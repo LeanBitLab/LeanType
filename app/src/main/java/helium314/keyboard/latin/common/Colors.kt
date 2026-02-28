@@ -268,7 +268,7 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
             // the white icon may not have enough contrast, and can't be adjusted by the user
             // Use 0.65 as threshold (white(1.0) on light accent > 0.65 is bad)
             // Or easier: if accent is bright, use dark icon
-            androidx.core.graphics.ColorUtils.calculateLuminance(accent) > 0.6 -> colorFilter(Color.DKGRAY)
+            androidx.core.graphics.ColorUtils.calculateLuminance(accent) > 0.5 -> colorFilter(Color.DKGRAY)
             else -> null
         }
     }
@@ -279,8 +279,9 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
         AUTOFILL_BACKGROUND_CHIP, GESTURE_PREVIEW, POPUP_KEYS_BACKGROUND, MORE_SUGGESTIONS_BACKGROUND, KEY_PREVIEW_BACKGROUND -> adjustedBackground
         TOOL_BAR_EXPAND_KEY_BACKGROUND -> if (!isNight) accent else doubleAdjustedBackground
         GESTURE_TRAIL -> gesture
-        KEY_TEXT, SUGGESTION_AUTO_CORRECT, REMOVE_SUGGESTION_ICON, EMOJI_KEY_TEXT, KEY_PREVIEW_TEXT, POPUP_KEY_TEXT,
-            KEY_ICON, POPUP_KEY_ICON, ONE_HANDED_MODE_BUTTON, EMOJI_CATEGORY, TOOL_BAR_KEY, FUNCTIONAL_KEY_TEXT -> keyText
+        KEY_TEXT, SUGGESTION_AUTO_CORRECT, REMOVE_SUGGESTION_ICON, EMOJI_KEY_TEXT, KEY_PREVIEW_TEXT,
+            KEY_ICON, ONE_HANDED_MODE_BUTTON, EMOJI_CATEGORY, TOOL_BAR_KEY, FUNCTIONAL_KEY_TEXT,
+            POPUP_KEY_TEXT, POPUP_KEY_ICON -> keyText
         KEY_HINT_TEXT -> keyHintText
         SPACE_BAR_TEXT -> spaceBarText
         FUNCTIONAL_KEY_BACKGROUND -> functionalKey

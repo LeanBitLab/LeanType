@@ -950,6 +950,17 @@ New dictionary:
     <string name="about_wiki_link">Go to Wiki</string>
     <!-- description for wiki link -->
     <string name="about_wiki_link_description">The Wiki can be improved by any GitHub user!</string>
+
+    <!-- Libraries Hub -->
+    <string name="libraries_hub_title">Libraries</string>
+    <string name="libraries_hub_summary">Manage gesture typing library, dictionaries, and emoji libraries.</string>
+    <string name="libraries_hub_gesture_title">Gesture Typing Library</string>
+    <string name="libraries_hub_dictionary_title">Main Dictionaries</string>
+    <string name="libraries_hub_emoji_title">Emoji Libraries</string>
+    <string name="libraries_hub_dict_guide_title">Dictionary Loading Guide</string>
+    <string name="libraries_hub_dict_guide_text">To add a new dictionary:\n1. Obtain a .dict file for your language.\n2. Tap \"Manage Dictionaries\".\n3. Use the plus (+) button to import the file.</string>
+    <string name="libraries_status_active">Active</string>
+    <string name="libraries_status_not_installed">Not Installed</string>
     <!-- preference title for saving the log to a file -->
     <string name="save_log">Save log</string>
     <!-- license for about screen-->
@@ -1092,11 +1103,14 @@ New dictionary:
     <string name="key_code">Key code</string>
     <!-- Text for showing / setting long press code -->
     <string name="long_press_code">Long press code</string>
-    <!-- Title of the setting for showing the toolbar automatically -->
+    <!-- Title of the setting to auto show toolbar -->
     <string name="auto_show_toolbar">Auto show toolbar</string>
-    <!-- Description of the setting for showing the toolbar automatically -->
-    <string name="auto_show_toolbar_summary">Show the toolbar if input starts or text is selected</string>
-    <!-- Title of the setting for hiding the toolbar automatically -->
+    <string name="auto_show_toolbar_open">Auto show toolbar on open</string>
+    <string name="auto_show_toolbar_select">Auto show toolbar on select</string>
+    <!-- Description of the auto_show_toolbar setting -->
+    <string name="auto_show_toolbar_summary">Show the toolbar when the keyboard opens</string>
+    <string name="auto_show_toolbar_select_summary">Show the toolbar when selecting text</string>
+    <!-- Title of the setting to auto hide toolbar -->
     <string name="auto_hide_toolbar">Auto hide toolbar</string>
     <!-- Description of the setting for hiding the toolbar automatically -->
     <string name="auto_hide_toolbar_summary">Hide the toolbar when suggestions become available</string>
@@ -1134,4 +1148,6 @@ New dictionary:
         <item>64</item>
         <item>128</item>
     </string-array>
+    <string name="clear_emoji_history_title">Clear emoji history</string>
+    <string name="clear_emoji_history_message">Are you sure you want to clear your recently used emojis?</string>
 </resources>

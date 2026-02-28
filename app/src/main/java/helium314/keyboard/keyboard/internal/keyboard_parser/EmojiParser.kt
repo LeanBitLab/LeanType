@@ -97,7 +97,13 @@ class EmojiParser(private val params: KeyboardParams, private val context: Conte
         if (!line.contains(" ") || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10) {
             // single emoji without popups, or emoticons (there is one that contains space...)
             return if (SupportedEmojis.isUnsupported(line)) null
-            else KeyParams(line, line.getCode(), null, null, Key.LABEL_FLAGS_FONT_NORMAL, params)
+            else {
+                // Emoticons get AUTO_X_SCALE so long text shrinks to fit
+                val flags = if (params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10)
+                    Key.LABEL_FLAGS_FONT_NORMAL or Key.LABEL_FLAGS_AUTO_X_SCALE
+                else Key.LABEL_FLAGS_FONT_NORMAL
+                KeyParams(line, line.getCode(), null, null, flags, params)
+            }
         }
         val split = line.split(" ")
         val label = split.first()

@@ -31,7 +31,7 @@ class EmojiSearchAdapter(
             )
             gravity = android.view.Gravity.CENTER
             setPadding(0, 16, 0, 16) // Padding for touch target
-            textSize = 24f // Emoji size
+            textSize = 22f // Emoji size
             setTextColor(Settings.getValues().mColors.get(helium314.keyboard.latin.common.ColorType.KEY_TEXT))
         }
         return ViewHolder(textView)

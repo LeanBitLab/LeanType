@@ -137,7 +137,7 @@ val toolbarKeyStrings = entries.associateWithTo(EnumMap(ToolbarKey::class.java))
 
 private val excludedKeys by lazy {
     val customAiKeys = if (BuildConfig.FLAVOR != "standard")
-        ToolbarKey.values().filter { it.name.startsWith("CUSTOM_AI_") }
+        ToolbarKey.entries.filter { it.name.startsWith("CUSTOM_AI_") }
     else emptyList()
     val otherKeys = if (BuildConfig.FLAVOR == "offlinelite")
         listOf(CLOSE_HISTORY, PROOFREAD, TRANSLATE, CLIPBOARD_SEARCH)

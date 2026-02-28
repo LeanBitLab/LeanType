@@ -1623,7 +1623,7 @@ public class LatinIME extends InputMethodService implements
                 ? currentSettings.mSpacingAndPunctuations.mSuggestPuncList
                 : SuggestedWords.getEmptyInstance();
         setSuggestedWords(neutralSuggestions);
-        if (hasSuggestionStripView() && currentSettings.mAutoShowToolbar) {
+        if (hasSuggestionStripView() && currentSettings.mAutoShowToolbarOnSelect) {
             final int codePointBeforeCursor = mInputLogic.getConnection().getCodePointBeforeCursor();
             if (mInputLogic.getConnection().hasSelection()
                     || codePointBeforeCursor == Constants.NOT_A_CODE

@@ -24,6 +24,7 @@ import helium314.keyboard.settings.screens.ColorsScreen
 import helium314.keyboard.settings.screens.DebugScreen
 import helium314.keyboard.settings.screens.CustomAIKeysScreen
 import helium314.keyboard.settings.screens.DictionaryScreen
+import helium314.keyboard.settings.screens.LibrariesHubScreen
 import helium314.keyboard.settings.screens.GestureTypingScreen
 import helium314.keyboard.settings.screens.LanguageScreen
 import helium314.keyboard.settings.screens.MainSettingsScreen
@@ -72,12 +73,14 @@ fun SettingsNavHost(
                 onClickPreferences = { navController.navigate(SettingsDestination.Preferences) },
                 onClickToolbar = { navController.navigate(SettingsDestination.Toolbar) },
                 onClickGestureTyping = { navController.navigate(SettingsDestination.GestureTyping) },
+                onClickLibraries = { navController.navigate(SettingsDestination.Libraries) },
                 onClickAdvanced = { navController.navigate(SettingsDestination.Advanced) },
                 onClickAppearance = { navController.navigate(SettingsDestination.Appearance) },
                 onClickLanguage = { navController.navigate(SettingsDestination.Languages) },
                 onClickLayouts = { navController.navigate(SettingsDestination.Layouts) },
                 onClickDictionaries = { navController.navigate(SettingsDestination.Dictionaries) },
                 onClickAIIntegration = { navController.navigate(SettingsDestination.AIIntegration) },
+                onClickGesture = { navController.navigate(SettingsDestination.GestureTyping) },
                 onClickBack = ::goBack,
             )
         }
@@ -101,6 +104,12 @@ fun SettingsNavHost(
         }
         composable(SettingsDestination.AIIntegration) {
             AIIntegrationScreen(onClickBack = ::goBack)
+        }
+        composable(SettingsDestination.Libraries) {
+            LibrariesHubScreen(
+                onClickBack = ::goBack,
+                onClickDictionaries = { navController.navigate(SettingsDestination.Dictionaries) }
+            )
         }
         composable(SettingsDestination.CustomAIKeys) {
             CustomAIKeysScreen(onClickBack = ::goBack)
@@ -152,6 +161,7 @@ object SettingsDestination {
     const val Toolbar = "toolbar"
     const val GestureTyping = "gesture_typing"
     const val Advanced = "advanced"
+    const val Libraries = "libraries_hub"
     const val AIIntegration = "ai_integration"
     const val Debug = "debug"
     const val Appearance = "appearance"

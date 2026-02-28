@@ -31,7 +31,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This is a Keyboard class where you can add keys dynamically shown in a grid layout
+ * This is a Keyboard class where you can add keys dynamically shown in a grid
+ * layout
  */
 final class DynamicGridKeyboard extends Keyboard {
     private static final String TAG = DynamicGridKeyboard.class.getSimpleName();
@@ -53,8 +54,9 @@ final class DynamicGridKeyboard extends Keyboard {
     public DynamicGridKeyboard(final SharedPreferences prefs, final Keyboard templateKeyboard,
             final int maxKeyCount, final int categoryId, final int width) {
         super(templateKeyboard);
-        // todo: would be better to keep them final and not require width, but how to properly set width of the template keyboard?
-        //  an alternative would be to always create the templateKeyboard with full width
+        // todo: would be better to keep them final and not require width, but how to
+        // properly set width of the template keyboard?
+        // an alternative would be to always create the templateKeyboard with full width
         final int paddingWidth = mOccupiedWidth - mBaseWidth;
         mBaseWidth = width - paddingWidth;
         mOccupiedWidth = width;
@@ -63,10 +65,19 @@ final class DynamicGridKeyboard extends Keyboard {
         final Key key1 = getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_1);
         final int horizontalGap = Math.abs(key1.getX() - key0.getX()) - key0.getWidth();
         final float widthScale = determineWidthScale(key0.getWidth() + horizontalGap);
-        mHorizontalGap = (int) (horizontalGap * widthScale);
-        mHorizontalStep = (int) ((key0.getWidth() + horizontalGap) * widthScale);
-        mVerticalStep = (int) ((key0.getHeight() + mVerticalGap) / Math.sqrt(Settings.getValues().mKeyboardHeightScale));
-        mColumnsNum = mBaseWidth / mHorizontalStep;
+        if (categoryId == EmojiCategory.ID_EMOTICONS) {
+            // Emoticons need more space, so we use approx half the columns
+            final int standardColumns = mBaseWidth / (int) ((key0.getWidth() + horizontalGap) * widthScale);
+            mColumnsNum = Math.max(1, standardColumns / 2);
+            mHorizontalStep = mBaseWidth / mColumnsNum;
+            mHorizontalGap = (int) (horizontalGap * widthScale * 2);
+        } else {
+            mHorizontalGap = (int) (horizontalGap * widthScale);
+            mHorizontalStep = (int) ((key0.getWidth() + horizontalGap) * widthScale);
+            mColumnsNum = mBaseWidth / mHorizontalStep;
+        }
+        mVerticalStep = (int) ((key0.getHeight() + mVerticalGap)
+                / Math.sqrt(Settings.getValues().mKeyboardHeightScale));
         if (spacerWidth > 0)
             setSpacerColumns(spacerWidth);
         mMaxKeyCount = maxKeyCount;
@@ -76,7 +87,8 @@ final class DynamicGridKeyboard extends Keyboard {
 
     private void setSpacerColumns(final float spacerWidth) {
         int spacerColumnsWidth = (int) (spacerWidth / mHorizontalStep);
-        if (spacerColumnsWidth == 0) return;
+        if (spacerColumnsWidth == 0)
+            return;
         if (mColumnsNum % 2 != spacerColumnsWidth % 2)
             spacerColumnsWidth++;
         final int leftmost;
@@ -153,10 +165,12 @@ final class DynamicGridKeyboard extends Keyboard {
         synchronized (mLock) {
             mCachedGridKeys = null;
             // When a key is added to recents keyboard, we don't want to keep its popup keys
-            // neither its hint label. Also, we make sure its background type is matching our keyboard
+            // neither its hint label. Also, we make sure its background type is matching
+            // our keyboard
             // if key comes from another keyboard (ie. a {@link PopupKeysKeyboard}).
             final boolean dropPopupKeys = mIsRecents;
-            // Check if hint was a more emoji indicator and prevent its copy if popup keys aren't copied
+            // Check if hint was a more emoji indicator and prevent its copy if popup keys
+            // aren't copied
             final boolean dropHintLabel = dropPopupKeys && EMOJI_HINT_LABEL.equals(usedKey.getHintLabel());
             final GridKey key = new GridKey(usedKey,
                     dropPopupKeys ? null : usedKey.getPopupKeys(),
@@ -188,6 +202,16 @@ final class DynamicGridKeyboard extends Keyboard {
         }
     }
 
+    public void clearRecentKeys() {
+        synchronized (mLock) {
+            mGridKeys.clear();
+            mPendingKeys.clear();
+            mEmptyColumnIndices.clear();
+            mCachedGridKeys = null;
+            saveRecentKeys();
+        }
+    }
+
     private void saveRecentKeys() {
         final ArrayList<Object> keys = new ArrayList<>();
         for (final Key key : mGridKeys) {
@@ -212,7 +236,8 @@ final class DynamicGridKeyboard extends Keyboard {
         }
 
         // fall back to creating the key
-        return new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null, Key.BACKGROUND_TYPE_EMPTY, code, null);
+        return new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null, Key.BACKGROUND_TYPE_EMPTY,
+                code, null);
     }
 
     private Key getKeyByOutputText(final Collection<DynamicGridKeyboard> keyboards,
@@ -226,7 +251,8 @@ final class DynamicGridKeyboard extends Keyboard {
         }
 
         // fall back to creating the key
-        return new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null, Key.BACKGROUND_TYPE_EMPTY, 0, outputText);
+        return new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null, Key.BACKGROUND_TYPE_EMPTY, 0,
+                outputText);
     }
 
     public void loadRecentKeys(final Collection<DynamicGridKeyboard> keyboards) {
@@ -235,7 +261,7 @@ final class DynamicGridKeyboard extends Keyboard {
         for (final Object o : keys) {
             final Key key;
             if (o instanceof Integer) {
-                final int code = (Integer)o;
+                final int code = (Integer) o;
                 key = getKeyByCode(keyboards, code);
             } else if (o instanceof final String outputText) {
                 key = getKeyByOutputText(keyboards, outputText);
@@ -292,7 +318,7 @@ final class DynamicGridKeyboard extends Keyboard {
         private int mCurrentY;
 
         public GridKey(@NonNull final Key originalKey, @Nullable final PopupKeySpec[] popupKeys,
-             @Nullable final String labelHint, final int backgroundType) {
+                @Nullable final String labelHint, final int backgroundType) {
             super(originalKey, popupKeys, labelHint, backgroundType);
         }
 
@@ -303,20 +329,38 @@ final class DynamicGridKeyboard extends Keyboard {
         }
 
         @Override
+        public int getWidth() {
+            return getHitBox().width() - getHorizontalGap();
+        }
+
+        @Override
+        public int getHeight() {
+            return getHitBox().height() - getVerticalGap();
+        }
+
+        @Override
         public int getX() {
-            return mCurrentX;
+            return getHitBox().left + getHorizontalGap() / 2;
         }
 
         @Override
         public int getY() {
-            return mCurrentY;
+            return getHitBox().top + getVerticalGap() / 2;
+        }
+
+        @Override
+        public int getDrawWidth() {
+            return getWidth();
         }
 
         @Override
         public boolean equals(final Object o) {
-            if (!(o instanceof final Key key)) return false;
-            if (getCode() != key.getCode()) return false;
-            if (!TextUtils.equals(getLabel(), key.getLabel())) return false;
+            if (!(o instanceof final Key key))
+                return false;
+            if (getCode() != key.getCode())
+                return false;
+            if (!TextUtils.equals(getLabel(), key.getLabel()))
+                return false;
             return TextUtils.equals(getOutputText(), key.getOutputText());
         }
 

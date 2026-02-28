@@ -1,38 +1,43 @@
+/*
+ * Copyright (C) 2026 LeanBitLab
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
 package helium314.keyboard.settings.screens
 
 import android.content.Context
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedCard
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ToolbarKey
+import helium314.keyboard.latin.utils.defaultToolbarPref
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.SearchScreen
 import helium314.keyboard.settings.dialogs.TextInputDialog
@@ -79,31 +84,8 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
     val isSet = currentPrompt.isNotBlank()
     var showDialog by remember { mutableStateOf(false) }
     
-    val keyEnum = when(index) {
-        1 -> ToolbarKey.CUSTOM_AI_1
-        2 -> ToolbarKey.CUSTOM_AI_2
-        3 -> ToolbarKey.CUSTOM_AI_3
-        4 -> ToolbarKey.CUSTOM_AI_4
-        5 -> ToolbarKey.CUSTOM_AI_5
-        6 -> ToolbarKey.CUSTOM_AI_6
-        7 -> ToolbarKey.CUSTOM_AI_7
-        8 -> ToolbarKey.CUSTOM_AI_8
-        9 -> ToolbarKey.CUSTOM_AI_9
-        else -> ToolbarKey.CUSTOM_AI_10
-    }
-    
-    val iconRes = when(index) {
-        1 -> R.drawable.ic_custom_ai_1
-        2 -> R.drawable.ic_custom_ai_2
-        3 -> R.drawable.ic_custom_ai_3
-        4 -> R.drawable.ic_custom_ai_4
-        5 -> R.drawable.ic_custom_ai_5
-        6 -> R.drawable.ic_custom_ai_6
-        7 -> R.drawable.ic_custom_ai_7
-        8 -> R.drawable.ic_custom_ai_8
-        9 -> R.drawable.ic_custom_ai_9
-        else -> R.drawable.ic_custom_ai_10
-    }
+    val keyEnum = CUSTOM_AI_KEY_ENUMS[index - 1]
+    val iconRes = CUSTOM_AI_KEY_ICONS[index - 1]
 
     val cardModifier = Modifier.fillMaxWidth()
     val cardColors = if (isSet) {
@@ -197,25 +179,31 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
     }
 }
 
+private val CUSTOM_AI_KEY_ENUMS = arrayOf(
+    ToolbarKey.CUSTOM_AI_1, ToolbarKey.CUSTOM_AI_2, ToolbarKey.CUSTOM_AI_3,
+    ToolbarKey.CUSTOM_AI_4, ToolbarKey.CUSTOM_AI_5, ToolbarKey.CUSTOM_AI_6,
+    ToolbarKey.CUSTOM_AI_7, ToolbarKey.CUSTOM_AI_8, ToolbarKey.CUSTOM_AI_9,
+    ToolbarKey.CUSTOM_AI_10
+)
+
+private val CUSTOM_AI_KEY_ICONS = intArrayOf(
+    R.drawable.ic_custom_ai_1, R.drawable.ic_custom_ai_2, R.drawable.ic_custom_ai_3,
+    R.drawable.ic_custom_ai_4, R.drawable.ic_custom_ai_5, R.drawable.ic_custom_ai_6,
+    R.drawable.ic_custom_ai_7, R.drawable.ic_custom_ai_8, R.drawable.ic_custom_ai_9,
+    R.drawable.ic_custom_ai_10
+)
+
 private fun updateToolbarKeyStatus(context: Context, key: ToolbarKey, enable: Boolean) {
     val prefs = context.prefs()
-    val toolbarKeys = prefs.getString(Settings.PREF_TOOLBAR_KEYS, helium314.keyboard.latin.utils.defaultToolbarPref) ?: ""
-    
-    var entries = toolbarKeys.split(";").toMutableList()
+    val toolbarKeys = prefs.getString(Settings.PREF_TOOLBAR_KEYS, defaultToolbarPref) ?: ""
+    val entries = toolbarKeys.split(";").toMutableList()
     val keyEntryPrefix = "${key.name},"
     val existingIndex = entries.indexOfFirst { it.startsWith(keyEntryPrefix) }
-    
     if (enable) {
-        if (existingIndex != -1) {
-            entries[existingIndex] = "${key.name},true"
-        } else {
-            entries.add("${key.name},true")
-        }
+        if (existingIndex != -1) entries[existingIndex] = "${key.name},true"
+        else entries.add("${key.name},true")
     } else {
-        if (existingIndex != -1) {
-            entries[existingIndex] = "${key.name},false"
-        }
+        if (existingIndex != -1) entries[existingIndex] = "${key.name},false"
     }
-    
     prefs.edit { putString(Settings.PREF_TOOLBAR_KEYS, entries.joinToString(";")) }
 }

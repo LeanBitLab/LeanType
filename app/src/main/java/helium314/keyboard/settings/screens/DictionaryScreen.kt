@@ -82,6 +82,22 @@ fun DictionaryScreen(
         },
         itemContent = { locale ->
             if (locale.language == SubtypeLocaleUtils.NO_LANGUAGE) {
+                // Add Dictionary Entry
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .padding(vertical = 4.dp, horizontal = 16.dp)
+                        .fillMaxWidth()
+                        .clickable { showAddDictDialog = true }
+                ) {
+                    Text(
+                        stringResource(R.string.add_new_dictionary_title),
+                    )
+                    Icon(painterResource(R.drawable.ic_plus), stringResource(R.string.add_new_dictionary_title))
+                }
+                androidx.compose.material3.Divider(modifier = Modifier.padding(vertical = 4.dp))
+
                 // Personal Dictionary Entry
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -96,21 +112,6 @@ fun DictionaryScreen(
                         style = MaterialTheme.typography.titleMedium
                     )
                     NextScreenIcon()
-                }
-                androidx.compose.material3.Divider(modifier = Modifier.padding(vertical = 4.dp))
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier
-                        .padding(vertical = 4.dp, horizontal = 16.dp)
-                        .fillMaxWidth()
-                        .clickable { showAddDictDialog = true }
-                ) {
-                    Text(
-                        stringResource(R.string.add_new_dictionary_title),
-                    )
-                    Icon(painterResource(R.drawable.ic_plus), stringResource(R.string.add_new_dictionary_title))
                 }
                 androidx.compose.material3.Divider(modifier = Modifier.padding(vertical = 4.dp))
                 

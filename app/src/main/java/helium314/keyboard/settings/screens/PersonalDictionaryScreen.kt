@@ -7,8 +7,10 @@ import android.database.Cursor
 import android.provider.UserDictionary
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -49,51 +51,53 @@ fun PersonalDictionaryScreen(
 ) {
     val words = getAll(locale, LocalContext.current)
     var selectedWord: Word? by remember { mutableStateOf(null) }
-    SearchScreen(
-        onClickBack = onClickBack,
-        title = {
-            Column {
-                Text(stringResource(R.string.edit_personal_dictionary))
-                Text(
-                    locale.getLocaleDisplayNameForUserDictSettings(LocalContext.current),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        },
-        filteredItems = { term ->
-            // we could maybe to this using a query and getting items by position
-            // requires adjusting the SearchScreen, likely not worth the effort
-            words.filter { it.word.startsWith(term, true) || it.shortcut?.startsWith(term, true) == true }
-        },
-        itemContent = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { selectedWord = it }
-                    .padding(vertical = 6.dp, horizontal = 16.dp)
-            ) {
+    Box(Modifier.fillMaxSize()) {
+        SearchScreen(
+            onClickBack = onClickBack,
+            title = {
                 Column {
-                    Text(it.word, style = MaterialTheme.typography.bodyLarge)
-                    val details = if (it.shortcut == null) it.weight.toString() else "${it.weight}  |  ${it.shortcut}"
-                    Text(details, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(stringResource(R.string.edit_personal_dictionary))
+                    Text(
+                        locale.getLocaleDisplayNameForUserDictSettings(LocalContext.current),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
-                Icon(painterResource(R.drawable.ic_edit), stringResource(R.string.user_dict_settings_edit_dialog_title))
+            },
+            filteredItems = { term ->
+                // we could maybe to this using a query and getting items by position
+                // requires adjusting the SearchScreen, likely not worth the effort
+                words.filter { it.word.startsWith(term, true) || it.shortcut?.startsWith(term, true) == true }
+            },
+            itemContent = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { selectedWord = it }
+                        .padding(vertical = 6.dp, horizontal = 16.dp)
+                ) {
+                    Column {
+                        Text(it.word, style = MaterialTheme.typography.bodyLarge)
+                        val details = if (it.shortcut == null) it.weight.toString() else "${it.weight}  |  ${it.shortcut}"
+                        Text(details, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                    Icon(painterResource(R.drawable.ic_edit), stringResource(R.string.user_dict_settings_edit_dialog_title))
+                }
             }
-        }
-    )
+        )
+        ExtendedFloatingActionButton(
+            onClick = { selectedWord = Word("", null, null) },
+            text = { Text(stringResource(R.string.user_dict_add_word_button)) },
+            icon = { Icon(painter = painterResource(R.drawable.ic_edit), stringResource(R.string.user_dict_add_word_button)) },
+            modifier = Modifier.align(Alignment.BottomEnd).padding(all = 12.dp)
+                .then(Modifier.safeDrawingPadding())
+        )
+    }
     if (selectedWord != null) {
         EditWordDialog(selectedWord!!, locale) { selectedWord = null }
     }
-    ExtendedFloatingActionButton(
-        onClick = { selectedWord = Word("", null, null) },
-        text = { Text(stringResource(R.string.user_dict_add_word_button)) },
-        icon = { Icon(painter = painterResource(R.drawable.ic_edit), stringResource(R.string.user_dict_add_word_button)) },
-        modifier = Modifier.wrapContentSize(Alignment.BottomEnd).padding(all = 12.dp)
-            .then(Modifier.safeDrawingPadding())
-    )
 }
 
 @Composable

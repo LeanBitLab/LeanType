@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.utils.SubtypeLocaleUtils.displayName
@@ -44,6 +45,8 @@ fun MainSettingsScreen(
     onClickAppearance: () -> Unit,
     onClickLanguage: () -> Unit,
     onClickLayouts: () -> Unit,
+    onClickGesture: () -> Unit,
+    onClickLibraries: () -> Unit,
     onClickDictionaries: () -> Unit,
     onClickAIIntegration: () -> Unit,
     onClickBack: () -> Unit,
@@ -71,11 +74,20 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
-                        if (helium314.keyboard.latin.BuildConfig.FLAVOR != "offlinelite") {
+                        if (BuildConfig.FLAVOR != "offlinelite") {
                             Preference(
                                 name = stringResource(R.string.settings_screen_ai_integration),
                                 onClick = onClickAIIntegration,
                                 icon = R.drawable.ic_proofread
+                            ) { NextScreenIcon() }
+                            HorizontalDivider(
+                                modifier = Modifier.padding(horizontal = 16.dp),
+                                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+                            )
+                            Preference(
+                                name = stringResource(R.string.libraries_hub_title),
+                                onClick = onClickLibraries,
+                                icon = R.drawable.ic_emoji_objects
                             ) { NextScreenIcon() }
                             HorizontalDivider(
                                 modifier = Modifier.padding(horizontal = 16.dp),
@@ -151,15 +163,6 @@ fun MainSettingsScreen(
                             onClick = onClickLayouts,
                             icon = R.drawable.ic_ime_switcher
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
-                        Preference(
-                            name = stringResource(R.string.dictionary_settings_category),
-                            onClick = onClickDictionaries,
-                            icon = R.drawable.ic_dictionary
-                        ) { NextScreenIcon() }
                     }
                 }
 
@@ -200,7 +203,7 @@ private fun PreviewScreen() {
     initPreview(LocalContext.current)
     Theme(previewDark) {
         Surface {
-            MainSettingsScreen({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
+            MainSettingsScreen({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
         }
     }
 }

@@ -137,11 +137,12 @@ class ProofreadService(private val context: Context) {
 
     // HuggingFace API endpoint
     fun getHuggingFaceEndpoint(): String {
-        // Auto-select correct endpoint based on provider
-        val defaultEndpoint = when (getProvider()) {
-            AIProvider.GROQ -> GROQ_ENDPOINT
-            else -> DEFAULT_HF_ENDPOINT
-        }
+        val provider = getProvider()
+        // If provider is GROQ, always use GROQ_ENDPOINT. 
+        // We don't want a saved OpenAI endpoint to override it.
+        if (provider == AIProvider.GROQ) return GROQ_ENDPOINT
+        
+        val defaultEndpoint = DEFAULT_HF_ENDPOINT
         return securePrefs.getString(KEY_HF_ENDPOINT, defaultEndpoint) ?: defaultEndpoint
     }
 

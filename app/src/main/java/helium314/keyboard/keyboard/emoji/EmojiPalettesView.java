@@ -45,6 +45,8 @@ import android.widget.TextView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.TextUtils;
+import android.view.WindowManager;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,6 +80,7 @@ import helium314.keyboard.latin.settings.Settings;
 import helium314.keyboard.latin.settings.SettingsValues;
 import helium314.keyboard.latin.utils.DictionaryInfoUtils;
 import helium314.keyboard.latin.utils.ResourceUtils;
+import helium314.keyboard.latin.common.StringUtilsKt;
 
 import static helium314.keyboard.latin.common.Constants.NOT_A_COORDINATE;
 
@@ -365,6 +368,27 @@ public final class EmojiPalettesView extends LinearLayout
         host.addView(iconView);
         iconView.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
         iconView.setOnClickListener(this);
+        if (categoryId == EmojiCategory.ID_RECENTS) {
+            iconView.setOnLongClickListener(v -> {
+                android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.clear_emoji_history_title)
+                        .setMessage(R.string.clear_emoji_history_message)
+                        .setPositiveButton(android.R.string.ok, (d, which) -> {
+                            getRecentsKeyboard().clearRecentKeys();
+                            mPager.getAdapter().notifyDataSetChanged();
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .create();
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams lp = window.getAttributes();
+                lp.token = iconView.getWindowToken();
+                lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
+                window.setAttributes(lp);
+                window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+                dialog.show();
+                return true;
+            });
+        }
     }
 
     private int toPx(float dp) {
@@ -658,23 +682,21 @@ public final class EmojiPalettesView extends LinearLayout
         if (sDictionaryFacilitator == null || TextUtils.isEmpty(query)) {
             if (mSearchAdapter != null)
                 mSearchAdapter.submitList(java.util.Collections.emptyList());
-            // No empty view in strip, just empty list
             return;
         }
 
-        final String lowerQuery = query.toLowerCase(java.util.Locale.ROOT);
-        java.util.List<String> results = new java.util.ArrayList<>();
-        java.util.List<String> allEmojis = mEmojiCategory.getAllEmojiKeys();
+        // Use dictionary-based fuzzy matching (same algorithm as inline :search)
+        var suggestions = sDictionaryFacilitator.getSuggestions(
+                StringUtilsKt.splitOnWhitespace(query));
 
-        for (String emoji : allEmojis) {
-            String desc = getDescription(emoji);
-            if (desc != null && desc.toLowerCase(java.util.Locale.ROOT).contains(lowerQuery)) {
-                results.add(emoji);
-                if (results.size() >= 50)
-                    break;
+        java.util.List<String> results = new java.util.ArrayList<>();
+        for (var info : suggestions) {
+            if (info.isEmoji()) {
+                results.add(info.mWord);
             }
         }
-        android.util.Log.d("EmojiSearch", "Found " + results.size() + " results");
+
+        android.util.Log.d("EmojiSearch", "Found " + results.size() + " results for: " + query);
         if (mSearchAdapter != null)
             mSearchAdapter.submitList(results);
     }

@@ -5,7 +5,7 @@
     android:viewportWidth="512"
     android:viewportHeight="512">
     
-    <group android:scaleX="0.75" android:scaleY="0.75" android:pivotX="256" android:pivotY="256" android:translateX="-12" android:translateY="10">
+    <group android:scaleX="0.5625" android:scaleY="0.5625" android:pivotX="256" android:pivotY="256" android:translateX="-12" android:translateY="10">
         <!-- Row 1 -->
         
         <!-- Key 1 (Top Left): L (replaces H) -->
