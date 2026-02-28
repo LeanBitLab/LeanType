@@ -296,6 +296,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         suggestionsStrip.layoutDirection = newLayoutDirection
     }
 
+    // Track whether the user manually toggles the toolbar open/close
+    var isToolbarManuallyOpen: Boolean = Settings.getValues().mAutoShowToolbar
+
     fun setToolbarVisibility(toolbarVisible: Boolean) {
         // avoid showing toolbar keys when locked
         val locked = isDeviceLocked(context)
@@ -494,7 +497,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             }
         }
         if (view === toolbarExpandKey) {
-            setToolbarVisibility(toolbarContainer.visibility != VISIBLE)
+            val willBeVisible = toolbarContainer.visibility != VISIBLE
+            isToolbarManuallyOpen = willBeVisible
+            setToolbarVisibility(willBeVisible)
         }
 
         // tag for word views is set in SuggestionStripLayoutHelper (setupWordViewsTextAndColor, layoutPunctuationSuggestions)

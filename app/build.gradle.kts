@@ -26,6 +26,10 @@ android {
         versionName = "3.7.3"
 
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        
+        ndk {
+            abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a"))
+        }
     }
 
     // ONNX Runtime is used instead of llama.cpp native build

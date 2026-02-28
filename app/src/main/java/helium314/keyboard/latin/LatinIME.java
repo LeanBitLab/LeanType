@@ -1624,11 +1624,10 @@ public class LatinIME extends InputMethodService implements
                 : SuggestedWords.getEmptyInstance();
         setSuggestedWords(neutralSuggestions);
         if (hasSuggestionStripView() && currentSettings.mAutoShowToolbarOnSelect) {
-            final int codePointBeforeCursor = mInputLogic.getConnection().getCodePointBeforeCursor();
-            if (mInputLogic.getConnection().hasSelection()
-                    || codePointBeforeCursor == Constants.NOT_A_CODE
-                    || codePointBeforeCursor == Constants.CODE_ENTER) {
+            if (mInputLogic.getConnection().hasSelection()) {
                 mSuggestionStripView.setToolbarVisibility(true);
+            } else {
+                mSuggestionStripView.setToolbarVisibility(mSuggestionStripView.isToolbarManuallyOpen());
             }
         }
     }
