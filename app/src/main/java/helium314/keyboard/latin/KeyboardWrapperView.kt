@@ -84,6 +84,10 @@ class KeyboardWrapperView @JvmOverloads constructor(
                     val newScale = (oldScale + changePercent / 100f).coerceAtMost(2.5f).coerceAtLeast(0.5f)
                     if (newScale == oldScale) return@setOnTouchListener true
                     Settings.getInstance().writeOneHandedModeScale(newScale)
+                    // Force reload settings synchronously to ensure the new scale is used immediately
+                    val settings = Settings.getInstance()
+                    val values = Settings.getValues()
+                    settings.loadSettings(context, values.mLocale, values.mInputAttributes)
                     KeyboardSwitcher.getInstance().setOneHandedModeEnabled(true, true)
                 }
                 else -> x = 0f

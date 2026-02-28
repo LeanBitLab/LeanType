@@ -165,10 +165,11 @@ object Defaults {
     const val PREF_DISABLE_NETWORK = false
     const val PREF_TOOLBAR_MODE = "EXPANDABLE"
     const val PREF_TOOLBAR_HIDING_GLOBAL = true
-    const val PREF_QUICK_PIN_TOOLBAR_KEYS = false
+    const val PREF_QUICK_PIN_TOOLBAR_KEYS = true
     val PREF_PINNED_TOOLBAR_KEYS = defaultPinnedToolbarPref
     val PREF_TOOLBAR_KEYS = defaultToolbarPref
     const val PREF_AUTO_SHOW_TOOLBAR = false
+    const val PREF_AUTO_SHOW_TOOLBAR_ON_SELECT = true
     const val PREF_AUTO_HIDE_TOOLBAR = true
     val PREF_CLIPBOARD_TOOLBAR_KEYS = defaultClipboardToolbarPref
     const val PREF_ABC_AFTER_EMOJI = false

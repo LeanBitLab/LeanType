@@ -69,9 +69,10 @@ fun ToolbarScreen(
         if (toolbarMode in listOf(ToolbarMode.EXPANDABLE, ToolbarMode.SUGGESTION_STRIP))
             Settings.PREF_PINNED_TOOLBAR_KEYS else null,
         if (clipboardToolbarVisible) Settings.PREF_CLIPBOARD_TOOLBAR_KEYS else null,
-        if (clipboardToolbarVisible && BuildConfig.FLAVOR == "standard") Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES else null,
+        if (clipboardToolbarVisible) Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES else null,
         if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_QUICK_PIN_TOOLBAR_KEYS else null,
         if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_SHOW_TOOLBAR else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT else null,
         if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_HIDE_TOOLBAR else null,
         if (toolbarMode != ToolbarMode.HIDDEN) Settings.PREF_VARIABLE_TOOLBAR_DIRECTION else null,
     )
@@ -118,28 +119,30 @@ fun createToolbarSettings(context: Context): List<Setting> {
         Setting(context, Settings.PREF_CLIPBOARD_TOOLBAR_KEYS, R.string.clipboard_toolbar_keys) {
             ReorderSwitchPreference(it, Defaults.PREF_CLIPBOARD_TOOLBAR_KEYS, filter)
         },
-        if (BuildConfig.FLAVOR == "standard") {
-            Setting(context, Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES, R.string.customize_toolbar_key_codes) {
-                var showDialog by rememberSaveable { mutableStateOf(false) }
-                Preference(
-                    name = it.title,
-                    onClick = { showDialog = true },
+        Setting(context, Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES, R.string.customize_toolbar_key_codes) {
+            var showDialog by rememberSaveable { mutableStateOf(false) }
+            Preference(
+                name = it.title,
+                onClick = { showDialog = true },
+            )
+            if (showDialog)
+                ToolbarKeysCustomizer(
+                    key = it.key,
+                    onDismissRequest = { showDialog = false }
                 )
-                if (showDialog)
-                    ToolbarKeysCustomizer(
-                        key = it.key,
-                        onDismissRequest = { showDialog = false }
-                    )
-            }
-        } else null,
+        },
         Setting(context, Settings.PREF_QUICK_PIN_TOOLBAR_KEYS,
             R.string.quick_pin_toolbar_keys, R.string.quick_pin_toolbar_keys_summary)
         {
             SwitchPreference(it, Defaults.PREF_QUICK_PIN_TOOLBAR_KEYS) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
         },
-        Setting(context, Settings.PREF_AUTO_SHOW_TOOLBAR, R.string.auto_show_toolbar, R.string.auto_show_toolbar_summary)
+        Setting(context, Settings.PREF_AUTO_SHOW_TOOLBAR, R.string.auto_show_toolbar_open, R.string.auto_show_toolbar_summary)
         {
             SwitchPreference(it, Defaults.PREF_AUTO_SHOW_TOOLBAR)
+        },
+        Setting(context, Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT, R.string.auto_show_toolbar_select, R.string.auto_show_toolbar_select_summary)
+        {
+            SwitchPreference(it, Defaults.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT)
         },
         Setting(context, Settings.PREF_AUTO_HIDE_TOOLBAR, R.string.auto_hide_toolbar, R.string.auto_hide_toolbar_summary)
         {
@@ -153,9 +156,12 @@ fun createToolbarSettings(context: Context): List<Setting> {
         Setting(context, Settings.PREF_SPLIT_TOOLBAR, R.string.split_toolbar, R.string.split_toolbar_summary) {
             val prefs = LocalContext.current.prefs()
             SwitchPreference(it, Defaults.PREF_SPLIT_TOOLBAR) { isEnabled ->
-                // When split toolbar is enabled, disable auto-hide toolbar
+                // When split toolbar is enabled, disable auto-hide toolbar and auto-show-on-select
                 if (isEnabled) {
-                    prefs.edit().putBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, false).apply()
+                    prefs.edit()
+                        .putBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, false)
+                        .putBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT, false)
+                        .apply()
                 }
                 KeyboardSwitcher.getInstance().setThemeNeedsReload()
             }

@@ -7,6 +7,7 @@ package helium314.keyboard.settings.screens
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import helium314.keyboard.latin.BuildConfig
@@ -38,24 +39,22 @@ fun AIIntegrationScreen(
 @Composable
 private fun StandardAIIntegrationScreen(onClickBack: () -> Unit) {
     val ctx = LocalContext.current
-    val service = helium314.keyboard.latin.utils.ProofreadService(ctx)
-    
+    // Use remember to avoid re-creating the service on every recomposition
+    val service = remember(ctx) { helium314.keyboard.latin.utils.ProofreadService(ctx) }
+
     // Initialize provider state if needed
     if (providerState.value == null) {
         providerState.value = service.getProvider().name
     }
-    
+
     val currentProvider by providerState.collectAsState()
-    
+
     val items = buildList {
         // Always show provider selection
         add(SettingsWithoutKey.AI_PROVIDER)
-        
-        // ADDED: Custom AI Keys entry
-        if (BuildConfig.FLAVOR == "standard") {
-            add(SettingsWithoutKey.CUSTOM_AI_KEYS)
-        }
-        
+        // Custom AI Keys are only shown in the standard flavor (guaranteed by caller)
+        add(SettingsWithoutKey.CUSTOM_AI_KEYS)
+
         // Show settings based on selected provider
         when (currentProvider) {
             "GROQ" -> {
@@ -76,7 +75,7 @@ private fun StandardAIIntegrationScreen(onClickBack: () -> Unit) {
             }
         }
     }
-    
+
     SearchSettingsScreen(
         onClickBack = onClickBack,
         title = stringResource(R.string.settings_screen_ai_integration),

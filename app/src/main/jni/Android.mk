@@ -90,7 +90,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CLANG := true
 LOCAL_SDK_VERSION := 14
 LOCAL_NDK_STL_VARIANT := c++_static
-LOCAL_LDFLAGS += -ldl
+LOCAL_LDFLAGS += -ldl -Wl,-z,max-page-size=16384
 
 # Avoid issues with reproducible builds, see https://gitlab.com/fdroid/rfp/-/issues/2662
 LOCAL_LDFLAGS += -Wl,--build-id=none

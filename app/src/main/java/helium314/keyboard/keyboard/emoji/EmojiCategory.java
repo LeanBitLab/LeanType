@@ -47,7 +47,7 @@ final class EmojiCategory {
     private static final int ID_OBJECTS = 7;
     private static final int ID_SYMBOLS = 8;
     private static final int ID_FLAGS = 9;
-    private static final int ID_EMOTICONS = 10;
+    public static final int ID_EMOTICONS = 10;
 
     private static final int MAX_LINE_COUNT_PER_PAGE = 3;
 
@@ -270,7 +270,7 @@ final class EmojiCategory {
 
     private int computeCategoryPageCount(final int categoryId) {
         final Keyboard keyboard = mLayoutSet.getKeyboard(sCategoryElementId[categoryId]);
-        return (keyboard.getSortedKeys().size() - 1) / computeMaxKeyCountPerPage() + 1;
+        return (keyboard.getSortedKeys().size() - 1) / computeMaxKeyCountPerPage(categoryId) + 1;
     }
 
     // Returns a keyboard from the recycler view's adapter position.
@@ -304,7 +304,7 @@ final class EmojiCategory {
             }
 
             final Keyboard keyboard = mLayoutSet.getKeyboard(sCategoryElementId[categoryId]);
-            final int keyCountPerPage = computeMaxKeyCountPerPage();
+            final int keyCountPerPage = computeMaxKeyCountPerPage(categoryId);
             final Key[][] sortedKeysPages = sortKeysGrouped(
                     keyboard.getSortedKeys(), keyCountPerPage);
             for (int pageId = 0; pageId < sortedKeysPages.length; ++pageId) {
@@ -323,10 +323,10 @@ final class EmojiCategory {
         }
     }
 
-    private int computeMaxKeyCountPerPage() {
+    private int computeMaxKeyCountPerPage(final int categoryId) {
         final DynamicGridKeyboard tempKeyboard = new DynamicGridKeyboard(mPrefs,
                 mLayoutSet.getKeyboard(KeyboardId.ELEMENT_EMOJI_RECENTS),
-                0, 0, ResourceUtils.getKeyboardWidth(mContext, Settings.getValues()));
+                0, categoryId, ResourceUtils.getKeyboardWidth(mContext, Settings.getValues()));
         return MAX_LINE_COUNT_PER_PAGE * tempKeyboard.getOccupiedColumnCount();
     }
 

@@ -22,8 +22,8 @@ android {
         applicationId = "com.leanbitlab.leantype"
         minSdk = 21
         targetSdk = 35
-        versionCode = 3702
-        versionName = "3.7.2"
+        versionCode = 3703
+        versionName = "3.7.3"
 
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
@@ -133,8 +133,8 @@ android {
 
     packaging {
         jniLibs {
-            // shrinks APK by 3 MB, zipped size unchanged
-            useLegacyPackaging = true
+            // false is required for Android 16+ 16-KB page alignment compatibility on prebuilts.
+            useLegacyPackaging = false
         }
     }
 

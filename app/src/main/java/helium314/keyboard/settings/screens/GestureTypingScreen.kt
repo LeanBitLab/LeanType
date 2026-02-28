@@ -130,7 +130,7 @@ fun createGestureTypingSettings(context: Context) = listOf(
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
     Setting(context, SettingsWithoutKey.LOAD_GESTURE_LIB, R.string.load_gesture_library, R.string.load_gesture_library_summary) {
-        LoadGestureLibPreference(it)
+        LoadGestureLibPreference(it.title)
     },
     Setting(context, Settings.PREF_SPACE_HORIZONTAL_SWIPE, R.string.show_horizontal_space_swipe) {
         val items = listOf(

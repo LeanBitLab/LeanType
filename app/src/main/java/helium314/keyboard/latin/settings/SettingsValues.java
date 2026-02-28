@@ -128,6 +128,7 @@ public class SettingsValues {
         public final boolean mToolbarHidingGlobal;
         public final boolean mSplitToolbar;
         public final boolean mAutoShowToolbar;
+        public final boolean mAutoShowToolbarOnSelect;
         public final boolean mAutoHideToolbar;
         public final boolean mAlphaAfterEmojiInEmojiView;
         public final boolean mAlphaAfterClipHistoryEntry;
@@ -366,6 +367,10 @@ public class SettingsValues {
                                 Defaults.PREFS_LONG_PRESS_SYMBOLS_FOR_NUMPAD);
                 mAutoShowToolbar = mToolbarMode == ToolbarMode.EXPANDABLE
                                 && prefs.getBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR, Defaults.PREF_AUTO_SHOW_TOOLBAR);
+                mAutoShowToolbarOnSelect = mToolbarMode == ToolbarMode.EXPANDABLE
+                                && !mSplitToolbar
+                                && prefs.getBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT,
+                                                Defaults.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT);
                 mAutoHideToolbar = mSuggestionsEnabledPerUserSettings
                                 && prefs.getBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, Defaults.PREF_AUTO_HIDE_TOOLBAR);
                 mAlphaAfterEmojiInEmojiView = prefs.getBoolean(Settings.PREF_ABC_AFTER_EMOJI,

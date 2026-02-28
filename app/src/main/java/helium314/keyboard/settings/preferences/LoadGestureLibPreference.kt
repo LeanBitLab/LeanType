@@ -40,9 +40,15 @@ import java.io.IOException
 import androidx.core.content.edit
 import helium314.keyboard.settings.FeedbackManager
 
+import androidx.annotation.DrawableRes
+
 @SuppressLint("ApplySharedPref")
 @Composable
-fun LoadGestureLibPreference(setting: Setting) {
+fun LoadGestureLibPreference(
+    title: String,
+    summary: String? = null,
+    @DrawableRes icon: Int? = null,
+) {
     var showDialog by rememberSaveable { mutableStateOf(false) }
     var isDownloading by rememberSaveable { mutableStateOf(false) }
     val ctx = LocalContext.current
@@ -107,7 +113,9 @@ fun LoadGestureLibPreference(setting: Setting) {
     }
     
     Preference(
-        name = setting.title,
+        name = title,
+        description = summary,
+        icon = icon,
         onClick = { showDialog = true }
     )
     
