@@ -90,7 +90,7 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
     val cardModifier = Modifier.fillMaxWidth()
     val cardColors = if (isSet) {
         CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
         )
     } else {
         CardDefaults.outlinedCardColors()
@@ -99,7 +99,7 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
     val CardContent = @Composable {
         Row(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -108,7 +108,7 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
                 painter = painterResource(iconRes),
                 contentDescription = null,
                 modifier = Modifier.size(32.dp),
-                tint = if (isSet) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                tint = if (isSet) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
             )
             
             Column(modifier = Modifier.weight(1f)) {
@@ -121,17 +121,25 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
                     text = if (isSet) currentPrompt else "Not configured",
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (isSet) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.outline,
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
             }
             
             if (isSet) {
-               Icon(
-                   painter = painterResource(R.drawable.ic_setup_check),
-                   contentDescription = null, // decorative
-                   tint = MaterialTheme.colorScheme.primary
-               )
+                androidx.compose.material3.IconButton(
+                    onClick = { 
+                        prefs.edit { remove(prefKey) }
+                        currentPrompt = ""
+                        updateToolbarKeyStatus(context, keyEnum, false)
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_close),
+                        contentDescription = "Clear",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
@@ -151,32 +159,144 @@ private fun CustomAIKeySlot(index: Int, context: Context) {
     }
     
     if (showDialog) {
-        TextInputDialog(
+        CustomAIKeyDialog(
+            initialPrompt = currentPrompt,
+            title = "Configure Key $index",
+            iconRes = iconRes,
             onDismissRequest = { showDialog = false },
             onConfirmed = { newPrompt ->
                 val trimmed = newPrompt.trim()
                 prefs.edit { putString(prefKey, trimmed) }
                 currentPrompt = trimmed
                 updateToolbarKeyStatus(context, keyEnum, trimmed.isNotEmpty())
-            },
-            title = { Text("Configure Key $index") },
-            textInputLabel = { Text("Prompt (e.g. \"rewrite in poetic style\")") },
-            initialText = currentPrompt,
-            neutralButtonText = if (isSet) "Clear" else null,
-            onNeutral = {
-                prefs.edit { remove(prefKey) }
-                currentPrompt = ""
-                updateToolbarKeyStatus(context, keyEnum, false)
-            },
-            icon = {
-                Icon(
-                    painter = painterResource(iconRes),
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp)
-                )
+                showDialog = false
             }
         )
     }
+}
+
+@Composable
+private fun CustomAIKeyDialog(
+    initialPrompt: String,
+    title: String,
+    iconRes: Int,
+    onDismissRequest: () -> Unit,
+    onConfirmed: (String) -> Unit
+) {
+    var prompt by remember { mutableStateOf(initialPrompt) }
+    
+    val modes = listOf(
+        "#editor" to "Edit text",
+        "#proofread" to "Fix grammar",
+        "#paraphrase" to "Rewrite",
+        "#summarize" to "Summarize",
+        "#expand" to "Expand",
+        "#toneshift" to "Adjust tone",
+        "#generate" to "Generate"
+    )
+    
+    val modifiersList = listOf(
+        "#outputonly" to "Result only",
+        "#append" to "Append result",
+        "#showthought" to "Show reasoning"
+    )
+
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismissRequest,
+        icon = {
+            Icon(
+                painter = painterResource(iconRes),
+                contentDescription = null,
+                modifier = Modifier.size(24.dp)
+            )
+        },
+        title = { Text(title) },
+        text = {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.padding(top = 8.dp)
+            ) {
+                // Modes Section
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        text = "Modes",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    androidx.compose.foundation.layout.FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        modes.forEach { (keyword, label) ->
+                            val isSelected = prompt.contains(keyword)
+                            androidx.compose.material3.FilterChip(
+                                selected = isSelected,
+                                onClick = {
+                                    prompt = if (isSelected) {
+                                        prompt.replace(keyword, "").replace("  ", " ").trim()
+                                    } else {
+                                        if (prompt.isBlank()) keyword else "$prompt $keyword".trim()
+                                    }
+                                },
+                                label = { Text(label) }
+                            )
+                        }
+                    }
+                }
+
+                // Modifiers Section
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        text = "Modifiers",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    androidx.compose.foundation.layout.FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        modifiersList.forEach { (keyword, label) ->
+                            val isSelected = prompt.contains(keyword)
+                            androidx.compose.material3.FilterChip(
+                                selected = isSelected,
+                                onClick = {
+                                    prompt = if (isSelected) {
+                                        prompt.replace(keyword, "").replace("  ", " ").trim()
+                                    } else {
+                                        if (prompt.isBlank()) keyword else "$prompt $keyword".trim()
+                                    }
+                                },
+                                label = { Text(label) }
+                            )
+                        }
+                    }
+                }
+
+                androidx.compose.material3.OutlinedTextField(
+                    value = prompt,
+                    onValueChange = { prompt = it },
+                    label = { Text("Custom Prompt") },
+                    modifier = Modifier.fillMaxWidth(),
+                    minLines = 2,
+                    maxLines = 5
+                )
+            }
+        },
+        confirmButton = {
+            androidx.compose.material3.TextButton(
+                onClick = { onConfirmed(prompt) }
+            ) {
+                Text("Save")
+            }
+        },
+        dismissButton = {
+            androidx.compose.material3.TextButton(
+                onClick = onDismissRequest
+            ) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        }
+    )
 }
 
 private val CUSTOM_AI_KEY_ENUMS = arrayOf(

@@ -473,8 +473,20 @@ class ProofreadService(private val context: Context) {
         private const val GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
         
         val AVAILABLE_MODELS = listOf(
+            "gemini-2.5-flash",
+            "gemini-2.5-pro",
             "gemini-flash-latest",
+            "gemini-flash-lite-latest",
+            "gemini-pro-latest",
+            "gemini-3.1-pro-preview",
+            "gemini-3.1-pro-preview-customtools",
+            "gemini-3-pro-preview",
+            "gemini-3-flash-preview",
+            "deep-research-pro-preview-12-2025",
             "gemma-3-27b-it",
+            "gemma-3-12b-it",
+            "gemma-3-4b-it",
+            "gemma-3-1b-it",
             "gemma-3n-e4b-it",
             "gemma-3n-e2b-it"
         )
