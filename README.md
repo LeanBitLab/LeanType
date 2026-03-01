@@ -12,6 +12,8 @@
 
 This fork adds **optional AI-powered features** using Gemini, Groq, and OpenAI-compatible APIs, offering a hybrid experience: a private, offline core with opt-in cloud intelligence.
 
+
+
 ## What's New in LeanType
 
 - **[🤖 Multi-Provider AI](docs/FEATURES.md#supported-ai-providers)** - Proofread using **Gemini**, **Groq** (Llama 3, Mixtral), or **OpenAI-compatible** providers.
@@ -27,6 +29,8 @@ This fork adds **optional AI-powered features** using Gemini, Groq, and OpenAI-c
 - **🔍 Clipboard Search** - Search through your clipboard history directly from the toolbar.
 - **🔎 Emoji Search** - Search for emojis by name. *Requires loading an Emoji Dictionary.*
 - **🔒 Privacy Choices** - Choose **Standard** (Opt-in AI), **Offline** (Hard-disabled network, offline model load), or **Offline Lite** (Minimalist, no AI) versions.
+
+
 
 ## Screenshots
 
@@ -127,6 +131,13 @@ See [LICENSE](/LICENSE) file.
 
 ### LeanType
 - Built with ❤️ by [LeanBitLab](https://github.com/LeanBitLab)
+
+## 🛡️ LeanBitLab Ecosystem
+
+Check out our other projects:
+👉 **[LeanBitLab Projects](https://github.com/LeanBitLab#-current-projects)**
+
+---
 
 ## Support the Development
 

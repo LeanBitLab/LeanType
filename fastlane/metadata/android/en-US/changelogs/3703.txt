@@ -1,0 +1,8 @@
+v3.7.3 - AI Updates & Emoji Fixes
+
+* AI Models: Updated Gemini and Groq with latest 2026 models.
+* AI Prompt Keywords: New keyword selectors and improved config flow.
+* Toolbar: Added option to auto-open toolbar on text selection.
+* Emoji: Expanded emoticons, fixed search and preview.
+* Bug Fixes: Resolved issues with one-hand mode.
+* UI Polish: Refined settings and UI tweaks.
