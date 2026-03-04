@@ -1,0 +1,8 @@
+- Improved AI custom key UI
+- Improved Settings UI
+- Fixed Emoji and Clipboard search bugs
+- Improved Split Toolbar and fixed its bugs
+- Added Monochrome theme icon support
+- Added Emoji dictionary download button in the Libraries section
+- Added Features link in the Libraries section
+- Optimization improvements

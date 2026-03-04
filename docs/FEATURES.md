@@ -86,8 +86,17 @@ Groq is a cloud API provider that uses custom LPUs (Language Processing Units) t
 | `llama-3.3-70b-versatile` | 128k | **Best Overall**. High intelligence. |
 | `llama-3.1-8b-instant` | 128k | **Fastest**. Quick grammar fixes. |
 | `meta-llama/llama-4-scout-17b-16e-instruct` | 128k | New scout model. Good balance. |
+| `meta-llama/llama-4-maverick-17b-128e-instruct`| 128k | New maverick model. Better reasoning. |
 | `qwen/qwen3-32b` | 128k | Good speed and logic. |
+| `openai/gpt-oss-120b` | 128k | Large OSS GPT model. |
+| `openai/gpt-oss-20b`  | 128k | Fast OSS GPT model. |
+| `groq/compound`| 128k | Deep-thinking internal model. |
 | `groq/compound-mini` | 128k | Optimized internal model. |
+| `moonshotai/kimi-k2-instruct` | 128k | Lightweight reasoning model. |
+| `moonshotai/kimi-k2-instruct-0905` | 128k | Specialized kimi instruction model. |
+| `canopylabs/orpheus-v1-english` | 128k | CanopyLabs English priority model. |
+| `canopylabs/orpheus-arabic-saudi` | 128k | CanopyLabs Arabic dialect model. |
+| `allam-2-7b` | 128k | Efficient 7B general use model. |
 
 ---
 
@@ -106,10 +115,22 @@ Groq is a cloud API provider that uses custom LPUs (Language Processing Units) t
 ### Available Models
 | Model ID | Description |
 | :--- | :--- |
-| `gemini-flash-latest` | **Default**. Fast and capable. |
+| `gemini-2.5-flash` | **Fastest**. Great for quick tasks. |
+| `gemini-2.5-pro` | High intelligence. Best overall quality. |
+| `gemini-flash-latest` | Fast and capable (latest flash). |
+| `gemini-flash-lite-latest` | Lightweight flash variant. |
+| `gemini-pro-latest` | Latest pro model. |
+| `gemini-3.1-pro-preview` | Next-gen pro preview. |
+| `gemini-3.1-pro-preview-customtools` | Pro preview with custom tools support. |
+| `gemini-3-pro-preview` | Gemini 3 pro preview. |
+| `gemini-3-flash-preview` | Gemini 3 flash preview. |
+| `deep-research-pro-preview-12-2025` | Deep research specialized model. |
 | `gemma-3-27b-it` | Large Gemma model. High quality. |
+| `gemma-3-12b-it` | Mid-size Gemma model. Good balance. |
+| `gemma-3-4b-it` | Compact Gemma model. Fast. |
+| `gemma-3-1b-it` | Smallest Gemma model. Ultra-light. |
 | `gemma-3n-e4b-it` | Efficient Gemma variant (4B). |
-| `gemma-3n-e2b-it` | Smallest Gemma variant (2B). |
+| `gemma-3n-e2b-it` | Efficient Gemma variant (2B). |
 
 ---
 
