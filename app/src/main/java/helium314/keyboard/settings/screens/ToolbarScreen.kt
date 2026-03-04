@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.edit
 import androidx.core.graphics.drawable.toBitmap
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.keyboard.internal.KeyboardIconsSet
@@ -60,20 +61,21 @@ fun ToolbarScreen(
     val toolbarMode = Settings.readToolbarMode(prefs)
     val clipboardToolbarVisible = toolbarMode != ToolbarMode.HIDDEN
         || !prefs.getBoolean(Settings.PREF_TOOLBAR_HIDING_GLOBAL, Defaults.PREF_TOOLBAR_HIDING_GLOBAL)
+    val isSplitToolbar = prefs.getBoolean(Settings.PREF_SPLIT_TOOLBAR, Defaults.PREF_SPLIT_TOOLBAR)
     val items = listOf(
         Settings.PREF_TOOLBAR_MODE,
         Settings.PREF_SPLIT_TOOLBAR,
         if (toolbarMode == ToolbarMode.HIDDEN) Settings.PREF_TOOLBAR_HIDING_GLOBAL else null,
         if (toolbarMode in listOf(ToolbarMode.EXPANDABLE, ToolbarMode.TOOLBAR_KEYS))
             Settings.PREF_TOOLBAR_KEYS else null,
-        if (toolbarMode in listOf(ToolbarMode.EXPANDABLE, ToolbarMode.SUGGESTION_STRIP))
+        if (toolbarMode in listOf(ToolbarMode.EXPANDABLE, ToolbarMode.SUGGESTION_STRIP) && !isSplitToolbar)
             Settings.PREF_PINNED_TOOLBAR_KEYS else null,
         if (clipboardToolbarVisible) Settings.PREF_CLIPBOARD_TOOLBAR_KEYS else null,
         if (clipboardToolbarVisible) Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES else null,
-        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_QUICK_PIN_TOOLBAR_KEYS else null,
-        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_SHOW_TOOLBAR else null,
-        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT else null,
-        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_HIDE_TOOLBAR else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_QUICK_PIN_TOOLBAR_KEYS else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_SHOW_TOOLBAR else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_HIDE_TOOLBAR else null,
         if (toolbarMode != ToolbarMode.HIDDEN) Settings.PREF_VARIABLE_TOOLBAR_DIRECTION else null,
     )
     SearchSettingsScreen(
@@ -156,12 +158,21 @@ fun createToolbarSettings(context: Context): List<Setting> {
         Setting(context, Settings.PREF_SPLIT_TOOLBAR, R.string.split_toolbar, R.string.split_toolbar_summary) {
             val prefs = LocalContext.current.prefs()
             SwitchPreference(it, Defaults.PREF_SPLIT_TOOLBAR) { isEnabled ->
-                // When split toolbar is enabled, disable auto-hide toolbar and auto-show-on-select
                 if (isEnabled) {
-                    prefs.edit()
-                        .putBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, false)
-                        .putBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT, false)
-                        .apply()
+                    prefs.edit {
+                        putBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR, false)
+                        putBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, false)
+                        putBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT, false)
+                        putBoolean(Settings.PREF_QUICK_PIN_TOOLBAR_KEYS, false)
+                    }
+                } else {
+                    // Restore pinned keys to default if they were previously cleared
+                    val currentPinned = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, "")
+                    if (currentPinned.isNullOrEmpty()) {
+                        prefs.edit {
+                            putString(Settings.PREF_PINNED_TOOLBAR_KEYS, Defaults.PREF_PINNED_TOOLBAR_KEYS)
+                        }
+                    }
                 }
                 KeyboardSwitcher.getInstance().setThemeNeedsReload()
             }

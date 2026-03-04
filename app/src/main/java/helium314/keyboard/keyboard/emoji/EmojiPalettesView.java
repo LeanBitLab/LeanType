@@ -78,6 +78,7 @@ import helium314.keyboard.latin.common.ColorType;
 import helium314.keyboard.latin.common.Colors;
 import helium314.keyboard.latin.settings.Settings;
 import helium314.keyboard.latin.settings.SettingsValues;
+import helium314.keyboard.latin.suggestions.SuggestionStripView;
 import helium314.keyboard.latin.utils.DictionaryInfoUtils;
 import helium314.keyboard.latin.utils.ResourceUtils;
 import helium314.keyboard.latin.common.StringUtilsKt;
@@ -239,17 +240,7 @@ public final class EmojiPalettesView extends LinearLayout
 
     private EditorInfo mEditorInfo;
 
-    private long mDownloadId = -1;
-    private final BroadcastReceiver mDownloadReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-            if (id == mDownloadId) {
-                mDownloadId = -1;
-                handleDownloadCompletion(context);
-            }
-        }
-    };
+    // DownloadManager variables removed
 
     public EmojiPalettesView(final Context context, final AttributeSet attrs) {
         this(context, attrs, R.attr.emojiPalettesViewStyle);
@@ -295,7 +286,11 @@ public final class EmojiPalettesView extends LinearLayout
         // Add Search Tab (First Item)
         if (Settings.getValues().mSecondaryStripVisible) {
             addTab(mTabStrip, ID_SEARCH_TAB); // Special ID for search
+            final boolean splitToolbar = Settings.getValues().mSplitToolbar;
             for (final EmojiCategory.CategoryProperties properties : mEmojiCategory.getShownCategories()) {
+                // Skip recents tab in split mode — recents shown on suggestion bar
+                if (splitToolbar && properties.mCategoryId == EmojiCategory.ID_RECENTS)
+                    continue;
                 addTab(mTabStrip, properties.mCategoryId);
             }
         }
@@ -399,7 +394,10 @@ public final class EmojiPalettesView extends LinearLayout
         mTabStrip.removeAllViews();
         if (Settings.getValues().mSecondaryStripVisible) {
             addTab(mTabStrip, ID_SEARCH_TAB); // Special ID for search
+            final boolean splitToolbar = Settings.getValues().mSplitToolbar;
             for (final EmojiCategory.CategoryProperties properties : mEmojiCategory.getShownCategories()) {
+                if (splitToolbar && properties.mCategoryId == EmojiCategory.ID_RECENTS)
+                    continue;
                 addTab(mTabStrip, properties.mCategoryId);
             }
         }
@@ -426,7 +424,9 @@ public final class EmojiPalettesView extends LinearLayout
         LinearLayout inputContainer = new LinearLayout(ctx);
         inputContainer.setOrientation(LinearLayout.HORIZONTAL);
         inputContainer.setGravity(android.view.Gravity.CENTER_VERTICAL);
-        inputContainer.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 0.4f));
+        float inputWeight = Settings.getValues().mSplitToolbar ? 1.0f : 0.4f;
+        inputContainer
+                .setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, inputWeight));
         inputContainer.setPadding(toPx(4), 0, toPx(4), 0);
 
         // Search Icon
@@ -477,17 +477,21 @@ public final class EmojiPalettesView extends LinearLayout
         stripContainer.addView(inputContainer);
 
         // --- Divider ---
-        View divider = new View(ctx);
-        divider.setBackgroundColor(0x55888888); // Semi-transparent gray
-        LinearLayout.LayoutParams divParams = new LinearLayout.LayoutParams(toPx(1),
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        divParams.setMargins(0, toPx(4), 0, toPx(4));
-        divider.setLayoutParams(divParams);
-        stripContainer.addView(divider);
+        if (!Settings.getValues().mSplitToolbar) {
+            View divider = new View(ctx);
+            divider.setBackgroundColor(0x55888888); // Semi-transparent gray
+            LinearLayout.LayoutParams divParams = new LinearLayout.LayoutParams(toPx(1),
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            divParams.setMargins(0, toPx(4), 0, toPx(4));
+            divider.setLayoutParams(divParams);
+            stripContainer.addView(divider);
+        }
 
         // --- Right Side: Results (Weight 0.6) ---
-        // Check for dictionary presence (show button if missing)
-        if (sDictionaryFacilitator == null) {
+        if (Settings.getValues().mSplitToolbar) {
+            // Do not add results to this row, they go to SuggestionStripView
+            mSearchAdapter = null;
+        } else if (sDictionaryFacilitator == null) {
             Button downloadBtn = new Button(ctx);
             downloadBtn.setText("Download Dictionary");
             downloadBtn.setTextSize(12); // Keep it small to fit
@@ -551,6 +555,9 @@ public final class EmojiPalettesView extends LinearLayout
                     mSearchBar.append(String.valueOf((char) primaryCode));
                 } else if (primaryCode == helium314.keyboard.latin.common.Constants.CODE_ENTER) {
                     stopSearchMode();
+                } else {
+                    stopSearchMode();
+                    mOriginalActionListener.onCodeInput(primaryCode, x, y, isKeyRepeat);
                 }
             }
 
@@ -648,8 +655,13 @@ public final class EmojiPalettesView extends LinearLayout
         // Load Alpha Keyboard
         KeyboardLayoutSet.Builder builder = new KeyboardLayoutSet.Builder(ctx, null);
         builder.setSubtype(RichInputMethodManager.getInstance().getCurrentSubtype());
+
+        // Fix: Use SecondaryKeyboardHeight which provides the exact height of the Emoji
+        // palettes area
+        // to avoid shrinking the keys to 20% while also preventing stretching.
         builder.setKeyboardGeometry(ResourceUtils.getKeyboardWidth(ctx, Settings.getValues()),
-                ResourceUtils.getKeyboardHeight(ctx.getResources(), Settings.getValues()));
+                ResourceUtils.getSecondaryKeyboardHeight(ctx.getResources(), Settings.getValues()));
+
         KeyboardLayoutSet kls = builder.build();
         bottomRow.setKeyboard(kls.getKeyboard(KeyboardId.ELEMENT_ALPHABET));
 
@@ -663,10 +675,18 @@ public final class EmojiPalettesView extends LinearLayout
             return;
         mInSearchMode = false;
 
+        // Return to alphabet keyboard directly upon closing search
+        if (mOriginalActionListener != null) {
+            mOriginalActionListener.onCodeInput(KeyCode.ALPHA,
+                    helium314.keyboard.latin.common.Constants.NOT_A_COORDINATE,
+                    helium314.keyboard.latin.common.Constants.NOT_A_COORDINATE, false);
+        }
+
         setupBottomRowKeyboard(null, mOriginalActionListener);
 
-        // Restore UI
+        // Restore UI internally
         setupCategoryTabs();
+
         mEmojiCategoryPageIndicatorView.setVisibility(View.VISIBLE);
         mPager.setVisibility(View.VISIBLE);
         if (mSearchContainer != null)
@@ -682,6 +702,10 @@ public final class EmojiPalettesView extends LinearLayout
         if (sDictionaryFacilitator == null || TextUtils.isEmpty(query)) {
             if (mSearchAdapter != null)
                 mSearchAdapter.submitList(java.util.Collections.emptyList());
+            // In split mode, restore recents on suggestion bar when search is empty
+            if (Settings.getValues().mSplitToolbar) {
+                populateSuggestionBarWithRecents();
+            }
             return;
         }
 
@@ -699,18 +723,29 @@ public final class EmojiPalettesView extends LinearLayout
         android.util.Log.d("EmojiSearch", "Found " + results.size() + " results for: " + query);
         if (mSearchAdapter != null)
             mSearchAdapter.submitList(results);
+
+        // Also show search results on suggestion bar in split mode
+        if (Settings.getValues().mSplitToolbar && !results.isEmpty()) {
+            pushEmojisToSuggestionBar(results);
+        }
     }
 
     public void startEmojiPalettes(final KeyVisualAttributes keyVisualAttr,
             final EditorInfo editorInfo, final KeyboardActionListener keyboardActionListener) {
         stopSearchMode(); // Ensure clean state
         mEditorInfo = editorInfo; // Saved
+        mKeyboardActionListener = keyboardActionListener;
         initialize();
         setupBottomRowKeyboard(editorInfo, keyboardActionListener);
         final KeyDrawParams params = new KeyDrawParams();
         params.updateParams(mEmojiLayoutParams.getBottomRowKeyboardHeight(), keyVisualAttr);
         setupSidePadding();
         initDictionaryFacilitator();
+
+        // In split mode, populate suggestion bar with recent emojis
+        if (Settings.getValues().mSplitToolbar) {
+            populateSuggestionBarWithRecents();
+        }
     }
 
     @Override
@@ -733,16 +768,24 @@ public final class EmojiPalettesView extends LinearLayout
         }
     }
 
-    // Need to modify setupBottomRowKeyboard to use mEditorInfo if passed null
     private void setupBottomRowKeyboard(final EditorInfo editorInfo,
             final KeyboardActionListener keyboardActionListener) {
-        EditorInfo ei = editorInfo != null ? editorInfo : mEditorInfo;
         MainKeyboardView keyboardView = findViewById(R.id.bottom_row_keyboard);
+        if (keyboardView == null || !this.isAttachedToWindow()) {
+            return;
+        }
+        EditorInfo ei = editorInfo != null ? editorInfo : mEditorInfo;
         keyboardView.setKeyboardActionListener(keyboardActionListener);
-        PointerTracker.switchTo(keyboardView);
-        final KeyboardLayoutSet kls = KeyboardLayoutSet.Builder.buildEmojiClipBottomRow(getContext(), ei);
-        final Keyboard keyboard = kls.getKeyboard(KeyboardId.ELEMENT_EMOJI_BOTTOM_ROW);
-        keyboardView.setKeyboard(keyboard);
+
+        try {
+            PointerTracker.switchTo(keyboardView);
+            final KeyboardLayoutSet kls = KeyboardLayoutSet.Builder.buildEmojiClipBottomRow(getContext(), ei);
+            final Keyboard keyboard = kls.getKeyboard(KeyboardId.ELEMENT_EMOJI_BOTTOM_ROW);
+            keyboardView.setKeyboard(keyboard);
+        } catch (NullPointerException e) {
+            // Can happen during window detachment if PointerTracker was already cleared
+            android.util.Log.e("EmojiPalettesView", "Failed to switch PointerTracker during teardown", e);
+        }
     }
 
     /**
@@ -838,11 +881,58 @@ public final class EmojiPalettesView extends LinearLayout
     public void stopEmojiPalettes() {
         if (!initialized)
             return;
+
+        if (mInSearchMode) {
+            stopSearchMode();
+        }
+
         getRecentsKeyboard().flushPendingRecentKeys();
+
+        // Clear emoji suggestions from the suggestion bar
+        SuggestionStripView stripView = KeyboardSwitcher.getInstance().getSuggestionStripView();
+        if (stripView != null) {
+            stripView.clearEmojiSuggestions();
+        }
     }
 
     private DynamicGridKeyboard getRecentsKeyboard() {
         return mEmojiCategory.getKeyboard(EmojiCategory.ID_RECENTS, 0);
+    }
+
+    /**
+     * Populates the suggestion bar with recent emojis (split toolbar mode).
+     */
+    private void populateSuggestionBarWithRecents() {
+        SuggestionStripView stripView = KeyboardSwitcher.getInstance().getSuggestionStripView();
+        if (stripView == null)
+            return;
+
+        java.util.List<String> recentEmojis = new java.util.ArrayList<>();
+        for (Key key : getRecentsKeyboard().getSortedKeys()) {
+            String output = key.getOutputText();
+            if (output != null) {
+                recentEmojis.add(output);
+            } else if (key.getCode() > 0) {
+                recentEmojis.add(new String(Character.toChars(key.getCode())));
+            }
+        }
+        pushEmojisToSuggestionBar(recentEmojis);
+    }
+
+    /**
+     * Pushes a list of emojis to the suggestion bar.
+     */
+    private void pushEmojisToSuggestionBar(java.util.List<String> emojis) {
+        SuggestionStripView stripView = KeyboardSwitcher.getInstance().getSuggestionStripView();
+        if (stripView == null)
+            return;
+
+        stripView.setEmojiSuggestions(emojis, emoji -> {
+            mKeyboardActionListener.onTextInput(emoji);
+            // Also add to recents
+            // Re-populate to show the newly used emoji at front
+            populateSuggestionBarWithRecents();
+        });
     }
 
     public void setKeyboardActionListener(final KeyboardActionListener listener) {
@@ -927,13 +1017,6 @@ public final class EmojiPalettesView extends LinearLayout
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            getContext().registerReceiver(mDownloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
-                    Context.RECEIVER_EXPORTED);
-        } else {
-            getContext().registerReceiver(mDownloadReceiver,
-                    new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-        }
     }
 
     @Override
@@ -941,78 +1024,61 @@ public final class EmojiPalettesView extends LinearLayout
         if (mInSearchMode) {
             stopSearchMode();
         }
-        try {
-            getContext().unregisterReceiver(mDownloadReceiver);
-        } catch (IllegalArgumentException e) {
-            // Check if receiver not registered
-        }
         super.onDetachedFromWindow();
     }
 
     private void downloadEmojiDictionary() {
         var locale = RichInputMethodManager.getInstance().getCurrentSubtype().getLocale();
-        // Construct URL:
-        // https://codeberg.org/Helium314/aosp-dictionaries/raw/branch/main/emoji_cldr_signal_dictionaries/emoji_<lang>.dict
-        // We use CLDR as it's the standard for emoji
         String lang = locale.getLanguage();
-        String url = Links.DICTIONARY_URL + Links.DICTIONARY_DOWNLOAD_SUFFIX + Links.DICTIONARY_EMOJI_CLDR_SUFFIX
+        String urlStr = Links.DICTIONARY_URL + Links.DICTIONARY_DOWNLOAD_SUFFIX + Links.DICTIONARY_EMOJI_CLDR_SUFFIX
                 + "emoji_" + lang + ".dict";
 
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-        request.setTitle("Downloading Emoji Dictionary (" + lang + ")");
-        request.setDescription("Downloading emoji dictionary for search...");
-        request.setDestinationInExternalFilesDir(getContext(), Environment.DIRECTORY_DOWNLOADS,
-                "emoji_" + lang + ".dict");
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        Toast.makeText(getContext(), "Downloading Emoji Dictionary...", Toast.LENGTH_SHORT).show();
 
-        DownloadManager manager = (DownloadManager) getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-        if (manager != null) {
-            mDownloadId = manager.enqueue(request);
-            Toast.makeText(getContext(), "Download started...", Toast.LENGTH_SHORT).show();
-        }
-    }
+        java.util.concurrent.Executors.newSingleThreadExecutor().execute(() -> {
+            try {
+                java.net.URL url = new java.net.URL(urlStr);
+                java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
+                conn.connect();
 
-    private void handleDownloadCompletion(Context context) {
-        // Move file from external files to internal cache dicts
-        // Because DownloadManager cannot write to internal storage directly
-        var locale = RichInputMethodManager.getInstance().getCurrentSubtype().getLocale();
-        String lang = locale.getLanguage();
-        File externalFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "emoji_" + lang + ".dict");
+                if (conn.getResponseCode() != java.net.HttpURLConnection.HTTP_OK) {
+                    throw new java.io.IOException("Server returned HTTP " + conn.getResponseCode());
+                }
 
-        if (externalFile.exists()) {
-            String cachePath = DictionaryInfoUtils.INSTANCE.getCacheDirectoryForLocale(locale, context);
-            if (cachePath != null) {
-                File targetFile = new File(cachePath, "emoji_" + lang + ".dict"); // Name doesn't matter much as long as
-                                                                                  // it's in the folder? verify
-                                                                                  // DictionaryInfoUtils
-                // Actually DictionaryInfoUtils usually expects name format?
-                // DictionaryInfoUtils.getCachedDictForLocaleAndType checks prefix "type_"
-                // so "emoji_..." should be fine as type="emoji"
+                String cachePath = DictionaryInfoUtils.INSTANCE.getCacheDirectoryForLocale(locale, getContext());
+                if (cachePath != null) {
+                    File targetFile = new File(cachePath, "emoji_" + lang + ".dict");
+                    try (java.io.InputStream is = conn.getInputStream();
+                            java.io.FileOutputStream fos = new java.io.FileOutputStream(targetFile)) {
+                        byte[] buffer = new byte[4096];
+                        int length;
+                        while ((length = is.read(buffer)) > 0) {
+                            fos.write(buffer, 0, length);
+                        }
+                    }
 
-                try (java.io.FileInputStream fis = new java.io.FileInputStream(externalFile)) {
-                    helium314.keyboard.latin.common.FileUtils.copyStreamToNewFile(fis, targetFile);
-                    externalFile.delete(); // Cleanup
-
-                    // Reload
-                    initDictionaryFacilitator();
-
-                    // Refresh UI if in search mode
+                    // Success! Switch back to UI thread
+                    new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                        Toast.makeText(getContext(), "Emoji dictionary installed!", Toast.LENGTH_SHORT).show();
+                        initDictionaryFacilitator();
+                        if (mInSearchMode) {
+                            stopSearchMode();
+                            startSearchMode();
+                        }
+                    });
+                } else {
+                    throw new java.io.IOException("Cache path is null");
+                }
+            } catch (Exception e) {
+                android.util.Log.e("EmojiSearch", "Failed to download dictionary", e);
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(getContext(), "Failed to download dictionary", Toast.LENGTH_SHORT).show();
                     if (mInSearchMode) {
-                        // Restart search mode to show results list instead of button
-                        // Need to run on UI thread? we are on UI thread in onReceive usually
                         stopSearchMode();
                         startSearchMode();
-                        // Maybe restore text?
                     }
-                    Toast.makeText(context, "Emoji dictionary installed!", Toast.LENGTH_SHORT).show();
-                } catch (java.io.IOException e) {
-                    android.util.Log.e("EmojiSearch", "Failed to move dictionary", e);
-                    Toast.makeText(context, "Failed to install dictionary", Toast.LENGTH_SHORT).show();
-                }
+                });
             }
-        } else {
-            Toast.makeText(context, "Download failed or file not found.", Toast.LENGTH_SHORT).show();
-        }
+        });
     }
 }

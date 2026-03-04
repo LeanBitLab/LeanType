@@ -112,7 +112,19 @@ fun SettingsNavHost(
             )
         }
         composable(SettingsDestination.CustomAIKeys) {
-            CustomAIKeysScreen(onClickBack = ::goBack)
+            CustomAIKeysScreen(
+                onClickBack = ::goBack,
+                onNavigateToConfig = { index -> 
+                    navController.navigate(SettingsDestination.CustomAIKeyConfig + index) 
+                }
+            )
+        }
+        composable(SettingsDestination.CustomAIKeyConfig + "{index}") {
+            val index = it.arguments?.getString("index")?.toIntOrNull() ?: 1
+            helium314.keyboard.settings.screens.ConfigCustomAIKeyScreen(
+                index = index,
+                onClickBack = ::goBack
+            )
         }
         composable(SettingsDestination.Debug) {
             DebugScreen(onClickBack = ::goBack)
@@ -174,6 +186,7 @@ object SettingsDestination {
     const val Layouts = "layouts"
     const val Dictionaries = "dictionaries"
     const val CustomAIKeys = "custom_ai_keys"
+    const val CustomAIKeyConfig = "custom_ai_key_config/"
     val navTarget = MutableStateFlow(Settings)
 
     private val navScope = CoroutineScope(Dispatchers.Default)

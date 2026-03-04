@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.runtime.remember
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DropdownMenu
@@ -40,6 +41,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -60,65 +62,64 @@ fun SearchSettingsScreen(
 ) {
     SearchScreen(
         onClickBack = onClickBack,
-        title = { Text(title) },
+        title = {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+            )
+        },
         content = {
             if (content != null) content()
             else {
                 Scaffold(
-                    contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)
+                    contentWindowInsets = WindowInsets(0),
+                    containerColor = androidx.compose.ui.graphics.Color.Transparent
                 ) { innerPadding ->
-                    Column(
-                        Modifier
-                            .verticalScroll(rememberScrollState())
-                            .padding(innerPadding)
-                            .padding(vertical = 8.dp) // Add vertical spacing for the whole list
-                    ) {
-                        // Group settings by Category
-                        val groups = mutableListOf<Pair<Int?, MutableList<String>>>()
+                    // Calculate groups only when settings change
+                    val groups = remember(settings) {
+                        val result = mutableListOf<Pair<Int?, MutableList<String>>>()
                         var currentGroup = mutableListOf<String>()
                         var currentTitle: Int? = null
                         
                         // Initial group (if starts without category)
-                        groups.add(null to currentGroup)
+                        result.add(null to currentGroup)
 
                         settings.forEach { item ->
                             if (item is Int) {
-                                // Start new group
                                 currentTitle = item
                                 currentGroup = mutableListOf()
-                                groups.add(currentTitle to currentGroup)
+                                result.add(currentTitle to currentGroup)
                             } else if (item is String) {
                                 currentGroup.add(item)
                             }
-                            // Ignore nulls
                         }
+                        result.filter { it.second.isNotEmpty() }
+                    }
 
-                        groups.forEach { (titleRes, keys) ->
-                            if (keys.isNotEmpty()) {
-                                androidx.compose.material3.ElevatedCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                                    colors = androidx.compose.material3.CardDefaults.elevatedCardColors(
-                                        containerColor = MaterialTheme.colorScheme.surfaceContainer
-                                    )
-                                ) {
-                                    Column {
-                                        if (titleRes != null) {
-                                            PreferenceCategory(stringResource(titleRes))
-                                        }
-                                        
-                                        keys.forEachIndexed { index, key ->
-                                            SettingsActivity.settingsContainer[key]?.Preference()
-                                            
-                                            // Add divider if not the last item
-                                            if (index < keys.lastIndex) {
-                                                androidx.compose.material3.HorizontalDivider(
-                                                    modifier = Modifier.padding(horizontal = 16.dp),
-                                                    color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                                                )
-                                            }
-                                        }
+                    LazyColumn(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
+                        contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 8.dp)
+                    ) {
+                        items(groups) { (titleRes, keys) ->
+                            androidx.compose.material3.Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                colors = androidx.compose.material3.CardDefaults.cardColors(
+                                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                                )
+                            ) {
+                                Column {
+                                    if (titleRes != null) {
+                                        PreferenceCategory(stringResource(titleRes))
+                                    }
+                                    
+                                    keys.forEach { key ->
+                                        SettingsActivity.settingsContainer[key]?.Preference()
                                     }
                                 }
                             }
@@ -168,7 +169,7 @@ fun <T: Any?> SearchScreen(
     // keyboard in unexpected situations such as going back from another screen, which is rather annoying
     var searchText by remember { mutableStateOf(TextFieldValue()) }
     var showSearch by remember { mutableStateOf(false) }
-    Scaffold(contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top))
+    Scaffold(contentWindowInsets = WindowInsets(0))
     { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding)) {
 
@@ -181,7 +182,7 @@ fun <T: Any?> SearchScreen(
                 else onClickBack()
             }
             Surface(
-                color = MaterialTheme.colorScheme.surfaceContainer,
+                color = androidx.compose.ui.graphics.Color.Transparent,
             ) {
                 Column {
                     TopAppBar(
@@ -227,7 +228,10 @@ fun <T: Any?> SearchScreen(
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 8.dp),
                         colors = TextFieldDefaults.colors(
-                            focusedContainerColor = MaterialTheme.colorScheme.surface
+                            focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                            unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent
                         )
                     )
                 }
@@ -240,7 +244,7 @@ fun <T: Any?> SearchScreen(
                 } else {
                     val items = filteredItems(searchText.text)
                     Scaffold(
-                        contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)
+                        contentWindowInsets = WindowInsets(0)
                     ) { innerPadding ->
                         LazyColumn(contentPadding = innerPadding) {
                             items(items) {
@@ -274,13 +278,15 @@ fun ExpandableSearchField(
         TextField(
             value = search,
             onValueChange = onSearchChange,
-            modifier = modifier.focusRequester(focusRequester),
-            leadingIcon = { SearchIcon() },
+            modifier = modifier
+                .focusRequester(focusRequester)
+                .clip(androidx.compose.foundation.shape.CircleShape),
             trailingIcon = { IconButton(onClick = {
                 if (search.text.isBlank()) onDismiss()
                 else onSearchChange(TextFieldValue())
             }) { CloseIcon(android.R.string.cancel) } },
             singleLine = true,
+            shape = androidx.compose.foundation.shape.CircleShape,
             colors = colors,
             textStyle = contentTextDirectionStyle,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search)

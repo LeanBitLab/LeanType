@@ -4,12 +4,14 @@ package helium314.keyboard.settings.preferences
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -23,6 +25,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.background
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,6 +59,7 @@ fun Preference(
     name: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     description: String? = null,
     @DrawableRes icon: Int? = null,
     value: @Composable (RowScope.() -> Unit)? = null,
@@ -62,20 +67,34 @@ fun Preference(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(enabled = enabled) { onClick() }
             .heightIn(min = 44.dp)
             .padding(vertical = 10.dp, horizontal = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (icon != null)
-            IconOrImage(icon, name, 32)
+        if (icon != null) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(androidx.compose.foundation.shape.CircleShape)
+                    .background(MaterialTheme.colorScheme.secondaryContainer),
+                contentAlignment = Alignment.Center
+            ) {
+                CompositionLocalProvider(
+                    LocalContentColor provides MaterialTheme.colorScheme.onSecondaryContainer
+                ) {
+                    IconOrImage(icon, name, 24)
+                }
+            }
+        }
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = name, style = MaterialTheme.typography.bodyLarge)
+            val alpha = if (enabled) 1f else 0.38f
+            Text(text = name, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha))
             if (description != null) {
                 CompositionLocalProvider(
                     LocalTextStyle provides MaterialTheme.typography.bodyMedium,
-                    LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant
+                    LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (enabled) 1f else 0.38f)
                 ) {
                     Text(
                         text = description,
@@ -119,6 +138,12 @@ private fun PreferencePreview() {
                     name = "Preference with icon",
                     onClick = {},
                     icon = R.drawable.ic_settings_about
+                )
+                Preference(
+                    name = "Disabled Preference",
+                    onClick = {},
+                    enabled = false,
+                    description = "This preference is disabled and cannot be clicked."
                 )
                 SliderPreference(
                     name = "SliderPreference",

@@ -88,12 +88,12 @@ object Defaults {
     @JvmField
     val PREF_SPLIT_SPACER_SCALE = Array(2) { DEFAULT_SIZE_SCALE }
     @JvmField
-    val PREF_KEYBOARD_HEIGHT_SCALE = Array(2) { 1.00f }
+    val PREF_KEYBOARD_HEIGHT_SCALE = Array(2) { 0.85f }
     @JvmField
     val PREF_BOTTOM_PADDING_SCALE = arrayOf(1.05f, 0f)
     @JvmField
     val PREF_SIDE_PADDING_SCALE = Array(4) { 0.15f }
-    const val PREF_FONT_SCALE = 0.80f
+    const val PREF_FONT_SCALE = 0.85f
     const val PREF_EMOJI_FONT_SCALE = DEFAULT_SIZE_SCALE
     const val PREF_EMOJI_KEY_FIT = true
     const val PREF_EMOJI_SKIN_TONE = ""

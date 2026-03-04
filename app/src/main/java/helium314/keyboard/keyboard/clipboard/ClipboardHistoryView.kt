@@ -301,6 +301,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
                  searchQuery.append(char)
                  searchBarTextView.text = searchQuery.toString()
                  clipboardAdapter.filter(searchQuery.toString())
+            } else {
+                 // Any other key (like Symbols ?123 or Settings) should close search 
+                 // and pass through to original listener
+                 stopSearchMode()
+                 keyboardActionListener.onCodeInput(primaryCode, x, y, isKeyRepeat)
             }
             // Block sending to app
             return 
@@ -474,6 +479,14 @@ class ClipboardHistoryView @JvmOverloads constructor(
 
     fun stopClipboardHistory() {
         if (!this::clipboardAdapter.isInitialized) return
+        
+        // Also ensure search mode is stopped if we explicitly leave clipboard history
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val inSearchMode = this::searchBarTextView.isInitialized && searchBarTextView.parent == clipboardStrip
+        if (inSearchMode) {
+            stopSearchMode()
+        }
+        
         clipboardRecyclerView.adapter = null
         clipboardHistoryManager.setHistoryChangeListener(null)
         clipboardAdapter.clipboardHistoryManager = null

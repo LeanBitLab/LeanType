@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    
+    <group android:pivotX="256" android:pivotY="256" android:scaleX="0.70" android:scaleY="0.70">
+        <group android:scaleX="1.0" android:scaleY="1.0" android:translateX="0" android:translateY="22">
+        <!-- Row 1 -->
+        <!-- Key 1 (Top Left) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M131,115 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        <!-- Letter L -->
+        <group android:translateX="136" android:translateY="136">
+            <path android:fillColor="#000000"
+                  android:pathData="M0,0 h8 v20 h20 v8 h-28 z"/>
+        </group>
+
+        <!-- Key 2 (Top Center) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M237,115 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        
+        <!-- Key 3 (Top Right) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M343,115 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        <!-- Sparkle Icon -->
+        <group android:translateX="327" android:translateY="126">
+             <path android:fillColor="#000000" android:pathData="M35,15 L38,28 L51,31 L38,34 L35,47 L32,34 L19,31 L32,28 Z"/>
+             <path android:fillColor="#000000" android:pathData="M50,20 m-3,0 a3,3 0 1,1 6,0 a3,3 0 1,1 -6,0"/>
+             <path android:fillColor="#000000" android:pathData="M20,50 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0"/>
+        </group>
+
+        <!-- Row 2 -->
+        <!-- Key 4 (Mid Left) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M131,221 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+
+        <!-- Key 5 (Mid Center) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M237,221 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        <!-- Translate Icon -->
+        <group android:translateX="238" android:translateY="238" android:scaleX="1.5" android:scaleY="1.5">
+              <path android:fillColor="#000000"
+                    android:pathData="M12.87,15.07l-2.54,-2.51 0.03,-0.03c1.74,-1.94 2.98,-4.17 3.71,-6.53L17,6L17,4h-7L10,2L8,2v2L1,4v1.99h11.17C11.5,7.92 10.44,9.75 9,11.35 8.07,10.32 7.3,9.19 6.69,8h-2c0.73,1.63 1.73,3.17 2.98,4.56l-5.09,5.02L4,19l5,-5 3.11,3.11 0.76,-2.04zM18.5,10h-2L12,22h2l1.12,-3h4.75L21,22h2l-4.5,-12zM15.88,17l1.62,-4.33L19.12,17h-3.24z"/>
+        </group>
+        
+        <!-- Key 6 (Mid Right) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M343,221 h38 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-38 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        <!-- Letter B -->
+        <group android:translateX="340.5" android:translateY="231" android:scaleX="2.0" android:scaleY="2.0">
+            <path android:fillColor="#000000"
+                  android:pathData="M15.6,10.79c0.97,-0.67 1.65,-1.77 1.65,-2.79 0,-2.26 -1.75,-4 -4,-4H7v14h7.04c2.09,0 3.71,-1.7 3.71,-3.79 0,-1.52 -0.86,-2.82 -2.15,-3.42zM10,6.5h3c0.83,0 1.5,0.67 1.5,1.5s-0.67,1.5 -1.5,1.5h-3v-3zm3.5,9H10v-3h3.5c0.83,0 1.5,0.67 1.5,1.5s-0.67,1.5 -1.5,1.5z"/>
+        </group>
+
+        <!-- Row 3 (Spacebar/Incognito) -->
+        <path android:strokeColor="#000000" android:strokeWidth="10" android:fillColor="#00000000"
+              android:pathData="M161,327 h190 a16,16 0,0 1,16 16 v38 a16,16 0,0 1,-16 16 h-190 a16,16 0,0 1,-16 -16 v-38 a16,16 0,0 1,16 -16 z"/>
+        
+        <!-- Incognito Icon -->
+        <group android:translateX="256" android:translateY="365" android:scaleX="1.0" android:scaleY="1.0">
+             <path android:fillColor="#000000" android:pathData="M-20,-10 L20,-10 L15,-25 L-15,-25 Z"/>
+             <path android:fillColor="#000000" android:pathData="M-30,-10 L30,-10 L30,-5 L-30,-5 Z"/>
+             <!-- Glasses: Standard circles and bridge -->
+             <path android:strokeColor="#000000" android:strokeWidth="4" android:pathData="M-12,10 m-8,0 a8,8 0 1,1 16,0 a8,8 0 1,1 -16,0"/>
+             <path android:strokeColor="#000000" android:strokeWidth="4" android:pathData="M12,10 m-8,0 a8,8 0 1,1 16,0 a8,8 0 1,1 -16,0"/>
+             <path android:strokeColor="#000000" android:strokeWidth="3" android:pathData="M-4,10 Q0,5 4,10"/>
+             <path android:strokeColor="#000000" android:strokeWidth="3" android:pathData="M-20,10 L-25,5"/>
+             <path android:strokeColor="#000000" android:strokeWidth="3" android:pathData="M20,10 L25,5"/>
+        </group>
+    </group>
+    </group>
+</vector>

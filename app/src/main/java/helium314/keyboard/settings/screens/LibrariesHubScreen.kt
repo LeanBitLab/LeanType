@@ -12,7 +12,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,7 +26,10 @@ import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.preferences.LoadGestureLibPreference
+import helium314.keyboard.settings.preferences.LoadEmojiLibPreference
+import helium314.keyboard.latin.common.Links
 import helium314.keyboard.settings.preferences.Preference
+import androidx.compose.ui.platform.LocalUriHandler
 
 @Composable
 fun LibrariesHubScreen(
@@ -66,10 +68,6 @@ fun LibrariesHubScreen(
                             icon = R.drawable.ic_settings_gesture,
                             summary = if (gestureInstalled) stringResource(R.string.libraries_status_active) else stringResource(R.string.libraries_status_not_installed)
                         )
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
 
                         // Dictionaries
                         Preference(
@@ -78,22 +76,26 @@ fun LibrariesHubScreen(
                             onClick = onClickDictionaries,
                             icon = R.drawable.ic_dictionary
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
 
                         // Emoji Libraries
                         val emojiDicts = DictionaryInfoUtils.getLocalesWithEmojiDicts(context)
-                        Preference(
-                            name = stringResource(R.string.libraries_hub_emoji_title),
-                            description = if (emojiDicts.isEmpty()) 
+                        LoadEmojiLibPreference(
+                            title = stringResource(R.string.libraries_hub_emoji_title),
+                            summary = if (emojiDicts.isEmpty()) 
                                 stringResource(R.string.libraries_status_not_installed)
                             else 
                                 stringResource(R.string.libraries_status_active) + ": " + emojiDicts.joinToString { it.displayLanguage },
-                            onClick = { /* Could link to emoji settings if they exist separately */ },
                             icon = R.drawable.ic_emoji_smileys_emotion
                         )
+
+                        // Documentation & Features
+                        val uriHandler = LocalUriHandler.current
+                        Preference(
+                            name = "Features Guide",
+                            description = "View the detailed features.md guide on GitHub",
+                            onClick = { uriHandler.openUri("https://github.com/LeanBitLab/HeliboardL/blob/main/docs/FEATURES.md") },
+                            icon = R.drawable.ic_settings_about_wiki
+                        ) { NextScreenIcon() }
                     }
                 }
             }

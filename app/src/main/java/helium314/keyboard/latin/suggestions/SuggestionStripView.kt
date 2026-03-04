@@ -231,15 +231,15 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val stripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
         val split = Settings.getValues().mSplitToolbar
-        if (split) {
-            // Double the height for split mode to accommodate both rows
-            val stripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
-            val newHeightSpec = MeasureSpec.makeMeasureSpec(stripHeight * 2, MeasureSpec.EXACTLY)
-            super.onMeasure(widthMeasureSpec, newHeightSpec)
+        
+        val newHeightSpec = if (split) {
+            MeasureSpec.makeMeasureSpec(stripHeight * 2, MeasureSpec.EXACTLY)
         } else {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            MeasureSpec.makeMeasureSpec(stripHeight, MeasureSpec.EXACTLY)
         }
+        super.onMeasure(widthMeasureSpec, newHeightSpec)
     }
 
     override fun onAttachedToWindow() {
@@ -304,11 +304,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val locked = isDeviceLocked(context)
         val split = Settings.getValues().mSplitToolbar
         
-        // In split mode, show only pinned keys (not full toolbar)
+        // In split mode, show only full toolbar, hide pinned keys
         if (split) {
             // suggestionsStrip visibility is handled dynamically in updateSplitToolbarState
-            toolbarContainer.isVisible = false // Hide full toolbar in split mode
-            pinnedKeys.isVisible = !locked // Show only pinned keys
+            toolbarContainer.isVisible = !locked // Show full toolbar in split mode
+            toolbar.visibility = VISIBLE
+            pinnedKeys.isVisible = false // Hide pinned keys
             toolbarExpandKey.isVisible = false // Hide expand key
             updateSplitToolbarState()
         } else {
@@ -529,6 +530,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
     private fun onLongClickToolbarKey(view: View) {
         val tag = view.tag as? ToolbarKey ?: return
+        
+        // Disable pinning and long press actions when split toolbar is enabled
+        if (Settings.getValues().mSplitToolbar) return
+        
         if (Settings.getValues().mQuickPinToolbarKeys) {
             if (view.parent === toolbar) {
                 // Pin: Move from toolbar to pinned keys
@@ -683,12 +688,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         
         if (split) {
             toolbarExpandKey.isVisible = false
-            pinnedKeys.isVisible = false // Hide pinned keys
+            pinnedKeys.isVisible = false // Hide pinned keys completely in split mode
             
             toolbarContainer.isVisible = !hideToolbarKeys // Show full toolbar container
             toolbar.visibility = VISIBLE // Show toolbar
             
-            updateVoiceKey() // Re-apply voice logic to pinned keys (though hidden now, logic remains)
+            updateVoiceKey() // Re-apply voice logic to pinned keys
             layoutHelper.setSuggestionsCountInStrip(5)
         } else {
             toolbarExpandKey.isVisible = toolbarIsExpandable
@@ -714,19 +719,28 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val colors = Settings.getValues().mColors
         val pinnedKeysList = getPinnedToolbarKeys(context.prefs())
         val mToolbarMode = Settings.getValues().mToolbarMode
-
+        val isSplitToolbar = Settings.getValues().mSplitToolbar
+        
         // Toolbar keys setup
         // Always populate toolbar keys if mode allows, visibility handled in updateKeys
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS || mToolbarMode == ToolbarMode.EXPANDABLE) {
             // Filter out pinned keys from toolbar to avoid duplication and keep UI clean
-            for (key in getEnabledToolbarKeys(context.prefs()).filterNot { it in pinnedKeysList }) {
+            // In split mode, we show ALL enabled keys in the toolbar, ignoring pin status
+            val keysToRender = if (isSplitToolbar) {
+                getEnabledToolbarKeys(context.prefs()) 
+            } else {
+                getEnabledToolbarKeys(context.prefs()).filterNot { it in pinnedKeysList }
+            }
+            for (key in keysToRender) {
                 val button = createToolbarKey(context, key)
                 button.layoutParams = toolbarKeyLayoutParams
                 setupKey(button, colors)
                 toolbar.addView(button)
             }
         }
-        if (!Settings.getValues().mSuggestionStripHiddenPerUserSettings) {
+        
+        // Only draw pinned keys if not in split mode
+        if (!isSplitToolbar && !Settings.getValues().mSuggestionStripHiddenPerUserSettings) {
             for (pinnedKey in pinnedKeysList) {
                 val button = createToolbarKey(context, pinnedKey)
                 button.layoutParams = toolbarKeyLayoutParams
@@ -800,15 +814,76 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                  suggestionsStrip.addView(placeholderContainer)
             }
         }
-        
+    }
+
+    private var isShowingEmojiSuggestions = false
+
+    /**
+     * Populates the suggestion strip with emoji items (used in split toolbar mode).
+     * @param emojis List of emoji strings to display
+     * @param onEmojiClick Callback when an emoji is tapped
+     */
+    fun setEmojiSuggestions(emojis: List<String>, onEmojiClick: java.util.function.Consumer<String>) {
+        if (!Settings.getValues().mSplitToolbar) return
+        isShowingEmojiSuggestions = true
+        suggestionsStrip.removeAllViews()
+
+        val colors = Settings.getValues().mColors
+        val customTypeface = Settings.getInstance().customTypeface
         val stripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
-        val targetHeight = stripHeight * 2
-        
-        val stripContainer = parent as? ViewGroup
-        if (stripContainer != null && stripContainer.layoutParams?.height != targetHeight) {
-             stripContainer.layoutParams?.height = targetHeight
-             stripContainer.requestLayout()
+
+        // Create a horizontal scroll container for emojis
+        val scrollView = android.widget.HorizontalScrollView(context)
+        scrollView.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        scrollView.isHorizontalScrollBarEnabled = false
+
+        val emojiContainer = LinearLayout(context)
+        emojiContainer.orientation = LinearLayout.HORIZONTAL
+        emojiContainer.gravity = android.view.Gravity.CENTER_VERTICAL
+        emojiContainer.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        for (emoji in emojis) {
+            val emojiView = TextView(context)
+            emojiView.text = emoji
+            emojiView.textSize = 22f
+            if (customTypeface != null) emojiView.typeface = customTypeface
+            emojiView.gravity = android.view.Gravity.CENTER
+            emojiView.setPadding(
+                8.dpToPx(resources), 2.dpToPx(resources), 
+                8.dpToPx(resources), 2.dpToPx(resources)
+            )
+            emojiView.layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, 
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            emojiView.setOnClickListener {
+                AudioAndHapticFeedbackManager.getInstance()
+                    .performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this, HapticEvent.KEY_PRESS)
+                onEmojiClick.accept(emoji)
+            }
+            emojiContainer.addView(emojiView)
         }
+
+        scrollView.addView(emojiContainer)
+        suggestionsStrip.addView(scrollView)
+        suggestionsStrip.isVisible = true
+    }
+
+    /**
+     * Clears emoji suggestions and restores normal suggestion strip state.
+     */
+    fun clearEmojiSuggestions() {
+        if (!isShowingEmojiSuggestions) return
+        isShowingEmojiSuggestions = false
+        suggestionsStrip.removeAllViews()
+        updateKeys()
+        updateSplitToolbarState()
     }
 
     companion object {

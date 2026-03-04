@@ -28,6 +28,7 @@ import androidx.core.content.edit
 fun SwitchPreference(
     setting: Setting,
     default: Boolean,
+    enabled: Boolean = true,
     allowCheckedChange: (Boolean) -> Boolean = { true },
     onCheckedChange: (Boolean) -> Unit = { }
 ) {
@@ -36,6 +37,7 @@ fun SwitchPreference(
         description = setting.description,
         key = setting.key,
         default = default,
+        enabled = enabled,
         allowCheckedChange = allowCheckedChange,
         onCheckedChange = onCheckedChange
     )
@@ -47,6 +49,7 @@ fun SwitchPreference(
     modifier: Modifier = Modifier,
     key: String,
     default: Boolean,
+    enabled: Boolean = true,
     description: String? = null,
     allowCheckedChange: (Boolean) -> Boolean = { true }, // true means ok, usually for showing some dialog
     onCheckedChange: (Boolean) -> Unit = { },
@@ -70,11 +73,13 @@ fun SwitchPreference(
         name = name,
         onClick = { switched(!value) },
         modifier = modifier,
+        enabled = enabled,
         description = description
     ) {
         Switch(
             checked = value,
             onCheckedChange = { switched(it) },
+            enabled = enabled,
         )
     }
 }

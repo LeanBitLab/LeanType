@@ -10,9 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -57,7 +56,7 @@ fun MainSettingsScreen(
         settings = emptyList(),
     ) {
         val enabledSubtypes = SubtypeSettings.getEnabledSubtypes(true)
-        Scaffold(contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)) { innerPadding ->
+        Scaffold(contentWindowInsets = WindowInsets(0)) { innerPadding ->
             Column(
                 Modifier
                     .verticalScroll(rememberScrollState())
@@ -65,11 +64,11 @@ fun MainSettingsScreen(
                     .padding(vertical = 8.dp)
             ) {
                 // Group 1: General (AI, Languages, Preferences, Appearance, Toolbar)
-                ElevatedCard(
+                Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = CardDefaults.elevatedCardColors(
+                    colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainer
                     )
                 ) {
@@ -80,19 +79,11 @@ fun MainSettingsScreen(
                                 onClick = onClickAIIntegration,
                                 icon = R.drawable.ic_proofread
                             ) { NextScreenIcon() }
-                            HorizontalDivider(
-                                modifier = Modifier.padding(horizontal = 16.dp),
-                                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                            )
                             Preference(
                                 name = stringResource(R.string.libraries_hub_title),
                                 onClick = onClickLibraries,
                                 icon = R.drawable.ic_emoji_objects
                             ) { NextScreenIcon() }
-                            HorizontalDivider(
-                                modifier = Modifier.padding(horizontal = 16.dp),
-                                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                            )
                         }
                         Preference(
                             name = stringResource(R.string.language_and_layouts_title),
@@ -100,28 +91,16 @@ fun MainSettingsScreen(
                             onClick = onClickLanguage,
                             icon = R.drawable.ic_settings_languages
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_preferences),
                             onClick = onClickPreferences,
                             icon = R.drawable.ic_settings_preferences
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_appearance),
                             onClick = onClickAppearance,
                             icon = R.drawable.ic_settings_appearance
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_toolbar),
                             onClick = onClickToolbar,
@@ -131,11 +110,11 @@ fun MainSettingsScreen(
                 }
 
                 // Group 2: Typing (Gesture, Correction, Secondary Layouts, Dictionaries)
-                ElevatedCard(
+                Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = CardDefaults.elevatedCardColors(
+                    colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainer
                     )
                 ) {
@@ -145,19 +124,11 @@ fun MainSettingsScreen(
                             onClick = onClickGestureTyping,
                             icon = R.drawable.ic_settings_gesture
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_correction),
                             onClick = onClickTextCorrection,
                             icon = R.drawable.ic_settings_correction
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_secondary_layouts),
                             onClick = onClickLayouts,
@@ -167,11 +138,11 @@ fun MainSettingsScreen(
                 }
 
                 // Group 3: Other (Advanced, About)
-                ElevatedCard(
+                Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = CardDefaults.elevatedCardColors(
+                    colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainer
                     )
                 ) {
@@ -181,10 +152,6 @@ fun MainSettingsScreen(
                             onClick = onClickAdvanced,
                             icon = R.drawable.ic_settings_advanced
                         ) { NextScreenIcon() }
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                        )
                         Preference(
                             name = stringResource(R.string.settings_screen_about),
                             onClick = onClickAbout,

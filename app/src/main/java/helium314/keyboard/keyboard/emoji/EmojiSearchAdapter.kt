@@ -26,11 +26,15 @@ class EmojiSearchAdapter(
         // For simplicity and performance, programmatic TextView is fine, or a simple layout.
         val textView = TextView(parent.context).apply {
             layoutParams = ViewGroup.MarginLayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, // Width (was MATCH_PARENT which forced one item per view)
-                ViewGroup.LayoutParams.WRAP_CONTENT
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
             )
             gravity = android.view.Gravity.CENTER
-            setPadding(0, 16, 0, 16) // Padding for touch target
+            // Use dp to prevent crowding out on high density devices
+            val density = context.resources.displayMetrics.density
+            val horizontalPadding = (12 * density).toInt()
+            setPadding(horizontalPadding, 0, horizontalPadding, 0)
+            minimumWidth = (44 * density).toInt()
             textSize = 22f // Emoji size
             setTextColor(Settings.getValues().mColors.get(helium314.keyboard.latin.common.ColorType.KEY_TEXT))
         }

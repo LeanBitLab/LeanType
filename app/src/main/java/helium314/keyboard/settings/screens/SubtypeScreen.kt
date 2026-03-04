@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -233,7 +232,7 @@ fun SubtypeScreen(
                         }
                     }
                 }
-                HorizontalDivider()
+                // Divider removed to match modern MD3 look
                 Text(
                     stringResource(R.string.settings_screen_secondary_layouts),
                     style = MaterialTheme.typography.titleMedium

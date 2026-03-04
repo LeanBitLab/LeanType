@@ -150,7 +150,7 @@ val defaultToolbarPref by lazy {
     val default = when (helium314.keyboard.latin.BuildConfig.FLAVOR) {
         "offline" -> listOf(SETTINGS, VOICE, CLIPBOARD, UNDO, INCOGNITO, COPY, PASTE, PROOFREAD, TRANSLATE)
         "offlinelite" -> listOf(SETTINGS, VOICE, CLIPBOARD, UNDO, INCOGNITO, COPY, PASTE)
-        else -> listOf(SETTINGS, VOICE, CLIPBOARD, CUSTOM_AI_1, UNDO, PROOFREAD, TRANSLATE, INCOGNITO, COPY, PASTE)
+        else -> listOf(SETTINGS, VOICE, CLIPBOARD, CUSTOM_AI_1, CUSTOM_AI_2, CUSTOM_AI_3, UNDO, PROOFREAD, TRANSLATE, INCOGNITO, NUMPAD, COPY, PASTE, SELECT_ALL)
     }
         
     val others = entries.filterNot { it in default || it in excludedKeys }

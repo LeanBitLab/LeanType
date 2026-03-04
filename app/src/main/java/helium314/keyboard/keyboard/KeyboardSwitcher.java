@@ -66,7 +66,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private LinearLayout mClipboardStripView;
     private HorizontalScrollView mClipboardStripScrollView;
     private SuggestionStripView mSuggestionStripView;
-    private FrameLayout mStripContainer;
+    private LinearLayout mStripContainer;
     private ClipboardHistoryView mClipboardHistoryView;
     private TextView mFakeToastView;
     private LatinIME mLatinIME;
@@ -361,7 +361,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         // @see
         // LatinIME#onComputeInset(android.inputmethodservice.InputMethodService.Insets)
         mKeyboardView.setVisibility(View.GONE);
-        mSuggestionStripView.setVisibility(View.GONE);
+        final boolean splitToolbar = Settings.getValues().mSplitToolbar;
+        mSuggestionStripView.setVisibility(splitToolbar ? View.VISIBLE : View.GONE);
         mStripContainer.setVisibility(getSecondaryStripVisibility());
         mClipboardStripScrollView.setVisibility(View.GONE);
         mEmojiTabStripView.setVisibility(View.VISIBLE);
@@ -705,7 +706,11 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         return mKeyboardView;
     }
 
-    public FrameLayout getStripContainer() {
+    public SuggestionStripView getSuggestionStripView() {
+        return mSuggestionStripView;
+    }
+
+    public LinearLayout getStripContainer() {
         return mStripContainer;
     }
 
