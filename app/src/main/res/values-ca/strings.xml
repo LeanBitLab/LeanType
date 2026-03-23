@@ -98,14 +98,14 @@
     <string name="delete_swipe_summary">Llisqueu damunt de la tecla d\'esborrar per seleccionar i treure grans parts de text d\'un sol cop</string>
     <string name="incognito">Força el mode d\'incògnit</string>
     <string name="abbreviation_unit_minutes">%s min</string>
-    <string name="spell_checker_service_name">Corrector ortogràfic de l\'LeanType</string>
-    <string name="android_spell_checker_settings">Configuració del corrector ortogràfic de l\'LeanType</string>
+    <string name="spell_checker_service_name">Corrector ortogràfic de l\'HeliBoard</string>
+    <string name="android_spell_checker_settings">Configuració del corrector ortogràfic de l\'HeliBoard</string>
     <string name="delete_swipe">Esborra amb lliscament</string>
     <string name="show_emoji_key">Tecla d\'accés a emojis</string>
     <string name="prefs_force_incognito_mode_summary">Desactiva l\'aprenentatge de paraules noves</string>
     <string name="number_row">Fila de nombres</string>
     <string name="number_row_summary">Mostra sempre la fila de nombres</string>
-    <string name="ime_settings">Configuració de l\'LeanType</string>
+    <string name="ime_settings">Configuració de l\'HeliBoard</string>
     <string name="settings_category_input">Entrada</string>
     <string name="settings_category_miscellaneous">Miscel·lània</string>
     <string name="key_borders">Vores del teclat</string>
@@ -322,7 +322,7 @@
     <string name="key_code">Codi de tecla</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Arrodonit</string>
     <string name="main_colors">Mostra només els colors principals</string>
-    <string name="all_colors_warning">Aquesta configuració exposa tots els colors que s\'utilitzen internament. La llista de colors pot canviar en qualsevol moment. El color predeterminat és aleatori i els noms no es traduiran.</string>
+    <string name="all_colors_warning">Aquesta configuració exposa tots els colors que s\'utilitzen internament. La llista de colors pot canviar en qualsevol moment. El color predeterminat és derivat dels colors normals i els noms no es traduiran.</string>
     <string name="hidden_features_title">Descripció de les característiques ocultes</string>
     <string name="no_dictionary_dont_show_again_button">No tornis a mostrar</string>
     <string name="add_dictionary">Seleccioneu un diccionari per afegir. Els diccionaris en format .dict es poden baixar %s.</string>
@@ -442,4 +442,10 @@
     <string name="layout_clip_bottom_row_with_action" tools:keep="@string/layout_clip_bottom_row_with_action">Fila inferior del porta-retalls amb tecla d\'acció</string>
     <string name="number_row_in_symbols">Mostra una línia de nombres a la vista de símbols</string>
     <string name="custom_emoji_font">Aplica una font d\'emoticones personalitzada des d\'un fitxer</string>
+    <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">Tecles funcionals (Khipro)</string>
+    <string name="timestamp_description">Podeu afegir la tecla de marca de temps mitjançant un disseny personalitzat amb la tecla «timestamp» o el codi de tecla -10043</string>
+    <string name="emoji_search_title">Cerca emojis</string>
+    <string name="search_field_placeholder">Cerca</string>
+    <string name="gesture_data_screen">Recopilació de dades gestuals</string>
+    <string name="gesture_data_description">Benvinguts a la pantalla de recopilació de dades de gestos!&lt;br/&gt;&lt;br/&gt; Això forma part d\'un &lt;a href=https://nlnet.nl/project/GestureTyping&gt;projecte finançat per NLnet&lt;/a&gt; que s\'esforça per produir una biblioteca de mecanografia gestual de codi obert completament capaç de substituir la biblioteca de codi tancat de Google.&lt;br/&gt; Es preveu que el resultat sigui un substitut senzill per als teclats basats en AOSP, però també utilitzable amb altres teclats, p. ex. FlorisBoard.&lt;br/&gt;&lt;br/&gt; Per desenvolupar la biblioteca, és tremendament útil tenir disponibles dades gestuals detallades en diferents idiomes i per diferents usuaris.&lt;br/&gt; En recopilar i enviar dades de mecanografia gestual, podeu contribuir a un conjunt obert de dades gestuals que s\'utilitzaran per al desenvolupament de la biblioteca. El conjunt de dades es publicarà sota una llicència CC BY-SA 4.0 un temps després que la fase de recopilació de dades s\'hagi finalitzat el %s. Un cop hàgiu recopilat les dades, les podeu enviar mitjançant la icona de compartir a la part inferior d\'aquesta pantalla.</string>
 </resources>
