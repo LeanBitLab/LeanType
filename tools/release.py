@@ -30,6 +30,12 @@ def update_translations():
             if not file.filename.startswith("heliboard/heliboard/app/src/main/res")\
                     and not file.filename.startswith("heliboard/heliboard/fastlane/metadata"):
                 continue
+            # Block extracting Heliboard's base string files, which would overwrite LeanType's English variants
+            if file.filename.startswith("heliboard/heliboard/app/src/main/res/values/"):
+                continue
+            # Block extracting upstream release changelogs since LeanType tracks its own release cycle
+            if "/changelogs/" in file.filename:
+                continue
             file.filename = file.filename.replace("heliboard/heliboard/", "")
             f.extract(file)
     os.remove(zip_file_name)
