@@ -18,9 +18,12 @@ def check_git():
 
 # download and update translations
 def update_translations():
+    import urllib.request
     url = "https://translate.codeberg.org/download/heliboard/?format=zip"
     zip_file_name = "translations.zip"
-    urlretrieve(url, zip_file_name)
+    req = urllib.request.Request(url, headers={'Cookie': 'x-robot-challenge-2=passed'})
+    with urllib.request.urlopen(req) as response, open(zip_file_name, 'wb') as out_file:
+        out_file.write(response.read())
     # extract all in heliboard/heliboard/app/src/main/res and heliboard/heliboard/fastlane/metadata
     with zipfile.ZipFile(zip_file_name, "r") as f:
         for file in f.filelist:
