@@ -79,12 +79,12 @@ fun MainSettingsScreen(
                                 onClick = onClickAIIntegration,
                                 icon = R.drawable.ic_proofread
                             ) { NextScreenIcon() }
-                            Preference(
-                                name = stringResource(R.string.libraries_hub_title),
-                                onClick = onClickLibraries,
-                                icon = R.drawable.ic_emoji_objects
-                            ) { NextScreenIcon() }
                         }
+                        Preference(
+                            name = stringResource(R.string.libraries_hub_title),
+                            onClick = onClickLibraries,
+                            icon = R.drawable.ic_emoji_objects
+                        ) { NextScreenIcon() }
                         Preference(
                             name = stringResource(R.string.language_and_layouts_title),
                             description = enabledSubtypes.joinToString(", ") { it.displayName() },

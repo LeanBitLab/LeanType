@@ -13,12 +13,14 @@ class Database private constructor(context: Context, name: String = NAME) : SQLi
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // nothing yet
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE CLIPBOARD ADD COLUMN IMAGE_URI TEXT")
+        }
     }
 
     companion object {
         private val TAG = Database::class.java.simpleName
-        private const val VERSION = 1
+        private const val VERSION = 2
         const val NAME = "heliboard.db"
         private var instance: Database? = null
         fun getInstance(context: Context): Database {
@@ -37,11 +39,21 @@ class Database private constructor(context: Context, name: String = NAME) : SQLi
                 Log.e(TAG, "can't transfer clipboard data because ClipboardDao is null")
                 return
             }
-            otherDb.readableDatabase.rawQuery("SELECT TIMESTAMP, PINNED, TEXT FROM CLIPBOARD", null)
+            val hasImageUri = otherDb.readableDatabase.rawQuery("PRAGMA table_info(CLIPBOARD)", null).use {
+                var hasIt = false
+                while(it.moveToNext()) {
+                    if (it.getString(1) == "IMAGE_URI") hasIt = true
+                }
+                hasIt
+            }
+            val query = if (hasImageUri) "SELECT TIMESTAMP, PINNED, TEXT, IMAGE_URI FROM CLIPBOARD" else "SELECT TIMESTAMP, PINNED, TEXT FROM CLIPBOARD"
+            otherDb.readableDatabase.rawQuery(query, null)
                 .use {
                     clipDao.clear()
-                    while (it.moveToNext())
-                        clipDao.addClip(it.getLong(0), it.getInt(1) != 0, it.getString(2))
+                    while (it.moveToNext()) {
+                        val imageUri = if (hasImageUri && !it.isNull(3)) it.getString(3) else null
+                        clipDao.addClip(it.getLong(0), it.getInt(1) != 0, it.getString(2) ?: "", imageUri)
+                    }
                 }
             otherDb.close()
             file.delete()

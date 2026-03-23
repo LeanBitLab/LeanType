@@ -26,7 +26,8 @@ This fork adds **optional AI-powered features** using Gemini, Groq, and OpenAI-c
 - **🔄 Google Dictionary Import** - Easily import your personal dictionary words.
 - **⚙️ Enhanced Customization** - Force auto-capitalization toggle, reorganized settings, and more.
 - **🕵️ Clear Incognito Mode** - Distinct "Hat & Glasses" icon for clear visibility.
-- **🔍 Clipboard Search** - Search through your clipboard history directly from the toolbar.
+- **🔍 Clipboard Search & Undo** - Search through your clipboard history directly from the toolbar, and undo accidental item deletions.
+- **📸 Screenshot Suggestion & Clipboard** - Suggests recently taken screenshots for quick sharing via the suggestion strip and saves them to your clipboard history.
 - **🔎 Emoji Search** - Search for emojis by name. *Requires loading an Emoji Dictionary.*
 - **🔒 Privacy Choices** - Choose **Standard** (Opt-in AI), **Offline** (Hard-disabled network, offline model load), or **Offline Lite** (Minimalist, no AI) versions.
 

@@ -1,14 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     SPDX-License-Identifier: GPL-3.0-only
-    Background for toolbar keys - wider squircle (rounded rectangle) shape
-    width and height are irrelevant for background
+    Improved ripple background for toolbar keys with inset to prevent overlapping
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="28dp"
-    android:height="24dp"
-    android:viewportWidth="28"
-    android:viewportHeight="24">
-    <path
-        android:fillColor="#fff"
-        android:pathData="M2,8C2,5.79 3.79,4 6,4h16c2.21,0 4,1.79 4,4v8c0,2.21 -1.79,4 -4,4h-16c-2.21,0 -4,-1.79 -4,-4z"/>
-</vector>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+    <item>
+        <inset android:inset="4dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="8dp" />
+                <solid android:color="#fff" />
+            </shape>
+        </inset>
+    </item>
+</ripple>

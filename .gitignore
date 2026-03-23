@@ -31,3 +31,6 @@ Pdoc/
 
 # Gemini System Prompts
 GEMINI.md
+
+.antigravityignore
+.gemini/

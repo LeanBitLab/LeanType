@@ -158,6 +158,7 @@ public class SettingsValues {
         private final boolean mSuggestionsEnabledPerUserSettings;
         private final boolean mOverrideShowingSuggestions;
         public final boolean mSuggestClipboardContent;
+        public final boolean mSuggestScreenshots;
         public final SettingsValuesForSuggestion mSettingsValuesForSuggestion;
         public final boolean mIncognitoModeEnabled;
         public final boolean mLongPressSymbolsForNumpad;
@@ -252,6 +253,8 @@ public class SettingsValues {
                                 Defaults.PREF_SUGGEST_PUNCTUATION);
                 mSuggestClipboardContent = prefs.getBoolean(Settings.PREF_SUGGEST_CLIPBOARD_CONTENT,
                                 Defaults.PREF_SUGGEST_CLIPBOARD_CONTENT);
+                mSuggestScreenshots = prefs.getBoolean(Settings.PREF_SUGGEST_SCREENSHOTS,
+                                Defaults.PREF_SUGGEST_SCREENSHOTS);
                 mDoubleSpacePeriodTimeout = 1100; // ms
                 mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());
                 final boolean isLandscape = mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE;

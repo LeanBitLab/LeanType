@@ -81,6 +81,9 @@ class ClipboardAdapter(
 
         private val pinnedIconView: ImageView
         private val contentView: TextView
+        private val imageContainer: View
+        private val imageView: ImageView
+        private val imageNameView: TextView
 
         init {
             view.apply {
@@ -95,6 +98,11 @@ class ClipboardAdapter(
                 visibility = View.GONE
                 setImageResource(pinnedIconResId)
             }
+            imageContainer = view.findViewById<View>(R.id.clipboard_entry_image_container).apply {
+                visibility = View.GONE
+            }
+            imageView = view.findViewById(R.id.clipboard_entry_image)
+            imageNameView = view.findViewById(R.id.clipboard_entry_image_name)
             contentView = view.findViewById<TextView>(R.id.clipboard_entry_content).apply {
                 typeface = itemTypeFace
                 setTextColor(itemTextColor)
@@ -107,13 +115,21 @@ class ClipboardAdapter(
 
         fun setContent(historyEntry: ClipboardHistoryEntry?) {
             itemView.tag = historyEntry?.id
-            contentView.text = historyEntry?.text?.take(1000) // truncate displayed text for performance reasons
-            pinnedIconView.visibility = if (historyEntry?.isPinned == true) View.VISIBLE else View.GONE
-            if (historyEntry?.isPinned == true) {
-                 val colors = Settings.getValues().mColors
-                 colors.setColor(pinnedIconView, ColorType.CLIPBOARD_PIN)
-                 pinnedIconView.setImageResource(pinnedIconResId)
+            
+            if (historyEntry?.imageUri != null) {
+                contentView.visibility = View.GONE
+                imageContainer.visibility = View.VISIBLE
+                val file = java.io.File(historyEntry.imageUri)
+                if (file.exists()) {
+                    imageView.setImageURI(android.net.Uri.fromFile(file))
+                    imageNameView.text = file.name
+                }
+            } else {
+                contentView.visibility = View.VISIBLE
+                imageContainer.visibility = View.GONE
+                contentView.text = historyEntry?.text?.take(1000) // truncate displayed text for performance reasons
             }
+            pinnedIconView.visibility = if (historyEntry?.isPinned == true) View.VISIBLE else View.GONE
         }
 
         @SuppressLint("ClickableViewAccessibility")

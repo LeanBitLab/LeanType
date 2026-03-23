@@ -80,6 +80,11 @@ public interface KeyboardActionListener {
     void onTextInput(String text);
 
     /**
+     * Sends an image URI to be pasted into the text field.
+     */
+    void onImageSelected(String imageUri);
+
+    /**
      * Called when user started batch input.
      */
     void onStartBatchInput();
@@ -176,6 +181,10 @@ public interface KeyboardActionListener {
 
         @Override
         public void onTextInput(String text) {
+        }
+
+        @Override
+        public void onImageSelected(String imageUri) {
         }
 
         @Override

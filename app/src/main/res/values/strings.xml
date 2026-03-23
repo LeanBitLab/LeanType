@@ -176,6 +176,10 @@
     <string name="suggest_clipboard_content">Suggest clipboard content</string>
     <!-- Description for the "suggest clipboard content" option. This makes the primary clipboard content visible in the suggestion strip view. -->
     <string name="suggest_clipboard_content_summary">Show recently copied clipboard content as a suggestion</string>
+    <!-- Option to enable the suggestion of recent screenshots. -->
+    <string name="suggest_screenshots">Suggest recent screenshots</string>
+    <!-- Description for the "suggest recent screenshots" option. This makes recent screenshots visible in the suggestion strip view. -->
+    <string name="suggest_screenshots_summary">Show recently taken screenshots as a suggestion</string>
     <!-- Option to enable gesture input. The user can input a word by tracing the letters of a word without releasing the finger from the screen.-->
     <string name="gesture_input">Enable gesture typing</string>
     <!-- Description for "gesture_input" option. The user can input a word by tracing the letters of a word without releasing the finger from the screen.-->
@@ -212,6 +216,8 @@
     <string name="clipboard_search_hint">Search clips...</string>
     <!-- Text for empty clipboard state -->
     <string name="clipboard_empty_text">No items found</string>
+    <!-- Text for clipboard item deleted undo bar -->
+    <string name="clipboard_item_deleted">Item deleted</string>
     <!-- Text for no search results -->
     <string name="clipboard_no_search_results">No results found</string>
     <!-- Preferences item for enabling swipe deletion -->
@@ -1148,6 +1154,8 @@ New dictionary:
         <item>64</item>
         <item>128</item>
     </string-array>
+    <!-- Toast message shown when image pasting is not supported by the app -->
+    <string name="image_pasting_not_supported">This app does not support image pasting</string>
     <string name="clear_emoji_history_title">Clear emoji history</string>
     <string name="clear_emoji_history_message">Are you sure you want to clear your recently used emojis?</string>
 </resources>

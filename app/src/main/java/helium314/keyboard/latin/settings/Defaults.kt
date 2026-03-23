@@ -88,7 +88,7 @@ object Defaults {
     @JvmField
     val PREF_SPLIT_SPACER_SCALE = Array(2) { DEFAULT_SIZE_SCALE }
     @JvmField
-    val PREF_KEYBOARD_HEIGHT_SCALE = Array(2) { 0.85f }
+    val PREF_KEYBOARD_HEIGHT_SCALE = Array(2) { 0.77f }
     @JvmField
     val PREF_BOTTOM_PADDING_SCALE = arrayOf(1.05f, 0f)
     @JvmField
@@ -109,6 +109,7 @@ object Defaults {
     const val PREF_BIGRAM_PREDICTIONS = true
     const val PREF_SUGGEST_PUNCTUATION = false
     const val PREF_SUGGEST_CLIPBOARD_CONTENT = true
+    const val PREF_SUGGEST_SCREENSHOTS = false
     const val PREF_GESTURE_INPUT = true
     const val PREF_VIBRATION_DURATION_SETTINGS = -1
     const val PREF_KEYPRESS_SOUND_VOLUME = -0.01f

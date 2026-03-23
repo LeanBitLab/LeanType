@@ -70,8 +70,16 @@ public final class KeyPreviewChoreographer {
         // Dismiss preview
         mShowingKeyPreviewViews.remove(key);
         keyPreviewView.setTag(null);
-        keyPreviewView.setVisibility(View.INVISIBLE);
-        mFreeKeyPreviewViews.add(keyPreviewView);
+        keyPreviewView.animate()
+                .scaleX(0.8f)
+                .scaleY(0.8f)
+                .alpha(0f)
+                .setDuration(50)
+                .withEndAction(() -> {
+                    keyPreviewView.setVisibility(View.INVISIBLE);
+                    mFreeKeyPreviewViews.add(keyPreviewView);
+                })
+                .start();
     }
 
     public void placeAndShowKeyPreview(final Key key, final KeyboardIconsSet iconsSet,
@@ -122,6 +130,17 @@ public final class KeyPreviewChoreographer {
 
     void showKeyPreview(final Key key, final KeyPreviewView keyPreviewView) {
         keyPreviewView.setVisibility(View.VISIBLE);
+        keyPreviewView.animate().cancel();
+        keyPreviewView.setScaleX(0.5f);
+        keyPreviewView.setScaleY(0.5f);
+        keyPreviewView.setAlpha(0f);
+        keyPreviewView.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .alpha(1f)
+                .setDuration(75)
+                .setInterpolator(new android.view.animation.OvershootInterpolator())
+                .start();
         mShowingKeyPreviewViews.put(key, keyPreviewView);
     }
 

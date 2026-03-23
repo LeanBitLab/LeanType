@@ -102,11 +102,11 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
     private fun getGesture(context: Context) = if (isNight) accent
         else ContextCompat.getColor(context, android.R.color.system_accent1_600)
     private fun getBackground(context: Context) = if (isNight) ContextCompat.getColor(context, android.R.color.system_neutral1_900)
-        else ContextCompat.getColor(context, android.R.color.system_neutral1_50)
+        else ContextCompat.getColor(context, android.R.color.system_neutral1_100)
     private fun getKeyBackground(context: Context) = if (isNight) ContextCompat.getColor(context, android.R.color.system_neutral1_800)
         else  ContextCompat.getColor(context, android.R.color.system_neutral1_0)
     private fun getFunctionalKey(context: Context) = if (isNight) ContextCompat.getColor(context, android.R.color.system_accent2_300)
-        else ContextCompat.getColor(context, android.R.color.system_accent2_100)
+        else ContextCompat.getColor(context, android.R.color.system_accent2_200)
     private fun getKeyText(context: Context) = if (isNight) ContextCompat.getColor(context, android.R.color.system_neutral1_50)
         else ContextCompat.getColor(context, android.R.color.system_accent3_900)
     private fun getKeyHintText(context: Context) = if (isNight) keyText

@@ -389,7 +389,18 @@ public class KeyboardView extends View {
         }
         background.setBounds(0, 0, bgWidth, bgHeight);
         canvas.translate(bgX, bgY);
+        
+        final boolean isShiftLocked = key.getCode() == KeyCode.SHIFT && key.isLocked();
+        if (isShiftLocked) {
+            background.setColorFilter(Color.argb(0x80, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+        }
+        
         background.draw(canvas);
+        
+        if (isShiftLocked) {
+            background.clearColorFilter();
+        }
+        
         canvas.translate(-bgX, -bgY);
     }
 

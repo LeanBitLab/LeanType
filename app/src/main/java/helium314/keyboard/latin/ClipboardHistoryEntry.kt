@@ -8,12 +8,14 @@ class ClipboardHistoryEntry(
     val id: Long,
     var timeStamp: Long,
     var isPinned: Boolean,
-    val text: String
+    val text: String,
+    val imageUri: String? = null
 ) : Comparable<ClipboardHistoryEntry> {
     override fun compareTo(other: ClipboardHistoryEntry): Int {
-        val result = other.isPinned.compareTo(isPinned)
-        if (result == 0) return other.timeStamp.compareTo(timeStamp)
-        if (Settings.getValues()?.mClipboardHistoryPinnedFirst == false) return -result
-        return result
+        if (Settings.getValues()?.mClipboardHistoryPinnedFirst != false) {
+            val result = other.isPinned.compareTo(isPinned)
+            if (result != 0) return result
+        }
+        return other.timeStamp.compareTo(timeStamp)
     }
 }

@@ -129,6 +129,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     override fun onTextInput(text: String?) = latinIME.onTextInput(text)
 
+    override fun onImageSelected(imageUri: String) = latinIME.onImageSelected(imageUri)
+
     override fun onStartBatchInput() = latinIME.onStartBatchInput()
 
     override fun onUpdateBatchInput(batchPointers: InputPointers?) = latinIME.onUpdateBatchInput(batchPointers)

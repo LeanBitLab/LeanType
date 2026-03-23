@@ -160,6 +160,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_OFFLINE_KEEP_MODEL_LOADED = "offline_keep_model_loaded";
 
     public static final String PREF_ENABLE_CLIPBOARD_HISTORY = "enable_clipboard_history";
+    public static final String PREF_SUGGEST_SCREENSHOTS = "suggest_screenshots";
     public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "clipboard_history_retention_time";
     public static final String PREF_CLIPBOARD_HISTORY_PINNED_FIRST = "clipboard_history_pinned_first";
 

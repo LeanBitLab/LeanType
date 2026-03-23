@@ -30,6 +30,9 @@ LeanType integrates with AI providers to offer advanced proofreading and transla
 | **Dictionary Import** | Import personal words from Google Gboard/other keyboards. | `Text correction > Dictionary > Import` |
 | **Force Auto-Caps** | Toggle to ensure automatic capitalization works reliably. | `Text correction > Auto-capitalization` |
 | **Emoji Search** | Search for emojis by name. | `Emoji Key > Search Icon` |
+| **Screenshot Suggestion** | Suggests recently taken screenshots for quick sharing. | `Text correction > Suggest recent screenshots` |
+| **Screenshot on Clipboard** | Automatically saves taken screenshots to your clipboard history. | *Automatic (when enabled)* |
+| **Clipboard Undo** | Undo swipe-to-delete on clipboard items with a timed undo bar. | *Automatic (on swipe delete)* |
 
 ---
 
@@ -42,6 +45,35 @@ LeanType integrates with AI providers to offer advanced proofreading and transla
     2.  Tap on your language (e.g., **English**).
     3.  Ensure the **Emoji English** (or relevant emoji dict) is available/downloaded.
     4.  *Note*: Basic emoji search requires this dictionary to map words to emoji characters.
+
+---
+
+## Screenshot Suggestion
+
+*   **Functionality**: When you take a screenshot, LeanType detects it and shows a suggestion in the suggestion strip for quick sharing. Tapping the suggestion inserts the screenshot as an image into the current input field (if the app supports image insertion).
+*   **Permissions**: Requires **storage/media access** (`READ_MEDIA_IMAGES` on Android 13+, or `READ_EXTERNAL_STORAGE` on older versions). The keyboard will prompt for permission when this feature is first enabled.
+*   **How to Enable** (Disabled by default):
+    1.  Go to **Settings > Text correction**.
+    2.  Enable **Suggest recent screenshots**.
+*   **Behavior**:
+    *   Screenshots taken within the last **4 minutes** are detected.
+    *   A thumbnail preview is shown in the suggestion strip.
+    *   Tapping the suggestion inserts the image; tapping the close button dismisses it.
+
+---
+
+## Screenshot on Clipboard
+
+*   **Functionality**: Taken screenshots are automatically saved to your clipboard history for later use.
+*   **Requirement**: Clipboard history must be enabled.
+*   **How to Enable**: Ensure **Suggest recent screenshots** is enabled in Text correction.
+
+---
+
+## Clipboard Item Delete Undo
+
+*   **Functionality**: When you swipe to delete an item from your clipboard history, a brief undo bar appears, allowing you to restore the deleted item.
+*   **Behavior**: Provides a safety net against accidental deletions of important clipboard content.
 
 ---
 

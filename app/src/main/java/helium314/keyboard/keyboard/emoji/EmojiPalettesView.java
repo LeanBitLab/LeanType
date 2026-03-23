@@ -352,7 +352,7 @@ public final class EmojiPalettesView extends LinearLayout
 
         if (categoryId == ID_SEARCH_TAB) {
             // Use search icon
-            iconView.setImageResource(R.drawable.sym_keyboard_search_rounded);
+            iconView.setImageResource(R.drawable.sym_keyboard_search_lxx);
             iconView.setContentDescription("Search Emojis");
         } else {
             iconView.setImageResource(mEmojiCategory.getCategoryTabIcon(categoryId));
@@ -363,6 +363,12 @@ public final class EmojiPalettesView extends LinearLayout
         host.addView(iconView);
         iconView.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
         iconView.setOnClickListener(this);
+        
+        // Visual indicator for selected tab
+        if (categoryId == mEmojiCategory.getCurrentCategoryId()) {
+            mColors.setColor(iconView, ColorType.EMOJI_CATEGORY_SELECTED);
+        }
+        
         if (categoryId == EmojiCategory.ID_RECENTS) {
             iconView.setOnLongClickListener(v -> {
                 android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(getContext())
@@ -523,6 +529,7 @@ public final class EmojiPalettesView extends LinearLayout
 
             mSearchAdapter = new EmojiSearchAdapter(emoji -> {
                 mKeyboardActionListener.onTextInput(emoji);
+                addRecentKey(emoji);
                 // Optional: stopSearchMode();
                 return kotlin.Unit.INSTANCE;
             });
@@ -574,6 +581,10 @@ public final class EmojiPalettesView extends LinearLayout
             @Override
             public void onTextInput(String t) {
                 mSearchBar.append(t);
+            }
+
+            @Override
+            public void onImageSelected(String imageUri) {
             }
 
             // Empty implementations...
@@ -676,7 +687,9 @@ public final class EmojiPalettesView extends LinearLayout
         mInSearchMode = false;
 
         // Return to alphabet keyboard directly upon closing search
-        if (mOriginalActionListener != null) {
+        // EXCEPTION: do not do this if we are being detached from the window,
+        // as this will corrupt the KeyboardSwitcher state and hide the toolbar.
+        if (mOriginalActionListener != null && isAttachedToWindow()) {
             mOriginalActionListener.onCodeInput(KeyCode.ALPHA,
                     helium314.keyboard.latin.common.Constants.NOT_A_COORDINATE,
                     helium314.keyboard.latin.common.Constants.NOT_A_COORDINATE, false);
@@ -851,6 +864,20 @@ public final class EmojiPalettesView extends LinearLayout
             return;
         }
         getRecentsKeyboard().addKeyFirst(key);
+        mPager.getAdapter().notifyItemChanged(mEmojiCategory.getRecentTabId());
+    }
+
+    public void addRecentKey(final String emoji) {
+        if (helium314.keyboard.latin.settings.Settings.getValues().mIncognitoModeEnabled || TextUtils.isEmpty(emoji)
+                || !helium314.keyboard.latin.common.StringUtils.mightBeEmoji(emoji.codePointAt(0))) {
+            // We do not want to log recent keys while being in incognito
+            return;
+        }
+        if (mEmojiCategory.isInRecentTab()) {
+            getRecentsKeyboard().addPendingStringKey(emoji);
+            return;
+        }
+        getRecentsKeyboard().addStringKeyFirst(emoji);
         mPager.getAdapter().notifyItemChanged(mEmojiCategory.getRecentTabId());
     }
 

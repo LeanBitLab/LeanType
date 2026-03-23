@@ -134,8 +134,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
     private val toolbarKeyLayoutParams = LinearLayout.LayoutParams(
         resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width),
-        LinearLayout.LayoutParams.MATCH_PARENT
-    )
+        resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
+    ).apply { gravity = android.view.Gravity.CENTER_VERTICAL }
 
     init {
         val colors = Settings.getValues().mColors
@@ -328,19 +328,28 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     fun setSuggestions(suggestions: SuggestedWords, isRtlLanguage: Boolean) {
+        if (isExternalSuggestionVisible && (suggestions.isEmpty || suggestions.isPunctuationSuggestions)) {
+            // Keep external suggestion (clipboard/screenshot) if new suggestions are empty or just punctuation
+            return
+        }
         clear()
+        isExternalSuggestionVisible = false
         setRtl(isRtlLanguage)
         suggestedWords = suggestions
         startIndexOfMoreSuggestions = layoutHelper.layoutAndReturnStartIndexOfMoreSuggestions(
             context, suggestedWords, suggestionsStrip, this
         )
-        isExternalSuggestionVisible = false
         updateKeys()
         updateSplitToolbarState()
     }
 
     fun setExternalSuggestionView(view: View?, addCloseButton: Boolean) {
         clear()
+        if (view == null) {
+            isExternalSuggestionVisible = false
+            updateSplitToolbarState()
+            return
+        }
         isExternalSuggestionVisible = true
 
         if (addCloseButton) {
@@ -450,8 +459,13 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     override fun onVisibilityChanged(view: View, visibility: Int) {
         super.onVisibilityChanged(view, visibility)
         // workaround for a bug with inline suggestions views that just keep showing up otherwise, https://github.com/Helium314/HeliBoard/pull/386
-        if (view === this)
-            suggestionsStrip.visibility = visibility
+        if (view === this) {
+            if (visibility == View.VISIBLE) {
+                setToolbarVisibility(isToolbarManuallyOpen)
+            } else {
+                suggestionsStrip.visibility = visibility
+            }
+        }
     }
 
     override fun onDetachedFromWindow() {

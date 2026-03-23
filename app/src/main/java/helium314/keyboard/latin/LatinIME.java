@@ -1028,6 +1028,7 @@ public class LatinIME extends InputMethodService implements
     @Override
     public void onWindowShown() {
         super.onWindowShown();
+        mClipboardHistoryManager.onPrimaryClipChanged();
         if (isInputViewShown()) {
             setNavigationBarColor();
             workaroundForHuaweiStatusBarIssue();
@@ -1469,6 +1470,55 @@ public class LatinIME extends InputMethodService implements
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
     }
 
+    public void onImageSelected(final String imageUri) {
+        final EditorInfo editorInfo = getCurrentInputEditorInfo();
+        if (editorInfo == null)
+            return;
+
+        android.net.Uri contentUri;
+        if (imageUri.startsWith("content://")) {
+            contentUri = android.net.Uri.parse(imageUri);
+        } else {
+            final java.io.File file = new java.io.File(imageUri);
+            if (!file.exists()) return;
+            contentUri = androidx.core.content.FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+        }
+
+        try {
+            final String mimeType = getContentResolver().getType(contentUri);
+            final String finalMimeType = mimeType != null ? mimeType : "image/png";
+
+            final androidx.core.view.inputmethod.InputContentInfoCompat inputContentInfoCompat = new androidx.core.view.inputmethod.InputContentInfoCompat(
+                    contentUri,
+                    new android.content.ClipDescription("Clipboard Image", new String[] { finalMimeType }),
+                    null);
+
+            final android.view.inputmethod.InputConnection ic = getCurrentInputConnection();
+            if (ic == null)
+                return;
+
+            int flags = 0;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1) {
+                flags = androidx.core.view.inputmethod.InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION;
+            }
+
+            boolean inserted = false;
+            try {
+                inserted = androidx.core.view.inputmethod.InputConnectionCompat.commitContent(
+                        ic, editorInfo, inputContentInfoCompat, flags, null);
+            } catch (Exception e) {
+                Log.e(TAG, "Failed to commit content", e);
+            }
+
+            if (!inserted) {
+                android.widget.Toast
+                        .makeText(this, R.string.image_pasting_not_supported, android.widget.Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to paste image", e);
+        }
+    }
+
     public void onStartBatchInput() {
         mInputLogic.onStartBatchInput(mSettings.getCurrent(), mKeyboardSwitcher, mHandler);
         mGestureConsumer.onGestureStarted(mRichImm.getCurrentSubtypeLocale(), mKeyboardSwitcher.getKeyboard());
@@ -1585,6 +1635,15 @@ public class LatinIME extends InputMethodService implements
                 mKeyboardSwitcher.getCurrentKeyboardScript(),
                 mHandler);
         updateStateAfterInputTransaction(completeInputTransaction);
+
+        if (suggestionInfo.mSourceDict != null && helium314.keyboard.latin.dictionary.Dictionary.TYPE_EMOJI
+                .equals(suggestionInfo.mSourceDict.mDictType)) {
+            final helium314.keyboard.keyboard.emoji.EmojiPalettesView emojiView = mKeyboardSwitcher
+                    .getEmojiPalettesView();
+            if (emojiView != null) {
+                emojiView.addRecentKey(suggestionInfo.mWord);
+            }
+        }
     }
 
     /**
@@ -1595,9 +1654,13 @@ public class LatinIME extends InputMethodService implements
     public boolean tryShowClipboardSuggestion() {
         final View clipboardView = mClipboardHistoryManager.getClipboardSuggestionView(getCurrentInputEditorInfo(),
                 mSuggestionStripView);
-        if (clipboardView != null && hasSuggestionStripView()) {
-            mSuggestionStripView.setExternalSuggestionView(clipboardView, false);
-            return true;
+        if (hasSuggestionStripView()) {
+            if (clipboardView != null) {
+                mSuggestionStripView.setExternalSuggestionView(clipboardView, false);
+                return true;
+            } else {
+                mSuggestionStripView.setExternalSuggestionView(null, false);
+            }
         }
         return false;
     }

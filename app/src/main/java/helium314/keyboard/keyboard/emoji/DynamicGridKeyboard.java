@@ -154,6 +154,18 @@ final class DynamicGridKeyboard extends Keyboard {
         }
     }
 
+    public void addStringKeyFirst(final String outputText) {
+        final Key key = new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null,
+                Key.BACKGROUND_TYPE_EMPTY, 0, outputText);
+        addKeyFirst(key);
+    }
+
+    public void addPendingStringKey(final String outputText) {
+        final Key key = new Key(getTemplateKey(Constants.RECENTS_TEMPLATE_KEY_CODE_0), null, null,
+                Key.BACKGROUND_TYPE_EMPTY, 0, outputText);
+        addPendingKey(key);
+    }
+
     public void addKeyLast(final Key usedKey) {
         addKey(usedKey, false);
     }

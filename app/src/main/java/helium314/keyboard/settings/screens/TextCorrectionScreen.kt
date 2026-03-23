@@ -4,6 +4,7 @@ package helium314.keyboard.settings.screens
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.Surface
@@ -87,6 +88,7 @@ fun TextCorrectionScreen(
         Settings.PREF_BIGRAM_PREDICTIONS,
         Settings.PREF_SUGGEST_PUNCTUATION,
         Settings.PREF_SUGGEST_CLIPBOARD_CONTENT,
+        Settings.PREF_SUGGEST_SCREENSHOTS,
         Settings.PREF_USE_CONTACTS,
         Settings.PREF_USE_APPS
     )
@@ -216,6 +218,30 @@ fun createCorrectionSettings(context: Context) = listOf(
         R.string.suggest_clipboard_content, R.string.suggest_clipboard_content_summary
     ) {
         SwitchPreference(it, Defaults.PREF_SUGGEST_CLIPBOARD_CONTENT)
+    },
+    Setting(context, Settings.PREF_SUGGEST_SCREENSHOTS,
+        R.string.suggest_screenshots, R.string.suggest_screenshots_summary
+    ) { setting ->
+        val activity = LocalContext.current.getActivity() ?: return@Setting
+        val permission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Manifest.permission.READ_MEDIA_IMAGES
+        } else {
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        }
+        var granted by remember { mutableStateOf(PermissionsUtil.checkAllPermissionsGranted(activity, permission)) }
+        val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+            granted = it
+            if (granted)
+                activity.prefs().edit { putBoolean(setting.key, true) }
+        }
+        SwitchPreference(setting, Defaults.PREF_SUGGEST_SCREENSHOTS,
+            allowCheckedChange = {
+                if (it && !granted) {
+                    launcher.launch(permission)
+                    false
+                } else true
+            }
+        )
     },
     Setting(context, Settings.PREF_USE_CONTACTS,
         R.string.use_contacts_dict, R.string.use_contacts_dict_summary

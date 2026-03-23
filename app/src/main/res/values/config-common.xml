@@ -8,7 +8,7 @@
 <resources>
 
     <integer name="config_delay_in_milliseconds_to_update_shift_state">100</integer>
-    <integer name="config_double_space_period_timeout">1100</integer>
+
 
     <integer name="config_key_repeat_start_timeout">400</integer>
     <integer name="config_key_repeat_interval">50</integer>
@@ -36,7 +36,7 @@
     <integer name="config_gesture_trail_update_interval">20</integer>
     <!-- Static threshold for gesture after fast typing (msec) -->
     <integer name="config_gesture_static_time_threshold_after_fast_typing">500</integer>
-    <integer name="config_gesture_fast_typing_cooldown_step">10</integer>
+
     <!-- Static threshold for starting gesture detection (keyWidth%/sec) -->
     <fraction name="config_gesture_detect_fast_move_speed_threshold">150%</fraction>
     <!-- Dynamic threshold for gesture after fast typing (msec) -->
@@ -102,7 +102,7 @@
     <dimen name="config_clipboard_pinned_icon_size">18dp</dimen>
 
     <!-- Inset used in Accessibility mode to avoid accidental key presses when a finger slides off the screen. -->
-    <dimen name="config_accessibility_edge_slop">8dp</dimen>
 
-    <integer name="config_user_dictionary_max_word_length">48</integer>
+
+
 </resources>

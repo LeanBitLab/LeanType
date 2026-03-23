@@ -1,0 +1,13 @@
+- Added real-time screenshot suggestions in the toolbar (Disabled by default, enable in Settings > Text correction)
+- Added automatic saving of recent screenshots to clipboard history
+- Added Clipboard item delete undo feature with a timed undo bar
+- Fixed and improved Emoji search, adding search icon and visual selection indicators to the Emoji toolbar
+- Refined clipboard image preview with curved corners and filename overlay
+- Re-styled toolbar keys with perfectly square shapes and modern ripple effects
+- Enhanced Caps Lock indicator for better visibility when engaged
+- Smoother scale and fade animations for character popups when typing
+- Improved function key contrast in Light Mode dynamic themes
+- Adjusted default keyboard height scale to 77%
+- Fixed issue where screenshot suggestions would disappear prematurely
+- Fixed image pasting support for screenshot suggestions in apps like Telegram
+- General performance and stability improvements

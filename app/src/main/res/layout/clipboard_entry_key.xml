@@ -18,6 +18,38 @@
 
     <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
          We just need to ignore the system's audio and haptic feedback settings. -->
+    <FrameLayout
+        android:id="@+id/clipboard_entry_image_container"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/clipboard_image_bg"
+        android:clipToOutline="true"
+        android:visibility="gone">
+
+        <ImageView
+                android:id="@+id/clipboard_entry_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+                
+        <TextView
+                android:id="@+id/clipboard_entry_image_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#66000000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="2dp"
+                android:singleLine="true"
+                android:ellipsize="end" />
+    </FrameLayout>
+
     <TextView
             android:id="@+id/clipboard_entry_content"
             android:layout_width="0dp"

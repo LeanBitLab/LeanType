@@ -908,6 +908,10 @@ public class Key implements Comparable<Key> {
         mLocked = locked;
     }
 
+    public boolean isLocked() {
+        return mLocked;
+    }
+
     @NonNull
     public Rect getHitBox() {
         return mHitBox;

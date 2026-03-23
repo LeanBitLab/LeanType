@@ -333,6 +333,10 @@ class ClipboardHistoryView @JvmOverloads constructor(
          keyboardActionListener.onTextInput(text)
     }
 
+    override fun onImageSelected(imageUri: String) {
+         keyboardActionListener.onImageSelected(imageUri)
+    }
+
     // Delegate other KeyboardActionListener methods
     override fun onPressKey(primaryCode: Int, repeatCount: Int, isSinglePointer: Boolean, hapticEvent: HapticEvent?) {
         keyboardActionListener.onPressKey(primaryCode, repeatCount, isSinglePointer, hapticEvent)
@@ -375,7 +379,10 @@ class ClipboardHistoryView @JvmOverloads constructor(
 
     private fun setupToolbarKeys() {
         // set layout params
-        val toolbarKeyLayoutParams = LayoutParams(resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width), LayoutParams.MATCH_PARENT)
+        val toolbarKeyLayoutParams = LayoutParams(
+            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width), 
+            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
+        ).apply { gravity = android.view.Gravity.CENTER_VERTICAL }
         toolbarKeys.forEach { it.layoutParams = toolbarKeyLayoutParams }
     }
 
@@ -469,7 +476,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
 
     override fun onKeyUp(clipId: Long) {
         val clipContent = clipboardHistoryManager.getHistoryEntryContent(clipId)
-        keyboardActionListener.onTextInput(clipContent?.text)
+        if (clipContent?.imageUri != null) {
+            keyboardActionListener.onImageSelected(clipContent.imageUri!!)
+        } else {
+            keyboardActionListener.onTextInput(clipContent?.text)
+        }
         keyboardActionListener.onReleaseKey(KeyCode.NOT_SPECIFIED, false)
         if (Settings.getValues().mAlphaAfterClipHistoryEntry)
             keyboardActionListener.onCodeInput(KeyCode.ALPHA, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
@@ -483,9 +494,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
         // Also ensure search mode is stopped if we explicitly leave clipboard history
         val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
         val inSearchMode = this::searchBarTextView.isInitialized && searchBarTextView.parent == clipboardStrip
-        if (inSearchMode) {
+        if (inSearchMode && isAttachedToWindow) {
             stopSearchMode()
         }
+
+        // Dismiss any active undo bar
+        clipboardRecyclerView.dismissUndoBar()
         
         clipboardRecyclerView.adapter = null
         clipboardHistoryManager.setHistoryChangeListener(null)

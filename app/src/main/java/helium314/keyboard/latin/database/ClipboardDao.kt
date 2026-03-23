@@ -38,7 +38,7 @@ class ClipboardDao private constructor(private val db: Database) {
     private val cache = mutableListOf<ClipboardHistoryEntry>().apply {
         db.readableDatabase.query(
             TABLE,
-            arrayOf(COLUMN_ID, COLUMN_TIMESTAMP, COLUMN_PINNED, COLUMN_TEXT),
+            arrayOf(COLUMN_ID, COLUMN_TIMESTAMP, COLUMN_PINNED, COLUMN_TEXT, COLUMN_IMAGE_URI),
             null,
             null,
             null,
@@ -46,32 +46,35 @@ class ClipboardDao private constructor(private val db: Database) {
             "$COLUMN_PINNED, $COLUMN_TIMESTAMP DESC" // was only relevant in the initial approach of using a cursor instead of a cache
         ).use {
             while (it.moveToNext()) {
-                add(ClipboardHistoryEntry(it.getLong(0), it.getLong(1), it.getInt(2) != 0, it.getString(3)))
+                val text = it.getString(3) ?: ""
+                val imageUri = if (it.isNull(4)) null else it.getString(4)
+                add(ClipboardHistoryEntry(it.getLong(0), it.getLong(1), it.getInt(2) != 0, text, imageUri))
             }
         }
         sort()
     }
 
-    fun addClip(timestamp: Long, pinned: Boolean, text: String) {
+    fun addClip(timestamp: Long, pinned: Boolean, text: String, imageUri: String? = null) {
         clearOldClips()
-        val existingIndex = cache.indexOfFirst { it.text == text }
+        val existingIndex = cache.indexOfFirst { it.text == text && it.imageUri == imageUri }
         if (existingIndex >= 0 && cache[existingIndex].timeStamp == timestamp)
             return // nothing to do
         if (existingIndex >= 0) {
             updateTimestampAt(existingIndex, timestamp)
             return
         }
-        insertNewEntry(timestamp, pinned, text)
+        insertNewEntry(timestamp, pinned, text, imageUri)
     }
 
-    private fun insertNewEntry(timestamp: Long, pinned: Boolean, text: String) {
-        val cv = ContentValues(3)
+    private fun insertNewEntry(timestamp: Long, pinned: Boolean, text: String, imageUri: String?) {
+        val cv = ContentValues(4)
         cv.put(COLUMN_TIMESTAMP, timestamp)
         cv.put(COLUMN_PINNED, pinned)
         cv.put(COLUMN_TEXT, text)
+        if (imageUri != null) cv.put(COLUMN_IMAGE_URI, imageUri)
         val rowId = db.writableDatabase.insert(TABLE, null, cv)
 
-        val entry = ClipboardHistoryEntry(rowId, timestamp, pinned, text)
+        val entry = ClipboardHistoryEntry(rowId, timestamp, pinned, text, imageUri)
         cache.add(entry)
         cache.sort()
         listener?.onClipInserted(cache.indexOf(entry))
@@ -118,10 +121,26 @@ class ClipboardDao private constructor(private val db: Database) {
     }
 
     // RecyclerView initiates this, so we don't call listener (or we'll get an IndexOutOfRangeException from RecyclerView)
-    fun deleteClipAt(index: Int) {
+    fun deleteClipAt(index: Int): ClipboardHistoryEntry? {
+        if (index < 0 || index >= cache.size) return null
         val entry = cache[index]
         cache.remove(entry)
         db.writableDatabase.delete(TABLE, "$COLUMN_ID = ${entry.id}", null)
+        return entry
+    }
+
+    /** Re-insert a previously deleted entry (for undo). */
+    fun restoreClip(entry: ClipboardHistoryEntry) {
+        val cv = ContentValues(5)
+        cv.put(COLUMN_ID, entry.id)
+        cv.put(COLUMN_TIMESTAMP, entry.timeStamp)
+        cv.put(COLUMN_PINNED, entry.isPinned)
+        cv.put(COLUMN_TEXT, entry.text)
+        if (entry.imageUri != null) cv.put(COLUMN_IMAGE_URI, entry.imageUri)
+        db.writableDatabase.insertWithOnConflict(TABLE, null, cv, android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE)
+        cache.add(entry)
+        cache.sort()
+        listener?.onClipInserted(cache.indexOf(entry))
     }
 
     fun clearOldClips(now: Boolean = false) {
@@ -174,12 +193,14 @@ class ClipboardDao private constructor(private val db: Database) {
         private const val COLUMN_TIMESTAMP = "TIMESTAMP"
         private const val COLUMN_PINNED = "PINNED"
         private const val COLUMN_TEXT = "TEXT" // we could enforce unique text, but that's only necessary if we can drop the cache (later)
+        private const val COLUMN_IMAGE_URI = "IMAGE_URI"
         const val CREATE_TABLE = """
             CREATE TABLE $TABLE (
                 $COLUMN_ID INTEGER PRIMARY KEY,
                 $COLUMN_TIMESTAMP INTEGER NOT NULL,
                 $COLUMN_PINNED TINYINT NOT NULL,
-                $COLUMN_TEXT TEXT
+                $COLUMN_TEXT TEXT,
+                $COLUMN_IMAGE_URI TEXT
             )
         """
 
