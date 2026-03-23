@@ -27,8 +27,8 @@ def update_translations():
     # extract all in heliboard/heliboard/app/src/main/res and heliboard/heliboard/fastlane/metadata
     with zipfile.ZipFile(zip_file_name, "r") as f:
         for file in f.filelist:
-            if not file.filename.startswith("heliboard/heliboard/app/src/main/res")\
-                    and not file.filename.startswith("heliboard/heliboard/fastlane/metadata"):
+            # We ONLY want the app/src/main/res translations, NOT fastlane/metadata (which contains Heliboard's titles & descriptions)
+            if not file.filename.startswith("heliboard/heliboard/app/src/main/res"):
                 continue
             # Block extracting Heliboard's base string files, which would overwrite LeanType's English variants
             if file.filename.startswith("heliboard/heliboard/app/src/main/res/values/"):
