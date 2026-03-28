@@ -172,6 +172,9 @@ object Defaults {
     const val PREF_AUTO_SHOW_TOOLBAR = false
     const val PREF_AUTO_SHOW_TOOLBAR_ON_SELECT = false
     const val PREF_AUTO_HIDE_TOOLBAR = true
+    const val PREF_AUTO_HIDE_PINNED_KEYS = false
+    const val PREF_REMEMBER_TOOLBAR_STATE = true
+    const val PREF_TOOLBAR_EXPANDED = false
     val PREF_CLIPBOARD_TOOLBAR_KEYS = defaultClipboardToolbarPref
     const val PREF_ABC_AFTER_EMOJI = false
     const val PREF_ABC_AFTER_CLIP = false

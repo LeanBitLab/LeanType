@@ -96,8 +96,8 @@
     <string name="settings_category_additional_keys">Teclas adicionales</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Cambiar método de entrada con la barra espaciadora</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Al presionar por mucho tiempo la barra espaciadora, aparecerá el menú de selección del método de entrada</string>
-    <string name="spell_checker_service_name">Corrector ortográfico de HeliBoard</string>
-    <string name="android_spell_checker_settings">Ajustes del corrector ortográfico de HeliBoard</string>
+    <string name="spell_checker_service_name">Corrector ortográfico de LeanType</string>
+    <string name="android_spell_checker_settings">Ajustes del corrector ortográfico de LeanType</string>
     <string name="prefs_keyboard_height_scale">Escala de altura del teclado</string>
     <string name="delete_swipe">Borrar deslizando</string>
     <string name="delete_swipe_summary">Deslice el dedo por la tecla Borrar para seleccionar y eliminar porciones más grandes de texto de una vez</string>
@@ -108,7 +108,7 @@
     <string name="settings_category_correction">Correcciones</string>
     <string name="settings_category_experimental">Experimental</string>
     <string name="settings_category_input">Entrada</string>
-    <string name="ime_settings">Ajustes de HeliBoard</string>
+    <string name="ime_settings">Ajustes de LeanType</string>
     <string name="settings_category_suggestions">Sugerencias</string>
     <string name="settings_category_miscellaneous">Otros</string>
     <string name="number_row">Fila de números</string>
@@ -441,7 +441,7 @@
     <string name="toolbar_mode_toolbar_keys" tools:keep="@string/toolbar_mode_toolbar_keys">Solo teclas de la barra de herramientas</string>
     <string name="number_row_in_symbols">Mostrar la fila de números en la vista de símbolos</string>
     <string name="custom_emoji_font">Aplica una fuente de emoticonos personalizada desde un fichero</string>
-    <string name="gesture_data_description_privacy">Privacidad\n\n Los datos que envíes consisten en la palabra objetivo, el diseño y las dimensiones del teclado, el gesto realizado (tiempos y coordenadas), las sugerencias generadas por la biblioteca actual, el hash de los diccionarios utilizados, la versión de la aplicación, el modo de recopilación de datos, si la biblioteca de escritura gestual es la predeterminada de Google y un identificador asociado a cada gesto.\n Los datos enviados se descargarán y se eliminarán del buzón de ProtonMail donde se almacenan tan pronto como nos sea posible. Una vez finalizada la fase de recopilación de datos de gestos, el conjunto de datos acumulado de todos los usuarios se publicará bajo la licencia Creative Commons BY‑SA 4.0.\n\n Como parte de nuestros esfuerzos por proteger tu privacidad, no aparecerás mencionado explícitamente como autor. Tu contribución se acreditará como «Colaboradores del proyecto de datos de gestos de HeliBoard». No debería ser posible vincular los datos que generes en esta pantalla con tu identidad. Sin embargo, podría ser posible determinar qué gestos fueron realizados por la misma persona, por ejemplo, a partir de un diseño de teclado personalizado, las dimensiones del teclado, el idioma o el estilo individual de gesticulación.</string>
+    <string name="gesture_data_description_privacy">Privacidad\n\n Los datos que envíes consisten en la palabra objetivo, el diseño y las dimensiones del teclado, el gesto realizado (tiempos y coordenadas), las sugerencias generadas por la biblioteca actual, el hash de los diccionarios utilizados, la versión de la aplicación, el modo de recopilación de datos, si la biblioteca de escritura gestual es la predeterminada de Google y un identificador asociado a cada gesto.\n Los datos enviados se descargarán y se eliminarán del buzón de ProtonMail donde se almacenan tan pronto como nos sea posible. Una vez finalizada la fase de recopilación de datos de gestos, el conjunto de datos acumulado de todos los usuarios se publicará bajo la licencia Creative Commons BY‑SA 4.0.\n\n Como parte de nuestros esfuerzos por proteger tu privacidad, no aparecerás mencionado explícitamente como autor. Tu contribución se acreditará como «Colaboradores del proyecto de datos de gestos de LeanType». No debería ser posible vincular los datos que generes en esta pantalla con tu identidad. Sin embargo, podría ser posible determinar qué gestos fueron realizados por la misma persona, por ejemplo, a partir de un diseño de teclado personalizado, las dimensiones del teclado, el idioma o el estilo individual de gesticulación.</string>
     <string name="gesture_data_active_start">Iniciar recopilación activa</string>
     <string name="gesture_data_active_description">Toca «Iniciar recopilación activa», cambia el diccionario si lo deseas y empieza a escribir por gestos la palabra que aparece.&lt;br/&gt; Si tu gesto coincide con la palabra, los datos se guardarán y aparecerá la siguiente. De lo contrario, puedes volver a intentarlo, omitir la palabra o confirmar que el gesto es correcto.&lt;br/&gt; Solo puedes usar diccionarios integrados en la aplicación o disponibles en el &lt;a href=%s&gt;repositorio de diccionarios&lt;/a&gt;; no se utilizarán otras palabras.</string>
     <string name="timestamp_description">Se puede añadir la tecla de marca de tiempo mediante un diseño personalizado con la tecla «timestamp» o con el código -10043</string>
@@ -481,7 +481,7 @@
     <string name="gesture_data_delete_dialog_submitted">Borrar %s palabras enviadas</string>
     <string name="gesture_data_many_not_shared_words">Tienes más de %s palabras pendientes de envío</string>
     <string name="gesture_data_email_body">IMPORTANTE:\n\n Hola,\n Te recordamos que estos datos se compartirán públicamente bajo la licencia CC BY‑SA 4.0 y que, para proteger tu privacidad, no figurarás como autor.\n\n Gracias por cedernos los derechos de uso de tus datos. Les daremos un buen uso.\n\n Ten en cuenta que modificar el texto de este aviso no cambia lo que haremos con tus datos. Esto no es un contrato que se pueda cambiar, sino solo un recordatorio amistoso.\n Si quieres enviarnos un mensaje junto con tus datos, escríbelo debajo de esta línea.\n ---------------------------------------------</string>
-    <string name="gesture_data_promotion_message">¡Hola!\n Como has instalado la biblioteca de escritura por gestos, quizá te interese el proyecto de HeliBoard para crear una biblioteca de escritura por gestos completamente abierta. Puedes colaborar enviando datos de gestos. Para más información, visita la pantalla de recopilación de datos de gestos.</string>
+    <string name="gesture_data_promotion_message">¡Hola!\n Como has instalado la biblioteca de escritura por gestos, quizá te interese el proyecto de LeanType para crear una biblioteca de escritura por gestos completamente abierta. Puedes colaborar enviando datos de gestos. Para más información, visita la pantalla de recopilación de datos de gestos.</string>
     <string name="gesture_data_reminder_message">¡Hola!\n Usaste la recopilación de datos de gestos anteriormente, pero hace bastante que no añades nuevos datos. ¿Te gustaría colaborar de nuevo?</string>
     <string name="gesture_data_take_me_there">Ir allí</string>
     <string name="gesture_data_links">Información sobre la recopilación de datos de gestos en:</string>

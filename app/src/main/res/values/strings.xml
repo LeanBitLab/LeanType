@@ -1120,6 +1120,16 @@ New dictionary:
     <string name="auto_hide_toolbar">Auto hide toolbar</string>
     <!-- Description of the setting for hiding the toolbar automatically -->
     <string name="auto_hide_toolbar_summary">Hide the toolbar when suggestions become available</string>
+    <!-- Title of the setting to auto hide pinned keys when toolbar is expanded -->
+    <string name="auto_hide_pinned_keys">Auto hide pinned keys</string>
+    <!-- Description of the setting to auto hide pinned keys when toolbar is expanded -->
+    <string name="auto_hide_pinned_keys_summary">Hide pinned keys when the toolbar is expanded</string>
+    <!-- Title of the setting to remember toolbar expanded/collapsed state -->
+    <string name="remember_toolbar_state">Remember toolbar state</string>
+    <!-- Description of the setting to remember toolbar expanded/collapsed state -->
+    <string name="remember_toolbar_state_summary">Remember whether the toolbar was expanded or collapsed</string>
+    <!-- Content description for the close button in translate language selector -->
+    <string name="close_translate_language_selector">Close language selector</string>
     <!-- Toast message shown when content is copied to the clipboard -->
     <string name="toast_msg_clipboard_copy">Content copied</string>
     <!-- Title of the setting to customize icons for keyboard and toolbar keys -->

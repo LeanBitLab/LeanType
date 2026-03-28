@@ -65,5 +65,31 @@
             android:minWidth="0dp"
             style="?attr/suggestionWordStyle">
         </LinearLayout>
+        <!-- Translate language selector -->
+        <HorizontalScrollView
+            android:id="@+id/translate_language_selector"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbarThumbHorizontal="@color/toolbar_scrollbar"
+            android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/translate_language_list"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                style="?attr/suggestionWordStyle">
+            </LinearLayout>
+        </HorizontalScrollView>
+        <ImageButton
+            android:id="@+id/translate_language_close_button"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0"
+            android:background="@drawable/toolbar_expand_key_background"
+            style="?attr/suggestionWordStyle"
+            android:contentDescription="@string/close_translate_language_selector"
+            android:visibility="gone" />
     </LinearLayout>
 </merge>

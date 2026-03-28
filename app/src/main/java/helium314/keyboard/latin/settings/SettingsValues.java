@@ -130,6 +130,8 @@ public class SettingsValues {
         public final boolean mAutoShowToolbar;
         public final boolean mAutoShowToolbarOnSelect;
         public final boolean mAutoHideToolbar;
+        public final boolean mAutoHidePinnedKeys;
+        public final boolean mRememberToolbarState;
         public final boolean mAlphaAfterEmojiInEmojiView;
         public final boolean mAlphaAfterClipHistoryEntry;
         public final boolean mAlphaAfterSymbolAndSpace;
@@ -378,6 +380,10 @@ public class SettingsValues {
                                 && prefs.getBoolean(Settings.PREF_AUTO_SHOW_TOOLBAR, Defaults.PREF_AUTO_SHOW_TOOLBAR);
                 mAutoHideToolbar = mSuggestionsEnabledPerUserSettings
                                 && prefs.getBoolean(Settings.PREF_AUTO_HIDE_TOOLBAR, Defaults.PREF_AUTO_HIDE_TOOLBAR);
+                mAutoHidePinnedKeys = mToolbarMode == ToolbarMode.EXPANDABLE
+                                && !mSplitToolbar
+                                && prefs.getBoolean(Settings.PREF_AUTO_HIDE_PINNED_KEYS, Defaults.PREF_AUTO_HIDE_PINNED_KEYS);
+                mRememberToolbarState = prefs.getBoolean(Settings.PREF_REMEMBER_TOOLBAR_STATE, Defaults.PREF_REMEMBER_TOOLBAR_STATE);
                 mAlphaAfterEmojiInEmojiView = prefs.getBoolean(Settings.PREF_ABC_AFTER_EMOJI,
                                 Defaults.PREF_ABC_AFTER_EMOJI);
                 mAlphaAfterClipHistoryEntry = prefs.getBoolean(Settings.PREF_ABC_AFTER_CLIP,

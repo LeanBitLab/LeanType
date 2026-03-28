@@ -1695,6 +1695,12 @@ public class LatinIME extends InputMethodService implements
         }
     }
 
+    public void showTranslateLanguageSelector() {
+        if (mSuggestionStripView != null) {
+            mSuggestionStripView.showTranslateLanguageSelector();
+        }
+    }
+
     @Override
     public void removeSuggestion(final String word) {
         mDictionaryFacilitator.removeWord(word);

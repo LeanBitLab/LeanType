@@ -104,16 +104,16 @@
     <string name="prefs_keyboard_height_scale">קנה-מידה גובה המקלדת</string>
     <string name="key_borders">גבולות מקלדת</string>
     <string name="day_night_mode">מצב יום/לילה אוטומטי</string>
-    <string name="android_spell_checker_settings">הגדרות בודק האיות של HeliBoard</string>
+    <string name="android_spell_checker_settings">הגדרות בודק האיות של LeanType</string>
     <string name="prefs_long_press_keyboard_to_change_lang">שינוי שיטת ההזנה על-ידי מקש רווח</string>
     <string name="show_emoji_key">מקש אמוג\'י</string>
     <string name="subtype_akkhor_bn_BD">%s (תווים)</string>
-    <string name="spell_checker_service_name">בודק האיות של HeliBoard</string>
+    <string name="spell_checker_service_name">בודק האיות של LeanType</string>
     <string name="settings_category_clipboard_history">היסטוריית הלוח</string>
     <string name="autospace_after_punctuation">הוספת רווח אוטומטית אחרי סימני פיסוק</string>
     <string name="day_night_mode_summary">המראה יעקוב אחר הגדרות המערכת</string>
     <string name="autospace_after_punctuation_summary">הוספת רווח אוטומטית לאחר סימני פיסוק בעת הקלדת מילה חדשה</string>
-    <string name="ime_settings">הגדרות HeliBoard</string>
+    <string name="ime_settings">הגדרות LeanType</string>
     <string name="settings_category_input">קֶלֶט</string>
     <string name="settings_category_experimental">נסיוני</string>
     <string name="settings_category_miscellaneous">שונות</string>
@@ -468,7 +468,7 @@
     <string name="gesture_data_much_data">יש לכם הרבה נתונים שלא נמסרו. אנא מיסרו אותם ומחקו את הנתונים הישנים.</string>
     <string name="gesture_data_how_to_use">איך להשתמש</string>
     <string name="gesture_data_description_modes">כעת קיים רק מצב האיסוף הפעיל, בו מוצגת לך מילה מוגדרת שנדרש להקליד בהקלדה ע\"י מחוות.\n בהמשך יתווסף מצב של איסוף סביל, בו יהיה באפשרותך לספק דוגמיות מהשימוש הרגיל שלך בהקלדה ע\"י מחוות מיישומים אחרים. בשל רגישותה של גישה זו, האפשרות תהיה מבחירה, ניתנת להגדרה, ותכלול תצוגה לסקירה של הנתונים שיוגשו מטעמך.</string>
-    <string name="gesture_data_description_privacy">פרטיות\n\nהנתונים שיוגשו מטעמך כוללים מילת יעד, פריסת המקלדת ומידותיה, המחווה (זמנים וקואורדינטות), הצעות מהספרייה הנוכחית, Hash של המילונים שבשימוש, גרסת היישום, מצב איסוף הנתונים, האם הספרייה המשמשת להקלדה ע\"י מחוות היא ספריית ברירת-המחדל של Google, ומזהה לכל מחווה.\n הנתונים שיוגשו יוסרו לאחר הורדתם מתיבת הדואר של ProtonMail שבה הם נשמרים בהקדם האפשרי. לאחר ששלב האיסוף של נתוני הקלדה במחוות הסתיים, המאגר המצטבר של הנתונים שהוגשו ע\"י כל המשתמשים יפורסם תחת רישיון Creative Commons BY-SA 4.0.\n\n במסגרת החתירה לשמירה על פרטיותך, לא יצויין שמך במפורש כמחבר. הקרדיט שלך יוצג כ\"תורמי פרויקט נתוני המחוות של HeliBoard\". לא יתאפשר לקשור את הנתונים שיוגשו על-ידך במסך זה לזהות שלך. עם זאת, עשוי להיות אפשרי לקבוע אילו מחוות בוצעו ע\"י אותו משתמש. הדבר מתאפשר לדוגמה עפ\"י פריסת מקלדת מותאמת, מימדי המקלדת, השפה, או סגנון הקלדה אישי.</string>
+    <string name="gesture_data_description_privacy">פרטיות\n\nהנתונים שיוגשו מטעמך כוללים מילת יעד, פריסת המקלדת ומידותיה, המחווה (זמנים וקואורדינטות), הצעות מהספרייה הנוכחית, Hash של המילונים שבשימוש, גרסת היישום, מצב איסוף הנתונים, האם הספרייה המשמשת להקלדה ע\"י מחוות היא ספריית ברירת-המחדל של Google, ומזהה לכל מחווה.\n הנתונים שיוגשו יוסרו לאחר הורדתם מתיבת הדואר של ProtonMail שבה הם נשמרים בהקדם האפשרי. לאחר ששלב האיסוף של נתוני הקלדה במחוות הסתיים, המאגר המצטבר של הנתונים שהוגשו ע\"י כל המשתמשים יפורסם תחת רישיון Creative Commons BY-SA 4.0.\n\n במסגרת החתירה לשמירה על פרטיותך, לא יצויין שמך במפורש כמחבר. הקרדיט שלך יוצג כ\"תורמי פרויקט נתוני המחוות של LeanType\". לא יתאפשר לקשור את הנתונים שיוגשו על-ידך במסך זה לזהות שלך. עם זאת, עשוי להיות אפשרי לקבוע אילו מחוות בוצעו ע\"י אותו משתמש. הדבר מתאפשר לדוגמה עפ\"י פריסת מקלדת מותאמת, מימדי המקלדת, השפה, או סגנון הקלדה אישי.</string>
     <string name="gesture_data_privacy">פרטיות</string>
     <string name="gesture_data_get_data">שיתוף קובץ נתוני ההקלדה במחוות</string>
     <string name="gesture_data_delete_data">הסרת נתוני ההקלדה במחוות</string>
@@ -489,7 +489,7 @@
     <string name="gesture_data_ended">שלב איסוף נתוני המחוות הסתיים ב-%s. באפשרותך לשתף את הנתונים הקיימים, אך לא להוסיף חדשים.</string>
     <string name="gesture_data_share_all">שיתוף כל %s המילים</string>
     <string name="gesture_data_email_body">חשוב:\n\n היי לך!\nלתזכורת, הנתונים הללו ישותפו ציבורית תחת רישיון CC BY-SA 4.0, ושמך לא יצויין ברשימת יוצרי הנתונים כדי לשמור על פרטיותך.\n\nתודה על שיתוף הזכויות לנתונים שלך איתנו. נעשה בהם שימוש טוב!\n\nיודגש ששינויים בניסוח הודעה זו לא משנים את השימוש שנעשה בעזרת הנתונים שלך. זה איננו חוזה שעובר שינוי, זו רק תזכורת ידידותית!\n אם ברצונך לשלוח לנו מסר ביחד עם הנתונים שלך, נא לכתוב אותו מתחת לקו כאן.\n ---------------------------------------------</string>
-    <string name="gesture_data_promotion_message">היי לך!\n מאחר והתקנת את ספריית ההקלדה במחוות, עשוי לעניין אותך גם המיזם של HeliBoard ליצירת ספריית הקלדה במחוות פתוחה במלואה. באפשרותך לסייע ע\"י נידוב נתוני הקלדה במחוות. למידע נוסף ניתן לבקר במסך איסוף נתוני ההקלדה במחוות.</string>
+    <string name="gesture_data_promotion_message">היי לך!\n מאחר והתקנת את ספריית ההקלדה במחוות, עשוי לעניין אותך גם המיזם של LeanType ליצירת ספריית הקלדה במחוות פתוחה במלואה. באפשרותך לסייע ע\"י נידוב נתוני הקלדה במחוות. למידע נוסף ניתן לבקר במסך איסוף נתוני ההקלדה במחוות.</string>
     <string name="gesture_data_reminder_message">היי לך!\n בעבר השתמשת באיסוף נתוני המחוות, אך לא הוספת נתונים מזה זמן מה. האם ברצונך לנדב נתונים שוב?</string>
     <string name="gesture_data_take_me_there">מעבר למסך כעת</string>
     <string name="gesture_data_links">מידע על איסוף נתוני שימוש במחוות:</string>

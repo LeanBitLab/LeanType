@@ -39,6 +39,21 @@ def update_translations():
             file.filename = file.filename.replace("heliboard/heliboard/", "")
             f.extract(file)
     os.remove(zip_file_name)
+    
+    # Replace "HeliBoard" with "LeanType" in all extracted translation files
+    # This ensures brand name consistency across all languages
+    import re
+    for root, dirs, files in os.walk("app/src/main/res"):
+        for file in files:
+            if file == "strings.xml":
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                # Replace HeliBoard with LeanType (preserving case variations)
+                content = re.sub(r'HeliBoard', 'LeanType', content)
+                content = re.sub(r'Heliboard', 'LeanType', content)
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(content)
 
 
 # git diff to make sure default strings are the same

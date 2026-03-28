@@ -1,2 +1,6 @@
 # Ignore all files in the app/src/main/java directory
 .aiderignore
+
+# Qwen AI context files
+QWEN.md
+**/QWEN.md

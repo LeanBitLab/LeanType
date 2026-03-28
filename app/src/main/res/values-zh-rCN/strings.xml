@@ -480,10 +480,10 @@
     <string name="gesture_data_take_me_there">前往查看</string>
     <string name="gesture_data_description">欢迎来到滑行输入数据收集界面！&lt;br/&gt;&lt;br/&gt; 这是由 &lt;a href=https://nlnet.nl/project/GestureTyping&gt;NLnet 基金会资助的一个项目&lt;/a&gt;，旨在开发一个完全开源的滑行输入库，以替代闭源的 Google 库。&lt;br/&gt; 最终目标是使其成为基于 AOSP 的键盘的简单替代品，同时也适用于其他键盘，例如 FlorisBoard。&lt;br/&gt;&lt;br/&gt; 为了更好地开发该库，我们需要收集不同语言、不同用户的详细滑行输入数据。&lt;br/&gt; 通过收集和提交滑行输入数据，您可以为用于库开发的开放滑行输入数据集做出贡献。该数据集将于 %s 在数据收集阶段结束后，以 CC BY-SA 4.0 许可协议发布。收集完数据后，您可以使用此屏幕底部的分享图标提交数据。</string>
     <string name="gesture_data_description_modes">目前仅提供主动收集模式，会显示一个特定字词，您需要使用滑行输入该字词。\n后续会添加被动收集模式，您可从其他应用中提取日常滑行输入的样本数据。由于此模式涉及敏感信息，因此需要用户选择是否启用，并且可以进行配置，在提交数据前提供审阅界面。</string>
-    <string name="gesture_data_description_privacy">隐私\n\n您提交的数据包括目标字词、键盘布局和尺寸、滑行输入（次数和坐标）、当前库的建议、所用字典的哈希值、应用版本、数据收集模式、滑行输入库是否为默认的 Google 库，以及每个滑行输入对应的 ID。\n提交的数据将被下载并从 ProtonMail 邮箱中尽快删除。滑行输入数据收集阶段结束后，所有用户汇总的数据集将根据知识共享署名-相同方式共享 4.0 国际许可协议发布。\n\n为了保护您的隐私，您不会被明确列为作者。您的贡献将统一记作“HeliBoard 滑行输入数据项目贡献者”。您在此界面生成的数据原则上无法与您的身份关联。但是，我们或许可以确定哪些滑行输入是由同一人完成的。例如，可以通过自定义键盘布局、键盘尺寸、语言或个人滑行输入风格来判断。</string>
+    <string name="gesture_data_description_privacy">隐私\n\n您提交的数据包括目标字词、键盘布局和尺寸、滑行输入（次数和坐标）、当前库的建议、所用字典的哈希值、应用版本、数据收集模式、滑行输入库是否为默认的 Google 库，以及每个滑行输入对应的 ID。\n提交的数据将被下载并从 ProtonMail 邮箱中尽快删除。滑行输入数据收集阶段结束后，所有用户汇总的数据集将根据知识共享署名-相同方式共享 4.0 国际许可协议发布。\n\n为了保护您的隐私，您不会被明确列为作者。您的贡献将统一记作“LeanType 滑行输入数据项目贡献者”。您在此界面生成的数据原则上无法与您的身份关联。但是，我们或许可以确定哪些滑行输入是由同一人完成的。例如，可以通过自定义键盘布局、键盘尺寸、语言或个人滑行输入风格来判断。</string>
     <string name="gesture_data_active_description">点按“开始主动收集”，可选择切换字典，然后开始滑行输入显示的字词。&lt;br/&gt; 如果您的滑行输入与字词匹配，数据将被保存并显示下一个字词。否则，您可以重试、跳过该字词或确认您的滑行输入正确。&lt;br/&gt; 您只能使用应用内置或&lt;a href=%s&gt;字典仓库&lt;/a&gt;中的字典，不会使用其他字词。</string>
     <string name="gesture_data_email_body">重要提示：\n\n 您好！\n 温馨提醒，您的数据将根据 CC BY-SA 4.0 许可协议公开分享，为保护您的隐私，您不会被列为作者。\n\n 感谢您与我们共享数据使用权，我们会妥善利用这些数据！\n\n 请注意，更改此提示的措辞不会改变我们对您数据的处理方式。本提示并非可修改的合同，仅为友好提醒！\n 如果您想随提交的数据一并给我们留言，请在下方横线处填写。\n ---------------------------------------------</string>
-    <string name="gesture_data_promotion_message">您好！\n 既然您已经安装了滑行输入库，您或许会对 HeliBoard 的完全开源滑行输入库项目感兴趣。您可以贡献滑行输入数据来提供帮助。如需了解详情，请访问滑行输入数据收集界面。</string>
+    <string name="gesture_data_promotion_message">您好！\n 既然您已经安装了滑行输入库，您或许会对 LeanType 的完全开源滑行输入库项目感兴趣。您可以贡献滑行输入数据来提供帮助。如需了解详情，请访问滑行输入数据收集界面。</string>
     <string name="gesture_data_reminder_message">您好！\n 您之前使用过滑行输入数据收集功能，但已经很久没有添加数据了。要再次贡献数据吗？</string>
     <string name="timestamp_description">您可以使用自定义布局添加时间戳键，使用“timestamp”键或键码 -10043</string>
     <string name="prefs_bottom_row_scale">底行比例</string>

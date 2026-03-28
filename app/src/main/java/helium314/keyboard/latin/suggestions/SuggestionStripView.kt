@@ -60,6 +60,7 @@ import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.removeFirst
 import helium314.keyboard.latin.utils.removePinnedKey
 import helium314.keyboard.latin.utils.setToolbarButtonsActivatedStateOnPrefChange
+import helium314.keyboard.settings.SettingsWithoutKey
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.math.min
 
@@ -122,6 +123,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     private val enabledToolKeyBackground = GradientDrawable()
     private var direction = 1 // 1 if LTR, -1 if RTL
 
+    // Track whether the user manually toggles the toolbar open/close
+    var isToolbarManuallyOpen: Boolean = false
+
+    // Translate language selector
+    private var isTranslateLanguageSelectorVisible = false
+    private val translateLanguageSelector: ViewGroup = findViewById(R.id.translate_language_selector)
+    private val translateLanguageCloseButton: ImageButton by lazy {
+        findViewById(R.id.translate_language_close_button)
+    }
+
     // Loading animation for proofreading/translation
     private var loadingAnimator: ValueAnimator? = null
     private val loadingBorderDrawable = GradientDrawable().apply {
@@ -138,6 +149,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     ).apply { gravity = android.view.Gravity.CENTER_VERTICAL }
 
     init {
+        isToolbarManuallyOpen = Settings.getValues().mAutoShowToolbar
+        
         val colors = Settings.getValues().mColors
 
         // expand key
@@ -158,7 +171,15 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         val mToolbarMode = Settings.getValues().mToolbarMode
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS) {
-            setToolbarVisibility(true)
+            setToolbarVisibility(true, saveState = false)
+        } else if (mToolbarMode == ToolbarMode.EXPANDABLE) {
+            // Restore saved toolbar state if enabled
+            val settingsValues = Settings.getValues()
+            if (settingsValues.mRememberToolbarState) {
+                val savedExpanded = context.prefs().getBoolean(Settings.PREF_TOOLBAR_EXPANDED, false)
+                isToolbarManuallyOpen = savedExpanded || settingsValues.mAutoShowToolbar
+                setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
+            }
         }
 
         // toolbar keys setup
@@ -296,14 +317,20 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         suggestionsStrip.layoutDirection = newLayoutDirection
     }
 
-    // Track whether the user manually toggles the toolbar open/close
-    var isToolbarManuallyOpen: Boolean = Settings.getValues().mAutoShowToolbar
-
-    fun setToolbarVisibility(toolbarVisible: Boolean) {
+    // Overload for Java compatibility (default saveState = true)
+    @JvmOverloads
+    fun setToolbarVisibility(toolbarVisible: Boolean, saveState: Boolean = true) {
         // avoid showing toolbar keys when locked
         val locked = isDeviceLocked(context)
         val split = Settings.getValues().mSplitToolbar
-        
+        val settingsValues = Settings.getValues()
+        val autoHidePinnedKeys = settingsValues.mAutoHidePinnedKeys
+
+        // Save toolbar state if requested
+        if (saveState && settingsValues.mRememberToolbarState) {
+            context.prefs().edit().putBoolean(Settings.PREF_TOOLBAR_EXPANDED, toolbarVisible).apply()
+        }
+
         // In split mode, show only full toolbar, hide pinned keys
         if (split) {
             // suggestionsStrip visibility is handled dynamically in updateSplitToolbarState
@@ -313,7 +340,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             toolbarExpandKey.isVisible = false // Hide expand key
             updateSplitToolbarState()
         } else {
-            pinnedKeys.isVisible = !locked && !toolbarVisible
+            // Auto-hide pinned keys when toolbar is expanded
+            val shouldHidePinnedKeys = autoHidePinnedKeys && toolbarVisible && !locked
+            pinnedKeys.isVisible = !locked && !toolbarVisible && !shouldHidePinnedKeys
             suggestionsStrip.isVisible = locked || !toolbarVisible
             toolbarContainer.isVisible = !locked && toolbarVisible
         }
@@ -369,7 +398,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             suggestionsStrip.addView(view)
         }
 
-        if (Settings.getValues().mAutoHideToolbar) setToolbarVisibility(false)
+        if (Settings.getValues().mAutoHideToolbar) setToolbarVisibility(false, saveState = false)
         updateSplitToolbarState()
     }
 
@@ -461,7 +490,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // workaround for a bug with inline suggestions views that just keep showing up otherwise, https://github.com/Helium314/HeliBoard/pull/386
         if (view === this) {
             if (visibility == View.VISIBLE) {
-                setToolbarVisibility(isToolbarManuallyOpen)
+                setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
             } else {
                 suggestionsStrip.visibility = visibility
             }
@@ -544,10 +573,19 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
     private fun onLongClickToolbarKey(view: View) {
         val tag = view.tag as? ToolbarKey ?: return
-        
+
+        // Special handling for TRANSLATE key - always allow language selector
+        if (tag === ToolbarKey.TRANSLATE) {
+            val longClickCode = getCodeForToolbarKeyLongClick(tag)
+            if (longClickCode != KeyCode.UNSPECIFIED) {
+                listener.onCodeInput(longClickCode, Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE, false)
+            }
+            return
+        }
+
         // Disable pinning and long press actions when split toolbar is enabled
         if (Settings.getValues().mSplitToolbar) return
-        
+
         if (Settings.getValues().mQuickPinToolbarKeys) {
             if (view.parent === toolbar) {
                 // Pin: Move from toolbar to pinned keys
@@ -657,7 +695,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         // Show the toolbar if no suggestions are left and the "Auto show toolbar" setting is enabled
         if (this.suggestedWords.isEmpty && Settings.getValues().mAutoShowToolbar) {
-            setToolbarVisibility(true)
+            setToolbarVisibility(true, saveState = false)
         }
     }
 
@@ -686,6 +724,85 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val show = Settings.getValues().mShowsVoiceInputKey
         toolbar.findViewWithTag<View>(ToolbarKey.VOICE)?.isVisible = show
         pinnedKeys.findViewWithTag<View>(ToolbarKey.VOICE)?.isVisible = show
+    }
+
+    fun showTranslateLanguageSelector() {
+        // Hide other views
+        suggestionsStrip.isVisible = false
+        toolbarContainer.isVisible = false
+        pinnedKeys.isVisible = false
+        toolbarExpandKey.isVisible = false
+
+        // Populate language buttons
+        val languageList = findViewById<LinearLayout>(R.id.translate_language_list)
+        languageList.removeAllViews()
+
+        val languageNames = resources.getStringArray(R.array.translate_language_names)
+        val prefs = context.prefs()
+
+        // Create a button for each language
+        for (languageName in languageNames) {
+            val button = android.widget.TextView(context, null, R.attr.suggestionWordStyle).apply {
+                text = languageName
+                gravity = android.view.Gravity.CENTER
+                setPadding(8.dpToPx(resources), 0, 8.dpToPx(resources), 0)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
+                setSingleLine()
+                ellipsize = android.text.TextUtils.TruncateAt.END
+                // Set minimum width for consistent appearance
+                minimumWidth = 100.dpToPx(resources)
+            }
+            button.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            ).apply { gravity = android.view.Gravity.CENTER_VERTICAL }
+            
+            button.setOnClickListener {
+                // Set the selected language and start translation
+                context.prefs().edit().apply {
+                    putString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, languageName)
+                    // Also update Gemini target language
+                    putString(SettingsWithoutKey.GEMINI_TARGET_LANGUAGE, languageName)
+                }.apply()
+                // Hide selector and trigger translation
+                hideTranslateLanguageSelector()
+                // Trigger translation with new language
+                listener.onCodeInput(KeyCode.TRANSLATE, Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE, false)
+            }
+            Settings.getValues().mColors.setColor(button.background, ColorType.TOOL_BAR_KEY)
+            button.setBackgroundResource(R.drawable.toolbar_key_background)
+            languageList.addView(button)
+        }
+
+        // Setup close button
+        translateLanguageCloseButton.isVisible = true
+        translateLanguageCloseButton.setOnClickListener {
+            hideTranslateLanguageSelector()
+        }
+
+        // Show the selector
+        translateLanguageSelector.isVisible = true
+        isTranslateLanguageSelectorVisible = true
+    }
+
+    fun hideTranslateLanguageSelector() {
+        translateLanguageSelector.isVisible = false
+        translateLanguageCloseButton.isVisible = false
+
+        // Restore normal view
+        val settingsValues = Settings.getValues()
+        if (!settingsValues.mSplitToolbar) {
+            toolbarExpandKey.isVisible = settingsValues.mToolbarMode == ToolbarMode.EXPANDABLE
+            pinnedKeys.isVisible = !isDeviceLocked(context) && !isToolbarManuallyOpen
+            toolbarContainer.isVisible = !isDeviceLocked(context) && isToolbarManuallyOpen
+            suggestionsStrip.isVisible = isDeviceLocked(context) || !isToolbarManuallyOpen
+        } else {
+            toolbarContainer.isVisible = !isDeviceLocked(context)
+            toolbar.visibility = VISIBLE
+            updateSplitToolbarState()
+        }
+
+        isTranslateLanguageSelectorVisible = false
     }
 
     private fun updateKeys() {

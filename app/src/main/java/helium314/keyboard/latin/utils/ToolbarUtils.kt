@@ -16,9 +16,11 @@ import helium314.keyboard.latin.common.Constants.Separators
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ToolbarKey.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.EnumMap
 import java.util.Locale
 
@@ -43,7 +45,9 @@ fun setToolbarButtonsActivatedStateOnPrefChange(buttonsGroup: ViewGroup, key: St
 
     GlobalScope.launch {
         delay(10) // need to wait until SettingsValues are reloaded
-        buttonsGroup.forEach { if (it is ImageButton) setToolbarButtonActivatedState(it) }
+        withContext(Dispatchers.Main) {
+            buttonsGroup.forEach { if (it is ImageButton) setToolbarButtonActivatedState(it) }
+        }
     }
 }
 
@@ -119,6 +123,7 @@ fun getCodeForToolbarKeyLongClick(key: ToolbarKey) = Settings.getInstance().getC
     WORD_RIGHT -> KeyCode.MOVE_END_OF_LINE
     PAGE_UP -> KeyCode.MOVE_START_OF_PAGE
     PAGE_DOWN -> KeyCode.MOVE_END_OF_PAGE
+    TRANSLATE -> KeyCode.SHOW_TRANSLATE_LANGUAGES
     else -> KeyCode.UNSPECIFIED
 }
 

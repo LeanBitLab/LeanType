@@ -907,7 +907,6 @@ public final class InputLogic {
                             mConnection.commitText(translatedText, 1);
 
                         } else {
-
                             if (!hasSelection) {
                                 int len = mTextBeforeTranslate != null ? mTextBeforeTranslate.length() : 0;
                                 mConnection.setSelection(len, len);
@@ -920,6 +919,11 @@ public final class InputLogic {
                         Log.e(TAG, "Translation error: " + errorMessage);
                     }
                 });
+    }
+
+    private void handleShowTranslateLanguages() {
+        // Show language selector panel in SuggestionStripView
+        mLatinIME.showTranslateLanguageSelector();
     }
 
     /**
@@ -1111,6 +1115,9 @@ public final class InputLogic {
                 break;
             case KeyCode.TRANSLATE:
                 handleTranslate();
+                break;
+            case KeyCode.SHOW_TRANSLATE_LANGUAGES:
+                handleShowTranslateLanguages();
                 break;
             case KeyCode.SPLIT_LAYOUT:
                 KeyboardSwitcher.getInstance().toggleSplitKeyboardMode();

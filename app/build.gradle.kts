@@ -168,6 +168,9 @@ android {
     namespace = "helium314.keyboard.latin"
     lint {
         abortOnError = true
+        // Upstream Heliboard translations reference strings not in LeanType's base strings.xml;
+        // these orphaned strings are harmlessly stripped by R8 during minification.
+        disable += "ExtraTranslation"
     }
 }
 
