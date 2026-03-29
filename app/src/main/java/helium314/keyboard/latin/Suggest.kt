@@ -6,6 +6,7 @@
 package helium314.keyboard.latin
 
 import android.text.TextUtils
+import android.util.LruCache
 import com.android.inputmethod.latin.utils.BinaryDictionaryUtils
 import helium314.keyboard.keyboard.Keyboard
 import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo
@@ -33,10 +34,23 @@ import kotlin.math.min
 class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
     private var mAutoCorrectionThreshold = 0f
     private val mPlausibilityThreshold = 0f
-    private val nextWordSuggestionsCache = HashMap<NgramContext, SuggestionResults>()
+    // Use LRU cache with size limit instead of HashMap to avoid clearing and preserve frequently used entries
+    // Cache size of 50 should cover most typing scenarios while limiting memory usage
+    private val nextWordSuggestionsCache = object : LruCache<NgramContext, SuggestionResults>(50) {
+        override fun entryRemoved(evicted: Boolean, key: NgramContext, oldValue: SuggestionResults, newValue: SuggestionResults?) {
+            // Optionally log evicted entries for debugging
+        }
+    }
+    // Cached scoreLimit to avoid repeated Settings lookups in hot path
+    @Volatile private var mCachedScoreLimitForAutocorrect = 0
+    @Volatile private var mLastScoreLimitUpdateTime = 0L
 
     // cache cleared whenever LatinIME.loadSettings is called, notably on changing layout and switching input fields
-    fun clearNextWordSuggestionsCache() = nextWordSuggestionsCache.clear()
+    fun clearNextWordSuggestionsCache() {
+        nextWordSuggestionsCache.evictAll()
+        // Also reset scoreLimit cache to force refresh on next use
+        mLastScoreLimitUpdateTime = 0
+    }
 
     /**
      * Set the normalized-score threshold for a suggestion to be considered strong enough that we
@@ -158,7 +172,13 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         val consideredWord = typedWordString.dropLast(trailingSingleQuotesCount)
         val firstAndTypedEmptyInfos by lazy { getEmptyWordSuggestions() }
 
-        val scoreLimit = Settings.getValues().mScoreLimitForAutocorrect
+        // Use cached scoreLimit to avoid repeated Settings lookups in hot path
+        val currentTime = System.currentTimeMillis()
+        if (currentTime - mLastScoreLimitUpdateTime > SCORE_LIMIT_CACHE_UPDATE_INTERVAL_MS) {
+            mCachedScoreLimitForAutocorrect = Settings.getValues().mScoreLimitForAutocorrect
+            mLastScoreLimitUpdateTime = currentTime
+        }
+        val scoreLimit = mCachedScoreLimitForAutocorrect
         // We allow auto-correction if whitelisting is not required or the word is whitelisted,
         // or if the word had more than one char and was not suggested.
         val allowsToBeAutoCorrected: Boolean
@@ -342,16 +362,17 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
     /** get suggestions based on the current ngram context, with an empty typed word (that's what next word suggestions do)  */
     private fun getNextWordSuggestions(ngramContext: NgramContext, keyboard: Keyboard, inputStyle: Int,
                                        settingsValuesForSuggestion: SettingsValuesForSuggestion): SuggestionResults {
-        val cachedResults = nextWordSuggestionsCache[ngramContext]
+        val cachedResults = nextWordSuggestionsCache.get(ngramContext)
         if (cachedResults != null) return cachedResults
         val newResults = mDictionaryFacilitator.getSuggestionResults(ComposedData(InputPointers(1),
             false, ""), ngramContext, keyboard, settingsValuesForSuggestion, SESSION_ID_TYPING, inputStyle)
-        nextWordSuggestionsCache[ngramContext] = newResults
+        nextWordSuggestionsCache.put(ngramContext, newResults)
         return newResults
     }
 
     companion object {
         private val TAG: String = Suggest::class.java.simpleName
+        private const val SCORE_LIMIT_CACHE_UPDATE_INTERVAL_MS = 100L
 
         // Session id for {@link #getSuggestedWords(WordComposer,String,ProximityInfo,boolean,int)}.
         // We are sharing the same ID between typing and gesture to save RAM footprint.

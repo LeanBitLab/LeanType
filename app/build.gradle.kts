@@ -63,7 +63,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            isShrinkResources = false
+            isShrinkResources = true  // Enable resource shrinking to reduce APK size and memory usage
             isDebuggable = false
             isJniDebuggable = false
             if (keystorePropertiesFile.exists()) {
@@ -72,7 +72,7 @@ android {
         }
         create("nouserlib") { // same as release, but does not allow the user to provide a library
             isMinifyEnabled = true
-            isShrinkResources = false
+            isShrinkResources = true  // Enable resource shrinking to reduce APK size
             isDebuggable = false
             isJniDebuggable = false
         }

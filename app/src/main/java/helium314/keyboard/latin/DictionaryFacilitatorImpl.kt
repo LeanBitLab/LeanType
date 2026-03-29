@@ -39,6 +39,7 @@ import helium314.keyboard.latin.utils.locale
 import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
@@ -56,6 +57,7 @@ import java.util.concurrent.TimeUnit
  * Currently AndroidSpellCheckerService and LatinIME both use DictionaryFacilitator as
  * a client for interacting with dictionaries.
  */
+@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 class DictionaryFacilitatorImpl : DictionaryFacilitator {
     private var dictionaryGroups = listOf(DictionaryGroup())
 
@@ -72,13 +74,12 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
     private var changeFrom = ""
     private var changeTo = ""
 
-    // todo: write cache never set, and never read (only written)
-    //  tried to use read cache for a while, but small performance improvements are not worth the work,
-    //  see https://github.com/Helium314/HeliBoard/issues/307
+    // Caches for spell checking word validity
     private var mValidSpellingWordReadCache: LruCache<String, Boolean>? = null
     private var mValidSpellingWordWriteCache: LruCache<String, Boolean>? = null
 
-    private val scope = CoroutineScope(Dispatchers.Default)
+    // Limit parallelism to prevent excessive CPU usage during dictionary operations
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default.limitedParallelism(2))
 
     override fun setValidSpellingWordReadCache(cache: LruCache<String, Boolean>) {
         mValidSpellingWordReadCache = cache
@@ -774,7 +775,8 @@ private class DictionaryGroup(
 
     // --------------- Blacklist -------------------
 
-    private val scope = CoroutineScope(Dispatchers.IO)
+    // Limit parallelism to prevent excessive I/O operations
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO.limitedParallelism(2))
 
     // words cannot be (permanently) removed from some dictionaries, so we use a blacklist for "removing" words
     private val blacklistFile = if (context?.filesDir == null) null

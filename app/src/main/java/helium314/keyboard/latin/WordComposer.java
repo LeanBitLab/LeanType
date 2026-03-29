@@ -55,6 +55,7 @@ public final class WordComposer {
 
     // Cache these values for performance
     private CharSequence mTypedWordCache;
+    private int[] mCodePointArrayCache;
     private int mCapsCount;
     private int mDigitsCount;
     private int mCapitalizedMode;
@@ -72,7 +73,9 @@ public final class WordComposer {
 
     public WordComposer() {
         mCombinerChain = new CombinerChain("", "");
-        mEvents = new ArrayList<>();
+        // Pre-allocate ArrayList with expected capacity to avoid resizing overhead
+        // Most words are 5-15 characters, so 20 provides good headroom
+        mEvents = new ArrayList<>(20);
         mAutoCorrection = null;
         mIsResumed = false;
         mIsBatchMode = false;
@@ -117,6 +120,8 @@ public final class WordComposer {
     private void refreshTypedWordCache() {
         mTypedWordCache = mCombinerChain.getComposingWordWithCombiningFeedback();
         mCodePointSize = Character.codePointCount(mTypedWordCache, 0, mTypedWordCache.length());
+        // Cache code point array to avoid repeated allocations in cursor movement
+        mCodePointArrayCache = StringUtils.toCodePointArray(mTypedWordCache);
     }
 
     /**
@@ -232,8 +237,8 @@ public final class WordComposer {
     public boolean moveCursorByAndReturnIfInsideComposingWord(final int expectedMoveAmount) {
         int actualMoveAmount = 0;
         int cursorPos = mCursorPositionWithinWord;
-        // TODO: Don't make that copy. We can do this directly from mTypedWordCache.
-        final int[] codePoints = StringUtils.toCodePointArray(mTypedWordCache);
+        // Use cached code point array to avoid repeated allocations
+        final int[] codePoints = mCodePointArrayCache != null ? mCodePointArrayCache : StringUtils.toCodePointArray(mTypedWordCache);
         if (expectedMoveAmount >= 0) {
             // Moving the cursor forward for the expected amount or until the end of the word has
             // been reached, whichever comes first.
