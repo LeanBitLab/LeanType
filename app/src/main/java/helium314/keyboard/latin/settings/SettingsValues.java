@@ -131,7 +131,7 @@ public class SettingsValues {
         public final boolean mAutoShowToolbarOnSelect;
         public final boolean mAutoHideToolbar;
         public final boolean mAutoHidePinnedKeys;
-        public final boolean mRememberToolbarState;
+        public final boolean mAutoFoldToolbar;
         public final boolean mAlphaAfterEmojiInEmojiView;
         public final boolean mAlphaAfterClipHistoryEntry;
         public final boolean mAlphaAfterSymbolAndSpace;
@@ -383,7 +383,12 @@ public class SettingsValues {
                 mAutoHidePinnedKeys = mToolbarMode == ToolbarMode.EXPANDABLE
                                 && !mSplitToolbar
                                 && prefs.getBoolean(Settings.PREF_AUTO_HIDE_PINNED_KEYS, Defaults.PREF_AUTO_HIDE_PINNED_KEYS);
-                mRememberToolbarState = prefs.getBoolean(Settings.PREF_REMEMBER_TOOLBAR_STATE, Defaults.PREF_REMEMBER_TOOLBAR_STATE);
+                mAutoFoldToolbar = prefs.getBoolean(Settings.PREF_AUTO_FOLD_TOOLBAR,
+                                Defaults.PREF_AUTO_FOLD_TOOLBAR);
+                // Migration: clear any old saved value and reset to default
+                if (!prefs.contains(Settings.PREF_AUTO_HIDE_PINNED_KEYS)) {
+                    prefs.edit().putBoolean(Settings.PREF_AUTO_HIDE_PINNED_KEYS, Defaults.PREF_AUTO_HIDE_PINNED_KEYS).apply();
+                }
                 mAlphaAfterEmojiInEmojiView = prefs.getBoolean(Settings.PREF_ABC_AFTER_EMOJI,
                                 Defaults.PREF_ABC_AFTER_EMOJI);
                 mAlphaAfterClipHistoryEntry = prefs.getBoolean(Settings.PREF_ABC_AFTER_CLIP,

@@ -173,13 +173,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS) {
             setToolbarVisibility(true, saveState = false)
         } else if (mToolbarMode == ToolbarMode.EXPANDABLE) {
-            // Restore saved toolbar state if enabled
-            val settingsValues = Settings.getValues()
-            if (settingsValues.mRememberToolbarState) {
-                val savedExpanded = context.prefs().getBoolean(Settings.PREF_TOOLBAR_EXPANDED, false)
-                isToolbarManuallyOpen = savedExpanded || settingsValues.mAutoShowToolbar
-                setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
-            }
+            // Always start with toolbar collapsed (unless auto-show is enabled)
+            isToolbarManuallyOpen = Settings.getValues().mAutoShowToolbar
+            setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
         }
 
         // toolbar keys setup
@@ -317,19 +313,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         suggestionsStrip.layoutDirection = newLayoutDirection
     }
 
-    // Overload for Java compatibility (default saveState = true)
+    // Overload for Java compatibility (default saveState = false)
     @JvmOverloads
-    fun setToolbarVisibility(toolbarVisible: Boolean, saveState: Boolean = true) {
+    fun setToolbarVisibility(toolbarVisible: Boolean, saveState: Boolean = false) {
         // avoid showing toolbar keys when locked
         val locked = isDeviceLocked(context)
         val split = Settings.getValues().mSplitToolbar
-        val settingsValues = Settings.getValues()
-        val autoHidePinnedKeys = settingsValues.mAutoHidePinnedKeys
-
-        // Save toolbar state if requested
-        if (saveState && settingsValues.mRememberToolbarState) {
-            context.prefs().edit().putBoolean(Settings.PREF_TOOLBAR_EXPANDED, toolbarVisible).apply()
-        }
 
         // In split mode, show only full toolbar, hide pinned keys
         if (split) {
@@ -340,9 +329,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             toolbarExpandKey.isVisible = false // Hide expand key
             updateSplitToolbarState()
         } else {
-            // Auto-hide pinned keys when toolbar is expanded
-            val shouldHidePinnedKeys = autoHidePinnedKeys && toolbarVisible && !locked
-            pinnedKeys.isVisible = !locked && !toolbarVisible && !shouldHidePinnedKeys
+            // When toolbar expands: show toolbar container, hide pinnedKeys container and suggestions
+            // When toolbar collapsed: show suggestions + pinnedKeys container, hide toolbar container
+            pinnedKeys.isVisible = !locked && !toolbarVisible
             suggestionsStrip.isVisible = locked || !toolbarVisible
             toolbarContainer.isVisible = !locked && toolbarVisible
         }
@@ -354,6 +343,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
 
         toolbarExpandKey.scaleX = (if (toolbarVisible && !locked) -1f else 1f) * direction
+    }
+
+    /** Collapse the toolbar and show suggestions instead. Called from LatinIME.onStartInputView(). */
+    fun foldToolbar() {
+        isToolbarManuallyOpen = false
+        setToolbarVisibility(false, saveState = false)
     }
 
     fun setSuggestions(suggestions: SuggestedWords, isRtlLanguage: Boolean) {
@@ -369,6 +364,11 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             context, suggestedWords, suggestionsStrip, this
         )
         updateKeys()
+        // Update toolbar visibility state
+        val settingsValues = Settings.getValues()
+        if (settingsValues.mToolbarMode == ToolbarMode.EXPANDABLE && !settingsValues.mSplitToolbar) {
+            setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
+        }
         updateSplitToolbarState()
     }
 
@@ -478,10 +478,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     override fun onSharedPreferenceChanged(prefs: SharedPreferences, key: String?) {
         setToolbarButtonsActivatedStateOnPrefChange(pinnedKeys, key)
         setToolbarButtonsActivatedStateOnPrefChange(toolbar, key)
-        if (key == Settings.PREF_PINNED_TOOLBAR_KEYS || key == Settings.PREF_TOOLBAR_KEYS || key == Settings.PREF_QUICK_PIN_TOOLBAR_KEYS) {
+        if (key == Settings.PREF_PINNED_TOOLBAR_KEYS || key == Settings.PREF_TOOLBAR_KEYS || key == Settings.PREF_QUICK_PIN_TOOLBAR_KEYS || key == Settings.PREF_AUTO_HIDE_PINNED_KEYS || key == Settings.PREF_SPLIT_TOOLBAR) {
             rebuildToolbarKeys()
-            // Also update visibility in case split mode changed or keys emptying affected layout
-            updateKeys()
+            // Update visibility with auto-hide logic
+            setToolbarVisibility(isToolbarManuallyOpen, false)
         }
     }
 
@@ -518,6 +518,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (isExternalSuggestionVisible) {
             return false
         }
+        
+        // In split mode, don't intercept touches on the top row (toolbar row)
+        // to prevent accidentally cancelling long presses on toolbar buttons.
+        if (Settings.getValues().mSplitToolbar) {
+            val stripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+            if (motionEvent.y < stripHeight) {
+                return false
+            }
+        }
+
         // Detecting sliding up finger to show MoreSuggestionsView.
         return moreSuggestionsView.shouldInterceptTouchEvent(motionEvent)
     }
@@ -543,7 +553,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (view === toolbarExpandKey) {
             val willBeVisible = toolbarContainer.visibility != VISIBLE
             isToolbarManuallyOpen = willBeVisible
-            setToolbarVisibility(willBeVisible)
+            setToolbarVisibility(willBeVisible, saveState = false)
         }
 
         // tag for word views is set in SuggestionStripLayoutHelper (setupWordViewsTextAndColor, layoutPunctuationSuggestions)
@@ -583,22 +593,20 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             return
         }
 
-        // Disable pinning and long press actions when split toolbar is enabled
-        if (Settings.getValues().mSplitToolbar) return
-
-        if (Settings.getValues().mQuickPinToolbarKeys) {
+        // Disable pinning when split toolbar is enabled
+        if (Settings.getValues().mSplitToolbar || !Settings.getValues().mQuickPinToolbarKeys) {
+            // Quick Pin disabled or Split Toolbar enabled: Perform standard long-press action
+            val longClickCode = getCodeForToolbarKeyLongClick(tag)
+            if (longClickCode != KeyCode.UNSPECIFIED) {
+                listener.onCodeInput(longClickCode, Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE, false)
+            }
+        } else {
             if (view.parent === toolbar) {
                 // Pin: Move from toolbar to pinned keys
                 addPinnedKey(context.prefs(), tag)
             } else if (view.parent === pinnedKeys) {
                 // Unpin: Move from pinned keys back to toolbar
                 removePinnedKey(context.prefs(), tag)
-            }
-        } else {
-            // Quick Pin disabled: Perform standard long-press action
-            val longClickCode = getCodeForToolbarKeyLongClick(tag)
-            if (longClickCode != KeyCode.UNSPECIFIED) {
-                listener.onCodeInput(longClickCode, Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE, false)
             }
         }
     }
@@ -793,9 +801,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val settingsValues = Settings.getValues()
         if (!settingsValues.mSplitToolbar) {
             toolbarExpandKey.isVisible = settingsValues.mToolbarMode == ToolbarMode.EXPANDABLE
-            pinnedKeys.isVisible = !isDeviceLocked(context) && !isToolbarManuallyOpen
-            toolbarContainer.isVisible = !isDeviceLocked(context) && isToolbarManuallyOpen
-            suggestionsStrip.isVisible = isDeviceLocked(context) || !isToolbarManuallyOpen
+            setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
         } else {
             toolbarContainer.isVisible = !isDeviceLocked(context)
             toolbar.visibility = VISIBLE
@@ -820,15 +826,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (split) {
             toolbarExpandKey.isVisible = false
             pinnedKeys.isVisible = false // Hide pinned keys completely in split mode
-            
+
             toolbarContainer.isVisible = !hideToolbarKeys // Show full toolbar container
             toolbar.visibility = VISIBLE // Show toolbar
-            
+
             updateVoiceKey() // Re-apply voice logic to pinned keys
             layoutHelper.setSuggestionsCountInStrip(5)
         } else {
             toolbarExpandKey.isVisible = toolbarIsExpandable
-            pinnedKeys.visibility = if (hideToolbarKeys) GONE else suggestionsStrip.visibility
+            // Don't manage visibility here - let setToolbarVisibility handle it
+            // This prevents conflicts with auto-hide pinned keys logic
             layoutHelper.setSuggestionsCountInStrip(3)
         }
         isExternalSuggestionVisible = false
@@ -855,15 +862,15 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Toolbar keys setup
         // Always populate toolbar keys if mode allows, visibility handled in updateKeys
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS || mToolbarMode == ToolbarMode.EXPANDABLE) {
-            // Filter out pinned keys from toolbar to avoid duplication and keep UI clean
-            // In split mode, we show ALL enabled keys in the toolbar, ignoring pin status
-            val keysToRender = if (isSplitToolbar) {
-                getEnabledToolbarKeys(context.prefs()) 
+            // In split mode, show ALL enabled keys in the toolbar, ignoring pin status
+            // When autoHidePinnedKeys=false: include pinned keys in toolbar too (they show side-by-side)
+            // When autoHidePinnedKeys=true: exclude pinned keys from toolbar (pinnedKeys container handles them)
+            val keysToRender = if (isSplitToolbar || !Settings.getValues().mAutoHidePinnedKeys) {
+                getEnabledToolbarKeys(context.prefs())
             } else {
                 getEnabledToolbarKeys(context.prefs()).filterNot { it in pinnedKeysList }
             }
-            for (key in keysToRender) {
-                val button = createToolbarKey(context, key)
+            for (key in keysToRender) {                val button = createToolbarKey(context, key)
                 button.layoutParams = toolbarKeyLayoutParams
                 setupKey(button, colors)
                 toolbar.addView(button)
@@ -1014,6 +1021,11 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         isShowingEmojiSuggestions = false
         suggestionsStrip.removeAllViews()
         updateKeys()
+        // Update toolbar visibility state
+        val settingsValues = Settings.getValues()
+        if (settingsValues.mToolbarMode == ToolbarMode.EXPANDABLE && !settingsValues.mSplitToolbar) {
+            setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
+        }
         updateSplitToolbarState()
     }
 

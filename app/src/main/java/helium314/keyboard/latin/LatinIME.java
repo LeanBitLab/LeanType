@@ -1003,6 +1003,10 @@ public class LatinIME extends InputMethodService implements
             // Space state must be updated before calling updateShiftState
             switcher.requestUpdatingShiftState(getCurrentAutoCapsState(), getCurrentRecapitalizeState());
         }
+        // Auto-fold: collapse toolbar when keyboard opens (if enabled)
+        if (hasSuggestionStripView() && currentSettingsValues.mAutoFoldToolbar) {
+            mSuggestionStripView.foldToolbar();
+        }
         // Set neutral suggestions and show the toolbar if the "Auto show toolbar"
         // setting is enabled.
         if (!mHandler.hasPendingResumeSuggestions()) {
@@ -1686,10 +1690,10 @@ public class LatinIME extends InputMethodService implements
                 ? currentSettings.mSpacingAndPunctuations.mSuggestPuncList
                 : SuggestedWords.getEmptyInstance();
         setSuggestedWords(neutralSuggestions);
-        if (hasSuggestionStripView() && currentSettings.mAutoShowToolbarOnSelect) {
-            if (mInputLogic.getConnection().hasSelection()) {
+        if (hasSuggestionStripView()) {
+            if (currentSettings.mAutoShowToolbarOnSelect && mInputLogic.getConnection().hasSelection()) {
                 mSuggestionStripView.setToolbarVisibility(true);
-            } else {
+            } else if (currentSettings.mAutoShowToolbarOnSelect) {
                 mSuggestionStripView.setToolbarVisibility(mSuggestionStripView.isToolbarManuallyOpen());
             }
         }

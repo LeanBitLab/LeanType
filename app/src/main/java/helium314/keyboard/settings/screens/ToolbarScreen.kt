@@ -77,7 +77,7 @@ fun ToolbarScreen(
         if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_SHOW_TOOLBAR_ON_SELECT else null,
         if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_HIDE_TOOLBAR else null,
         if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_AUTO_HIDE_PINNED_KEYS else null,
-        if (toolbarMode == ToolbarMode.EXPANDABLE && !isSplitToolbar) Settings.PREF_REMEMBER_TOOLBAR_STATE else null,
+        if (toolbarMode == ToolbarMode.EXPANDABLE) Settings.PREF_AUTO_FOLD_TOOLBAR else null,
         if (toolbarMode != ToolbarMode.HIDDEN) Settings.PREF_VARIABLE_TOOLBAR_DIRECTION else null,
     )
     SearchSettingsScreen(
@@ -154,11 +154,13 @@ fun createToolbarSettings(context: Context): List<Setting> {
         },
         Setting(context, Settings.PREF_AUTO_HIDE_PINNED_KEYS, R.string.auto_hide_pinned_keys, R.string.auto_hide_pinned_keys_summary)
         {
-            SwitchPreference(it, Defaults.PREF_AUTO_HIDE_PINNED_KEYS)
+            SwitchPreference(it, Defaults.PREF_AUTO_HIDE_PINNED_KEYS) { _ ->
+                KeyboardSwitcher.getInstance().setThemeNeedsReload()
+            }
         },
-        Setting(context, Settings.PREF_REMEMBER_TOOLBAR_STATE, R.string.remember_toolbar_state, R.string.remember_toolbar_state_summary)
+        Setting(context, Settings.PREF_AUTO_FOLD_TOOLBAR, R.string.auto_fold_toolbar, R.string.auto_fold_toolbar_summary)
         {
-            SwitchPreference(it, Defaults.PREF_REMEMBER_TOOLBAR_STATE)
+            SwitchPreference(it, Defaults.PREF_AUTO_FOLD_TOOLBAR)
         },
         Setting(context, Settings.PREF_VARIABLE_TOOLBAR_DIRECTION,
             R.string.var_toolbar_direction, R.string.var_toolbar_direction_summary)
