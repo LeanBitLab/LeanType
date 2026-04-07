@@ -21,7 +21,7 @@ class Database private constructor(context: Context, name: String = NAME) : SQLi
     companion object {
         private val TAG = Database::class.java.simpleName
         private const val VERSION = 2
-        const val NAME = "heliboard.db"
+        const val NAME = "leantype.db"
         private var instance: Database? = null
         fun getInstance(context: Context): Database {
             if (instance == null)

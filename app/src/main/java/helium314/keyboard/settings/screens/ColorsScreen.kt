@@ -161,7 +161,7 @@ fun ColorsScreen(
             },
             stringResource(R.string.copy_to_clipboard) to {
                 val cm = ctx.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                cm.setPrimaryClip(ClipData.newPlainText("HeliBoard theme", getColorString(prefs, newThemeName.text)))
+                cm.setPrimaryClip(ClipData.newPlainText("LeanType theme", getColorString(prefs, newThemeName.text)))
             },
         ),
         onClickBack = onClickBack,
