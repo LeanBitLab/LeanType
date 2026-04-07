@@ -1,11 +1,14 @@
-HeliBoard is a privacy-conscious open-source keyboard, based on AOSP / OpenBoard.
-Does not use internet permission, and thus is 100% offline.
+LeanType is a privacy-conscious, customizable open-source keyboard, based on AOSP / OpenBoard / HeliBoard.
+It enhances the original keyboard with optional AI-powered features, offering both cloud-based and fully offline on-device intelligence.
 
 Features:
 <ul>
+  <li><b>AI Proofreading & Translation:</b> Proofread or translate text using Gemini, Groq, or OpenAI-compatible providers, or use fully offline on-device ONNX models.</li>
+  <li><b>Custom AI Keys:</b> Assign custom prompts and personas to customizable toolbar keys.</li>
+  <li><b>Clipboard Search & Undo:</b> Search through your clipboard history directly from the toolbar, and undo accidental item deletions.</li>
   <li>Add dictionaries for suggestions and spell check</li>
   <ul>
-    <li>build your own, or get them  <a href="https://codeberg.org/Helium314/aosp-dictionaries#dictionaries">here</a>, or in the <a href="https://codeberg.org/Helium314/aosp-dictionaries#experimental-dictionaries">experimental</a> section (quality may vary)</li>
+    <li>build your own, or get them <a href="https://codeberg.org/Helium314/aosp-dictionaries#dictionaries">here</a>, or in the <a href="https://codeberg.org/Helium314/aosp-dictionaries#experimental-dictionaries">experimental</a> section (quality may vary)</li>
     <li>additional dictionaries for emojis or scientific symbols can be used to provide suggestions (similar to "emoji search")</li>
     <li>note that for Korean layouts, suggestions only work using <a href="https://github.com/openboard-team/openboard/commit/83fca9533c03b9fecc009fc632577226bbd6301f">this dictionary</a>, the tools in the dictionary repository are not able to create working dictionaries</li>
   </ul>
@@ -14,8 +17,8 @@ Features:
     <li>can follow the system's day/night setting on Android 10+ (and on some versions of Android 9)</li>
     <li>can follow dynamic colors for Android 12+</li>
   </ul>
-  <li>Customize keyboard <a href="https://github.com/Helium314/HeliBoard/blob/main/layouts.md">layouts</a> (only available when disabling <i>use system languages</i>)</li>
-  <li>Customize special layouts, like symbols, number,  or functional key layout</li>
+  <li>Customize keyboard <a href="https://github.com/LeanBitLab/HeliboardL/blob/main/layouts.md">layouts</a> (only available when disabling <i>use system languages</i>)</li>
+  <li>Customize special layouts, like symbols, number, or functional key layout</li>
   <li>Multilingual typing</li>
   <li>Glide typing (<i>only with closed source library</i> ☹️)</li>
   <ul>
@@ -28,3 +31,5 @@ Features:
   <li>Number pad</li>
   <li>Backup and restore your settings and learned word / history data</li>
 </ul>
+
+LeanType is available in multiple build flavors based on your privacy needs: Standard (Opt-in Cloud AI), Offline (On-device AI, NO internet permission), and Offline Lite (No AI, NO internet permission).

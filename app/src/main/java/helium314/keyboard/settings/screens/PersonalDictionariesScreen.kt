@@ -163,25 +163,24 @@ private suspend fun importGboardDictionary(context: android.content.Context, uri
 
 private fun parseAndInsert(context: android.content.Context, reader: BufferedReader): Int {
     var count = 0
-    reader.forEachLine { line ->
-        if (line.startsWith("#")) return@forEachLine
-        val parts = line.split("\t")
-        if (parts.size >= 1) {
+    var line: String?
+    while (reader.readLine().also { line = it } != null) {
+        val currentLine = line ?: continue
+        if (currentLine.startsWith("#")) continue
+        val parts = currentLine.split("\t")
+        if (parts.isNotEmpty()) {
             val word = parts[0]
             if (word.isNotBlank()) {
                 val shortcut = if (parts.size >= 2) parts[1].ifBlank { null } else null
                 val localeStr = if (parts.size >= 3) parts[2].ifBlank { null } else null
                 
-                val locale = if (localeStr != null) {
+                val locale = if (localeStr != null && localeStr != "all") {
                     try { Locale.forLanguageTag(localeStr) } catch(_: Exception) { null }
                 } else null
                 
-                // Frequency is not always present or standardized, use default
-                // UserDictionary.Words.addWord(context, word, 250, shortcut, locale)
-                // We need to use valid locale
                 try {
-                UserDictionary.Words.addWord(context, word, 250, shortcut, locale)
-                count++
+                    UserDictionary.Words.addWord(context, word, 250, shortcut, locale)
+                    count++
                 } catch (e: Exception) {
                     Log.w("ImportDict", "Failed to add word $word", e)
                 }

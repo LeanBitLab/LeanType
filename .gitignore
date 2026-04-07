@@ -1,6 +1,52 @@
-# Ignore all files in the app/src/main/java directory
-.aiderignore
+# Android & Gradle
+*.iml
+.idea/
+.gradle/
+.kotlin/
+local.properties
+build/
+app/build/
+app/release/
+app/.cxx/
+app/.attach_*/
+tools/make-emoji-keys/build/
 
-# Qwen AI context files
+# OS Specific
+.DS_Store
+
+# Ruby/Fastlane
+Gemfile
+fastlane/Appfile
+
+# Keys & Secrets
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# Build logs
+*.log
+
+# Scripts & Misc
+tools/*.txt
+tools/clean_qwencoder_history.sh
+
+# Offline model files & Node
+tokenizer.json
+node_modules/
+
+# Python Virtual Env
+.venv/
+
+# AI Assistants & Context
+.aider*
+.qwen/
 QWEN.md
 **/QWEN.md
+AGENTS.md
+**/AGENTS.md
+GEMINI.md
+Pdoc/
+.antigravityignore
+.gemini/
+help/
