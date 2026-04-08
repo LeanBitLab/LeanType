@@ -220,23 +220,8 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
         val mainKeyboardFrame = overlayRoot?.findViewById<View>(R.id.main_keyboard_frame)
         if (mainKeyboardFrame != null) {
-            // Remove from overlay content container
+            // Remove from overlay content container so it can be safely GC'd
             (mainKeyboardFrame.parent as? ViewGroup)?.removeView(mainKeyboardFrame)
-
-            // Restore to original parent
-            val parent = savedParent
-            if (parent != null) {
-                mainKeyboardFrame.layoutParams = savedLayoutParams ?: LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply { gravity = Gravity.BOTTOM }
-
-                if (savedParentIndex >= 0 && savedParentIndex <= parent.childCount) {
-                    parent.addView(mainKeyboardFrame, savedParentIndex)
-                } else {
-                    parent.addView(mainKeyboardFrame)
-                }
-            }
         }
 
         // Remove overlay window

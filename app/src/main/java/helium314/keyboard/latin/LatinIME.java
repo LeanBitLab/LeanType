@@ -805,9 +805,10 @@ public class LatinIME extends InputMethodService implements
      * Restores the IME input view and re-shows the IME window.
      */
     public void onFloatingKeyboardHidden() {
-        if (mInputView != null) {
-            mInputView.setVisibility(View.VISIBLE);
-        }
+        // Recreate the entire input view to fix bottom navigation/chin overlaps
+        setInputView(onCreateInputView());
+        updateInputViewShown();
+        
         // Re-show the IME window
         startShowingInputView(true);
     }
