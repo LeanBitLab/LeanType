@@ -22,8 +22,8 @@ android {
         applicationId = "com.leanbitlab.leantype"
         minSdk = 21
         targetSdk = 35
-        versionCode = 3705
-        versionName = "3.7.5"
+        versionCode = 3706
+        versionName = "3.7.6"
 
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         

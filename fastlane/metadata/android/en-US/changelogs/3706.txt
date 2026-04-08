@@ -1,0 +1,4 @@
+* Added floating keyboard feature
+* Added auto hide pinned key toggle
+* Added autofold toolbar toggle
+* Fixed some bugs and crashes
