@@ -27,11 +27,29 @@ public final class ResourceUtils {
     public static final float UNDEFINED_RATIO = -1.0f;
     public static final int UNDEFINED_DIMENSION = -1;
 
+    /**
+     * When > 0, overrides the keyboard width for floating keyboard mode.
+     * Set by FloatingKeyboardManager before triggering a keyboard reload.
+     */
+    private static int sFloatingKeyboardWidthOverride = 0;
+
+    public static void setFloatingKeyboardWidth(int widthPx) {
+        sFloatingKeyboardWidthOverride = widthPx;
+    }
+
+    public static int getFloatingKeyboardWidth() {
+        return sFloatingKeyboardWidthOverride;
+    }
+
     private ResourceUtils() {
         // This utility class is not publicly instantiable.
     }
 
     public static int getKeyboardWidth(final Context ctx, final SettingsValues settingsValues) {
+        // Floating keyboard width takes priority
+        if (sFloatingKeyboardWidthOverride > 0) {
+            return sFloatingKeyboardWidthOverride;
+        }
         final int defaultKeyboardWidth = getDefaultKeyboardWidth(ctx);
         if (settingsValues.mOneHandedModeEnabled) {
             return (int) (settingsValues.mOneHandedModeScale * defaultKeyboardWidth);

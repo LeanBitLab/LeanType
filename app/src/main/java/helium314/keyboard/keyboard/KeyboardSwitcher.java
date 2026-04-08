@@ -532,6 +532,14 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         Settings.getInstance().writeOneHandedModeGravity(mKeyboardViewWrapper.getOneHandedGravity());
     }
 
+    // Implements {@link KeyboardState.SwitchActions}.
+    @Override
+    public void toggleFloatingKeyboard() {
+        if (mLatinIME != null && mLatinIME.getFloatingKeyboardManager() != null) {
+            mLatinIME.getFloatingKeyboardManager().toggle();
+        }
+    }
+
     public void toggleSplitKeyboardMode() {
         final Settings settings = Settings.getInstance();
         settings.writeSplitKeyboardEnabled(

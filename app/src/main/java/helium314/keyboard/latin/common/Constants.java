@@ -231,6 +231,7 @@ public final class Constants {
         case CODE_SPACE: return "space";
         case KeyCode.TOGGLE_ONE_HANDED_MODE: return "toggleOneHandedMode";
         case KeyCode.SWITCH_ONE_HANDED_MODE: return "switchOneHandedMode";
+        case KeyCode.TOGGLE_FLOATING_KEYBOARD: return "toggleFloatingKeyboard";
         case KeyCode.SPLIT_LAYOUT: return "splitLayout";
         case KeyCode.NUMPAD: return "numpad";
         default:

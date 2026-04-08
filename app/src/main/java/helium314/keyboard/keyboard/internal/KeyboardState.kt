@@ -49,6 +49,7 @@ class KeyboardState(private val switchActions: SwitchActions) {
 
         fun setOneHandedModeEnabled(enabled: Boolean)
         fun switchOneHandedMode()
+        fun toggleFloatingKeyboard()
 
         companion object {
             const val DEBUG_ACTION = false
@@ -666,6 +667,7 @@ class KeyboardState(private val switchActions: SwitchActions) {
             KeyCode.SYMBOL -> setSymbolsKeyboard()
             KeyCode.TOGGLE_ONE_HANDED_MODE -> setOneHandedModeEnabled(!Settings.getValues().mOneHandedModeEnabled)
             KeyCode.SWITCH_ONE_HANDED_MODE -> switchOneHandedMode()
+            KeyCode.TOGGLE_FLOATING_KEYBOARD -> switchActions.toggleFloatingKeyboard()
         }
     }
 

@@ -130,7 +130,7 @@ public class LatinIME extends InputMethodService implements
     final InputLogic mInputLogic = new InputLogic(this, this, mDictionaryFacilitator);
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
-    private View mInputView;
+    View mInputView;
     private InsetsOutlineProvider mInsetsUpdater;
     private SuggestionStripView mSuggestionStripView;
 
@@ -182,6 +182,12 @@ public class LatinIME extends InputMethodService implements
     private GestureConsumer mGestureConsumer = GestureConsumer.NULL_GESTURE_CONSUMER;
 
     private final ClipboardHistoryManager mClipboardHistoryManager = new ClipboardHistoryManager(this);
+
+    private FloatingKeyboardManager mFloatingKeyboardManager;
+
+    public FloatingKeyboardManager getFloatingKeyboardManager() {
+        return mFloatingKeyboardManager;
+    }
 
     public static final class UIHandler extends LeakGuardHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
@@ -542,6 +548,7 @@ public class LatinIME extends InputMethodService implements
         mStatsUtilsManager.onCreate(this, mDictionaryFacilitator);
         mDisplayContext = KtxKt.getDisplayContext(this);
         KeyboardSwitcher.init(this);
+        mFloatingKeyboardManager = new FloatingKeyboardManager(this, this);
         super.onCreate();
 
         loadSettings();
@@ -694,6 +701,9 @@ public class LatinIME extends InputMethodService implements
 
     @Override
     public void onDestroy() {
+        if (mFloatingKeyboardManager != null) {
+            mFloatingKeyboardManager.destroy();
+        }
         mClipboardHistoryManager.onDestroy();
         mDictionaryFacilitator.closeDictionaries();
         mSettings.onDestroy();
@@ -770,6 +780,36 @@ public class LatinIME extends InputMethodService implements
             mSuggestionStripView.setRtl(mRichImm.getCurrentSubtype().isRtlSubtype());
             mSuggestionStripView.setListener(this, view);
         }
+        // If floating mode is active and the input view was recreated (e.g. theme change),
+        // reparent the new keyboard views into the overlay.
+        if (mFloatingKeyboardManager != null && mFloatingKeyboardManager.isFloating()) {
+            mFloatingKeyboardManager.onInputViewRecreated(view);
+        }
+    }
+
+    /**
+     * Called by FloatingKeyboardManager when the floating overlay is shown.
+     * Hides the IME window entirely so the bottom navigation bar disappears.
+     */
+    public void onFloatingKeyboardShown() {
+        if (mInputView != null) {
+            mInputView.setVisibility(View.GONE);
+        }
+        // Request the system to hide the IME window so the bottom bar disappears.
+        // The InputConnection stays alive because the service is still bound.
+        requestHideSelf(0);
+    }
+
+    /**
+     * Called by FloatingKeyboardManager when the floating overlay is dismissed.
+     * Restores the IME input view and re-shows the IME window.
+     */
+    public void onFloatingKeyboardHidden() {
+        if (mInputView != null) {
+            mInputView.setVisibility(View.VISIBLE);
+        }
+        // Re-show the IME window
+        startShowingInputView(true);
     }
 
     @Override
@@ -799,6 +839,11 @@ public class LatinIME extends InputMethodService implements
     @Override
     public void onFinishInput() {
         mHandler.onFinishInput();
+        // Auto-dismiss floating keyboard when the input session ends
+        // (user navigated away from text input)
+        if (mFloatingKeyboardManager != null && mFloatingKeyboardManager.isFloating()) {
+            mFloatingKeyboardManager.hide();
+        }
     }
 
     @Override
@@ -1024,6 +1069,13 @@ public class LatinIME extends InputMethodService implements
                 currentSettingsValues.mGestureInputEnabled,
                 currentSettingsValues.mGestureTrailEnabled,
                 currentSettingsValues.mGestureFloatingPreviewTextEnabled);
+
+        // If floating keyboard is active, re-hide the IME window.
+        // The system re-shows it when a new text field gets focus, so we need to re-hide.
+        if (mFloatingKeyboardManager != null && mFloatingKeyboardManager.isFloating()) {
+            mInputView.setVisibility(View.GONE);
+            requestHideSelf(0);
+        }
 
         if (TRACE)
             Debug.startMethodTracing("/data/trace/latinime");

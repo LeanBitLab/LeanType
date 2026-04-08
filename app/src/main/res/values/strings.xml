@@ -361,6 +361,7 @@
     <string name="select_all" tools:keep="@string/select_all" translatable="false">@android:string/selectAll</string>
     <string name="select_word" tools:keep="@string/select_word">Select word</string>
     <string name="one_handed" tools:keep="@string/one_handed">One-handed mode</string>
+    <string name="floating" tools:keep="@string/floating">Float</string>
     <string name="split" tools:keep="@string/split">Split keyboard</string>
     <string name="full_left" tools:keep="@string/full_left">Full left</string>
     <string name="full_right" tools:keep="@string/full_right">Full right</string>
@@ -1168,4 +1169,6 @@ New dictionary:
     <string name="image_pasting_not_supported">This app does not support image pasting</string>
     <string name="clear_emoji_history_title">Clear emoji history</string>
     <string name="clear_emoji_history_message">Are you sure you want to clear your recently used emojis?</string>
+    <string name="floating_keyboard_drag_handle">Drag to move keyboard</string>
+    <string name="floating_keyboard_resize_handle">Drag to resize keyboard</string>
 </resources>

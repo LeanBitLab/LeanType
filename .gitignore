@@ -40,6 +40,7 @@ node_modules/
 
 # AI Assistants & Context
 .aider*
+.superpowers/
 .qwen/
 QWEN.md
 **/QWEN.md
@@ -50,3 +51,11 @@ Pdoc/
 .antigravityignore
 .gemini/
 help/
+.cursor/
+.cursorrules
+.cline/
+cline_docs/
+.rocline/
+.continue/
+prompt_history.json
+chat.json
