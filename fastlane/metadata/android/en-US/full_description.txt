@@ -1,12 +1,9 @@
-LeanType is a privacy-conscious, customizable open-source Android keyboard. Based on the robust foundations of AOSP and HeliBoard, LeanType offers a pure, ad-free typing experience that guarantees your typing privacy while offering cutting-edge AI integrations.
-
-Choose Your Experience
-LeanType is available in multiple builds depending on your privacy needs. The Standard version supports optional Cloud AI features, while the Offline versions physically guarantee zero internet access at the OS level while still offering full neural proofreading via on-device ONNX models.
+LeanType is a privacy-conscious, customizable open-source Android keyboard. Based on the robust foundations of AOSP and HeliBoard.
+LeanType (Standard) offers a hybrid experience: a private, secure offline core for everyday typing, with powerful AI capabilities available whenever you choose to enable them.
 
 Key Features:
 <ul>
   <li><b>AI Proofreading & Translation:</b> Instantly fix grammar, rewrite text, or translate sentences using powerful AI. Choose between Gemini, Groq, or OpenAI-compatible backends.</li>
-  <li><b>Always Private, On-Device AI:</b> Download and use fully offline ONNX models (Flan-T5, Visheratin, etc.) to securely proofread without any data ever leaving your device.</li>
   <li><b>Floating Keyboard:</b> Detach the keyboard into a draggable window for seamless multitasking and improved accessibility.</li>
   <li><b>Clipboard Power-tools:</b> Search your clipboard history directly, enjoy visual previews, and undo accidental clip deletions.</li>
   <li><b>Screenshot Suggestions:</b> Instantly paste recently taken screenshots directly from your keyboard suggestions.</li>
@@ -21,12 +18,12 @@ Standard Features:
   <li>Import dictionaries from Gboard/Google</li>
   <li>Fully customizable themes (Colors, backgrounds, Day/Night integration, Material You dynamic colors)</li>
   <li>Customizable special layouts (NumPads, Symbol layouts)</li>
-  <li>Glide typing support (Requires external closed-source library)</li>
+  <li>Glide typing support (Requires external library)</li>
   <li>One-handed mode and Split keyboard</li>
   <li>Backup & restore for all your settings and learned words</li>
 </ul>
 
-Privacy First:
-We believe your keyboard shouldn't spy on you. LeanType's offline versions strictly forbid internet permissions. For the standard version, network access is only ever used if you explicitly input API keys and actively request AI features.
+Privacy Policy:
+We believe your keyboard shouldn't spy on you. LeanType is fully open-source and respects your data. While this version includes Internet permission to support AI features, network access is only ever used if you explicitly provide an API key and actively trigger an AI request. Your keystrokes are never logged or sent anywhere without your direct action.
 
 Built with ❤️ by LeanBitLab.
