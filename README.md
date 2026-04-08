@@ -20,6 +20,7 @@ This fork adds **optional AI-powered features** using Gemini, Groq, and OpenAI-c
 - **[🛡️ Offline AI](docs/FEATURES.md#5-offline-proofreading-privacy-focused)** - Private, on-device proofreading and translation using ONNX models (Offline build only).
 - **🌐 AI Translation** - Translate selected text directly using your chosen AI provider.
 - **[🧠 Custom AI Keys](docs/FEATURES.md#4-custom-ai-keys--keywords)** - Assign custom prompts and personas (#editor, #proofread) to 10 customizable toolbar keys.
+- **🪟 Floating Keyboard** - Detach the keyboard into a draggable window for seamless multitasking.
 - **⌨️ Dual Toolbar / Split Suggestions** - Option to split suggestions and toolbar for easier access.
 - **🖱️ Touchpad Mode** - Swipe spacebar up to toggle touchpad; custom sensitivity controls.
 - **🎨 Modern UI** - "Squircle" key backgrounds, refined icons, and polished aesthetics.

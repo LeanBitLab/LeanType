@@ -22,6 +22,7 @@ LeanType integrates with AI providers to offer advanced proofreading and transla
 | **Offline Proofreading** | Private, on-device AI for grammar (requires downloads). | `AI Integration > Offline Proofreading` |
 | **Custom AI Keys** | 10 toolbar keys with customizable prompts (supports hashtags). | `AI Integration > Custom Keys` |
 | **AI Translation** | Translates selected text via your configured AI provider. | Toolbar > Translate Icon |
+| **Floating Keyboard** | Detach the keyboard into a draggable window for multitasking. | Toolbar > Floating Keyboard |
 | **Touchpad Mode** | Swipe up on Spacebar to control cursor like a touchpad. | `Gesture typing > Vertical spacebar swipe` |
 | **Split Suggestions** | Separates suggestions from toolbar for quicker access. | `Appearance > Split toolbar & suggestions` |
 | **Build Variants** | Choose Standard, Offline, or Offline Lite versions. | GitHub Releases |
