@@ -283,6 +283,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             val text = connection.getTextBeforeCursor(-steps * 4, 0) ?: return false
             moveSteps = negativeMoveSteps(text, steps)
             if (moveSteps == 0) {
+                // don't send dpad events if we are already at the beginning of the field
+                if (text.isEmpty() && connection.expectedSelectionStart == 0) return true
                 // some apps don't return any text via input connection, and the cursor can't be moved
                 // we fall back to virtually pressing the left/right key one or more times instead
                 repeat(-steps) {
@@ -299,6 +301,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             val text = connection.getTextAfterCursor(steps * 4, 0) ?: return false
             moveSteps = positiveMoveSteps(text, steps)
             if (moveSteps == 0) {
+                // don't send dpad events if we are already at the end of the field
+                if (text.isEmpty()) return true
                 // some apps don't return any text via input connection, and the cursor can't be moved
                 // we fall back to virtually pressing the left/right key one or more times instead
                 repeat(steps) {
