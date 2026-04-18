@@ -965,10 +965,10 @@ public final class InputLogic {
                 onSettingsKeyPressed();
                 break;
             case KeyCode.ACTION_NEXT:
-                performEditorAction(EditorInfo.IME_ACTION_NEXT);
+                performEditorAction(EditorInfo.IME_ACTION_NEXT, inputTransaction.getSettingsValues(), handler);
                 break;
             case KeyCode.ACTION_PREVIOUS:
-                performEditorAction(EditorInfo.IME_ACTION_PREVIOUS);
+                performEditorAction(EditorInfo.IME_ACTION_PREVIOUS, inputTransaction.getSettingsValues(), handler);
                 break;
             case KeyCode.LANGUAGE_SWITCH:
                 handleLanguageSwitchKey();
@@ -1199,7 +1199,7 @@ public final class InputLogic {
             if (InputTypeUtils.IME_ACTION_CUSTOM_LABEL == imeOptionsActionId) {
                 // Either we have an actionLabel and we should performEditorAction with
                 // actionId regardless of its value.
-                performEditorAction(editorInfo.actionId);
+                performEditorAction(editorInfo.actionId, inputTransaction.getSettingsValues(), handler);
             } else if (EditorInfo.IME_ACTION_NONE != imeOptionsActionId) {
                 // We didn't have an actionLabel, but we had another action to execute.
                 // EditorInfo.IME_ACTION_NONE explicitly means no action. In contrast,
@@ -1208,7 +1208,7 @@ public final class InputLogic {
                 // code for it - presumably it only handles one. It does not have to be treated
                 // in any specific way: anything that is not IME_ACTION_NONE should be sent to
                 // performEditorAction.
-                performEditorAction(imeOptionsActionId);
+                performEditorAction(imeOptionsActionId, inputTransaction.getSettingsValues(), handler);
             } else {
                 // No action label, and the action from imeOptions is NONE: this is a regular
                 // enter key that should input a carriage return.
@@ -2534,7 +2534,11 @@ public final class InputLogic {
     /**
      * @param actionId the action to perform
      */
-    private void performEditorAction(final int actionId) {
+    private void performEditorAction(final int actionId, final SettingsValues settingsValues,
+            final LatinIME.UIHandler handler) {
+        if (mWordComposer.isComposingWord()) {
+            commitCurrentAutoCorrection(settingsValues, LastComposedWord.NOT_A_SEPARATOR, handler);
+        }
         mConnection.performEditorAction(actionId);
     }
 
