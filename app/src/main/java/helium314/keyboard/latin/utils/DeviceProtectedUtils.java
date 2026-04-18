@@ -9,6 +9,7 @@ package helium314.keyboard.latin.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.UserManager;
 
 import java.io.File;
 
@@ -18,21 +19,32 @@ public final class DeviceProtectedUtils {
     private static SharedPreferences prefs;
 
     public static SharedPreferences getSharedPreferences(final Context context) {
-        if (prefs != null)
+        return getSharedPreferences(context, context.getPackageName() + "_preferences");
+    }
+
+    public static SharedPreferences getSharedPreferences(final Context context, final String name) {
+        if (prefs != null && name.equals(context.getPackageName() + "_preferences"))
             return prefs;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            prefs = getDefaultSharedPreferences(context);
-            return prefs;
+            final SharedPreferences p = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+            if (name.equals(context.getPackageName() + "_preferences"))
+                prefs = p;
+            return p;
         }
         final Context deviceProtectedContext = getDeviceProtectedContext(context);
-        prefs = getDefaultSharedPreferences(deviceProtectedContext);
-        if (prefs.getAll() == null)
-            return prefs; // happens for compose previews
-        if (prefs.getAll().isEmpty()) {
-            Log.i(TAG, "Device encrypted storage is empty, copying values from credential encrypted storage");
-            deviceProtectedContext.moveSharedPreferencesFrom(context, android.preference.PreferenceManager.getDefaultSharedPreferencesName(context));
+        final SharedPreferences p = deviceProtectedContext.getSharedPreferences(name, Context.MODE_PRIVATE);
+        if (name.equals(context.getPackageName() + "_preferences"))
+            prefs = p;
+        if (p.getAll() == null)
+            return p; // happens for compose previews
+        if (p.getAll().isEmpty()) {
+            final UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+            if (userManager != null && userManager.isUserUnlocked()) {
+                Log.i(TAG, "Device encrypted storage for " + name + " is empty, copying values from credential encrypted storage");
+                deviceProtectedContext.moveSharedPreferencesFrom(context, name);
+            }
         }
-        return prefs;
+        return p;
     }
 
     // keep this private to avoid accidental use of device protected context anywhere in the app

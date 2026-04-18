@@ -24,6 +24,7 @@ import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ResourceUtils
+import helium314.keyboard.latin.utils.DeviceProtectedUtils
 
 /**
  * Manages the floating keyboard by reparenting the existing main_keyboard_frame
@@ -45,7 +46,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
     }
 
     private val prefs: SharedPreferences =
-        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        DeviceProtectedUtils.getSharedPreferences(context, PREFS_NAME)
 
     private var overlayRoot: FrameLayout? = null
     private var windowManager: WindowManager? = null
