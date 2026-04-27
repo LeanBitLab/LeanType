@@ -55,7 +55,7 @@ class InputLogicTest {
     private lateinit var latinIME: LatinIME
     private val settingsValues get() = Settings.getValues()
     private val inputLogic get() = latinIME.mInputLogic
-    private val connection: RichInputConnection get() = inputLogic.mConnection
+    private val connection: RichInputConnection get() = inputLogic.connection
     private val composerReader = InputLogic::class.java.getDeclaredField("mWordComposer").apply { isAccessible = true }
     private val composer get() = composerReader.get(inputLogic) as WordComposer
     private val spaceStateReader = InputLogic::class.java.getDeclaredField("mSpaceState").apply { isAccessible = true }
@@ -755,7 +755,7 @@ class InputLogicTest {
 
         if (currentScript != ScriptUtils.SCRIPT_HANGUL // check fails if hangul combiner merges symbols
             && !(codePoint == Constants.CODE_SPACE && oldBefore.lastOrNull() == ' ') // check fails when 2 spaces are converted into a period
-            && !latinIME.mInputLogic.mSuggestedWords.mWillAutoCorrect // autocorrect obviously creates inconsistencies
+            && !latinIME.mInputLogic.suggestedWords.mWillAutoCorrect // autocorrect obviously creates inconsistencies
             ) {
             if (phantomSpaceToInsert.isEmpty())
                 assertEquals(oldBefore + insert, textBeforeCursor)
