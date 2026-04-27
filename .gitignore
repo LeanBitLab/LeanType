@@ -49,6 +49,7 @@ AGENTS.md
 GEMINI.md
 Pdoc/
 .antigravityignore
+.geminiignore
 .gemini/
 help/
 .cursor/
