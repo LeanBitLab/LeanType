@@ -39,7 +39,7 @@ import kotlin.test.assertEquals
 ])
 class SuggestTest {
     private lateinit var latinIME: LatinIME
-    private val suggest get() = latinIME.mInputLogic.mSuggest
+    private val suggest get() = helium314.keyboard.latin.inputlogic.InputLogic::class.java.getDeclaredField("mSuggest").apply { isAccessible = true }.get(latinIME.mInputLogic) as helium314.keyboard.latin.Suggest
 
     // values taken from the string array auto_correction_threshold_mode_indexes
     private val thresholdModest = 0.185f

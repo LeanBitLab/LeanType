@@ -743,12 +743,13 @@ private class DictionaryGroup(
     // typing in. For now, this is simply the number of times a word from this language
     // has been committed in a row, with an exception when typing a single word not contained
     // in this language.
-    var confidence = 1
+    var confidence = 1f
 
     // allow to go above max confidence, for better determination of currently preferred language
     // when decreasing confidence or getting weight factor, limit to maximum
     fun increaseConfidence() {
-        confidence += 1
+        confidence += 0.2f
+        if (confidence > 1.2f) confidence = 1.2f
     }
 
     // If confidence is above max, drop to max confidence. This does not change weights and
@@ -756,7 +757,10 @@ private class DictionaryGroup(
     fun decreaseConfidence() {
         if (confidence > MAX_CONFIDENCE) confidence = MAX_CONFIDENCE
         else if (confidence > 0) {
-            confidence -= 1
+            confidence -= 0.2f
+            if (confidence < 0f) {
+                confidence = 0f
+            }
         }
     }
 
@@ -869,6 +873,6 @@ private class DictionaryGroup(
 
     companion object {
         private val TAG = DictionaryGroup::class.java.simpleName
-        const val MAX_CONFIDENCE = 2
+        const val MAX_CONFIDENCE = 2f
     }
 }
