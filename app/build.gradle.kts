@@ -175,6 +175,7 @@ android {
 }
 
 dependencies {
+
     // androidx
     implementation("androidx.core:core-ktx:1.16.0") // 1.17 requires SDK 36
     implementation("androidx.recyclerview:recyclerview:1.4.0")
@@ -211,4 +212,9 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.14.1")
     testImplementation("androidx.test:runner:1.6.2")
     testImplementation("androidx.test:core:1.6.1")
+}
+dependencies {
+    testImplementation("androidx.test.ext:junit:1.1.5")
+    testImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
