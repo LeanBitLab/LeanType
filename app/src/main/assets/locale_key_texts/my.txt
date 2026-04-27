@@ -1,5 +1,5 @@
 [popup_keys]
-punctuation !autoColumnOrder!9 ၊ . ? ! # ) ( / ; ... ' @ : - " + \% &
+punctuation !autoOrder!9 ၊ . ? ! # ) ( / ; ... ' @ : - " + \% &
 
 [labels]
 alphabet: ကခဂ

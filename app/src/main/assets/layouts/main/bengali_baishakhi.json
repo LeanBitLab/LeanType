@@ -94,7 +94,7 @@
       },
       { "$": "shift_state_selector",
         "manualOrLocked": { "label": "ঁ", "labelFlags": 1073741824, "popup": { "relevant": [
-            { "label": "!autoColumnOrder!6" },
+            { "label": "!autoOrder!6" },
             { "label": "়" },
             { "label": "ৄ" },
             { "label": "ঽ" },

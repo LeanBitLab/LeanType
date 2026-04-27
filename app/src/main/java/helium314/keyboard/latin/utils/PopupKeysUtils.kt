@@ -38,17 +38,17 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
     }
     if (!popupKeysDelegate.isInitialized() || popupKeys.isEmpty())
         return null
-    val fco = popupKeys.firstOrNull { it.startsWith(Key.POPUP_KEYS_FIXED_COLUMN_ORDER) }
-    if (fco != null && fco.substringAfter(Key.POPUP_KEYS_FIXED_COLUMN_ORDER).toIntOrNull() != popupKeys.size - 1) {
+    val fco = popupKeys.firstOrNull { it.startsWith(Key.POPUP_KEYS_FIXED_ORDER) }
+    if (fco != null && fco.substringAfter(Key.POPUP_KEYS_FIXED_ORDER).toIntOrNull() != popupKeys.size - 1) {
         val fcoExpected = popupKeys.size - popupKeys.count { it.startsWith("!") && it.endsWith("!") } - 1
-        if (fco.substringAfter(Key.POPUP_KEYS_FIXED_COLUMN_ORDER).toIntOrNull() != fcoExpected)
+        if (fco.substringAfter(Key.POPUP_KEYS_FIXED_ORDER).toIntOrNull() != fcoExpected)
             popupKeys.remove(fco) // maybe rather adjust the number instead of remove?
     }
     if (popupKeys.size > 1 && (label == "(" || label == ")")) { // add fixed column order for that case (typically other variants of brackets / parentheses
         // not really fast, but no other way to add first in a LinkedHashSet
         val tmp = popupKeys.toList()
         popupKeys.clear()
-        popupKeys.add("${Key.POPUP_KEYS_FIXED_COLUMN_ORDER}${tmp.size}")
+        popupKeys.add("${Key.POPUP_KEYS_FIXED_ORDER}${tmp.size}")
         popupKeys.addAll(tmp)
     }
     // autoColumnOrder should be fine
@@ -76,7 +76,7 @@ fun getHintLabel(popupSet: PopupSet<*>?, params: KeyboardParams, label: String):
         return null // better show nothing instead of the toolbar key label
 
     return KeySpecParser.getLabel(transformLabel(hintLabel, params))
-        // avoid e.g. !autoColumnOrder! as label
+        // avoid e.g. !autoOrder! as label
         //  this will avoid having labels on comma and period keys
         ?.takeIf { label -> !label.startsWith("!") || label.count { it == '!' } != 2 } // excluding the special labels
 }
