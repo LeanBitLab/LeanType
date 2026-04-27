@@ -1,5 +1,5 @@
 [popup_keys]
-punctuation !autoColumnOrder!8 \, ՞ ՜ ․ … ' = / ՝ ՛ ֊ » « ― ) (
+punctuation !autoOrder!8 \, ՞ ՜ ․ … ' = / ՝ ՛ ֊ » « ― ) (
 ? ՞ ¿
 ! ՜ ¡
 

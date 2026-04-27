@@ -6,7 +6,7 @@ o ó º
 u ú ü
 n ñ
 y ý
-punctuation !autoColumnOrder!9 \, ? ! # ) ( / ; ¡ ' @ : - " + \% & ¿
+punctuation !autoOrder!9 \, ? ! # ) ( / ; ¡ ' @ : - " + \% & ¿
 
 [extra_keys]
 2: ñ

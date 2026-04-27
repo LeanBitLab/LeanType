@@ -122,7 +122,7 @@
     },
     { "$": "shift_state_selector",
       "manualOrLocked": { "label": "ঁ", "popup": { "relevant": [
-            { "label": "!autoColumnOrder!6"},
+            { "label": "!autoOrder!6"},
             { "label": "়" },
             { "label": "ৄ"},
             { "label": "ঽ"},

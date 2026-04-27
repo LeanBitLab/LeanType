@@ -6,7 +6,7 @@ o ò ó
 u ú ü
 c ç
 l l·l
-punctuation !autoColumnOrder!9 \, ? ! · # ) ( / ; ' @ : - " + \% &
+punctuation !autoOrder!9 \, ? ! · # ) ( / ; ' @ : - " + \% &
 
 [extra_keys]
 2: ç

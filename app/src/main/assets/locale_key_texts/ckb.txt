@@ -22,7 +22,7 @@
 ز ظ
 ع ؏
 ب ى 
-punctuation !autoColumnOrder!8 \؟ ! ، ٫ ؍ : ؛ ; : | - @ _ # * ٪ & ^
+punctuation !autoOrder!8 \؟ ! ، ٫ ؍ : ؛ ; : | - @ _ # * ٪ & ^
 « „ “ ”
 » ‚ ‘ ’ ‹ ›
 

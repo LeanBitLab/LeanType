@@ -1,7 +1,7 @@
 [popup_keys]
 ट ़
 ् ऽ
-punctuation !autoColumnOrder!9 . \, ? ! # ) ( / ; ' @ : - " + \% &
+punctuation !autoOrder!9 . \, ? ! # ) ( / ; ' @ : - " + \% &
 त्त ञ ज्ञ ॥
 ड्ढ ई
 ऐ घ

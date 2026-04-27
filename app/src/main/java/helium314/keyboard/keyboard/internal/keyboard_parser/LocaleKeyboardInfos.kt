@@ -53,15 +53,15 @@ class LocaleKeyboardInfos(dataStream: InputStream?, locale: Locale) {
         // should this also be done with punctuation popupKeys?
         // todo: those defaults should not be in here
         if ("\'" !in popupKeys)
-            popupKeys["\'"] = mutableListOf("!fixedColumnOrder!5", "‚", "‘", "’", "‹", "›")
+            popupKeys["\'"] = mutableListOf("!fixedOrder!5", "‚", "‘", "’", "‹", "›")
         if ("\"" !in popupKeys)
-            popupKeys["\""] = mutableListOf("!fixedColumnOrder!5", "„", "“", "”", "«", "»")
+            popupKeys["\""] = mutableListOf("!fixedOrder!5", "„", "“", "”", "«", "»")
         if ("!" !in popupKeys)
             popupKeys["!"] = mutableListOf("¡")
         if (labelQuestion !in popupKeys)
             popupKeys[labelQuestion] = if (labelQuestion == "?") mutableListOf("¿") else mutableListOf("?", "¿")
         if ("punctuation" !in popupKeys)
-            popupKeys["punctuation"] = mutableListOf("${Key.POPUP_KEYS_AUTO_COLUMN_ORDER}8", "\\,", "?", "!", "#", ")", "(", "/", ";", "'", "@", ":", "-", "\"", "+", "\\%", "&")
+            popupKeys["punctuation"] = mutableListOf("${Key.POPUP_KEYS_AUTO_ORDER}8", "\\,", "?", "!", "#", ")", "(", "/", ";", "'", "@", ":", "-", "\"", "+", "\\%", "&")
     }
 
     private fun readStream(stream: InputStream?, onlyPopupKeys: Boolean, priority: Boolean) {
@@ -170,21 +170,21 @@ class LocaleKeyboardInfos(dataStream: InputStream?, locale: Locale) {
 
 private fun addFixedColumnOrder(popupKeys: MutableCollection<String>) {
     // use intermediate list, because we can't add first in a LinkedHashSet (i.e. MutableSet)
-    popupKeys.removeAll { it.startsWith(Key.POPUP_KEYS_FIXED_COLUMN_ORDER) }
+    popupKeys.removeAll { it.startsWith(Key.POPUP_KEYS_FIXED_ORDER) }
     val temp = popupKeys.toList()
     popupKeys.clear()
-    popupKeys.add("${Key.POPUP_KEYS_FIXED_COLUMN_ORDER}${temp.size}")
+    popupKeys.add("${Key.POPUP_KEYS_FIXED_ORDER}${temp.size}")
     popupKeys.addAll(temp)
 }
 
 private fun adjustAutoColumnOrder(popupKeys: MutableCollection<String>) {
     // same style as above
-    // currently, POPUP_KEYS_AUTO_COLUMN_ORDER is only used for 2 lines of punctuation popups, so assume 2 lines
-    if (!popupKeys.removeAll { it.startsWith(Key.POPUP_KEYS_AUTO_COLUMN_ORDER) })
+    // currently, POPUP_KEYS_AUTO_ORDER is only used for 2 lines of punctuation popups, so assume 2 lines
+    if (!popupKeys.removeAll { it.startsWith(Key.POPUP_KEYS_AUTO_ORDER) })
         return
     val temp = popupKeys.toList()
     popupKeys.clear()
-    popupKeys.add("${Key.POPUP_KEYS_AUTO_COLUMN_ORDER}${((temp.size + 1) / 2).coerceAtMost(9)}")
+    popupKeys.add("${Key.POPUP_KEYS_AUTO_ORDER}${((temp.size + 1) / 2).coerceAtMost(9)}")
     popupKeys.addAll(temp)
 }
 
