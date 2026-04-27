@@ -119,9 +119,8 @@ fun <T>DropDownField(
 
 @Composable
 fun isWideScreen(): Boolean {
-    val width = LocalConfiguration.current.screenWidthDp
-    val height = LocalConfiguration.current.screenHeightDp
-    return height < 500 && width > height
+    val config = LocalConfiguration.current
+    return config.screenWidthDp > 600
 }
 
 val contentTextDirectionStyle = TextStyle(textDirection = TextDirection.Content)
