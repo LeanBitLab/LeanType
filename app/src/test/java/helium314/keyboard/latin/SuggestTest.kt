@@ -39,7 +39,7 @@ import kotlin.test.assertEquals
 ])
 class SuggestTest {
     private lateinit var latinIME: LatinIME
-    private val suggest get() = latinIME.mInputLogic.suggest
+    private val suggest get() = latinIME.mInputLogic.mSuggest
 
     // values taken from the string array auto_correction_threshold_mode_indexes
     private val thresholdModest = 0.185f

@@ -55,10 +55,10 @@ class InputLogicTest {
     private lateinit var latinIME: LatinIME
     private val settingsValues get() = Settings.getValues()
     private val inputLogic get() = latinIME.mInputLogic
-    private val connection: RichInputConnection get() = inputLogic.connection
-    private val composerReader = helium314.keyboard.latin.inputlogic.InputLogic::class.java.getDeclaredField("mWordComposer").apply { isAccessible = true }
+    private val connection: RichInputConnection get() = inputLogic.mConnection
+    private val composerReader = InputLogic::class.java.getDeclaredField("mWordComposer").apply { isAccessible = true }
     private val composer get() = composerReader.get(inputLogic) as WordComposer
-    private val spaceStateReader = helium314.keyboard.latin.inputlogic.InputLogic::class.java.getDeclaredField("mSpaceState").apply { isAccessible = true }
+    private val spaceStateReader = InputLogic::class.java.getDeclaredField("mSpaceState").apply { isAccessible = true }
     private val spaceState get() = spaceStateReader.get(inputLogic) as Int
     private val beforeComposingReader = RichInputConnection::class.java.getDeclaredField("mCommittedTextBeforeComposingText").apply { isAccessible = true }
     private val connectionTextBeforeComposingText get() = (beforeComposingReader.get(connection) as CharSequence).toString()
@@ -755,7 +755,7 @@ class InputLogicTest {
 
         if (currentScript != ScriptUtils.SCRIPT_HANGUL // check fails if hangul combiner merges symbols
             && !(codePoint == Constants.CODE_SPACE && oldBefore.lastOrNull() == ' ') // check fails when 2 spaces are converted into a period
-            && !latinIME.mInputLogic.suggestedWords.mWillAutoCorrect // autocorrect obviously creates inconsistencies
+            && !latinIME.mInputLogic.mSuggestedWords.mWillAutoCorrect // autocorrect obviously creates inconsistencies
             ) {
             if (phantomSpaceToInsert.isEmpty())
                 assertEquals(oldBefore + insert, textBeforeCursor)
