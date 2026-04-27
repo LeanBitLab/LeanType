@@ -169,7 +169,7 @@ fun createAboutSettings(context: Context) = listOf(
             scope.launch(Dispatchers.IO) {
                 ctx.getActivity()?.contentResolver?.openOutputStream(uri)?.use { os ->
                     os.writer().use { writer ->
-                        val logcat = Runtime.getRuntime().exec("logcat -d -b all *:W").inputStream.use { it.reader().readText() }
+                        val logcat = ProcessBuilder("logcat", "-d", "-b", "all", "*:W").start().inputStream.use { it.reader().readText() }
                         val internal = Log.getLog().joinToString("\n")
                         writer.write(logcat + "\n\n" + internal)
                     }
