@@ -213,7 +213,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         Log.i(TAG, "Floating keyboard shown at ${floatingWidth}px width")
     }
 
-    fun hide() {
+    fun hide(showDockedKeyboard: Boolean = true) {
         if (!isFloating) return
 
         // Clear the floating width override FIRST
@@ -240,7 +240,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         isFloating = false
 
         // Show the IME window again
-        latinIME.onFloatingKeyboardHidden()
+        latinIME.onFloatingKeyboardHidden(showDockedKeyboard)
 
         // Reload keyboard at full width so keys re-measure properly
         KeyboardSwitcher.getInstance().reloadKeyboard()

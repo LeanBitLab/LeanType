@@ -149,9 +149,14 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     ).apply { gravity = android.view.Gravity.CENTER_VERTICAL }
 
     init {
-        isToolbarManuallyOpen = Settings.getValues().mAutoShowToolbar
+        val settingsValues = Settings.getValues()
+        if (settingsValues.mRememberToolbarState) {
+            isToolbarManuallyOpen = context.prefs().getBoolean(Settings.PREF_TOOLBAR_EXPANDED, settingsValues.mAutoShowToolbar)
+        } else {
+            isToolbarManuallyOpen = settingsValues.mAutoShowToolbar
+        }
         
-        val colors = Settings.getValues().mColors
+        val colors = settingsValues.mColors
 
         // expand key
         // weird way of setting size (default is config_suggestions_strip_edge_key_width)
@@ -343,12 +348,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
 
         toolbarExpandKey.scaleX = (if (toolbarVisible && !locked) -1f else 1f) * direction
+
+        if (saveState && Settings.getValues().mRememberToolbarState) {
+            context.prefs().edit().putBoolean(Settings.PREF_TOOLBAR_EXPANDED, toolbarVisible).apply()
+        }
     }
 
-    /** Collapse the toolbar and show suggestions instead. Called from LatinIME.onStartInputView(). */
-    fun foldToolbar() {
+    /** Collapse the toolbar and show suggestions instead. Called from LatinIME.onStartInputView() or for auto-hide. */
+    fun foldToolbar(saveState: Boolean = false) {
         isToolbarManuallyOpen = false
-        setToolbarVisibility(false, saveState = false)
+        setToolbarVisibility(false, saveState = saveState)
     }
 
     fun setSuggestions(suggestions: SuggestedWords, isRtlLanguage: Boolean) {
@@ -553,7 +562,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (view === toolbarExpandKey) {
             val willBeVisible = toolbarContainer.visibility != VISIBLE
             isToolbarManuallyOpen = willBeVisible
-            setToolbarVisibility(willBeVisible, saveState = false)
+            setToolbarVisibility(willBeVisible, saveState = true)
         }
 
         // tag for word views is set in SuggestionStripLayoutHelper (setupWordViewsTextAndColor, layoutPunctuationSuggestions)

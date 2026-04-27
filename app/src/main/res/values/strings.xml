@@ -1125,10 +1125,8 @@ New dictionary:
     <string name="auto_hide_pinned_keys">Auto hide pinned keys</string>
     <!-- Description of the setting to auto hide pinned keys when toolbar is expanded -->
     <string name="auto_hide_pinned_keys_summary">Hide pinned keys when the toolbar is expanded</string>
-    <!-- Title of the setting to auto fold toolbar on keyboard open -->
-    <string name="auto_fold_toolbar">Auto-fold toolbar</string>
-    <!-- Description of the setting to auto fold toolbar on keyboard open -->
-    <string name="auto_fold_toolbar_summary">Automatically collapse the toolbar when the keyboard opens</string>
+    <string name="remember_toolbar_state">Remember toolbar state</string>
+    <string name="remember_toolbar_state_summary">Keep the toolbar expanded or collapsed between sessions and while typing</string>
     <!-- Content description for the close button in translate language selector -->
     <string name="close_translate_language_selector">Close language selector</string>
     <!-- Toast message shown when content is copied to the clipboard -->

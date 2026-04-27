@@ -804,13 +804,16 @@ public class LatinIME extends InputMethodService implements
      * Called by FloatingKeyboardManager when the floating overlay is dismissed.
      * Restores the IME input view and re-shows the IME window.
      */
-    public void onFloatingKeyboardHidden() {
+    public void onFloatingKeyboardHidden(boolean showDockedKeyboard) {
         // Recreate the entire input view to fix bottom navigation/chin overlaps
         setInputView(onCreateInputView());
         updateInputViewShown();
         
-        // Re-show the IME window
-        startShowingInputView(true);
+        if (showDockedKeyboard) {
+            // Re-show the IME window
+            requestShowSelf(0);
+            startShowingInputView(true);
+        }
     }
 
     @Override
@@ -843,7 +846,7 @@ public class LatinIME extends InputMethodService implements
         // Auto-dismiss floating keyboard when the input session ends
         // (user navigated away from text input)
         if (mFloatingKeyboardManager != null && mFloatingKeyboardManager.isFloating()) {
-            mFloatingKeyboardManager.hide();
+            mFloatingKeyboardManager.hide(false);
         }
     }
 
@@ -1049,9 +1052,11 @@ public class LatinIME extends InputMethodService implements
             // Space state must be updated before calling updateShiftState
             switcher.requestUpdatingShiftState(getCurrentAutoCapsState(), getCurrentRecapitalizeState());
         }
-        // Auto-fold: collapse toolbar when keyboard opens (if enabled)
-        if (hasSuggestionStripView() && currentSettingsValues.mAutoFoldToolbar) {
-            mSuggestionStripView.foldToolbar();
+        // Reset toolbar state if we are not remembering it
+        if (hasSuggestionStripView() && !currentSettingsValues.mRememberToolbarState) {
+            boolean defaultVisible = currentSettingsValues.mAutoShowToolbar;
+            mSuggestionStripView.setToolbarManuallyOpen(defaultVisible);
+            mSuggestionStripView.setToolbarVisibility(defaultVisible, false);
         }
         // Set neutral suggestions and show the toolbar if the "Auto show toolbar"
         // setting is enabled.
@@ -1651,7 +1656,7 @@ public class LatinIME extends InputMethodService implements
                     mRichImm.getCurrentSubtype().isRtlSubtype());
             // Auto hide the toolbar if dictionary suggestions are available
             if (currentSettingsValues.mAutoHideToolbar && !noSuggestionsFromDictionaries) {
-                mSuggestionStripView.setToolbarVisibility(false);
+                mSuggestionStripView.foldToolbar(true);
             }
         }
     }
