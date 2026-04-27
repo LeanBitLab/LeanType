@@ -1,18 +1,50 @@
 package helium314.keyboard.latin.utils;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricTestRunner.class)
 public class JsonUtilsTest {
+
+    @Test
+    public void testListToJsonStr() {
+        // null list
+        assertEquals("", JsonUtils.listToJsonStr(null));
+
+        // empty list
+        assertEquals("", JsonUtils.listToJsonStr(Collections.emptyList()));
+
+        // list with integers and strings
+        List<Object> list = Arrays.asList(1, "hello", 2, "world");
+        String expected = "[{\"Integer\":1},{\"String\":\"hello\"},{\"Integer\":2},{\"String\":\"world\"}]";
+        assertEquals(expected, JsonUtils.listToJsonStr(list));
+
+        // list with unsupported types (they should be serialized as empty objects)
+        List<Object> listWithUnsupported = Arrays.asList(1, 3.14, "test");
+        String expectedWithUnsupported = "[{\"Integer\":1},{},{\"String\":\"test\"}]";
+        assertEquals(expectedWithUnsupported, JsonUtils.listToJsonStr(listWithUnsupported));
+    }
+
+    @Test
+    public void testJsonStrToList() {
+        // empty or invalid
+        assertTrue(JsonUtils.jsonStrToList("").isEmpty());
+
+        // Test parsing the generated string back
+        List<Object> originalList = Arrays.asList(1, "hello", 2, "world");
+        String json = JsonUtils.listToJsonStr(originalList);
+        List<Object> parsedList = JsonUtils.jsonStrToList(json);
+        assertEquals(originalList, parsedList);
+    }
 
     @Test
     public void testJsonStrToListValid() {
@@ -35,20 +67,5 @@ public class JsonUtilsTest {
         // 2. Syntax error in property name
         List<Object> result2 = JsonUtils.jsonStrToList("[ { Integer: 123 } ]");
         assertTrue("Expected empty list for JSON with syntax error", result2.isEmpty());
-    }
-
-    @Test
-    public void testListToJsonStr() {
-        // When processing an object of unsupported type (like 45.6, Double),
-        // it still calls writer.beginObject() and writer.endObject(), adding "{}"
-        List<Object> list = Arrays.asList(123, "test", 45.6);
-        String json = JsonUtils.listToJsonStr(list);
-        assertEquals("[{\"Integer\":123},{\"String\":\"test\"},{}]", json);
-    }
-
-    @Test
-    public void testListToJsonStrEmpty() {
-        assertEquals("", JsonUtils.listToJsonStr(null));
-        assertEquals("", JsonUtils.listToJsonStr(Arrays.asList()));
     }
 }
