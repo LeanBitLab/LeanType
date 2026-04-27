@@ -110,8 +110,8 @@ You can also specify special key codes like `a|!code/key_action_previous` or `ab
   * `!noPanelAutoPopupKey!`: no popups are shown, a long press will result in the first normal popup of the key being selected
   * `!needsDividers!`: dividers are shown between popup keys
   * `!hasLabels!`: reduces text size in popup keys for nicer display of labels instead of letters
-  * `!autoColumnOrder!`: use with a number, e.g. _!autoColumnOrder!4_ will result in 4 popup columns
-  * `!fixedColumnOrder!`: use with a number, e.g. _!fixedColumnOrder!4_ will result in 4 popup columns. Keys will not be re-ordered if the result is a single line.
+  * `!autoOrder!`: use with a number, e.g. _!autoOrder!4_ will result in 4 popup columns
+  * `!fixedOrder!`: use with a number, e.g. _!fixedOrder!4_ will result in 4 popup columns. Keys will not be re-ordered if the result is a single line.
 
 ## Adding new layouts / languages
 * You need a layout file in one of the formats above, and add it to [layouts](app/src/main/assets/layouts)

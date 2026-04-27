@@ -93,7 +93,7 @@
         "popup": {
           "relevant": [
             {
-              "label": "!fixedColumnOrder!2"
+              "label": "!fixedOrder!2"
             },
             {
               "label": "!hasLabels!"
@@ -115,7 +115,7 @@
         "popup": {
           "relevant": [
             {
-              "label": "!fixedColumnOrder!2"
+              "label": "!fixedOrder!2"
             },
             {
               "label": "!hasLabels!"

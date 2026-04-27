@@ -122,13 +122,13 @@ sealed interface KeyData : AbstractKeyData {
                     popupKeys[i] = popupKeys[i].rtlLabel(params) // for parentheses
             }
             if (params.setTabletExtraKeys && popupKeys.contains("!") && popupKeys.contains("?")) {
-                // remove ! and ? keys and reduce number in autoColumnOrder
+                // remove ! and ? keys and reduce number in autoOrder
                 // this makes use of removal of empty popupKeys in PopupKeySpec.insertAdditionalPopupKeys
                 popupKeys[popupKeys.indexOf("!")] = ""
                 popupKeys[popupKeys.indexOf("?")] = ""
-                val columns = popupKeys[0].substringAfter(Key.POPUP_KEYS_AUTO_COLUMN_ORDER).toIntOrNull()
+                val columns = popupKeys[0].substringAfter(Key.POPUP_KEYS_AUTO_ORDER).toIntOrNull()
                 if (columns != null)
-                    popupKeys[0] = "${Key.POPUP_KEYS_AUTO_COLUMN_ORDER}${columns - 1}"
+                    popupKeys[0] = "${Key.POPUP_KEYS_AUTO_ORDER}${columns - 1}"
             }
             return popupKeys
         }
@@ -208,9 +208,9 @@ sealed interface KeyData : AbstractKeyData {
             // (probably not necessary, but whatever) and in emoji mode
             if ((Settings.getInstance().isTablet || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_BOTTOM_ROW)
                 && popupKeys.remove("!icon/emoji_action_key|!code/key_emoji")) {
-                val i = popupKeys.indexOfFirst { it.startsWith(Key.POPUP_KEYS_FIXED_COLUMN_ORDER) }
+                val i = popupKeys.indexOfFirst { it.startsWith(Key.POPUP_KEYS_FIXED_ORDER) }
                 if (i > -1) {
-                    val n = popupKeys[i].substringAfter(Key.POPUP_KEYS_FIXED_COLUMN_ORDER).toIntOrNull()
+                    val n = popupKeys[i].substringAfter(Key.POPUP_KEYS_FIXED_ORDER).toIntOrNull()
                     if (n != null)
                         popupKeys[i] = popupKeys[i].replace(n.toString(), (n - 1).toString())
                 }
@@ -245,11 +245,11 @@ sealed interface KeyData : AbstractKeyData {
         // could make arrays right away, but they need to be copied anyway as popupKeys arrays are modified when creating KeyParams
         private const val POPUP_KEYS_NAVIGATE_PREVIOUS = "!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard"
         private const val POPUP_KEYS_NAVIGATE_NEXT = "!icon/clipboard_action_key|!code/key_clipboard,!icon/next_key|!code/key_action_next"
-        private const val POPUP_KEYS_NAVIGATE_PREVIOUS_NEXT = "!fixedColumnOrder!3,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/next_key|!code/key_action_next"
-        private const val POPUP_KEYS_NAVIGATE_EMOJI_PREVIOUS = "!fixedColumnOrder!3,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji"
+        private const val POPUP_KEYS_NAVIGATE_PREVIOUS_NEXT = "!fixedOrder!3,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/next_key|!code/key_action_next"
+        private const val POPUP_KEYS_NAVIGATE_EMOJI_PREVIOUS = "!fixedOrder!3,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji"
         private const val POPUP_KEYS_NAVIGATE_EMOJI = "!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji"
-        private const val POPUP_KEYS_NAVIGATE_EMOJI_NEXT = "!fixedColumnOrder!3,!needsDividers!,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji,!icon/next_key|!code/key_action_next"
-        private const val POPUP_KEYS_NAVIGATE_EMOJI_PREVIOUS_NEXT = "!fixedColumnOrder!4,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji,!icon/next_key|!code/key_action_next"
+        private const val POPUP_KEYS_NAVIGATE_EMOJI_NEXT = "!fixedOrder!3,!needsDividers!,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji,!icon/next_key|!code/key_action_next"
+        private const val POPUP_KEYS_NAVIGATE_EMOJI_PREVIOUS_NEXT = "!fixedOrder!4,!needsDividers!,!icon/previous_key|!code/key_action_previous,!icon/clipboard_action_key|!code/key_clipboard,!icon/emoji_action_key|!code/key_emoji,!icon/next_key|!code/key_action_next"
     }
 
     /** get the label, but also considers code, which can't be set separately for popup keys and thus goes into the label */

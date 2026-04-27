@@ -11,7 +11,7 @@ g ğ ģ ġ
 c ç ć č ċ
 z ž ź ż
 l ł ĺ ļ ľ ŀ
-punctuation !autoColumnOrder!9 \, ? ! # ) ( / ; ' @ : - " + \% & ¡ ¿
+punctuation !autoOrder!9 \, ? ! # ) ( / ; ' @ : - " + \% & ¡ ¿
 d ď đ ð
 r ř ŕ ŗ
 t ť ţ þ ț ŧ

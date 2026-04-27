@@ -27,5 +27,5 @@ $$$4
 [
 ]
 
-< !fixedColumnOrder!3 ‹ ≤ «
-> !fixedColumnOrder!3 › ≥ »
+< !fixedOrder!3 ‹ ≤ «
+> !fixedOrder!3 › ≥ »

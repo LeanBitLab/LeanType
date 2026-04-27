@@ -1,11 +1,11 @@
 [popup_keys]
 ه ﻫ|ه‍ هٔ ة
 ی ئ ي ﯨ|ى
-ا !fixedColumnOrder!5 ٱ ء آ أ إ
+ا !fixedOrder!5 ٱ ء آ أ إ
 ت ة
 ک ك
 و ؤ
-punctuation !fixedColumnOrder!7  ٕ|ٕ  ْ|ْ  ّ|ّ  ٌ|ٌ  ٍ|ٍ  ً|ً  ٔ|ٔ  ٖ|ٖ  ٰ|ٰ  ٓ|ٓ  ُ|ُ  ِ|ِ  َ|َ ـــ|ـ
+punctuation !fixedOrder!7  ٕ|ٕ  ْ|ْ  ّ|ّ  ٌ|ٌ  ٍ|ٍ  ً|ً  ٔ|ٔ  ٖ|ٖ  ٰ|ٰ  ٓ|ٓ  ُ|ُ  ِ|ِ  َ|َ ـــ|ـ
 « „ “ ”
 » ‚ ‘ ’ ‹ ›
 
