@@ -4,6 +4,7 @@ package helium314.keyboard
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodSubtype
 import com.android.inputmethod.keyboard.ProximityInfo
+import helium314.keyboard.keyboard.Key
 import helium314.keyboard.keyboard.Key.KeyParams
 import helium314.keyboard.keyboard.Keyboard
 import helium314.keyboard.keyboard.KeyboardId
@@ -56,7 +57,26 @@ class ParserTest {
         addLocaleKeyTextsToParams(latinIME, params, POPUP_KEYS_NORMAL)
     }
 
-    // todo: add tests for background type, also consider e.g. emoji key has functional bg by default
+    @Test fun backgroundType() {
+        // CHARACTER -> NORMAL
+        assertIsExpected("""[[{ "label": "a", "type": "character" }]]""", Expected('a'.code, "a", background = Key.BACKGROUND_TYPE_NORMAL))
+        // NUMERIC -> NORMAL
+        assertIsExpected("""[[{ "label": "1", "type": "numeric" }]]""", Expected('1'.code, "1", background = Key.BACKGROUND_TYPE_NORMAL))
+        // FUNCTION -> FUNCTIONAL
+        assertIsExpected("""[[{ "label": "f1", "type": "function" }]]""", Expected(KeyCode.MULTIPLE_CODE_POINTS, "f1", background = Key.BACKGROUND_TYPE_FUNCTIONAL))
+        // ENTER_EDITING -> ACTION
+        assertIsExpected("""[[{ "label": "ent", "type": "enter_editing" }]]""", Expected(KeyCode.MULTIPLE_CODE_POINTS, "ent", background = Key.BACKGROUND_TYPE_ACTION))
+        // NAVIGATION -> SPACEBAR
+        assertIsExpected("""[[{ "label": "tab", "type": "navigation" }]]""", Expected(KeyCode.MULTIPLE_CODE_POINTS, "tab", background = Key.BACKGROUND_TYPE_SPACEBAR))
+
+        // default backgrounds (type is null)
+        // emoji -> FUNCTIONAL
+        assertIsExpected("""[[{ "label": "emoji" }]]""", Expected(KeyCode.EMOJI, background = Key.BACKGROUND_TYPE_FUNCTIONAL))
+        // space -> SPACEBAR
+        assertIsExpected("""[[{ "label": "space" }]]""", Expected(32, background = Key.BACKGROUND_TYPE_SPACEBAR))
+        // action -> ACTION
+        assertIsExpected("""[[{ "label": "action" }]]""", Expected(10, background = Key.BACKGROUND_TYPE_ACTION))
+    }
 
     @Test fun simpleParser() {
         val layoutStrings = listOf(
@@ -509,7 +529,7 @@ f""", // no newline at the end
         assertEquals(KeyCode.TIMESTAMP, keys[6].mPopupKeys?.first()?.mCode)
     }
 
-    private data class Expected(val code: Int, val label: String? = null, val icon: String? = null, val text: String? = null, val popups: List<Pair<String?, Int>>? = null)
+    private data class Expected(val code: Int, val label: String? = null, val icon: String? = null, val text: String? = null, val popups: List<Pair<String?, Int>>? = null, val background: Int? = null)
 
     private fun assertIsExpected(json: String, expected: Expected) {
         assertAreExpected(json, listOf(expected))
@@ -528,6 +548,7 @@ f""", // no newline at the end
             // todo (later): what's wrong with popup order?
             assertEquals(expected[index].popups?.sortedBy { it.first }, keyParams.mPopupKeys?.mapNotNull { it.mLabel to it.mCode }?.sortedBy { it.first })
             assertEquals(expected[index].text, keyParams.outputText)
+            expected[index].background?.let { assertEquals(it, keyParams.mBackgroundType) }
             assertTrue(LayoutUtilsCustom.checkKeys(listOf(listOf(keyParams))))
         }
     }
