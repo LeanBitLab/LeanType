@@ -35,11 +35,12 @@ public class CombinedFormatUtils {
         if (attributeMap.containsKey(DictionaryHeader.DICTIONARY_ID_KEY)) {
             builder.append(attributeMap.get(DictionaryHeader.DICTIONARY_ID_KEY));
         }
-        for (final String key : attributeMap.keySet()) {
+        for (final java.util.Map.Entry<String, String> entry : attributeMap.entrySet()) {
+            final String key = entry.getKey();
             if (key.equals(DictionaryHeader.DICTIONARY_ID_KEY)) {
                 continue;
             }
-            final String value = attributeMap.get(key);
+            final String value = entry.getValue();
             builder.append("," + key + "=" + value);
         }
         builder.append("\n");
