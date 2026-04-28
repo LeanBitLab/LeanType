@@ -139,11 +139,11 @@ class StringUtilsTest {
     @Test fun detectEmojisAtEndFail() {
         if (BuildConfig.BUILD_TYPE == "runTests") return
         // fails, but unlikely enough that we leave it unfixed
-        assertEquals("\uD83C\uDFFC", getFullEmojiAtEnd("\uD83C\uDF84\uD83C\uDFFC")) // 🎄🏼
+        assertEquals("\uD83C\uDF84\uD83C\uDFFC", getFullEmojiAtEnd("\uD83C\uDF84\uD83C\uDFFC")) // 🎄🏼
         // below also fail, because current ZWJ handling is not suitable for some unusual cases
-        assertEquals("", getFullEmojiAtEnd("\u200D"))
-        assertEquals("", getFullEmojiAtEnd("a\u200D"))
-        assertEquals("\uD83D\uDE22", getFullEmojiAtEnd(" \u200D\uD83D\uDE22"))
+        assertEquals("\u200D", getFullEmojiAtEnd("\u200D"))
+        assertEquals("\u200D", getFullEmojiAtEnd("a\u200D"))
+        assertEquals("\u200D\uD83D\uDE22", getFullEmojiAtEnd(" \u200D\uD83D\uDE22"))
     }
 
     @Test fun isEmojiDetectsSingleEmojis() {
@@ -166,18 +166,25 @@ class StringUtilsTest {
 
         val brokenDetectionAtStart = listOf("〰️", "〽️", "©️", "®️", "#️⃣", "*️⃣", "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "㊗️", "㊙️")
         allEmojis.forEach {
-            if (it == "🀄" || it == "🃏") return@forEach // todo: should be fixed, ideally in the regex
-            assert(isEmoji(it))
+            assert(isEmoji(it)) { "Failed isEmoji for $it" }
             assert(StringUtils.mightBeEmoji(it.codePointBefore(it.length)))
             if (it !in brokenDetectionAtStart)
                 assert(StringUtils.mightBeEmoji(it.codePointAt(0)))
         }
     }
 
-    // todo: add tests for emoji detection?
-    //  could help towards fully fixing https://github.com/Helium314/HeliBoard/issues/22
-    //  though this might be tricky, as some emojis will show as one on new Android versions, and
-    //  as two on older versions (also may differ by app)
+    @Test fun testGetFullEmojiAtEndWithAllAvailableEmojis() {
+        val ctx = ApplicationProvider.getApplicationContext<App>()
+        val allEmojis = ctx.assets.list("emoji")!!.flatMap {
+            if (it == "minApi.txt" || it == "EMOTICONS.txt") return@flatMap emptyList()
+            ctx.assets.open("emoji/$it").reader().readLines()
+        }.flatMap { it.splitOnWhitespace() }
+
+        allEmojis.forEach {
+            val emojiAtEnd = getFullEmojiAtEnd(it)
+            assertEquals(it, emojiAtEnd, "Failed getFullEmojiAtEnd for $it")
+        }
+    }
 
     private fun checkTextRange(before: String, after: String, sp: SpacingAndPunctuations, script: String, wordStart: Int, wordEnd: Int) {
         val got = getTouchedWordRange(before, after, script, sp)
