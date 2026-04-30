@@ -142,6 +142,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         setColor(Color.TRANSPARENT)
     }
     private var isLoadingAnimationActive = false
+    private var transientToolbarKeys: List<ToolbarKey> = emptyList()
 
     private val toolbarKeyLayoutParams = LinearLayout.LayoutParams(
         resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width),
@@ -382,6 +383,11 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     fun setExternalSuggestionView(view: View?, addCloseButton: Boolean) {
+        setExternalSuggestionView(view, addCloseButton, false)
+    }
+
+    fun setExternalSuggestionView(view: View?, addCloseButton: Boolean, fillAvailableWidth: Boolean) {
+        if (view == null) return
         clear()
         if (view == null) {
             isExternalSuggestionVisible = false
@@ -392,7 +398,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         if (addCloseButton) {
             val wrapper = LinearLayout(context)
-            wrapper.layoutParams = LinearLayout.LayoutParams(suggestionsStrip.width - 30.dpToPx(resources), LayoutParams.MATCH_PARENT)
+            wrapper.layoutParams = if (fillAvailableWidth) {
+                LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1f)
+            } else {
+                LinearLayout.LayoutParams(suggestionsStrip.width - 30.dpToPx(resources), LayoutParams.MATCH_PARENT)
+            }
+            view.layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
             wrapper.addView(view)
             suggestionsStrip.addView(wrapper)
 
@@ -409,6 +420,14 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         if (Settings.getValues().mAutoHideToolbar) setToolbarVisibility(false, saveState = false)
         updateSplitToolbarState()
+    }
+
+    fun setTransientToolbarKeys(keys: List<ToolbarKey>) {
+        val distinctKeys = keys.distinct()
+        if (transientToolbarKeys == distinctKeys) return
+        transientToolbarKeys = distinctKeys
+        rebuildToolbarKeys()
+        updateKeys()
     }
 
     fun setMoreSuggestionsHeight(remainingHeight: Int) {
@@ -847,7 +866,6 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             // This prevents conflicts with auto-hide pinned keys logic
             layoutHelper.setSuggestionsCountInStrip(3)
         }
-        isExternalSuggestionVisible = false
     }
 
     private fun setupKey(view: ImageButton, colors: Colors) {
@@ -871,15 +889,17 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Toolbar keys setup
         // Always populate toolbar keys if mode allows, visibility handled in updateKeys
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS || mToolbarMode == ToolbarMode.EXPANDABLE) {
-            // In split mode, show ALL enabled keys in the toolbar, ignoring pin status
-            // When autoHidePinnedKeys=false: include pinned keys in toolbar too (they show side-by-side)
-            // When autoHidePinnedKeys=true: exclude pinned keys from toolbar (pinnedKeys container handles them)
+            // In split mode, show ALL enabled keys in the toolbar, ignoring pin status.
+            // When autoHidePinnedKeys=false: include pinned keys in toolbar too (they show side-by-side).
+            // When autoHidePinnedKeys=true: exclude pinned keys from toolbar (pinnedKeys container handles them).
+            val enabledKeys = getEnabledToolbarKeys(context.prefs())
             val keysToRender = if (isSplitToolbar || !Settings.getValues().mAutoHidePinnedKeys) {
-                getEnabledToolbarKeys(context.prefs())
+                transientToolbarKeys + enabledKeys
             } else {
-                getEnabledToolbarKeys(context.prefs()).filterNot { it in pinnedKeysList }
+                transientToolbarKeys + enabledKeys.filterNot { it in pinnedKeysList }
             }
-            for (key in keysToRender) {                val button = createToolbarKey(context, key)
+            for (key in keysToRender.distinct()) {
+                val button = createToolbarKey(context, key)
                 button.layoutParams = toolbarKeyLayoutParams
                 setupKey(button, colors)
                 toolbar.addView(button)

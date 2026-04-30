@@ -44,6 +44,8 @@ import helium314.keyboard.latin.Suggest.OnGetSuggestedWordsCallback;
 import helium314.keyboard.latin.SuggestedWords;
 import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo;
 import helium314.keyboard.latin.WordComposer;
+import helium314.keyboard.latin.ai.AiCandidateFeatureFactory;
+import helium314.keyboard.latin.ai.RichInputCandidateCommitter;
 import helium314.keyboard.latin.common.Constants;
 import helium314.keyboard.latin.common.InputPointers;
 import helium314.keyboard.latin.common.StringUtils;
@@ -1079,6 +1081,13 @@ public final class InputLogic {
                 break;
             case KeyCode.REDO:
                 sendDownUpKeyEventWithMetaState(KeyEvent.KEYCODE_Z, KeyEvent.META_CTRL_ON | KeyEvent.META_SHIFT_ON);
+                break;
+            case KeyCode.AI_CANDIDATES:
+                AiCandidateFeatureFactory.get().requestCandidates(
+                        mLatinIME,
+                        mConnection,
+                        mLatinIME.getCurrentInputEditorInfo(),
+                        new RichInputCandidateCommitter(mLatinIME, mConnection));
                 break;
             case KeyCode.CUSTOM_AI_1:
                 handleCustomAIKey(1);

@@ -379,8 +379,20 @@
     <string name="redo" tools:keep="@string/redo">Redo</string>
     <string name="close_history" tools:keep="@string/close_history">Close clipboard history</string>
     <string name="emoji" tools:keep="@string/emoji">Emoji</string>
+    <string name="ai_candidates" tools:keep="@string/ai_candidates">AI candidates</string>
     <!-- Proofreading feature strings -->
     <string name="proofread" tools:keep="@string/proofread">Proofread</string>
+    <string name="ai_candidates_loading">Generating AI candidates...</string>
+    <string name="ai_candidates_error">AI candidate generation failed</string>
+    <string name="ai_candidates_no_context">No text context available</string>
+    <string name="ai_candidates_privacy_blocked">AI candidates are disabled for this private field</string>
+    <string name="ai_candidates_commit_stale">Content changed. Generate again.</string>
+    <string name="ai_candidates_accessibility_service">LeanType WeChat Context</string>
+    <string name="ai_candidates_accessibility_description">Reads only visible WeChat messages when you tap AI candidates in LeanType.</string>
+    <string name="ai_candidates_accessibility_explainer">Enable "LeanType WeChat Context" to use visible WeChat messages. Return here and tap AI again.</string>
+    <string name="ai_candidates_open_accessibility">Open settings</string>
+    <string name="ai_candidates_wechat_consent">Visible WeChat messages will be sent to your configured AI provider only for this request.</string>
+    <string name="ai_candidates_agree_generate">Agree</string>
     <string name="proofread_loading">Proofreading…</string>
     <string name="proofread_success">Text proofread</string>
     <string name="proofread_error">Proofreading failed: %s</string>

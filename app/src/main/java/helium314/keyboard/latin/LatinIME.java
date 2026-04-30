@@ -54,6 +54,8 @@ import helium314.keyboard.keyboard.KeyboardLayoutSet;
 import helium314.keyboard.keyboard.KeyboardSwitcher;
 import helium314.keyboard.keyboard.MainKeyboardView;
 import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo;
+import helium314.keyboard.latin.ai.AiCancelReason;
+import helium314.keyboard.latin.ai.AiCandidateFeatureFactory;
 import helium314.keyboard.latin.common.ColorType;
 import helium314.keyboard.latin.common.Constants;
 import helium314.keyboard.latin.common.CoordinateUtils;
@@ -80,6 +82,7 @@ import helium314.keyboard.latin.utils.StatsUtilsManager;
 import helium314.keyboard.latin.utils.SubtypeLocaleUtils;
 import helium314.keyboard.latin.utils.SubtypeSettings;
 import helium314.keyboard.latin.utils.SubtypeState;
+import helium314.keyboard.latin.utils.ToolbarKey;
 import helium314.keyboard.latin.utils.ToolbarMode;
 import helium314.keyboard.settings.SettingsActivity2;
 import kotlin.Unit;
@@ -87,6 +90,7 @@ import kotlin.Unit;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -934,6 +938,7 @@ public class LatinIME extends InputMethodService implements
         if (DebugFlags.DEBUG_ENABLED) {
             EditorInfoCompatUtils.INSTANCE.debugLog(editorInfo, TAG);
         }
+        AiCandidateFeatureFactory.get().onStartInputView(this, editorInfo, mInputLogic.getConnection());
 
         // In landscape mode, this method gets called without the input view being
         // created.
@@ -1066,6 +1071,7 @@ public class LatinIME extends InputMethodService implements
             if (hasSuggestionStripView() && currentSettingsValues.mAutoShowToolbar && !tryShowClipboardSuggestion()) {
                 mSuggestionStripView.setToolbarVisibility(true);
             }
+            refreshAiCandidateToolbarKey();
         }
 
         mainKeyboardView.setMainDictionaryAvailability(mDictionaryFacilitator.hasAtLeastOneInitializedMainDictionary());
@@ -1122,6 +1128,7 @@ public class LatinIME extends InputMethodService implements
     void onFinishInputViewInternal(final boolean finishingInput) {
         super.onFinishInputView(finishingInput);
         Log.i(TAG, "onFinishInputView");
+        AiCandidateFeatureFactory.get().onFinishInputView();
         cleanupInternalStateForFinishInput();
     }
 
@@ -1173,6 +1180,7 @@ public class LatinIME extends InputMethodService implements
                 return;
             mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(), getCurrentRecapitalizeState());
         }
+        refreshAiCandidateToolbarKey();
     }
 
     /**
@@ -1215,6 +1223,7 @@ public class LatinIME extends InputMethodService implements
     @Override
     public void hideWindow() {
         Log.i(TAG, "hideWindow");
+        AiCandidateFeatureFactory.get().onHideWindow();
         if (hasSuggestionStripView() && mSettings.getCurrent().mToolbarMode == ToolbarMode.EXPANDABLE)
             mSuggestionStripView.setToolbarVisibility(false);
         mKeyboardSwitcher.onHideWindow();
@@ -1742,6 +1751,7 @@ public class LatinIME extends InputMethodService implements
             // clipboard suggestion has been set
             if (hasSuggestionStripView() && currentSettings.mAutoHideToolbar)
                 mSuggestionStripView.setToolbarVisibility(false);
+            refreshAiCandidateToolbarKey();
             return;
         }
         final SuggestedWords neutralSuggestions = currentSettings.mSuggestPunctuation
@@ -1755,6 +1765,7 @@ public class LatinIME extends InputMethodService implements
                 mSuggestionStripView.setToolbarVisibility(mSuggestionStripView.isToolbarManuallyOpen());
             }
         }
+        refreshAiCandidateToolbarKey();
     }
 
     public void showTranslateLanguageSelector() {
@@ -1770,8 +1781,28 @@ public class LatinIME extends InputMethodService implements
 
     @Override
     public void removeExternalSuggestions() {
+        AiCandidateFeatureFactory.get().cancelCurrentRequest(AiCancelReason.USER_CLOSED);
         setNeutralSuggestionStrip();
         mHandler.postResumeSuggestions(false);
+    }
+
+    public void setAiCandidateSuggestionView(final View view) {
+        if (!hasSuggestionStripView()) {
+            return;
+        }
+        mHandler.cancelResumeSuggestions();
+        mSuggestionStripView.setExternalSuggestionView(view, true, true);
+    }
+
+    public void refreshAiCandidateToolbarKey() {
+        if (!hasSuggestionStripView() || getCurrentInputEditorInfo() == null) {
+            return;
+        }
+        final boolean show = AiCandidateFeatureFactory.get().shouldShowTransientToolbarKey(
+                this, getCurrentInputEditorInfo(), mInputLogic.getConnection());
+        mSuggestionStripView.setTransientToolbarKeys(show
+                ? Collections.singletonList(ToolbarKey.AI_CANDIDATES)
+                : Collections.emptyList());
     }
 
     private void loadKeyboard() {
