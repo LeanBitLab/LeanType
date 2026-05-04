@@ -81,13 +81,12 @@ public final class InputLogic {
     private static final int[] EMPTY_CODE_POINTS = new int[0];
 
     // TODO : Remove this member when we can.
-    final LatinIME mLatinIME;
+    private final LatinIME mLatinIME;
     private final SuggestionStripViewAccessor mSuggestionStripViewAccessor;
 
     @NonNull
     private final InputLogicHandler mInputLogicHandler;
 
-    // TODO : make all these fields private as soon as possible.
     // Current space state of the input method. This can be any of the above
     // constants.
     private int mSpaceState;
@@ -98,7 +97,6 @@ public final class InputLogic {
     private SingleDictionaryFacilitator mEmojiDictionaryFacilitator;
 
     private LastComposedWord mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD;
-    // This has package visibility so it can be accessed from InputLogicHandler.
     private final WordComposer mWordComposer;
     private final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
