@@ -4,18 +4,19 @@
  * SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
  */
 
-package helium314.keyboard.latin.utils;
+package helium314.keyboard.latin.utils
 
 /**
  * A class for logging and debugging utility methods.
  */
-public final class DebugLogUtils {
+object DebugLogUtils {
     /**
      * Get the string representation of the current stack trace, for debugging purposes.
      * @return a readable, carriage-return-separated string for the current stack trace.
      */
-    public static String getStackTrace() {
-        return getStackTrace(Integer.MAX_VALUE - 1);
+    @JvmStatic
+    fun getStackTrace(): String {
+        return getStackTrace(Int.MAX_VALUE - 1)
     }
 
     /**
@@ -23,17 +24,20 @@ public final class DebugLogUtils {
      * @param limit the maximum number of stack frames to be returned.
      * @return a readable, carriage-return-separated string for the current stack trace.
      */
-    public static String getStackTrace(final int limit) {
-        final StringBuilder sb = new StringBuilder();
+    @JvmStatic
+    fun getStackTrace(limit: Int): String {
+        val sb = StringBuilder()
         try {
-            throw new RuntimeException();
-        } catch (final RuntimeException e) {
-            final StackTraceElement[] frames = e.getStackTrace();
+            throw RuntimeException()
+        } catch (e: RuntimeException) {
+            val frames = e.stackTrace
             // Start at 1 because the first frame is here and we don't care about it
-            for (int j = 1; j < frames.length && j < limit + 1; ++j) {
-                sb.append(frames[j].toString()).append("\n");
+            var j = 1
+            while (j < frames.size && j < limit + 1) {
+                sb.append(frames[j].toString()).append("\n")
+                ++j
             }
         }
-        return sb.toString();
+        return sb.toString()
     }
 }
