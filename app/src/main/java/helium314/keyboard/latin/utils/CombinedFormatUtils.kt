@@ -59,7 +59,7 @@ object CombinedFormatUtils {
         }
         builder.append("\n")
         if (wordProperty.mHasShortcuts) {
-            for (shortcutTarget in wordProperty.mShortcutTargets) {
+            for (shortcutTarget in wordProperty.mShortcutTargets.orEmpty()) {
                 builder.append("  $SHORTCUT_TAG=${shortcutTarget.mWord}")
                 builder.append(",")
                 builder.append(formatProbabilityInfo(shortcutTarget.mProbabilityInfo))
@@ -67,7 +67,7 @@ object CombinedFormatUtils {
             }
         }
         if (wordProperty.mHasNgrams) {
-            for (ngramProperty in wordProperty.mNgrams) {
+            for (ngramProperty in wordProperty.mNgrams.orEmpty()) {
                 builder.append(" $NGRAM_TAG=${ngramProperty.mTargetWord.mWord}")
                 builder.append(",")
                 builder.append(formatProbabilityInfo(ngramProperty.mTargetWord.mProbabilityInfo))
