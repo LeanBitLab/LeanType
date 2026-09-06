@@ -100,7 +100,7 @@ abstract class Dictionary(
      * @param typedWord the word to compare with
      * @return true if they are the same, false otherwise.
      */
-    protected open fun same(word: CharArray, length: Int, typedWord: String): Boolean {
+    open fun same(word: CharArray, length: Int, typedWord: String): Boolean {
         if (typedWord.length != length) {
             return false
         }
