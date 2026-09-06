@@ -4,15 +4,15 @@
  * SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
  */
 
-package helium314.keyboard.latin.inputlogic;
+package helium314.keyboard.latin.inputlogic
 
-import android.os.Bundle;
+import android.os.Bundle
 
 /**
  * Provides an interface matching
- * {@link android.view.inputmethod.InputConnection#performPrivateCommand(String,Bundle)}.
+ * [android.view.inputmethod.InputConnection.performPrivateCommand].
  */
-public interface PrivateCommandPerformer {
+fun interface PrivateCommandPerformer {
     /**
      * API to send private commands from an input method to its connected
      * editor. This can be used to provide domain-specific features that are
@@ -26,5 +26,5 @@ public interface PrivateCommandPerformer {
      * associated editor understood it), false if the input connection is no
      * longer valid.
      */
-    boolean performPrivateCommand(String action, Bundle data);
+    fun performPrivateCommand(action: String?, data: Bundle?): Boolean
 }
