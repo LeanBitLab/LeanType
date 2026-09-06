@@ -72,7 +72,7 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
     }
 
     // todo: remove when InputLogic is ready
-    interface OnGetSuggestedWordsCallback {
+    fun interface OnGetSuggestedWordsCallback {
         fun onGetSuggestedWords(suggestedWords: SuggestedWords?)
     }
 
