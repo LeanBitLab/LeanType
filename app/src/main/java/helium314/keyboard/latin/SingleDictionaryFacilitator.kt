@@ -96,7 +96,7 @@ class SingleDictionaryFacilitator(private val dict: Dictionary) : DictionaryFaci
 
     override fun isActive(): Boolean = true
 
-    override fun getMainLocale(): Locale = dict.mLocale
+    override fun getMainLocale(): Locale = dict.mLocale ?: Locale.ROOT
 
     override fun getCurrentLocale(): Locale = mainLocale
 

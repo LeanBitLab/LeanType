@@ -834,7 +834,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
             if (suggestions.size < 5) {
                 val historyDict = dictGroup.getSubDict(Dictionary.TYPE_USER_HISTORY)
                 val topHistoryWords = try {
-                    historyDict?.allWordsWithFrequency
+                    historyDict?.getAllWordsWithFrequency()
                 } catch (e: Exception) {
                     null
                 }
