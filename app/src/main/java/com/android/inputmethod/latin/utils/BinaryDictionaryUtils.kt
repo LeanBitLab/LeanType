@@ -51,7 +51,7 @@ object BinaryDictionaryUtils {
             true /* useFullEditDistance */, null /* locale */, "" /* dictType */,
             false /* isUpdatable */
         )
-        val header = binaryDictionary.getHeader()
+        val header = binaryDictionary.header
         binaryDictionary.close()
         if (header == null) {
             throw IOException()
