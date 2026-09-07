@@ -150,13 +150,14 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         currentRecapitalizeState: RecapitalizeMode?,
         internalAction: KeyboardLayoutSet.InternalAction?
     ) {
-        val themeContext = mThemeContext!!
+        val themeContext = mThemeContext ?: return
         val builder = KeyboardLayoutSet.Builder(themeContext, editorInfo)
         val keyboardWidth = ResourceUtils.getKeyboardWidth(themeContext, settingsValues)
         val keyboardHeight = ResourceUtils.getKeyboardHeight(themeContext.resources, settingsValues)
         val oneHandedModeEnabled = settingsValues.mOneHandedModeEnabled
+        val richImm = mRichImm ?: RichInputMethodManager.getInstance()
         mKeyboardLayoutSet = builder.setKeyboardGeometry(keyboardWidth, keyboardHeight)
-            .setSubtype(mRichImm!!.currentSubtype)
+            .setSubtype(richImm.currentSubtype)
             .setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey)
             .setNumberRowEnabled(settingsValues.mShowsNumberRow)
             .setNumberRowInSymbolsEnabled(settingsValues.mShowsNumberRowInSymbols)
@@ -167,12 +168,13 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             .setOneHandedModeEnabled(oneHandedModeEnabled)
             .setInternalAction(internalAction)
             .build()
+        val state = mState ?: return
         try {
-            mState!!.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
+            state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
         } catch (e: KeyboardLayoutSetException) {
             Log.e(TAG, "loading keyboard failed: " + e.mKeyboardId, e.cause)
             try {
-                val defaults = SubtypeUtilsAdditional.createDefaultSubtype(mRichImm!!.currentSubtypeLocale)
+                val defaults = SubtypeUtilsAdditional.createDefaultSubtype(richImm.currentSubtypeLocale)
                 mKeyboardLayoutSet = builder.setKeyboardGeometry(keyboardWidth, keyboardHeight)
                     .setSubtype(RichInputMethodSubtype.get(defaults))
                     .setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey)
@@ -184,7 +186,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
                     .setSplitLayoutEnabled(settingsValues.mIsSplitKeyboardEnabled)
                     .setOneHandedModeEnabled(oneHandedModeEnabled)
                     .build()
-                mState!!.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
+                state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
                 showToast("error loading the keyboard, falling back to defaults", false)
             } catch (e2: KeyboardLayoutSetException) {
                 Log.e(TAG, "even fallback to defaults failed: " + e2.mKeyboardId, e2.cause)
@@ -200,8 +202,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun onHideWindow() {
         mKeyboardView?.onHideWindow()
-        if (mOcrCameraView != null && mOcrCameraView!!.isShown) {
-            mOcrCameraView!!.stopCamera()
+        val ocrCamera = mOcrCameraView
+        if (ocrCamera != null && ocrCamera.isShown) {
+            ocrCamera.stopCamera()
         }
     }
 
@@ -226,14 +229,16 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         } else {
             keyboardId
         }
-        val newKeyboard = mKeyboardLayoutSet!!.getKeyboard(targetId)
+        val keyboardLayoutSet = mKeyboardLayoutSet ?: return
+        val newKeyboard = keyboardLayoutSet.getKeyboard(targetId)
         keyboardView.setKeyboard(newKeyboard)
         mCurrentInputView?.setKeyboardTopPadding(newKeyboard.mTopPadding)
         keyboardView.setKeyPreviewPopupEnabled(currentSettingsValues.mKeyPreviewPopupOn)
-        keyboardView.updateShortcutKey(mRichImm!!.isShortcutImeReady)
+        val richImm = mRichImm ?: RichInputMethodManager.getInstance()
+        keyboardView.updateShortcutKey(richImm.isShortcutImeReady)
         val subtypeChanged = oldKeyboard == null || newKeyboard.mId.mSubtype != oldKeyboard.mId.mSubtype
         val languageOnSpacebarFormatType = LanguageOnSpacebarUtils.getLanguageOnSpacebarFormatType(newKeyboard.mId.mSubtype)
-        val hasMultipleEnabledIMEsOrSubtypes = mRichImm!!.hasMultipleEnabledIMEsOrSubtypes(true)
+        val hasMultipleEnabledIMEsOrSubtypes = richImm.hasMultipleEnabledIMEsOrSubtypes(true)
         keyboardView.startDisplayLanguageOnSpacebar(subtypeChanged, languageOnSpacebarFormatType, hasMultipleEnabledIMEsOrSubtypes)
     }
 
@@ -323,10 +328,12 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
                 it.isClickable = false
                 it.isFocusable = false
             }
-            if (mOcrCameraView != null && mOcrCameraView!!.isShown) {
-                mOcrCameraView!!.bringToFront()
-            } else if (mOcrResultView != null && mOcrResultView!!.isShown) {
-                mOcrResultView!!.bringToFront()
+            val ocrCamera = mOcrCameraView
+            val ocrResult = mOcrResultView
+            if (ocrCamera != null && ocrCamera.isShown) {
+                ocrCamera.bringToFront()
+            } else if (ocrResult != null && ocrResult.isShown) {
+                ocrResult.bringToFront()
             }
             mCurrentInputView?.let { it.post { it.requestApplyInsets() } }
             return
@@ -397,11 +404,11 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mEmojiTabStripView?.visibility = View.VISIBLE
         mClipboardHistoryView?.visibility = View.GONE
         mEmojiPalettesView?.let {
-            it.startEmojiPalettes(mKeyboardView!!.keyVisualAttribute, mLatinIME!!.currentInputEditorInfo, mLatinIME!!.mKeyboardActionListener)
+            it.startEmojiPalettes(mKeyboardView?.keyVisualAttribute, mLatinIME?.currentInputEditorInfo, mLatinIME?.mKeyboardActionListener)
             it.visibility = View.VISIBLE
         }
-        if (splitToolbar && mSuggestionStripView != null) {
-            mSuggestionStripView!!.updateSplitToolbarState()
+        if (splitToolbar) {
+            mSuggestionStripView?.updateSplitToolbarState()
         }
     }
 
@@ -422,7 +429,14 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         }
         mEmojiPalettesView?.visibility = View.GONE
         mClipboardHistoryView?.let {
-            it.startClipboardHistory(mLatinIME!!.clipboardHistoryManager, mKeyboardView!!.keyVisualAttribute, mLatinIME!!.currentInputEditorInfo, mLatinIME!!.mKeyboardActionListener)
+            val latinIme = mLatinIME ?: return@let
+            val editorInfo = latinIme.currentInputEditorInfo ?: return@let
+            it.startClipboardHistory(
+                latinIme.clipboardHistoryManager,
+                mKeyboardView?.keyVisualAttribute,
+                editorInfo,
+                latinIme.mKeyboardActionListener
+            )
             it.visibility = View.VISIBLE
         }
     }
@@ -442,19 +456,22 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mClipboardHistoryView?.visibility = View.GONE
 
         mHandwritingView?.let { handwritingView ->
-            val subtype = mRichImm!!.currentSubtype
+            val latinIme = mLatinIME ?: return@let
+            val editorInfo = latinIme.currentInputEditorInfo ?: return@let
+            val richImm = mRichImm ?: RichInputMethodManager.getInstance()
+            val subtype = richImm.currentSubtype
             val subtypeLanguage = subtype.locale.toLanguageTag()
-            val effectiveLanguage = HandwritingLoader.getEffectiveLanguage(mLatinIME!!, subtypeLanguage)
+            val effectiveLanguage = HandwritingLoader.getEffectiveLanguage(latinIme, subtypeLanguage)
             handwritingView.startHandwriting(
-                mLatinIME!!.currentInputEditorInfo,
-                mLatinIME!!.mKeyboardActionListener,
+                editorInfo,
+                latinIme.mKeyboardActionListener,
                 effectiveLanguage
             )
             handwritingView.visibility = View.VISIBLE
         }
     }
 
-    val isHandwritingShowing: Boolean get() = mHandwritingView != null && mHandwritingView!!.isShown
+    val isHandwritingShowing: Boolean get() = mHandwritingView?.isShown == true
 
     fun clearHandwritingCanvas() {
         mHandwritingView?.clearCanvasAndComposition()
@@ -483,7 +500,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         }
         mOcrResultView?.visibility = View.GONE
         mOcrCameraView?.let { cameraView ->
-            val ocrCameraHeight = ResourceUtils.getOcrCameraHeight(mThemeContext!!.resources, Settings.getValues())
+            val resources = mThemeContext?.resources ?: return@let
+            val ocrCameraHeight = ResourceUtils.getOcrCameraHeight(resources, Settings.getValues())
             val lp = cameraView.layoutParams
             if (lp != null) {
                 lp.height = ocrCameraHeight
@@ -526,7 +544,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             it.visibility = View.GONE
         }
         mOcrResultView?.let { resultView ->
-            val keyboardHeight = ResourceUtils.getKeyboardHeight(mThemeContext!!.resources, Settings.getValues())
+            val resources = mThemeContext?.resources ?: return@let
+            val keyboardHeight = ResourceUtils.getKeyboardHeight(resources, Settings.getValues())
             val lp = resultView.layoutParams
             if (lp != null) {
                 lp.height = keyboardHeight
@@ -570,10 +589,17 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     }
 
     val isOcrCameraShowing: Boolean
-        get() = mOcrCameraView != null && (mOcrCameraView!!.isShown || mOcrCameraView!!.visibility == View.VISIBLE)
+        get() {
+            val camera = mOcrCameraView ?: return false
+            return camera.isShown || camera.visibility == View.VISIBLE
+        }
 
     val isOcrShowing: Boolean
-        get() = isOcrCameraShowing || (mOcrResultView != null && (mOcrResultView!!.isShown || mOcrResultView!!.visibility == View.VISIBLE))
+        get() {
+            if (isOcrCameraShowing) return true
+            val result = mOcrResultView ?: return false
+            return result.isShown || result.visibility == View.VISIBLE
+        }
 
     override fun setNumpadKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setNumpadKeyboard")
@@ -601,7 +627,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     val keyboardSwitchState: KeyboardSwitchState
         get() {
             val hidden = !isShowingEmojiPalettes && !isShowingClipboardHistory
-                    && (mKeyboardLayoutSet == null || mKeyboardView == null || !mKeyboardView!!.isShown)
+                    && (mKeyboardLayoutSet == null || mKeyboardView?.isShown != true)
             return when {
                 hidden -> KeyboardSwitchState.HIDDEN
                 isShowingEmojiPalettes -> KeyboardSwitchState.EMOJI
@@ -753,10 +779,13 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     fun reloadMainKeyboard() {
         val wasEmoji = isShowingEmojiPalettes
         val wasClipboard = isShowingClipboardHistory
-        loadKeyboard(
-            mLatinIME!!.currentInputEditorInfo, Settings.getValues(),
-            mLatinIME!!.currentAutoCapsState, mLatinIME!!.currentRecapitalizeState, null
-        )
+        val latinIme = mLatinIME
+        if (latinIme != null) {
+            loadKeyboard(
+                latinIme.currentInputEditorInfo, Settings.getValues(),
+                latinIme.currentAutoCapsState, latinIme.currentRecapitalizeState, null
+            )
+        }
         if (wasEmoji) {
             setEmojiKeyboard()
         } else if (wasClipboard) {
@@ -830,32 +859,38 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     }
 
     val isShowingEmojiPalettes: Boolean
-        get() = mEmojiPalettesView != null && (mEmojiPalettesView!!.isShown || mEmojiPalettesView!!.visibility == View.VISIBLE)
+        get() {
+            val emojiView = mEmojiPalettesView ?: return false
+            return emojiView.isShown || emojiView.visibility == View.VISIBLE
+        }
 
     val isShowingClipboardHistory: Boolean
-        get() = mClipboardHistoryView != null && mClipboardHistoryView!!.isShown
+        get() = mClipboardHistoryView?.isShown == true
 
     val isShowingPopupKeysPanel: Boolean
         get() {
             if (isShowingEmojiPalettes || isShowingClipboardHistory) {
                 return false
             }
-            return mKeyboardView != null && mKeyboardView!!.isShowingPopupKeysPanel()
+            return mKeyboardView?.isShowingPopupKeysPanel() == true
         }
 
     val isShowingStripContainer: Boolean
-        get() = mStripContainer != null && mStripContainer!!.isShown
+        get() = mStripContainer?.isShown == true
 
     val emojiPalettesView: EmojiPalettesView? get() = mEmojiPalettesView
 
     val visibleKeyboardView: View?
-        get() = when {
-            isOcrCameraShowing -> mOcrCameraView
-            mOcrResultView != null && (mOcrResultView!!.isShown || mOcrResultView!!.visibility == View.VISIBLE) -> mOcrResultView
-            isShowingEmojiPalettes -> mEmojiPalettesView
-            isShowingClipboardHistory -> mClipboardHistoryView
-            isHandwritingShowing -> mHandwritingView
-            else -> mKeyboardView
+        get() {
+            val ocrResult = mOcrResultView
+            return when {
+                isOcrCameraShowing -> mOcrCameraView
+                ocrResult != null && (ocrResult.isShown || ocrResult.visibility == View.VISIBLE) -> ocrResult
+                isShowingEmojiPalettes -> mEmojiPalettesView
+                isShowingClipboardHistory -> mClipboardHistoryView
+                isHandwritingShowing -> mHandwritingView
+                else -> mKeyboardView
+            }
         }
 
     val wrapperView: View? get() = mKeyboardViewWrapper
@@ -981,8 +1016,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         }
 
         keyboardView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            if (mTouchpadView != null && mTouchpadView!!.visibility == View.VISIBLE) {
-                mTouchpadView!!.setPadding(
+            val touchpad = mTouchpadView
+            if (touchpad != null && touchpad.visibility == View.VISIBLE) {
+                touchpad.setPadding(
                     keyboardView.paddingLeft,
                     keyboardView.paddingTop,
                     keyboardView.paddingRight,

@@ -59,8 +59,9 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
 
     private fun onCreate(context: Context) {
         mContext = context
-        mPrefs = context.prefs()
-        mPrefs!!.registerOnSharedPreferenceChangeListener(this)
+        val prefs = context.prefs()
+        mPrefs = prefs
+        prefs.registerOnSharedPreferenceChangeListener(this)
     }
 
     fun onDestroy() {
@@ -71,19 +72,21 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         if (dontReloadOnChanged.contains(key) || (key != null && key.startsWith(PREF_SAVED_APP_SUBTYPE_PREFIX))) return
         mSettingsValuesLock.lock()
         try {
-            if (mSettingsValues == null) {
+            val context = mContext
+            val currentValues = mSettingsValues
+            if (context == null || currentValues == null) {
                 Log.w(TAG, "onSharedPreferenceChanged called before loadSettings.")
                 return
             }
             clearCustomToolbarKeyCodes()
-            loadSettings(mContext!!, mSettingsValues!!.mLocale, mSettingsValues!!.mInputAttributes, mSettingsValues!!.mCurrentKeyboardScript)
-            StatsUtils.onLoadSettings(mSettingsValues!!)
+            loadSettings(context, currentValues.mLocale, currentValues.mInputAttributes, currentValues.mCurrentKeyboardScript)
+            StatsUtils.onLoadSettings(currentValues)
             helium314.keyboard.latin.LatinIME.sSettingsDirty = true
         } finally {
             mSettingsValuesLock.unlock()
         }
         if (PREF_ADDITIONAL_SUBTYPES == key) {
-            SubtypeSettings.reloadEnabledSubtypes(mContext!!)
+            mContext?.let { SubtypeSettings.reloadEnabledSubtypes(it) }
         }
     }
 
@@ -98,7 +101,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         mSettingsValuesLock.lock()
         mContext = context
         try {
-            val prefs = mPrefs!!
+            val prefs = mPrefs ?: context.prefs().also { mPrefs = it }
             Log.i(TAG, "loadSettings")
             val actualLocale = locale ?: context.resources.configuration.locale()
             mSettingsValues = runInLocale(context, actualLocale) { ctx ->
@@ -118,92 +121,109 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     }
 
     val current: SettingsValues
-        get() = mSettingsValues!!
+        get() = mSettingsValues ?: getValues()
 
     fun toggleAutoCorrect() {
-        val oldValue = mPrefs!!.getBoolean(PREF_AUTO_CORRECTION, Defaults.PREF_AUTO_CORRECTION)
-        mPrefs!!.edit().putBoolean(PREF_AUTO_CORRECTION, !oldValue).apply()
+        val prefs = mPrefs ?: return
+        val oldValue = prefs.getBoolean(PREF_AUTO_CORRECTION, Defaults.PREF_AUTO_CORRECTION)
+        prefs.edit().putBoolean(PREF_AUTO_CORRECTION, !oldValue).apply()
     }
 
     fun toggleAlwaysIncognitoMode() {
-        val oldValue = mPrefs!!.getBoolean(PREF_ALWAYS_INCOGNITO_MODE, Defaults.PREF_ALWAYS_INCOGNITO_MODE)
-        mPrefs!!.edit().putBoolean(PREF_ALWAYS_INCOGNITO_MODE, !oldValue).apply()
+        val prefs = mPrefs ?: return
+        val oldValue = prefs.getBoolean(PREF_ALWAYS_INCOGNITO_MODE, Defaults.PREF_ALWAYS_INCOGNITO_MODE)
+        prefs.edit().putBoolean(PREF_ALWAYS_INCOGNITO_MODE, !oldValue).apply()
     }
 
     fun writeOneHandedModeEnabled(enabled: Boolean) {
-        val landscape = mSettingsValues!!.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
-        val index = findIndexOfDefaultSetting(landscape, mSettingsValues!!.mIsSplitKeyboardEnabled)
+        val settingsValues = mSettingsValues ?: return
+        val prefs = mPrefs ?: return
+        val landscape = settingsValues.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
+        val index = findIndexOfDefaultSetting(landscape, settingsValues.mIsSplitKeyboardEnabled)
         val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_MODE_PREFIX, index, 2)
-        mPrefs!!.edit().putBoolean(key, enabled).apply()
+        prefs.edit().putBoolean(key, enabled).apply()
     }
 
     fun writeOneHandedModeScale(scale: Float?) {
-        val landscape = mSettingsValues!!.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
-        val index = findIndexOfDefaultSetting(landscape, mSettingsValues!!.mIsSplitKeyboardEnabled)
+        if (scale == null) return
+        val settingsValues = mSettingsValues ?: return
+        val prefs = mPrefs ?: return
+        val landscape = settingsValues.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
+        val index = findIndexOfDefaultSetting(landscape, settingsValues.mIsSplitKeyboardEnabled)
         val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_SCALE_PREFIX, index, 2)
-        mPrefs!!.edit().putFloat(key, scale!!).apply()
+        prefs.edit().putFloat(key, scale).apply()
     }
 
     fun writeOneHandedModeGravity(gravity: Int) {
-        val landscape = mSettingsValues!!.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
-        val index = findIndexOfDefaultSetting(landscape, mSettingsValues!!.mIsSplitKeyboardEnabled)
+        val settingsValues = mSettingsValues ?: return
+        val prefs = mPrefs ?: return
+        val landscape = settingsValues.mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
+        val index = findIndexOfDefaultSetting(landscape, settingsValues.mIsSplitKeyboardEnabled)
         val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_GRAVITY_PREFIX, index, 2)
-        mPrefs!!.edit().putInt(key, gravity).apply()
+        prefs.edit().putInt(key, gravity).apply()
     }
 
     fun writeSplitKeyboardEnabled(enabled: Boolean, isLandscape: Boolean) {
+        val settingsValues = mSettingsValues ?: return
+        val prefs = mPrefs ?: return
         val basePref = if (isLandscape) PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else PREF_ENABLE_SPLIT_KEYBOARD
-        val profilePref = getProfileAwarePrefKey(basePref, mSettingsValues!!.mScreenProfile)
-        mPrefs!!.edit().putBoolean(profilePref, enabled).apply()
+        val profilePref = getProfileAwarePrefKey(basePref, settingsValues.mScreenProfile)
+        prefs.edit().putBoolean(profilePref, enabled).apply()
     }
 
     fun readShowToolbarOnly(): Boolean {
-        return mSettingsValues!!.mHasHardwareKeyboard && mPrefs!!.getBoolean(PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD, Defaults.PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD)
+        val settingsValues = mSettingsValues ?: return false
+        val prefs = mPrefs ?: return false
+        return settingsValues.mHasHardwareKeyboard && prefs.getBoolean(PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD, Defaults.PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD)
     }
 
     fun readClipboardHistoryPinnedFirst(): Boolean {
-        val prefs = mPrefs ?: mContext!!.prefs()
+        val prefs = mPrefs ?: mContext?.prefs() ?: return Defaults.PREF_CLIPBOARD_HISTORY_PINNED_FIRST
         return prefs.getBoolean(PREF_CLIPBOARD_HISTORY_PINNED_FIRST, Defaults.PREF_CLIPBOARD_HISTORY_PINNED_FIRST)
     }
 
     fun readClipboardFoldPinned(): Boolean {
-        val prefs = mPrefs ?: mContext!!.prefs()
+        val prefs = mPrefs ?: mContext?.prefs() ?: return Defaults.PREF_CLIPBOARD_FOLD_PINNED
         return prefs.getBoolean(PREF_CLIPBOARD_FOLD_PINNED, Defaults.PREF_CLIPBOARD_FOLD_PINNED)
     }
 
     val isTablet: Boolean
-        get() = mContext!!.resources.getInteger(R.integer.config_screen_metrics) >= 3
+        get() = mContext?.resources?.getInteger(R.integer.config_screen_metrics)?.let { it >= 3 } ?: false
 
     @SuppressLint("DiscouragedApi")
     fun getStringResIdByName(name: String): Int {
-        return mContext!!.resources.getIdentifier(name, "string", mContext!!.packageName)
+        val context = mContext ?: return 0
+        return context.resources.getIdentifier(name, "string", context.packageName)
     }
 
     fun getInLocale(@StringRes resId: Int, locale: java.util.Locale): String {
-        return runInLocale(mContext!!, locale) { ctx -> ctx.getString(resId) }
+        val context = mContext ?: return ""
+        return runInLocale(context, locale) { ctx -> ctx.getString(resId) }
     }
 
     fun readCustomCurrencyKey(): String {
-        return mPrefs!!.getString(PREF_CUSTOM_CURRENCY_KEY, Defaults.PREF_CUSTOM_CURRENCY_KEY)!!
+        return mPrefs?.getString(PREF_CUSTOM_CURRENCY_KEY, Defaults.PREF_CUSTOM_CURRENCY_KEY) ?: Defaults.PREF_CUSTOM_CURRENCY_KEY
     }
 
     fun getCustomToolbarKeyCode(key: ToolbarKey): Int? {
-        return getCustomKeyCode(key, mPrefs!!)
+        val prefs = mPrefs ?: return null
+        return getCustomKeyCode(key, prefs)
     }
 
     fun getCustomToolbarLongpressCode(key: ToolbarKey): Int? {
-        return getCustomLongpressKeyCode(key, mPrefs!!)
+        val prefs = mPrefs ?: return null
+        return getCustomLongpressKeyCode(key, prefs)
     }
 
     fun saveSubtypeForApp(subtype: RichInputMethodSubtype, packageName: String?) {
         if (isSubtypePerApp() && !packageName.isNullOrEmpty()) {
-            mPrefs!!.edit().putString(PREF_SAVED_APP_SUBTYPE_PREFIX + packageName, subtype.rawSubtype.toSettingsSubtype().toPref()).apply()
+            mPrefs?.edit()?.putString(PREF_SAVED_APP_SUBTYPE_PREFIX + packageName, subtype.rawSubtype.toSettingsSubtype().toPref())?.apply()
         }
     }
 
     fun getSubtypeForApp(packageName: String?): RichInputMethodSubtype? {
         if (!isSubtypePerApp() || packageName.isNullOrEmpty()) return null
-        val subtypePref = mPrefs!!.getString(PREF_SAVED_APP_SUBTYPE_PREFIX + packageName, null) ?: return null
+        val subtypePref = mPrefs?.getString(PREF_SAVED_APP_SUBTYPE_PREFIX + packageName, null) ?: return null
         val settingsSubtype = subtypePref.toSettingsSubtype()
         var subtype = settingsSubtype.toEnabledSubtype()
         if (subtype == null) {
@@ -213,11 +233,11 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     }
 
     private fun isSubtypePerApp(): Boolean {
-        return mPrefs!!.getBoolean(PREF_SAVE_SUBTYPE_PER_APP, Defaults.PREF_SAVE_SUBTYPE_PER_APP)
+        return mPrefs?.getBoolean(PREF_SAVE_SUBTYPE_PER_APP, Defaults.PREF_SAVE_SUBTYPE_PER_APP) ?: Defaults.PREF_SAVE_SUBTYPE_PER_APP
     }
 
     fun useSystemEmoji(): Boolean {
-        return mPrefs!!.getBoolean(PREF_USE_SYSTEM_EMOJI, Defaults.PREF_USE_SYSTEM_EMOJI)
+        return mPrefs?.getBoolean(PREF_USE_SYSTEM_EMOJI, Defaults.PREF_USE_SYSTEM_EMOJI) ?: Defaults.PREF_USE_SYSTEM_EMOJI
     }
 
     @get:JvmName("customTypefaceProperty")
@@ -226,9 +246,12 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
 
     fun getCustomTypeface(): Typeface? {
         if (!sCustomTypefaceLoaded) {
-            try {
-                sCachedTypeface = Typeface.createFromFile(getCustomFontFile(mContext!!))
-            } catch (ignored: Exception) {
+            val context = mContext
+            if (context != null) {
+                try {
+                    sCachedTypeface = Typeface.createFromFile(getCustomFontFile(context))
+                } catch (ignored: Exception) {
+                }
             }
         }
         sCustomTypefaceLoaded = true
@@ -242,9 +265,12 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     fun getCustomEmojiTypeface(): Typeface? {
         if (useSystemEmoji()) return null
         if (!sCustomEmojiTypefaceLoaded) {
-            try {
-                sCachedEmojiTypeface = Typeface.createFromFile(getCustomEmojiFontFile(mContext!!))
-            } catch (ignored: Exception) {
+            val context = mContext
+            if (context != null) {
+                try {
+                    sCachedEmojiTypeface = Typeface.createFromFile(getCustomEmojiFontFile(context))
+                } catch (ignored: Exception) {
+                }
             }
         }
         sCustomEmojiTypefaceLoaded = true
@@ -493,10 +519,10 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             if (sInstance.mSettingsValues == null) {
                 sInstance.mContext?.let { sInstance.loadSettings(it) }
             }
-            return sInstance.mSettingsValues!!
+            return requireNotNull(sInstance.mSettingsValues) { "SettingsValues must be initialized" }
         }
 
-        fun getCurrentContext(): Context = sInstance.mContext!!
+        fun getCurrentContext(): Context = requireNotNull(sInstance.mContext) { "Context not initialized" }
 
         fun init(context: Context) {
             sInstance.onCreate(context)
@@ -521,8 +547,10 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         fun readDefaultGestureFastTypingCooldown(res: Resources): Int =
             res.getInteger(R.integer.config_gesture_static_time_threshold_after_fast_typing)
 
-        fun readToolbarMode(prefs: SharedPreferences): ToolbarMode =
-            ToolbarMode.valueOf(prefs.getString(PREF_TOOLBAR_MODE, Defaults.PREF_TOOLBAR_MODE)!!)
+        fun readToolbarMode(prefs: SharedPreferences): ToolbarMode {
+            val raw = prefs.getString(PREF_TOOLBAR_MODE, Defaults.PREF_TOOLBAR_MODE) ?: Defaults.PREF_TOOLBAR_MODE
+            return runCatching { ToolbarMode.valueOf(raw) }.getOrDefault(ToolbarMode.valueOf(Defaults.PREF_TOOLBAR_MODE))
+        }
 
         fun readHorizontalSpaceSwipe(prefs: SharedPreferences): Int {
             return when (prefs.getString(PREF_SPACE_HORIZONTAL_SWIPE, Defaults.PREF_SPACE_HORIZONTAL_SWIPE)) {
@@ -667,7 +695,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         fun getCustomEmojiFontFile(context: Context): File = File(DeviceProtectedUtils.getFilesDir(context), "custom_emoji_font")
 
         fun readDefaultLayoutName(type: LayoutType, prefs: SharedPreferences): String =
-            prefs.getString(PREF_LAYOUT_PREFIX + type.name, type.default)!!
+            prefs.getString(PREF_LAYOUT_PREFIX + type.name, type.default) ?: type.default
 
         fun writeDefaultLayoutName(name: String?, type: LayoutType, prefs: SharedPreferences) {
             if (name == null)
@@ -686,7 +714,8 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
 }
 
 fun customIconNames(prefs: SharedPreferences) = runCatching {
-    Json.decodeFromString<Map<String, String>>(prefs.getString(Settings.PREF_CUSTOM_ICON_NAMES, Defaults.PREF_CUSTOM_ICON_NAMES)!!)
+    val raw = prefs.getString(Settings.PREF_CUSTOM_ICON_NAMES, Defaults.PREF_CUSTOM_ICON_NAMES) ?: Defaults.PREF_CUSTOM_ICON_NAMES
+    Json.decodeFromString<Map<String, String>>(raw)
 }.getOrElse { emptyMap() }
 
 @SuppressLint("DiscouragedApi")
