@@ -1036,11 +1036,11 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         if (isShowingEmojiPalettes() || isShowingClipboardHistory()) {
             return false;
         }
-        return mKeyboardView.isShowingPopupKeysPanel();
+        return mKeyboardView != null && mKeyboardView.isShowingPopupKeysPanel();
     }
 
     public boolean isShowingStripContainer() {
-        return mStripContainer.isShown();
+        return mStripContainer != null && mStripContainer.isShown();
     }
 
     public EmojiPalettesView getEmojiPalettesView() {
