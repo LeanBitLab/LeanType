@@ -261,7 +261,7 @@ class InputLogic(
         val suggestedWords = mSuggestedWords
         val suggestion = suggestionInfo.mWord
         // If this is a punctuation picked from the suggestion strip, pass it to onCodeInput
-        if (suggestion.length == 1 && suggestedWords.isPunctuationSuggestions()) {
+        if (suggestion.length == 1 && suggestedWords.isPunctuationSuggestions) {
             // We still want to log a suggestion click.
             StatsUtils.onPickSuggestionManually(mSuggestedWords, suggestionInfo, mDictionaryFacilitator)
             // Word separators are suggested before the user inputs something.
@@ -463,7 +463,7 @@ class InputLogic(
     }
 
     fun setSuggestedWords(suggestedWords: SuggestedWords) {
-        if (!suggestedWords.isEmpty()) {
+        if (!suggestedWords.isEmpty) {
             val suggestedWordInfo = if (suggestedWords.mWillAutoCorrect) {
                 suggestedWords.getInfo(SuggestedWords.INDEX_OF_AUTO_CORRECTION)
             } else {
@@ -1147,14 +1147,14 @@ class InputLogic(
             mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
         } else if (Constants.CODE_SPACE == codePoint) {
             if (DebugFlags.DEBUG_ENABLED) {
-                Log.i("SuggestTrace", "space: wasComposing=$wasComposingWord suggestedWordsEmpty=${mSuggestedWords.isEmpty()}")
+                Log.i("SuggestTrace", "space: wasComposing=$wasComposingWord suggestedWordsEmpty=${mSuggestedWords.isEmpty}")
             }
-            if (!mSuggestedWords.isPunctuationSuggestions()) {
+            if (!mSuggestedWords.isPunctuationSuggestions) {
                 mSpaceState = SpaceState.WEAK
             }
 
             startDoubleSpacePeriodCountdown(inputTransaction)
-            if (wasComposingWord || mSuggestedWords.isEmpty()) {
+            if (wasComposingWord || mSuggestedWords.isEmpty) {
                 inputTransaction.setRequiresUpdateSuggestions()
             }
 
@@ -1657,7 +1657,7 @@ class InputLogic(
             Log.i("SuggestTrace", "updateStrip: composing=${mWordComposer.isComposingWord()}"
                 + " typedLen=${mWordComposer.getTypedWord().length}"
                 + " suggestedSize=${suggestedWords.size()}"
-                + " punctuation=${suggestedWords.isPunctuationSuggestions()}")
+                + " punctuation=${suggestedWords.isPunctuationSuggestions}")
             val runTimeMillis = System.currentTimeMillis() - startTimeMillis
             Log.d(TAG, "performUpdateSuggestionStripSync() : $runTimeMillis ms to finish")
         }
@@ -2667,7 +2667,7 @@ class InputLogic(
             typedWordInfo: SuggestedWordInfo,
             previousSuggestedWords: SuggestedWords
         ): SuggestedWords {
-            val oldSuggestedWords = if (previousSuggestedWords.isPunctuationSuggestions()) {
+            val oldSuggestedWords = if (previousSuggestedWords.isPunctuationSuggestions) {
                 SuggestedWords.getEmptyInstance()
             } else {
                 previousSuggestedWords

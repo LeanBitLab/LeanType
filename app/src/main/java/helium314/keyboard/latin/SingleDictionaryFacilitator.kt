@@ -96,9 +96,9 @@ class SingleDictionaryFacilitator(private val dict: Dictionary) : DictionaryFaci
 
     override fun isActive(): Boolean = true
 
-    override fun getMainLocale(): Locale = dict.mLocale ?: Locale.ROOT
+    override val mainLocale: Locale get() = dict.mLocale ?: Locale.ROOT
 
-    override fun getCurrentLocale(): Locale = mainLocale
+    override val currentLocale: Locale get() = mainLocale
 
     override fun usesSameSettings(locales: List<Locale>, contacts: Boolean, apps: Boolean, personalization: Boolean): Boolean {
         return locales.singleOrNull() == mainLocale

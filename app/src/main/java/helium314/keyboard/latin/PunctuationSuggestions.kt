@@ -49,7 +49,8 @@ class PunctuationSuggestions private constructor(punctuationsList: ArrayList<Sug
         return newHardCodedWordInfo(getWord(index))
     }
 
-    override fun isPunctuationSuggestions(): Boolean = true
+    override val isPunctuationSuggestions: Boolean
+        get() = true
 
     override fun toString(): String {
         return "PunctuationSuggestions:  words=" + Arrays.toString(mSuggestedWordInfoList.toTypedArray())

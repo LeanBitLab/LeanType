@@ -107,7 +107,7 @@ open class GestureFloatingTextDrawingPreview(mainKeyboardViewAttr: TypedArray) :
     }
 
     override fun drawPreview(canvas: Canvas) {
-        if (!isPreviewEnabled || mSuggestedWords.isEmpty() || TextUtils.isEmpty(mSuggestedWords.getWord(0))) {
+        if (!isPreviewEnabled || mSuggestedWords.isEmpty || TextUtils.isEmpty(mSuggestedWords.getWord(0))) {
             return
         }
         val round = mParams.mGesturePreviewRoundRadius
@@ -117,7 +117,7 @@ open class GestureFloatingTextDrawingPreview(mainKeyboardViewAttr: TypedArray) :
     }
 
     protected fun updatePreviewPosition() {
-        if (mSuggestedWords.isEmpty() || TextUtils.isEmpty(mSuggestedWords.getWord(0))) {
+        if (mSuggestedWords.isEmpty || TextUtils.isEmpty(mSuggestedWords.getWord(0))) {
             invalidateDrawingView()
             return
         }

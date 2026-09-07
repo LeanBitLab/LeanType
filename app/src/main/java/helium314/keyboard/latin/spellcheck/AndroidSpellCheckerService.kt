@@ -136,9 +136,10 @@ class AndroidSpellCheckerService : SpellCheckerService(), SharedPreferences.OnSh
         try {
             sessionId = mSessionIdPool.poll()
             val dictionaryFacilitatorForLocale = mDictionaryFacilitatorCache.get(locale)
+            val settingsValues = mSettingsValuesForSuggestion ?: return null
             return dictionaryFacilitatorForLocale.getSuggestionResults(
                 composedData, ngramContext,
-                keyboard, mSettingsValuesForSuggestion,
+                keyboard, settingsValues,
                 sessionId, SuggestedWords.INPUT_STYLE_TYPING
             )
         } finally {
