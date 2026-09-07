@@ -67,7 +67,7 @@ open class KeyboardView @JvmOverloads constructor(
     private val mOffscreenCanvas = Canvas()
     private val mPaint = Paint()
     private val mFontMetrics = Paint.FontMetrics()
-    @JvmField protected var mTypeface: Typeface?
+    protected var mTypeface: Typeface?
     protected val mEmojiTypeface: Typeface?
 
     init {

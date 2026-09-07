@@ -28,17 +28,17 @@ class DicTraverseSession(locale: Locale?, dictionary: Long, dictSize: Long) {
         private external fun releaseDicTraverseSessionNative(nativeDicTraverseSession: Long)
     }
 
-    @JvmField val mInputCodePoints = IntArray(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH)
-    @JvmField val mPrevWordCodePointArrays: Array<IntArray?> = arrayOfNulls(DecoderSpecificConstants.MAX_PREV_WORD_COUNT_FOR_N_GRAM)
-    @JvmField val mIsBeginningOfSentenceArray = BooleanArray(DecoderSpecificConstants.MAX_PREV_WORD_COUNT_FOR_N_GRAM)
-    @JvmField val mOutputSuggestionCount = IntArray(1)
-    @JvmField val mOutputCodePoints = IntArray(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH * MAX_RESULTS)
-    @JvmField val mSpaceIndices = IntArray(MAX_RESULTS)
-    @JvmField val mOutputScores = IntArray(MAX_RESULTS)
-    @JvmField val mOutputTypes = IntArray(MAX_RESULTS)
-    @JvmField val mOutputAutoCommitFirstWordConfidence = IntArray(1)
-    @JvmField val mInputOutputWeightOfLangModelVsSpatialModel = FloatArray(1)
-    @JvmField val mNativeSuggestOptions = NativeSuggestOptions()
+    val mInputCodePoints = IntArray(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH)
+    val mPrevWordCodePointArrays: Array<IntArray?> = arrayOfNulls(DecoderSpecificConstants.MAX_PREV_WORD_COUNT_FOR_N_GRAM)
+    val mIsBeginningOfSentenceArray = BooleanArray(DecoderSpecificConstants.MAX_PREV_WORD_COUNT_FOR_N_GRAM)
+    val mOutputSuggestionCount = IntArray(1)
+    val mOutputCodePoints = IntArray(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH * MAX_RESULTS)
+    val mSpaceIndices = IntArray(MAX_RESULTS)
+    val mOutputScores = IntArray(MAX_RESULTS)
+    val mOutputTypes = IntArray(MAX_RESULTS)
+    val mOutputAutoCommitFirstWordConfidence = IntArray(1)
+    val mInputOutputWeightOfLangModelVsSpatialModel = FloatArray(1)
+    val mNativeSuggestOptions = NativeSuggestOptions()
 
     private var mNativeDicTraverseSession: Long = setDicTraverseSessionNative(locale?.toString() ?: "", dictSize)
 

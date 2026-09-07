@@ -62,7 +62,6 @@ class BogusMoveEventDetector {
         private const val BOGUS_MOVE_ACCUMULATED_DISTANCE_THRESHOLD = 0.53f
         private const val BOGUS_MOVE_RADIUS_THRESHOLD = 1.14f
 
-        @JvmField
         var sNeedsProximateBogusDownMoveUpEventHack = false
 
         @JvmStatic

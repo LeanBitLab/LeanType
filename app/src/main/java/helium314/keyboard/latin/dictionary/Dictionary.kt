@@ -19,8 +19,8 @@ import helium314.keyboard.latin.settings.SettingsValuesForSuggestion
  * strokes.
  */
 abstract class Dictionary(
-    @JvmField val mDictType: String,
-    @JvmField val mLocale: Locale?
+    val mDictType: String,
+    val mLocale: Locale?
 ) {
     /**
      * Searches for suggestions for a given context.
@@ -190,20 +190,20 @@ abstract class Dictionary(
         // The following types do not actually come from real dictionary instances, so we create
         // corresponding instances.
         const val TYPE_USER_TYPED = "user_typed"
-        @JvmField val DICTIONARY_USER_TYPED: PhonyDictionary = PhonyDictionary(TYPE_USER_TYPED)
+        val DICTIONARY_USER_TYPED: PhonyDictionary = PhonyDictionary(TYPE_USER_TYPED)
 
         const val TYPE_USER_SHORTCUT = "user_shortcut"
-        @JvmField val DICTIONARY_USER_SHORTCUT: PhonyDictionary = PhonyDictionary(TYPE_USER_SHORTCUT)
+        val DICTIONARY_USER_SHORTCUT: PhonyDictionary = PhonyDictionary(TYPE_USER_SHORTCUT)
 
         const val TYPE_APPLICATION_DEFINED = "application_defined"
-        @JvmField val DICTIONARY_APPLICATION_DEFINED: PhonyDictionary = PhonyDictionary(TYPE_APPLICATION_DEFINED)
+        val DICTIONARY_APPLICATION_DEFINED: PhonyDictionary = PhonyDictionary(TYPE_APPLICATION_DEFINED)
 
         const val TYPE_HARDCODED = "hardcoded" // punctuation signs and such
-        @JvmField val DICTIONARY_HARDCODED: PhonyDictionary = PhonyDictionary(TYPE_HARDCODED)
+        val DICTIONARY_HARDCODED: PhonyDictionary = PhonyDictionary(TYPE_HARDCODED)
 
         // Spawned by resuming suggestions. Comes from a span that was in the TextView.
         const val TYPE_RESUMED = "resumed"
-        @JvmField val DICTIONARY_RESUMED: PhonyDictionary = PhonyDictionary(TYPE_RESUMED)
+        val DICTIONARY_RESUMED: PhonyDictionary = PhonyDictionary(TYPE_RESUMED)
 
         // The following types of dictionary have actual functional instances. We don't need final
         // phony dictionary instances for them.

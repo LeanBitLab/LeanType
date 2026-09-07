@@ -147,8 +147,7 @@ object Constants {
 
     const val LONG_PRESS_MILLISECONDS = 200
 
-    // Non-constant expression (BuildConfig.DEBUG check): @JvmField preserves public static field access for Java callers
-    @JvmField
+    // Non-constant expression (BuildConfig.DEBUG check): preserves public static field access for Java callers
     val GET_SUGGESTED_WORDS_TIMEOUT: Int = if (BuildConfig.DEBUG) 500 else 200
 
     const val DELETE_ACCELERATE_AT = 20

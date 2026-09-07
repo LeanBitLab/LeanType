@@ -9,8 +9,8 @@ package helium314.keyboard.latin.makedict
 import helium314.keyboard.latin.NgramContext
 
 class NgramProperty(
-    @JvmField val mTargetWord: WeightedString,
-    @JvmField val mNgramContext: NgramContext
+    val mTargetWord: WeightedString,
+    val mNgramContext: NgramContext
 ) {
     override fun hashCode(): Int {
         return mTargetWord.hashCode() xor mNgramContext.hashCode()

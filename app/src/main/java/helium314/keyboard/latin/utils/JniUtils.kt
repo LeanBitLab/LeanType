@@ -37,10 +37,8 @@ object JniUtils {
         }
     }
 
-    @JvmField
     var sHaveGestureLib: Boolean = false
 
-    @JvmField
     var sHaveNativeGestureLib: Boolean = false
 
     init {

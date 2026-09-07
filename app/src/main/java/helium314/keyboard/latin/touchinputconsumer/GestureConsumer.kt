@@ -41,7 +41,6 @@ class GestureConsumer private constructor() {
     ) {}
 
     companion object {
-        @JvmField
         val NULL_GESTURE_CONSUMER: GestureConsumer = GestureConsumer()
 
         @JvmStatic

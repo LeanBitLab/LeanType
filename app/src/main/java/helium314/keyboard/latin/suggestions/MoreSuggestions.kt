@@ -22,7 +22,7 @@ import helium314.keyboard.latin.utils.TypefaceUtils
 
 class MoreSuggestions internal constructor(
     params: MoreSuggestionsParam,
-    @JvmField val mSuggestedWords: SuggestedWords
+    val mSuggestedWords: SuggestedWords
 ) : Keyboard(params) {
 
     internal class MoreSuggestionsParam : KeyboardParams() {
@@ -31,8 +31,8 @@ class MoreSuggestions internal constructor(
         val mColumnOrders = IntArray(SuggestedWords.MAX_SUGGESTIONS)
         val mNumColumnsInRow = IntArray(SuggestedWords.MAX_SUGGESTIONS)
         var mNumRows = 0
-        @JvmField var mDivider: Drawable? = null
-        @JvmField var mDividerWidth = 0
+        var mDivider: Drawable? = null
+        var mDividerWidth = 0
 
         fun layout(
             suggestedWords: SuggestedWords, fromIndex: Int,
@@ -217,7 +217,7 @@ class MoreSuggestions internal constructor(
         params.getX(index), params.getY(index), params.getWidth(index),
         params.mDefaultAbsoluteRowHeight, params.mHorizontalGap, params.mVerticalGap
     ) {
-        @JvmField val mSuggestedWordIndex: Int = index
+        val mSuggestedWordIndex: Int = index
     }
 
     private class Divider(

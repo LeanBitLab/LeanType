@@ -155,7 +155,6 @@ interface DictionaryFacilitator {
     fun forEachMainDictionaryWord(consumer: java.util.function.BiConsumer<String, Int>) {}
 
     companion object {
-        @JvmField
         val ALL_DICTIONARY_TYPES = arrayOf(
             Dictionary.TYPE_MAIN,
             Dictionary.TYPE_CONTACTS,
@@ -164,7 +163,6 @@ interface DictionaryFacilitator {
             Dictionary.TYPE_USER
         )
 
-        @JvmField
         val DYNAMIC_DICTIONARY_TYPES = arrayOf(
             Dictionary.TYPE_CONTACTS,
             Dictionary.TYPE_APPS,

@@ -28,20 +28,20 @@ class SentenceLevelAdapter(res: Resources, locale: Locale) {
      * Container for split TextInfo parameters
      */
     class SentenceWordItem(
-        @JvmField val mTextInfo: TextInfo,
-        @JvmField val mStart: Int,
+        val mTextInfo: TextInfo,
+        val mStart: Int,
         end: Int
     ) {
-        @JvmField val mLength: Int = end - mStart
+        val mLength: Int = end - mStart
     }
 
     /**
      * Container for originally queried TextInfo and parameters
      */
     class SentenceTextInfoParams(
-        @JvmField val mOriginalTextInfo: TextInfo,
-        @JvmField val mItems: ArrayList<SentenceWordItem>,
-        @JvmField val mSize: Int = mItems.size
+        val mOriginalTextInfo: TextInfo,
+        val mItems: ArrayList<SentenceWordItem>,
+        val mSize: Int = mItems.size
     )
 
     fun getSplitWords(originalTextInfo: TextInfo): SentenceTextInfoParams {

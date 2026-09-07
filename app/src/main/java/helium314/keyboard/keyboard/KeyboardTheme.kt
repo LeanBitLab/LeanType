@@ -34,7 +34,7 @@ import java.util.EnumMap
 import androidx.core.graphics.toColorInt
 
 class KeyboardTheme // Note: The themeId should be aligned with "themeId" attribute of Keyboard style in values/themes-<style>.xml.
-private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
+private constructor(val themeId: Int, val mStyleId: Int) {
     override fun equals(other: Any?) = if (other === this) true
         else (other as? KeyboardTheme)?.themeId == themeId
 

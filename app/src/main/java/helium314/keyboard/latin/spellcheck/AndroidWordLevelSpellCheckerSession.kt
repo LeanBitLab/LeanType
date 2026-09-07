@@ -215,7 +215,7 @@ abstract class AndroidWordLevelSpellCheckerSession(
 
     companion object {
         private const val TAG = "AndroidWordLevelSpellCheckerSession"
-        @JvmField val EMPTY_STRING_ARRAY = emptyArray<String>()
+        val EMPTY_STRING_ARRAY = emptyArray<String>()
 
         private const val quotesRegexp = "([\u0022\u0027\u0060\u00B4\u2018\u2019\u201C\u201D])"
         private val scriptToPunctuationRegexMap = TreeMap<String, String>().apply {
@@ -259,8 +259,8 @@ abstract class AndroidWordLevelSpellCheckerSession(
     }
 
     protected class SuggestionsParams(
-        @JvmField val mSuggestions: Array<String>,
-        @JvmField val mFlags: Int
+        val mSuggestions: Array<String>,
+        val mFlags: Int
     )
 
     protected class SuggestionsCache {
@@ -287,7 +287,7 @@ abstract class AndroidWordLevelSpellCheckerSession(
     }
 
     private class Result(
-        @JvmField val mSuggestions: Array<String>?,
-        @JvmField val mHasRecommendedSuggestions: Boolean
+        val mSuggestions: Array<String>?,
+        val mHasRecommendedSuggestions: Boolean
     )
 }

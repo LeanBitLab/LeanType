@@ -64,12 +64,9 @@ object Defaults {
     private const val DEFAULT_SIZE_SCALE = 1.0f // 100%
     const val PREF_THEME_STYLE = KeyboardTheme.STYLE_ROUNDED
     const val PREF_ICON_STYLE = KeyboardTheme.STYLE_ROUNDED
-    @JvmField
     val PREF_THEME_COLORS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) KeyboardTheme.THEME_DYNAMIC else KeyboardTheme.THEME_LIGHT
-    @JvmField
     val PREF_THEME_COLORS_NIGHT = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) KeyboardTheme.THEME_DYNAMIC else KeyboardTheme.THEME_DARK
     const val PREF_THEME_KEY_BORDERS = true
-    @JvmField
     val PREF_THEME_DAY_NIGHT = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
     const val PREF_CUSTOM_ICON_NAMES = ""
     const val PREF_TOOLBAR_CUSTOM_KEY_CODES = ""
@@ -80,7 +77,6 @@ object Defaults {
     const val PREF_SUGGEST_EMOJIS = true
     const val PREF_INLINE_EMOJI_SEARCH = true
     const val PREF_SHOW_EMOJI_DESCRIPTIONS = true
-    @JvmField
     var PREF_POPUP_ON = true
     const val PREF_AUTO_CORRECTION = false
     const val PREF_AUTO_CORRECT_TRIGGER = "both"
@@ -114,13 +110,9 @@ object Defaults {
     const val PREF_PERSIST_TEXT_EDIT_MODE = false
     // ponytail: default value to disable multi-word suggestions is false
     const val PREF_DISABLE_MULTI_WORD_SUGGESTIONS = false
-    @JvmField
     val PREF_SPLIT_SPACER_SCALE = Array(2) { DEFAULT_SIZE_SCALE }
-    @JvmField
     val PREF_KEYBOARD_HEIGHT_SCALE = arrayOf(0.77f, 0.45f)
-    @JvmField
     val PREF_BOTTOM_PADDING_SCALE = arrayOf(1.05f, 0f)
-    @JvmField
     val PREF_SIDE_PADDING_SCALE = Array(4) { 0.15f }
     const val PREF_FONT_SCALE = 0.85f
     const val PREF_EMOJI_FONT_SCALE = DEFAULT_SIZE_SCALE
@@ -173,7 +165,6 @@ object Defaults {
     const val PREF_GESTURE_PREVIEW_TRAIL = true
     const val PREF_GESTURE_FLOATING_PREVIEW_TEXT = true
     const val PREF_GESTURE_FLOATING_PREVIEW_DYNAMIC = true
-    @JvmField
     var PREF_GESTURE_DYNAMIC_PREVIEW_FOLLOW_SYSTEM = true
     const val PREF_GESTURE_SPACE_AWARE = false
     const val PREF_GESTURE_FAST_TYPING_COOLDOWN = 500
@@ -222,7 +213,6 @@ object Defaults {
     const val PREF_CLEAR_CLIPBOARD_ICON = "bin"
     const val PREF_ADD_TO_PERSONAL_DICTIONARY = true
     const val PREF_ADD_TO_PERSONAL_DICT_THRESHOLD = 2
-    @JvmField
     val PREF_NAVBAR_COLOR = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
     const val PREF_NARROW_KEY_GAPS = true
     const val PREF_NARROW_KEY_GAPS_LEVEL = 1

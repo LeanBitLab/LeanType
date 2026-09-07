@@ -12,8 +12,8 @@ package helium314.keyboard.latin.makedict
  * This represents an "attribute", that is either a bigram or a shortcut.
  */
 class WeightedString(
-    @JvmField val mWord: String,
-    @JvmField var mProbabilityInfo: ProbabilityInfo
+    val mWord: String,
+    var mProbabilityInfo: ProbabilityInfo
 ) {
     constructor(word: String, probability: Int) : this(word, ProbabilityInfo(probability))
 

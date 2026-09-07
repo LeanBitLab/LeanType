@@ -17,11 +17,10 @@ import java.util.TreeSet
 class SuggestionResults private constructor(
     comparator: Comparator<in SuggestedWordInfo>?,
     private val mCapacity: Int,
-    @JvmField val mIsBeginningOfSentence: Boolean,
-    @JvmField val mFirstSuggestionExceedsConfidenceThreshold: Boolean
+    val mIsBeginningOfSentence: Boolean,
+    val mFirstSuggestionExceedsConfidenceThreshold: Boolean
 ) : TreeSet<SuggestedWordInfo>(comparator) {
 
-    @JvmField
     val mRawSuggestions: ArrayList<SuggestedWordInfo>? =
         if (ProductionFlags.INCLUDE_RAW_SUGGESTIONS) ArrayList() else null
 

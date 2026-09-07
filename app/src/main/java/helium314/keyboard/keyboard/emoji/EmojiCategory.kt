@@ -48,7 +48,7 @@ class EmojiCategory(
         }
     }
 
-    inner class CategoryProperties(@JvmField val mCategoryId: Int) {
+    inner class CategoryProperties(val mCategoryId: Int) {
         var mPageCount = -1
         fun getPageCount(): Int {
             if (mPageCount < 0) mPageCount = computeCategoryPageCount(mCategoryId)

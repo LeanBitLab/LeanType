@@ -13,7 +13,6 @@ import android.provider.ContactsContract.Contacts
  * Constants related to Contacts Content Provider.
  */
 object ContactsDictionaryConstants {
-    @JvmField
     val PROJECTION: Array<String> = arrayOf(
         BaseColumns._ID,
         Contacts.DISPLAY_NAME,
@@ -22,7 +21,6 @@ object ContactsDictionaryConstants {
         Contacts.IN_VISIBLE_GROUP
     )
 
-    @JvmField
     val PROJECTION_ID_ONLY: Array<String> = arrayOf(BaseColumns._ID)
 
     /**

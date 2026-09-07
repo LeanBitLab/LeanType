@@ -50,14 +50,14 @@ internal class SuggestionStripLayoutHelper(
     dividerViews: ArrayList<View>,
     debugInfoViews: ArrayList<TextView>
 ) {
-    @JvmField val mPadding: Int
-    @JvmField val mDividerWidth: Int
-    @JvmField val mSuggestionsStripHeight: Int
+    val mPadding: Int
+    val mDividerWidth: Int
+    val mSuggestionsStripHeight: Int
     private var mSuggestionsCountInStrip: Int
-    @JvmField val mMoreSuggestionsRowHeight: Int
+    val mMoreSuggestionsRowHeight: Int
     private var mMaxMoreSuggestionsRow: Int
-    @JvmField val mMinMoreSuggestionsWidth: Float
-    @JvmField val mMoreSuggestionsBottomGap: Int
+    val mMinMoreSuggestionsWidth: Float
+    val mMoreSuggestionsBottomGap: Int
     private var mMoreSuggestionsAvailable: Boolean = false
 
     private val mWordViews: ArrayList<TextView> = wordViews

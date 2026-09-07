@@ -27,13 +27,9 @@ import kotlin.math.pow
 class ContactsManager(private val mContext: Context) {
 
     protected open class RankedContact(cursor: Cursor) {
-        @JvmField
         val mName: String = cursor.getString(ContactsDictionaryConstants.NAME_INDEX)
-        @JvmField
         val mTimesContacted: Int = cursor.getInt(ContactsDictionaryConstants.TIMES_CONTACTED_INDEX)
-        @JvmField
         val mLastContactedTime: Long = cursor.getLong(ContactsDictionaryConstants.LAST_TIME_CONTACTED_INDEX)
-        @JvmField
         val mInVisibleGroup: Boolean = cursor.getInt(ContactsDictionaryConstants.IN_VISIBLE_GROUP_INDEX) == 1
 
         var affinity: Float = 0.0f

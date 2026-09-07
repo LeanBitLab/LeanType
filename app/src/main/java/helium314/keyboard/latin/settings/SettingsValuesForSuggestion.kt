@@ -7,7 +7,7 @@
 package helium314.keyboard.latin.settings
 
 class SettingsValuesForSuggestion(
-    @JvmField val mBlockPotentiallyOffensive: Boolean,
-    @JvmField val mSpaceAwareGesture: Boolean,
-    @JvmField val mGestureMethod: String
+    val mBlockPotentiallyOffensive: Boolean,
+    val mSpaceAwareGesture: Boolean,
+    val mGestureMethod: String
 )

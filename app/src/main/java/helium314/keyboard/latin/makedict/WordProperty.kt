@@ -19,16 +19,16 @@ import helium314.keyboard.latin.utils.CombinedFormatUtils
  * This is chiefly used to iterate a dictionary.
  */
 class WordProperty : Comparable<WordProperty> {
-    @JvmField val mWord: String
-    @JvmField val mProbabilityInfo: ProbabilityInfo
-    @JvmField val mShortcutTargets: ArrayList<WeightedString>?
-    @JvmField val mNgrams: ArrayList<NgramProperty>?
+    val mWord: String
+    val mProbabilityInfo: ProbabilityInfo
+    val mShortcutTargets: ArrayList<WeightedString>?
+    val mNgrams: ArrayList<NgramProperty>?
     // TODO: Support mIsBeginningOfSentence.
-    @JvmField val mIsBeginningOfSentence: Boolean
-    @JvmField val mIsNotAWord: Boolean
-    @JvmField val mIsPossiblyOffensive: Boolean
-    @JvmField val mHasShortcuts: Boolean
-    @JvmField val mHasNgrams: Boolean
+    val mIsBeginningOfSentence: Boolean
+    val mIsNotAWord: Boolean
+    val mIsPossiblyOffensive: Boolean
+    val mHasShortcuts: Boolean
+    val mHasNgrams: Boolean
 
     private var mHashCode = 0
 

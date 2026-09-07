@@ -13,16 +13,16 @@ class HermiteInterpolator {
     private var mMaxPos = 0
 
     // Working variables exposed as public fields for zero-allocation output
-    @JvmField var mP1X = 0
-    @JvmField var mP1Y = 0
-    @JvmField var mP2X = 0
-    @JvmField var mP2Y = 0
-    @JvmField var mSlope1X = 0f
-    @JvmField var mSlope1Y = 0f
-    @JvmField var mSlope2X = 0f
-    @JvmField var mSlope2Y = 0f
-    @JvmField var mInterpolatedX = 0f
-    @JvmField var mInterpolatedY = 0f
+    var mP1X = 0
+    var mP1Y = 0
+    var mP2X = 0
+    var mP2Y = 0
+    var mSlope1X = 0f
+    var mSlope1Y = 0f
+    var mSlope2X = 0f
+    var mSlope2Y = 0f
+    var mInterpolatedX = 0f
+    var mInterpolatedY = 0f
 
     fun reset(xCoords: IntArray, yCoords: IntArray, minPos: Int, maxPos: Int) {
         mXCoords = xCoords

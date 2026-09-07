@@ -40,7 +40,7 @@ import kotlin.math.hypot
 import kotlin.math.sqrt
 
 class PointerTracker private constructor(
-    @JvmField val mPointerId: Int
+    val mPointerId: Int
 ) : PointerTrackerQueue.Element, BatchInputArbiterListener {
 
     internal class PointerTrackerParams(mainKeyboardViewAttr: TypedArray) {
@@ -1196,7 +1196,6 @@ class PointerTracker private constructor(
         private var sTypingTimeRecorder: TypingTimeRecorder? = null
         private var sInKeySwipe = false
 
-        @JvmField
         var sPersistentTouchpadModeActive = false
         private var sTouchpadModeActive = false
 

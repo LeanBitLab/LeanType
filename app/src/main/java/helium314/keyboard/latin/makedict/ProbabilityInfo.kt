@@ -10,10 +10,10 @@ import com.android.inputmethod.latin.BinaryDictionary
 import helium314.keyboard.latin.utils.CombinedFormatUtils
 
 class ProbabilityInfo(
-    @JvmField val mProbability: Int,
-    @JvmField val mTimestamp: Int,
-    @JvmField val mLevel: Int,
-    @JvmField val mCount: Int
+    val mProbability: Int,
+    val mTimestamp: Int,
+    val mLevel: Int,
+    val mCount: Int
 ) {
     constructor(probability: Int) : this(probability, BinaryDictionary.NOT_A_VALID_TIMESTAMP, 0, 0)
 

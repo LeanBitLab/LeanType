@@ -39,7 +39,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock
  * getDictionary(Context context, Locale locale, File dictFile, String dictNamePrefix)
  */
 abstract class ExpandableBinaryDictionary(
-    @JvmField val mContext: Context,
+    val mContext: Context,
     dictName: String,
     locale: Locale?,
     dictType: String,

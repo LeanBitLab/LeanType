@@ -10,10 +10,10 @@ import android.content.res.TypedArray
 import helium314.keyboard.latin.R
 
 class GestureStrokeDrawingParams(mainKeyboardViewAttr: TypedArray) {
-    @JvmField val mMinSamplingDistance: Double
-    @JvmField val mMaxInterpolationAngularThreshold: Double
-    @JvmField val mMaxInterpolationDistanceThreshold: Double
-    @JvmField val mMaxInterpolationSegments: Int
+    val mMinSamplingDistance: Double
+    val mMaxInterpolationAngularThreshold: Double
+    val mMaxInterpolationDistanceThreshold: Double
+    val mMaxInterpolationSegments: Int
 
     init {
         mMinSamplingDistance = mainKeyboardViewAttr.getDimension(

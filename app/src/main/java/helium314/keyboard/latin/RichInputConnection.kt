@@ -1206,7 +1206,6 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         private const val OPERATION_GET_WORD_RANGE_AT_CURSOR = 2
         private const val OPERATION_RELOAD_TEXT_CACHE = 3
 
-        @JvmField
         val OPERATION_NAMES = arrayOf(
             "GET_TEXT_BEFORE_CURSOR",
             "GET_TEXT_AFTER_CURSOR",

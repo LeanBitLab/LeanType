@@ -155,7 +155,6 @@ interface PopupKeysPanel {
         get() = getContainerView().parent != null
 
     companion object {
-        @JvmField
         val EMPTY_CONTROLLER: Controller = object : Controller {
             override fun onShowPopupKeysPanel(panel: PopupKeysPanel) {}
             override fun onDismissPopupKeysPanel() {}

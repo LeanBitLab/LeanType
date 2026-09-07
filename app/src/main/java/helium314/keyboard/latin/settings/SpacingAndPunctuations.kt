@@ -25,16 +25,16 @@ class SpacingAndPunctuations(res: Resources, urlDetection: Boolean) {
     private val mSortedWordConnectors: IntArray
     private val mSortedSometimesWordConnectors: IntArray
 
-    @JvmField val mSortedWordSeparators: IntArray
-    @JvmField val mPairSymbols: List<IntArray>
-    @JvmField val mSuggestPuncList: PunctuationSuggestions
+    val mSortedWordSeparators: IntArray
+    val mPairSymbols: List<IntArray>
+    val mSuggestPuncList: PunctuationSuggestions
     private val mSentenceSeparator: Int
     private val mAbbreviationMarker: Int
     private val mSortedSentenceTerminators: IntArray
-    @JvmField val mSentenceSeparatorAndSpace: String
-    @JvmField val mCurrentLanguageHasSpaces: Boolean
-    @JvmField val mUsesAmericanTypography: Boolean
-    @JvmField val mUsesGermanRules: Boolean
+    val mSentenceSeparatorAndSpace: String
+    val mCurrentLanguageHasSpaces: Boolean
+    val mUsesAmericanTypography: Boolean
+    val mUsesGermanRules: Boolean
 
     init {
         mSortedSymbolsPrecededBySpace = StringUtils.toSortedCodePointArray(res.getString(R.string.symbols_preceded_by_space))

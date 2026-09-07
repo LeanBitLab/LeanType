@@ -11,16 +11,16 @@ import helium314.keyboard.latin.R
 import helium314.keyboard.latin.utils.ResourceUtils
 
 class GestureStrokeRecognitionParams {
-    @JvmField val mStaticTimeThresholdAfterFastTyping: Int
-    @JvmField val mDetectFastMoveSpeedThreshold: Float
-    @JvmField val mDynamicThresholdDecayDuration: Int
-    @JvmField val mDynamicTimeThresholdFrom: Int
-    @JvmField val mDynamicTimeThresholdTo: Int
-    @JvmField val mDynamicDistanceThresholdFrom: Float
-    @JvmField val mDynamicDistanceThresholdTo: Float
-    @JvmField val mSamplingMinimumDistance: Float
-    @JvmField val mRecognitionMinimumTime: Int
-    @JvmField val mRecognitionSpeedThreshold: Float
+    val mStaticTimeThresholdAfterFastTyping: Int
+    val mDetectFastMoveSpeedThreshold: Float
+    val mDynamicThresholdDecayDuration: Int
+    val mDynamicTimeThresholdFrom: Int
+    val mDynamicTimeThresholdTo: Int
+    val mDynamicDistanceThresholdFrom: Float
+    val mDynamicDistanceThresholdTo: Float
+    val mSamplingMinimumDistance: Float
+    val mRecognitionMinimumTime: Int
+    val mRecognitionSpeedThreshold: Float
 
     private constructor() {
         mStaticTimeThresholdAfterFastTyping = 500
@@ -84,6 +84,6 @@ class GestureStrokeRecognitionParams {
     }
 
     companion object {
-        @JvmField val DEFAULT: GestureStrokeRecognitionParams = GestureStrokeRecognitionParams()
+        val DEFAULT: GestureStrokeRecognitionParams = GestureStrokeRecognitionParams()
     }
 }

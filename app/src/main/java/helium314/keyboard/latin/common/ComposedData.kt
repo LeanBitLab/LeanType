@@ -10,9 +10,9 @@ import kotlin.random.Random
 
 /** An immutable class that encapsulates a snapshot of word composition data. */
 class ComposedData(
-    @JvmField val mInputPointers: InputPointers,
-    @JvmField val mIsBatchMode: Boolean,
-    @JvmField val mTypedWord: String
+    val mInputPointers: InputPointers,
+    val mIsBatchMode: Boolean,
+    val mTypedWord: String
 ) {
     /**
      * Copy the code points in the typed word to a destination array of ints.

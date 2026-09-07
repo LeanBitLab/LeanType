@@ -12,12 +12,12 @@ import java.math.RoundingMode
 import java.util.Locale
 
 class DictionaryStats {
-    @JvmField val mLocale: Locale
-    @JvmField val mDictType: String
-    @JvmField val mDictFileName: String?
-    @JvmField val mDictFileSize: Long
-    @JvmField val mContentVersion: Int
-    @JvmField val mWordCount: Int
+    val mLocale: Locale
+    val mDictType: String
+    val mDictFileName: String?
+    val mDictFileSize: Long
+    val mContentVersion: Int
+    val mWordCount: Int
 
     constructor(
         locale: Locale,

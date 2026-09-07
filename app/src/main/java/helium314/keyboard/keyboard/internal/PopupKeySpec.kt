@@ -18,10 +18,10 @@ import java.util.HashSet
 import java.util.Locale
 
 class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Locale) {
-    @JvmField val mCode: Int
-    @JvmField val mLabel: String?
-    @JvmField val mOutputText: String?
-    @JvmField val mIconName: String?
+    val mCode: Int
+    val mLabel: String?
+    val mOutputText: String?
+    val mIconName: String?
 
     init {
         if (popupKeySpec.isEmpty()) throw KeySpecParser.KeySpecParserError("Empty popup key spec")

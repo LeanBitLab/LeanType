@@ -25,7 +25,6 @@ class EmojiCategoryPageIndicatorView @JvmOverloads constructor(
     private var mOffset = 0.0f
 
     // package-private in Java, exposed to EmojiPalettesView
-    @JvmField
     var mWidth: Int = 0
 
     fun setColors(foregroundColor: Int, backgroundColor: Int) {

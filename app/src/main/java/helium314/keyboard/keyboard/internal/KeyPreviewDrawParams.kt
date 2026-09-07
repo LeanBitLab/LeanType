@@ -11,8 +11,8 @@ import android.view.View
 import helium314.keyboard.latin.R
 
 class KeyPreviewDrawParams(mainKeyboardViewAttr: TypedArray) {
-    @JvmField val mPreviewOffset: Int
-    @JvmField val mPreviewBackgroundResId: Int
+    val mPreviewOffset: Int
+    val mPreviewBackgroundResId: Int
     private var mShowPopup: Boolean = true
 
     private var mVisibleWidth: Int = 0

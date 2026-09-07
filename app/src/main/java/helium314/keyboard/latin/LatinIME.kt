@@ -120,21 +120,21 @@ class LatinIME : InputMethodService(),
     private var lastInputType = 0
     private var lastOrientation = 0
 
-    @JvmField val mSettings: Settings = Settings.getInstance()
+    val mSettings: Settings = Settings.getInstance()
     val settings: Settings get() = mSettings
 
     private val dictionaryFacilitator: DictionaryFacilitator = DictionaryFacilitatorProvider.getDictionaryFacilitator(false)
 
-    @JvmField val mHandler: UIHandler = UIHandler(this)
+    val mHandler: UIHandler = UIHandler(this)
     val handler: UIHandler get() = mHandler
 
-    @JvmField val mInputLogic: InputLogic = InputLogic(this, this, dictionaryFacilitator)
+    val mInputLogic: InputLogic = InputLogic(this, this, dictionaryFacilitator)
     val inputLogic: InputLogic get() = mInputLogic
 
-    @JvmField val mKeyboardSwitcher: KeyboardSwitcher = KeyboardSwitcher.getInstance()
+    val mKeyboardSwitcher: KeyboardSwitcher = KeyboardSwitcher.getInstance()
     val keyboardSwitcher: KeyboardSwitcher get() = mKeyboardSwitcher
 
-    @JvmField val mKeyboardActionListener: KeyboardActionListener = KeyboardActionListenerImpl(this, mInputLogic)
+    val mKeyboardActionListener: KeyboardActionListener = KeyboardActionListenerImpl(this, mInputLogic)
     val keyboardActionListener: KeyboardActionListener get() = mKeyboardActionListener
 
     private var originalNavBarColor = 0
@@ -142,7 +142,7 @@ class LatinIME : InputMethodService(),
     private var originalNavBarSaved = false
     private var lastMainDictionaryAvailable = false
 
-    @JvmField var mInputView: View? = null
+    var mInputView: View? = null
     val inputView: View?
         get() = mInputView
 
@@ -1722,16 +1722,16 @@ class LatinIME : InputMethodService(),
     }
 
     companion object {
-        @JvmField val TAG = LatinIME::class.java.simpleName
+        val TAG = LatinIME::class.java.simpleName
         private const val TRACE = false
         private const val EXTENDED_TOUCHABLE_REGION_HEIGHT = 100
         private const val PERIOD_FOR_AUDIO_AND_HAPTIC_FEEDBACK_IN_KEY_REPEAT = 2
         private const val PENDING_IMS_CALLBACK_DURATION_MILLIS = 800
-        @JvmField val DELAY_WAIT_FOR_DICTIONARY_LOAD_MILLIS = TimeUnit.SECONDS.toMillis(2)
-        @JvmField val DELAY_DEALLOCATE_MEMORY_MILLIS = TimeUnit.SECONDS.toMillis(10)
+        val DELAY_WAIT_FOR_DICTIONARY_LOAD_MILLIS = TimeUnit.SECONDS.toMillis(2)
+        val DELAY_DEALLOCATE_MEMORY_MILLIS = TimeUnit.SECONDS.toMillis(10)
         private const val SCHEME_PACKAGE = "package"
         
-        @JvmField var sSettingsDirty = true
+        var sSettingsDirty = true
         
         @Volatile
         private var sInstance: LatinIME? = null

@@ -24,13 +24,13 @@ import kotlin.math.min
 open class GestureFloatingTextDrawingPreview(mainKeyboardViewAttr: TypedArray) : AbstractDrawingPreview() {
 
     protected class GesturePreviewTextParams(mainKeyboardViewAttr: TypedArray) {
-        @JvmField val mGesturePreviewDynamic: Boolean
-        @JvmField val mGesturePreviewTextOffset: Int
-        @JvmField val mGesturePreviewTextHeight: Int
-        @JvmField val mGesturePreviewHorizontalPadding: Float
-        @JvmField val mGesturePreviewVerticalPadding: Float
-        @JvmField val mGesturePreviewRoundRadius: Float
-        @JvmField val mDisplayWidth: Int
+        val mGesturePreviewDynamic: Boolean
+        val mGesturePreviewTextOffset: Int
+        val mGesturePreviewTextHeight: Int
+        val mGesturePreviewHorizontalPadding: Float
+        val mGesturePreviewVerticalPadding: Float
+        val mGesturePreviewRoundRadius: Float
+        val mDisplayWidth: Int
 
         private val mGesturePreviewTextSize: Int
         private val mGesturePreviewTextColor: Int

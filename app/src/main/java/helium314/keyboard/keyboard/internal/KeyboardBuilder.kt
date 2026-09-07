@@ -26,8 +26,7 @@ import helium314.keyboard.latin.utils.sumOf
 import org.xmlpull.v1.XmlPullParser
 
 // TODO: Write unit tests for this class.
-open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context, @JvmField val mParams: KP) {
-    @JvmField
+open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context, val mParams: KP) {
     protected val mResources: Resources
     private var mCurrentY = 0
 

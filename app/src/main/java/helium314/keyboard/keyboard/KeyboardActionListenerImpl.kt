@@ -655,9 +655,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
 
     companion object {
-        @JvmField
         var sPersistentTextEditModeActive = false
-        @JvmField
         var sPersistentSelectionModeActive = false
         private enum class MetaPressState {
             UNSET, // default state, not active

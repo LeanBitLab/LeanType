@@ -41,6 +41,6 @@ interface TimerProxy {
     }
 
     companion object {
-        @JvmField val NULL: TimerProxy = Adapter()
+        val NULL: TimerProxy = Adapter()
     }
 }

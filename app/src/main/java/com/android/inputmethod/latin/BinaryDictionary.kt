@@ -115,11 +115,11 @@ class BinaryDictionary : Dictionary {
         private external fun migrateNative(dict: Long, dictFilePath: String, newFormatVersion: Long): Boolean
     }
 
-    class GetNextWordPropertyResult(@JvmField val mWordProperty: WordProperty?, @JvmField val mNextToken: Int)
+    class GetNextWordPropertyResult(val mWordProperty: WordProperty?, val mNextToken: Int)
 
-    class WordAndFrequency(@JvmField val mWord: String, @JvmField val mFrequency: Int)
+    class WordAndFrequency(val mWord: String, val mFrequency: Int)
 
-    class GetNextWordAndFrequencyResult(@JvmField val mWordAndFrequency: WordAndFrequency, @JvmField val mNextToken: Int)
+    class GetNextWordAndFrequencyResult(val mWordAndFrequency: WordAndFrequency, val mNextToken: Int)
 
     private var mNativeDict: Long = 0
     private val mDictSize: Long

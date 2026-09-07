@@ -15,7 +15,6 @@ abstract class UniqueKeysCache {
     abstract fun getUniqueKey(key: Key): Key
 
     companion object {
-        @JvmField
         val NO_CACHE: UniqueKeysCache = object : UniqueKeysCache() {
             override fun setEnabled(enabled: Boolean) {}
             override fun clear() {}

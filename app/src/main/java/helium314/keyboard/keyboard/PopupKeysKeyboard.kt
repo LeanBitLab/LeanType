@@ -23,15 +23,15 @@ class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
     fun getDefaultCoordX(): Int = mDefaultKeyCoordX
 
     class PopupKeysKeyboardParams : KeyboardParams() {
-        @JvmField var mIsPopupKeysFixedOrder = false
-        @JvmField var mTopRowAdjustment = 0
-        @JvmField var mNumRows = 0
-        @JvmField var mNumColumns = 0
-        @JvmField var mTopKeys = 0
-        @JvmField var mLeftKeys = 0
-        @JvmField var mRightKeys = 0 // includes default key.
-        @JvmField var mDividerWidth = 0
-        @JvmField var mColumnWidth = 0
+        var mIsPopupKeysFixedOrder = false
+        var mTopRowAdjustment = 0
+        var mNumRows = 0
+        var mNumColumns = 0
+        var mTopKeys = 0
+        var mLeftKeys = 0
+        var mRightKeys = 0 // includes default key.
+        var mDividerWidth = 0
+        var mColumnWidth = 0
 
         /**
          * Set keyboard parameters of popup keys keyboard.

@@ -19,9 +19,9 @@ class TextRange(
     private val mWordAtCursorStartIndex: Int,
     private val mWordAtCursorEndIndex: Int,
     private val mCursorIndex: Int,
-    @JvmField val mHasUrlSpans: Boolean
+    val mHasUrlSpans: Boolean
 ) {
-    @JvmField val mWord: CharSequence
+    val mWord: CharSequence
 
     init {
         if (mWordAtCursorStartIndex < 0 || mCursorIndex < mWordAtCursorStartIndex

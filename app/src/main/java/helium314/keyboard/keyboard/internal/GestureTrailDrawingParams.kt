@@ -12,16 +12,16 @@ import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.settings.Settings
 
 class GestureTrailDrawingParams(mainKeyboardViewAttr: TypedArray) {
-    @JvmField val mTrailColor: Int
-    @JvmField val mTrailStartWidth: Float
-    @JvmField val mTrailEndWidth: Float
-    @JvmField val mTrailBodyRatio: Float
-    @JvmField val mTrailShadowEnabled: Boolean
-    @JvmField val mTrailShadowRatio: Float
-    @JvmField val mFadeoutStartDelay: Int
-    @JvmField val mFadeoutDuration: Int
-    @JvmField val mUpdateInterval: Int
-    @JvmField val mTrailLingerDuration: Int
+    val mTrailColor: Int
+    val mTrailStartWidth: Float
+    val mTrailEndWidth: Float
+    val mTrailBodyRatio: Float
+    val mTrailShadowEnabled: Boolean
+    val mTrailShadowRatio: Float
+    val mFadeoutStartDelay: Int
+    val mFadeoutDuration: Int
+    val mUpdateInterval: Int
+    val mTrailLingerDuration: Int
 
     init {
         mTrailColor = Settings.getValues().mColors.get(ColorType.GESTURE_TRAIL)

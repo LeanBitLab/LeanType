@@ -92,7 +92,7 @@ object FormatSpec {
     /**
      * Options global to the dictionary.
      */
-    class DictionaryOptions(@JvmField val mAttributes: HashMap<String, String>) {
+    class DictionaryOptions(val mAttributes: HashMap<String, String>) {
         override fun toString(): String {
             return toString(0, false)
         }
