@@ -67,7 +67,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val keyboard = getKeyboard()
+        val keyboard = keyboard
         if (keyboard != null) {
             val width = keyboard.mOccupiedWidth + paddingLeft + paddingRight
             val height = keyboard.mOccupiedHeight + paddingTop + paddingBottom
@@ -166,7 +166,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         val panelMaxX = parentView.measuredWidth - measuredWidth
         val panelFinalX = max(0, min(panelMaxX, x))
         val center = panelFinalX + measuredWidth / 2
-        val keyboard = getKeyboard()!!
+        val keyboard = keyboard!!
         val layoutGravity = when {
             center < pointX - keyboard.mMostCommonKeyWidth / 2 -> Gravity.RIGHT
             center > pointX + keyboard.mMostCommonKeyWidth / 2 -> Gravity.LEFT
@@ -203,7 +203,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
      * Returns the default x coordinate for showing this panel.
      */
     protected open fun getDefaultCoordX(): Int {
-        return (getKeyboard() as PopupKeysKeyboard).getDefaultCoordX()
+        return (keyboard as PopupKeysKeyboard).getDefaultCoordX()
     }
 
     override fun onDownEvent(x: Int, y: Int, pointerId: Int, eventTime: Long) {
@@ -246,7 +246,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
             if (code == KeyCode.MULTIPLE_CODE_POINTS) {
                 mListener!!.onTextInput(key.outputText)
             } else if (code != KeyCode.NOT_SPECIFIED) {
-                if (getKeyboard()!!.hasProximityCharsCorrection(code)) {
+                if (keyboard!!.hasProximityCharsCorrection(code)) {
                     mListener!!.onCodeInput(code, x, y, false /* isKeyRepeat */)
                 } else {
                     mListener!!.onCodeInput(

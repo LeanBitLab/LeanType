@@ -108,7 +108,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (event.isHandled) {
             inputLogic.onCodeInput(
                 settings.current, event,
-                keyboardSwitcher.getKeyboardShiftMode(), // TODO: this is not necessarily correct for a hardware keyboard right now
+                keyboardSwitcher.keyboardShiftMode, // TODO: this is not necessarily correct for a hardware keyboard right now
                 latinIME.mHandler
             )
             return true
@@ -212,7 +212,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             KeyCode.SHIFT -> {
                 if (keyboardSwitcher.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT || sPersistentTextEditModeActive) {
                     if (inputLogic.connection.hasSelection()) {
-                        inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.SHIFT, 0, 0, 0, false), keyboardSwitcher.getKeyboardShiftMode(), latinIME.mHandler)
+                        inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.SHIFT, 0, 0, 0, false), keyboardSwitcher.keyboardShiftMode, latinIME.mHandler)
                     } else {
                         sPersistentSelectionModeActive = !sPersistentSelectionModeActive
                         keyboardSwitcher.mainKeyboardView?.invalidateAllKeys()
@@ -223,7 +223,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             KeyCode.CAPS_LOCK -> {
                 if (keyboardSwitcher.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT || sPersistentTextEditModeActive) {
                     if (inputLogic.connection.hasSelection()) {
-                        inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.SHIFT, 0, 0, 0, false), keyboardSwitcher.getKeyboardShiftMode(), latinIME.mHandler)
+                        inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.SHIFT, 0, 0, 0, false), keyboardSwitcher.keyboardShiftMode, latinIME.mHandler)
                     } else {
                         sPersistentSelectionModeActive = true
                         keyboardSwitcher.mainKeyboardView?.invalidateAllKeys()
@@ -246,12 +246,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 return
             }
             KeyCode.CLIPBOARD_COPY_ALL -> {
-                inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.CLIPBOARD_SELECT_ALL, 0, 0, 0, false), keyboardSwitcher.getKeyboardShiftMode(), latinIME.mHandler)
-                inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.CLIPBOARD_COPY, 0, 0, 0, false), keyboardSwitcher.getKeyboardShiftMode(), latinIME.mHandler)
+                inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.CLIPBOARD_SELECT_ALL, 0, 0, 0, false), keyboardSwitcher.keyboardShiftMode, latinIME.mHandler)
+                inputLogic.onCodeInput(settings.current, Event.createSoftwareKeypressEvent(KeyCode.CLIPBOARD_COPY, 0, 0, 0, false), keyboardSwitcher.keyboardShiftMode, latinIME.mHandler)
                 return
             }
         }
         val mkv = keyboardSwitcher.mainKeyboardView
+        val keyX = mkv?.getKeyX(x) ?: x
+        val keyY = mkv?.getKeyY(y) ?: y
 
         val isEditingNav = primaryCode == KeyCode.WORD_LEFT || primaryCode == KeyCode.WORD_RIGHT
                 || primaryCode == KeyCode.MOVE_START_OF_PAGE || primaryCode == KeyCode.MOVE_END_OF_PAGE
@@ -265,9 +267,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
         // checking if the character is a combining accent
         val event = if (primaryCode in combiningRange) { // todo: should this be done later, maybe in inputLogic?
-            Event.createSoftwareDeadEvent(primaryCode, 0, eventMetaState, mkv.getKeyX(x), mkv.getKeyY(y), null)
+            Event.createSoftwareDeadEvent(primaryCode, 0, eventMetaState, keyX, keyY, null)
         } else {
-            Event.createSoftwareKeypressEvent(primaryCode, eventMetaState, mkv.getKeyX(x), mkv.getKeyY(y), isKeyRepeat)
+            Event.createSoftwareKeypressEvent(primaryCode, eventMetaState, keyX, keyY, isKeyRepeat)
         }
         latinIME.onEvent(event)
         metaAfterCodeInput(primaryCode)
@@ -296,11 +298,11 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             return latinIME.showInputPickerDialog()
         }
         if (requestCode == KeyboardActionListener.CODE_TOUCHPAD_ON) {
-            keyboardSwitcher.getMainKeyboardView()?.alpha = 0.5f
+            keyboardSwitcher.mainKeyboardView?.alpha = 0.5f
             return true
         }
         if (requestCode == KeyboardActionListener.CODE_TOUCHPAD_OFF) {
-            keyboardSwitcher.getMainKeyboardView()?.alpha = 1.0f
+            keyboardSwitcher.mainKeyboardView?.alpha = 1.0f
             return true
         }
         return false

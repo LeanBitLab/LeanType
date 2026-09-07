@@ -108,7 +108,7 @@ private fun removeBlockedWord(context: Context, word: String, locale: Locale) {
 }
 
 private fun notifyKeyboardToReload() {
-    KeyboardSwitcher.getInstance().getLatinIME()?.reloadBlacklist()
+    KeyboardSwitcher.getInstance().latinIME?.reloadBlacklist()
 }
 
 @Composable

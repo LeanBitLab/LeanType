@@ -174,11 +174,8 @@ class TouchpadView @JvmOverloads constructor(
         val btnClose = mBtnClose
         if (btnClose != null) {
             val switcher = KeyboardSwitcher.getInstance()
-            val iconsSet: KeyboardIconsSet? = if (switcher != null && switcher.keyboard != null) {
-                switcher.keyboard.mIconsSet
-            } else {
-                null
-            }
+            val kb = switcher.keyboard
+            val iconsSet: KeyboardIconsSet? = kb?.mIconsSet
             val keyIconColor = colors.get(ColorType.KEY_ICON)
 
             // Set rounded background for the close button

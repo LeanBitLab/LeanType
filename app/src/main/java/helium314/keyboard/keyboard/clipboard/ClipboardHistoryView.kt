@@ -198,7 +198,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
             }
         }
 
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         val clipboardStripScrollView = KeyboardSwitcher.getInstance().clipboardStripScrollView
         if (clipboardStripScrollView != null) {
             colors.setBackground(clipboardStripScrollView, ColorType.STRIP_BACKGROUND)
@@ -254,7 +254,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     }
     
     private fun startSearchMode() {
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         clipboardStrip.removeAllViews()
         
         searchBarTextView = TextView(context).apply {
@@ -294,7 +294,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     }
 
     private fun stopSearchMode() {
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         clipboardStrip.removeAllViews()
         toolbarKeys.forEach { clipboardStrip.addView(it) }
         applyClipboardToolbarKeyLayoutParams()
@@ -334,7 +334,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     fun startEditMode(entry: ClipboardHistoryEntry) {
         clipboardRecyclerView.dismissUndoBar()
         dismissConfirmationBar()
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         val inSearchMode = this::searchBarTextView.isInitialized && searchBarTextView.parent == clipboardStrip
         if (inSearchMode) {
             stopSearchMode()
@@ -419,7 +419,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         deleteSwipeStartPos = -1
         currentDeleteSwipePos = -1
 
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         clipboardStrip.removeAllViews()
         toolbarKeys.forEach { clipboardStrip.addView(it) }
         applyClipboardToolbarKeyLayoutParams()
@@ -1004,7 +1004,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     }
 
     override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
-        setToolbarButtonsActivatedStateOnPrefChange(KeyboardSwitcher.getInstance().clipboardStrip, key)
+        setToolbarButtonsActivatedStateOnPrefChange(KeyboardSwitcher.getInstance().clipboardStrip ?: return, key)
 
         if (key == Settings.PREF_AUTO_SPAN_TOOLBAR_KEYS || key == Settings.PREF_TOOLBAR_KEYS_ALIGNMENT || key == Settings.PREF_CLIPBOARD_KEYS_ALIGNMENT || key == Settings.PREF_CLIPBOARD_TOOLBAR_KEYS) {
             applyClipboardToolbarKeyLayoutParams()

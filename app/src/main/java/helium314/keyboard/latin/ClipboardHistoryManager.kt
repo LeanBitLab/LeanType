@@ -559,7 +559,7 @@ class ClipboardHistoryManager(
         latinIME.mSettings.getCustomTypeface()?.let { textView.typeface = it }
         textView.text = (if (isClipSensitive(inputType)) "*".repeat(content.length) else content)
             .take(200) // truncate displayed text for performance reasons
-        val clipIcon = latinIME.mKeyboardSwitcher.keyboard.mIconsSet.getIconDrawable(ToolbarKey.PASTE.name.lowercase())
+        val clipIcon = latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.PASTE.name.lowercase())
         textView.setCompoundDrawablesRelativeWithIntrinsicBounds(clipIcon, null, null, null)
         textView.setOnClickListener {
             dontShowCurrentSuggestion = true
@@ -568,7 +568,7 @@ class ClipboardHistoryManager(
             binding.root.isGone = true
         }
         val closeButton = binding.clipboardSuggestionClose
-        closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard.mIconsSet.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
+        closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
         closeButton.setOnClickListener {
             val prefs = latinIME.prefs()
             prefs.edit().putString("last_dismissed_clipboard_text", content.toString()).apply()
@@ -644,7 +644,7 @@ class ClipboardHistoryManager(
                 val thumb = latinIME.contentResolver.loadThumbnail(contentUri, android.util.Size(160, 160), null)
                 thumbnailImage.setImageBitmap(thumb)
             } catch (e: Exception) {
-                val clipIcon = latinIME.mKeyboardSwitcher.keyboard.mIconsSet.getIconDrawable(ToolbarKey.PASTE.name.lowercase())
+                val clipIcon = latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.PASTE.name.lowercase())
                 thumbnailImage.setImageDrawable(clipIcon)
             }
         }
@@ -690,7 +690,7 @@ class ClipboardHistoryManager(
             binding.root.isGone = true
         }
 
-        closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard.mIconsSet.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
+        closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
         closeButton.setOnClickListener { 
             val prefs = latinIME.prefs()
             val rawDeletedSet = prefs.getStringSet("deleted_screenshot_uris", emptySet()) ?: emptySet()
