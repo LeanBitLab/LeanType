@@ -81,7 +81,6 @@ open class KeyPreviewView @JvmOverloads constructor(
 
         private val sNoScaleXTextSet = HashSet<String>()
 
-        @JvmStatic
         fun clearTextCache() {
             sNoScaleXTextSet.clear()
         }

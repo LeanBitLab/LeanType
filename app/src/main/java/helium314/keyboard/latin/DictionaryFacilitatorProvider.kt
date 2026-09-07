@@ -10,7 +10,6 @@ package helium314.keyboard.latin
  * Factory for instantiating DictionaryFacilitator objects.
  */
 object DictionaryFacilitatorProvider {
-    @JvmStatic
     fun getDictionaryFacilitator(isNeededForSpellChecking: Boolean): DictionaryFacilitator {
         return DictionaryFacilitatorImpl()
     }

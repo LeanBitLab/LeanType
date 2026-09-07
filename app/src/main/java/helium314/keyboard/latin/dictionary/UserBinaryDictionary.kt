@@ -81,7 +81,6 @@ class UserBinaryDictionary protected constructor(
 
         private const val NAME = "userunigram"
 
-        @JvmStatic
         fun getDictionary(
             context: Context,
             locale: Locale,

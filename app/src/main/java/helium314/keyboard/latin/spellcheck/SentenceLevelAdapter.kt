@@ -74,12 +74,10 @@ class SentenceLevelAdapter(res: Resources, locale: Locale) {
         private val EMPTY_SENTENCE_SUGGESTIONS_INFOS = emptyArray<SentenceSuggestionsInfo>()
         private val EMPTY_SUGGESTIONS_INFO = SuggestionsInfo(0, null)
 
-        @JvmStatic
         fun getEmptySentenceSuggestionsInfo(): Array<SentenceSuggestionsInfo> {
             return EMPTY_SENTENCE_SUGGESTIONS_INFOS
         }
 
-        @JvmStatic
         fun reconstructSuggestions(
             originalTextInfoParams: SentenceTextInfoParams?,
             results: Array<SuggestionsInfo?>?

@@ -21,7 +21,6 @@ abstract class UniqueKeysCache {
             override fun getUniqueKey(key: Key): Key = key
         }
 
-        @JvmStatic
         fun newInstance(): UniqueKeysCache = UniqueKeysCacheImpl()
     }
 

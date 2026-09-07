@@ -25,17 +25,14 @@ object InputTypeUtils {
     )
     const val IME_ACTION_CUSTOM_LABEL = EditorInfo.IME_MASK_ACTION + 1
 
-    @JvmStatic
     fun isNumberInputType(inputType: Int): Boolean {
         return (inputType and TEXT_NUMBER_INPUT_TYPE) != 0
     }
 
-    @JvmStatic
     fun isEmailVariation(variation: Int): Boolean {
         return variation == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS || variation == InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS
     }
 
-    @JvmStatic
     fun isUriOrEmailType(inputType: Int): Boolean {
         if ((inputType and InputType.TYPE_MASK_CLASS) != InputType.TYPE_CLASS_TEXT) return false
         val maskedInputType = inputType and InputType.TYPE_MASK_VARIATION
@@ -43,7 +40,6 @@ object InputTypeUtils {
     }
 
     // Please refer to TextView.isPasswordInputType
-    @JvmStatic
     fun isPasswordInputType(inputType: Int): Boolean {
         val maskedInputType = inputType and (InputType.TYPE_MASK_CLASS or InputType.TYPE_MASK_VARIATION)
         return (maskedInputType == WEB_TEXT_PASSWORD_INPUT_TYPE || maskedInputType == TEXT_PASSWORD_INPUT_TYPE
@@ -51,18 +47,15 @@ object InputTypeUtils {
     }
 
     // Please refer to TextView.isVisiblePasswordInputType
-    @JvmStatic
     fun isVisiblePasswordInputType(inputType: Int): Boolean {
         val maskedInputType = inputType and (InputType.TYPE_MASK_CLASS or InputType.TYPE_MASK_VARIATION)
         return maskedInputType == TEXT_VISIBLE_PASSWORD_INPUT_TYPE
     }
 
-    @JvmStatic
     fun isAnyPasswordInputType(inputType: Int): Boolean {
         return isPasswordInputType(inputType) || isVisiblePasswordInputType(inputType)
     }
 
-    @JvmStatic
     fun isAutoSpaceFriendlyType(inputType: Int): Boolean {
         if (InputType.TYPE_CLASS_TEXT != (InputType.TYPE_MASK_CLASS and inputType)) return false
         val variation = InputType.TYPE_MASK_VARIATION and inputType
@@ -72,7 +65,6 @@ object InputTypeUtils {
         return true
     }
 
-    @JvmStatic
     fun getImeOptionsActionIdFromEditorInfo(editorInfo: EditorInfo): Int {
         val imeOptions = AppWorkarounds.adjustImeOptions(editorInfo.imeOptions, editorInfo.packageName)
         if ((imeOptions and EditorInfo.IME_FLAG_NO_ENTER_ACTION) != 0) {

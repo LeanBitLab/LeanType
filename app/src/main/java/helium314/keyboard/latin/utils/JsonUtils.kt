@@ -21,7 +21,6 @@ object JsonUtils {
 
     private const val EMPTY_STRING = ""
 
-    @JvmStatic
     fun jsonStrToList(s: String): List<Any> {
         val list = ArrayList<Any>()
         val reader = JsonReader(StringReader(s))
@@ -51,7 +50,6 @@ object JsonUtils {
         return emptyList()
     }
 
-    @JvmStatic
     fun listToJsonStr(list: List<Any>?): String {
         if (list.isNullOrEmpty()) {
             return EMPTY_STRING

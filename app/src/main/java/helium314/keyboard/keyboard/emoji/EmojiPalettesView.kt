@@ -1093,7 +1093,6 @@ class EmojiPalettesView @JvmOverloads constructor(
         private const val ID_SEARCH_TAB = -2
         private var sDictionaryFacilitator: SingleDictionaryFacilitator? = null
 
-        @JvmStatic
         fun closeDictionaryFacilitator() {
             sDictionaryFacilitator?.closeDictionaries()
             sDictionaryFacilitator = null

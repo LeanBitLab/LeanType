@@ -16,7 +16,6 @@ object NgramContextUtils {
     private val NEWLINE_REGEX = Pattern.compile("[\\r\\n]+")
     private val SPACE_REGEX = Pattern.compile("\\s+")
 
-    @JvmStatic
     fun getNgramContextFromNthPreviousWord(
         prev: CharSequence?,
         spacingAndPunctuations: SpacingAndPunctuations,

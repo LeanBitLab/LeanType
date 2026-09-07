@@ -234,7 +234,6 @@ class SessionWordBoost private constructor(
         @Volatile
         private var instance: SessionWordBoost? = null
 
-        @JvmStatic
         fun getInstance(context: Context): SessionWordBoost {
             return instance ?: synchronized(this) {
                 instance ?: run {

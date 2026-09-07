@@ -20,7 +20,6 @@ object TranslationLoader {
     private var cachedClassLoader: PluginClassLoader? = null
     private var cachedApkModified: Long = 0L
 
-    @JvmStatic
     fun getTargetAbi(): String {
         for (abi in android.os.Build.SUPPORTED_ABIS) {
             when (abi) {
@@ -33,7 +32,6 @@ object TranslationLoader {
         return "arm64-v8a"
     }
 
-    @JvmStatic
     fun getPluginDownloadUrl(tag: String? = null): String {
         val abi = getTargetAbi()
         val filename = "translation_plugin-$abi.apk"
@@ -44,7 +42,6 @@ object TranslationLoader {
         }
     }
 
-    @JvmStatic
     fun downloadPluginApk(context: Context, tag: String? = null, tempFile: File): Boolean {
         val urlsToTry = listOf(
             getPluginDownloadUrl(tag),

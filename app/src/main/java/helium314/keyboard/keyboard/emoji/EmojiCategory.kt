@@ -288,7 +288,6 @@ class EmojiCategory(
             KeyboardId.ELEMENT_EMOJI_CATEGORY10
         )
 
-        @JvmStatic
         fun getCategoryName(categoryId: Int, categoryPageId: Int): String {
             return sCategoryName[categoryId] + "-" + categoryPageId
         }

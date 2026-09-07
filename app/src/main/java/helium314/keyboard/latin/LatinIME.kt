@@ -1742,7 +1742,6 @@ class LatinIME : InputMethodService(),
             JniUtils.loadNativeLibrary()
         }
 
-        @JvmStatic
         fun getInstance(): LatinIME? = sInstance
     }
 }

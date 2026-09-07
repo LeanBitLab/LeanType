@@ -1034,10 +1034,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         @SuppressLint("StaticFieldLeak")
         private val sInstance = KeyboardSwitcher()
 
-        @JvmStatic
         fun getInstance(): KeyboardSwitcher = sInstance
 
-        @JvmStatic
         fun init(latinIme: LatinIME) {
             sInstance.initInternal(latinIme)
         }

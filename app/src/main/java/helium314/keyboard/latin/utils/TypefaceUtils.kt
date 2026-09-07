@@ -67,17 +67,14 @@ object TypefaceUtils {
         }
     }
 
-    @JvmStatic
     fun getReferenceCharHeight(paint: Paint): Float {
         return getCharHeight(KEY_LABEL_REFERENCE_CHAR, paint)
     }
 
-    @JvmStatic
     fun getReferenceCharWidth(paint: Paint): Float {
         return getCharWidth(KEY_LABEL_REFERENCE_CHAR, paint)
     }
 
-    @JvmStatic
     fun getReferenceDigitWidth(paint: Paint): Float {
         return getCharWidth(KEY_NUMERIC_HINT_LABEL_REFERENCE_CHAR, paint)
     }
@@ -85,7 +82,6 @@ object TypefaceUtils {
     // Working variable for the following method.
     private val sStringWidthBounds = Rect()
 
-    @JvmStatic
     fun getStringWidth(string: String, paint: Paint): Float {
         synchronized(sStringWidthBounds) {
             paint.getTextBounds(string, 0, string.length, sStringWidthBounds)

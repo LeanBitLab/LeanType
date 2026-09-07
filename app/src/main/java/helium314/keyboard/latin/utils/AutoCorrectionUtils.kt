@@ -13,7 +13,6 @@ import helium314.keyboard.latin.define.DebugFlags
 object AutoCorrectionUtils {
     private const val TAG = "AutoCorrectionUtils"
 
-    @JvmStatic
     fun suggestionExceedsThreshold(
         suggestion: SuggestedWordInfo?,
         consideredWord: String,

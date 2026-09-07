@@ -502,7 +502,6 @@ Current settings :
     """.trimIndent()
 
     companion object {
-        @JvmStatic
         private fun readUseContactsEnabled(prefs: SharedPreferences, ctx: Context): Boolean {
             val setting = prefs.getBoolean(Settings.PREF_USE_CONTACTS, Defaults.PREF_USE_CONTACTS)
             if (!setting) return false

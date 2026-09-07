@@ -76,7 +76,6 @@ object KeySpecParser {
         if (DebugFlags.DEBUG_ENABLED) throw KeySpecParserError("Multiple $VERTICAL_BAR: $keySpec")
     }
 
-    @JvmStatic
     fun getLabel(keySpec: String?): String? {
         if (keySpec == null) return null
         if (hasIcon(keySpec)) return null
@@ -94,7 +93,6 @@ object KeySpecParser {
         return parseEscape(getAfterLabelEnd(keySpec, labelEnd))
     }
 
-    @JvmStatic
     fun getOutputText(keySpec: String?, code: Int): String? {
         if (keySpec == null) return null
         val labelEnd = indexOfLabelEnd(keySpec)
@@ -113,7 +111,6 @@ object KeySpecParser {
         return if (StringUtils.codePointCount(label) == 1) null else label
     }
 
-    @JvmStatic
     fun getCode(keySpec: String?): Int {
         if (keySpec == null) return KeyCode.NOT_SPECIFIED
         val labelEnd = indexOfLabelEnd(keySpec)
@@ -136,7 +133,6 @@ object KeySpecParser {
         return if (StringUtils.codePointCount(label) == 1) label.codePointAt(0) else KeyCode.MULTIPLE_CODE_POINTS
     }
 
-    @JvmStatic
     fun parseCode(text: String?, defaultCode: Int): Int {
         if (text == null) return defaultCode
         if (text.startsWith(KeyboardCodesSet.PREFIX_CODE)) {
@@ -148,7 +144,6 @@ object KeySpecParser {
         return defaultCode
     }
 
-    @JvmStatic
     fun getIconName(keySpec: String?): String? {
         if (keySpec == null) return null
         if (!hasIcon(keySpec)) return null

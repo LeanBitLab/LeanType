@@ -40,7 +40,6 @@ import helium314.keyboard.latin.settings.Settings
 @RequiresApi(api = Build.VERSION_CODES.R)
 object InlineAutofillUtils {
 
-    @JvmStatic
     fun createInlineSuggestionRequest(context: Context): InlineSuggestionsRequest {
         val colors = Settings.getValues().mColors
         val chipBgDrawableId = androidx.autofill.R.drawable.autofill_inline_suggestion_chip_background
@@ -94,7 +93,6 @@ object InlineAutofillUtils {
             .build()
     }
 
-    @JvmStatic
     fun createView(
         inlineSuggestions: List<InlineSuggestion>,
         context: Context

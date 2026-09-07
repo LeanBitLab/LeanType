@@ -101,7 +101,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
         private val ADDITIONAL_POPUP_KEY_MARKER = StringUtils.newSingleCodePointString(Constants.CODE_PERCENT)
         private val EMPTY_STRING_ARRAY = arrayOf<String>()
 
-        @JvmStatic
         fun removeRedundantPopupKeys(popupKeys: Array<PopupKeySpec>?, lettersOnBaseLayout: LettersOnBaseLayout): Array<PopupKeySpec>? {
             if (popupKeys == null) return null
             val filteredPopupKeys = ArrayList<PopupKeySpec>()
@@ -116,7 +115,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
             return filteredPopupKeys.toTypedArray()
         }
 
-        @JvmStatic
         fun splitKeySpecs(text: String?): Array<String>? {
             if (TextUtils.isEmpty(text)) return null
             val size = text!!.length
@@ -148,7 +146,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
             return list.toTypedArray()
         }
 
-        @JvmStatic
         fun filterOutEmptyString(array: Array<String>?): Array<String> {
             if (array == null) return EMPTY_STRING_ARRAY
             var out: ArrayList<String>? = null
@@ -163,7 +160,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
             return out?.toTypedArray() ?: array
         }
 
-        @JvmStatic
         fun insertAdditionalPopupKeys(popupKeySpecs: Array<String>?, additionalPopupKeySpecs: Array<String>?): Array<String>? {
             val popupKeys = filterOutEmptyString(popupKeySpecs)
             val additionalPopupKeys = filterOutEmptyString(additionalPopupKeySpecs)
@@ -203,7 +199,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
             }
         }
 
-        @JvmStatic
         fun getIntValue(popupKeys: Array<String?>?, key: String, defaultValue: Int): Int {
             if (popupKeys == null) return defaultValue
             val keyLen = key.length
@@ -225,7 +220,6 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
             return value
         }
 
-        @JvmStatic
         fun getBooleanValue(popupKeys: Array<String?>?, key: String): Boolean {
             if (popupKeys == null) return false
             var value = false

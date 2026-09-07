@@ -194,7 +194,6 @@ open class SuggestedWords(
             const val KIND_FLAG_EXACT_MATCH_WITH_INTENTIONAL_OMISSION = 0x20000000
             const val KIND_FLAG_APPROPRIATE_FOR_AUTO_CORRECTION = 0x10000000
 
-            @JvmStatic
             fun removeDupsAndTypedWord(typedWord: String?, candidates: ArrayList<SuggestedWordInfo>): Int {
                 if (candidates.isEmpty()) return -1
                 var firstOccurrenceOfWord = -1
@@ -260,7 +259,6 @@ open class SuggestedWords(
             false, false, INPUT_STYLE_UPDATE_BATCH, NOT_A_SEQUENCE_NUMBER
         )
 
-        @JvmStatic
         fun getFromApplicationSpecifiedCompletions(infos: Array<CompletionInfo>?): ArrayList<SuggestedWordInfo> {
             val result = ArrayList<SuggestedWordInfo>()
             if (infos != null) {
@@ -272,13 +270,10 @@ open class SuggestedWords(
             return result
         }
 
-        @JvmStatic
         fun getEmptyInstance(): SuggestedWords = EMPTY
 
-        @JvmStatic
         fun getEmptyBatchInstance(): SuggestedWords = EMPTY_BATCH
 
-        @JvmStatic
         fun getTypedWordAndPreviousSuggestions(
             typedWordInfo: SuggestedWordInfo,
             previousSuggestions: SuggestedWords

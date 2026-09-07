@@ -18,12 +18,10 @@ object UnicodeSurrogate {
     private const val HIGH_SURROGATE_MIN = '\uDC00'
     private const val HIGH_SURROGATE_MAX = '\uDFFF'
 
-    @JvmStatic
     fun isLowSurrogate(c: Char): Boolean {
         return c in LOW_SURROGATE_MIN..LOW_SURROGATE_MAX
     }
 
-    @JvmStatic
     fun isHighSurrogate(c: Char): Boolean {
         return c in HIGH_SURROGATE_MIN..HIGH_SURROGATE_MAX
     }

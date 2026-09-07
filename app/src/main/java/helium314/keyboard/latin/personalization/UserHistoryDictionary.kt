@@ -40,12 +40,10 @@ class UserHistoryDictionary internal constructor(
     companion object {
         const val NAME = "UserHistoryDictionary"
 
-        @JvmStatic
         internal fun getUserHistoryDictName(name: String, locale: Locale, dictFile: File?): String {
             return getDictName(name, locale, dictFile)
         }
 
-        @JvmStatic
         fun getDictionary(
             context: Context,
             locale: Locale,
@@ -55,7 +53,6 @@ class UserHistoryDictionary internal constructor(
             return PersonalizationHelper.getUserHistoryDictionary(context, locale)
         }
 
-        @JvmStatic
         fun addToDictionary(
             userHistoryDictionary: ExpandableBinaryDictionary,
             ngramContext: NgramContext,

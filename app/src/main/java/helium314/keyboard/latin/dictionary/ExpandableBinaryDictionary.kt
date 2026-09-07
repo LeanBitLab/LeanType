@@ -533,7 +533,6 @@ abstract class ExpandableBinaryDictionary(
         const val MAX_WORD_LENGTH = DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH
         const val DICT_FILE_EXTENSION = ".dict"
 
-        @JvmStatic
         fun matchesExpectedBinaryDictFormatVersionForThisType(formatVersion: Int): Boolean {
             return formatVersion == FormatSpec.VERSION4
         }
@@ -542,12 +541,10 @@ abstract class ExpandableBinaryDictionary(
             return formatVersion == FormatSpec.VERSION402
         }
 
-        @JvmStatic
         fun getDictFile(context: Context, dictName: String, dictFile: File?): File {
             return dictFile ?: File(context.filesDir, dictName + DICT_FILE_EXTENSION)
         }
 
-        @JvmStatic
         fun getDictName(name: String, locale: Locale?, dictFile: File?): String {
             return dictFile?.name ?: (name + "." + (locale?.toLanguageTag() ?: ""))
         }

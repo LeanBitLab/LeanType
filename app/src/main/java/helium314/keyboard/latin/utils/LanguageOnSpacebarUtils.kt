@@ -22,7 +22,6 @@ object LanguageOnSpacebarUtils {
     private var sEnabledSubtypes: List<InputMethodSubtype> = emptyList()
     private var sIsSystemLanguageSameAsInputLanguage = false
 
-    @JvmStatic
     fun getLanguageOnSpacebarFormatType(subtype: RichInputMethodSubtype): Int {
         if (Settings.getValues().mSpaceBarText.isNotEmpty()) {
             return FORMAT_TYPE_FULL_LOCALE
@@ -49,12 +48,10 @@ object LanguageOnSpacebarUtils {
         return if (sameLanguageAndLayoutCount > 1) FORMAT_TYPE_FULL_LOCALE else FORMAT_TYPE_LANGUAGE_ONLY
     }
 
-    @JvmStatic
     fun setEnabledSubtypes(enabledSubtypes: List<InputMethodSubtype>) {
         sEnabledSubtypes = enabledSubtypes
     }
 
-    @JvmStatic
     fun onSubtypeChanged(
         subtype: RichInputMethodSubtype,
         implicitlyEnabledSubtype: Boolean,

@@ -35,7 +35,6 @@ object SubtypeLocaleUtils {
     private val resourceSubtypeDisplayNameCache = HashMap<Int, String>()
 
     // Note that this initialization method can be called multiple times.
-    @JvmStatic
     fun init(context: Context) {
         synchronized(this) {
             if (!initialized) {
@@ -111,12 +110,10 @@ object SubtypeLocaleUtils {
         return StringUtils.capitalizeFirstCodePoint(displayName, displayLocale)
     }
 
-    @JvmStatic
     fun clearSubtypeDisplayNameCache() {
         resourceSubtypeDisplayNameCache.clear()
     }
 
-    @JvmStatic
     fun getSubtypeNameForLogging(subtype: InputMethodSubtype?): String {
         if (subtype == null) {
             return "<null subtype>"
@@ -179,7 +176,6 @@ object SubtypeLocaleUtils {
         return mainLayoutName // should never happen...
     }
 
-    @JvmStatic
     fun getCombiningRulesExtraValue(subtype: InputMethodSubtype): String? = subtype.getExtraValueOf(ExtraValue.COMBINING_RULES)
 
     // Special language code to represent "no language".

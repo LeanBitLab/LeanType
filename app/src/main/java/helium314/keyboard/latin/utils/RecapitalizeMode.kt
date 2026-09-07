@@ -30,7 +30,6 @@ enum class RecapitalizeMode {
     companion object {
         private val sCarousel = entries.toTypedArray()
 
-        @JvmStatic
         fun of(string: String, sortedSeparators: IntArray): RecapitalizeMode {
             return when {
                 StringUtils.isIdenticalAfterUpcase(string) -> ALL_UPPER
@@ -40,7 +39,6 @@ enum class RecapitalizeMode {
             }
         }
 
-        @JvmStatic
         fun count(): Int {
             return sCarousel.size
         }

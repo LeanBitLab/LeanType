@@ -25,7 +25,6 @@ object CapsModeUtils {
      * @param locale The locale for capitalizing.
      * @return The capitalized string.
      */
-    @JvmStatic
     fun applyAutoCapsMode(s: String, capitalizeMode: Int, locale: Locale): String {
         return if (WordComposer.CAPS_MODE_AUTO_SHIFT_LOCKED == capitalizeMode) {
             s.uppercase(locale)
@@ -41,7 +40,6 @@ object CapsModeUtils {
      * @param mode The mode to test for
      * @return true if this represents an auto-caps mode, false otherwise
      */
-    @JvmStatic
     fun isAutoCapsMode(mode: Int): Boolean {
         return (WordComposer.CAPS_MODE_AUTO_SHIFTED == mode
                 || WordComposer.CAPS_MODE_AUTO_SHIFT_LOCKED == mode)
@@ -81,7 +79,6 @@ object CapsModeUtils {
      * {@link TextUtils#CAP_MODE_CHARACTERS}, {@link TextUtils#CAP_MODE_WORDS}, and
      * {@link TextUtils#CAP_MODE_SENTENCES}.
      */
-    @JvmStatic
     fun getCapsMode(
         cs: CharSequence,
         reqModes: Int,
@@ -228,7 +225,6 @@ object CapsModeUtils {
      * @param capsFlags The modes flags to be converted.
      * @return the text that describes the capsMode.
      */
-    @JvmStatic
     fun flagsToString(capsFlags: Int): String {
         val capsFlagsMask = (TextUtils.CAP_MODE_CHARACTERS or TextUtils.CAP_MODE_WORDS
                 or TextUtils.CAP_MODE_SENTENCES)

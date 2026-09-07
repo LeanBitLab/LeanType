@@ -235,7 +235,6 @@ class KeyboardLayoutSet internal constructor(
         companion object {
             private val EMPTY_EDITOR_INFO = EditorInfo()
 
-            @JvmStatic
             fun buildEmojiClipBottomRow(context: Context, ei: EditorInfo?): KeyboardLayoutSet {
                 val builder = Builder(context, ei)
                 builder.mParams.mMode = KeyboardId.MODE_TEXT
@@ -247,7 +246,6 @@ class KeyboardLayoutSet internal constructor(
                 return builder.build()
             }
 
-            @JvmStatic
             fun getKeyboardMode(editorInfo: EditorInfo): Int {
                 val inputType = editorInfo.inputType
                 val variation = inputType and InputType.TYPE_MASK_VARIATION
@@ -283,19 +281,16 @@ class KeyboardLayoutSet internal constructor(
         private val sKeyboardCache = HashMap<KeyboardId, SoftReference<Keyboard>>()
         private val sUniqueKeysCache = UniqueKeysCache.newInstance()
 
-        @JvmStatic
         fun onSystemLocaleChanged() {
             clearKeyboardCache()
             clearCache()
             SubtypeLocaleUtils.clearSubtypeDisplayNameCache()
         }
 
-        @JvmStatic
         fun onKeyboardThemeChanged() {
             clearKeyboardCache()
         }
 
-        @JvmStatic
         private fun clearKeyboardCache() {
             sKeyboardCache.clear()
             sUniqueKeysCache.clear()
@@ -304,7 +299,6 @@ class KeyboardLayoutSet internal constructor(
         }
 
         // used for testing keyboard layout files without actually creating a keyboard
-        @JvmStatic
         fun getFakeKeyboardId(elementId: Int): KeyboardId {
             val params = Params()
             params.mEditorInfo = EditorInfo()

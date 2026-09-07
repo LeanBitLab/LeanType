@@ -43,7 +43,6 @@ class ProbabilityInfo(
     }
 
     companion object {
-        @JvmStatic
         fun max(probabilityInfo1: ProbabilityInfo?, probabilityInfo2: ProbabilityInfo?): ProbabilityInfo? {
             if (probabilityInfo1 == null) {
                 return probabilityInfo2

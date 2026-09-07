@@ -255,7 +255,7 @@ object KeyCode {
      *  Positive codes are passed through, unknown negative codes result in KeyEvent.KEYCODE_UNKNOWN.
      *  To be uses for fake hardware key press.
      */
-    @JvmStatic fun keyCodeToKeyEventCode(keyCode: Int) = when (keyCode) {
+    fun keyCodeToKeyEventCode(keyCode: Int) = when (keyCode) {
         ARROW_UP -> KeyEvent.KEYCODE_DPAD_UP
         ARROW_RIGHT -> KeyEvent.KEYCODE_DPAD_RIGHT
         ARROW_DOWN -> KeyEvent.KEYCODE_DPAD_DOWN
@@ -298,7 +298,7 @@ object KeyCode {
      *  Fallback to KeyEvent.KEYCODE_UNKNOWN.
      *  To be uses for fake hardware key press.
      */
-    @JvmStatic fun codePointToKeyEventCode(codePoint: Int): Int = when (codePoint.toChar().uppercaseChar()) {
+    fun codePointToKeyEventCode(codePoint: Int): Int = when (codePoint.toChar().uppercaseChar()) {
         '/' -> KeyEvent.KEYCODE_SLASH
         '\\' -> KeyEvent.KEYCODE_BACKSLASH
         ';' -> KeyEvent.KEYCODE_SEMICOLON

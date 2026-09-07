@@ -9,7 +9,6 @@ import android.os.Build
 
 object ClipboardManagerCompat {
 
-    @JvmStatic
     fun clearPrimaryClip(cm: ClipboardManager) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             try {
@@ -23,7 +22,6 @@ object ClipboardManagerCompat {
         }
     }
 
-    @JvmStatic
     fun getClipTimestamp(cd: ClipData): Long {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val timestamp = cd.description.timestamp
@@ -33,7 +31,6 @@ object ClipboardManagerCompat {
         return System.currentTimeMillis()
     }
 
-    @JvmStatic
     fun getClipSensitivity(cd: ClipDescription?): Boolean? {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return cd != null && cd.extras?.getBoolean("android.content.extra.IS_SENSITIVE") == true

@@ -239,7 +239,6 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
             return elementId < ELEMENT_SYMBOLS
         }
 
-        @JvmStatic
         fun equivalentEditorInfoForKeyboard(a: EditorInfo?, b: EditorInfo?): Boolean {
             if (a == null && b == null) return true
             if (a == null || b == null) return false
@@ -248,7 +247,6 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
                     TextUtils.equals(a.privateImeOptions, b.privateImeOptions)
         }
 
-        @JvmStatic
         fun elementIdToName(elementId: Int): String? {
             return when (elementId) {
                 ELEMENT_ALPHABET -> "alphabet"
@@ -293,7 +291,6 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
             }
         }
 
-        @JvmStatic
         fun modeName(mode: Int): String? {
             return when (mode) {
                 MODE_TEXT -> "text"
@@ -310,7 +307,6 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
             }
         }
 
-        @JvmStatic
         fun actionName(actionId: Int): String {
             return if (actionId == InputTypeUtils.IME_ACTION_CUSTOM_LABEL) {
                 "actionCustomLabel"

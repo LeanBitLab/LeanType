@@ -524,7 +524,6 @@ class WordComposer {
         const val CAPS_MODE_AUTO_SHIFTED = 0x5
         const val CAPS_MODE_AUTO_SHIFT_LOCKED = 0x7
 
-        @JvmStatic
         fun getComposerForTest(isEmpty: Boolean): WordComposer {
             return WordComposer(isEmpty)
         }

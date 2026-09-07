@@ -45,7 +45,6 @@ class SystemBroadcastReceiver : BroadcastReceiver() {
     companion object {
         private val TAG = SystemBroadcastReceiver::class.simpleName
 
-        @JvmStatic
         fun toggleAppIcon(context: Context) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 return // can't change visibility in Android 10 and above

@@ -19,7 +19,6 @@ object CollectionUtils {
      * @param end Last index exclusive to be converted.
      * @throws IllegalArgumentException if start or end are out of range or start > end.
      */
-    @JvmStatic
     fun <E> arrayAsList(array: Array<E>, start: Int, end: Int): ArrayList<E> {
         if (start < 0 || start > end || end > array.size) {
             throw IllegalArgumentException(

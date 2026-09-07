@@ -24,7 +24,6 @@ object PersonalizationHelper {
 
     private val sLangUserHistoryDictCache = ConcurrentHashMap<String, SoftReference<UserHistoryDictionary>>()
 
-    @JvmStatic
     fun getUserHistoryDictionary(context: Context, locale: Locale): UserHistoryDictionary {
         val lookupStr = locale.toString()
         synchronized(sLangUserHistoryDictCache) {
@@ -43,7 +42,6 @@ object PersonalizationHelper {
         }
     }
 
-    @JvmStatic
     fun removeAllUserHistoryDictionaries(context: Context) {
         synchronized(sLangUserHistoryDictCache) {
             for (ref in sLangUserHistoryDictCache.values) {

@@ -64,7 +64,6 @@ class BogusMoveEventDetector {
 
         var sNeedsProximateBogusDownMoveUpEventHack = false
 
-        @JvmStatic
         fun init(res: Resources) {
             val screenMetrics = res.getInteger(R.integer.config_screen_metrics)
             val isLargeTablet = screenMetrics == Constants.SCREEN_METRICS_LARGE_TABLET

@@ -19,7 +19,6 @@ object BitmapUtils {
      * @param preferLowConfig if true, prefer RGB_565 (half the memory) when the image has no alpha
      */
     @WorkerThread
-    @JvmStatic
     fun decodeSampledBitmap(file: File, maxDim: Int = DEFAULT_BACKGROUND_MAX_DIM, preferLowConfig: Boolean = true): Bitmap? {
         if (!file.isFile) return null
         val bounds = BitmapFactory.Options()

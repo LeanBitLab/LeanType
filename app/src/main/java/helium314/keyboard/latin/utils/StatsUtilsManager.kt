@@ -20,12 +20,10 @@ open class StatsUtilsManager {
         /**
          * @return the singleton instance of [StatsUtilsManager].
          */
-        @JvmStatic
         fun getInstance(): StatsUtilsManager {
             return sTestInstance ?: sInstance
         }
 
-        @JvmStatic
         fun setTestInstance(testInstance: StatsUtilsManager?) {
             sTestInstance = testInstance
         }

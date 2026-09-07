@@ -44,7 +44,6 @@ object WordTokenizer {
      *
      * Does NOT strip if the word looks like a URL or email (contains @ or multiple dots).
      */
-    @JvmStatic
     fun normalizeForLookup(word: String): String {
         if (word.length <= 1) return word
 
@@ -74,7 +73,6 @@ object WordTokenizer {
      * Check if a word is a contraction (contains an apostrophe between letters).
      * e.g., "don't", "I'm", "they're"
      */
-    @JvmStatic
     fun isContraction(word: String): Boolean {
         if (word.length < 3) return false
         val apostropheIdx = word.indexOf('\'')
@@ -89,7 +87,6 @@ object WordTokenizer {
      * "they're" → ["they", "re"]
      * Returns null if not a contraction.
      */
-    @JvmStatic
     fun splitContraction(word: String): Pair<String, String>? {
         if (!isContraction(word)) return null
         val idx = word.indexOf('\'')
@@ -100,7 +97,6 @@ object WordTokenizer {
      * Normalize a word for recording in session boost / user history.
      * Strips boundary punctuation and lowercases.
      */
-    @JvmStatic
     fun normalizeForHistory(word: String): String {
         return normalizeForLookup(word).lowercase()
     }

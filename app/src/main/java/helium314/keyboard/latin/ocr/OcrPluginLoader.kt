@@ -32,7 +32,6 @@ object OcrPluginLoader {
     private var cachedClassLoader: PluginClassLoader? = null
     private var cachedApkModified: Long = 0L
 
-    @JvmStatic
     fun resetRecognizer() {
         activeRecognizer?.release()
         activeRecognizer = null
@@ -44,7 +43,6 @@ object OcrPluginLoader {
         cachedApkModified = 0L
     }
 
-    @JvmStatic
     fun getTargetAbi(): String {
         for (abi in android.os.Build.SUPPORTED_ABIS) {
             when (abi) {
@@ -57,7 +55,6 @@ object OcrPluginLoader {
         return "arm64-v8a"
     }
 
-    @JvmStatic
     fun getPluginDownloadUrl(tag: String? = null): String {
         val abi = getTargetAbi()
         val filename = "ocr_plugin-$abi.apk"
@@ -68,7 +65,6 @@ object OcrPluginLoader {
         }
     }
 
-    @JvmStatic
     fun downloadPluginApk(context: Context, tag: String? = null, tempFile: File): Boolean {
         val urlsToTry = listOf(
             getPluginDownloadUrl(tag),
@@ -183,7 +179,6 @@ object OcrPluginLoader {
         }
     }
 
-    @JvmStatic
     fun getRecognizer(context: Context): ITextRecognizer? {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return null
         if (activeRecognizer != null) return activeRecognizer
@@ -350,7 +345,6 @@ object OcrPluginLoader {
         context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, false).apply()
     }
 
-    @JvmStatic
     fun release() {
         resetRecognizer()
     }

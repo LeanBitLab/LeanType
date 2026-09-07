@@ -118,7 +118,6 @@ private constructor(val themeId: Int, val mStyleId: Int) {
         const val COLOR_SPACEBAR_TEXT = "spacebar_text"
         const val COLOR_BACKGROUND = "background"
 
-        @JvmStatic
         fun getKeyboardTheme(context: Context): KeyboardTheme {
             val prefs = context.prefs()
             val style = prefs.getString(Settings.PREF_THEME_STYLE, Defaults.PREF_THEME_STYLE)
@@ -135,7 +134,6 @@ private constructor(val themeId: Int, val mStyleId: Int) {
             return if (themeId == THEME_ID_LXX_BASE || themeId == THEME_ID_ROUNDED_BASE) Key.LABEL_FLAGS_KEEP_BACKGROUND_ASPECT_RATIO else 0
         }
 
-        @JvmStatic
         fun getColorsForCurrentTheme(context: Context): Colors {
             val prefs = context.prefs()
             val isNight = SettingsActivity.forceNight

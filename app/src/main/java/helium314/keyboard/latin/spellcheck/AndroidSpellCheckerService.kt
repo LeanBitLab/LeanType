@@ -227,7 +227,6 @@ class AndroidSpellCheckerService : SpellCheckerService(), SharedPreferences.OnSh
         const val SINGLE_QUOTE = "'"
         const val APOSTROPHE = "’"
 
-        @JvmStatic
         fun getNotInDictEmptySuggestions(reportAsTypo: Boolean): SuggestionsInfo {
             return SuggestionsInfo(
                 if (reportAsTypo) SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO else 0,
@@ -235,7 +234,6 @@ class AndroidSpellCheckerService : SpellCheckerService(), SharedPreferences.OnSh
             )
         }
 
-        @JvmStatic
         fun getInDictEmptySuggestions(): SuggestionsInfo {
             return SuggestionsInfo(SuggestionsInfo.RESULT_ATTR_IN_THE_DICTIONARY, EMPTY_STRING_ARRAY)
         }

@@ -41,7 +41,6 @@ object KeyboardCodesSet {
         }
     }
 
-    @JvmStatic
     fun getCode(name: String?): Int {
         if (name == null) return KeyCode.NOT_SPECIFIED
         val id = sNameToIdMap[name]

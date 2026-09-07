@@ -20,7 +20,6 @@ object PermissionsUtil {
     /**
      * Queries if al the permissions are granted for the given permission strings.
      */
-    @JvmStatic
     fun checkAllPermissionsGranted(context: Context?, vararg permissions: String): Boolean {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1) {
             // For all pre-M devices, we should have all the permissions granted on install.
@@ -37,7 +36,6 @@ object PermissionsUtil {
         return true
     }
 
-    @JvmStatic
     fun isNotificationListenerEnabled(context: Context?): Boolean {
         if (context == null) return false
         val component = ComponentName(context, OtpNotificationListenerService::class.java)

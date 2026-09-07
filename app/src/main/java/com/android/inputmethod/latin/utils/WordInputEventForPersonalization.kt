@@ -38,7 +38,6 @@ class WordInputEventForPersonalization(
         private const val DEBUG_TOKEN = false
 
         // Process a list of words and return a list of [WordInputEventForPersonalization] objects.
-        @JvmStatic
         fun createInputEventFrom(
             tokens: List<String>, timestamp: Int,
             spacingAndPunctuations: SpacingAndPunctuations, locale: Locale

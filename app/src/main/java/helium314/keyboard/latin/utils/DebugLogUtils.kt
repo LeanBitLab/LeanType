@@ -14,7 +14,6 @@ object DebugLogUtils {
      * Get the string representation of the current stack trace, for debugging purposes.
      * @return a readable, carriage-return-separated string for the current stack trace.
      */
-    @JvmStatic
     fun getStackTrace(): String {
         return getStackTrace(Int.MAX_VALUE - 1)
     }
@@ -24,7 +23,6 @@ object DebugLogUtils {
      * @param limit the maximum number of stack frames to be returned.
      * @return a readable, carriage-return-separated string for the current stack trace.
      */
-    @JvmStatic
     fun getStackTrace(limit: Int): String {
         val sb = StringBuilder()
         try {

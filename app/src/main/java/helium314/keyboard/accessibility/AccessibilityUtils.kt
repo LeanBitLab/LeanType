@@ -204,7 +204,6 @@ class AccessibilityUtils private constructor() {
          */
         private const val ENABLE_ACCESSIBILITY = true
 
-        @JvmStatic
         fun init(context: Context) {
             if (!ENABLE_ACCESSIBILITY) return
             // These only need to be initialized if the kill switch is off.

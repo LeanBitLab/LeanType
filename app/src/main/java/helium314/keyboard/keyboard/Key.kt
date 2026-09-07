@@ -952,7 +952,6 @@ open class Key : Comparable<Key> {
         }
 
         companion object {
-            @JvmStatic
             fun newSpacer(params: KeyboardParams, width: Float): KeyParams {
                 val spacer = KeyParams(params)
                 spacer.mWidth = width
@@ -1051,7 +1050,6 @@ open class Key : Comparable<Key> {
         private const val ACTION_FLAGS_ALT_CODE_WHILE_TYPING = 0x04
         private const val ACTION_FLAGS_ENABLE_LONG_PRESS = 0x08
 
-        @JvmStatic
         fun removeRedundantPopupKeys(key: Key, lettersOnBaseLayout: PopupKeySpec.LettersOnBaseLayout): Key {
             if (key.isPopupKeysFixedColumn) {
                 return key

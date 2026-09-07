@@ -57,7 +57,6 @@ class PunctuationSuggestions private constructor(punctuationsList: ArrayList<Sug
     }
 
     companion object {
-        @JvmStatic
         fun newPunctuationSuggestions(punctuationSpecs: Array<String>?): PunctuationSuggestions {
             if (punctuationSpecs == null || punctuationSpecs.isEmpty()) {
                 return PunctuationSuggestions(ArrayList(0))

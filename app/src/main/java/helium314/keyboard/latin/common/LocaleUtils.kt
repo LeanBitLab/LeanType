@@ -115,13 +115,11 @@ object LocaleUtils {
             else LOCALE_LANGUAGE_AND_COUNTRY_MATCH_VARIANT_DIFFER
     }
 
-    @JvmStatic
     fun isGoodMatch(subtype: RichInputMethodSubtype, locale: Locale) =
         getMatchLevel(locale, subtype.locale) >= LOCALE_LANGUAGE_MATCH_COUNTRY_DIFFER
             || getSecondaryLocales(subtype.rawSubtype.extraValue)
                 .any { getMatchLevel(locale, it) >= LOCALE_LANGUAGE_MATCH_COUNTRY_DIFFER }
 
-    @JvmStatic
     fun <T> getBestMatch(locale: Locale, collection: Collection<T>, toLocale: (T) -> Locale): T? {
         var best: T? = null
         var bestLevel = 0
@@ -147,7 +145,6 @@ object LocaleUtils {
      * Converts "ZZ" regions that used to signal latin script into actual latin script.
      * "cc" / region should be uppercase and language should be lowercase, this is automatically converted
      */
-    @JvmStatic
     fun String.constructLocale(): Locale {
         synchronized(sLocaleCache) {
             sLocaleCache[this]?.let { return it }

@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit
  */
 object FileUtils {
 
-    @JvmStatic
     fun deleteRecursively(path: File): Boolean {
         if (path.isDirectory) {
             val files = path.listFiles()
@@ -36,7 +35,6 @@ object FileUtils {
         return path.delete()
     }
 
-    @JvmStatic
     fun deleteFilteredFiles(dir: File, fileNameFilter: FilenameFilter?): Boolean {
         if (!dir.isDirectory) {
             return false
@@ -55,7 +53,6 @@ object FileUtils {
      * copy data to file on different thread to avoid NetworkOnMainThreadException
      * still effectively blocking, as we only use small files which are mostly stored locally
      */
-    @JvmStatic
     @Throws(IOException::class)
     fun copyContentUriToNewFile(uri: Uri, context: Context, outfile: File) {
         val allOk = booleanArrayOf(true)
@@ -82,7 +79,6 @@ object FileUtils {
         }
     }
 
-    @JvmStatic
     @Throws(IOException::class)
     fun copyStreamToNewFile(inputStream: InputStream?, outfile: File) {
         if (inputStream == null) {
@@ -97,7 +93,6 @@ object FileUtils {
         out.close()
     }
 
-    @JvmStatic
     @Throws(IOException::class)
     fun copyStreamToOtherStream(`in`: InputStream, out: OutputStream) {
         val buf = ByteArray(1024)

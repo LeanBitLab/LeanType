@@ -101,7 +101,6 @@ class KeyVisualAttributes private constructor(keyAttr: TypedArray) {
             }
         }
 
-        @JvmStatic
         fun newInstance(keyAttr: TypedArray): KeyVisualAttributes? {
             val indexCount = keyAttr.indexCount
             for (i in 0 until indexCount) {

@@ -25,7 +25,6 @@ object JniUtils {
     private const val CHECKSUM_X86_64 = "c882e12e6d48dd946e0b644c66868a720bd11ac3fecf152000e21a3d5abd59c9"
     private const val CHECKSUM_X86 = "bd946d126c957b5a6dea3bafa07fa36a27950b30e2b684dffc60746d0a1c7ad8"
 
-    @JvmStatic
     fun expectedDefaultChecksum(): String {
         val abi = Build.SUPPORTED_ABIS[0]
         return when (abi) {
@@ -99,7 +98,6 @@ object JniUtils {
         }
     }
 
-    @JvmStatic
     fun loadNativeLibrary() {
         // Ensures the static initializer is called
     }

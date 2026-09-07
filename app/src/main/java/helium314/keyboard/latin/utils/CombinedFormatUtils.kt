@@ -25,7 +25,6 @@ object CombinedFormatUtils {
     const val POSSIBLY_OFFENSIVE_TAG = "possibly_offensive"
     const val TRUE_VALUE = "true"
 
-    @JvmStatic
     fun formatAttributeMap(attributeMap: Map<String, String>): String {
         val builder = StringBuilder()
         builder.append("$DICTIONARY_TAG=")
@@ -42,7 +41,6 @@ object CombinedFormatUtils {
         return builder.toString()
     }
 
-    @JvmStatic
     fun formatWordProperty(wordProperty: WordProperty): String {
         val builder = StringBuilder()
         builder.append(" $WORD_TAG=${wordProperty.mWord}")
@@ -85,7 +83,6 @@ object CombinedFormatUtils {
         return builder.toString()
     }
 
-    @JvmStatic
     fun formatProbabilityInfo(probabilityInfo: ProbabilityInfo): String {
         val builder = StringBuilder()
         builder.append("$PROBABILITY_TAG=${probabilityInfo.mProbability}")
@@ -101,7 +98,6 @@ object CombinedFormatUtils {
         return builder.toString()
     }
 
-    @JvmStatic
     fun isLiteralTrue(value: String?): Boolean {
         return TRUE_VALUE.equals(value, ignoreCase = true)
     }

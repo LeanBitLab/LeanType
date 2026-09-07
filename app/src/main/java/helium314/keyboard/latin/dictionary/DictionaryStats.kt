@@ -80,7 +80,6 @@ class DictionaryStats {
     }
 
     companion object {
-        @JvmStatic
         fun toString(stats: Iterable<DictionaryStats>): String {
             val builder = StringBuilder("LM Stats")
             for (stat in stats) {

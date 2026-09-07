@@ -27,7 +27,6 @@ object UncachedInputMethodManagerUtils {
      * @param imm the {@link InputMethodManager}.
      * @return true if this IME is enabled.
      */
-    @JvmStatic
     fun isThisImeEnabled(context: Context, imm: InputMethodManager): Boolean {
         val packageName = context.packageName
         for (imi in imm.enabledInputMethodList.orEmpty()) {
@@ -46,7 +45,6 @@ object UncachedInputMethodManagerUtils {
      * @param imm the {@link InputMethodManager}.
      * @return true if this IME is the current IME.
      */
-    @JvmStatic
     fun isThisImeCurrent(context: Context, imm: InputMethodManager): Boolean {
         val imi = getInputMethodInfoOf(context.packageName, imm) ?: return false
         val currentImeId = Settings.Secure.getString(
@@ -68,7 +66,6 @@ object UncachedInputMethodManagerUtils {
      * @return the {@link InputMethodInfo} of the IME specified by the <code>packageName</code>,
      * or null if not found.
      */
-    @JvmStatic
     fun getInputMethodInfoOf(packageName: String, imm: InputMethodManager): InputMethodInfo? {
         for (imi in imm.inputMethodList.orEmpty()) {
             if (packageName == imi.packageName) {

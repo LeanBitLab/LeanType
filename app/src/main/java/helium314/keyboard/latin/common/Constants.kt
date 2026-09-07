@@ -154,7 +154,6 @@ object Constants {
 
     const val WORD_SEPARATOR = " "
 
-    @JvmStatic
     fun isValidCoordinate(coordinate: Int): Boolean {
         return coordinate >= 0
     }
@@ -190,12 +189,10 @@ object Constants {
     const val REGEXP_PERIOD = "\\."
     const val STRING_SPACE = " "
 
-    @JvmStatic
     fun isLetterCode(code: Int): Boolean {
         return code >= CODE_SPACE
     }
 
-    @JvmStatic
     fun printableCode(code: Int): String {
         return when (code) {
             KeyCode.SHIFT -> "shift"

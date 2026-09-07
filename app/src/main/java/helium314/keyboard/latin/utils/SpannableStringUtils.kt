@@ -19,7 +19,6 @@ import java.util.regex.Pattern
 
 object SpannableStringUtils {
 
-    @JvmStatic
     fun copyNonParagraphSuggestionSpansFrom(
         source: Spanned,
         start: Int,
@@ -43,7 +42,6 @@ object SpannableStringUtils {
         }
     }
 
-    @JvmStatic
     fun concatWithNonParagraphSuggestionSpansOnly(vararg text: CharSequence): CharSequence {
         if (text.isEmpty()) {
             return ""
@@ -83,7 +81,6 @@ object SpannableStringUtils {
         return SpannedString(ss)
     }
 
-    @JvmStatic
     fun fromHtml(text: String): Spanned {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
@@ -93,7 +90,6 @@ object SpannableStringUtils {
         }
     }
 
-    @JvmStatic
     fun hasUrlSpans(
         text: CharSequence?,
         startIndex: Int,
@@ -106,7 +102,6 @@ object SpannableStringUtils {
         return !spans.isNullOrEmpty()
     }
 
-    @JvmStatic
     fun split(
         charSequence: CharSequence,
         regex: String,

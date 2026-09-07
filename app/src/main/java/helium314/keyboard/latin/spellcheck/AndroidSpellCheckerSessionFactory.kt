@@ -10,7 +10,6 @@ import android.service.textservice.SpellCheckerService
 
 abstract class AndroidSpellCheckerSessionFactory {
     companion object {
-        @JvmStatic
         fun newInstance(service: AndroidSpellCheckerService): SpellCheckerService.Session {
             return AndroidSpellCheckerSession(service)
         }

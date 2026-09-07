@@ -16,12 +16,10 @@ object DeviceProtectedUtils {
     private const val TAG = "DeviceProtectedUtils"
     private var prefs: SharedPreferences? = null
 
-    @JvmStatic
     fun getSharedPreferences(context: Context): SharedPreferences {
         return getSharedPreferences(context, "${context.packageName}_preferences")
     }
 
-    @JvmStatic
     fun getSharedPreferences(context: Context, name: String): SharedPreferences {
         val defaultName = "${context.packageName}_preferences"
         if (prefs != null && name == defaultName) {
@@ -56,7 +54,6 @@ object DeviceProtectedUtils {
         return ctx ?: context
     }
 
-    @JvmStatic
     fun getFilesDir(context: Context): File {
         return getDeviceProtectedContext(context).filesDir
     }

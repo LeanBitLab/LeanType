@@ -427,7 +427,6 @@ internal class SuggestionStripLayoutHelper(
             return bitmapDrawable
         }
 
-        @JvmStatic
         fun shouldOmitTypedWord(
             inputStyle: Int,
             gestureFloatingPreviewTextEnabled: Boolean,
@@ -439,7 +438,6 @@ internal class SuggestionStripLayoutHelper(
             return shouldShowUiToAcceptTypedWord && omitTypedWord
         }
 
-        @JvmStatic
         fun getPositionInSuggestionStrip(
             indexInSuggestedWords: Int,
             willAutoCorrect: Boolean, omitTypedWord: Boolean,
@@ -487,7 +485,6 @@ internal class SuggestionStripLayoutHelper(
             params.gravity = Gravity.CENTER
         }
 
-        @JvmStatic
         fun setLayoutWeight(v: View, weight: Float, height: Int) {
             val lp = v.layoutParams
             if (lp is LinearLayout.LayoutParams) {

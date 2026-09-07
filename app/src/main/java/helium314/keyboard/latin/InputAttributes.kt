@@ -147,7 +147,6 @@ class InputAttributes(
     companion object {
         private val TAG = InputAttributes::class.java.simpleName
 
-        @JvmStatic
         fun inPrivateImeOptions(packageName: String?, key: String?, editorInfo: EditorInfo?): Boolean {
             if (editorInfo == null || key == null) return false
             val findingKey = if (packageName != null) "$packageName.$key" else key

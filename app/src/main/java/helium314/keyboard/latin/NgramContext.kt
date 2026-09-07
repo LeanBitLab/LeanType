@@ -242,7 +242,6 @@ class NgramContext {
         const val BEGINNING_OF_SENTENCE_TAG = "<S>"
         const val CONTEXT_SEPARATOR = " "
 
-        @JvmStatic
         fun getEmptyPrevWordsContext(maxPrevWordCount: Int): NgramContext {
             return NgramContext(maxPrevWordCount, WordInfo.EMPTY_WORD_INFO)
         }

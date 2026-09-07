@@ -9,7 +9,6 @@ import helium314.keyboard.event.HangulCombiner.HangulJamo
 
 object HangulEventDecoder {
 
-    @JvmStatic
     fun decodeHardwareKeyEvent(subtype: RichInputMethodSubtype, event: KeyEvent, defaultEvent: () -> Event): Event {
         val layout = LAYOUTS[subtype.mainLayoutName] ?: return defaultEvent()
         val codePoint = layout[event.keyCode]?.let { if (event.isShiftPressed) it.second else it.first } ?: return defaultEvent()
@@ -17,7 +16,6 @@ object HangulEventDecoder {
         return decodeSoftwareKeyEvent(hardwareEvent)
     }
 
-    @JvmStatic
     fun decodeSoftwareKeyEvent(event: Event): Event {
         if (event.isCombining) return event
         return if (HangulJamo.of(event.codePoint) is HangulJamo.NonHangul) event

@@ -50,7 +50,6 @@ class ContactsBinaryDictionary protected constructor(
         private const val DEBUG = false
         private const val DEBUG_DUMP = false
 
-        @JvmStatic
         fun getDictionary(
             context: Context,
             locale: Locale,

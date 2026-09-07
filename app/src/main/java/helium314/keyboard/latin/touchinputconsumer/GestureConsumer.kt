@@ -43,7 +43,6 @@ class GestureConsumer private constructor() {
     companion object {
         val NULL_GESTURE_CONSUMER: GestureConsumer = GestureConsumer()
 
-        @JvmStatic
         fun newInstance(
             editorInfo: EditorInfo?,
             commandPerformer: PrivateCommandPerformer?,

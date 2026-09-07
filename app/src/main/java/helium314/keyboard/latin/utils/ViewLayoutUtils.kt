@@ -15,7 +15,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 
 object ViewLayoutUtils {
-    @JvmStatic
     fun newLayoutParam(placer: ViewGroup?, width: Int, height: Int): MarginLayoutParams {
         return when (placer) {
             is FrameLayout -> FrameLayout.LayoutParams(width, height)
@@ -25,7 +24,6 @@ object ViewLayoutUtils {
         }
     }
 
-    @JvmStatic
     fun placeViewAt(view: View, x: Int, y: Int, w: Int, h: Int) {
         val lp = view.layoutParams
         if (lp is MarginLayoutParams) {
@@ -35,7 +33,6 @@ object ViewLayoutUtils {
         }
     }
 
-    @JvmStatic
     fun updateLayoutHeightOf(window: Window, layoutHeight: Int) {
         val params = window.attributes
         if (params != null && params.height != layoutHeight) {
@@ -44,7 +41,6 @@ object ViewLayoutUtils {
         }
     }
 
-    @JvmStatic
     fun updateLayoutHeightOf(view: View?, layoutHeight: Int) {
         val params = view?.layoutParams
         if (params != null && params.height != layoutHeight) {
@@ -53,7 +49,6 @@ object ViewLayoutUtils {
         }
     }
 
-    @JvmStatic
     fun updateLayoutGravityOf(view: View?, layoutGravity: Int) {
         val lp = view?.layoutParams ?: return
         when (lp) {

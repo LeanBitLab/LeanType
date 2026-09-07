@@ -631,7 +631,6 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             return suggestionsList
         }
 
-        @JvmStatic
         fun addDebugInfo(wordInfo: SuggestedWordInfo?, typedWord: String) {
             if (!SuggestionStripView.DEBUG_SUGGESTIONS || wordInfo == null)
                 return

@@ -41,12 +41,10 @@ object ExecutorUtils {
 
     private var sExecutorServiceForTests: ScheduledExecutorService? = null
 
-    @JvmStatic
     fun setExecutorServiceForTests(executorServiceForTests: ScheduledExecutorService?) {
         sExecutorServiceForTests = executorServiceForTests
     }
 
-    @JvmStatic
     fun getBackgroundExecutor(name: String): ScheduledExecutorService {
         sExecutorServiceForTests?.let { return it }
         return when (name) {
@@ -56,7 +54,6 @@ object ExecutorUtils {
         }
     }
 
-    @JvmStatic
     fun killTasks(name: String) {
         val executorService = getBackgroundExecutor(name)
         executorService.shutdownNow()
@@ -75,7 +72,6 @@ object ExecutorUtils {
         }
     }
 
-    @JvmStatic
     fun chain(vararg runnables: Runnable): Runnable {
         return RunnableChain(*runnables)
     }

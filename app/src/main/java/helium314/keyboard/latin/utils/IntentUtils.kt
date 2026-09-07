@@ -11,7 +11,6 @@ object IntentUtils {
     private const val ACTION_SEND_INTENT = "helium314.keyboard.latin.ACTION_SEND_INTENT"
     private const val EXTRA_NUMBER = "EXTRA_NUMBER"
 
-    @JvmStatic
     fun handleSendIntentKey(context: Context, mKeyCode: Int) {
         val intentNumber = (KeyCode.SEND_INTENT_ONE + 1) - mKeyCode
 

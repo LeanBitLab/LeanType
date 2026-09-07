@@ -155,10 +155,8 @@ class AudioAndHapticFeedbackManager private constructor() {
     companion object {
         private val sInstance = AudioAndHapticFeedbackManager()
 
-        @JvmStatic
         fun getInstance(): AudioAndHapticFeedbackManager = sInstance
 
-        @JvmStatic
         fun init(context: Context) {
             sInstance.initInternal(context)
         }
