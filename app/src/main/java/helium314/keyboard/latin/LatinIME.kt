@@ -203,8 +203,9 @@ class LatinIME : InputMethodService(),
         displayContext = getDisplayContext()
         KeyboardSwitcher.init(this)
         floatingKeyboardManager = FloatingKeyboardManager(this, this)
-        voicePluginManager = VoicePluginManager(this)
-        voiceInputManager = VoiceInputManager(this, voicePluginManager!!)
+        val vpm = VoicePluginManager(this)
+        voicePluginManager = vpm
+        voiceInputManager = VoiceInputManager(this, vpm)
         
         super.onCreate()
 
@@ -439,14 +440,12 @@ class LatinIME : InputMethodService(),
         updateSoftInputWindowLayoutParameters(inputView)
         
         suggestionStripView = if (settings.current.mToolbarMode == ToolbarMode.HIDDEN) null else view.findViewById(R.id.suggestion_strip_view)
-        if (hasSuggestionStripView()) {
-            suggestionStripView!!.setRtl(richImm.currentSubtype.isRtlSubtype)
-            suggestionStripView!!.setListener(this, view)
+        suggestionStripView?.let { strip ->
+            strip.setRtl(richImm.currentSubtype.isRtlSubtype)
+            strip.setListener(this, view)
         }
         
-        if (floatingKeyboardManager != null && floatingKeyboardManager!!.isFloating) {
-            floatingKeyboardManager!!.onInputViewRecreated(view)
-        }
+        floatingKeyboardManager?.takeIf { it.isFloating }?.onInputViewRecreated(view)
         
         voiceInputManager?.setListener(object : VoiceInputManager.VoiceInputListener {
             override fun onStateChanged(state: VoiceInputManager.VoiceState) { onVoiceStateChanged(state) }
@@ -461,30 +460,30 @@ class LatinIME : InputMethodService(),
         handler.post {
             if (state == lastVoiceState) return@post
             lastVoiceState = state
-            if (hasSuggestionStripView()) {
+            suggestionStripView?.let { strip ->
                 when (state) {
                     VoiceInputManager.VoiceState.CONNECTING_PLUGIN, VoiceInputManager.VoiceState.STARTING_SESSION -> {
-                        suggestionStripView!!.showVoiceStatus(
+                        strip.showVoiceStatus(
                             getString(R.string.voice_status_connecting), false,
                             { voiceInputManager?.stopVoice() }, { voiceInputManager?.cancelVoice() },
                             VoiceVisualizerView.Mode.CONNECTING
                         )
                     }
                     VoiceInputManager.VoiceState.RECORDING -> {
-                        suggestionStripView!!.showVoiceStatus(
+                        strip.showVoiceStatus(
                             getString(R.string.voice_status_listening), false,
                             { voiceInputManager?.stopVoice() }, { voiceInputManager?.cancelVoice() },
                             VoiceVisualizerView.Mode.RECORDING
                         )
                     }
                     VoiceInputManager.VoiceState.PROCESSING_FINAL -> {
-                        suggestionStripView!!.showVoiceStatus(
+                        strip.showVoiceStatus(
                             getString(R.string.voice_status_processing), true,
                             null, { voiceInputManager?.cancelVoice() },
                             VoiceVisualizerView.Mode.PROCESSING
                         )
                     }
-                    else -> suggestionStripView!!.hideVoiceStatus()
+                    else -> strip.hideVoiceStatus()
                 }
             }
             
@@ -537,8 +536,8 @@ class LatinIME : InputMethodService(),
 
     override fun onFinishInput() {
         handler.onFinishInput()
-        if (floatingKeyboardManager != null && floatingKeyboardManager!!.isFloating && !Settings.getInstance().current.mPersistFloatingKeyboard) {
-            floatingKeyboardManager!!.hide(false)
+        if (!Settings.getInstance().current.mPersistFloatingKeyboard) {
+            floatingKeyboardManager?.takeIf { it.isFloating }?.hide(false)
         }
         if (KeyboardActionListenerImpl.sPersistentTextEditModeActive && !Settings.getInstance().current.mPersistTextEditMode) {
             KeyboardActionListenerImpl.sPersistentTextEditModeActive = false
@@ -557,9 +556,7 @@ class LatinIME : InputMethodService(),
         inputLogic.onSubtypeChanged(SubtypeLocaleUtils.getCombiningRulesExtraValue(subtype), settings.current)
         loadKeyboard()
         
-        if (hasSuggestionStripView()) {
-            suggestionStripView!!.setRtl(richImm.currentSubtype.isRtlSubtype)
-        }
+        suggestionStripView?.setRtl(richImm.currentSubtype.isRtlSubtype)
         settings.saveSubtypeForApp(richImm.currentSubtype, currentInputEditorInfo.packageName)
     }
 
@@ -571,8 +568,8 @@ class LatinIME : InputMethodService(),
     fun onStartInputInternal(editorInfo: EditorInfo?, restarting: Boolean) {
         super.onStartInput(editorInfo, restarting)
         if (editorInfo == null || editorInfo.inputType == android.text.InputType.TYPE_NULL) {
-            if (floatingKeyboardManager != null && floatingKeyboardManager!!.isFloating && !Settings.getInstance().current.mPersistFloatingKeyboard) {
-                floatingKeyboardManager!!.hide(false)
+            if (!Settings.getInstance().current.mPersistFloatingKeyboard) {
+                floatingKeyboardManager?.takeIf { it.isFloating }?.hide(false)
             }
         }
         
@@ -589,10 +586,11 @@ class LatinIME : InputMethodService(),
         super.onStartInputView(editorInfo, restarting)
         ProofreadHelper.preloadModel(this)
         
-        if (voicePluginManager != null && !voicePluginManager!!.isPluginConnected() &&
+        val vpm = voicePluginManager
+        if (vpm != null && !vpm.isPluginConnected() &&
             DeviceProtectedUtils.getSharedPreferences(this).getBoolean(VoiceConstants.PREF_VOICE_OFFLINE_ENABLED, false)
         ) {
-            voicePluginManager!!.bindIfNeeded()
+            vpm.bindIfNeeded()
         }
         
         clipboardHistoryManager.onStartInputView()
@@ -630,7 +628,7 @@ class LatinIME : InputMethodService(),
         if (isDifferentTextField || !currentSettingsValues.hasSameOrientation(resources.configuration)) {
             loadSettings()
             currentSettingsValues = settings.current
-            if (hasSuggestionStripView()) suggestionStripView!!.updateVoiceKey()
+            suggestionStripView?.updateVoiceKey()
         }
         
         val needToCallLoadKeyboardLater: Boolean
@@ -662,17 +660,19 @@ class LatinIME : InputMethodService(),
             switcher.requestUpdatingShiftState(currentAutoCapsState, currentRecapitalizeState)
         }
         
-        if (hasSuggestionStripView() && !currentSettingsValues.mRememberToolbarState) {
+        if (!currentSettingsValues.mRememberToolbarState) {
             val defaultVisible = currentSettingsValues.mAutoShowToolbar
-            suggestionStripView!!.isToolbarManuallyOpen = defaultVisible
-            suggestionStripView!!.setToolbarVisibility(defaultVisible, false)
+            suggestionStripView?.let { strip ->
+                strip.isToolbarManuallyOpen = defaultVisible
+                strip.setToolbarVisibility(defaultVisible, false)
+            }
         }
         
         if (!handler.hasPendingResumeSuggestions()) {
             handler.cancelUpdateSuggestionStrip()
             setNeutralSuggestionStrip()
-            if (hasSuggestionStripView() && currentSettingsValues.mAutoShowToolbar && !tryShowClipboardSuggestion()) {
-                suggestionStripView!!.setToolbarVisibility(true)
+            if (currentSettingsValues.mAutoShowToolbar && !tryShowClipboardSuggestion()) {
+                suggestionStripView?.setToolbarVisibility(true)
             }
             if (shouldRequestInitialPredictions(currentSettingsValues)) {
                 handler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_RECORRECTION)
@@ -688,15 +688,16 @@ class LatinIME : InputMethodService(),
             currentSettingsValues.mGestureFloatingPreviewTextEnabled
         )
         
-        if (floatingKeyboardManager != null && floatingKeyboardManager!!.isFloating) {
+        val fkm = floatingKeyboardManager
+        if (fkm != null && fkm.isFloating) {
             inputView?.visibility = View.GONE
             requestHideSelf(0)
         } else if (currentSettingsValues.mRememberFloatingKeyboard &&
-            floatingKeyboardManager != null &&
-            floatingKeyboardManager!!.wasFloatingLastTime() &&
-            floatingKeyboardManager!!.canDrawOverlays()
+            fkm != null &&
+            fkm.wasFloatingLastTime() &&
+            fkm.canDrawOverlays()
         ) {
-            floatingKeyboardManager!!.show()
+            fkm.show()
         }
         
         if (isInputViewShown) setNavigationBarColor()
@@ -725,8 +726,8 @@ class LatinIME : InputMethodService(),
     fun onFinishInputInternal() {
         super.onFinishInput()
         Log.i(TAG, "onFinishInput")
-        if (floatingKeyboardManager != null && floatingKeyboardManager!!.isFloating && !Settings.getInstance().current.mPersistFloatingKeyboard) {
-            floatingKeyboardManager!!.hide(false)
+        if (!Settings.getInstance().current.mPersistFloatingKeyboard) {
+            floatingKeyboardManager?.takeIf { it.isFloating }?.hide(false)
         }
         dictionaryFacilitator.onFinishInput()
         keyboardSwitcher.mainKeyboardView?.closing()
@@ -735,7 +736,7 @@ class LatinIME : InputMethodService(),
     fun onFinishInputViewInternal(finishingInput: Boolean) {
         super.onFinishInputView(finishingInput)
         Log.i(TAG, "onFinishInputView")
-        if (voiceInputManager?.isRecording() == true) voiceInputManager!!.stopVoice()
+        voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
         otpSuggestionManager.stop()
         clipboardHistoryManager.onFinishInputView()
         AudioAndHapticFeedbackManager.getInstance().onFinishInputView()
@@ -790,13 +791,13 @@ class LatinIME : InputMethodService(),
 
     override fun hideWindow() {
         Log.i(TAG, "hideWindow")
-        if (hasSuggestionStripView() && settings.current.mToolbarMode == ToolbarMode.EXPANDABLE) {
-            suggestionStripView!!.setToolbarVisibility(false)
+        if (settings.current.mToolbarMode == ToolbarMode.EXPANDABLE) {
+            suggestionStripView?.setToolbarVisibility(false)
         }
         keyboardSwitcher.onHideWindow()
         if (TRACE) Debug.stopMethodTracing()
         if (isShowingOptionDialog()) {
-            optionsDialog!!.dismiss()
+            optionsDialog?.dismiss()
             optionsDialog = null
         }
         super.hideWindow()
@@ -858,7 +859,7 @@ class LatinIME : InputMethodService(),
         val stripHeight = if (keyboardSwitcher.isShowingStripContainer) keyboardSwitcher.stripContainer?.height ?: 0 else 0
         val visibleTopY = inputHeight - keyboardHeight - stripHeight
         
-        if (hasSuggestionStripView()) suggestionStripView!!.setMoreSuggestionsHeight(visibleTopY)
+        suggestionStripView?.setMoreSuggestionsHeight(visibleTopY)
         
         if (visibleKeyboardView.isShown || keyboardSwitcher.isShowingStripContainer) {
             val touchLeft = 0
@@ -963,7 +964,7 @@ class LatinIME : InputMethodService(),
         return false
     }
 
-    private fun isShowingOptionDialog(): Boolean = optionsDialog != null && optionsDialog!!.isShowing
+    private fun isShowingOptionDialog(): Boolean = optionsDialog?.isShowing == true
 
     fun switchToNextSubtype() {
         val switchSubtype = settings.current.mLanguageSwitchKeyToOtherSubtypes
@@ -1043,8 +1044,8 @@ class LatinIME : InputMethodService(),
             val offlineEnabled = prefs().getBoolean(VoiceConstants.PREF_VOICE_OFFLINE_ENABLED, false)
             if (offlineEnabled) {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                    if (voiceInputManager != null) {
-                        if (voiceInputManager!!.isRecording()) voiceInputManager!!.stopVoice() else voiceInputManager!!.startVoice()
+                    voiceInputManager?.let { vim ->
+                        if (vim.isRecording()) vim.stopVoice() else vim.startVoice()
                     }
                 } else {
                     Toast.makeText(this, "Microphone permission required for offline voice input. Enable in Settings -> Voice", Toast.LENGTH_LONG).show()
@@ -1152,9 +1153,9 @@ class LatinIME : InputMethodService(),
             currentSettingsValues.isApplicationSpecifiedCompletionsOn() ||
             noSuggestionsFromDictionaries
         ) {
-            suggestionStripView!!.setSuggestions(suggestedWords, richImm.currentSubtype.isRtlSubtype)
+            suggestionStripView?.setSuggestions(suggestedWords, richImm.currentSubtype.isRtlSubtype)
             if (currentSettingsValues.mAutoHideToolbar && !noSuggestionsFromDictionaries) {
-                suggestionStripView!!.foldToolbar(true)
+                suggestionStripView?.foldToolbar(true)
             }
         }
     }
@@ -1174,7 +1175,7 @@ class LatinIME : InputMethodService(),
     }
 
     override fun showSuggestionStrip() {
-        if (hasSuggestionStripView()) suggestionStripView!!.setToolbarVisibility(false)
+        suggestionStripView?.setToolbarVisibility(false)
     }
 
     override fun pickSuggestionManually(suggestionInfo: SuggestedWordInfo?) {
@@ -1189,34 +1190,33 @@ class LatinIME : InputMethodService(),
     }
 
     fun tryShowOtpSuggestion(): Boolean {
-        if (!hasSuggestionStripView()) return false
-        val otpView = otpSuggestionManager.getOtpSuggestionView(suggestionStripView!!)
+        val strip = suggestionStripView ?: return false
+        val otpView = otpSuggestionManager.getOtpSuggestionView(strip)
         if (otpView != null) {
-            suggestionStripView!!.setExternalSuggestionView(otpView, false)
+            strip.setExternalSuggestionView(otpView, false)
             return true
         }
         return false
     }
 
     fun tryShowMathSuggestion(): Boolean {
-        if (!hasSuggestionStripView()) return false
-        val mathView = mathSuggestionManager.getMathSuggestionView(suggestionStripView!!)
+        val strip = suggestionStripView ?: return false
+        val mathView = mathSuggestionManager.getMathSuggestionView(strip)
         if (mathView != null) {
-            suggestionStripView!!.setExternalSuggestionView(mathView, false)
+            strip.setExternalSuggestionView(mathView, false)
             return true
         }
         return false
     }
 
     fun tryShowClipboardSuggestion(): Boolean {
-        val clipboardView = clipboardHistoryManager.getClipboardSuggestionView(currentInputEditorInfo, suggestionStripView)
-        if (hasSuggestionStripView()) {
-            if (clipboardView != null) {
-                suggestionStripView!!.setExternalSuggestionView(clipboardView, false)
-                return true
-            } else {
-                suggestionStripView!!.setExternalSuggestionView(null, false)
-            }
+        val strip = suggestionStripView ?: return false
+        val clipboardView = clipboardHistoryManager.getClipboardSuggestionView(currentInputEditorInfo, strip)
+        if (clipboardView != null) {
+            strip.setExternalSuggestionView(clipboardView, false)
+            return true
+        } else {
+            strip.setExternalSuggestionView(null, false)
         }
         return false
     }
@@ -1225,7 +1225,7 @@ class LatinIME : InputMethodService(),
         if (keyboardSwitcher.isHandwritingShowing) return
         val currentSettings = settings.current
         if (tryShowOtpSuggestion() || tryShowMathSuggestion() || tryShowClipboardSuggestion()) {
-            if (hasSuggestionStripView() && currentSettings.mAutoHideToolbar) suggestionStripView!!.setToolbarVisibility(false)
+            if (currentSettings.mAutoHideToolbar) suggestionStripView?.setToolbarVisibility(false)
             return
         }
         
@@ -1238,11 +1238,11 @@ class LatinIME : InputMethodService(),
                 override fun onGetSuggestedWords(suggestedWords: SuggestedWords?) {
                     if (suggestedWords != null && !suggestedWords.isEmpty) {
                         setSuggestedWords(suggestedWords)
-                        if (hasSuggestionStripView()) {
+                        suggestionStripView?.let { strip ->
                             if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
-                                suggestionStripView!!.setToolbarVisibility(true)
+                                strip.setToolbarVisibility(true)
                             } else if (currentSettings.mAutoShowToolbarOnSelect) {
-                                suggestionStripView!!.setToolbarVisibility(suggestionStripView!!.isToolbarManuallyOpen)
+                                strip.setToolbarVisibility(strip.isToolbarManuallyOpen)
                             }
                         }
                     } else {
@@ -1258,11 +1258,11 @@ class LatinIME : InputMethodService(),
     private fun setNeutralPunctuationSuggestionStrip(currentSettings: SettingsValues) {
         val neutralSuggestions = if (currentSettings.mSuggestPunctuation) currentSettings.mSpacingAndPunctuations.mSuggestPuncList else SuggestedWords.getEmptyInstance()
         setSuggestedWords(neutralSuggestions)
-        if (hasSuggestionStripView()) {
+        suggestionStripView?.let { strip ->
             if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
-                suggestionStripView!!.setToolbarVisibility(true)
+                strip.setToolbarVisibility(true)
             } else if (currentSettings.mAutoShowToolbarOnSelect) {
-                suggestionStripView!!.setToolbarVisibility(suggestionStripView!!.isToolbarManuallyOpen)
+                strip.setToolbarVisibility(strip.isToolbarManuallyOpen)
             }
         }
     }

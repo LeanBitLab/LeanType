@@ -233,39 +233,45 @@ class EmojiPalettesView @JvmOverloads constructor(
     fun initialize() {
         if (initialized) return
         mEmojiCategory.initialize()
-        mTabStrip = KeyboardSwitcher.getInstance().emojiTabStrip as LinearLayout?
+        val tabStrip = KeyboardSwitcher.getInstance().emojiTabStrip as LinearLayout?
+        mTabStrip = tabStrip
 
-        if (Settings.getValues().mSecondaryStripVisible) {
-            addTab(mTabStrip!!, ID_SEARCH_TAB)
+        if (tabStrip != null && Settings.getValues().mSecondaryStripVisible) {
+            addTab(tabStrip, ID_SEARCH_TAB)
             val splitToolbar = Settings.getValues().mSplitToolbar
             for (properties in mEmojiCategory.getShownCategories()) {
                 if (splitToolbar && properties.mCategoryId == EmojiCategory.ID_RECENTS) continue
-                addTab(mTabStrip!!, properties.mCategoryId)
+                addTab(tabStrip, properties.mCategoryId)
             }
         }
 
-        mPager = findViewById(R.id.emoji_pager)
-        mPager!!.adapter = PagerAdapter(mPager!!)
-        mEmojiLayoutParams.setEmojiListProperties(mPager!!)
-        mEmojiCategoryPageIndicatorView = findViewById(R.id.emoji_category_page_id_view)
-        mEmojiLayoutParams.setCategoryPageIdViewProperties(mEmojiCategoryPageIndicatorView!!)
+        val pager: ViewPager2 = findViewById(R.id.emoji_pager)
+        mPager = pager
+        pager.adapter = PagerAdapter(pager)
+        mEmojiLayoutParams.setEmojiListProperties(pager)
+        val indicatorView: EmojiCategoryPageIndicatorView = findViewById(R.id.emoji_category_page_id_view)
+        mEmojiCategoryPageIndicatorView = indicatorView
+        mEmojiLayoutParams.setCategoryPageIdViewProperties(indicatorView)
 
         mSearchContainer = findViewById(R.id.emoji_search_container)
-        mSearchResultsList = findViewById(R.id.emoji_search_results)
+        val resultsList: RecyclerView = findViewById(R.id.emoji_search_results)
+        mSearchResultsList = resultsList
         mSearchEmptyView = findViewById(R.id.emoji_search_empty_view)
 
-        mSearchResultsList!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        mSearchAdapter = EmojiSearchAdapter { emoji ->
+        resultsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val searchAdapter = EmojiSearchAdapter { emoji ->
             mKeyboardActionListener.onTextInput(emoji)
             addRecentKey(emoji)
             stopSearchMode()
         }
-        mSearchResultsList!!.adapter = mSearchAdapter
+        mSearchAdapter = searchAdapter
+        resultsList.adapter = searchAdapter
 
         findViewById<View>(R.id.emoji_search_close_btn).setOnClickListener { stopSearchMode() }
 
-        mSearchBar = findViewById(R.id.emoji_search_bar)
-        mSearchBar!!.addTextChangedListener(object : TextWatcher {
+        val searchBar: EditText = findViewById(R.id.emoji_search_bar)
+        mSearchBar = searchBar
+        searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -274,7 +280,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         })
 
         setCurrentCategoryId(mEmojiCategory.getCurrentCategoryId(), true)
-        mEmojiCategoryPageIndicatorView!!.setColors(
+        indicatorView.setColors(
             mColors.get(ColorType.EMOJI_CATEGORY_SELECTED),
             mColors.get(ColorType.STRIP_BACKGROUND)
         )
@@ -317,11 +323,13 @@ class EmojiPalettesView @JvmOverloads constructor(
                     .setNegativeButton(android.R.string.cancel, null)
                     .create()
                 val window = dialog.window
-                val lp = window!!.attributes
-                lp.token = iconView.windowToken
-                lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG
-                window.attributes = lp
-                window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+                if (window != null) {
+                    val lp = window.attributes
+                    lp.token = iconView.windowToken
+                    lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG
+                    window.attributes = lp
+                    window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+                }
                 dialog.show()
                 true
             }
@@ -333,13 +341,14 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     private fun setupCategoryTabs() {
-        mTabStrip?.removeAllViews()
+        val tabStrip = mTabStrip ?: return
+        tabStrip.removeAllViews()
         if (Settings.getValues().mSecondaryStripVisible) {
-            addTab(mTabStrip!!, ID_SEARCH_TAB)
+            addTab(tabStrip, ID_SEARCH_TAB)
             val splitToolbar = Settings.getValues().mSplitToolbar
             for (properties in mEmojiCategory.getShownCategories()) {
                 if (splitToolbar && properties.mCategoryId == EmojiCategory.ID_RECENTS) continue
-                addTab(mTabStrip!!, properties.mCategoryId)
+                addTab(tabStrip, properties.mCategoryId)
             }
         }
     }
@@ -372,25 +381,26 @@ class EmojiPalettesView @JvmOverloads constructor(
         searchIcon.layoutParams = LayoutParams(iconSize, iconSize)
         inputContainer.addView(searchIcon)
 
-        mSearchBar = EditText(ctx)
-        mSearchBar!!.background = null
-        mSearchBar!!.hint = "Search"
-        mSearchBar!!.setTextColor(mColors.get(ColorType.KEY_TEXT))
-        mSearchBar!!.setHintTextColor(mColors.get(ColorType.KEY_TEXT) and 0x00FFFFFF or -0x80000000)
-        mSearchBar!!.textSize = 14f
-        mSearchBar!!.setSingleLine(true)
-        mSearchBar!!.imeOptions = EditorInfo.IME_ACTION_DONE or EditorInfo.IME_FLAG_NO_EXTRACT_UI
-        mSearchBar!!.setPadding(toPx(4f), 0, toPx(4f), 0)
-        mSearchBar!!.layoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-
-        mSearchBar!!.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                performSearch(s.toString())
-            }
-        })
-        inputContainer.addView(mSearchBar)
+        val searchBar = EditText(ctx).apply {
+            background = null
+            hint = "Search"
+            setTextColor(mColors.get(ColorType.KEY_TEXT))
+            setHintTextColor(mColors.get(ColorType.KEY_TEXT) and 0x00FFFFFF or -0x80000000)
+            textSize = 14f
+            setSingleLine(true)
+            imeOptions = EditorInfo.IME_ACTION_DONE or EditorInfo.IME_FLAG_NO_EXTRACT_UI
+            setPadding(toPx(4f), 0, toPx(4f), 0)
+            layoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
+            addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    performSearch(s.toString())
+                }
+            })
+        }
+        mSearchBar = searchBar
+        inputContainer.addView(searchBar)
 
         val closeBtn = ImageButton(ctx)
         closeBtn.setImageResource(R.drawable.ic_close_rounded)
@@ -460,11 +470,12 @@ class EmojiPalettesView @JvmOverloads constructor(
             private var mCurrentDeleteSwipeStart = -1
 
             override fun onCodeInput(primaryCode: Int, x: Int, y: Int, isKeyRepeat: Boolean) {
+                val searchBar = mSearchBar
                 if (primaryCode == KeyCode.DELETE) {
-                    val text = mSearchBar?.text ?: return
+                    val text = searchBar?.text ?: return
                     if (text.isNotEmpty()) {
-                        val selStart = mSearchBar!!.selectionStart
-                        val selEnd = mSearchBar!!.selectionEnd
+                        val selStart = searchBar.selectionStart
+                        val selEnd = searchBar.selectionEnd
                         if (selStart >= 0 && selEnd > selStart) {
                             text.delete(selStart, selEnd)
                         } else if (selStart > 0) {
@@ -472,28 +483,28 @@ class EmojiPalettesView @JvmOverloads constructor(
                         }
                     }
                 } else if (primaryCode == Constants.CODE_SPACE) {
-                    val text = mSearchBar?.text ?: return
-                    var sel = mSearchBar!!.selectionStart
+                    val text = searchBar?.text ?: return
+                    var sel = searchBar.selectionStart
                     if (sel < 0) sel = text.length
                     text.insert(sel, " ")
                 } else if (primaryCode > 0) {
-                    val text = mSearchBar?.text ?: return
-                    var sel = mSearchBar!!.selectionStart
+                    val text = searchBar?.text ?: return
+                    var sel = searchBar.selectionStart
                     if (sel < 0) sel = text.length
                     text.insert(sel, primaryCode.toChar().toString())
                 } else if (primaryCode == Constants.CODE_ENTER) {
                     stopSearchMode()
                 } else if (primaryCode == KeyCode.SYMBOL || primaryCode == KeyCode.SYMBOL_ALPHA || primaryCode == KeyCode.ALPHA) {
-                    if (mSearchKeyboardLayoutSet != null) {
+                    mSearchKeyboardLayoutSet?.let { layoutSet ->
                         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                         val currentElementId = bottomRow.keyboard?.mId?.mElementId ?: KeyboardId.ELEMENT_ALPHABET
                         val isOnSymbols = currentElementId == KeyboardId.ELEMENT_SYMBOLS || currentElementId == KeyboardId.ELEMENT_SYMBOLS_SHIFTED
                         val targetId = if (isOnSymbols) KeyboardId.ELEMENT_ALPHABET else KeyboardId.ELEMENT_SYMBOLS
-                        bottomRow.setKeyboard(mSearchKeyboardLayoutSet!!.getKeyboard(targetId))
+                        bottomRow.setKeyboard(layoutSet.getKeyboard(targetId))
                         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
                     }
                 } else if (primaryCode == KeyCode.SHIFT) {
-                    if (mSearchKeyboardLayoutSet != null) {
+                    mSearchKeyboardLayoutSet?.let { layoutSet ->
                         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                         val currentElementId = bottomRow.keyboard?.mId?.mElementId ?: KeyboardId.ELEMENT_ALPHABET
                         val targetId = when (currentElementId) {
@@ -502,7 +513,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                             KeyboardId.ELEMENT_ALPHABET -> KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED
                             else -> KeyboardId.ELEMENT_ALPHABET
                         }
-                        bottomRow.setKeyboard(mSearchKeyboardLayoutSet!!.getKeyboard(targetId))
+                        bottomRow.setKeyboard(layoutSet.getKeyboard(targetId))
                         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
                     }
                 } else if (primaryCode == KeyCode.EMOJI || primaryCode == KeyCode.CLIPBOARD) {
@@ -546,9 +557,10 @@ class EmojiPalettesView @JvmOverloads constructor(
             }
 
             override fun onTextInput(t: String?) {
-                val text = mSearchBar?.text ?: return
+                val searchBar = mSearchBar ?: return
+                val text = searchBar.text ?: return
                 if (t == null) return
-                var sel = mSearchBar!!.selectionStart
+                var sel = searchBar.selectionStart
                 if (sel < 0) sel = text.length
                 text.insert(sel, t)
             }
@@ -571,10 +583,11 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onCustomRequest(r: Int): Boolean = false
             
             override fun onHorizontalSpaceSwipe(s: Int): Boolean {
-                val text = mSearchBar?.text ?: return false
+                val searchBar = mSearchBar ?: return false
+                val text = searchBar.text ?: return false
                 val len = text.length
-                val selStart = mSearchBar!!.selectionStart
-                val selEnd = mSearchBar!!.selectionEnd
+                val selStart = searchBar.selectionStart
+                val selEnd = searchBar.selectionEnd
                 if (selStart < 0 || selEnd < 0) return false
 
                 val rtl = RichInputMethodManager.getInstance().currentSubtype.isRtlSubtype
@@ -584,7 +597,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (newSel < 0) newSel = 0
                 if (newSel > len) newSel = len
 
-                mSearchBar!!.setSelection(newSel)
+                searchBar.setSelection(newSel)
                 return true
             }
 
@@ -593,9 +606,10 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun toggleNumpad(w: Boolean, f: Boolean): Boolean = false
 
             override fun onMoveDeletePointer(s: Int) {
-                val text = mSearchBar?.text ?: return
+                val searchBar = mSearchBar ?: return
+                val text = searchBar.text ?: return
                 if (mDeleteSwipeStartSel == -1) {
-                    mDeleteSwipeStartSel = mSearchBar!!.selectionEnd
+                    mDeleteSwipeStartSel = searchBar.selectionEnd
                     mCurrentDeleteSwipeStart = mDeleteSwipeStartSel
                 }
                 if (mDeleteSwipeStartSel < 0) return
@@ -604,13 +618,14 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (mCurrentDeleteSwipeStart < 0) mCurrentDeleteSwipeStart = 0
                 if (mCurrentDeleteSwipeStart > mDeleteSwipeStartSel) mCurrentDeleteSwipeStart = mDeleteSwipeStartSel
 
-                mSearchBar!!.setSelection(mCurrentDeleteSwipeStart, mDeleteSwipeStartSel)
+                searchBar.setSelection(mCurrentDeleteSwipeStart, mDeleteSwipeStartSel)
             }
 
             override fun onUpWithDeletePointerActive() {
-                val text = mSearchBar?.text ?: return
-                val selStart = mSearchBar!!.selectionStart
-                val selEnd = mSearchBar!!.selectionEnd
+                val searchBar = mSearchBar ?: return
+                val text = searchBar.text ?: return
+                val selStart = searchBar.selectionStart
+                val selEnd = searchBar.selectionEnd
                 if (selStart >= 0 && selEnd > selStart) {
                     text.delete(selStart, selEnd)
                 }
@@ -629,11 +644,12 @@ class EmojiPalettesView @JvmOverloads constructor(
             ResourceUtils.getSecondaryKeyboardHeight(resources, Settings.getValues())
         )
 
-        mSearchKeyboardLayoutSet = builder.build()
-        bottomRow.setKeyboard(mSearchKeyboardLayoutSet!!.getKeyboard(KeyboardId.ELEMENT_ALPHABET))
+        val searchKeyboardLayoutSet = builder.build()
+        mSearchKeyboardLayoutSet = searchKeyboardLayoutSet
+        bottomRow.setKeyboard(searchKeyboardLayoutSet.getKeyboard(KeyboardId.ELEMENT_ALPHABET))
         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
 
-        mSearchBar!!.requestFocus()
+        mSearchBar?.requestFocus()
         if (isInLayout) {
             post { requestLayout() }
         } else {
@@ -657,8 +673,8 @@ class EmojiPalettesView @JvmOverloads constructor(
         mSearchBar = null
         mSearchKeyboardLayoutSet = null
 
-        if (mOriginalActionListener != null) {
-            PointerTracker.setKeyboardActionListener(mOriginalActionListener!!)
+        mOriginalActionListener?.let {
+            PointerTracker.setKeyboardActionListener(it)
         }
 
         if (isAttachedToWindow) {
@@ -674,10 +690,11 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     private fun performSearch(query: String?) {
         Log.d("EmojiSearch", "performSearch: $query")
-        if (sDictionaryFacilitator == null || TextUtils.isEmpty(query)) {
+        val dict = sDictionaryFacilitator
+        if (dict == null || query.isNullOrEmpty()) {
             mSearchAdapter?.submitList(Collections.emptyList())
             if (Settings.getValues().mSplitToolbar) {
-                if (sDictionaryFacilitator == null) {
+                if (dict == null) {
                     updateSplitToolbarEmojiSuggestions()
                 } else {
                     populateSuggestionBarWithRecents()
@@ -686,7 +703,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             return
         }
 
-        val suggestions = sDictionaryFacilitator!!.getSuggestions(query!!.splitOnWhitespace())
+        val suggestions = dict.getSuggestions(query.splitOnWhitespace())
         val results = ArrayList<String>()
         for (info in suggestions) {
             if (info.isEmoji) {
@@ -779,9 +796,7 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     override fun getDescription(emoji: String): String? {
-        if (sDictionaryFacilitator == null) return null
-
-        val wordProperty = sDictionaryFacilitator!!.getWordProperty(emoji)
+        val wordProperty = sDictionaryFacilitator?.getWordProperty(emoji)
         if (wordProperty == null || !wordProperty.mHasShortcuts) return null
 
         return wordProperty.mShortcutTargets?.firstOrNull()?.mWord
@@ -800,16 +815,14 @@ class EmojiPalettesView @JvmOverloads constructor(
             return
         }
         getRecentsKeyboard().addKeyFirst(key)
-        if (mPager?.adapter != null) {
-            mPager!!.adapter!!.notifyItemChanged(mEmojiCategory.getRecentTabId())
-        }
+        mPager?.adapter?.notifyItemChanged(mEmojiCategory.getRecentTabId())
         if (split && isShown) {
             populateSuggestionBarWithRecents()
         }
     }
 
     fun addRecentKey(emoji: String?) {
-        if (Settings.getValues().mIncognitoModeEnabled || TextUtils.isEmpty(emoji) || !StringUtils.mightBeEmoji(emoji!!.codePointAt(0))) {
+        if (Settings.getValues().mIncognitoModeEnabled || emoji.isNullOrEmpty() || !StringUtils.mightBeEmoji(emoji.codePointAt(0))) {
             return
         }
         val split = Settings.getValues().mSplitToolbar
@@ -818,9 +831,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             return
         }
         getRecentsKeyboard().addStringKeyFirst(emoji)
-        if (mPager?.adapter != null) {
-            mPager!!.adapter!!.notifyItemChanged(mEmojiCategory.getRecentTabId())
-        }
+        mPager?.adapter?.notifyItemChanged(mEmojiCategory.getRecentTabId())
         if (split && isShown) {
             populateSuggestionBarWithRecents()
         }
@@ -833,13 +844,12 @@ class EmojiPalettesView @JvmOverloads constructor(
         val leftPadding = keyboardAttr.getFraction(R.styleable.Keyboard_keyboardLeftPadding, keyboardWidth, keyboardWidth, 0f) * sv.mSidePaddingScale
         val rightPadding = keyboardAttr.getFraction(R.styleable.Keyboard_keyboardRightPadding, keyboardWidth, keyboardWidth, 0f) * sv.mSidePaddingScale
         keyboardAttr.recycle()
-        mPager?.setPadding(leftPadding.toInt(), mPager!!.paddingTop, rightPadding.toInt(), mPager!!.paddingBottom)
-        mEmojiCategoryPageIndicatorView?.setPadding(
-            leftPadding.toInt(),
-            mEmojiCategoryPageIndicatorView!!.paddingTop,
-            rightPadding.toInt(),
-            mEmojiCategoryPageIndicatorView!!.paddingBottom
-        )
+        mPager?.let {
+            it.setPadding(leftPadding.toInt(), it.paddingTop, rightPadding.toInt(), it.paddingBottom)
+        }
+        mEmojiCategoryPageIndicatorView?.let {
+            it.setPadding(leftPadding.toInt(), it.paddingTop, rightPadding.toInt(), it.paddingBottom)
+        }
     }
 
     fun stopEmojiPalettes() {
@@ -856,7 +866,9 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     private fun getRecentsKeyboard(): DynamicGridKeyboard {
-        return mEmojiCategory.getKeyboard(EmojiCategory.ID_RECENTS, 0)!!
+        return requireNotNull(mEmojiCategory.getKeyboard(EmojiCategory.ID_RECENTS, 0)) {
+            "Recent emoji keyboard must be available"
+        }
     }
 
     private fun populateSuggestionBarWithRecents() {
@@ -905,8 +917,9 @@ class EmojiPalettesView @JvmOverloads constructor(
                 }
             }, mIsDownloadingEmojiDict)
         } else {
-            if (mSearchBar != null && !TextUtils.isEmpty(mSearchBar!!.text)) {
-                performSearch(mSearchBar!!.text.toString())
+            val queryText = mSearchBar?.text
+            if (!queryText.isNullOrEmpty()) {
+                performSearch(queryText.toString())
             } else {
                 populateSuggestionBarWithRecents()
             }
@@ -918,8 +931,7 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     private fun updateEmojiCategoryPageIdView() {
-        if (mEmojiCategoryPageIndicatorView == null) return
-        mEmojiCategoryPageIndicatorView!!.setCategoryPageId(
+        mEmojiCategoryPageIndicatorView?.setCategoryPageId(
             mEmojiCategory.getCurrentCategoryPageCount(),
             mEmojiCategory.getCurrentCategoryPageId(), 0.0f
         )
@@ -930,8 +942,9 @@ class EmojiPalettesView @JvmOverloads constructor(
         if (initial || oldCategoryId != categoryId) {
             mEmojiCategory.setCurrentCategoryId(categoryId)
 
-            if (mPager!!.scrollState != ViewPager2.SCROLL_STATE_DRAGGING) {
-                mPager!!.setCurrentItem(
+            val pager = mPager
+            if (pager != null && pager.scrollState != ViewPager2.SCROLL_STATE_DRAGGING) {
+                pager.setCurrentItem(
                     mEmojiCategory.getTabIdFromCategoryId(mEmojiCategory.getCurrentCategoryId()),
                     !initial && !isAnimationsDisabled()
                 )
@@ -956,10 +969,11 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     fun updateColors() {
         mColors = Settings.getValues().mColors
-        if (mTabStrip != null) {
-            mColors.setBackground(mTabStrip!!, ColorType.STRIP_BACKGROUND)
-            for (i in 0 until mTabStrip!!.childCount) {
-                val child = mTabStrip!!.getChildAt(i)
+        val tabStrip = mTabStrip
+        if (tabStrip != null) {
+            mColors.setBackground(tabStrip, ColorType.STRIP_BACKGROUND)
+            for (i in 0 until tabStrip.childCount) {
+                val child = tabStrip.getChildAt(i)
                 if (child is ImageView) {
                     val tag = child.tag
                     val categoryId = if (tag is Long) tag.toInt() else -1
@@ -974,12 +988,10 @@ class EmojiPalettesView @JvmOverloads constructor(
                 }
             }
         }
-        if (mEmojiCategoryPageIndicatorView != null) {
-            mEmojiCategoryPageIndicatorView!!.setColors(
-                mColors.get(ColorType.EMOJI_CATEGORY_SELECTED),
-                mColors.get(ColorType.STRIP_BACKGROUND)
-            )
-        }
+        mEmojiCategoryPageIndicatorView?.setColors(
+            mColors.get(ColorType.EMOJI_CATEGORY_SELECTED),
+            mColors.get(ColorType.STRIP_BACKGROUND)
+        )
     }
 
     private fun isAnimationsDisabled(): Boolean {
@@ -1000,7 +1012,8 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     private fun initDictionaryFacilitator() {
         val locale = RichInputMethodManager.getInstance().currentSubtype.locale
-        if (sDictionaryFacilitator == null || !sDictionaryFacilitator!!.isForLocale(locale)) {
+        val facilitator = sDictionaryFacilitator
+        if (facilitator == null || !facilitator.isForLocale(locale)) {
             closeDictionaryFacilitator()
             val dictFile = DictionaryInfoUtils.getCachedDictForLocaleAndType(locale, Dictionary.TYPE_EMOJI, context)
             val dictionary = if (dictFile != null) DictionaryFactory.getDictionary(dictFile, locale) else null
