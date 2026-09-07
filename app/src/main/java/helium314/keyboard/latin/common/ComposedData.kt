@@ -50,7 +50,7 @@ class ComposedData(
             for (i in codePoints.indices) {
                 CoordinateUtils.setXYInArray(coordinates, i, Random.nextBits(2), Random.nextBits(2))
             }
-            return WordComposer().apply { setComposingWord(codePoints, coordinates) }.composedDataSnapshot
+            return WordComposer().apply { setComposingWord(codePoints, coordinates) }.getComposedDataSnapshot()
         }
     }
 }

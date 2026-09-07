@@ -117,8 +117,8 @@ class InputLogic(
         mEnteredText = null
         mWordBeingCorrectedByCursor = null
         mConnection.onStartInput()
-        if (mWordComposer.typedWord.isNotEmpty()) {
-            StatsUtils.onWordCommitUserTyped(mWordComposer.typedWord, mWordComposer.isBatchMode())
+        if (mWordComposer.getTypedWord().isNotEmpty()) {
+            StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
         }
         mWordComposer.restartCombining(combiningSpec)
         resetComposingState(true)
@@ -150,7 +150,7 @@ class InputLogic(
     fun finishInput() {
         if (mWordComposer.isComposingWord()) {
             mConnection.finishComposingText()
-            StatsUtils.onWordCommitUserTyped(mWordComposer.typedWord, mWordComposer.isBatchMode())
+            StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
         }
         resetComposingState(true)
         mInputLogicHandler.reset()
@@ -489,7 +489,7 @@ class InputLogic(
         }
         if (mWordComposer.isComposingWord()) {
             if (SpaceState.PHANTOM == inputTransaction.spaceState
-                && "bn_khipro" == mWordComposer.combiningSpec
+                && "bn_khipro" == mWordComposer.getCombiningSpec()
             ) {
                 insertAutomaticSpaceIfOptionsAndTextAllow(inputTransaction.settingsValues)
                 mSpaceState = SpaceState.NONE
@@ -1567,7 +1567,7 @@ class InputLogic(
         if (!settingsValues.isSuggestionsEnabledPerUserSettings() || TextUtils.isEmpty(suggestion)) {
             return
         }
-        val wasAutoCapitalized = mWordComposer.wasAutoCapitalized() && !mWordComposer.isMostlyCaps
+        val wasAutoCapitalized = mWordComposer.wasAutoCapitalized() && !mWordComposer.isMostlyCaps()
         val word = stripWordSeparatorsFromEnd(suggestion, settingsValues)
         if (settingsValues.mIncognitoModeEnabled) {
             mDictionaryFacilitator.adjustConfidences(word, wasAutoCapitalized)
