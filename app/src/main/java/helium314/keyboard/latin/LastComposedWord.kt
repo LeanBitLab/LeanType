@@ -19,14 +19,14 @@ import java.util.ArrayList
 class LastComposedWord(
     events: ArrayList<Event>,
     inputPointers: InputPointers?,
-    @JvmField val mTypedWord: String,
-    @JvmField val mCommittedWord: CharSequence,
-    @JvmField val mSeparatorString: String,
-    @JvmField val mNgramContext: NgramContext?,
-    @JvmField val mCapitalizedMode: Int
+    val mTypedWord: String,
+    val mCommittedWord: CharSequence,
+    val mSeparatorString: String,
+    val mNgramContext: NgramContext?,
+    val mCapitalizedMode: Int
 ) {
-    @JvmField val mEvents: ArrayList<Event> = ArrayList(events)
-    @JvmField val mInputPointers: InputPointers = InputPointers(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH)
+    val mEvents: ArrayList<Event> = ArrayList(events)
+    val mInputPointers: InputPointers = InputPointers(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH)
 
     private var mActive: Boolean = true
 
@@ -56,7 +56,6 @@ class LastComposedWord(
 
         const val NOT_A_SEPARATOR = ""
 
-        @JvmField
         val NOT_A_COMPOSED_WORD = LastComposedWord(
             ArrayList(),
             null,

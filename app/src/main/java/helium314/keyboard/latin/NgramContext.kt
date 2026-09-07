@@ -201,8 +201,8 @@ class NgramContext {
     }
 
     class WordInfo {
-        @JvmField val mWord: CharSequence?
-        @JvmField val mIsBeginningOfSentence: Boolean
+        val mWord: CharSequence?
+        val mIsBeginningOfSentence: Boolean
 
         // Beginning of sentence.
         private constructor() {
@@ -230,14 +230,14 @@ class NgramContext {
         }
 
         companion object {
-            @JvmField val EMPTY_WORD_INFO = WordInfo(null)
-            @JvmField val BEGINNING_OF_SENTENCE_WORD_INFO = WordInfo()
+            val EMPTY_WORD_INFO = WordInfo(null)
+            val BEGINNING_OF_SENTENCE_WORD_INFO = WordInfo()
         }
     }
 
     companion object {
-        @JvmField val EMPTY_PREV_WORDS_INFO = NgramContext(WordInfo.EMPTY_WORD_INFO)
-        @JvmField val BEGINNING_OF_SENTENCE = NgramContext(WordInfo.BEGINNING_OF_SENTENCE_WORD_INFO)
+        val EMPTY_PREV_WORDS_INFO = NgramContext(WordInfo.EMPTY_WORD_INFO)
+        val BEGINNING_OF_SENTENCE = NgramContext(WordInfo.BEGINNING_OF_SENTENCE_WORD_INFO)
 
         const val BEGINNING_OF_SENTENCE_TAG = "<S>"
         const val CONTEXT_SEPARATOR = " "

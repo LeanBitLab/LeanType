@@ -25,18 +25,18 @@ class InputAttributes(
     isFullscreenMode: Boolean,
     packageNameForPrivateImeOptions: String?
 ) {
-    @JvmField val mTargetApplicationPackageName: String? = editorInfo?.packageName
-    @JvmField val mInputTypeShouldAutoCorrect: Boolean
-    @JvmField val mIsPasswordField: Boolean
-    @JvmField val mShouldShowSuggestions: Boolean
-    @JvmField val mMayOverrideShowingSuggestions: Boolean
-    @JvmField val mApplicationSpecifiedCompletionOn: Boolean
-    @JvmField val mShouldInsertSpacesAutomatically: Boolean
-    @JvmField val mShouldShowVoiceInputKey: Boolean
-    @JvmField val mNoLearning: Boolean
-    @JvmField val mDisableGestureFloatingPreviewText: Boolean
-    @JvmField val mIsGeneralTextInput: Boolean
-    @JvmField val mInputType: Int = AppWorkarounds.adjustInputType(editorInfo?.inputType ?: 0, mTargetApplicationPackageName)
+    val mTargetApplicationPackageName: String? = editorInfo?.packageName
+    val mInputTypeShouldAutoCorrect: Boolean
+    val mIsPasswordField: Boolean
+    val mShouldShowSuggestions: Boolean
+    val mMayOverrideShowingSuggestions: Boolean
+    val mApplicationSpecifiedCompletionOn: Boolean
+    val mShouldInsertSpacesAutomatically: Boolean
+    val mShouldShowVoiceInputKey: Boolean
+    val mNoLearning: Boolean
+    val mDisableGestureFloatingPreviewText: Boolean
+    val mIsGeneralTextInput: Boolean
+    val mInputType: Int = AppWorkarounds.adjustInputType(editorInfo?.inputType ?: 0, mTargetApplicationPackageName)
 
     private val mEditorInfo: EditorInfo? = editorInfo
     private val mPackageNameForPrivateImeOptions: String? = packageNameForPrivateImeOptions

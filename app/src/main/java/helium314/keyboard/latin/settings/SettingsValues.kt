@@ -43,175 +43,175 @@ open class SettingsValues(
     context: Context,
     prefs: SharedPreferences,
     res: Resources,
-    @JvmField val mInputAttributes: InputAttributes,
+    val mInputAttributes: InputAttributes,
     currentKeyboardScript: String
 ) {
     // From resources:
-    @JvmField val mSpacingAndPunctuations: SpacingAndPunctuations
-    @JvmField val mDoubleSpacePeriodTimeout: Long
+    val mSpacingAndPunctuations: SpacingAndPunctuations
+    val mDoubleSpacePeriodTimeout: Long
     // From configuration:
-    @JvmField val mLocale: Locale
-    @JvmField val mCurrentKeyboardScript: String
-    @JvmField val mHasHardwareKeyboard: Boolean
-    @JvmField val mShowToolbarOnly: Boolean
-    @JvmField val mPhysicalKeyboardSuggestionShortcuts: String
-    @JvmField val mDisplayOrientation: Int
-    @JvmField val mScreenProfile: helium314.keyboard.latin.utils.ScreenProfile
+    val mLocale: Locale
+    val mCurrentKeyboardScript: String
+    val mHasHardwareKeyboard: Boolean
+    val mShowToolbarOnly: Boolean
+    val mPhysicalKeyboardSuggestionShortcuts: String
+    val mDisplayOrientation: Int
+    val mScreenProfile: helium314.keyboard.latin.utils.ScreenProfile
     // From preferences
-    @JvmField val mAutoCap: Boolean
-    @JvmField val mVibrateOn: Boolean
-    @JvmField val mVibrateInDndMode: Boolean
-    @JvmField val mSoundOn: Boolean
-    @JvmField val mSuggestEmojis: Boolean
-    @JvmField val mInlineEmojiSearch: Boolean
-    @JvmField val mShowEmojiDescriptions: Boolean
-    @JvmField val mKeyPreviewPopupOn: Boolean
-    @JvmField val mShowsVoiceInputKey: Boolean
-    @JvmField val mLanguageSwitchKeyToOtherImes: Boolean
-    @JvmField val mLanguageSwitchKeyToOtherSubtypes: Boolean
+    val mAutoCap: Boolean
+    val mVibrateOn: Boolean
+    val mVibrateInDndMode: Boolean
+    val mSoundOn: Boolean
+    val mSuggestEmojis: Boolean
+    val mInlineEmojiSearch: Boolean
+    val mShowEmojiDescriptions: Boolean
+    val mKeyPreviewPopupOn: Boolean
+    val mShowsVoiceInputKey: Boolean
+    val mLanguageSwitchKeyToOtherImes: Boolean
+    val mLanguageSwitchKeyToOtherSubtypes: Boolean
     private val mShowsLanguageSwitchKey: Boolean
-    @JvmField val mShowsNumberRow: Boolean
-    @JvmField val mShowsNumberRowInSymbols: Boolean
-    @JvmField val mCompactNumberRowInSymbols: Boolean
-    @JvmField val mLocalizedNumberRow: Boolean
-    @JvmField val mShowNumberRowHints: Boolean
-    @JvmField val mShowsHints: Boolean
-    @JvmField val mShowsPopupHints: Boolean
-    @JvmField val mShowTldPopupKeys: Boolean
-    @JvmField val mSpaceForLangChange: Boolean
-    @JvmField val mShowsEmojiKey: Boolean
-    @JvmField val mVarToolbarDirection: Boolean
-    @JvmField val mUsePersonalizedDicts: Boolean
-    @JvmField val mUseDoubleSpacePeriod: Boolean
-    @JvmField val mBlockPotentiallyOffensive: Boolean
-    @JvmField val mSpaceSwipeHorizontal: Int
-    @JvmField val mSpaceSwipeVertical: Int
-    @JvmField val mLanguageSwipeDistance: Int
-    @JvmField val mTouchpadSensitivity: Int
-    @JvmField val mTouchpadFullscreen: Boolean
-    @JvmField val mForceAutoCaps: Boolean
-    @JvmField val mDeleteSwipeEnabled: Boolean
-    @JvmField val mAutospaceAfterPunctuation: Boolean
-    @JvmField val mAutospaceAfterEmoji: Boolean
-    @JvmField val mAutospaceAfterSuggestion: Boolean
-    @JvmField val mImmediateAutoSpace: Boolean
-    @JvmField val mAutospaceAfterGestureTyping: Boolean
-    @JvmField val mAutospaceBeforeGestureTyping: Boolean
-    @JvmField val mShiftRemovesAutospace: Boolean
-    @JvmField val mPreserveSpaceBeforePunctuation: Boolean
-    @JvmField val mClipboardHistoryEnabled: Boolean
-    @JvmField val mClipboardHistoryRetentionTime: Long
-    @JvmField val mClipboardHistoryPinnedFirst: Boolean
-    @JvmField val mClipboardFoldPinned: Boolean
-    @JvmField val mOneHandedModeEnabled: Boolean
-    @JvmField val mOneHandedModeGravity: Int
-    @JvmField val mOneHandedModeScale: Float
-    @JvmField val mNarrowKeyGaps: Boolean
-    @JvmField val mNarrowKeyGapsLevel: Int
-    @JvmField val mThemeKeyBorders: Boolean
-    @JvmField val mShowMorePopupKeys: String
-    @JvmField val mPopupKeyTypes: List<String>
-    @JvmField val mPopupKeyLabelSources: List<String>
-    @JvmField val mSecondaryLocales: List<Locale>
-    @JvmField val mBigramPredictionEnabled: Boolean
-    @JvmField val mFirstWordPredictionEnabled: Boolean
-    @JvmField val mSuggestPunctuation: Boolean
-    @JvmField val mCenterSuggestionTextToEnter: Boolean
-    @JvmField val mGestureMethod: String
-    @JvmField val mGestureInputEnabled: Boolean
-    @JvmField val mGestureTrailEnabled: Boolean
-    @JvmField val mGestureFloatingPreviewTextEnabled: Boolean
-    @JvmField val mGestureFloatingPreviewDynamicEnabled: Boolean
-    @JvmField val mGestureFastTypingCooldown: Int
-    @JvmField val mGestureTrailFadeoutDuration: Int
-    @JvmField val mSlidingKeyInputPreviewEnabled: Boolean
-    @JvmField val mKeyLongpressTimeout: Int
-    @JvmField val mEnableEmojiAltPhysicalKey: Boolean
-    @JvmField val mIsSplitKeyboardEnabled: Boolean
-    @JvmField val mSplitKeyboardSpacerRelativeWidth: Float
-    @JvmField val mQuickPinToolbarKeys: Boolean
-    @JvmField val mScreenMetrics: Int
-    @JvmField val mAddToPersonalDictionary: Boolean
-    @JvmField val mAddToPersonalDictThreshold: Int
-    @JvmField val mUseContactsDictionary: Boolean
-    @JvmField val mUseAppsDictionary: Boolean
-    @JvmField val mEnableSpellCheckerService: Boolean
-    @JvmField val mEnableContactsObserver: Boolean
-    @JvmField val mEnableClipboardListener: Boolean
-    @JvmField val mEnableSmsOtpReceiver: Boolean
-    @JvmField val mEnableAppSyncListener: Boolean
-    @JvmField val mCustomNavBarColor: Boolean
-    @JvmField val mKeyboardHeightScale: Float
-    @JvmField val mUrlDetectionEnabled: Boolean
-    @JvmField val mBottomPaddingScale: Float
-    @JvmField val mSidePaddingScale: Float
-    @JvmField val mToolbarMode: ToolbarMode
-    @JvmField val mToolbarHidingGlobal: Boolean
-    @JvmField val mSplitToolbar: Boolean
-    @JvmField val mAutoSpanToolbarKeys: Boolean
-    @JvmField val mToolbarKeysAlignment: String
-    @JvmField val mClipboardKeysAlignment: String
-    @JvmField val mShowDownloadButtonInToolbar: Boolean
-    @JvmField val mAutoShowToolbar: Boolean
-    @JvmField val mAutoShowToolbarOnSelect: Boolean
-    @JvmField val mAutoHideToolbar: Boolean
-    @JvmField val mToolbarSwipeDownDismiss: Boolean
-    @JvmField val mAutoHidePinnedKeys: Boolean
-    @JvmField val mRememberToolbarState: Boolean
-    @JvmField val mAlphaAfterEmojiInEmojiView: Boolean
-    @JvmField val mAlphaAfterClipHistoryEntry: Boolean
-    @JvmField val mAlphaAfterSymbolAndSpace: Boolean
-    @JvmField val mAlphaAfterNumpadAndSpace: Boolean
-    @JvmField val mRemoveRedundantPopups: Boolean
-    @JvmField val mSpaceBarText: String
-    @JvmField val mFontSizeMultiplier: Float
-    @JvmField val mFontSizeMultiplierEmoji: Float
-    @JvmField val mEmojiKeyFit: Boolean
+    val mShowsNumberRow: Boolean
+    val mShowsNumberRowInSymbols: Boolean
+    val mCompactNumberRowInSymbols: Boolean
+    val mLocalizedNumberRow: Boolean
+    val mShowNumberRowHints: Boolean
+    val mShowsHints: Boolean
+    val mShowsPopupHints: Boolean
+    val mShowTldPopupKeys: Boolean
+    val mSpaceForLangChange: Boolean
+    val mShowsEmojiKey: Boolean
+    val mVarToolbarDirection: Boolean
+    val mUsePersonalizedDicts: Boolean
+    val mUseDoubleSpacePeriod: Boolean
+    val mBlockPotentiallyOffensive: Boolean
+    val mSpaceSwipeHorizontal: Int
+    val mSpaceSwipeVertical: Int
+    val mLanguageSwipeDistance: Int
+    val mTouchpadSensitivity: Int
+    val mTouchpadFullscreen: Boolean
+    val mForceAutoCaps: Boolean
+    val mDeleteSwipeEnabled: Boolean
+    val mAutospaceAfterPunctuation: Boolean
+    val mAutospaceAfterEmoji: Boolean
+    val mAutospaceAfterSuggestion: Boolean
+    val mImmediateAutoSpace: Boolean
+    val mAutospaceAfterGestureTyping: Boolean
+    val mAutospaceBeforeGestureTyping: Boolean
+    val mShiftRemovesAutospace: Boolean
+    val mPreserveSpaceBeforePunctuation: Boolean
+    val mClipboardHistoryEnabled: Boolean
+    val mClipboardHistoryRetentionTime: Long
+    val mClipboardHistoryPinnedFirst: Boolean
+    val mClipboardFoldPinned: Boolean
+    val mOneHandedModeEnabled: Boolean
+    val mOneHandedModeGravity: Int
+    val mOneHandedModeScale: Float
+    val mNarrowKeyGaps: Boolean
+    val mNarrowKeyGapsLevel: Int
+    val mThemeKeyBorders: Boolean
+    val mShowMorePopupKeys: String
+    val mPopupKeyTypes: List<String>
+    val mPopupKeyLabelSources: List<String>
+    val mSecondaryLocales: List<Locale>
+    val mBigramPredictionEnabled: Boolean
+    val mFirstWordPredictionEnabled: Boolean
+    val mSuggestPunctuation: Boolean
+    val mCenterSuggestionTextToEnter: Boolean
+    val mGestureMethod: String
+    val mGestureInputEnabled: Boolean
+    val mGestureTrailEnabled: Boolean
+    val mGestureFloatingPreviewTextEnabled: Boolean
+    val mGestureFloatingPreviewDynamicEnabled: Boolean
+    val mGestureFastTypingCooldown: Int
+    val mGestureTrailFadeoutDuration: Int
+    val mSlidingKeyInputPreviewEnabled: Boolean
+    val mKeyLongpressTimeout: Int
+    val mEnableEmojiAltPhysicalKey: Boolean
+    val mIsSplitKeyboardEnabled: Boolean
+    val mSplitKeyboardSpacerRelativeWidth: Float
+    val mQuickPinToolbarKeys: Boolean
+    val mScreenMetrics: Int
+    val mAddToPersonalDictionary: Boolean
+    val mAddToPersonalDictThreshold: Int
+    val mUseContactsDictionary: Boolean
+    val mUseAppsDictionary: Boolean
+    val mEnableSpellCheckerService: Boolean
+    val mEnableContactsObserver: Boolean
+    val mEnableClipboardListener: Boolean
+    val mEnableSmsOtpReceiver: Boolean
+    val mEnableAppSyncListener: Boolean
+    val mCustomNavBarColor: Boolean
+    val mKeyboardHeightScale: Float
+    val mUrlDetectionEnabled: Boolean
+    val mBottomPaddingScale: Float
+    val mSidePaddingScale: Float
+    val mToolbarMode: ToolbarMode
+    val mToolbarHidingGlobal: Boolean
+    val mSplitToolbar: Boolean
+    val mAutoSpanToolbarKeys: Boolean
+    val mToolbarKeysAlignment: String
+    val mClipboardKeysAlignment: String
+    val mShowDownloadButtonInToolbar: Boolean
+    val mAutoShowToolbar: Boolean
+    val mAutoShowToolbarOnSelect: Boolean
+    val mAutoHideToolbar: Boolean
+    val mToolbarSwipeDownDismiss: Boolean
+    val mAutoHidePinnedKeys: Boolean
+    val mRememberToolbarState: Boolean
+    val mAlphaAfterEmojiInEmojiView: Boolean
+    val mAlphaAfterClipHistoryEntry: Boolean
+    val mAlphaAfterSymbolAndSpace: Boolean
+    val mAlphaAfterNumpadAndSpace: Boolean
+    val mRemoveRedundantPopups: Boolean
+    val mSpaceBarText: String
+    val mFontSizeMultiplier: Float
+    val mFontSizeMultiplierEmoji: Float
+    val mEmojiKeyFit: Boolean
 
     // Deduced settings
-    @JvmField val mSuggestionStripHiddenPerUserSettings: Boolean
-    @JvmField val mSecondaryStripVisible: Boolean
-    @JvmField val mKeypressVibrationDuration: Int
-    @JvmField val mKeypressVibrationAmplitude: Int
-    @JvmField val mKeypressSoundVolume: Float
-    @JvmField val mKeypressSoundStyle: String
-    @JvmField val mSoundPitchScale: Float
-    @JvmField val mSoundRandomPitch: Boolean
-    @JvmField val mSoundStereoPan: Boolean
-    @JvmField val mSoundDynamicVelocity: Boolean
-    @JvmField val mSoundMuteInSilent: Boolean
-    @JvmField val mSoundMuteInDnd: Boolean
-    @JvmField val mSoundVolSpace: Float
-    @JvmField val mSoundVolDelete: Float
-    @JvmField val mSoundVolEnter: Float
-    @JvmField val mSoundVolModifiers: Float
-    @JvmField val mAutoCorrectionEnabledPerUserSettings: Boolean
-    @JvmField val mAutoCorrectTrigger: String
-    @JvmField val mAutoCorrectEnabled: Boolean
-    @JvmField val mAutoCorrectionThreshold: Float
-    @JvmField val mAutoCorrectShortcuts: Boolean
-    @JvmField val mPersistFloatingKeyboard: Boolean
-    @JvmField val mRememberFloatingKeyboard: Boolean
-    @JvmField val mPersistTextEditMode: Boolean
-    @JvmField val mBackspaceRevertsAutocorrect: Boolean
-    @JvmField val mDisableMultiWordSuggestions: Boolean
-    @JvmField val mPrioritizePersonalSuggestions: Boolean
-    @JvmField val mSuggestionBalance: Int
-    @JvmField val mNextWordBoostLevel: Int
-    @JvmField val mNextWordStrictNgram: Boolean
-    @JvmField val mScoreLimitForAutocorrect: Int
+    val mSuggestionStripHiddenPerUserSettings: Boolean
+    val mSecondaryStripVisible: Boolean
+    val mKeypressVibrationDuration: Int
+    val mKeypressVibrationAmplitude: Int
+    val mKeypressSoundVolume: Float
+    val mKeypressSoundStyle: String
+    val mSoundPitchScale: Float
+    val mSoundRandomPitch: Boolean
+    val mSoundStereoPan: Boolean
+    val mSoundDynamicVelocity: Boolean
+    val mSoundMuteInSilent: Boolean
+    val mSoundMuteInDnd: Boolean
+    val mSoundVolSpace: Float
+    val mSoundVolDelete: Float
+    val mSoundVolEnter: Float
+    val mSoundVolModifiers: Float
+    val mAutoCorrectionEnabledPerUserSettings: Boolean
+    val mAutoCorrectTrigger: String
+    val mAutoCorrectEnabled: Boolean
+    val mAutoCorrectionThreshold: Float
+    val mAutoCorrectShortcuts: Boolean
+    val mPersistFloatingKeyboard: Boolean
+    val mRememberFloatingKeyboard: Boolean
+    val mPersistTextEditMode: Boolean
+    val mBackspaceRevertsAutocorrect: Boolean
+    val mDisableMultiWordSuggestions: Boolean
+    val mPrioritizePersonalSuggestions: Boolean
+    val mSuggestionBalance: Int
+    val mNextWordBoostLevel: Int
+    val mNextWordStrictNgram: Boolean
+    val mScoreLimitForAutocorrect: Int
     private val mSuggestionsEnabledPerUserSettings: Boolean
     private val mOverrideShowingSuggestions: Boolean
-    @JvmField val mSuggestClipboardContent: Boolean
-    @JvmField val mSuggestScreenshots: Boolean
-    @JvmField val mAutoReadOtp: Boolean
-    @JvmField val mInlineMathCalculation: Boolean
-    @JvmField val mCompressScreenshots: Boolean
-    @JvmField val mSettingsValuesForSuggestion: SettingsValuesForSuggestion
-    @JvmField val mIncognitoModeEnabled: Boolean
-    @JvmField val mLongPressSymbolsForNumpad: Boolean
-    @JvmField val mFoldableMode: Boolean
-    @JvmField val mColors: Colors
+    val mSuggestClipboardContent: Boolean
+    val mSuggestScreenshots: Boolean
+    val mAutoReadOtp: Boolean
+    val mInlineMathCalculation: Boolean
+    val mCompressScreenshots: Boolean
+    val mSettingsValuesForSuggestion: SettingsValuesForSuggestion
+    val mIncognitoModeEnabled: Boolean
+    val mLongPressSymbolsForNumpad: Boolean
+    val mFoldableMode: Boolean
+    val mColors: Colors
 
     init {
         mLocale = res.configuration.locale()

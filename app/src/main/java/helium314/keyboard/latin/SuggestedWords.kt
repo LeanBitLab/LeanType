@@ -18,14 +18,14 @@ import java.util.Arrays
 import java.util.HashSet
 
 open class SuggestedWords(
-    @JvmField protected val mSuggestedWordInfoList: ArrayList<SuggestedWordInfo>,
-    @JvmField val mRawSuggestions: ArrayList<SuggestedWordInfo>?,
-    @JvmField val mTypedWordInfo: SuggestedWordInfo?,
-    @JvmField val mTypedWordValid: Boolean,
-    @JvmField val mWillAutoCorrect: Boolean,
-    @JvmField val mIsObsoleteSuggestions: Boolean,
-    @JvmField val mInputStyle: Int,
-    @JvmField val mSequenceNumber: Int
+    protected val mSuggestedWordInfoList: ArrayList<SuggestedWordInfo>,
+    val mRawSuggestions: ArrayList<SuggestedWordInfo>?,
+    val mTypedWordInfo: SuggestedWordInfo?,
+    val mTypedWordValid: Boolean,
+    val mWillAutoCorrect: Boolean,
+    val mIsObsoleteSuggestions: Boolean,
+    val mInputStyle: Int,
+    val mSequenceNumber: Int
 ) {
 
     open val isEmpty: Boolean
@@ -78,15 +78,15 @@ open class SuggestedWords(
     }
 
     open class SuggestedWordInfo {
-        @JvmField val mWord: String
-        @JvmField val mPrevWordsContext: String
-        @JvmField val mApplicationSpecifiedCompletionInfo: CompletionInfo?
-        @JvmField val mScore: Int
-        @JvmField val mKindAndFlags: Int
-        @JvmField val mCodePointCount: Int
-        @JvmField val mSourceDict: Dictionary
-        @JvmField val mIndexOfTouchPointOfSecondWord: Int
-        @JvmField val mAutoCommitFirstWordConfidence: Int
+        val mWord: String
+        val mPrevWordsContext: String
+        val mApplicationSpecifiedCompletionInfo: CompletionInfo?
+        val mScore: Int
+        val mKindAndFlags: Int
+        val mCodePointCount: Int
+        val mSourceDict: Dictionary
+        val mIndexOfTouchPointOfSecondWord: Int
+        val mAutoCommitFirstWordConfidence: Int
 
         private var mDebugString = ""
         private var mIsEmoji: Boolean? = null
@@ -250,13 +250,11 @@ open class SuggestedWords(
 
         private val EMPTY_WORD_INFO_LIST = ArrayList<SuggestedWordInfo>(0)
 
-        @JvmField
         val EMPTY: SuggestedWords = SuggestedWords(
             EMPTY_WORD_INFO_LIST, null, null, false,
             false, false, INPUT_STYLE_NONE, NOT_A_SEQUENCE_NUMBER
         )
 
-        @JvmField
         val EMPTY_BATCH: SuggestedWords = SuggestedWords(
             EMPTY_WORD_INFO_LIST, null, null, false,
             false, false, INPUT_STYLE_UPDATE_BATCH, NOT_A_SEQUENCE_NUMBER
