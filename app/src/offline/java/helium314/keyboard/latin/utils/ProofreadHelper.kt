@@ -28,12 +28,10 @@ object ProofreadHelper {
     private var currentJob: Job? = null
     
     // Check if an operation is in progress
-    @JvmStatic
     val isOperationInProgress: Boolean
         get() = currentJob?.isActive == true
     
     // Store original text for potential undo
-    @JvmStatic
     var lastOriginalText: String? = null
         private set
     
@@ -42,7 +40,6 @@ object ProofreadHelper {
     /**
      * Preload the model in the background to avoid initial latency.
      */
-    @JvmStatic
     fun preloadModel(context: Context) {
         if (isPreloaded.get()) return
         val service = ProofreadService(context)
@@ -58,7 +55,6 @@ object ProofreadHelper {
     /**
      * Cancel the current proofreading/translation operation if one is in progress.
      */
-    @JvmStatic
     fun cancelCurrentOperation() {
         if (currentJob?.isActive == true) {
             currentJob?.cancel()
@@ -273,7 +269,6 @@ object ProofreadHelper {
     /**
      * Proofread text asynchronously and call the callback with the result.
      */
-    @JvmStatic
     fun proofreadAsync(
         context: Context,
         text: String,
@@ -297,7 +292,6 @@ object ProofreadHelper {
         fun onError(errorMessage: String)
     }
     
-    @JvmStatic
     fun proofreadAsync(
         context: Context,
         text: String,
@@ -313,7 +307,6 @@ object ProofreadHelper {
         )
     }
 
-    @JvmStatic
     fun translateAsync(
         context: Context,
         text: String,
@@ -441,7 +434,6 @@ object ProofreadHelper {
         )
     }
     
-    @JvmStatic
     fun translateAsync(
         context: Context,
         text: String,
@@ -456,7 +448,6 @@ object ProofreadHelper {
             onError = { callback.onError(it) }
         )
     }
-    @JvmStatic
     fun customAsync(
         context: Context,
         text: String,
@@ -477,7 +468,6 @@ object ProofreadHelper {
         )
     }
 
-    @JvmStatic
     fun customAsync(
         context: Context,
         text: String,
