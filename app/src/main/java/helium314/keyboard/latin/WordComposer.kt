@@ -23,11 +23,11 @@ import java.util.ArrayList
  */
 class WordComposer {
 
-    private var mCombinerChain: CombinerChain? = null
+    private var mCombinerChain: CombinerChain = CombinerChain("", "")
     private var mCombiningSpec: String? = null
 
     // The list of events that served to compose this string.
-    private var mEvents: ArrayList<Event>?
+    private val mEvents: ArrayList<Event> = ArrayList(20)
     private val mInputPointers = InputPointers(MAX_WORD_LENGTH)
 
     private var mAutoCorrection: SuggestedWordInfo? = null
@@ -55,9 +55,7 @@ class WordComposer {
 
     constructor() {
         mCombinerChain = CombinerChain("", "")
-        // Pre-allocate ArrayList with expected capacity to avoid resizing overhead.
-        // Most words are 5-15 characters, so 20 provides good headroom.
-        mEvents = ArrayList(20)
+        mEvents.clear()
         mAutoCorrection = null
         mIsResumed = false
         mIsBatchMode = false
@@ -68,7 +66,6 @@ class WordComposer {
 
     private constructor(isEmpty: Boolean) {
         mCodePointSize = if (isEmpty) 0 else 1
-        mEvents = null
         mTypedWordCache = ""
         mCodePointArrayCache = null
     }
@@ -85,9 +82,8 @@ class WordComposer {
     fun restartCombining(combiningSpec: String?) {
         val nonNullCombiningSpec = combiningSpec ?: ""
         if (nonNullCombiningSpec != mCombiningSpec) {
-            val chain = mCombinerChain ?: CombinerChain("", "")
             mCombinerChain = CombinerChain(
-                chain.composingWordWithCombiningFeedback.toString(),
+                mCombinerChain.composingWordWithCombiningFeedback.toString(),
                 nonNullCombiningSpec
             )
             mCombiningSpec = nonNullCombiningSpec
@@ -98,8 +94,8 @@ class WordComposer {
      * Clear out the keys registered so far.
      */
     fun reset() {
-        mCombinerChain!!.reset()
-        mEvents!!.clear()
+        mCombinerChain.reset()
+        mEvents.clear()
         mAutoCorrection = null
         mCapsCount = 0
         mDigitsCount = 0
@@ -140,13 +136,12 @@ class WordComposer {
      * @return the processed event. Never null, but may be marked as consumed.
      */
     fun processEvent(event: Event): Event {
-        val events = mEvents!!
-        val processedEvent = mCombinerChain!!.processEvent(events, event)
+        val processedEvent = mCombinerChain.processEvent(mEvents, event)
 
         // The retained state of the combiner chain may have changed while processing the event,
         // so we need to update our cache.
         refreshTypedWordCache()
-        events.add(event)
+        mEvents.add(event)
         return processedEvent
     }
 
@@ -167,7 +162,7 @@ class WordComposer {
      * because typically nothing changes.
      */
     fun applyProcessedEvent(event: Event, keepCursorPosition: Boolean) {
-        mCombinerChain!!.applyProcessedEvent(event)
+        mCombinerChain.applyProcessedEvent(event)
 
         val primaryCode = event.codePoint
         val keyX = event.x
@@ -268,9 +263,8 @@ class WordComposer {
 
         mCursorPositionWithinWord = cursorPos
 
-        val chain = mCombinerChain!!
-        chain.applyProcessedEvent(
-            chain.processEvent(mEvents!!, Event.createCursorMovedEvent(cursorPos))
+        mCombinerChain.applyProcessedEvent(
+            mCombinerChain.processEvent(mEvents, Event.createCursorMovedEvent(cursorPos))
         )
         return true
     }
@@ -425,7 +419,7 @@ class WordComposer {
         separatorString: String,
         ngramContext: NgramContext
     ): LastComposedWord {
-        val events = mEvents!!
+        val events = mEvents
 
         // Note: currently, we come here whenever we commit a word. If it's a MANUAL_PICK
         // or a DECIDED_WORD we may cancel the commit later; otherwise, deactivate the last
@@ -451,7 +445,7 @@ class WordComposer {
         mCapsCount = 0
         mDigitsCount = 0
         mIsBatchMode = false
-        mCombinerChain!!.reset()
+        mCombinerChain.reset()
         events.clear()
         mCodePointSize = 0
         mIsOnlyFirstCharCapitalized = false
@@ -466,7 +460,7 @@ class WordComposer {
     }
 
     fun resumeSuggestionOnLastComposedWord(lastComposedWord: LastComposedWord) {
-        val events = mEvents!!
+        val events = mEvents
         events.clear()
 
         // NOTE:
@@ -476,7 +470,7 @@ class WordComposer {
         events.addAll(lastComposedWord.mEvents)
 
         mInputPointers.set(lastComposedWord.mInputPointers)
-        mCombinerChain!!.reset()
+        mCombinerChain.reset()
         refreshTypedWordCache()
         mCapitalizedMode = lastComposedWord.mCapitalizedMode
         mAutoCorrection = null // This will be filled by the next call to updateSuggestion.

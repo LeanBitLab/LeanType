@@ -222,11 +222,13 @@ open class SettingsValues(
         val selectedSubtype = SubtypeSettings.getSelectedSubtype(prefs)
 
         mToolbarMode = Settings.readToolbarMode(prefs)
-        mPhysicalKeyboardSuggestionShortcuts = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS, Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS)!!
+        mPhysicalKeyboardSuggestionShortcuts = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS, Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS) ?: Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS
         mToolbarHidingGlobal = prefs.getBoolean(Settings.PREF_TOOLBAR_HIDING_GLOBAL, Defaults.PREF_TOOLBAR_HIDING_GLOBAL)
         mSplitToolbar = prefs.getBoolean(Settings.PREF_SPLIT_TOOLBAR, Defaults.PREF_SPLIT_TOOLBAR)
         mAutoSpanToolbarKeys = prefs.getBoolean(Settings.PREF_AUTO_SPAN_TOOLBAR_KEYS, Defaults.PREF_AUTO_SPAN_TOOLBAR_KEYS)
-        mToolbarKeysAlignment = prefs.getString(Settings.PREF_TOOLBAR_KEYS_ALIGNMENT, prefs.getString(Settings.PREF_CLIPBOARD_KEYS_ALIGNMENT, Defaults.PREF_TOOLBAR_KEYS_ALIGNMENT))!!
+        val defaultAlign = Defaults.PREF_TOOLBAR_KEYS_ALIGNMENT
+        val fallbackAlign = prefs.getString(Settings.PREF_CLIPBOARD_KEYS_ALIGNMENT, defaultAlign) ?: defaultAlign
+        mToolbarKeysAlignment = prefs.getString(Settings.PREF_TOOLBAR_KEYS_ALIGNMENT, fallbackAlign) ?: fallbackAlign
         mClipboardKeysAlignment = mToolbarKeysAlignment
         mShowDownloadButtonInToolbar = prefs.getBoolean(Settings.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR, Defaults.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR)
         mAutoCap = prefs.getBoolean(Settings.PREF_AUTO_CAP, Defaults.PREF_AUTO_CAP) && ScriptUtils.scriptSupportsUppercase(mLocale)
@@ -240,7 +242,7 @@ open class SettingsValues(
         mSlidingKeyInputPreviewEnabled = prefs.getBoolean(DebugSettings.PREF_SLIDING_KEY_INPUT_PREVIEW, Defaults.PREF_SLIDING_KEY_INPUT_PREVIEW)
         mShowsVoiceInputKey = mInputAttributes.mShouldShowVoiceInputKey
 
-        val languagePref = prefs.getString(Settings.PREF_LANGUAGE_SWITCH_KEY, Defaults.PREF_LANGUAGE_SWITCH_KEY)!!
+        val languagePref = prefs.getString(Settings.PREF_LANGUAGE_SWITCH_KEY, Defaults.PREF_LANGUAGE_SWITCH_KEY) ?: Defaults.PREF_LANGUAGE_SWITCH_KEY
         mLanguageSwitchKeyToOtherImes = languagePref == "input_method" || languagePref == "both"
         mLanguageSwitchKeyToOtherSubtypes = languagePref == "internal" || languagePref == "both"
         mShowsLanguageSwitchKey = prefs.getBoolean(Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY, Defaults.PREF_SHOW_LANGUAGE_SWITCH_KEY)
@@ -266,7 +268,7 @@ open class SettingsValues(
         mBlockPotentiallyOffensive = prefs.getBoolean(Settings.PREF_BLOCK_POTENTIALLY_OFFENSIVE, Defaults.PREF_BLOCK_POTENTIALLY_OFFENSIVE)
         mUrlDetectionEnabled = prefs.getBoolean(Settings.PREF_URL_DETECTION, Defaults.PREF_URL_DETECTION)
         mAutoCorrectionEnabledPerUserSettings = prefs.getBoolean(Settings.PREF_AUTO_CORRECTION, Defaults.PREF_AUTO_CORRECTION)
-        mAutoCorrectTrigger = prefs.getString(Settings.PREF_AUTO_CORRECT_TRIGGER, Defaults.PREF_AUTO_CORRECT_TRIGGER)!!
+        mAutoCorrectTrigger = prefs.getString(Settings.PREF_AUTO_CORRECT_TRIGGER, Defaults.PREF_AUTO_CORRECT_TRIGGER) ?: Defaults.PREF_AUTO_CORRECT_TRIGGER
         mAutoCorrectEnabled = mAutoCorrectionEnabledPerUserSettings && (mInputAttributes.mInputTypeShouldAutoCorrect || prefs.getBoolean(Settings.PREF_MORE_AUTO_CORRECTION, Defaults.PREF_MORE_AUTO_CORRECTION)) && (mUrlDetectionEnabled || !InputTypeUtils.isUriOrEmailType(mInputAttributes.mInputType))
         mCenterSuggestionTextToEnter = prefs.getBoolean(Settings.PREF_CENTER_SUGGESTION_TEXT_TO_ENTER, Defaults.PREF_CENTER_SUGGESTION_TEXT_TO_ENTER)
         mAutoCorrectionThreshold = if (mAutoCorrectEnabled) prefs.getFloat(Settings.PREF_AUTO_CORRECT_THRESHOLD, Defaults.PREF_AUTO_CORRECT_THRESHOLD) else Float.MAX_VALUE
@@ -283,7 +285,7 @@ open class SettingsValues(
 
         var boostLevel = 500
         try {
-            boostLevel = prefs.getString(Settings.PREF_NEXT_WORD_BOOST_LEVEL, Defaults.PREF_NEXT_WORD_BOOST_LEVEL)!!.toInt()
+            boostLevel = (prefs.getString(Settings.PREF_NEXT_WORD_BOOST_LEVEL, Defaults.PREF_NEXT_WORD_BOOST_LEVEL) ?: Defaults.PREF_NEXT_WORD_BOOST_LEVEL).toInt()
         } catch (e: Exception) {
             boostLevel = 500
         }
@@ -313,7 +315,7 @@ open class SettingsValues(
         mKeypressVibrationDuration = prefs.getInt(Settings.PREF_VIBRATION_DURATION_SETTINGS, Defaults.PREF_VIBRATION_DURATION_SETTINGS)
         mKeypressVibrationAmplitude = prefs.getInt(Settings.PREF_VIBRATION_AMPLITUDE_SETTINGS, Defaults.PREF_VIBRATION_AMPLITUDE_SETTINGS)
         mKeypressSoundVolume = prefs.getFloat(Settings.PREF_KEYPRESS_SOUND_VOLUME, Defaults.PREF_KEYPRESS_SOUND_VOLUME)
-        mKeypressSoundStyle = prefs.getString(Settings.PREF_KEYPRESS_SOUND_STYLE, Defaults.PREF_KEYPRESS_SOUND_STYLE)!!
+        mKeypressSoundStyle = prefs.getString(Settings.PREF_KEYPRESS_SOUND_STYLE, Defaults.PREF_KEYPRESS_SOUND_STYLE) ?: Defaults.PREF_KEYPRESS_SOUND_STYLE
         mSoundPitchScale = prefs.getFloat(Settings.PREF_SOUND_PITCH_SCALE, Defaults.PREF_SOUND_PITCH_SCALE)
         mSoundRandomPitch = prefs.getBoolean(Settings.PREF_SOUND_RANDOM_PITCH, Defaults.PREF_SOUND_RANDOM_PITCH)
         mSoundStereoPan = prefs.getBoolean(Settings.PREF_SOUND_STEREO_PAN, Defaults.PREF_SOUND_STEREO_PAN)
@@ -325,7 +327,7 @@ open class SettingsValues(
         mSoundVolEnter = prefs.getFloat(Settings.PREF_SOUND_VOL_ENTER, Defaults.PREF_SOUND_VOL_ENTER)
         mSoundVolModifiers = prefs.getFloat(Settings.PREF_SOUND_VOL_MODIFIERS, Defaults.PREF_SOUND_VOL_MODIFIERS)
         mEnableEmojiAltPhysicalKey = prefs.getBoolean(Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, Defaults.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY)
-        mGestureMethod = prefs.getString(Settings.PREF_GESTURE_METHOD, "fallback")!!
+        mGestureMethod = prefs.getString(Settings.PREF_GESTURE_METHOD, "fallback") ?: "fallback"
         mGestureInputEnabled = JniUtils.sHaveGestureLib && prefs.getBoolean(Settings.PREF_GESTURE_INPUT, Defaults.PREF_GESTURE_INPUT)
         mGestureTrailEnabled = prefs.getBoolean(Settings.PREF_GESTURE_PREVIEW_TRAIL, Defaults.PREF_GESTURE_PREVIEW_TRAIL)
         mGestureFloatingPreviewTextEnabled = !mInputAttributes.mDisableGestureFloatingPreviewText && prefs.getBoolean(Settings.PREF_GESTURE_FLOATING_PREVIEW_TEXT, Defaults.PREF_GESTURE_FLOATING_PREVIEW_TEXT)
@@ -403,7 +405,7 @@ open class SettingsValues(
         mAlphaAfterSymbolAndSpace = prefs.getBoolean(Settings.PREF_ABC_AFTER_SYMBOL_SPACE, Defaults.PREF_ABC_AFTER_SYMBOL_SPACE)
         mAlphaAfterNumpadAndSpace = prefs.getBoolean(Settings.PREF_ABC_AFTER_NUMPAD_SPACE, Defaults.PREF_ABC_AFTER_NUMPAD_SPACE)
         mRemoveRedundantPopups = prefs.getBoolean(Settings.PREF_REMOVE_REDUNDANT_POPUPS, Defaults.PREF_REMOVE_REDUNDANT_POPUPS)
-        mSpaceBarText = prefs.getString(Settings.PREF_SPACE_BAR_TEXT, Defaults.PREF_SPACE_BAR_TEXT)!!
+        mSpaceBarText = prefs.getString(Settings.PREF_SPACE_BAR_TEXT, Defaults.PREF_SPACE_BAR_TEXT) ?: Defaults.PREF_SPACE_BAR_TEXT
         mFontSizeMultiplier = prefs.getFloat(Settings.PREF_FONT_SCALE, Defaults.PREF_FONT_SCALE)
         mFontSizeMultiplierEmoji = prefs.getFloat(Settings.PREF_EMOJI_FONT_SCALE, Defaults.PREF_EMOJI_FONT_SCALE)
         mEmojiKeyFit = prefs.getBoolean(Settings.PREF_EMOJI_KEY_FIT, Defaults.PREF_EMOJI_KEY_FIT)

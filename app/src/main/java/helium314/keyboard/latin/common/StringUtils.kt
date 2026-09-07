@@ -318,10 +318,10 @@ object StringUtils {
     }
 
     fun codePointCount(text: CharSequence?): Int {
-        if (isEmpty(text)) {
+        if (text.isNullOrEmpty()) {
             return 0
         }
-        return Character.codePointCount(text!!, 0, text.length)
+        return Character.codePointCount(text, 0, text.length)
     }
 
     fun newSingleCodePointString(codePoint: Int): String {
@@ -600,8 +600,8 @@ object StringUtils {
         }
         val label = newSingleCodePointString(code)
         val titleCaseLabel = toTitleCaseOfKeyLabel(label, locale)
-        return if (codePointCount(titleCaseLabel) == 1) {
-            titleCaseLabel!!.codePointAt(0)
+        return if (titleCaseLabel != null && codePointCount(titleCaseLabel) == 1) {
+            titleCaseLabel.codePointAt(0)
         } else {
             KeyCode.NOT_SPECIFIED
         }
@@ -617,10 +617,10 @@ object StringUtils {
     }
 
     fun hasLineBreakCharacter(text: String?): Boolean {
-        if (isEmpty(text)) {
+        if (text.isNullOrEmpty()) {
             return false
         }
-        for (i in text!!.length - 1 downTo 0) {
+        for (i in text.length - 1 downTo 0) {
             val c = text[i]
             when (c) {
                 CHAR_LINE_FEED,

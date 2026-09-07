@@ -55,7 +55,7 @@ class AudioAndHapticFeedbackManager private constructor() {
     fun hasVibrator(): Boolean = mVibrator?.hasVibrator() == true
 
     fun hasAmplitudeControl(): Boolean =
-        mVibrator != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && mVibrator!!.hasAmplitudeControl()
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && mVibrator?.hasAmplitudeControl() == true
 
     fun vibrate(milliseconds: Long) {
         vibrate(milliseconds, -1)
@@ -69,13 +69,9 @@ class AudioAndHapticFeedbackManager private constructor() {
             val safeAmplitude = if (amplitudePercent < 0) {
                 VibrationEffect.DEFAULT_AMPLITUDE
             } else {
-                min(255, max(1, ((amplitudePercent / 100f) * 255).toInt()))
+                (amplitudePercent * 255 / 100).coerceIn(1, 255)
             }
-            try {
-                vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, safeAmplitude))
-            } catch (e: Exception) {
-                vibrator.vibrate(milliseconds)
-            }
+            vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, safeAmplitude))
         } else {
             vibrator.vibrate(milliseconds)
         }
@@ -83,9 +79,10 @@ class AudioAndHapticFeedbackManager private constructor() {
 
     private fun reevaluateIfSoundIsOn(): Boolean {
         val settings = mSettingsValues ?: return false
-        if (!settings.mSoundOn || mAudioManager == null) return false
+        val audioManager = mAudioManager ?: return false
+        if (!settings.mSoundOn) return false
         if (settings.mSoundMuteInDnd && mDoNotDisturb) return false
-        if (settings.mSoundMuteInSilent && mAudioManager!!.ringerMode != AudioManager.RINGER_MODE_NORMAL) return false
+        if (settings.mSoundMuteInSilent && audioManager.ringerMode != AudioManager.RINGER_MODE_NORMAL) return false
         return true
     }
 
@@ -130,8 +127,9 @@ class AudioAndHapticFeedbackManager private constructor() {
     fun onSettingsChanged(settingsValues: SettingsValues?) {
         mSettingsValues = settingsValues
         mSoundOn = reevaluateIfSoundIsOn()
-        if (mContext != null && settingsValues?.mKeypressSoundStyle != null) {
-            CustomSoundManager.getInstance(mContext!!).setSoundPack(settingsValues.mKeypressSoundStyle)
+        val context = mContext
+        if (context != null && settingsValues?.mKeypressSoundStyle != null) {
+            CustomSoundManager.getInstance(context).setSoundPack(settingsValues.mKeypressSoundStyle)
         }
     }
 

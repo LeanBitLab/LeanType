@@ -186,8 +186,9 @@ class InputLogic(
         if (hasOrHadSelection || !settingsValues.needsToLookupSuggestions() ||
             (selectionChangedOrSafeToReset && !mWordComposer.moveCursorByAndReturnIfInsideComposingWord(moveAmount))) {
             resetEntireInputState(newSelStart, newSelEnd, false)
-            if (!TextUtils.isEmpty(mWordBeingCorrectedByCursor)) {
-                performAdditionToUserHistoryDictionary(settingsValues, mWordBeingCorrectedByCursor!!, NgramContext.EMPTY_PREV_WORDS_INFO)
+            val wordBeingCorrected = mWordBeingCorrectedByCursor
+            if (!wordBeingCorrected.isNullOrEmpty()) {
+                performAdditionToUserHistoryDictionary(settingsValues, wordBeingCorrected, NgramContext.EMPTY_PREV_WORDS_INFO)
             }
         } else {
             mConnection.resetCachesUponCursorMoveAndReturnSuccess(newSelStart, newSelEnd, false)
@@ -558,12 +559,13 @@ class InputLogic(
             textToProofread,
             hasSelection,
             onSuccess = { proofreadText ->
-                if (proofreadText.isNotEmpty() && proofreadText != mTextBeforeProofread) {
-                    if (mTextBeforeProofread != null && mTextBeforeProofread!!.length > 20 && proofreadText.length < mTextBeforeProofread!!.length * 0.3) {
-                        Log.w(TAG, "Proofread result suspiciously short (${proofreadText.length} vs ${mTextBeforeProofread!!.length}), aborting replacement to prevent truncation data loss")
+                val textBefore = mTextBeforeProofread
+                if (proofreadText.isNotEmpty() && proofreadText != textBefore) {
+                    if (textBefore != null && textBefore.length > 20 && proofreadText.length < textBefore.length * 0.3) {
+                        Log.w(TAG, "Proofread result suspiciously short (${proofreadText.length} vs ${textBefore.length}), aborting replacement to prevent truncation data loss")
                         KeyboardSwitcher.getInstance().showToast("Proofread output truncated by model; replacement aborted.", false)
                         if (!hasSelection) {
-                            val len = mTextBeforeProofread!!.length
+                            val len = textBefore.length
                             mConnection.setSelection(len, len)
                         }
                         return@proofreadAsync
@@ -571,7 +573,7 @@ class InputLogic(
                     mConnection.commitText(proofreadText, 1)
                 } else {
                     if (!hasSelection) {
-                        val len = mTextBeforeProofread?.length ?: 0
+                        val len = textBefore?.length ?: 0
                         mConnection.setSelection(len, len)
                     }
                 }
@@ -621,12 +623,13 @@ class InputLogic(
             textToTranslate,
             hasSelection,
             onSuccess = { translatedText ->
-                if (translatedText.isNotEmpty() && translatedText != mTextBeforeTranslate) {
-                    if (mTextBeforeTranslate != null && mTextBeforeTranslate!!.length > 20 && translatedText.length < mTextBeforeTranslate!!.length * 0.3) {
-                        Log.w(TAG, "Translation result suspiciously short (${translatedText.length} vs ${mTextBeforeTranslate!!.length}), aborting replacement to prevent truncation data loss")
+                val textBefore = mTextBeforeTranslate
+                if (translatedText.isNotEmpty() && translatedText != textBefore) {
+                    if (textBefore != null && textBefore.length > 20 && translatedText.length < textBefore.length * 0.3) {
+                        Log.w(TAG, "Translation result suspiciously short (${translatedText.length} vs ${textBefore.length}), aborting replacement to prevent truncation data loss")
                         KeyboardSwitcher.getInstance().showToast("Translation output truncated by model; replacement aborted.", false)
                         if (!hasSelection) {
-                            val len = mTextBeforeTranslate!!.length
+                            val len = textBefore.length
                             mConnection.setSelection(len, len)
                         }
                         return@translateAsync
@@ -634,7 +637,7 @@ class InputLogic(
                     mConnection.commitText(translatedText, 1)
                 } else {
                     if (!hasSelection) {
-                        val len = mTextBeforeTranslate?.length ?: 0
+                        val len = textBefore?.length ?: 0
                         mConnection.setSelection(len, len)
                     }
                 }
@@ -1194,10 +1197,10 @@ class InputLogic(
         mDeleteCount++
 
         val selection = mConnection.getSelectedText(0)
-        val hasSelection = !TextUtils.isEmpty(selection) || mConnection.hasSelection()
+        val hasSelection = !selection.isNullOrEmpty() || mConnection.hasSelection()
         if (hasSelection) {
-            val numCharsDeleted = if (!TextUtils.isEmpty(selection)) selection!!.length else (mConnection.expectedSelectionEnd - mConnection.expectedSelectionStart)
-            if (!TextUtils.isEmpty(selection)) {
+            val numCharsDeleted = if (!selection.isNullOrEmpty()) selection.length else (mConnection.expectedSelectionEnd - mConnection.expectedSelectionStart)
+            if (!selection.isNullOrEmpty()) {
                 unlearnWord(selection.toString(), inputTransaction.settingsValues, Constants.EVENT_BACKSPACE)
             }
             mWordComposer.reset()
@@ -1211,17 +1214,18 @@ class InputLogic(
             return
         }
 
-        if (mLastExpandedText != null && !event.isKeyRepeat
+        val lastExpandedText = mLastExpandedText
+        if (lastExpandedText != null && !event.isKeyRepeat
             && TextExpanderUtils.isBackspaceRevertsEnabled(mLatinIME)
         ) {
             val expectedCursor = mConnection.expectedSelectionEnd
             if (expectedCursor == mLastExpandedCursorPosition) {
                 val beforeLen = mLastExpandedCursorOffset
-                val afterLen = mLastExpandedText!!.length - beforeLen
+                val afterLen = lastExpandedText.length - beforeLen
                 val textBefore = mConnection.getTextBeforeCursor(beforeLen, 0)
                 val textAfter = mConnection.getTextAfterCursor(afterLen, 0)
-                val expectedBefore = mLastExpandedText!!.substring(0, beforeLen)
-                val expectedAfter = mLastExpandedText!!.substring(beforeLen)
+                val expectedBefore = lastExpandedText.substring(0, beforeLen)
+                val expectedAfter = lastExpandedText.substring(beforeLen)
                 if (textBefore != null && textBefore.toString() == expectedBefore
                     && textAfter != null && textAfter.toString() == expectedAfter
                 ) {
@@ -2033,7 +2037,7 @@ class InputLogic(
         keyboardSwitcher: KeyboardSwitcher
     ) {
         val batchInputText = if (suggestedWords.isEmpty) null else suggestedWords.getWord(0)
-        if (TextUtils.isEmpty(batchInputText)) {
+        if (batchInputText.isNullOrEmpty()) {
             return
         }
         mConnection.beginBatchEdit()
@@ -2041,7 +2045,7 @@ class InputLogic(
             insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues)
             mSpaceState = SpaceState.NONE
         }
-        enterInlineEmojiSearchIfNeeded(batchInputText!!.codePointAt(0), settingsValues)
+        enterInlineEmojiSearchIfNeeded(batchInputText.codePointAt(0), settingsValues)
         mWordComposer.setBatchInputWord(batchInputText)
         setComposingTextInternal(batchInputText, 1)
         mConnection.endBatchEdit()
@@ -2320,12 +2324,12 @@ class InputLogic(
 
     private fun searchForEmojiInline(sequenceNumber: Int, callback: Suggest.OnGetSuggestedWordsCallback) {
         val input = getInlineEmojiSearchString()
-        if (StringUtils.isEmpty(input)) {
+        if (input.isNullOrEmpty()) {
             callback.onGetSuggestedWords(SuggestedWords.getEmptyInstance())
             return
         }
 
-        val suggestions = mEmojiDictionaryFacilitator?.getSuggestions(input!!.splitOnWhitespace())
+        val suggestions = mEmojiDictionaryFacilitator?.getSuggestions(input.splitOnWhitespace())
         if (suggestions == null || suggestions.isEmpty()) {
             callback.onGetSuggestedWords(SuggestedWords.getEmptyInstance())
             return
@@ -2371,7 +2375,8 @@ class InputLogic(
     fun updateEmojiDictionary(locale: Locale?) {
         val sv = Settings.getValues()
         if (sv.mInlineEmojiSearch && sv.needsToLookupSuggestions() && locale != null) {
-            if (mEmojiDictionaryFacilitator == null || !mEmojiDictionaryFacilitator!!.isForLocale(locale)) {
+            val facilitator = mEmojiDictionaryFacilitator
+            if (facilitator == null || !facilitator.isForLocale(locale)) {
                 closeEmojiDictionary()
                 val dictFile = DictionaryInfoUtils.getCachedDictForLocaleAndType(locale, "emoji", mLatinIME)
                 val dictionary = if (dictFile != null) DictionaryFactory.getDictionary(dictFile, locale) else null
@@ -2383,10 +2388,8 @@ class InputLogic(
     }
 
     private fun closeEmojiDictionary() {
-        if (mEmojiDictionaryFacilitator != null) {
-            mEmojiDictionaryFacilitator!!.closeDictionaries()
-            mEmojiDictionaryFacilitator = null
-        }
+        mEmojiDictionaryFacilitator?.closeDictionaries()
+        mEmojiDictionaryFacilitator = null
     }
 
     private fun handleCustomAIKey(index: Int) {
