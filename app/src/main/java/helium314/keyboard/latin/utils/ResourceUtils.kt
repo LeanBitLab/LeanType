@@ -28,29 +28,24 @@ object ResourceUtils {
      */
     private var sFloatingKeyboardWidthOverride = 0
 
-    @JvmStatic
     fun setFloatingKeyboardWidth(widthPx: Int) {
         sFloatingKeyboardWidthOverride = widthPx
     }
 
-    @JvmStatic
     fun getFloatingKeyboardWidth(): Int {
         return sFloatingKeyboardWidthOverride
     }
 
     private var sFloatingKeyboardScaleOverride = 0.0f
 
-    @JvmStatic
     fun setFloatingKeyboardScale(scale: Float) {
         sFloatingKeyboardScaleOverride = scale
     }
 
-    @JvmStatic
     fun getFloatingKeyboardScale(): Float {
         return sFloatingKeyboardScaleOverride
     }
 
-    @JvmStatic
     fun getKeyboardWidth(ctx: Context, settingsValues: SettingsValues): Int {
         // Floating keyboard width takes priority
         if (sFloatingKeyboardWidthOverride > 0) {
@@ -63,7 +58,6 @@ object ResourceUtils {
         return defaultKeyboardWidth
     }
 
-    @JvmStatic
     fun getDefaultKeyboardWidth(ctx: Context): Int {
         if (Build.VERSION.SDK_INT < 35) {
             val dm = ctx.resources.displayMetrics
@@ -80,7 +74,6 @@ object ResourceUtils {
         return windowBounds.width() - insets.left - insets.right
     }
 
-    @JvmStatic
     fun getSuggestionsStripHeight(res: Resources): Int {
         val defaultHeight = res.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
         if (sFloatingKeyboardScaleOverride > 0.0f) {
@@ -92,7 +85,6 @@ object ResourceUtils {
         return defaultHeight
     }
 
-    @JvmStatic
     fun getSecondaryKeyboardHeight(res: Resources, settingsValues: SettingsValues): Int {
         val keyboardHeight = getKeyboardHeight(res, settingsValues)
         if (settingsValues.mToolbarMode == ToolbarMode.HIDDEN && !settingsValues.mToolbarHidingGlobal) {
@@ -102,7 +94,6 @@ object ResourceUtils {
         return keyboardHeight
     }
 
-    @JvmStatic
     fun getKeyboardHeight(res: Resources, settingsValues: SettingsValues): Int {
         val defaultKeyboardHeight = getDefaultKeyboardHeight(res, settingsValues.mShowsNumberRow)
         var scale = settingsValues.mKeyboardHeightScale
@@ -113,7 +104,6 @@ object ResourceUtils {
         return (defaultKeyboardHeight * scale).toInt()
     }
 
-    @JvmStatic
     fun getOcrCameraHeight(res: Resources, settingsValues: SettingsValues?): Int {
         val baseHeight = if (settingsValues != null) {
             getKeyboardHeight(res, settingsValues)
@@ -127,7 +117,6 @@ object ResourceUtils {
         return Math.min((baseHeight * multiplier).toInt(), maxAllowed)
     }
 
-    @JvmStatic
     fun getDefaultKeyboardHeight(res: Resources, showsNumberRow: Boolean): Int {
         val dm = res.displayMetrics
         val keyboardHeight = res.getDimension(R.dimen.config_default_keyboard_height) * (if (showsNumberRow) 1.33f else 1f)
@@ -147,17 +136,14 @@ object ResourceUtils {
         return Math.max(Math.min(keyboardHeight, maxKeyboardHeight), minKeyboardHeight).toInt()
     }
 
-    @JvmStatic
     fun isValidFraction(fraction: Float): Boolean {
         return fraction >= 0.0f
     }
 
-    @JvmStatic
     fun isValidDimensionPixelSize(dimension: Int): Boolean {
         return dimension > 0
     }
 
-    @JvmStatic
     fun getFraction(a: TypedArray, index: Int, defValue: Float): Float {
         val value = a.peekValue(index)
         if (value == null || !isFractionValue(value)) {
@@ -166,12 +152,10 @@ object ResourceUtils {
         return a.getFraction(index, 1, 1, defValue)
     }
 
-    @JvmStatic
     fun getFraction(a: TypedArray, index: Int): Float {
         return getFraction(a, index, UNDEFINED_RATIO)
     }
 
-    @JvmStatic
     fun getDimensionPixelSize(a: TypedArray, index: Int): Int {
         val value = a.peekValue(index)
         if (value == null || !isDimensionValue(value)) {
@@ -180,7 +164,6 @@ object ResourceUtils {
         return a.getDimensionPixelSize(index, UNDEFINED_DIMENSION)
     }
 
-    @JvmStatic
     fun getDimensionOrFraction(
         a: TypedArray,
         index: Int,
@@ -196,17 +179,14 @@ object ResourceUtils {
         return defValue
     }
 
-    @JvmStatic
     fun isFractionValue(v: TypedValue): Boolean {
         return v.type == TypedValue.TYPE_FRACTION
     }
 
-    @JvmStatic
     fun isDimensionValue(v: TypedValue): Boolean {
         return v.type == TypedValue.TYPE_DIMENSION
     }
 
-    @JvmStatic
     fun isNight(res: Resources): Boolean {
         return (res.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
     }

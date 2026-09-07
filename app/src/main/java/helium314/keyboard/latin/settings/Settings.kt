@@ -487,10 +487,8 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             PREF_SELECTED_SUBTYPE
         )
 
-        @JvmStatic
         fun getInstance(): Settings = sInstance
 
-        @JvmStatic
         fun getValues(): SettingsValues {
             if (sInstance.mSettingsValues == null) {
                 sInstance.mContext?.let { sInstance.loadSettings(it) }
@@ -498,22 +496,17 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return sInstance.mSettingsValues!!
         }
 
-        @JvmStatic
         fun getCurrentContext(): Context = sInstance.mContext!!
 
-        @JvmStatic
         fun init(context: Context) {
             sInstance.onCreate(context)
         }
 
-        @JvmStatic
         fun readScreenMetrics(res: Resources): Int = res.getInteger(R.integer.config_screen_metrics)
 
-        @JvmStatic
         fun readVibrationEnabled(prefs: SharedPreferences): Boolean =
             prefs.getBoolean(PREF_VIBRATE_ON, Defaults.PREF_VIBRATE_ON) && AudioAndHapticFeedbackManager.getInstance().hasVibrator()
 
-        @JvmStatic
         fun readGestureDynamicPreviewEnabled(prefs: SharedPreferences): Boolean {
             val followSystem = prefs.getBoolean(PREF_GESTURE_DYNAMIC_PREVIEW_FOLLOW_SYSTEM, Defaults.PREF_GESTURE_DYNAMIC_PREVIEW_FOLLOW_SYSTEM)
             val defValue = Defaults.PREF_GESTURE_DYNAMIC_PREVIEW_FOLLOW_SYSTEM
@@ -521,20 +514,16 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return if (followSystem) defValue else curValue
         }
 
-        @JvmStatic
         fun readGestureDynamicPreviewDefault(context: Context): Boolean {
             return getTransitionAnimationScale(context) != 0.0f
         }
 
-        @JvmStatic
         fun readDefaultGestureFastTypingCooldown(res: Resources): Int =
             res.getInteger(R.integer.config_gesture_static_time_threshold_after_fast_typing)
 
-        @JvmStatic
         fun readToolbarMode(prefs: SharedPreferences): ToolbarMode =
             ToolbarMode.valueOf(prefs.getString(PREF_TOOLBAR_MODE, Defaults.PREF_TOOLBAR_MODE)!!)
 
-        @JvmStatic
         fun readHorizontalSpaceSwipe(prefs: SharedPreferences): Int {
             return when (prefs.getString(PREF_SPACE_HORIZONTAL_SWIPE, Defaults.PREF_SPACE_HORIZONTAL_SWIPE)) {
                 "move_cursor" -> KeyboardActionListener.SWIPE_MOVE_CURSOR
@@ -544,7 +533,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             }
         }
 
-        @JvmStatic
         fun readVerticalSpaceSwipe(prefs: SharedPreferences): Int {
             return when (prefs.getString(PREF_SPACE_VERTICAL_SWIPE, Defaults.PREF_SPACE_VERTICAL_SWIPE)) {
                 "move_cursor" -> KeyboardActionListener.SWIPE_MOVE_CURSOR
@@ -556,10 +544,8 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             }
         }
 
-        @JvmStatic
         fun readFullscreenModeAllowed(res: Resources): Boolean = res.getBoolean(R.bool.config_fullscreen_mode_allowed)
 
-        @JvmStatic
         fun readShowSetupWizardIcon(prefs: SharedPreferences, context: Context): Boolean {
             if (!prefs.contains(PREF_SHOW_SETUP_WIZARD_ICON)) {
                 val appInfo = context.applicationInfo
@@ -569,40 +555,34 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return prefs.getBoolean(PREF_SHOW_SETUP_WIZARD_ICON, Defaults.PREF_SHOW_SETUP_WIZARD_ICON)
         }
 
-        @JvmStatic
         fun readOneHandedModeEnabled(prefs: SharedPreferences, landscape: Boolean, split: Boolean): Boolean {
             val index = findIndexOfDefaultSetting(landscape, split)
             val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_MODE_PREFIX, index, 2)
             return prefs.getBoolean(key, Defaults.PREF_ONE_HANDED_MODE)
         }
 
-        @JvmStatic
         fun readOneHandedModeScale(prefs: SharedPreferences, landscape: Boolean, split: Boolean): Float {
             val index = findIndexOfDefaultSetting(landscape, split)
             val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_SCALE_PREFIX, index, 2)
             return prefs.getFloat(key, Defaults.PREF_ONE_HANDED_SCALE)
         }
 
-        @JvmStatic
         fun readOneHandedModeGravity(prefs: SharedPreferences, landscape: Boolean, split: Boolean): Int {
             val index = findIndexOfDefaultSetting(landscape, split)
             val key = createPrefKeyForBooleanSettings(PREF_ONE_HANDED_GRAVITY_PREFIX, index, 2)
             return prefs.getInt(key, Defaults.PREF_ONE_HANDED_GRAVITY)
         }
 
-        @JvmStatic
         fun readSplitKeyboardEnabled(prefs: SharedPreferences, isLandscape: Boolean): Boolean {
             return readSplitKeyboardEnabled(prefs, isLandscape, helium314.keyboard.latin.utils.ScreenProfile.COMPACT)
         }
 
-        @JvmStatic
         fun readSplitKeyboardEnabled(prefs: SharedPreferences, isLandscape: Boolean, profile: helium314.keyboard.latin.utils.ScreenProfile): Boolean {
             val basePref = if (isLandscape) PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else PREF_ENABLE_SPLIT_KEYBOARD
             val defaultValue = profile.isLarge() || if (isLandscape) Defaults.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else Defaults.PREF_ENABLE_SPLIT_KEYBOARD
             return getProfileAwareBoolean(prefs, basePref, profile, defaultValue)
         }
 
-        @JvmStatic
         fun readSplitSpacerScale(prefs: SharedPreferences, landscape: Boolean): Float {
             val index = findIndexOfDefaultSetting(landscape)
             val defaults = Defaults.PREF_SPLIT_SPACER_SCALE
@@ -610,7 +590,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return prefs.getFloat(createPrefKeyForBooleanSettings(PREF_SPLIT_SPACER_SCALE_PREFIX, index, 1), defaultValue)
         }
 
-        @JvmStatic
         fun readBottomPaddingScale(prefs: SharedPreferences, landscape: Boolean): Float {
             val index = findIndexOfDefaultSetting(landscape)
             val defaults = Defaults.PREF_BOTTOM_PADDING_SCALE
@@ -618,7 +597,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return prefs.getFloat(createPrefKeyForBooleanSettings(PREF_BOTTOM_PADDING_SCALE_PREFIX, index, 1), defaultValue)
         }
 
-        @JvmStatic
         fun readSidePaddingScale(prefs: SharedPreferences, landscape: Boolean, split: Boolean): Float {
             val index = findIndexOfDefaultSetting(landscape, split)
             val defaults = Defaults.PREF_SIDE_PADDING_SCALE
@@ -626,12 +604,10 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return prefs.getFloat(createPrefKeyForBooleanSettings(PREF_SIDE_PADDING_SCALE_PREFIX, index, 2), defaultValue)
         }
 
-        @JvmStatic
         fun readHeightScale(prefs: SharedPreferences, landscape: Boolean): Float {
             return readHeightScale(prefs, landscape, helium314.keyboard.latin.utils.ScreenProfile.COMPACT)
         }
 
-        @JvmStatic
         fun readHeightScale(prefs: SharedPreferences, landscape: Boolean, profile: helium314.keyboard.latin.utils.ScreenProfile): Float {
             val index = findIndexOfDefaultSetting(landscape)
             val defaults = Defaults.PREF_KEYBOARD_HEIGHT_SCALE
@@ -640,12 +616,10 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return getProfileAwareFloat(prefs, basePref, profile, defaultValue)
         }
 
-        @JvmStatic
         fun readHasHardwareKeyboard(conf: Configuration): Boolean {
             return conf.keyboard != Configuration.KEYBOARD_NOKEYS && conf.hardKeyboardHidden != Configuration.HARDKEYBOARDHIDDEN_YES
         }
 
-        @JvmStatic
         fun readUserBackgroundImage(context: Context, night: Boolean): Drawable? {
             val landscape = context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             val index = (if (night) 1 else 0) + (if (landscape) 2 else 0)
@@ -665,7 +639,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             }
         }
 
-        @JvmStatic
         fun getCustomBackgroundFile(context: Context, night: Boolean, landscape: Boolean): File {
             return File(
                 DeviceProtectedUtils.getFilesDir(context),
@@ -673,12 +646,10 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             )
         }
 
-        @JvmStatic
         fun clearCachedBackgroundImages() {
             sCachedBackgroundImages.fill(null)
         }
 
-        @JvmStatic
         fun getDayNightContext(context: Context, wantNight: Boolean): Context {
             val isNight = ResourceUtils.isNight(context.resources)
             if (isNight == wantNight) return context
@@ -691,17 +662,13 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             return wrapper
         }
 
-        @JvmStatic
         fun getCustomFontFile(context: Context): File = File(DeviceProtectedUtils.getFilesDir(context), "custom_font")
 
-        @JvmStatic
         fun getCustomEmojiFontFile(context: Context): File = File(DeviceProtectedUtils.getFilesDir(context), "custom_emoji_font")
 
-        @JvmStatic
         fun readDefaultLayoutName(type: LayoutType, prefs: SharedPreferences): String =
             prefs.getString(PREF_LAYOUT_PREFIX + type.name, type.default)!!
 
-        @JvmStatic
         fun writeDefaultLayoutName(name: String?, type: LayoutType, prefs: SharedPreferences) {
             if (name == null)
                 prefs.edit().remove(PREF_LAYOUT_PREFIX + type.name).apply()
@@ -709,7 +676,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                 prefs.edit().putString(PREF_LAYOUT_PREFIX + type.name, name).apply()
         }
 
-        @JvmStatic
         fun clearCachedTypeface() {
             sCachedTypeface = null
             sCustomTypefaceLoaded = false

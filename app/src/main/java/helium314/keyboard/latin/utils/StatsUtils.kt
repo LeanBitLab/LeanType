@@ -15,11 +15,9 @@ import helium314.keyboard.latin.settings.SettingsValues
 @Suppress("unused")
 object StatsUtils {
 
-    @JvmStatic
     fun onCreate(settingsValues: SettingsValues?, richImm: RichInputMethodManager?) {
     }
 
-    @JvmStatic
     fun onPickSuggestionManually(
         suggestedWords: SuggestedWords?,
         suggestionInfo: SuggestedWords.SuggestedWordInfo?,
@@ -27,47 +25,36 @@ object StatsUtils {
     ) {
     }
 
-    @JvmStatic
     fun onBackspaceWordDelete(wordLength: Int) {
     }
 
-    @JvmStatic
     fun onBackspacePressed(lengthToDelete: Int) {
     }
 
-    @JvmStatic
     fun onBackspaceSelectedText(selectedTextLength: Int) {
     }
 
-    @JvmStatic
     fun onDeleteMultiCharInput(multiCharLength: Int) {
     }
 
-    @JvmStatic
     fun onRevertAutoCorrect() {
     }
 
-    @JvmStatic
     fun onRevertDoubleSpacePeriod() {
     }
 
-    @JvmStatic
     fun onRevertSwapPunctuation() {
     }
 
-    @JvmStatic
     fun onFinishInputView() {
     }
 
-    @JvmStatic
     fun onCreateInputView() {
     }
 
-    @JvmStatic
     fun onStartInputView(inputType: Int, displayOrientation: Int, restarting: Boolean) {
     }
 
-    @JvmStatic
     fun onAutoCorrection(
         typedWord: String?,
         autoCorrectionWord: String?,
@@ -77,43 +64,33 @@ object StatsUtils {
     ) {
     }
 
-    @JvmStatic
     fun onWordCommitUserTyped(commitWord: String?, isBatchMode: Boolean) {
     }
 
-    @JvmStatic
     fun onWordCommitAutoCorrect(commitWord: String?, isBatchMode: Boolean) {
     }
 
-    @JvmStatic
     fun onWordCommitSuggestionPickedManually(commitWord: String?, isBatchMode: Boolean) {
     }
 
-    @JvmStatic
     fun onDoubleSpacePeriod() {
     }
 
-    @JvmStatic
     fun onLoadSettings(settingsValues: SettingsValues?) {
     }
 
-    @JvmStatic
     fun onInvalidWordIdentification(invalidWord: String?) {
     }
 
-    @JvmStatic
     fun onSubtypeChanged(oldSubtype: InputMethodSubtype?, newSubtype: InputMethodSubtype?) {
     }
 
-    @JvmStatic
     fun onSettingsActivity(entryPoint: String?) {
     }
 
-    @JvmStatic
     fun onInputConnectionLaggy(operation: Int, duration: Long) {
     }
 
-    @JvmStatic
     fun onDecoderLaggy(operation: Int, duration: Long) {
     }
 }

@@ -2620,7 +2620,6 @@ class InputLogic(
         private val THAI_LOCALE = Locale.forLanguageTag("th")
         private val THAI_WORD_BREAK_ITERATOR = ThreadLocal.withInitial { BreakIterator.getWordInstance(THAI_LOCALE) }
 
-        @JvmStatic
         fun isSpaceStrippingPunctuation(codePoint: Int): Boolean {
             return codePoint == '.'.code
                 || codePoint == ','.code
@@ -2648,7 +2647,6 @@ class InputLogic(
                 || codePoint == '』'.code
         }
 
-        @JvmStatic
         fun canBeFollowedByDoubleSpacePeriod(codePoint: Int): Boolean {
             return Character.isLetterOrDigit(codePoint)
                 || codePoint == Constants.CODE_SINGLE_QUOTE
@@ -2662,7 +2660,6 @@ class InputLogic(
                 || Character.getType(codePoint) == Character.OTHER_SYMBOL.toInt()
         }
 
-        @JvmStatic
         fun retrieveOlderSuggestions(
             typedWordInfo: SuggestedWordInfo,
             previousSuggestedWords: SuggestedWords
@@ -2683,7 +2680,6 @@ class InputLogic(
             )
         }
 
-        @JvmStatic
         fun isResumableWord(settings: SettingsValues, word: String): Boolean {
             val firstCodePoint = word.codePointAt(0)
             return settings.isWordCodePoint(firstCodePoint)
@@ -2691,19 +2687,16 @@ class InputLogic(
                 && Constants.CODE_DASH != firstCodePoint
         }
 
-        @JvmStatic
         fun isInlineEmojiSearchAction(): Boolean {
             val keyboard = KeyboardSwitcher.getInstance().keyboard
             val internalAction = keyboard?.mId?.mInternalAction
             return internalAction != null && internalAction.code() == KeyCode.INLINE_EMOJI_SEARCH_DONE
         }
 
-        @JvmStatic
         fun isInlineEmojiSearchChar(codePoint: Int): Boolean {
             return Character.isLetterOrDigit(codePoint) || codePoint == '_'.code || codePoint == '+'.code || codePoint == '-'.code
         }
 
-        @JvmStatic
         fun getInlineEmojiSearchString(textBeforeCursor: CharSequence?): String? {
             if (textBeforeCursor == null) {
                 return null
@@ -2731,7 +2724,6 @@ class InputLogic(
             return searchString
         }
 
-        @JvmStatic
         fun isStartOfInlineEmojiSearch(
             codePoint: Int,
             codePointBeforeCursor: Int,
@@ -2743,7 +2735,6 @@ class InputLogic(
                 && isValidInlineEmojiSearchPreviousChar(charBeforeBeforeCursor, settingsValues)
         }
 
-        @JvmStatic
         fun isValidInlineEmojiSearchPreviousChar(
             charBeforeBeforeCursor: Int,
             settingsValues: SettingsValues

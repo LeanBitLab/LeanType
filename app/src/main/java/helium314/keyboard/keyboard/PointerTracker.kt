@@ -1156,13 +1156,11 @@ class PointerTracker private constructor(
 
         private val sProxyMap = WeakHashMap<DrawingProxy, Array<Any?>>(4)
 
-        @JvmStatic
         fun clearOldViewData() {
             sProxyMap.clear()
             sDrawingProxy = null
         }
 
-        @JvmStatic
         fun switchTo(drawingProxy: DrawingProxy?) {
             if (drawingProxy == null) return
             sDrawingProxy = drawingProxy
@@ -1206,15 +1204,12 @@ class PointerTracker private constructor(
         private const val TOUCHPAD_SENSITIVITY_UPDATE_INTERVAL_MS = 100
         private const val TOUCHPAD_ACCELERATION_FACTOR = 50.0f
 
-        @JvmStatic
         fun setTouchpadModeActive(active: Boolean) {
             sTouchpadModeActive = active
         }
 
-        @JvmStatic
         fun isTouchpadModeActive(): Boolean = sTouchpadModeActive
 
-        @JvmStatic
         fun init(
             mainKeyboardViewAttr: TypedArray,
             timerProxy: TimerProxy?,
@@ -1245,17 +1240,14 @@ class PointerTracker private constructor(
             )
         }
 
-        @JvmStatic
         fun setMainDictionaryAvailability(mainDictionaryAvailable: Boolean) {
             sGestureEnabler.setMainDictionaryAvailability(mainDictionaryAvailable)
         }
 
-        @JvmStatic
         fun setGestureHandlingEnabledByUser(gestureHandlingEnabledByUser: Boolean) {
             sGestureEnabler.setGestureHandlingEnabledByUser(gestureHandlingEnabledByUser)
         }
 
-        @JvmStatic
         fun setClipboardInlineInputActive(active: Boolean) {
             val changed = sGestureEnabler.setClipboardInlineInputActive(active)
             if (changed && active) {
@@ -1263,7 +1255,6 @@ class PointerTracker private constructor(
             }
         }
 
-        @JvmStatic
         fun getPointerTracker(id: Int): PointerTracker {
             val trackers = sTrackers
             for (i in trackers.size..id) {
@@ -1273,20 +1264,16 @@ class PointerTracker private constructor(
             return trackers[id]
         }
 
-        @JvmStatic
         fun isAnyInDraggingFinger(): Boolean = sPointerTrackerQueue.isAnyInDraggingFinger()
 
-        @JvmStatic
         fun cancelAllPointerTrackers() {
             sPointerTrackerQueue.cancelAllPointerTrackers()
         }
 
-        @JvmStatic
         fun setKeyboardActionListener(listener: KeyboardActionListener) {
             sListener = listener
         }
 
-        @JvmStatic
         fun setKeyDetector(keyDetector: KeyDetector) {
             val keyboard = keyDetector.getKeyboard() ?: return
             val trackersSize = sTrackers.size
@@ -1297,7 +1284,6 @@ class PointerTracker private constructor(
             sGestureEnabler.setPasswordMode(keyboard.mId.passwordInput())
         }
 
-        @JvmStatic
         fun setReleasedKeyGraphicsToAllKeys() {
             val trackersSize = sTrackers.size
             for (i in 0 until trackersSize) {
@@ -1306,7 +1292,6 @@ class PointerTracker private constructor(
             }
         }
 
-        @JvmStatic
         fun dismissAllPopupKeysPanels() {
             val trackersSize = sTrackers.size
             for (i in 0 until trackersSize) {
@@ -1315,7 +1300,6 @@ class PointerTracker private constructor(
             }
         }
 
-        @JvmStatic
         fun getActivePointerTrackerCount(): Int = sPointerTrackerQueue.size()
 
         private fun needsToSuppressKeyPreviewPopup(eventTime: Long): Boolean {

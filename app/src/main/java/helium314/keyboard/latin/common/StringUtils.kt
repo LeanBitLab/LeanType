@@ -313,12 +313,10 @@ object StringUtils {
     private val EMPTY_CODEPOINTS = IntArray(0)
     private const val LANGUAGE_GREEK = "el"
 
-    @JvmStatic
     fun isEmpty(str: CharSequence?): Boolean {
         return str.isNullOrEmpty()
     }
 
-    @JvmStatic
     fun codePointCount(text: CharSequence?): Int {
         if (isEmpty(text)) {
             return 0
@@ -326,7 +324,6 @@ object StringUtils {
         return Character.codePointCount(text!!, 0, text.length)
     }
 
-    @JvmStatic
     fun newSingleCodePointString(codePoint: Int): String {
         if (Character.charCount(codePoint) == 1) {
             return codePoint.toChar().toString()
@@ -334,7 +331,6 @@ object StringUtils {
         return String(Character.toChars(codePoint))
     }
 
-    @JvmStatic
     fun capitalizeFirstCodePoint(s: String, locale: Locale): String {
         if (s.length <= 1) {
             return s.uppercase(getLocaleUsedForToTitleCase(locale))
@@ -343,7 +339,6 @@ object StringUtils {
         return s.substring(0, cutoff).uppercase(getLocaleUsedForToTitleCase(locale)) + s.substring(cutoff)
     }
 
-    @JvmStatic
     fun capitalizeFirstAndDowncaseRest(s: String, locale: Locale): String {
         if (s.length <= 1) {
             return s.uppercase(getLocaleUsedForToTitleCase(locale))
@@ -352,12 +347,10 @@ object StringUtils {
         return s.substring(0, cutoff).uppercase(getLocaleUsedForToTitleCase(locale)) + s.substring(cutoff).lowercase(locale)
     }
 
-    @JvmStatic
     fun toCodePointArray(charSequence: CharSequence): IntArray {
         return toCodePointArray(charSequence, 0, charSequence.length)
     }
 
-    @JvmStatic
     fun toCodePointArray(charSequence: CharSequence, startIndex: Int, endIndex: Int): IntArray {
         val length = charSequence.length
         if (length <= 0) {
@@ -368,7 +361,6 @@ object StringUtils {
         return codePoints
     }
 
-    @JvmStatic
     fun copyCodePointsAndReturnCodePointCount(
         destination: IntArray,
         charSequence: CharSequence,
@@ -387,14 +379,12 @@ object StringUtils {
         return destIndex
     }
 
-    @JvmStatic
     fun toSortedCodePointArray(string: String): IntArray {
         val codePoints = toCodePointArray(string)
         codePoints.sort()
         return codePoints
     }
 
-    @JvmStatic
     fun getStringFromNullTerminatedCodePointArray(codePoints: IntArray): String {
         var stringLength = codePoints.size
         for (i in codePoints.indices) {
@@ -406,7 +396,6 @@ object StringUtils {
         return String(codePoints, 0, stringLength)
     }
 
-    @JvmStatic
     fun getCapitalizationType(text: String): Int {
         val len = text.length
         var index = 0
@@ -438,7 +427,6 @@ object StringUtils {
         return if (letterCount == capsCount) CAPITALIZE_ALL else CAPITALIZE_NONE
     }
 
-    @JvmStatic
     fun isIdenticalAfterUpcase(text: String): Boolean {
         val length = text.length
         var i = 0
@@ -452,7 +440,6 @@ object StringUtils {
         return true
     }
 
-    @JvmStatic
     fun isIdenticalAfterDowncase(text: String): Boolean {
         val length = text.length
         var i = 0
@@ -466,7 +453,6 @@ object StringUtils {
         return true
     }
 
-    @JvmStatic
     fun isIdenticalAfterCapitalizeEachWord(text: String, sortedSeparators: IntArray): Boolean {
         var needsCapsNext = true
         val len = text.length
@@ -486,7 +472,6 @@ object StringUtils {
         return true
     }
 
-    @JvmStatic
     fun capitalizeEachWord(text: String, sortedSeparators: IntArray, locale: Locale): String {
         val builder = java.lang.StringBuilder()
         var needsCapsNext = true
@@ -506,7 +491,6 @@ object StringUtils {
         return builder.toString()
     }
 
-    @JvmStatic
     fun lastPartLooksLikeURL(text: CharSequence): Boolean {
         var i = text.length
         if (0 == i) {
@@ -549,7 +533,6 @@ object StringUtils {
         return hasPeriod && hasSlash
     }
 
-    @JvmStatic
     fun isInsideDoubleQuoteOrAfterDigit(text: CharSequence): Boolean {
         var i = text.length
         if (0 == i) {
@@ -584,7 +567,6 @@ object StringUtils {
         }
     }
 
-    @JvmStatic
     fun isEmptyStringOrWhiteSpaces(s: String): Boolean {
         val n = codePointCount(s)
         for (i in 0 until n) {
@@ -602,7 +584,6 @@ object StringUtils {
         return locale
     }
 
-    @JvmStatic
     fun toTitleCaseOfKeyLabel(label: String?, locale: Locale): String? {
         if (label == null || !ScriptUtils.scriptSupportsUppercase(locale)) {
             return label
@@ -613,7 +594,6 @@ object StringUtils {
         return label.uppercase(getLocaleUsedForToTitleCase(locale))
     }
 
-    @JvmStatic
     fun toTitleCaseOfKeyCode(code: Int, locale: Locale): Int {
         if (!Constants.isLetterCode(code)) {
             return code
@@ -627,7 +607,6 @@ object StringUtils {
         }
     }
 
-    @JvmStatic
     fun getTrailingSingleQuotesCount(charSequence: CharSequence): Int {
         val lastIndex = charSequence.length - 1
         var i = lastIndex
@@ -637,7 +616,6 @@ object StringUtils {
         return lastIndex - i
     }
 
-    @JvmStatic
     fun hasLineBreakCharacter(text: String?): Boolean {
         if (isEmpty(text)) {
             return false
@@ -657,7 +635,6 @@ object StringUtils {
         return false
     }
 
-    @JvmStatic
     fun mightBeEmoji(c: Int): Boolean {
         return (c in 0x200D..0x2BFF)
                 || (c in 0x1F000..0x1FAFF)
@@ -665,7 +642,6 @@ object StringUtils {
                 || c == 0xFE0F || c == 0x00A9 || c == 0x00AE || c == '#'.code || c == '*'.code || (c in '0'.code..'9'.code)
     }
 
-    @JvmStatic
     fun isLowerCaseAscii(s: String): Boolean {
         val length = s.length
         for (i in 0 until length) {
@@ -675,7 +651,6 @@ object StringUtils {
         return true
     }
 
-    @JvmStatic
     fun charIndexOfFirstWhitespace(s: CharSequence): Int {
         for (i in 0 until s.length - 1) {
             val c = s[i]
@@ -686,7 +661,6 @@ object StringUtils {
         return -1
     }
 
-    @JvmStatic
     fun charIndexOfLastWhitespace(s: CharSequence): Int {
         for (i in s.length - 1 downTo 0) {
             val c = s[i]
