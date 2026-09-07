@@ -545,8 +545,9 @@ class EmojiPalettesView @JvmOverloads constructor(
                 }
             }
 
-            override fun onTextInput(t: String) {
+            override fun onTextInput(t: String?) {
                 val text = mSearchBar?.text ?: return
+                if (t == null) return
                 var sel = mSearchBar!!.selectionStart
                 if (sel < 0) sel = text.length
                 text.insert(sel, t)

@@ -626,7 +626,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
         keyboardActionListener.onCodeInput(primaryCode, x, y, isKeyRepeat)
     }
     
-    override fun onTextInput(text: String) {
+    override fun onTextInput(text: String?) {
+         if (text == null) return
          if (inEditMode) {
               editText.insert(editCursorPos, text)
               editCursorPos += text.length
@@ -653,7 +654,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
          keyboardActionListener.onImageSelected(imageUri)
     }
 
-    override fun onPressKey(primaryCode: Int, repeatCount: Int, isSinglePointer: Boolean, hapticEvent: HapticEvent?) {
+    override fun onPressKey(primaryCode: Int, repeatCount: Int, isSinglePointer: Boolean, hapticEvent: HapticEvent) {
         val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
         val inSearchMode = this::searchBarTextView.isInitialized && searchBarTextView.parent == clipboardStrip
         if ((inEditMode || inSearchMode) && isLayoutSwitchCode(primaryCode)) return
@@ -668,15 +669,15 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onLongPressKey(primaryCode: Int) {
         keyboardActionListener.onLongPressKey(primaryCode)
     }
-    override fun onKeyDown(keyCode: Int, keyEvent: android.view.KeyEvent?): Boolean {
+    override fun onKeyDown(keyCode: Int, keyEvent: android.view.KeyEvent): Boolean {
         return keyboardActionListener.onKeyDown(keyCode, keyEvent)
     }
-    override fun onKeyUp(keyCode: Int, keyEvent: android.view.KeyEvent?): Boolean {
+    override fun onKeyUp(keyCode: Int, keyEvent: android.view.KeyEvent): Boolean {
         return keyboardActionListener.onKeyUp(keyCode, keyEvent)
     }
     override fun onStartBatchInput() { keyboardActionListener.onStartBatchInput() }
-    override fun onUpdateBatchInput(p: helium314.keyboard.latin.common.InputPointers?) { keyboardActionListener.onUpdateBatchInput(p) }
-    override fun onEndBatchInput(p: helium314.keyboard.latin.common.InputPointers?) { keyboardActionListener.onEndBatchInput(p) }
+    override fun onUpdateBatchInput(p: helium314.keyboard.latin.common.InputPointers) { keyboardActionListener.onUpdateBatchInput(p) }
+    override fun onEndBatchInput(p: helium314.keyboard.latin.common.InputPointers) { keyboardActionListener.onEndBatchInput(p) }
     override fun onCancelBatchInput() { keyboardActionListener.onCancelBatchInput() }
     override fun onCancelInput() { keyboardActionListener.onCancelInput() }
     override fun onFinishSlidingInput() { keyboardActionListener.onFinishSlidingInput() }

@@ -129,7 +129,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
 
     private static DrawingProxy sDrawingProxy;
     private static TimerProxy sTimerProxy = TimerProxy.NULL;
-    private static KeyboardActionListener sListener = KeyboardActionListener.EMPTY_LISTENER;
+    private static KeyboardActionListener sListener = KeyboardActionListener.Companion.getEMPTY_LISTENER();
 
     // The {@link KeyDetector} is set whenever the down event is processed. Also
     // this is updated

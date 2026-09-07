@@ -195,7 +195,7 @@ object KeyLabel {
             EditorInfo.IME_ACTION_NEXT             -> KeyboardIconsSet.NAME_NEXT_KEY
             EditorInfo.IME_ACTION_DONE             -> KeyboardIconsSet.NAME_DONE_KEY
             EditorInfo.IME_ACTION_PREVIOUS         -> KeyboardIconsSet.NAME_PREVIOUS_KEY
-            InputTypeUtils.IME_ACTION_CUSTOM_LABEL -> return params.mId.mCustomActionLabel
+            InputTypeUtils.IME_ACTION_CUSTOM_LABEL -> return params.mId.mCustomActionLabel ?: "!icon/enter_key"
             else                                   -> return "!icon/enter_key"
         }
         val replacement = iconName.replaceIconWithLabelIfNoDrawable(params)

@@ -176,7 +176,7 @@ open class KeyboardParams {
             mBaseWidth = mOccupiedWidth - mLeftPadding - mRightPadding
             val defaultKeyWidthFactor = if (context.resources.getInteger(R.integer.config_screen_metrics) > 2) 0.9f else 1f
             val alphaSymbolKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth, 1, 1, defaultKeyWidthFactor / DEFAULT_KEYBOARD_COLUMNS)
-            mDefaultKeyWidth = if (mId.isNumberLayout()) 0.17f else alphaSymbolKeyWidth
+            mDefaultKeyWidth = if (mId.isNumberLayout) 0.17f else alphaSymbolKeyWidth
             mDefaultAbsoluteKeyWidth = (mDefaultKeyWidth * mBaseWidth).toInt()
             mAbsolutePopupKeyWidth = (alphaSymbolKeyWidth * mBaseWidth).toInt()
 
@@ -232,7 +232,7 @@ open class KeyboardParams {
 
             val touchPositionResId = keyboardAttr.getResourceId(R.styleable.Keyboard_touchPositionCorrectionData, 0)
             if (touchPositionResId != 0) {
-                val actualId = if (mId.isAlphabetKeyboard()) touchPositionResId else R.array.touch_position_correction_data_default
+                val actualId = if (mId.isAlphabetKeyboard) touchPositionResId else R.array.touch_position_correction_data_default
                 val data = context.resources.getStringArray(actualId)
                 mTouchPositionCorrection.load(data)
             }

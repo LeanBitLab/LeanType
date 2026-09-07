@@ -279,9 +279,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     override fun onStartBatchInput() = latinIME.onStartBatchInput()
 
-    override fun onUpdateBatchInput(batchPointers: InputPointers?) = latinIME.onUpdateBatchInput(batchPointers)
+    override fun onUpdateBatchInput(batchPointers: InputPointers) = latinIME.onUpdateBatchInput(batchPointers)
 
-    override fun onEndBatchInput(batchPointers: InputPointers?) = latinIME.onEndBatchInput(batchPointers)
+    override fun onEndBatchInput(batchPointers: InputPointers) = latinIME.onEndBatchInput(batchPointers)
 
     override fun onCancelBatchInput() = latinIME.onCancelBatchInput()
 
