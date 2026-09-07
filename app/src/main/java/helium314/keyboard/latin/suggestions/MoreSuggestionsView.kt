@@ -79,9 +79,9 @@ class MoreSuggestionsView @JvmOverloads constructor(
         // With accessibility mode off, mAccessibilityDelegate is set to null at the above PopupKeysKeyboardView#setKeyboard call.
         // With accessibility mode on, mAccessibilityDelegate is set to a PopupKeysKeyboardAccessibilityDelegate object at the above
         // PopupKeysKeyboardView#setKeyboard call.
-        if (mAccessibilityDelegate != null) {
-            mAccessibilityDelegate.setOpenAnnounce(R.string.spoken_open_more_suggestions)
-            mAccessibilityDelegate.setCloseAnnounce(R.string.spoken_close_more_suggestions)
+        mAccessibilityDelegate?.let {
+            it.setOpenAnnounce(R.string.spoken_open_more_suggestions)
+            it.setCloseAnnounce(R.string.spoken_close_more_suggestions)
         }
     }
 
