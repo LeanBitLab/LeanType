@@ -10,27 +10,27 @@ import android.graphics.Typeface
 import helium314.keyboard.latin.utils.ResourceUtils
 
 class KeyDrawParams {
-    @JvmField var mTypeface: Typeface = Typeface.DEFAULT
-    @JvmField var mLetterSize: Int = 0
-    @JvmField var mLabelSize: Int = 0
-    @JvmField var mLargeLetterSize: Int = 0
-    @JvmField var mHintLetterSize: Int = 0
-    @JvmField var mShiftedLetterHintSize: Int = 0
-    @JvmField var mHintLabelSize: Int = 0
-    @JvmField var mPreviewTextSize: Int = 0
-    @JvmField var mTextColor: Int = 0
-    @JvmField var mTextInactivatedColor: Int = 0
-    @JvmField var mTextShadowColor: Int = 0
-    @JvmField var mFunctionalTextColor: Int = 0
-    @JvmField var mHintLetterColor: Int = 0
-    @JvmField var mHintLabelColor: Int = 0
-    @JvmField var mShiftedLetterHintInactivatedColor: Int = 0
-    @JvmField var mShiftedLetterHintActivatedColor: Int = 0
-    @JvmField var mPreviewTextColor: Int = 0
-    @JvmField var mHintLabelVerticalAdjustment: Float = 0f
-    @JvmField var mLabelOffCenterRatio: Float = 0f
-    @JvmField var mHintLabelOffCenterRatio: Float = 0f
-    @JvmField var mAnimAlpha: Int = 0
+    var mTypeface: Typeface = Typeface.DEFAULT
+    var mLetterSize: Int = 0
+    var mLabelSize: Int = 0
+    var mLargeLetterSize: Int = 0
+    var mHintLetterSize: Int = 0
+    var mShiftedLetterHintSize: Int = 0
+    var mHintLabelSize: Int = 0
+    var mPreviewTextSize: Int = 0
+    var mTextColor: Int = 0
+    var mTextInactivatedColor: Int = 0
+    var mTextShadowColor: Int = 0
+    var mFunctionalTextColor: Int = 0
+    var mHintLetterColor: Int = 0
+    var mHintLabelColor: Int = 0
+    var mShiftedLetterHintInactivatedColor: Int = 0
+    var mShiftedLetterHintActivatedColor: Int = 0
+    var mPreviewTextColor: Int = 0
+    var mHintLabelVerticalAdjustment: Float = 0f
+    var mLabelOffCenterRatio: Float = 0f
+    var mHintLabelOffCenterRatio: Float = 0f
+    var mAnimAlpha: Int = 0
 
     constructor()
 

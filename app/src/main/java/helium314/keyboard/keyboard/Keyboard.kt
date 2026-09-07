@@ -21,41 +21,41 @@ import java.util.Collections
  * consists of rows of keys.
  */
 open class Keyboard {
-    @JvmField val mId: KeyboardId
-    @JvmField val mThemeId: Int
+    val mId: KeyboardId
+    val mThemeId: Int
 
     /** Total height of the keyboard, including the padding and keys */
-    @JvmField val mOccupiedHeight: Int
+    val mOccupiedHeight: Int
     /** Total width of the keyboard, including the padding and keys */
-    @JvmField var mOccupiedWidth: Int
+    var mOccupiedWidth: Int
 
     /** Base height of the keyboard, used to calculate rows' height */
-    @JvmField val mBaseHeight: Int
+    val mBaseHeight: Int
     /** Base width of the keyboard, used to calculate keys' width */
-    @JvmField var mBaseWidth: Int
+    var mBaseWidth: Int
 
     /** The padding above the keyboard */
-    @JvmField val mTopPadding: Int
+    val mTopPadding: Int
     /** Default gap between rows */
-    @JvmField val mVerticalGap: Int
+    val mVerticalGap: Int
 
     /** Per keyboard key visual parameters */
-    @JvmField val mKeyVisualAttributes: KeyVisualAttributes?
+    val mKeyVisualAttributes: KeyVisualAttributes?
 
-    @JvmField val mMostCommonKeyHeight: Int
-    @JvmField val mMostCommonKeyWidth: Int
+    val mMostCommonKeyHeight: Int
+    val mMostCommonKeyWidth: Int
 
     /** Popup keys keyboard template */
-    @JvmField val mPopupKeysTemplate: Int
+    val mPopupKeysTemplate: Int
 
     /** Maximum column for popup keys keyboard */
-    @JvmField val mMaxPopupKeysKeyboardColumn: Int
+    val mMaxPopupKeysKeyboardColumn: Int
 
     /** List of keys in this keyboard */
     private val mSortedKeys: List<Key>
-    @JvmField val mShiftKeys: List<Key>
-    @JvmField val mAltCodeKeysWhileTyping: List<Key>
-    @JvmField val mIconsSet: KeyboardIconsSet
+    val mShiftKeys: List<Key>
+    val mAltCodeKeysWhileTyping: List<Key>
+    val mIconsSet: KeyboardIconsSet
 
     private val mKeyCache = SparseArray<Key?>()
 

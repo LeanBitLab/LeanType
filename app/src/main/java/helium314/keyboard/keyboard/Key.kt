@@ -86,7 +86,7 @@ open class Key : Comparable<Key> {
     open val y: Int get() = mY
 
     /** Hit bounding box of the key */
-    @JvmField val hitBox: Rect = Rect()
+    val hitBox: Rect = Rect()
 
     /**
      * Popup keys. It is guaranteed that this is null or an array of one or more
@@ -668,28 +668,28 @@ open class Key : Comparable<Key> {
     }
 
     open class KeyParams {
-        @JvmField var isSpacer: Boolean = false
+        var isSpacer: Boolean = false
         internal val mKeyboardParams: KeyboardParams
-        @JvmField var mWidth: Float = 0f
-        @JvmField var mHeight: Float = 0f
+        var mWidth: Float = 0f
+        var mHeight: Float = 0f
 
-        @JvmField var mAbsoluteWidth: Float = 0f
-        @JvmField var mAbsoluteHeight: Float = 0f
-        @JvmField var xPos: Float = 0f
-        @JvmField var yPos: Float = 0f
+        var mAbsoluteWidth: Float = 0f
+        var mAbsoluteHeight: Float = 0f
+        var xPos: Float = 0f
+        var yPos: Float = 0f
 
-        @JvmField val mCode: Int
-        @JvmField val mLabel: String?
-        @JvmField val mHintLabel: String?
-        @JvmField val mLabelFlags: Int
-        @JvmField val mIconName: String?
-        @JvmField val mPopupKeys: Array<PopupKeySpec>?
-        @JvmField val mPopupKeysColumnAndFlags: Int
-        @JvmField val mBackgroundType: Int
-        @JvmField val mActionFlags: Int
-        @JvmField val mKeyVisualAttributes: KeyVisualAttributes?
+        val mCode: Int
+        val mLabel: String?
+        val mHintLabel: String?
+        val mLabelFlags: Int
+        val mIconName: String?
+        val mPopupKeys: Array<PopupKeySpec>?
+        val mPopupKeysColumnAndFlags: Int
+        val mBackgroundType: Int
+        val mActionFlags: Int
+        val mKeyVisualAttributes: KeyVisualAttributes?
         internal val mOptionalAttributes: OptionalAttributes?
-        @JvmField val mEnabled: Boolean
+        val mEnabled: Boolean
 
         fun createKey(): Key {
             if (isSpacer) return Spacer(this)

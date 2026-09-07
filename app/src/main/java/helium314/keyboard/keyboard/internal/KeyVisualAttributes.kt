@@ -15,30 +15,30 @@ import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ResourceUtils
 
 class KeyVisualAttributes private constructor(keyAttr: TypedArray) {
-    @JvmField val mTypeface: Typeface?
-    @JvmField val mLetterRatio: Float
-    @JvmField val mLetterSize: Int
-    @JvmField val mLabelRatio: Float
-    @JvmField val mLabelSize: Int
-    @JvmField val mLargeLetterRatio: Float
-    @JvmField val mHintLetterRatio: Float
-    @JvmField val mShiftedLetterHintRatio: Float
-    @JvmField val mHintLabelRatio: Float
-    @JvmField val mPreviewTextRatio: Float
+    val mTypeface: Typeface?
+    val mLetterRatio: Float
+    val mLetterSize: Int
+    val mLabelRatio: Float
+    val mLabelSize: Int
+    val mLargeLetterRatio: Float
+    val mHintLetterRatio: Float
+    val mShiftedLetterHintRatio: Float
+    val mHintLabelRatio: Float
+    val mPreviewTextRatio: Float
 
-    @JvmField val mTextColor: Int
-    @JvmField val mTextInactivatedColor: Int
-    @JvmField val mTextShadowColor: Int
-    @JvmField val mFunctionalTextColor: Int
-    @JvmField val mHintLetterColor: Int
-    @JvmField val mHintLabelColor: Int
-    @JvmField val mShiftedLetterHintInactivatedColor: Int
-    @JvmField val mShiftedLetterHintActivatedColor: Int
-    @JvmField val mPreviewTextColor: Int
+    val mTextColor: Int
+    val mTextInactivatedColor: Int
+    val mTextShadowColor: Int
+    val mFunctionalTextColor: Int
+    val mHintLetterColor: Int
+    val mHintLabelColor: Int
+    val mShiftedLetterHintInactivatedColor: Int
+    val mShiftedLetterHintActivatedColor: Int
+    val mPreviewTextColor: Int
 
-    @JvmField val mHintLabelVerticalAdjustment: Float
-    @JvmField val mLabelOffCenterRatio: Float
-    @JvmField val mHintLabelOffCenterRatio: Float
+    val mHintLabelVerticalAdjustment: Float
+    val mLabelOffCenterRatio: Float
+    val mHintLabelOffCenterRatio: Float
 
     init {
         if (keyAttr.hasValue(R.styleable.Keyboard_Key_keyTypeface)) {

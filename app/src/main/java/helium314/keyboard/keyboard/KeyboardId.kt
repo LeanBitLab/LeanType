@@ -21,24 +21,24 @@ import java.util.Objects
  * Unique identifier for each keyboard type.
  */
 class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
-    @JvmField val mSubtype: RichInputMethodSubtype = params.mSubtype
-    @JvmField val mWidth: Int = params.mKeyboardWidth
-    @JvmField val mHeight: Int = params.mKeyboardHeight
-    @JvmField val mMode: Int = params.mMode
-    @JvmField val mElementId: Int = elementId
-    @JvmField val mEditorInfo: EditorInfo = params.mEditorInfo
-    @JvmField val mDeviceLocked: Boolean = params.mDeviceLocked
-    @JvmField val mNumberRowEnabled: Boolean = params.mNumberRowEnabled
-    @JvmField val mNumberRowInSymbols: Boolean = params.mNumberRowInSymbols
-    @JvmField val mCompactNumberRowInSymbols: Boolean = params.mCompactNumberRowInSymbols
-    @JvmField val mLanguageSwitchKeyEnabled: Boolean = params.mLanguageSwitchKeyEnabled
-    @JvmField val mEmojiKeyEnabled: Boolean = params.mEmojiKeyEnabled
-    @JvmField val mCustomActionLabel: String? =
+    val mSubtype: RichInputMethodSubtype = params.mSubtype
+    val mWidth: Int = params.mKeyboardWidth
+    val mHeight: Int = params.mKeyboardHeight
+    val mMode: Int = params.mMode
+    val mElementId: Int = elementId
+    val mEditorInfo: EditorInfo = params.mEditorInfo
+    val mDeviceLocked: Boolean = params.mDeviceLocked
+    val mNumberRowEnabled: Boolean = params.mNumberRowEnabled
+    val mNumberRowInSymbols: Boolean = params.mNumberRowInSymbols
+    val mCompactNumberRowInSymbols: Boolean = params.mCompactNumberRowInSymbols
+    val mLanguageSwitchKeyEnabled: Boolean = params.mLanguageSwitchKeyEnabled
+    val mEmojiKeyEnabled: Boolean = params.mEmojiKeyEnabled
+    val mCustomActionLabel: String? =
         if (mEditorInfo.actionLabel != null) mEditorInfo.actionLabel.toString() else null
-    @JvmField val mHasShortcutKey: Boolean = params.mVoiceInputKeyEnabled
-    @JvmField val mIsSplitLayout: Boolean = params.mIsSplitLayoutEnabled
-    @JvmField val mOneHandedModeEnabled: Boolean = params.mOneHandedModeEnabled
-    @JvmField val mInternalAction: KeyboardLayoutSet.InternalAction? = params.mInternalAction
+    val mHasShortcutKey: Boolean = params.mVoiceInputKeyEnabled
+    val mIsSplitLayout: Boolean = params.mIsSplitLayoutEnabled
+    val mOneHandedModeEnabled: Boolean = params.mOneHandedModeEnabled
+    val mInternalAction: KeyboardLayoutSet.InternalAction? = params.mInternalAction
 
     private val mHashCode: Int = computeHashCode(this)
 

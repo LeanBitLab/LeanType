@@ -23,58 +23,58 @@ import java.util.TreeSet
 
 open class KeyboardParams {
     lateinit var mId: KeyboardId
-    @JvmField var mThemeId: Int = 0
+    var mThemeId: Int = 0
 
-    @JvmField var mOccupiedHeight: Int = 0
-    @JvmField var mOccupiedWidth: Int = 0
+    var mOccupiedHeight: Int = 0
+    var mOccupiedWidth: Int = 0
 
-    @JvmField var mBaseHeight: Int = 0
-    @JvmField var mBaseWidth: Int = 0
+    var mBaseHeight: Int = 0
+    var mBaseWidth: Int = 0
 
-    @JvmField var mTopPadding: Int = 0
-    @JvmField var mBottomPadding: Int = 0
-    @JvmField var mLeftPadding: Int = 0
-    @JvmField var mRightPadding: Int = 0
+    var mTopPadding: Int = 0
+    var mBottomPadding: Int = 0
+    var mLeftPadding: Int = 0
+    var mRightPadding: Int = 0
 
-    @JvmField var mKeyVisualAttributes: KeyVisualAttributes? = null
+    var mKeyVisualAttributes: KeyVisualAttributes? = null
 
-    @JvmField var mDefaultRowHeight: Float = 0f
-    @JvmField var mDefaultKeyWidth: Float = 0f
-    @JvmField var mRelativeHorizontalGap: Float = 0f
-    @JvmField var mRelativeVerticalGap: Float = 0f
-    @JvmField var mDefaultAbsoluteRowHeight: Int = 0
-    @JvmField var mDefaultAbsoluteKeyWidth: Int = 0
-    @JvmField var mHorizontalGap: Int = 0
-    @JvmField var mVerticalGap: Int = 0
+    var mDefaultRowHeight: Float = 0f
+    var mDefaultKeyWidth: Float = 0f
+    var mRelativeHorizontalGap: Float = 0f
+    var mRelativeVerticalGap: Float = 0f
+    var mDefaultAbsoluteRowHeight: Int = 0
+    var mDefaultAbsoluteKeyWidth: Int = 0
+    var mHorizontalGap: Int = 0
+    var mVerticalGap: Int = 0
 
-    @JvmField var mPopupKeysTemplate: Int = 0
-    @JvmField var mMaxPopupKeysKeyboardColumn: Int = 0
-    @JvmField var mAbsolutePopupKeyWidth: Int = 0
+    var mPopupKeysTemplate: Int = 0
+    var mMaxPopupKeysKeyboardColumn: Int = 0
+    var mAbsolutePopupKeyWidth: Int = 0
 
-    @JvmField var GRID_WIDTH: Int = 0
-    @JvmField var GRID_HEIGHT: Int = 0
+    var GRID_WIDTH: Int = 0
+    var GRID_HEIGHT: Int = 0
 
-    @JvmField val mSortedKeys: TreeSet<Key> = TreeSet(ROW_COLUMN_COMPARATOR)
-    @JvmField val mShiftKeys: ArrayList<Key> = ArrayList()
-    @JvmField val mAltCodeKeysWhileTyping: ArrayList<Key> = ArrayList()
-    @JvmField val mIconsSet: KeyboardIconsSet = KeyboardIconsSet.instance
-    @JvmField val mSecondaryLocales: List<Locale> = Settings.getValues().mSecondaryLocales
-    @JvmField val mPopupKeyTypes: ArrayList<String> = ArrayList()
-    @JvmField val mPopupKeyLabelSources: ArrayList<String> = ArrayList()
+    val mSortedKeys: TreeSet<Key> = TreeSet(ROW_COLUMN_COMPARATOR)
+    val mShiftKeys: ArrayList<Key> = ArrayList()
+    val mAltCodeKeysWhileTyping: ArrayList<Key> = ArrayList()
+    val mIconsSet: KeyboardIconsSet = KeyboardIconsSet.instance
+    val mSecondaryLocales: List<Locale> = Settings.getValues().mSecondaryLocales
+    val mPopupKeyTypes: ArrayList<String> = ArrayList()
+    val mPopupKeyLabelSources: ArrayList<String> = ArrayList()
 
     private val mUniqueKeysCache: UniqueKeysCache
-    @JvmField var mAllowRedundantPopupKeys: Boolean = false
+    var mAllowRedundantPopupKeys: Boolean = false
     lateinit var mLocaleKeyboardInfos: LocaleKeyboardInfos
-    @JvmField var setTabletExtraKeys: Boolean = false
+    var setTabletExtraKeys: Boolean = false
 
-    @JvmField var mMostCommonKeyHeight: Int = 0
-    @JvmField var mMostCommonKeyWidth: Int = 0
+    var mMostCommonKeyHeight: Int = 0
+    var mMostCommonKeyWidth: Int = 0
 
-    @JvmField var mProximityCharsCorrectionEnabled: Boolean = false
+    var mProximityCharsCorrectionEnabled: Boolean = false
 
-    @JvmField var baseKeys: List<Key.KeyParams>? = null
+    var baseKeys: List<Key.KeyParams>? = null
 
-    @JvmField val mTouchPositionCorrection: TouchPositionCorrection = TouchPositionCorrection()
+    val mTouchPositionCorrection: TouchPositionCorrection = TouchPositionCorrection()
 
     private var mMaxHeightCount = 0
     private var mMaxWidthCount = 0

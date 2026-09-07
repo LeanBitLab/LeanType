@@ -40,10 +40,10 @@ class KeyboardLayoutSet internal constructor(
     private val mContext: Context,
     private val mParams: Params
 ) {
-    @JvmField val mLocaleKeyboardInfos: LocaleKeyboardInfos =
+    val mLocaleKeyboardInfos: LocaleKeyboardInfos =
         getOrCreate(mContext, mParams.mSubtype.locale)
 
-    class KeyboardLayoutSetException(cause: Throwable, @JvmField val mKeyboardId: KeyboardId) :
+    class KeyboardLayoutSetException(cause: Throwable, val mKeyboardId: KeyboardId) :
         RuntimeException(cause)
 
     /**
@@ -51,30 +51,30 @@ class KeyboardLayoutSet internal constructor(
      * @param code to send on action key press
      * @param label to display on action key
      */
-    data class InternalAction(@JvmField val code: Int, @JvmField val label: String) {
+    data class InternalAction(val code: Int, val label: String) {
         fun code(): Int = code
         fun label(): String = label
     }
 
     class Params {
-        @JvmField var mMode: Int = 0
-        @JvmField var mDisableTouchPositionCorrectionDataForTest: Boolean = false
-        @JvmField var mEditorInfo: EditorInfo = EditorInfo()
-        @JvmField var mVoiceInputKeyEnabled: Boolean = false
-        @JvmField var mDeviceLocked: Boolean = false
-        @JvmField var mNumberRowEnabled: Boolean = false
-        @JvmField var mNumberRowInSymbols: Boolean = false
-        @JvmField var mCompactNumberRowInSymbols: Boolean = false
-        @JvmField var mLanguageSwitchKeyEnabled: Boolean = false
-        @JvmField var mEmojiKeyEnabled: Boolean = false
-        @JvmField var mOneHandedModeEnabled: Boolean = false
-        @JvmField var mSubtype: RichInputMethodSubtype = RichInputMethodSubtype.noLanguageSubtype
-        @JvmField var mIsSpellChecker: Boolean = false
-        @JvmField var mKeyboardWidth: Int = 0
-        @JvmField var mKeyboardHeight: Int = 0
-        @JvmField var mScript: String = ScriptUtils.SCRIPT_LATIN
-        @JvmField var mIsSplitLayoutEnabled: Boolean = false
-        @JvmField var mInternalAction: InternalAction? = null
+        var mMode: Int = 0
+        var mDisableTouchPositionCorrectionDataForTest: Boolean = false
+        var mEditorInfo: EditorInfo = EditorInfo()
+        var mVoiceInputKeyEnabled: Boolean = false
+        var mDeviceLocked: Boolean = false
+        var mNumberRowEnabled: Boolean = false
+        var mNumberRowInSymbols: Boolean = false
+        var mCompactNumberRowInSymbols: Boolean = false
+        var mLanguageSwitchKeyEnabled: Boolean = false
+        var mEmojiKeyEnabled: Boolean = false
+        var mOneHandedModeEnabled: Boolean = false
+        var mSubtype: RichInputMethodSubtype = RichInputMethodSubtype.noLanguageSubtype
+        var mIsSpellChecker: Boolean = false
+        var mKeyboardWidth: Int = 0
+        var mKeyboardHeight: Int = 0
+        var mScript: String = ScriptUtils.SCRIPT_LATIN
+        var mIsSplitLayoutEnabled: Boolean = false
+        var mInternalAction: InternalAction? = null
     }
 
     fun getKeyboard(baseKeyboardLayoutSetElementId: Int): Keyboard {
