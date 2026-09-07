@@ -99,7 +99,6 @@ class GestureStrokeDrawingPoints(private val mDrawingParams: GestureStrokeDrawin
             if (GestureTrailDrawingPoints.DEBUG_SHOW_POINTS) {
                 types.addAt(d1, GestureTrailDrawingPoints.POINT_TYPE_SAMPLED)
             }
-            d1++
         }
         return lastInterpolatedDrawIndex
     }
@@ -110,22 +109,16 @@ class GestureStrokeDrawingPoints(private val mDrawingParams: GestureStrokeDrawin
         yCoords: ResizableIntArray,
         types: ResizableIntArray
     ) {
-        val size = mPreviewEventTimes.length
-        if (size == mLastPreviewSize) return
+        val length = mPreviewEventTimes.length - mLastPreviewSize
+        if (length <= 0) return
 
-        val pt = mPreviewEventTimes.primitiveArray
-        val px = mPreviewXCoordinates.primitiveArray
-        val py = mPreviewYCoordinates.primitiveArray
-
-        for (i in mLastPreviewSize until size) {
-            eventTimes.add(pt[i])
-            xCoords.add(px[i])
-            yCoords.add(py[i])
-            if (GestureTrailDrawingPoints.DEBUG_SHOW_POINTS) {
-                types.add(GestureTrailDrawingPoints.POINT_TYPE_SAMPLED)
-            }
+        eventTimes.append(mPreviewEventTimes, mLastPreviewSize, length)
+        xCoords.append(mPreviewXCoordinates, mLastPreviewSize, length)
+        yCoords.append(mPreviewYCoordinates, mLastPreviewSize, length)
+        if (GestureTrailDrawingPoints.DEBUG_SHOW_POINTS) {
+            types.fill(GestureTrailDrawingPoints.POINT_TYPE_SAMPLED, types.length, length)
         }
-        mLastPreviewSize = size
+        mLastPreviewSize = mPreviewEventTimes.length
     }
 
     private fun reset() {
