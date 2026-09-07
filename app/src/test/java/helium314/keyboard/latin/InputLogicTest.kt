@@ -23,6 +23,7 @@ import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.LocaleUtils.constructLocale
 import helium314.keyboard.latin.common.StringUtils
+import helium314.keyboard.latin.dictionary.Dictionary
 import helium314.keyboard.latin.inputlogic.InputLogic
 import helium314.keyboard.latin.inputlogic.SpaceState
 import helium314.keyboard.latin.settings.Settings
@@ -1139,15 +1140,15 @@ class InputLogicTest {
 
     // like selecting a suggestion from strip
     private fun pickSuggestion(suggestion: String) {
-        val info = SuggestedWordInfo(suggestion, "", 0, 0, null, 0, 0)
+        val info = SuggestedWordInfo(suggestion, "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0)
         latinIME.pickSuggestionManually(info)
         checkConnectionConsistency()
     }
 
     // only works when autocorrect is on, separator after word is required
     private fun getAutocorrectedWithSpaceAfter(suggestion: String, typedWord: String?) {
-        val info = SuggestedWordInfo(suggestion, "", 0, 0, null, 0, 0)
-        val typedInfo = SuggestedWordInfo(typedWord, "", 0, 0, null, 0, 0)
+        val info = SuggestedWordInfo(suggestion, "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0)
+        val typedInfo = SuggestedWordInfo(typedWord ?: "", "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0)
         val sw = SuggestedWords(ArrayList(listOf(typedInfo, info)), null, typedInfo, false, true, false, 0, 0)
         latinIME.mInputLogic.setSuggestedWords(sw) // this prepares for autocorrect
         input(' ')
@@ -1155,7 +1156,7 @@ class InputLogicTest {
     }
 
     private fun glideTypingInput(word: String) {
-        val info = SuggestedWordInfo(word, "", 0, 0, null, 0, 0)
+        val info = SuggestedWordInfo(word, "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0)
         val sw = SuggestedWords(ArrayList(listOf(info)), null, info, true, false, false, 0, 0)
         latinIME.mInputLogic.onUpdateTailBatchInputCompleted(settingsValues, sw, KeyboardSwitcher.getInstance())
     }

@@ -293,7 +293,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 val isExactOrCaseMatch = firstSuggestion.mWord.equals(consideredWord, ignoreCase = true)
                 val isUserHistory = firstSuggestion.mSourceDict?.mDictType == Dictionary.TYPE_USER_HISTORY
                 val isWhitelist = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_WHITELIST)
-                if (!isExactOrCaseMatch && !isUserHistory && !isWhitelist && expectedContraction == null) {
+                val isShortcut = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && Settings.getValues().mAutoCorrectShortcuts
+                if (!isExactOrCaseMatch && !isUserHistory && !isWhitelist && !isShortcut && expectedContraction == null) {
                     return true to false
                 }
             }
@@ -326,10 +327,11 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             if (allowed && typedWordInfo != null && typedWordInfo.mScore > scoreLimit) {
                 val isExactOrCaseMatch = firstSuggestion.mWord.equals(typedWordString, ignoreCase = true)
                 val isWhitelist = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_WHITELIST)
+                val isDiacriticMatch = isSameIgnoringAccents(firstSuggestion.mWord, typedWordString)
 
                 // If user typed a completely valid dictionary word, never auto-replace it with a different word or contraction
-                // (e.g. "does" -> "doesn't", "do" -> "don't") unless the suggestion is an explicit dictionary whitelist replacement
-                if (!isWhitelist && !isExactOrCaseMatch) {
+                // (e.g. "does" -> "doesn't", "do" -> "don't") unless the suggestion is an explicit dictionary whitelist replacement or diacritic variation
+                if (!isWhitelist && !isExactOrCaseMatch && !isDiacriticMatch) {
                     return true to false
                 }
 
@@ -582,6 +584,13 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 }
             }
             return false
+        }
+
+        private val DIACRITIC_REGEX = "\\p{M}+".toRegex()
+        private fun isSameIgnoringAccents(a: String, b: String): Boolean {
+            val normA = java.text.Normalizer.normalize(a, java.text.Normalizer.Form.NFD).replace(DIACRITIC_REGEX, "")
+            val normB = java.text.Normalizer.normalize(b, java.text.Normalizer.Form.NFD).replace(DIACRITIC_REGEX, "")
+            return normA.equals(normB, ignoreCase = true)
         }
 
         private fun getTransformedSuggestedWordInfoList(
