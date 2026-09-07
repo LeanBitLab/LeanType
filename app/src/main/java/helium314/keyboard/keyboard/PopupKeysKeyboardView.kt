@@ -115,7 +115,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         }
         val shortcutKey = keyboard.getKey(KeyCode.VOICE_INPUT)
         if (shortcutKey != null) {
-            shortcutKey.setEnabled(RichInputMethodManager.getInstance().isShortcutImeReady)
+            shortcutKey.isEnabled = RichInputMethodManager.getInstance().isShortcutImeReady
             invalidateKey(shortcutKey)
         }
     }

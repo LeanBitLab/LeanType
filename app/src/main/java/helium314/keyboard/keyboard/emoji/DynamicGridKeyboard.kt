@@ -116,7 +116,7 @@ class DynamicGridKeyboard(
     }
 
     private fun getTemplateKey(code: Int): Key {
-        for (key in super.getSortedKeys()) {
+        for (key in super.sortedKeys) {
             if (key.code == code) {
                 return key
             }
@@ -287,16 +287,17 @@ class DynamicGridKeyboard(
         return row * mVerticalStep + mVerticalGap / 2
     }
 
-    override fun getSortedKeys(): List<Key> {
-        synchronized(mLock) {
-            val cached = mCachedGridKeys
-            if (cached != null) return cached
-            val cachedKeys = ArrayList<Key>(mGridKeys)
-            val unmodifiable = Collections.unmodifiableList(cachedKeys)
-            mCachedGridKeys = unmodifiable
-            return unmodifiable
+    override val sortedKeys: List<Key>
+        get() {
+            synchronized(mLock) {
+                val cached = mCachedGridKeys
+                if (cached != null) return cached
+                val cachedKeys = ArrayList<Key>(mGridKeys)
+                val unmodifiable = Collections.unmodifiableList(cachedKeys)
+                mCachedGridKeys = unmodifiable
+                return unmodifiable
+            }
         }
-    }
 
     override fun getNearestKeys(x: Int, y: Int): List<Key> {
         return sortedKeys
@@ -318,27 +319,25 @@ class DynamicGridKeyboard(
             hitBox.set(x0, y0, x1, y1)
         }
 
-        override fun getHorizontalGap(): Int {
-            return if (Settings.getValues().mEmojiKeyFit) {
-                (super.getHorizontalGap() * Settings.getValues().mFontSizeMultiplierEmoji).toInt()
-            } else super.getHorizontalGap()
-        }
+        override val horizontalGap: Int
+            get() = if (Settings.getValues().mEmojiKeyFit) {
+                (super.horizontalGap * Settings.getValues().mFontSizeMultiplierEmoji).toInt()
+            } else super.horizontalGap
 
-        override fun getVerticalGap(): Int {
-            return if (Settings.getValues().mEmojiKeyFit) {
-                (super.getVerticalGap() * Settings.getValues().mFontSizeMultiplierEmoji).toInt()
-            } else super.getVerticalGap()
-        }
+        override val verticalGap: Int
+            get() = if (Settings.getValues().mEmojiKeyFit) {
+                (super.verticalGap * Settings.getValues().mFontSizeMultiplierEmoji).toInt()
+            } else super.verticalGap
 
-        override fun getWidth(): Int = hitBox.width() - horizontalGap
+        override val width: Int get() = hitBox.width() - horizontalGap
 
-        override fun getHeight(): Int = hitBox.height() - verticalGap
+        override val height: Int get() = hitBox.height() - verticalGap
 
-        override fun getX(): Int = hitBox.left + horizontalGap / 2
+        override val x: Int get() = hitBox.left + horizontalGap / 2
 
-        override fun getY(): Int = hitBox.top + verticalGap / 2
+        override val y: Int get() = hitBox.top + verticalGap / 2
 
-        override fun getDrawWidth(): Int = width
+        override val drawWidth: Int get() = width
 
         override fun equals(other: Any?): Boolean {
             if (other !is Key) return false
