@@ -131,12 +131,13 @@ class NgramContext {
         for (i in codePointArrays.indices) {
             if (i < mPrevWordsCount) {
                 val wordInfo = mPrevWordsInfo[i]
-                if (!wordInfo.isValid) {
+                val word = wordInfo.mWord
+                if (!wordInfo.isValid || word == null) {
                     codePointArrays[i] = IntArray(0)
                     isBeginningOfSentenceArray[i] = false
                     continue
                 }
-                codePointArrays[i] = StringUtils.toCodePointArray(wordInfo.mWord!!)
+                codePointArrays[i] = StringUtils.toCodePointArray(word)
                 isBeginningOfSentenceArray[i] = wordInfo.mIsBeginningOfSentence
             } else {
                 codePointArrays[i] = IntArray(0)

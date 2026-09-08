@@ -123,8 +123,9 @@ object TranslationLoader {
             ensureWorkManagerInitialized(context)
             val nativeLibDir = getNativeLibDir(context, apkFile)
             extractNativeLibs(apkFile, nativeLibDir)
-            val classLoader = if (cachedClassLoader != null && cachedApkModified == apkFile.lastModified()) {
-                cachedClassLoader!!
+            val cachedLoader = cachedClassLoader
+            val classLoader = if (cachedLoader != null && cachedApkModified == apkFile.lastModified()) {
+                cachedLoader
             } else {
                 val cl = PluginClassLoader(
                     apkFile.absolutePath,

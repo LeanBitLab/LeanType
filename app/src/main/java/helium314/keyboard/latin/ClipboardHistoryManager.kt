@@ -83,7 +83,7 @@ class ClipboardHistoryManager(
         }
         if (latinIME.checkCallingOrSelfPermission(permission) != android.content.pm.PackageManager.PERMISSION_GRANTED) return
         try {
-            screenshotObserver = object : ContentObserver(mainHandler) {
+            val observer = object : ContentObserver(mainHandler) {
                 override fun onChange(selfChange: Boolean, uri: Uri?) {
                     super.onChange(selfChange, uri)
                     if (!latinIME.isInputViewShown) return
@@ -94,10 +94,11 @@ class ClipboardHistoryManager(
                     }
                 }
             }
+            screenshotObserver = observer
             latinIME.contentResolver.registerContentObserver(
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 true,
-                screenshotObserver!!
+                observer
             )
         } catch (e: Exception) {
             // Ignore observer registration failures

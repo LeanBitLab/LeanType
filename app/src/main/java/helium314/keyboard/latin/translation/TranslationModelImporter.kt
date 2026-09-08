@@ -267,12 +267,11 @@ object TranslationModelImporter {
                 }
             }
 
-            if (detectedModelName == null) {
+            val modelName = detectedModelName
+            if (modelName == null) {
                 Log.e(TAG, "Could not detect translation model language pair from zip contents")
                 return null
             }
-
-            val modelName = detectedModelName!!
             val baseDir = context.noBackupFilesDir ?: context.filesDir
             val targetDir = File(baseDir, "com.google.mlkit.translate.models/$modelName")
             val targetDirZero = File(targetDir, "0")

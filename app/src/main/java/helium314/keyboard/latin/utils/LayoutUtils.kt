@@ -35,7 +35,7 @@ object LayoutUtils {
         if (layoutType.name.startsWith("CUSTOM")) {
             return getContent(LayoutType.SYMBOLS, "symbols", context)
         }
-        val layouts = context.assets.list(layoutType.folder)!!
+        val layouts = context.assets.list(layoutType.folder) ?: emptyArray()
         layouts.firstOrNull { it.startsWith("$layoutName.") }
             ?.let { return context.assets.open(layoutType.folder + File.separator + it).reader().readText() }
         val fallback = layouts.first { it.startsWith(layoutType.default) } // must exist!

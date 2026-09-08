@@ -201,8 +201,9 @@ object OcrPluginLoader {
             val nativeLibDir = getNativeLibDir(context, apkFile)
             extractNativeLibs(apkFile, nativeLibDir)
 
-            val classLoader = if (cachedClassLoader != null && cachedApkModified == apkLastModified) {
-                cachedClassLoader!!
+            val cachedLoader = cachedClassLoader
+            val classLoader = if (cachedLoader != null && cachedApkModified == apkLastModified) {
+                cachedLoader
             } else {
                 PluginClassLoader(
                     apkFile.absolutePath,

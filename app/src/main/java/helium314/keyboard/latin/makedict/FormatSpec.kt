@@ -111,10 +111,12 @@ object FormatSpec {
                 s.append(indent)
                 s.append(optionKey)
                 s.append(" = ")
+                val attrValue = mAttributes[optionKey]
                 if (optionKey == "date" && !plumbing) {
-                    s.append(Date(1000 * mAttributes[optionKey]!!.toLong()))
+                    val timestamp = attrValue?.toLongOrNull() ?: 0L
+                    s.append(Date(1000 * timestamp))
                 } else {
-                    s.append(mAttributes[optionKey])
+                    s.append(attrValue)
                 }
                 s.append("\n")
             }

@@ -958,11 +958,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     fun isCursorFollowedByWordCharacter(spacingAndPunctuations: SpacingAndPunctuations): Boolean {
         val after = getTextAfterCursor(1, 0)
 
-        if (TextUtils.isEmpty(after)) {
+        if (after.isNullOrEmpty()) {
             return false
         }
 
-        val codePointAfterCursor = Character.codePointAt(after!!, 0)
+        val codePointAfterCursor = Character.codePointAt(after, 0)
 
         return !spacingAndPunctuations.isWordSeparator(codePointAfterCursor) &&
                 !spacingAndPunctuations.isWordConnector(codePointAfterCursor)
@@ -1009,8 +1009,9 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
         val textBeforeCursor = getTextBeforeCursor(2, 0)
 
-        if (TextUtils.isEmpty(textBeforeCursor) ||
-            Constants.CODE_SPACE != textBeforeCursor!![1].code
+        if (textBeforeCursor.isNullOrEmpty() ||
+            textBeforeCursor.length < 2 ||
+            Constants.CODE_SPACE != textBeforeCursor[1].code
         ) {
             Log.d(TAG, "Tried to revert a swap of punctuation but we didn't find a space just before the cursor.")
             return false

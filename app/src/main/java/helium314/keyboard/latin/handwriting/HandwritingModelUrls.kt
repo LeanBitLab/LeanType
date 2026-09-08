@@ -67,11 +67,11 @@ object HandwritingModelUrls {
         
         // Fallback to script URL
         val script = LANG_TO_SCRIPT[baseLang] ?: "latin"
-        val fallback = SCRIPT_URLS[script] ?: SCRIPT_URLS["latin"]!!
+        val fallback = SCRIPT_URLS[script] ?: SCRIPT_URLS["latin"] ?: ""
         return listOf(fallback)
     }
 
     fun getDownloadUrl(languageTag: String): String {
-        return getDownloadUrls(languageTag).firstOrNull() ?: SCRIPT_URLS["latin"]!!
+        return getDownloadUrls(languageTag).firstOrNull() ?: SCRIPT_URLS["latin"] ?: ""
     }
 }

@@ -22,8 +22,9 @@ object DeviceProtectedUtils {
 
     fun getSharedPreferences(context: Context, name: String): SharedPreferences {
         val defaultName = "${context.packageName}_preferences"
-        if (prefs != null && name == defaultName) {
-            return prefs!!
+        val defaultPrefs = prefs
+        if (defaultPrefs != null && name == defaultName) {
+            return defaultPrefs
         }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             val p = context.getSharedPreferences(name, Context.MODE_PRIVATE)

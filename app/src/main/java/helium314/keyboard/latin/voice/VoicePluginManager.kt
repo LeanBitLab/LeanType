@@ -206,8 +206,9 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
 
                 val component = resolveServiceComponent()
                 val intent = Intent().apply { this.component = component }
+                val sc = conn
                 val bound = try {
-                    appContext.bindService(intent, conn!!, Context.BIND_AUTO_CREATE)
+                    if (sc != null) appContext.bindService(intent, sc, Context.BIND_AUTO_CREATE) else false
                 } catch (e: Exception) {
                     Log.e(TAG, "Failed to bind to voice plugin", e)
                     false

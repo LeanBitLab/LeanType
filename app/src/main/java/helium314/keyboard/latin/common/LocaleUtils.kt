@@ -156,19 +156,19 @@ object LocaleUtils {
             }
             val elements = split("_", limit = 3)
             val language = elements[0].lowercase()
-            val region = elements.getOrNull(1)?.uppercase()
+            val region = elements.getOrNull(1)?.uppercase().orEmpty()
             val locale = if (elements.size == 1) {
                 Locale(language) // "zz" works both in constructor and forLanguageTag
             } else if (elements.size == 2) {
                 if (region == "ZZ") Locale.forLanguageTag(elements[0] + "-Latn")
-                else Locale(language, region!!)
+                else Locale(language, region)
             } else if (language == SubtypeLocaleUtils.NO_LANGUAGE) { // localeParams.length == 3
                 Locale.Builder().setLanguage(language).setVariant(elements[2]).setScript("Latn").build()
             } else if (elements[2].startsWith("#")) {
                 // best guess: elements[2] is a script, e.g. sr-Latn locale to string is sr__#Latn
                 Locale.Builder().setLanguage(language).setRegion(region).setScript(elements[2].substringAfter("#")).build()
             } else {
-                Locale(language, region!!, elements[2])
+                Locale(language, region, elements[2])
             }
             sLocaleCache[this] = locale
             return locale

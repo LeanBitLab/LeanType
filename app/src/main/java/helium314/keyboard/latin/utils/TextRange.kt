@@ -92,7 +92,7 @@ class TextRange(
                     if (span == otherSpan) {
                         // We found the same span somewhere else. Read the new extent of this
                         // span, and adjust our values accordingly.
-                        spanStart = minOf(spanStart, text.getSpanStart(otherSpan!!))
+                        spanStart = minOf(spanStart, text.getSpanStart(otherSpan))
                         spanEnd = maxOf(spanEnd, text.getSpanEnd(otherSpan))
                         // ...and mark the span as processed.
                         spans[i] = null

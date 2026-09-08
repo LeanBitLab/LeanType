@@ -24,9 +24,7 @@ class Database private constructor(context: Context, name: String = NAME) : SQLi
         const val NAME = "leantype.db"
         private var instance: Database? = null
         fun getInstance(context: Context): Database {
-            if (instance == null)
-                instance = Database(context)
-            return instance!!
+            return instance ?: Database(context).also { instance = it }
         }
 
         // needs to be in sync with db version

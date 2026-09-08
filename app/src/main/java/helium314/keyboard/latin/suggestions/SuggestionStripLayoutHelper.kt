@@ -548,10 +548,10 @@ internal class SuggestionStripLayoutHelper(
         }
 
         private fun getTextWidth(text: CharSequence?, paint: TextPaint): Int {
-            if (TextUtils.isEmpty(text)) {
+            if (text.isNullOrEmpty()) {
                 return 0
             }
-            val length = text!!.length
+            val length = text.length
             val widths = FloatArray(length)
             val count: Int
             val savedTypeface = paint.typeface

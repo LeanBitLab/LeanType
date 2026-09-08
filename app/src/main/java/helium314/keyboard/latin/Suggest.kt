@@ -449,7 +449,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         // For some reason some suggestions with MIN_VALUE are making their way here.
         // TODO: Find a more robust way to detect distracters.
         for (i in suggestionsContainer.indices.reversed()) {
-            if (suggestionsContainer[i]!!.mScore < SUPPRESS_SUGGEST_THRESHOLD) {
+            val suggestion = suggestionsContainer[i]
+            if (suggestion != null && suggestion.mScore < SUPPRESS_SUGGEST_THRESHOLD) {
                 suggestionsContainer.removeAt(i)
             }
         }

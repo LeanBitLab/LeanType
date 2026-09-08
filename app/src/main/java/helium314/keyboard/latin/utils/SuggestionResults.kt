@@ -54,7 +54,8 @@ class SuggestionResults private constructor(
 
     override fun add(element: SuggestedWordInfo): Boolean {
         if (size < mCapacity) return super.add(element)
-        if (comparator()!!.compare(element, last()) > 0) return false
+        val comp = comparator()
+        if (comp != null && comp.compare(element, last()) > 0) return false
         super.add(element)
         pollLast()
         return true

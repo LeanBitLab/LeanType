@@ -102,8 +102,9 @@ class UserBinaryDictionary protected constructor(
 
     @Synchronized
     override fun close() {
-        if (mObserver != null) {
-            mContext.contentResolver.unregisterContentObserver(mObserver!!)
+        val observer = mObserver
+        if (observer != null) {
+            mContext.contentResolver.unregisterContentObserver(observer)
             mObserver = null
         }
         super.close()

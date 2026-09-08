@@ -102,8 +102,9 @@ object SubtypeLocaleUtils {
             // "No language" subtype should be displayed in system locale.
             return resources.getString(R.string.subtype_no_language)
         }
-        val displayName = if (displayLocale == Locale.ROOT && exceptionalLocaleDisplayedInRootLocale.containsKey(languageTag)) {
-            exceptionalLocaleDisplayedInRootLocale[languageTag]!!
+        val exceptionalName = exceptionalLocaleDisplayedInRootLocale[languageTag]
+        val displayName = if (displayLocale == Locale.ROOT && exceptionalName != null) {
+            exceptionalName
         } else {
             locale.localizedDisplayName(resources, displayLocale)
         }

@@ -90,7 +90,9 @@ class AndroidSpellCheckerSession(service: AndroidSpellCheckerService) : AndroidW
         if (retval.size != textInfos?.size) return retval
 
         for (i in retval.indices) {
-            val tempSsi = fixWronglyInvalidatedWordWithSingleQuote(textInfos[i]!!, retval[i]!!)
+            val textInfo = textInfos?.getOrNull(i) ?: continue
+            val ret = retval[i] ?: continue
+            val tempSsi = fixWronglyInvalidatedWordWithSingleQuote(textInfo, ret)
             if (tempSsi != null) {
                 retval[i] = tempSsi
             }
@@ -114,7 +116,8 @@ class AndroidSpellCheckerSession(service: AndroidSpellCheckerService) : AndroidW
                 }
             }
         }
-        if (sentenceLevelAdapter == null) {
+        val adapter = sentenceLevelAdapter
+        if (adapter == null) {
             @Suppress("UNCHECKED_CAST")
             return SentenceLevelAdapter.getEmptySentenceSuggestionsInfo() as Array<SentenceSuggestionsInfo?>
         }
@@ -123,7 +126,7 @@ class AndroidSpellCheckerSession(service: AndroidSpellCheckerService) : AndroidW
         val retval = arrayOfNulls<SentenceSuggestionsInfo>(infosSize)
         for (i in 0 until infosSize) {
             val textInfo = textInfos[i] ?: continue
-            val textInfoParams = sentenceLevelAdapter!!.getSplitWords(textInfo)
+            val textInfoParams = adapter.getSplitWords(textInfo)
             val mItems = textInfoParams.mItems
             val itemsSize = mItems.size
             val splitTextInfos = arrayOfNulls<TextInfo>(itemsSize)

@@ -159,7 +159,7 @@ open class SuggestedWords(
                 if (mIsEmoji == null) {
                     mIsEmoji = isEmoji(mWord)
                 }
-                return mIsEmoji!!
+                return mIsEmoji ?: false
             }
 
         @Deprecated("Use mSourceDict directly")
