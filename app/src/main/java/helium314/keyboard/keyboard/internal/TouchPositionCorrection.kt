@@ -69,15 +69,15 @@ class TouchPositionCorrection {
     fun getX(row: Int): Float {
         return 0.0f
         // Touch position correction data for X coordinate is obsolete.
-        // return mXs!![row]
+        // return mXs?.getOrNull(row) ?: 0.0f
     }
 
     fun getY(row: Int): Float {
-        return mYs!![row]
+        return mYs?.getOrNull(row) ?: 0.0f
     }
 
     fun getRadius(row: Int): Float {
-        return mRadii!![row]
+        return mRadii?.getOrNull(row) ?: 0.0f
     }
 
     companion object {

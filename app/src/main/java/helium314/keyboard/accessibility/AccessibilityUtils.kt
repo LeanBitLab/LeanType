@@ -195,7 +195,7 @@ class AccessibilityUtils private constructor() {
     companion object {
         private val TAG = AccessibilityUtils::class.java.simpleName
         private val CLASS = AccessibilityUtils::class.java.name
-        private val PACKAGE = AccessibilityUtils::class.java.getPackage()!!.name
+        private val PACKAGE = AccessibilityUtils::class.java.getPackage()?.name ?: "helium314.keyboard.accessibility"
         val instance = AccessibilityUtils()
         /*
          * Setting this constant to {@code false} will disable all keyboard

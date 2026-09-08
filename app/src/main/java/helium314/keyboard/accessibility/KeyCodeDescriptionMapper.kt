@@ -170,8 +170,9 @@ internal class KeyCodeDescriptionMapper private constructor() {
          */
         private fun getDescriptionForActionKey(context: Context, keyboard: Keyboard?, key: Key): String {
             // Always use the label, if available.
-            if (!TextUtils.isEmpty(key.label)) {
-                return key.label!!.trim { it <= ' ' }
+            val label = key.label
+            if (!label.isNullOrEmpty()) {
+                return label.trim { it <= ' ' }
             }
             val resId = when (keyboard?.mId?.imeAction()) {
                 EditorInfo.IME_ACTION_SEARCH -> R.string.label_search_key

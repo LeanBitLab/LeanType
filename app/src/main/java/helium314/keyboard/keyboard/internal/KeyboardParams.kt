@@ -109,9 +109,10 @@ open class KeyboardParams {
     }
 
     fun removeRedundantPopupKeys() {
-        if (mAllowRedundantPopupKeys || baseKeys == null) return
+        val keys = baseKeys
+        if (mAllowRedundantPopupKeys || keys == null) return
         val lettersOnBaseLayout = PopupKeySpec.LettersOnBaseLayout()
-        for (key in baseKeys!!) {
+        for (key in keys) {
             lettersOnBaseLayout.addLetter(key)
         }
         val allKeys = ArrayList(mSortedKeys)

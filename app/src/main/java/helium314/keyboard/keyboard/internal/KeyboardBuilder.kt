@@ -189,16 +189,14 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     private fun reduceSymbolAndActionKeyWidth(row: ArrayList<KeyParams>) {
         val spaceKey = row.first { it.mCode == Constants.CODE_SPACE }
         val symbolKey = row.firstOrNull { it.mCode == KeyCode.SYMBOL_ALPHA }
-        val symbolKeyWidth = symbolKey?.mWidth ?: 0f
-        if (symbolKeyWidth > mParams.mDefaultKeyWidth) {
-            val widthToChange = symbolKey!!.mWidth - mParams.mDefaultKeyWidth
+        if (symbolKey != null && symbolKey.mWidth > mParams.mDefaultKeyWidth) {
+            val widthToChange = symbolKey.mWidth - mParams.mDefaultKeyWidth
             symbolKey.mWidth -= widthToChange
             spaceKey.mWidth += widthToChange
         }
         val actionKey = row.firstOrNull { it.mBackgroundType == Key.BACKGROUND_TYPE_ACTION }
-        val actionKeyWidth = actionKey?.mWidth ?: 0f
-        if (actionKeyWidth > mParams.mDefaultKeyWidth * 1.1f) { // allow it to stay a little wider
-            val widthToChange = actionKey!!.mWidth - mParams.mDefaultKeyWidth * 1.1f
+        if (actionKey != null && actionKey.mWidth > mParams.mDefaultKeyWidth * 1.1f) { // allow it to stay a little wider
+            val widthToChange = actionKey.mWidth - mParams.mDefaultKeyWidth * 1.1f
             actionKey.mWidth -= widthToChange
             spaceKey.mWidth += widthToChange
         }

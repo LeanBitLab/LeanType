@@ -86,8 +86,8 @@ open class KeyPreviewView @JvmOverloads constructor(
         }
 
         private fun getTextWidth(text: String?, paint: TextPaint): Float {
-            if (TextUtils.isEmpty(text)) return 0.0f
-            val len = text!!.length
+            if (text.isNullOrEmpty()) return 0.0f
+            val len = text.length
             val widths = FloatArray(len)
             val count = paint.getTextWidths(text, 0, len, widths)
             var width = 0.0f

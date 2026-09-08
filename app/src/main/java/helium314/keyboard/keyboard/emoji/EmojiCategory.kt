@@ -107,7 +107,7 @@ class EmojiCategory(
 
     fun getCategoryId(name: String): Int {
         val strings = name.split("-")
-        return mCategoryNameToIdMap[strings[0]]!!
+        return mCategoryNameToIdMap[strings.firstOrNull()] ?: ID_RECENTS
     }
 
     fun getCategoryTabIcon(categoryId: Int): Int = mCategoryTabIconId[categoryId]
@@ -215,9 +215,7 @@ class EmojiCategory(
         for (i in 1 until sCategoryElementId.size) {
             val kbd = mLayoutSet.getKeyboard(sCategoryElementId[i])
             for (key in kbd.sortedKeys) {
-                if (key.outputText != null) {
-                    allEmojis.add(key.outputText!!)
-                }
+                key.outputText?.let { allEmojis.add(it) }
             }
         }
         return allEmojis

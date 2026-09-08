@@ -264,8 +264,7 @@ class DeadKeyCombiner : Combiner {
                 lastEvent = Event.createHardwareKeypressEvent(codePoint, originalEvent.keyCode, 0, lastEvent, false)
                 index -= Character.charCount(codePoint)
             } while (index > 0)
-            // can't be null because
-            return lastEvent!!
+            return lastEvent ?: originalEvent
         }
     }
 }

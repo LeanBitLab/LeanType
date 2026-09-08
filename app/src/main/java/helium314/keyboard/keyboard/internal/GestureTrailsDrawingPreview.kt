@@ -103,9 +103,10 @@ class GestureTrailsDrawingPreview(mainKeyboardViewAttr: TypedArray) : AbstractDr
             mDrawingHandler.postDelayed(this, mDrawingParams.mUpdateInterval.toLong())
         }
         if (!mDirtyRect.isEmpty()) {
+            val buffer = mOffscreenBuffer ?: return
             mOffscreenSrcRect.set(mDirtyRect)
             mOffscreenSrcRect.offset(0, mOffscreenOffsetY)
-            canvas.drawBitmap(mOffscreenBuffer!!, mOffscreenSrcRect, mDirtyRect, null)
+            canvas.drawBitmap(buffer, mOffscreenSrcRect, mDirtyRect, null)
         }
     }
 

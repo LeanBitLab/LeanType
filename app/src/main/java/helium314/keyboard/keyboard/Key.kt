@@ -790,18 +790,20 @@ open class Key : Comparable<Key> {
             }
 
             var resolvedCode = code
-            if (resolvedCode == KeyCode.NOT_SPECIFIED && TextUtils.isEmpty(outputText) && !TextUtils.isEmpty(mLabel)) {
-                if (StringUtils.codePointCount(mLabel) == 1) {
+            val currentLabel = mLabel
+            if (resolvedCode == KeyCode.NOT_SPECIFIED && TextUtils.isEmpty(outputText) && !currentLabel.isNullOrEmpty()) {
+                if (StringUtils.codePointCount(currentLabel) == 1) {
+                    val hint = mHintLabel
                     if ((mLabelFlags and LABEL_FLAGS_HAS_SHIFTED_LETTER_HINT) != 0 &&
                         (mLabelFlags and LABEL_FLAGS_SHIFTED_LETTER_ACTIVATED) != 0 &&
-                        !TextUtils.isEmpty(mHintLabel)
+                        !hint.isNullOrEmpty()
                     ) {
-                        resolvedCode = mHintLabel!!.codePointAt(0)
+                        resolvedCode = hint.codePointAt(0)
                     } else {
-                        resolvedCode = mLabel!!.codePointAt(0)
+                        resolvedCode = currentLabel.codePointAt(0)
                     }
                 } else {
-                    outputText = mLabel
+                    outputText = currentLabel
                     resolvedCode = KeyCode.MULTIPLE_CODE_POINTS
                 }
             } else if (resolvedCode == KeyCode.NOT_SPECIFIED && outputText != null) {

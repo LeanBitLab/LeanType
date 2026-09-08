@@ -67,8 +67,8 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
     override fun toString(): String {
         val label = if (mIconName == null) mLabel else KeyboardIconsSet.PREFIX_ICON + mIconName
         val output = if (mCode == KeyCode.MULTIPLE_CODE_POINTS) mOutputText else Constants.printableCode(mCode)
-        return if (StringUtils.codePointCount(label) == 1 && label!!.codePointAt(0) == mCode) {
-            output!!
+        return if (StringUtils.codePointCount(label) == 1 && label?.codePointAt(0) == mCode) {
+            output.orEmpty()
         } else {
             "$label|$output"
         }
@@ -116,8 +116,8 @@ class PopupKeySpec(popupKeySpec: String, needsToUpperCase: Boolean, locale: Loca
         }
 
         fun splitKeySpecs(text: String?): Array<String>? {
-            if (TextUtils.isEmpty(text)) return null
-            val size = text!!.length
+            if (text.isNullOrEmpty()) return null
+            val size = text.length
             if (size == 1) {
                 return if (text[0] == COMMA) null else arrayOf(text)
             }

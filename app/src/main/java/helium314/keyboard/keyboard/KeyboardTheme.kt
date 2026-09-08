@@ -404,7 +404,8 @@ private constructor(val themeId: Int, val mStyleId: Int) {
 
         fun readUserColors(prefs: SharedPreferences, themeName: String): List<ColorSetting> {
             val key = Settings.PREF_USER_COLORS_PREFIX + themeName
-            return Json.decodeFromString(prefs.getString(key, Defaults.PREF_USER_COLORS)!!)
+            val json = prefs.getString(key, Defaults.PREF_USER_COLORS) ?: Defaults.PREF_USER_COLORS
+            return Json.decodeFromString(json)
         }
 
         fun writeUserMoreColors(prefs: SharedPreferences, themeName: String, value: Int) {
@@ -426,7 +427,7 @@ private constructor(val themeId: Int, val mStyleId: Int) {
 
         fun readUserAllColors(prefs: SharedPreferences, themeName: String, fallback: Colors?): EnumMap<ColorType, Int> {
             val key = Settings.PREF_USER_ALL_COLORS_PREFIX + themeName
-            val colorsString = prefs.getString(key, Defaults.PREF_USER_ALL_COLORS)!!
+            val colorsString = prefs.getString(key, Defaults.PREF_USER_ALL_COLORS) ?: Defaults.PREF_USER_ALL_COLORS
             val colorMap = EnumMap<ColorType, Int>(ColorType::class.java)
             colorsString.split(";").forEach {
                 val ct = try {

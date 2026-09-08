@@ -32,8 +32,8 @@ class HermiteInterpolator {
     }
 
     fun setInterval(p0: Int, p1: Int, p2: Int, p3: Int) {
-        val xCoords = mXCoords!!
-        val yCoords = mYCoords!!
+        val xCoords = mXCoords ?: return
+        val yCoords = mYCoords ?: return
         mP1X = xCoords[p1]
         mP1Y = yCoords[p1]
         mP2X = xCoords[p2]

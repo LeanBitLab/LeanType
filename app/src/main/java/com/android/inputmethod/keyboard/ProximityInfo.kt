@@ -227,7 +227,7 @@ class ProximityInfo(
             val indexEnd = indexStart + neighborCountPerCell[i]
             val neighbors = ArrayList<Key>(indexEnd - indexStart)
             for (index in indexStart until indexEnd) {
-                neighbors.add(neighborsFlatBuffer[index]!!)
+                neighborsFlatBuffer[index]?.let { neighbors.add(it) }
             }
             mGridNeighbors[i] = Collections.unmodifiableList(neighbors)
         }
