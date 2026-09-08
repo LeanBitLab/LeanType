@@ -59,6 +59,8 @@ fun AppearanceScreen(
         Settings.PREF_CUSTOM_ICON_NAMES,
         Settings.PREF_THEME_COLORS,
         Settings.PREF_THEME_KEY_BORDERS,
+        if (prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, Defaults.PREF_THEME_KEY_BORDERS))
+            Settings.PREF_KEY_BORDER_RADIUS else null,
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             Settings.PREF_THEME_DAY_NIGHT else null,
         if (dayNightMode) Settings.PREF_THEME_COLORS_NIGHT else null,
@@ -187,6 +189,16 @@ fun createAppearanceSettings(context: Context) = listOf(
     },
     Setting(context, Settings.PREF_THEME_KEY_BORDERS, R.string.key_borders) {
         SwitchPreference(it, Defaults.PREF_THEME_KEY_BORDERS) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
+    },
+    Setting(context, Settings.PREF_KEY_BORDER_RADIUS, R.string.key_border_radius) { setting ->
+        SliderPreference(
+            name = setting.title,
+            key = setting.key,
+            default = Defaults.PREF_KEY_BORDER_RADIUS,
+            range = 0f..20f,
+            stepSize = 1,
+            description = { radius -> "${radius.toInt()}dp" }
+        ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
     Setting(context, Settings.PREF_THEME_DAY_NIGHT, R.string.day_night_mode, R.string.day_night_mode_summary) {
         SwitchPreference(it, Defaults.PREF_THEME_DAY_NIGHT) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }

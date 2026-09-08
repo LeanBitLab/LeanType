@@ -11,6 +11,8 @@ import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.view.View
 import android.widget.ImageView
@@ -79,6 +81,23 @@ interface Colors {
 
         setColor(drawable, color)
         return drawable
+    }
+
+    fun applyKeyBorderRadius(drawable: Drawable?, radiusPx: Float) {
+        val current = drawable?.current ?: drawable ?: return
+        applyRadiusRecursive(current, radiusPx)
+    }
+
+    private fun applyRadiusRecursive(drawable: Drawable?, radiusPx: Float) {
+        when (drawable) {
+            is GradientDrawable -> drawable.cornerRadius = radiusPx
+            is LayerDrawable -> {
+                for (i in 0 until drawable.numberOfLayers) {
+                    applyRadiusRecursive(drawable.getDrawable(i), radiusPx)
+                }
+            }
+            is InsetDrawable -> applyRadiusRecursive(drawable.drawable, radiusPx)
+        }
     }
 }
 

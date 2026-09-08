@@ -285,6 +285,12 @@ open class KeyboardView @JvmOverloads constructor(
             bgX = -padding.left
         }
         
+        val radiusDp = Settings.getValues().mKeyBorderRadius
+        if (radiusDp >= 0f && mColors.hasKeyBorders) {
+            val radiusPx = radiusDp * resources.displayMetrics.density
+            mColors.applyKeyBorderRadius(drawBackground, radiusPx)
+        }
+
         drawBackground.setBounds(0, 0, bgWidth, bgHeight)
         canvas.translate(bgX.toFloat(), bgY.toFloat())
         
