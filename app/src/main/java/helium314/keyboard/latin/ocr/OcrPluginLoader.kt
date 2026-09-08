@@ -14,6 +14,7 @@ object OcrPluginLoader {
     private const val PLUGIN_CLASS_NAME = "helium314.keyboard.ocr.plugin.TextRecognizerImpl"
     private const val PREF_HAS_PLUGIN = "pref_ocr_has_plugin"
     const val PREF_OCR_SCRIPT = "pref_ocr_script"
+    const val DEFAULT_OCR_SCRIPT = "latin"
     const val PREF_OCR_KEEP_LINE_BREAKS = "pref_ocr_keep_line_breaks"
     const val PREF_OCR_TRIM_WHITESPACE = "pref_ocr_trim_whitespace"
     const val PREF_OCR_CASING = "pref_ocr_casing"
@@ -183,6 +184,11 @@ object OcrPluginLoader {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return null
         if (activeRecognizer != null) return activeRecognizer
         if (!hasPlugin(context)) return null
+
+        val prefs = context.prefs()
+        if (!prefs.contains(PREF_OCR_SCRIPT)) {
+            prefs.edit().putString(PREF_OCR_SCRIPT, DEFAULT_OCR_SCRIPT).apply()
+        }
 
         val apkFile = File(context.filesDir, PLUGIN_FILENAME)
         if (!apkFile.exists()) {
