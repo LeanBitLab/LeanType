@@ -325,6 +325,9 @@ object StringUtils {
     }
 
     fun newSingleCodePointString(codePoint: Int): String {
+        if (codePoint <= 0 || !Character.isValidCodePoint(codePoint)) {
+            return ""
+        }
         if (Character.charCount(codePoint) == 1) {
             return codePoint.toChar().toString()
         }

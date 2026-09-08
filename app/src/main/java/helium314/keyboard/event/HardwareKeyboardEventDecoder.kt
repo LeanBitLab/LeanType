@@ -52,6 +52,13 @@ class HardwareKeyboardEventDecoder(val mDeviceId: Int) : HardwareEventDecoder {
                     Event.createHardwareKeypressEvent(Event.NOT_A_CODE_POINT, // todo: maybe remove, see also related comment in input logic
                             KeyCode.SHIFT_ENTER, 0, null, isKeyRepeat)
                 } else Event.createHardwareKeypressEvent(Constants.CODE_ENTER, keyCode, metaState, null, isKeyRepeat)
+            } else if (KeyEvent.KEYCODE_SPACE == keyCode) {
+                if (keyEvent.isCtrlPressed) {
+                    Event.createHardwareKeypressEvent(Event.NOT_A_CODE_POINT, KeyCode.LANGUAGE_SWITCH, 0, null, isKeyRepeat)
+                } else {
+                    val spaceMeta = metaState and (KeyEvent.META_SHIFT_ON or KeyEvent.META_SHIFT_LEFT_ON or KeyEvent.META_SHIFT_RIGHT_ON).inv()
+                    Event.createHardwareKeypressEvent(Constants.CODE_SPACE, keyCode, spaceMeta, null, isKeyRepeat)
+                }
             } else Event.createHardwareKeypressEvent(codePointAndFlags, keyCode, metaState, null, isKeyRepeat)
             // If not Enter, then this is just a regular keypress event for a normal character
             // that can be committed right away, taking into account the current state.
