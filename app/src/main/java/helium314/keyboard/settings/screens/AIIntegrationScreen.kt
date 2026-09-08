@@ -104,7 +104,7 @@ private fun OfflineAIIntegrationScreen(onClickBack: () -> Unit) {
     
     SearchSettingsScreen(
         onClickBack = onClickBack,
-        title = stringResource(R.string.settings_screen_ai_integration),
+        title = stringResource(R.string.load_offline_ai_plugin),
         settings = items
     )
 }
