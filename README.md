@@ -208,8 +208,8 @@ Discover our complete suite of privacy-first, open-source Android applications a
 
 ## 🤝 Community & Contributing
 
-- **Bug Reports & Feature Requests**: [Open a GitHub Issue](https://github.com/LeanBitLab/HeliboardL/issues)
-- **Discussion & Support**: [GitHub Discussions](https://github.com/LeanBitLab/HeliboardL/discussions)
+- **Bug Reports & Feature Requests**: [Open a GitHub Issue](https://github.com/LeanBitLab/LeanType/issues)
+- **Discussion & Support**: [GitHub Discussions](https://github.com/LeanBitLab/LeanType/discussions)
 - **Official Telegram Channel**: [@LeanBitLab](https://t.me/leanbitlab)
 - **Theme Creators**: Tag your repository with `leantype-theme` to appear in our theme catalog.
 
@@ -239,7 +239,7 @@ If LeanType improves your daily typing workflow, please consider sponsoring our 
 - **[OpenBoard](https://github.com/openboard-team/openboard)** & **[AOSP LatinIME](https://android.googlesource.com/platform/packages/inputmethods/LatinIME/)**
 - **[llama.cpp](https://github.com/ggerganov/llama.cpp)** & **[llamacpp-kotlin](https://github.com/ljcamargo/llamacpp-kotlin)** — on-device local LLM execution
 - **[whisper.cpp](https://github.com/ggerganov/whisper.cpp)** — on-device speech recognition
-- All [contributors](https://github.com/LeanBitLab/HeliboardL/graphs/contributors) and open-source supporters!
+- All [contributors](https://github.com/LeanBitLab/LeanType/graphs/contributors) and open-source supporters!
 
 ---
 
