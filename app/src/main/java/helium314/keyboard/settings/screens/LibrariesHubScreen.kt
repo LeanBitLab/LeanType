@@ -126,11 +126,7 @@ fun LibrariesHubScreen(
                         val ocrInstalled = isOcrSupported && OcrPluginLoader.hasPlugin(context)
                         val ocrSummary = when {
                             !isOcrSupported -> "Requires Android 8.0+"
-                            ocrInstalled -> {
-                                val script = OcrPluginLoader.getActiveScriptName(context)
-                                if (!script.isNullOrBlank()) "${stringResource(R.string.libraries_status_active)} ($script)"
-                                else stringResource(R.string.libraries_status_active)
-                            }
+                            ocrInstalled -> stringResource(R.string.libraries_status_active)
                             else -> stringResource(R.string.libraries_status_not_installed)
                         }
                         Preference(
