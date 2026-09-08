@@ -56,7 +56,7 @@ object SubtypeSettings {
 
     fun addEnabledSubtype(prefs: SharedPreferences, newSubtype: InputMethodSubtype) {
         val subtype = newSubtype.toSettingsSubtype()
-        val subtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!) + subtype
+        val subtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES) + subtype
         val newString = createPrefSubtypes(subtypes)
         prefs.edit { putString(Settings.PREF_ENABLED_SUBTYPES, newString) }
 
@@ -75,7 +75,7 @@ object SubtypeSettings {
             if (SubtypeUtilsAdditional.isAdditionalSubtype(subtype))
                 return false
             // We want to disable a built-in subtype, but can't. This might be because it was changed in method.xml, and we definitely should disable it
-            val enabledFromSettings = createSettingsSubtypes(context.prefs().getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!)
+            val enabledFromSettings = createSettingsSubtypes(context.prefs().getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES)
             val match = enabledFromSettings.firstOrNull {
                 !it.isAdditionalSubtype(context.prefs())
                     && it.locale == subtype.locale()
@@ -96,7 +96,7 @@ object SubtypeSettings {
     }
 
     fun getSelectedSubtype(prefs: SharedPreferences): InputMethodSubtype {
-        val selectedSubtype = prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE)!!.toSettingsSubtype()
+        val selectedSubtype = (prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE) ?: Defaults.PREF_SELECTED_SUBTYPE).toSettingsSubtype()
         if (selectedSubtype.isAdditionalSubtype(prefs))
             return selectedSubtype.toAdditionalSubtype()
         // no additional subtype, must be a resource subtype
@@ -166,7 +166,7 @@ object SubtypeSettings {
             Settings.PREF_ENABLED_SUBTYPES to Defaults.PREF_ENABLED_SUBTYPES,
             Settings.PREF_SELECTED_SUBTYPE to Defaults.PREF_SELECTED_SUBTYPE
         ).forEach { (key, default) ->
-            val new = prefs.getString(key, default)!!.split(Separators.SETS).mapNotNullTo(mutableSetOf()) {
+            val new = (prefs.getString(key, default) ?: default).split(Separators.SETS).mapNotNullTo(mutableSetOf()) {
                 if (it.isEmpty()) return@mapNotNullTo null
                 val subtype = it.toSettingsSubtype()
                 if (subtype.layoutName(type) == from) {
@@ -253,7 +253,7 @@ object SubtypeSettings {
 
     private fun loadAdditionalSubtypes(prefs: SharedPreferences) {
         additionalSubtypes.clear()
-        val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+        val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES
         val subtypes = SubtypeUtilsAdditional.createAdditionalSubtypes(additionalSubtypeString)
         additionalSubtypes.addAll(subtypes)
     }
@@ -261,7 +261,7 @@ object SubtypeSettings {
     // requires loadResourceSubtypes to be called before
     private fun loadEnabledSubtypes(context: Context) {
         val prefs = context.prefs()
-        val settingsSubtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!)
+        val settingsSubtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES)
         for (settingsSubtype in settingsSubtypes) {
             if (settingsSubtype.isAdditionalSubtype(prefs)) {
                 enabledSubtypes.add(settingsSubtype.toAdditionalSubtype())
@@ -295,12 +295,12 @@ object SubtypeSettings {
 
     /** @return whether pref was changed */
     private fun removeEnabledSubtype(prefs: SharedPreferences, subtype: SettingsSubtype): Boolean {
-        val oldSubtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!)
+        val oldSubtypes = createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES)
         val newSubtypes = oldSubtypes - subtype
         if (oldSubtypes == newSubtypes)
             return false // already removed
         prefs.edit { putString(Settings.PREF_ENABLED_SUBTYPES, createPrefSubtypes(newSubtypes)) }
-        if (subtype == prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE)!!.toSettingsSubtype()) {
+        if (subtype == (prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE) ?: Defaults.PREF_SELECTED_SUBTYPE).toSettingsSubtype()) {
             // switch subtype if the currently used one has been disabled
             try {
                 val nextSubtype = RichInputMethodManager.getInstance().getNextSubtypeInThisIme(true)
