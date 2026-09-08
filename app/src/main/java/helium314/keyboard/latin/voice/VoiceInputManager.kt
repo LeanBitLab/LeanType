@@ -107,10 +107,12 @@ class VoiceInputManager(
             return
         }
 
-        try {
-            ims.requestShowSelf(0)
-        } catch (e: Exception) {
-            Log.w(TAG, "Failed to requestShowSelf", e)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            try {
+                ims.requestShowSelf(0)
+            } catch (e: Exception) {
+                Log.w(TAG, "Failed to requestShowSelf", e)
+            }
         }
 
         val isConnected = pluginManager.isPluginConnected()

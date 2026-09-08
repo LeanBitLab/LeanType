@@ -506,7 +506,9 @@ class LatinIME : InputMethodService(),
         setInputView(onCreateInputView())
         updateInputViewShown()
         if (showDockedKeyboard) {
-            requestShowSelf(0)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                requestShowSelf(0)
+            }
             startShowingInputView(true)
         }
     }
