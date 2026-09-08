@@ -211,7 +211,7 @@ fun createAppearanceSettings(context: Context) = listOf(
             name = setting.title,
             key = setting.key,
             default = Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL,
-            range = 0f..50f,
+            range = 0f..25f,
             stepSize = 1,
             description = { radius ->
                 val isDef = radius.toInt() == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL.toInt() || radius < 0f
