@@ -554,6 +554,10 @@ class ProofreadService(private val context: Context) {
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 val response = connection.inputStream.bufferedReader().use(BufferedReader::readText)
                 parseOpenAIResponse(response, showThinking)
+            } else if (responseCode == 429) {
+                Result.failure(ProofreadException(context.getString(R.string.api_error_rate_limit)))
+            } else if (responseCode == HttpURLConnection.HTTP_UNAVAILABLE) {
+                Result.failure(ProofreadException(context.getString(R.string.api_error_service_unavailable)))
             } else {
                 val errorBody = connection.errorStream?.bufferedReader()?.use(BufferedReader::readText) ?: "Unknown error"
                 Result.failure(ProofreadException("API error ($responseCode): $errorBody"))

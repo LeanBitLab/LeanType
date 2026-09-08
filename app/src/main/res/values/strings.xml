@@ -611,6 +611,8 @@
     <string name="proofread_success">Text proofread</string>
     <string name="proofread_error">Proofreading failed: %s</string>
     <string name="proofread_no_text">No text to proofread</string>
+    <string name="api_error_rate_limit">Rate limit reached. Please wait a moment and try again.</string>
+    <string name="api_error_service_unavailable">Service temporarily unavailable. Please try again later.</string>
     <string name="proofread_no_api_key">Gemini API key not set. Go to Settings → AI integration.</string>
     <string name="gemini_api_key_title">Gemini API Key</string>
     <string name="gemini_api_key_summary">Enter your Google Gemini API key for proofreading</string>
