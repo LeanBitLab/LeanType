@@ -18,6 +18,7 @@ import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.common.StringUtils
+import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.suggestions.MoreSuggestions
 import helium314.keyboard.latin.suggestions.MoreSuggestionsView
@@ -292,7 +293,12 @@ open class KeyboardView @JvmOverloads constructor(
             } else {
                 Settings.getValues().mKeyBorderRadius
             }
-            if (radiusDp >= 0f) {
+            val isDefault = radiusDp < 0f || if (isFunctional) {
+                radiusDp == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL
+            } else {
+                radiusDp == Defaults.PREF_KEY_BORDER_RADIUS
+            }
+            if (!isDefault) {
                 val radiusPx = radiusDp * resources.displayMetrics.density
                 mColors.applyKeyBorderRadius(drawBackground, radiusPx)
             }

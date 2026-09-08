@@ -197,10 +197,11 @@ fun createAppearanceSettings(context: Context) = listOf(
             name = setting.title,
             key = setting.key,
             default = Defaults.PREF_KEY_BORDER_RADIUS,
-            range = -1f..25f,
+            range = 0f..20f,
             stepSize = 1,
             description = { radius ->
-                if (radius.toInt() < 0) stringResource(R.string.button_default)
+                val isDef = radius.toInt() == Defaults.PREF_KEY_BORDER_RADIUS.toInt() || radius < 0f
+                if (isDef) "${Defaults.PREF_KEY_BORDER_RADIUS.toInt()}dp (${stringResource(R.string.button_default)})"
                 else "${radius.toInt()}dp"
             }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
@@ -210,10 +211,11 @@ fun createAppearanceSettings(context: Context) = listOf(
             name = setting.title,
             key = setting.key,
             default = Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL,
-            range = -1f..35f,
+            range = 0f..50f,
             stepSize = 1,
             description = { radius ->
-                if (radius.toInt() < 0) stringResource(R.string.button_default)
+                val isDef = radius.toInt() == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL.toInt() || radius < 0f
+                if (isDef) "${Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL.toInt()}dp (${stringResource(R.string.button_default)})"
                 else "${radius.toInt()}dp"
             }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
