@@ -183,7 +183,8 @@ fun SettingsNavHost(
             ColorsScreen(isNight = true, theme = it.arguments?.getString("theme"), onClickBack = ::goBack)
         }
         composable(SettingsDestination.Subtype + "{subtype}") {
-            SubtypeScreen(initialSubtype = it.arguments?.getString("subtype")!!.toSettingsSubtype(), onClickBack = ::goBack)
+            val subtypeArg = it.arguments?.getString("subtype") ?: ""
+            SubtypeScreen(initialSubtype = subtypeArg.toSettingsSubtype(), onClickBack = ::goBack)
         }
         composable(SettingsDestination.TextExpander) {
             TextExpanderScreen(onClickBack = ::goBack)

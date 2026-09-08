@@ -38,7 +38,7 @@ fun ReorderSwitchPreference(setting: Setting, default: String, filter: (String) 
         val ctx = LocalContext.current
         val prefs = ctx.prefs()
         val items = remember(setting.key) {
-            prefs.getString(setting.key, default)!!.split(Separators.ENTRY).map {
+            (prefs.getString(setting.key, default) ?: default).split(Separators.ENTRY).map {
                 val both = it.split(Separators.KV)
                 KeyAndState(both.first(), both.last().toBoolean())
             }.filter { filter(it.name) }

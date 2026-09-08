@@ -190,8 +190,9 @@ fun BlockedWordsScreen(
         )
     }
 
-    if (selectedWord != null) {
-        EditBlockedWordDialog(selectedWord!!, onDismissRequest = {
+    val currentSelectedWord = selectedWord
+    if (currentSelectedWord != null) {
+        EditBlockedWordDialog(currentSelectedWord, onDismissRequest = {
             selectedWord = null
             refreshTrigger++
         })

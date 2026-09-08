@@ -87,8 +87,9 @@ fun HandwritingModelDownloadDialog(
         }
     }
 
-    if (pendingImportUris != null) {
-        val uris = pendingImportUris!!
+    val currentUris = pendingImportUris
+    if (currentUris != null) {
+        val uris = currentUris
         val filesSummary = remember(uris) { HandwritingModelImporter.getUrisSummary(context, uris) }
         val detectedTag = remember(uris) { HandwritingModelImporter.detectLanguageTagFromUris(context, uris) }
         val enabledTags = remember { SubtypeSettings.getEnabledSubtypes(true).map { it.locale().toLanguageTag() } }
@@ -144,11 +145,12 @@ fun HandwritingModelDownloadDialog(
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(bottom = 12.dp)
                     )
-                    if (sortedLanguages.isNotEmpty() && selectedLanguage != null) {
+                    val lang = selectedLanguage
+                    if (sortedLanguages.isNotEmpty() && lang != null) {
                         WithSmallTitle(stringResource(R.string.button_select_language)) {
                             DropDownField(
                                 items = sortedLanguages,
-                                selectedItem = selectedLanguage!!,
+                                selectedItem = lang,
                                 onSelected = { selectedLanguage = it }
                             ) { item ->
                                 Text(item.displayName)
@@ -203,8 +205,9 @@ fun HandwritingModelDownloadDialog(
 
     var offlineDownloadItem by remember { mutableStateOf<HandwritingLanguageItem?>(null) }
 
-    if (offlineDownloadItem != null) {
-        val currentItem = offlineDownloadItem!!
+    val offlineItem = offlineDownloadItem
+    if (offlineItem != null) {
+        val currentItem = offlineItem
         val urls = HandwritingModelUrls.getDownloadUrls(currentItem.code)
         PreferenceDialog(
             onDismissRequest = { offlineDownloadItem = null },

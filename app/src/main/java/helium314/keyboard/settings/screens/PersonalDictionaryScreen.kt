@@ -112,8 +112,9 @@ fun PersonalDictionaryScreen(
                 .then(Modifier.safeDrawingPadding())
         )
     }
-    if (selectedWord != null) {
-        EditWordDialog(selectedWord!!, locale) {
+    val currentSelectedWord = selectedWord
+    if (currentSelectedWord != null) {
+        EditWordDialog(currentSelectedWord, locale) {
             selectedWord = null
             refreshTrigger++
         }
