@@ -108,7 +108,7 @@ private fun removeBlockedWord(context: Context, word: String, locale: Locale) {
 }
 
 private fun notifyKeyboardToReload() {
-    KeyboardSwitcher.getInstance().getLatinIME()?.reloadBlacklist()
+    KeyboardSwitcher.getInstance().latinIME?.reloadBlacklist()
 }
 
 @Composable
@@ -190,8 +190,9 @@ fun BlockedWordsScreen(
         )
     }
 
-    if (selectedWord != null) {
-        EditBlockedWordDialog(selectedWord!!, onDismissRequest = {
+    val currentSelectedWord = selectedWord
+    if (currentSelectedWord != null) {
+        EditBlockedWordDialog(currentSelectedWord, onDismissRequest = {
             selectedWord = null
             refreshTrigger++
         })

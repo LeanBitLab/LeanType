@@ -22,7 +22,6 @@ object HandwritingModelImporter {
         val isReady: Boolean get() = hasModel && hasFst
     }
 
-    @JvmStatic
     fun canonicalTagKey(tag: String): String {
         return tag.trim().lowercase().replace('_', '-')
     }

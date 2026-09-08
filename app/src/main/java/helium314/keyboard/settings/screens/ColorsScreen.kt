@@ -77,8 +77,8 @@ fun ColorsScreen(
     if ((b?.value ?: 0) < 0)
         Log.v("irrelevant", "stupid way to trigger recomposition on preference change")
 
-    val themeName = theme ?: if (isNight) prefs.getString(Settings.PREF_THEME_COLORS_NIGHT, Defaults.PREF_THEME_COLORS_NIGHT)!!
-        else prefs.getString(Settings.PREF_THEME_COLORS, Defaults.PREF_THEME_COLORS)!!
+    val themeName = theme ?: if (isNight) prefs.getString(Settings.PREF_THEME_COLORS_NIGHT, Defaults.PREF_THEME_COLORS_NIGHT) ?: Defaults.PREF_THEME_COLORS_NIGHT
+        else prefs.getString(Settings.PREF_THEME_COLORS, Defaults.PREF_THEME_COLORS) ?: Defaults.PREF_THEME_COLORS
     var newThemeName by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue(themeName)) }
 
     // is there really no better way of only setting forceOpposite while the screen is shown (and not paused)?
@@ -100,7 +100,7 @@ fun ColorsScreen(
     val userColors = KeyboardTheme.readUserColors(prefs, newThemeName.text)
     val shownColors = if (moreColors == 2) {
         val fallbackColors = KeyboardTheme.readUserColorTheme(
-            prefs.getString(Settings.PREF_THEME_STYLE, Defaults.PREF_THEME_STYLE)!!,
+            prefs.getString(Settings.PREF_THEME_STYLE, Defaults.PREF_THEME_STYLE) ?: Defaults.PREF_THEME_STYLE,
             prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, Defaults.PREF_THEME_KEY_BORDERS),
         userColors, ctx, isNight, null
         )

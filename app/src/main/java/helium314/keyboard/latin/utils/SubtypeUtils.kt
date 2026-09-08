@@ -74,19 +74,22 @@ fun getHasLocalizedNumberRow(subtype: InputMethodSubtype, prefs: SharedPreferenc
 
 fun getPopupKeyTypes(subtype: InputMethodSubtype, prefs: SharedPreferences): List<String> {
     val string = subtype.getExtraValueOf(ExtraValue.POPUP_ORDER)
-        ?: prefs.getString(Settings.PREF_POPUP_KEYS_ORDER, Defaults.PREF_POPUP_KEYS_ORDER)!!
+        ?: prefs.getString(Settings.PREF_POPUP_KEYS_ORDER, Defaults.PREF_POPUP_KEYS_ORDER)
+        ?: Defaults.PREF_POPUP_KEYS_ORDER
     return getEnabledPopupKeys(string)
 }
 
 fun getPopupKeyLabelSources(subtype: InputMethodSubtype, prefs: SharedPreferences): List<String> {
     val string = subtype.getExtraValueOf(ExtraValue.HINT_ORDER)
-        ?: prefs.getString(Settings.PREF_POPUP_KEYS_LABELS_ORDER, Defaults.PREF_POPUP_KEYS_LABELS_ORDER)!!
+        ?: prefs.getString(Settings.PREF_POPUP_KEYS_LABELS_ORDER, Defaults.PREF_POPUP_KEYS_LABELS_ORDER)
+        ?: Defaults.PREF_POPUP_KEYS_LABELS_ORDER
     return getEnabledPopupKeys(string)
 }
 
 fun getMoreKeys(subtype: InputMethodSubtype, prefs: SharedPreferences): String =
     subtype.getExtraValueOf(ExtraValue.MORE_POPUPS)
-        ?: prefs.getString(Settings.PREF_MORE_POPUP_KEYS, Defaults.PREF_MORE_POPUP_KEYS)!!
+        ?: prefs.getString(Settings.PREF_MORE_POPUP_KEYS, Defaults.PREF_MORE_POPUP_KEYS)
+        ?: Defaults.PREF_MORE_POPUP_KEYS
 
 fun getSecondaryLocales(extraValues: String): List<Locale> =
     extraValues.getExtraValueOf(ExtraValue.SECONDARY_LOCALES)

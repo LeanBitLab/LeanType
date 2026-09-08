@@ -71,8 +71,9 @@ fun LoadOcrPluginPreference(
     val hasPlugin = OcrPluginLoader.hasPlugin(ctx)
     val localVersion = remember(hasPlugin) { OcrPluginLoader.getPluginVersion(ctx) }
     val updateAvailable = remember(localVersion, remoteVersion) {
-        if (localVersion != null && remoteVersion != null) {
-            isUpdateAvailable(localVersion, remoteVersion!!)
+        val remVersion = remoteVersion
+        if (localVersion != null && remVersion != null) {
+            isUpdateAvailable(localVersion, remVersion)
         } else {
             false
         }

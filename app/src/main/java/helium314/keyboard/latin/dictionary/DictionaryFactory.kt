@@ -94,7 +94,6 @@ object DictionaryFactory {
         dicts.add(dictionary)
     }
 
-    @JvmStatic
     fun getDictionary(
         file: File,
         locale: Locale

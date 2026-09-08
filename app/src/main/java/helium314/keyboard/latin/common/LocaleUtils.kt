@@ -115,13 +115,11 @@ object LocaleUtils {
             else LOCALE_LANGUAGE_AND_COUNTRY_MATCH_VARIANT_DIFFER
     }
 
-    @JvmStatic
     fun isGoodMatch(subtype: RichInputMethodSubtype, locale: Locale) =
         getMatchLevel(locale, subtype.locale) >= LOCALE_LANGUAGE_MATCH_COUNTRY_DIFFER
             || getSecondaryLocales(subtype.rawSubtype.extraValue)
                 .any { getMatchLevel(locale, it) >= LOCALE_LANGUAGE_MATCH_COUNTRY_DIFFER }
 
-    @JvmStatic
     fun <T> getBestMatch(locale: Locale, collection: Collection<T>, toLocale: (T) -> Locale): T? {
         var best: T? = null
         var bestLevel = 0
@@ -147,7 +145,6 @@ object LocaleUtils {
      * Converts "ZZ" regions that used to signal latin script into actual latin script.
      * "cc" / region should be uppercase and language should be lowercase, this is automatically converted
      */
-    @JvmStatic
     fun String.constructLocale(): Locale {
         synchronized(sLocaleCache) {
             sLocaleCache[this]?.let { return it }
@@ -159,19 +156,19 @@ object LocaleUtils {
             }
             val elements = split("_", limit = 3)
             val language = elements[0].lowercase()
-            val region = elements.getOrNull(1)?.uppercase()
+            val region = elements.getOrNull(1)?.uppercase().orEmpty()
             val locale = if (elements.size == 1) {
                 Locale(language) // "zz" works both in constructor and forLanguageTag
             } else if (elements.size == 2) {
                 if (region == "ZZ") Locale.forLanguageTag(elements[0] + "-Latn")
-                else Locale(language, region!!)
+                else Locale(language, region)
             } else if (language == SubtypeLocaleUtils.NO_LANGUAGE) { // localeParams.length == 3
                 Locale.Builder().setLanguage(language).setVariant(elements[2]).setScript("Latn").build()
             } else if (elements[2].startsWith("#")) {
                 // best guess: elements[2] is a script, e.g. sr-Latn locale to string is sr__#Latn
                 Locale.Builder().setLanguage(language).setRegion(region).setScript(elements[2].substringAfter("#")).build()
             } else {
-                Locale(language, region!!, elements[2])
+                Locale(language, region, elements[2])
             }
             sLocaleCache[this] = locale
             return locale

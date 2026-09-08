@@ -34,7 +34,6 @@ object ScriptUtils {
     const val SCRIPT_HANGUL = "Hang"
     const val SCRIPT_GUJARATI = "Gujr"
 
-    @JvmStatic
     fun scriptSupportsUppercase(locale: Locale): Boolean {
         // only Latin, Cyrillic, Greek and Armenian have upper/lower case
         // https://unicode.org/faq/casemap_charprop.html#3
@@ -52,7 +51,6 @@ object ScriptUtils {
      * Hence at the moment this explicitly tests for Cyrillic characters or Latin characters
      * as appropriate, and explicitly excludes CJK, Arabic and Hebrew characters.
      */
-    @JvmStatic
     fun isLetterPartOfScript(codePoint: Int, script: String): Boolean {
         return when (script) {
             SCRIPT_ARABIC ->
@@ -154,7 +152,6 @@ object ScriptUtils {
     /**
      * returns the locale script with fallback to default scripts
      */
-    @JvmStatic
     fun Locale.script(): String {
         if (script.isNotEmpty()) return script
         if (country.equals("ZZ", true)) {
@@ -189,11 +186,9 @@ object ScriptUtils {
      * Returns true if the locale uses a script that requires explicit word segmentation.
      * Currently returns true for Thai only.
      */
-    @JvmStatic
     fun needsWordSegmentation(locale: Locale): Boolean =
         locale.language == "th"
 
-    @JvmStatic
     fun isScriptRtl(script: String): Boolean {
         return when (script) {
             SCRIPT_ARABIC, SCRIPT_HEBREW -> true

@@ -146,13 +146,11 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         return dictionaryGroups[0].locale.language.isNotEmpty()
     }
 
-    override fun getMainLocale(): Locale {
-        return dictionaryGroups[0].locale
-    }
+    override val mainLocale: Locale
+        get() = dictionaryGroups[0].locale
 
-    override fun getCurrentLocale(): Locale {
-        return currentlyPreferredDictionaryGroup.locale
-    }
+    override val currentLocale: Locale
+        get() = currentlyPreferredDictionaryGroup.locale
 
     override fun usesSameSettings(locales: List<Locale>, contacts: Boolean, apps: Boolean, personalization: Boolean): Boolean {
         val prefs = mPrefs
@@ -812,33 +810,35 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
             // Level 1: Primary grammatical language continuation connectors
             val fallbackUnigrams = getLanguageFallbackUnigrams(dictGroup.locale)
             val mainDict = dictGroup.getDict(Dictionary.TYPE_MAIN)
-            var fallbackScore = 95
-            for (word in fallbackUnigrams) {
-                if (suggestions.size >= 4) break
-                if (isBlacklisted(word)) continue
-                suggestions.add(
-                    SuggestedWordInfo(
-                        word,
-                        "",
-                        fallbackScore,
-                        SuggestedWordInfo.KIND_PREDICTION,
-                        mainDict,
-                        SuggestedWordInfo.NOT_AN_INDEX,
-                        SuggestedWordInfo.NOT_A_CONFIDENCE
+            if (mainDict != null) {
+                var fallbackScore = 95
+                for (word in fallbackUnigrams) {
+                    if (suggestions.size >= 4) break
+                    if (isBlacklisted(word)) continue
+                    suggestions.add(
+                        SuggestedWordInfo(
+                            word,
+                            "",
+                            fallbackScore,
+                            SuggestedWordInfo.KIND_PREDICTION,
+                            mainDict,
+                            SuggestedWordInfo.NOT_AN_INDEX,
+                            SuggestedWordInfo.NOT_A_CONFIDENCE
+                        )
                     )
-                )
-                fallbackScore -= 2
+                    fallbackScore -= 2
+                }
             }
 
             // Level 2: Fill remaining slots with user history/personal frequent words
             if (suggestions.size < 5) {
                 val historyDict = dictGroup.getSubDict(Dictionary.TYPE_USER_HISTORY)
                 val topHistoryWords = try {
-                    historyDict?.allWordsWithFrequency
+                    historyDict?.getAllWordsWithFrequency()
                 } catch (e: Exception) {
                     null
                 }
-                if (!topHistoryWords.isNullOrEmpty()) {
+                if (!topHistoryWords.isNullOrEmpty() && historyDict != null) {
                     val existingWords = suggestions.map { it.mWord }.toSet()
                     val sortedHistory = topHistoryWords.entries
                         .filter { !isBlacklisted(it.key) && it.key.length > 1 && !existingWords.contains(it.key) }

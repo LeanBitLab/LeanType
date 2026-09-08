@@ -22,10 +22,8 @@ import java.util.Calendar
 import java.util.Locale
 
 object DebugFlags {
-    @JvmField
     var DEBUG_ENABLED = false
 
-    @JvmField
     var SCORE_AUDIT = false
 
     fun init(context: Context) {

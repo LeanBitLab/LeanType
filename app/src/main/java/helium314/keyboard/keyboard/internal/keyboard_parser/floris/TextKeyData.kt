@@ -116,7 +116,7 @@ sealed interface KeyData : AbstractKeyData {
                 return listOf("…")
             if (params.mId.isNumberLayout)
                 return listOf(":", "…", ";", "∞", "π", "√", "°", "^")
-            val popupKeys = params.mLocaleKeyboardInfos.getPopupKeys("punctuation")!!.toMutableList()
+            val popupKeys = params.mLocaleKeyboardInfos.getPopupKeys("punctuation")?.toMutableList() ?: mutableListOf()
             if (params.mId.mSubtype.isRtlSubtype) {
                 for (i in popupKeys.indices)
                     popupKeys[i] = popupKeys[i].rtlLabel(params) // for parentheses

@@ -17,7 +17,6 @@ object OfflineAiLoader {
 
     private var activeProvider: IOfflineAiProvider? = null
 
-    @JvmStatic
     fun getTargetAbi(): String {
         for (abi in android.os.Build.SUPPORTED_ABIS) {
             when (abi) {
@@ -28,7 +27,6 @@ object OfflineAiLoader {
         return "arm64-v8a"
     }
 
-    @JvmStatic
     fun getPluginDownloadUrl(tag: String? = null): String {
         val abi = getTargetAbi()
         val filename = "ai_plugin-$abi.apk"
@@ -39,7 +37,6 @@ object OfflineAiLoader {
         }
     }
 
-    @JvmStatic
     fun downloadPluginApk(context: Context, tag: String? = null, tempFile: File): Boolean {
         val urlsToTry = listOf(
             getPluginDownloadUrl(tag),

@@ -203,7 +203,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             TextInputDialog(
                 onDismissRequest = { showDialog = false },
                 textInputLabel = { Text(stringResource(R.string.customize_currencies_detail)) },
-                initialText = prefs.getString(setting.key, Defaults.PREF_CUSTOM_CURRENCY_KEY)!!,
+                initialText = prefs.getString(setting.key, Defaults.PREF_CUSTOM_CURRENCY_KEY) ?: Defaults.PREF_CUSTOM_CURRENCY_KEY,
                 onConfirmed = { prefs.edit { putString(setting.key, it) }; KeyboardLayoutSet.onSystemLocaleChanged() },
                 title = { Text(stringResource(R.string.customize_currencies)) },
                 neutralButtonText = if (prefs.contains(setting.key)) stringResource(R.string.button_default) else null,

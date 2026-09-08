@@ -168,7 +168,8 @@ object LayoutUtilsCustom {
                 return@forEach
             remove(type, name)
         }
-        prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+        val additionalSubtypes = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES
+        additionalSubtypes
             .split(Separators.SETS).forEach outer@{
                 val subtype = it.toSettingsSubtype()
                 LayoutType.getLayoutMap(subtype.getExtraValueOf(KEYBOARD_LAYOUT_SET) ?: "").forEach { (type, name) ->

@@ -104,9 +104,9 @@ class BnKhiproCombiner : Combiner {
             for (l in (end - i) downTo 1) {
                 val chunk = text.substring(i, i + l)
                 for (g in allowed) {
-                    val map = GROUP_MAPS[g]
-                    if (map?.containsKey(chunk) == true) {
-                        return Triple(g, chunk, map[chunk]!!)
+                    val value = GROUP_MAPS[g]?.get(chunk)
+                    if (value != null) {
+                        return Triple(g, chunk, value)
                     }
                 }
             }

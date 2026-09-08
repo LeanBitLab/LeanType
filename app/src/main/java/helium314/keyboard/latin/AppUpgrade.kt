@@ -112,7 +112,7 @@ object AppUpgrade {
             }
             if (prefs.contains("enabled_input_styles")) {
                 // rename subtype setting, and clean old subtypes that might remain in some cases
-                val subtypesPref = prefs.getString("enabled_input_styles", "")!!
+                val subtypesPref = (prefs.getString("enabled_input_styles", "") ?: "")
                     .split(";").filter { it.isNotEmpty() }
                     .map {
                         val localeAndLayout = it.split(":").toMutableList()
@@ -128,7 +128,7 @@ object AppUpgrade {
         }
         if (oldVersion <= 2000) {
             // upgrade pinned toolbar keys pref
-            val oldPinnedKeysPref = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, "")!!
+            val oldPinnedKeysPref = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, "") ?: ""
             val pinnedKeys = oldPinnedKeysPref.split(";").mapNotNull {
                 try {
                     ToolbarKey.valueOf(it)
@@ -157,7 +157,7 @@ object AppUpgrade {
             }
         }
         if (oldVersion <= 2201) {
-            val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+            val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES
             if (additionalSubtypeString.contains(".")) { // means there are custom layouts
                 val subtypeStrings = additionalSubtypeString.split(";")
                 val newSubtypeStrings = subtypeStrings.mapNotNull {
@@ -173,10 +173,10 @@ object AppUpgrade {
                     if (!oldFile.exists()) return@mapNotNull null // should never happen
                     if (newFile.exists()) newFile.delete() // should never happen
                     oldFile.renameTo(newFile)
-                    val enabledSubtypes = prefs.getString(Settings.PREF_ENABLED_SUBTYPES, "")!!
+                    val enabledSubtypes = prefs.getString(Settings.PREF_ENABLED_SUBTYPES, "") ?: ""
                     if (enabledSubtypes.contains(oldName))
                         prefs.edit { putString(Settings.PREF_ENABLED_SUBTYPES, enabledSubtypes.replace(oldName, newName)) }
-                    val selectedSubtype = prefs.getString(Settings.PREF_SELECTED_SUBTYPE, "")!!
+                    val selectedSubtype = prefs.getString(Settings.PREF_SELECTED_SUBTYPE, "") ?: ""
                     if (selectedSubtype.contains(oldName))
                         prefs.edit { putString(Settings.PREF_SELECTED_SUBTYPE, selectedSubtype.replace(oldName, newName)) }
                     split[1] = newName
@@ -262,7 +262,7 @@ object AppUpgrade {
         }
         if (oldVersion <= 2302) {
             fun readCustomKeyCodes(setting: String) =
-                prefs.getString(setting, "")!!
+                (prefs.getString(setting, "") ?: "")
                     .split(";").filter { it.isNotEmpty()}.associate {
                         val code = runCatching { it.substringAfter(",").toIntOrNull()?.checkAndConvertCode() }.getOrNull()
                         it.substringBefore(",") to code
@@ -392,7 +392,7 @@ object AppUpgrade {
             if (prefs.contains(Settings.PREF_ADDITIONAL_SUBTYPES))
                 prefs.edit {
                     putString(
-                        Settings.PREF_ADDITIONAL_SUBTYPES, prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "")!!
+                        Settings.PREF_ADDITIONAL_SUBTYPES, (prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "") ?: "")
                             .replace(":", Separators.SET)
                     )
                 }
@@ -405,14 +405,15 @@ object AppUpgrade {
                 // change language tag to SCRIPT_LATIN, but
                 //  avoid overwriting if 2 layouts have a different language tag, but the same name
                 val layoutDisplayName = LayoutUtilsCustom.getDisplayName(it.name)
-                var newFile = File(it.parentFile!!, LayoutUtilsCustom.getLayoutName(layoutDisplayName, LayoutType.MAIN, locale))
+                val parent = it.parentFile ?: return@forEach
+                var newFile = File(parent, LayoutUtilsCustom.getLayoutName(layoutDisplayName, LayoutType.MAIN, locale))
                 var i = 1
                 while (newFile.exists()) // make sure name is not already in use, e.g. custom.en.abcd. and custom.it.abcd. would both be custom.Latn.abcd
-                    newFile = File(it.parentFile!!, LayoutUtilsCustom.getLayoutName(layoutDisplayName + i++, LayoutType.MAIN, locale))
+                    newFile = File(parent, LayoutUtilsCustom.getLayoutName(layoutDisplayName + i++, LayoutType.MAIN, locale))
                 it.renameTo(newFile)
                 // modify prefs
                 listOf(Settings.PREF_ENABLED_SUBTYPES, Settings.PREF_SELECTED_SUBTYPE, Settings.PREF_ADDITIONAL_SUBTYPES).forEach { key ->
-                    val value = prefs.getString(key, "")!!
+                    val value = prefs.getString(key, "") ?: ""
                     if (it.name in value)
                         prefs.edit { putString(key, value.replace(it.name, newFile.name)) }
                 }
@@ -423,23 +424,23 @@ object AppUpgrade {
             (prefs.all.keys.filter { it.startsWith(Settings.PREF_POPUP_KEYS_ORDER) || it.startsWith(Settings.PREF_POPUP_KEYS_LABELS_ORDER) } +
                 listOf(Settings.PREF_TOOLBAR_KEYS, Settings.PREF_PINNED_TOOLBAR_KEYS, Settings.PREF_CLIPBOARD_TOOLBAR_KEYS)).forEach {
                 if (!prefs.contains(it)) return@forEach
-                val newValue = prefs.getString(it, "")!!.replace(",", Separators.KV).replace(";", Separators.ENTRY)
+                val newValue = (prefs.getString(it, "") ?: "").replace(",", Separators.KV).replace(";", Separators.ENTRY)
                 prefs.edit { putString(it, newValue) }
             }
             listOf(Settings.PREF_ENABLED_SUBTYPES, Settings.PREF_SELECTED_SUBTYPE, Settings.PREF_ADDITIONAL_SUBTYPES).forEach {
                 if (!prefs.contains(it)) return@forEach
-                val value = prefs.getString(it, "")!!.replace(":", Separators.SET)
+                val value = (prefs.getString(it, "") ?: "").replace(":", Separators.SET)
                 prefs.edit { putString(it, value) }
             }
             prefs.all.keys.filter { it.startsWith("secondary_locales_") }.forEach {
-                val newValue = prefs.getString(it, "")!!.replace(";", Separators.KV)
+                val newValue = (prefs.getString(it, "") ?: "").replace(";", Separators.KV)
                 prefs.edit { putString(it, newValue) }
             }
         }
         if (oldVersion <= 2306) {
             // upgrade additional, enabled, and selected subtypes to same format of locale and (filtered) extra value
             if (prefs.contains(Settings.PREF_ADDITIONAL_SUBTYPES)) {
-                val new = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "")!!
+                val new = (prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "") ?: "")
                     .split(Separators.SETS)
                     .filter { it.isNotEmpty() }
                     .mapNotNull { pref ->
@@ -458,9 +459,9 @@ object AppUpgrade {
             listOf(Settings.PREF_ENABLED_SUBTYPES, Settings.PREF_SELECTED_SUBTYPE).forEach { key ->
                 if (!prefs.contains(key)) return@forEach
                 val resourceSubtypes = getResourceSubtypes(context.resources)
-                val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+                val additionalSubtypeString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES
                 val additionalSubtypes = SubtypeUtilsAdditional.createAdditionalSubtypes(additionalSubtypeString)
-                val new = prefs.getString(key, "")!!.split(Separators.SETS).filter { it.isNotEmpty() }.joinToString(Separators.SETS) { pref ->
+                val new = (prefs.getString(key, "") ?: "").split(Separators.SETS).filter { it.isNotEmpty() }.joinToString(Separators.SETS) { pref ->
                     val oldSplit = pref.split(Separators.SET)
                     val languageTag = oldSplit[0]
                     if (oldSplit.size == 1)
@@ -495,7 +496,7 @@ object AppUpgrade {
             prefs.all.keys.forEach {
                 if (!it.startsWith(Settings.PREF_POPUP_KEYS_ORDER) && !it.startsWith(Settings.PREF_POPUP_KEYS_LABELS_ORDER))
                     return@forEach
-                prefs.edit { putString(it, prefs.getString(it, "")!!.replace("popup_keys_", "")) }
+                prefs.edit { putString(it, (prefs.getString(it, "") ?: "").replace("popup_keys_", "")) }
             }
         }
         if (oldVersion <= 2308) {
@@ -508,7 +509,7 @@ object AppUpgrade {
                             SubtypeUtilsAdditional.changeAdditionalSubtype(it.toSettingsSubtype(), it.toSettingsSubtype(), context)
                         }
                     }
-                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "")!!
+                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "") ?: ""
                     additional.split(Separators.SETS).filter { it.isNotEmpty() }.forEach inner@{
                         val subtype = it.toSettingsSubtype()
                         if (subtype.locale != locale) return@inner
@@ -524,7 +525,7 @@ object AppUpgrade {
                             SubtypeUtilsAdditional.changeAdditionalSubtype(it.toSettingsSubtype(), it.toSettingsSubtype(), context)
                         }
                     }
-                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "")!!
+                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "") ?: ""
                     additional.split(Separators.SETS).filter { it.isNotEmpty() }.forEach inner@{
                         val subtype = it.toSettingsSubtype()
                         if (subtype.locale != locale) return@inner
@@ -540,8 +541,8 @@ object AppUpgrade {
                             SubtypeUtilsAdditional.changeAdditionalSubtype(it.toSettingsSubtype(), it.toSettingsSubtype(), context)
                         }
                     }
-                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "")!!
-                    val secondaryLocales = prefs.getString(key, "")!!.split(Separators.KV).filter { it.isNotBlank() }.joinToString(Separators.KV)
+                    val additional = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, "") ?: ""
+                    val secondaryLocales = (prefs.getString(key, "") ?: "").split(Separators.KV).filter { it.isNotBlank() }.joinToString(Separators.KV)
                     additional.split(Separators.SETS).filter { it.isNotEmpty() }.forEach inner@{
                         val subtype = it.toSettingsSubtype()
                         if (subtype.locale != locale) return@inner
@@ -568,7 +569,7 @@ object AppUpgrade {
                 Settings.PREF_SELECTED_SUBTYPE,
                 Settings.PREF_ADDITIONAL_SUBTYPES
             ).forEach { key ->
-                val value = prefs.getString(key, "")!!
+                val value = prefs.getString(key, "") ?: ""
                 if ("bengali," in value) {
                     prefs.edit { putString(key, value.replace("bengali,", "bengali_inscript,")) }
                 }
@@ -579,7 +580,7 @@ object AppUpgrade {
         }
         if (oldVersion <= 3002) {
             prefs.all.filterKeys { it.startsWith(Settings.PREF_USER_ALL_COLORS_PREFIX) }.forEach {
-                val oldValue = prefs.getString(it.key, "")!!
+                val oldValue = prefs.getString(it.key, "") ?: ""
                 if ("KEY_PREVIEW" !in oldValue) return@forEach
                 val newValue = oldValue.replace("KEY_PREVIEW", "KEY_PREVIEW_BACKGROUND")
                 prefs.edit { putString(it.key, newValue) }
@@ -619,14 +620,14 @@ object AppUpgrade {
                     e.putFloat(createPrefKeyForBooleanSettings(Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX, 1, 1), value)
                 } else {
                     if (key == Settings.PREF_ADDITIONAL_SUBTYPES || key == Settings.PREF_ENABLED_SUBTYPES) {
-                        val subtypes = prefs.getString(key, "")!!.split(Separators.SETS).filter { it.isNotEmpty() }.map {
+                        val subtypes = (prefs.getString(key, "") ?: "").split(Separators.SETS).filter { it.isNotEmpty() }.map {
                             val st = it.toSettingsSubtype()
                             if (st.locale.language == "ko") st.with(ExtraValue.COMBINING_RULES, "hangul")
                             else st
                         }
                         e.putString(key, subtypes.joinToString(Separators.SETS) { it.toPref() })
                     } else if (key == Settings.PREF_SELECTED_SUBTYPE) {
-                        val subtype = prefs.getString(key, "")!!.toSettingsSubtype()
+                        val subtype = (prefs.getString(key, "") ?: "").toSettingsSubtype()
                         if (subtype.locale.language == "ko")
                             e.putString(key, subtype.with(ExtraValue.COMBINING_RULES, "hangul").toPref())
                     }

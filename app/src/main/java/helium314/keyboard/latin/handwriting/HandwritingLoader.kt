@@ -18,23 +18,19 @@ object HandwritingLoader {
 
     private var activeRecognizer: HandwritingRecognizer? = null
 
-    @JvmStatic
     fun resetRecognizer() {
         activeRecognizer = null
         displayNameCache = null
     }
 
-    @JvmStatic
     fun getHandwritingLanguagePref(context: Context): String {
         return context.prefs().getString(PREF_HANDWRITING_LANGUAGE, LANG_FOLLOW_KEYBOARD) ?: LANG_FOLLOW_KEYBOARD
     }
 
-    @JvmStatic
     fun setHandwritingLanguage(context: Context, language: String) {
         context.prefs().edit().putString(PREF_HANDWRITING_LANGUAGE, language).apply()
     }
 
-    @JvmStatic
     fun findInstalledModelForLanguage(context: Context, languageTag: String): String? {
         val target = languageTag.trim()
         if (target.isBlank()) return null
@@ -69,7 +65,6 @@ object HandwritingLoader {
         return null
     }
 
-    @JvmStatic
     fun getEffectiveLanguage(context: Context, subtypeLanguage: String): String {
         val pref = getHandwritingLanguagePref(context)
         val target = if (pref == LANG_FOLLOW_KEYBOARD || pref.isBlank()) {
@@ -85,7 +80,6 @@ object HandwritingLoader {
     @Volatile
     private var displayNameCache: DisplayNameCache? = null
 
-    @JvmStatic
     fun getEffectiveDisplayName(context: Context, subtypeLanguage: String): String {
         val tag = getEffectiveLanguage(context, subtypeLanguage)
         val currentCache = displayNameCache
@@ -104,7 +98,6 @@ object HandwritingLoader {
         return displayName
     }
 
-    @JvmStatic
     fun getTargetAbi(): String {
         for (abi in android.os.Build.SUPPORTED_ABIS) {
             when (abi) {
@@ -117,7 +110,6 @@ object HandwritingLoader {
         return "arm64-v8a"
     }
 
-    @JvmStatic
     fun getPluginDownloadUrl(tag: String? = null): String {
         val abi = getTargetAbi()
         val filename = "handwriting_plugin-$abi.apk"
@@ -128,7 +120,6 @@ object HandwritingLoader {
         }
     }
 
-    @JvmStatic
     fun downloadPluginApk(context: Context, tag: String? = null, tempFile: File): Boolean {
         val urlsToTry = listOf(
             getPluginDownloadUrl(tag),
@@ -234,7 +225,6 @@ object HandwritingLoader {
         return targetDir
     }
 
-    @JvmStatic
     fun getRecognizer(context: Context): HandwritingRecognizer? {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return null
         if (activeRecognizer != null) return activeRecognizer

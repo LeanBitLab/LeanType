@@ -91,7 +91,7 @@ fun ColorThemePickerDialog(
             else -> null
         }
     }.toSortedSet() // we don't want duplicates, and we want a consistent order
-    val selectedColor = prefs.getString(setting.key, default)!!
+    val selectedColor = prefs.getString(setting.key, default) ?: default
     if (selectedColor !in defaultColors)
         userColors.add(selectedColor) // there are cases where we have no settings for a user theme
 

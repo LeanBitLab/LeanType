@@ -50,8 +50,8 @@ object KeyLabel {
         "view_numeric_advanced" -> NUMPAD
         "view_phone" -> ALPHA // phone keyboard is treated like alphabet, just with different layout
         "view_phone2" -> SYMBOL // phone symbols
-        "ime_ui_mode_media" -> toolbarKeyStrings[ToolbarKey.EMOJI]!!
-        "ime_ui_mode_clipboard" -> toolbarKeyStrings[ToolbarKey.CLIPBOARD]!!
+        "ime_ui_mode_media" -> toolbarKeyStrings[ToolbarKey.EMOJI] ?: "emoji"
+        "ime_ui_mode_clipboard" -> toolbarKeyStrings[ToolbarKey.CLIPBOARD] ?: "clipboard"
         "ime_ui_mode_text" -> ALPHA
         "currency_slot_1" -> CURRENCY
         "currency_slot_2" -> CURRENCY1
@@ -195,7 +195,7 @@ object KeyLabel {
             EditorInfo.IME_ACTION_NEXT             -> KeyboardIconsSet.NAME_NEXT_KEY
             EditorInfo.IME_ACTION_DONE             -> KeyboardIconsSet.NAME_DONE_KEY
             EditorInfo.IME_ACTION_PREVIOUS         -> KeyboardIconsSet.NAME_PREVIOUS_KEY
-            InputTypeUtils.IME_ACTION_CUSTOM_LABEL -> return params.mId.mCustomActionLabel
+            InputTypeUtils.IME_ACTION_CUSTOM_LABEL -> return params.mId.mCustomActionLabel ?: "!icon/enter_key"
             else                                   -> return "!icon/enter_key"
         }
         val replacement = iconName.replaceIconWithLabelIfNoDrawable(params)

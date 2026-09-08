@@ -84,16 +84,21 @@ fun LibrariesHubScreen(
                     Column {
                         PreferenceCategory("Active Engines & Capabilities")
 
-                        // AI Integration Screen (Available in standard, standardfull, offline)
-                        val isSupported = BuildConfig.FLAVOR != "classic"
-                        val aiPluginInstalled = helium314.keyboard.latin.ai.OfflineAiLoader.hasPlugin(context)
-                        if (isSupported) {
+                        // Offline AI Plugin (Only available in offline flavor)
+                        val isOfflineAiSupported = BuildConfig.FLAVOR == "offline" &&
+                            android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O
+                        if (isOfflineAiSupported) {
+                            val aiPluginInstalled = helium314.keyboard.latin.ai.OfflineAiLoader.hasPlugin(context)
                             val aiSummary = when {
-                                aiPluginInstalled -> stringResource(R.string.libraries_status_active)
+                                aiPluginInstalled -> {
+                                    val version = helium314.keyboard.latin.ai.OfflineAiLoader.getPluginVersion(context)
+                                    if (version != null) "${stringResource(R.string.libraries_status_active)} (v$version)"
+                                    else stringResource(R.string.libraries_status_active)
+                                }
                                 else -> stringResource(R.string.libraries_status_not_installed)
                             }
                             Preference(
-                                name = stringResource(R.string.settings_screen_ai_integration),
+                                name = stringResource(R.string.load_offline_ai_plugin),
                                 description = aiSummary,
                                 onClick = onClickAIIntegration,
                                 icon = R.drawable.ic_proofread

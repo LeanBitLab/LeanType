@@ -366,7 +366,7 @@ fun upgradeToolbarPrefs(prefs: SharedPreferences) {
 
 private fun upgradeToolbarPref(prefs: SharedPreferences, pref: String, default: String) {
     if (!prefs.contains(pref)) return
-    val originalString = prefs.getString(pref, default)!!
+    val originalString = prefs.getString(pref, default) ?: default
     val list = originalString.split(Separators.ENTRY).toMutableList()
     val splitDefault = default.split(Separators.ENTRY)
     splitDefault.forEach { entry ->
@@ -397,7 +397,7 @@ fun getEnabledClipboardToolbarKeys(prefs: SharedPreferences) = getEnabledToolbar
 
 fun addPinnedKey(prefs: SharedPreferences, key: ToolbarKey) {
     // remove the existing version of this key and add the enabled one after the last currently enabled key
-    val string = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, defaultPinnedToolbarPref)!!
+    val string = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, defaultPinnedToolbarPref) ?: defaultPinnedToolbarPref
     val keys = string.split(Separators.ENTRY).toMutableList()
     keys.removeAll { it.startsWith(key.name + Separators.KV) }
     val lastEnabledIndex = keys.indexOfLast { it.endsWith("true") }
@@ -407,7 +407,7 @@ fun addPinnedKey(prefs: SharedPreferences, key: ToolbarKey) {
 
 fun removePinnedKey(prefs: SharedPreferences, key: ToolbarKey) {
     // just set it to disabled
-    val string = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, defaultPinnedToolbarPref)!!
+    val string = prefs.getString(Settings.PREF_PINNED_TOOLBAR_KEYS, defaultPinnedToolbarPref) ?: defaultPinnedToolbarPref
     val result = string.split(Separators.ENTRY).joinToString(Separators.ENTRY) {
         if (it.startsWith(key.name + Separators.KV))
             key.name + Separators.KV + "false"
@@ -417,7 +417,7 @@ fun removePinnedKey(prefs: SharedPreferences, key: ToolbarKey) {
 }
 
 private fun getEnabledToolbarKeys(prefs: SharedPreferences, pref: String, default: String, exclusions: Collection<ToolbarKey> = excludedKeys): List<ToolbarKey> {
-    val string = prefs.getString(pref, default)!!
+    val string = prefs.getString(pref, default) ?: default
     return string.split(Separators.ENTRY).mapNotNull {
         val split = it.split(Separators.KV)
         if (split.last() == "true") {
@@ -438,7 +438,7 @@ fun writeCustomKeyCodes(prefs: SharedPreferences, codes: EnumMap<ToolbarKey, Pai
 
 fun readCustomKeyCodes(prefs: SharedPreferences): EnumMap<ToolbarKey, Pair<Int?, Int?>> {
     val map = EnumMap<ToolbarKey, Pair<Int?, Int?>>(ToolbarKey::class.java)
-    prefs.getString(Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES, Defaults.PREF_TOOLBAR_CUSTOM_KEY_CODES)!!
+    (prefs.getString(Settings.PREF_TOOLBAR_CUSTOM_KEY_CODES, Defaults.PREF_TOOLBAR_CUSTOM_KEY_CODES) ?: Defaults.PREF_TOOLBAR_CUSTOM_KEY_CODES)
         .split(";").forEach {
             runCatching {
                 val s = it.split(",")
@@ -449,15 +449,13 @@ fun readCustomKeyCodes(prefs: SharedPreferences): EnumMap<ToolbarKey, Pair<Int?,
 }
 
 fun getCustomKeyCode(key: ToolbarKey, prefs: SharedPreferences): Int? {
-    if (customToolbarKeyCodes == null)
-        customToolbarKeyCodes = readCustomKeyCodes(prefs)
-    return customToolbarKeyCodes!![key]?.first
+    val codes = customToolbarKeyCodes ?: readCustomKeyCodes(prefs).also { customToolbarKeyCodes = it }
+    return codes[key]?.first
 }
 
 fun getCustomLongpressKeyCode(key: ToolbarKey, prefs: SharedPreferences): Int? {
-    if (customToolbarKeyCodes == null)
-        customToolbarKeyCodes = readCustomKeyCodes(prefs)
-    return customToolbarKeyCodes!![key]?.second
+    val codes = customToolbarKeyCodes ?: readCustomKeyCodes(prefs).also { customToolbarKeyCodes = it }
+    return codes[key]?.second
 }
 
 fun clearCustomToolbarKeyCodes() {

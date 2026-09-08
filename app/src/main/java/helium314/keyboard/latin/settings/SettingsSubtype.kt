@@ -69,7 +69,7 @@ data class SettingsSubtype(val locale: Locale, val extraValues: String) {
     }
 
     fun isAdditionalSubtype(prefs: SharedPreferences) =
-        prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+        (prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES)
             .split(Separators.SETS).contains(toPref())
 
     fun isSameAsDefault() = SubtypeSettings.getResourceSubtypesForLocale(locale).any { it.toSettingsSubtype() == this.toPref().toSettingsSubtype() }

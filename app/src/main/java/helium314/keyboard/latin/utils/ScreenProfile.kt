@@ -21,7 +21,6 @@ object ScreenProfileProvider {
     private var cachedProfile: ScreenProfile? = null
     private var cachedConfigHash: Int = 0
 
-    @JvmStatic
     @JvmOverloads
     fun getScreenProfile(
         context: Context,
@@ -59,7 +58,6 @@ object ScreenProfileProvider {
         return profile
     }
 
-    @JvmStatic
     fun invalidateCache() {
         cachedProfile = null
         cachedConfigHash = 0

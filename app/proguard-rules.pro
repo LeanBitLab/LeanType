@@ -1,13 +1,65 @@
-# Keep classes that contain native methods
--keep class * {
+# ============================================================
+# JNI / Native Code Protection — LeanType Keyboard
+# ============================================================
+
+# 1. Keep ALL native method declarations globally
+-keepclasseswithmembernames class * {
     native <methods>;
 }
 
-# Keep classes that are used as a parameter type of methods that are also marked as keep
-# to preserve changing those methods' signature.
--keep class helium314.keyboard.latin.dictionary.Dictionary
--keep class helium314.keyboard.latin.NgramContext
--keep class helium314.keyboard.latin.makedict.ProbabilityInfo
+# 2. Dynamic native registration via RegisterNatives
+-keep class com.android.inputmethod.latin.BinaryDictionary { *; }
+-keep class com.android.inputmethod.latin.BinaryDictionary$Companion { *; }
+-keep class com.android.inputmethod.latin.utils.BinaryDictionaryUtils { *; }
+-keep class com.android.inputmethod.latin.utils.BinaryDictionaryUtils$Companion { *; }
+-keep class com.android.inputmethod.latin.DicTraverseSession { *; }
+-keep class com.android.inputmethod.latin.DicTraverseSession$Companion { *; }
+-keep class com.android.inputmethod.keyboard.ProximityInfo { *; }
+-keep class com.android.inputmethod.keyboard.ProximityInfo$Companion { *; }
+
+# 3. JNI field reflection via GetFieldID
+-keep class com.android.inputmethod.latin.utils.WordInputEventForPersonalization {
+    <fields>;
+    <init>(...);
+}
+
+# 4. JNI library loader
+-keep class helium314.keyboard.latin.utils.JniUtils { *; }
+
+# 5. Native method parameter types to preserve method signatures
+-keep class helium314.keyboard.latin.dictionary.Dictionary { *; }
+-keep class helium314.keyboard.latin.NgramContext { *; }
+-keep class helium314.keyboard.latin.NgramContext$WordInfo { *; }
+-keep class helium314.keyboard.latin.makedict.ProbabilityInfo { *; }
+
+# 6. Enum methods values() and valueOf()
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# 7. Parcelable CREATORs & Serializable
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# 8. Kotlin metadata, @JvmField, and @JvmStatic native
+-keep class kotlin.Metadata { *; }
+-keepclassmembers class * {
+    @kotlin.jvm.JvmField <fields>;
+}
+-keepclassmembers class * {
+    @kotlin.jvm.JvmStatic native <methods>;
+}
+-dontwarn kotlinx.coroutines.**
 
 # after upgrading to gradle 8, stack traces contain "unknown source"
 -keepattributes SourceFile,LineNumberTable

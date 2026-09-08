@@ -161,11 +161,12 @@ fun BackupRestorePreference(setting: Setting) {
             }
         )
     }
-    if (error != null) {
+    val currentError = error
+    if (currentError != null) {
         InfoDialog(
-            if (error!!.startsWith("b"))
-                stringResource(R.string.backup_error, error!!.drop(1))
-            else stringResource(R.string.restore_error, error!!.drop(1))
+            if (currentError.startsWith("b"))
+                stringResource(R.string.backup_error, currentError.drop(1))
+            else stringResource(R.string.restore_error, currentError.drop(1))
         ) { error = null }
     }
 }

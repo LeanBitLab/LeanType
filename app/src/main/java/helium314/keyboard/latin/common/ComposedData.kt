@@ -10,9 +10,9 @@ import kotlin.random.Random
 
 /** An immutable class that encapsulates a snapshot of word composition data. */
 class ComposedData(
-    @JvmField val mInputPointers: InputPointers,
-    @JvmField val mIsBatchMode: Boolean,
-    @JvmField val mTypedWord: String
+    val mInputPointers: InputPointers,
+    val mIsBatchMode: Boolean,
+    val mTypedWord: String
 ) {
     /**
      * Copy the code points in the typed word to a destination array of ints.
@@ -50,7 +50,7 @@ class ComposedData(
             for (i in codePoints.indices) {
                 CoordinateUtils.setXYInArray(coordinates, i, Random.nextBits(2), Random.nextBits(2))
             }
-            return WordComposer().apply { setComposingWord(codePoints, coordinates) }.composedDataSnapshot
+            return WordComposer().apply { setComposingWord(codePoints, coordinates) }.getComposedDataSnapshot()
         }
     }
 }

@@ -236,7 +236,6 @@ class RichInputMethodManager private constructor() {
 
         private val instance = RichInputMethodManager()
 
-        @JvmStatic
         fun getInstance(): RichInputMethodManager {
             instance.checkInitialized()
             return instance
@@ -246,7 +245,6 @@ class RichInputMethodManager private constructor() {
             instance.initInternal(ctx)
         }
 
-        @JvmStatic
         fun isInitialized() = instance.isInitializedInternal
 
         private var forcedSubtypeForTesting: RichInputMethodSubtype? = null

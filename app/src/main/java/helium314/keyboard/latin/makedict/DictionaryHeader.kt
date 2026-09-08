@@ -16,16 +16,14 @@ import java.util.Locale
  * Class representing dictionary header.
  */
 class DictionaryHeader(
-    @JvmField val mDictionaryOptions: DictionaryOptions,
+    val mDictionaryOptions: DictionaryOptions,
 ) {
     val mLocaleString = mDictionaryOptions.mAttributes[DICTIONARY_LOCALE_KEY]
         ?: throw UnsupportedFormatException("Cannot create a FileHeader without a locale")
-    @JvmField
     val mVersionString = mDictionaryOptions.mAttributes[DICTIONARY_VERSION_KEY]
         ?: throw UnsupportedFormatException(
             "Cannot create a FileHeader without a version"
         )
-    @JvmField
     val mIdString = mDictionaryOptions.mAttributes[DICTIONARY_ID_KEY]
         ?: throw UnsupportedFormatException("Cannot create a FileHeader without an ID")
     private val mDate = mDictionaryOptions.mAttributes[DICTIONARY_DATE_KEY]?.toIntOrNull()

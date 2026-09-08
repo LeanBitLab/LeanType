@@ -103,12 +103,10 @@ object DictionaryInfoUtils {
         return absoluteDirectoryName
     }
 
-    @JvmStatic
     fun getLocalesWithEmojiDicts(context: Context): List<Locale> =
         SubtypeSettings.getEnabledSubtypes(true)
             .map { it.locale() }.filter { getCachedDictForLocaleAndType(it, Dictionary.TYPE_EMOJI, context) != null }
 
-    @JvmStatic
     fun getCachedDictForLocaleAndType(locale: Locale, type: String, context: Context): File? =
         getCachedDictsForLocale(locale, context).firstOrNull { it.name.substringBefore("_") == type }
 
@@ -220,7 +218,6 @@ object DictionaryInfoUtils {
     fun getAssetsDictionaryList(context: Context): Array<String>? =
         runCatching { context.assets.list(ASSETS_DICTIONARY_FOLDER) }.getOrNull()
 
-    @JvmStatic
     fun looksValidForDictionaryInsertion(text: CharSequence, spacingAndPunctuations: SpacingAndPunctuations): Boolean {
         if (TextUtils.isEmpty(text)) {
             return false

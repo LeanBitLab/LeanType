@@ -66,7 +66,7 @@ object SubtypeUtilsAdditional {
     fun removeAdditionalSubtype(context: Context, subtype: InputMethodSubtype) {
         val prefs = context.prefs()
         SubtypeSettings.removeEnabledSubtype(context, subtype)
-        val oldAdditionalSubtypesString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!
+        val oldAdditionalSubtypesString = prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES
         val oldAdditionalSubtypes = SubtypeSettings.createSettingsSubtypes(oldAdditionalSubtypesString)
         val settingsSubtype = subtype.toSettingsSubtype()
         val newAdditionalSubtypes = oldAdditionalSubtypes.filter { it != settingsSubtype }
@@ -79,10 +79,10 @@ object SubtypeUtilsAdditional {
     fun changeAdditionalSubtype(from: SettingsSubtype, to: SettingsSubtype, context: Context) {
         val prefs = context.prefs()
         // read now because there may be an intermediate state where the subtype is invalid and thus removed
-        val isSelected = prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE)!!.toSettingsSubtype() == from
-        val isEnabled = prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!.split(Separators.SETS)
+        val isSelected = (prefs.getString(Settings.PREF_SELECTED_SUBTYPE, Defaults.PREF_SELECTED_SUBTYPE) ?: Defaults.PREF_SELECTED_SUBTYPE).toSettingsSubtype() == from
+        val isEnabled = (prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES).split(Separators.SETS)
             .any { it.toSettingsSubtype() == from }
-        val additionalSubtypes = SubtypeSettings.createSettingsSubtypes(prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES)!!)
+        val additionalSubtypes = SubtypeSettings.createSettingsSubtypes(prefs.getString(Settings.PREF_ADDITIONAL_SUBTYPES, Defaults.PREF_ADDITIONAL_SUBTYPES) ?: Defaults.PREF_ADDITIONAL_SUBTYPES)
             .toMutableList()
         additionalSubtypes.remove(from)
         if (!to.isSameAsDefault()) {
@@ -98,7 +98,7 @@ object SubtypeUtilsAdditional {
             editor.putString(Settings.PREF_SELECTED_SUBTYPE, to.toPref())
         }
         if (isEnabled) {
-            val enabled = SubtypeSettings.createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES)!!)
+            val enabled = SubtypeSettings.createSettingsSubtypes(prefs.getString(Settings.PREF_ENABLED_SUBTYPES, Defaults.PREF_ENABLED_SUBTYPES) ?: Defaults.PREF_ENABLED_SUBTYPES)
                 .toMutableList()
             enabled.remove(from)
             enabled.add(to)

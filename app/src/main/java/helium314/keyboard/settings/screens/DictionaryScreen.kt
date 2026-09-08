@@ -332,10 +332,11 @@ fun DictionaryScreen(
             }
         )
     }
-    if (selectedLocale != null) {
+    val currentSelectedLocale = selectedLocale
+    if (currentSelectedLocale != null) {
         DictionaryDialog(
             onDismissRequest = { selectedLocale = null },
-            locale = selectedLocale!!
+            locale = currentSelectedLocale
         )
     }
 }

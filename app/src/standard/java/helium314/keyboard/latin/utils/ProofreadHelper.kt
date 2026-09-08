@@ -29,19 +29,16 @@ object ProofreadHelper {
     private var currentJob: Job? = null
     
     // Check if an operation is in progress
-    @JvmStatic
     val isOperationInProgress: Boolean
         get() = currentJob?.isActive == true
     
     // Store original text for potential undo
-    @JvmStatic
     var lastOriginalText: String? = null
         private set
     
     /**
      * Preload the model in the background to avoid initial latency.
      */
-    @JvmStatic
     fun preloadModel(context: Context) {
         // No-op for standard flavor (runs API based proofreader)
     }
@@ -49,7 +46,6 @@ object ProofreadHelper {
     /**
      * Cancel the current proofreading/translation operation if one is in progress.
      */
-    @JvmStatic
     fun cancelCurrentOperation() {
         if (currentJob?.isActive == true) {
             currentJob?.cancel()
@@ -166,7 +162,6 @@ object ProofreadHelper {
      * @param onSuccess Callback with proofread text
      * @param onError Callback with error message
      */
-    @JvmStatic
     fun proofreadAsync(
         context: Context,
         text: String,
@@ -196,7 +191,6 @@ object ProofreadHelper {
     /**
      * Java-friendly version using callback interface.
      */
-    @JvmStatic
     fun proofreadAsync(
         context: Context,
         text: String,
@@ -355,7 +349,6 @@ object ProofreadHelper {
      * @param onSuccess Callback for successful translation
      * @param onError Callback for error
      */
-    @JvmStatic
     fun translateAsync(
         context: Context,
         text: String,
@@ -496,7 +489,6 @@ object ProofreadHelper {
     /**
      * Simple Java-friendly interface for translation (reuses ProofreadCallback).
      */
-    @JvmStatic
     fun translateAsync(
         context: Context,
         text: String,
@@ -514,7 +506,6 @@ object ProofreadHelper {
     /**
      * Perform custom AI action asynchronously.
      */
-    @JvmStatic
     fun customAsync(
         context: Context,
         text: String,
@@ -539,7 +530,6 @@ object ProofreadHelper {
     /**
      * Java-friendly interface for custom action.
      */
-    @JvmStatic
     fun customAsync(
         context: Context,
         text: String,

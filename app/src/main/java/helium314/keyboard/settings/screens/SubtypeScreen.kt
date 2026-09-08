@@ -295,7 +295,7 @@ fun SubtypeScreen(
                             val value = explicitValue ?: prefs.getString(
                                 Settings.PREF_MORE_POPUP_KEYS,
                                 Defaults.PREF_MORE_POPUP_KEYS
-                            )!!
+                            ) ?: Defaults.PREF_MORE_POPUP_KEYS
                             ActionRow(onClick = { showMorePopupsDialog = true }) {
                                 Text(stringResource(morePopupKeysResId(value)),
                                     modifier = Modifier
@@ -397,7 +397,7 @@ fun SubtypeScreen(
                 initialValue = setting ?: prefs.getString(
                     Settings.PREF_POPUP_KEYS_ORDER,
                     Defaults.PREF_POPUP_KEYS_ORDER
-                )!!,
+                ) ?: Defaults.PREF_POPUP_KEYS_ORDER,
                 title = stringResource(R.string.popup_order),
                 showDefault = setting != null,
                 onConfirmed = {
@@ -415,7 +415,7 @@ fun SubtypeScreen(
                 initialValue = setting ?: prefs.getString(
                     Settings.PREF_POPUP_KEYS_LABELS_ORDER,
                     Defaults.PREF_POPUP_KEYS_LABELS_ORDER
-                )!!,
+                ) ?: Defaults.PREF_POPUP_KEYS_LABELS_ORDER,
                 title = stringResource(R.string.hint_source),
                 showDefault = setting != null,
                 onConfirmed = {
@@ -546,9 +546,10 @@ private fun MainLayoutRow(
                 )
             }
         }
-        if (showLayoutEditDialog != null) {
-            val layoutName = showLayoutEditDialog!!.first
-            val startContent = showLayoutEditDialog?.second
+        val layoutEditDialog = showLayoutEditDialog
+        if (layoutEditDialog != null) {
+            val layoutName = layoutEditDialog.first
+            val startContent = layoutEditDialog.second
                 ?: if (layoutName in appLayouts) LayoutUtils.getContentWithPlus(layoutName, currentSubtype.locale, ctx)
                 else null
             LayoutEditDialog(

@@ -80,8 +80,9 @@ fun TranslationModelDownloadDialog(
         }
     }
 
-    if (pendingImportUri != null) {
-        val uri = pendingImportUri!!
+    val currentImportUri = pendingImportUri
+    if (currentImportUri != null) {
+        val uri = currentImportUri
         val fileName = remember(uri) { TranslationModelImporter.getFilename(context, uri) ?: uri.lastPathSegment ?: "model.zip" }
         val detectedLangCode = remember(uri) { TranslationModelImporter.detectLanguageCode(context, uri) }
         val enabledLanguages = remember { SubtypeSettings.getEnabledSubtypes(true).map { it.locale().language } }
@@ -131,11 +132,12 @@ fun TranslationModelDownloadDialog(
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.padding(bottom = 12.dp)
                     )
-                    if (sortedLanguages.isNotEmpty() && selectedLanguage != null) {
+                    val lang = selectedLanguage
+                    if (sortedLanguages.isNotEmpty() && lang != null) {
                         WithSmallTitle(stringResource(R.string.button_select_language)) {
                             DropDownField(
                                 items = sortedLanguages,
-                                selectedItem = selectedLanguage!!,
+                                selectedItem = lang,
                                 onSelected = { selectedLanguage = it }
                             ) { item ->
                                 Text(item.displayName)

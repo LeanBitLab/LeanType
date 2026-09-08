@@ -34,7 +34,7 @@ import java.util.EnumMap
 import androidx.core.graphics.toColorInt
 
 class KeyboardTheme // Note: The themeId should be aligned with "themeId" attribute of Keyboard style in values/themes-<style>.xml.
-private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
+private constructor(val themeId: Int, val mStyleId: Int) {
     override fun equals(other: Any?) = if (other === this) true
         else (other as? KeyboardTheme)?.themeId == themeId
 
@@ -118,7 +118,6 @@ private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
         const val COLOR_SPACEBAR_TEXT = "spacebar_text"
         const val COLOR_BACKGROUND = "background"
 
-        @JvmStatic
         fun getKeyboardTheme(context: Context): KeyboardTheme {
             val prefs = context.prefs()
             val style = prefs.getString(Settings.PREF_THEME_STYLE, Defaults.PREF_THEME_STYLE)
@@ -135,7 +134,6 @@ private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
             return if (themeId == THEME_ID_LXX_BASE || themeId == THEME_ID_ROUNDED_BASE) Key.LABEL_FLAGS_KEEP_BACKGROUND_ASPECT_RATIO else 0
         }
 
-        @JvmStatic
         fun getColorsForCurrentTheme(context: Context): Colors {
             val prefs = context.prefs()
             val isNight = SettingsActivity.forceNight
@@ -406,7 +404,8 @@ private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
 
         fun readUserColors(prefs: SharedPreferences, themeName: String): List<ColorSetting> {
             val key = Settings.PREF_USER_COLORS_PREFIX + themeName
-            return Json.decodeFromString(prefs.getString(key, Defaults.PREF_USER_COLORS)!!)
+            val json = prefs.getString(key, Defaults.PREF_USER_COLORS) ?: Defaults.PREF_USER_COLORS
+            return Json.decodeFromString(json)
         }
 
         fun writeUserMoreColors(prefs: SharedPreferences, themeName: String, value: Int) {
@@ -428,7 +427,7 @@ private constructor(val themeId: Int, @JvmField val mStyleId: Int) {
 
         fun readUserAllColors(prefs: SharedPreferences, themeName: String, fallback: Colors?): EnumMap<ColorType, Int> {
             val key = Settings.PREF_USER_ALL_COLORS_PREFIX + themeName
-            val colorsString = prefs.getString(key, Defaults.PREF_USER_ALL_COLORS)!!
+            val colorsString = prefs.getString(key, Defaults.PREF_USER_ALL_COLORS) ?: Defaults.PREF_USER_ALL_COLORS
             val colorMap = EnumMap<ColorType, Int>(ColorType::class.java)
             colorsString.split(";").forEach {
                 val ct = try {

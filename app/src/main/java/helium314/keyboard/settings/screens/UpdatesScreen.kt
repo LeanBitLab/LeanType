@@ -369,10 +369,12 @@ fun UpdatesScreen(
                                             Button(
                                                 onClick = {
                                                     val localApk = downloadedApkFile
+                                                    val apkUrl = downloadApkUrl
+                                                    val versionTag = latestVersionTag
                                                     if (localApk != null && localApk.exists()) {
                                                         installApk(localApk)
-                                                    } else if (downloadApkUrl != null) {
-                                                        startDownload(downloadApkUrl!!, latestVersionTag!!)
+                                                    } else if (apkUrl != null && versionTag != null) {
+                                                        startDownload(apkUrl, versionTag)
                                                     } else {
                                                         val intent = Intent(Intent.ACTION_VIEW, Links.GITHUB_RELEASES_PAGE.toUri())
                                                         context.startActivity(intent)
@@ -383,7 +385,7 @@ fun UpdatesScreen(
                                                     containerColor = MaterialTheme.colorScheme.primary
                                                 )
                                             ) {
-                                                val btnText = if (downloadedApkFile != null && downloadedApkFile!!.exists()) "Install Now" else "Download & Install"
+                                                val btnText = if (downloadedApkFile?.exists() == true) "Install Now" else "Download & Install"
                                                 Text(btnText, fontWeight = FontWeight.Bold)
                                             }
                                         } else {
@@ -413,9 +415,10 @@ fun UpdatesScreen(
                     ) {
                         Column(modifier = Modifier.padding(vertical = 4.dp)) {
                             val currentVersionText = "Installed: v${BuildConfig.VERSION_NAME} (${BuildConfig.FLAVOR})"
+                            val status = updateCheckStatus
                             val checkDescription = when {
                                 isCheckingUpdates -> stringResource(R.string.updates_checking)
-                                updateCheckStatus != null -> updateCheckStatus!!
+                                status != null -> status
                                 else -> currentVersionText
                             }
 

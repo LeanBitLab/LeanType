@@ -14,7 +14,6 @@ import java.util.*
 
 object EditorInfoCompatUtils {
 
-    @JvmStatic
     fun imeActionName(imeOptions: Int): String {
         return when (val actionId = imeOptions and EditorInfo.IME_MASK_ACTION) {
             EditorInfo.IME_ACTION_UNSPECIFIED -> "actionUnspecified"
@@ -44,7 +43,6 @@ object EditorInfoCompatUtils {
         Log.d(tag, ("All caps: $allCaps, sentence caps: $sentenceCaps, word caps: $wordCaps"))
     }
 
-    @JvmStatic
     fun getHintLocales(editorInfo: EditorInfo?): List<Locale> {
         if (editorInfo == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             return listOf()

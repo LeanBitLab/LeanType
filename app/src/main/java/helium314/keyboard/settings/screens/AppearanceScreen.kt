@@ -154,7 +154,7 @@ fun createAppearanceSettings(context: Context) = listOf(
         var showDialog by rememberSaveable { mutableStateOf(false) }
         Preference(
             name = setting.title,
-            description = prefs.getString(setting.key, Defaults.PREF_THEME_COLORS)!!.getStringResourceOrName("theme_name_", ctx),
+            description = (prefs.getString(setting.key, Defaults.PREF_THEME_COLORS) ?: Defaults.PREF_THEME_COLORS).getStringResourceOrName("theme_name_", ctx),
             onClick = { showDialog = true }
         )
         if (showDialog)
@@ -174,7 +174,7 @@ fun createAppearanceSettings(context: Context) = listOf(
         var showDialog by rememberSaveable { mutableStateOf(false) }
         Preference(
             name = setting.title,
-            description = prefs.getString(setting.key, Defaults.PREF_THEME_COLORS_NIGHT)!!.getStringResourceOrName("theme_name_", ctx),
+            description = (prefs.getString(setting.key, Defaults.PREF_THEME_COLORS_NIGHT) ?: Defaults.PREF_THEME_COLORS_NIGHT).getStringResourceOrName("theme_name_", ctx),
             onClick = { showDialog = true }
         )
         if (showDialog)

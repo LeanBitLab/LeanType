@@ -43,7 +43,7 @@ class EmojiParser(private val params: KeyboardParams, private val context: Conte
         } else {
             context.assets.open("emoji/$emojiFileName").reader().use { it.readLines() }
         }
-        val defaultSkinTone = context.prefs().getString(Settings.PREF_EMOJI_SKIN_TONE, Defaults.PREF_EMOJI_SKIN_TONE)!!
+        val defaultSkinTone = context.prefs().getString(Settings.PREF_EMOJI_SKIN_TONE, Defaults.PREF_EMOJI_SKIN_TONE) ?: Defaults.PREF_EMOJI_SKIN_TONE
         if (params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY2 && defaultSkinTone != "") {
             // adjust PEOPLE_AND_BODY if we have a non-yellow default skin tone
             val modifiedLines = emojiLines.map { line ->

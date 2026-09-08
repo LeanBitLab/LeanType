@@ -45,10 +45,11 @@ class SingleDictionaryFacilitator(private val dict: Dictionary) : DictionaryFaci
 
     // this will not work from spell checker if used together with a different keyboard app
     fun getSuggestions(word: String): SuggestionResults {
+        val keyboard = KeyboardSwitcher.getInstance().keyboard ?: return SuggestionResults(0, false, false)
         val suggestionResults = getSuggestionResults(
             ComposedData.createForWord(word),
             NgramContext.getEmptyPrevWordsContext(0),
-            KeyboardSwitcher.getInstance().keyboard, // looks like actual keyboard doesn't matter (composed data doesn't contain coordinates)
+            keyboard, // looks like actual keyboard doesn't matter (composed data doesn't contain coordinates)
             SettingsValuesForSuggestion(false, false, "fallback"),
             Suggest.SESSION_ID_TYPING, SuggestedWords.INPUT_STYLE_TYPING
         )
@@ -96,9 +97,9 @@ class SingleDictionaryFacilitator(private val dict: Dictionary) : DictionaryFaci
 
     override fun isActive(): Boolean = true
 
-    override fun getMainLocale(): Locale = dict.mLocale
+    override val mainLocale: Locale get() = dict.mLocale ?: Locale.ROOT
 
-    override fun getCurrentLocale(): Locale = mainLocale
+    override val currentLocale: Locale get() = mainLocale
 
     override fun usesSameSettings(locales: List<Locale>, contacts: Boolean, apps: Boolean, personalization: Boolean): Boolean {
         return locales.singleOrNull() == mainLocale

@@ -76,10 +76,7 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Settings.getValues() == null) {
-            val inputAttributes = InputAttributes(EditorInfo(), false, packageName)
-            Settings.getInstance().loadSettings(this, resources.configuration.locale(), inputAttributes, helium314.keyboard.latin.utils.ScriptUtils.SCRIPT_UNKNOWN)
-        }
+        Settings.getInstance().loadSettings(this)
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute { cleanUnusedMainDicts(this) }
         crashReportFiles.value = findCrashReports(!BuildConfig.DEBUG && !DebugFlags.DEBUG_ENABLED)
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -123,9 +120,9 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
                                         BackButton { this@SettingsActivity.finish() }
                                     },
                                 )
-                                settingsContainer[Settings.PREF_USE_CONTACTS]!!.Preference()
-                                settingsContainer[Settings.PREF_USE_APPS]!!.Preference()
-                                settingsContainer[Settings.PREF_BLOCK_POTENTIALLY_OFFENSIVE]!!.Preference()
+                                settingsContainer[Settings.PREF_USE_CONTACTS]?.Preference()
+                                settingsContainer[Settings.PREF_USE_APPS]?.Preference()
+                                settingsContainer[Settings.PREF_BLOCK_POTENTIALLY_OFFENSIVE]?.Preference()
                             }
                         }
                     else {

@@ -1,0 +1,13 @@
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ * modified
+ * SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
+ */
+
+package helium314.keyboard.latin.settings
+
+class SettingsValuesForSuggestion(
+    val mBlockPotentiallyOffensive: Boolean,
+    val mSpaceAwareGesture: Boolean,
+    val mGestureMethod: String
+)

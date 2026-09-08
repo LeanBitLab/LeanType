@@ -6,9 +6,6 @@ import helium314.keyboard.ShadowBinaryDictionaryUtils
 import helium314.keyboard.ShadowInputMethodManager2
 import helium314.keyboard.ShadowLocaleManagerCompat
 import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo
-import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo.KIND_FLAG_APPROPRIATE_FOR_AUTO_CORRECTION
-import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo.KIND_SHORTCUT
-import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo.KIND_WHITELIST
 import helium314.keyboard.latin.common.ComposedData
 import helium314.keyboard.latin.common.StringUtils
 import helium314.keyboard.latin.dictionary.Dictionary
@@ -342,9 +339,9 @@ fun suggestion(word: String, score: Int, locale: Locale, shortcut: Boolean = fal
         // when previous word context is empty, scores are usually 200+ if word is known and somewhat often used, 0 if unknown
         /* score */ score,
 
-        /* kindAndFlags */ if (score == Int.MAX_VALUE) KIND_WHITELIST
-            else if (shortcut) KIND_SHORTCUT // whitelist & shortcut only counts a whitelist
-            else KIND_FLAG_APPROPRIATE_FOR_AUTO_CORRECTION, // shortcuts seem to never have this flag
+        /* kindAndFlags */ if (score == Int.MAX_VALUE) SuggestedWordInfo.KIND_WHITELIST
+            else if (shortcut) SuggestedWordInfo.KIND_SHORTCUT // whitelist & shortcut only counts a whitelist
+            else SuggestedWordInfo.KIND_FLAG_APPROPRIATE_FOR_AUTO_CORRECTION, // shortcuts seem to never have this flag
         /* sourceDict */ TestDict(locale),
         /* indexOfTouchPointOfSecondWord */ 0, // irrelevant
         /* autoCommitFirstWordConfidence */ 0 // irrelevant?
@@ -360,19 +357,18 @@ class ShadowFacilitator {
 
 private class TestDict(locale: Locale) : Dictionary("testDict", locale) {
     override fun getSuggestions(
-        composedData: ComposedData?,
-        ngramContext: NgramContext?,
+        composedData: ComposedData,
+        ngramContext: NgramContext,
         proximityInfoHandle: Long,
-        settingsValuesForSuggestion: SettingsValuesForSuggestion?,
+        settingsValuesForSuggestion: SettingsValuesForSuggestion,
         sessionId: Int,
         weightForLocale: Float,
         inOutWeightOfLangModelVsSpatialModel: FloatArray?
-    ): ArrayList<SuggestedWordInfo> {
+    ): ArrayList<SuggestedWordInfo>? {
         TODO("Not yet implemented")
     }
 
-    override fun isInDictionary(word: String?): Boolean {
+    override fun isInDictionary(word: String): Boolean {
         TODO("Not yet implemented")
     }
-
 }

@@ -143,13 +143,13 @@ class ClipboardHistoryRecyclerView @JvmOverloads constructor(
     }
 
     private fun checkAdapterContentChange() {
-        if (placeholderView == null) return
+        val placeholder = placeholderView ?: return
         val adapterIsEmpty = adapter == null || adapter?.itemCount == 0
         if (isVisible && adapterIsEmpty) {
-            placeholderView!!.visibility = VISIBLE
+            placeholder.visibility = VISIBLE
             visibility = INVISIBLE
         } else if (isInvisible && !adapterIsEmpty) {
-            placeholderView!!.visibility = INVISIBLE
+            placeholder.visibility = INVISIBLE
             visibility = VISIBLE
         }
     }
