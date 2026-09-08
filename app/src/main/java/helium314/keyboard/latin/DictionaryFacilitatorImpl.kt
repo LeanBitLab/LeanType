@@ -575,6 +575,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         if (eventType != Constants.EVENT_BACKSPACE) {
             currentlyPreferredDictionaryGroup.getSubDict(Dictionary.TYPE_USER_HISTORY)?.removeUnigramEntryDynamically(word)
         }
+        sessionWordBoost?.removeWord(word)
 
         // Update the spelling cache after unlearning. Words that are removed from user history
         // and appear in no other language model are not considered valid.
@@ -749,6 +750,23 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                 if (word.length == 1 && info.mSourceDict.mDictType == Dictionary.TYPE_EMOJI && !StringUtils.mightBeEmoji(word[0].code))
                     continue
 
+                // ==========================================
+                // 1. User Dictionary Authority (Hard Priority)
+                // Explicitly added user words act as whitelists and bypass standard weighting.
+                // ==========================================
+                if (dictType == Dictionary.TYPE_USER) {
+                    val authoritativeScore = SuggestedWordInfo.MAX_SCORE - 2
+                    val authoritativeKind = info.mKindAndFlags or SuggestedWordInfo.KIND_WHITELIST
+                    suggestions.add(
+                        SuggestedWordInfo(
+                            info.mWord, info.mPrevWordsContext, authoritativeScore,
+                            authoritativeKind, info.mSourceDict,
+                            info.mIndexOfTouchPointOfSecondWord, info.mAutoCommitFirstWordConfidence
+                        )
+                    )
+                    continue
+                }
+
                 val settingsValues = Settings.getValues()
                 val balance = settingsValues.mSuggestionBalance
                 val (mainWeight, historyWeight, userWeight) = when (balance) {
@@ -758,9 +776,24 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                     Settings.SUGGESTION_BALANCE_HIGHLY_PERSONALIZED -> Triple(0.90f, 1.30f, 1.40f)
                     else -> Triple(1.00f, 1.00f, 1.00f)
                 }
+
+                // ==========================================
+                // 2. Contextual Gating (MainDict vs UserHistory)
+                // Dampen history unigrams if MainDict has a strong contextual bigram.
+                // ==========================================
+                var effectiveHistoryWeight = historyWeight
+                if (dictType == Dictionary.TYPE_USER_HISTORY && ngramContext.isValid) {
+                    val maxMainScore = suggestions
+                        .filter { it.mSourceDict?.mDictType == Dictionary.TYPE_MAIN }
+                        .maxOfOrNull { it.mScore } ?: 0
+                    if (maxMainScore > 180) {
+                        effectiveHistoryWeight *= 0.70f
+                    }
+                }
+
                 val dictWeight = when (dictType) {
                     Dictionary.TYPE_MAIN -> mainWeight
-                    Dictionary.TYPE_USER_HISTORY -> historyWeight
+                    Dictionary.TYPE_USER_HISTORY -> effectiveHistoryWeight
                     Dictionary.TYPE_USER -> userWeight
                     else -> 1.00f
                 }
