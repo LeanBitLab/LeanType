@@ -334,7 +334,14 @@ class ClipboardHistoryManager(
                 lastPrimaryClipUri = currentUri
                 lastPrimaryClipTimestamp = currentTimestamp
 
-                ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute { fetchPrimaryClip() }
+                ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
+                    fetchPrimaryClip()
+                    mainHandler.post {
+                        if (latinIME.isInputViewShown) {
+                            latinIME.tryShowClipboardSuggestion()
+                        }
+                    }
+                }
                 dontShowCurrentSuggestion = false
                 val prefs = latinIME.prefs()
                 prefs.edit().remove("last_dismissed_clipboard_text").apply()
