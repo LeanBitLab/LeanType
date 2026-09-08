@@ -1211,6 +1211,7 @@ class InputLogic(
             ) {
                 restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
             }
+            inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_LATER)
             return
         }
 
@@ -1371,7 +1372,7 @@ class InputLogic(
                         hasUnlearnedWordBeingDeleted = hasUnlearnedWordBeingDeleted or unlearnWordBeingDeleted(inputTransaction.settingsValues)
                         val codePointBeforeCursorToDeleteAgain = mConnection.codePointBeforeCursor
                         if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
-                            val lengthToDeleteAgain = if (codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)) {
+                            val lengthToDeleteAgain = if (codePointBeforeCursorToDeleteAgain > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursorToDeleteAgain)) {
                                 mConnection.charCountToDeleteBeforeCursor
                             } else {
                                 1
