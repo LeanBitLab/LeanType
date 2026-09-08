@@ -180,32 +180,34 @@ class MoreSuggestions internal constructor(
         }
 
         override fun build(): MoreSuggestions {
+            val suggestedWords = mSuggestedWords ?: return MoreSuggestions(mParams, SuggestedWords.getEmptyInstance())
             val params = mParams
+            val dividerDrawable = params.mDivider
             for (index in mFromIndex until mToIndex) {
                 val x = params.getX(index)
                 val y = params.getY(index)
                 val width = params.getWidth(index)
                 val word: String
                 val info: String?
-                if (isIndexSubjectToAutoCorrection(mSuggestedWords!!, index)) {
+                if (isIndexSubjectToAutoCorrection(suggestedWords, index)) {
                     // INDEX_OF_AUTO_CORRECTION and INDEX_OF_TYPED_WORD got swapped.
-                    word = mSuggestedWords!!.getLabel(SuggestedWords.INDEX_OF_TYPED_WORD)
-                    info = mSuggestedWords!!.getDebugString(SuggestedWords.INDEX_OF_TYPED_WORD)
+                    word = suggestedWords.getLabel(SuggestedWords.INDEX_OF_TYPED_WORD)
+                    info = suggestedWords.getDebugString(SuggestedWords.INDEX_OF_TYPED_WORD)
                 } else {
-                    word = mSuggestedWords!!.getLabel(index)
-                    info = mSuggestedWords!!.getDebugString(index)
+                    word = suggestedWords.getLabel(index)
+                    info = suggestedWords.getDebugString(index)
                 }
                 val key = MoreSuggestionKey(word, info, index, params)
                 params.markAsEdgeKey(key, index)
                 params.onAddKey(key)
                 val columnNumber = params.getColumnNumber(index)
                 val numColumnInRow = params.getNumColumnInRow(index)
-                if (columnNumber < numColumnInRow - 1) {
-                    val divider = Divider(params, params.mDivider!!, x + width, y, params.mDividerWidth, params.mDefaultAbsoluteRowHeight)
+                if (columnNumber < numColumnInRow - 1 && dividerDrawable != null) {
+                    val divider = Divider(params, dividerDrawable, x + width, y, params.mDividerWidth, params.mDefaultAbsoluteRowHeight)
                     params.onAddKey(divider)
                 }
             }
-            return MoreSuggestions(params, mSuggestedWords!!)
+            return MoreSuggestions(params, suggestedWords)
         }
     }
 

@@ -140,8 +140,9 @@ class TouchpadView @JvmOverloads constructor(
             }
 
             override fun onDoubleTap(e: MotionEvent): Boolean {
-                if (mListener != null) {
-                    mListener!!.onDoubleTap()
+                val listener = mListener
+                if (listener != null) {
+                    listener.onDoubleTap()
                     return true
                 }
                 return false
@@ -286,11 +287,12 @@ class TouchpadView @JvmOverloads constructor(
                             mTwoFingerTapCount = 0
                             removeCallbacks(mTwoFingerTapRunnable)
 
-                            if (mListener != null) {
+                            val listener = mListener
+                            if (listener != null) {
                                 if (deltaY < 0) {
-                                    mListener!!.onThreeFingerSwipeUp()
+                                    listener.onThreeFingerSwipeUp()
                                 } else {
-                                    mListener!!.onThreeFingerSwipeDown()
+                                    listener.onThreeFingerSwipeDown()
                                 }
                             }
                         } else {
@@ -306,7 +308,7 @@ class TouchpadView @JvmOverloads constructor(
                                 mTwoFingerTapCount = 0
                                 removeCallbacks(mTwoFingerTapRunnable)
                                 mHasScrolledHorizontally = true
-                                if (mListener != null) mListener!!.onScroll(KeyCode.WORD_RIGHT)
+                                mListener?.onScroll(KeyCode.WORD_RIGHT)
                                 mScrollAccX -= SCROLL_THRESHOLD
                             }
                             while (mScrollAccX <= -SCROLL_THRESHOLD) {
@@ -315,7 +317,7 @@ class TouchpadView @JvmOverloads constructor(
                                 mTwoFingerTapCount = 0
                                 removeCallbacks(mTwoFingerTapRunnable)
                                 mHasScrolledHorizontally = true
-                                if (mListener != null) mListener!!.onScroll(KeyCode.WORD_LEFT)
+                                mListener?.onScroll(KeyCode.WORD_LEFT)
                                 mScrollAccX += SCROLL_THRESHOLD
                             }
                         }
@@ -334,19 +336,19 @@ class TouchpadView @JvmOverloads constructor(
                         if (threshold < 10) threshold = 10
 
                         while (mAccX >= threshold) {
-                            if (mListener != null) mListener!!.onCursorMove(KeyCode.ARROW_RIGHT, mSelectionMode)
+                            mListener?.onCursorMove(KeyCode.ARROW_RIGHT, mSelectionMode)
                             mAccX -= threshold
                         }
                         while (mAccX <= -threshold) {
-                            if (mListener != null) mListener!!.onCursorMove(KeyCode.ARROW_LEFT, mSelectionMode)
+                            mListener?.onCursorMove(KeyCode.ARROW_LEFT, mSelectionMode)
                             mAccX += threshold
                         }
                         while (mAccY >= threshold) {
-                            if (mListener != null) mListener!!.onCursorMove(KeyCode.ARROW_DOWN, mSelectionMode)
+                            mListener?.onCursorMove(KeyCode.ARROW_DOWN, mSelectionMode)
                             mAccY -= threshold
                         }
                         while (mAccY <= -threshold) {
-                            if (mListener != null) mListener!!.onCursorMove(KeyCode.ARROW_UP, mSelectionMode)
+                            mListener?.onCursorMove(KeyCode.ARROW_UP, mSelectionMode)
                             mAccY += threshold
                         }
                     }

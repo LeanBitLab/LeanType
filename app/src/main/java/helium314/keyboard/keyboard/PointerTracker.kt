@@ -127,7 +127,7 @@ class PointerTracker private constructor(
         sGestureStrokeRecognitionParams ?: GestureStrokeRecognitionParams.DEFAULT
     )
     val gestureStrokeDrawingPoints: GestureStrokeDrawingPoints = GestureStrokeDrawingPoints(
-        sGestureStrokeDrawingParams!!
+        requireNotNull(sGestureStrokeDrawingParams) { "sGestureStrokeDrawingParams must be initialized before creating PointerTracker" }
     )
 
     // Returns true if keyboard has been changed by this callback.
@@ -230,10 +230,11 @@ class PointerTracker private constructor(
         if (keyDetector === mKeyDetector && keyboard === mKeyboard) {
             return
         }
-        if (mKeyboard != null) {
+        val oldKeyboard = mKeyboard
+        if (oldKeyboard != null) {
             // changing keyboards may change height
             // since y is measured from top of view, this change needs to be considered in some places
-            keyboardChangeOccupiedHeightDifference = keyboard.mOccupiedHeight - mKeyboard!!.mOccupiedHeight
+            keyboardChangeOccupiedHeightDifference = keyboard.mOccupiedHeight - oldKeyboard.mOccupiedHeight
         }
         mKeyDetector = keyDetector
         mKeyboard = keyboard
@@ -635,7 +636,7 @@ class PointerTracker private constructor(
 
     private fun processDraggingFingerInToNewKey(newKey: Key, x: Int, y: Int, eventTime: Long) {
         var key: Key? = newKey
-        if (callListenerOnPressAndCheckKeyboardLayoutChange(key!!, 0)) {
+        if (callListenerOnPressAndCheckKeyboardLayoutChange(newKey, 0)) {
             key = onMoveKey(x, y)
         }
         onMoveToNewKey(key, x, y)
@@ -1215,12 +1216,15 @@ class PointerTracker private constructor(
             timerProxy: TimerProxy?,
             drawingProxy: DrawingProxy
         ) {
-            sParams = PointerTrackerParams(mainKeyboardViewAttr)
-            sGestureStrokeRecognitionParams = GestureStrokeRecognitionParams(mainKeyboardViewAttr)
-            sGestureStrokeDrawingParams = GestureStrokeDrawingParams(mainKeyboardViewAttr)
+            val params = PointerTrackerParams(mainKeyboardViewAttr)
+            val gestureRecognition = GestureStrokeRecognitionParams(mainKeyboardViewAttr)
+            val gestureDrawing = GestureStrokeDrawingParams(mainKeyboardViewAttr)
+            sParams = params
+            sGestureStrokeRecognitionParams = gestureRecognition
+            sGestureStrokeDrawingParams = gestureDrawing
             sTypingTimeRecorder = TypingTimeRecorder(
-                sGestureStrokeRecognitionParams!!.mStaticTimeThresholdAfterFastTyping,
-                sParams!!.mSuppressKeyPreviewAfterBatchInputDuration
+                gestureRecognition.mStaticTimeThresholdAfterFastTyping,
+                params.mSuppressKeyPreviewAfterBatchInputDuration
             )
 
             val res = mainKeyboardViewAttr.resources

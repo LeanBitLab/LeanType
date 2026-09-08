@@ -262,7 +262,8 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
 
         val x = mLastX
         val y = mLastY
-        if (popupKeysPanel != null || descriptionPanel != null) {
+        val panel = popupKeysPanel ?: descriptionPanel
+        if (panel != null) {
             mPopupKeysKeyboardContainer.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -274,8 +275,7 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
             else
                 key.x + key.width / 2
             val pointY = key.y - (keyboard?.mVerticalGap ?: 0)
-            (popupKeysPanel ?: descriptionPanel!!)
-                .showPopupKeysPanel(this, this, pointX, pointY, mEmojiViewCallback)
+            panel.showPopupKeysPanel(this, this, pointX, pointY, mEmojiViewCallback)
         }
 
         if (popupKeysPanel != null) {
@@ -366,11 +366,12 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
         releaseCurrentKey(false)
 
         val isShowingPopupKeysPanel = isShowingPopupKeysPanel()
-        if (isShowingPopupKeysPanel) {
+        val popupPanel = mPopupKeysPanel
+        if (isShowingPopupKeysPanel && popupPanel != null) {
             val eventTime = e.eventTime
-            val translatedX = mPopupKeysPanel!!.translateX(x)
-            val translatedY = mPopupKeysPanel!!.translateY(y)
-            mPopupKeysPanel!!.onUpEvent(translatedX, translatedY, mPointerId, eventTime)
+            val translatedX = popupPanel.translateX(x)
+            val translatedY = popupPanel.translateY(y)
+            popupPanel.onUpEvent(translatedX, translatedY, mPointerId, eventTime)
             dismissPopupKeysPanel()
         } else if (key != null && key == currentKey && pendingKeyDown != null) {
             pendingKeyDown.run()
@@ -407,11 +408,12 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
             registerLongPress(key)
         }
 
-        if (isShowingPopupKeysPanel) {
+        val movePanel = mPopupKeysPanel
+        if (isShowingPopupKeysPanel && movePanel != null) {
             val eventTime = e.eventTime
-            val translatedX = mPopupKeysPanel!!.translateX(x)
-            val translatedY = mPopupKeysPanel!!.translateY(y)
-            mPopupKeysPanel!!.onMoveEvent(translatedX, translatedY, mPointerId, eventTime)
+            val translatedX = movePanel.translateX(x)
+            val translatedY = movePanel.translateY(y)
+            movePanel.onMoveEvent(translatedX, translatedY, mPointerId, eventTime)
         }
 
         mLastX = x

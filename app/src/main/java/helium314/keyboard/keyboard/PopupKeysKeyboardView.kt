@@ -104,12 +104,12 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
             -paddingTop.toFloat() + verticalCorrection
         )
         if (AccessibilityUtils.instance.isAccessibilityEnabled) {
-            if (mAccessibilityDelegate == null) {
-                mAccessibilityDelegate = PopupKeysKeyboardAccessibilityDelegate(this, mKeyDetector)
-                mAccessibilityDelegate!!.setOpenAnnounce(R.string.spoken_open_popup_keys_keyboard)
-                mAccessibilityDelegate!!.setCloseAnnounce(R.string.spoken_close_popup_keys_keyboard)
+            val delegate = mAccessibilityDelegate ?: PopupKeysKeyboardAccessibilityDelegate(this, mKeyDetector).also {
+                it.setOpenAnnounce(R.string.spoken_open_popup_keys_keyboard)
+                it.setCloseAnnounce(R.string.spoken_close_popup_keys_keyboard)
+                mAccessibilityDelegate = it
             }
-            mAccessibilityDelegate!!.keyboard = keyboard
+            delegate.keyboard = keyboard
         } else {
             mAccessibilityDelegate = null
         }
@@ -166,7 +166,7 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         val panelMaxX = parentView.measuredWidth - measuredWidth
         val panelFinalX = max(0, min(panelMaxX, x))
         val center = panelFinalX + measuredWidth / 2
-        val keyboard = keyboard!!
+        val keyboard = keyboard ?: return
         val layoutGravity = when {
             center < pointX - keyboard.mMostCommonKeyWidth / 2 -> Gravity.RIGHT
             center > pointX + keyboard.mMostCommonKeyWidth / 2 -> Gravity.LEFT
@@ -230,9 +230,10 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         // Calling detectKey here is harmless because the last move event and
         // the following up event share the same coordinates.
         mCurrentKey = detectKey(x, y)
-        if (mCurrentKey != null) {
-            updateReleaseKeyGraphics(mCurrentKey!!)
-            onKeyInput(mCurrentKey!!, x, y)
+        val currentKey = mCurrentKey
+        if (currentKey != null) {
+            updateReleaseKeyGraphics(currentKey)
+            onKeyInput(currentKey, x, y)
             mCurrentKey = null
         }
     }
@@ -241,15 +242,16 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
      * Performs the specific action for this panel when the user presses a key on the panel.
      */
     protected open fun onKeyInput(key: Key, x: Int, y: Int) {
-        if (mListener != null) {
+        val listener = mListener
+        if (listener != null) {
             val code = key.code
             if (code == KeyCode.MULTIPLE_CODE_POINTS) {
-                mListener!!.onTextInput(key.outputText)
+                listener.onTextInput(key.outputText)
             } else if (code != KeyCode.NOT_SPECIFIED) {
-                if (keyboard!!.hasProximityCharsCorrection(code)) {
-                    mListener!!.onCodeInput(code, x, y, false /* isKeyRepeat */)
+                if (keyboard?.hasProximityCharsCorrection(code) == true) {
+                    listener.onCodeInput(code, x, y, false /* isKeyRepeat */)
                 } else {
-                    mListener!!.onCodeInput(
+                    listener.onCodeInput(
                         code,
                         Constants.NOT_A_COORDINATE,
                         Constants.NOT_A_COORDINATE,
@@ -257,8 +259,8 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
                     )
                 }
             }
-        } else if (mEmojiViewCallback != null) {
-            mEmojiViewCallback!!.onReleaseKey(key)
+        } else {
+            mEmojiViewCallback?.onReleaseKey(key)
         }
     }
 

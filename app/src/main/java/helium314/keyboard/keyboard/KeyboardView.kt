@@ -165,7 +165,8 @@ open class KeyboardView @JvmOverloads constructor(
     private fun maybeAllocateOffscreenBuffer(): Boolean {
         val w = width; val h = height
         if (w == 0 || h == 0) return false
-        if (mOffscreenBuffer != null && mOffscreenBuffer!!.width == w && mOffscreenBuffer!!.height == h) return false
+        val buffer = mOffscreenBuffer
+        if (buffer != null && buffer.width == w && buffer.height == h) return false
         freeOffscreenBuffer()
         mOffscreenBuffer = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         return true
@@ -246,7 +247,7 @@ open class KeyboardView @JvmOverloads constructor(
 
     protected open fun onDrawKeyBackground(key: Key, canvas: Canvas, background: Drawable) {
         var customColor = 0
-        val isTextEditMode = KeyboardActionListenerImpl.sPersistentTextEditModeActive || (keyboard != null && keyboard!!.mId.mElementId == KeyboardId.ELEMENT_TEXT_EDIT)
+        val isTextEditMode = KeyboardActionListenerImpl.sPersistentTextEditModeActive || (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT)
         if (isTextEditMode) {
             customColor = when (key.code) {
                 -131, -132, -7, -9 -> mColors.get(ColorType.EDIT_MODE_DELETE_BACKGROUND)
@@ -258,8 +259,9 @@ open class KeyboardView @JvmOverloads constructor(
             }
         }
 
-        val drawBackground = if (customColor != 0 && mEditModeKeyBackground != null) mEditModeKeyBackground!! else background
-        val padding = if (customColor != 0 && mEditModeKeyBackground != null) mEditModeKeyBackgroundPadding else mKeyBackgroundPadding
+        val editBg = mEditModeKeyBackground
+        val drawBackground = if (customColor != 0 && editBg != null) editBg else background
+        val padding = if (customColor != 0 && editBg != null) mEditModeKeyBackgroundPadding else mKeyBackgroundPadding
 
         val keyWidth = key.drawWidth
         val keyHeight = key.height
@@ -352,8 +354,9 @@ open class KeyboardView @JvmOverloads constructor(
             }
 
             if (key.isEnabled) {
-                if (mKeyCustomBgColors.containsKey(key)) {
-                    paint.color = getContrastingColor(mKeyCustomBgColors[key]!!)
+                val customBgColor = mKeyCustomBgColors[key]
+                if (customBgColor != null) {
+                    paint.color = getContrastingColor(customBgColor)
                 } else if (isEmoji(label)) {
                     paint.color = key.selectTextColor(params) or 0xFF000000.toInt()
                 } else if (key.hasActionKeyBackground()) {
@@ -514,8 +517,9 @@ open class KeyboardView @JvmOverloads constructor(
     }
 
     private fun setKeyIconColor(key: Key, icon: Drawable, keyboard: Keyboard?) {
-        if (mKeyCustomBgColors.containsKey(key)) {
-            icon.setColorFilter(getContrastingColor(mKeyCustomBgColors[key]!!), PorterDuff.Mode.SRC_IN)
+        val customBgColor = mKeyCustomBgColors[key]
+        if (customBgColor != null) {
+            icon.setColorFilter(getContrastingColor(customBgColor), PorterDuff.Mode.SRC_IN)
         } else if (key.hasActionKeyBackground()) {
             mColors.setColor(icon, ColorType.ACTION_KEY_ICON)
         } else if (key.isShift() && keyboard != null) {

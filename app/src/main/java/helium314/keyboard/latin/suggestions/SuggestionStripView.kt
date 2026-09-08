@@ -225,12 +225,14 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             wrapper.orientation = LinearLayout.VERTICAL
             
             // Create toolbar row for Expand Key, Toolbar, Pinned Keys
-            toolbarRow = LinearLayout(context)
-            toolbarRow!!.orientation = LinearLayout.HORIZONTAL
-            toolbarRow!!.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                stripHeight
-            )
+            val row = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    stripHeight
+                )
+            }
+            toolbarRow = row
             
             // Remove views from wrapper
             wrapper.removeView(toolbarExpandKey)
@@ -258,12 +260,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             pinnedKeys.layoutParams = pinnedParams
             
             // Add views to toolbar row
-            toolbarRow!!.addView(toolbarExpandKey)
-            toolbarRow!!.addView(toolbarContainer)
-            toolbarRow!!.addView(pinnedKeys)
+            row.addView(toolbarExpandKey)
+            row.addView(toolbarContainer)
+            row.addView(pinnedKeys)
             
             // Add toolbar row to wrapper at the START (Top) - Toolbar at top, Suggestions at bottom
-            wrapper.addView(toolbarRow!!, 0)
+            wrapper.addView(row, 0)
             
             // Set suggestions strip params - use weight to fill remaining space
             val suggestionsParams = LinearLayout.LayoutParams(

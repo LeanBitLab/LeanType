@@ -210,10 +210,11 @@ class MainKeyboardView @JvmOverloads constructor(
     }
 
     private fun showKeyPreview(key: Key) {
+        val kbd = keyboard ?: return
         locatePreviewPlacerView()
         getLocationInWindow(mOriginCoords)
         val fullWidth = KeyboardSwitcher.getInstance().wrapperView?.width ?: width
-        mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard!!.mIconsSet, keyDrawParams, fullWidth, mOriginCoords, mDrawingPreviewPlacerView)
+        mKeyPreviewChoreographer.placeAndShowKeyPreview(key, kbd.mIconsSet, keyDrawParams, fullWidth, mOriginCoords, mDrawingPreviewPlacerView)
     }
 
     private fun dismissKeyPreviewWithoutDelay(key: Key) { mKeyPreviewChoreographer.dismissKeyPreview(key); invalidateKey(key) }
@@ -268,10 +269,11 @@ class MainKeyboardView @JvmOverloads constructor(
 
     override fun showPopupKeysKeyboard(key: Key, tracker: PointerTracker): PopupKeysPanel? {
         val popupKeys = key.popupKeys ?: return null
+        val kbd = keyboard ?: return null
         var popupKeysKeyboard = mPopupKeysKeyboardCache[key]
         if (popupKeysKeyboard == null) {
             val isSinglePopupKeyWithPreview = mKeyPreviewDrawParams.isPopupEnabled() && key.hasPreview() && popupKeys.size == 1 && mKeyPreviewDrawParams.getVisibleWidth() > 0
-            val builder = PopupKeysKeyboard.Builder(context, key, keyboard!!, isSinglePopupKeyWithPreview, mKeyPreviewDrawParams.getVisibleWidth(), mKeyPreviewDrawParams.getVisibleHeight(), newLabelPaint(key))
+            val builder = PopupKeysKeyboard.Builder(context, key, kbd, isSinglePopupKeyWithPreview, mKeyPreviewDrawParams.getVisibleWidth(), mKeyPreviewDrawParams.getVisibleHeight(), newLabelPaint(key))
             popupKeysKeyboard = builder.build()
             mPopupKeysKeyboardCache[key] = popupKeysKeyboard
         }
@@ -301,7 +303,7 @@ class MainKeyboardView @JvmOverloads constructor(
         mPopupKeysPanel = panel
     }
 
-    fun isShowingPopupKeysPanel(): Boolean = mPopupKeysPanel != null && mPopupKeysPanel!!.isShowingInParent
+    fun isShowingPopupKeysPanel(): Boolean = mPopupKeysPanel?.isShowingInParent == true
     override fun onCancelPopupKeysPanel() { PointerTracker.dismissAllPopupKeysPanels() }
     override fun onDismissPopupKeysPanel() { if (isShowingPopupKeysPanel()) { mPopupKeysPanel?.removeFromParent(); mPopupKeysPanel = null } }
 
