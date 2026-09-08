@@ -604,22 +604,28 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
                 }
 
                 KeyEvent.KEYCODE_DEL -> {
-                    if (mComposingText.isEmpty()) {
-                        if (mCommittedTextBeforeComposingText.isNotEmpty()) {
-                            mCommittedTextBeforeComposingText.delete(
-                                mCommittedTextBeforeComposingText.length - 1,
-                                mCommittedTextBeforeComposingText.length
-                            )
-                        }
+                    val hadSelection = mExpectedSelStart != mExpectedSelEnd
+                    if (hadSelection) {
+                        mExpectedSelEnd = mExpectedSelStart
+                        mComposingText.setLength(0)
                     } else {
-                        mComposingText.delete(mComposingText.length - 1, mComposingText.length)
-                    }
+                        if (mComposingText.isEmpty()) {
+                            if (mCommittedTextBeforeComposingText.isNotEmpty()) {
+                                mCommittedTextBeforeComposingText.delete(
+                                    mCommittedTextBeforeComposingText.length - 1,
+                                    mCommittedTextBeforeComposingText.length
+                                )
+                            }
+                        } else {
+                            mComposingText.delete(mComposingText.length - 1, mComposingText.length)
+                        }
 
-                    if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
-                        mExpectedSelStart -= 1
-                    }
+                        if (mExpectedSelStart > 0) {
+                            mExpectedSelStart -= 1
+                        }
 
-                    mExpectedSelEnd = mExpectedSelStart
+                        mExpectedSelEnd = mExpectedSelStart
+                    }
                 }
 
                 KeyEvent.KEYCODE_UNKNOWN -> {

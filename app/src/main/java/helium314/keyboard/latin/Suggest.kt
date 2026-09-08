@@ -299,6 +299,20 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 }
             }
 
+            // Suppress auto-correcting to a titlecase/uppercase variant when user deliberately typed all lowercase mid-sentence (Issue #482)
+            val isMidSentenceLowercase = !wordComposer.wasShiftedNoLock()
+                && !wordComposer.wasAutoCapitalized()
+                && !wordComposer.isAllUpperCase()
+                && consideredWord.all { !it.isLetter() || it.isLowerCase() }
+            if (isMidSentenceLowercase) {
+                val isCaseVariantOnly = !firstSuggestion.mWord.equals(consideredWord, ignoreCase = false)
+                    && firstSuggestion.mWord.equals(consideredWord, ignoreCase = true)
+                val isWhitelist = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_WHITELIST)
+                if (isCaseVariantOnly && !isWhitelist) {
+                    return true to false
+                }
+            }
+
             if (!AutoCorrectionUtils.suggestionExceedsThreshold(firstSuggestion, consideredWord, mAutoCorrectionThreshold)) {
                 // Score is too low for autocorrect — but for long words, the normalized score
                 // formula penalizes proportionally (weight = 1 - editDist/len), so a single typo
