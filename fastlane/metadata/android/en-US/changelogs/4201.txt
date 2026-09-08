@@ -1,5 +1,7 @@
 - 100% Kotlin Migration: Converted all 430 Java source files to idiomatic Kotlin with zero Java files remaining in the application layer.
-- Null-Safety & Interop Hardening: Eliminated 425 force-unwraps (!!) and stripped 920+ legacy @JvmField/@JvmStatic interop annotations.
-- R8 & Binary Size Optimization: Hardened ProGuard/R8 JNI keep rules, shrinking release APK size from 28MB to 11MB (60.7% reduction).
-- Settings & Theme Refinements: Scoped offline AI plugins to the offline flavor and cleaned up main AI preference screens.
-- Full Test Suite Integrity: All 206 unit tests passing across dictionary, suggest, and input engine modules.
+- Appearance: Added user-configurable Key Corner Radius slider (0-20dp) for bordered keys.
+- Suggestion Engine: Added user dictionary authority, smart contextual gating, and instant session typo eviction on backspace.
+- OCR Text Scanner: Defaulted OCR recognition to Latin for faster text extraction, and improved camera viewfinder lifecycle & back-press handling.
+- Input & Auto-Caps: Fixed selection deletion cache desync, restored auto-caps after backspace, and fixed mid-sentence auto-caps (#448, #482).
+- Foldable & Hardware Keyboard: Fixed layout sizing on folded screens (#400) and stabilized Ctrl+Space / Shift+Space language switching (#444).
+- Compatibility & Polish: Guarded voice input on Android <= 8.1, improved AI error handling (#492), and instant clipboard toolbar sync (#493).
