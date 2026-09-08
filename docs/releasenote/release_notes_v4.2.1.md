@@ -6,7 +6,7 @@ As an open-source, community-funded project, we operate on a very limited budget
 
 ### ✨ Highlights
 - **100% Kotlin Migration**: Complete migration of the entire Android application layer from Java to idiomatic Kotlin. 0 Java files remain across the codebase, greatly improving type safety and modern language interoperability.
-- **Key Corner Radius Customization**: Added a user-configurable corner radius slider (0–20dp) in Appearance settings when key borders are active, dynamically shaping key backgrounds and shadow bevels.
+- **Key & Functional Corner Radius Customization**: Added independent user-configurable corner radius sliders for normal and functional keys in Appearance settings when key borders are active, with full theme-default preservation.
 - **Suggestion Engine Intelligence**: Enhanced word ranking with user dictionary authority, smart contextual bigram gating to prevent unigram overrides, and instant session typo eviction on backspace.
 - **Fast OCR Scanning**: Defaulted offline OCR recognition script to Latin for significantly faster single-language scanning, with reordered script picker and improved camera lifecycle.
 - **Null-Safety & Interop Hardening**: Eliminated over 425 force-unwrap (`!!`) assertions across input logic, suggestions, layout, and settings. Stripped 920+ obsolete `@JvmField` and `@JvmStatic` interop annotations.

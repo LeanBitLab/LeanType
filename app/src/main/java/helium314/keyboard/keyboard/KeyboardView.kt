@@ -285,10 +285,17 @@ open class KeyboardView @JvmOverloads constructor(
             bgX = -padding.left
         }
         
-        val radiusDp = Settings.getValues().mKeyBorderRadius
-        if (radiusDp >= 0f && mColors.hasKeyBorders) {
-            val radiusPx = radiusDp * resources.displayMetrics.density
-            mColors.applyKeyBorderRadius(drawBackground, radiusPx)
+        if (mColors.hasKeyBorders) {
+            val isFunctional = key.hasFunctionalBackground() || key.hasActionKeyBackground()
+            val radiusDp = if (isFunctional) {
+                Settings.getValues().mKeyBorderRadiusFunctional
+            } else {
+                Settings.getValues().mKeyBorderRadius
+            }
+            if (radiusDp >= 0f) {
+                val radiusPx = radiusDp * resources.displayMetrics.density
+                mColors.applyKeyBorderRadius(drawBackground, radiusPx)
+            }
         }
 
         drawBackground.setBounds(0, 0, bgWidth, bgHeight)

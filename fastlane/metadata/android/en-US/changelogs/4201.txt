@@ -1,5 +1,5 @@
 - 100% Kotlin Migration: Converted all 430 Java source files to idiomatic Kotlin with zero Java files remaining in the application layer.
-- Appearance: Added user-configurable Key Corner Radius slider (0-20dp) for bordered keys.
+- Appearance: Added independent Key & Functional Corner Radius sliders for bordered keys with theme-default preservation.
 - Suggestion Engine: Added user dictionary authority, smart contextual gating, and instant session typo eviction on backspace.
 - OCR Text Scanner: Defaulted OCR recognition to Latin for faster text extraction, and improved camera viewfinder lifecycle & back-press handling.
 - Input & Auto-Caps: Fixed selection deletion cache desync, restored auto-caps after backspace, and fixed mid-sentence auto-caps (#448, #482).

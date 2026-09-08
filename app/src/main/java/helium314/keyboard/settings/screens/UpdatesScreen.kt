@@ -73,7 +73,7 @@ import java.net.URL
 
 private val currentChangelogItems = listOf(
     "• 100% Kotlin Migration: Complete conversion of all 430 application layer files from Java to modern Kotlin (0 Java files remaining)",
-    "• Key Corner Radius: User-configurable corner radius slider (0–20dp) in Appearance settings when key borders are active",
+    "• Key & Functional Corner Radius: Independent corner radius sliders for normal and functional keys in Appearance settings when key borders are active",
     "• Smart Suggestions: User dictionary authority, contextual bigram gating, and instant session typo eviction on backspace",
     "• Fast OCR Scanning: Defaulted OCR recognition to Latin for faster text extraction, with refined camera lifecycle & back-press handling (#487)",
     "• Input & Auto-Caps Fixes: Fixed selection delete cache desync, restored caps on backspace, and suppressed mid-sentence auto-caps (#448, #482)",

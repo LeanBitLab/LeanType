@@ -1189,6 +1189,8 @@ New dictionary:
     <string name="key_borders">Key borders</string>
     <!-- Option for choosing key corner radius -->
     <string name="key_border_radius">Key corner radius</string>
+    <!-- Option for choosing functional key corner radius -->
+    <string name="key_border_radius_functional">Functional key corner radius</string>
     <!-- Option for choosing auto day/night theme switch -->
     <string name="day_night_mode">Auto day/night mode</string>
     <!-- Description for "day_night_mode" option. -->
