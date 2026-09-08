@@ -218,6 +218,23 @@ object SubtypeSettings {
 
         loadResourceSubtypes(context.resources)
         loadAdditionalSubtypes(context.prefs())
+
+        // Migrate legacy default en-AU to en-US if system locale is not Australia
+        val prefs = context.prefs()
+        val isSystemAu = systemLocales.any { it.country.equals("AU", ignoreCase = true) }
+        if (!isSystemAu) {
+            val oldAuSubtype = "en-AU§SupportTouchPositionCorrection,TrySuppressingImeSwitcher"
+            val newUsSubtype = "en-US§SupportTouchPositionCorrection,TrySuppressingImeSwitcher"
+            val enabledPref = prefs.getString(Settings.PREF_ENABLED_SUBTYPES, null)
+            val selectedPref = prefs.getString(Settings.PREF_SELECTED_SUBTYPE, null)
+            if (enabledPref != null && enabledPref.contains(oldAuSubtype)) {
+                prefs.edit { putString(Settings.PREF_ENABLED_SUBTYPES, enabledPref.replace(oldAuSubtype, newUsSubtype)) }
+            }
+            if (selectedPref != null && selectedPref.contains(oldAuSubtype)) {
+                prefs.edit { putString(Settings.PREF_SELECTED_SUBTYPE, selectedPref.replace(oldAuSubtype, newUsSubtype)) }
+            }
+        }
+
         loadEnabledSubtypes(context)
 
         if (enabledSubtypes.isEmpty()) {

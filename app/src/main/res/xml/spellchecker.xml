@@ -43,13 +43,13 @@
         android:subtypeLocale="en" />
     <subtype
         android:label="@string/subtype_generic"
+        android:subtypeLocale="en_US" />
+    <subtype
+        android:label="@string/subtype_generic"
         android:subtypeLocale="en_AU" />
     <subtype
         android:label="@string/subtype_generic"
         android:subtypeLocale="en_GB" />
-    <subtype
-        android:label="@string/subtype_generic"
-        android:subtypeLocale="en_US" />
     <subtype
         android:label="@string/subtype_generic"
         android:subtypeLocale="eo" />
