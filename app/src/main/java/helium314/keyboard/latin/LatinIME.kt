@@ -736,6 +736,9 @@ class LatinIME : InputMethodService(),
     fun onFinishInputViewInternal(finishingInput: Boolean) {
         super.onFinishInputView(finishingInput)
         Log.i(TAG, "onFinishInputView")
+        if (keyboardSwitcher.isOcrShowing) {
+            keyboardSwitcher.hideOcrPanels()
+        }
         voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
         otpSuggestionManager.stop()
         clipboardHistoryManager.onFinishInputView()
@@ -1362,11 +1365,18 @@ class LatinIME : InputMethodService(),
     }
 
     override fun onKeyDown(keyCode: Int, keyEvent: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && keyboardSwitcher.isOcrShowing) {
+            keyboardSwitcher.hideOcrPanels()
+            return true
+        }
         if (keyboardActionListener.onKeyDown(keyCode, keyEvent)) return true
         return super.onKeyDown(keyCode, keyEvent)
     }
 
     override fun onKeyUp(keyCode: Int, keyEvent: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && keyboardSwitcher.isOcrShowing) {
+            return true
+        }
         if (keyboardActionListener.onKeyUp(keyCode, keyEvent)) return true
         return super.onKeyUp(keyCode, keyEvent)
     }

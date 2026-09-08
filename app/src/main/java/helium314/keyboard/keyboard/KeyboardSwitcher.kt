@@ -202,9 +202,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun onHideWindow() {
         mKeyboardView?.onHideWindow()
-        val ocrCamera = mOcrCameraView
-        if (ocrCamera != null && ocrCamera.isShown) {
-            ocrCamera.stopCamera()
+        if (isOcrShowing) {
+            hideOcrPanels()
         }
     }
 
@@ -542,6 +541,11 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mOcrCameraView?.let {
             it.stopCamera()
             it.visibility = View.GONE
+            val lp = it.layoutParams
+            if (lp != null) {
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                it.layoutParams = lp
+            }
         }
         mOcrResultView?.let { resultView ->
             val resources = mThemeContext?.resources ?: return@let
@@ -566,8 +570,20 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mOcrCameraView?.let {
             if (it.isShown) it.stopCamera()
             it.visibility = View.GONE
+            val lp = it.layoutParams
+            if (lp != null) {
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                it.layoutParams = lp
+            }
         }
-        mOcrResultView?.visibility = View.GONE
+        mOcrResultView?.let {
+            it.visibility = View.GONE
+            val lp = it.layoutParams
+            if (lp != null) {
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                it.layoutParams = lp
+            }
+        }
         mKeyboardView?.let {
             it.visibility = View.VISIBLE
             it.isClickable = true
