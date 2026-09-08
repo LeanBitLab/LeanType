@@ -47,6 +47,7 @@ object ScreenProfileProvider {
 
         val profile = when {
             availableWidthDp >= 600 -> ScreenProfile.LARGE
+            availableWidthDp > 0 -> ScreenProfile.COMPACT
             config.smallestScreenWidthDp >= 600 -> ScreenProfile.LARGE
             else -> ScreenProfile.COMPACT
         }

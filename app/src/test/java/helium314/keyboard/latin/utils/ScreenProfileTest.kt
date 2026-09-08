@@ -46,4 +46,19 @@ class ScreenProfileTest {
         val profile = ScreenProfileProvider.getScreenProfile(context, config)
         assertEquals(ScreenProfile.LARGE, profile)
     }
+
+    @Test
+    fun testScreenProfileFoldedOuterScreenIsCompact() {
+        // When pref_foldable_mode is true, but device is folded (screenWidthDp < 600, though smallestScreenWidthDp >= 600),
+        // it must return COMPACT
+        context.prefs().edit().putBoolean(Settings.PREF_FOLDABLE_MODE, true).apply()
+        ScreenProfileProvider.invalidateCache()
+
+        val config = Configuration().apply {
+            screenWidthDp = 400
+            smallestScreenWidthDp = 800
+        }
+        val profile = ScreenProfileProvider.getScreenProfile(context, config)
+        assertEquals(ScreenProfile.COMPACT, profile)
+    }
 }
