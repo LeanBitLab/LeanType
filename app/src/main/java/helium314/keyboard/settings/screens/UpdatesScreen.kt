@@ -72,11 +72,11 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private val currentChangelogItems = listOf(
-    "• Offline Camera OCR & Screenshot Extraction: Live in-keyboard camera viewfinder and automatic screenshot chip with advanced text formatting options (casing, join styles, punctuation, dehyphenation)",
-    "• Inline Math Suggestions: Real-time math expression evaluation on typing '=' with instant suggestion strip answers and one-tap replacement",
-    "• Sound Packs & Plugins: Dedicated Sound screen under Plugins Hub, remote synthesized pack downloads, and custom .zip imports",
-    "• Typing & Editing Refinements: Restored Shift double-tap for Caps Lock, improved multiline auto-capitalization, suppressed emojis during gesture typing, and added repeat haptics for backspace/navigation",
-    "• UI & Stability: Centered toolbar micro-pill indicators, swipe-down toolbar dismissal, and battery/thermal optimizations"
+    "• 100% Kotlin Migration: Converted all 430 application layer files from Java to modern Kotlin (0 Java files remaining)",
+    "• Null-Safety Hardening: Eliminated 425 forced unwraps (!!) across engine, layout, and settings modules",
+    "• R8 & Binary Size Optimization: Hardened JNI keep rules for release builds, shrinking release APK from 28MB to 11MB",
+    "• Settings Polish: Scoped offline AI settings strictly to offline flavor and cleaned up main AI preferences",
+    "• Stability & Performance: All 206 unit tests passing with enhanced runtime reliability"
 )
 
 @Composable

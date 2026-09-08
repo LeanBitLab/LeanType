@@ -1010,6 +1010,8 @@ class InputLogicTest {
         lastNgramContext = ""
         addedWords.clear()
         ngramContexts.clear()
+        messages.clear()
+        delayedMessages.clear()
 
         // reset settings
         latinIME.prefs().edit {

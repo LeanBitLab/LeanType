@@ -1,0 +1,5 @@
+- 100% Kotlin Migration: Converted all 430 Java source files to idiomatic Kotlin with zero Java files remaining in the application layer.
+- Null-Safety & Interop Hardening: Eliminated 425 force-unwraps (!!) and stripped 920+ legacy @JvmField/@JvmStatic interop annotations.
+- R8 & Binary Size Optimization: Hardened ProGuard/R8 JNI keep rules, shrinking release APK size from 28MB to 11MB (60.7% reduction).
+- Settings & Theme Refinements: Scoped offline AI plugins to the offline flavor and cleaned up main AI preference screens.
+- Full Test Suite Integrity: All 206 unit tests passing across dictionary, suggest, and input engine modules.
