@@ -750,23 +750,6 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                 if (word.length == 1 && info.mSourceDict.mDictType == Dictionary.TYPE_EMOJI && !StringUtils.mightBeEmoji(word[0].code))
                     continue
 
-                // ==========================================
-                // 1. User Dictionary Authority (Hard Priority)
-                // Explicitly added user words act as whitelists and bypass standard weighting.
-                // ==========================================
-                if (dictType == Dictionary.TYPE_USER) {
-                    val authoritativeScore = SuggestedWordInfo.MAX_SCORE - 2
-                    val authoritativeKind = info.mKindAndFlags or SuggestedWordInfo.KIND_WHITELIST
-                    suggestions.add(
-                        SuggestedWordInfo(
-                            info.mWord, info.mPrevWordsContext, authoritativeScore,
-                            authoritativeKind, info.mSourceDict,
-                            info.mIndexOfTouchPointOfSecondWord, info.mAutoCommitFirstWordConfidence
-                        )
-                    )
-                    continue
-                }
-
                 val settingsValues = Settings.getValues()
                 val balance = settingsValues.mSuggestionBalance
                 val (mainWeight, historyWeight, userWeight) = when (balance) {
@@ -778,11 +761,11 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                 }
 
                 // ==========================================
-                // 2. Contextual Gating (MainDict vs UserHistory)
-                // Dampen history unigrams if MainDict has a strong contextual bigram.
+                // Contextual Gating (MainDict vs UserHistory)
+                // Dampen history unigrams for next-word predictions if MainDict has a strong contextual bigram.
                 // ==========================================
                 var effectiveHistoryWeight = historyWeight
-                if (dictType == Dictionary.TYPE_USER_HISTORY && ngramContext.isValid) {
+                if (dictType == Dictionary.TYPE_USER_HISTORY && ngramContext.isValid && composedData.mTypedWord.isEmpty()) {
                     val maxMainScore = suggestions
                         .filter { it.mSourceDict?.mDictType == Dictionary.TYPE_MAIN }
                         .maxOfOrNull { it.mScore } ?: 0
