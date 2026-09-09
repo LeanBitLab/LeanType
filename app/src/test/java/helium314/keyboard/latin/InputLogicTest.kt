@@ -105,6 +105,118 @@ class InputLogicTest {
         assertEquals("there", composingText)
     }
 
+    @Test fun `held backspace accelerates inside a composing word`() {
+        reset()
+        val original = "abcdefghijklmnopqrstuvwxyzabcdefghij"
+        chainInput(original)
+        assertEquals(original, composingText)
+        repeat(Constants.DELETE_ACCELERATE_AT) { repeatBackspace() }
+        assertEquals(original.dropLast(Constants.DELETE_ACCELERATE_AT), text)
+        repeatBackspace()
+        assertEquals(original.dropLast(Constants.DELETE_ACCELERATE_AT + 2), text)
+        assertEquals(text, composingText)
+    }
+
+    @Test fun `held backspace keeps accelerating after resuming a committed word`() {
+        reset()
+        val original = "abcdefghijklmnopqrstuvwxyzabcdefghij"
+        setText("$original ")
+        repeatBackspace()
+        assertEquals(original, composingText)
+        repeat(Constants.DELETE_ACCELERATE_AT - 1) { repeatBackspace() }
+        repeatBackspace()
+        assertEquals(original.dropLast(Constants.DELETE_ACCELERATE_AT + 1), text)
+        assertEquals(text, composingText)
+    }
+
+    @Test fun `accelerated backspace crosses from composition into committed text`() {
+        reset()
+        setText("prefix ")
+        chainInput("a".repeat(Constants.DELETE_ACCELERATE_AT + 1))
+        repeat(Constants.DELETE_ACCELERATE_AT) { repeatBackspace() }
+        assertEquals("prefix a", text)
+        assertEquals("a", composingText)
+        repeatBackspace()
+        assertEquals("prefix", text)
+        checkConnectionConsistency()
+        repeatBackspace()
+        assertEquals("pref", text)
+    }
+
+    @Test fun `held backspace preserves acceleration for committed digits`() {
+        reset()
+        val original = "1234567890".repeat(4)
+        setText(original)
+        repeat(Constants.DELETE_ACCELERATE_AT) { repeatBackspace() }
+        repeatBackspace()
+        assertEquals(original.dropLast(Constants.DELETE_ACCELERATE_AT + 2), text)
+    }
+
+    @Test fun `accelerated committed deletion keeps an emoji intact`() {
+        reset()
+        setText("x🕵🏼" + "1".repeat(Constants.DELETE_ACCELERATE_AT + 1))
+        repeat(Constants.DELETE_ACCELERATE_AT) { repeatBackspace() }
+        assertEquals("x🕵🏼1", text)
+        repeatBackspace()
+        assertEquals("x", text)
+    }
+
+    @Test fun `accelerated backspace stops after deleting a selection`() {
+        reset()
+        setText("prefix selected suffix")
+        setCursorPosition(7, 15)
+        armBackspaceAcceleration()
+        repeatBackspace()
+        assertEquals("prefix  suffix", text)
+    }
+
+    @Test fun `accelerated backspace stops after reverting autocorrection`() {
+        reset()
+        setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_AUTO_CORRECT)
+        chainInput("hullo")
+        getAutocorrectedWithSpaceAfter("hello", "hullo")
+        armBackspaceAcceleration()
+        repeatBackspace()
+        assertEquals("hullo", text)
+    }
+
+    @Test fun `accelerated backspace stops after rejecting a gesture word`() {
+        reset()
+        setText("prefix ")
+        glideTypingInput("hello")
+        armBackspaceAcceleration()
+        repeatBackspace()
+        assertEquals("prefix ", text)
+    }
+
+    @Test fun `accelerated backspace does not overrun the last composing character`() {
+        reset()
+        chainInput("a")
+        armBackspaceAcceleration()
+        repeatBackspace()
+        assertEquals("", text)
+    }
+
+    private fun armBackspaceAcceleration() {
+        InputLogic::class.java.getDeclaredField("mDeleteCount").apply {
+            isAccessible = true
+            setInt(inputLogic, Constants.DELETE_ACCELERATE_AT)
+        }
+        InputLogic::class.java.getDeclaredField("mLastKeyTime").apply {
+            isAccessible = true
+            setLong(inputLogic, android.os.SystemClock.uptimeMillis())
+        }
+    }
+
+    private fun repeatBackspace() {
+        org.robolectric.shadows.ShadowSystemClock.advanceBy(java.time.Duration.ofMillis(50))
+        latinIME.onEvent(Event.createSoftwareKeypressEvent(
+            KeyCode.DELETE, 0, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, true
+        ))
+        handleMessages()
+        checkConnectionConsistency()
+    }
+
     @Test fun deleteInsideWord() {
         reset()
         setText("hello you there")

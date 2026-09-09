@@ -1192,9 +1192,38 @@ class InputLogic(
     }
 
     private fun handleBackspaceEvent(event: Event, inputTransaction: InputTransaction) {
-        val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
         mSpaceState = SpaceState.NONE
         mDeleteCount++
+        // Decide acceleration independently of whether the cursor is in a composing word.
+        // Selection deletion, undo and gesture-word rejection remain single actions.
+        val accelerated = mDeleteCount > Constants.DELETE_ACCELERATE_AT
+        if (!handleBackspaceStep(event, inputTransaction, resumeSuggestions = !accelerated)
+            || !accelerated
+            || mConnection.expectedSelectionStart == 0
+        ) return
+
+        // This is a new logical deletion, not a second application of the processed event.
+        // The first step may have emptied/resumed a word or changed a combiner's state.
+        val extraBackspace = Event.createSoftwareKeypressEvent(
+            KeyCode.DELETE, event.metaState, event.x, event.y, event.isKeyRepeat
+        )
+        var extraEvent: Event? = mWordComposer.processEvent(extraBackspace)
+        while (extraEvent != null) {
+            when {
+                extraEvent.isConsumed -> handleConsumedEvent(extraEvent, inputTransaction)
+                extraEvent.keyCode == KeyCode.DELETE -> handleBackspaceStep(extraEvent, inputTransaction)
+                extraEvent.isFunctionalKeyEvent -> handleFunctionalEvent(extraEvent, inputTransaction, mLatinIME.mHandler)
+                else -> handleNonFunctionalEvent(extraEvent, inputTransaction, mLatinIME.mHandler)
+            }
+            extraEvent = extraEvent.nextEvent
+        }
+    }
+
+    // Returns true only for ordinary deletion, which may receive an accelerated second step.
+    private fun handleBackspaceStep(
+        event: Event, inputTransaction: InputTransaction, resumeSuggestions: Boolean = true
+    ): Boolean {
+        val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
 
         val selection = mConnection.getSelectedText(0)
         val hasSelection = !selection.isNullOrEmpty() || mConnection.hasSelection()
@@ -1212,7 +1241,7 @@ class InputLogic(
                 restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
             }
             inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_LATER)
-            return
+            return false
         }
 
         val lastExpandedText = mLastExpandedText
@@ -1238,7 +1267,7 @@ class InputLogic(
                     mLastExpandedCursorPosition = -1
                     mLastExpandedCursorOffset = -1
                     mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
-                    return
+                    return false
                 }
             }
         }
@@ -1256,6 +1285,7 @@ class InputLogic(
         }
         if (mWordComposer.isComposingWord()) {
             val wasBatchMode = mWordComposer.isBatchMode()
+            var expandedShortcut = false
             if (mWordComposer.isBatchMode()) {
                 val rejectedSuggestion = mWordComposer.getTypedWord()
                 mWordComposer.reset()
@@ -1285,6 +1315,7 @@ class InputLogic(
                                 }
                                 commitExpandedText(result.matchedString, result.expandedText)
                                 resetComposingState(true)
+                                expandedShortcut = true
                             }
                         }
                     }
@@ -1299,6 +1330,7 @@ class InputLogic(
             }
             updateInlineEmojiSearch()
             inputTransaction.setRequiresUpdateSuggestions()
+            return !wasBatchMode && !expandedShortcut
         } else {
             if (mJustRevertedExpandedShortcut != null) {
                 mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
@@ -1317,7 +1349,7 @@ class InputLogic(
                 ) {
                     restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
                 }
-                return
+                return false
             }
             if (SpaceState.DOUBLE == inputTransaction.spaceState) {
                 cancelDoubleSpacePeriodCountdown()
@@ -1325,32 +1357,26 @@ class InputLogic(
                     inputTransaction.setRequiresUpdateSuggestions()
                     mWordComposer.setCapitalizedModeAtStartComposingTime(WordComposer.CAPS_MODE_OFF)
                     StatsUtils.onRevertDoubleSpacePeriod()
-                    return
+                    return false
                 }
             } else if (SpaceState.SWAP_PUNCTUATION == inputTransaction.spaceState) {
                 if (mConnection.revertSwapPunctuation()) {
                     StatsUtils.onRevertSwapPunctuation()
-                    return
+                    return false
                 }
             }
 
-            var hasUnlearnedWordBeingDeleted = false
             val fallbackSel = mConnection.getSelectedText(0)
             if (!TextUtils.isEmpty(fallbackSel) || mConnection.hasSelection()) {
                 mWordComposer.reset()
                 sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
+                return false
             } else {
                 if (inputTransaction.settingsValues.mInputAttributes.isTypeNull
                     || Constants.NOT_A_CURSOR_POSITION == mConnection.expectedSelectionEnd
                 ) {
                     sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
-                    var totalDeletedLength = 1
-                    if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                        hasUnlearnedWordBeingDeleted = hasUnlearnedWordBeingDeleted or unlearnWordBeingDeleted(inputTransaction.settingsValues)
-                        sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
-                        totalDeletedLength++
-                    }
-                    StatsUtils.onBackspacePressed(totalDeletedLength)
+                    StatsUtils.onBackspacePressed(1)
                 } else {
                     val codePointBeforeCursor = mConnection.codePointBeforeCursor
                     if (codePointBeforeCursor == Constants.NOT_A_CODE) {
@@ -1359,7 +1385,7 @@ class InputLogic(
                         } else {
                             mConnection.deleteTextBeforeCursor(1)
                         }
-                        return
+                        return false
                     }
                     val lengthToDelete = if (codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)) {
                         mConnection.charCountToDeleteBeforeCursor
@@ -1367,34 +1393,19 @@ class InputLogic(
                         1
                     }
                     mConnection.deleteTextBeforeCursor(lengthToDelete)
-                    var totalDeletedLength = lengthToDelete
-                    if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                        hasUnlearnedWordBeingDeleted = hasUnlearnedWordBeingDeleted or unlearnWordBeingDeleted(inputTransaction.settingsValues)
-                        val codePointBeforeCursorToDeleteAgain = mConnection.codePointBeforeCursor
-                        if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
-                            val lengthToDeleteAgain = if (codePointBeforeCursorToDeleteAgain > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursorToDeleteAgain)) {
-                                mConnection.charCountToDeleteBeforeCursor
-                            } else {
-                                1
-                            }
-                            mConnection.deleteTextBeforeCursor(lengthToDeleteAgain)
-                            totalDeletedLength += lengthToDeleteAgain
-                        }
-                    }
-                    StatsUtils.onBackspacePressed(totalDeletedLength)
+                    StatsUtils.onBackspacePressed(lengthToDelete)
                 }
             }
-            if (!hasUnlearnedWordBeingDeleted) {
-                unlearnWordBeingDeleted(inputTransaction.settingsValues)
-            }
+            unlearnWordBeingDeleted(inputTransaction.settingsValues)
             if (mConnection.hasSlowInputConnection()) {
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
-            } else if (inputTransaction.settingsValues.needsToLookupSuggestions()
+            } else if (resumeSuggestions && inputTransaction.settingsValues.needsToLookupSuggestions()
                 && inputTransaction.settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
             ) {
                 restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
             }
         }
+        return true
     }
 
     internal fun getWordAtCursor(settingsValues: SettingsValues): String {
