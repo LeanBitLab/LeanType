@@ -197,6 +197,42 @@ class InputLogicTest {
         assertEquals("", text)
     }
 
+    @Test fun `accelerated committed deletion unlearns only the first matched prefix`() {
+        reset()
+        setText("cats")
+        inputLogic.finishInput()
+        assertEquals("", composingText)
+        ShadowFacilitator2.unlearnedWords.clear()
+        armBackspaceAcceleration()
+        repeatBackspace()
+        assertEquals("ca", text)
+        assertEquals(listOf("cat"), ShadowFacilitator2.unlearnedWords)
+    }
+
+    @Test fun `fallback selection deletion resumes suggestions without extra deletion`() {
+        reset()
+        setText("catsmore")
+        inputLogic.finishInput()
+        assertEquals("", composingText)
+        armBackspaceAcceleration()
+        var queries = 0
+        selectedTextQueryHook = {
+            if (++queries == 2) {
+                // The editor reveals a selection only on the defensive second query.
+                selectionStart = 4
+                selectionEnd = 8
+                selectedTextQueryHook = null
+            }
+        }
+        try {
+            repeatBackspace()
+            assertEquals("cats", text)
+            assertEquals("cats", composingText)
+        } finally {
+            selectedTextQueryHook = null
+        }
+    }
+
     private fun armBackspaceAcceleration() {
         InputLogic::class.java.getDeclaredField("mDeleteCount").apply {
             isAccessible = true
@@ -1348,6 +1384,7 @@ private val composingText get() = if (composingStart == -1 || composingEnd == -1
     else text.substring(composingStart, composingEnd)
 
 // essentially this is the text field we're editing in
+private var selectedTextQueryHook: (() -> Unit)? = null
 private val ic = object : InputConnection {
     // pretty clear (though this may be slow depending on the editor)
     // bad return value here is likely the cause for that weird bug improved/fixed by fixIncorrectLength
@@ -1355,8 +1392,11 @@ private val ic = object : InputConnection {
     // pretty clear (though this may be slow depending on the editor)
     override fun getTextAfterCursor(p0: Int, p1: Int): CharSequence = textAfterCursor.take(p0)
     // pretty clear
-    override fun getSelectedText(p0: Int): CharSequence? = if (selectionStart == selectionEnd) null
+    override fun getSelectedText(p0: Int): CharSequence? {
+        selectedTextQueryHook?.invoke()
+        return if (selectionStart == selectionEnd) null
         else text.substring(selectionStart, selectionEnd)
+    }
     // inserts text at cursor (right?), and sets it as composing text
     // this REPLACES currently composing text (even if at a different position)
     // moves the cursor: positive means relative to composing text start, negative means relative to start
@@ -1559,6 +1599,12 @@ class ShadowKeyboardSwitcher {
 @Implements(DictionaryFacilitatorImpl::class)
 class ShadowFacilitator2 {
     @Implementation
+    fun unlearnFromUserHistory(word: String, ngramContext: NgramContext,
+                               timeStampInSeconds: Long, eventType: Int) {
+        unlearnedWords.add(word)
+    }
+
+    @Implementation
     fun addToUserHistory(suggestion: String, wasAutoCapitalized: Boolean,
                          ngramContext: NgramContext, timeStampInSeconds: Long,
                          blockPotentiallyOffensive: Boolean) {
@@ -1570,6 +1616,7 @@ class ShadowFacilitator2 {
     companion object {
         var lastAddedWord = ""
         var lastNgramContext = ""
+        val unlearnedWords = mutableListOf<String>()
         val addedWords = mutableListOf<String>()
         val ngramContexts = mutableListOf<String>()
     }

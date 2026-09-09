@@ -1197,7 +1197,8 @@ class InputLogic(
         // Decide acceleration independently of whether the cursor is in a composing word.
         // Selection deletion, undo and gesture-word rejection remain single actions.
         val accelerated = mDeleteCount > Constants.DELETE_ACCELERATE_AT
-        if (!handleBackspaceStep(event, inputTransaction, resumeSuggestions = !accelerated)
+        val firstStep = handleBackspaceStep(event, inputTransaction, resumeSuggestions = !accelerated)
+        if (firstStep == BackspaceStepResult.SINGLE_ACTION
             || !accelerated
             || mConnection.expectedSelectionStart == 0
         ) return
@@ -1207,11 +1208,16 @@ class InputLogic(
         val extraBackspace = Event.createSoftwareKeypressEvent(
             KeyCode.DELETE, event.metaState, event.x, event.y, event.isKeyRepeat
         )
+        var hasUnlearnedWord = firstStep == BackspaceStepResult.DELETED_AND_UNLEARNED
         var extraEvent: Event? = mWordComposer.processEvent(extraBackspace)
         while (extraEvent != null) {
             when {
                 extraEvent.isConsumed -> handleConsumedEvent(extraEvent, inputTransaction)
-                extraEvent.keyCode == KeyCode.DELETE -> handleBackspaceStep(extraEvent, inputTransaction)
+                extraEvent.keyCode == KeyCode.DELETE -> {
+                    val result = handleBackspaceStep(extraEvent, inputTransaction,
+                        alreadyUnlearnedWord = hasUnlearnedWord)
+                    hasUnlearnedWord = hasUnlearnedWord || result == BackspaceStepResult.DELETED_AND_UNLEARNED
+                }
                 extraEvent.isFunctionalKeyEvent -> handleFunctionalEvent(extraEvent, inputTransaction, mLatinIME.mHandler)
                 else -> handleNonFunctionalEvent(extraEvent, inputTransaction, mLatinIME.mHandler)
             }
@@ -1219,10 +1225,14 @@ class InputLogic(
         }
     }
 
-    // Returns true only for ordinary deletion, which may receive an accelerated second step.
+    private enum class BackspaceStepResult { SINGLE_ACTION, DELETED, DELETED_AND_UNLEARNED }
+
+    // Only ordinary deletion may receive an extra step. Carry successful unlearning across
+    // steps so one key event does not remove multiple intermediate prefixes from history.
     private fun handleBackspaceStep(
-        event: Event, inputTransaction: InputTransaction, resumeSuggestions: Boolean = true
-    ): Boolean {
+        event: Event, inputTransaction: InputTransaction, resumeSuggestions: Boolean = true,
+        alreadyUnlearnedWord: Boolean = false
+    ): BackspaceStepResult {
         val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
 
         val selection = mConnection.getSelectedText(0)
@@ -1241,7 +1251,7 @@ class InputLogic(
                 restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
             }
             inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_LATER)
-            return false
+            return BackspaceStepResult.SINGLE_ACTION
         }
 
         val lastExpandedText = mLastExpandedText
@@ -1267,7 +1277,7 @@ class InputLogic(
                     mLastExpandedCursorPosition = -1
                     mLastExpandedCursorOffset = -1
                     mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
-                    return false
+                    return BackspaceStepResult.SINGLE_ACTION
                 }
             }
         }
@@ -1330,7 +1340,8 @@ class InputLogic(
             }
             updateInlineEmojiSearch()
             inputTransaction.setRequiresUpdateSuggestions()
-            return !wasBatchMode && !expandedShortcut
+            return if (wasBatchMode || expandedShortcut) BackspaceStepResult.SINGLE_ACTION
+            else BackspaceStepResult.DELETED
         } else {
             if (mJustRevertedExpandedShortcut != null) {
                 mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
@@ -1349,7 +1360,7 @@ class InputLogic(
                 ) {
                     restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
                 }
-                return false
+                return BackspaceStepResult.SINGLE_ACTION
             }
             if (SpaceState.DOUBLE == inputTransaction.spaceState) {
                 cancelDoubleSpacePeriodCountdown()
@@ -1357,20 +1368,20 @@ class InputLogic(
                     inputTransaction.setRequiresUpdateSuggestions()
                     mWordComposer.setCapitalizedModeAtStartComposingTime(WordComposer.CAPS_MODE_OFF)
                     StatsUtils.onRevertDoubleSpacePeriod()
-                    return false
+                    return BackspaceStepResult.SINGLE_ACTION
                 }
             } else if (SpaceState.SWAP_PUNCTUATION == inputTransaction.spaceState) {
                 if (mConnection.revertSwapPunctuation()) {
                     StatsUtils.onRevertSwapPunctuation()
-                    return false
+                    return BackspaceStepResult.SINGLE_ACTION
                 }
             }
 
             val fallbackSel = mConnection.getSelectedText(0)
-            if (!TextUtils.isEmpty(fallbackSel) || mConnection.hasSelection()) {
+            val deletedSelection = !TextUtils.isEmpty(fallbackSel) || mConnection.hasSelection()
+            if (deletedSelection) {
                 mWordComposer.reset()
                 sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
-                return false
             } else {
                 if (inputTransaction.settingsValues.mInputAttributes.isTypeNull
                     || Constants.NOT_A_CURSOR_POSITION == mConnection.expectedSelectionEnd
@@ -1385,7 +1396,7 @@ class InputLogic(
                         } else {
                             mConnection.deleteTextBeforeCursor(1)
                         }
-                        return false
+                        return BackspaceStepResult.SINGLE_ACTION
                     }
                     val lengthToDelete = if (codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)) {
                         mConnection.charCountToDeleteBeforeCursor
@@ -1396,16 +1407,20 @@ class InputLogic(
                     StatsUtils.onBackspacePressed(lengthToDelete)
                 }
             }
-            unlearnWordBeingDeleted(inputTransaction.settingsValues)
+            val hasUnlearnedWord = alreadyUnlearnedWord || unlearnWordBeingDeleted(inputTransaction.settingsValues)
             if (mConnection.hasSlowInputConnection()) {
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
-            } else if (resumeSuggestions && inputTransaction.settingsValues.needsToLookupSuggestions()
+            } else if ((resumeSuggestions || deletedSelection) && inputTransaction.settingsValues.needsToLookupSuggestions()
                 && inputTransaction.settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
             ) {
                 restartSuggestionsOnWordTouchedByCursor(inputTransaction.settingsValues)
             }
+            return when {
+                deletedSelection -> BackspaceStepResult.SINGLE_ACTION
+                hasUnlearnedWord -> BackspaceStepResult.DELETED_AND_UNLEARNED
+                else -> BackspaceStepResult.DELETED
+            }
         }
-        return true
     }
 
     internal fun getWordAtCursor(settingsValues: SettingsValues): String {
