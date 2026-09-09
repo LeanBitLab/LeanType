@@ -1,0 +1,4 @@
+- Auto-Correction Restoration: Fixed critical issue where personal dictionary words erroneously hijacked and replaced everyday words during sentence typing.
+- Contextual Gating Refinement: Properly scoped contextual bigram gating to next-word predictions without dampening active typing history.
+- Suggestion Balance Integrity: Restored natural spatial and edit-distance weighting for personal dictionary candidates.
+- Stability & Quality: All core engine and suggestion test suites passing with full verification.

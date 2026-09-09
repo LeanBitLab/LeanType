@@ -72,13 +72,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private val currentChangelogItems = listOf(
-    "• 100% Kotlin Migration: Complete conversion of all 430 application layer files from Java to modern Kotlin (0 Java files remaining)",
-    "• Key & Functional Corner Radius: Independent corner radius sliders for normal and functional keys in Appearance settings when key borders are active",
-    "• Smart Suggestions: User dictionary authority, contextual bigram gating, and instant session typo eviction on backspace",
-    "• Fast OCR Scanning: Defaulted OCR recognition to Latin for faster text extraction, with refined camera lifecycle & back-press handling (#487)",
-    "• Input & Auto-Caps Fixes: Fixed selection delete cache desync, restored caps on backspace, and suppressed mid-sentence auto-caps (#448, #482)",
-    "• Foldables & Hardware Keys: Fixed layout on folded cover screens (#400) and stabilized Ctrl+Space / Shift+Space shortcuts (#444)",
-    "• Compatibility & Stability: Fixed Android <= 8.1 voice input crash, added graceful AI error handling (#492), and instant clipboard sync (#493)"
+    "• Auto-Correction Restoration: Fixed critical regression where personal dictionary entries hijacked everyday words in sentences (e.g. replacing 'how' with 'huewail')",
+    "• Accurate Contextual Gating: Correctly scoped contextual bigram gating to next-word predictions without dampening history during active typing",
+    "• Suggestion Balance Integrity: Restored natural spatial and edit-distance weighting for personal dictionary entries without artificial score inflation",
+    "• Full Kotlin Engine & Quality: Complete 100% Kotlin code base with all 206 core engine and suggestion tests passing"
 )
 
 @Composable
