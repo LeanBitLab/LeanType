@@ -287,6 +287,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_THEME_KEY_BORDERS = "theme_key_borders"
         const val PREF_KEY_BORDER_RADIUS = "key_border_radius"
         const val PREF_KEY_BORDER_RADIUS_FUNCTIONAL = "key_border_radius_functional"
+        const val PREF_KEY_BORDER_RADIUS_ACTION = "key_border_radius_action"
         const val PREF_THEME_DAY_NIGHT = "theme_auto_day_night"
         const val PREF_USER_COLORS_PREFIX = "user_colors_"
         const val PREF_USER_ALL_COLORS_PREFIX = "user_all_colors_"

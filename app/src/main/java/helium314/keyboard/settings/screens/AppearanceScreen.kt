@@ -63,6 +63,8 @@ fun AppearanceScreen(
             Settings.PREF_KEY_BORDER_RADIUS else null,
         if (prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, Defaults.PREF_THEME_KEY_BORDERS))
             Settings.PREF_KEY_BORDER_RADIUS_FUNCTIONAL else null,
+        if (prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, Defaults.PREF_THEME_KEY_BORDERS))
+            Settings.PREF_KEY_BORDER_RADIUS_ACTION else null,
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             Settings.PREF_THEME_DAY_NIGHT else null,
         if (dayNightMode) Settings.PREF_THEME_COLORS_NIGHT else null,
@@ -216,6 +218,20 @@ fun createAppearanceSettings(context: Context) = listOf(
             description = { radius ->
                 val isDef = radius.toInt() == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL.toInt() || radius < 0f
                 if (isDef) "${Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL.toInt()}dp (${stringResource(R.string.button_default)})"
+                else "${radius.toInt()}dp"
+            }
+        ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
+    },
+    Setting(context, Settings.PREF_KEY_BORDER_RADIUS_ACTION, R.string.key_border_radius_action) { setting ->
+        SliderPreference(
+            name = setting.title,
+            key = setting.key,
+            default = Defaults.PREF_KEY_BORDER_RADIUS_ACTION,
+            range = 0f..25f,
+            stepSize = 1,
+            description = { radius ->
+                val isDef = radius.toInt() == Defaults.PREF_KEY_BORDER_RADIUS_ACTION.toInt() || radius < 0f
+                if (isDef) "${Defaults.PREF_KEY_BORDER_RADIUS_ACTION.toInt()}dp (${stringResource(R.string.button_default)})"
                 else "${radius.toInt()}dp"
             }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }

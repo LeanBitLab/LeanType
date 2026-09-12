@@ -287,16 +287,15 @@ open class KeyboardView @JvmOverloads constructor(
         }
         
         if (mColors.hasKeyBorders) {
-            val isFunctional = key.hasFunctionalBackground() || key.hasActionKeyBackground()
-            val radiusDp = if (isFunctional) {
-                Settings.getValues().mKeyBorderRadiusFunctional
-            } else {
-                Settings.getValues().mKeyBorderRadius
+            val radiusDp = when {
+                key.hasActionKeyBackground() -> Settings.getValues().mKeyBorderRadiusAction
+                key.hasFunctionalBackground() -> Settings.getValues().mKeyBorderRadiusFunctional
+                else -> Settings.getValues().mKeyBorderRadius
             }
-            val isDefault = radiusDp < 0f || if (isFunctional) {
-                radiusDp == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL
-            } else {
-                radiusDp == Defaults.PREF_KEY_BORDER_RADIUS
+            val isDefault = radiusDp < 0f || when {
+                key.hasActionKeyBackground() -> radiusDp == Defaults.PREF_KEY_BORDER_RADIUS_ACTION
+                key.hasFunctionalBackground() -> radiusDp == Defaults.PREF_KEY_BORDER_RADIUS_FUNCTIONAL
+                else -> radiusDp == Defaults.PREF_KEY_BORDER_RADIUS
             }
             if (!isDefault) {
                 val radiusPx = radiusDp * resources.displayMetrics.density
@@ -322,7 +321,12 @@ open class KeyboardView @JvmOverloads constructor(
         if (isSelected) drawBackground.clearColorFilter()
         if (hasCustomTint) {
             if (drawBackground === background) {
-                val originalType = if (key.backgroundType == Key.BACKGROUND_TYPE_FUNCTIONAL) ColorType.FUNCTIONAL_KEY_BACKGROUND else ColorType.KEY_BACKGROUND
+                val originalType = when {
+                    key.hasActionKeyBackground() -> ColorType.ACTION_KEY_BACKGROUND
+                    key.hasFunctionalBackground() -> ColorType.FUNCTIONAL_KEY_BACKGROUND
+                    key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR -> ColorType.SPACE_BAR_BACKGROUND
+                    else -> ColorType.KEY_BACKGROUND
+                }
                 mColors.setColor(background, originalType)
             } else {
                 DrawableCompat.setTintList(drawBackground, null)
