@@ -158,14 +158,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         val richImm = mRichImm ?: RichInputMethodManager.getInstance()
         mKeyboardLayoutSet = builder.setKeyboardGeometry(keyboardWidth, keyboardHeight)
             .setSubtype(richImm.currentSubtype)
-            .setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey)
-            .setNumberRowEnabled(settingsValues.mShowsNumberRow)
-            .setNumberRowInSymbolsEnabled(settingsValues.mShowsNumberRowInSymbols)
-            .setCompactNumberRowInSymbolsEnabled(settingsValues.mCompactNumberRowInSymbols)
-            .setLanguageSwitchKeyEnabled(settingsValues.isLanguageSwitchKeyEnabled())
-            .setEmojiKeyEnabled(settingsValues.mShowsEmojiKey)
-            .setSplitLayoutEnabled(settingsValues.mIsSplitKeyboardEnabled)
-            .setOneHandedModeEnabled(oneHandedModeEnabled)
+            .setKeyboardOptions(settingsValues)
             .setInternalAction(internalAction)
             .build()
         val state = mState ?: return
@@ -177,14 +170,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
                 val defaults = SubtypeUtilsAdditional.createDefaultSubtype(richImm.currentSubtypeLocale)
                 mKeyboardLayoutSet = builder.setKeyboardGeometry(keyboardWidth, keyboardHeight)
                     .setSubtype(RichInputMethodSubtype.get(defaults))
-                    .setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey)
-                    .setNumberRowEnabled(settingsValues.mShowsNumberRow)
-                    .setNumberRowInSymbolsEnabled(settingsValues.mShowsNumberRowInSymbols)
-                    .setCompactNumberRowInSymbolsEnabled(settingsValues.mCompactNumberRowInSymbols)
-                    .setLanguageSwitchKeyEnabled(settingsValues.isLanguageSwitchKeyEnabled())
-                    .setEmojiKeyEnabled(settingsValues.mShowsEmojiKey)
-                    .setSplitLayoutEnabled(settingsValues.mIsSplitKeyboardEnabled)
-                    .setOneHandedModeEnabled(oneHandedModeEnabled)
+                    .setKeyboardOptions(settingsValues)
                     .build()
                 state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
                 showToast("error loading the keyboard, falling back to defaults", false)
@@ -247,6 +233,11 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mState?.onResetKeyboardStateToAlphabet(currentAutoCapsState, currentRecapitalizeState)
     }
 
+    // A secondary view may have been shown directly, without changing the keyboard state.
+    fun returnToAlphabetKeyboard() {
+        mState?.setAlphabetKeyboard(0, null)
+    }
+
     fun onPressKey(code: Int, isSinglePointer: Boolean, currentAutoCapsState: Int, currentRecapitalizeState: RecapitalizeMode?) {
         mState?.onPressKey(code, isSinglePointer, currentAutoCapsState, currentRecapitalizeState)
     }
@@ -296,7 +287,14 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     override fun setCustomKeyboard(customIndex: Int) {
         if (DEBUG_ACTION) Log.d(TAG, "setCustomKeyboard: $customIndex")
-        val elementId = when (customIndex) {
+        setKeyboard(customKeyboardElementId(customIndex), KeyboardSwitchState.OTHER)
+    }
+
+    val activeAlphabetKeyboardId: Int
+        get() = customKeyboardElementId(mState?.lastCustomIndex ?: 0)
+
+    private fun customKeyboardElementId(customIndex: Int): Int =
+        when (customIndex) {
             1 -> KeyboardId.ELEMENT_CUSTOM1
             2 -> KeyboardId.ELEMENT_CUSTOM2
             3 -> KeyboardId.ELEMENT_CUSTOM3
@@ -304,8 +302,6 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             5 -> KeyboardId.ELEMENT_CUSTOM5
             else -> KeyboardId.ELEMENT_ALPHABET
         }
-        setKeyboard(elementId, KeyboardSwitchState.OTHER)
-    }
 
     fun isImeSuppressedByHardwareKeyboard(
         settingsValues: SettingsValues,

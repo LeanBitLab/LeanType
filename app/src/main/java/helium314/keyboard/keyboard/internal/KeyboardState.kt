@@ -67,7 +67,8 @@ class KeyboardState(private val switchActions: SwitchActions) {
     private var mode = Mode.ALPHABET
     private var modeBeforeNumpad = Mode.ALPHABET
     // ponytail: track active custom layout index, 0 means default
-    private var lastCustomIndex = 0
+    var lastCustomIndex = 0
+        private set
     private var isSymbolShifted = false
     private var prevMainKeyboardWasShiftLocked = false
     private var prevSymbolsKeyboardWasShifted = false
@@ -249,7 +250,7 @@ class KeyboardState(private val switchActions: SwitchActions) {
         }
     }
 
-    private fun setAlphabetKeyboard(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?) {
+    fun setAlphabetKeyboard(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?) {
         if (DebugFlags.DEBUG_ENABLED) {
             Log.d(TAG, "setAlphabetKeyboard: ${stateToString(autoCapsFlags, recapitalizeMode)}")
         }

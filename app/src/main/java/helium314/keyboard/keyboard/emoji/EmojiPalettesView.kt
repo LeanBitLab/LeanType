@@ -195,6 +195,7 @@ class EmojiPalettesView @JvmOverloads constructor(
     private var mIsDownloadingEmojiDict = false
     private var mOriginalActionListener: KeyboardActionListener? = null
     private var mSearchKeyboardLayoutSet: KeyboardLayoutSet? = null
+    private var mSearchAlphabetKeyboardId = KeyboardId.ELEMENT_ALPHABET
 
     private var mEditorInfo: EditorInfo? = null
 
@@ -499,7 +500,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                         val currentElementId = bottomRow.keyboard?.mId?.mElementId ?: KeyboardId.ELEMENT_ALPHABET
                         val isOnSymbols = currentElementId == KeyboardId.ELEMENT_SYMBOLS || currentElementId == KeyboardId.ELEMENT_SYMBOLS_SHIFTED
-                        val targetId = if (isOnSymbols) KeyboardId.ELEMENT_ALPHABET else KeyboardId.ELEMENT_SYMBOLS
+                        val targetId = if (isOnSymbols) mSearchAlphabetKeyboardId else KeyboardId.ELEMENT_SYMBOLS
                         bottomRow.setKeyboard(layoutSet.getKeyboard(targetId))
                         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
                     }
@@ -511,7 +512,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                             KeyboardId.ELEMENT_SYMBOLS -> KeyboardId.ELEMENT_SYMBOLS_SHIFTED
                             KeyboardId.ELEMENT_SYMBOLS_SHIFTED -> KeyboardId.ELEMENT_SYMBOLS
                             KeyboardId.ELEMENT_ALPHABET -> KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED
-                            else -> KeyboardId.ELEMENT_ALPHABET
+                            else -> mSearchAlphabetKeyboardId
                         }
                         bottomRow.setKeyboard(layoutSet.getKeyboard(targetId))
                         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
@@ -638,7 +639,7 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         val builder = KeyboardLayoutSet.Builder(ctx, null)
         builder.setSubtype(RichInputMethodManager.getInstance().currentSubtype)
-        builder.setSplitLayoutEnabled(Settings.getValues().mIsSplitKeyboardEnabled)
+        builder.setKeyboardOptions(Settings.getValues())
         builder.setKeyboardGeometry(
             ResourceUtils.getKeyboardWidth(ctx, Settings.getValues()),
             ResourceUtils.getSecondaryKeyboardHeight(resources, Settings.getValues())
@@ -646,7 +647,8 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         val searchKeyboardLayoutSet = builder.build()
         mSearchKeyboardLayoutSet = searchKeyboardLayoutSet
-        bottomRow.setKeyboard(searchKeyboardLayoutSet.getKeyboard(KeyboardId.ELEMENT_ALPHABET))
+        mSearchAlphabetKeyboardId = KeyboardSwitcher.getInstance().activeAlphabetKeyboardId
+        bottomRow.setKeyboard(searchKeyboardLayoutSet.getKeyboard(mSearchAlphabetKeyboardId))
         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
 
         mSearchBar?.requestFocus()
@@ -657,12 +659,17 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
     }
 
-    private fun stopSearchMode() {
+    private fun stopSearchMode(returnToKeyboard: Boolean = true) {
         Log.d("EmojiSearch", "stopSearchMode")
         if (!mInSearchMode) return
         mInSearchMode = false
 
-        setupBottomRowKeyboard(null, mOriginalActionListener)
+        if (returnToKeyboard) {
+            setupBottomRowKeyboard(null, mOriginalActionListener)
+        } else {
+            // Do not take PointerTracker back from the panel that is replacing us.
+            findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)?.setKeyboardActionListener(mOriginalActionListener)
+        }
         setupCategoryTabs()
 
         mEmojiCategoryPageIndicatorView?.visibility = View.GONE
@@ -677,8 +684,8 @@ class EmojiPalettesView @JvmOverloads constructor(
             PointerTracker.setKeyboardActionListener(it)
         }
 
-        if (isAttachedToWindow) {
-            KeyboardSwitcher.getInstance().setAlphabetKeyboard()
+        if (returnToKeyboard && isAttachedToWindow) {
+            KeyboardSwitcher.getInstance().returnToAlphabetKeyboard()
         }
 
         if (isInLayout) {
@@ -724,7 +731,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         editorInfo: EditorInfo?,
         keyboardActionListener: KeyboardActionListener?
     ) {
-        stopSearchMode()
+        stopSearchMode(returnToKeyboard = false)
         mEditorInfo = editorInfo
         mKeyboardActionListener = keyboardActionListener ?: KeyboardActionListener.EMPTY_LISTENER
         initialize()
@@ -760,11 +767,11 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     private fun setupBottomRowKeyboard(editorInfo: EditorInfo?, keyboardActionListener: KeyboardActionListener?) {
         val keyboardView = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard) ?: return
+        keyboardView.setKeyboardActionListener(keyboardActionListener)
         if (!isAttachedToWindow) return
         
         keyboardView.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
         val ei = editorInfo ?: mEditorInfo
-        keyboardView.setKeyboardActionListener(keyboardActionListener)
 
         try {
             PointerTracker.switchTo(keyboardView)
@@ -856,7 +863,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         if (!initialized) return
 
         if (mInSearchMode) {
-            stopSearchMode()
+            stopSearchMode(returnToKeyboard = false)
         }
 
         getRecentsKeyboard().flushPendingRecentKeys()
@@ -1023,14 +1030,14 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     override fun setVisibility(visibility: Int) {
         if (visibility != View.VISIBLE && mInSearchMode) {
-            stopSearchMode()
+            stopSearchMode(returnToKeyboard = false)
         }
         super.setVisibility(visibility)
     }
 
     override fun onDetachedFromWindow() {
         if (mInSearchMode) {
-            stopSearchMode()
+            stopSearchMode(returnToKeyboard = false)
         }
         super.onDetachedFromWindow()
     }
