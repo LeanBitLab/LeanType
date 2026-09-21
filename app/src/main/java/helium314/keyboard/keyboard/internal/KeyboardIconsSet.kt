@@ -129,7 +129,7 @@ class KeyboardIconsSet private constructor() {
 //            NAME_GO_KEY to                      null,
             NAME_SEARCH_KEY to                  R.drawable.sym_keyboard_search_holo,
 //            NAME_SEND_KEY to                    null,
-//            NAME_DONE_KEY to                    null,
+            NAME_DONE_KEY to                    R.drawable.sym_keyboard_done_lxx,
 //            NAME_NEXT_KEY to                    null,
 //            NAME_PREVIOUS_KEY to                null,
             NAME_TAB_KEY to                     R.drawable.sym_keyboard_tab_holo,

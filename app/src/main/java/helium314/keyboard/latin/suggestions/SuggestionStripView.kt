@@ -32,6 +32,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import com.leanbitlab.leantype.voice.VoiceConstants
@@ -590,6 +591,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Microphone Icon
         val micIconView = android.widget.ImageView(context).apply {
             val micDrawable = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.VOICE.name.lowercase(Locale.US), context)
+                ?: ContextCompat.getDrawable(context, R.drawable.sym_keyboard_voice_lxx)?.mutate()
             setImageDrawable(micDrawable)
             scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
             val pad = 6.dpToPx(resources)
@@ -631,9 +633,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (!isProcessing && onStop != null) {
             val doneButton = ImageButton(context, null, R.attr.suggestionWordStyle).apply {
                 val doneIcon = KeyboardIconsSet.instance.getNewDrawable(KeyboardIconsSet.NAME_DONE_KEY, context)
+                    ?: ContextCompat.getDrawable(context, R.drawable.sym_keyboard_done_lxx)?.mutate()
                 setImageDrawable(doneIcon)
                 setBackgroundResource(R.drawable.toolbar_key_background)
-                colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+                background?.let { colors.setColor(it, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND) }
                 colors.setColor(this, ColorType.TOOL_BAR_KEY)
                 scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
                 val pad = 9.dpToPx(resources)
@@ -652,9 +655,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (onCancel != null) {
             val closeButton = ImageButton(context, null, R.attr.suggestionWordStyle).apply {
                 val closeIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase(Locale.US), context)
+                    ?: ContextCompat.getDrawable(context, R.drawable.ic_close)?.mutate()
                 setImageDrawable(closeIcon)
                 setBackgroundResource(R.drawable.toolbar_key_background)
-                colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+                background?.let { colors.setColor(it, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND) }
                 colors.setColor(this, ColorType.TOOL_BAR_KEY)
                 scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
                 val pad = 9.dpToPx(resources)

@@ -55,7 +55,7 @@ interface Colors {
     @ColorInt fun getPressedColor(color: ColorType): Int
 
     /** apply a color to the [drawable], may be through color filter or tint (with or without state list) */
-    fun setColor(drawable: Drawable, color: ColorType)
+    fun setColor(drawable: Drawable?, color: ColorType)
 
     /** set a foreground color to the [view] */
     fun setColor(view: ImageView, color: ColorType)
@@ -335,7 +335,8 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
         EDIT_MODE_JUMP_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(keyBackground, functionalKey, 0.7f)
     }
 
-    override fun setColor(drawable: Drawable, color: ColorType) {
+    override fun setColor(drawable: Drawable?, color: ColorType) {
+        if (drawable == null) return
         val colorStateList = when (color) {
             MORE_SUGGESTIONS_WORD_BACKGROUND -> backgroundStateList
             KEY_BACKGROUND -> keyStateList
@@ -361,7 +362,7 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
     override fun setColor(view: ImageView, color: ColorType) {
         if (color == TOOL_BAR_KEY) {
             view.clearColorFilter()
-            setColor(view.drawable, color)
+            view.drawable?.let { setColor(it, color) }
             return
         }
         view.drawable?.let { DrawableCompat.setTintList(it, null) }
@@ -547,7 +548,8 @@ class DefaultColors (
         EDIT_MODE_JUMP_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(keyBackground, functionalKey, 0.7f)
     }
 
-    override fun setColor(drawable: Drawable, color: ColorType) {
+    override fun setColor(drawable: Drawable?, color: ColorType) {
+        if (drawable == null) return
         val colorStateList = when (color) {
             MORE_SUGGESTIONS_WORD_BACKGROUND -> backgroundStateList
             KEY_BACKGROUND -> keyStateList
@@ -573,7 +575,7 @@ class DefaultColors (
     override fun setColor(view: ImageView, color: ColorType) {
         if (color == TOOL_BAR_KEY) {
             view.clearColorFilter()
-            setColor(view.drawable, color)
+            view.drawable?.let { setColor(it, color) }
             return
         }
         view.drawable?.let { DrawableCompat.setTintList(it, null) }
@@ -621,7 +623,8 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
     private val colorFilters = hashMapOf<ColorType, ColorFilter>()
     override fun get(color: ColorType): Int = colorMap[color] ?: color.default()
 
-    override fun setColor(drawable: Drawable, color: ColorType) {
+    override fun setColor(drawable: Drawable?, color: ColorType) {
+        if (drawable == null) return
         val colorStateList = stateListMap.getOrPut(color) { pressedStateList(brightenOrDarken(get(color), true), get(color)) }
         DrawableCompat.setTintMode(drawable, PorterDuff.Mode.MULTIPLY)
         DrawableCompat.setTintList(drawable, colorStateList)
@@ -630,7 +633,7 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
     override fun setColor(view: ImageView, color: ColorType) {
         if (color == TOOL_BAR_KEY) {
             view.clearColorFilter()
-            setColor(view.drawable, color)
+            view.drawable?.let { setColor(it, color) }
             return
         }
         view.drawable?.let { DrawableCompat.setTintList(it, null) }
