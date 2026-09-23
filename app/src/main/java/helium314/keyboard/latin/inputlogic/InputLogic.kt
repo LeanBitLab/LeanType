@@ -589,7 +589,11 @@ class InputLogic(
                         }
                         return@proofreadAsync
                     }
-                    mConnection.commitText(proofreadText, 1)
+                    if (hasSelection) {
+                        mConnection.commitText(proofreadText, 1)
+                    } else {
+                        mConnection.replaceEntireText(proofreadText)
+                    }
                 } else {
                     if (!hasSelection) {
                         val len = textBefore?.length ?: 0
@@ -660,7 +664,11 @@ class InputLogic(
                         }
                         return@translateAsync
                     }
-                    mConnection.commitText(translatedText, 1)
+                    if (hasSelection) {
+                        mConnection.commitText(translatedText, 1)
+                    } else {
+                        mConnection.replaceEntireText(translatedText)
+                    }
                 } else {
                     if (!hasSelection) {
                         val len = textBefore?.length ?: 0
@@ -2606,7 +2614,11 @@ class InputLogic(
             mLatinIME,
             textToProcess, prompt, hasSelection, showThinking,
             onSuccess = { resultText ->
-                mLatinIME.onTextInput(resultText)
+                if (!hasSelection && !shouldAppend) {
+                    mConnection.replaceEntireText(resultText)
+                } else {
+                    mLatinIME.onTextInput(resultText)
+                }
             },
             onError = { errorMessage ->
                 Log.e(TAG, "Custom AI Error: $errorMessage")

@@ -1214,6 +1214,38 @@ class InputLogicTest {
         assertEquals(0, delayedMessages.size)
     }
 
+    @Test
+    fun testReplaceEntireText() {
+        reset()
+        val connection = latinIME.mInputLogic.connection
+        connection.replaceEntireText("Hello World")
+        assertEquals("Hello World", text)
+        assertEquals("Hello World", connection.getTextBeforeCursor(100, 0)?.toString())
+        assertEquals(11, connection.expectedSelectionStart)
+        assertEquals(11, connection.expectedSelectionEnd)
+
+        connection.replaceEntireText("Replaced")
+        assertEquals("Replaced", text)
+        assertEquals("Replaced", connection.getTextBeforeCursor(100, 0)?.toString())
+        assertEquals(8, connection.expectedSelectionStart)
+        assertEquals(8, connection.expectedSelectionEnd)
+    }
+
+    @Test
+    fun testCommitTextWithSelection() {
+        reset()
+        val connection = latinIME.mInputLogic.connection
+        connection.replaceEntireText("prefix suffix")
+        connection.setSelection(7, 13)
+        selectionStart = 7
+        selectionEnd = 13
+        latinIME.onUpdateSelection(13, 13, 7, 13, -1, -1)
+
+        connection.commitText("replacement", 1)
+        assertEquals("prefix replacement", text)
+        assertEquals("prefix replacement", connection.getTextBeforeCursor(100, 0)?.toString())
+    }
+
 }
 
 private var currentInputType = InputType.TYPE_CLASS_TEXT
@@ -1390,7 +1422,14 @@ private val ic = object : InputConnection {
     override fun deleteSurroundingTextInCodePoints(p0: Int, p1: Int): Boolean = TODO("Not yet implemented")
     override fun commitCompletion(p0: CompletionInfo?): Boolean = TODO("Not yet implemented")
     override fun performEditorAction(p0: Int): Boolean = true
-    override fun performContextMenuAction(p0: Int): Boolean = TODO("Not yet implemented")
+    override fun performContextMenuAction(p0: Int): Boolean {
+        if (p0 == android.R.id.selectAll) {
+            selectionStart = 0
+            selectionEnd = text.length
+            return true
+        }
+        return false
+    }
     override fun clearMetaKeyStates(p0: Int): Boolean = TODO("Not yet implemented")
     override fun reportFullscreenMode(p0: Boolean): Boolean = TODO("Not yet implemented")
     override fun performPrivateCommand(p0: String?, p1: Bundle?): Boolean = TODO("Not yet implemented")

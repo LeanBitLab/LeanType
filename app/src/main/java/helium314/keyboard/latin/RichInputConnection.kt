@@ -63,6 +63,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
     private val mCommittedTextBeforeComposingText = StringBuilder()
     private val mComposingText = StringBuilder()
+    private var mPendingInFlightDeletions = 0
 
     private val mTempObjectForCommitText = SpannableStringBuilder()
 
@@ -85,6 +86,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mLastSlowInputConnectionTime = -SLOW_INPUTCONNECTION_PERSIST_MS
         mNestLevel = 0
         mIsActive = true
+        mPendingInFlightDeletions = 0
         mIC = mParent.currentInputConnection
     }
 
@@ -92,6 +94,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mIsActive = false
         mIC = null
         mNestLevel = 0
+        mPendingInFlightDeletions = 0
     }
 
     private fun checkConsistencyForDebug() {
@@ -192,6 +195,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
         mExpectedSelStart = newSelStart
         mExpectedSelEnd = newSelEnd
+        mPendingInFlightDeletions = 0
 
         val didReloadTextSuccessfully = reloadTextCache()
 
@@ -280,11 +284,29 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             Log.d(TAG, "committing ${text.length} characters")
         }
 
-        mCommittedTextBeforeComposingText.append(text)
+        mPendingInFlightDeletions = 0
 
-        mExpectedSelStart += text.length - mComposingText.length
-        mExpectedSelEnd = mExpectedSelStart
-        mComposingText.setLength(0)
+        if (hasSelection()) {
+            val selStart = minOf(mExpectedSelStart, mExpectedSelEnd)
+            val selEnd = maxOf(mExpectedSelStart, mExpectedSelEnd)
+            val selectionLength = selEnd - selStart
+
+            if (mComposingText.isNotEmpty()) {
+                mComposingText.setLength(0)
+            } else if (selectionLength > 0 && mCommittedTextBeforeComposingText.isNotEmpty()) {
+                val deleteFrom = maxOf(0, mCommittedTextBeforeComposingText.length - selectionLength)
+                mCommittedTextBeforeComposingText.delete(deleteFrom, mCommittedTextBeforeComposingText.length)
+            }
+
+            mExpectedSelStart = selStart + text.length
+            mExpectedSelEnd = mExpectedSelStart
+        } else {
+            mExpectedSelStart += text.length - mComposingText.length
+            mExpectedSelEnd = mExpectedSelStart
+            mComposingText.setLength(0)
+        }
+
+        mCommittedTextBeforeComposingText.append(text)
 
         if (isConnected()) {
             val isDirectCommit = AppQuirksManager.isDirectCommitApp(mParent.currentInputEditorInfo?.packageName)
@@ -323,6 +345,26 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
                 // Invalidate local committed text cache in web editors to prevent stale reads and insertion loops
                 mCommittedTextBeforeComposingText.setLength(0)
             }
+        }
+    }
+
+    fun replaceEntireText(newText: CharSequence) {
+        if (!isConnected()) return
+
+        beginBatchEdit()
+        try {
+            mIC?.performContextMenuAction(android.R.id.selectAll)
+            mIC?.commitText(newText, 1)
+
+            mCommittedTextBeforeComposingText.setLength(0)
+            mComposingText.setLength(0)
+            mCommittedTextBeforeComposingText.append(newText)
+
+            mExpectedSelStart = newText.length
+            mExpectedSelEnd = newText.length
+            mPendingInFlightDeletions = 0
+        } finally {
+            endBatchEdit()
         }
     }
 
@@ -513,7 +555,21 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             else -> return true
         }
 
-        if (lastCachedChar != lastChar) return false
+        if (lastCachedChar != lastChar) {
+            val cachedText = if (composingLength > 0) {
+                mCommittedTextBeforeComposingText.toString() + mComposingText.toString()
+            } else {
+                mCommittedTextBeforeComposingText.toString()
+            }
+            val allowedInFlight = if (mPendingInFlightDeletions > 0) mPendingInFlightDeletions else 1
+            if (textField.length > cachedText.length &&
+                textField.length <= cachedText.length + allowedInFlight &&
+                textField.startsWith(cachedText)
+            ) {
+                return true
+            }
+            return false
+        }
 
         if (lastIndex > 0 && textField[lastIndex - 1] != lastChar) return true
 
@@ -589,6 +645,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         val remainingChars = mComposingText.length - beforeLength
+        mPendingInFlightDeletions = minOf(mPendingInFlightDeletions + beforeLength, 32)
 
         if (remainingChars >= 0) {
             mComposingText.setLength(remainingChars)
@@ -621,6 +678,9 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         val remainingChars = mComposingText.length - beforeLength
+        if (beforeLength > 0) {
+            mPendingInFlightDeletions = minOf(mPendingInFlightDeletions + beforeLength, 32)
+        }
 
         if (remainingChars >= 0) {
             mComposingText.setLength(remainingChars)
@@ -1116,6 +1176,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         composingSpanEnd: Int
     ): Boolean {
         if (mExpectedSelStart == newSelStart && mExpectedSelEnd == newSelEnd) {
+            mPendingInFlightDeletions = 0
             if (composingSpanStart >= 0 && composingSpanEnd >= 0) {
                 if (composingSpanEnd - composingSpanStart < mComposingText.length) {
                     return false
@@ -1131,9 +1192,14 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return false
         }
 
-        return (newSelStart == newSelEnd) &&
+        val isExpected = (newSelStart == newSelEnd) &&
                 (newSelStart - oldSelStart) * (mExpectedSelStart - newSelStart) >= 0 &&
                 (newSelEnd - oldSelEnd) * (mExpectedSelEnd - newSelEnd) >= 0
+        if (isExpected) {
+            val moved = kotlin.math.abs(newSelStart - oldSelStart)
+            mPendingInFlightDeletions = maxOf(0, mPendingInFlightDeletions - moved)
+        }
+        return isExpected
     }
 
     fun textBeforeCursorLooksLikeURL(): Boolean {
@@ -1279,7 +1345,10 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     val expectedSelectionEnd: Int
         get() = mExpectedSelEnd
 
-    fun hasSelection(): Boolean = mExpectedSelEnd != mExpectedSelStart
+    fun hasSelection(): Boolean =
+        mExpectedSelEnd != mExpectedSelStart &&
+        mExpectedSelStart != INVALID_CURSOR_POSITION &&
+        mExpectedSelEnd != INVALID_CURSOR_POSITION
 
     fun isCursorPositionKnown(): Boolean = INVALID_CURSOR_POSITION != mExpectedSelStart
 
