@@ -58,8 +58,6 @@ import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipOutputStream
@@ -203,7 +201,6 @@ private fun backupLauncher(
                 }
             }
         }
-        val wait = CountDownLatch(1)
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
             try {
                 ctx.getActivity()?.contentResolver?.openOutputStream(uri)?.use { os ->
@@ -260,14 +257,11 @@ private fun backupLauncher(
                     zipStream.close()
                 }
             } catch (t: Throwable) {
-                onError("b" + t.message)
+                Handler(Looper.getMainLooper()).post {
+                    onError("b" + t.message)
+                }
                 Log.w("AdvancedScreen", "error during backup", t)
-            } finally {
-                wait.countDown()
             }
-        }
-        if (!wait.await(30, TimeUnit.SECONDS)) {
-            Log.w("AdvancedScreen", "Backup timed out")
         }
     }
 }
@@ -279,7 +273,6 @@ private fun restoreLauncher(
 ): ManagedActivityResultLauncher<Intent, ActivityResult> {
     val ctx = LocalContext.current
     return filePicker { uri ->
-        val wait = CountDownLatch(1)
         val restoredDb = ctx.getDatabasePath(Database.NAME + "_restored")
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
             try {
@@ -371,28 +364,25 @@ private fun restoreLauncher(
                 }
                 Handler(Looper.getMainLooper()).post {
                     FeedbackManager.message(ctx, R.string.backup_restored)
+                    AppUpgrade.checkVersionUpgrade(ctx)
+                    AppUpgrade.transferOldPinnedClips(ctx)
+                    Settings.getInstance().startListener()
+                    SubtypeSettings.reloadEnabledSubtypes(ctx)
+                    val newDictBroadcast = Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION)
+                    ctx.getActivity()?.sendBroadcast(newDictBroadcast)
+                    LayoutUtilsCustom.onLayoutFileChanged()
+                    LayoutUtilsCustom.removeMissingLayouts(ctx)
+                    (ctx.getActivity() as? SettingsActivity)?.prefChanged()
+                    SupportedEmojis.load(ctx)
+                    KeyboardSwitcher.getInstance().setThemeNeedsReload()
                 }
             } catch (t: Throwable) {
-                onError("r" + t.message)
+                Handler(Looper.getMainLooper()).post {
+                    onError("r" + t.message)
+                }
                 Log.w("AdvancedScreen", "error during restore", t)
-            } finally {
-                wait.countDown()
             }
         }
-        if (!wait.await(30, TimeUnit.SECONDS)) {
-            Log.w("AdvancedScreen", "Restore timed out")
-        }
-        AppUpgrade.checkVersionUpgrade(ctx)
-        AppUpgrade.transferOldPinnedClips(ctx)
-        Settings.getInstance().startListener()
-        SubtypeSettings.reloadEnabledSubtypes(ctx)
-        val newDictBroadcast = Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION)
-        ctx.getActivity()?.sendBroadcast(newDictBroadcast)
-        LayoutUtilsCustom.onLayoutFileChanged()
-        LayoutUtilsCustom.removeMissingLayouts(ctx)
-        (ctx.getActivity() as? SettingsActivity)?.prefChanged()
-        SupportedEmojis.load(ctx)
-        KeyboardSwitcher.getInstance().setThemeNeedsReload()
     }
 }
 
