@@ -15,7 +15,9 @@ import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.latin.utils.SubtypeUtilsAdditional
 import helium314.keyboard.latin.utils.prefs
 import org.junit.runner.RunWith
+import java.io.File
 import java.util.Locale
+import helium314.keyboard.latin.utils.DictionaryInfoUtils
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -93,5 +95,18 @@ class SubtypeTest {
         SubtypeUtilsAdditional.changeAdditionalSubtype(to, toNew, latinIME)
         assertEquals(emptyList(), SubtypeSettings.getAdditionalSubtypes().map { it.toSettingsSubtype() })
         assertEquals(from.toSettingsSubtype(), SubtypeSettings.getEnabledSubtypes(false).single().toSettingsSubtype())
+    }
+
+    @Test fun catalanDictionaryFolderIsPreserved() {
+        val dictDir = File(DictionaryInfoUtils.getWordListCacheDirectory(latinIME))
+        val caFolder = File(dictDir, "ca").apply { mkdirs() }
+        val caDictFile = File(caFolder, "main.dict").apply { writeText("dummy") }
+        val enCaFolder = File(dictDir, "en-CA").apply { mkdirs() }
+        File(enCaFolder, "main.dict").apply { writeText("dummy-en") }
+
+        helium314.keyboard.latin.utils.getDictionaryLocales(latinIME)
+
+        assertTrue(caFolder.exists(), "ca folder should not be deleted or renamed by legacy migration")
+        assertTrue(caDictFile.exists(), "ca dictionary file should be preserved")
     }
 }

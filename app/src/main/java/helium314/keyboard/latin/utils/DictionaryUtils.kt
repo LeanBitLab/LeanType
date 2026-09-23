@@ -65,10 +65,10 @@ import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 fun getDictionaryLocales(context: Context): MutableSet<Locale> {
     val locales = HashSet<Locale>()
 
-    // ponytail: migrate legacy incorrectly-named dictionary folders (gb, au, ca) to en-GB, en-AU, en-CA
+    // ponytail: migrate legacy incorrectly-named dictionary folders (gb, au) to en-GB, en-AU
     val dictDir = File(DictionaryInfoUtils.getWordListCacheDirectory(context))
     if (dictDir.exists() && dictDir.isDirectory) {
-        val legacyMap = mapOf("gb" to "en-GB", "au" to "en-AU", "ca" to "en-CA")
+        val legacyMap = mapOf("gb" to "en-GB", "au" to "en-AU")
         legacyMap.forEach { (legacy, correct) ->
             val legacyFolder = File(dictDir, legacy)
             if (legacyFolder.exists() && legacyFolder.isDirectory) {
