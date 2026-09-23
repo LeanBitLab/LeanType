@@ -72,6 +72,37 @@ open class KeyboardView @JvmOverloads constructor(
     protected var mTypeface: Typeface?
     protected val mEmojiTypeface: Typeface?
 
+    private var mCachedHexPathWidth = 0f
+    private var mCachedHexPathHeight = 0f
+    private val mCachedHexPath = Path()
+
+    private fun getHexagonPath(width: Float, height: Float): Path {
+        if (width == mCachedHexPathWidth && height == mCachedHexPathHeight) {
+            return mCachedHexPath
+        }
+        mCachedHexPathWidth = width
+        mCachedHexPathHeight = height
+        mCachedHexPath.reset()
+
+        val pad = resources.displayMetrics.density * 1.5f
+        val left = pad
+        val right = width - pad
+        val top = pad
+        val bottom = height - pad
+        val cx = width / 2f
+        val hQuarter = (bottom - top) / 4f
+
+        mCachedHexPath.moveTo(cx, top)
+        mCachedHexPath.lineTo(right, top + hQuarter)
+        mCachedHexPath.lineTo(right, bottom - hQuarter)
+        mCachedHexPath.lineTo(cx, bottom)
+        mCachedHexPath.lineTo(left, bottom - hQuarter)
+        mCachedHexPath.lineTo(left, top + hQuarter)
+        mCachedHexPath.close()
+
+        return mCachedHexPath
+    }
+
     init {
         val keyboardViewAttr = context.obtainStyledAttributes(attrs, R.styleable.KeyboardView, defStyle, R.style.KeyboardView)
         mKeyBackground = when {
@@ -286,6 +317,34 @@ open class KeyboardView @JvmOverloads constructor(
     }
 
     protected open fun onDrawKeyBackground(key: Key, canvas: Canvas, background: Drawable) {
+        val isHex = keyboard?.isHexagonal == true
+        val isLetterHex = isHex && !key.isSpacer && !key.hasFunctionalBackground() && !key.hasActionKeyBackground() &&
+                key.backgroundType != Key.BACKGROUND_TYPE_SPACEBAR && !key.isModifier() && key.code > 0 &&
+                key.drawWidth <= key.height * 1.3f
+        if (isLetterHex) {
+            val width = key.drawWidth.toFloat()
+            val height = key.height.toFloat()
+            val hexPath = getHexagonPath(width, height)
+
+            val bgColor = if (key.isPressed) {
+                mColors.getPressedColor(ColorType.KEY_BACKGROUND)
+            } else {
+                mColors.get(ColorType.KEY_BACKGROUND)
+            }
+
+            mPaint.color = bgColor
+            mPaint.style = Paint.Style.FILL
+            canvas.drawPath(hexPath, mPaint)
+
+            if (mColors.hasKeyBorders) {
+                mPaint.color = ColorUtils.setAlphaComponent(mColors.get(ColorType.KEY_TEXT), 50)
+                mPaint.style = Paint.Style.STROKE
+                mPaint.strokeWidth = resources.displayMetrics.density * 1.5f
+                canvas.drawPath(hexPath, mPaint)
+            }
+            return
+        }
+
         var customColor = 0
         val isTextEditMode = KeyboardActionListenerImpl.sPersistentTextEditModeActive || (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT)
         if (isTextEditMode) {

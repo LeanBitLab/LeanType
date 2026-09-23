@@ -126,6 +126,9 @@ open class Keyboard {
         return canAssumeNativeHasProximityCharsInfoOfAllKeys || Character.isLetter(code)
     }
 
+    val isHexagonal: Boolean
+        get() = mId.isHexagonal
+
     val proximityInfo: ProximityInfo
         get() = mProximityInfo
 

@@ -24,6 +24,8 @@ import java.util.TreeSet
 open class KeyboardParams {
     lateinit var mId: KeyboardId
     var mThemeId: Int = 0
+    val isHexagonal: Boolean
+        get() = ::mId.isInitialized && mId.isHexagonal
 
     var mOccupiedHeight: Int = 0
     var mOccupiedWidth: Int = 0

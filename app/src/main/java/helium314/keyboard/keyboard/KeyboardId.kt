@@ -70,6 +70,9 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
     val isAlphabetKeyboard: Boolean
         get() = isAlphabetKeyboard(mElementId)
 
+    val isHexagonal: Boolean
+        get() = isAlphabetKeyboard && mSubtype.mainLayoutName.contains("hex", ignoreCase = true)
+
     fun navigateNext(): Boolean {
         return (mEditorInfo.imeOptions and EditorInfo.IME_FLAG_NAVIGATE_NEXT) != 0 ||
                 imeAction() == EditorInfo.IME_ACTION_NEXT

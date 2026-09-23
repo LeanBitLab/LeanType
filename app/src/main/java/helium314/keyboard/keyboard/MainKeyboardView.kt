@@ -88,7 +88,7 @@ class MainKeyboardView @JvmOverloads constructor(
         val mainKeyboardViewAttr = context.obtainStyledAttributes(attrs, R.styleable.MainKeyboardView, defStyle, R.style.MainKeyboardView)
         
         mTimerHandler = TimerHandler(this, mainKeyboardViewAttr.getInt(R.styleable.MainKeyboardView_ignoreAltCodeKeyTimeout, 0), mainKeyboardViewAttr.getInt(R.styleable.MainKeyboardView_gestureRecognitionUpdateTime, 0))
-        mKeyDetector = KeyDetector(mainKeyboardViewAttr.getDimension(R.styleable.MainKeyboardView_keyHysteresisDistance, 0.0f), mainKeyboardViewAttr.getDimension(R.styleable.MainKeyboardView_keyHysteresisDistanceForSlidingModifier, 0.0f))
+        mKeyDetector = HexKeyDetector(mainKeyboardViewAttr.getDimension(R.styleable.MainKeyboardView_keyHysteresisDistance, 0.0f), mainKeyboardViewAttr.getDimension(R.styleable.MainKeyboardView_keyHysteresisDistanceForSlidingModifier, 0.0f))
         
         PointerTracker.init(mainKeyboardViewAttr, mTimerHandler, this)
         

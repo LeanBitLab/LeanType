@@ -66,8 +66,10 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     private fun setupParams() {
         val sv = Settings.getValues()
         mParams.mAllowRedundantPopupKeys = !sv.mRemoveRedundantPopups
-        mParams.mProximityCharsCorrectionEnabled = mParams.mId.mElementId == KeyboardId.ELEMENT_ALPHABET
+        mParams.mProximityCharsCorrectionEnabled = !mParams.isHexagonal && (
+            mParams.mId.mElementId == KeyboardId.ELEMENT_ALPHABET
                 || (mParams.mId.isAlphabetKeyboard && !mParams.mId.mSubtype.hasExtraValue(Constants.Subtype.ExtraValue.NO_SHIFT_PROXIMITY_CORRECTION))
+        )
 
         addLocaleKeyTextsToParams(mContext, mParams, sv.mShowMorePopupKeys)
         mParams.mPopupKeyTypes.addAll(sv.mPopupKeyTypes)
@@ -110,6 +112,10 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
 
     // determine key size and positions using relative width and height
     private fun determineAbsoluteValues() {
+        if (mParams.isHexagonal) {
+            determineHexAbsoluteValues()
+            return
+        }
         var currentY = mParams.mTopPadding.toFloat()
         for (row in keysInRows) {
             if (row.isEmpty()) continue
@@ -121,6 +127,44 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
                 currentX += it.mAbsoluteWidth
             }
             currentY += row.first().mAbsoluteHeight
+        }
+    }
+
+    private fun determineHexAbsoluteValues() {
+        val baseRowHeight = if (keysInRows.isNotEmpty() && keysInRows.first().isNotEmpty()) {
+            keysInRows.first().first().mHeight * mParams.mBaseHeight
+        } else {
+            mParams.mDefaultRowHeight.toFloat() * mParams.mBaseHeight
+        }
+        val hexHeight = baseRowHeight * 1.15f
+        var currentY = mParams.mTopPadding.toFloat()
+
+        for ((rowIndex, row) in keysInRows.withIndex()) {
+            if (row.isEmpty()) continue
+
+            val isHexRow = row.any { it.mCode > 0 && Character.isLetter(it.mCode) }
+            val nextRowIsHex = rowIndex + 1 < keysInRows.size && keysInRows[rowIndex + 1].any { it.mCode > 0 && Character.isLetter(it.mCode) }
+
+            // Align Row 2 (Shift + 7 letters + Delete) for interlocking honeycomb
+            if (isHexRow && row.size >= 9 && row.first().mCode == KeyCode.SHIFT) {
+                row.first().mWidth = 0.10f
+                row.last().mWidth = 0.20f
+            }
+
+            var currentX = mParams.mLeftPadding.toFloat()
+            for (keyParams in row) {
+                keyParams.setAbsoluteDimensions(currentX, currentY)
+                if (isHexRow && keyParams.mCode > 0) {
+                    keyParams.mAbsoluteHeight = hexHeight
+                }
+                currentX += keyParams.mAbsoluteWidth
+            }
+
+            currentY += when {
+                isHexRow && nextRowIsHex -> hexHeight * 0.75f
+                isHexRow && !nextRowIsHex -> hexHeight * 0.85f
+                else -> baseRowHeight
+            }
         }
     }
 
