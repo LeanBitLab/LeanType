@@ -206,7 +206,6 @@ class LatinIME : InputMethodService(),
 
     override fun onCreate() {
         sInstance = this
-        settings.startListener()
         KeyboardIconsSet.instance.loadIcons(this)
         richImm = RichInputMethodManager.getInstance()
         AudioAndHapticFeedbackManager.init(this)
@@ -223,6 +222,7 @@ class LatinIME : InputMethodService(),
         super.onCreate()
 
         loadSettings()
+        settings.startListener()
         clipboardHistoryManager.onCreate()
         handler.onCreate()
 

@@ -61,7 +61,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         mContext = context
         val prefs = context.prefs()
         mPrefs = prefs
-        prefs.registerOnSharedPreferenceChangeListener(this)
     }
 
     fun onDestroy() {
@@ -75,7 +74,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             val context = mContext
             val currentValues = mSettingsValues
             if (context == null || currentValues == null) {
-                Log.w(TAG, "onSharedPreferenceChanged called before loadSettings.")
                 return
             }
             clearCustomToolbarKeyCodes()
