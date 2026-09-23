@@ -83,7 +83,7 @@ object JniUtils {
                 sHaveGestureLib = true
                 sHaveNativeGestureLib = true
             } catch (ul: UnsatisfiedLinkError) {
-                Log.w(TAG, "Could not load system glide typing library $JNI_LIB_NAME_GOOGLE: ${ul.message}")
+                Log.i(TAG, "Could not load system glide typing library $JNI_LIB_NAME_GOOGLE: ${ul.message}")
             }
         }
 
