@@ -38,6 +38,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | ⚙️ **[Per-App Profiles & Compatibility Engine](#27-per-app-profiles--compatibility-engine)** | Per-app composing rules, symbol composing for Tasker, auto-incognito, and Enter overrides |
 | ⌨️ **[Hardware & Physical Keyboard Support](#28-hardware--physical-keyboard-support)** | External Bluetooth/USB keyboard suggestions, shortcuts (`1`,`2`,`3`), D-PAD emoji navigation |
 | 🎨 **[Advanced Appearance & Key Ergonomics](#29-advanced-appearance--key-ergonomics)** | Independent corner radii (normal, functional, action), key gaps, padding scales, Shift icons |
+| ⌨️ **[Comprehensive Keycodes & Actions Reference](#30-comprehensive-keycodes--actions-reference)** | Complete reference table of all functional, navigation, editing, AI, and hardware keycodes |
 
 ---
 
@@ -540,5 +541,203 @@ Go beyond simple color themes with granular, user-level control over the keyboar
   - **Filled Arrow**: Single Shift active.
   - **Underlined Arrow**: Caps Lock locked.
 - **Auto-Spanning Key Balance**: Proportionately expands toolbar keys symmetrically across wider displays and landscape orientations (**Settings → Appearance → Toolbar auto-spacing**).
+
+---
+
+## 30. Comprehensive Keycodes & Actions Reference
+
+LeanType provides an extensible keycode architecture that allows customizing keys in:
+- **Custom JSON Layouts**: Map keys via `"code": <value>` (e.g. `{"code": -9, "label": "Del"}`).
+- **Simple Text Layouts**: Defined directly in custom layout `.txt` files.
+- **Toolbar Customization**: Custom primary and long-press codes via **Settings → Preferences → Customize toolbar key codes**.
+- **Popup Keys**: Extended keys revealed on long-pressing any primary keyboard key.
+
+> [!TIP]
+> All negative keycodes listed below are actively recognized and validated by `KeyCode.checkAndConvertCode()`. Positive integer codes correspond to standard Unicode codepoints (or ASCII values like `10` for Enter, `32` for Space, `9` for Tab).
+
+---
+
+### 1. ✏️ Text Editing & Deletion
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-7`** | `DELETE` | Backspace; deletes the character preceding the cursor. |
+| **`-8`** | `DELETE_WORD` | Backspace word; deletes the word preceding the cursor (`Ctrl` + Backspace). |
+| **`-9`** | `FORWARD_DELETE` | Forward delete; deletes the character after the cursor (`KeyEvent.KEYCODE_FORWARD_DEL`). |
+| **`-10`** | `FORWARD_DELETE_WORD` | Forward delete word; deletes the word following the cursor (`Ctrl` + Forward Delete). |
+| **`-131`** | `UNDO` | Reverts the last text modification (`Ctrl` + `Z`). |
+| **`-132`** | `REDO` | Re-applies the last undone modification (`Ctrl` + `Y`). |
+
+---
+
+### 2. 🧭 Cursor Navigation & Text Selection
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-21`** | `ARROW_LEFT` | Moves cursor left by one character (`DPAD_LEFT`). |
+| **`-22`** | `ARROW_RIGHT` | Moves cursor right by one character (`DPAD_RIGHT`). |
+| **`-23`** | `ARROW_UP` | Moves cursor up by one line (`DPAD_UP`). |
+| **`-24`** | `ARROW_DOWN` | Moves cursor down by one line (`DPAD_DOWN`). |
+| **`-27`** | `MOVE_START_OF_LINE` | Moves cursor to the start of the current line (`MOVE_HOME`). |
+| **`-28`** | `MOVE_END_OF_LINE` | Moves cursor to the end of the current line (`MOVE_END`). |
+| **`-10015`** | `WORD_LEFT` | Moves cursor one word to the left (`Ctrl` + `DPAD_LEFT`, RTL aware). |
+| **`-10016`** | `WORD_RIGHT` | Moves cursor one word to the right (`Ctrl` + `DPAD_RIGHT`, RTL aware). |
+| **`-10010`** | `PAGE_UP` | Scrolls or moves cursor up by one page (`PAGE_UP`). |
+| **`-10011`** | `PAGE_DOWN` | Scrolls or moves cursor down by one page (`PAGE_DOWN`). |
+| **`-25`** | `MOVE_START_OF_PAGE` | Moves cursor to the start of the document/page. |
+| **`-26`** | `MOVE_END_OF_PAGE` | Moves cursor to the end of the document/page. |
+| **`-305`** | `TOGGLE_TEXT_EDIT_MODE` | Toggles the dedicated Text Editing navigation pad. |
+| **`-306`** | `TOGGLE_SELECTION_MODE` | Toggles persistent Shift selection mode for arrow navigation keys. |
+
+---
+
+### 3. 📋 Clipboard Utilities
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-31`** | `CLIPBOARD_COPY` | Copies the current text selection to the clipboard. |
+| **`-32`** | `CLIPBOARD_CUT` | Cuts the current text selection to the clipboard. |
+| **`-33`** | `CLIPBOARD_PASTE` | Pastes text from the primary clipboard clip. |
+| **`-34`** | `CLIPBOARD_SELECT_WORD` | Automatically selects the entire word under the cursor. |
+| **`-35`** | `CLIPBOARD_SELECT_ALL` | Selects all text in the active editor field. |
+| **`-10009`** | `CLIPBOARD_COPY_ALL` | Selects all text and immediately copies it to the clipboard. |
+| **`-36`** | `CLIPBOARD_CLEAR_HISTORY`| Clears unpinned history entries from the in-app clipboard history. |
+| **`-213`** | `CLIPBOARD` | Opens the rich Clipboard History browser view. |
+| **`-10071`** | `CLIPBOARD_SEARCH` | Focuses the inline search bar within the clipboard manager. |
+
+---
+
+### 4. 🔣 Keyboard Views, Layouts & Modes
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-201`** | `ALPHA` | Switches to the standard Alphabet keyboard view. |
+| **`-202`** | `SYMBOL` | Switches to the primary Symbols keyboard view. |
+| **`-10001`** | `SYMBOL_ALPHA` | Toggles between Alphabet and Symbols views. |
+| **`-205`** | `NUMPAD` | Switches to the dedicated numeric Numpad keyboard view. |
+| **`-206`** | `VIEW_PHONE` | Opens the telephone dialer layout. |
+| **`-207`** | `VIEW_PHONE2` | Opens the secondary phone symbols layout. |
+| **`-212`** | `EMOJI` | Opens the interactive Emoji & Media palette. |
+| **`-113`** | `SPLIT_LAYOUT` | Toggles split keyboard mode for wide screens and landscape. |
+| **`-10072`** | `TOGGLE_FLOATING_KEYBOARD` | Toggles the moveable native IME floating keyboard window. |
+| **`-10073`** | `TOGGLE_TOUCHPAD_MODE` | Toggles the full-keyboard touchpad / trackpad cursor surface. |
+| **`-10002`** | `TOGGLE_ONE_HANDED_MODE` | Toggles one-handed keyboard mode (compact docked to left or right). |
+| **`-10004`** | `SWITCH_ONE_HANDED_MODE` | Switches the one-handed dock side between left and right. |
+| **`-10074`** | `HANDWRITING` | Toggles the on-device handwriting drawing canvas. |
+| **`-10075`** | `CLEAR_HANDWRITING` | Clears all current drawing strokes from the handwriting canvas. |
+| **`-10077`** | `OCR` | Opens the live camera viewfinder and screenshot OCR scanner. |
+| **`-10076`** | `SWITCH_TO_USER_IME` | Instantly switches to the user's configured target IME keyboard. |
+
+---
+
+### 5. 🤖 AI Integration & Translation
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-10052`** | `PROOFREAD` | Triggers AI proofreading / grammar correction on the current input. |
+| **`-10053`** | `TRANSLATE` | Translates the active field or selection using configured translation engine. |
+| **`-10054`** | `SHOW_TRANSLATE_LANGUAGES`| Opens the quick language selector for in-keyboard translation. |
+| **`-10061`** | `CUSTOM_AI_1` | Executes prompt template assigned to Custom AI Key #1. |
+| **`-10062`** | `CUSTOM_AI_2` | Executes prompt template assigned to Custom AI Key #2. |
+| **`-10063`** | `CUSTOM_AI_3` | Executes prompt template assigned to Custom AI Key #3. |
+| **`-10064`** | `CUSTOM_AI_4` | Executes prompt template assigned to Custom AI Key #4. |
+| **`-10065`** | `CUSTOM_AI_5` | Executes prompt template assigned to Custom AI Key #5. |
+| **`-10066`** | `CUSTOM_AI_6` | Executes prompt template assigned to Custom AI Key #6. |
+| **`-10067`** | `CUSTOM_AI_7` | Executes prompt template assigned to Custom AI Key #7. |
+| **`-10068`** | `CUSTOM_AI_8` | Executes prompt template assigned to Custom AI Key #8. |
+| **`-10069`** | `CUSTOM_AI_9` | Executes prompt template assigned to Custom AI Key #9. |
+| **`-10070`** | `CUSTOM_AI_10` | Executes prompt template assigned to Custom AI Key #10. |
+
+---
+
+### 6. ⚙️ Input Controls & Toggles
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-10005`** | `SHIFT_ENTER` | Sends Shift+Enter (forces a literal newline in chat apps that send on Enter). |
+| **`-10006`** | `ACTION_NEXT` | Performs the `IME_ACTION_NEXT` editor action (jump to next form field). |
+| **`-10007`** | `ACTION_PREVIOUS` | Performs the `IME_ACTION_PREVIOUS` editor action (jump to previous field). |
+| **`-227`** | `LANGUAGE_SWITCH` | Cycles to the next enabled language subtype. |
+| **`-232`** | `IME_HIDE_UI` | Dismisses / closes the soft keyboard window. |
+| **`-233`** | `VOICE_INPUT` | Initiates voice typing (Whisper on-device or system voice IME). |
+| **`-244`** | `TOGGLE_INCOGNITO_MODE`| Toggles incognito private mode (disables dictionary learning). |
+| **`-245`** | `TOGGLE_AUTOCORRECT` | Instantly toggles auto-correction on or off. |
+| **`-301`** | `SETTINGS` | Opens LeanType Settings. |
+| **`-10043`** | `TIMESTAMP` | Inserts the current localized date and time stamp at cursor. |
+| **`-10051`** | `INLINE_EMOJI_SEARCH_DONE` | Confirms and closes inline emoji search. |
+
+---
+
+### 7. ⌨️ Modifiers & Locks
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-11`** | `SHIFT` | Shift modifier; capitalizes next character or shifts symbols. |
+| **`-13`** | `CAPS_LOCK` | Locks keyboard in uppercase state. |
+| **`-1`** | `CTRL` | Control modifier (`KeyEvent.META_CTRL_ON`). |
+| **`-2`** | `CTRL_LOCK` | Locks Control modifier. |
+| **`-3`** | `ALT` | Alt modifier (`KeyEvent.META_ALT_ON`). |
+| **`-4`** | `ALT_LOCK` | Locks Alt modifier. |
+| **`-5`** | `FN` | Function modifier. |
+| **`-6`** | `FN_LOCK` | Locks Function modifier. |
+| **`-10012`** | `META` | Meta / Super / Windows modifier. |
+| **`-10013`** | `META_LOCK` | Locks Meta modifier. |
+| **`-10044`** | `CTRL_LEFT` | Left Control key specifically. |
+| **`-10045`** | `CTRL_RIGHT` | Right Control key specifically. |
+| **`-10046`** | `ALT_LEFT` | Left Alt key specifically. |
+| **`-10047`** | `ALT_RIGHT` | Right Alt key specifically. |
+| **`-10048`** | `META_LEFT` | Left Meta key specifically. |
+| **`-10049`** | `META_RIGHT` | Right Meta key specifically. |
+
+---
+
+### 8. 💻 Hardware & Media Controls
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-10014`** | `TAB` | Tab key (`KeyEvent.KEYCODE_TAB`). |
+| **`-10017`** | `ESCAPE` | Escape key (`KeyEvent.KEYCODE_ESCAPE`). |
+| **`-10018`** | `INSERT` | Insert key (`KeyEvent.KEYCODE_INSERT`). |
+| **`-10040`** | `BACK` | Android Back button (`KeyEvent.KEYCODE_BACK`). |
+| **`-10019`** | `SLEEP` | System Sleep key (`KeyEvent.KEYCODE_SLEEP`). |
+| **`-10020`** | `MEDIA_PLAY` | Media Play (`KeyEvent.KEYCODE_MEDIA_PLAY`). |
+| **`-10021`** | `MEDIA_PAUSE` | Media Pause (`KeyEvent.KEYCODE_MEDIA_PAUSE`). |
+| **`-10022`** | `MEDIA_PLAY_PAUSE` | Media Play/Pause toggle (`KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE`). |
+| **`-10023`** | `MEDIA_NEXT` | Next Track (`KeyEvent.KEYCODE_MEDIA_NEXT`). |
+| **`-10024`** | `MEDIA_PREVIOUS` | Previous Track (`KeyEvent.KEYCODE_MEDIA_PREVIOUS`). |
+| **`-10025`** | `VOL_UP` | Volume Up (`KeyEvent.KEYCODE_VOLUME_UP`). |
+| **`-10026`** | `VOL_DOWN` | Volume Down (`KeyEvent.KEYCODE_VOLUME_DOWN`). |
+| **`-10027`** | `MUTE` | Audio Mute (`KeyEvent.KEYCODE_VOLUME_MUTE`). |
+| **`-10028` .. `-10039`** | `F1` .. `F12` | Function keys F1 through F12 (`KeyEvent.KEYCODE_F1` .. `KEYCODE_F12`). |
+
+---
+
+### 9. 🎨 Custom Layout Slots & Currency Keys
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-10081`** | `CUSTOM1` | Activates Custom Layout Profile #1. |
+| **`-10082`** | `CUSTOM2` | Activates Custom Layout Profile #2. |
+| **`-10083`** | `CUSTOM3` | Activates Custom Layout Profile #3. |
+| **`-10084`** | `CUSTOM4` | Activates Custom Layout Profile #4. |
+| **`-10085`** | `CUSTOM5` | Activates Custom Layout Profile #5. |
+| **`-801` .. `-806`** | `CURRENCY_SLOT_1` .. `_6` | Inserts the currency symbol assigned to slots 1 through 6. |
+
+---
+
+### 10. 📡 Custom Intents & Typography Codes
+
+| Keycode | Constant Name | Action / Description |
+| :---: | :--- | :--- |
+| **`-20000`** | `SEND_INTENT_ONE` | Dispatches user-configured broadcast Intent #1. |
+| **`-20001`** | `SEND_INTENT_TWO` | Dispatches user-configured broadcast Intent #2. |
+| **`-20002`** | `SEND_INTENT_THREE` | Dispatches user-configured broadcast Intent #3. |
+| **`1600`** | `KESHIDA` | Arabic Tatweel / Keshida elongator (`\u0640`). |
+| **`8204`** | `ZWNJ` | Zero-Width Non-Joiner (`\u200C`). |
+| **`8205`** | `ZWJ` | Zero-Width Joiner (`\u200D`). |
+| **`12288`** | `CJK_SPACE` | CJK Fullwidth Ideographic Space (`\u3000`). |
+| **`-902`** | `MULTIPLE_CODE_POINTS` | Special container key producing multi-character text sequences. |
+| **`-10008`** | `NOT_SPECIFIED` | Structural dummy spacer key (disables key interaction, renders blank). |
+
 
 
