@@ -208,6 +208,9 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         val (newDictionaryGroups, existingDictsToCleanup) =
             getNewDictGroupsAndDictsToCleanup(locales, subDictTypesToUse, forceReloadMainDictionary, dictNamePrefix, context)
 
+        mLoadedSuggestEmojis = Settings.getValues().mSuggestEmojis
+        mLoadedEmojiDictExists = locales.any { helium314.keyboard.latin.utils.DictionaryInfoUtils.getCachedDictForLocaleAndType(it, Dictionary.TYPE_EMOJI, context) != null }
+
         // Replace Dictionaries.
         val oldDictionaryGroups: List<DictionaryGroup>
         synchronized(this) {
