@@ -1,5 +1,6 @@
 package helium314.keyboard.keyboard
 
+import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.common.Constants
 import kotlin.math.abs
 
@@ -17,9 +18,9 @@ open class HexKeyDetector(
         val touchX = getTouchX(x)
         val touchY = getTouchY(y)
 
-        // 1. Direct Cartesian hit-test for spacebar (the only non-hex key)
+        // 1. Direct Cartesian hit-test for non-hexagonal keys (wide spacebar, notch Shift/Delete)
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (isSpacebarKey(key)) {
+            if (isNonHexKey(key)) {
                 if (key.isOnKey(touchX, touchY)) {
                     return key
                 }
@@ -31,7 +32,7 @@ open class HexKeyDetector(
         var minDistance = Int.MAX_VALUE
 
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isSpacebarKey(key)) continue
+            if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -50,7 +51,7 @@ open class HexKeyDetector(
 
         // 3. Fallback: find nearest hex key by center distance among candidate keys
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isSpacebarKey(key)) continue
+            if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -65,8 +66,10 @@ open class HexKeyDetector(
         return bestHexKey ?: super.detectHitKey(x, y)
     }
 
-    private fun isSpacebarKey(key: Key): Boolean {
-        return key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR
+    private fun isNonHexKey(key: Key): Boolean {
+        val isWideSpacebar = (key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR) && key.width > key.height * 1.4f
+        val isHalfFunctional = (key.isShift() || key.code == KeyCode.DELETE) && key.width < key.height * 0.6f
+        return isWideSpacebar || isHalfFunctional
     }
 
     private fun isInsideHexagon(px: Int, py: Int, keyX: Int, keyY: Int, width: Int, height: Int): Boolean {

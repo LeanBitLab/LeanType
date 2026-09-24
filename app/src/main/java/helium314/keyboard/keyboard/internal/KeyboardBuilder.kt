@@ -131,6 +131,50 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     }
 
     private fun determineHexAbsoluteValues() {
+        val isTypewise = keysInRows.size == 5 && keysInRows.any { it.size == 7 }
+        if (isTypewise) {
+            determineTypewiseHoneycombValues()
+        } else {
+            determineHexQwertyValues()
+        }
+    }
+
+    private fun determineTypewiseHoneycombValues() {
+        val totalCols = 7f
+        val hexWidth = mParams.mBaseWidth / totalCols
+        // Equilateral pointy-topped hexagon height: width * 2 / sqrt(3) ≈ width * 1.1547f
+        val hexHeight = hexWidth * 1.1547f
+        val verticalPitch = hexHeight * 0.75f
+        val totalHeight = 4f * verticalPitch + hexHeight
+
+        val yStart = mParams.mTopPadding.toFloat() + kotlin.math.max(
+            0f,
+            (mParams.mOccupiedHeight - mParams.mTopPadding - mParams.mBottomPadding - totalHeight) / 2f
+        )
+
+        for ((rowIndex, row) in keysInRows.withIndex()) {
+            if (row.isEmpty()) continue
+            val currentY = yStart + rowIndex * verticalPitch
+            val totalRowWidth = row.fold(0f) { acc, kp ->
+                val isHalf = kp.isSpacer || kp.mCode == KeyCode.SHIFT || kp.mCode == KeyCode.DELETE
+                acc + if (isHalf) hexWidth / 2f else hexWidth
+            }
+            var currentX = mParams.mLeftPadding.toFloat() + kotlin.math.max(0f, (mParams.mBaseWidth - totalRowWidth) / 2f)
+
+            for (keyParams in row) {
+                val isHalfKey = keyParams.isSpacer || keyParams.mCode == KeyCode.SHIFT || keyParams.mCode == KeyCode.DELETE
+                val keyW = if (isHalfKey) hexWidth / 2f else hexWidth
+                keyParams.mWidth = keyW / mParams.mBaseWidth
+                keyParams.mHeight = hexHeight / mParams.mBaseHeight
+                keyParams.setAbsoluteDimensions(currentX, currentY)
+                keyParams.mAbsoluteWidth = keyW
+                keyParams.mAbsoluteHeight = hexHeight
+                currentX += keyW
+            }
+        }
+    }
+
+    private fun determineHexQwertyValues() {
         val baseRowHeight = if (keysInRows.isNotEmpty() && keysInRows.first().isNotEmpty()) {
             keysInRows.first().first().mHeight * mParams.mBaseHeight
         } else {

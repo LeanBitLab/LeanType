@@ -318,21 +318,29 @@ open class KeyboardView @JvmOverloads constructor(
 
     protected open fun onDrawKeyBackground(key: Key, canvas: Canvas, background: Drawable) {
         val isHex = keyboard?.isHexagonal == true
-        val isSpacebar = key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR
-        val isHexKey = isHex && !key.isSpacer && !isSpacebar
+        val isWideSpacebar = (key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR) && key.drawWidth > key.height * 1.4f
+        val isHalfFunctionalKey = (key.isShift() || key.code == KeyCode.DELETE) && key.drawWidth < key.height * 0.6f
+        val isHexKey = isHex && !key.isSpacer && !isWideSpacebar && !isHalfFunctionalKey
         if (isHexKey) {
             val width = key.drawWidth.toFloat()
             val height = key.height.toFloat()
             val hexPath = getHexagonPath(width, height)
 
             val isActionKey = key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER
+            val isSpaceKey = key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR
             val isFunctional = key.hasFunctionalBackground() || key.isShift() || key.isModifier() || key.code == KeyCode.DELETE || key.code == KeyCode.SYMBOL_ALPHA
+
+            val baseBg = mColors.get(ColorType.KEY_BACKGROUND)
+            val isDarkTheme = ColorUtils.calculateLuminance(baseBg) < 0.5
+            val spaceBlendColor = if (isDarkTheme) Color.WHITE else Color.BLACK
+            val spaceBlendRatio = if (isDarkTheme) 0.12f else 0.08f
 
             val bgColor = when {
                 key.isPressed -> mColors.getPressedColor(if (isActionKey) ColorType.ACTION_KEY_BACKGROUND else if (isFunctional) ColorType.FUNCTIONAL_KEY_BACKGROUND else ColorType.KEY_BACKGROUND)
-                isActionKey -> mColors.get(ColorType.ACTION_KEY_BACKGROUND)
+                isActionKey -> Color.parseColor("#2979FF") // Vibrant blue action hex
+                isSpaceKey -> ColorUtils.blendARGB(baseBg, spaceBlendColor, spaceBlendRatio) // Subtle elevated gray for twin spacebars
                 isFunctional -> mColors.get(ColorType.FUNCTIONAL_KEY_BACKGROUND)
-                else -> mColors.get(ColorType.KEY_BACKGROUND)
+                else -> baseBg
             }
 
             mPaint.color = bgColor
@@ -449,7 +457,8 @@ open class KeyboardView @JvmOverloads constructor(
         val icon = kb?.let { key.getIcon(it.mIconsSet, params.mAnimAlpha) }
         var labelX = centerX
         var labelBaseline = centerY
-        val label = key.label
+        val isHexSpace = keyboard?.isHexagonal == true && (key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR) && key.drawWidth <= key.height * 1.4f
+        val label = if (isHexSpace) null else key.label
         
         if (label != null) {
             val typeface = if (mEmojiTypeface != null && isEmoji(label)) mEmojiTypeface else mTypeface
@@ -647,6 +656,8 @@ open class KeyboardView @JvmOverloads constructor(
         val customBgColor = mKeyCustomBgColors[key]
         if (customBgColor != null) {
             icon.setColorFilter(getContrastingColor(customBgColor), PorterDuff.Mode.SRC_IN)
+        } else if (keyboard?.isHexagonal == true && (key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER)) {
+            icon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
         } else if (key.hasActionKeyBackground()) {
             mColors.setColor(icon, ColorType.ACTION_KEY_ICON)
         } else if (key.isShift() && keyboard != null) {
