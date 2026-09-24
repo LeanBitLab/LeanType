@@ -74,14 +74,16 @@ open class KeyboardView @JvmOverloads constructor(
 
     private var mCachedHexPathWidth = 0f
     private var mCachedHexPathHeight = 0f
+    private var mCachedHexVariant = -1
     private val mCachedHexPath = Path()
 
-    private fun getHexagonPath(width: Float, height: Float): Path {
-        if (width == mCachedHexPathWidth && height == mCachedHexPathHeight) {
+    private fun getHexPath(width: Float, height: Float, variant: Int): Path {
+        if (width == mCachedHexPathWidth && height == mCachedHexPathHeight && variant == mCachedHexVariant) {
             return mCachedHexPath
         }
         mCachedHexPathWidth = width
         mCachedHexPathHeight = height
+        mCachedHexVariant = variant
         mCachedHexPath.reset()
 
         val pad = resources.displayMetrics.density * 1.0f
@@ -89,17 +91,37 @@ open class KeyboardView @JvmOverloads constructor(
         val right = width - pad
         val top = pad
         val bottom = height - pad
-        val cx = width / 2f
         val hQuarter = (bottom - top) / 4f
 
-        mCachedHexPath.moveTo(cx, top)
-        mCachedHexPath.lineTo(right, top + hQuarter)
-        mCachedHexPath.lineTo(right, bottom - hQuarter)
-        mCachedHexPath.lineTo(cx, bottom)
-        mCachedHexPath.lineTo(left, bottom - hQuarter)
-        mCachedHexPath.lineTo(left, top + hQuarter)
-        mCachedHexPath.close()
-
+        when (variant) {
+            HexVariant.HALF_LEFT -> {
+                // Flat left edge, pointy right vertices (Shift)
+                mCachedHexPath.moveTo(left, top)
+                mCachedHexPath.lineTo(right, top + hQuarter)
+                mCachedHexPath.lineTo(right, bottom - hQuarter)
+                mCachedHexPath.lineTo(left, bottom)
+                mCachedHexPath.close()
+            }
+            HexVariant.HALF_RIGHT -> {
+                // Pointy left vertices, flat right edge (Delete)
+                mCachedHexPath.moveTo(right, top)
+                mCachedHexPath.lineTo(left, top + hQuarter)
+                mCachedHexPath.lineTo(left, bottom - hQuarter)
+                mCachedHexPath.lineTo(right, bottom)
+                mCachedHexPath.close()
+            }
+            else -> {
+                // Full pointy-topped hexagon
+                val cx = width / 2f
+                mCachedHexPath.moveTo(cx, top)
+                mCachedHexPath.lineTo(right, top + hQuarter)
+                mCachedHexPath.lineTo(right, bottom - hQuarter)
+                mCachedHexPath.lineTo(cx, bottom)
+                mCachedHexPath.lineTo(left, bottom - hQuarter)
+                mCachedHexPath.lineTo(left, top + hQuarter)
+                mCachedHexPath.close()
+            }
+        }
         return mCachedHexPath
     }
 
@@ -319,12 +341,11 @@ open class KeyboardView @JvmOverloads constructor(
     protected open fun onDrawKeyBackground(key: Key, canvas: Canvas, background: Drawable) {
         val isHex = keyboard?.isHexagonal == true
         val isWideSpacebar = (key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR) && key.drawWidth > key.height * 1.4f
-        val isHalfFunctionalKey = (key.isShift() || key.code == KeyCode.DELETE) && key.drawWidth < key.height * 0.6f
-        val isHexKey = isHex && !key.isSpacer && !isWideSpacebar && !isHalfFunctionalKey
+        val isHexKey = isHex && !key.isSpacer && !isWideSpacebar
         if (isHexKey) {
             val width = key.drawWidth.toFloat()
             val height = key.height.toFloat()
-            val hexPath = getHexagonPath(width, height)
+            val hexPath = getHexPath(width, height, key.hexVariant)
 
             val isActionKey = key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER
             val isSpaceKey = key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR

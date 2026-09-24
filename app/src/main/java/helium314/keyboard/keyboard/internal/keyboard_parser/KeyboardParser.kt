@@ -81,6 +81,11 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
                 params.mBaseHeight /= 4
                 params.mTopPadding = (params.mTopPadding / 4.0).roundToInt()
             }
+        } else if (params.isHexagonal) {
+            // Hex rows keep FULL height (1/4 of mBaseHeight each).
+            // The interlocking 0.75-pitch is handled in KeyboardBuilder.
+            // 5 rows × 0.75 pitch + 1 full row = 4.0 × rowHeight = mBaseHeight
+            heightRescale = 1f
         } else {
             // rescale height if we have anything but the usual 4 rows
             heightRescale = if (keysInRows.size != 4) 4f / keysInRows.size else 1f
@@ -103,10 +108,12 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
 
         val numberRows = getNumberRows()
         val numberRow = numberRows.first()
-        addNumberRowOrPopupKeys(baseKeys, numberRow)
+        if (!params.isHexagonal) {
+            addNumberRowOrPopupKeys(baseKeys, numberRow)
+        }
         if (params.mId.isAlphabetKeyboard)
             addSymbolPopupKeys(baseKeys)
-        if (params.mId.isAlphaOrSymbolKeyboard && (params.mId.mNumberRowEnabled
+        if (!params.isHexagonal && params.mId.isAlphaOrSymbolKeyboard && (params.mId.mNumberRowEnabled
                 || (params.mId.mElementId == KeyboardId.ELEMENT_SYMBOLS && params.mId.mNumberRowInSymbols && !params.mId.mCompactNumberRowInSymbols))) {
             val newLabelFlags = defaultLabelFlags or
                     if (Settings.getValues().mShowNumberRowHints) 0 else Key.LABEL_FLAGS_DISABLE_HINT_LABEL
@@ -204,7 +211,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
 
         // adjust last normal row key widths to be aligned with row above, assuming a reasonably close-to-default alpha / symbol layout
         // like in original layouts, e.g. for nordic and swiss layouts
-        if (!params.mId.isAlphaOrSymbolKeyboard || bassKeyParams.size < 3 || bassKeyParams.last().isNotEmpty())
+        if (params.isHexagonal || !params.mId.isAlphaOrSymbolKeyboard || bassKeyParams.size < 3 || bassKeyParams.last().isNotEmpty())
             return keysInRows
         val lastNormalRow = bassKeyParams[bassKeyParams.lastIndex - 1]
         val rowAboveLast = bassKeyParams[bassKeyParams.lastIndex - 2]

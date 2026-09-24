@@ -112,10 +112,7 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
 
     // determine key size and positions using relative width and height
     private fun determineAbsoluteValues() {
-        if (mParams.isHexagonal) {
-            determineHexAbsoluteValues()
-            return
-        }
+        val yPitchFactor = if (mParams.isHexagonal) 0.75f else 1.0f
         var currentY = mParams.mTopPadding.toFloat()
         for (row in keysInRows) {
             if (row.isEmpty()) continue
@@ -126,90 +123,7 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
                     Log.d(TAG, "setting size and position for ${it.mLabel ?: it.mIconName}, ${it.mCode}: x ${currentX.toInt()}, w ${it.mAbsoluteWidth.toInt()}")
                 currentX += it.mAbsoluteWidth
             }
-            currentY += row.first().mAbsoluteHeight
-        }
-    }
-
-    private fun determineHexAbsoluteValues() {
-        val isTypewise = keysInRows.size == 5 && keysInRows.any { it.size == 7 }
-        if (isTypewise) {
-            determineTypewiseHoneycombValues()
-        } else {
-            determineHexQwertyValues()
-        }
-    }
-
-    private fun determineTypewiseHoneycombValues() {
-        val totalCols = 7f
-        val hexWidth = mParams.mBaseWidth / totalCols
-        // Equilateral pointy-topped hexagon height: width * 2 / sqrt(3) ≈ width * 1.1547f
-        val hexHeight = hexWidth * 1.1547f
-        val verticalPitch = hexHeight * 0.75f
-        val totalHeight = 4f * verticalPitch + hexHeight
-
-        val yStart = mParams.mTopPadding.toFloat() + kotlin.math.max(
-            0f,
-            (mParams.mOccupiedHeight - mParams.mTopPadding - mParams.mBottomPadding - totalHeight) / 2f
-        )
-
-        for ((rowIndex, row) in keysInRows.withIndex()) {
-            if (row.isEmpty()) continue
-            val currentY = yStart + rowIndex * verticalPitch
-            val totalRowWidth = row.fold(0f) { acc, kp ->
-                val isHalf = kp.isSpacer || kp.mCode == KeyCode.SHIFT || kp.mCode == KeyCode.DELETE
-                acc + if (isHalf) hexWidth / 2f else hexWidth
-            }
-            var currentX = mParams.mLeftPadding.toFloat() + kotlin.math.max(0f, (mParams.mBaseWidth - totalRowWidth) / 2f)
-
-            for (keyParams in row) {
-                val isHalfKey = keyParams.isSpacer || keyParams.mCode == KeyCode.SHIFT || keyParams.mCode == KeyCode.DELETE
-                val keyW = if (isHalfKey) hexWidth / 2f else hexWidth
-                keyParams.mWidth = keyW / mParams.mBaseWidth
-                keyParams.mHeight = hexHeight / mParams.mBaseHeight
-                keyParams.setAbsoluteDimensions(currentX, currentY)
-                keyParams.mAbsoluteWidth = keyW
-                keyParams.mAbsoluteHeight = hexHeight
-                currentX += keyW
-            }
-        }
-    }
-
-    private fun determineHexQwertyValues() {
-        val baseRowHeight = if (keysInRows.isNotEmpty() && keysInRows.first().isNotEmpty()) {
-            keysInRows.first().first().mHeight * mParams.mBaseHeight
-        } else {
-            mParams.mDefaultRowHeight.toFloat() * mParams.mBaseHeight
-        }
-        val hexHeight = baseRowHeight * 1.15f
-        var currentY = mParams.mTopPadding.toFloat()
-
-        for ((rowIndex, row) in keysInRows.withIndex()) {
-            if (row.isEmpty()) continue
-
-            val isHexRow = row.any { it.mCode > 0 && Character.isLetter(it.mCode) }
-            val nextRowIsHex = rowIndex + 1 < keysInRows.size && keysInRows[rowIndex + 1].any { it.mCode > 0 && Character.isLetter(it.mCode) }
-
-            // Balance Row 2 (Shift + 7 letters + Delete) with equal, normal-sized functional keys
-            if (isHexRow && row.size >= 9 && row.first().mCode == KeyCode.SHIFT) {
-                row.first().mWidth = 0.15f
-                row.last().mWidth = 0.15f
-            }
-
-            var currentX = mParams.mLeftPadding.toFloat()
-            for (keyParams in row) {
-                keyParams.setAbsoluteDimensions(currentX, currentY)
-                val isSpacebar = keyParams.mCode == Constants.CODE_SPACE
-                if (!isSpacebar) {
-                    keyParams.mAbsoluteHeight = hexHeight
-                }
-                currentX += keyParams.mAbsoluteWidth
-            }
-
-            currentY += when {
-                isHexRow && nextRowIsHex -> hexHeight * 0.75f
-                isHexRow && !nextRowIsHex -> hexHeight * 0.85f
-                else -> baseRowHeight
-            }
+            currentY += row.first().mAbsoluteHeight * yPitchFactor
         }
     }
 

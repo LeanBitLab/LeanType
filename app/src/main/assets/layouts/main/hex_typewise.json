@@ -17,14 +17,14 @@
     { "label": "p", "width": 0.142857 }
   ],
   [
-    { "label": "shift", "width": 0.071428 },
+    { "label": "shift", "width": 0.071429, "hexVariant": 1 },
     { "label": ",", "width": 0.142857, "popup": { "main": { "label": "'" }, "relevant": [{ "label": "-" }] } },
     { "code": 32, "label": " ", "width": 0.142857 },
     { "label": "f", "width": 0.142857, "popup": { "main": { "label": "8" } } },
     { "label": "h", "width": 0.142857, "popup": { "main": { "label": "9" } } },
     { "code": 32, "label": " ", "width": 0.142857 },
     { "label": ".", "width": 0.142857, "popup": { "main": { "label": "!" }, "relevant": [{ "label": "?" }] } },
-    { "label": "delete", "width": 0.071428 }
+    { "label": "delete", "width": 0.071429, "hexVariant": 2 }
   ],
   [
     { "label": "y", "width": 0.142857 },

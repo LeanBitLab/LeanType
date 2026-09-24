@@ -105,6 +105,8 @@ open class Key : Comparable<Key> {
     protected val mBackgroundType: Int
     open val backgroundType: Int get() = mBackgroundType
 
+    val hexVariant: Int
+
     internal val mActionFlags: Int
 
     val visualAttributes: KeyVisualAttributes?
@@ -196,6 +198,7 @@ open class Key : Comparable<Key> {
         mY = y
         hitBox.set(x, y, x + width + 1, y + height)
         mKeyVisualAttributes = null
+        hexVariant = HexVariant.FULL
         mHashCode = computeHashCode(this)
     }
 
@@ -226,6 +229,7 @@ open class Key : Comparable<Key> {
         mActionFlags = key.mActionFlags
         mKeyVisualAttributes = key.visualAttributes
         mOptionalAttributes = key.mOptionalAttributes
+        hexVariant = key.hexVariant
         mHashCode = key.mHashCode
         mPressed = key.isPressed
         mEnabled = key.isEnabled
@@ -265,6 +269,7 @@ open class Key : Comparable<Key> {
         mKeyVisualAttributes = key.visualAttributes
         mOptionalAttributes = if (outputText == null) null
         else OptionalAttributes.newInstance(outputText, KeyCode.NOT_SPECIFIED, null, 0, 0)
+        hexVariant = key.hexVariant
         mHashCode = key.mHashCode
         mPressed = key.isPressed
         mEnabled = key.isEnabled
@@ -284,6 +289,7 @@ open class Key : Comparable<Key> {
         mKeyVisualAttributes = keyParams.mKeyVisualAttributes
         mOptionalAttributes = keyParams.mOptionalAttributes
         mEnabled = keyParams.mEnabled
+        hexVariant = keyParams.mHexVariant
 
         val horizontalGapFloat = if (isSpacer) 0f
         else (keyParams.mKeyboardParams.mRelativeHorizontalGap * keyParams.mKeyboardParams.mOccupiedWidth)
@@ -330,6 +336,7 @@ open class Key : Comparable<Key> {
         }
         mKeyVisualAttributes = key.visualAttributes
         mOptionalAttributes = key.mOptionalAttributes
+        hexVariant = key.hexVariant
         mHashCode = key.mHashCode
         mPressed = key.isPressed
         mEnabled = key.isEnabled
@@ -677,6 +684,7 @@ open class Key : Comparable<Key> {
         var mAbsoluteHeight: Float = 0f
         var xPos: Float = 0f
         var yPos: Float = 0f
+        var mHexVariant: Int = HexVariant.FULL
 
         val mCode: Int
         val mLabel: String?
@@ -951,6 +959,7 @@ open class Key : Comparable<Key> {
             mActionFlags = keyParams.mActionFlags
             mKeyVisualAttributes = keyParams.mKeyVisualAttributes
             mOptionalAttributes = keyParams.mOptionalAttributes
+            mHexVariant = keyParams.mHexVariant
         }
 
         companion object {

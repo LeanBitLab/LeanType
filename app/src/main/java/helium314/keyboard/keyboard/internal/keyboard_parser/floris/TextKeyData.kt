@@ -51,6 +51,7 @@ sealed interface KeyData : AbstractKeyData {
     val popup: PopupSet<out AbstractKeyData> // not nullable because can't add number otherwise
     val width: Float // in percent of keyboard width, 0 is default (depends on key), -1 is fill (like space bar)
     val labelFlags: Int
+    val hexVariant: Int get() = helium314.keyboard.keyboard.HexVariant.FULL
 
     fun copy(newType: KeyType? = type, newCode: Int = code, newLabel: String = label, newGroupId: Int = groupId,
              newPopup: PopupSet<out AbstractKeyData> = popup, newWidth: Float = width, newLabelFlags: Int = labelFlags): KeyData
@@ -362,7 +363,7 @@ sealed interface KeyData : AbstractKeyData {
         if (background == Key.BACKGROUND_TYPE_FUNCTIONAL)
             newLabelFlags = newLabelFlags or Key.LABEL_FLAGS_FOLLOW_FUNCTIONAL_TEXT_COLOR
 
-        return if (newCode == KeyCode.UNSPECIFIED || newCode == KeyCode.MULTIPLE_CODE_POINTS) {
+        val keyParams = if (newCode == KeyCode.UNSPECIFIED || newCode == KeyCode.MULTIPLE_CODE_POINTS) {
             // code will be determined from label if possible (i.e. label is single code point)
             // but also longer labels should work without issues, also for MultiTextKeyData
             if (this is MultiTextKeyData) {
@@ -398,6 +399,13 @@ sealed interface KeyData : AbstractKeyData {
                 newPopupKeys,
             )
         }
+        keyParams.mHexVariant = when {
+            hexVariant != helium314.keyboard.keyboard.HexVariant.FULL -> hexVariant
+            params.isHexagonal && (newLabel == KeyLabel.SHIFT || keyParams.mCode == KeyCode.SHIFT) && newWidth < 0.1f -> helium314.keyboard.keyboard.HexVariant.HALF_LEFT
+            params.isHexagonal && (newLabel == KeyLabel.DELETE || keyParams.mCode == KeyCode.DELETE) && newWidth < 0.1f -> helium314.keyboard.keyboard.HexVariant.HALF_RIGHT
+            else -> helium314.keyboard.keyboard.HexVariant.FULL
+        }
+        return keyParams
     }
 
     private fun getDefaultBackground(params: KeyboardParams): Int {
@@ -504,7 +512,8 @@ class TextKeyData(
     override val groupId: Int = KeyData.GROUP_DEFAULT,
     override val popup: PopupSet<out AbstractKeyData> = SimplePopups(null),
     override val width: Float = 0f,
-    override val labelFlags: Int = 0
+    override val labelFlags: Int = 0,
+    override val hexVariant: Int = helium314.keyboard.keyboard.HexVariant.FULL
 ) : KeyData {
     override fun asString(isForDisplay: Boolean): String {
         return buildString {
@@ -531,7 +540,7 @@ class TextKeyData(
         newPopup: PopupSet<out AbstractKeyData>,
         newWidth: Float,
         newLabelFlags: Int
-    ) = TextKeyData(newType, newCode, newLabel, newGroupId, newPopup, newWidth, newLabelFlags)
+    ) = TextKeyData(newType, newCode, newLabel, newGroupId, newPopup, newWidth, newLabelFlags, hexVariant)
 
 }
 
