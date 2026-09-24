@@ -63,12 +63,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private val currentChangelogItems = listOf(
-    "• Floating Window Layout Fix: Eliminated persistent bottom dead space in floating mode by intercepting framework insets, toggling fitsSystemWindows, and performing clean deferred re-measurement",
-    "• Flavor Consolidation: Fully merged standardfull into standard, delivering a streamlined two-flavor lineup (standard & offline) with zero sensitive permission overhead",
-    "• Input Compatibility & Dialer Search: Fixed TYPE_NULL fields in generic search bars and dialer apps by properly respecting explicit show requests from users",
-    "• Bluetooth Audio Interception: Fallback custom sound packs to native system clicks on Bluetooth A2DP to avoid interrupting car radios or media playback",
-    "• Popup & Preview Alignment: Corrected horizontal preview bounds clamping and aligned popup key rows precisely to parent key coordinates in floating mode",
-    "• UI & Selection Polish: Fixed pinned text selection mode state in suggestion strip, enhanced toolbar key icon contrast, and improved system theme reloads"
+    "• Hexagonal Honeycomb Layout: Native Typewise and hex QWERTY layouts with axial hit detection, twin spacebars, and custom vector rendering",
+    "• Landscape Hex Ergonomic Split: Positioned hex keys at each end of the screen with a central gap in landscape mode, maintaining comfortable key sizing and natural thumb reachability",
+    "• Mode Switch Input Protection: Fixed PointerTracker layout transitions to eliminate accidental space and 'x' character insertions when toggling ?123 and ABC",
+    "• Popup Key Vertical Offset: Added an adjustable popup position slider (0–10 dp) in Appearance settings with refined preview animations"
 )
 
 @Composable

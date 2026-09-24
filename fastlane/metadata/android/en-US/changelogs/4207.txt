@@ -1,0 +1,4 @@
+- Hexagonal Honeycomb Layout Engine: Native integration of authentic Typewise and hex QWERTY layouts with axial hit detection, twin spacebars, and custom vector rendering.
+- Landscape Hex Ergonomic Split: Positioned hex keys at each end of the screen with a central gap in landscape mode, maintaining comfortable key sizing and natural thumb reachability.
+- Mode Switch Input Protection: Fixed PointerTracker layout transitions to eliminate accidental space and 'x' character insertions when toggling ?123 and ABC.
+- Popup Key Vertical Offset: Added an adjustable popup position slider (0–10 dp) in Appearance settings with refined preview animations.
