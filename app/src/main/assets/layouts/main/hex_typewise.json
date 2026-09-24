@@ -1,0 +1,46 @@
+[
+  [
+    { "label": "w" },
+    { "label": "e", "popup": { "main": { "label": "1" } } },
+    { "label": "t", "popup": { "main": { "label": "2" } } },
+    { "label": "z", "popup": { "main": { "label": "3" } } },
+    { "label": "i", "popup": { "main": { "label": "4" } } },
+    { "label": "o" }
+  ],
+  [
+    { "label": "q" },
+    { "label": "a" },
+    { "label": "r", "popup": { "main": { "label": "5" } } },
+    { "label": "g", "popup": { "main": { "label": "6" } } },
+    { "label": "u", "popup": { "main": { "label": "7" } } },
+    { "label": "l" },
+    { "label": "p" }
+  ],
+  [
+    { "label": "shift", "width": 0.5 },
+    { "label": ",", "popup": { "main": { "label": "'" }, "relevant": [{ "label": "-" }] } },
+    { "code": 32, "label": " ", "width": 1.0 },
+    { "label": "f", "popup": { "main": { "label": "8" } } },
+    { "label": "h", "popup": { "main": { "label": "9" } } },
+    { "code": 32, "label": " ", "width": 1.0 },
+    { "label": ".", "popup": { "main": { "label": "!" }, "relevant": [{ "label": "?" }] } },
+    { "label": "delete", "width": 0.5 }
+  ],
+  [
+    { "label": "y" },
+    { "label": "s" },
+    { "label": "d" },
+    { "label": "n", "popup": { "main": { "label": "0" } } },
+    { "label": "m" },
+    { "label": "j" },
+    { "label": "k" }
+  ],
+  [
+    { "label": "x" },
+    { "label": "c" },
+    { "label": "v" },
+    { "label": "b" },
+    { "label": "symbol_alpha" },
+    { "label": "action" }
+  ]
+]

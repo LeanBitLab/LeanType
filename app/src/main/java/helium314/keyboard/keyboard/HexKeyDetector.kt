@@ -17,21 +17,21 @@ open class HexKeyDetector(
         val touchX = getTouchX(x)
         val touchY = getTouchY(y)
 
-        // 1. Direct Cartesian hit-test for wide, modifier, and functional keys (Spacebar, Shift, Enter, Delete, etc.)
+        // 1. Direct Cartesian hit-test for non-hexagonal keys (narrow margin Shift/Delete, wide pills)
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (isSpecialOrWide(key)) {
+            if (isNonHexKey(key)) {
                 if (key.isOnKey(touchX, touchY)) {
                     return key
                 }
             }
         }
 
-        // 2. Exact inside-hexagon test for letter keys
+        // 2. Exact inside-hexagon test for all hexagonal keys (letters, twin spaces, enter, 123, punct)
         var bestHexKey: Key? = null
         var minDistance = Int.MAX_VALUE
 
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isSpecialOrWide(key)) continue
+            if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -48,9 +48,9 @@ open class HexKeyDetector(
 
         if (bestHexKey != null) return bestHexKey
 
-        // 3. Fallback: find nearest hex letter key by center distance among candidate keys
+        // 3. Fallback: find nearest hex key by center distance among candidate keys
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isSpecialOrWide(key)) continue
+            if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -65,14 +65,8 @@ open class HexKeyDetector(
         return bestHexKey ?: super.detectHitKey(x, y)
     }
 
-    private fun isSpecialOrWide(key: Key): Boolean {
-        return key.hasFunctionalBackground() ||
-                key.hasActionKeyBackground() ||
-                key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR ||
-                key.isModifier() ||
-                key.code <= 0 ||
-                key.code == Constants.CODE_SPACE ||
-                key.width > key.height * 1.3f
+    private fun isNonHexKey(key: Key): Boolean {
+        return key.width < key.height * 0.7f || key.width > key.height * 1.3f
     }
 
     private fun isInsideHexagon(px: Int, py: Int, keyX: Int, keyY: Int, width: Int, height: Int): Boolean {

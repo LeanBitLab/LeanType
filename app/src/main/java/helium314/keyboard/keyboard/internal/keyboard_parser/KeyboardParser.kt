@@ -117,7 +117,8 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
         if (!params.mAllowRedundantPopupKeys)
             params.baseKeys = baseKeys.flatMap { row -> row.map { it.toKeyParams(params) } }
 
-        val allFunctionalKeys = LayoutParser.parseLayout(LayoutType.FUNCTIONAL, params, context)
+        val allFunctionalKeys = if (params.isHexagonal && baseKeys.size >= 5) mutableListOf()
+            else LayoutParser.parseLayout(LayoutType.FUNCTIONAL, params, context)
         adjustBottomFunctionalRowAndBaseKeys(allFunctionalKeys, baseKeys)
 
         if (allFunctionalKeys.none { it.singleOrNull()?.isKeyPlaceholder() == true })

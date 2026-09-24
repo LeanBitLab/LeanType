@@ -39,6 +39,7 @@
         <item>bepo</item>
         <item>pcqwerty</item>
         <item>hex_qwerty</item>
+        <item>hex_typewise</item>
     </string-array>
     <!-- Predefined keyboard layout display names -->
     <string-array name="predefined_layout_display_names">
@@ -53,6 +54,7 @@
         <item>Bépo</item>
         <item>PC</item>
         <item>Hexagonal QWERTY</item>
+        <item>Typewise Honeycomb</item>
     </string-array>
 
     <!-- Description for Bulgarian (BDS) subtype. -->
