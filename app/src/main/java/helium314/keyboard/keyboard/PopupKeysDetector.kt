@@ -6,8 +6,10 @@
 
 package helium314.keyboard.keyboard
 
-class PopupKeysDetector(slideAllowance: Float) : KeyDetector() {
-    private val mSlideAllowanceSquare: Int = (slideAllowance * slideAllowance).toInt()
+import helium314.keyboard.latin.settings.Settings
+
+class PopupKeysDetector(private val mSlideAllowance: Float) : KeyDetector() {
+    private val mSlideAllowanceSquare: Int = (mSlideAllowance * mSlideAllowance).toInt()
 
     // Top slide allowance is slightly longer (sqrt(2) times) than other edges.
     private val mSlideAllowanceSquareTop: Int = mSlideAllowanceSquare * 2
@@ -21,8 +23,13 @@ class PopupKeysDetector(slideAllowance: Float) : KeyDetector() {
         val touchX = getTouchX(x)
         val touchY = getTouchY(y)
 
+        val density = android.content.res.Resources.getSystem().displayMetrics.density
+        val extraDownwardAllowance = maxOf(0f, Settings.getValues().mPopupKeysVerticalOffset * density)
+        val downwardAllowance = mSlideAllowance + extraDownwardAllowance
+        val allowanceSquareDown = (downwardAllowance * downwardAllowance).toInt()
+
         var nearestKey: Key? = null
-        var nearestDist = if (y < 0) mSlideAllowanceSquareTop else mSlideAllowanceSquare
+        var nearestDist = if (y < 0) mSlideAllowanceSquareTop else allowanceSquareDown
         for (key in keyboard.sortedKeys) {
             val dist = key.squaredDistanceToEdge(touchX, touchY)
             if (dist < nearestDist) {

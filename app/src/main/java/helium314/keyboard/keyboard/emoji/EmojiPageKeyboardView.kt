@@ -269,10 +269,12 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
 
     override fun onDismissPopupKeysPanel() {
         if (isShowingPopupKeysPanel()) {
-            mPopupKeysPanel?.removeFromParent()
+            val panel = mPopupKeysPanel
             mPopupKeysPanel = null
-            installPopupKeysPlacerView(true)
-            LatinIME.getInstance()?.requestInsetsUpdate()
+            panel?.dismissInParent {
+                installPopupKeysPlacerView(true)
+                LatinIME.getInstance()?.requestInsetsUpdate()
+            }
         }
     }
 

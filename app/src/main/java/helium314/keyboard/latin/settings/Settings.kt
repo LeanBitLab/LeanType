@@ -423,6 +423,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_SHOW_POPUP_HINTS = "show_popup_hints"
         const val PREF_MORE_POPUP_KEYS = "more_popup_keys"
         const val PREF_SHOW_TLD_POPUP_KEYS = "show_tld_popup_keys"
+        const val PREF_POPUP_KEYS_VERTICAL_OFFSET = "popup_keys_vertical_offset"
 
         const val PREF_SPACE_TO_CHANGE_LANG = "prefs_long_press_keyboard_to_change_lang"
         const val PREF_LANGUAGE_SWIPE_DISTANCE = "language_swipe_distance"

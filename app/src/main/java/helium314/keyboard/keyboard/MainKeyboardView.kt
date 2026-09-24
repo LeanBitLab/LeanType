@@ -211,7 +211,7 @@ class MainKeyboardView @JvmOverloads constructor(
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, kbd.mIconsSet, keyDrawParams, fullWidth, mOriginCoords, mDrawingPreviewPlacerView)
     }
 
-    private fun dismissKeyPreviewWithoutDelay(key: Key) { mKeyPreviewChoreographer.dismissKeyPreview(key); invalidateKey(key) }
+    private fun dismissKeyPreviewWithoutDelay(key: Key) { mKeyPreviewChoreographer.dismissKeyPreviewWithoutDelay(key); invalidateKey(key) }
 
     override fun onKeyReleased(key: Key, withAnimation: Boolean) {
         key.onReleased()
@@ -302,9 +302,11 @@ class MainKeyboardView @JvmOverloads constructor(
     override fun onCancelPopupKeysPanel() { PointerTracker.dismissAllPopupKeysPanels() }
     override fun onDismissPopupKeysPanel() {
         if (isShowingPopupKeysPanel()) {
-            mPopupKeysPanel?.removeFromParent()
+            val panel = mPopupKeysPanel
             mPopupKeysPanel = null
-            LatinIME.getInstance()?.requestInsetsUpdate()
+            panel?.dismissInParent {
+                LatinIME.getInstance()?.requestInsetsUpdate()
+            }
         }
     }
 
@@ -339,6 +341,12 @@ class MainKeyboardView @JvmOverloads constructor(
         mGestureFloatingTextDrawingPreview.dismissGestureFloatingPreviewText()
         mSlidingKeyInputDrawingPreview.dismissSlidingKeyInputPreview()
         PointerTracker.dismissAllPopupKeysPanels()
+        mPopupKeysKeyboardContainer.animate().cancel()
+        (mPopupKeysKeyboardContainer.parent as? ViewGroup)?.removeView(mPopupKeysKeyboardContainer)
+        mPopupKeysKeyboardForActionContainer.animate().cancel()
+        (mPopupKeysKeyboardForActionContainer.parent as? ViewGroup)?.removeView(mPopupKeysKeyboardForActionContainer)
+        mPopupKeysPanel?.removeFromParent()
+        mPopupKeysPanel = null
         dismissAllKeyPreviews()
         PointerTracker.cancelAllPointerTrackers()
     }

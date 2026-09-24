@@ -879,6 +879,8 @@
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Long pressing space key will prompt input method selection menu</string>
     <!-- Title of the setting enabling long press on symbols key to switch to numpad -->
     <string name="prefs_long_press_symbol_for_numpad">Long press symbols key for numpad</string>
+    <!-- Title of the setting for adjusting vertical position offset of long-press popup keys -->
+    <string name="prefs_popup_keys_vertical_offset">Long-press popup position</string>
     <!-- Title of the setting for reduced distance between keys -->
     <string name="prefs_narrow_key_gaps">Narrow key gaps</string>
     <string name="prefs_narrow_key_gaps_level">Narrowness level</string>

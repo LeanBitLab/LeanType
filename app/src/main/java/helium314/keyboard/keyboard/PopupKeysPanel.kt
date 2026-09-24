@@ -8,6 +8,8 @@ package helium314.keyboard.keyboard
 
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import helium314.keyboard.keyboard.emoji.EmojiViewCallback
 
 interface PopupKeysPanel {
@@ -130,20 +132,70 @@ interface PopupKeysPanel {
     fun getContainerView(): View = (this as View).parent as View
 
     /**
-     * Show this [PopupKeysPanel] in the parent view.
+     * Show this [PopupKeysPanel] in the parent view with a smooth entrance animation.
      *
      * @param parentView the [ViewGroup] that hosts this [PopupKeysPanel].
      */
     fun showInParent(parentView: ViewGroup) {
-        removeFromParent()
-        parentView.addView(getContainerView())
+        val containerView = getContainerView()
+        val currentParent = containerView.parent as? ViewGroup
+        if (currentParent === parentView) {
+            containerView.animate().cancel()
+        } else {
+            removeFromParent()
+            parentView.addView(containerView)
+        }
+        containerView.alpha = 0f
+        containerView.scaleX = 0.72f
+        containerView.scaleY = 0.72f
+        val density = containerView.resources.displayMetrics.density
+        containerView.translationY = 12f * density
+        containerView.animate()
+            .alpha(1f)
+            .scaleX(1f)
+            .scaleY(1f)
+            .translationY(0f)
+            .setDuration(110)
+            .setInterpolator(OvershootInterpolator(0.85f))
+            .start()
     }
 
     /**
-     * Remove this [PopupKeysPanel] from the parent view.
+     * Dismiss this [PopupKeysPanel] with a smooth exit animation.
+     */
+    fun dismissInParent(onEnd: () -> Unit = {}) {
+        val containerView = getContainerView()
+        val currentParent = containerView.parent as? ViewGroup
+        if (currentParent == null) {
+            onEnd()
+            return
+        }
+        val density = containerView.resources.displayMetrics.density
+        containerView.animate().cancel()
+        containerView.animate()
+            .alpha(0f)
+            .scaleX(0.85f)
+            .scaleY(0.85f)
+            .translationY(8f * density)
+            .setDuration(70)
+            .setInterpolator(AccelerateInterpolator(1.5f))
+            .withEndAction {
+                removeFromParent()
+                onEnd()
+            }
+            .start()
+    }
+
+    /**
+     * Remove this [PopupKeysPanel] from the parent view immediately.
      */
     fun removeFromParent() {
         val containerView = getContainerView()
+        containerView.animate().cancel()
+        containerView.scaleX = 1f
+        containerView.scaleY = 1f
+        containerView.translationY = 0f
+        containerView.alpha = 1f
         val currentParent = containerView.parent as? ViewGroup
         currentParent?.removeView(containerView)
     }

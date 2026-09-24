@@ -24,6 +24,7 @@ import helium314.keyboard.latin.R
 import helium314.keyboard.latin.RichInputMethodManager
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.CoordinateUtils
+import helium314.keyboard.latin.settings.Settings
 import kotlin.math.max
 import kotlin.math.min
 
@@ -154,12 +155,14 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         mController = controller
         val container = getContainerView()
         // The coordinates of panel's left-top corner in parentView's coordinate system.
-        // We need to consider background drawable paddings.
+        // We need to consider background drawable paddings and user-configured vertical offset.
+        val verticalOffsetPx = (Settings.getValues().mPopupKeysVerticalOffset * resources.displayMetrics.density).toInt()
         val x = pointX - getDefaultCoordX() - container.paddingLeft - paddingLeft
-        val y = pointY - container.measuredHeight + container.paddingBottom + paddingBottom
+        val y = pointY - container.measuredHeight + container.paddingBottom + paddingBottom - verticalOffsetPx
 
         parentView.getLocationInWindow(mCoordinates)
-        val containerY = y + CoordinateUtils.y(mCoordinates)
+        val rawContainerY = y + CoordinateUtils.y(mCoordinates)
+        val containerY = max(0, rawContainerY)
         container.y = containerY.toFloat()
 
         // This is needed for cases where there's also a text popup above this keyboard
@@ -190,8 +193,15 @@ open class PopupKeysKeyboardView @JvmOverloads constructor(
         translationX = (panelFinalX - containerFinalX).toFloat()
         controller.setLayoutGravity(layoutGravity)
 
+        val clampedY = containerY - CoordinateUtils.y(mCoordinates)
         mOriginX = panelFinalX
-        mOriginY = y + container.paddingTop + this.y.toInt()
+        mOriginY = clampedY + container.paddingTop + this.y.toInt()
+
+        // Anchor animation pivot to the center of the pressed key:
+        val keyCenterXInContainer = (pointX - containerFinalX).toFloat()
+        container.pivotX = keyCenterXInContainer.coerceIn(0f, container.measuredWidth.toFloat())
+        container.pivotY = container.measuredHeight.toFloat()
+
         controller.onShowPopupKeysPanel(this)
         val accessibilityDelegate = mAccessibilityDelegate
         if (accessibilityDelegate != null && AccessibilityUtils.instance.isAccessibilityEnabled) {

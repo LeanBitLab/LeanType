@@ -77,20 +77,29 @@ class PopupTextView @JvmOverloads constructor(
         mController = controller
         val container = getContainerView()
         // The coordinates of panel's left-top corner in parentView's coordinate system.
-        // We need to consider background drawable paddings.
+        // We need to consider background drawable paddings and user-configured vertical offset.
+        val verticalOffsetPx = (Settings.getValues().mPopupKeysVerticalOffset * resources.displayMetrics.density).toInt()
         val x = pointX - measuredWidth / 2 - container.paddingLeft - paddingLeft
-        val y = pointY - container.measuredHeight + container.paddingBottom + paddingBottom
+        val y = pointY - container.measuredHeight + container.paddingBottom + paddingBottom - verticalOffsetPx
 
         parentView.getLocationInWindow(mCoordinates)
         // Ensure the horizontal position of the panel does not extend past the parentView edges.
         val maxX = parentView.measuredWidth - container.measuredWidth
-        val panelX = max(0, min(maxX, x)) + CoordinateUtils.x(mCoordinates)
-        val panelY = y + CoordinateUtils.y(mCoordinates)
+        val panelFinalX = max(0, min(maxX, x))
+        val panelX = panelFinalX + CoordinateUtils.x(mCoordinates)
+        val rawPanelY = y + CoordinateUtils.y(mCoordinates)
+        val panelY = max(0, rawPanelY)
         container.x = panelX.toFloat()
         container.y = panelY.toFloat()
 
-        mOriginX = x + container.paddingLeft
-        mOriginY = y + container.paddingTop
+        val clampedY = panelY - CoordinateUtils.y(mCoordinates)
+        mOriginX = panelFinalX + container.paddingLeft
+        mOriginY = clampedY + container.paddingTop
+
+        val keyCenterXInContainer = (pointX - panelFinalX).toFloat()
+        container.pivotX = keyCenterXInContainer.coerceIn(0f, container.measuredWidth.toFloat())
+        container.pivotY = container.measuredHeight.toFloat()
+
         controller.setLayoutGravity(Gravity.NO_GRAVITY)
         controller.onShowPopupKeysPanel(this)
     }

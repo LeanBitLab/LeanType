@@ -77,6 +77,7 @@ open class SettingsValues(
     val mShowsHints: Boolean
     val mShowsPopupHints: Boolean
     val mShowTldPopupKeys: Boolean
+    val mPopupKeysVerticalOffset: Float
     val mSpaceForLangChange: Boolean
     val mShowsEmojiKey: Boolean
     val mVarToolbarDirection: Boolean
@@ -259,6 +260,7 @@ open class SettingsValues(
         mShowsHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, Defaults.PREF_SHOW_HINTS)
         mShowsPopupHints = prefs.getBoolean(Settings.PREF_SHOW_POPUP_HINTS, Defaults.PREF_SHOW_POPUP_HINTS)
         mShowTldPopupKeys = prefs.getBoolean(Settings.PREF_SHOW_TLD_POPUP_KEYS, Defaults.PREF_SHOW_TLD_POPUP_KEYS)
+        mPopupKeysVerticalOffset = prefs.getFloat(Settings.PREF_POPUP_KEYS_VERTICAL_OFFSET, Defaults.PREF_POPUP_KEYS_VERTICAL_OFFSET)
         mSpaceForLangChange = prefs.getBoolean(Settings.PREF_SPACE_TO_CHANGE_LANG, Defaults.PREF_SPACE_TO_CHANGE_LANG)
         mShowsEmojiKey = prefs.getBoolean(Settings.PREF_SHOW_EMOJI_KEY, Defaults.PREF_SHOW_EMOJI_KEY)
         mVarToolbarDirection = mToolbarMode != ToolbarMode.HIDDEN && prefs.getBoolean(Settings.PREF_VARIABLE_TOOLBAR_DIRECTION, Defaults.PREF_VARIABLE_TOOLBAR_DIRECTION)

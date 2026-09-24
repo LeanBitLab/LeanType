@@ -8,7 +8,8 @@ package helium314.keyboard.keyboard.internal
 
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.OvershootInterpolator
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import helium314.keyboard.keyboard.Key
 import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.CoordinateUtils
@@ -44,16 +45,36 @@ class KeyPreviewChoreographer(private val mParams: KeyPreviewDrawParams) {
         val keyPreviewView = mShowingKeyPreviewViews.remove(key) ?: return
 
         keyPreviewView.tag = null
+        keyPreviewView.animate().cancel()
         keyPreviewView.animate()
-            .scaleX(0.8f)
-            .scaleY(0.8f)
+            .scaleX(0.85f)
+            .scaleY(0.85f)
+            .translationY(keyPreviewView.measuredHeight * 0.08f)
             .alpha(0f)
-            .setDuration(50)
+            .setDuration(60)
+            .setInterpolator(AccelerateInterpolator(1.5f))
             .withEndAction {
                 keyPreviewView.visibility = View.INVISIBLE
+                keyPreviewView.scaleX = 1f
+                keyPreviewView.scaleY = 1f
+                keyPreviewView.translationY = 0f
+                keyPreviewView.alpha = 1f
                 mFreeKeyPreviewViews.add(keyPreviewView)
             }
             .start()
+    }
+
+    fun dismissKeyPreviewWithoutDelay(key: Key?) {
+        if (key == null) return
+        val keyPreviewView = mShowingKeyPreviewViews.remove(key) ?: return
+        keyPreviewView.tag = null
+        keyPreviewView.animate().cancel()
+        keyPreviewView.visibility = View.INVISIBLE
+        keyPreviewView.scaleX = 1f
+        keyPreviewView.scaleY = 1f
+        keyPreviewView.translationY = 0f
+        keyPreviewView.alpha = 1f
+        mFreeKeyPreviewViews.add(keyPreviewView)
     }
 
     fun placeAndShowKeyPreview(
@@ -107,29 +128,37 @@ class KeyPreviewChoreographer(private val mParams: KeyPreviewDrawParams) {
         val previewY = key.y - previewHeight + key.height - mParams.mPreviewOffset + CoordinateUtils.y(originCoords)
 
         ViewLayoutUtils.placeViewAt(keyPreviewView, previewX, previewY, previewWidth, previewHeight)
-        keyPreviewView.pivotX = previewWidth / 2.0f
+        val keyCenterX = key.drawX + keyDrawWidth / 2.0f + minX
+        keyPreviewView.pivotX = (keyCenterX - previewX).coerceIn(0f, previewWidth.toFloat())
         keyPreviewView.pivotY = previewHeight.toFloat()
     }
 
     private fun showKeyPreview(key: Key, keyPreviewView: KeyPreviewView) {
         keyPreviewView.visibility = View.VISIBLE
         keyPreviewView.animate().cancel()
-        keyPreviewView.scaleX = 0.5f
-        keyPreviewView.scaleY = 0.5f
+        keyPreviewView.scaleX = 0.72f
+        keyPreviewView.scaleY = 0.72f
+        keyPreviewView.translationY = keyPreviewView.measuredHeight * 0.12f
         keyPreviewView.alpha = 0f
         keyPreviewView.animate()
             .scaleX(1f)
             .scaleY(1f)
+            .translationY(0f)
             .alpha(1f)
-            .setDuration(75)
-            .setInterpolator(OvershootInterpolator())
+            .setDuration(85)
+            .setInterpolator(DecelerateInterpolator(1.8f))
             .start()
         mShowingKeyPreviewViews[key] = keyPreviewView
     }
 
     fun clear() {
         for (view in mShowingKeyPreviewViews.values) {
+            view.animate().cancel()
             view.visibility = View.INVISIBLE
+            view.scaleX = 1f
+            view.scaleY = 1f
+            view.translationY = 0f
+            view.alpha = 1f
         }
         mShowingKeyPreviewViews.clear()
         mFreeKeyPreviewViews.clear()
