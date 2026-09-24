@@ -523,11 +523,20 @@ class PointerTracker private constructor(
         mIsTrackingForActionDisabled = false
         resetKeySelectionByDraggingFinger()
         if (key != null) {
-            if (callListenerOnPressAndCheckKeyboardLayoutChange(key, 0)) {
+            val pressedKey = key
+            if (callListenerOnPressAndCheckKeyboardLayoutChange(pressedKey, 0)) {
                 val yOffset = keyboardChangeOccupiedHeightDifference
                 keyboardChangeOccupiedHeightDifference = 0
                 CoordinateUtils.set(mDownCoordinates, x, y + yOffset)
-                key = onDownKey(x, y + yOffset, eventTime)
+                val newKey = mKeyDetector.detectHitKey(x, y + yOffset)
+                if (newKey != null && newKey.code == pressedKey.code) {
+                    key = onDownKey(x, y + yOffset, eventTime)
+                } else {
+                    key = null
+                    mCurrentKey = pressedKey
+                    mKeyX = x
+                    mKeyY = y
+                }
             }
 
             if (key != null) {
@@ -636,8 +645,10 @@ class PointerTracker private constructor(
 
     private fun processDraggingFingerInToNewKey(newKey: Key, x: Int, y: Int, eventTime: Long) {
         var key: Key? = newKey
-        if (callListenerOnPressAndCheckKeyboardLayoutChange(newKey, 0)) {
-            key = onMoveKey(x, y)
+        val pressedKey = newKey
+        if (callListenerOnPressAndCheckKeyboardLayoutChange(pressedKey, 0)) {
+            val candidateKey = onMoveKey(x, y)
+            key = if (candidateKey != null && candidateKey.code == pressedKey.code) candidateKey else null
         }
         onMoveToNewKey(key, x, y)
         if (mIsTrackingForActionDisabled) {

@@ -56,7 +56,8 @@ open class HexKeyDetector(
             val dx = touchX - cx
             val dy = touchY - cy
             val dist = dx * dx + dy * dy
-            if (dist < minDistance) {
+            val maxAllowedDist = (key.width * 1.1f) * (key.width * 1.1f)
+            if (dist < minDistance && dist <= maxAllowedDist) {
                 minDistance = dist
                 bestHexKey = key
             }

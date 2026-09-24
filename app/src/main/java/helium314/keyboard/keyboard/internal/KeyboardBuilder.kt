@@ -6,6 +6,7 @@
 package helium314.keyboard.keyboard.internal
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.util.Xml
 import androidx.annotation.XmlRes
@@ -102,7 +103,7 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     }
 
     open fun build(): Keyboard {
-        if (mParams.mId.mIsSplitLayout
+        if (!mParams.isHexagonal && mParams.mId.mIsSplitLayout
                 && mParams.mId.mElementId in KeyboardId.ELEMENT_ALPHABET..KeyboardId.ELEMENT_SYMBOLS_SHIFTED) {
             addSplit()
         }
@@ -113,17 +114,40 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     // determine key size and positions using relative width and height
     private fun determineAbsoluteValues() {
         val yPitchFactor = if (mParams.isHexagonal) 0.75f else 1.0f
+        val isLandscapeHex = mParams.isHexagonal && mContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        val hexSplitShift = if (isLandscapeHex) {
+            ((mParams.mOccupiedWidth - mParams.mLeftPadding - mParams.mRightPadding) - mParams.mBaseWidth).toFloat()
+        } else {
+            0f
+        }
+
         var currentY = mParams.mTopPadding.toFloat()
         for (row in keysInRows) {
             if (row.isEmpty()) continue
             var currentX = mParams.mLeftPadding.toFloat()
-            row.forEach {
-                it.setAbsoluteDimensions(currentX, currentY)
+            val splitIndex = if (isLandscapeHex) findHexRowSplitIndex(row) else -1
+            row.forEachIndexed { index, it ->
+                var xPos = currentX
+                if (isLandscapeHex && index >= splitIndex) {
+                    xPos += hexSplitShift
+                }
+                it.setAbsoluteDimensions(xPos, currentY)
                 if (DebugFlags.DEBUG_ENABLED)
-                    Log.d(TAG, "setting size and position for ${it.mLabel ?: it.mIconName}, ${it.mCode}: x ${currentX.toInt()}, w ${it.mAbsoluteWidth.toInt()}")
+                    Log.d(TAG, "setting size and position for ${it.mLabel ?: it.mIconName}, ${it.mCode}: x ${xPos.toInt()}, w ${it.mAbsoluteWidth.toInt()}")
                 currentX += it.mAbsoluteWidth
             }
             currentY += row.first().mAbsoluteHeight * yPitchFactor
+        }
+    }
+
+    private fun findHexRowSplitIndex(row: ArrayList<KeyParams>): Int {
+        if (row.size % 2 == 0) return row.size / 2
+        val mid = row.size / 2
+        val midLabel = row.getOrNull(mid)?.mLabel?.lowercase()
+        return when (midLabel) {
+            "g" -> mid + 1
+            "n" -> mid
+            else -> (row.size + 1) / 2
         }
     }
 
