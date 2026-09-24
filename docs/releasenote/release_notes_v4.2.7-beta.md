@@ -26,8 +26,8 @@
 ---
 
 ### 📦 Beta Build Artifacts
-Built using the `standard` flavor (`assembleStandardRelease`).
 
-| File | Flavor | Size |
-|:---|:---|:---:|
-| `1-LeanType_4.2.7-standard-release.apk` | Standard | - |
+| File | Flavor | Description | Size |
+|:---|:---|:---|:---:|
+| `1-LeanType_4.2.7-standard-release.apk` | Standard | Full features & online/offline AI voice | - |
+| `2-LeanType_4.2.7-offline-release.apk` | Offline | Fully air-gapped (zero internet permission) | - |
