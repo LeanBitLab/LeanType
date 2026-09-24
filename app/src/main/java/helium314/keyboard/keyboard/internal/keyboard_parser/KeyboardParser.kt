@@ -14,6 +14,7 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyLabel
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyType
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.SimplePopups
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.TextKeyData
+import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.define.DebugFlags
 import helium314.keyboard.latin.settings.Settings
@@ -104,6 +105,15 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
             params.mLeftPadding = (params.mOccupiedWidth * 0.1f).toInt()
             params.mRightPadding = (params.mOccupiedWidth * 0.1f).toInt()
             params.mBaseWidth = params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding
+        }
+
+        if (params.isHexagonal && context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            val pad = (params.mOccupiedWidth * 0.20f).toInt()
+            params.mLeftPadding += pad
+            params.mRightPadding += pad
+            params.mBaseWidth = params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding
+            params.mDefaultAbsoluteKeyWidth = (params.mDefaultKeyWidth * params.mBaseWidth).toInt()
+            params.mAbsolutePopupKeyWidth = (params.mDefaultKeyWidth * params.mBaseWidth).toInt()
         }
 
         val numberRows = getNumberRows()
@@ -318,6 +328,8 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
             val baseRow = baseKeys.getOrNull(i) ?: return@forEachIndexed
             row.forEachIndexed { j, key ->
                 val baseKey = baseRow.getOrNull(j) ?: return@forEachIndexed
+                if (baseKey.code == Constants.CODE_SPACE || baseKey.label == KeyLabel.SPACE || baseKey.label == " ") return@forEachIndexed
+                if (baseKey.label in listOf(KeyLabel.SHIFT, KeyLabel.DELETE, KeyLabel.ACTION, KeyLabel.SYMBOL_ALPHA, KeyLabel.ALPHA, KeyLabel.NUMPAD, KeyLabel.LANGUAGE_SWITCH)) return@forEachIndexed
                 val symbols = mutableListOf<String>()
                 key.label.takeIf { it.isNotEmpty() }?.let { symbols.add(it) }
                 key.popup.getPopupKeyLabels(params)?.let { symbols.addAll(it) }

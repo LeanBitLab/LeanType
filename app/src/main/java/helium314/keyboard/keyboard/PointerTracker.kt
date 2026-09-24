@@ -982,12 +982,15 @@ class PointerTracker private constructor(
         }
         val code = key.code
         val sv = Settings.getValues()
-        if (code == KeyCode.LANGUAGE_SWITCH || (code == Constants.CODE_SPACE && key.popupKeys == null && sv.mSpaceForLangChange)) {
+        if (code == KeyCode.LANGUAGE_SWITCH || (code == Constants.CODE_SPACE && sv.mSpaceForLangChange)) {
             if (sListener.onCustomRequest(Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER)) {
                 cancelKeyTracking()
                 sListener.onReleaseKey(code, false)
                 return
             }
+        }
+        if (code == Constants.CODE_SPACE) {
+            return
         }
         if (code == KeyCode.SYMBOL_ALPHA && sv.mLongPressSymbolsForNumpad) {
             sListener.toggleNumpad(true, true)
