@@ -5,13 +5,20 @@ As an open-source, community-funded project, we operate on a very limited budget
 ## 🚀 What's New in v4.2.7
 
 ### ✨ Highlights
+- **Word Replacement & Backspace Desync Fix**: Resolved cursor desync and text duplication during word replacement (such as suggestion replacement in web search fields) and rapid backspacing in `RichInputConnection`.
+- **Backup & Restore UI Freeze Elimination**: Removed blocking `CountDownLatch` calls on the main looper during backup and restore operations, preventing ANRs and keyboard freezes.
+- **Mode Switch (`?123` / `ABC`) Input Protection**: Resolved a touch-tracker state transition issue where switching layouts on touch-down caused accidental spacebar or 'x' character insertions upon release due to differing key coordinates between alphabet and symbol layouts.
 - **Hexagonal Honeycomb Layout Engine (`hex_typewise` & `hex_qwerty`)**: Native integration of authentic Typewise and hexagonal QWERTY layouts directly into the keyboard engine pipeline. Features custom axial hexagonal hit testing, vector path rendering, interlocking row math, dual spacebars, and half-hex functional keys (Shift/Delete).
 - **Landscape Hex Ergonomic Split**: In landscape orientation, hexagonal keys are ergonomically split into left and right clusters positioned at each end of the screen with a central gap, preserving comfortable key dimensions and enabling natural thumb reachability while maintaining vertical honeycomb alignment.
-- **Mode Switch (`?123` / `ABC`) Input Protection**: Resolved a touch-tracker state transition issue where switching layouts on touch-down caused accidental spacebar or 'x' character insertions upon release due to differing key coordinates between alphabet and symbol layouts.
 
 ### 🛠️ Improvements & Enhancements
 - **Customizable Popup Key Vertical Offset**: Introduced an adjustable popup position slider in **Settings → Appearance → Popup key vertical offset** (0–10 dp) with smoother popup preview animations and refined container positioning.
 - **Hex Touch Hit Detection Bounds**: Added distance threshold clamping in the hexagonal key detector to eliminate ghost clicks when tapping in the central gap in landscape mode.
+- **Key Long-Press Mapping**: Added select mode long-press mapping and refined spacebar long-press behavior.
+- **Startup Preference Listener Race Fix**: Decoupled preference change listener registration from `onCreate` to prevent early callback race conditions.
+- **Voice Status Crash Fix**: Resolved a `NullPointerException` on null drawable during voice status display and theme color updates.
+- **Dictionary & Locale Preservations**: Synchronously synchronized emoji settings during dictionary resets to avoid reload churn; preserved Catalan dictionary folder ('ca') from legacy cleanup.
+- **Diagnostics & Documentation**: Logged missing system glide typing library as `INFO` instead of `WARN`; added comprehensive keycodes and actions reference to `FEATURES.md`.
 
 ## 📦 Choose Your Flavor
 

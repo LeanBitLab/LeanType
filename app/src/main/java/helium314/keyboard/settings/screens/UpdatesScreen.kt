@@ -63,10 +63,13 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private val currentChangelogItems = listOf(
+    "• Input Desync & Duplication Fix: Resolved text duplication during word replacement and backspace desync thrashing in RichInputConnection",
+    "• Backup & Restore Freeze Elimination: Removed blocking main-thread latches during backup and restore to prevent UI freezes and ANRs",
+    "• Mode Switch Touch Protection: Fixed PointerTracker layout transitions to eliminate accidental space and 'x' clicks when switching ?123 and ABC",
     "• Hexagonal Honeycomb Layout: Native Typewise and hex QWERTY layouts with axial hit detection, twin spacebars, and custom vector rendering",
-    "• Landscape Hex Ergonomic Split: Positioned hex keys at each end of the screen with a central gap in landscape mode, maintaining comfortable key sizing and natural thumb reachability",
-    "• Mode Switch Input Protection: Fixed PointerTracker layout transitions to eliminate accidental space and 'x' character insertions when toggling ?123 and ABC",
-    "• Popup Key Vertical Offset: Added an adjustable popup position slider (0–10 dp) in Appearance settings with refined preview animations"
+    "• Landscape Hex Ergonomic Split: Positioned hex keys at screen edges with a central gap in landscape mode, maintaining comfortable key sizing and thumb reachability",
+    "• Popup Key Vertical Offset: Added an adjustable popup position slider (0–10 dp) in Appearance settings with refined preview animations",
+    "• Engine & Locale Polish: Decoupled startup settings listeners, fixed voice status NPE, synchronized emoji dictionary reloads, and preserved Catalan dictionaries"
 )
 
 @Composable

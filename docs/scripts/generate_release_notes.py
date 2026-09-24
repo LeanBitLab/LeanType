@@ -129,11 +129,17 @@ def main():
     # 1. Try to get version from tag name (if running in GitHub Actions)
     ref_name = os.environ.get('GITHUB_REF_NAME')
     version_name = None
-    if ref_name and ref_name.startswith('v'):
-        version_name = ref_name[1:]
-        print(f"Detected version name from GITHUB_REF_NAME: {version_name}")
-        
-    # 2. Fall back to build.gradle.kts if not running in action or tag not matching
+    is_beta = False
+
+    if ref_name:
+        if ref_name.startswith('beta-'):
+            is_beta = True
+            print(f"Detected beta build tag: {ref_name}")
+        elif ref_name.startswith('v'):
+            version_name = ref_name[1:]
+            print(f"Detected version name from GITHUB_REF_NAME: {version_name}")
+
+    # 2. Fall back to build.gradle.kts if not determined from tag
     if not version_name:
         gradle_path = os.path.join(project_root, 'app', 'build.gradle.kts')
         if os.path.exists(gradle_path):
@@ -150,11 +156,33 @@ def main():
 
     # 3. Locate the existing release notes file
     releasenote_dir = os.path.join(project_root, 'docs', 'releasenote')
-    source_path = os.path.join(releasenote_dir, f'release_notes_v{version_name}.md')
+    source_path = None
+    if is_beta:
+        candidates = [
+            os.path.join(releasenote_dir, f'release_notes_v{version_name}-beta.md'),
+            os.path.join(releasenote_dir, 'release_notes_beta.md'),
+            os.path.join(releasenote_dir, f'release_notes_v{version_name}.md')
+        ]
+        for candidate in candidates:
+            if os.path.exists(candidate):
+                source_path = candidate
+                break
+    else:
+        candidates = [
+            os.path.join(releasenote_dir, f'release_notes_v{version_name}.md')
+        ]
+        if '-' in version_name:
+            base_version = version_name.split('-')[0]
+            candidates.append(os.path.join(releasenote_dir, f'release_notes_v{base_version}.md'))
+        for candidate in candidates:
+            if os.path.exists(candidate):
+                source_path = candidate
+                break
+
     temp_path = os.path.join(releasenote_dir, 'release_notes_temp.md')
 
-    if not os.path.exists(source_path):
-        print(f"Error: Release note file {source_path} not found")
+    if not source_path or not os.path.exists(source_path):
+        print(f"Error: Release note file not found in candidates")
         # Write a fallback file so the build/release step doesn't fail
         with open(temp_path, 'w', encoding='utf-8') as df:
             df.write(f"Release notes for version {version_name}")
@@ -163,6 +191,17 @@ def main():
     # 4. Read release note template
     with open(source_path, 'r', encoding='utf-8') as sf:
         content = sf.read()
+
+    # Dynamically inject build number into beta header if applicable
+    if is_beta and ref_name:
+        match = re.search(r'-(\d+)$', ref_name)
+        if match:
+            build_num = match.group(1)
+            content = re.sub(
+                r'## 🧪 LeanType [^\n]+ Beta.*',
+                f'## 🧪 LeanType {version_name} Beta (Build {build_num})',
+                content
+            )
 
     # 5. Scan built APK sizes and dynamically inject into release notes
     apk_sizes = get_apk_sizes(project_root)
