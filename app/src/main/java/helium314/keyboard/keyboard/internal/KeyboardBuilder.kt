@@ -131,48 +131,6 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
     }
 
     private fun determineHexAbsoluteValues() {
-        val isTypewise = keysInRows.size == 5 && keysInRows.any { it.size == 7 }
-        if (isTypewise) {
-            determineTypewiseHoneycombValues()
-        } else {
-            determineHexQwertyValues()
-        }
-    }
-
-    private fun determineTypewiseHoneycombValues() {
-        val totalCols = 7f
-        val hexWidth = mParams.mBaseWidth / totalCols
-        // Equilateral pointy-topped hexagon height: width * 2 / sqrt(3) ≈ width * 1.1547f
-        val hexHeight = hexWidth * 1.1547f
-        val verticalPitch = hexHeight * 0.75f
-        val totalHeight = 4f * verticalPitch + hexHeight
-
-        val yStart = mParams.mTopPadding.toFloat() + kotlin.math.max(
-            0f,
-            (mParams.mOccupiedHeight - mParams.mTopPadding - mParams.mBottomPadding - totalHeight) / 2f
-        )
-
-        for ((rowIndex, row) in keysInRows.withIndex()) {
-            if (row.isEmpty()) continue
-            val currentY = yStart + rowIndex * verticalPitch
-            val totalRowWidth = row.fold(0f) { acc, keyParams ->
-                val isHalf = keyParams.isSpacer || keyParams.mCode == KeyCode.SHIFT || keyParams.mCode == KeyCode.DELETE
-                acc + (if (isHalf) hexWidth / 2f else hexWidth)
-            }
-            var currentX = mParams.mLeftPadding.toFloat() + kotlin.math.max(0f, (mParams.mBaseWidth - totalRowWidth) / 2f)
-
-            for (keyParams in row) {
-                val isHalfKey = keyParams.isSpacer || keyParams.mCode == KeyCode.SHIFT || keyParams.mCode == KeyCode.DELETE
-                val keyW = if (isHalfKey) hexWidth / 2f else hexWidth
-                keyParams.setAbsoluteDimensions(currentX, currentY)
-                keyParams.mAbsoluteWidth = keyW
-                keyParams.mAbsoluteHeight = hexHeight
-                currentX += keyW
-            }
-        }
-    }
-
-    private fun determineHexQwertyValues() {
         val baseRowHeight = if (keysInRows.isNotEmpty() && keysInRows.first().isNotEmpty()) {
             keysInRows.first().first().mHeight * mParams.mBaseHeight
         } else {
@@ -187,16 +145,17 @@ open class KeyboardBuilder<KP : KeyboardParams>(protected val mContext: Context,
             val isHexRow = row.any { it.mCode > 0 && Character.isLetter(it.mCode) }
             val nextRowIsHex = rowIndex + 1 < keysInRows.size && keysInRows[rowIndex + 1].any { it.mCode > 0 && Character.isLetter(it.mCode) }
 
-            // Align Row 2 (Shift + 7 letters + Delete) for interlocking honeycomb
+            // Balance Row 2 (Shift + 7 letters + Delete) with equal, normal-sized functional keys
             if (isHexRow && row.size >= 9 && row.first().mCode == KeyCode.SHIFT) {
-                row.first().mWidth = 0.10f
-                row.last().mWidth = 0.20f
+                row.first().mWidth = 0.15f
+                row.last().mWidth = 0.15f
             }
 
             var currentX = mParams.mLeftPadding.toFloat()
             for (keyParams in row) {
                 keyParams.setAbsoluteDimensions(currentX, currentY)
-                if (isHexRow && keyParams.mCode > 0) {
+                val isSpacebar = keyParams.mCode == Constants.CODE_SPACE
+                if (!isSpacebar) {
                     keyParams.mAbsoluteHeight = hexHeight
                 }
                 currentX += keyParams.mAbsoluteWidth

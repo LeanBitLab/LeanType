@@ -17,21 +17,21 @@ open class HexKeyDetector(
         val touchX = getTouchX(x)
         val touchY = getTouchY(y)
 
-        // 1. Direct Cartesian hit-test for non-hexagonal keys (narrow margin Shift/Delete, wide pills)
+        // 1. Direct Cartesian hit-test for spacebar (the only non-hex key)
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (isNonHexKey(key)) {
+            if (isSpacebarKey(key)) {
                 if (key.isOnKey(touchX, touchY)) {
                     return key
                 }
             }
         }
 
-        // 2. Exact inside-hexagon test for all hexagonal keys (letters, twin spaces, enter, 123, punct)
+        // 2. Exact inside-hexagon test for all hexagonal keys
         var bestHexKey: Key? = null
         var minDistance = Int.MAX_VALUE
 
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isNonHexKey(key)) continue
+            if (key.isSpacer || isSpacebarKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -50,7 +50,7 @@ open class HexKeyDetector(
 
         // 3. Fallback: find nearest hex key by center distance among candidate keys
         for (key in keyboard.getNearestKeys(touchX, touchY)) {
-            if (key.isSpacer || isNonHexKey(key)) continue
+            if (key.isSpacer || isSpacebarKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
             val dx = touchX - cx
@@ -65,8 +65,8 @@ open class HexKeyDetector(
         return bestHexKey ?: super.detectHitKey(x, y)
     }
 
-    private fun isNonHexKey(key: Key): Boolean {
-        return key.width < key.height * 0.7f || key.width > key.height * 1.3f
+    private fun isSpacebarKey(key: Key): Boolean {
+        return key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR
     }
 
     private fun isInsideHexagon(px: Int, py: Int, keyX: Int, keyY: Int, width: Int, height: Int): Boolean {
