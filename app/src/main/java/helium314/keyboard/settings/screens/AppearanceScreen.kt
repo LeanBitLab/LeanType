@@ -308,11 +308,11 @@ fun createAppearanceSettings(context: Context) = listOf(
             name = setting.title,
             key = setting.key,
             default = Defaults.PREF_POPUP_KEYS_VERTICAL_OFFSET,
-            range = 0f..80f,
+            range = 0f..10f,
             stepSize = 1,
             description = { offset ->
                 val isDef = offset.toInt() == Defaults.PREF_POPUP_KEYS_VERTICAL_OFFSET.toInt()
-                if (isDef) "0dp (${stringResource(R.string.button_default)})"
+                if (isDef) "${offset.toInt()}dp (${stringResource(R.string.button_default)})"
                 else "${offset.toInt()}dp"
             }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }

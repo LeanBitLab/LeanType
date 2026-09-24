@@ -146,15 +146,12 @@ interface PopupKeysPanel {
             parentView.addView(containerView)
         }
         containerView.alpha = 0f
-        containerView.scaleX = 0.72f
-        containerView.scaleY = 0.72f
-        val density = containerView.resources.displayMetrics.density
-        containerView.translationY = 12f * density
+        containerView.scaleX = 0.75f
+        containerView.scaleY = 0.75f
         containerView.animate()
             .alpha(1f)
             .scaleX(1f)
             .scaleY(1f)
-            .translationY(0f)
             .setDuration(110)
             .setInterpolator(OvershootInterpolator(0.85f))
             .start()
@@ -170,13 +167,11 @@ interface PopupKeysPanel {
             onEnd()
             return
         }
-        val density = containerView.resources.displayMetrics.density
         containerView.animate().cancel()
         containerView.animate()
             .alpha(0f)
-            .scaleX(0.85f)
-            .scaleY(0.85f)
-            .translationY(8f * density)
+            .scaleX(0.8f)
+            .scaleY(0.8f)
             .setDuration(70)
             .setInterpolator(AccelerateInterpolator(1.5f))
             .withEndAction {
@@ -194,7 +189,6 @@ interface PopupKeysPanel {
         containerView.animate().cancel()
         containerView.scaleX = 1f
         containerView.scaleY = 1f
-        containerView.translationY = 0f
         containerView.alpha = 1f
         val currentParent = containerView.parent as? ViewGroup
         currentParent?.removeView(containerView)
