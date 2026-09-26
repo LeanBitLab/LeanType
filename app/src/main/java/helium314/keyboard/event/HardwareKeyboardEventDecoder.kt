@@ -18,19 +18,24 @@ import helium314.keyboard.latin.common.Constants
  * can be dead keys, they can be meta keys like shift or ctrl... This does not deal with
  * 10-key like keyboards; a different decoder is used for this.
  */
-// TODO: get the layout for this hardware keyboard
 class HardwareKeyboardEventDecoder(val mDeviceId: Int) : HardwareEventDecoder {
-    override fun decodeHardwareKey(keyEvent: KeyEvent): Event {
+    override fun decodeHardwareKey(keyEvent: KeyEvent, layoutName: String?): Event {
         val keyCode = keyEvent.keyCode
         val metaState = keyEvent.metaState
         val isKeyRepeat = 0 != keyEvent.repeatCount
+
+        // Resolve character via active physical keyboard layout if configured
+        val mappedUnicode = if (layoutName != null) {
+            PhysicalKeyboardLayouts.mapHardwareKey(keyCode, metaState, layoutName)
+        } else null
 
         // KeyEvent#getUnicodeChar() does not exactly return a unicode char, but rather a value
         // that includes both the unicode char in the lower 21 bits and flags in the upper bits,
         // hence the name "codePointAndFlags". {@see KeyEvent#getUnicodeChar()} for more info.
         // For numpad keys, if Android has NumLock off in metaState, resolve using META_NUM_LOCK_ON
         // or the key's numeric label so numpad typing works consistently across all devices.
-        val rawUnicode = keyEvent.unicodeChar.takeIf { it != 0 }
+        val rawUnicode = mappedUnicode
+            ?: keyEvent.unicodeChar.takeIf { it != 0 }
             ?: if (isNumpadKey(keyCode)) {
                 keyEvent.getUnicodeChar(metaState or KeyEvent.META_NUM_LOCK_ON).takeIf { it != 0 }
                     ?: keyEvent.number.takeIf { it != 0.toChar() }?.code

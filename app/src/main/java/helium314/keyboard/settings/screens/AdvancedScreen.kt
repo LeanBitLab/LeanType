@@ -87,6 +87,7 @@ fun AdvancedSettingsScreen(
         if (Settings.readHorizontalSpaceSwipe(prefs) == KeyboardActionListener.SWIPE_SWITCH_LANGUAGE
             || Settings.readVerticalSpaceSwipe(prefs) == KeyboardActionListener.SWIPE_SWITCH_LANGUAGE)
             Settings.PREF_LANGUAGE_SWIPE_DISTANCE else null,
+        Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT,
         Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY,
         Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS,
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) Settings.PREF_SHOW_SETUP_WIZARD_ICON else null,
@@ -122,6 +123,23 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             range = 2f..18f,
             description = { it.toString() }
         )
+    },
+    Setting(context, Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT, R.string.prefs_physical_keyboard_layout,
+        R.string.prefs_physical_keyboard_layout_summary) { setting ->
+        val items = listOf(
+            stringResource(R.string.physical_keyboard_layout_match_soft) to Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT,
+            stringResource(R.string.physical_keyboard_layout_system_default) to "system_default",
+            "AZERTY (French)" to "azerty",
+            "QWERTZ (German)" to "qwertz",
+            "QWERTY" to "qwerty",
+            "Dvorak" to "dvorak",
+            "Colemak" to "colemak",
+            "Colemak Mod-DH" to "colemak_dh",
+            "Workman" to "workman",
+            "Bépo (French)" to "bepo",
+            "PC QWERTY" to "pcqwerty",
+        )
+        ListPreference(setting, items, Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT)
     },
     Setting(context, Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, R.string.prefs_enable_emoji_alt_physical_key,
         R.string.prefs_enable_emoji_alt_physical_key_summary)

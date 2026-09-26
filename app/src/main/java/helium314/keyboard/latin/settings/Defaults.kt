@@ -104,6 +104,7 @@ object Defaults {
     const val PREF_VARIABLE_TOOLBAR_DIRECTION = true
     const val PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD = true
     const val PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS = "alt"
+    const val PREF_PHYSICAL_KEYBOARD_LAYOUT = "match_soft_keyboard"
     const val PREF_ADDITIONAL_SUBTYPES = "de${Separators.SET}${ExtraValue.KEYBOARD_LAYOUT_SET}=MAIN:qwerty${Separators.SETS}" +
             "fr${Separators.SET}${ExtraValue.KEYBOARD_LAYOUT_SET}=MAIN:qwertz${Separators.SETS}" +
             "hu${Separators.SET}${ExtraValue.KEYBOARD_LAYOUT_SET}=MAIN:qwerty"

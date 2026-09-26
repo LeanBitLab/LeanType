@@ -54,6 +54,7 @@ open class SettingsValues(
     val mHasHardwareKeyboard: Boolean
     val mShowToolbarOnly: Boolean
     val mPhysicalKeyboardSuggestionShortcuts: String
+    val mPhysicalKeyboardLayout: String
     val mDisplayOrientation: Int
     val mScreenProfile: helium314.keyboard.latin.utils.ScreenProfile
     // From preferences
@@ -228,6 +229,7 @@ open class SettingsValues(
 
         mToolbarMode = Settings.readToolbarMode(prefs)
         mPhysicalKeyboardSuggestionShortcuts = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS, Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS) ?: Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS
+        mPhysicalKeyboardLayout = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT, Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT) ?: Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT
         mToolbarHidingGlobal = prefs.getBoolean(Settings.PREF_TOOLBAR_HIDING_GLOBAL, Defaults.PREF_TOOLBAR_HIDING_GLOBAL)
         mSplitToolbar = prefs.getBoolean(Settings.PREF_SPLIT_TOOLBAR, Defaults.PREF_SPLIT_TOOLBAR)
         mAutoSpanToolbarKeys = prefs.getBoolean(Settings.PREF_AUTO_SPAN_TOOLBAR_KEYS, Defaults.PREF_AUTO_SPAN_TOOLBAR_KEYS)

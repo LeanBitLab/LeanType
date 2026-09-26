@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.keyboard
 
+import android.os.SystemClock
 import android.text.InputType
 import android.util.SparseArray
 import android.view.KeyEvent
@@ -11,6 +12,7 @@ import helium314.keyboard.event.HangulEventDecoder
 import helium314.keyboard.event.HapticEvent
 import helium314.keyboard.event.HardwareEventDecoder
 import helium314.keyboard.event.HardwareKeyboardEventDecoder
+import helium314.keyboard.event.PhysicalKeyboardLayouts
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.AudioAndHapticFeedbackManager
 import helium314.keyboard.latin.EmojiAltPhysicalKeyDetector
@@ -26,6 +28,7 @@ import helium314.keyboard.latin.common.loopOverCodePoints
 import helium314.keyboard.latin.common.loopOverCodePointsBackwards
 import helium314.keyboard.latin.define.ProductionFlags
 import helium314.keyboard.latin.inputlogic.InputLogic
+import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.SubtypeSettings
 import kotlin.math.abs
@@ -69,6 +72,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     }
 
     private val mConsumedPhysicalKeys = HashSet<Int>()
+    private val mRemappedShortcutKeys = HashMap<Int, Int>()
 
     private fun isUnhandledNavigationKey(keyCode: Int): Boolean = when (keyCode) {
         KeyEvent.KEYCODE_PAGE_UP,
@@ -84,6 +88,13 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         emojiAltPhysicalKeyDetector.onKeyUp(keyEvent)
         if (!ProductionFlags.IS_HARDWARE_KEYBOARD_SUPPORTED)
             return false
+
+        val remappedCode = mRemappedShortcutKeys.remove(keyCode)
+        if (remappedCode != null) {
+            val eventTime = SystemClock.uptimeMillis()
+            connection.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, remappedCode, keyEvent.repeatCount, keyEvent.metaState, keyEvent.deviceId, keyEvent.scanCode, keyEvent.flags, keyEvent.source))
+            return true
+        }
 
         if (mConsumedPhysicalKeys.remove(keyCode)) {
             return true
@@ -126,14 +137,34 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             }
         }
 
+        val physicalLayoutPref = settings.current.mPhysicalKeyboardLayout
+        val targetLayoutName = if (physicalLayoutPref == Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT) {
+            val subtype = keyboardSwitcher.keyboard?.mId?.mSubtype ?: RichInputMethodManager.getInstance().currentSubtype
+            subtype.mainLayoutName
+        } else if (physicalLayoutPref == "system_default") {
+            null
+        } else {
+            physicalLayoutPref
+        }
+
+        if (targetLayoutName != null && keyEvent.isCtrlPressed && keyCode != KeyEvent.KEYCODE_SPACE) {
+            val remappedCode = PhysicalKeyboardLayouts.remapKeyCodeForShortcuts(keyCode, targetLayoutName)
+            if (remappedCode != keyCode) {
+                mRemappedShortcutKeys[keyCode] = remappedCode
+                val eventTime = SystemClock.uptimeMillis()
+                connection.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, remappedCode, keyEvent.repeatCount, keyEvent.metaState, keyEvent.deviceId, keyEvent.scanCode, keyEvent.flags, keyEvent.source))
+                return true
+            }
+        }
+
         val event: Event
         if (settings.current.mLocale.language == "ko") { // todo: this does not appear to be the right place
             val subtype = keyboardSwitcher.keyboard?.mId?.mSubtype ?: RichInputMethodManager.getInstance().currentSubtype
             event = HangulEventDecoder.decodeHardwareKeyEvent(subtype, keyEvent) {
-                getHardwareKeyEventDecoder(keyEvent.deviceId).decodeHardwareKey(keyEvent)
+                getHardwareKeyEventDecoder(keyEvent.deviceId).decodeHardwareKey(keyEvent, targetLayoutName)
             }
         } else {
-            event = getHardwareKeyEventDecoder(keyEvent.deviceId).decodeHardwareKey(keyEvent)
+            event = getHardwareKeyEventDecoder(keyEvent.deviceId).decodeHardwareKey(keyEvent, targetLayoutName)
         }
 
         if (event.isHandled) {

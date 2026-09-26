@@ -11,5 +11,5 @@ import android.view.KeyEvent
  * An event decoder for hardware events.
  */
 interface HardwareEventDecoder : EventDecoder {
-    fun decodeHardwareKey(keyEvent: KeyEvent): Event
+    fun decodeHardwareKey(keyEvent: KeyEvent, layoutName: String? = null): Event
 }

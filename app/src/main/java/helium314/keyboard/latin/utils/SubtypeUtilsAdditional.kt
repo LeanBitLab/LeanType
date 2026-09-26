@@ -43,8 +43,12 @@ object SubtypeUtilsAdditional {
             .setIsAsciiCapable(isAsciiCapable)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
             builder.setLanguageTag(locale.toLanguageTag())
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && LayoutUtilsCustom.isCustomLayout(mainLayoutName))
-            builder.setSubtypeNameOverride(LayoutUtilsCustom.getDisplayName(mainLayoutName))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            if (LayoutUtilsCustom.isCustomLayout(mainLayoutName)) {
+                builder.setSubtypeNameOverride(LayoutUtilsCustom.getDisplayName(mainLayoutName))
+            }
+            builder.setPhysicalKeyboardHint(android.icu.util.ULocale.forLocale(locale), mainLayoutName)
+        }
         return builder.build()
     }
 

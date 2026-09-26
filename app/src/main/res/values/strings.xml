@@ -171,6 +171,12 @@
     <string name="physical_keyboard_shortcut_alt">Alt + Number (Alt+1, Alt+2, Alt+3)</string>
     <string name="physical_keyboard_shortcut_ctrl">Ctrl + Number (Ctrl+1, Ctrl+2, Ctrl+3)</string>
     <string name="physical_keyboard_shortcut_number">Number Key (1, 2, 3 while composing)</string>
+    <!-- Title of the setting for choosing physical keyboard layout -->
+    <string name="prefs_physical_keyboard_layout">Physical keyboard layout</string>
+    <!-- Description of the setting for choosing physical keyboard layout -->
+    <string name="prefs_physical_keyboard_layout_summary">Choose layout mapping for external hardware keyboards (e.g. AZERTY, QWERTZ, Dvorak)</string>
+    <string name="physical_keyboard_layout_match_soft">Match on-screen keyboard (Auto)</string>
+    <string name="physical_keyboard_layout_system_default">System default</string>
     <string name="large_screen_layout_note">Settings on this screen apply to large-screen layout</string>
     <!-- Option to undo auto correction with backspace -->
     <string name="backspace_reverts_autocorrect">Backspace reverts autocorrect</string>

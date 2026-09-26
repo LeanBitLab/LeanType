@@ -332,6 +332,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_VARIABLE_TOOLBAR_DIRECTION = "var_toolbar_direction"
         const val PREF_SHOW_ONLY_TOOLBAR_WITH_HARDWARE_KEYBOARD = "only_toolbar_with_hw_keyboard"
         const val PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS = "pref_physical_keyboard_suggestion_shortcuts"
+        const val PREF_PHYSICAL_KEYBOARD_LAYOUT = "pref_physical_keyboard_layout"
         const val PREF_ADDITIONAL_SUBTYPES = "additional_subtypes"
 
         const val PREF_ENABLE_SPELL_CHECKER_SERVICE = "enable_spell_checker_service"
