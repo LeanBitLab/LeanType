@@ -426,10 +426,22 @@ object TextExpanderUtils {
             } else {
                 val prefix = entry.prefix
                 val expectedSuffix = item.cleanKey
-                if (word == null || expectedSuffix.equals(prefix + word, ignoreCase = true)) {
-                    if (textBeforeCursor.endsWith(expectedSuffix, ignoreCase = true)) {
-                        return ExpandedResult(expand(entry.template, context), prefix.length, expectedSuffix)
+                val matchesWord = word == null
+                    || expectedSuffix.equals(prefix + word, ignoreCase = true)
+                    || (expectedSuffix.endsWith(word, ignoreCase = true) && textBeforeCursor.endsWith(expectedSuffix, ignoreCase = true))
+                if (matchesWord && textBeforeCursor.endsWith(expectedSuffix, ignoreCase = true)) {
+                    if (word == null && prefix.isEmpty() && textBeforeCursor.length > expectedSuffix.length) {
+                        val prevChar = textBeforeCursor[textBeforeCursor.length - expectedSuffix.length - 1]
+                        if (Character.isLetterOrDigit(prevChar)) {
+                            continue
+                        }
                     }
+                    val effectivePrefixLength = if (word != null && expectedSuffix.endsWith(word, ignoreCase = true)) {
+                        expectedSuffix.length - word.length
+                    } else {
+                        prefix.length
+                    }
+                    return ExpandedResult(expand(entry.template, context), effectivePrefixLength, expectedSuffix)
                 }
             }
         }

@@ -1218,6 +1218,19 @@ class InputLogic(
             } else {
                 commitTyped(settingsValues, StringUtils.newSingleCodePointString(codePoint))
             }
+        } else if (TextExpanderUtils.isEnabled(mLatinIME)) {
+            val textBefore = mConnection.getTextBeforeCursor(50, 0)
+            if (textBefore != null) {
+                val result = TextExpanderUtils.getExpandedWordForTyped(null, textBefore.toString(), mLatinIME)
+                if (result != null) {
+                    if (mJustRevertedExpandedShortcut == null
+                        || !result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)
+                    ) {
+                        mConnection.deleteTextBeforeCursor(result.matchedString.length)
+                        commitExpandedText(result.matchedString, result.expandedText)
+                    }
+                }
+            }
         }
 
         val swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event, inputTransaction)

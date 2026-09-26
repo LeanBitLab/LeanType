@@ -385,6 +385,78 @@ class InputLogicTest {
         assertEquals("user_mention", text)
     }
 
+    @Test fun numberShortcutWithAtPrefixExpandsOnSpace() {
+        reset()
+        latinIME.prefs().edit().apply {
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_ENABLED, true)
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_IMMEDIATE, false)
+        }.commit()
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+        val shortcuts = mapOf("@21" to helium314.keyboard.latin.utils.TextExpanderUtils.ShortcutEntry("twenty-one", "@"))
+        helium314.keyboard.latin.utils.TextExpanderUtils.saveShortcuts(latinIME, shortcuts)
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+
+        typeNoAssert("@21 ")
+        assertEquals("twenty-one ", text)
+    }
+
+    @Test fun numberShortcutWithAtPrefixExpandsOnPunctuation() {
+        reset()
+        latinIME.prefs().edit().apply {
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_ENABLED, true)
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_IMMEDIATE, false)
+        }.commit()
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+        val shortcuts = mapOf("@21" to helium314.keyboard.latin.utils.TextExpanderUtils.ShortcutEntry("twenty-one", "@"))
+        helium314.keyboard.latin.utils.TextExpanderUtils.saveShortcuts(latinIME, shortcuts)
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+
+        typeNoAssert("@21.")
+        assertEquals("twenty-one.", text)
+    }
+
+    @Test fun numberShortcutWithoutPrefixExpandsOnSpaceAndRespectsWordBoundary() {
+        reset()
+        latinIME.prefs().edit().apply {
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_ENABLED, true)
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_IMMEDIATE, false)
+        }.commit()
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+        val shortcuts = mapOf("21" to helium314.keyboard.latin.utils.TextExpanderUtils.ShortcutEntry("twenty-one", ""))
+        helium314.keyboard.latin.utils.TextExpanderUtils.saveShortcuts(latinIME, shortcuts)
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+
+        typeNoAssert("21 ")
+        assertEquals("twenty-one ", text)
+
+        reset()
+        latinIME.prefs().edit().apply {
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_ENABLED, true)
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_IMMEDIATE, false)
+        }.commit()
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+        helium314.keyboard.latin.utils.TextExpanderUtils.saveShortcuts(latinIME, shortcuts)
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+
+        typeNoAssert("121 ")
+        assertEquals("121 ", text)
+    }
+
+    @Test fun numberShortcutWithAtPrefixExpandsImmediately() {
+        reset()
+        latinIME.prefs().edit().apply {
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_ENABLED, true)
+            putBoolean(helium314.keyboard.latin.utils.TextExpanderUtils.PREF_IMMEDIATE, true)
+        }.commit()
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+        val shortcuts = mapOf("@21" to helium314.keyboard.latin.utils.TextExpanderUtils.ShortcutEntry("twenty-one", "@"))
+        helium314.keyboard.latin.utils.TextExpanderUtils.saveShortcuts(latinIME, shortcuts)
+        helium314.keyboard.latin.utils.TextExpanderUtils.clearCache()
+
+        typeNoAssert("@21")
+        assertEquals("twenty-one", text)
+    }
+
     // see issue 1551 (debug only)
     @Test fun deleteHangul() {
         reset()
