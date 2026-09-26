@@ -9,6 +9,95 @@ RES_DIR = os.path.join(REPO_ROOT, "app", "src", "main", "res")
 BASE_STRINGS = os.path.join(RES_DIR, "values", "strings.xml")
 OUTPUT_DIR = os.path.join(REPO_ROOT, "docs", "i18n_prompts")
 
+LANG_NAMES = {
+    "af": "Afrikaans",
+    "am": "Amharic",
+    "as": "Assamese",
+    "ast-rES": "Asturian",
+    "az": "Azerbaijani",
+    "bal": "Balochi",
+    "be": "Belarusian",
+    "bg": "Bulgarian",
+    "bn": "Bengali",
+    "b+sr+Latn": "Serbian (Latin)",
+    "bs": "Bosnian",
+    "ca": "Catalan",
+    "cs": "Czech",
+    "cy": "Welsh",
+    "da": "Danish",
+    "dv": "Dhivehi",
+    "el": "Greek",
+    "en-rAU": "English (Australia)",
+    "en-rCA": "English (Canada)",
+    "en-rGB": "English (UK)",
+    "en-rIN": "English (India)",
+    "es-rUS": "Spanish (US)",
+    "et": "Estonian",
+    "eu": "Basque",
+    "fa": "Persian",
+    "fi": "Finnish",
+    "fil": "Filipino",
+    "fr-rCA": "French (Canada)",
+    "gd": "Scottish Gaelic",
+    "gl": "Galician",
+    "gu": "Gujarati",
+    "hi": "Hindi",
+    "hr": "Croatian",
+    "hu": "Hungarian",
+    "hy": "Armenian",
+    "in": "Indonesian",
+    "is": "Icelandic",
+    "iw": "Hebrew",
+    "ja": "Japanese",
+    "jpr": "Judeo-Persian",
+    "ka": "Georgian",
+    "kab": "Kabyle",
+    "kk": "Kazakh",
+    "km": "Khmer",
+    "kn": "Kannada",
+    "ko": "Korean",
+    "kw": "Cornish",
+    "ky": "Kyrgyz",
+    "lb": "Luxembourgish",
+    "lo": "Lao",
+    "lt": "Lithuanian",
+    "lv": "Latvian",
+    "mk": "Macedonian",
+    "mn": "Mongolian",
+    "mr": "Marathi",
+    "ms": "Malay",
+    "my": "Burmese",
+    "nb": "Norwegian Bokmål",
+    "ne": "Nepali",
+    "or": "Odia",
+    "ota": "Ottoman Turkish",
+    "pa": "Punjabi",
+    "pa-rPK": "Punjabi (Pakistan)",
+    "pt-rBR": "Portuguese (Brazil)",
+    "pt-rPT": "Portuguese (Portugal)",
+    "ro": "Romanian",
+    "sc-rIT": "Sardinian",
+    "si": "Sinhala",
+    "sk": "Slovak",
+    "sl": "Slovenian",
+    "sq": "Albanian",
+    "sr": "Serbian (Cyrillic)",
+    "sv": "Swedish",
+    "sw": "Swahili",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "tg": "Tajik",
+    "th": "Thai",
+    "tl": "Tagalog",
+    "uk": "Ukrainian",
+    "uz": "Uzbek",
+    "vi": "Vietnamese",
+    "zh-rCN": "Simplified Chinese",
+    "zh-rHK": "Traditional Chinese (Hong Kong)",
+    "zh-rTW": "Traditional Chinese (Taiwan)",
+    "zu": "Zulu",
+}
+
 PROMPT_TEMPLATE = """# Translation Task: {lang_title} ({folder}) - Part {part_num} of {total_parts}
 
 Translate the following Android XML string resources for LeanType Keyboard into {lang_title}.
@@ -56,6 +145,7 @@ def export_language(lang_code, chunk_size=300):
         return
 
     lang_name = folder.replace("values-", "")
+    lang_title = LANG_NAMES.get(lang_name, lang_name)
     print(f"[{folder}] Total missing strings: {len(missing)}")
 
     if len(missing) == 0:
@@ -80,7 +170,7 @@ def export_language(lang_code, chunk_size=300):
 
         xml_block = "\n".join(xml_lines)
         md_content = PROMPT_TEMPLATE.format(
-            lang_title=lang_name,
+            lang_title=lang_title,
             folder=folder,
             part_num=idx,
             total_parts=total_parts,
