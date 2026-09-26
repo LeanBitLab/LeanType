@@ -1371,6 +1371,8 @@ class InputLogic(
         }
         if (mWordComposer.isComposingWord()) {
             val wasBatchMode = mWordComposer.isBatchMode()
+            val initialLength = mWordComposer.getTypedWord().length
+            var deletedCodePoints = 0
             if (mWordComposer.isBatchMode()) {
                 val rejectedSuggestion = mWordComposer.getTypedWord()
                 mWordComposer.reset()
@@ -1381,7 +1383,12 @@ class InputLogic(
                 StatsUtils.onBackspaceWordDelete(rejectedSuggestion.length)
             } else {
                 mWordComposer.applyProcessedEvent(event)
-                StatsUtils.onBackspacePressed(1)
+                deletedCodePoints++
+                if (mDeleteCount > Constants.DELETE_ACCELERATE_AT && mWordComposer.isComposingWord()) {
+                    mWordComposer.applyProcessedEvent(event)
+                    deletedCodePoints++
+                }
+                StatsUtils.onBackspacePressed(deletedCodePoints)
             }
             if (mWordComposer.isComposingWord()) {
                 val typedWord = mWordComposer.getTypedWord()
@@ -1409,7 +1416,26 @@ class InputLogic(
                     mConnection.commitText("", 1)
                 } else {
                     mConnection.finishComposingText()
-                    mConnection.deleteTextBeforeCursor(1)
+                    mConnection.deleteTextBeforeCursor(initialLength)
+                    if (deletedCodePoints < 2 && mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
+                        unlearnWordBeingDeleted(inputTransaction.settingsValues)
+                        val codePointBeforeCursor = mConnection.codePointBeforeCursor
+                        if (codePointBeforeCursor != Constants.NOT_A_CODE) {
+                            val isEmoji = codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)
+                            val lengthToDeleteAgain = if (isEmoji) {
+                                mConnection.charCountToDeleteBeforeCursor
+                            } else {
+                                1
+                            }
+                            val isWeb = InputTypeUtils.isWebEditor(getCurrentInputEditorInfo())
+                            if (isWeb && !isEmoji) {
+                                sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
+                            } else {
+                                mConnection.deleteTextBeforeCursor(lengthToDeleteAgain)
+                            }
+                            StatsUtils.onBackspacePressed(lengthToDeleteAgain)
+                        }
+                    }
                 }
             }
             updateInlineEmojiSearch()
@@ -1513,7 +1539,7 @@ class InputLogic(
             if (!hasUnlearnedWordBeingDeleted) {
                 unlearnWordBeingDeleted(inputTransaction.settingsValues)
             }
-            if (mConnection.hasSlowInputConnection()) {
+            if (mConnection.hasSlowInputConnection() || event.isKeyRepeat || mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
             } else if (inputTransaction.settingsValues.needsToLookupSuggestions()
                 && inputTransaction.settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces

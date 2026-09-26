@@ -1027,8 +1027,57 @@ class InputLogicTest {
         functionalKeyPress(KeyCode.DELETE)
         assertEquals("", text)
 
-        // todo: now we want some way to disable delete-all on backspace, either per setting or something else
-        //  need to avoid getting into the mWordComposer.isBatchMode() part of handleBackspaceEvent
+    }
+
+    @Test fun `held backspace accelerates composing word deletion past threshold`() {
+        reset()
+        chainInput("abcdefghijklmnopqrstuvwxy") // 25 characters
+        assertEquals("abcdefghijklmnopqrstuvwxy", composingText)
+
+        // First 20 deletions delete 1 char each (mDeleteCount 1..20)
+        for (i in 1..20) {
+            functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        }
+        // 5 characters remaining
+        assertEquals("abcde", composingText)
+
+        // 21st deletion: accelerated (> 20), deletes 2 characters
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals("abc", composingText)
+
+        // 22nd deletion: accelerated, deletes 2 characters
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals("a", composingText)
+
+        // 23rd deletion: accelerated with 1 char in composer, deletes "a" and finishes composing
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals("", composingText)
+        assertEquals("", text)
+    }
+
+    @Test fun `key repeat backspace does not restart intermediate composing words`() {
+        reset()
+        setText("first second ")
+        // Single backspace removes trailing space and restarts suggestions on "second"
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = false)
+        assertEquals("first second", text)
+        assertEquals("second", composingText)
+
+        // Repeating backspace deletes through "second"
+        for (i in 1..6) {
+            functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        }
+        assertEquals("first ", text)
+        assertEquals("", composingText)
+
+        // Next repeating backspaces delete trailing space and into "first" without intermediate composing
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals("first", text)
+        assertEquals("", composingText)
+
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals("firs", text)
+        assertEquals("", composingText)
     }
 
     @Test fun timestamp() {
@@ -1168,9 +1217,9 @@ class InputLogicTest {
         checkConnectionConsistency()
     }
 
-    private fun functionalKeyPress(keyCode: Int) {
+    private fun functionalKeyPress(keyCode: Int, isKeyRepeat: Boolean = false) {
         require(keyCode < 0) { "not a functional key code: $keyCode" }
-        latinIME.onEvent(Event.createSoftwareKeypressEvent(Event.NOT_A_CODE_POINT, keyCode, 0, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false))
+        latinIME.onEvent(Event.createSoftwareKeypressEvent(Event.NOT_A_CODE_POINT, keyCode, 0, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat))
         handleMessages()
         checkConnectionConsistency()
     }
