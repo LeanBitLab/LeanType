@@ -738,8 +738,8 @@
     <string name="translate_source_language_title">Translation source language</string>
     <string name="translate_source_language_summary">Select the source language or auto detect</string>
     <string name="translate_language_auto">Auto Detect</string>
-    <string name="translate_language_keyboard">Default (Keyboard language)</string>
-    <string name="translate_language_keyboard_short">Default (Keyboard)</string>
+    <string name="translate_language_keyboard">Default</string>
+    <string name="translate_language_keyboard_short">Default</string>
     
     <!-- Translation target language options -->
     <string-array name="translate_language_names">

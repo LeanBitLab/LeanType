@@ -450,8 +450,9 @@ fun TranslationTargetLanguagePreference() {
                                         },
                                         modifier = Modifier.weight(1f)
                                     ) {
+                                        val itemText = if (code.equals("keyboard", ignoreCase = true) || code.equals("default", ignoreCase = true)) name else "$name ($code)"
                                         Text(
-                                            text = if (isSelected) "✓ $name ($code)" else "$name ($code)",
+                                            text = if (isSelected) "✓ $itemText" else itemText,
                                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                                             modifier = Modifier.fillMaxWidth()
                                         )

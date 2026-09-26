@@ -766,8 +766,9 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                                         showPickerDialog = false
                                     }
                                 )
+                                val itemText = if (code.equals("keyboard", ignoreCase = true) || code.equals("default", ignoreCase = true)) name else "$name ($code)"
                                 Text(
-                                    text = "$name ($code)",
+                                    text = itemText,
                                     modifier = androidx.compose.ui.Modifier
                                         .weight(1f)
                                         .padding(start = 8.dp)
