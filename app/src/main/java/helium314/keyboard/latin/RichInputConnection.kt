@@ -538,6 +538,20 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             reloadTextCache()
         }
 
+        if (!isWeb && mPendingInFlightDeletions > 0 && result != null) {
+            val cachedText = if (mComposingText.isNotEmpty()) {
+                mCommittedTextBeforeComposingText.toString() + mComposingText.toString()
+            } else {
+                mCommittedTextBeforeComposingText.toString()
+            }
+            if (result.length > cachedText.length &&
+                result.length <= cachedText.length + mPendingInFlightDeletions &&
+                result.startsWith(cachedText)
+            ) {
+                return cachedText
+            }
+        }
+
         return result
     }
 
@@ -792,10 +806,14 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         if (DEBUG_BATCH_NESTING) checkBatchEdit()
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
 
-        val moveBy = mExpectedSelStart - start
+        if (start < 0 || end < start) return false
+
+        var adjustedStart = start
+        val moveBy = mExpectedSelStart - adjustedStart
+        if (moveBy < 0) return false
 
         val textBeforeCursor = getTextBeforeCursor(
-            Constants.EDITOR_CONTENTS_CACHE_SIZE + (end - start),
+            Constants.EDITOR_CONTENTS_CACHE_SIZE + (end - adjustedStart),
             0
         )
 
@@ -803,7 +821,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mComposingText.setLength(0)
 
         textBeforeCursor?.let { text ->
-            val indexOfStartOfComposingText = max(text.length - moveBy, 0)
+            var indexOfStartOfComposingText = max(text.length - (mExpectedSelStart - adjustedStart), 0)
+            while (indexOfStartOfComposingText < text.length && Character.isWhitespace(text[indexOfStartOfComposingText])) {
+                indexOfStartOfComposingText++
+                adjustedStart++
+            }
 
             mComposingText.append(
                 text.subSequence(indexOfStartOfComposingText, text.length)
@@ -815,7 +837,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         return if (isConnected()) {
-            mIC?.setComposingRegion(start, end) ?: false
+            mIC?.setComposingRegion(adjustedStart, end) ?: false
         } else {
             false
         }
@@ -1058,16 +1080,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return null
         }
 
-        val before = getTextBeforeCursorAndDetectLaggyConnection(
-            OPERATION_GET_WORD_RANGE_AT_CURSOR,
-            SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
+        val before = getTextBeforeCursor(
             NUM_CHARS_TO_GET_BEFORE_CURSOR,
             InputConnection.GET_TEXT_WITH_STYLES
         )
 
-        val after = getTextAfterCursorAndDetectLaggyConnection(
-            OPERATION_GET_WORD_RANGE_AT_CURSOR,
-            SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
+        val after = getTextAfterCursor(
             NUM_CHARS_TO_GET_AFTER_CURSOR,
             InputConnection.GET_TEXT_WITH_STYLES
         )

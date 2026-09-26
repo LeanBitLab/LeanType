@@ -106,6 +106,47 @@ class InputLogicTest {
         assertEquals("there", composingText)
     }
 
+    @Test fun testHelloHowAreYouBackspaceTwice() {
+        reset()
+        chainInput("hello how are you")
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are yo", text)
+        assertEquals("yo", composingText)
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are y", text)
+        assertEquals("y", composingText)
+    }
+
+    @Test fun testHelloHowAreYouSpaceBackspaceTwice() {
+        reset()
+        chainInput("hello how are you ")
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are you", text)
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are yo", text)
+        assertEquals("yo", composingText)
+    }
+
+    @Test fun testHelloHowAreYouSuggestionsBackspaceTwice() {
+        reset()
+        chainInput("hello how are ")
+        pickSuggestion("you")
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are ", text)
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("hello how are", text)
+    }
+
+    @Test fun testSetComposingRegionSkipsLeadingWhitespace() {
+        reset()
+        setText("hello how are you")
+        // In "hello how are you", index 9 is ' ', index 10-12 is "are"
+        connection.setComposingRegion(9, 13)
+        // Leading space at index 9 should be skipped, composingText should be "are " without the preceding space
+        assert(!connectionComposingText.startsWith(" "))
+    }
+
+
     @Test fun deleteInsideWord() {
         reset()
         setText("hello you there")
