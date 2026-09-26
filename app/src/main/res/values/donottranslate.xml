@@ -38,7 +38,6 @@
         <item>workman</item>
         <item>bepo</item>
         <item>pcqwerty</item>
-        <item>hex_qwerty</item>
         <item>hex_typewise</item>
     </string-array>
     <!-- Predefined keyboard layout display names -->
@@ -53,7 +52,6 @@
         <item>Workman</item>
         <item>Bépo</item>
         <item>PC</item>
-        <item>Hexagonal QWERTY</item>
         <item>Typewise Honeycomb</item>
     </string-array>
 

@@ -26,7 +26,12 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
     // often PopupKeys are empty, so we want to avoid unnecessarily creating sets
     val popupKeysDelegate = lazy { mutableSetOf<String>() }
     val popupKeys by popupKeysDelegate
-    val types = if (params.mId.isAlphabetKeyboard) params.mPopupKeyTypes else allPopupKeyTypes
+    val baseTypes = if (params.mId.isAlphabetKeyboard) params.mPopupKeyTypes else allPopupKeyTypes
+    val types = if (params.isHexagonal) {
+        listOf(POPUP_KEYS_LAYOUT) + (baseTypes - POPUP_KEYS_LAYOUT)
+    } else {
+        baseTypes
+    }
     types.forEach { type ->
         when (type) {
             POPUP_KEYS_NUMBER -> popupSet?.numberLabel?.let { popupKeys.add(it) }
@@ -62,7 +67,12 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
 
 fun getHintLabel(popupSet: PopupSet<*>?, params: KeyboardParams, label: String): String? {
     var hintLabel: String? = null
-    for (type in params.mPopupKeyLabelSources) {
+    val sources = if (params.isHexagonal) {
+        listOf(POPUP_KEYS_LAYOUT) + (params.mPopupKeyLabelSources - POPUP_KEYS_LAYOUT)
+    } else {
+        params.mPopupKeyLabelSources
+    }
+    for (type in sources) {
         when (type) {
             POPUP_KEYS_NUMBER -> popupSet?.numberLabel?.let { hintLabel = it }
             POPUP_KEYS_LAYOUT -> popupSet?.getPopupKeyLabels(params)?.let { hintLabel = it.firstOrNull() }

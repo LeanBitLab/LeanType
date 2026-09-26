@@ -119,7 +119,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
         if (!params.isHexagonal) {
             addNumberRowOrPopupKeys(baseKeys, numberRow)
         }
-        if (params.mId.isAlphabetKeyboard)
+        if (!params.isHexagonal && params.mId.isAlphabetKeyboard)
             addSymbolPopupKeys(baseKeys)
         if (!params.isHexagonal && params.mId.isAlphaOrSymbolKeyboard && (params.mId.mNumberRowEnabled
                 || (params.mId.mElementId == KeyboardId.ELEMENT_SYMBOLS && params.mId.mNumberRowInSymbols && !params.mId.mCompactNumberRowInSymbols))) {
@@ -375,7 +375,8 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
     }
 
     // some layouts have numbers hardcoded in the main layout (pcqwerty as keys, and others as popups)
-    private fun hasBuiltInNumbers() = params.mId.mSubtype.mainLayoutName == "pcqwerty"
+    private fun hasBuiltInNumbers() = params.isHexagonal
+            || params.mId.mSubtype.mainLayoutName == "pcqwerty"
             || (Settings.getValues().mPopupKeyTypes.contains(POPUP_KEYS_LAYOUT)
                 && params.mId.mSubtype.mainLayoutName in listOf("lao", "thai", "korean_sebeolsik_390", "korean_sebeolsik_final")
             )

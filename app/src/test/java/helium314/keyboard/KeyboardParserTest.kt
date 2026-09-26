@@ -576,6 +576,35 @@ f""", // no newline at the end
         }
     }
 
+    @Test fun hexTypewisePopupKeys() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "hex_typewise", true)
+        val (_, keys) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+        val allKeys = keys.flatten()
+        val eKey = allKeys.first { it.mLabel == "e" }
+        assertEquals("1", eKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("1", eKey.mHintLabel)
+
+        val tKey = allKeys.first { it.mLabel == "t" }
+        assertEquals("2", tKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("2", tKey.mHintLabel)
+
+        val rKey = allKeys.first { it.mLabel == "r" }
+        assertEquals("5", rKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("5", rKey.mHintLabel)
+
+        val nKey = allKeys.first { it.mLabel == "n" }
+        assertEquals("0", nKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("0", nKey.mHintLabel)
+
+        val commaKey = allKeys.first { it.mLabel == "," }
+        assertEquals("'", commaKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("'", commaKey.mHintLabel)
+
+        val periodKey = allKeys.first { it.mLabel == "." }
+        assertEquals("!", periodKey.mPopupKeys?.first()?.mLabel)
+        assertEquals("!", periodKey.mHintLabel)
+    }
+
     private fun buildKeyboard(editorInfo: EditorInfo, subtype: InputMethodSubtype, elementId: Int): Pair<Keyboard, List<List<KeyParams>>> {
         val layoutParams = KeyboardLayoutSet.Params()
         val editorInfoField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mEditorInfo").apply { isAccessible = true }
