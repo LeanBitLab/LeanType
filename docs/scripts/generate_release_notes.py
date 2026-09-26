@@ -132,10 +132,10 @@ def main():
     is_beta = False
 
     if ref_name:
-        if 'beta' in ref_name.lower() or 'alpha' in ref_name.lower() or 'rc' in ref_name.lower():
+        if ref_name.startswith('beta-'):
             is_beta = True
-            print(f"Detected beta/pre-release build tag: {ref_name}")
-        if ref_name.startswith('v'):
+            print(f"Detected beta build tag: {ref_name}")
+        elif ref_name.startswith('v'):
             version_name = ref_name[1:]
             print(f"Detected version name from GITHUB_REF_NAME: {version_name}")
 
@@ -160,7 +160,7 @@ def main():
     clean_version = re.sub(r'[-_]?beta.*$', '', version_name, flags=re.IGNORECASE)
 
     if is_beta:
-        build_match = re.search(r'beta[-._]?(\d+)', ref_name or '', re.IGNORECASE) or re.search(r'-(\d+)$', ref_name or '')
+        build_match = re.search(r'-(\d+)$', ref_name or '') or re.search(r'beta[-._]?(\d+)', ref_name or '', re.IGNORECASE)
         build_num = build_match.group(1) if build_match else "2"
         build_suffix = f"beta{build_num}"
         candidates = [
