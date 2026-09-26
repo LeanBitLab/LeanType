@@ -132,10 +132,10 @@ def main():
     is_beta = False
 
     if ref_name:
-        if ref_name.startswith('beta-'):
+        if 'beta' in ref_name.lower() or 'alpha' in ref_name.lower() or 'rc' in ref_name.lower():
             is_beta = True
-            print(f"Detected beta build tag: {ref_name}")
-        elif ref_name.startswith('v'):
+            print(f"Detected beta/pre-release build tag: {ref_name}")
+        if ref_name.startswith('v'):
             version_name = ref_name[1:]
             print(f"Detected version name from GITHUB_REF_NAME: {version_name}")
 
@@ -157,11 +157,19 @@ def main():
     # 3. Locate the existing release notes file
     releasenote_dir = os.path.join(project_root, 'docs', 'releasenote')
     source_path = None
+    clean_version = re.sub(r'[-_]?beta.*$', '', version_name, flags=re.IGNORECASE)
+
     if is_beta:
+        build_match = re.search(r'beta[-._]?(\d+)', ref_name or '', re.IGNORECASE) or re.search(r'-(\d+)$', ref_name or '')
+        build_num = build_match.group(1) if build_match else "2"
+        build_suffix = f"beta{build_num}"
         candidates = [
-            os.path.join(releasenote_dir, f'release_notes_v{version_name}-beta.md'),
+            os.path.join(releasenote_dir, f'release_notes_v{clean_version}-{build_suffix}.md'),
+            os.path.join(releasenote_dir, f'release_notes_v{clean_version}-beta.md'),
+            os.path.join(releasenote_dir, f'release_notes_{clean_version}-{build_suffix}.md'),
+            os.path.join(releasenote_dir, f'release_notes_v{version_name}.md'),
             os.path.join(releasenote_dir, 'release_notes_beta.md'),
-            os.path.join(releasenote_dir, f'release_notes_v{version_name}.md')
+            os.path.join(releasenote_dir, f'release_notes_v{clean_version}.md')
         ]
         for candidate in candidates:
             if os.path.exists(candidate):
@@ -193,15 +201,13 @@ def main():
         content = sf.read()
 
     # Dynamically inject build number into beta header if applicable
-    if is_beta and ref_name:
-        match = re.search(r'-(\d+)$', ref_name)
-        if match:
-            build_num = match.group(1)
-            content = re.sub(
-                r'## 🧪 LeanType [^\n]+ Beta.*',
-                f'## 🧪 LeanType {version_name} Beta (Build {build_num})',
-                content
-            )
+    if is_beta:
+        header_build = build_num if 'build_num' in locals() and build_num else "2"
+        content = re.sub(
+            r'## 🧪 LeanType [^\n]+ Beta.*',
+            f'## 🧪 LeanType {clean_version} Beta (Build {header_build})',
+            content
+        )
 
     # 5. Scan built APK sizes and dynamically inject into release notes
     apk_sizes = get_apk_sizes(project_root)
