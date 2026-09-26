@@ -103,9 +103,9 @@
     <string name="label_search_key">"ရှာဖွေရန်"</string>
     <string name="label_pause_key">"ဆိုင်းငံ့ရန်"</string>
     <string name="label_wait_key">"စောင့်ဆိုင်းရန်"</string>
-    <string name="ime_settings">ဟေလီဘုတ်ချိန်ညှိခြင်းများ</string>
-    <string name="spell_checker_service_name">ဟေလီဘုတ်သတ်ပုံစစ်</string>
-    <string name="android_spell_checker_settings">ဟေလီဘုတ်သတ်ပုံစစ်ကို ချိန်ညှိရန်</string>
+    <string name="ime_settings">LeanType ချိန်ညှိခြင်းများ</string>
+    <string name="spell_checker_service_name">LeanType သတ်ပုံစစ်</string>
+    <string name="android_spell_checker_settings">LeanType သတ်ပုံစစ်ကို ချိန်ညှိရန်</string>
     <string name="vibrate_in_dnd_mode">မနှောင့်ယှက်ရစနစ်ဖွင့်ထားချိန်တွင် တုန်ခါပါ</string>
     <string name="suggest_emojis">အီမိုဂျီအကြံပေး</string>
     <string name="suggest_emojis_summary">အီမိုဂျီအဘိဓာန်ကို သာမန်အကြံပေးစနစ်တွင် အသုံးပြုပါ</string>
@@ -165,7 +165,7 @@
     <string name="restore_error">%s ပြန်လည်ထည့်သွင်းခြင်းလုပ်ငန်းမအောင်မြင်ပါ</string>
     <string name="button_backup">အရန်သိမ်းဆည်းခြင်း</string>
     <string name="button_restore">ပြန်လည်ထည့်သွင်းခြင်း</string>
-    <string name="backup_restored">အရန်သိမ်းဆည်းထားသောအချက်အလက်များကို ဟေလီဘုတ်စနစ်ထံ ပြန်လည်ထည့်သွင်းခြင်းလုပ်ငန်းအောင်မြင်သည်</string>
+    <string name="backup_restored">အရန်သိမ်းဆည်းထားသောအချက်အလက်များကို LeanType စနစ်ထံ ပြန်လည်ထည့်သွင်းခြင်းလုပ်ငန်းအောင်မြင်သည်</string>
     <string name="theme_name_user" tools:keep="@string/theme_name_user">အသုံးပြုသူ သတ်မှတ်သည့်အတိုင်း</string>
     <string name="auto_user_color">အလိုလျောက်အရောင်ရွေးချယ်ရန်</string>
     <string name="main_colors">အဓိကအရောင်များကိုသာကြည့်မည်</string>

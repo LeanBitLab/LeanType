@@ -4,9 +4,9 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="spell_checker_service_name">হেলিবোর্ড বানান পরীক্ষক</string>
-    <string name="ime_settings">হেলিবোর্ড সেটিংস</string>
-    <string name="android_spell_checker_settings">হেলিবোর্ড বানান পরীক্ষক সেটিংস</string>
+    <string name="spell_checker_service_name">LeanType বানান পরীক্ষক</string>
+    <string name="ime_settings">LeanType সেটিংস</string>
+    <string name="android_spell_checker_settings">LeanType বানান পরীক্ষক সেটিংস</string>
     <string name="use_contacts_dict">পরিচিতি তালিকায় নাম অনুসন্ধান</string>
     <string name="vibrate_on_keypress">কিপ্রেস কম্পন</string>
     <string name="sound_on_keypress">কিপ্রেসের শব্দ</string>

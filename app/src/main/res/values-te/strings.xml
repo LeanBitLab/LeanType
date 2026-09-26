@@ -106,10 +106,10 @@
     <string name="settings_no_limit">పరిమితి లేదు</string>
     <string name="more_keys_strip_description">మరికొన్ని కీస్</string>
     <string name="number_row">సంఖ్యల వరుస</string>
-    <string name="spell_checker_service_name">ఓపెన్ బోర్డ్ స్పెల్ల్ చెకర్</string>
-    <string name="android_spell_checker_settings">ఓపెన్ బోర్డ్ స్పెల్ చెకర్ సెటింగ్స్</string>
+    <string name="spell_checker_service_name">LeanType స్పెల్ల్ చెకర్</string>
+    <string name="android_spell_checker_settings">LeanType స్పెల్ చెకర్ సెట్టింగ్స్</string>
     <string name="show_hints">కీ సూచనలు చూపండి</string>
-    <string name="ime_settings">పరికరము యొక్క సాంకేతికతను బట్టి విద్యుత్ వినియోగము తగ్గించవచ్చు</string>
+    <string name="ime_settings">LeanType సెట్టింగ్స్</string>
     <string name="settings_category_additional_keys">అదనపు కీస్</string>
     <string name="undo">"చర్య రద్దు చేయి"</string>
     <string name="redo">"చర్యను పునరావృతం చేయి"</string>

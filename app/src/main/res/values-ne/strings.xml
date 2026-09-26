@@ -104,5 +104,5 @@
     <string name="label_search_key">"खोजी गर्नुहोस्"</string>
     <string name="label_pause_key">"रोक्नुहोस्"</string>
     <string name="label_wait_key">"पर्खनुहोस्"</string>
-    <string name="spell_checker_service_name">हेलीबोर्ड हिज्जे जाँचकर्ता</string>
+    <string name="spell_checker_service_name">LeanType हिज्जे जाँचकर्ता</string>
 </resources>

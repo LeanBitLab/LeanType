@@ -92,9 +92,9 @@
     <string name="user_dict_settings_all_languages">"За све језике"</string>
     <string name="user_dict_settings_more_languages">"Још језика…"</string>
     <string name="select_input_method">"Избор метода уноса"</string>
-    <string name="spell_checker_service_name">ХелиБоард провера правописа</string>
-    <string name="android_spell_checker_settings">ХелиБоард подешавања провере правописа</string>
-    <string name="ime_settings">ХелиБоард подешавања</string>
+    <string name="spell_checker_service_name">LeanType провера правописа</string>
+    <string name="android_spell_checker_settings">LeanType подешавања провере правописа</string>
+    <string name="ime_settings">LeanType подешавања</string>
     <string name="settings_category_input">Унос</string>
     <string name="settings_category_additional_keys">Додатни кључеви</string>
     <string name="auto_correction_confidence">Поузданост ауто-корекције</string>

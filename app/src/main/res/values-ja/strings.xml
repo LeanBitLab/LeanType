@@ -103,14 +103,14 @@
     <string name="label_search_key">"検索"</string>
     <string name="label_pause_key">"停止"</string>
     <string name="label_wait_key">"待機"</string>
-    <string name="ime_settings">ヘリボードの設定</string>
+    <string name="ime_settings">LeanTypeの設定</string>
     <string name="settings_no_limit">遅延無し</string>
-    <string name="spell_checker_service_name">ヘリボードスペルチェッカ</string>
+    <string name="spell_checker_service_name">LeanTypeスペルチェッカ</string>
     <string name="settings_category_input">入力</string>
     <string name="abbreviation_unit_minutes">%s 分</string>
     <string name="backup_restore_title">退避とレストア</string>
     <string name="enable_split_keyboard_landscape">スプリットキーボードをイネーブルする（横向き）</string>
-    <string name="android_spell_checker_settings">ヘリボードスペルチェッカの設定</string>
+    <string name="android_spell_checker_settings">LeanTypeスペルチェッカの設定</string>
     <string name="settings_category_suggestions">提案</string>
     <string name="settings_category_experimental">実験的</string>
     <string name="disable_personalized_dicts_message">注意：この設定をディセーブルしたら習ったデータが消える</string>

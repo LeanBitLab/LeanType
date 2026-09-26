@@ -103,9 +103,9 @@
     <string name="label_search_key">"தேடு"</string>
     <string name="label_pause_key">"இடைநிறுத்து"</string>
     <string name="label_wait_key">"காத்திரு"</string>
-    <string name="spell_checker_service_name">எலிபோர்டு எழுத்துப்பிழை சரிபார்ப்பு</string>
-    <string name="ime_settings">எலிபோர்டு அமைப்புகள்</string>
-    <string name="android_spell_checker_settings">எலிபோர்டு எழுத்துப்பிழை சரிபார்ப்பு அமைப்புகள்</string>
+    <string name="spell_checker_service_name">LeanType எழுத்துப்பிழை சரிபார்ப்பு</string>
+    <string name="ime_settings">LeanType அமைப்புகள்</string>
+    <string name="android_spell_checker_settings">LeanType எழுத்துப்பிழை சரிபார்ப்பு அமைப்புகள்</string>
     <string name="vibrate_in_dnd_mode">தொந்தரவு செய்யாதே பயன்முறையில் அதிர்வு</string>
     <string name="suggest_emojis">ஈமோசிகளைப் பரிந்துரைக்கவும்</string>
     <string name="suggest_emojis_summary">சாதாரண பரிந்துரைகளில் ஈமோசி அகராதியைப் பயன்படுத்தவும்</string>

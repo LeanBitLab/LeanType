@@ -583,7 +583,7 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="open_app_info">Sistem Uygulama Bilgisini Aç</string>
     <string name="open_app_info_summary">Android ayarlarında izinleri ve pil kullanımını yönet</string>
     <string name="gemini_network_disabled">LeanType ayarlarında ağ erişimi devre dışı</string>
-    <string name="ai_provider_title">Yapay Zeka Sağlayıcısı</string>
+    <string name="ai_provider_title">AI Sağlayıcısı</string>
     <string name="ai_provider_summary">Yazım denetimi için AI hizmetini seçin</string>
     <string name="ai_provider_gemini">Google Gemini</string>
     <string name="split_toolbar">Bölünmüş araç çubuğu</string>
@@ -610,7 +610,7 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="huggingface_endpoint_title">API Endpoint</string>
     <string name="huggingface_endpoint_summary">API endpoint URL\'si</string>
     <string name="huggingface_endpoint_hint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="insecure_connection_blocked">Güvensiz HTTP bağlantısı engellendi. Yapay zeka ayarlarından \'Güvensiz Bağlantılara İzin Ver\' seçeneğini etkinleştirin.</string>
+    <string name="insecure_connection_blocked">Güvensiz HTTP bağlantısı engellendi. AI ayarlarından \'Güvensiz Bağlantılara İzin Ver\' seçeneğini etkinleştirin.</string>
     <string name="ai_allow_insecure_connections_title">Güvensiz bağlantılara izin ver</string>
     <string name="ai_allow_insecure_connections_summary">HTTP bağlantılarına izin ver ve SSL sertifika hatalarını yoksay. Uyarı: Giriş verilerini yerel ağ dinlemelerine karşı savunmasız bırakır.</string>
     <string name="backup_category_layouts">Düzenler</string>
@@ -665,7 +665,7 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="translate_model_title">Çeviri Modeli</string>
     <string name="translate_model_summary">Çeviri için AI modelini seçin. Yazım denetimi modelini kullanmak için boş bırakın.</string>
     <string name="translation_engine_title">Çeviri Motoru</string>
-    <string name="translation_engine_summary">Çeviri için arka uç seçin (Eklenti veya Yapay Zeka)</string>
+    <string name="translation_engine_summary">Çeviri için arka uç seçin (Eklenti veya AI)</string>
     <string-array name="translate_language_names">
         <item>İngilizce</item><item>İspanyolca</item><item>Fransızca</item><item>Almanca</item><item>İtalyanca</item>
         <item>Portekizce</item><item>Çince (Basitleştirilmiş)</item><item>Çince (Geleneksel)</item><item>Japonca</item><item>Korece</item>

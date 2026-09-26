@@ -99,13 +99,13 @@
     <string name="number_row_summary">എല്ലായ്പ്പോഴും നമ്പർ വരി കാണിക്കുക</string>
     <string name="number_row">നമ്പർ വരി</string>
     <string name="show_hints">കീ സൂചനകൾ കാണിക്കുക</string>
-    <string name="android_spell_checker_settings">ഓപ്പൺബോർഡ് സ്പെൽ ചെക്കർ ക്രമീകരണങ്ങൾ</string>
+    <string name="android_spell_checker_settings">LeanType സ്പെൽ ചെക്കർ ക്രമീകരണങ്ങൾ</string>
     <string name="delete_swipe">ഡിലീറ്റ് സ്വൈപ്പ്</string>
     <string name="show_emoji_key">ഇമോജി കീ</string>
     <string name="prefs_force_incognito_mode_summary">പുതിയ വാക്കുകൾ പഠിക്കുന്നത് അപ്രാപ്തമാക്കുക</string>
     <string name="settings_category_suggestions">നിർദ്ദേശങ്ങൾ</string>
-    <string name="spell_checker_service_name">ഓപ്പൺബോർഡ് സ്പെൽ ചെക്കർ</string>
-    <string name="ime_settings">ഓപ്പൺബോർഡ് ക്രമീകരണങ്ങൾ</string>
+    <string name="spell_checker_service_name">LeanType സ്പെൽ ചെക്കർ</string>
+    <string name="ime_settings">LeanType ക്രമീകരണങ്ങൾ</string>
     <string name="settings_category_clipboard_history">ക്ലിപ്പ്ബോർഡ് ഹിസ്റ്ററി</string>
     <string name="enable_clipboard_history_summary">പ്രവർത്തനരഹിതമാക്കിയാൽ, ക്ലിപ്പ്ബോർഡ് ഉള്ളടക്കം എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ക്ലിപ്പ്ബോർഡ് കീ പേസ്റ്റ് ചെയ്യും</string>
     <string name="enable_clipboard_history">ക്ലിപ്പ്ബോർഡ് ചരിത്രം എനേബിൾ ചെയ്യുക</string>

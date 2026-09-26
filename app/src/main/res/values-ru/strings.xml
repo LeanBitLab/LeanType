@@ -489,8 +489,8 @@
     <string name="gesture_data_please_switch_keyboard">Пожалуйста, переключитесь на %s</string>
     <string name="gesture_data_share_limit">Чтобы не превысить лимит размера, будут экспортированы только первые %s слов(а)</string>
 	<string name="settings_screen_ai_integration">Интеграция AI</string>
-	<string name="ai_provider_title">Поставщик ИИ</string>
-    <string name="custom_ai_keys_title">Пользовательские ключи ИИ</string>
+	<string name="ai_provider_title">Поставщик AI</string>
+    <string name="custom_ai_keys_title">Пользовательские ключи AI</string>
     <string name="custom_ai_keys_summary">Привязывайте собственные запросы к пронумерованным кнопкам панели</string>
 	<string name="translate_target_language_title">Целевой язык</string>
     <string name="translate_target_language_summary">Выберите целевой язык</string>
@@ -501,7 +501,7 @@
     <string name="clear_emoji_history_message">Очистить историю недавно использованных эмодзи?</string>
 	<string name="proofread_no_api_key">API-ключ Gemini не задан. Перейдите в Настройки → Интеграция AI.</string>
     <string name="gemini_api_key_title">Ключ API Gemini</string>
-	<string name="get_api_key">Получить ключ</string>
+	<string name="get_api_key">Получить API-ключ</string>
     <string name="gemini_model_title">Модель Gemini</string>
 	<string name="libraries_hub_title">Библиотеки</string>
     <string name="libraries_hub_gesture_title">Библиотека ввода свайпом</string>
@@ -735,7 +735,7 @@
     <string name="huggingface_endpoint_title">API Endpoint</string>
     <string name="huggingface_endpoint_summary">URL API Endpoint</string>
     <string name="huggingface_endpoint_hint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="insecure_connection_blocked">Небезопасное HTTP-соединение заблокировано. Включите \'Разрешить небезопасные соединения\' в настройках ИИ.</string>
+    <string name="insecure_connection_blocked">Небезопасное HTTP-соединение заблокировано. Включите \'Разрешить небезопасные соединения\' в настройках AI.</string>
     <string name="ai_allow_insecure_connections_title">Разрешить небезопасные соединения</string>
     <string name="ai_allow_insecure_connections_summary">Разрешить HTTP-соединения и игнорировать ошибки SSL-сертификатов. Предупреждение: подвергает ввод риску прослушивания в локальной сети.</string>
     <string name="backup_category_layouts">Макеты</string>
@@ -749,14 +749,14 @@
     <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
     <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">Держать модель в памяти</string>
-    <string name="offline_keep_model_loaded_summary">Удерживать офлайн-модель AI в памяти, чтобы избежать задержки перезагрузки (использует больше ОЗУ)</string>
+    <string name="offline_keep_model_loaded_summary">Удерживать офлайн-модель AI в памяти, чтобы избежать задержки перезагрузки (использует больше RAM)</string>
     <string name="translate">Перевести</string>
     <string name="translate_loading">Перевод…</string>
     <string name="translate_success">Текст переведен</string>
     <string name="translate_error">Ошибка перевода: %s</string>
     <string name="translate_no_text">Нет текста для перевода</string>
     <string name="translation_engine_title">Движок перевода</string>
-    <string name="translation_engine_summary">Выберите бэкенд для перевода (Плагин или ИИ)</string>
+    <string name="translation_engine_summary">Выберите бэкенд для перевода (Плагин или AI)</string>
     <string name="toolbar_long_press_hint">Показывать точки-подсказки долгого нажатия</string>
     <string name="toolbar_long_press_hint_summary">Показывать точки на кнопках панели инструментов, у которых есть действие по долгому нажатию</string>
     <string name="prefs_use_system_emoji">Использовать системный шрифт эмодзи</string>
@@ -797,7 +797,7 @@
     <string name="close_translate_language_selector">Закрыть выбор языка</string>
     <string name="offline_model_title">Офлайн-модель</string>
     <string name="offline_model_summary">Управление локальной LLM</string>
-    <string name="offline_max_tokens_title">Макс. Token ИИ офлайн</string>
+    <string name="offline_max_tokens_title">Макс. Token AI офлайн</string>
     <string name="offline_max_tokens_summary">Максимальная длина генерируемого исправления</string>
     <string name="offline_max_tokens_custom_option">Пользовательский…</string>
     <string name="offline_max_tokens_custom_desc">Пользовательский (%1$d Token)</string>
