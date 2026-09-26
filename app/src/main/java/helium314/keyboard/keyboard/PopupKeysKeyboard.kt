@@ -18,7 +18,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
-    private val mDefaultKeyCoordX: Int = params.defaultKeyCoordX + params.mAbsolutePopupKeyWidth / 2
+    private val mDefaultKeyCoordX: Int = params.defaultKeyCoordX + params.mDefaultAbsoluteKeyWidth / 2
 
     fun getDefaultCoordX(): Int = mDefaultKeyCoordX
 
@@ -233,9 +233,6 @@ class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
         context: Context,
         private val mParentKey: Key,
         keyboard: Keyboard?,
-        isSinglePopupKeyWithPreview: Boolean,
-        keyPreviewVisibleWidth: Int,
-        keyPreviewVisibleHeight: Int,
         paintToMeasure: Paint
     ) : KeyboardBuilder<PopupKeysKeyboardParams>(context, PopupKeysKeyboardParams()) {
 
@@ -255,25 +252,12 @@ class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
             mParams.mVerticalGap = (keyboard?.mVerticalGap ?: 0) / 2
             // This PopupKeysKeyboard is invoked from the parent key.
 
-            val keyWidth: Int
-            val rowHeight: Int
-            if (isSinglePopupKeyWithPreview) {
-                // Use pre-computed width and height if this popup keys keyboard has only one key to
-                // mitigate visual flicker between key preview and popup keys keyboard.
-                // Caveats for the visual assets: To achieve this effect, both the key preview
-                // backgrounds and the popup keys keyboard panel background have the exact same
-                // left/right/top paddings. The bottom paddings of both backgrounds don't need to
-                // be considered because the vertical positions of both backgrounds were already
-                // adjusted with their bottom paddings deducted.
-                keyWidth = keyPreviewVisibleWidth
-                rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap
-            } else {
-                val padding = context.resources.getDimension(
-                    R.dimen.config_popup_keys_keyboard_key_horizontal_padding
-                ) + (if (mParentKey.hasLabelsInPopupKeys()) mParams.mAbsolutePopupKeyWidth * LABEL_PADDING_RATIO else 0.0f)
-                keyWidth = getMaxKeyWidth(mParentKey, mParams.mAbsolutePopupKeyWidth, padding, paintToMeasure)
-                rowHeight = keyboard?.mMostCommonKeyHeight ?: 0
-            }
+            val minKeyWidth = maxOf(mParams.mAbsolutePopupKeyWidth, mParentKey.drawWidth)
+            val padding = context.resources.getDimension(
+                R.dimen.config_popup_keys_keyboard_key_horizontal_padding
+            ) + (if (mParentKey.hasLabelsInPopupKeys()) minKeyWidth * LABEL_PADDING_RATIO else 0.0f)
+            val keyWidth = getMaxKeyWidth(mParentKey, minKeyWidth, padding, paintToMeasure)
+            val rowHeight = keyboard?.mMostCommonKeyHeight ?: mParentKey.height
             val dividerWidth = if (mParentKey.needsDividersInPopupKeys()) {
                 (keyWidth * DIVIDER_RATIO).toInt()
             } else {
@@ -313,7 +297,7 @@ class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
                 // The "pos" value represents the offset from the default position. Negative means
                 // left of the default position.
                 if (params.mDividerWidth > 0 && pos != 0) {
-                    val dividerX = if (pos > 0) x - params.mDividerWidth else x + params.mAbsolutePopupKeyWidth
+                    val dividerX = if (pos > 0) x - params.mDividerWidth else x + params.mDefaultAbsoluteKeyWidth
                     val divider = PopupKeyDivider(
                         params, dividerX, y, params.mDividerWidth, params.mDefaultAbsoluteRowHeight
                     )

@@ -107,9 +107,12 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
             params.mBaseWidth = params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding
         }
 
-        if (params.isHexagonal && context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            val totalPad = (params.mOccupiedWidth * 0.40f).toInt()
-            params.mBaseWidth = params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding - totalPad
+        if (params.isHexagonal) {
+            params.mDefaultKeyWidth = 1f / 7f
+            if (context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                val totalPad = (params.mOccupiedWidth * 0.40f).toInt()
+                params.mBaseWidth = params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding - totalPad
+            }
             params.mDefaultAbsoluteKeyWidth = (params.mDefaultKeyWidth * params.mBaseWidth).toInt()
             params.mAbsolutePopupKeyWidth = (params.mDefaultKeyWidth * params.mBaseWidth).toInt()
         }

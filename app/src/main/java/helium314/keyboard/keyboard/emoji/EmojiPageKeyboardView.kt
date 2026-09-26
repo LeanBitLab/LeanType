@@ -230,7 +230,7 @@ class EmojiPageKeyboardView @JvmOverloads constructor(
         var popupKeysKeyboard = mPopupKeysKeyboardCache[key]
         if (popupKeysKeyboard == null) {
             val builder = PopupKeysKeyboard.Builder(
-                context, key, keyboard, false, 0, 0, newLabelPaint(key)
+                context, key, keyboard, newLabelPaint(key)
             )
             popupKeysKeyboard = builder.build()
             mPopupKeysKeyboardCache[key] = popupKeysKeyboard

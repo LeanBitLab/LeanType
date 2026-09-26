@@ -266,8 +266,7 @@ class MainKeyboardView @JvmOverloads constructor(
         val kbd = keyboard ?: return null
         var popupKeysKeyboard = mPopupKeysKeyboardCache[key]
         if (popupKeysKeyboard == null) {
-            val isSinglePopupKeyWithPreview = mKeyPreviewDrawParams.isPopupEnabled() && key.hasPreview() && popupKeys.size == 1 && mKeyPreviewDrawParams.getVisibleWidth() > 0
-            val builder = PopupKeysKeyboard.Builder(context, key, kbd, isSinglePopupKeyWithPreview, mKeyPreviewDrawParams.getVisibleWidth(), mKeyPreviewDrawParams.getVisibleHeight(), newLabelPaint(key))
+            val builder = PopupKeysKeyboard.Builder(context, key, kbd, newLabelPaint(key))
             popupKeysKeyboard = builder.build()
             mPopupKeysKeyboardCache[key] = popupKeysKeyboard
         }
