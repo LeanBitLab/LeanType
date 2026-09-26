@@ -913,9 +913,9 @@
     <string name="key_border_radius">Promień zaokrąglenia rogów klawiszy</string>
     <string name="key_border_radius_functional">Promień zaokrąglenia rogów klawiszy funkcyjnych</string>
     <string name="key_border_radius_action">Promień zaokrąglenia rogów klawisza akcji</string>
-    <string name="theme_name_mint_and_pink">@string/theme_name_mint_and_pink</string>
-    <string name="theme_name_leanbitlab_light">@string/theme_name_leanbitlab_light</string>
-    <string name="theme_name_leanbitlab_dark">@string/theme_name_leanbitlab_dark</string>
+    <string name="theme_name_mint_and_pink">Miętowy i różowy</string>
+    <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
+    <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
     <string name="about_sponsor_link">Wesprzyj projekt</string>
     <string name="about_sponsor_link_description">Wesprzyj rozwój LeanType</string>
     <string name="sponsor_dialog_title">Wesprzyj ten projekt</string>
