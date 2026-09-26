@@ -13,6 +13,7 @@ object TranslationModelImporter {
     private const val TAG = "TranslationModelImporter"
 
     fun isModelInstalled(context: Context, langCode: String): Boolean {
+        if (langCode == "en") return true
         val modelName = TranslationModelUrls.getModelName(langCode) ?: langCode
         val baseDirs = listOfNotNull(context.noBackupFilesDir, context.filesDir).distinct()
         val normalized = if (langCode == "he") "iw" else if (langCode == "iw") "he" else langCode
@@ -23,14 +24,18 @@ object TranslationModelImporter {
             langCode, normalized
         ).distinct()
 
+        val isValidModelFile = { f: File ->
+            f.isFile && (f.name.startsWith("merged_dict") || f.name.startsWith("dict.") || f.length() > 100_000)
+        }
+
         for (baseDir in baseDirs) {
             for (name in possibleNames) {
                 val dir = File(baseDir, "com.google.mlkit.translate.models/$name")
                 if (dir.exists() && dir.isDirectory) {
-                    val hasRootFiles = dir.listFiles()?.any { it.isFile && it.length() > 0 } == true
+                    val hasRootFiles = dir.listFiles()?.any(isValidModelFile) == true
                     val dirZero = File(dir, "0")
                     val hasZeroFiles = dirZero.exists() && dirZero.isDirectory &&
-                        dirZero.listFiles()?.any { it.isFile && it.length() > 0 } == true
+                        dirZero.listFiles()?.any(isValidModelFile) == true
                     if (hasRootFiles || hasZeroFiles) return true
                 }
             }
@@ -39,6 +44,7 @@ object TranslationModelImporter {
     }
 
     fun deleteModel(context: Context, langCode: String): Boolean {
+        if (langCode == "en") return false
         val modelName = TranslationModelUrls.getModelName(langCode) ?: langCode
         val baseDirs = listOfNotNull(context.noBackupFilesDir, context.filesDir).distinct()
         val normalized = if (langCode == "he") "iw" else if (langCode == "iw") "he" else langCode

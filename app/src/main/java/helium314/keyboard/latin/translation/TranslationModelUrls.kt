@@ -14,7 +14,6 @@ object TranslationModelUrls {
         "da" to "da_en",
         "de" to "de_en",
         "el" to "el_en",
-        "en" to "en_es",
         "eo" to "en_eo",
         "es" to "en_es",
         "et" to "en_et",

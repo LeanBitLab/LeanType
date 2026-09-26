@@ -390,8 +390,15 @@ object ProofreadHelper {
                             service.translate(text)
                         }
                     } catch (e: Throwable) {
+                        val errorMsg = if (e.message?.contains("not installed for en", ignoreCase = true) == true) {
+                            val missingCode = if (sourceLangCode != "en") sourceLangCode else targetLangCode
+                            val missingName = getLanguageDisplayName(context, missingCode)
+                            context.getString(R.string.translation_specific_model_not_downloaded, missingName)
+                        } else {
+                            e.message ?: "Translation error"
+                        }
                         if (translationEngine == "plugin" || !hasLocalModel) {
-                            Result.failure(e)
+                            Result.failure(Exception(errorMsg, e))
                         } else {
                             mainHandler.post {
                                 KeyboardSwitcher.getInstance().showToast(
