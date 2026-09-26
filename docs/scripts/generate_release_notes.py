@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import re
+import sys
 
 def extract_flavor(text):
     """Extracts the specific flavor name from an APK filename or markdown row."""
@@ -126,8 +127,8 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(os.path.dirname(script_dir))
     
-    # 1. Try to get version from tag name (if running in GitHub Actions)
-    ref_name = os.environ.get('GITHUB_REF_NAME')
+    # 1. Try to get version from tag name (via CLI arg or GitHub Actions env)
+    ref_name = sys.argv[1] if len(sys.argv) > 1 else os.environ.get('GITHUB_REF_NAME')
     version_name = None
     is_beta = False
 
