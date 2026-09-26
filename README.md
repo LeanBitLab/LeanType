@@ -133,11 +133,6 @@ LeanType is available in two purpose-built flavors designed to match your exact 
       </a>
     </td>
     <td align="center" valign="middle">
-      <a href="https://github.com/LeanBitLab/LeanType/releases">
-        <img alt="Get Pre-release" src="docs/images/get-pre-release.svg" height="55">
-      </a>
-    </td>
-    <td align="center" valign="middle">
       <a href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/LeanBitLab/LeanType">
         <img alt="Get it on Obtainium" src="docs/images/get-it-on-obtainium.png" height="55">
       </a>
@@ -145,6 +140,11 @@ LeanType is available in two purpose-built flavors designed to match your exact 
     <td align="center" valign="middle">
       <a href="https://f-droid.org/en/packages/com.leanbitlab.leantype/index.html">
         <img alt="Get it on F-Droid" src="docs/images/get-it-on-fdroid.png" height="80">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://github.com/LeanBitLab/LeanType/releases">
+        <img alt="Get Pre-release" src="docs/images/get-pre-release.svg" height="55">
       </a>
     </td>
   </tr>
