@@ -358,7 +358,7 @@ open class KeyboardView @JvmOverloads constructor(
 
             val bgColor = when {
                 key.isPressed -> mColors.getPressedColor(if (isActionKey) ColorType.ACTION_KEY_BACKGROUND else if (isFunctional) ColorType.FUNCTIONAL_KEY_BACKGROUND else ColorType.KEY_BACKGROUND)
-                isActionKey -> Color.parseColor("#2979FF") // Vibrant blue action hex
+                isActionKey -> mColors.get(ColorType.ACTION_KEY_BACKGROUND)
                 isSpaceKey -> ColorUtils.blendARGB(baseBg, spaceBlendColor, spaceBlendRatio) // Subtle elevated gray for twin spacebars
                 isFunctional -> mColors.get(ColorType.FUNCTIONAL_KEY_BACKGROUND)
                 else -> baseBg
@@ -369,7 +369,7 @@ open class KeyboardView @JvmOverloads constructor(
             canvas.drawPath(hexPath, mPaint)
 
             if (mColors.hasKeyBorders) {
-                val borderColor = if (isActionKey) Color.parseColor("#80FFFFFF") else ColorUtils.setAlphaComponent(mColors.get(ColorType.KEY_TEXT), 45)
+                val borderColor = ColorUtils.setAlphaComponent(mColors.get(ColorType.KEY_TEXT), 45)
                 mPaint.color = borderColor
                 mPaint.style = Paint.Style.STROKE
                 mPaint.strokeWidth = resources.displayMetrics.density * 1.2f
@@ -516,7 +516,7 @@ open class KeyboardView @JvmOverloads constructor(
                     paint.color = getContrastingColor(customBgColor)
                 } else if (isEmoji(label)) {
                     paint.color = key.selectTextColor(params) or 0xFF000000.toInt()
-                } else if (key.hasActionKeyBackground()) {
+                } else if (key.hasActionKeyBackground() || (keyboard?.isHexagonal == true && key.code == Constants.CODE_ENTER)) {
                     paint.color = mColors.get(ColorType.ACTION_KEY_ICON)
                 } else if (this is EmojiPageKeyboardView) {
                     paint.color = mColors.get(ColorType.EMOJI_KEY_TEXT)
@@ -677,9 +677,7 @@ open class KeyboardView @JvmOverloads constructor(
         val customBgColor = mKeyCustomBgColors[key]
         if (customBgColor != null) {
             icon.setColorFilter(getContrastingColor(customBgColor), PorterDuff.Mode.SRC_IN)
-        } else if (keyboard?.isHexagonal == true && (key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER)) {
-            icon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
-        } else if (key.hasActionKeyBackground()) {
+        } else if (key.hasActionKeyBackground() || (keyboard?.isHexagonal == true && key.code == Constants.CODE_ENTER)) {
             mColors.setColor(icon, ColorType.ACTION_KEY_ICON)
         } else if (key.isShift() && keyboard != null) {
             if (keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED)
