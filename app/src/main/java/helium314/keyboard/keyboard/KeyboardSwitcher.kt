@@ -19,6 +19,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodSubtype
 import android.widget.FrameLayout
@@ -337,16 +338,30 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         val visibility = if (isImeSuppressedByHardwareKeyboard(settingsValues, toggleState)) View.GONE else View.VISIBLE
         val stripVisibility = if (settingsValues.mToolbarMode == ToolbarMode.HIDDEN) View.GONE else View.VISIBLE
         mStripContainer?.visibility = stripVisibility
+        val wasSecondaryShowing = (mEmojiPalettesView?.visibility == View.VISIBLE) || (mClipboardHistoryView?.visibility == View.VISIBLE)
         PointerTracker.switchTo(mKeyboardView)
         if (PointerTracker.sPersistentTouchpadModeActive) {
             mKeyboardView?.visibility = if (visibility == View.VISIBLE) View.INVISIBLE else View.GONE
         } else {
             mKeyboardView?.visibility = visibility
+            if (visibility == View.VISIBLE) {
+                val duration = Settings.getAnimationDuration(100)
+                if (duration > 0L && wasSecondaryShowing) {
+                    mKeyboardView?.alpha = 0f
+                    mKeyboardView?.animate()?.cancel()
+                    mKeyboardView?.animate()?.alpha(1f)?.setDuration(duration)?.setInterpolator(DecelerateInterpolator(1.5f))?.start()
+                } else {
+                    mKeyboardView?.alpha = 1f
+                }
+            }
         }
         mMainKeyboardFrame?.visibility = if (stripVisibility == View.VISIBLE || visibility == View.VISIBLE) View.VISIBLE else View.GONE
         mKeyboardViewWrapper?.visibility = visibility
         (mCurrentInputView as? InputView)?.updateBottomPadding()
         mEmojiPalettesView?.let {
+            it.animate()?.cancel()
+            it.alpha = 1f
+            it.translationY = 0f
             it.visibility = View.GONE
             it.stopEmojiPalettes()
         }
@@ -355,6 +370,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mOcrStripScrollView?.visibility = View.GONE
         mSuggestionStripView?.visibility = stripVisibility
         mClipboardHistoryView?.let {
+            it.animate()?.cancel()
+            it.alpha = 1f
+            it.translationY = 0f
             it.visibility = View.GONE
             it.stopClipboardHistory()
         }
@@ -398,16 +416,38 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mMainKeyboardFrame?.visibility = View.VISIBLE
         mKeyboardViewWrapper?.visibility = View.VISIBLE
         (mCurrentInputView as? InputView)?.updateBottomPadding()
+        mKeyboardView?.animate()?.cancel()
         mKeyboardView?.visibility = View.GONE
         val splitToolbar = Settings.getValues().mSplitToolbar
         mSuggestionStripView?.visibility = if (splitToolbar) View.VISIBLE else View.GONE
         mStripContainer?.visibility = getSecondaryStripVisibility()
         mClipboardStripScrollView?.visibility = View.GONE
         mEmojiTabStripView?.visibility = View.VISIBLE
-        mClipboardHistoryView?.visibility = View.GONE
+        mClipboardHistoryView?.let {
+            it.animate()?.cancel()
+            it.alpha = 1f
+            it.translationY = 0f
+            it.visibility = View.GONE
+        }
         mEmojiPalettesView?.let {
             it.startEmojiPalettes(mKeyboardView?.keyVisualAttribute, mLatinIME?.currentInputEditorInfo, mLatinIME?.mKeyboardActionListener)
             it.visibility = View.VISIBLE
+            val duration = Settings.getAnimationDuration(110)
+            if (duration > 0L) {
+                it.alpha = 0f
+                it.translationY = 16f * it.resources.displayMetrics.density
+                it.animate()?.cancel()
+                it.animate()
+                    ?.alpha(1f)
+                    ?.translationY(0f)
+                    ?.setDuration(duration)
+                    ?.setInterpolator(DecelerateInterpolator(1.5f))
+                    ?.start()
+            } else {
+                it.animate()?.cancel()
+                it.alpha = 1f
+                it.translationY = 0f
+            }
         }
         if (splitToolbar) {
             mSuggestionStripView?.updateSplitToolbarState()
@@ -425,6 +465,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mMainKeyboardFrame?.visibility = View.VISIBLE
         mKeyboardViewWrapper?.visibility = View.VISIBLE
         (mCurrentInputView as? InputView)?.updateBottomPadding()
+        mKeyboardView?.animate()?.cancel()
         mKeyboardView?.visibility = View.GONE
         mEmojiTabStripView?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.GONE
@@ -434,7 +475,12 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             Settings.getValues().mColors.setBackground(scrollView, ColorType.STRIP_BACKGROUND)
             scrollView.visibility = View.VISIBLE
         }
-        mEmojiPalettesView?.visibility = View.GONE
+        mEmojiPalettesView?.let {
+            it.animate()?.cancel()
+            it.alpha = 1f
+            it.translationY = 0f
+            it.visibility = View.GONE
+        }
         mClipboardHistoryView?.let {
             val latinIme = mLatinIME ?: return@let
             val editorInfo = latinIme.currentInputEditorInfo ?: return@let
@@ -445,6 +491,22 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
                 latinIme.mKeyboardActionListener
             )
             it.visibility = View.VISIBLE
+            val duration = Settings.getAnimationDuration(110)
+            if (duration > 0L) {
+                it.alpha = 0f
+                it.translationY = 16f * it.resources.displayMetrics.density
+                it.animate()?.cancel()
+                it.animate()
+                    ?.alpha(1f)
+                    ?.translationY(0f)
+                    ?.setDuration(duration)
+                    ?.setInterpolator(DecelerateInterpolator(1.5f))
+                    ?.start()
+            } else {
+                it.animate()?.cancel()
+                it.alpha = 1f
+                it.translationY = 0f
+            }
         }
     }
 

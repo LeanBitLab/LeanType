@@ -43,6 +43,7 @@ import helium314.keyboard.settings.preferences.TextInputPreference
 import helium314.keyboard.settings.previewDark
 import androidx.core.content.edit
 import helium314.keyboard.latin.settings.Settings
+import java.util.Locale
 
 @Composable
 fun AppearanceScreen(
@@ -82,6 +83,7 @@ fun AppearanceScreen(
         Settings.PREF_SHOW_POPUP_HINTS,
         Settings.PREF_SHOW_TLD_POPUP_KEYS,
         Settings.PREF_POPUP_KEYS_VERTICAL_OFFSET,
+        Settings.PREF_ANIMATION_SPEED_SCALE,
         Settings.PREF_POPUP_ON,
         R.string.settings_category_miscellaneous,
         Settings.PREF_ENABLE_SPLIT_KEYBOARD,
@@ -316,6 +318,21 @@ fun createAppearanceSettings(context: Context) = listOf(
                 else "${offset.toInt()}dp"
             }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
+    },
+    Setting(context, Settings.PREF_ANIMATION_SPEED_SCALE, R.string.pref_animation_speed_scale, R.string.pref_animation_speed_scale_summary) { setting ->
+        SliderPreference(
+            name = setting.title,
+            key = setting.key,
+            default = Defaults.PREF_ANIMATION_SPEED_SCALE,
+            range = 0f..2f,
+            description = { scale ->
+                when {
+                    scale <= 0.05f -> stringResource(R.string.animation_speed_off)
+                    kotlin.math.abs(scale - 1.0f) < 0.05f -> "1.0x (${stringResource(R.string.button_default)})"
+                    else -> String.format(Locale.US, "%.2fx", scale)
+                }
+            }
+        ) { KeyboardSwitcher.getInstance().reloadKeyboard() }
     },
     Setting(context, Settings.PREF_POPUP_ON, R.string.popup_on_keypress) {
         SwitchPreference(it, Defaults.PREF_POPUP_ON) { KeyboardSwitcher.getInstance().reloadKeyboard() }

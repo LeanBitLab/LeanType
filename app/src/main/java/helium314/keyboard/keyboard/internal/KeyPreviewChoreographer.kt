@@ -42,6 +42,11 @@ class KeyPreviewChoreographer(private val mParams: KeyPreviewDrawParams) {
 
     fun dismissKeyPreview(key: Key?) {
         if (key == null) return
+        val duration = Settings.getAnimationDuration(60)
+        if (duration == 0L) {
+            dismissKeyPreviewWithoutDelay(key)
+            return
+        }
         val keyPreviewView = mShowingKeyPreviewViews.remove(key) ?: return
 
         keyPreviewView.tag = null
@@ -51,7 +56,7 @@ class KeyPreviewChoreographer(private val mParams: KeyPreviewDrawParams) {
             .scaleY(0.85f)
             .translationY(keyPreviewView.measuredHeight * 0.08f)
             .alpha(0f)
-            .setDuration(60)
+            .setDuration(duration)
             .setInterpolator(AccelerateInterpolator(1.5f))
             .withEndAction {
                 keyPreviewView.visibility = View.INVISIBLE
@@ -134,20 +139,28 @@ class KeyPreviewChoreographer(private val mParams: KeyPreviewDrawParams) {
     }
 
     private fun showKeyPreview(key: Key, keyPreviewView: KeyPreviewView) {
+        val duration = Settings.getAnimationDuration(85)
         keyPreviewView.visibility = View.VISIBLE
         keyPreviewView.animate().cancel()
-        keyPreviewView.scaleX = 0.72f
-        keyPreviewView.scaleY = 0.72f
-        keyPreviewView.translationY = keyPreviewView.measuredHeight * 0.12f
-        keyPreviewView.alpha = 0f
-        keyPreviewView.animate()
-            .scaleX(1f)
-            .scaleY(1f)
-            .translationY(0f)
-            .alpha(1f)
-            .setDuration(85)
-            .setInterpolator(DecelerateInterpolator(1.8f))
-            .start()
+        if (duration == 0L) {
+            keyPreviewView.scaleX = 1f
+            keyPreviewView.scaleY = 1f
+            keyPreviewView.translationY = 0f
+            keyPreviewView.alpha = 1f
+        } else {
+            keyPreviewView.scaleX = 0.72f
+            keyPreviewView.scaleY = 0.72f
+            keyPreviewView.translationY = keyPreviewView.measuredHeight * 0.12f
+            keyPreviewView.alpha = 0f
+            keyPreviewView.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .translationY(0f)
+                .alpha(1f)
+                .setDuration(duration)
+                .setInterpolator(DecelerateInterpolator(1.8f))
+                .start()
+        }
         mShowingKeyPreviewViews[key] = keyPreviewView
     }
 

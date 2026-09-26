@@ -27,6 +27,7 @@ import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewConfiguration
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.view.accessibility.AccessibilityEvent
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -381,9 +382,72 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             val forceToolbar = mode == ToolbarMode.TOOLBAR_KEYS
             val effectiveToolbarVisible = forceToolbar || toolbarVisible
             val showPinned = !locked && !effectiveToolbarVisible && mode != ToolbarMode.SUGGESTION_STRIP
-            pinnedKeys.isVisible = showPinned
-            suggestionsStrip.isVisible = locked || !effectiveToolbarVisible
-            toolbarContainer.isVisible = !locked && effectiveToolbarVisible
+            val duration = Settings.getAnimationDuration(100)
+            val prevToolbarVisible = toolbarContainer.isVisible
+            val nextToolbarVisible = !locked && effectiveToolbarVisible
+            val prevSuggestionsVisible = suggestionsStrip.isVisible
+            val nextSuggestionsVisible = locked || !effectiveToolbarVisible
+            val prevPinnedVisible = pinnedKeys.isVisible
+
+            if (nextToolbarVisible) {
+                toolbarContainer.isVisible = true
+                if (duration > 0L && isAttachedToWindow && !prevToolbarVisible) {
+                    toolbarContainer.alpha = 0f
+                    toolbarContainer.translationX = 14f * resources.displayMetrics.density * direction
+                    toolbarContainer.animate()?.cancel()
+                    toolbarContainer.animate()
+                        ?.alpha(1f)
+                        ?.translationX(0f)
+                        ?.setDuration(duration)
+                        ?.setInterpolator(DecelerateInterpolator(1.5f))
+                        ?.start()
+                } else {
+                    toolbarContainer.animate()?.cancel()
+                    toolbarContainer.alpha = 1f
+                    toolbarContainer.translationX = 0f
+                }
+            } else {
+                toolbarContainer.animate()?.cancel()
+                toolbarContainer.isVisible = false
+            }
+
+            if (nextSuggestionsVisible) {
+                suggestionsStrip.isVisible = true
+                if (duration > 0L && isAttachedToWindow && !prevSuggestionsVisible) {
+                    suggestionsStrip.alpha = 0f
+                    suggestionsStrip.animate()?.cancel()
+                    suggestionsStrip.animate()
+                        ?.alpha(1f)
+                        ?.setDuration(duration)
+                        ?.setInterpolator(DecelerateInterpolator(1.5f))
+                        ?.start()
+                } else {
+                    suggestionsStrip.animate()?.cancel()
+                    suggestionsStrip.alpha = 1f
+                }
+            } else {
+                suggestionsStrip.animate()?.cancel()
+                suggestionsStrip.isVisible = false
+            }
+
+            if (showPinned) {
+                pinnedKeys.isVisible = true
+                if (duration > 0L && isAttachedToWindow && !prevPinnedVisible) {
+                    pinnedKeys.alpha = 0f
+                    pinnedKeys.animate()?.cancel()
+                    pinnedKeys.animate()
+                        ?.alpha(1f)
+                        ?.setDuration(duration)
+                        ?.setInterpolator(DecelerateInterpolator(1.5f))
+                        ?.start()
+                } else {
+                    pinnedKeys.animate()?.cancel()
+                    pinnedKeys.alpha = 1f
+                }
+            } else {
+                pinnedKeys.animate()?.cancel()
+                pinnedKeys.isVisible = false
+            }
         }
 
         if (DEBUG_SUGGESTIONS) {
@@ -392,7 +456,19 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             }
         }
 
-        toolbarExpandKey.scaleX = (if (toolbarVisible && !locked) -1f else 1f) * direction
+        val targetScaleX = (if (toolbarVisible && !locked) -1f else 1f) * direction
+        val duration = Settings.getAnimationDuration(100)
+        if (duration > 0L && isAttachedToWindow && toolbarExpandKey.scaleX != targetScaleX) {
+            toolbarExpandKey.animate()?.cancel()
+            toolbarExpandKey.animate()
+                ?.scaleX(targetScaleX)
+                ?.setDuration(duration)
+                ?.setInterpolator(DecelerateInterpolator(1.5f))
+                ?.start()
+        } else {
+            toolbarExpandKey.animate()?.cancel()
+            toolbarExpandKey.scaleX = targetScaleX
+        }
 
         applyToolbarKeyLayoutParams(toolbarVisible && !locked)
         toolbarContainer.post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
@@ -469,7 +545,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
         isExternalSuggestionVisible = true
 
-        if (addCloseButton) {
+        val targetView = if (addCloseButton) {
             val wrapper = LinearLayout(context)
             wrapper.layoutParams = LinearLayout.LayoutParams(suggestionsStrip.width - 30.dpToPx(resources), LayoutParams.MATCH_PARENT)
             wrapper.addView(view)
@@ -482,8 +558,25 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                 listener.removeExternalSuggestions()
             }
             suggestionsStrip.addView(closeButton)
+            wrapper
         } else {
             suggestionsStrip.addView(view)
+            view
+        }
+
+        val duration = Settings.getAnimationDuration(100)
+        if (duration > 0L && suggestionsStrip.isAttachedToWindow) {
+            targetView.alpha = 0f
+            targetView.scaleX = 0.92f
+            targetView.scaleY = 0.92f
+            targetView.animate()?.cancel()
+            targetView.animate()
+                ?.alpha(1f)
+                ?.scaleX(1f)
+                ?.scaleY(1f)
+                ?.setDuration(duration)
+                ?.setInterpolator(DecelerateInterpolator(1.5f))
+                ?.start()
         }
 
         if (Settings.getValues().mAutoHideToolbar) setToolbarVisibility(false, saveState = false)

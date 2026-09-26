@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import helium314.keyboard.keyboard.emoji.EmojiViewCallback
+import helium314.keyboard.latin.settings.Settings
 
 interface PopupKeysPanel {
     interface Controller {
@@ -145,16 +146,23 @@ interface PopupKeysPanel {
             removeFromParent()
             parentView.addView(containerView)
         }
-        containerView.alpha = 0f
-        containerView.scaleX = 0.75f
-        containerView.scaleY = 0.75f
-        containerView.animate()
-            .alpha(1f)
-            .scaleX(1f)
-            .scaleY(1f)
-            .setDuration(110)
-            .setInterpolator(OvershootInterpolator(0.85f))
-            .start()
+        val enterDuration = Settings.getAnimationDuration(110)
+        if (enterDuration == 0L) {
+            containerView.alpha = 1f
+            containerView.scaleX = 1f
+            containerView.scaleY = 1f
+        } else {
+            containerView.alpha = 0f
+            containerView.scaleX = 0.75f
+            containerView.scaleY = 0.75f
+            containerView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(enterDuration)
+                .setInterpolator(OvershootInterpolator(0.85f))
+                .start()
+        }
     }
 
     /**
@@ -167,18 +175,24 @@ interface PopupKeysPanel {
             onEnd()
             return
         }
+        val exitDuration = Settings.getAnimationDuration(70)
         containerView.animate().cancel()
-        containerView.animate()
-            .alpha(0f)
-            .scaleX(0.8f)
-            .scaleY(0.8f)
-            .setDuration(70)
-            .setInterpolator(AccelerateInterpolator(1.5f))
-            .withEndAction {
-                removeFromParent()
-                onEnd()
-            }
-            .start()
+        if (exitDuration == 0L) {
+            removeFromParent()
+            onEnd()
+        } else {
+            containerView.animate()
+                .alpha(0f)
+                .scaleX(0.8f)
+                .scaleY(0.8f)
+                .setDuration(exitDuration)
+                .setInterpolator(AccelerateInterpolator(1.5f))
+                .withEndAction {
+                    removeFromParent()
+                    onEnd()
+                }
+                .start()
+        }
     }
 
     /**
