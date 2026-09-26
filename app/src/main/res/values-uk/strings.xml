@@ -1035,7 +1035,7 @@
     <string name="app_quirks_filter_configured">Тільки налаштовані</string>
     <string name="app_quirks_reset_default">Скинути до замовчування</string>
     <string name="app_quirks_force_direct_commit">Примусова пряма фіксація тексту</string>
-    <string name="app_quirks_force_direct_commit_summary">Обходити spans складання та фіксувати символи безпосередньо у з\'єднанні введення (виправляє зламані text watchers)</string>
+    <string name="app_quirks_force_direct_commit_summary">Обходити діапазони складання та фіксувати символи безпосередньо у з\'єднанні введення (виправляє несправні text watchers)</string>
     <string name="app_quirks_allow_symbol_composing">Дозволити складання символів</string>
     <string name="app_quirks_allow_symbol_composing_summary">Залишати символи, такі як підкреслення, всередині слів, що складаються, замість негайної фіксації (виправляє змінні поля Tasker)</string>
     <string name="app_quirks_disable_auto_space">Вимкнути автоматичні пробіли</string>
