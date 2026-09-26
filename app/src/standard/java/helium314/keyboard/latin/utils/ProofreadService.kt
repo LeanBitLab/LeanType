@@ -22,6 +22,7 @@ import com.google.ai.client.generativeai.type.TextPart
 import com.leanbitlab.leantype.voice.VoiceConstants
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.R
+import helium314.keyboard.latin.RichInputMethodManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
@@ -226,6 +227,16 @@ class ProofreadService(private val context: Context) {
         securePrefs.edit().putString(KEY_VOICE_GEMINI_MODEL, modelName.trim()).apply()
     }
 
+    // Source language
+    fun getSourceLanguage(): String {
+        val lang = securePrefs.getString(KEY_SOURCE_LANGUAGE, DEFAULT_SOURCE_LANGUAGE) ?: DEFAULT_SOURCE_LANGUAGE
+        return if (lang.equals("Auto", ignoreCase = true) || lang.equals("Auto Detect", ignoreCase = true)) "auto" else lang
+    }
+
+    fun setSourceLanguage(language: String) {
+        securePrefs.edit().putString(KEY_SOURCE_LANGUAGE, language).apply()
+    }
+
     // Target language
     fun getTargetLanguage(): String {
         val lang = securePrefs.getString(KEY_TARGET_LANGUAGE, DEFAULT_TARGET_LANGUAGE) ?: DEFAULT_TARGET_LANGUAGE
@@ -234,6 +245,21 @@ class ProofreadService(private val context: Context) {
 
     fun setTargetLanguage(language: String) {
         securePrefs.edit().putString(KEY_TARGET_LANGUAGE, language).apply()
+    }
+
+    fun getResolvedTargetLanguage(): String {
+        val lang = getTargetLanguage()
+        if (lang.equals("keyboard", ignoreCase = true) || lang.equals("default", ignoreCase = true)) {
+            try {
+                val currentSubtype = RichInputMethodManager.getInstance().currentSubtype
+                val keyboardLang = currentSubtype.locale.language
+                if (keyboardLang.isNotBlank() && keyboardLang != "zz") {
+                    return keyboardLang.lowercase()
+                }
+            } catch (_: Throwable) {}
+            return "en"
+        }
+        return lang
     }
 
     // HuggingFace token (optional)
@@ -475,7 +501,7 @@ class ProofreadService(private val context: Context) {
                 )
             )
 
-            val targetLanguage = getTargetLanguage()
+            val targetLanguage = getResolvedTargetLanguage()
             val response = model.generateContent(getTranslatePrompt(targetLanguage, text))
             val finishReason = response.candidates.firstOrNull()?.finishReason?.name ?: ""
             if (finishReason.contains("MAX_TOKENS", ignoreCase = true) || finishReason.contains("LENGTH", ignoreCase = true)) {
@@ -725,7 +751,7 @@ class ProofreadService(private val context: Context) {
     }
 
     private fun huggingFaceTranslate(text: String): Result<String> {
-        val targetLanguage = getTargetLanguage()
+        val targetLanguage = getResolvedTargetLanguage()
         val prompt = getTranslatePrompt(targetLanguage, text)
         val result = huggingFaceRequest(prompt, showThinking = false, isTranslate = true)
         return result.map { cleanTranslationOutput(text, it) }
@@ -920,6 +946,7 @@ class ProofreadService(private val context: Context) {
         private const val KEY_MODEL_NAME = "gemini_model_name"
         private const val KEY_TRANSLATE_MODEL_NAME = "translate_gemini_model_name"
         private const val KEY_TARGET_LANGUAGE = "gemini_target_language"
+        private const val KEY_SOURCE_LANGUAGE = "pref_translation_source_language"
         private const val KEY_PROVIDER = "ai_provider"
         private const val KEY_HF_TOKEN = "huggingface_token"
         private const val KEY_HF_MODEL = "huggingface_model"
@@ -931,7 +958,8 @@ class ProofreadService(private val context: Context) {
         private const val KEY_VOICE_GROQ_MODEL = "voice_groq_model"
         private const val KEY_VOICE_GEMINI_MODEL = "voice_gemini_model"
         private const val KEY_VOICE_HF_MODEL = "voice_huggingface_model"
-        private const val DEFAULT_TARGET_LANGUAGE = "en"
+        private const val DEFAULT_TARGET_LANGUAGE = "keyboard"
+        private const val DEFAULT_SOURCE_LANGUAGE = "auto"
         private const val DEFAULT_HF_MODEL = "gpt-4o-mini"
         const val DEFAULT_VOICE_GEMINI_MODEL = "gemini-2.0-flash"
         const val DEFAULT_VOICE_HF_MODEL = "whisper-1"

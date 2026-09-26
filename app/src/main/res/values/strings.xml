@@ -735,6 +735,11 @@
     <string name="translation_specific_model_not_downloaded">%s model not downloaded. Download in Settings → Translation.</string>
     <string name="translation_switching_to_ai">%s model not found in plugin. Switching to AI…</string>
     <string name="translation_plugin_fallback_to_ai">Plugin unavailable. Switching to AI…</string>
+    <string name="translate_source_language_title">Translation source language</string>
+    <string name="translate_source_language_summary">Select the source language or auto detect</string>
+    <string name="translate_language_auto">Auto Detect</string>
+    <string name="translate_language_keyboard">Default (Keyboard language)</string>
+    <string name="translate_language_keyboard_short">Default (Keyboard)</string>
     
     <!-- Translation target language options -->
     <string-array name="translate_language_names">

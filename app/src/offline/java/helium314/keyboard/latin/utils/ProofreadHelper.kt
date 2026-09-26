@@ -132,9 +132,23 @@ object ProofreadHelper {
         }
     }
 
+    private fun getKeyboardLanguage(): String {
+        try {
+            val currentSubtype = RichInputMethodManager.getInstance().currentSubtype
+            val lang = currentSubtype.locale.language
+            if (lang.isNotBlank() && lang != "zz") {
+                return lang.lowercase()
+            }
+        } catch (_: Throwable) {}
+        return "en"
+    }
+
     private fun getLangCode(targetLang: String): String {
         val trimmed = targetLang.trim()
         if (trimmed.isEmpty()) return "en"
+        if (trimmed.equals("keyboard", ignoreCase = true) || trimmed.equals("default", ignoreCase = true)) {
+            return getKeyboardLanguage()
+        }
         if (trimmed.length in 2..3 && trimmed.all { it.isLetter() }) return trimmed.lowercase()
         if (trimmed.contains("-") || trimmed.contains("_")) {
             val prefix = trimmed.split('-', '_')[0].trim().lowercase()
@@ -224,38 +238,14 @@ object ProofreadHelper {
         }
     }
 
-    private fun detectSourceLanguage(text: String): String {
-        for (cp in text.codePoints()) {
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_TAMIL)) return "ta"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_MALAYALAM)) return "ml"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_TELUGU)) return "te"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_KANNADA)) return "kn"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_GUJARATI)) return "gu"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_BENGALI)) return "bn"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_DEVANAGARI)) return "hi"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_ARABIC)) return "ar"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_GREEK)) return "el"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_HEBREW)) return "he"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_HANGUL)) return "ko"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_THAI)) return "th"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_GEORGIAN)) return "ka"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_ARMENIAN)) return "hy"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_SINHALA)) return "si"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_MYANMAR)) return "my"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_KHMER)) return "km"
-            if (ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_LAO)) return "lo"
-        }
-        try {
-            val currentSubtype = RichInputMethodManager.getInstance().currentSubtype
-            val lang = currentSubtype.locale.language
-            if (lang.isNotBlank() && lang != "zz") {
-                return lang.lowercase()
-            }
-        } catch (_: Throwable) {}
-        return "auto"
+    private fun detectSourceLanguage(context: Context, text: String, targetLangCode: String? = null): String {
+        return LanguageDetector.detect(context, text, targetLangCode)
     }
 
     private fun getLanguageDisplayName(context: Context, code: String): String {
+        if (code.equals("keyboard", ignoreCase = true) || code.equals("default", ignoreCase = true)) {
+            return context.getString(R.string.translate_language_keyboard)
+        }
         val names = context.resources.getStringArray(R.array.translate_language_names)
         val codes = context.resources.getStringArray(R.array.translate_language_codes)
         val index = codes.indexOfFirst { it.equals(code, ignoreCase = true) }
@@ -330,7 +320,12 @@ object ProofreadHelper {
                 val pluginProvider = if (usePlugin) TranslationLoader.getProvider(context) else null
                 val targetLang = service.getTargetLanguage()
                 val targetLangCode = getLangCode(targetLang)
-                val sourceLangCode = detectSourceLanguage(text)
+                val configuredSourceLang = service.getSourceLanguage()
+                val sourceLangCode = if (configuredSourceLang.isNotBlank() && !configuredSourceLang.equals("auto", ignoreCase = true)) {
+                    getLangCode(configuredSourceLang)
+                } else {
+                    detectSourceLanguage(context, text, targetLangCode)
+                }
 
                 val hasLocalModel = !service.getModelPath().isNullOrBlank()
 

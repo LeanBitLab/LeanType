@@ -178,6 +178,7 @@ object SettingsWithoutKey {
     const val GEMINI_API_KEY = "gemini_api_key"
     const val GEMINI_MODEL = "gemini_model"
     const val GEMINI_TARGET_LANGUAGE = "gemini_target_language"
+    const val TRANSLATION_SOURCE_LANGUAGE = "pref_translation_source_language"
     const val TRANSLATE_GROQ_MODEL = "translate_groq_model"
     const val TRANSLATE_GEMINI_MODEL = "translate_gemini_model"
     const val TRANSLATE_HUGGINGFACE_MODEL = "translate_huggingface_model"

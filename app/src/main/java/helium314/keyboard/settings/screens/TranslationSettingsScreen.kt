@@ -28,6 +28,7 @@ import helium314.keyboard.settings.preferences.Preference
 import helium314.keyboard.settings.preferences.PreferenceCategory
 import helium314.keyboard.settings.preferences.TranslationEnginePreference
 import helium314.keyboard.settings.preferences.TranslationModePreference
+import helium314.keyboard.settings.preferences.TranslationSourceLanguagePreference
 import helium314.keyboard.settings.preferences.TranslationTargetLanguagePreference
 
 @Composable
@@ -82,6 +83,9 @@ fun TranslationSettingsScreen(
                         if (BuildConfig.FLAVOR != "offline" || android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                             TranslationEnginePreference()
                         }
+
+                        // Translation Source Language Selection (Auto Detect by default)
+                        TranslationSourceLanguagePreference()
 
                         // Translation Target Language Selection
                         TranslationTargetLanguagePreference()

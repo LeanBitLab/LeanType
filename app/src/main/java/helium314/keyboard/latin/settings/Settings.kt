@@ -442,6 +442,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_OFFLINE_SYSTEM_PROMPT = "offline_system_prompt"
         const val PREF_OFFLINE_TRANSLATE_SYSTEM_PROMPT = "offline_translate_system_prompt"
         const val PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE = "offline_translate_target_language"
+        const val PREF_TRANSLATION_SOURCE_LANGUAGE = "pref_translation_source_language"
         const val PREF_OFFLINE_MAX_TOKENS = "offline_max_tokens"
         const val PREF_OFFLINE_KEEP_MODEL_LOADED = "offline_keep_model_loaded"
         const val PREF_AI_ALLOW_INSECURE_CONNECTIONS = "ai_allow_insecure_connections"

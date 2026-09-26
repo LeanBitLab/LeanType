@@ -240,11 +240,27 @@ class ProofreadService(private val context: Context) {
 
     fun setModelName(name: String) { /* No-op */ }
     
+    // Source language
+    fun getSourceLanguage(): String {
+        val lang = sharedPrefs.getString(
+            helium314.keyboard.settings.SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE,
+            sharedPrefs.getString(Settings.PREF_TRANSLATION_SOURCE_LANGUAGE, "auto")
+        ) ?: "auto"
+        return if (lang.equals("Auto", ignoreCase = true) || lang.equals("Auto Detect", ignoreCase = true)) "auto" else lang
+    }
+
+    fun setSourceLanguage(language: String) {
+        sharedPrefs.edit()
+            .putString(helium314.keyboard.settings.SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE, language)
+            .putString(Settings.PREF_TRANSLATION_SOURCE_LANGUAGE, language)
+            .apply()
+    }
+
     fun getTargetLanguage(): String {
         val lang = sharedPrefs.getString(
             helium314.keyboard.settings.SettingsWithoutKey.GEMINI_TARGET_LANGUAGE,
-            sharedPrefs.getString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, "en")
-        ) ?: "en"
+            sharedPrefs.getString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, "keyboard")
+        ) ?: "keyboard"
         return if (lang.equals("English", ignoreCase = true)) "en" else lang
     }
 
@@ -253,6 +269,21 @@ class ProofreadService(private val context: Context) {
             .putString(helium314.keyboard.settings.SettingsWithoutKey.GEMINI_TARGET_LANGUAGE, language)
             .putString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, language)
             .apply()
+    }
+
+    fun getResolvedTargetLanguage(): String {
+        val lang = getTargetLanguage()
+        if (lang.equals("keyboard", ignoreCase = true) || lang.equals("default", ignoreCase = true)) {
+            try {
+                val currentSubtype = RichInputMethodManager.getInstance().currentSubtype
+                val keyboardLang = currentSubtype.locale.language
+                if (keyboardLang.isNotBlank() && keyboardLang != "zz") {
+                    return keyboardLang.lowercase()
+                }
+            } catch (_: Throwable) {}
+            return "en"
+        }
+        return lang
     }
 
     fun getTranslateModelName(): String = ""
@@ -284,7 +315,7 @@ class ProofreadService(private val context: Context) {
      * Run llamacpp inference for translation.
      */
     suspend fun translate(text: String): Result<String> {
-        val target = getTargetLanguage()
+        val target = getResolvedTargetLanguage()
         val systemPromptTemplate = getTranslateSystemPrompt().takeIf { it.isNotBlank() } ?: Defaults.PREF_OFFLINE_TRANSLATE_SYSTEM_PROMPT
         val prompt = systemPromptTemplate.replace("{lang}", target)
         return proofread(text, overridePrompt = prompt, targetLanguage = target)

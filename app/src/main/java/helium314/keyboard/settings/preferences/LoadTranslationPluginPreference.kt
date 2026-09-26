@@ -380,18 +380,23 @@ fun TranslationTargetLanguagePreference() {
                         filteredZipped.add(0, h.first to h.second)
                     }
                 }
-                if (selectedLanguage.isNotEmpty() && filteredZipped.none { it.second.equals(selectedLanguage, ignoreCase = true) }) {
+                if (selectedLanguage.isNotEmpty() && !selectedLanguage.equals("keyboard", ignoreCase = true) && filteredZipped.none { it.second.equals(selectedLanguage, ignoreCase = true) }) {
                     filteredZipped.add(0, selectedLanguage to selectedLanguage)
                 }
+                filteredZipped.add(0, ctx.getString(R.string.translate_language_keyboard) to "keyboard")
                 filteredZipped
             }
 
             val displayLabel = remember(selectedLanguage, items) {
-                val found = items.find { it.second.equals(selectedLanguage, ignoreCase = true) }
-                if (found != null) {
-                    "${found.first} (${found.second})"
+                if (selectedLanguage.equals("keyboard", ignoreCase = true) || selectedLanguage.equals("default", ignoreCase = true)) {
+                    ctx.getString(R.string.translate_language_keyboard)
                 } else {
-                    selectedLanguage
+                    val found = items.find { it.second.equals(selectedLanguage, ignoreCase = true) }
+                    if (found != null) {
+                        "${found.first} (${found.second})"
+                    } else {
+                        selectedLanguage
+                    }
                 }
             }
 
@@ -423,7 +428,7 @@ fun TranslationTargetLanguagePreference() {
                             items(items.size) { i ->
                                 val (name, code) = items[i]
                                 val isSelected = code.equals(selectedLanguage, ignoreCase = true)
-                                val isDefault = languageCodes.contains(code)
+                                val isDefault = languageCodes.contains(code) || code.equals("keyboard", ignoreCase = true)
                                 Row(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -438,7 +443,9 @@ fun TranslationTargetLanguagePreference() {
                                                 putString(helium314.keyboard.latin.settings.Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, name)
                                             }.apply()
                                             selectedLanguage = code
-                                            helium314.keyboard.latin.utils.TranslationUtils.saveLanguageHistory(ctx.prefs(), name, code)
+                                            if (!code.equals("keyboard", ignoreCase = true)) {
+                                                helium314.keyboard.latin.utils.TranslationUtils.saveLanguageHistory(ctx.prefs(), name, code)
+                                            }
                                             showPickerDialog = false
                                         },
                                         modifier = Modifier.weight(1f)
@@ -484,6 +491,175 @@ fun TranslationTargetLanguagePreference() {
                                 putString(helium314.keyboard.latin.settings.Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, cleanName)
                             }.apply()
                             service.setTargetLanguage(cleanCode)
+                            selectedLanguage = cleanCode
+                            listVersion++
+                        }
+                        showCustomDialog = false
+                    },
+                    title = { Text("Add Custom Language") },
+                    content = {
+                        Column {
+                            androidx.compose.material3.OutlinedTextField(
+                                value = customLangName,
+                                onValueChange = { customLangName = it },
+                                label = { Text("Language Name (e.g. Sanskrit)") },
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+                            )
+                            androidx.compose.material3.OutlinedTextField(
+                                value = customLangCode,
+                                onValueChange = { customLangCode = it },
+                                label = { Text("Language Code (e.g. sa)") },
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    }
+                )
+            }
+        }
+    }
+    setting.Preference()
+}
+
+@Composable
+fun TranslationSourceLanguagePreference() {
+    val ctx = LocalContext.current
+    val setting = remember {
+        helium314.keyboard.settings.Setting(
+            ctx,
+            helium314.keyboard.settings.SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE,
+            R.string.translate_source_language_title,
+            R.string.translate_source_language_summary
+        ) { setting ->
+            val service = remember { helium314.keyboard.latin.utils.ProofreadService(ctx) }
+            val languageNames = ctx.resources.getStringArray(R.array.translate_language_names)
+            val languageCodes = ctx.resources.getStringArray(R.array.translate_language_codes)
+            var selectedLanguage by remember { mutableStateOf(service.getSourceLanguage()) }
+            var showPickerDialog by remember { mutableStateOf(false) }
+            var showCustomDialog by remember { mutableStateOf(false) }
+            var listVersion by remember { mutableStateOf(0) }
+
+            val items = remember(selectedLanguage, listVersion) {
+                val zipped = languageNames.zip(languageCodes).toMutableList()
+                val history = helium314.keyboard.latin.utils.TranslationUtils.getLanguageHistory(ctx.prefs())
+                val removed = helium314.keyboard.latin.utils.TranslationUtils.getRemovedLanguages(ctx.prefs())
+                val filteredZipped = zipped.filter { it.first.lowercase() !in removed && it.second.lowercase() !in removed }.toMutableList()
+                for (h in history.reversed()) {
+                    if (h.first.lowercase() !in removed && h.second.lowercase() !in removed && filteredZipped.none { helium314.keyboard.latin.utils.TranslationUtils.isSameLanguage(it, h) }) {
+                        filteredZipped.add(0, h.first to h.second)
+                    }
+                }
+                if (selectedLanguage.isNotEmpty() && !selectedLanguage.equals("auto", ignoreCase = true) && filteredZipped.none { it.second.equals(selectedLanguage, ignoreCase = true) }) {
+                    filteredZipped.add(0, selectedLanguage to selectedLanguage)
+                }
+                filteredZipped.add(0, ctx.getString(R.string.translate_language_auto) to "auto")
+                filteredZipped
+            }
+
+            val displayLabel = remember(selectedLanguage, items) {
+                if (selectedLanguage.equals("auto", ignoreCase = true)) {
+                    ctx.getString(R.string.translate_language_auto)
+                } else {
+                    val found = items.find { it.second.equals(selectedLanguage, ignoreCase = true) }
+                    if (found != null) {
+                        "${found.first} (${found.second})"
+                    } else {
+                        selectedLanguage
+                    }
+                }
+            }
+
+            Preference(
+                name = stringResource(R.string.translate_source_language_title),
+                description = displayLabel,
+                icon = R.drawable.ic_settings_languages,
+                onClick = { showPickerDialog = true }
+            )
+
+            if (showPickerDialog) {
+                helium314.keyboard.settings.dialogs.ConfirmationDialog(
+                    onDismissRequest = { showPickerDialog = false },
+                    onConfirmed = { showPickerDialog = false },
+                    confirmButtonText = null,
+                    cancelButtonText = null,
+                    neutralButtonText = "+ Custom Language",
+                    onNeutral = {
+                        showPickerDialog = false
+                        showCustomDialog = true
+                    },
+                    title = { Text(stringResource(R.string.translate_source_language_title)) },
+                    content = {
+                        androidx.compose.foundation.lazy.LazyColumn(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(380.dp)
+                        ) {
+                            items(items.size) { i ->
+                                val (name, code) = items[i]
+                                val isSelected = code.equals(selectedLanguage, ignoreCase = true)
+                                val isDefault = languageCodes.contains(code) || code.equals("auto", ignoreCase = true)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    TextButton(
+                                        onClick = {
+                                            service.setSourceLanguage(code)
+                                            ctx.prefs().edit().apply {
+                                                putString(helium314.keyboard.settings.SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE, code)
+                                                putString(helium314.keyboard.latin.settings.Settings.PREF_TRANSLATION_SOURCE_LANGUAGE, code)
+                                            }.apply()
+                                            selectedLanguage = code
+                                            if (!code.equals("auto", ignoreCase = true)) {
+                                                helium314.keyboard.latin.utils.TranslationUtils.saveLanguageHistory(ctx.prefs(), name, code)
+                                            }
+                                            showPickerDialog = false
+                                        },
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+                                        val itemText = if (code == "auto") name else "$name ($code)"
+                                        Text(
+                                            text = if (isSelected) "✓ $itemText" else itemText,
+                                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                    }
+                                    if (!isDefault) {
+                                        IconButton(
+                                            onClick = {
+                                                helium314.keyboard.latin.utils.TranslationUtils.removeLanguageHistory(ctx.prefs(), code)
+                                                listVersion++
+                                            }
+                                        ) {
+                                            Icon(
+                                                painter = androidx.compose.ui.res.painterResource(R.drawable.ic_close),
+                                                contentDescription = "Delete language"
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                )
+            }
+
+            if (showCustomDialog) {
+                var customLangName by remember { mutableStateOf("") }
+                var customLangCode by remember { mutableStateOf("") }
+                helium314.keyboard.settings.dialogs.ConfirmationDialog(
+                    onDismissRequest = { showCustomDialog = false },
+                    onConfirmed = {
+                        if (customLangName.isNotBlank() && customLangCode.isNotBlank()) {
+                            val cleanName = customLangName.trim()
+                            val cleanCode = customLangCode.trim()
+                            helium314.keyboard.latin.utils.TranslationUtils.saveLanguageHistory(ctx.prefs(), cleanName, cleanCode)
+                            ctx.prefs().edit().apply {
+                                putString(helium314.keyboard.settings.SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE, cleanCode)
+                                putString(helium314.keyboard.latin.settings.Settings.PREF_TRANSLATION_SOURCE_LANGUAGE, cleanCode)
+                            }.apply()
+                            service.setSourceLanguage(cleanCode)
                             selectedLanguage = cleanCode
                             listVersion++
                         }

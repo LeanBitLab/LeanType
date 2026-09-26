@@ -1064,7 +1064,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val currentLanguageName = prefs.getString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, currentLanguageCode) ?: currentLanguageCode
         
         val history = getLanguageHistory(prefs).toMutableList()
-        if (currentLanguageCode.isNotEmpty() && currentLanguageCode != "custom") {
+        if (currentLanguageCode.isNotEmpty() && currentLanguageCode != "custom" && !currentLanguageCode.equals("keyboard", ignoreCase = true)) {
             val currentPair = currentLanguageName to currentLanguageCode
             if (history.none { isSameLanguage(it, currentPair) }) {
                 history.add(0, currentPair)
@@ -1072,6 +1072,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
 
         val list = mutableListOf<Pair<String, String>>()
+        val defaultKeyboardLabel = context.getString(R.string.translate_language_keyboard_short)
+        list.add(defaultKeyboardLabel to "keyboard")
+
         for (item in history) {
             if (list.none { isSameLanguage(it, item) }) {
                 list.add(item)
@@ -1110,7 +1113,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                     putString(Settings.PREF_OFFLINE_TRANSLATE_TARGET_LANGUAGE, languageName)
                     putString(SettingsWithoutKey.GEMINI_TARGET_LANGUAGE, languageCode)
                 }.apply()
-                saveLanguageHistory(context.prefs(), languageName, languageCode)
+                if (!languageCode.equals("keyboard", ignoreCase = true)) {
+                    saveLanguageHistory(context.prefs(), languageName, languageCode)
+                }
                 helium314.keyboard.latin.utils.ProofreadService(context).setTargetLanguage(languageCode)
                 hideTranslateLanguageSelector()
                 listener.onCodeInput(KeyCode.TRANSLATE, Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE, false)
