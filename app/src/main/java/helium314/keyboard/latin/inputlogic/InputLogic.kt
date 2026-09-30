@@ -98,6 +98,15 @@ class InputLogic(
     private var mJustRevertedACommit = false
     private var mIsProcessingSelectionUpdate = false
 
+    // Sequential typing expansion state
+    /** True while the sequential typing loop is dispatching characters.
+     *  Incoming physical key events are dropped while this is true. */
+    private var mIsTypingExpansion = false
+    /** Grapheme clusters remaining to be dispatched in the current typing loop. */
+    private var mPendingTypingChars: List<String>? = null
+    /** How many chars to move the cursor back once the final character is emitted. */
+    private var mPendingCursorMoveBack = 0
+
     private var mAutoCommitSequenceNumber = 1
     private var mTextBeforeProofread: String? = null
     private var mTextBeforeTranslate: String? = null
@@ -154,6 +163,12 @@ class InputLogic(
         if (mWordComposer.isComposingWord()) {
             mConnection.finishComposingText()
             StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
+        }
+        // Cancel any in-progress sequential expansion if the IME is dismissed.
+        if (mIsTypingExpansion) {
+            mIsTypingExpansion = false
+            mPendingTypingChars = null
+            mPendingCursorMoveBack = 0
         }
         resetComposingState(true)
         mInputLogicHandler.reset()
@@ -357,6 +372,16 @@ class InputLogic(
         keyboardShiftMode: Int,
         handler: LatinIME.UIHandler
     ): InputTransaction {
+        // Drop physical keystrokes while the sequential expansion loop is running.
+        if (mIsTypingExpansion) {
+            return InputTransaction(
+                settingsValues,
+                mWordComposer.processEvent(event),
+                SystemClock.uptimeMillis(),
+                mSpaceState,
+                getActualCapsMode(settingsValues, keyboardShiftMode)
+            )
+        }
         mWordBeingCorrectedByCursor = null
         mJustRevertedACommit = false
         val processedEvent = mWordComposer.processEvent(event)
@@ -1069,7 +1094,8 @@ class InputLogic(
             var didSetComposingText = false
             var didExpand = false
             var shouldDeferSegmentation = false
-            if (TextExpanderUtils.isEnabled(mLatinIME)
+            if (!mIsTypingExpansion
+                && TextExpanderUtils.isEnabled(mLatinIME)
                 && TextExpanderUtils.isImmediateEnabled(mLatinIME)
             ) {
                 val typedWord = mWordComposer.getTypedWord()
@@ -1118,7 +1144,8 @@ class InputLogic(
                     inputTransaction.setRequiresUpdateSuggestions()
                 }
             }
-            if (TextExpanderUtils.isEnabled(mLatinIME)
+            if (!mIsTypingExpansion
+                && TextExpanderUtils.isEnabled(mLatinIME)
                 && TextExpanderUtils.isImmediateEnabled(mLatinIME)
             ) {
                 val textBefore = mConnection.getTextBeforeCursor(50, 0)
@@ -1237,7 +1264,7 @@ class InputLogic(
             } else {
                 commitTyped(settingsValues, StringUtils.newSingleCodePointString(codePoint))
             }
-        } else if (TextExpanderUtils.isEnabled(mLatinIME)) {
+        } else if (!mIsTypingExpansion && TextExpanderUtils.isEnabled(mLatinIME)) {
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {
                 val result = TextExpanderUtils.getExpandedWordForTyped(null, textBefore.toString(), mLatinIME)
@@ -1344,6 +1371,15 @@ class InputLogic(
         val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
         mSpaceState = SpaceState.NONE
         mDeleteCount++
+
+        // If a sequential expansion is in progress, cancel the loop so backspace
+        // can act on the partially-committed text. mLastExpandedText and
+        // mLastShortcutText remain valid for the revert check below.
+        if (mIsTypingExpansion) {
+            mIsTypingExpansion = false
+            mPendingTypingChars = null
+            mPendingCursorMoveBack = 0
+        }
 
         val selection = mConnection.getSelectedText(0)
         val hasSelection = !selection.isNullOrEmpty() || mConnection.hasSelection()
@@ -2339,7 +2375,7 @@ class InputLogic(
             startTimeMillis = System.currentTimeMillis()
             Log.d(TAG, "commitChosenWord() : [$chosenWord]")
         }
-        val isEnabled = TextExpanderUtils.isEnabled(mLatinIME)
+        val isEnabled = !mIsTypingExpansion && TextExpanderUtils.isEnabled(mLatinIME)
         if (isEnabled) {
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {
@@ -2786,59 +2822,125 @@ class InputLogic(
         return false
     }
 
+    /**
+     * Resolves %cursor% / %cursorN% from an expanded template.
+     * Returns a Pair of (cleanText, cursorMoveBack) where cursorMoveBack is how many
+     * characters to shift the cursor leftward AFTER all chars are committed.
+     * Higher-numbered %cursor2..N% tokens are left intact in the text for
+     * tryJumpToNextPlaceholder() to handle on subsequent Enter presses.
+     */
+    private fun resolveExpandedTextAndCursor(expanded: String): Pair<String, Int> {
+        // Simple %cursor%
+        val simpleIdx = expanded.indexOf("%cursor%")
+        if (simpleIdx != -1) {
+            val clean = expanded.replace("%cursor%", "")
+            val moveBack = clean.length - simpleIdx
+            return Pair(clean, maxOf(0, moveBack))
+        }
+        // Numbered %cursorN% — pick the lowest N only; leave higher tokens for Enter-key navigation
+        val numberedPattern = java.util.regex.Pattern.compile("%cursor(\\d+)%")
+        val matcher = numberedPattern.matcher(expanded)
+        var bestStart = -1; var bestEnd = -1; var lowestNum = Int.MAX_VALUE
+        while (matcher.find()) {
+            val num = matcher.group(1)?.toIntOrNull() ?: continue
+            if (num < lowestNum) { lowestNum = num; bestStart = matcher.start(); bestEnd = matcher.end() }
+        }
+        if (bestStart != -1) {
+            val clean = expanded.substring(0, bestStart) + expanded.substring(bestEnd)
+            val moveBack = clean.length - bestStart
+            return Pair(clean, maxOf(0, moveBack))
+        }
+        return Pair(expanded, 0)
+    }
+
+    /**
+     * Splits a string into Unicode grapheme clusters using BreakIterator so that
+     * multi-codepoint sequences (ZWJ emoji, regional indicators, combining diacritics)
+     * are kept together and each commitText() call delivers a complete glyph.
+     */
+    private fun String.toGraphemeClusters(): List<String> {
+        if (isEmpty()) return emptyList()
+        val bi = BreakIterator.getCharacterInstance(Locale.getDefault())
+        bi.setText(this)
+        val result = mutableListOf<String>()
+        var start = bi.first(); var end = bi.next()
+        while (end != BreakIterator.DONE) {
+            result.add(substring(start, end)); start = end; end = bi.next()
+        }
+        return result
+    }
+
+    /**
+     * Entry point for committing an expanded shortcut text.
+     *
+     * Records all backspace-revert state IMMEDIATELY (synchronously), then launches
+     * a sequential character-by-character typing loop via mLatinIME.mHandler.postDelayed()
+     * with 5–15 ms randomised delays. This keeps emission on the main thread (safe for
+     * InputConnection) while making the output indistinguishable from natural typing to
+     * target applications.
+     */
     private fun commitExpandedText(shortcut: String, expanded: String) {
-        val cursorOffset = expanded.indexOf("%cursor%")
-        if (cursorOffset != -1) {
-            val finalExpandedText = expanded.replace("%cursor%", "")
-            mConnection.commitText(finalExpandedText, 1)
-            mLastExpandedText = finalExpandedText
-            mLastShortcutText = shortcut
-            mLastExpandedCursorOffset = cursorOffset
-            val moveBackAmount = finalExpandedText.length - cursorOffset
-            if (moveBackAmount > 0) {
-                val newCursorPos = mConnection.expectedSelectionEnd - moveBackAmount
-                mConnection.setSelection(newCursorPos, newCursorPos)
-            }
-            mLastExpandedCursorPosition = mConnection.expectedSelectionEnd
+        val (finalText, moveBack) = resolveExpandedTextAndCursor(expanded)
+
+        // Record backspace-revert state NOW, before any characters are dispatched,
+        // so the user can always press Backspace to revert even mid-loop.
+        mLastExpandedText = finalText
+        mLastShortcutText = shortcut
+        mLastExpandedCursorOffset = finalText.length - moveBack
+        // mLastExpandedCursorPosition is set by finalizeExpansionLoop() once typing is done.
+
+        // Acquire expansion lock — onCodeInput() will drop keystrokes while this is true.
+        mIsTypingExpansion = true
+        mPendingTypingChars = finalText.toGraphemeClusters()
+        mPendingCursorMoveBack = moveBack
+
+        // Fire the first character; subsequent ones are chained inside scheduleNextExpandedChar.
+        scheduleNextExpandedChar(0)
+    }
+
+    /**
+     * Recursive scheduler: commits one grapheme cluster to the InputConnection per call,
+     * then schedules the next with a 5–15 ms randomised delay, entirely on the main thread.
+     */
+    private fun scheduleNextExpandedChar(index: Int) {
+        val chars = mPendingTypingChars ?: run { finalizeExpansionLoop(); return }
+        if (index >= chars.size) {
+            finalizeExpansionLoop()
             return
         }
-
-        val pattern = java.util.regex.Pattern.compile("%cursor(\\d+)%")
-        val matcher = pattern.matcher(expanded)
-        var bestStart = -1
-        var bestEnd = -1
-        var lowestNum = Int.MAX_VALUE
-        while (matcher.find()) {
+        // Randomise delay between 5 and 15 ms to simulate natural typing cadence.
+        val delayMs = 5L + (Math.random() * 10L).toLong()
+        mLatinIME.mHandler.postDelayed({
+            // Abort gracefully if the loop was cancelled (e.g. Backspace or IME dismissed).
+            if (!mIsTypingExpansion) return@postDelayed
             try {
-                val num = matcher.group(1)?.toInt() ?: continue
-                if (num < lowestNum) {
-                    lowestNum = num
-                    bestStart = matcher.start()
-                    bestEnd = matcher.end()
-                }
-            } catch (e: NumberFormatException) {
-                // ignore
+                mConnection.commitText(chars[index], 1)
+            } catch (e: Exception) {
+                Log.e(TAG, "Sequential expansion: commitText failed at index $index", e)
+                finalizeExpansionLoop()
+                return@postDelayed
             }
-        }
+            scheduleNextExpandedChar(index + 1)
+        }, delayMs)
+    }
 
-        if (bestStart != -1) {
-            val finalExpandedText = expanded.substring(0, bestStart) + expanded.substring(bestEnd)
-            mConnection.commitText(finalExpandedText, 1)
-            mLastExpandedText = finalExpandedText
-            mLastShortcutText = shortcut
-            mLastExpandedCursorOffset = bestStart
-            val moveBackAmount = finalExpandedText.length - bestStart
-            if (moveBackAmount > 0) {
-                val newCursorPos = mConnection.expectedSelectionEnd - moveBackAmount
-                mConnection.setSelection(newCursorPos, newCursorPos)
-            }
-        } else {
-            mConnection.commitText(expanded, 1)
-            mLastExpandedText = expanded
-            mLastShortcutText = shortcut
-            mLastExpandedCursorOffset = expanded.length
+    /**
+     * Called after the last grapheme cluster has been dispatched (or on cancellation).
+     * Positions the cursor for %cursor% / %cursorN% and releases the expansion lock.
+     */
+    private fun finalizeExpansionLoop() {
+        val moveBack = mPendingCursorMoveBack
+        if (moveBack > 0) {
+            val newPos = mConnection.expectedSelectionEnd - moveBack
+            if (newPos >= 0) mConnection.setSelection(newPos, newPos)
         }
         mLastExpandedCursorPosition = mConnection.expectedSelectionEnd
+
+        // Release the lock and clean up transient state.
+        mIsTypingExpansion = false
+        mPendingTypingChars = null
+        mPendingCursorMoveBack = 0
+        mJustRevertedExpandedShortcut = null
     }
 
     companion object {
