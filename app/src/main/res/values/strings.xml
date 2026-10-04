@@ -324,6 +324,7 @@
     <string name="clipboard_item_deleted">Item deleted</string>
     <!-- Text for no search results -->
     <string name="clipboard_no_search_results">No results found</string>
+    <string name="clear_search">Clear search</string>
     <string name="clipboard_clear_all_confirmation">Are you sure you want to clear all history?</string>
     <string name="clear_all">Clear All</string>
     <!-- Preferences item for enabling swipe deletion -->

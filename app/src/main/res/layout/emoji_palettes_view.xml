@@ -50,7 +50,8 @@
                 android:src="@drawable/sym_keyboard_search_rounded"
                 android:tint="?android:attr/textColorPrimary"
                 android:alpha="0.7"
-                android:layout_marginEnd="4dp"/>
+                android:layout_marginEnd="4dp"
+                android:importantForAccessibility="no" />
 
             <EditText
                 android:id="@+id/emoji_search_bar"
@@ -73,7 +74,8 @@
                 android:src="@drawable/ic_close_rounded"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:tint="?android:attr/textColorPrimary"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:contentDescription="@string/clear_search" />
         </LinearLayout>
 
         <!-- Vertical Divider -->
