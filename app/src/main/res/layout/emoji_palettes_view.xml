@@ -73,7 +73,8 @@
                 android:src="@drawable/ic_close_rounded"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:tint="?android:attr/textColorPrimary"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:contentDescription="@string/dialog_close" />
         </LinearLayout>
 
         <!-- Vertical Divider -->
