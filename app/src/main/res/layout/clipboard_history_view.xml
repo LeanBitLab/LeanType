@@ -37,7 +37,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:padding="10dp"
-                android:contentDescription="Back" />
+                android:contentDescription="@string/clipboard_action_back" />
 
             <EditText
                 android:id="@+id/clipboard_search_bar"
@@ -62,7 +62,7 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:visibility="gone"
                 android:padding="10dp"
-                android:contentDescription="Clear search" />
+                android:contentDescription="@string/clipboard_action_clear_search" />
         </LinearLayout>
 
         <FrameLayout
@@ -85,17 +85,16 @@
                     android:layout_height="64dp"
                     android:src="@drawable/sym_keyboard_paste_rounded"
                     android:alpha="0.5"
-                    android:contentDescription="No items" />
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/clipboard_empty_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="No clipboard items found"
+                    android:text="@string/clipboard_empty_text"
                     android:textSize="16sp"
-                    android:alpha="0.7"
-                    tools:ignore="HardcodedText" />
+                    android:alpha="0.7" />
             </LinearLayout>
 
             <helium314.keyboard.keyboard.clipboard.ClipboardHistoryRecyclerView

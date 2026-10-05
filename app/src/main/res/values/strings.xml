@@ -320,6 +320,10 @@
     <string name="clipboard_search_hint">Search clips...</string>
     <!-- Text for empty clipboard state -->
     <string name="clipboard_empty_text">No items found</string>
+    <string name="clipboard_action_back">Back</string>
+    <string name="clipboard_action_clear_search">Clear search</string>
+    <string name="action_clear">Clear</string>
+    <string name="touchpad_close_description">Close touchpad mode</string>
     <!-- Text for clipboard item deleted undo bar -->
     <string name="clipboard_item_deleted">Item deleted</string>
     <!-- Text for no search results -->
