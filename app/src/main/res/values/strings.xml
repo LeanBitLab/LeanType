@@ -2210,4 +2210,11 @@ New dictionary:
     <string name="handwriting_models_management_desc">Download and manage offline recognition models</string>
     <string name="ocr_plugin_title">OCR Plugin APK</string>
     <string name="plugin_active_version_format">Plugin active (version %s)</string>
+
+    <!-- Action descriptors for accessibility -->
+    <string name="action_back">Back</string>
+    <string name="action_clear_search">Clear search</string>
+    <string name="action_close_touchpad">Close touchpad mode</string>
+    <string name="action_clear">Clear</string>
+    <string name="state_empty_clipboard">No items</string>
 </resources>

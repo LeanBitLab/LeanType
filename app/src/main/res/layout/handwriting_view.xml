@@ -47,7 +47,7 @@
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_close"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Clear" />
+                android:contentDescription="@string/action_clear" />
         </RelativeLayout>
 
         <FrameLayout
@@ -78,7 +78,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/ic_edit"
-                    android:contentDescription="" />
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/handwriting_plugin_title"

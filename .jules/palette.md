@@ -1,0 +1,3 @@
+## 2025-02-12 - Accessibility contentDescription on ImageViews
+**Learning:** In Android XML layouts, using hardcoded string literals for `contentDescription` like `android:contentDescription="Close"` fails accessibility lints and breaks localization. Similarly, assigning an empty string `""` to decorative icons does not correctly instruct screen readers to ignore them.
+**Action:** Always extract text strings for `contentDescription` into `strings.xml`. For purely decorative elements (e.g. background plugin icons) that shouldn't be read by TalkBack, explicitly set `android:contentDescription="@null"` instead of an empty string.
