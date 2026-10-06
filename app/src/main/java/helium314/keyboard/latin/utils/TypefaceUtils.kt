@@ -7,7 +7,6 @@
 package helium314.keyboard.latin.utils
 
 import android.graphics.Paint
-import android.graphics.Rect
 import android.graphics.Typeface
 import android.util.SparseArray
 
@@ -18,7 +17,7 @@ object TypefaceUtils {
     // This sparse array caches key label text height in pixel indexed by key label text size.
     private val sTextHeightCache = SparseArray<Float>()
     // Working variable for the following method.
-    private val sTextHeightBounds = Rect()
+    private val sTextHeightBounds = android.graphics.Rect()
 
     private fun getCharHeight(referenceChar: CharArray, paint: Paint): Float {
         val key = getCharGeometryCacheKey(referenceChar[0], paint)
@@ -37,8 +36,6 @@ object TypefaceUtils {
 
     // This sparse array caches key label text width in pixel indexed by key label text size.
     private val sTextWidthCache = SparseArray<Float>()
-    // Working variable for the following method.
-    private val sTextWidthBounds = Rect()
 
     private fun getCharWidth(referenceChar: CharArray, paint: Paint): Float {
         val key = getCharGeometryCacheKey(referenceChar[0], paint)
@@ -48,8 +45,9 @@ object TypefaceUtils {
                 return cachedValue
             }
 
-            paint.getTextBounds(referenceChar, 0, 1, sTextWidthBounds)
-            val width = sTextWidthBounds.width().toFloat()
+            // Optimization: Use paint.measureText instead of getTextBounds to avoid creating a Rect
+            // and synchronizing on it, which is faster and reduces thread contention.
+            val width = paint.measureText(referenceChar, 0, 1)
             sTextWidthCache.put(key, width)
             return width
         }
@@ -79,13 +77,9 @@ object TypefaceUtils {
         return getCharWidth(KEY_NUMERIC_HINT_LABEL_REFERENCE_CHAR, paint)
     }
 
-    // Working variable for the following method.
-    private val sStringWidthBounds = Rect()
-
     fun getStringWidth(string: String, paint: Paint): Float {
-        synchronized(sStringWidthBounds) {
-            paint.getTextBounds(string, 0, string.length, sStringWidthBounds)
-            return sStringWidthBounds.width().toFloat()
-        }
+        // Optimization: Use paint.measureText instead of getTextBounds to avoid creating a Rect
+        // and synchronizing on it, which is faster and reduces thread contention.
+        return paint.measureText(string)
     }
 }
