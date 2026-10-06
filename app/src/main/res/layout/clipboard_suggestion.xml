@@ -24,10 +24,12 @@
         style="?android:attr/textAppearanceSmall" />
     <ImageView
         android:id="@+id/clipboard_suggestion_close"
-        android:contentDescription="@string/spoken_clipboard_suggestion"
+        android:contentDescription="@string/dialog_close"
         android:src="@drawable/ic_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
         android:gravity="center" />
 
 </LinearLayout>

@@ -29,6 +29,7 @@
         android:contentDescription="@string/touchpad_close"
         android:scaleType="fitCenter"
         android:clickable="true"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:focusable="true" />
 
 </FrameLayout>
