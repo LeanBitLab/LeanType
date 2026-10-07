@@ -79,6 +79,7 @@ class UserBinaryDictionary protected constructor(
             Words.FREQUENCY
         )
 
+        private val SPACE_REGEX = Regex("\\s+")
         private const val NAME = "userunigram"
 
         fun getDictionary(
@@ -195,7 +196,7 @@ class UserBinaryDictionary protected constructor(
                         )
                     }
                     // ponytail: split phrase into unigrams and n-grams for next-word prediction
-                    val parts = word.split(Regex("\\s+"))
+                    val parts = word.split(SPACE_REGEX)
                     if (parts.size > 1) {
                         for (part in parts) {
                             if (part.length <= MAX_WORD_LENGTH && part.isNotEmpty() && part != word) {

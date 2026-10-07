@@ -35,6 +35,7 @@ class AppsBinaryDictionary private constructor(
         private const val TAG = "AppsBinaryDictionary"
         private const val NAME = "apps"
 
+        private val SPACE_REGEX = Regex("\\s+")
         private const val FREQUENCY_FOR_APPS = 100
         private const val FREQUENCY_FOR_APPS_BIGRAM = 200
 
@@ -75,7 +76,7 @@ class AppsBinaryDictionary private constructor(
         var ngramContext = NgramContext.getEmptyPrevWordsContext(
             BinaryDictionary.MAX_PREV_WORD_COUNT_FOR_N_GRAM
         )
-        for (word in appLabel.split(Regex("\\s+"))) {
+        for (word in appLabel.split(SPACE_REGEX)) {
             if (word.isEmpty()) continue
             if (DEBUG_DUMP) {
                 Log.d(TAG, "addName word = $word")
