@@ -502,14 +502,22 @@ private const val PREFS_FILE_NAME = "preferences.json"
 private const val PROTECTED_PREFS_FILE_NAME = "protected_preferences.json"
 private const val FLOATING_KEYBOARD_PREFS_FILE_NAME = "floating_keyboard_preferences.json"
 
+private val blacklistsRegex = "blacklists${File.separator}.*\\.txt".toRegex()
+private val layoutsRegex = "layouts${File.separator}.*${LayoutUtilsCustom.CUSTOM_LAYOUT_PREFIX}+\\..{0,4}".toRegex()
+private val dictsRegex = "dicts${File.separator}.*${File.separator}.*user\\.dict".toRegex()
+private val historyDictRegex = "UserHistoryDictionary.*${File.separator}UserHistoryDictionary.*\\.(body|header)".toRegex()
+private val bgImgRegex = "custom_background_image.*".toRegex()
+private val fontRegex = "custom_font".toRegex()
+private val emojiFontRegex = "custom_emoji_font".toRegex()
+
 private val backupFilePatterns by lazy { listOf(
-    "blacklists${File.separator}.*\\.txt".toRegex(),
-    "layouts${File.separator}.*${LayoutUtilsCustom.CUSTOM_LAYOUT_PREFIX}+\\..{0,4}".toRegex(), // can't expect a period at the end, as this would break restoring older backups
-    "dicts${File.separator}.*${File.separator}.*user\\.dict".toRegex(),
-    "UserHistoryDictionary.*${File.separator}UserHistoryDictionary.*\\.(body|header)".toRegex(),
-    "custom_background_image.*".toRegex(),
-    "custom_font".toRegex(),
-    "custom_emoji_font".toRegex(),
+    blacklistsRegex,
+    layoutsRegex, // can't expect a period at the end, as this would break restoring older backups
+    dictsRegex,
+    historyDictRegex,
+    bgImgRegex,
+    fontRegex,
+    emojiFontRegex,
 ) }
 
 enum class BackupCategory {

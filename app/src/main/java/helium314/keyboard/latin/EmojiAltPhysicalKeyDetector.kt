@@ -130,7 +130,7 @@ class EmojiAltPhysicalKeyDetector(resources: Resources) {
             val values = resources.getStringArray(resourceId)
             if (values != null) {
                 for (i in values.indices) {
-                    val valuePair = values[i].split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                    val valuePair = values[i].split(commaRegex).dropLastWhile { it.isEmpty() }.toTypedArray()
                     if (valuePair.size != 2) {
                         Log.w(TAG, "Expected 2 integers in $name[$i] : ${values[i]}")
                     }
@@ -148,3 +148,5 @@ class EmojiAltPhysicalKeyDetector(resources: Resources) {
         }
     }
 }
+
+private val commaRegex = ",".toRegex()

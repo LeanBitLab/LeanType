@@ -63,5 +63,7 @@ object LayoutUtils {
     }
 
     fun getSimpleRowStrings(layoutContent: String): List<String> =
-        layoutContent.replace("\r\n", "\n").split("\\n\\s*\\n".toRegex()).filter { it.isNotBlank() }
+        layoutContent.replace("\r\n", "\n").split(doubleNewlineRegex).filter { it.isNotBlank() }
 }
+
+private val doubleNewlineRegex = "\\n\\s*\\n".toRegex()

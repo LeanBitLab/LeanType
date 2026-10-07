@@ -67,7 +67,6 @@ class LocaleKeyboardInfos(dataStream: InputStream?, locale: Locale) {
         if (stream == null) return
         stream.reader().use { reader ->
             var mode = READER_MODE_NONE
-            val colonSpaceRegex = ":\\s+".toRegex()
             reader.forEachLine { l ->
                 val line = l.trim()
                 if (line.isEmpty()) return@forEachLine
@@ -257,9 +256,9 @@ private fun getCurrencyKey(locale: Locale): Pair<String, List<String>> {
         return euro
     if (locale.toString().matches(euroLocales))
         return euro
-    if (locale.language.matches("ca|eu|lb|mt|pms".toRegex()))
+    if (locale.language.matches(euroLanguagesRegex))
         return euro
-    if (locale.language.matches("ak|dag|ee|fa|gaa|ha|he|ig|iw|lo|ko|km|mn|ne|si|th|uk|vi|yo".toRegex()))
+    if (locale.language.matches(otherLanguagesRegex))
         return genericCurrencyKey(getCurrency(locale))
     if (locale.language == "hy")
         return dram
@@ -271,7 +270,7 @@ private fun getCurrencyKey(locale: Locale): Pair<String, List<String>> {
         return genericCurrencyKey(getCurrency(locale))
     if (locale.country != "IN" && locale.language == "ta")
         return genericCurrencyKey("௹")
-    if (locale.country == "IN" || locale.language.matches("hi|kn|ml|mr|ta|te|gu".toRegex()))
+    if (locale.country == "IN" || locale.language.matches(inLanguagesRegex))
         return rupee
     if (locale.country == "GB")
         return pound
@@ -324,6 +323,11 @@ private val lira = "₺" to listOf("€", "$", "£", "¥", "₱")
 private val dollar = "$" to listOf("£", "¢", "€", "¥", "₱")
 private val euroCountries = "AD|AT|BE|BG|HR|CY|CZ|DA|EE|FI|FR|DE|GR|HU|IE|IT|XK|LV|LT|LU|MT|MO|ME|NL|PL|PT|RO|SM|SK|SI|ES|VA".toRegex()
 private val euroLocales = "bg|ca|cs|da|de|el|en|es|et|eu|fi|fr|ga|gl|hr|hu|it|lb|lt|lv|mt|nl|pl|pt|ro|sk|sl|sq|sr|sv".toRegex()
+
+private val colonSpaceRegex = ":\\s+".toRegex()
+private val euroLanguagesRegex = "ca|eu|lb|mt|pms".toRegex()
+private val otherLanguagesRegex = "ak|dag|ee|fa|gaa|ha|he|ig|iw|lo|ko|km|mn|ne|si|th|uk|vi|yo".toRegex()
+private val inLanguagesRegex = "hi|kn|ml|mr|ta|te|gu".toRegex()
 
 const val POPUP_KEYS_ALL = "all"
 const val POPUP_KEYS_MORE = "more"

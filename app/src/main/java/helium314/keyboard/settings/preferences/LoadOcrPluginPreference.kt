@@ -93,8 +93,7 @@ fun LoadOcrPluginPreference(
                 conn.connect()
                 if (conn.responseCode == 200) {
                     val response = conn.inputStream.bufferedReader().use { it.readText() }
-                    val regex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()
-                    val match = regex.find(response)
+                    val match = tagNameRegex.find(response)
                     if (match != null) {
                         remoteVersion = match.groupValues[1]
                     }
@@ -321,3 +320,5 @@ private fun isUpdateAvailable(local: String, remote: String): Boolean {
     }
     return false
 }
+
+private val tagNameRegex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()

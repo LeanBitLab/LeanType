@@ -46,7 +46,7 @@ object SoundPackImporter {
     }
 
     fun getPackDir(context: Context, packId: String): File {
-        val cleanId = packId.replace("[^a-zA-Z0-9._-]".toRegex(), "_")
+        val cleanId = packId.replace(filenameAllowedCharsRegex, "_")
         return File(getSoundPacksDir(context), cleanId)
     }
 
@@ -225,7 +225,7 @@ object SoundPackImporter {
     ): String? {
         val ext = originalName.substringAfterLast(".", "ogg").lowercase()
         val rawName = originalName.substringBeforeLast(".")
-        val cleanId = "custom_${rawName.replace("[^a-zA-Z0-9_-]".toRegex(), "_").lowercase()}_${System.currentTimeMillis() % 10000}"
+        val cleanId = "custom_${rawName.replace(packIdAllowedCharsRegex, "_").lowercase()}_${System.currentTimeMillis() % 10000}"
         val displayName = customName?.takeIf { it.isNotBlank() } ?: rawName
         val packDir = getPackDir(context, cleanId)
         packDir.mkdirs()
@@ -300,7 +300,7 @@ object SoundPackImporter {
             val finalId = if (manifest != null) {
                 manifest.id
             } else {
-                val baseName = zipFile.nameWithoutExtension.replace("[^a-zA-Z0-9_-]".toRegex(), "_").lowercase()
+                val baseName = zipFile.nameWithoutExtension.replace(packIdAllowedCharsRegex, "_").lowercase()
                 "custom_${baseName}_${System.currentTimeMillis() % 10000}"
             }
 
@@ -505,3 +505,6 @@ object SoundPackImporter {
         return uri.lastPathSegment
     }
 }
+
+private val filenameAllowedCharsRegex = "[^a-zA-Z0-9._-]".toRegex()
+private val packIdAllowedCharsRegex = "[^a-zA-Z0-9_-]".toRegex()

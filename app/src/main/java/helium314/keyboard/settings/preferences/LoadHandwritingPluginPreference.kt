@@ -90,8 +90,7 @@ fun LoadHandwritingPluginPreference(
                 conn.connect()
                 if (conn.responseCode == 200) {
                     val response = conn.inputStream.bufferedReader().use { it.readText() }
-                    val regex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()
-                    val match = regex.find(response)
+                    val match = tagNameRegex.find(response)
                     if (match != null) {
                         val tag = match.groupValues[1]
                         remoteVersion = tag
@@ -319,6 +318,8 @@ private fun isUpdateAvailable(local: String, remote: String): Boolean {
     }
     return false
 }
+
+private val tagNameRegex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()
 
 private fun buildLanguageEntries(context: Context): List<Pair<String, String>> {
     val sysLocale = context.resources.configuration.locales[0]
