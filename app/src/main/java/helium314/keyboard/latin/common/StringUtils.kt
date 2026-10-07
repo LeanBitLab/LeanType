@@ -291,7 +291,8 @@ fun isEmoji(c: Int): Boolean = StringUtils.mightBeEmoji(c) && isEmoji(StringUtil
 /** returns whether the text is a single emoji */
 fun isEmoji(text: CharSequence): Boolean = mightBeEmoji(text) && text.matches(emoRegex)
 
-fun String.splitOnWhitespace() = split(Regex("\\s+")).filter { it.isNotEmpty() }
+private val WHITESPACE_REGEX = Regex("\\s+")
+fun String.splitOnWhitespace() = split(WHITESPACE_REGEX).filter { it.isNotEmpty() }
 
 // from https://github.com/mathiasbynens/emoji-test-regex-pattern, MIT license
 // matches single emojis only
