@@ -50,6 +50,7 @@ class App : Application(), Configuration.Provider {
         LayoutUtilsCustom.removeMissingLayouts(this) // only after version upgrade
         SupportedEmojis.load(this)
         PermissionsUtil.updateNotificationListenerComponent(this, prefs().getBoolean(Settings.PREF_AUTO_READ_OTP, false))
+        helium314.keyboard.latin.gif.GifPluginManager.get(this).start()
 
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
         @Suppress("DEPRECATION")

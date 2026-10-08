@@ -3,4 +3,5 @@
     <cache-path name="clipboard_images" path="clipboard_images/" />
     <cache-path name="logs" path="logs/" />
     <cache-path name="updates" path="updates/" />
+    <cache-path name="gif_cache" path="gif_cache/" />
 </paths>
