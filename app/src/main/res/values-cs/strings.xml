@@ -1666,4 +1666,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="app_quirks_always_show_suggestions">Vždy zobrazovat návrhy</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorujte požadavky této aplikace na deaktivaci návrhů</string>
     <string name="app_quirks_badge_always_suggestions">Vždy návrhy</string>
+    <string name="app_quirks_use_selection_replacement">Náhrada slov na základě výběru</string>
+    <string name="app_quirks_use_selection_replacement_summary">Nahraďte slova výběrem a potvrzením namísto skládání rozsahů (oprava omniboxu Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">Výběr Nahradit</string>
 </resources>

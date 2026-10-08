@@ -1726,4 +1726,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="app_quirks_always_show_suggestions">Mostra sempre suggerimenti</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignora le richieste di questa app per disabilitare i suggerimenti</string>
     <string name="app_quirks_badge_always_suggestions">Sempre suggerimenti</string>
+    <string name="app_quirks_use_selection_replacement">Sostituzione delle parole basata sulla selezione</string>
+    <string name="app_quirks_use_selection_replacement_summary">Sostituisci le parole selezionando e confermando invece di comporre intervalli (corregge Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Selezione Sostituisci</string>
 </resources>

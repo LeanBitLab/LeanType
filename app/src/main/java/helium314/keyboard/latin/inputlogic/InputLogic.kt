@@ -17,6 +17,7 @@ import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.EditorInfo
+import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.event.Event
 import helium314.keyboard.event.InputTransaction
 import helium314.keyboard.keyboard.Keyboard
@@ -93,6 +94,8 @@ class InputLogic(
     private var mIsAutoCorrectionIndicatorOn = false
     private var mDoubleSpacePeriodCountdownStart = 0L
     private var mWordBeingCorrectedByCursor: String? = null
+    private var mResumedWordStart = -1
+    private var mResumedWordEnd = -1
     private var mLastExpandedText: String? = null
     private var mLastShortcutText: String? = null
     private var mLastExpandedCursorPosition = -1
@@ -365,6 +368,8 @@ class InputLogic(
         handler: LatinIME.UIHandler
     ): InputTransaction {
         mWordBeingCorrectedByCursor = null
+        mResumedWordStart = -1
+        mResumedWordEnd = -1
         mJustRevertedACommit = false
         val processedEvent = mWordComposer.processEvent(event)
         val inputTransaction = InputTransaction(
@@ -2005,6 +2010,10 @@ class InputLogic(
         val numberOfCharsInWordBeforeCursor = range.getNumberOfCharsInWordBeforeCursor()
         val expectedCursorPosition = mConnection.expectedSelectionStart
         if (numberOfCharsInWordBeforeCursor > expectedCursorPosition) return
+        val wordStart = expectedCursorPosition - numberOfCharsInWordBeforeCursor
+        val wordEnd = expectedCursorPosition + range.getNumberOfCharsInWordAfterCursor()
+        mResumedWordStart = wordStart
+        mResumedWordEnd = wordEnd
         val suggestions = ArrayList<SuggestedWordInfo>()
         val typedWordString = range.mWord.toString()
         val typedWordInfo = SuggestedWordInfo(
@@ -2036,13 +2045,12 @@ class InputLogic(
             val codePoints = StringUtils.toCodePointArray(typedWordString)
             mWordComposer.setComposingWord(codePoints, mLatinIME.getCoordinatesForCurrentKeyboard(codePoints))
             mWordComposer.setCursorPositionWithinWord(typedWordString.codePointCount(0, numberOfCharsInWordBeforeCursor))
-            val success = mConnection.setComposingRegion(
-                expectedCursorPosition - numberOfCharsInWordBeforeCursor,
-                expectedCursorPosition + range.getNumberOfCharsInWordAfterCursor()
-            )
-            if (!success) {
+            val success = mConnection.setComposingRegion(wordStart, wordEnd)
+            if (!success && !AppQuirksManager.shouldUseSelectionForWordReplacement(mLatinIME.currentInputEditorInfo?.packageName)) {
                 mWordComposer.reset()
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                mResumedWordStart = -1
+                mResumedWordEnd = -1
                 return
             }
         }
@@ -2258,6 +2266,8 @@ class InputLogic(
         if (alsoResetLastComposedWord) {
             mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
         }
+        mResumedWordStart = -1
+        mResumedWordEnd = -1
     }
 
     private fun getDictionaryFacilitatorLocale(): Locale {
@@ -2456,7 +2466,15 @@ class InputLogic(
             Log.d(TAG, "commitChosenWord() : NgramContext = $ngramContext")
             startTimeMillis = System.currentTimeMillis()
         }
+        if (mWordComposer.isResumed() && mResumedWordStart >= 0 && mResumedWordEnd > mResumedWordStart) {
+            if (AppQuirksManager.shouldUseSelectionForWordReplacement(mLatinIME.currentInputEditorInfo?.packageName)) {
+                mConnection.finishComposingText()
+                mConnection.setSelection(mResumedWordStart, mResumedWordEnd)
+            }
+        }
         mConnection.commitText(chosenWordWithSuggestions, 1)
+        mResumedWordStart = -1
+        mResumedWordEnd = -1
         if (DebugFlags.DEBUG_ENABLED) {
             var runTimeMillis = System.currentTimeMillis() - startTimeMillis
             Log.d(TAG, "commitChosenWord() : $runTimeMillis ms to run Connection.commitText")

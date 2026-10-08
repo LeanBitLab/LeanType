@@ -60,8 +60,33 @@ object BrowserDetector {
         }
     }
 
+    private val GECKO_BROWSER_PACKAGES = setOf(
+        "org.mozilla.fennec_fdroid", "org.mozilla.fenix", "org.mozilla.firefox_beta", "org.mozilla.focus",
+        "org.mozilla.klar", "org.mozilla.firefox", "org.ironfoxoss.ironfox", "net.waterfox.android.release",
+        "io.github.forkmaintainers.iceraven", "com.zen.web.tools.browser",
+        "us.spotco.fennec_dos", "org.torproject.torbrowser", "org.torproject.torbrowser_alpha",
+        "org.mozilla.fenix.nightly", "jp.ablaze.floorp", "net.mullvad.mullvadbrowser"
+    )
+
     fun isWebBrowser(packageName: String?): Boolean {
         return packageName != null && discoveredBrowsers.contains(packageName)
+    }
+
+    fun isGeckoBrowser(packageName: String?): Boolean {
+        if (packageName == null) return false
+        return GECKO_BROWSER_PACKAGES.contains(packageName) || packageName.startsWith("org.mozilla.")
+    }
+
+    fun isChromiumBrowser(packageName: String?): Boolean {
+        if (packageName == null) return false
+        if (isGeckoBrowser(packageName)) return false
+        return isWebBrowser(packageName) ||
+                packageName.contains("chrome") ||
+                packageName.contains("chromium") ||
+                packageName.contains("brave") ||
+                packageName.contains("edge") ||
+                packageName.contains("opera") ||
+                packageName.contains("vivaldi")
     }
 
     internal fun resetForTesting() {

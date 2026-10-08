@@ -276,6 +276,13 @@ fun AppQuirksScreen(
                         MaterialTheme.colorScheme.onSecondaryContainer
                     ))
                 }
+                if (effective?.useSelectionForWordReplacement == true) {
+                    badges.add(BadgeInfo(
+                        stringResource(R.string.app_quirks_badge_selection_replacement),
+                        MaterialTheme.colorScheme.primaryContainer,
+                        MaterialTheme.colorScheme.onPrimaryContainer
+                    ))
+                }
                 if (effective?.forceEnterAction != null) {
                     val actionLabel = when (effective.forceEnterAction) {
                         EditorInfo.IME_ACTION_NONE -> stringResource(R.string.app_quirks_enter_action_none)
@@ -423,6 +430,7 @@ private fun AppQuirkDialog(
     var autoCorrectionMode by remember { mutableStateOf(initialEffective.autoCorrectionMode) }
     var hideSuggestionStrip by remember { mutableStateOf(initialEffective.hideSuggestionStrip) }
     var alwaysShowSuggestions by remember { mutableStateOf(initialEffective.alwaysShowSuggestions) }
+    var useSelectionForWordReplacement by remember { mutableStateOf(initialEffective.useSelectionForWordReplacement) }
     var hideToolbar by remember { mutableStateOf(initialEffective.hideToolbar) }
     var selectedAction by remember { mutableStateOf(initialEffective.forceEnterAction) }
 
@@ -462,6 +470,7 @@ private fun AppQuirkDialog(
                 hideSuggestionStrip = hideSuggestionStrip,
                 hideToolbar = hideToolbar,
                 alwaysShowSuggestions = alwaysShowSuggestions,
+                useSelectionForWordReplacement = useSelectionForWordReplacement,
             )
             AppQuirksManager.saveQuirk(newQuirk)
             onSaved()
@@ -516,6 +525,12 @@ private fun AppQuirkDialog(
                     summary = stringResource(R.string.app_quirks_hide_toolbar_summary),
                     checked = hideToolbar,
                     onCheckedChange = { hideToolbar = it }
+                )
+                QuirkToggleRow(
+                    title = stringResource(R.string.app_quirks_use_selection_replacement),
+                    summary = stringResource(R.string.app_quirks_use_selection_replacement_summary),
+                    checked = useSelectionForWordReplacement,
+                    onCheckedChange = { useSelectionForWordReplacement = it }
                 )
                 QuirkToggleRow(
                     title = stringResource(R.string.app_quirks_force_web_editor),

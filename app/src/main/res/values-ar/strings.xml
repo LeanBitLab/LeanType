@@ -1724,4 +1724,7 @@
     <string name="app_quirks_always_show_suggestions">اعرض الاقتراحات دائمًا</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاهل طلبات هذا التطبيق لتعطيل الاقتراحات</string>
     <string name="app_quirks_badge_always_suggestions">دائما الاقتراحات</string>
+    <string name="app_quirks_use_selection_replacement">استبدال الكلمات على أساس الاختيار</string>
+    <string name="app_quirks_use_selection_replacement_summary">استبدال الكلمات عن طريق التحديد والالتزام بدلاً من إنشاء الامتدادات (إصلاحات Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">استبدال التحديد</string>
 </resources>

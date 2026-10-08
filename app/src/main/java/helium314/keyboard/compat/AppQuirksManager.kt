@@ -198,6 +198,16 @@ object AppQuirksManager {
         return getEffectiveQuirk(packageName)?.hideToolbar == true
     }
 
+    /**
+     * Returns whether word replacement should use selection and commit instead of composition.
+     */
+    fun shouldUseSelectionForWordReplacement(packageName: String?): Boolean {
+        if (packageName == null) return false
+        val quirk = getEffectiveQuirk(packageName)
+        if (quirk?.useSelectionForWordReplacement == true) return true
+        return BrowserDetector.isChromiumBrowser(packageName)
+    }
+
     fun getUserQuirk(packageName: String): AppQuirk? = userQuirks[packageName]
 
     fun getAllUserQuirks(): Map<String, AppQuirk> = HashMap(userQuirks)

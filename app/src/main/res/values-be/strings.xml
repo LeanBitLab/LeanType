@@ -1653,4 +1653,7 @@
     <string name="app_quirks_always_show_suggestions">Заўсёды паказваць прапановы</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігнараваць запыты гэтай праграмы аб адключэнні прапаноў</string>
     <string name="app_quirks_badge_always_suggestions">Заўсёды прапановы</string>
+    <string name="app_quirks_use_selection_replacement">Замена слоў на аснове падбору</string>
+    <string name="app_quirks_use_selection_replacement_summary">Замяняйце словы выбарам і фіксацыяй, а не складаннем прамежкаў (выпраўлена Omnibox Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">Выбар Замяніць</string>
 </resources>

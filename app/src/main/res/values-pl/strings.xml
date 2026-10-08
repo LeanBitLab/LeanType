@@ -1703,4 +1703,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="app_quirks_always_show_suggestions">Zawsze pokazuj sugestie</string>
     <string name="app_quirks_always_show_suggestions_summary">Zignoruj ​​prośby tej aplikacji o wyłączenie sugestii</string>
     <string name="app_quirks_badge_always_suggestions">Zawsze sugestie</string>
+    <string name="app_quirks_use_selection_replacement">Zamiana słów na podstawie wyboru</string>
+    <string name="app_quirks_use_selection_replacement_summary">Zamień słowa, wybierając i zatwierdzając zamiast tworzyć zakresy (naprawia Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Wybór Zamień</string>
 </resources>

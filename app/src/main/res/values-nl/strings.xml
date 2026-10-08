@@ -1701,4 +1701,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="app_quirks_always_show_suggestions">Laat altijd suggesties zien</string>
     <string name="app_quirks_always_show_suggestions_summary">Negeer de verzoeken van deze app om suggesties uit te schakelen</string>
     <string name="app_quirks_badge_always_suggestions">Altijd suggesties</string>
+    <string name="app_quirks_use_selection_replacement">Op selectie gebaseerde woordvervanging</string>
+    <string name="app_quirks_use_selection_replacement_summary">Vervang woorden door te selecteren en vast te leggen in plaats van reeksen samen te stellen (probleem Chrome Omnibox opgelost)</string>
+    <string name="app_quirks_badge_selection_replacement">Selectie Vervangen</string>
 </resources>

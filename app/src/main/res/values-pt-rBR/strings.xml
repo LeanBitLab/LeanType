@@ -1660,4 +1660,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="app_quirks_always_show_suggestions">Sempre mostrar sugestões</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignore as solicitações deste aplicativo para desativar sugestões</string>
     <string name="app_quirks_badge_always_suggestions">Sempre sugestões</string>
+    <string name="app_quirks_use_selection_replacement">Substituição de palavras baseada em seleção</string>
+    <string name="app_quirks_use_selection_replacement_summary">Substitua palavras selecionando e confirmando em vez de compor intervalos (corrige o Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Seleção Substituir</string>
 </resources>

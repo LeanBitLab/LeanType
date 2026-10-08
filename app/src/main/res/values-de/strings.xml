@@ -1663,4 +1663,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="app_quirks_always_show_suggestions">Vorschläge immer anzeigen</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorieren Sie die Aufforderungen dieser App, Vorschläge zu deaktivieren</string>
     <string name="app_quirks_badge_always_suggestions">Immer Vorschläge</string>
+    <string name="app_quirks_use_selection_replacement">Auswahlbasierte Wortersetzung</string>
+    <string name="app_quirks_use_selection_replacement_summary">Ersetzen Sie Wörter durch Auswählen und Festschreiben, anstatt Zeitspannen zu verfassen (behebt Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Auswahl Ersetzen</string>
 </resources>

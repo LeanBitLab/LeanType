@@ -1726,4 +1726,7 @@
     <string name="app_quirks_always_show_suggestions">Всегда показывать предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорируйте запросы этого приложения, чтобы отключить предложения.</string>
     <string name="app_quirks_badge_always_suggestions">Всегда предложения</string>
+    <string name="app_quirks_use_selection_replacement">Замена слов на основе выбора</string>
+    <string name="app_quirks_use_selection_replacement_summary">Заменяйте слова, выбирая и фиксируя вместо составления промежутков (исправляет Chrome Omnibox).</string>
+    <string name="app_quirks_badge_selection_replacement">Выбор Заменить</string>
 </resources>

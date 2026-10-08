@@ -1652,4 +1652,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="app_quirks_always_show_suggestions">Mostrar siempre sugerencias</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignora las solicitudes de esta aplicación para desactivar las sugerencias</string>
     <string name="app_quirks_badge_always_suggestions">Siempre sugerencias</string>
+    <string name="app_quirks_use_selection_replacement">Reemplazo de palabras basado en selección</string>
+    <string name="app_quirks_use_selection_replacement_summary">Reemplazar palabras seleccionando y confirmando en lugar de componer intervalos (corrige Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Selección Reemplazar</string>
 </resources>

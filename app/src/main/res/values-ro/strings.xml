@@ -1648,4 +1648,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="app_quirks_always_show_suggestions">Afișați întotdeauna sugestii</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorați solicitările acestei aplicații pentru a dezactiva sugestiile</string>
     <string name="app_quirks_badge_always_suggestions">Întotdeauna sugestii</string>
+    <string name="app_quirks_use_selection_replacement">Înlocuirea cuvintelor pe bază de selecție</string>
+    <string name="app_quirks_use_selection_replacement_summary">Înlocuiți cuvintele selectând și comitând în loc să compuneți intervale (remediază caseta polivalentă Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">Selecție Înlocuiește</string>
 </resources>

@@ -1621,4 +1621,7 @@
     <string name="app_quirks_always_show_suggestions">Завжди показувати пропозиції</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігноруйте запити цієї програми щодо вимкнення пропозицій</string>
     <string name="app_quirks_badge_always_suggestions">Завжди пропозиції</string>
+    <string name="app_quirks_use_selection_replacement">Заміна слів на основі підбору</string>
+    <string name="app_quirks_use_selection_replacement_summary">Замінюйте слова вибором і фіксацією замість створення проміжків (виправлено універсальне вікно пошуку Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">Вибір Замінити</string>
 </resources>

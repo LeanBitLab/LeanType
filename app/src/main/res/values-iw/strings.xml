@@ -1668,4 +1668,7 @@
     <string name="app_quirks_always_show_suggestions">הצג תמיד הצעות</string>
     <string name="app_quirks_always_show_suggestions_summary">התעלם מהבקשות של אפליקציה זו להשבית הצעות</string>
     <string name="app_quirks_badge_always_suggestions">תמיד הצעות</string>
+    <string name="app_quirks_use_selection_replacement">החלפת מילים מבוססת בחירה</string>
+    <string name="app_quirks_use_selection_replacement_summary">החלף מילים על ידי בחירה והתחייבות במקום חיבור טווחים (מתקן את סרגל הכתובות של Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">בחירה החלפה</string>
 </resources>

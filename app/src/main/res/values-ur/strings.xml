@@ -1710,4 +1710,7 @@
     <string name="app_quirks_always_show_suggestions">ہمیشہ تجاویز دکھائیں۔</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاویز کو غیر فعال کرنے کے لیے اس ایپ کی درخواستوں کو نظر انداز کریں۔</string>
     <string name="app_quirks_badge_always_suggestions">ہمیشہ تجاویز</string>
+    <string name="app_quirks_use_selection_replacement">انتخاب پر مبنی لفظ کی تبدیلی</string>
+    <string name="app_quirks_use_selection_replacement_summary">اسپین کمپوزنگ کے بجائے منتخب کرکے اور کمٹ کرکے الفاظ کو تبدیل کریں (کروم اومنی باکس کو ٹھیک کرتا ہے)</string>
+    <string name="app_quirks_badge_selection_replacement">انتخاب بدلیں۔</string>
 </resources>

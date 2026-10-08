@@ -1701,4 +1701,7 @@
     <string name="app_quirks_always_show_suggestions">Винаги показвайте предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорирайте заявките на това приложение за деактивиране на предложенията</string>
     <string name="app_quirks_badge_always_suggestions">Винаги предложения</string>
+    <string name="app_quirks_use_selection_replacement">Замяна на думи въз основа на избор</string>
+    <string name="app_quirks_use_selection_replacement_summary">Замяна на думи чрез избиране и ангажиране вместо съставяне на интервали (коригира Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Избор Замяна</string>
 </resources>

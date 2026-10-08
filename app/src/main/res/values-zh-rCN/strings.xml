@@ -1667,4 +1667,7 @@
     <string name="app_quirks_always_show_suggestions">始终显示建议</string>
     <string name="app_quirks_always_show_suggestions_summary">忽略此应用程序的禁用建议的请求</string>
     <string name="app_quirks_badge_always_suggestions">总是建议</string>
+    <string name="app_quirks_use_selection_replacement">基于选择的单词替换</string>
+    <string name="app_quirks_use_selection_replacement_summary">通过选择和提交而不是组合跨度来替换单词（修复了 Chrome 多功能框）</string>
+    <string name="app_quirks_badge_selection_replacement">选择替换</string>
 </resources>

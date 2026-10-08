@@ -1641,4 +1641,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="app_quirks_always_show_suggestions">Uvijek prikaži prijedloge</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorirajte zahtjeve ove aplikacije za onemogućavanje prijedloga</string>
     <string name="app_quirks_badge_always_suggestions">Uvijek prijedlozi</string>
+    <string name="app_quirks_use_selection_replacement">Zamjena riječi na temelju odabira</string>
+    <string name="app_quirks_use_selection_replacement_summary">Zamijenite riječi odabirom i uvrštavanjem umjesto sastavljanjem raspona (popravlja višenamjenski okvir Chromea)</string>
+    <string name="app_quirks_badge_selection_replacement">Odabir Zamijeni</string>
 </resources>

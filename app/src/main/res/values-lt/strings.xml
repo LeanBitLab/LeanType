@@ -1649,4 +1649,7 @@ Ar norite atnaujinti?</string>
     <string name="app_quirks_always_show_suggestions">Visada rodyti pasiūlymus</string>
     <string name="app_quirks_always_show_suggestions_summary">Nepaisykite šios programos užklausų išjungti pasiūlymus</string>
     <string name="app_quirks_badge_always_suggestions">Visada Pasiūlymai</string>
+    <string name="app_quirks_use_selection_replacement">Pasirinkimu pagrįstas žodžių keitimas</string>
+    <string name="app_quirks_use_selection_replacement_summary">Pakeiskite žodžius pasirinkdami ir įsipareigodami, o ne kurdami intervalus (pataiso „Chrome Omnibox“)</string>
+    <string name="app_quirks_badge_selection_replacement">Pasirinkimas Pakeisti</string>
 </resources>

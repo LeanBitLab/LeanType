@@ -1648,4 +1648,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="app_quirks_always_show_suggestions">Näita alati soovitusi</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignoreeri selle rakenduse taotlusi soovituste keelamiseks</string>
     <string name="app_quirks_badge_always_suggestions">Alati soovitused</string>
+    <string name="app_quirks_use_selection_replacement">Valikupõhine sõnaasendus</string>
+    <string name="app_quirks_use_selection_replacement_summary">Asendage sõnu, valides ja sidudes vahemike koostamise asemel (parandab Chrome\'i omnikastike)</string>
+    <string name="app_quirks_badge_selection_replacement">Valik Asenda</string>
 </resources>

@@ -1616,4 +1616,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="app_quirks_always_show_suggestions">Selalu tampilkan saran</string>
     <string name="app_quirks_always_show_suggestions_summary">Abaikan permintaan aplikasi ini untuk menonaktifkan saran</string>
     <string name="app_quirks_badge_always_suggestions">Selalu Saran</string>
+    <string name="app_quirks_use_selection_replacement">Penggantian kata berdasarkan pilihan</string>
+    <string name="app_quirks_use_selection_replacement_summary">Ganti kata dengan memilih dan melakukan alih-alih membuat rentang (memperbaiki Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Seleksi Ganti</string>
 </resources>

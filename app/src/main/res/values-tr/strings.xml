@@ -1649,4 +1649,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="app_quirks_always_show_suggestions">Önerileri her zaman göster</string>
     <string name="app_quirks_always_show_suggestions_summary">Bu uygulamanın önerileri devre dışı bırakma isteklerini göz ardı edin</string>
     <string name="app_quirks_badge_always_suggestions">Her zaman Öneriler</string>
+    <string name="app_quirks_use_selection_replacement">Seçime dayalı sözcük değiştirme</string>
+    <string name="app_quirks_use_selection_replacement_summary">Aralıkları oluşturmak yerine seçerek ve taahhüt ederek kelimeleri değiştirin (Chrome Çok Amaçlı Adres Çubuğu düzeltildi)</string>
+    <string name="app_quirks_badge_selection_replacement">Seçimi Değiştir</string>
 </resources>

@@ -1645,4 +1645,7 @@
     <string name="app_quirks_always_show_suggestions">हमेशा सुझाव दिखाएं</string>
     <string name="app_quirks_always_show_suggestions_summary">सुझावों को अक्षम करने के लिए इस ऐप के अनुरोधों पर ध्यान न दें</string>
     <string name="app_quirks_badge_always_suggestions">हमेशा सुझाव</string>
+    <string name="app_quirks_use_selection_replacement">चयन-आधारित शब्द प्रतिस्थापन</string>
+    <string name="app_quirks_use_selection_replacement_summary">स्पैन लिखने के बजाय चयन और कमिट करके शब्दों को बदलें (क्रोम ऑम्निबॉक्स को ठीक करता है)</string>
+    <string name="app_quirks_badge_selection_replacement">चयन बदलें</string>
 </resources>

@@ -1715,4 +1715,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="app_quirks_always_show_suggestions">Toujours afficher les suggestions</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorer les demandes de cette application pour désactiver les suggestions</string>
     <string name="app_quirks_badge_always_suggestions">Toujours des suggestions</string>
+    <string name="app_quirks_use_selection_replacement">Remplacement de mots basé sur la sélection</string>
+    <string name="app_quirks_use_selection_replacement_summary">Remplacez les mots en sélectionnant et en validant au lieu de composer des spans (corrige Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Sélection Remplacer</string>
 </resources>

@@ -1841,6 +1841,9 @@ New dictionary:
     <string name="app_quirks_always_show_suggestions">Always show suggestions</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignore this app’s requests to disable suggestions</string>
     <string name="app_quirks_badge_always_suggestions">Always Suggestions</string>
+    <string name="app_quirks_use_selection_replacement">Selection-based word replacement</string>
+    <string name="app_quirks_use_selection_replacement_summary">Replace words by selecting and committing instead of composing spans (fixes Chrome Omnibox)</string>
+    <string name="app_quirks_badge_selection_replacement">Selection Replace</string>
 
     <!-- Emoticon sub-category names -->
     <string name="emoticon_group_classic">Classic</string>

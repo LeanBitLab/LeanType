@@ -1719,4 +1719,7 @@
     <string name="app_quirks_always_show_suggestions">Να εμφανίζονται πάντα προτάσεις</string>
     <string name="app_quirks_always_show_suggestions_summary">Αγνοήστε τα αιτήματα αυτής της εφαρμογής για απενεργοποίηση προτάσεων</string>
     <string name="app_quirks_badge_always_suggestions">Πάντα Προτάσεις</string>
+    <string name="app_quirks_use_selection_replacement">Αντικατάσταση λέξης βάσει επιλογής</string>
+    <string name="app_quirks_use_selection_replacement_summary">Αντικαταστήστε λέξεις επιλέγοντας και δεσμεύοντας αντί να συνθέτετε διαστήματα (διορθώνει το Κύριο πλαίσιο του Chrome)</string>
+    <string name="app_quirks_badge_selection_replacement">Επιλογή Αντικατάσταση</string>
 </resources>

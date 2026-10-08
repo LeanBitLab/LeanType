@@ -562,6 +562,52 @@ class InputLogicTest {
         assertEquals("hello world there", getText())
     }
 
+    @Test fun testPickSuggestionOnWordCursor_chromiumBrowser_startOfWord() {
+        reset()
+        val ei = EditorInfo().apply {
+            packageName = "com.android.chrome"
+            inputType = InputType.TYPE_CLASS_TEXT
+        }
+        editorInfoOverride = ei
+        try {
+            setText("hello wrld there")
+            setCursorPosition(6)
+            pickSuggestion("world")
+            assertEquals("hello world there", getText())
+        } finally {
+            editorInfoOverride = null
+        }
+    }
+
+    @Test fun testPickSuggestionOnWordCursor_chromiumBrowser_endOfWord() {
+        reset()
+        val ei = EditorInfo().apply {
+            packageName = "com.android.chrome"
+            inputType = InputType.TYPE_CLASS_TEXT
+        }
+        editorInfoOverride = ei
+        try {
+            setText("hello wrld there")
+            setCursorPosition(10)
+            pickSuggestion("world")
+            assertEquals("hello world there", getText())
+        } finally {
+            editorInfoOverride = null
+        }
+    }
+
+    @Test fun testBrowserDetectorAndQuirk_geckoVsChromium() {
+        assertTrue(helium314.keyboard.compat.BrowserDetector.isChromiumBrowser("com.android.chrome"))
+        assertTrue(helium314.keyboard.compat.BrowserDetector.isChromiumBrowser("com.brave.browser"))
+        assertTrue(helium314.keyboard.compat.BrowserDetector.isChromiumBrowser("com.microsoft.emmx"))
+        assertTrue(helium314.keyboard.compat.BrowserDetector.isGeckoBrowser("org.mozilla.firefox"))
+        assertTrue(helium314.keyboard.compat.BrowserDetector.isGeckoBrowser("org.mozilla.fenix"))
+        assertFalse(helium314.keyboard.compat.BrowserDetector.isChromiumBrowser("org.mozilla.firefox"))
+        assertTrue(AppQuirksManager.shouldUseSelectionForWordReplacement("com.android.chrome"))
+        assertFalse(AppQuirksManager.shouldUseSelectionForWordReplacement("org.mozilla.firefox"))
+        assertFalse(AppQuirksManager.shouldUseSelectionForWordReplacement("com.some.normal.app"))
+    }
+
     // todo: make it work, but it might not be that simple because adding is done in combiner
     //  https://github.com/Helium314/HeliBoard/issues/214
     @Ignore("Known issue: https://github.com/Helium314/HeliBoard/issues/214")

@@ -1719,4 +1719,7 @@
     <string name="app_quirks_always_show_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ കാണിക്കുക</string>
     <string name="app_quirks_always_show_suggestions_summary">നിർദ്ദേശങ്ങൾ പ്രവർത്തനരഹിതമാക്കാനുള്ള ഈ ആപ്പിൻ്റെ അഭ്യർത്ഥനകൾ അവഗണിക്കുക</string>
     <string name="app_quirks_badge_always_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ</string>
+    <string name="app_quirks_use_selection_replacement">തിരഞ്ഞെടുക്കൽ അടിസ്ഥാനമാക്കിയുള്ള വാക്ക് മാറ്റിസ്ഥാപിക്കൽ</string>
+    <string name="app_quirks_use_selection_replacement_summary">സ്‌പാനുകൾ രചിക്കുന്നതിനുപകരം തിരഞ്ഞെടുത്ത് കമ്മിറ്റ് ചെയ്‌ത് വാക്കുകൾ മാറ്റിസ്ഥാപിക്കുക (Chrome ഓമ്‌നിബോക്‌സ് ശരിയാക്കുന്നു)</string>
+    <string name="app_quirks_badge_selection_replacement">തിരഞ്ഞെടുക്കൽ മാറ്റിസ്ഥാപിക്കുക</string>
 </resources>

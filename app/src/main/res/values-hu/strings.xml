@@ -1657,4 +1657,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="app_quirks_always_show_suggestions">Mindig mutasson javaslatokat</string>
     <string name="app_quirks_always_show_suggestions_summary">Hagyja figyelmen kívül az alkalmazás kéréseit a javaslatok letiltásához</string>
     <string name="app_quirks_badge_always_suggestions">Mindig javaslatok</string>
+    <string name="app_quirks_use_selection_replacement">Kijelölés alapú szócsere</string>
+    <string name="app_quirks_use_selection_replacement_summary">Cserélje ki a szavakat kijelöléssel és véglegesítéssel a tartományok írása helyett (javítja a Chrome Omniboxot)</string>
+    <string name="app_quirks_badge_selection_replacement">Kiválasztás Csere</string>
 </resources>
