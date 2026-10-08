@@ -1652,4 +1652,19 @@ Ar norite atnaujinti?</string>
     <string name="app_quirks_use_selection_replacement">Pasirinkimu pagrįstas žodžių keitimas</string>
     <string name="app_quirks_use_selection_replacement_summary">Pakeiskite žodžius pasirinkdami ir įsipareigodami, o ne kurdami intervalus (pataiso „Chrome Omnibox“)</string>
     <string name="app_quirks_badge_selection_replacement">Pasirinkimas Pakeisti</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Ieškoti GIF</string>
+    <string name="gif_no_results">Jokių rezultatų</string>
+    <string name="gif_error_plugin_not_installed">GIF papildinys neįdiegtas</string>
+    <string name="gif_error_untrusted">GIF papildinio parašas nepatikimas</string>
+    <string name="gif_error_host_too_old">Atnaujinkite klaviatūrą</string>
+    <string name="gif_error_plugin_too_old">Atnaujinkite GIF papildinį</string>
+    <string name="gif_error_unavailable">GIF įskiepis nereaguoja</string>
+    <string name="gif_error_not_configured">Nustatymuose pridėkite savo API raktą</string>
+    <string name="gif_error_rate_limited">Įvertinimas ribotas, netrukus bandykite dar kartą</string>
+    <string name="gif_error_timeout">Baigėsi laikas</string>
+    <string name="gif_error_busy">GIF papildinys užimtas, bandykite dar kartą</string>
+    <string name="gif_error_generic">Nepavyko įkelti GIF</string>
+    <string name="gif_insertion_unsupported">Programa nepalaiko GIF įterpimo</string>
+    <string name="gif_install_plugin">Įdiekite GIF papildinį</string>
 </resources>

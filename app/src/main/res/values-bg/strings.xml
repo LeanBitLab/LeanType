@@ -1704,4 +1704,19 @@
     <string name="app_quirks_use_selection_replacement">Замяна на думи въз основа на избор</string>
     <string name="app_quirks_use_selection_replacement_summary">Замяна на думи чрез избиране и ангажиране вместо съставяне на интервали (коригира Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Избор Замяна</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Търсете GIF файлове</string>
+    <string name="gif_no_results">Няма резултати</string>
+    <string name="gif_error_plugin_not_installed">Приставката за GIF не е инсталирана</string>
+    <string name="gif_error_untrusted">Подписът на приставката GIF не е надежден</string>
+    <string name="gif_error_host_too_old">Актуализирайте клавиатурата</string>
+    <string name="gif_error_plugin_too_old">Актуализирайте приставката за GIF</string>
+    <string name="gif_error_unavailable">GIF плъгинът не отговаря</string>
+    <string name="gif_error_not_configured">Добавете вашия API ключ в настройките</string>
+    <string name="gif_error_rate_limited">Скоростта е ограничена, опитайте отново след малко</string>
+    <string name="gif_error_timeout">Времето изтече</string>
+    <string name="gif_error_busy">Приставката GIF е заета, опитайте отново</string>
+    <string name="gif_error_generic">GIF файловете не можаха да се заредят</string>
+    <string name="gif_insertion_unsupported">Приложението не поддържа вмъкване на GIF</string>
+    <string name="gif_install_plugin">Инсталирайте GIF плъгин</string>
 </resources>

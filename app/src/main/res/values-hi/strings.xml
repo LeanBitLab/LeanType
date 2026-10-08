@@ -1648,4 +1648,19 @@
     <string name="app_quirks_use_selection_replacement">चयन-आधारित शब्द प्रतिस्थापन</string>
     <string name="app_quirks_use_selection_replacement_summary">स्पैन लिखने के बजाय चयन और कमिट करके शब्दों को बदलें (क्रोम ऑम्निबॉक्स को ठीक करता है)</string>
     <string name="app_quirks_badge_selection_replacement">चयन बदलें</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">GIF खोजें</string>
+    <string name="gif_no_results">कोई परिणाम नहीं</string>
+    <string name="gif_error_plugin_not_installed">GIF प्लगइन स्थापित नहीं है</string>
+    <string name="gif_error_untrusted">GIF प्लगइन हस्ताक्षर पर भरोसा नहीं किया गया</string>
+    <string name="gif_error_host_too_old">कीबोर्ड अपडेट करें</string>
+    <string name="gif_error_plugin_too_old">GIF प्लगइन को अपडेट करें</string>
+    <string name="gif_error_unavailable">GIF प्लगइन प्रतिसाद नहीं दे रहा है</string>
+    <string name="gif_error_not_configured">सेटिंग्स में अपनी एपीआई कुंजी जोड़ें</string>
+    <string name="gif_error_rate_limited">दर सीमित है, शीघ्र ही पुनः प्रयास करें</string>
+    <string name="gif_error_timeout">समय समााप्त</string>
+    <string name="gif_error_busy">GIF प्लगइन व्यस्त है, पुनः प्रयास करें</string>
+    <string name="gif_error_generic">GIFs लोड नहीं हो सका</string>
+    <string name="gif_insertion_unsupported">ऐप GIF इंसर्शन का समर्थन नहीं करता</string>
+    <string name="gif_install_plugin">GIF प्लगइन इंस्टॉल करें</string>
 </resources>

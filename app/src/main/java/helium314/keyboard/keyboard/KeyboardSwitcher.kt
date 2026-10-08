@@ -58,6 +58,7 @@ import helium314.keyboard.latin.utils.ScreenProfileProvider
 import helium314.keyboard.latin.utils.ScriptUtils
 import helium314.keyboard.latin.utils.SubtypeUtilsAdditional
 import helium314.keyboard.latin.utils.ToolbarMode
+import helium314.keyboard.latin.utils.InputTypeUtils
 import helium314.keyboard.latin.utils.prefs
 
 private val VIEW_SWITCH_ENTER_INTERPOLATOR = PathInterpolator(0.05f, 0.7f, 0.1f, 1.0f)
@@ -81,6 +82,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     private var mOcrCameraView: OcrCameraView? = null
     private var mOcrResultView: OcrResultView? = null
     private var mTouchpadView: TouchpadView? = null
+    private var mGifPickerView: helium314.keyboard.latin.gif.GifPickerView? = null
+    var editorSession: Long = 1L
+        private set
     private var mFakeToastView: TextView? = null
     private var mLatinIME: LatinIME? = null
     private var mRichImm: RichInputMethodManager? = null
@@ -256,7 +260,52 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     override fun setAlphabetKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setAlphabetKeyboard")
+        hideGifPicker()
         setKeyboard(KeyboardId.ELEMENT_ALPHABET, KeyboardSwitchState.OTHER)
+    }
+
+    fun hideGifPicker() {
+        mGifPickerView?.let {
+            if (it.isShown || it.visibility == View.VISIBLE) {
+                it.close()
+            }
+            it.visibility = View.GONE
+        }
+        val stripVisibility = if (Settings.getValues().mToolbarMode == ToolbarMode.HIDDEN) View.GONE else View.VISIBLE
+        mStripContainer?.visibility = stripVisibility
+    }
+
+    fun setGifPickerKeyboard() {
+        val latinIme = mLatinIME ?: return
+        if (InputTypeUtils.isAnyPasswordInputType(latinIme.currentInputEditorInfo?.inputType ?: 0)) return
+        if (latinIme.inputLogic.isComposingWord) {
+            latinIme.inputLogic.connection.setComposingText("", 1)
+        }
+        latinIme.inputLogic.resetComposingState(true)
+        latinIme.inputLogic.connection.finishComposingText()
+        setKeyboard(KeyboardId.ELEMENT_ALPHABET, KeyboardSwitchState.OTHER)
+        mStripContainer?.visibility = View.GONE
+        mGifPickerView?.let { v ->
+            v.targetProvider = { latinIme.currentInputConnection to latinIme.currentInputEditorInfo }
+            v.sessionProvider = { editorSession }
+            v.onCloseRequested = { setAlphabetKeyboard() }
+            v.visibility = View.VISIBLE
+            v.open()
+        }
+    }
+
+    val isGifPickerShowing: Boolean
+        get() {
+            val picker = mGifPickerView ?: return false
+            return picker.isShown || picker.visibility == View.VISIBLE
+        }
+
+    fun onGifSearchKey(code: Int): Boolean = isGifPickerShowing && mGifPickerView?.onHostKey(code) == true
+
+    fun onGifSearchText(text: String): Boolean = isGifPickerShowing && mGifPickerView?.onHostText(text) == true
+
+    fun bumpEditorSession() {
+        editorSession++
     }
 
     override fun setAlphabetManualShiftedKeyboard() {
@@ -411,6 +460,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     override fun setEmojiKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setEmojiKeyboard")
+        hideGifPicker()
         mLatinIME?.let { ime ->
             ime.inputLogic.commitTyped(Settings.getValues(), LastComposedWord.NOT_A_SEPARATOR)
         }
@@ -460,6 +510,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     override fun setClipboardKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setClipboardKeyboard")
+        hideGifPicker()
         mLatinIME?.let { ime ->
             ime.inputLogic.commitTyped(Settings.getValues(), LastComposedWord.NOT_A_SEPARATOR)
         }
@@ -516,6 +567,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun setHandwritingKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setHandwritingKeyboard")
+        hideGifPicker()
         mLatinIME?.let { ime ->
             ime.inputLogic.commitTyped(Settings.getValues(), LastComposedWord.NOT_A_SEPARATOR)
         }
@@ -557,6 +609,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun showOcrCamera() {
         if (DEBUG_ACTION) Log.d(TAG, "showOcrCamera")
+        hideGifPicker()
         PointerTracker.sPersistentTouchpadModeActive = false
         mTouchpadView?.visibility = View.GONE
         KeyboardActionListenerImpl.sPersistentTextEditModeActive = false
@@ -1049,6 +1102,10 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     val stripContainer: LinearLayout? get() = mStripContainer
 
     fun updateStripVisibility(settingsValues: SettingsValues = Settings.getValues()) {
+        if (isGifPickerShowing) {
+            mStripContainer?.visibility = View.GONE
+            return
+        }
         mStripContainer?.visibility = if (settingsValues.mToolbarMode == ToolbarMode.HIDDEN) View.GONE else View.VISIBLE
     }
 
@@ -1093,6 +1150,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mHandwritingView = inputView.findViewById(R.id.handwriting_view)
         mOcrCameraView = inputView.findViewById(R.id.ocr_camera_view)
         mOcrResultView = inputView.findViewById(R.id.ocr_result_view)
+        mGifPickerView = inputView.findViewById(R.id.gif_picker_view)
         mFakeToastView = inputView.findViewById(R.id.fakeToast)
 
         mOcrCameraView?.setListener(object : OcrCameraView.OcrViewListener {

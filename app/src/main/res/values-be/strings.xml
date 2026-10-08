@@ -1656,4 +1656,19 @@
     <string name="app_quirks_use_selection_replacement">Замена слоў на аснове падбору</string>
     <string name="app_quirks_use_selection_replacement_summary">Замяняйце словы выбарам і фіксацыяй, а не складаннем прамежкаў (выпраўлена Omnibox Chrome)</string>
     <string name="app_quirks_badge_selection_replacement">Выбар Замяніць</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Пошук GIF-файлаў</string>
+    <string name="gif_no_results">Няма вынікаў</string>
+    <string name="gif_error_plugin_not_installed">Убудова GIF не ўстаноўлена</string>
+    <string name="gif_error_untrusted">Подпіс плагіна GIF не надзейны</string>
+    <string name="gif_error_host_too_old">Абнавіць клавіятуру</string>
+    <string name="gif_error_plugin_too_old">Абнавіце плагін GIF</string>
+    <string name="gif_error_unavailable">Убудова GIF не адказвае</string>
+    <string name="gif_error_not_configured">Дадайце ключ API ў наладах</string>
+    <string name="gif_error_rate_limited">Ацэнка абмежавана, паўтарыце спробу ў бліжэйшы час</string>
+    <string name="gif_error_timeout">Час чакання скончыўся</string>
+    <string name="gif_error_busy">Плагін GIF заняты, паўтарыце спробу</string>
+    <string name="gif_error_generic">Не ўдалося загрузіць GIF-файлы</string>
+    <string name="gif_insertion_unsupported">Праграма не падтрымлівае ўстаўку GIF</string>
+    <string name="gif_install_plugin">Усталяваць плагін GIF</string>
 </resources>

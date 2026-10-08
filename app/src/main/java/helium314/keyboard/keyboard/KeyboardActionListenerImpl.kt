@@ -237,6 +237,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 }
                 return
             }
+            KeyCode.GIF -> {
+                if (keyboardSwitcher.isGifPickerShowing) {
+                    keyboardSwitcher.setAlphabetKeyboard()
+                } else {
+                    keyboardSwitcher.setGifPickerKeyboard()
+                }
+                return
+            }
             KeyCode.TOGGLE_AUTOCORRECT -> return settings.toggleAutoCorrect()
             KeyCode.TOGGLE_AUTO_CAP, KeyCode.TOGGLE_FORCE_AUTO_CAPS -> {
                 if (primaryCode == KeyCode.TOGGLE_AUTO_CAP) settings.toggleAutoCapitalization()

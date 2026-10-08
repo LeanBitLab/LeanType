@@ -1652,4 +1652,19 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="app_quirks_use_selection_replacement">Seçime dayalı sözcük değiştirme</string>
     <string name="app_quirks_use_selection_replacement_summary">Aralıkları oluşturmak yerine seçerek ve taahhüt ederek kelimeleri değiştirin (Chrome Çok Amaçlı Adres Çubuğu düzeltildi)</string>
     <string name="app_quirks_badge_selection_replacement">Seçimi Değiştir</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">GIF\'lerde ara</string>
+    <string name="gif_no_results">Sonuç yok</string>
+    <string name="gif_error_plugin_not_installed">GIF eklentisi yüklü değil</string>
+    <string name="gif_error_untrusted">GIF eklenti imzasına güvenilmiyor</string>
+    <string name="gif_error_host_too_old">Klavyeyi güncelle</string>
+    <string name="gif_error_plugin_too_old">GIF eklentisini güncelleyin</string>
+    <string name="gif_error_unavailable">GIF eklentisi yanıt vermiyor</string>
+    <string name="gif_error_not_configured">API anahtarınızı ayarlara ekleyin</string>
+    <string name="gif_error_rate_limited">Hız sınırlı, kısa süre sonra tekrar deneyin</string>
+    <string name="gif_error_timeout">Zaman aşımına uğradı</string>
+    <string name="gif_error_busy">GIF eklentisi meşgul, tekrar deneyin</string>
+    <string name="gif_error_generic">GIF\'ler yüklenemedi</string>
+    <string name="gif_insertion_unsupported">Uygulama GIF eklemeyi desteklemiyor</string>
+    <string name="gif_install_plugin">GIF eklentisini yükleyin</string>
 </resources>

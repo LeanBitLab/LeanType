@@ -72,6 +72,7 @@ import helium314.keyboard.latin.utils.getCodeForToolbarKey
 import helium314.keyboard.latin.utils.getCodeForToolbarKeyLongClick
 import helium314.keyboard.latin.utils.getEnabledToolbarKeys
 import helium314.keyboard.latin.utils.getPinnedToolbarKeys
+import helium314.keyboard.latin.utils.InputTypeUtils
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.removeFirst
 import helium314.keyboard.latin.utils.removePinnedKey
@@ -1587,6 +1588,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val mToolbarMode = Settings.getValues().mToolbarMode
         val isSplitToolbar = Settings.getValues().mSplitToolbar
         
+        val isPassword = InputTypeUtils.isAnyPasswordInputType(KeyboardSwitcher.getInstance().latinIME?.currentInputEditorInfo?.inputType ?: 0)
         // Toolbar keys setup
         // Always populate toolbar keys if mode allows, visibility handled in updateKeys
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS || mToolbarMode == ToolbarMode.EXPANDABLE) {
@@ -1598,7 +1600,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             } else {
                 getEnabledToolbarKeys(context.prefs()).filterNot { it in pinnedKeysList }
             }
-            for (key in keysToRender) {                val button = createToolbarKey(context, key)
+            for (key in keysToRender) {
+                if (key == ToolbarKey.GIF && isPassword) continue
+                val button = createToolbarKey(context, key)
                 button.layoutParams = toolbarKeyLayoutParams
                 setupKey(button, colors)
                 toolbar.addView(button)
@@ -1608,6 +1612,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Only draw pinned keys if not in split mode
         if (!isSplitToolbar && !Settings.getValues().mSuggestionStripHiddenPerUserSettings) {
             for (pinnedKey in pinnedKeysList) {
+                if (pinnedKey == ToolbarKey.GIF && isPassword) continue
                 val button = createToolbarKey(context, pinnedKey)
                 button.layoutParams = toolbarKeyLayoutParams
                 setupKey(button, colors)

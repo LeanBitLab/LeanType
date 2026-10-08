@@ -1619,4 +1619,19 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="app_quirks_use_selection_replacement">Penggantian kata berdasarkan pilihan</string>
     <string name="app_quirks_use_selection_replacement_summary">Ganti kata dengan memilih dan melakukan alih-alih membuat rentang (memperbaiki Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Seleksi Ganti</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Telusuri GIF</string>
+    <string name="gif_no_results">Tidak ada hasil</string>
+    <string name="gif_error_plugin_not_installed">Plugin GIF tidak diinstal</string>
+    <string name="gif_error_untrusted">Tanda tangan plugin GIF tidak dipercaya</string>
+    <string name="gif_error_host_too_old">Perbarui papan ketik</string>
+    <string name="gif_error_plugin_too_old">Perbarui plugin GIF</string>
+    <string name="gif_error_unavailable">Plugin GIF tidak merespons</string>
+    <string name="gif_error_not_configured">Tambahkan kunci API Anda di pengaturan</string>
+    <string name="gif_error_rate_limited">Tarif terbatas, coba lagi sebentar lagi</string>
+    <string name="gif_error_timeout">Waktu habis</string>
+    <string name="gif_error_busy">Plugin GIF sibuk, coba lagi</string>
+    <string name="gif_error_generic">Tidak dapat memuat GIF</string>
+    <string name="gif_insertion_unsupported">Aplikasi tidak mendukung penyisipan GIF</string>
+    <string name="gif_install_plugin">Instal plugin GIF</string>
 </resources>

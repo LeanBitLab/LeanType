@@ -1651,4 +1651,19 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="app_quirks_use_selection_replacement">Valikupõhine sõnaasendus</string>
     <string name="app_quirks_use_selection_replacement_summary">Asendage sõnu, valides ja sidudes vahemike koostamise asemel (parandab Chrome\'i omnikastike)</string>
     <string name="app_quirks_badge_selection_replacement">Valik Asenda</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Otsige GIF-e</string>
+    <string name="gif_no_results">Tulemusi pole</string>
+    <string name="gif_error_plugin_not_installed">GIF-pluginat pole installitud</string>
+    <string name="gif_error_untrusted">GIF-i pistikprogrammi allkiri pole usaldusväärne</string>
+    <string name="gif_error_host_too_old">Uuenda klaviatuuri</string>
+    <string name="gif_error_plugin_too_old">Värskendage GIF-i pistikprogrammi</string>
+    <string name="gif_error_unavailable">GIF-plugin ei reageeri</string>
+    <string name="gif_error_not_configured">Lisage seadetes oma API võti</string>
+    <string name="gif_error_rate_limited">Hind piiratud, proovige varsti uuesti</string>
+    <string name="gif_error_timeout">Aeg läbi</string>
+    <string name="gif_error_busy">GIF-i pistikprogramm on hõivatud, proovige uuesti</string>
+    <string name="gif_error_generic">GIF-e ei saanud laadida</string>
+    <string name="gif_insertion_unsupported">Rakendus ei toeta GIF-i sisestamist</string>
+    <string name="gif_install_plugin">Installige GIF-i pistikprogramm</string>
 </resources>

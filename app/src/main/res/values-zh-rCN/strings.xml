@@ -1670,4 +1670,19 @@
     <string name="app_quirks_use_selection_replacement">基于选择的单词替换</string>
     <string name="app_quirks_use_selection_replacement_summary">通过选择和提交而不是组合跨度来替换单词（修复了 Chrome 多功能框）</string>
     <string name="app_quirks_badge_selection_replacement">选择替换</string>
+    <string name="gif">动图</string>
+    <string name="gif_search_hint">搜索 GIF</string>
+    <string name="gif_no_results">没有结果</string>
+    <string name="gif_error_plugin_not_installed">GIF 插件未安装</string>
+    <string name="gif_error_untrusted">GIF 插件签名不受信任</string>
+    <string name="gif_error_host_too_old">更新键盘</string>
+    <string name="gif_error_plugin_too_old">更新 GIF 插件</string>
+    <string name="gif_error_unavailable">GIF 插件没有响应</string>
+    <string name="gif_error_not_configured">在设置中添加您的 API 密钥</string>
+    <string name="gif_error_rate_limited">速率有限，请稍后重试</string>
+    <string name="gif_error_timeout">超时</string>
+    <string name="gif_error_busy">GIF 插件繁忙，请重试</string>
+    <string name="gif_error_generic">无法加载 GIF</string>
+    <string name="gif_insertion_unsupported">应用程序不支持GIF插入</string>
+    <string name="gif_install_plugin">安装 GIF 插件</string>
 </resources>

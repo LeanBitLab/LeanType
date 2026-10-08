@@ -1659,4 +1659,19 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="app_quirks_use_selection_replacement">Substituição de palavras baseada em seleção</string>
     <string name="app_quirks_use_selection_replacement_summary">Substitua palavras selecionando e confirmando em vez de compor intervalos (corrige o Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Seleção Substituir</string>
+    <string name="gif">GIFs</string>
+    <string name="gif_search_hint">Pesquisar GIFs</string>
+    <string name="gif_no_results">Nenhum resultado</string>
+    <string name="gif_error_plugin_not_installed">Plug-in GIF não instalado</string>
+    <string name="gif_error_untrusted">Assinatura do plugin GIF não confiável</string>
+    <string name="gif_error_host_too_old">Atualize o teclado</string>
+    <string name="gif_error_plugin_too_old">Atualize o plugin GIF</string>
+    <string name="gif_error_unavailable">O plugin GIF não está respondendo</string>
+    <string name="gif_error_not_configured">Adicione sua chave API nas configurações</string>
+    <string name="gif_error_rate_limited">Tarifa limitada. Tente novamente em breve</string>
+    <string name="gif_error_timeout">Tempo limite esgotado</string>
+    <string name="gif_error_busy">Plugin GIF ocupado, tente novamente</string>
+    <string name="gif_error_generic">Não foi possível carregar os GIFs</string>
+    <string name="gif_insertion_unsupported">O aplicativo não suporta inserção de GIF</string>
+    <string name="gif_install_plugin">Instale o plugin GIF</string>
 </resources>

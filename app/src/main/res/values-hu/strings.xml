@@ -1660,4 +1660,19 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="app_quirks_use_selection_replacement">Kijelölés alapú szócsere</string>
     <string name="app_quirks_use_selection_replacement_summary">Cserélje ki a szavakat kijelöléssel és véglegesítéssel a tartományok írása helyett (javítja a Chrome Omniboxot)</string>
     <string name="app_quirks_badge_selection_replacement">Kiválasztás Csere</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">GIF-ek keresése</string>
+    <string name="gif_no_results">Nincs eredmény</string>
+    <string name="gif_error_plugin_not_installed">A GIF bővítmény nincs telepítve</string>
+    <string name="gif_error_untrusted">A GIF beépülő modul aláírása nem megbízható</string>
+    <string name="gif_error_host_too_old">Frissítse a billentyűzetet</string>
+    <string name="gif_error_plugin_too_old">Frissítse a GIF bővítményt</string>
+    <string name="gif_error_unavailable">A GIF beépülő modul nem válaszol</string>
+    <string name="gif_error_not_configured">Adja hozzá az API-kulcsot a beállításokhoz</string>
+    <string name="gif_error_rate_limited">Az ár korlátozott, próbálja újra rövidesen</string>
+    <string name="gif_error_timeout">Időtúllépés</string>
+    <string name="gif_error_busy">A GIF-bővítmény foglalt, próbálkozzon újra</string>
+    <string name="gif_error_generic">Nem sikerült betölteni a GIF-eket</string>
+    <string name="gif_insertion_unsupported">Az alkalmazás nem támogatja a GIF beillesztést</string>
+    <string name="gif_install_plugin">Telepítse a GIF bővítményt</string>
 </resources>

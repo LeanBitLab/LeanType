@@ -1729,4 +1729,19 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="app_quirks_use_selection_replacement">Sostituzione delle parole basata sulla selezione</string>
     <string name="app_quirks_use_selection_replacement_summary">Sostituisci le parole selezionando e confermando invece di comporre intervalli (corregge Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Selezione Sostituisci</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Cerca GIF</string>
+    <string name="gif_no_results">Nessun risultato</string>
+    <string name="gif_error_plugin_not_installed">Plug-in GIF non installato</string>
+    <string name="gif_error_untrusted">Firma del plug-in GIF non attendibile</string>
+    <string name="gif_error_host_too_old">Aggiorna la tastiera</string>
+    <string name="gif_error_plugin_too_old">Aggiorna il plugin GIF</string>
+    <string name="gif_error_unavailable">Il plugin GIF non risponde</string>
+    <string name="gif_error_not_configured">Aggiungi la tua chiave API nelle impostazioni</string>
+    <string name="gif_error_rate_limited">Tariffa limitata, riprova a breve</string>
+    <string name="gif_error_timeout">Timeout</string>
+    <string name="gif_error_busy">Plug-in GIF occupato, riprova</string>
+    <string name="gif_error_generic">Impossibile caricare le GIF</string>
+    <string name="gif_insertion_unsupported">L\'app non supporta l\'inserimento di GIF</string>
+    <string name="gif_install_plugin">Installa il plugin GIF</string>
 </resources>

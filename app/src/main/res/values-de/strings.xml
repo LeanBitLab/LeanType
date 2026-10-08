@@ -1666,4 +1666,19 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="app_quirks_use_selection_replacement">Auswahlbasierte Wortersetzung</string>
     <string name="app_quirks_use_selection_replacement_summary">Ersetzen Sie Wörter durch Auswählen und Festschreiben, anstatt Zeitspannen zu verfassen (behebt Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Auswahl Ersetzen</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Suchen Sie nach GIFs</string>
+    <string name="gif_no_results">Keine Ergebnisse</string>
+    <string name="gif_error_plugin_not_installed">GIF-Plugin nicht installiert</string>
+    <string name="gif_error_untrusted">Die Signatur des GIF-Plugins ist nicht vertrauenswürdig</string>
+    <string name="gif_error_host_too_old">Aktualisieren Sie die Tastatur</string>
+    <string name="gif_error_plugin_too_old">Aktualisieren Sie das GIF-Plugin</string>
+    <string name="gif_error_unavailable">Das GIF-Plugin reagiert nicht</string>
+    <string name="gif_error_not_configured">Fügen Sie Ihren API-Schlüssel in den Einstellungen hinzu</string>
+    <string name="gif_error_rate_limited">Begrenzter Preis, versuchen Sie es in Kürze noch einmal</string>
+    <string name="gif_error_timeout">Zeitüberschreitung</string>
+    <string name="gif_error_busy">Das GIF-Plugin ist ausgelastet. Versuchen Sie es erneut</string>
+    <string name="gif_error_generic">GIFs konnten nicht geladen werden</string>
+    <string name="gif_insertion_unsupported">Die App unterstützt das Einfügen von GIFs nicht</string>
+    <string name="gif_install_plugin">Installieren Sie das GIF-Plugin</string>
 </resources>

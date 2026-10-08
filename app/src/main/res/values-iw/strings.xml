@@ -1671,4 +1671,19 @@
     <string name="app_quirks_use_selection_replacement">החלפת מילים מבוססת בחירה</string>
     <string name="app_quirks_use_selection_replacement_summary">החלף מילים על ידי בחירה והתחייבות במקום חיבור טווחים (מתקן את סרגל הכתובות של Chrome)</string>
     <string name="app_quirks_badge_selection_replacement">בחירה החלפה</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">חפש קובצי GIF</string>
+    <string name="gif_no_results">אין תוצאות</string>
+    <string name="gif_error_plugin_not_installed">תוסף GIF לא מותקן</string>
+    <string name="gif_error_untrusted">חתימת תוסף GIF לא מהימנה</string>
+    <string name="gif_error_host_too_old">עדכן את המקלדת</string>
+    <string name="gif_error_plugin_too_old">עדכן את הפלאגין GIF</string>
+    <string name="gif_error_unavailable">תוסף GIF לא מגיב</string>
+    <string name="gif_error_not_configured">הוסף את מפתח ה-API שלך בהגדרות</string>
+    <string name="gif_error_rate_limited">שיעור מוגבל, נסה שוב בקרוב</string>
+    <string name="gif_error_timeout">תם הזמן הקצוב</string>
+    <string name="gif_error_busy">תוסף GIF תפוס, נסה שוב</string>
+    <string name="gif_error_generic">לא ניתן היה לטעון קובצי GIF</string>
+    <string name="gif_insertion_unsupported">האפליקציה אינה תומכת בהכנסת GIF</string>
+    <string name="gif_install_plugin">התקן תוסף GIF</string>
 </resources>

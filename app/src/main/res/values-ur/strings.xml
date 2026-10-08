@@ -1713,4 +1713,19 @@
     <string name="app_quirks_use_selection_replacement">انتخاب پر مبنی لفظ کی تبدیلی</string>
     <string name="app_quirks_use_selection_replacement_summary">اسپین کمپوزنگ کے بجائے منتخب کرکے اور کمٹ کرکے الفاظ کو تبدیل کریں (کروم اومنی باکس کو ٹھیک کرتا ہے)</string>
     <string name="app_quirks_badge_selection_replacement">انتخاب بدلیں۔</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">GIFs تلاش کریں۔</string>
+    <string name="gif_no_results">کوئی نتیجہ نہیں نکلا۔</string>
+    <string name="gif_error_plugin_not_installed">GIF پلگ ان انسٹال نہیں ہے۔</string>
+    <string name="gif_error_untrusted">GIF پلگ ان دستخط قابل اعتبار نہیں ہے۔</string>
+    <string name="gif_error_host_too_old">کی بورڈ کو اپ ڈیٹ کریں۔</string>
+    <string name="gif_error_plugin_too_old">GIF پلگ ان کو اپ ڈیٹ کریں۔</string>
+    <string name="gif_error_unavailable">GIF پلگ ان جواب نہیں دے رہا ہے۔</string>
+    <string name="gif_error_not_configured">ترتیبات میں اپنی API کلید شامل کریں۔</string>
+    <string name="gif_error_rate_limited">ریٹ محدود ہے، جلد ہی دوبارہ کوشش کریں۔</string>
+    <string name="gif_error_timeout">وقت ختم</string>
+    <string name="gif_error_busy">GIF پلگ ان مصروف ہے، دوبارہ کوشش کریں۔</string>
+    <string name="gif_error_generic">GIFs لوڈ نہیں ہو سکے۔</string>
+    <string name="gif_insertion_unsupported">ایپ GIF داخل کرنے کی حمایت نہیں کرتی ہے۔</string>
+    <string name="gif_install_plugin">GIF پلگ ان انسٹال کریں۔</string>
 </resources>

@@ -1669,4 +1669,19 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="app_quirks_use_selection_replacement">Náhrada slov na základě výběru</string>
     <string name="app_quirks_use_selection_replacement_summary">Nahraďte slova výběrem a potvrzením namísto skládání rozsahů (oprava omniboxu Chrome)</string>
     <string name="app_quirks_badge_selection_replacement">Výběr Nahradit</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Hledat GIFy</string>
+    <string name="gif_no_results">Žádné výsledky</string>
+    <string name="gif_error_plugin_not_installed">Plugin GIF není nainstalován</string>
+    <string name="gif_error_untrusted">Podpis pluginu GIF není důvěryhodný</string>
+    <string name="gif_error_host_too_old">Aktualizujte klávesnici</string>
+    <string name="gif_error_plugin_too_old">Aktualizujte plugin GIF</string>
+    <string name="gif_error_unavailable">Plugin GIF neodpovídá</string>
+    <string name="gif_error_not_configured">Přidejte svůj API klíč do nastavení</string>
+    <string name="gif_error_rate_limited">Cena omezena, zkuste to znovu za chvíli</string>
+    <string name="gif_error_timeout">Vypršel časový limit</string>
+    <string name="gif_error_busy">Plugin GIF je zaneprázdněn, zkuste to znovu</string>
+    <string name="gif_error_generic">Nelze načíst GIFy</string>
+    <string name="gif_insertion_unsupported">Aplikace nepodporuje vkládání GIF</string>
+    <string name="gif_install_plugin">Nainstalujte si plugin GIF</string>
 </resources>

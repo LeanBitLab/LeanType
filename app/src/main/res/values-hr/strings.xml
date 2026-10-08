@@ -1644,4 +1644,19 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="app_quirks_use_selection_replacement">Zamjena riječi na temelju odabira</string>
     <string name="app_quirks_use_selection_replacement_summary">Zamijenite riječi odabirom i uvrštavanjem umjesto sastavljanjem raspona (popravlja višenamjenski okvir Chromea)</string>
     <string name="app_quirks_badge_selection_replacement">Odabir Zamijeni</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Pretraživanje GIF-ova</string>
+    <string name="gif_no_results">Nema rezultata</string>
+    <string name="gif_error_plugin_not_installed">GIF dodatak nije instaliran</string>
+    <string name="gif_error_untrusted">Potpis GIF dodatka nije pouzdan</string>
+    <string name="gif_error_host_too_old">Ažurirajte tipkovnicu</string>
+    <string name="gif_error_plugin_too_old">Ažurirajte GIF dodatak</string>
+    <string name="gif_error_unavailable">GIF dodatak ne reagira</string>
+    <string name="gif_error_not_configured">Dodajte svoj API ključ u postavkama</string>
+    <string name="gif_error_rate_limited">Stopa ograničena, pokušajte ponovo uskoro</string>
+    <string name="gif_error_timeout">Isteklo vrijeme</string>
+    <string name="gif_error_busy">GIF dodatak je zauzet, pokušajte ponovno</string>
+    <string name="gif_error_generic">Nije moguće učitati GIF-ove</string>
+    <string name="gif_insertion_unsupported">Aplikacija ne podržava umetanje GIF-ova</string>
+    <string name="gif_install_plugin">Instalirajte GIF dodatak</string>
 </resources>

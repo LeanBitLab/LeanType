@@ -1727,4 +1727,19 @@
     <string name="app_quirks_use_selection_replacement">استبدال الكلمات على أساس الاختيار</string>
     <string name="app_quirks_use_selection_replacement_summary">استبدال الكلمات عن طريق التحديد والالتزام بدلاً من إنشاء الامتدادات (إصلاحات Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">استبدال التحديد</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">بحث في ملفات GIF</string>
+    <string name="gif_no_results">لا توجد نتائج</string>
+    <string name="gif_error_plugin_not_installed">لم يتم تثبيت البرنامج المساعد GIF</string>
+    <string name="gif_error_untrusted">توقيع البرنامج المساعد GIF غير موثوق به</string>
+    <string name="gif_error_host_too_old">قم بتحديث لوحة المفاتيح</string>
+    <string name="gif_error_plugin_too_old">قم بتحديث البرنامج المساعد GIF</string>
+    <string name="gif_error_unavailable">المكون الإضافي GIF لا يستجيب</string>
+    <string name="gif_error_not_configured">أضف مفتاح API الخاص بك في الإعدادات</string>
+    <string name="gif_error_rate_limited">السعر محدود، حاول مرة أخرى قريبًا</string>
+    <string name="gif_error_timeout">انتهت المهلة</string>
+    <string name="gif_error_busy">ملحق GIF مشغول، حاول مرة أخرى</string>
+    <string name="gif_error_generic">تعذر تحميل ملفات GIF</string>
+    <string name="gif_insertion_unsupported">التطبيق لا يدعم إدراج GIF</string>
+    <string name="gif_install_plugin">قم بتثبيت البرنامج المساعد GIF</string>
 </resources>

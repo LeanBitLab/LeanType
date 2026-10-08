@@ -1704,4 +1704,19 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="app_quirks_use_selection_replacement">Op selectie gebaseerde woordvervanging</string>
     <string name="app_quirks_use_selection_replacement_summary">Vervang woorden door te selecteren en vast te leggen in plaats van reeksen samen te stellen (probleem Chrome Omnibox opgelost)</string>
     <string name="app_quirks_badge_selection_replacement">Selectie Vervangen</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Zoek GIF\'s</string>
+    <string name="gif_no_results">Geen resultaten</string>
+    <string name="gif_error_plugin_not_installed">GIF-plug-in niet geïnstalleerd</string>
+    <string name="gif_error_untrusted">Handtekening van GIF-plug-in niet vertrouwd</string>
+    <string name="gif_error_host_too_old">Werk het toetsenbord bij</string>
+    <string name="gif_error_plugin_too_old">Update de GIF-plug-in</string>
+    <string name="gif_error_unavailable">GIF-plug-in reageert niet</string>
+    <string name="gif_error_not_configured">Voeg uw API-sleutel toe in de instellingen</string>
+    <string name="gif_error_rate_limited">Tarief beperkt. Probeer het binnenkort opnieuw</string>
+    <string name="gif_error_timeout">Time-out</string>
+    <string name="gif_error_busy">GIF-plug-in bezet, probeer het opnieuw</string>
+    <string name="gif_error_generic">Kan GIF\'s niet laden</string>
+    <string name="gif_insertion_unsupported">App ondersteunt geen GIF-invoeging</string>
+    <string name="gif_install_plugin">Installeer de GIF-plug-in</string>
 </resources>

@@ -1624,4 +1624,19 @@
     <string name="app_quirks_use_selection_replacement">Заміна слів на основі підбору</string>
     <string name="app_quirks_use_selection_replacement_summary">Замінюйте слова вибором і фіксацією замість створення проміжків (виправлено універсальне вікно пошуку Chrome)</string>
     <string name="app_quirks_badge_selection_replacement">Вибір Замінити</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Пошук GIF-файлів</string>
+    <string name="gif_no_results">Результатів немає</string>
+    <string name="gif_error_plugin_not_installed">Плагін GIF не встановлено</string>
+    <string name="gif_error_untrusted">Підпис плагіна GIF не є надійним</string>
+    <string name="gif_error_host_too_old">Оновіть клавіатуру</string>
+    <string name="gif_error_plugin_too_old">Оновіть плагін GIF</string>
+    <string name="gif_error_unavailable">Плагін GIF не відповідає</string>
+    <string name="gif_error_not_configured">Додайте ключ API в налаштуваннях</string>
+    <string name="gif_error_rate_limited">Оцінка обмежена, спробуйте ще раз незабаром</string>
+    <string name="gif_error_timeout">Час очікування минув</string>
+    <string name="gif_error_busy">Плагін GIF зайнятий, повторіть спробу</string>
+    <string name="gif_error_generic">Не вдалося завантажити GIF-файли</string>
+    <string name="gif_insertion_unsupported">Програма не підтримує вставку GIF</string>
+    <string name="gif_install_plugin">Встановіть плагін GIF</string>
 </resources>

@@ -1651,4 +1651,19 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="app_quirks_use_selection_replacement">Înlocuirea cuvintelor pe bază de selecție</string>
     <string name="app_quirks_use_selection_replacement_summary">Înlocuiți cuvintele selectând și comitând în loc să compuneți intervale (remediază caseta polivalentă Chrome)</string>
     <string name="app_quirks_badge_selection_replacement">Selecție Înlocuiește</string>
+    <string name="gif">GIF</string>
+    <string name="gif_search_hint">Căutați GIF-uri</string>
+    <string name="gif_no_results">Niciun rezultat</string>
+    <string name="gif_error_plugin_not_installed">Pluginul GIF nu este instalat</string>
+    <string name="gif_error_untrusted">Semnătura pluginului GIF nu este de încredere</string>
+    <string name="gif_error_host_too_old">Actualizați tastatura</string>
+    <string name="gif_error_plugin_too_old">Actualizați pluginul GIF</string>
+    <string name="gif_error_unavailable">Pluginul GIF nu răspunde</string>
+    <string name="gif_error_not_configured">Adăugați cheia dvs. API în setări</string>
+    <string name="gif_error_rate_limited">Tarif limitat, încercați din nou în scurt timp</string>
+    <string name="gif_error_timeout">Timpul expirat</string>
+    <string name="gif_error_busy">Plugin GIF ocupat, încercați din nou</string>
+    <string name="gif_error_generic">GIF-urile nu au putut fi încărcate</string>
+    <string name="gif_insertion_unsupported">Aplicația nu acceptă inserarea GIF</string>
+    <string name="gif_install_plugin">Instalați pluginul GIF</string>
 </resources>

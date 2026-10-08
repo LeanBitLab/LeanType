@@ -92,6 +92,7 @@ import helium314.keyboard.latin.utils.DeviceProtectedUtils
 import helium314.keyboard.latin.utils.ExecutorUtils
 import helium314.keyboard.latin.utils.InlineAutofillUtils
 import helium314.keyboard.latin.utils.JniUtils
+import helium314.keyboard.latin.utils.InputTypeUtils
 import helium314.keyboard.latin.utils.LeakGuardHandlerWrapper
 import helium314.keyboard.latin.utils.LocaleUtils
 import helium314.keyboard.latin.utils.Log
@@ -191,6 +192,7 @@ class LatinIME : InputMethodService(),
     private var voicePluginManager: VoicePluginManager? = null
     private var voiceInputManager: VoiceInputManager? = null
     private var lastVoiceState = VoiceInputManager.VoiceState.IDLE
+    private var lastEditorKey: EditorKey? = null
 
     private var appliedLanguage = ""
 
@@ -746,6 +748,26 @@ class LatinIME : InputMethodService(),
         val packageChanged = editorInfo.packageName != lastInputPackageName
         lastInputPackageName = editorInfo.packageName
         val isDifferentTextField = !restarting || inputTypeChanged || packageChanged
+
+        val currentEditorKey = EditorKey(
+            editorInfo.packageName,
+            editorInfo.inputType,
+            editorInfo.imeOptions,
+            editorInfo.actionId,
+            editorInfo.fieldId,
+            editorInfo.privateImeOptions
+        )
+        val keyChanged = lastEditorKey != currentEditorKey
+        lastEditorKey = currentEditorKey
+        val isPassword = InputTypeUtils.isAnyPasswordInputType(editorInfo.inputType)
+
+        if (keyChanged || isPassword) {
+            keyboardSwitcher.hideGifPicker()
+            keyboardSwitcher.bumpEditorSession()
+        } else if (!restarting) {
+            keyboardSwitcher.bumpEditorSession()
+        }
+
         StatsUtils.onStartInputView(editorInfo.inputType, Settings.getValues().mDisplayOrientation, !isDifferentTextField)
         
         updateFullscreenMode()
@@ -781,8 +803,10 @@ class LatinIME : InputMethodService(),
             switcher.reloadMainKeyboard()
             if (needToCallLoadKeyboardLater) switcher.saveKeyboardState()
         } else if (restarting) {
-            switcher.resetKeyboardStateToAlphabet(currentAutoCapsState, currentRecapitalizeState)
-            switcher.requestUpdatingShiftState(currentAutoCapsState, currentRecapitalizeState)
+            if (!switcher.isGifPickerShowing) {
+                switcher.resetKeyboardStateToAlphabet(currentAutoCapsState, currentRecapitalizeState)
+                switcher.requestUpdatingShiftState(currentAutoCapsState, currentRecapitalizeState)
+            }
         }
         
         keyboardSwitcher.updateStripVisibility(currentSettingsValues)
@@ -857,6 +881,7 @@ class LatinIME : InputMethodService(),
     override fun onWindowHidden() {
         super.onWindowHidden()
         Log.i(TAG, "onWindowHidden")
+        keyboardSwitcher.hideGifPicker()
         val fkm = floatingKeyboardManager
         if (fkm != null) {
             if (!settings.current.mRememberFloatingKeyboard) {
@@ -882,6 +907,7 @@ class LatinIME : InputMethodService(),
     fun onFinishInputViewInternal(finishingInput: Boolean) {
         super.onFinishInputView(finishingInput)
         Log.i(TAG, "onFinishInputView")
+        keyboardSwitcher.hideGifPicker()
         if (keyboardSwitcher.isOcrShowing) {
             keyboardSwitcher.hideOcrPanels()
         }
@@ -1299,10 +1325,20 @@ class LatinIME : InputMethodService(),
     }
 
     override fun onCodeInput(codePoint: Int, x: Int, y: Int, isKeyRepeat: Boolean) {
+        if (keyboardSwitcher.isGifPickerShowing && keyboardSwitcher.onGifSearchKey(codePoint)) return
         keyboardActionListener.onCodeInput(codePoint, x, y, isKeyRepeat)
     }
 
     fun onEvent(event: Event) {
+        if (keyboardSwitcher.isGifPickerShowing) {
+            val text = event.text
+            if (text != null) {
+                if (keyboardSwitcher.onGifSearchText(text.toString())) return
+            } else {
+                val code = if (event.keyCode != Event.NOT_A_KEY_CODE) event.keyCode else event.codePoint
+                if (keyboardSwitcher.onGifSearchKey(code)) return
+            }
+        }
         if (event.keyCode == KeyCode.SWITCH_TO_USER_IME) { switchToUserIme(); return }
         if (event.keyCode == KeyCode.VOICE_INPUT) {
             when (richImm.currentVoiceProvider) {
@@ -1332,6 +1368,7 @@ class LatinIME : InputMethodService(),
 
     fun onTextInput(rawText: String?) {
         if (rawText == null) return
+        if (keyboardSwitcher.isGifPickerShowing && keyboardSwitcher.onGifSearchText(rawText)) return
         val event = Event.createSoftwareTextEvent(rawText, KeyCode.MULTIPLE_CODE_POINTS, null)
         val completeInputTransaction = inputLogic.onTextInput(settings.current, event, keyboardSwitcher.keyboardShiftMode, handler)
         updateStateAfterInputTransaction(completeInputTransaction)
@@ -1417,6 +1454,7 @@ class LatinIME : InputMethodService(),
     private fun setSuggestedWords(suggestedWords: SuggestedWords) {
         val currentSettingsValues = settings.current
         inputLogic.setSuggestedWords(suggestedWords)
+        if (keyboardSwitcher.isGifPickerShowing) return
         if (!hasSuggestionStripView()) return
         if (!onEvaluateInputViewShown() && !currentSettingsValues.mHasHardwareKeyboard) return
         
@@ -1656,12 +1694,19 @@ class LatinIME : InputMethodService(),
             keyboardSwitcher.hideOcrPanels()
             return true
         }
+        if (keyCode == KeyEvent.KEYCODE_BACK && keyboardSwitcher.isGifPickerShowing) {
+            keyboardSwitcher.hideGifPicker()
+            return true
+        }
         if (keyboardActionListener.onKeyDown(keyCode, keyEvent)) return true
         return super.onKeyDown(keyCode, keyEvent)
     }
 
     override fun onKeyUp(keyCode: Int, keyEvent: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && keyboardSwitcher.isOcrShowing) {
+            return true
+        }
+        if (keyCode == KeyEvent.KEYCODE_BACK && keyboardSwitcher.isGifPickerShowing) {
             return true
         }
         if (keyboardActionListener.onKeyUp(keyCode, keyEvent)) return true
@@ -2055,3 +2100,12 @@ class LatinIME : InputMethodService(),
         fun getInstance(): LatinIME? = sInstance
     }
 }
+
+private data class EditorKey(
+    val packageName: String?,
+    val inputType: Int,
+    val imeOptions: Int,
+    val actionId: Int,
+    val fieldId: Int,
+    val privateImeOptions: String?
+)

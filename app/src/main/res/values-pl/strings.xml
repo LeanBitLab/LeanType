@@ -1706,4 +1706,19 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="app_quirks_use_selection_replacement">Zamiana słów na podstawie wyboru</string>
     <string name="app_quirks_use_selection_replacement_summary">Zamień słowa, wybierając i zatwierdzając zamiast tworzyć zakresy (naprawia Chrome Omnibox)</string>
     <string name="app_quirks_badge_selection_replacement">Wybór Zamień</string>
+    <string name="gif">GIF-y</string>
+    <string name="gif_search_hint">Wyszukaj GIF-y</string>
+    <string name="gif_no_results">Brak wyników</string>
+    <string name="gif_error_plugin_not_installed">Wtyczka GIF nie jest zainstalowana</string>
+    <string name="gif_error_untrusted">Podpis wtyczki GIF nie jest zaufany</string>
+    <string name="gif_error_host_too_old">Zaktualizuj klawiaturę</string>
+    <string name="gif_error_plugin_too_old">Zaktualizuj wtyczkę GIF</string>
+    <string name="gif_error_unavailable">Wtyczka GIF nie odpowiada</string>
+    <string name="gif_error_not_configured">Dodaj swój klucz API w ustawieniach</string>
+    <string name="gif_error_rate_limited">Cena ograniczona. Spróbuj ponownie wkrótce</string>
+    <string name="gif_error_timeout">Upłynął limit czasu</string>
+    <string name="gif_error_busy">Wtyczka GIF jest zajęta, spróbuj ponownie</string>
+    <string name="gif_error_generic">Nie udało się wczytać GIF-ów</string>
+    <string name="gif_insertion_unsupported">Aplikacja nie obsługuje wstawiania GIF</string>
+    <string name="gif_install_plugin">Zainstaluj wtyczkę GIF</string>
 </resources>
