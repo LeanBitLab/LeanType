@@ -154,3 +154,6 @@
 # ponytail: keep kotlin stdlib classes to prevent NoSuchMethodError in plugin loading
 -keep class kotlin.** { *; }
 
+# Keep GIF plugin IPC contract and parcelable models
+-keep class com.leanbitlab.leantype.gif.** { *; }
+
