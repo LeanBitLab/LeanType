@@ -1667,4 +1667,20 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_error_generic">GIF\'ler yüklenemedi</string>
     <string name="gif_insertion_unsupported">Uygulama GIF eklemeyi desteklemiyor</string>
     <string name="gif_install_plugin">GIF eklentisini yükleyin</string>
+    <string name="gif_settings_title">GIF Arama</string>
+    <string name="gif_plugin_status_title">Eklenti Durumu</string>
+    <string name="gif_plugin_not_installed_desc">GIF eklentisi, klavyeye ağ erişimi izni vermeden Tenor, Klipy ve diğer sağlayıcılar için arama ve ekleme olanağı sağlar.</string>
+    <string name="gif_plugin_untrusted_desc">Yüklenen GIF eklentisi imzası, güvenilen sertifikayla eşleşmiyor.</string>
+    <string name="gif_plugin_unavailable_desc">GIF eklenti hizmeti yanıt vermiyor. Lütfen eklentiyi bir kez başlatın veya izinlerini doğrulayın.</string>
+    <string name="gif_download_plugin">Eklentiyi indir</string>
+    <string name="gif_providers_title">Mevcut Sağlayıcılar</string>
+    <string name="gif_dialog_title">API Anahtarını Yapılandır</string>
+    <string name="gif_provider_configured">Yapılandırılmış</string>
+    <string name="gif_provider_not_configured">API anahtarı gerekli</string>
+    <string name="gif_enter_api_key">API anahtarını girin</string>
+    <string name="gif_clear_key">Temizlemek</string>
+    <string name="gif_save">Kaydetmek</string>
+    <string name="gif_connecting">Bağlanıyor…</string>
+    <string name="gif_api_key_saved">API anahtarı kaydedildi</string>
+    <string name="gif_api_key_cleared">API anahtarı temizlendi</string>
 </resources>

@@ -49,6 +49,7 @@ fun LibrariesHubScreen(
     onClickAIIntegration: () -> Unit = {},
     onClickSound: () -> Unit = {},
     onClickAppProfiles: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.AppQuirks) },
+    onClickGif: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.Gif) },
 ) {
     val context = LocalContext.current
     val prefs = remember { context.prefs() }
@@ -171,6 +172,22 @@ fun LibrariesHubScreen(
                             enabled = isTranslationSupported,
                             icon = R.drawable.ic_translate
                         ) { if (isTranslationSupported) NextScreenIcon() }
+
+                        // GIF Search Plugin
+                        val gifManager = remember { helium314.keyboard.latin.gif.GifPluginManager.get(context) }
+                        val gifState = gifManager.state.collectAsState()
+                        val gifSummary = when (gifState.value) {
+                            helium314.keyboard.latin.gif.GifPluginManager.State.CONNECTED -> stringResource(R.string.libraries_status_active)
+                            helium314.keyboard.latin.gif.GifPluginManager.State.UNTRUSTED_PLUGIN -> stringResource(R.string.gif_error_untrusted)
+                            helium314.keyboard.latin.gif.GifPluginManager.State.NOT_INSTALLED -> stringResource(R.string.libraries_status_not_installed)
+                            else -> stringResource(R.string.installed)
+                        }
+                        Preference(
+                            name = stringResource(R.string.gif_settings_title),
+                            description = gifSummary,
+                            onClick = onClickGif,
+                            icon = R.drawable.ic_gif
+                        ) { NextScreenIcon() }
 
                         // Keypress Audio & Sound Packs Plugin
                         val currentSoundStyle = prefs.getString(Settings.PREF_KEYPRESS_SOUND_STYLE, Defaults.PREF_KEYPRESS_SOUND_STYLE) ?: Defaults.PREF_KEYPRESS_SOUND_STYLE

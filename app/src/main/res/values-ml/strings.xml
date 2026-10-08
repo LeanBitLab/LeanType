@@ -1737,4 +1737,20 @@
     <string name="gif_error_generic">GIF-കൾ ലോഡ് ചെയ്യാനായില്ല</string>
     <string name="gif_insertion_unsupported">ആപ്പ് GIF ചേർക്കുന്നതിനെ പിന്തുണയ്ക്കുന്നില്ല</string>
     <string name="gif_install_plugin">GIF പ്ലഗിൻ ഇൻസ്റ്റാൾ ചെയ്യുക</string>
+    <string name="gif_settings_title">GIF തിരയൽ</string>
+    <string name="gif_plugin_status_title">പ്ലഗിൻ നില</string>
+    <string name="gif_plugin_not_installed_desc">Tenor, Klipy, മറ്റ് ദാതാക്കൾ എന്നിവയ്‌ക്കായി കീബോർഡിലേക്ക് നെറ്റ്‌വർക്ക് ആക്‌സസ് അനുവദിക്കാതെ തന്നെ തിരയലും ചേർക്കലും GIF പ്ലഗിൻ നൽകുന്നു.</string>
+    <string name="gif_plugin_untrusted_desc">ഇൻസ്റ്റാൾ ചെയ്ത GIF പ്ലഗിൻ ഒപ്പ് വിശ്വസനീയ സർട്ടിഫിക്കറ്റുമായി പൊരുത്തപ്പെടുന്നില്ല.</string>
+    <string name="gif_plugin_unavailable_desc">GIF പ്ലഗിൻ സേവനം പ്രതികരിക്കുന്നില്ല. ഒരിക്കൽ പ്ലഗിൻ സമാരംഭിക്കുക അല്ലെങ്കിൽ അതിൻ്റെ അനുമതികൾ പരിശോധിക്കുക.</string>
+    <string name="gif_download_plugin">പ്ലഗിൻ ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="gif_providers_title">ലഭ്യമായ ദാതാക്കൾ</string>
+    <string name="gif_dialog_title">API കീ കോൺഫിഗർ ചെയ്യുക</string>
+    <string name="gif_provider_configured">ക്രമീകരിച്ചു</string>
+    <string name="gif_provider_not_configured">API കീ ആവശ്യമാണ്</string>
+    <string name="gif_enter_api_key">API കീ നൽകുക</string>
+    <string name="gif_clear_key">ക്ലിയർ</string>
+    <string name="gif_save">സംരക്ഷിക്കുക</string>
+    <string name="gif_connecting">ബന്ധിപ്പിക്കുന്നു...</string>
+    <string name="gif_api_key_saved">API കീ സംരക്ഷിച്ചു</string>
+    <string name="gif_api_key_cleared">API കീ മായ്ച്ചു</string>
 </resources>

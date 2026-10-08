@@ -1681,4 +1681,20 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_error_generic">GIFs konnten nicht geladen werden</string>
     <string name="gif_insertion_unsupported">Die App unterstützt das Einfügen von GIFs nicht</string>
     <string name="gif_install_plugin">Installieren Sie das GIF-Plugin</string>
+    <string name="gif_settings_title">GIF-Suche</string>
+    <string name="gif_plugin_status_title">Plugin-Status</string>
+    <string name="gif_plugin_not_installed_desc">Das GIF-Plugin ermöglicht die Suche und Einfügung für Tenor, Klipy und andere Anbieter, ohne Netzwerkzugriff auf die Tastatur zu gewähren.</string>
+    <string name="gif_plugin_untrusted_desc">Die Signatur des installierten GIF-Plugins stimmt nicht mit dem vertrauenswürdigen Zertifikat überein.</string>
+    <string name="gif_plugin_unavailable_desc">Der GIF-Plugin-Dienst antwortet nicht. Bitte starten Sie das Plugin einmal oder überprüfen Sie seine Berechtigungen.</string>
+    <string name="gif_download_plugin">Plugin herunterladen</string>
+    <string name="gif_providers_title">Verfügbare Anbieter</string>
+    <string name="gif_dialog_title">API-Schlüssel konfigurieren</string>
+    <string name="gif_provider_configured">Konfiguriert</string>
+    <string name="gif_provider_not_configured">API-Schlüssel erforderlich</string>
+    <string name="gif_enter_api_key">Geben Sie den API-Schlüssel ein</string>
+    <string name="gif_clear_key">Klar</string>
+    <string name="gif_save">Speichern</string>
+    <string name="gif_connecting">Verbinden…</string>
+    <string name="gif_api_key_saved">API-Schlüssel gespeichert</string>
+    <string name="gif_api_key_cleared">API-Schlüssel gelöscht</string>
 </resources>

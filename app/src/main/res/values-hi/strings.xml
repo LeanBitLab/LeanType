@@ -1663,4 +1663,20 @@
     <string name="gif_error_generic">GIFs लोड नहीं हो सका</string>
     <string name="gif_insertion_unsupported">ऐप GIF इंसर्शन का समर्थन नहीं करता</string>
     <string name="gif_install_plugin">GIF प्लगइन इंस्टॉल करें</string>
+    <string name="gif_settings_title">जीआईएफ खोज</string>
+    <string name="gif_plugin_status_title">प्लगइन स्थिति</string>
+    <string name="gif_plugin_not_installed_desc">जीआईएफ प्लगइन कीबोर्ड तक नेटवर्क पहुंच प्रदान किए बिना टेनर, क्लिपी और अन्य प्रदाताओं के लिए खोज और प्रविष्टि प्रदान करता है।</string>
+    <string name="gif_plugin_untrusted_desc">स्थापित GIF प्लगइन हस्ताक्षर विश्वसनीय प्रमाणपत्र से मेल नहीं खाता है।</string>
+    <string name="gif_plugin_unavailable_desc">GIF प्लगइन सेवा प्रतिसाद नहीं दे रही है. कृपया एक बार प्लगइन लॉन्च करें या इसकी अनुमतियाँ सत्यापित करें।</string>
+    <string name="gif_download_plugin">प्लगइन डाउनलोड करें</string>
+    <string name="gif_providers_title">उपलब्ध प्रदाता</string>
+    <string name="gif_dialog_title">एपीआई कुंजी कॉन्फ़िगर करें</string>
+    <string name="gif_provider_configured">कॉन्फ़िगर किया गया</string>
+    <string name="gif_provider_not_configured">एपीआई कुंजी आवश्यक है</string>
+    <string name="gif_enter_api_key">एपीआई कुंजी दर्ज करें</string>
+    <string name="gif_clear_key">स्पष्ट</string>
+    <string name="gif_save">बचाना</string>
+    <string name="gif_connecting">कनेक्ट हो रहा है...</string>
+    <string name="gif_api_key_saved">एपीआई कुंजी सहेजी गई</string>
+    <string name="gif_api_key_cleared">एपीआई कुंजी साफ़ की गई</string>
 </resources>

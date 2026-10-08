@@ -1728,4 +1728,20 @@
     <string name="gif_error_generic">GIFs لوڈ نہیں ہو سکے۔</string>
     <string name="gif_insertion_unsupported">ایپ GIF داخل کرنے کی حمایت نہیں کرتی ہے۔</string>
     <string name="gif_install_plugin">GIF پلگ ان انسٹال کریں۔</string>
+    <string name="gif_settings_title">GIF تلاش</string>
+    <string name="gif_plugin_status_title">پلگ ان کی حیثیت</string>
+    <string name="gif_plugin_not_installed_desc">GIF پلگ ان Tenor، Klipy، اور دیگر فراہم کنندگان کو کی بورڈ تک نیٹ ورک تک رسائی دیے بغیر تلاش اور اندراج فراہم کرتا ہے۔</string>
+    <string name="gif_plugin_untrusted_desc">انسٹال کردہ GIF پلگ ان دستخط قابل اعتماد سرٹیفکیٹ سے میل نہیں کھاتا ہے۔</string>
+    <string name="gif_plugin_unavailable_desc">GIF پلگ ان سروس جواب نہیں دے رہی ہے۔ براہ کرم پلگ ان کو ایک بار لانچ کریں یا اس کی اجازتوں کی تصدیق کریں۔</string>
+    <string name="gif_download_plugin">پلگ ان ڈاؤن لوڈ کریں۔</string>
+    <string name="gif_providers_title">دستیاب فراہم کنندگان</string>
+    <string name="gif_dialog_title">API کلید کو ترتیب دیں۔</string>
+    <string name="gif_provider_configured">تشکیل شدہ</string>
+    <string name="gif_provider_not_configured">API کلید درکار ہے۔</string>
+    <string name="gif_enter_api_key">API کلید درج کریں۔</string>
+    <string name="gif_clear_key">صاف</string>
+    <string name="gif_save">محفوظ کریں۔</string>
+    <string name="gif_connecting">منسلک ہو رہا ہے…</string>
+    <string name="gif_api_key_saved">API کلید محفوظ ہو گئی۔</string>
+    <string name="gif_api_key_cleared">API کلید صاف ہو گئی۔</string>
 </resources>

@@ -1742,4 +1742,20 @@
     <string name="gif_error_generic">تعذر تحميل ملفات GIF</string>
     <string name="gif_insertion_unsupported">التطبيق لا يدعم إدراج GIF</string>
     <string name="gif_install_plugin">قم بتثبيت البرنامج المساعد GIF</string>
+    <string name="gif_settings_title">بحث GIF</string>
+    <string name="gif_plugin_status_title">حالة البرنامج المساعد</string>
+    <string name="gif_plugin_not_installed_desc">يوفر المكون الإضافي GIF إمكانية البحث والإدراج لموفري Tenor وKlipy وغيرهم من مقدمي الخدمات دون منح الوصول إلى الشبكة إلى لوحة المفاتيح.</string>
+    <string name="gif_plugin_untrusted_desc">توقيع البرنامج المساعد GIF المثبت لا يتطابق مع الشهادة الموثوقة.</string>
+    <string name="gif_plugin_unavailable_desc">خدمة البرنامج المساعد GIF لا تستجيب. يرجى تشغيل البرنامج المساعد مرة واحدة أو التحقق من أذوناته.</string>
+    <string name="gif_download_plugin">تحميل البرنامج المساعد</string>
+    <string name="gif_providers_title">مقدمي الخدمة المتاحين</string>
+    <string name="gif_dialog_title">تكوين مفتاح API</string>
+    <string name="gif_provider_configured">تم تكوينه</string>
+    <string name="gif_provider_not_configured">مفتاح API مطلوب</string>
+    <string name="gif_enter_api_key">أدخل مفتاح API</string>
+    <string name="gif_clear_key">واضح</string>
+    <string name="gif_save">يحفظ</string>
+    <string name="gif_connecting">جارٍ الاتصال…</string>
+    <string name="gif_api_key_saved">تم حفظ مفتاح API</string>
+    <string name="gif_api_key_cleared">تم مسح مفتاح API</string>
 </resources>

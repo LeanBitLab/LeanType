@@ -1659,4 +1659,20 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_error_generic">Nije moguće učitati GIF-ove</string>
     <string name="gif_insertion_unsupported">Aplikacija ne podržava umetanje GIF-ova</string>
     <string name="gif_install_plugin">Instalirajte GIF dodatak</string>
+    <string name="gif_settings_title">Pretraživanje GIF-ova</string>
+    <string name="gif_plugin_status_title">Status dodatka</string>
+    <string name="gif_plugin_not_installed_desc">GIF dodatak omogućuje pretraživanje i umetanje za Tenor, Klipy i druge pružatelje usluga bez dopuštanja mrežnog pristupa tipkovnici.</string>
+    <string name="gif_plugin_untrusted_desc">Potpis instaliranog GIF dodatka ne odgovara pouzdanom certifikatu.</string>
+    <string name="gif_plugin_unavailable_desc">Usluga GIF dodatka ne reagira. Jednom pokrenite dodatak ili provjerite njegova dopuštenja.</string>
+    <string name="gif_download_plugin">Preuzmite dodatak</string>
+    <string name="gif_providers_title">Dostupni pružatelji usluga</string>
+    <string name="gif_dialog_title">Konfigurirajte API ključ</string>
+    <string name="gif_provider_configured">Konfigurirano</string>
+    <string name="gif_provider_not_configured">Potreban je API ključ</string>
+    <string name="gif_enter_api_key">Unesite API ključ</string>
+    <string name="gif_clear_key">Jasan</string>
+    <string name="gif_save">Uštedjeti</string>
+    <string name="gif_connecting">Povezivanje…</string>
+    <string name="gif_api_key_saved">API ključ spremljen</string>
+    <string name="gif_api_key_cleared">API ključ obrisan</string>
 </resources>

@@ -1685,4 +1685,20 @@
     <string name="gif_error_generic">无法加载 GIF</string>
     <string name="gif_insertion_unsupported">应用程序不支持GIF插入</string>
     <string name="gif_install_plugin">安装 GIF 插件</string>
+    <string name="gif_settings_title">GIF 搜索</string>
+    <string name="gif_plugin_status_title">插件状态</string>
+    <string name="gif_plugin_not_installed_desc">GIF 插件为 Tenor、Klipy 和其他提供商提供搜索和插入功能，而无需授予键盘的网络访问权限。</string>
+    <string name="gif_plugin_untrusted_desc">安装的 GIF 插件签名与受信任的证书不匹配。</string>
+    <string name="gif_plugin_unavailable_desc">GIF 插件服务没有响应。请启动该插件一次或验证其权限。</string>
+    <string name="gif_download_plugin">下载插件</string>
+    <string name="gif_providers_title">可用的提供商</string>
+    <string name="gif_dialog_title">配置API密钥</string>
+    <string name="gif_provider_configured">已配置</string>
+    <string name="gif_provider_not_configured">需要 API 密钥</string>
+    <string name="gif_enter_api_key">输入 API 密钥</string>
+    <string name="gif_clear_key">清除</string>
+    <string name="gif_save">节省</string>
+    <string name="gif_connecting">正在连接…</string>
+    <string name="gif_api_key_saved">API 密钥已保存</string>
+    <string name="gif_api_key_cleared">API密钥已清除</string>
 </resources>

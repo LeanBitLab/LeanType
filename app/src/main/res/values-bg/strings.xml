@@ -1719,4 +1719,20 @@
     <string name="gif_error_generic">GIF файловете не можаха да се заредят</string>
     <string name="gif_insertion_unsupported">Приложението не поддържа вмъкване на GIF</string>
     <string name="gif_install_plugin">Инсталирайте GIF плъгин</string>
+    <string name="gif_settings_title">GIF Търсене</string>
+    <string name="gif_plugin_status_title">Състояние на приставката</string>
+    <string name="gif_plugin_not_installed_desc">GIF плъгинът осигурява търсене и вмъкване за Tenor, Klipy и други доставчици, без да предоставя мрежов достъп до клавиатурата.</string>
+    <string name="gif_plugin_untrusted_desc">Подписът на инсталирания GIF плъгин не съответства на надеждния сертификат.</string>
+    <string name="gif_plugin_unavailable_desc">Услугата за приставка за GIF не отговаря. Моля, стартирайте плъгина веднъж или проверете неговите разрешения.</string>
+    <string name="gif_download_plugin">Изтеглете плъгина</string>
+    <string name="gif_providers_title">Налични доставчици</string>
+    <string name="gif_dialog_title">Конфигуриране на API ключ</string>
+    <string name="gif_provider_configured">Конфигуриран</string>
+    <string name="gif_provider_not_configured">Изисква се API ключ</string>
+    <string name="gif_enter_api_key">Въведете API ключ</string>
+    <string name="gif_clear_key">ясно</string>
+    <string name="gif_save">Запазване</string>
+    <string name="gif_connecting">Свързване...</string>
+    <string name="gif_api_key_saved">API ключът е запазен</string>
+    <string name="gif_api_key_cleared">API ключът е изчистен</string>
 </resources>

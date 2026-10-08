@@ -1737,4 +1737,20 @@
     <string name="gif_error_generic">Δεν ήταν δυνατή η φόρτωση GIF</string>
     <string name="gif_insertion_unsupported">Η εφαρμογή δεν υποστηρίζει την εισαγωγή GIF</string>
     <string name="gif_install_plugin">Εγκαταστήστε την προσθήκη GIF</string>
+    <string name="gif_settings_title">Αναζήτηση GIF</string>
+    <string name="gif_plugin_status_title">Κατάσταση πρόσθετου</string>
+    <string name="gif_plugin_not_installed_desc">Η προσθήκη GIF παρέχει αναζήτηση και εισαγωγή για Tenor, Klipy και άλλους παρόχους χωρίς να εκχωρεί πρόσβαση στο δίκτυο στο πληκτρολόγιο.</string>
+    <string name="gif_plugin_untrusted_desc">Η εγκατεστημένη υπογραφή προσθήκης GIF δεν ταιριάζει με το αξιόπιστο πιστοποιητικό.</string>
+    <string name="gif_plugin_unavailable_desc">Η υπηρεσία προσθήκης GIF δεν αποκρίνεται. Εκκινήστε την προσθήκη μία φορά ή επαληθεύστε τα δικαιώματά της.</string>
+    <string name="gif_download_plugin">Λήψη προσθήκης</string>
+    <string name="gif_providers_title">Διαθέσιμοι πάροχοι</string>
+    <string name="gif_dialog_title">Διαμόρφωση κλειδιού API</string>
+    <string name="gif_provider_configured">Διαμόρφωση</string>
+    <string name="gif_provider_not_configured">Απαιτείται κλειδί API</string>
+    <string name="gif_enter_api_key">Εισαγάγετε το κλειδί API</string>
+    <string name="gif_clear_key">Σαφής</string>
+    <string name="gif_save">Εκτός</string>
+    <string name="gif_connecting">Συνδετικός…</string>
+    <string name="gif_api_key_saved">Το κλειδί API αποθηκεύτηκε</string>
+    <string name="gif_api_key_cleared">Το κλειδί API διαγράφηκε</string>
 </resources>

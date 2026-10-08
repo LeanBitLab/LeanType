@@ -1667,4 +1667,20 @@ Ar norite atnaujinti?</string>
     <string name="gif_error_generic">Nepavyko įkelti GIF</string>
     <string name="gif_insertion_unsupported">Programa nepalaiko GIF įterpimo</string>
     <string name="gif_install_plugin">Įdiekite GIF papildinį</string>
+    <string name="gif_settings_title">GIF paieška</string>
+    <string name="gif_plugin_status_title">Papildinio būsena</string>
+    <string name="gif_plugin_not_installed_desc">GIF papildinys suteikia Tenor, Klipy ir kitų teikėjų paiešką ir įterpimą nesuteikdamas tinklo prieigos prie klaviatūros.</string>
+    <string name="gif_plugin_untrusted_desc">Įdiegto GIF papildinio parašas neatitinka patikimo sertifikato.</string>
+    <string name="gif_plugin_unavailable_desc">GIF papildinio paslauga nereaguoja. Vieną kartą paleiskite papildinį arba patikrinkite jo leidimus.</string>
+    <string name="gif_download_plugin">Atsisiųsti papildinį</string>
+    <string name="gif_providers_title">Galimi tiekėjai</string>
+    <string name="gif_dialog_title">Konfigūruoti API raktą</string>
+    <string name="gif_provider_configured">Sukonfigūruota</string>
+    <string name="gif_provider_not_configured">Reikalingas API raktas</string>
+    <string name="gif_enter_api_key">Įveskite API raktą</string>
+    <string name="gif_clear_key">Aišku</string>
+    <string name="gif_save">Išsaugoti</string>
+    <string name="gif_connecting">Jungiamasi…</string>
+    <string name="gif_api_key_saved">API raktas išsaugotas</string>
+    <string name="gif_api_key_cleared">API raktas išvalytas</string>
 </resources>

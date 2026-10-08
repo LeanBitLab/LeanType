@@ -1744,4 +1744,20 @@
     <string name="gif_error_generic">Не удалось загрузить GIF-файлы.</string>
     <string name="gif_insertion_unsupported">Приложение не поддерживает вставку GIF.</string>
     <string name="gif_install_plugin">Установить плагин GIF</string>
+    <string name="gif_settings_title">Поиск GIF</string>
+    <string name="gif_plugin_status_title">Статус плагина</string>
+    <string name="gif_plugin_not_installed_desc">Плагин GIF обеспечивает поиск и вставку для Tenor, Klipy и других провайдеров без предоставления сетевого доступа к клавиатуре.</string>
+    <string name="gif_plugin_untrusted_desc">Подпись установленного плагина GIF не соответствует доверенному сертификату.</string>
+    <string name="gif_plugin_unavailable_desc">Служба плагина GIF не отвечает. Пожалуйста, запустите плагин один раз или проверьте его разрешения.</string>
+    <string name="gif_download_plugin">Скачать плагин</string>
+    <string name="gif_providers_title">Доступные провайдеры</string>
+    <string name="gif_dialog_title">Настроить ключ API</string>
+    <string name="gif_provider_configured">Настроен</string>
+    <string name="gif_provider_not_configured">Требуется ключ API</string>
+    <string name="gif_enter_api_key">Введите ключ API</string>
+    <string name="gif_clear_key">Прозрачный</string>
+    <string name="gif_save">Сохранять</string>
+    <string name="gif_connecting">Подключение…</string>
+    <string name="gif_api_key_saved">Ключ API сохранен.</string>
+    <string name="gif_api_key_cleared">Ключ API удален</string>
 </resources>

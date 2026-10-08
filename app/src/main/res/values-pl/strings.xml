@@ -1721,4 +1721,20 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="gif_error_generic">Nie udało się wczytać GIF-ów</string>
     <string name="gif_insertion_unsupported">Aplikacja nie obsługuje wstawiania GIF</string>
     <string name="gif_install_plugin">Zainstaluj wtyczkę GIF</string>
+    <string name="gif_settings_title">Wyszukiwanie GIF-ów</string>
+    <string name="gif_plugin_status_title">Stan wtyczki</string>
+    <string name="gif_plugin_not_installed_desc">Wtyczka GIF umożliwia wyszukiwanie i wstawianie plików Tenor, Klipy i innych dostawców bez przyznawania dostępu sieciowego do klawiatury.</string>
+    <string name="gif_plugin_untrusted_desc">Podpis zainstalowanej wtyczki GIF nie jest zgodny z zaufanym certyfikatem.</string>
+    <string name="gif_plugin_unavailable_desc">Usługa wtyczki GIF nie odpowiada. Proszę uruchomić wtyczkę raz lub sprawdzić jej uprawnienia.</string>
+    <string name="gif_download_plugin">Pobierz wtyczkę</string>
+    <string name="gif_providers_title">Dostępni dostawcy</string>
+    <string name="gif_dialog_title">Skonfiguruj klucz API</string>
+    <string name="gif_provider_configured">Skonfigurowane</string>
+    <string name="gif_provider_not_configured">Wymagany klucz API</string>
+    <string name="gif_enter_api_key">Wprowadź klucz API</string>
+    <string name="gif_clear_key">Jasne</string>
+    <string name="gif_save">Ratować</string>
+    <string name="gif_connecting">Złączony…</string>
+    <string name="gif_api_key_saved">Klucz API został zapisany</string>
+    <string name="gif_api_key_cleared">Klucz API został wyczyszczony</string>
 </resources>

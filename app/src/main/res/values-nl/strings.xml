@@ -1719,4 +1719,20 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_error_generic">Kan GIF\'s niet laden</string>
     <string name="gif_insertion_unsupported">App ondersteunt geen GIF-invoeging</string>
     <string name="gif_install_plugin">Installeer de GIF-plug-in</string>
+    <string name="gif_settings_title">GIF-zoekopdracht</string>
+    <string name="gif_plugin_status_title">Plug-instatus</string>
+    <string name="gif_plugin_not_installed_desc">De GIF-plug-in biedt zoeken en invoegen voor Tenor, Klipy en andere providers zonder netwerktoegang tot het toetsenbord te verlenen.</string>
+    <string name="gif_plugin_untrusted_desc">De geïnstalleerde handtekening van de GIF-plug-in komt niet overeen met het vertrouwde certificaat.</string>
+    <string name="gif_plugin_unavailable_desc">De GIF-plug-inservice reageert niet. Start de plug-in één keer of controleer de rechten ervan.</string>
+    <string name="gif_download_plugin">Plugin downloaden</string>
+    <string name="gif_providers_title">Beschikbare aanbieders</string>
+    <string name="gif_dialog_title">Configureer API-sleutel</string>
+    <string name="gif_provider_configured">Geconfigureerd</string>
+    <string name="gif_provider_not_configured">API-sleutel vereist</string>
+    <string name="gif_enter_api_key">Voer de API-sleutel in</string>
+    <string name="gif_clear_key">Duidelijk</string>
+    <string name="gif_save">Redden</string>
+    <string name="gif_connecting">Verbinden…</string>
+    <string name="gif_api_key_saved">API-sleutel opgeslagen</string>
+    <string name="gif_api_key_cleared">API-sleutel gewist</string>
 </resources>

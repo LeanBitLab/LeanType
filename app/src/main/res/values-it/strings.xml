@@ -1744,4 +1744,20 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_error_generic">Impossibile caricare le GIF</string>
     <string name="gif_insertion_unsupported">L\'app non supporta l\'inserimento di GIF</string>
     <string name="gif_install_plugin">Installa il plugin GIF</string>
+    <string name="gif_settings_title">Ricerca GIF</string>
+    <string name="gif_plugin_status_title">Stato del plug-in</string>
+    <string name="gif_plugin_not_installed_desc">Il plug-in GIF consente la ricerca e l\'inserimento di Tenor, Klipy e altri provider senza garantire l\'accesso alla rete alla tastiera.</string>
+    <string name="gif_plugin_untrusted_desc">La firma del plugin GIF installata non corrisponde al certificato attendibile.</string>
+    <string name="gif_plugin_unavailable_desc">Il servizio plugin GIF non risponde. Avvia il plugin una volta o verificane le autorizzazioni.</string>
+    <string name="gif_download_plugin">Scarica plug-in</string>
+    <string name="gif_providers_title">Fornitori disponibili</string>
+    <string name="gif_dialog_title">Configura la chiave API</string>
+    <string name="gif_provider_configured">Configurato</string>
+    <string name="gif_provider_not_configured">Chiave API richiesta</string>
+    <string name="gif_enter_api_key">Inserisci la chiave API</string>
+    <string name="gif_clear_key">Chiaro</string>
+    <string name="gif_save">Salva</string>
+    <string name="gif_connecting">Connessione…</string>
+    <string name="gif_api_key_saved">Chiave API salvata</string>
+    <string name="gif_api_key_cleared">Chiave API cancellata</string>
 </resources>

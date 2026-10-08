@@ -1639,4 +1639,20 @@
     <string name="gif_error_generic">Не вдалося завантажити GIF-файли</string>
     <string name="gif_insertion_unsupported">Програма не підтримує вставку GIF</string>
     <string name="gif_install_plugin">Встановіть плагін GIF</string>
+    <string name="gif_settings_title">Пошук GIF</string>
+    <string name="gif_plugin_status_title">Статус плагіна</string>
+    <string name="gif_plugin_not_installed_desc">Плагін GIF забезпечує пошук і вставку для Tenor, Klipy та інших постачальників без надання мережевого доступу до клавіатури.</string>
+    <string name="gif_plugin_untrusted_desc">Установлений підпис плагіна GIF не відповідає надійному сертифікату.</string>
+    <string name="gif_plugin_unavailable_desc">Служба плагіна GIF не відповідає. Будь ласка, запустіть плагін один раз або перевірте його дозволи.</string>
+    <string name="gif_download_plugin">Завантажити плагін</string>
+    <string name="gif_providers_title">Доступні постачальники</string>
+    <string name="gif_dialog_title">Налаштувати ключ API</string>
+    <string name="gif_provider_configured">Налаштовано</string>
+    <string name="gif_provider_not_configured">Потрібен ключ API</string>
+    <string name="gif_enter_api_key">Введіть ключ API</string>
+    <string name="gif_clear_key">ясно</string>
+    <string name="gif_save">зберегти</string>
+    <string name="gif_connecting">Підключення…</string>
+    <string name="gif_api_key_saved">Ключ API збережено</string>
+    <string name="gif_api_key_cleared">Ключ API видалено</string>
 </resources>

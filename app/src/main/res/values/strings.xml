@@ -2363,4 +2363,20 @@ New dictionary:
     <string name="gif_error_generic">Couldn\'t load GIFs</string>
     <string name="gif_insertion_unsupported">App does not support GIF insertion</string>
     <string name="gif_install_plugin">Install GIF plugin</string>
+    <string name="gif_settings_title">GIF Search</string>
+    <string name="gif_plugin_status_title">Plugin Status</string>
+    <string name="gif_plugin_not_installed_desc">The GIF plugin provides search and insertion for Tenor, Klipy, and other providers without granting network access to the keyboard.</string>
+    <string name="gif_plugin_untrusted_desc">The installed GIF plugin signature does not match the trusted certificate.</string>
+    <string name="gif_plugin_unavailable_desc">The GIF plugin service is not responding. Please launch the plugin once or verify its permissions.</string>
+    <string name="gif_download_plugin">Download plugin</string>
+    <string name="gif_providers_title">Available Providers</string>
+    <string name="gif_dialog_title">Configure API Key</string>
+    <string name="gif_provider_configured">Configured</string>
+    <string name="gif_provider_not_configured">API key required</string>
+    <string name="gif_enter_api_key">Enter API key</string>
+    <string name="gif_clear_key">Clear</string>
+    <string name="gif_save">Save</string>
+    <string name="gif_connecting">Connecting…</string>
+    <string name="gif_api_key_saved">API key saved</string>
+    <string name="gif_api_key_cleared">API key cleared</string>
 </resources>

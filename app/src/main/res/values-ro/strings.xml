@@ -1666,4 +1666,20 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_error_generic">GIF-urile nu au putut fi încărcate</string>
     <string name="gif_insertion_unsupported">Aplicația nu acceptă inserarea GIF</string>
     <string name="gif_install_plugin">Instalați pluginul GIF</string>
+    <string name="gif_settings_title">Căutare GIF</string>
+    <string name="gif_plugin_status_title">Stare plugin</string>
+    <string name="gif_plugin_not_installed_desc">Pluginul GIF oferă căutare și inserare pentru Tenor, Klipy și alți furnizori fără a acorda acces la rețea la tastatură.</string>
+    <string name="gif_plugin_untrusted_desc">Semnătura pluginului GIF instalată nu se potrivește cu certificatul de încredere.</string>
+    <string name="gif_plugin_unavailable_desc">Serviciul de plugin GIF nu răspunde. Lansați pluginul o dată sau verificați permisiunile acestuia.</string>
+    <string name="gif_download_plugin">Descărcați pluginul</string>
+    <string name="gif_providers_title">Furnizori disponibili</string>
+    <string name="gif_dialog_title">Configurați cheia API</string>
+    <string name="gif_provider_configured">Configurat</string>
+    <string name="gif_provider_not_configured">Este necesară cheia API</string>
+    <string name="gif_enter_api_key">Introduceți cheia API</string>
+    <string name="gif_clear_key">Clar</string>
+    <string name="gif_save">Salva</string>
+    <string name="gif_connecting">Se conectează...</string>
+    <string name="gif_api_key_saved">Cheia API salvată</string>
+    <string name="gif_api_key_cleared">Cheia API a fost ștearsă</string>
 </resources>

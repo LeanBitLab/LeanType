@@ -1686,4 +1686,20 @@
     <string name="gif_error_generic">לא ניתן היה לטעון קובצי GIF</string>
     <string name="gif_insertion_unsupported">האפליקציה אינה תומכת בהכנסת GIF</string>
     <string name="gif_install_plugin">התקן תוסף GIF</string>
+    <string name="gif_settings_title">חיפוש GIF</string>
+    <string name="gif_plugin_status_title">סטטוס הפלאגין</string>
+    <string name="gif_plugin_not_installed_desc">תוסף GIF מספק חיפוש והוספה עבור Tenor, Klipy וספקים אחרים מבלי להעניק גישה לרשת למקלדת.</string>
+    <string name="gif_plugin_untrusted_desc">חתימת הפלאגין GIF המותקן אינה תואמת לאישור המהימן.</string>
+    <string name="gif_plugin_unavailable_desc">שירות הפלאגין GIF אינו מגיב. אנא הפעל את הפלאגין פעם אחת או אמת את ההרשאות שלו.</string>
+    <string name="gif_download_plugin">הורד תוסף</string>
+    <string name="gif_providers_title">ספקים זמינים</string>
+    <string name="gif_dialog_title">הגדר מפתח API</string>
+    <string name="gif_provider_configured">מוגדר</string>
+    <string name="gif_provider_not_configured">נדרש מפתח API</string>
+    <string name="gif_enter_api_key">הזן מפתח API</string>
+    <string name="gif_clear_key">בָּרוּר</string>
+    <string name="gif_save">לְהַצִיל</string>
+    <string name="gif_connecting">מְקַשֵׁר…</string>
+    <string name="gif_api_key_saved">מפתח API נשמר</string>
+    <string name="gif_api_key_cleared">מפתח API נוקה</string>
 </resources>

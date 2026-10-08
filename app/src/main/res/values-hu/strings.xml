@@ -1675,4 +1675,20 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="gif_error_generic">Nem sikerült betölteni a GIF-eket</string>
     <string name="gif_insertion_unsupported">Az alkalmazás nem támogatja a GIF beillesztést</string>
     <string name="gif_install_plugin">Telepítse a GIF bővítményt</string>
+    <string name="gif_settings_title">GIF keresés</string>
+    <string name="gif_plugin_status_title">Beépülő modul állapota</string>
+    <string name="gif_plugin_not_installed_desc">A GIF beépülő modul keresést és beillesztést biztosít a Tenor, a Klipy és más szolgáltatók számára anélkül, hogy hálózati hozzáférést biztosítana a billentyűzethez.</string>
+    <string name="gif_plugin_untrusted_desc">A telepített GIF-bővítmény aláírása nem egyezik a megbízható tanúsítvánnyal.</string>
+    <string name="gif_plugin_unavailable_desc">A GIF beépülő modul szolgáltatás nem válaszol. Kérjük, indítsa el egyszer a beépülő modult, vagy ellenőrizze az engedélyeit.</string>
+    <string name="gif_download_plugin">Töltse le a bővítményt</string>
+    <string name="gif_providers_title">Elérhető szolgáltatók</string>
+    <string name="gif_dialog_title">Konfigurálja az API-kulcsot</string>
+    <string name="gif_provider_configured">Beállítva</string>
+    <string name="gif_provider_not_configured">API-kulcs szükséges</string>
+    <string name="gif_enter_api_key">Írja be az API kulcsot</string>
+    <string name="gif_clear_key">Világos</string>
+    <string name="gif_save">Megtakarítás</string>
+    <string name="gif_connecting">Csatlakozás…</string>
+    <string name="gif_api_key_saved">API-kulcs mentve</string>
+    <string name="gif_api_key_cleared">API-kulcs törölve</string>
 </resources>

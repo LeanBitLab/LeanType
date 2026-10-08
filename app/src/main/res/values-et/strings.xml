@@ -1666,4 +1666,20 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_error_generic">GIF-e ei saanud laadida</string>
     <string name="gif_insertion_unsupported">Rakendus ei toeta GIF-i sisestamist</string>
     <string name="gif_install_plugin">Installige GIF-i pistikprogramm</string>
+    <string name="gif_settings_title">GIF-i otsing</string>
+    <string name="gif_plugin_status_title">Plugina olek</string>
+    <string name="gif_plugin_not_installed_desc">GIF-i pistikprogramm pakub Tenori, Klipy ja teiste pakkujate otsingut ja sisestamist ilma klaviatuurile võrgujuurdepääsu andmata.</string>
+    <string name="gif_plugin_untrusted_desc">Installitud GIF-i pistikprogrammi allkiri ei ühti usaldusväärse sertifikaadiga.</string>
+    <string name="gif_plugin_unavailable_desc">GIF-i pistikprogrammi teenus ei reageeri. Käivitage pistikprogramm üks kord või kontrollige selle õigusi.</string>
+    <string name="gif_download_plugin">Laadige alla pistikprogramm</string>
+    <string name="gif_providers_title">Saadaolevad pakkujad</string>
+    <string name="gif_dialog_title">Seadistage API võti</string>
+    <string name="gif_provider_configured">Seadistatud</string>
+    <string name="gif_provider_not_configured">Vajalik on API võti</string>
+    <string name="gif_enter_api_key">Sisestage API võti</string>
+    <string name="gif_clear_key">Selge</string>
+    <string name="gif_save">Salvesta</string>
+    <string name="gif_connecting">Ühendamine…</string>
+    <string name="gif_api_key_saved">API võti on salvestatud</string>
+    <string name="gif_api_key_cleared">API võti on kustutatud</string>
 </resources>

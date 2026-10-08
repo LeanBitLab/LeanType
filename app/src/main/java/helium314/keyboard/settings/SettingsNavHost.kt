@@ -216,6 +216,9 @@ fun SettingsNavHost(
         composable(SettingsDestination.Storage) {
             helium314.keyboard.settings.screens.StorageScreen(onClickBack = ::goBack)
         }
+        composable(SettingsDestination.Gif) {
+            helium314.keyboard.settings.screens.GifSettingsScreen(onClickBack = ::goBack)
+        }
     }
     if (target.value != SettingsDestination.Settings/* && target.value != navController.currentBackStackEntry?.destination?.route*/)
         navController.navigate(route = target.value)
@@ -256,6 +259,7 @@ object SettingsDestination {
     const val OCR = "ocr"
     const val Sound = "sound"
     const val AppQuirks = "app_quirks"
+    const val Gif = "gif"
     val navTarget = MutableStateFlow(Settings)
 
     // Use SupervisorJob so a cancellation in one navigation hop
