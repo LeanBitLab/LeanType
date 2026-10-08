@@ -53,7 +53,8 @@ class GifPluginManager private constructor(private val appContext: Context) {
         // Signing-cert SHA-256 digests (lowercase hex)
         private val PINNED_PLUGIN_CERTS = setOf(
             "ac7360ae311a36f2cc1caf1dad4848e18e191c55aaf128838fc34c92c6838016", // release
-            "ca2d7663d16db859ee3ec70b349f0ab232d2e16eefdd4f4eff8b451ba694509e"  // debug
+            "ca2d7663d16db859ee3ec70b349f0ab232d2e16eefdd4f4eff8b451ba694509e", // debug
+            "01cfc72120c539ec4cc846cd70d25f83e3fc694d8bdcd2211454a8c993c4f5a3"  // plugin-release.jks
         )
 
         private val SETTLED = setOf(
