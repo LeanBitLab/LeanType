@@ -8,3 +8,7 @@
 ## 2024-05-18 - Pre-compile Regex in hot dictionary loops
 **Learning:** Instantiating `Regex` objects inside dictionary processing loops (like adding words in `UserBinaryDictionary` or `AppsBinaryDictionary`) causes unnecessary allocations and compilation overhead on every item iteration.
 **Action:** Always pre-compile `Regex` objects as `private val` properties in the class or companion object to eliminate per-iteration compilation and allocation pressure.
+
+## 2024-05-18 - Pre-compile Regex in model importers
+**Learning:** `TranslationModelImporter` and `HandwritingModelImporter` create `Regex` instances inside `detectLanguageCode` and `detectLanguageTag` methods, sometimes inside a loop parsing zip entries. This causes unnecessary overhead on every detection call.
+**Action:** Extract frequently used `Regex` instances into `companion object`s as `private val`s to ensure they are compiled only once, reducing execution time and object allocation.

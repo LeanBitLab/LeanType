@@ -158,10 +158,15 @@ object TranslationModelImporter {
         return uri.lastPathSegment
     }
 
+    private val FN_MATCH_REGEX = Regex("""(?:dict\.|merged_dict_)?([a-z]{2,3})[_-]([a-z]{2,3})""")
+    private val SINGLE_MATCH_REGEX = Regex("""^([a-z]{2,3})(?:[._-]model)?\.zip$""")
+    private val INNER_MATCH_REGEX = Regex("""(?:dict\.|merged_dict_)([a-z]{2,3})_([a-z]{2,3})""")
+    private val SINGLE_INNER_MATCH_REGEX = Regex("""(?:dict\.|merged_dict_)([a-z]{2,3}_[a-z]{2,3})""")
+
     fun detectLanguageCode(context: Context, uri: Uri): String? {
         val filename = getFilename(context, uri) ?: uri.lastPathSegment ?: ""
         val fnLower = filename.lowercase()
-        val fnMatch = Regex("""(?:dict\.|merged_dict_)?([a-z]{2,3})[_-]([a-z]{2,3})""").find(fnLower)
+        val fnMatch = FN_MATCH_REGEX.find(fnLower)
         if (fnMatch != null) {
             val code1 = fnMatch.groupValues[1]
             val code2 = fnMatch.groupValues[2]
@@ -169,7 +174,7 @@ object TranslationModelImporter {
             if (code2 == "en") return code1
             return code1
         }
-        val singleMatch = Regex("""^([a-z]{2,3})(?:[._-]model)?\.zip$""").find(fnLower)
+        val singleMatch = SINGLE_MATCH_REGEX.find(fnLower)
         if (singleMatch != null) {
             return singleMatch.groupValues[1]
         }
@@ -180,7 +185,7 @@ object TranslationModelImporter {
                     var entry = zipIn.nextEntry
                     while (entry != null) {
                         val name = entry.name.lowercase()
-                        val match = Regex("""(?:dict\.|merged_dict_)([a-z]{2,3})_([a-z]{2,3})""").find(name)
+                        val match = INNER_MATCH_REGEX.find(name)
                         if (match != null) {
                             val code1 = match.groupValues[1]
                             val code2 = match.groupValues[2]
@@ -295,7 +300,7 @@ object TranslationModelImporter {
                 while (entries.hasMoreElements()) {
                     val entry = entries.nextElement()
                     val name = entry.name
-                    val match = Regex("""(?:dict\.|merged_dict_)([a-z]{2,3}_[a-z]{2,3})""").find(name)
+                    val match = SINGLE_INNER_MATCH_REGEX.find(name)
                     if (match != null) {
                         detectedModelName = match.groupValues[1]
                         break

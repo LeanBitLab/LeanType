@@ -170,19 +170,20 @@ object HandwritingModelImporter {
         }
     }
 
+    private val QRNN_REGEX = Regex("""qrnn[._]([a-z]{2,3}(?:[_-][a-z0-9]+)?)[._]reco""")
+    private val FST_REGEX = Regex("""^([a-z]{2,3}(?:[_-][a-z0-9]+)?)[._]\d+[._]compact""")
+    private val ZIP_REGEX = Regex("""^([a-z]{2,3}(?:[_-][a-z0-9]+)?)(?:[._-]model)?\.zip$""")
+    private val LSTM_REGEX = Regex("""lstm[._]([a-z]+)[._]""")
+
     fun detectLanguageTag(filename: String): String? {
         val name = filename.lowercase()
-        val qrnnRegex = Regex("""qrnn[._]([a-z]{2,3}(?:[_-][a-z0-9]+)?)[._]reco""")
-        qrnnRegex.find(name)?.let { return formatBcp47(it.groupValues[1]) }
+        QRNN_REGEX.find(name)?.let { return formatBcp47(it.groupValues[1]) }
 
-        val fstRegex = Regex("""^([a-z]{2,3}(?:[_-][a-z0-9]+)?)[._]\d+[._]compact""")
-        fstRegex.find(name)?.let { return formatBcp47(it.groupValues[1]) }
+        FST_REGEX.find(name)?.let { return formatBcp47(it.groupValues[1]) }
 
-        val zipRegex = Regex("""^([a-z]{2,3}(?:[_-][a-z0-9]+)?)(?:[._-]model)?\.zip$""")
-        zipRegex.find(name)?.let { return formatBcp47(it.groupValues[1]) }
+        ZIP_REGEX.find(name)?.let { return formatBcp47(it.groupValues[1]) }
 
-        val lstmRegex = Regex("""lstm[._]([a-z]+)[._]""")
-        lstmRegex.find(name)?.let {
+        LSTM_REGEX.find(name)?.let {
             val script = it.groupValues[1]
             val lang = SCRIPT_TO_LANG[script] ?: script
             return formatBcp47(lang)
