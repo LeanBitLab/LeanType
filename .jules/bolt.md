@@ -12,3 +12,6 @@
 ## 2024-05-18 - Pre-compile Regex in model importers
 **Learning:** `TranslationModelImporter` and `HandwritingModelImporter` create `Regex` instances inside `detectLanguageCode` and `detectLanguageTag` methods, sometimes inside a loop parsing zip entries. This causes unnecessary overhead on every detection call.
 **Action:** Extract frequently used `Regex` instances into `companion object`s as `private val`s to ensure they are compiled only once, reducing execution time and object allocation.
+## 2024-05-18 - Pre-compile Regex in SpellCheckerSession
+**Learning:** `AndroidWordLevelSpellCheckerSession` previously instantiated new `Regex` objects for every quote matching and punctuation splitting operation during `onGetSuggestionsInternal`, which is a highly invoked method on the spellchecker hot-path.
+**Action:** Always extract frequently instantiated `Regex` objects from hot paths (like text replacement or splitting) into `companion object` private constants (e.g. `periodRegex`, `quotesStartRegex`) to reduce allocation and regex compilation overhead per keystroke.
