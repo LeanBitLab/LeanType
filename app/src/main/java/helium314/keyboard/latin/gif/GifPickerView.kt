@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.ImageDecoder
+import android.graphics.drawable.AnimatedImageDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.util.AttributeSet
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,7 +77,7 @@ class GifPickerView @JvmOverloads constructor(
     private lateinit var statusText: TextView
     private lateinit var statusAction: TextView
 
-    private val adapter = GifAdapter(context) { onGifClicked(it) }
+    private val adapter = GifAdapter(context, scope) { onGifClicked(it) }
     private val isInserting = AtomicBoolean(false)
 
     var targetProvider: (() -> Pair<InputConnection?, EditorInfo?>)? = null
@@ -294,16 +298,19 @@ class GifPickerView @JvmOverloads constructor(
     }
 
     private fun reload(debounce: Boolean) {
+        val seq = ++loadSeq
         queryJob?.cancel()
         pagingJob?.cancel()
         isPaging = false
         nextPos = null
         hasMore = true
+        statusContainer.visibility = View.GONE
 
         queryJob = scope.launch {
             if (debounce) delay(300)
+            if (!isActive || seq != loadSeq) return@launch
             val q = query.toString().trim()
-            runRequest(isPage = false) { engine, id, cb ->
+            runRequest(isPage = false, seq = seq) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 if (q.isEmpty()) {
                     engine.trending(id, provider, "", PAGE_SIZE, cb)
@@ -320,10 +327,11 @@ class GifPickerView @JvmOverloads constructor(
         if (pos.isEmpty()) return
         isPaging = true
 
+        val seq = loadSeq
         pagingJob?.cancel()
         pagingJob = scope.launch {
             val q = query.toString().trim()
-            runRequest(isPage = true) { engine, id, cb ->
+            runRequest(isPage = true, seq = seq) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 if (q.isEmpty()) {
                     engine.trending(id, provider, pos, PAGE_SIZE, cb)
@@ -336,6 +344,7 @@ class GifPickerView @JvmOverloads constructor(
 
     private suspend fun runRequest(
         isPage: Boolean,
+        seq: Int,
         call: (IGifEngine, Int, IGifCallback) -> Unit
     ) {
         if (!isPage) {
@@ -343,7 +352,6 @@ class GifPickerView @JvmOverloads constructor(
             statusContainer.visibility = View.GONE
             progress.visibility = View.VISIBLE
         }
-        val seq = ++loadSeq
         val gen = manager.connectionGeneration.value
         val id = manager.nextRequestId().also { currentRequestId = it }
 
@@ -366,23 +374,30 @@ class GifPickerView @JvmOverloads constructor(
 
         if (result.isFailure) {
             if (currentRequestId == id) currentRequestId = null
+            val err = result.exceptionOrNull()
+            if (err is CancellationException) return
             if (isPage) {
                 isPaging = false
-            } else if (opened && seq == loadSeq) {
+            } else if (opened && seq == loadSeq && currentCoroutineContext().isActive) {
                 progress.visibility = View.GONE
-                showErrorStatus(result.exceptionOrNull() ?: Exception())
+                showErrorStatus(err ?: Exception())
             }
             return
         }
 
         val response = try {
             withTimeout(12_000) { deferred.await() }
+        } catch (e: CancellationException) {
+            runCatching { manager.call { it.cancel(id) } }
+            if (currentRequestId == id) currentRequestId = null
+            if (isPage) isPaging = false
+            return
         } catch (e: Exception) {
             runCatching { manager.call { it.cancel(id) } }
             if (currentRequestId == id) currentRequestId = null
             if (isPage) {
                 isPaging = false
-            } else if (opened && seq == loadSeq) {
+            } else if (opened && seq == loadSeq && currentCoroutineContext().isActive) {
                 progress.visibility = View.GONE
                 showErrorStatus(e)
             }
@@ -390,7 +405,7 @@ class GifPickerView @JvmOverloads constructor(
         }
 
         if (currentRequestId == id) currentRequestId = null
-        if (!opened || seq != loadSeq || gen != manager.connectionGeneration.value) {
+        if (!opened || seq != loadSeq || gen != manager.connectionGeneration.value || !currentCoroutineContext().isActive) {
             if (isPage) isPaging = false
             return
         }
@@ -562,14 +577,19 @@ class GifPickerView @JvmOverloads constructor(
 
     private class GifAdapter(
         private val context: Context,
+        private val scope: CoroutineScope,
         private val onClick: (GifItem) -> Unit
     ) : RecyclerView.Adapter<GifAdapter.VH>() {
         private var items = listOf<GifItem>()
         private var insertingId: String? = null
+        private var liveItemId: String? = null
+        private var liveJob: Job? = null
 
         @SuppressLint("NotifyDataSetChanged")
         fun submit(new: List<GifItem>) {
             items = new
+            liveItemId = null
+            liveJob?.cancel()
             notifyDataSetChanged()
         }
 
@@ -588,12 +608,28 @@ class GifPickerView @JvmOverloads constructor(
 
         class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val imageView: ImageView = itemView.findViewById(R.id.gifThumbImage)
+            val liveBadge: TextView = itemView.findViewById(R.id.liveBadge)
             val insertOverlay: View = itemView.findViewById(R.id.insertOverlay)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_gif_thumb, parent, false)
             return VH(view)
+        }
+
+        override fun onViewRecycled(holder: VH) {
+            super.onViewRecycled(holder)
+            stopAnimation(holder.imageView)
+            holder.imageView.setImageDrawable(null)
+        }
+
+        private fun stopAnimation(imageView: ImageView) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                val d = imageView.drawable
+                if (d is AnimatedImageDrawable) {
+                    d.stop()
+                }
+            }
         }
 
         override fun onBindViewHolder(holder: VH, position: Int) {
@@ -613,11 +649,54 @@ class GifPickerView @JvmOverloads constructor(
             lp.width = computedWidth.coerceIn((h * 0.5f).toInt(), (h * 2.0f).toInt())
             holder.itemView.layoutParams = lp
 
-            holder.imageView.load(uri, GifImageLoader.get(context)) {
-                placeholder(R.drawable.ic_gif_placeholder)
-                precision(Precision.INEXACT)
+            val isLive = item.id == liveItemId
+            holder.liveBadge.visibility = if (isLive) View.VISIBLE else View.GONE
+
+            if (isLive && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                bindLive(holder, uri, item.id)
+            } else {
+                stopAnimation(holder.imageView)
+                holder.imageView.load(uri, GifImageLoader.get(context)) {
+                    placeholder(R.drawable.ic_gif_placeholder)
+                    precision(Precision.INEXACT)
+                }
             }
+
             holder.itemView.setOnClickListener { onClick(item) }
+            holder.itemView.setOnLongClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                val oldLiveId = liveItemId
+                liveItemId = if (liveItemId == item.id) null else item.id
+                val oldPos = items.indexOfFirst { it.id == oldLiveId }
+                val newPos = items.indexOfFirst { it.id == liveItemId }
+                if (oldPos != -1) notifyItemChanged(oldPos)
+                if (newPos != -1 && newPos != oldPos) notifyItemChanged(newPos)
+                true
+            }
+        }
+
+        private fun bindLive(holder: VH, uri: Uri, itemId: String) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return
+            liveJob?.cancel()
+            liveJob = scope.launch(Dispatchers.IO) {
+                val drawable = try {
+                    val source = ImageDecoder.createSource(context.contentResolver, uri)
+                    ImageDecoder.decodeDrawable(source)
+                } catch (_: Exception) {
+                    null
+                }
+                withContext(Dispatchers.Main) {
+                    if (liveItemId == itemId && holder.bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                        if (drawable is AnimatedImageDrawable) {
+                            holder.imageView.setImageDrawable(drawable)
+                            drawable.repeatCount = AnimatedImageDrawable.REPEAT_INFINITE
+                            drawable.start()
+                        } else if (drawable != null) {
+                            holder.imageView.setImageDrawable(drawable)
+                        }
+                    }
+                }
+            }
         }
 
         override fun getItemCount(): Int = items.size

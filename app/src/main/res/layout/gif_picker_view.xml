@@ -10,7 +10,17 @@
         android:layout_height="@dimen/gif_picker_header_height"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingEnd="4dp">
+        android:paddingStart="4dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/closeButton"
+            android:layout_width="@dimen/gif_picker_header_height"
+            android:layout_height="@dimen/gif_picker_header_height"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/action_back"
+            android:tint="?android:attr/textColorPrimary" />
 
         <LinearLayout
             android:id="@+id/searchContainer"
@@ -18,8 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginVertical="2dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
             android:background="@drawable/bg_gif_search_box"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -68,15 +77,6 @@
                 android:contentDescription="@string/gif_search_clear"
                 android:visibility="gone" />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/closeButton"
-            android:layout_width="@dimen/gif_picker_header_height"
-            android:layout_height="@dimen/gif_picker_header_height"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_close"
-            android:contentDescription="@string/dialog_close"
-            android:tint="?android:attr/textColorPrimary" />
     </LinearLayout>
 
     <FrameLayout

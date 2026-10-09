@@ -18,6 +18,22 @@
         android:scaleType="centerCrop"
         android:contentDescription="@null" />
 
+    <TextView
+        android:id="@+id/liveBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_gif_search_box"
+        android:backgroundTint="#88000000"
+        android:text="LIVE"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="1dp"
+        android:visibility="gone" />
+
     <FrameLayout
         android:id="@+id/insertOverlay"
         android:layout_width="match_parent"
