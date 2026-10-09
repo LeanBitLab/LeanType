@@ -127,12 +127,12 @@ abstract class AndroidWordLevelSpellCheckerSession(
             val locale = mLocale ?: return AndroidSpellCheckerService.getNotInDictEmptySuggestions(false)
             var text = textInfo.text
                 .replace(AndroidSpellCheckerService.APOSTROPHE, AndroidSpellCheckerService.SINGLE_QUOTE)
-                .replace(Regex("^$quotesRegexp"), "")
-                .replace(Regex("$quotesRegexp$"), "")
+                .replace(quotesStartRegex, "")
+                .replace(quotesEndRegex, "")
 
             val localeRegex = scriptToPunctuationRegexMap[locale.script()]
             if (localeRegex != null) {
-                text = text.replace(Regex(localeRegex), "")
+                text = text.replace(localeRegex, "")
             }
 
             val cachedSuggestionsParams = mSuggestionsCache.getSuggestionsFromCache(text)
@@ -148,7 +148,7 @@ abstract class AndroidWordLevelSpellCheckerSession(
             if (CHECKABILITY_CHECKABLE != checkability) {
                 val periodOnlyAtLastIndex = text.indexOf(Constants.CODE_PERIOD.toChar()) == (text.length - 1)
                 if (CHECKABILITY_CONTAINS_PERIOD == checkability) {
-                    val splitText = text.split(Regex(Constants.REGEXP_PERIOD))
+                    val splitText = text.split(periodRegex)
                     var allWordsAreValid = true
                     for (word in splitText) {
                         if (word.isNotEmpty() && !mService.isValidWord(locale, word) && !mService.isValidWord(locale, word.lowercase(locale))) {
@@ -218,8 +218,11 @@ abstract class AndroidWordLevelSpellCheckerSession(
         val EMPTY_STRING_ARRAY = emptyArray<String>()
 
         private const val quotesRegexp = "([\u0022\u0027\u0060\u00B4\u2018\u2019\u201C\u201D])"
-        private val scriptToPunctuationRegexMap = TreeMap<String, String>().apply {
-            put(ScriptUtils.SCRIPT_ARMENIAN, "(\u0028|\u0029|\u0027|\u2026|\u055E|\u055C|\u055B|\u055D|\u058A|\u2015|\u00AB|\u00BB|\u002C|\u0589|\u2024)")
+        private val quotesStartRegex = Regex("^$quotesRegexp")
+        private val quotesEndRegex = Regex("$quotesRegexp$")
+        private val periodRegex = Regex(Constants.REGEXP_PERIOD)
+        private val scriptToPunctuationRegexMap = TreeMap<String, Regex>().apply {
+            put(ScriptUtils.SCRIPT_ARMENIAN, Regex("(\u0028|\u0029|\u0027|\u2026|\u055E|\u055C|\u055B|\u055D|\u058A|\u2015|\u00AB|\u00BB|\u002C|\u0589|\u2024)"))
         }
 
         private const val CHECKABILITY_CHECKABLE = 0
