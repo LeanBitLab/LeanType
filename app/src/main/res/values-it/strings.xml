@@ -1760,4 +1760,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_connecting">Connessione…</string>
     <string name="gif_api_key_saved">Chiave API salvata</string>
     <string name="gif_api_key_cleared">Chiave API cancellata</string>
+    <string name="gif_provider_active">Attivo</string>
+    <string name="gif_set_as_active">Imposta come attivo</string>
+    <string name="gif_search_hint_provider">Cerca%s…</string>
 </resources>

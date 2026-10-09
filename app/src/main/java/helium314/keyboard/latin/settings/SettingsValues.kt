@@ -236,6 +236,7 @@ open class SettingsValues(
     val mLongPressSymbolsForNumpad: Boolean
     val mFoldableMode: Boolean
     val mColors: Colors
+    val mGifProvider: String
     val isSymbolComposingApp: Boolean = AppQuirksManager.isSymbolComposingApp(mInputAttributes.mTargetApplicationPackageName)
 
     init {
@@ -243,6 +244,7 @@ open class SettingsValues(
         mCurrentKeyboardScript = currentKeyboardScript
         mDisplayOrientation = res.configuration.orientation
         mFoldableMode = prefs.getBoolean(Settings.PREF_FOLDABLE_MODE, false)
+        mGifProvider = prefs.getString(Settings.PREF_GIF_PROVIDER, "") ?: ""
         mScreenProfile = helium314.keyboard.latin.utils.ScreenProfileProvider.getScreenProfile(context, res.configuration, this)
         val selectedSubtype = SubtypeSettings.getSelectedSubtype(prefs)
 

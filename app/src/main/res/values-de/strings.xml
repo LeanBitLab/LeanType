@@ -1697,4 +1697,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_connecting">Verbinden…</string>
     <string name="gif_api_key_saved">API-Schlüssel gespeichert</string>
     <string name="gif_api_key_cleared">API-Schlüssel gelöscht</string>
+    <string name="gif_provider_active">Aktiv</string>
+    <string name="gif_set_as_active">Als aktiv festlegen</string>
+    <string name="gif_search_hint_provider">Suche%s…</string>
 </resources>

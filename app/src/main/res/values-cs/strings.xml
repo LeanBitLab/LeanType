@@ -1700,4 +1700,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_connecting">Spojovací…</string>
     <string name="gif_api_key_saved">Klíč API byl uložen</string>
     <string name="gif_api_key_cleared">Klíč API vymazán</string>
+    <string name="gif_provider_active">Aktivní</string>
+    <string name="gif_set_as_active">Nastavit jako aktivní</string>
+    <string name="gif_search_hint_provider">Hledat%s…</string>
 </resources>

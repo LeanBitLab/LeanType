@@ -1749,4 +1749,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="gif_connecting">De liaison…</string>
     <string name="gif_api_key_saved">Clé API enregistrée</string>
     <string name="gif_api_key_cleared">Clé API effacée</string>
+    <string name="gif_provider_active">Actif</string>
+    <string name="gif_set_as_active">Définir comme actif</string>
+    <string name="gif_search_hint_provider">Rechercher%s…</string>
 </resources>

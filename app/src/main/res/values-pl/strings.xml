@@ -1737,4 +1737,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="gif_connecting">Złączony…</string>
     <string name="gif_api_key_saved">Klucz API został zapisany</string>
     <string name="gif_api_key_cleared">Klucz API został wyczyszczony</string>
+    <string name="gif_provider_active">Aktywny</string>
+    <string name="gif_set_as_active">Ustaw jako aktywne</string>
+    <string name="gif_search_hint_provider">Szukaj%s…</string>
 </resources>

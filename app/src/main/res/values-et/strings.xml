@@ -1682,4 +1682,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_connecting">Ühendamine…</string>
     <string name="gif_api_key_saved">API võti on salvestatud</string>
     <string name="gif_api_key_cleared">API võti on kustutatud</string>
+    <string name="gif_provider_active">Aktiivne</string>
+    <string name="gif_set_as_active">Määra aktiivseks</string>
+    <string name="gif_search_hint_provider">Otsi%s…</string>
 </resources>

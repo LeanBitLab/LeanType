@@ -1753,4 +1753,7 @@
     <string name="gif_connecting">Συνδετικός…</string>
     <string name="gif_api_key_saved">Το κλειδί API αποθηκεύτηκε</string>
     <string name="gif_api_key_cleared">Το κλειδί API διαγράφηκε</string>
+    <string name="gif_provider_active">Ενεργός</string>
+    <string name="gif_set_as_active">Ορίστε ως ενεργό</string>
+    <string name="gif_search_hint_provider">Αναζήτηση%s…</string>
 </resources>

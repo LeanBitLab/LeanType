@@ -1691,4 +1691,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="gif_connecting">Csatlakozás…</string>
     <string name="gif_api_key_saved">API-kulcs mentve</string>
     <string name="gif_api_key_cleared">API-kulcs törölve</string>
+    <string name="gif_provider_active">Aktív</string>
+    <string name="gif_set_as_active">Beállítás aktívként</string>
+    <string name="gif_search_hint_provider">Keresés:%s…</string>
 </resources>

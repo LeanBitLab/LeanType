@@ -1758,4 +1758,7 @@
     <string name="gif_connecting">جارٍ الاتصال…</string>
     <string name="gif_api_key_saved">تم حفظ مفتاح API</string>
     <string name="gif_api_key_cleared">تم مسح مفتاح API</string>
+    <string name="gif_provider_active">نشيط</string>
+    <string name="gif_set_as_active">تعيين كنشط</string>
+    <string name="gif_search_hint_provider">بحث%s…</string>
 </resources>

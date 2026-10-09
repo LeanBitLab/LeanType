@@ -1683,4 +1683,7 @@ Ar norite atnaujinti?</string>
     <string name="gif_connecting">Jungiamasi…</string>
     <string name="gif_api_key_saved">API raktas išsaugotas</string>
     <string name="gif_api_key_cleared">API raktas išvalytas</string>
+    <string name="gif_provider_active">Aktyvus</string>
+    <string name="gif_set_as_active">Nustatyti kaip aktyvų</string>
+    <string name="gif_search_hint_provider">Ieškoti%s…</string>
 </resources>

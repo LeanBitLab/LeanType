@@ -1679,4 +1679,7 @@
     <string name="gif_connecting">कनेक्ट हो रहा है...</string>
     <string name="gif_api_key_saved">एपीआई कुंजी सहेजी गई</string>
     <string name="gif_api_key_cleared">एपीआई कुंजी साफ़ की गई</string>
+    <string name="gif_provider_active">सक्रिय</string>
+    <string name="gif_set_as_active">सक्रिय के रूप में सेट करें</string>
+    <string name="gif_search_hint_provider">खोजें%s…</string>
 </resources>

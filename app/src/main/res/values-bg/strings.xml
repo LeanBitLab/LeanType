@@ -1735,4 +1735,7 @@
     <string name="gif_connecting">Свързване...</string>
     <string name="gif_api_key_saved">API ключът е запазен</string>
     <string name="gif_api_key_cleared">API ключът е изчистен</string>
+    <string name="gif_provider_active">Активен</string>
+    <string name="gif_set_as_active">Задайте като активен</string>
+    <string name="gif_search_hint_provider">Търсене%s…</string>
 </resources>

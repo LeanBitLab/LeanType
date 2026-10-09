@@ -1712,4 +1712,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="gif_connecting">Conectando…</string>
     <string name="gif_api_key_saved">Clave API guardada</string>
     <string name="gif_api_key_cleared">Clave API borrada</string>
+    <string name="gif_provider_active">Activo</string>
+    <string name="gif_set_as_active">Establecer como activo</string>
+    <string name="gif_search_hint_provider">Buscar%s…</string>
 </resources>

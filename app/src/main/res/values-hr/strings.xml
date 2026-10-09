@@ -1675,4 +1675,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_connecting">Povezivanje…</string>
     <string name="gif_api_key_saved">API ključ spremljen</string>
     <string name="gif_api_key_cleared">API ključ obrisan</string>
+    <string name="gif_provider_active">Aktivan</string>
+    <string name="gif_set_as_active">Postavi kao aktivno</string>
+    <string name="gif_search_hint_provider">Traži%s…</string>
 </resources>

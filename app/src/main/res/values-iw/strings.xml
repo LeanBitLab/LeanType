@@ -1702,4 +1702,7 @@
     <string name="gif_connecting">מְקַשֵׁר…</string>
     <string name="gif_api_key_saved">מפתח API נשמר</string>
     <string name="gif_api_key_cleared">מפתח API נוקה</string>
+    <string name="gif_provider_active">פָּעִיל</string>
+    <string name="gif_set_as_active">הגדר כפעיל</string>
+    <string name="gif_search_hint_provider">חפש%s…</string>
 </resources>

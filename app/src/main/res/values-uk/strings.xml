@@ -1655,4 +1655,7 @@
     <string name="gif_connecting">Підключення…</string>
     <string name="gif_api_key_saved">Ключ API збережено</string>
     <string name="gif_api_key_cleared">Ключ API видалено</string>
+    <string name="gif_provider_active">Активний</string>
+    <string name="gif_set_as_active">Встановити як активний</string>
+    <string name="gif_search_hint_provider">Пошук%s…</string>
 </resources>

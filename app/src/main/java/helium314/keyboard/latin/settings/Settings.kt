@@ -366,6 +366,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_ENABLE_CLIPBOARD_LISTENER = "enable_clipboard_listener"
         const val PREF_ENABLE_SMS_OTP_RECEIVER = "enable_sms_otp_receiver"
         const val PREF_ENABLE_APP_SYNC_LISTENER = "enable_app_sync_listener"
+        const val PREF_GIF_PROVIDER = "pref_gif_provider"
         const val PREF_FOLDABLE_MODE = "pref_foldable_mode"
         const val PREF_ENABLE_SPLIT_KEYBOARD = "split_keyboard"
         const val PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE = "split_keyboard_landscape"

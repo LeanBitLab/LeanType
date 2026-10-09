@@ -2371,6 +2371,9 @@ New dictionary:
     <string name="gif_download_plugin">Download plugin</string>
     <string name="gif_providers_title">Available Providers</string>
     <string name="gif_dialog_title">Configure API Key</string>
+    <string name="gif_provider_active">Active</string>
+    <string name="gif_set_as_active">Set as active</string>
+    <string name="gif_search_hint_provider">Search %s…</string>
     <string name="gif_provider_configured">Configured</string>
     <string name="gif_provider_not_configured">API key required</string>
     <string name="gif_enter_api_key">Enter API key</string>

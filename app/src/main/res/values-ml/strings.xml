@@ -1753,4 +1753,7 @@
     <string name="gif_connecting">ബന്ധിപ്പിക്കുന്നു...</string>
     <string name="gif_api_key_saved">API കീ സംരക്ഷിച്ചു</string>
     <string name="gif_api_key_cleared">API കീ മായ്ച്ചു</string>
+    <string name="gif_provider_active">സജീവമാണ്</string>
+    <string name="gif_set_as_active">സജീവമായി സജ്ജമാക്കുക</string>
+    <string name="gif_search_hint_provider">%sതിരയുക…</string>
 </resources>

@@ -1682,4 +1682,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_connecting">Se conectează...</string>
     <string name="gif_api_key_saved">Cheia API salvată</string>
     <string name="gif_api_key_cleared">Cheia API a fost ștearsă</string>
+    <string name="gif_provider_active">Activ</string>
+    <string name="gif_set_as_active">Setați ca activ</string>
+    <string name="gif_search_hint_provider">Căutați%s…</string>
 </resources>

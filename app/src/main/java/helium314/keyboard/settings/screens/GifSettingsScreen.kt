@@ -38,7 +38,9 @@ import androidx.compose.ui.unit.dp
 import com.leanbitlab.leantype.gif.ProviderInfo
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.gif.GifPluginManager
+import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.Log
+import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.dialogs.PreferenceDialog
 import helium314.keyboard.settings.preferences.Preference
@@ -55,6 +57,8 @@ fun GifSettingsScreen(
     val context = LocalContext.current
     val manager = remember { GifPluginManager.get(context) }
     val scope = rememberCoroutineScope()
+    val prefs = remember { context.prefs() }
+    var activeProviderId by remember { mutableStateOf(prefs.getString(Settings.PREF_GIF_PROVIDER, "") ?: "") }
 
     DisposableEffect(manager) {
         manager.acquire("settings")
@@ -220,11 +224,17 @@ fun GifSettingsScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         } else {
+                            val effectiveActiveId = if (activeProviderId.isNotEmpty()) {
+                                activeProviderId
+                            } else {
+                                providers.firstOrNull { it.configured }?.id ?: ""
+                            }
                             providers.forEach { provider ->
-                                val statusText = if (provider.configured) {
-                                    stringResource(R.string.gif_provider_configured)
-                                } else {
-                                    stringResource(R.string.gif_provider_not_configured)
+                                val isActive = provider.configured && provider.id == effectiveActiveId
+                                val statusText = when {
+                                    isActive -> "${stringResource(R.string.gif_provider_configured)} • ${stringResource(R.string.gif_provider_active)}"
+                                    provider.configured -> stringResource(R.string.gif_provider_configured)
+                                    else -> stringResource(R.string.gif_provider_not_configured)
                                 }
                                 Preference(
                                     name = provider.displayName,
@@ -244,6 +254,12 @@ fun GifSettingsScreen(
     selectedProviderForConfig?.let { provider ->
         var credentialInput by remember { mutableStateOf("") }
         val targetField = provider.credentialFields.firstOrNull() ?: "api_key"
+        val effectiveActiveId = if (activeProviderId.isNotEmpty()) {
+            activeProviderId
+        } else {
+            providers.firstOrNull { it.configured }?.id ?: ""
+        }
+        val isCurrentActive = provider.configured && provider.id == effectiveActiveId
 
         PreferenceDialog(
             onDismissRequest = { selectedProviderForConfig = null },
@@ -261,6 +277,10 @@ fun GifSettingsScreen(
                                         engine.clearCredential(provider.id)
                                     }
                                     result.onSuccess {
+                                        if (activeProviderId == provider.id) {
+                                            prefs.edit().remove(Settings.PREF_GIF_PROVIDER).apply()
+                                            activeProviderId = ""
+                                        }
                                         Toast.makeText(context, R.string.gif_api_key_cleared, Toast.LENGTH_SHORT).show()
                                         selectedProviderForConfig = null
                                         refreshProviders()
@@ -285,6 +305,8 @@ fun GifSettingsScreen(
                                         engine.setCredential(provider.id, targetField, credentialInput.trim())
                                     }
                                     result.onSuccess {
+                                        prefs.edit().putString(Settings.PREF_GIF_PROVIDER, provider.id).apply()
+                                        activeProviderId = provider.id
                                         Toast.makeText(context, R.string.gif_api_key_saved, Toast.LENGTH_SHORT).show()
                                         selectedProviderForConfig = null
                                         refreshProviders()
@@ -310,6 +332,26 @@ fun GifSettingsScreen(
                     text = provider.displayName,
                     style = MaterialTheme.typography.titleSmall
                 )
+                if (provider.configured) {
+                    Spacer(modifier = Modifier.height(4.dp))
+                    if (isCurrentActive) {
+                        Text(
+                            text = stringResource(R.string.gif_provider_active),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    } else {
+                        TextButton(
+                            onClick = {
+                                prefs.edit().putString(Settings.PREF_GIF_PROVIDER, provider.id).apply()
+                                activeProviderId = provider.id
+                                selectedProviderForConfig = null
+                            }
+                        ) {
+                            Text(stringResource(R.string.gif_set_as_active))
+                        }
+                    }
+                }
                 Spacer(modifier = Modifier.height(12.dp))
                 OutlinedTextField(
                     value = credentialInput,

@@ -1683,4 +1683,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_connecting">Bağlanıyor…</string>
     <string name="gif_api_key_saved">API anahtarı kaydedildi</string>
     <string name="gif_api_key_cleared">API anahtarı temizlendi</string>
+    <string name="gif_provider_active">Aktif</string>
+    <string name="gif_set_as_active">Etkin olarak ayarla</string>
+    <string name="gif_search_hint_provider">%sara…</string>
 </resources>

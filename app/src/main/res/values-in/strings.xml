@@ -1650,4 +1650,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_connecting">Menghubungkan…</string>
     <string name="gif_api_key_saved">Kunci API disimpan</string>
     <string name="gif_api_key_cleared">Kunci API dihapus</string>
+    <string name="gif_provider_active">Aktif</string>
+    <string name="gif_set_as_active">Tetapkan sebagai aktif</string>
+    <string name="gif_search_hint_provider">Telusuri%s…</string>
 </resources>

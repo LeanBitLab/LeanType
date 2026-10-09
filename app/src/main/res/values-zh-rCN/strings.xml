@@ -1701,4 +1701,7 @@
     <string name="gif_connecting">正在连接…</string>
     <string name="gif_api_key_saved">API 密钥已保存</string>
     <string name="gif_api_key_cleared">API密钥已清除</string>
+    <string name="gif_provider_active">积极的</string>
+    <string name="gif_set_as_active">设置为活动状态</string>
+    <string name="gif_search_hint_provider">搜索%s…</string>
 </resources>

@@ -1744,4 +1744,7 @@
     <string name="gif_connecting">منسلک ہو رہا ہے…</string>
     <string name="gif_api_key_saved">API کلید محفوظ ہو گئی۔</string>
     <string name="gif_api_key_cleared">API کلید صاف ہو گئی۔</string>
+    <string name="gif_provider_active">فعال</string>
+    <string name="gif_set_as_active">فعال کے طور پر سیٹ کریں۔</string>
+    <string name="gif_search_hint_provider">تلاش کریں%s…</string>
 </resources>

@@ -1705,4 +1705,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="gif_connecting">Conectando…</string>
     <string name="gif_api_key_saved">Chave de API salva</string>
     <string name="gif_api_key_cleared">Chave de API apagada</string>
+    <string name="gif_provider_active">Ativo</string>
+    <string name="gif_set_as_active">Definir como ativo</string>
+    <string name="gif_search_hint_provider">Pesquisar%s…</string>
 </resources>

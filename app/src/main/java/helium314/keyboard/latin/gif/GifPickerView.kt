@@ -27,6 +27,8 @@ import com.leanbitlab.leantype.gif.IGifEngine
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.Constants
+import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeoutException
 import java.util.concurrent.atomic.AtomicBoolean
@@ -41,6 +43,8 @@ class GifPickerView @JvmOverloads constructor(
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val query = StringBuilder()
 
+    private var activeProviderId: String = ""
+    private var activeProviderName: String = ""
     private var queryJob: Job? = null
     private var stateJob: Job? = null
     private var currentRequestId: Int? = null
@@ -90,6 +94,7 @@ class GifPickerView @JvmOverloads constructor(
                 loadSeq++
                 adapter.submit(emptyList())
                 if (manager.state.value == GifPluginManager.State.CONNECTED) {
+                    manager.call { engine -> resolveProvider(engine) }
                     reload(debounce = false)
                 }
             }
@@ -100,6 +105,8 @@ class GifPickerView @JvmOverloads constructor(
     fun close() {
         if (!opened) return
         opened = false
+        activeProviderId = ""
+        activeProviderName = ""
         loadSeq++
         queryJob?.cancel()
         stateJob?.cancel()
@@ -163,16 +170,39 @@ class GifPickerView @JvmOverloads constructor(
         searchText.text = query.toString()
     }
 
+    private fun resolveProvider(engine: IGifEngine): String {
+        val prefProvider = context.prefs().getString(Settings.PREF_GIF_PROVIDER, "") ?: Settings.getValues().mGifProvider
+        val list = try { engine.listProviders() } catch (_: Exception) { emptyList() }
+        val configured = list.firstOrNull { it.id == prefProvider && it.configured }
+            ?: list.firstOrNull { it.configured }
+            ?: list.firstOrNull { it.id == prefProvider }
+            ?: list.firstOrNull()
+
+        val id = configured?.id ?: "giphy"
+        val name = configured?.displayName ?: "GIPHY"
+        activeProviderId = id
+        activeProviderName = name
+        post {
+            if (activeProviderName.isNotEmpty()) {
+                searchText.hint = context.getString(R.string.gif_search_hint_provider, activeProviderName)
+            } else {
+                searchText.hint = context.getString(R.string.gif_search_hint)
+            }
+        }
+        return id
+    }
+
     private fun reload(debounce: Boolean) {
         queryJob?.cancel()
         queryJob = scope.launch {
             if (debounce) delay(300)
             val q = query.toString().trim()
             runRequest { engine, id, cb ->
+                val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 if (q.isEmpty()) {
-                    engine.trending(id, DEFAULT_PROVIDER, "", PAGE_SIZE, cb)
+                    engine.trending(id, provider, "", PAGE_SIZE, cb)
                 } else {
-                    engine.search(id, DEFAULT_PROVIDER, q, "", PAGE_SIZE, cb)
+                    engine.search(id, provider, q, "", PAGE_SIZE, cb)
                 }
             }
         }
@@ -377,7 +407,6 @@ class GifPickerView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_PROVIDER = "klipy"
         private const val PAGE_SIZE = 24
         private const val MAX_QUERY_CODE_POINTS = 80
         private const val THUMB_AUTHORITY = "com.leanbitlab.leantype.gif.thumbs"
