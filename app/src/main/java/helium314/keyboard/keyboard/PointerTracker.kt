@@ -89,6 +89,8 @@ class PointerTracker private constructor(
     private var mLastY = 0
     private var mStartX = 0
     private var mStartY = 0
+    private var mDeleteRunX = 0
+    private var mDeleteRunY = 0
     private var mStartTime = 0L
     private var mInHorizontalSwipe = false
     private var mInVerticalSwipe = false
@@ -549,6 +551,8 @@ class PointerTracker private constructor(
             }
             mStartX = x
             mStartY = y
+            mDeleteRunX = x
+            mDeleteRunY = y
             mStartTime = System.currentTimeMillis()
         }
     }
@@ -835,7 +839,27 @@ class PointerTracker private constructor(
             val stepSizeX = if (sv.mDeleteSwipeWordByWord) sWordDeletePointerStep else sPointerStep
             val verticalPointerStep = max(1, sv.mVerticalSwipeThreshold.dpToPx(Resources.getSystem()))
             val stepsX = (x - mStartX) / stepSizeX
-            val stepsY = (y - mStartY) / verticalPointerStep
+            var stepsY = (y - mStartY) / verticalPointerStep
+
+            // Track lowest point (largest y) of the current upward run.
+            if (y >= mDeleteRunY) {
+                mDeleteRunY = y
+                mDeleteRunX = x
+            }
+            if (stepsY < 0) {
+                // Upward step candidate. If it comes from a rightward move that is at least as long
+                // horizontally as it is vertically (<= 45 degrees), it is thumb drift while
+                // swiping right to deselect text, so ignore it and restart vertical tracking.
+                val runDx = x - mDeleteRunX
+                val runDy = mDeleteRunY - y
+                if (runDx > 0 && runDx >= runDy) {
+                    stepsY = 0
+                    mStartY = y
+                    mDeleteRunX = x
+                    mDeleteRunY = y
+                }
+            }
+
             if (stepsX != 0 || stepsY != 0) {
                 if (!mInHorizontalSwipe) {
                     getTimerProxy().cancelKeyTimersOf(this)
@@ -846,6 +870,8 @@ class PointerTracker private constructor(
                 }
                 if (stepsY != 0) {
                     mStartY += stepsY * verticalPointerStep
+                    mDeleteRunX = x
+                    mDeleteRunY = y
                 }
                 sListener.onMoveDeletePointer(stepsX, stepsY)
             }
