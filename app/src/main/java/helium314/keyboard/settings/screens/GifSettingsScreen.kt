@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -31,6 +32,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -224,10 +226,10 @@ fun GifSettingsScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         } else {
-                            val effectiveActiveId = if (activeProviderId.isNotEmpty()) {
-                                activeProviderId
-                            } else {
-                                providers.firstOrNull { it.configured }?.id ?: ""
+                            val effectiveActiveId = when {
+                                activeProviderId == "disabled" -> ""
+                                activeProviderId.isNotEmpty() -> activeProviderId
+                                else -> providers.firstOrNull { it.configured }?.id ?: ""
                             }
                             providers.forEach { provider ->
                                 val isActive = provider.configured && provider.id == effectiveActiveId
@@ -254,10 +256,10 @@ fun GifSettingsScreen(
     selectedProviderForConfig?.let { provider ->
         var credentialInput by remember { mutableStateOf("") }
         val targetField = provider.credentialFields.firstOrNull() ?: "api_key"
-        val effectiveActiveId = if (activeProviderId.isNotEmpty()) {
-            activeProviderId
-        } else {
-            providers.firstOrNull { it.configured }?.id ?: ""
+        val effectiveActiveId = when {
+            activeProviderId == "disabled" -> ""
+            activeProviderId.isNotEmpty() -> activeProviderId
+            else -> providers.firstOrNull { it.configured }?.id ?: ""
         }
         val isCurrentActive = provider.configured && provider.id == effectiveActiveId
 
@@ -267,7 +269,8 @@ fun GifSettingsScreen(
             buttons = {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (provider.configured) {
                         OutlinedButton(
@@ -293,9 +296,30 @@ fun GifSettingsScreen(
                             Text(stringResource(R.string.gif_clear_key))
                         }
                     }
-                    Spacer(modifier = Modifier.weight(1f, fill = false))
-                    TextButton(onClick = { selectedProviderForConfig = null }) {
-                        Text(stringResource(android.R.string.cancel))
+                    Spacer(modifier = Modifier.weight(1f))
+                    if (provider.configured) {
+                        if (isCurrentActive) {
+                            OutlinedButton(
+                                onClick = {
+                                    prefs.edit().putString(Settings.PREF_GIF_PROVIDER, "disabled").apply()
+                                    activeProviderId = "disabled"
+                                    selectedProviderForConfig = null
+                                }
+                            ) {
+                                Text(stringResource(R.string.gif_disable))
+                            }
+                        } else {
+                            Button(
+                                onClick = {
+                                    prefs.edit().putString(Settings.PREF_GIF_PROVIDER, provider.id).apply()
+                                    activeProviderId = provider.id
+                                    selectedProviderForConfig = null
+                                }
+                            ) {
+                                Text(stringResource(R.string.gif_enable))
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
                     }
                     Button(
                         onClick = {
@@ -334,23 +358,15 @@ fun GifSettingsScreen(
                 )
                 if (provider.configured) {
                     Spacer(modifier = Modifier.height(4.dp))
-                    if (isCurrentActive) {
-                        Text(
-                            text = stringResource(R.string.gif_provider_active),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    } else {
-                        TextButton(
-                            onClick = {
-                                prefs.edit().putString(Settings.PREF_GIF_PROVIDER, provider.id).apply()
-                                activeProviderId = provider.id
-                                selectedProviderForConfig = null
-                            }
-                        ) {
-                            Text(stringResource(R.string.gif_set_as_active))
-                        }
-                    }
+                    Text(
+                        text = if (isCurrentActive) {
+                            "${stringResource(R.string.gif_provider_configured)} • ${stringResource(R.string.gif_provider_active)}"
+                        } else {
+                            stringResource(R.string.gif_provider_configured)
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = if (isCurrentActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 OutlinedTextField(

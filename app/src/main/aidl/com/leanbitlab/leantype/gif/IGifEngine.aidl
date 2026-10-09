@@ -18,4 +18,6 @@ interface IGifEngine {
     oneway void getPack(int requestId, String provider, String packId, String pos, int limit, IGifCallback cb);
     oneway void fetch(int requestId, in GifItem item, IGifCallback cb);
     oneway void cancel(int requestId);
+    oneway void searchKind(int requestId, String provider, int kind, String query, String pos, int limit, IGifCallback cb);
+    oneway void trendingKind(int requestId, String provider, int kind, String pos, int limit, IGifCallback cb);
 }

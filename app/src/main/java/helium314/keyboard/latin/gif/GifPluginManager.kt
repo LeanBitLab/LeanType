@@ -47,7 +47,7 @@ class GifPluginManager private constructor(private val appContext: Context) {
         const val PLUGIN_PACKAGE = "com.leanbitlab.leantype.gif"
         const val PLUGIN_ACTION = "com.leanbitlab.leantype.gif.ENGINE"
         private const val MIN_CONTRACT = 1
-        private const val MAX_CONTRACT = 1
+        private const val MAX_CONTRACT = 2
         private const val MAX_ATTEMPTS = 5
 
         // Signing-cert SHA-256 digests (lowercase hex)
@@ -86,6 +86,10 @@ class GifPluginManager private constructor(private val appContext: Context) {
     @Volatile
     private var engineRef: IGifEngine? = null
     val engine: IGifEngine? get() = engineRef
+
+    @Volatile
+    private var currentContractVersion = 1
+    val contractVersion: Int get() = currentContractVersion
 
     // Dedicated fixed pool of 2 daemon threads for plugin binder transactions (isolated from Dispatchers.IO)
     private val pluginDispatcher = Executors.newFixedThreadPool(2) { r ->
@@ -151,6 +155,7 @@ class GifPluginManager private constructor(private val appContext: Context) {
                             unbindExactlyOnce()
                         }
                         else -> {
+                            currentContractVersion = version
                             engineRef = candidate
                             attempts = 0
                             backoffMs = 500L

@@ -1,14 +1,16 @@
 package com.leanbitlab.leantype.gif
 
 object Contract {
-    const val VERSION = 1
+    const val VERSION = 2
     const val KIND_GIF = 0
     const val KIND_STICKER = 1
     const val KIND_ANIMATED_EMOJI = 2
+    const val KIND_MEME = 3
 
     const val KINDS_GIF = 1
     const val KINDS_STICKER = 2
     const val KINDS_ANIMATED_EMOJI = 4
+    const val KINDS_MEME = 8
 
     const val CAP_SEARCH = 1
     const val CAP_TRENDING = 2

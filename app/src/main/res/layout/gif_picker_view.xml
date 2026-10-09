@@ -61,9 +61,14 @@
                 android:id="@+id/providerBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_gif_tab"
+                android:clickable="true"
+                android:focusable="true"
                 android:textSize="10sp"
                 android:textStyle="bold"
-                android:paddingHorizontal="4dp"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
+                android:layout_marginEnd="4dp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:visibility="gone" />
 
@@ -78,6 +83,69 @@
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/categoryTabsScroll"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:paddingHorizontal="4dp"
+        android:layout_marginBottom="2dp">
+
+        <LinearLayout
+            android:id="@+id/categoryTabsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tabGifs"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/bg_gif_tab"
+                android:text="@string/gif_category_gifs"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tabStickers"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/bg_gif_tab"
+                android:text="@string/gif_category_stickers"
+                android:textSize="12sp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tabMemes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/bg_gif_tab"
+                android:text="@string/gif_category_memes"
+                android:textSize="12sp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tabEmojis"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/bg_gif_tab"
+                android:text="@string/gif_category_emojis"
+                android:textSize="12sp"
+                android:layout_marginEnd="6dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <FrameLayout
         android:layout_width="match_parent"

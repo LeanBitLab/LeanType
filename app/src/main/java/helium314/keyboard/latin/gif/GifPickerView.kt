@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.ImageDecoder
+import android.graphics.Typeface
 import android.graphics.drawable.AnimatedImageDrawable
 import android.net.Uri
 import android.os.Build
@@ -16,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
+import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -30,6 +33,7 @@ import com.leanbitlab.leantype.gif.Contract
 import com.leanbitlab.leantype.gif.GifItem
 import com.leanbitlab.leantype.gif.IGifCallback
 import com.leanbitlab.leantype.gif.IGifEngine
+import com.leanbitlab.leantype.gif.ProviderInfo
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
@@ -54,6 +58,9 @@ class GifPickerView @JvmOverloads constructor(
 
     private var activeProviderId: String = ""
     private var activeProviderName: String = ""
+    private var activeProviderKinds: Int = Contract.KINDS_GIF
+    private var selectedKind: Int = Contract.KIND_GIF
+    private var cachedProviders: List<ProviderInfo> = emptyList()
     private var queryJob: Job? = null
     private var pagingJob: Job? = null
     private var stateJob: Job? = null
@@ -71,6 +78,11 @@ class GifPickerView @JvmOverloads constructor(
     private lateinit var providerBadge: TextView
     private lateinit var clearQueryButton: ImageButton
     private lateinit var closeButton: ImageButton
+    private lateinit var categoryTabsScroll: HorizontalScrollView
+    private lateinit var tabGifs: TextView
+    private lateinit var tabStickers: TextView
+    private lateinit var tabMemes: TextView
+    private lateinit var tabEmojis: TextView
     private lateinit var recycler: RecyclerView
     private lateinit var progress: ProgressBar
     private lateinit var statusContainer: LinearLayout
@@ -92,11 +104,21 @@ class GifPickerView @JvmOverloads constructor(
         providerBadge = findViewById(R.id.providerBadge)
         clearQueryButton = findViewById(R.id.clearQueryButton)
         closeButton = findViewById(R.id.closeButton)
+        categoryTabsScroll = findViewById(R.id.categoryTabsScroll)
+        tabGifs = findViewById(R.id.tabGifs)
+        tabStickers = findViewById(R.id.tabStickers)
+        tabMemes = findViewById(R.id.tabMemes)
+        tabEmojis = findViewById(R.id.tabEmojis)
         recycler = findViewById(R.id.recycler)
         progress = findViewById(R.id.progress)
         statusContainer = findViewById(R.id.statusContainer)
         statusText = findViewById(R.id.statusText)
         statusAction = findViewById(R.id.statusAction)
+
+        tabGifs.setOnClickListener { selectKind(Contract.KIND_GIF) }
+        tabStickers.setOnClickListener { selectKind(Contract.KIND_STICKER) }
+        tabMemes.setOnClickListener { selectKind(Contract.KIND_MEME) }
+        tabEmojis.setOnClickListener { selectKind(Contract.KIND_ANIMATED_EMOJI) }
 
         val lm = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recycler.layoutManager = lm
@@ -109,6 +131,7 @@ class GifPickerView @JvmOverloads constructor(
             renderQuery()
             reload(debounce = false)
         }
+        providerBadge.setOnClickListener { toggleProvider() }
 
         recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -132,6 +155,7 @@ class GifPickerView @JvmOverloads constructor(
         nextPos = null
         isPaging = false
         hasMore = true
+        selectedKind = Contract.KIND_GIF
         renderQuery()
         statusContainer.visibility = View.GONE
         adapter.submit(emptyList())
@@ -253,9 +277,91 @@ class GifPickerView @JvmOverloads constructor(
         clearQueryButton.visibility = if (text.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
+    private fun selectKind(kind: Int) {
+        if (selectedKind == kind) return
+        selectedKind = kind
+        updateCategoryTabsUI()
+        updateSearchHint()
+        reload(debounce = false)
+    }
+
+    private fun updateCategoryTabsVisibility() {
+        val hasStickers = (activeProviderKinds and Contract.KINDS_STICKER) != 0
+        val hasMemes = (activeProviderKinds and Contract.KINDS_MEME) != 0
+        val hasEmojis = (activeProviderKinds and Contract.KINDS_ANIMATED_EMOJI) != 0
+
+        tabStickers.visibility = if (hasStickers) View.VISIBLE else View.GONE
+        tabMemes.visibility = if (hasMemes) View.VISIBLE else View.GONE
+        tabEmojis.visibility = if (hasEmojis) View.VISIBLE else View.GONE
+
+        if (selectedKind == Contract.KIND_STICKER && !hasStickers ||
+            selectedKind == Contract.KIND_MEME && !hasMemes ||
+            selectedKind == Contract.KIND_ANIMATED_EMOJI && !hasEmojis
+        ) {
+            selectedKind = Contract.KIND_GIF
+        }
+        updateCategoryTabsUI()
+    }
+
+    private fun updateCategoryTabsUI() {
+        val colors = Settings.getValues().mColors
+        val activeBg = colors?.get(ColorType.ACTION_KEY_BACKGROUND) ?: 0x33888888
+        val activeText = colors?.get(ColorType.KEY_TEXT) ?: 0xFFFFFFFF.toInt()
+        val inactiveText = colors?.get(ColorType.KEY_HINT_TEXT) ?: 0x88FFFFFF.toInt()
+
+        val tabs = listOf(
+            tabGifs to Contract.KIND_GIF,
+            tabStickers to Contract.KIND_STICKER,
+            tabMemes to Contract.KIND_MEME,
+            tabEmojis to Contract.KIND_ANIMATED_EMOJI
+        )
+        for ((tab, kind) in tabs) {
+            val isSelected = (selectedKind == kind)
+            if (isSelected) {
+                tab.backgroundTintList = ColorStateList.valueOf(activeBg)
+                tab.setTextColor(activeText)
+                tab.setTypeface(null, Typeface.BOLD)
+            } else {
+                tab.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+                tab.setTextColor(inactiveText)
+                tab.setTypeface(null, Typeface.NORMAL)
+            }
+        }
+    }
+
+    private fun updateSearchHint() {
+        val categoryName = when (selectedKind) {
+            Contract.KIND_STICKER -> context.getString(R.string.gif_category_stickers)
+            Contract.KIND_MEME -> context.getString(R.string.gif_category_memes)
+            Contract.KIND_ANIMATED_EMOJI -> context.getString(R.string.gif_category_emojis)
+            else -> context.getString(R.string.gif_category_gifs)
+        }
+        if (activeProviderName.isNotEmpty()) {
+            searchText.hint = "Search $categoryName ($activeProviderName)"
+        } else {
+            searchText.hint = "Search $categoryName"
+        }
+    }
+
     private fun resolveProvider(engine: IGifEngine): String {
         val prefProvider = context.prefs().getString(Settings.PREF_GIF_PROVIDER, "") ?: Settings.getValues().mGifProvider
         val list = try { engine.listProviders() } catch (_: Exception) { emptyList() }
+        cachedProviders = list
+
+        if (prefProvider == "disabled") {
+            activeProviderId = "disabled"
+            activeProviderName = ""
+            activeProviderKinds = 0
+            post {
+                providerBadge.visibility = View.GONE
+                updateCategoryTabsVisibility()
+                showStatus(context.getString(R.string.gif_disabled_message), context.getString(R.string.gif_open_settings)) {
+                    openGifSettings()
+                }
+            }
+            return ""
+        }
+
         val configured = list.firstOrNull { it.id == prefProvider && it.configured }
             ?: list.firstOrNull { it.configured }
             ?: list.firstOrNull { it.id == prefProvider }
@@ -263,19 +369,64 @@ class GifPickerView @JvmOverloads constructor(
 
         val id = configured?.id ?: "giphy"
         val name = configured?.displayName ?: "GIPHY"
+        val kinds = configured?.kinds ?: 0
         activeProviderId = id
         activeProviderName = name
+        activeProviderKinds = if (kinds != 0) kinds else Contract.KINDS_GIF
         post {
+            updateCategoryTabsVisibility()
+            updateSearchHint()
             if (activeProviderName.isNotEmpty()) {
                 providerBadge.text = activeProviderName.uppercase()
                 providerBadge.visibility = View.VISIBLE
-                searchText.hint = context.getString(R.string.gif_search_hint_provider, activeProviderName)
             } else {
                 providerBadge.visibility = View.GONE
-                searchText.hint = context.getString(R.string.gif_search_hint)
             }
         }
         return id
+    }
+
+    private fun toggleProvider() {
+        scope.launch {
+            val list = manager.call { it.listProviders() }.getOrNull()
+                ?.also { cachedProviders = it }
+                ?: cachedProviders
+            if (list.isEmpty()) return@launch
+
+            val candidates = if (list.count { it.configured } >= 2) {
+                list.filter { it.configured }
+            } else {
+                list
+            }
+            if (candidates.size <= 1) return@launch
+
+            val currentIndex = candidates.indexOfFirst { it.id == activeProviderId }
+            val nextProvider = if (currentIndex >= 0) {
+                candidates[(currentIndex + 1) % candidates.size]
+            } else {
+                candidates[0]
+            }
+            if (nextProvider.id == activeProviderId) return@launch
+
+            activeProviderId = nextProvider.id
+            activeProviderName = nextProvider.displayName
+            val kinds = nextProvider.kinds
+            activeProviderKinds = if (kinds != 0) kinds else Contract.KINDS_GIF
+            context.prefs().edit().putString(Settings.PREF_GIF_PROVIDER, nextProvider.id).apply()
+
+            providerBadge.text = activeProviderName.uppercase()
+            providerBadge.visibility = View.VISIBLE
+            updateCategoryTabsVisibility()
+            updateSearchHint()
+
+            Toast.makeText(
+                context,
+                context.getString(R.string.gif_switched_to, activeProviderName),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            reload(debounce = false)
+        }
     }
 
     private fun applyTheme() {
@@ -292,9 +443,13 @@ class GifPickerView @JvmOverloads constructor(
 
         searchText.setTextColor(colors.get(ColorType.KEY_TEXT))
         searchText.setHintTextColor(colors.get(ColorType.KEY_HINT_TEXT))
-        providerBadge.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
+        val pillBg = colors.get(ColorType.ACTION_KEY_BACKGROUND)
+        providerBadge.backgroundTintList = ColorStateList.valueOf(pillBg)
+        providerBadge.setTextColor(colors.get(ColorType.KEY_TEXT))
         statusText.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
         statusAction.setTextColor(colors.get(ColorType.KEY_TEXT))
+
+        updateCategoryTabsUI()
     }
 
     private fun reload(debounce: Boolean) {
@@ -305,6 +460,7 @@ class GifPickerView @JvmOverloads constructor(
         nextPos = null
         hasMore = true
         statusContainer.visibility = View.GONE
+        if (activeProviderId == "disabled") return
 
         queryJob = scope.launch {
             if (debounce) delay(300)
@@ -312,10 +468,19 @@ class GifPickerView @JvmOverloads constructor(
             val q = query.toString().trim()
             runRequest(isPage = false, seq = seq) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
+                val isV2 = manager.contractVersion >= 2
                 if (q.isEmpty()) {
-                    engine.trending(id, provider, "", PAGE_SIZE, cb)
+                    if (isV2) {
+                        engine.trendingKind(id, provider, selectedKind, "", PAGE_SIZE, cb)
+                    } else {
+                        engine.trending(id, provider, "", PAGE_SIZE, cb)
+                    }
                 } else {
-                    engine.search(id, provider, q, "", PAGE_SIZE, cb)
+                    if (isV2) {
+                        engine.searchKind(id, provider, selectedKind, q, "", PAGE_SIZE, cb)
+                    } else {
+                        engine.search(id, provider, q, "", PAGE_SIZE, cb)
+                    }
                 }
             }
         }
@@ -333,10 +498,19 @@ class GifPickerView @JvmOverloads constructor(
             val q = query.toString().trim()
             runRequest(isPage = true, seq = seq) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
+                val isV2 = manager.contractVersion >= 2
                 if (q.isEmpty()) {
-                    engine.trending(id, provider, pos, PAGE_SIZE, cb)
+                    if (isV2) {
+                        engine.trendingKind(id, provider, selectedKind, pos, PAGE_SIZE, cb)
+                    } else {
+                        engine.trending(id, provider, pos, PAGE_SIZE, cb)
+                    }
                 } else {
-                    engine.search(id, provider, q, pos, PAGE_SIZE, cb)
+                    if (isV2) {
+                        engine.searchKind(id, provider, selectedKind, q, pos, PAGE_SIZE, cb)
+                    } else {
+                        engine.search(id, provider, q, pos, PAGE_SIZE, cb)
+                    }
                 }
             }
         }

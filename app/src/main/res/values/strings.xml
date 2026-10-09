@@ -2387,4 +2387,12 @@ New dictionary:
     <string name="gif_open_settings">Open Settings</string>
     <string name="gif_no_results_query">No GIFs found for \"%s\"</string>
     <string name="gif_inserting">Sending GIF…</string>
+    <string name="gif_category_gifs">GIFs</string>
+    <string name="gif_category_stickers">Stickers</string>
+    <string name="gif_category_memes">Memes</string>
+    <string name="gif_category_emojis">Emojis</string>
+    <string name="gif_enable">Enable</string>
+    <string name="gif_disable">Disable</string>
+    <string name="gif_switched_to">Switched to %s</string>
+    <string name="gif_disabled_message">GIF search is disabled</string>
 </resources>
