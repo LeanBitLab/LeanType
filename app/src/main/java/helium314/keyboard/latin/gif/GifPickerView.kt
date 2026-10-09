@@ -89,17 +89,42 @@ class GifPickerView @JvmOverloads constructor(
 
         stateJob?.cancel()
         stateJob = scope.launch {
-            manager.connectionGeneration.collect { gen ->
+            manager.state.collect { state ->
                 if (!opened) return@collect
-                loadSeq++
-                adapter.submit(emptyList())
-                if (manager.state.value == GifPluginManager.State.CONNECTED) {
-                    manager.call { engine -> resolveProvider(engine) }
-                    reload(debounce = false)
+                when (state) {
+                    GifPluginManager.State.CONNECTED -> {
+                        loadSeq++
+                        manager.call { engine -> resolveProvider(engine) }
+                        reload(debounce = false)
+                    }
+                    GifPluginManager.State.CONNECTING -> {
+                        progress.visibility = View.VISIBLE
+                        emptyView.visibility = View.GONE
+                    }
+                    GifPluginManager.State.NOT_INSTALLED -> {
+                        progress.visibility = View.GONE
+                        showMessage(context.getString(R.string.gif_plugin_not_installed_desc))
+                    }
+                    GifPluginManager.State.UNTRUSTED_PLUGIN -> {
+                        progress.visibility = View.GONE
+                        showMessage(context.getString(R.string.gif_plugin_untrusted_desc))
+                    }
+                    GifPluginManager.State.PLUGIN_TOO_OLD -> {
+                        progress.visibility = View.GONE
+                        showMessage(context.getString(R.string.gif_error_plugin_too_old))
+                    }
+                    GifPluginManager.State.HOST_TOO_OLD -> {
+                        progress.visibility = View.GONE
+                        showMessage(context.getString(R.string.gif_error_host_too_old))
+                    }
+                    GifPluginManager.State.UNAVAILABLE -> {
+                        progress.visibility = View.GONE
+                        showMessage(context.getString(R.string.gif_error_unavailable))
+                    }
+                    else -> {}
                 }
             }
         }
-        reload(debounce = false)
     }
 
     fun close() {

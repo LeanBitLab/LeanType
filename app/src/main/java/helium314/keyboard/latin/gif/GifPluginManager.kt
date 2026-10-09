@@ -154,6 +154,8 @@ class GifPluginManager private constructor(private val appContext: Context) {
                             engineRef = candidate
                             attempts = 0
                             backoffMs = 500L
+                            generation++
+                            _connectionGeneration.value = generation
                             _state.value = State.CONNECTED
                         }
                     }
