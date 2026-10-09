@@ -406,7 +406,7 @@ fun createAppearanceSettings(context: Context) = listOf(
             name = setting.title,
             key = setting.key,
             default = Defaults.PREF_KEY_PREVIEW_HEIGHT_SCALE,
-            range = 0.5f..1.5f,
+            range = 0.5f..2.0f,
             description = { "${(100 * it).toInt()}%" }
         ) { KeyboardSwitcher.getInstance().reloadKeyboard() }
     },
