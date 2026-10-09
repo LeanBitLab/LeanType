@@ -835,15 +835,7 @@ class PointerTracker private constructor(
             val stepSizeX = if (sv.mDeleteSwipeWordByWord) sWordDeletePointerStep else sPointerStep
             val verticalPointerStep = max(1, sv.mVerticalSwipeThreshold.dpToPx(Resources.getSystem()))
             val stepsX = (x - mStartX) / stepSizeX
-            var stepsY = (y - mStartY) / verticalPointerStep
-            // Moving right deselects words; reset vertical baseline on rightward steps
-            // so upward thumb drift cannot accumulate across a deselect sweep.
-            if (stepsX > 0) {
-                if (stepsY < 0) {
-                    stepsY = 0
-                }
-                mStartY = y
-            }
+            val stepsY = (y - mStartY) / verticalPointerStep
             if (stepsX != 0 || stepsY != 0) {
                 if (!mInHorizontalSwipe) {
                     getTimerProxy().cancelKeyTimersOf(this)
