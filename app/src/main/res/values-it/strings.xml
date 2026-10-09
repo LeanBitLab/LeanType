@@ -1746,7 +1746,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_install_plugin">Installa il plugin GIF</string>
     <string name="gif_settings_title">Ricerca GIF</string>
     <string name="gif_plugin_status_title">Stato del plug-in</string>
-    <string name="gif_plugin_not_installed_desc">Il plug-in GIF consente la ricerca e l\'inserimento di Tenor, Klipy e altri provider senza garantire l\'accesso alla rete alla tastiera.</string>
+    <string name="gif_plugin_not_installed_desc">Il plug-in GIF consente la ricerca e l\'inserimento di GIPHY, Klipy e altri provider senza garantire l\'accesso alla rete alla tastiera.</string>
     <string name="gif_plugin_untrusted_desc">La firma del plugin GIF installata non corrisponde al certificato attendibile.</string>
     <string name="gif_plugin_unavailable_desc">Il servizio plugin GIF non risponde. Avvia il plugin una volta o verificane le autorizzazioni.</string>
     <string name="gif_download_plugin">Scarica plug-in</string>

@@ -1721,7 +1721,7 @@
     <string name="gif_install_plugin">Инсталирайте GIF плъгин</string>
     <string name="gif_settings_title">GIF Търсене</string>
     <string name="gif_plugin_status_title">Състояние на приставката</string>
-    <string name="gif_plugin_not_installed_desc">GIF плъгинът осигурява търсене и вмъкване за Tenor, Klipy и други доставчици, без да предоставя мрежов достъп до клавиатурата.</string>
+    <string name="gif_plugin_not_installed_desc">GIF плъгинът осигурява търсене и вмъкване за GIPHY, Klipy и други доставчици, без да предоставя мрежов достъп до клавиатурата.</string>
     <string name="gif_plugin_untrusted_desc">Подписът на инсталирания GIF плъгин не съответства на надеждния сертификат.</string>
     <string name="gif_plugin_unavailable_desc">Услугата за приставка за GIF не отговаря. Моля, стартирайте плъгина веднъж или проверете неговите разрешения.</string>
     <string name="gif_download_plugin">Изтеглете плъгина</string>

@@ -1744,7 +1744,7 @@
     <string name="gif_install_plugin">قم بتثبيت البرنامج المساعد GIF</string>
     <string name="gif_settings_title">بحث GIF</string>
     <string name="gif_plugin_status_title">حالة البرنامج المساعد</string>
-    <string name="gif_plugin_not_installed_desc">يوفر المكون الإضافي GIF إمكانية البحث والإدراج لموفري Tenor وKlipy وغيرهم من مقدمي الخدمات دون منح الوصول إلى الشبكة إلى لوحة المفاتيح.</string>
+    <string name="gif_plugin_not_installed_desc">يوفر المكون الإضافي GIF إمكانية البحث والإدراج لموفري GIPHY وKlipy وغيرهم من مقدمي الخدمات دون منح الوصول إلى الشبكة إلى لوحة المفاتيح.</string>
     <string name="gif_plugin_untrusted_desc">توقيع البرنامج المساعد GIF المثبت لا يتطابق مع الشهادة الموثوقة.</string>
     <string name="gif_plugin_unavailable_desc">خدمة البرنامج المساعد GIF لا تستجيب. يرجى تشغيل البرنامج المساعد مرة واحدة أو التحقق من أذوناته.</string>
     <string name="gif_download_plugin">تحميل البرنامج المساعد</string>

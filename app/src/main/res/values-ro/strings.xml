@@ -1668,7 +1668,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_install_plugin">Instalați pluginul GIF</string>
     <string name="gif_settings_title">Căutare GIF</string>
     <string name="gif_plugin_status_title">Stare plugin</string>
-    <string name="gif_plugin_not_installed_desc">Pluginul GIF oferă căutare și inserare pentru Tenor, Klipy și alți furnizori fără a acorda acces la rețea la tastatură.</string>
+    <string name="gif_plugin_not_installed_desc">Pluginul GIF oferă căutare și inserare pentru GIPHY, Klipy și alți furnizori fără a acorda acces la rețea la tastatură.</string>
     <string name="gif_plugin_untrusted_desc">Semnătura pluginului GIF instalată nu se potrivește cu certificatul de încredere.</string>
     <string name="gif_plugin_unavailable_desc">Serviciul de plugin GIF nu răspunde. Lansați pluginul o dată sau verificați permisiunile acestuia.</string>
     <string name="gif_download_plugin">Descărcați pluginul</string>

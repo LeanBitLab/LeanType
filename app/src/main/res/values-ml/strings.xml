@@ -1739,7 +1739,7 @@
     <string name="gif_install_plugin">GIF പ്ലഗിൻ ഇൻസ്റ്റാൾ ചെയ്യുക</string>
     <string name="gif_settings_title">GIF തിരയൽ</string>
     <string name="gif_plugin_status_title">പ്ലഗിൻ നില</string>
-    <string name="gif_plugin_not_installed_desc">Tenor, Klipy, മറ്റ് ദാതാക്കൾ എന്നിവയ്‌ക്കായി കീബോർഡിലേക്ക് നെറ്റ്‌വർക്ക് ആക്‌സസ് അനുവദിക്കാതെ തന്നെ തിരയലും ചേർക്കലും GIF പ്ലഗിൻ നൽകുന്നു.</string>
+    <string name="gif_plugin_not_installed_desc">GIPHY, Klipy, മറ്റ് ദാതാക്കൾ എന്നിവയ്‌ക്കായി കീബോർഡിലേക്ക് നെറ്റ്‌വർക്ക് ആക്‌സസ് അനുവദിക്കാതെ തന്നെ തിരയലും ചേർക്കലും GIF പ്ലഗിൻ നൽകുന്നു.</string>
     <string name="gif_plugin_untrusted_desc">ഇൻസ്റ്റാൾ ചെയ്ത GIF പ്ലഗിൻ ഒപ്പ് വിശ്വസനീയ സർട്ടിഫിക്കറ്റുമായി പൊരുത്തപ്പെടുന്നില്ല.</string>
     <string name="gif_plugin_unavailable_desc">GIF പ്ലഗിൻ സേവനം പ്രതികരിക്കുന്നില്ല. ഒരിക്കൽ പ്ലഗിൻ സമാരംഭിക്കുക അല്ലെങ്കിൽ അതിൻ്റെ അനുമതികൾ പരിശോധിക്കുക.</string>
     <string name="gif_download_plugin">പ്ലഗിൻ ഡൗൺലോഡ് ചെയ്യുക</string>

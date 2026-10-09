@@ -1721,7 +1721,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_install_plugin">Installeer de GIF-plug-in</string>
     <string name="gif_settings_title">GIF-zoekopdracht</string>
     <string name="gif_plugin_status_title">Plug-instatus</string>
-    <string name="gif_plugin_not_installed_desc">De GIF-plug-in biedt zoeken en invoegen voor Tenor, Klipy en andere providers zonder netwerktoegang tot het toetsenbord te verlenen.</string>
+    <string name="gif_plugin_not_installed_desc">De GIF-plug-in biedt zoeken en invoegen voor GIPHY, Klipy en andere providers zonder netwerktoegang tot het toetsenbord te verlenen.</string>
     <string name="gif_plugin_untrusted_desc">De geïnstalleerde handtekening van de GIF-plug-in komt niet overeen met het vertrouwde certificaat.</string>
     <string name="gif_plugin_unavailable_desc">De GIF-plug-inservice reageert niet. Start de plug-in één keer of controleer de rechten ervan.</string>
     <string name="gif_download_plugin">Plugin downloaden</string>

@@ -1686,7 +1686,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_install_plugin">Nainstalujte si plugin GIF</string>
     <string name="gif_settings_title">Vyhledávání GIFů</string>
     <string name="gif_plugin_status_title">Stav pluginu</string>
-    <string name="gif_plugin_not_installed_desc">Zásuvný modul GIF poskytuje vyhledávání a vkládání pro Tenor, Klipy a další poskytovatele bez udělování síťového přístupu ke klávesnici.</string>
+    <string name="gif_plugin_not_installed_desc">Zásuvný modul GIF poskytuje vyhledávání a vkládání pro GIPHY, Klipy a další poskytovatele bez udělování síťového přístupu ke klávesnici.</string>
     <string name="gif_plugin_untrusted_desc">Podpis nainstalovaného pluginu GIF neodpovídá důvěryhodnému certifikátu.</string>
     <string name="gif_plugin_unavailable_desc">Služba pluginu GIF neodpovídá. Spusťte plugin jednou nebo ověřte jeho oprávnění.</string>
     <string name="gif_download_plugin">Stáhnout plugin</string>

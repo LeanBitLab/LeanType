@@ -1739,7 +1739,7 @@
     <string name="gif_install_plugin">Εγκαταστήστε την προσθήκη GIF</string>
     <string name="gif_settings_title">Αναζήτηση GIF</string>
     <string name="gif_plugin_status_title">Κατάσταση πρόσθετου</string>
-    <string name="gif_plugin_not_installed_desc">Η προσθήκη GIF παρέχει αναζήτηση και εισαγωγή για Tenor, Klipy και άλλους παρόχους χωρίς να εκχωρεί πρόσβαση στο δίκτυο στο πληκτρολόγιο.</string>
+    <string name="gif_plugin_not_installed_desc">Η προσθήκη GIF παρέχει αναζήτηση και εισαγωγή για GIPHY, Klipy και άλλους παρόχους χωρίς να εκχωρεί πρόσβαση στο δίκτυο στο πληκτρολόγιο.</string>
     <string name="gif_plugin_untrusted_desc">Η εγκατεστημένη υπογραφή προσθήκης GIF δεν ταιριάζει με το αξιόπιστο πιστοποιητικό.</string>
     <string name="gif_plugin_unavailable_desc">Η υπηρεσία προσθήκης GIF δεν αποκρίνεται. Εκκινήστε την προσθήκη μία φορά ή επαληθεύστε τα δικαιώματά της.</string>
     <string name="gif_download_plugin">Λήψη προσθήκης</string>

@@ -1688,7 +1688,7 @@
     <string name="gif_install_plugin">התקן תוסף GIF</string>
     <string name="gif_settings_title">חיפוש GIF</string>
     <string name="gif_plugin_status_title">סטטוס הפלאגין</string>
-    <string name="gif_plugin_not_installed_desc">תוסף GIF מספק חיפוש והוספה עבור Tenor, Klipy וספקים אחרים מבלי להעניק גישה לרשת למקלדת.</string>
+    <string name="gif_plugin_not_installed_desc">תוסף GIF מספק חיפוש והוספה עבור GIPHY, Klipy וספקים אחרים מבלי להעניק גישה לרשת למקלדת.</string>
     <string name="gif_plugin_untrusted_desc">חתימת הפלאגין GIF המותקן אינה תואמת לאישור המהימן.</string>
     <string name="gif_plugin_unavailable_desc">שירות הפלאגין GIF אינו מגיב. אנא הפעל את הפלאגין פעם אחת או אמת את ההרשאות שלו.</string>
     <string name="gif_download_plugin">הורד תוסף</string>

@@ -1636,7 +1636,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_install_plugin">Instal plugin GIF</string>
     <string name="gif_settings_title">Pencarian GIF</string>
     <string name="gif_plugin_status_title">Status Pengaya</string>
-    <string name="gif_plugin_not_installed_desc">Plugin GIF menyediakan pencarian dan penyisipan untuk Tenor, Klipy, dan penyedia lainnya tanpa memberikan akses jaringan ke keyboard.</string>
+    <string name="gif_plugin_not_installed_desc">Plugin GIF menyediakan pencarian dan penyisipan untuk GIPHY, Klipy, dan penyedia lainnya tanpa memberikan akses jaringan ke keyboard.</string>
     <string name="gif_plugin_untrusted_desc">Tanda tangan plugin GIF yang diinstal tidak cocok dengan sertifikat tepercaya.</string>
     <string name="gif_plugin_unavailable_desc">Layanan plugin GIF tidak merespons. Silakan luncurkan plugin satu kali atau verifikasi izinnya.</string>
     <string name="gif_download_plugin">Unduh plugin</string>

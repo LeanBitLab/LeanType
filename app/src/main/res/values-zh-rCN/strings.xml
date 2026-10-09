@@ -1687,7 +1687,7 @@
     <string name="gif_install_plugin">安装 GIF 插件</string>
     <string name="gif_settings_title">GIF 搜索</string>
     <string name="gif_plugin_status_title">插件状态</string>
-    <string name="gif_plugin_not_installed_desc">GIF 插件为 Tenor、Klipy 和其他提供商提供搜索和插入功能，而无需授予键盘的网络访问权限。</string>
+    <string name="gif_plugin_not_installed_desc">GIF 插件为 GIPHY、Klipy 和其他提供商提供搜索和插入功能，而无需授予键盘的网络访问权限。</string>
     <string name="gif_plugin_untrusted_desc">安装的 GIF 插件签名与受信任的证书不匹配。</string>
     <string name="gif_plugin_unavailable_desc">GIF 插件服务没有响应。请启动该插件一次或验证其权限。</string>
     <string name="gif_download_plugin">下载插件</string>

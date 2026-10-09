@@ -1723,7 +1723,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="gif_install_plugin">Zainstaluj wtyczkę GIF</string>
     <string name="gif_settings_title">Wyszukiwanie GIF-ów</string>
     <string name="gif_plugin_status_title">Stan wtyczki</string>
-    <string name="gif_plugin_not_installed_desc">Wtyczka GIF umożliwia wyszukiwanie i wstawianie plików Tenor, Klipy i innych dostawców bez przyznawania dostępu sieciowego do klawiatury.</string>
+    <string name="gif_plugin_not_installed_desc">Wtyczka GIF umożliwia wyszukiwanie i wstawianie plików GIPHY, Klipy i innych dostawców bez przyznawania dostępu sieciowego do klawiatury.</string>
     <string name="gif_plugin_untrusted_desc">Podpis zainstalowanej wtyczki GIF nie jest zgodny z zaufanym certyfikatem.</string>
     <string name="gif_plugin_unavailable_desc">Usługa wtyczki GIF nie odpowiada. Proszę uruchomić wtyczkę raz lub sprawdzić jej uprawnienia.</string>
     <string name="gif_download_plugin">Pobierz wtyczkę</string>

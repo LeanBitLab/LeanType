@@ -1730,7 +1730,7 @@
     <string name="gif_install_plugin">GIF پلگ ان انسٹال کریں۔</string>
     <string name="gif_settings_title">GIF تلاش</string>
     <string name="gif_plugin_status_title">پلگ ان کی حیثیت</string>
-    <string name="gif_plugin_not_installed_desc">GIF پلگ ان Tenor، Klipy، اور دیگر فراہم کنندگان کو کی بورڈ تک نیٹ ورک تک رسائی دیے بغیر تلاش اور اندراج فراہم کرتا ہے۔</string>
+    <string name="gif_plugin_not_installed_desc">GIF پلگ ان GIPHY، Klipy، اور دیگر فراہم کنندگان کو کی بورڈ تک نیٹ ورک تک رسائی دیے بغیر تلاش اور اندراج فراہم کرتا ہے۔</string>
     <string name="gif_plugin_untrusted_desc">انسٹال کردہ GIF پلگ ان دستخط قابل اعتماد سرٹیفکیٹ سے میل نہیں کھاتا ہے۔</string>
     <string name="gif_plugin_unavailable_desc">GIF پلگ ان سروس جواب نہیں دے رہی ہے۔ براہ کرم پلگ ان کو ایک بار لانچ کریں یا اس کی اجازتوں کی تصدیق کریں۔</string>
     <string name="gif_download_plugin">پلگ ان ڈاؤن لوڈ کریں۔</string>

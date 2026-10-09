@@ -1669,7 +1669,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_install_plugin">GIF eklentisini yükleyin</string>
     <string name="gif_settings_title">GIF Arama</string>
     <string name="gif_plugin_status_title">Eklenti Durumu</string>
-    <string name="gif_plugin_not_installed_desc">GIF eklentisi, klavyeye ağ erişimi izni vermeden Tenor, Klipy ve diğer sağlayıcılar için arama ve ekleme olanağı sağlar.</string>
+    <string name="gif_plugin_not_installed_desc">GIF eklentisi, klavyeye ağ erişimi izni vermeden GIPHY, Klipy ve diğer sağlayıcılar için arama ve ekleme olanağı sağlar.</string>
     <string name="gif_plugin_untrusted_desc">Yüklenen GIF eklentisi imzası, güvenilen sertifikayla eşleşmiyor.</string>
     <string name="gif_plugin_unavailable_desc">GIF eklenti hizmeti yanıt vermiyor. Lütfen eklentiyi bir kez başlatın veya izinlerini doğrulayın.</string>
     <string name="gif_download_plugin">Eklentiyi indir</string>

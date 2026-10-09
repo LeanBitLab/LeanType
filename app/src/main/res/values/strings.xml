@@ -2365,7 +2365,7 @@ New dictionary:
     <string name="gif_install_plugin">Install GIF plugin</string>
     <string name="gif_settings_title">GIF Search</string>
     <string name="gif_plugin_status_title">Plugin Status</string>
-    <string name="gif_plugin_not_installed_desc">The GIF plugin provides search and insertion for Tenor, Klipy, and other providers without granting network access to the keyboard.</string>
+    <string name="gif_plugin_not_installed_desc">The GIF plugin provides search and insertion for GIPHY, Klipy, and other providers without granting network access to the keyboard.</string>
     <string name="gif_plugin_untrusted_desc">The installed GIF plugin signature does not match the trusted certificate.</string>
     <string name="gif_plugin_unavailable_desc">The GIF plugin service is not responding. Please launch the plugin once or verify its permissions.</string>
     <string name="gif_download_plugin">Download plugin</string>

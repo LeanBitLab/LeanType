@@ -1661,7 +1661,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_install_plugin">Instalirajte GIF dodatak</string>
     <string name="gif_settings_title">Pretraživanje GIF-ova</string>
     <string name="gif_plugin_status_title">Status dodatka</string>
-    <string name="gif_plugin_not_installed_desc">GIF dodatak omogućuje pretraživanje i umetanje za Tenor, Klipy i druge pružatelje usluga bez dopuštanja mrežnog pristupa tipkovnici.</string>
+    <string name="gif_plugin_not_installed_desc">GIF dodatak omogućuje pretraživanje i umetanje za GIPHY, Klipy i druge pružatelje usluga bez dopuštanja mrežnog pristupa tipkovnici.</string>
     <string name="gif_plugin_untrusted_desc">Potpis instaliranog GIF dodatka ne odgovara pouzdanom certifikatu.</string>
     <string name="gif_plugin_unavailable_desc">Usluga GIF dodatka ne reagira. Jednom pokrenite dodatak ili provjerite njegova dopuštenja.</string>
     <string name="gif_download_plugin">Preuzmite dodatak</string>

@@ -1641,7 +1641,7 @@
     <string name="gif_install_plugin">Встановіть плагін GIF</string>
     <string name="gif_settings_title">Пошук GIF</string>
     <string name="gif_plugin_status_title">Статус плагіна</string>
-    <string name="gif_plugin_not_installed_desc">Плагін GIF забезпечує пошук і вставку для Tenor, Klipy та інших постачальників без надання мережевого доступу до клавіатури.</string>
+    <string name="gif_plugin_not_installed_desc">Плагін GIF забезпечує пошук і вставку для GIPHY, Klipy та інших постачальників без надання мережевого доступу до клавіатури.</string>
     <string name="gif_plugin_untrusted_desc">Установлений підпис плагіна GIF не відповідає надійному сертифікату.</string>
     <string name="gif_plugin_unavailable_desc">Служба плагіна GIF не відповідає. Будь ласка, запустіть плагін один раз або перевірте його дозволи.</string>
     <string name="gif_download_plugin">Завантажити плагін</string>

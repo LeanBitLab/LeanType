@@ -1672,7 +1672,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="gif_install_plugin">Instalar el complemento GIF</string>
     <string name="gif_settings_title">Búsqueda de GIF</string>
     <string name="gif_plugin_status_title">Estado del complemento</string>
-    <string name="gif_plugin_not_installed_desc">El complemento GIF proporciona búsqueda e inserción para Tenor, Klipy y otros proveedores sin otorgar acceso de red al teclado.</string>
+    <string name="gif_plugin_not_installed_desc">El complemento GIF proporciona búsqueda e inserción para GIPHY, Klipy y otros proveedores sin otorgar acceso de red al teclado.</string>
     <string name="gif_plugin_untrusted_desc">La firma del complemento GIF instalado no coincide con el certificado confiable.</string>
     <string name="gif_plugin_unavailable_desc">El servicio del complemento GIF no responde. Inicie el complemento una vez o verifique sus permisos.</string>
     <string name="gif_download_plugin">Descargar complemento</string>
