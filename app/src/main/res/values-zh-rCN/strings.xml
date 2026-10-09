@@ -1704,4 +1704,9 @@
     <string name="gif_provider_active">积极的</string>
     <string name="gif_set_as_active">设置为活动状态</string>
     <string name="gif_search_hint_provider">搜索%s…</string>
+    <string name="gif_search_clear">清除搜索</string>
+    <string name="gif_retry">重试</string>
+    <string name="gif_open_settings">打开设置</string>
+    <string name="gif_no_results_query">找不到“%s”的 GIF</string>
+    <string name="gif_inserting">正在发送 GIF...</string>
 </resources>

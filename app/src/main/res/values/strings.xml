@@ -2382,4 +2382,9 @@ New dictionary:
     <string name="gif_connecting">Connecting…</string>
     <string name="gif_api_key_saved">API key saved</string>
     <string name="gif_api_key_cleared">API key cleared</string>
+    <string name="gif_search_clear">Clear search</string>
+    <string name="gif_retry">Retry</string>
+    <string name="gif_open_settings">Open Settings</string>
+    <string name="gif_no_results_query">No GIFs found for \"%s\"</string>
+    <string name="gif_inserting">Sending GIF…</string>
 </resources>

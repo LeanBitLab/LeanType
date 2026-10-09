@@ -1747,4 +1747,9 @@
     <string name="gif_provider_active">فعال</string>
     <string name="gif_set_as_active">فعال کے طور پر سیٹ کریں۔</string>
     <string name="gif_search_hint_provider">تلاش کریں%s…</string>
+    <string name="gif_search_clear">تلاش صاف کریں۔</string>
+    <string name="gif_retry">دوبارہ کوشش کریں۔</string>
+    <string name="gif_open_settings">ترتیبات کھولیں۔</string>
+    <string name="gif_no_results_query">\"%s\" کے لیے کوئی GIF نہیں ملا</string>
+    <string name="gif_inserting">GIF بھیج رہا ہے…</string>
 </resources>

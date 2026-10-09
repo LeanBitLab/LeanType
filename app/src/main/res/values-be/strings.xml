@@ -1690,4 +1690,9 @@
     <string name="gif_provider_active">Актыўны</string>
     <string name="gif_set_as_active">Усталяваць як актыўны</string>
     <string name="gif_search_hint_provider">Пошук%s…</string>
+    <string name="gif_search_clear">Выразны пошук</string>
+    <string name="gif_retry">Паўтарыць</string>
+    <string name="gif_open_settings">Адкрыйце Налады</string>
+    <string name="gif_no_results_query">GIF-файлы не знойдзены для \"%s\"</string>
+    <string name="gif_inserting">Адпраўка GIF...</string>
 </resources>

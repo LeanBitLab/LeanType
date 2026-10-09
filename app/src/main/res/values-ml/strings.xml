@@ -1756,4 +1756,9 @@
     <string name="gif_provider_active">സജീവമാണ്</string>
     <string name="gif_set_as_active">സജീവമായി സജ്ജമാക്കുക</string>
     <string name="gif_search_hint_provider">%sതിരയുക…</string>
+    <string name="gif_search_clear">തിരയൽ മായ്‌ക്കുക</string>
+    <string name="gif_retry">വീണ്ടും ശ്രമിക്കുക</string>
+    <string name="gif_open_settings">ക്രമീകരണങ്ങൾ തുറക്കുക</string>
+    <string name="gif_no_results_query">\"%s\" എന്നതിനായി GIF-കളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="gif_inserting">GIF അയയ്‌ക്കുന്നു...</string>
 </resources>

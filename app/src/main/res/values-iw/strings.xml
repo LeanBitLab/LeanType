@@ -1705,4 +1705,9 @@
     <string name="gif_provider_active">פָּעִיל</string>
     <string name="gif_set_as_active">הגדר כפעיל</string>
     <string name="gif_search_hint_provider">חפש%s…</string>
+    <string name="gif_search_clear">נקה חיפוש</string>
+    <string name="gif_retry">נסה שוב</string>
+    <string name="gif_open_settings">פתח את ההגדרות</string>
+    <string name="gif_no_results_query">לא נמצאו קובצי GIF עבור \"%s\"</string>
+    <string name="gif_inserting">שולח GIF...</string>
 </resources>

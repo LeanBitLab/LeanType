@@ -1763,4 +1763,9 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_provider_active">Attivo</string>
     <string name="gif_set_as_active">Imposta come attivo</string>
     <string name="gif_search_hint_provider">Cerca%s…</string>
+    <string name="gif_search_clear">Cancella ricerca</string>
+    <string name="gif_retry">Riprova</string>
+    <string name="gif_open_settings">Apri Impostazioni</string>
+    <string name="gif_no_results_query">Nessuna GIF trovata per \"%s\"</string>
+    <string name="gif_inserting">Invio GIF...</string>
 </resources>

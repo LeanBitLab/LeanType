@@ -1763,4 +1763,9 @@
     <string name="gif_provider_active">Активный</string>
     <string name="gif_set_as_active">Сделать активным</string>
     <string name="gif_search_hint_provider">Поиск%s…</string>
+    <string name="gif_search_clear">Очистить поиск</string>
+    <string name="gif_retry">Повторить попытку</string>
+    <string name="gif_open_settings">Открыть настройки</string>
+    <string name="gif_no_results_query">GIF-файлы для \"%s\" не найдены</string>
+    <string name="gif_inserting">Отправка GIF…</string>
 </resources>

@@ -1685,4 +1685,9 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_provider_active">Aktiivne</string>
     <string name="gif_set_as_active">Määra aktiivseks</string>
     <string name="gif_search_hint_provider">Otsi%s…</string>
+    <string name="gif_search_clear">Tühjenda otsing</string>
+    <string name="gif_retry">Proovi uuesti</string>
+    <string name="gif_open_settings">Avage Seaded</string>
+    <string name="gif_no_results_query">\"%s\" jaoks ei leitud ühtegi GIF-i</string>
+    <string name="gif_inserting">GIF-i saatmine…</string>
 </resources>

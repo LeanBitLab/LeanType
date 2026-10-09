@@ -1761,4 +1761,9 @@
     <string name="gif_provider_active">نشيط</string>
     <string name="gif_set_as_active">تعيين كنشط</string>
     <string name="gif_search_hint_provider">بحث%s…</string>
+    <string name="gif_search_clear">مسح البحث</string>
+    <string name="gif_retry">أعد المحاولة</string>
+    <string name="gif_open_settings">افتح الإعدادات</string>
+    <string name="gif_no_results_query">لم يتم العثور على ملفات GIF لـ \"%s\"</string>
+    <string name="gif_inserting">جارٍ إرسال ملف GIF…</string>
 </resources>

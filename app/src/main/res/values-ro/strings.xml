@@ -1685,4 +1685,9 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_provider_active">Activ</string>
     <string name="gif_set_as_active">Setați ca activ</string>
     <string name="gif_search_hint_provider">Căutați%s…</string>
+    <string name="gif_search_clear">Ștergeți căutarea</string>
+    <string name="gif_retry">Reîncercați</string>
+    <string name="gif_open_settings">Deschide Setări</string>
+    <string name="gif_no_results_query">Nu s-au găsit GIF-uri pentru \"%s\"</string>
+    <string name="gif_inserting">Se trimite GIF...</string>
 </resources>

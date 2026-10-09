@@ -1678,4 +1678,9 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_provider_active">Aktivan</string>
     <string name="gif_set_as_active">Postavi kao aktivno</string>
     <string name="gif_search_hint_provider">Traži%s…</string>
+    <string name="gif_search_clear">Očisti pretragu</string>
+    <string name="gif_retry">Pokušaj ponovo</string>
+    <string name="gif_open_settings">Otvorite postavke</string>
+    <string name="gif_no_results_query">Nije pronađen nijedan GIF za \"%s\"</string>
+    <string name="gif_inserting">Slanje GIF-a…</string>
 </resources>

@@ -1689,4 +1689,9 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="gif_provider_active">Activo</string>
     <string name="gif_set_as_active">Establecer como activo</string>
     <string name="gif_search_hint_provider">Buscar%s…</string>
+    <string name="gif_search_clear">Borrar búsqueda</string>
+    <string name="gif_retry">Rever</string>
+    <string name="gif_open_settings">Abrir configuración</string>
+    <string name="gif_no_results_query">No se encontraron GIF para \"%s\"</string>
+    <string name="gif_inserting">Enviando GIF…</string>
 </resources>

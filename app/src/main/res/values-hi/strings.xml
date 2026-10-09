@@ -1682,4 +1682,9 @@
     <string name="gif_provider_active">सक्रिय</string>
     <string name="gif_set_as_active">सक्रिय के रूप में सेट करें</string>
     <string name="gif_search_hint_provider">खोजें%s…</string>
+    <string name="gif_search_clear">स्पष्ट खोज</string>
+    <string name="gif_retry">पुन: प्रयास करें</string>
+    <string name="gif_open_settings">खुली सेटिंग</string>
+    <string name="gif_no_results_query">\"%s\" के लिए कोई GIF नहीं मिला</string>
+    <string name="gif_inserting">जीआईएफ भेजा जा रहा है...</string>
 </resources>

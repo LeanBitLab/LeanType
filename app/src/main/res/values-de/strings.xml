@@ -1700,4 +1700,9 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_provider_active">Aktiv</string>
     <string name="gif_set_as_active">Als aktiv festlegen</string>
     <string name="gif_search_hint_provider">Suche%s…</string>
+    <string name="gif_search_clear">Suche löschen</string>
+    <string name="gif_retry">Wiederholen</string>
+    <string name="gif_open_settings">Öffnen Sie Einstellungen</string>
+    <string name="gif_no_results_query">Keine GIFs für „%s“ gefunden</string>
+    <string name="gif_inserting">GIF wird gesendet…</string>
 </resources>

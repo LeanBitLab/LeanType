@@ -1738,4 +1738,9 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_provider_active">Actief</string>
     <string name="gif_set_as_active">Instellen als actief</string>
     <string name="gif_search_hint_provider">Zoek%s…</string>
+    <string name="gif_search_clear">Duidelijke zoekopdracht</string>
+    <string name="gif_retry">Opnieuw proberen</string>
+    <string name="gif_open_settings">Instellingen openen</string>
+    <string name="gif_no_results_query">Geen GIF\'s gevonden voor \"%s\"</string>
+    <string name="gif_inserting">GIF verzenden…</string>
 </resources>

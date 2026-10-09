@@ -2,6 +2,8 @@ package helium314.keyboard.latin.gif
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.ParcelFileDescriptor
 import android.util.AttributeSet
@@ -26,9 +28,12 @@ import com.leanbitlab.leantype.gif.IGifCallback
 import com.leanbitlab.leantype.gif.IGifEngine
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.R
+import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.SettingsActivity
+import helium314.keyboard.settings.SettingsDestination
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeoutException
 import java.util.concurrent.atomic.AtomicBoolean
@@ -46,16 +51,27 @@ class GifPickerView @JvmOverloads constructor(
     private var activeProviderId: String = ""
     private var activeProviderName: String = ""
     private var queryJob: Job? = null
+    private var pagingJob: Job? = null
     private var stateJob: Job? = null
     private var currentRequestId: Int? = null
     private var loadSeq = 0
     private var opened = false
 
+    private var nextPos: String? = null
+    private var isPaging = false
+    private var hasMore = true
+
+    private lateinit var searchContainer: LinearLayout
+    private lateinit var searchIcon: ImageView
     private lateinit var searchText: TextView
+    private lateinit var providerBadge: TextView
+    private lateinit var clearQueryButton: ImageButton
     private lateinit var closeButton: ImageButton
     private lateinit var recycler: RecyclerView
     private lateinit var progress: ProgressBar
-    private lateinit var emptyView: TextView
+    private lateinit var statusContainer: LinearLayout
+    private lateinit var statusText: TextView
+    private lateinit var statusAction: TextView
 
     private val adapter = GifAdapter(context) { onGifClicked(it) }
     private val isInserting = AtomicBoolean(false)
@@ -66,16 +82,42 @@ class GifPickerView @JvmOverloads constructor(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
+        searchContainer = findViewById(R.id.searchContainer)
+        searchIcon = findViewById(R.id.searchIcon)
         searchText = findViewById(R.id.searchText)
+        providerBadge = findViewById(R.id.providerBadge)
+        clearQueryButton = findViewById(R.id.clearQueryButton)
         closeButton = findViewById(R.id.closeButton)
         recycler = findViewById(R.id.recycler)
         progress = findViewById(R.id.progress)
-        emptyView = findViewById(R.id.emptyView)
+        statusContainer = findViewById(R.id.statusContainer)
+        statusText = findViewById(R.id.statusText)
+        statusAction = findViewById(R.id.statusAction)
 
-        recycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        val lm = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recycler.layoutManager = lm
         recycler.setHasFixedSize(true)
         recycler.adapter = adapter
+
         closeButton.setOnClickListener { onCloseRequested?.invoke() }
+        clearQueryButton.setOnClickListener {
+            query.clear()
+            renderQuery()
+            reload(debounce = false)
+        }
+
+        recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dx <= 0) return
+                val total = lm.itemCount
+                val lastVisible = lm.findLastVisibleItemPosition()
+                if (total > 0 && lastVisible >= total - 4 && !isPaging && hasMore && !nextPos.isNullOrEmpty()) {
+                    loadNextPage()
+                }
+            }
+        })
+
+        applyTheme()
     }
 
     fun open() {
@@ -83,8 +125,13 @@ class GifPickerView @JvmOverloads constructor(
         opened = true
         loadSeq++
         query.clear()
+        nextPos = null
+        isPaging = false
+        hasMore = true
         renderQuery()
+        statusContainer.visibility = View.GONE
         adapter.submit(emptyList())
+        applyTheme()
         manager.acquire("picker")
 
         stateJob?.cancel()
@@ -99,27 +146,31 @@ class GifPickerView @JvmOverloads constructor(
                     }
                     GifPluginManager.State.CONNECTING -> {
                         progress.visibility = View.VISIBLE
-                        emptyView.visibility = View.GONE
+                        statusContainer.visibility = View.GONE
                     }
                     GifPluginManager.State.NOT_INSTALLED -> {
                         progress.visibility = View.GONE
-                        showMessage(context.getString(R.string.gif_plugin_not_installed_desc))
+                        showStatus(context.getString(R.string.gif_plugin_not_installed_desc), context.getString(R.string.gif_open_settings)) {
+                            openGifSettings()
+                        }
                     }
                     GifPluginManager.State.UNTRUSTED_PLUGIN -> {
                         progress.visibility = View.GONE
-                        showMessage(context.getString(R.string.gif_plugin_untrusted_desc))
+                        showStatus(context.getString(R.string.gif_plugin_untrusted_desc), context.getString(R.string.gif_open_settings)) {
+                            openGifSettings()
+                        }
                     }
                     GifPluginManager.State.PLUGIN_TOO_OLD -> {
                         progress.visibility = View.GONE
-                        showMessage(context.getString(R.string.gif_error_plugin_too_old))
+                        showStatus(context.getString(R.string.gif_error_plugin_too_old))
                     }
                     GifPluginManager.State.HOST_TOO_OLD -> {
                         progress.visibility = View.GONE
-                        showMessage(context.getString(R.string.gif_error_host_too_old))
+                        showStatus(context.getString(R.string.gif_error_host_too_old))
                     }
                     GifPluginManager.State.UNAVAILABLE -> {
                         progress.visibility = View.GONE
-                        showMessage(context.getString(R.string.gif_error_unavailable))
+                        showStatus(context.getString(R.string.gif_error_unavailable))
                     }
                     else -> {}
                 }
@@ -134,6 +185,7 @@ class GifPickerView @JvmOverloads constructor(
         activeProviderName = ""
         loadSeq++
         queryJob?.cancel()
+        pagingJob?.cancel()
         stateJob?.cancel()
         cancelCurrent()
         manager.release("picker")
@@ -158,7 +210,7 @@ class GifPickerView @JvmOverloads constructor(
                     renderQuery()
                     reload(debounce = true)
                 }
-                return true // Consumed: empty buffer does not trigger refetch
+                return true
             }
             code == Constants.CODE_ENTER || code == '\n'.code -> {
                 reload(debounce = false)
@@ -172,7 +224,7 @@ class GifPickerView @JvmOverloads constructor(
                 }
                 return true
             }
-            else -> return false // Shift, layout switches, etc.
+            else -> return false
         }
     }
 
@@ -192,7 +244,9 @@ class GifPickerView @JvmOverloads constructor(
     }
 
     private fun renderQuery() {
-        searchText.text = query.toString()
+        val text = query.toString()
+        searchText.text = text
+        clearQueryButton.visibility = if (text.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun resolveProvider(engine: IGifEngine): String {
@@ -209,20 +263,47 @@ class GifPickerView @JvmOverloads constructor(
         activeProviderName = name
         post {
             if (activeProviderName.isNotEmpty()) {
+                providerBadge.text = activeProviderName.uppercase()
+                providerBadge.visibility = View.VISIBLE
                 searchText.hint = context.getString(R.string.gif_search_hint_provider, activeProviderName)
             } else {
+                providerBadge.visibility = View.GONE
                 searchText.hint = context.getString(R.string.gif_search_hint)
             }
         }
         return id
     }
 
+    private fun applyTheme() {
+        val colors = Settings.getValues().mColors ?: return
+        setBackgroundColor(colors.get(ColorType.STRIP_BACKGROUND))
+        searchContainer.backgroundTintList = ColorStateList.valueOf(colors.get(ColorType.KEY_BACKGROUND))
+        statusAction.backgroundTintList = ColorStateList.valueOf(colors.get(ColorType.ACTION_KEY_BACKGROUND))
+
+        val iconColor = colors.get(ColorType.KEY_ICON)
+        searchIcon.imageTintList = ColorStateList.valueOf(iconColor)
+        clearQueryButton.imageTintList = ColorStateList.valueOf(iconColor)
+        closeButton.imageTintList = ColorStateList.valueOf(iconColor)
+        progress.indeterminateTintList = ColorStateList.valueOf(iconColor)
+
+        searchText.setTextColor(colors.get(ColorType.KEY_TEXT))
+        searchText.setHintTextColor(colors.get(ColorType.KEY_HINT_TEXT))
+        providerBadge.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
+        statusText.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
+        statusAction.setTextColor(colors.get(ColorType.KEY_TEXT))
+    }
+
     private fun reload(debounce: Boolean) {
         queryJob?.cancel()
+        pagingJob?.cancel()
+        isPaging = false
+        nextPos = null
+        hasMore = true
+
         queryJob = scope.launch {
             if (debounce) delay(300)
             val q = query.toString().trim()
-            runRequest { engine, id, cb ->
+            runRequest(isPage = false) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 if (q.isEmpty()) {
                     engine.trending(id, provider, "", PAGE_SIZE, cb)
@@ -233,19 +314,43 @@ class GifPickerView @JvmOverloads constructor(
         }
     }
 
-    private suspend fun runRequest(call: (IGifEngine, Int, IGifCallback) -> Unit) {
-        cancelCurrent()
+    private fun loadNextPage() {
+        if (isPaging || !hasMore) return
+        val pos = nextPos ?: return
+        if (pos.isEmpty()) return
+        isPaging = true
+
+        pagingJob?.cancel()
+        pagingJob = scope.launch {
+            val q = query.toString().trim()
+            runRequest(isPage = true) { engine, id, cb ->
+                val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
+                if (q.isEmpty()) {
+                    engine.trending(id, provider, pos, PAGE_SIZE, cb)
+                } else {
+                    engine.search(id, provider, q, pos, PAGE_SIZE, cb)
+                }
+            }
+        }
+    }
+
+    private suspend fun runRequest(
+        isPage: Boolean,
+        call: (IGifEngine, Int, IGifCallback) -> Unit
+    ) {
+        if (!isPage) {
+            cancelCurrent()
+            statusContainer.visibility = View.GONE
+            progress.visibility = View.VISIBLE
+        }
         val seq = ++loadSeq
         val gen = manager.connectionGeneration.value
         val id = manager.nextRequestId().also { currentRequestId = it }
 
-        progress.visibility = View.VISIBLE
-        emptyView.visibility = View.GONE
-
-        val deferred = CompletableDeferred<List<GifItem>>()
+        val deferred = CompletableDeferred<Pair<List<GifItem>, String?>>()
         val cb = object : IGifCallback.Stub() {
-            override fun onItems(requestId: Int, items: MutableList<GifItem>, nextPos: String?) {
-                if (requestId == id) deferred.complete(items)
+            override fun onItems(requestId: Int, items: MutableList<GifItem>, newNextPos: String?) {
+                if (requestId == id) deferred.complete(items to newNextPos)
             }
             override fun onFetched(requestId: Int, pfd: ParcelFileDescriptor?, mimeType: String?, width: Int, height: Int) {
                 runCatching { pfd?.close() }
@@ -261,37 +366,64 @@ class GifPickerView @JvmOverloads constructor(
 
         if (result.isFailure) {
             if (currentRequestId == id) currentRequestId = null
-            if (opened && seq == loadSeq) {
+            if (isPage) {
+                isPaging = false
+            } else if (opened && seq == loadSeq) {
                 progress.visibility = View.GONE
-                showMessage(failureMessage(result.exceptionOrNull() ?: Exception()))
+                showErrorStatus(result.exceptionOrNull() ?: Exception())
             }
             return
         }
 
-        val itemsResult = try {
+        val response = try {
             withTimeout(12_000) { deferred.await() }
         } catch (e: Exception) {
             runCatching { manager.call { it.cancel(id) } }
             if (currentRequestId == id) currentRequestId = null
-            if (opened && seq == loadSeq) {
+            if (isPage) {
+                isPaging = false
+            } else if (opened && seq == loadSeq) {
                 progress.visibility = View.GONE
-                showMessage(failureMessage(e))
+                showErrorStatus(e)
             }
             return
         }
 
         if (currentRequestId == id) currentRequestId = null
-        if (!opened || seq != loadSeq || gen != manager.connectionGeneration.value) return
+        if (!opened || seq != loadSeq || gen != manager.connectionGeneration.value) {
+            if (isPage) isPaging = false
+            return
+        }
 
-        progress.visibility = View.GONE
-        if (recycler.isComputingLayout) {
-            post {
-                adapter.submit(itemsResult)
-                if (itemsResult.isEmpty()) showMessage(context.getString(R.string.gif_no_results))
+        val (itemsResult, returnedPos) = response
+        nextPos = returnedPos
+        hasMore = !returnedPos.isNullOrEmpty() && itemsResult.isNotEmpty()
+
+        if (!isPage) {
+            progress.visibility = View.GONE
+            adapter.submit(itemsResult)
+            if (itemsResult.isEmpty()) {
+                val q = query.toString().trim()
+                if (q.isNotEmpty()) {
+                    showStatus(
+                        context.getString(R.string.gif_no_results_query, q),
+                        context.getString(R.string.gif_search_clear)
+                    ) {
+                        query.clear()
+                        renderQuery()
+                        reload(debounce = false)
+                    }
+                } else {
+                    showStatus(context.getString(R.string.gif_no_results))
+                }
+            } else {
+                statusContainer.visibility = View.GONE
             }
         } else {
-            adapter.submit(itemsResult)
-            if (itemsResult.isEmpty()) showMessage(context.getString(R.string.gif_no_results))
+            isPaging = false
+            if (itemsResult.isNotEmpty()) {
+                adapter.append(itemsResult)
+            }
         }
     }
 
@@ -304,9 +436,46 @@ class GifPickerView @JvmOverloads constructor(
         currentRequestId = null
     }
 
-    private fun showMessage(msg: String) {
-        emptyView.text = msg
-        emptyView.visibility = View.VISIBLE
+    private fun showStatus(msg: String, actionText: String? = null, onAction: (() -> Unit)? = null) {
+        statusText.text = msg
+        if (actionText != null && onAction != null) {
+            statusAction.text = actionText
+            statusAction.setOnClickListener { onAction() }
+            statusAction.visibility = View.VISIBLE
+        } else {
+            statusAction.visibility = View.GONE
+        }
+        statusContainer.visibility = View.VISIBLE
+    }
+
+    private fun showErrorStatus(t: Throwable) {
+        val pluginState = manager.state.value
+        val isNotConfigured = (t as? PluginException)?.code == Contract.ERR_NOT_CONFIGURED
+        val isNotInstalled = pluginState == GifPluginManager.State.NOT_INSTALLED
+        val isUntrusted = pluginState == GifPluginManager.State.UNTRUSTED_PLUGIN
+
+        val msg = failureMessage(t)
+        when {
+            isNotConfigured || isNotInstalled || isUntrusted -> {
+                showStatus(msg, context.getString(R.string.gif_open_settings)) {
+                    openGifSettings()
+                }
+            }
+            else -> {
+                showStatus(msg, context.getString(R.string.gif_retry)) {
+                    reload(debounce = false)
+                }
+            }
+        }
+    }
+
+    private fun openGifSettings() {
+        val intent = Intent(context, SettingsActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        SettingsDestination.navigateTo(SettingsDestination.Gif)
+        context.startActivity(intent)
+        onCloseRequested?.invoke()
     }
 
     private fun failureMessage(t: Throwable): String = when (manager.state.value) {
@@ -335,6 +504,8 @@ class GifPickerView @JvmOverloads constructor(
             return
         }
         val capturedSession = sessionProvider?.invoke() ?: 0L
+
+        adapter.setInsertingId(item.id)
 
         scope.launch {
             manager.acquire("insert")
@@ -382,6 +553,7 @@ class GifPickerView @JvmOverloads constructor(
 
                 GifInserter.commit(context.applicationContext, pfd, mime, ic, ei)
             } finally {
+                adapter.setInsertingId(null)
                 manager.release("insert")
                 isInserting.set(false)
             }
@@ -393,6 +565,7 @@ class GifPickerView @JvmOverloads constructor(
         private val onClick: (GifItem) -> Unit
     ) : RecyclerView.Adapter<GifAdapter.VH>() {
         private var items = listOf<GifItem>()
+        private var insertingId: String? = null
 
         @SuppressLint("NotifyDataSetChanged")
         fun submit(new: List<GifItem>) {
@@ -400,32 +573,51 @@ class GifPickerView @JvmOverloads constructor(
             notifyDataSetChanged()
         }
 
-        class VH(val imageView: ImageView) : RecyclerView.ViewHolder(imageView)
+        fun append(newItems: List<GifItem>) {
+            if (newItems.isEmpty()) return
+            val start = items.size
+            items = items + newItems
+            notifyItemRangeInserted(start, newItems.size)
+        }
+
+        @SuppressLint("NotifyDataSetChanged")
+        fun setInsertingId(id: String?) {
+            insertingId = id
+            notifyDataSetChanged()
+        }
+
+        class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val imageView: ImageView = itemView.findViewById(R.id.gifThumbImage)
+            val insertOverlay: View = itemView.findViewById(R.id.insertOverlay)
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_gif_thumb, parent, false) as ImageView
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_gif_thumb, parent, false)
             return VH(view)
         }
 
         override fun onBindViewHolder(holder: VH, position: Int) {
             val item = items[position]
+            val isCurrentInserting = item.id == insertingId
+            holder.insertOverlay.visibility = if (isCurrentInserting) View.VISIBLE else View.GONE
+
             val uri = Uri.parse(item.previewUri)
             if (uri.scheme != "content" || uri.authority != THUMB_AUTHORITY) {
                 return
             }
 
-            val lp = holder.imageView.layoutParams
+            val lp = holder.itemView.layoutParams
             val h = context.resources.getDimensionPixelSize(R.dimen.gif_thumb_height)
             lp.height = h
             val computedWidth = (h * item.width.toFloat() / item.height.coerceAtLeast(1)).toInt()
             lp.width = computedWidth.coerceIn((h * 0.5f).toInt(), (h * 2.0f).toInt())
-            holder.imageView.layoutParams = lp
+            holder.itemView.layoutParams = lp
 
             holder.imageView.load(uri, GifImageLoader.get(context)) {
                 placeholder(R.drawable.ic_gif_placeholder)
                 precision(Precision.INEXACT)
             }
-            holder.imageView.setOnClickListener { onClick(item) }
+            holder.itemView.setOnClickListener { onClick(item) }
         }
 
         override fun getItemCount(): Int = items.size

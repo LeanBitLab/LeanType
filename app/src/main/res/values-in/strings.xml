@@ -1653,4 +1653,9 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_provider_active">Aktif</string>
     <string name="gif_set_as_active">Tetapkan sebagai aktif</string>
     <string name="gif_search_hint_provider">Telusuri%s…</string>
+    <string name="gif_search_clear">Hapus pencarian</string>
+    <string name="gif_retry">Mencoba kembali</string>
+    <string name="gif_open_settings">Buka Pengaturan</string>
+    <string name="gif_no_results_query">GIF tidak ditemukan untuk \"%s\"</string>
+    <string name="gif_inserting">Mengirim GIF…</string>
 </resources>

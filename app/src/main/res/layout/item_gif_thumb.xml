@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gifThumbImage"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gifThumbContainer"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/gif_thumb_height"
-    android:layout_margin="2dp"
-    android:scaleType="centerCrop"
-    android:background="@drawable/ic_gif_placeholder"
-    android:contentDescription="@null" />
+    android:layout_marginHorizontal="3dp"
+    android:layout_marginVertical="2dp"
+    android:background="@drawable/bg_gif_thumb_card"
+    android:clipToOutline="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/gifThumbImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <FrameLayout
+        android:id="@+id/insertOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/insertProgress"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+</FrameLayout>

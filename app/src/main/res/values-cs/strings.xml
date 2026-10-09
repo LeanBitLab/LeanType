@@ -1703,4 +1703,9 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_provider_active">Aktivní</string>
     <string name="gif_set_as_active">Nastavit jako aktivní</string>
     <string name="gif_search_hint_provider">Hledat%s…</string>
+    <string name="gif_search_clear">Vymazat vyhledávání</string>
+    <string name="gif_retry">Zkuste to znovu</string>
+    <string name="gif_open_settings">Otevřete Nastavení</string>
+    <string name="gif_no_results_query">Pro \"%s\" nebyly nalezeny žádné GIFy</string>
+    <string name="gif_inserting">Odesílání GIF…</string>
 </resources>

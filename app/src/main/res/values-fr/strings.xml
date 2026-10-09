@@ -1752,4 +1752,9 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="gif_provider_active">Actif</string>
     <string name="gif_set_as_active">Définir comme actif</string>
     <string name="gif_search_hint_provider">Rechercher%s…</string>
+    <string name="gif_search_clear">Effacer la recherche</string>
+    <string name="gif_retry">Réessayer</string>
+    <string name="gif_open_settings">Ouvrir les paramètres</string>
+    <string name="gif_no_results_query">Aucun GIF trouvé pour \"%s\"</string>
+    <string name="gif_inserting">Envoi de GIF…</string>
 </resources>

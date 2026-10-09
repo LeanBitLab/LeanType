@@ -1686,4 +1686,9 @@ Ar norite atnaujinti?</string>
     <string name="gif_provider_active">Aktyvus</string>
     <string name="gif_set_as_active">Nustatyti kaip aktyvų</string>
     <string name="gif_search_hint_provider">Ieškoti%s…</string>
+    <string name="gif_search_clear">Išvalyti paiešką</string>
+    <string name="gif_retry">Bandykite dar kartą</string>
+    <string name="gif_open_settings">Atidarykite Nustatymai</string>
+    <string name="gif_no_results_query">Nerasta \"%s\" GIF failų</string>
+    <string name="gif_inserting">Siunčiamas GIF…</string>
 </resources>
