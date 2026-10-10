@@ -259,8 +259,9 @@ fun DictionaryScreen(
                                 types.add(0, internalDictLabel)
                             
                             // Render active dictionaries as stylized badges
-                            Row(
+                            androidx.compose.foundation.layout.FlowRow(
                                 horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalArrangement = Arrangement.spacedBy(4.dp),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 if (types.isEmpty()) {
@@ -291,7 +292,9 @@ fun DictionaryScreen(
                                                 text = type,
                                                 style = MaterialTheme.typography.labelMedium,
                                                 color = badgeTextColor,
-                                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
+                                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                                                maxLines = 1,
+                                                softWrap = false
                                             )
                                         }
                                     }

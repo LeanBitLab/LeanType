@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -56,17 +57,50 @@ fun ThreeButtonAlertDialogContent(
         content = content,
         buttons = {
             if (neutralButtonText != null || confirmButtonText != null || cancelButtonText != null) {
-                Row {
-                    if (neutralButtonText != null)
-                        TextButton(onClick = onNeutral) { Text(neutralButtonText) }
-                    Spacer(Modifier.weight(1f))
-                    if (cancelButtonText != null)
-                        TextButton(onClick = onDismissRequest) { Text(cancelButtonText) }
-                    if (confirmButtonText != null)
-                        TextButton(
-                            enabled = checkOk(),
-                            onClick = { onConfirmed(); onDismissRequest() },
-                        ) { Text(confirmButtonText) }
+                if (neutralButtonText == null) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = androidx.compose.foundation.layout.Arrangement.End,
+                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                    ) {
+                        if (cancelButtonText != null)
+                            TextButton(onClick = onDismissRequest) {
+                                Text(cancelButtonText, maxLines = 1, softWrap = false)
+                            }
+                        if (confirmButtonText != null)
+                            TextButton(
+                                enabled = checkOk(),
+                                onClick = { onConfirmed(); onDismissRequest() },
+                            ) {
+                                Text(confirmButtonText, maxLines = 1, softWrap = false)
+                            }
+                    }
+                } else {
+                    androidx.compose.foundation.layout.FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = androidx.compose.foundation.layout.Arrangement.SpaceBetween,
+                        verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(4.dp)
+                    ) {
+                        TextButton(onClick = onNeutral) {
+                            Text(neutralButtonText, maxLines = 1, softWrap = false)
+                        }
+                        Row(
+                            horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp, androidx.compose.ui.Alignment.End),
+                            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                        ) {
+                            if (cancelButtonText != null)
+                                TextButton(onClick = onDismissRequest) {
+                                    Text(cancelButtonText, maxLines = 1, softWrap = false)
+                                }
+                            if (confirmButtonText != null)
+                                TextButton(
+                                    enabled = checkOk(),
+                                    onClick = { onConfirmed(); onDismissRequest() },
+                                ) {
+                                    Text(confirmButtonText, maxLines = 1, softWrap = false)
+                                }
+                        }
+                    }
                 }
             }
         }

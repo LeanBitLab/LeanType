@@ -156,7 +156,7 @@ fun AppQuirksScreen(
                 Text(stringResource(R.string.app_quirks_title))
             },
             menu = listOf(
-                (if (filterConfiguredOnly) "Show All Apps" else stringResource(R.string.app_quirks_filter_configured)) to {
+                (if (filterConfiguredOnly) stringResource(R.string.app_quirks_filter_all) else stringResource(R.string.app_quirks_filter_configured)) to {
                     filterConfiguredOnly = !filterConfiguredOnly
                 }
             ),
@@ -300,7 +300,7 @@ fun AppQuirksScreen(
                     ))
                 } else if (userQuirk != null && userQuirk.hasCustomSettings()) {
                     badges.add(BadgeInfo(
-                        "Custom",
+                        stringResource(R.string.app_quirks_badge_custom),
                         MaterialTheme.colorScheme.surfaceVariant,
                         MaterialTheme.colorScheme.onSurfaceVariant
                     ))
@@ -367,8 +367,9 @@ fun AppQuirksScreen(
                             )
                             if (badges.isNotEmpty()) {
                                 Spacer(modifier = Modifier.height(6.dp))
-                                Row(
+                                androidx.compose.foundation.layout.FlowRow(
                                     horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                    verticalArrangement = Arrangement.spacedBy(4.dp),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     badges.forEach { badge ->
@@ -380,6 +381,8 @@ fun AppQuirksScreen(
                                             Text(
                                                 text = badge.text,
                                                 style = MaterialTheme.typography.labelSmall,
+                                                maxLines = 1,
+                                                softWrap = false,
                                                 modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                             )
                                         }

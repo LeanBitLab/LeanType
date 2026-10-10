@@ -573,7 +573,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                 onConfirmed = { showPickerDialog = false },
                 confirmButtonText = null,
                 cancelButtonText = null,
-                neutralButtonText = "+ Custom Language",
+                neutralButtonText = stringResource(R.string.translation_custom_language_button),
                 onNeutral = {
                     showPickerDialog = false
                     showCustomDialog = true
@@ -728,7 +728,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                 onConfirmed = { showPickerDialog = false },
                 confirmButtonText = null,
                 cancelButtonText = null,
-                neutralButtonText = "+ Custom Language",
+                neutralButtonText = stringResource(R.string.translation_custom_language_button),
                 onNeutral = {
                     showPickerDialog = false
                     showCustomDialog = true
