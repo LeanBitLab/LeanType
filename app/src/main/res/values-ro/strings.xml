@@ -1690,4 +1690,12 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_open_settings">Deschide Setări</string>
     <string name="gif_no_results_query">Nu s-au găsit GIF-uri pentru \"%s\"</string>
     <string name="gif_inserting">Se trimite GIF...</string>
+    <string name="gif_category_gifs">GIF-uri</string>
+    <string name="gif_category_stickers">Autocolante</string>
+    <string name="gif_category_memes">Meme</string>
+    <string name="gif_category_emojis">Emoji-uri</string>
+    <string name="gif_enable">Activează</string>
+    <string name="gif_disable">Dezactivează</string>
+    <string name="gif_switched_to">Comutat la %s</string>
+    <string name="gif_disabled_message">Căutarea GIF este dezactivată</string>
 </resources>

@@ -1687,4 +1687,12 @@
     <string name="gif_open_settings">खुली सेटिंग</string>
     <string name="gif_no_results_query">\"%s\" के लिए कोई GIF नहीं मिला</string>
     <string name="gif_inserting">जीआईएफ भेजा जा रहा है...</string>
+    <string name="gif_category_gifs">जीआईएफ</string>
+    <string name="gif_category_stickers">स्टिकर</string>
+    <string name="gif_category_memes">मीम्स</string>
+    <string name="gif_category_emojis">इमोजी</string>
+    <string name="gif_enable">सक्षम करें</string>
+    <string name="gif_disable">अक्षम करें</string>
+    <string name="gif_switched_to">%s पर स्विच किया गया</string>
+    <string name="gif_disabled_message">GIF खोज अक्षम है</string>
 </resources>

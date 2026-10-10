@@ -1710,4 +1710,12 @@
     <string name="gif_open_settings">פתח את ההגדרות</string>
     <string name="gif_no_results_query">לא נמצאו קובצי GIF עבור \"%s\"</string>
     <string name="gif_inserting">שולח GIF...</string>
+    <string name="gif_category_gifs">קובצי GIF</string>
+    <string name="gif_category_stickers">מדבקות</string>
+    <string name="gif_category_memes">ממים</string>
+    <string name="gif_category_emojis">אימוג\'ים</string>
+    <string name="gif_enable">הפעל</string>
+    <string name="gif_disable">השבת</string>
+    <string name="gif_switched_to">עבר ל-%s</string>
+    <string name="gif_disabled_message">חיפוש GIF מושבת</string>
 </resources>

@@ -1705,4 +1705,12 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_open_settings">Öffnen Sie Einstellungen</string>
     <string name="gif_no_results_query">Keine GIFs für „%s“ gefunden</string>
     <string name="gif_inserting">GIF wird gesendet…</string>
+    <string name="gif_category_gifs">GIFs</string>
+    <string name="gif_category_stickers">Sticker</string>
+    <string name="gif_category_memes">Memes</string>
+    <string name="gif_category_emojis">Emojis</string>
+    <string name="gif_enable">Aktivieren</string>
+    <string name="gif_disable">Deaktivieren</string>
+    <string name="gif_switched_to">Zu %s gewechselt</string>
+    <string name="gif_disabled_message">Die GIF-Suche ist deaktiviert</string>
 </resources>

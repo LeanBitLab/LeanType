@@ -1768,4 +1768,12 @@
     <string name="gif_open_settings">Открыть настройки</string>
     <string name="gif_no_results_query">GIF-файлы для \"%s\" не найдены</string>
     <string name="gif_inserting">Отправка GIF…</string>
+    <string name="gif_category_gifs">GIF</string>
+    <string name="gif_category_stickers">Стикеры</string>
+    <string name="gif_category_memes">Мемы</string>
+    <string name="gif_category_emojis">Эмодзи</string>
+    <string name="gif_enable">Включить</string>
+    <string name="gif_disable">Отключить</string>
+    <string name="gif_switched_to">Переключено на %s</string>
+    <string name="gif_disabled_message">Поиск GIF отключен</string>
 </resources>

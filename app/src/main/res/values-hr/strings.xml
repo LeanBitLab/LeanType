@@ -1683,4 +1683,12 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_open_settings">Otvorite postavke</string>
     <string name="gif_no_results_query">Nije pronađen nijedan GIF za \"%s\"</string>
     <string name="gif_inserting">Slanje GIF-a…</string>
+    <string name="gif_category_gifs">GIF-ovi</string>
+    <string name="gif_category_stickers">Naljepnice</string>
+    <string name="gif_category_memes">Memovi</string>
+    <string name="gif_category_emojis">Emojiji</string>
+    <string name="gif_enable">Omogući</string>
+    <string name="gif_disable">Onemogući</string>
+    <string name="gif_switched_to">Prebačeno na %s</string>
+    <string name="gif_disabled_message">Pretraživanje GIF-ova je onemogućeno</string>
 </resources>

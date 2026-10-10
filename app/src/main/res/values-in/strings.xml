@@ -1658,4 +1658,12 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_open_settings">Buka Pengaturan</string>
     <string name="gif_no_results_query">GIF tidak ditemukan untuk \"%s\"</string>
     <string name="gif_inserting">Mengirim GIF…</string>
+    <string name="gif_category_gifs">GIF</string>
+    <string name="gif_category_stickers">Stiker</string>
+    <string name="gif_category_memes">Meme</string>
+    <string name="gif_category_emojis">Emoji</string>
+    <string name="gif_enable">Aktifkan</string>
+    <string name="gif_disable">Nonaktifkan</string>
+    <string name="gif_switched_to">Beralih ke %s</string>
+    <string name="gif_disabled_message">Pencarian GIF dinonaktifkan</string>
 </resources>

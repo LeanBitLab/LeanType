@@ -1663,4 +1663,12 @@
     <string name="gif_open_settings">Відкрийте налаштування</string>
     <string name="gif_no_results_query">Не знайдено GIF для \"%s\"</string>
     <string name="gif_inserting">Надсилання GIF…</string>
+    <string name="gif_category_gifs">GIF-файли</string>
+    <string name="gif_category_stickers">Стікери</string>
+    <string name="gif_category_memes">Меми</string>
+    <string name="gif_category_emojis">Емодзі</string>
+    <string name="gif_enable">Увімкнути</string>
+    <string name="gif_disable">Вимкнути</string>
+    <string name="gif_switched_to">Переключено на %s</string>
+    <string name="gif_disabled_message">Пошук GIF вимкнено</string>
 </resources>

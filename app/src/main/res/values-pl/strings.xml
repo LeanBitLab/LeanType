@@ -1745,4 +1745,12 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="gif_open_settings">Otwórz Ustawienia</string>
     <string name="gif_no_results_query">Nie znaleziono GIF-ów dla „%s”</string>
     <string name="gif_inserting">Wysyłam GIF…</string>
+    <string name="gif_category_gifs">GIF-y</string>
+    <string name="gif_category_stickers">Naklejki</string>
+    <string name="gif_category_memes">Memy</string>
+    <string name="gif_category_emojis">Emotikony</string>
+    <string name="gif_enable">Włącz</string>
+    <string name="gif_disable">Wyłącz</string>
+    <string name="gif_switched_to">Przełączono na %s</string>
+    <string name="gif_disabled_message">Wyszukiwanie GIF jest wyłączone</string>
 </resources>

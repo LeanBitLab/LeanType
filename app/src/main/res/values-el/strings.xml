@@ -1761,4 +1761,12 @@
     <string name="gif_open_settings">Ανοίξτε τις Ρυθμίσεις</string>
     <string name="gif_no_results_query">Δεν βρέθηκαν GIF για \"%s\"</string>
     <string name="gif_inserting">Αποστολή GIF…</string>
+    <string name="gif_category_gifs">GIFs</string>
+    <string name="gif_category_stickers">Αυτοκόλλητα</string>
+    <string name="gif_category_memes">Memes</string>
+    <string name="gif_category_emojis">Emoji</string>
+    <string name="gif_enable">Ενεργοποίηση</string>
+    <string name="gif_disable">Απενεργοποίηση</string>
+    <string name="gif_switched_to">Έγινε εναλλαγή σε %s</string>
+    <string name="gif_disabled_message">Η αναζήτηση GIF είναι απενεργοποιημένη</string>
 </resources>

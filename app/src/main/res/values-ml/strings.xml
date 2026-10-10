@@ -1761,4 +1761,12 @@
     <string name="gif_open_settings">ക്രമീകരണങ്ങൾ തുറക്കുക</string>
     <string name="gif_no_results_query">\"%s\" എന്നതിനായി GIF-കളൊന്നും കണ്ടെത്തിയില്ല</string>
     <string name="gif_inserting">GIF അയയ്‌ക്കുന്നു...</string>
+    <string name="gif_category_gifs">GIF-കൾ</string>
+    <string name="gif_category_stickers">സ്റ്റിക്കറുകൾ</string>
+    <string name="gif_category_memes">മീമുകൾ</string>
+    <string name="gif_category_emojis">ഇമോജികൾ</string>
+    <string name="gif_enable">പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="gif_disable">പ്രവർത്തനരഹിതമാക്കുക</string>
+    <string name="gif_switched_to">%s എന്നതിലേക്ക് മാറി</string>
+    <string name="gif_disabled_message">GIF തിരയൽ പ്രവർത്തനരഹിതമാക്കി</string>
 </resources>

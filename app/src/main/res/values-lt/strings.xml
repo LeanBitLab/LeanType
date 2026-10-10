@@ -1691,4 +1691,12 @@ Ar norite atnaujinti?</string>
     <string name="gif_open_settings">Atidarykite Nustatymai</string>
     <string name="gif_no_results_query">Nerasta \"%s\" GIF failų</string>
     <string name="gif_inserting">Siunčiamas GIF…</string>
+    <string name="gif_category_gifs">GIF</string>
+    <string name="gif_category_stickers">Lipdukai</string>
+    <string name="gif_category_memes">Memai</string>
+    <string name="gif_category_emojis">Jaustukai</string>
+    <string name="gif_enable">Įjungti</string>
+    <string name="gif_disable">Išjungti</string>
+    <string name="gif_switched_to">Perjungta į %s</string>
+    <string name="gif_disabled_message">GIF paieška išjungta</string>
 </resources>

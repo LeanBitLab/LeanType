@@ -1757,4 +1757,12 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="gif_open_settings">Ouvrir les paramètres</string>
     <string name="gif_no_results_query">Aucun GIF trouvé pour \"%s\"</string>
     <string name="gif_inserting">Envoi de GIF…</string>
+    <string name="gif_category_gifs">GIF</string>
+    <string name="gif_category_stickers">Autocollants</string>
+    <string name="gif_category_memes">Mèmes</string>
+    <string name="gif_category_emojis">Émojis</string>
+    <string name="gif_enable">Activer</string>
+    <string name="gif_disable">Désactiver</string>
+    <string name="gif_switched_to">Passé à %s</string>
+    <string name="gif_disabled_message">La recherche GIF est désactivée</string>
 </resources>

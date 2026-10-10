@@ -1768,4 +1768,12 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_open_settings">Apri Impostazioni</string>
     <string name="gif_no_results_query">Nessuna GIF trovata per \"%s\"</string>
     <string name="gif_inserting">Invio GIF...</string>
+    <string name="gif_category_gifs">GIF</string>
+    <string name="gif_category_stickers">Adesivi</string>
+    <string name="gif_category_memes">Meme</string>
+    <string name="gif_category_emojis">Emoji</string>
+    <string name="gif_enable">Attiva</string>
+    <string name="gif_disable">Disattiva</string>
+    <string name="gif_switched_to">Passato a %s</string>
+    <string name="gif_disabled_message">La ricerca GIF è disattivata</string>
 </resources>

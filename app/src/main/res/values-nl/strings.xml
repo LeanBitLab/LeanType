@@ -1743,4 +1743,12 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_open_settings">Instellingen openen</string>
     <string name="gif_no_results_query">Geen GIF\'s gevonden voor \"%s\"</string>
     <string name="gif_inserting">GIF verzenden…</string>
+    <string name="gif_category_gifs">GIF\'s</string>
+    <string name="gif_category_stickers">Stickers</string>
+    <string name="gif_category_memes">Memes</string>
+    <string name="gif_category_emojis">Emoji\'s</string>
+    <string name="gif_enable">Inschakelen</string>
+    <string name="gif_disable">Uitschakelen</string>
+    <string name="gif_switched_to">Overgeschakeld naar %s</string>
+    <string name="gif_disabled_message">GIF-zoeken is uitgeschakeld</string>
 </resources>

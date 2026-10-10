@@ -1709,4 +1709,12 @@
     <string name="gif_open_settings">打开设置</string>
     <string name="gif_no_results_query">找不到“%s”的 GIF</string>
     <string name="gif_inserting">正在发送 GIF...</string>
+    <string name="gif_category_gifs">动图</string>
+    <string name="gif_category_stickers">贴纸</string>
+    <string name="gif_category_memes">梗图</string>
+    <string name="gif_category_emojis">表情符号</string>
+    <string name="gif_enable">启用</string>
+    <string name="gif_disable">禁用</string>
+    <string name="gif_switched_to">已切换至 %s</string>
+    <string name="gif_disabled_message">GIF 搜索已禁用</string>
 </resources>

@@ -1699,4 +1699,12 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="gif_open_settings">Nyissa meg a Beállítások lehetőséget</string>
     <string name="gif_no_results_query">Nem található GIF a következőhöz: \"%s\"</string>
     <string name="gif_inserting">GIF küldése…</string>
+    <string name="gif_category_gifs">GIF-ek</string>
+    <string name="gif_category_stickers">Matricák</string>
+    <string name="gif_category_memes">Mémek</string>
+    <string name="gif_category_emojis">Hangulatjelek</string>
+    <string name="gif_enable">Engedélyezés</string>
+    <string name="gif_disable">Letiltás</string>
+    <string name="gif_switched_to">Átváltva a következőre: %s</string>
+    <string name="gif_disabled_message">A GIF-keresés le van tiltva</string>
 </resources>

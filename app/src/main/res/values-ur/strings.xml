@@ -1752,4 +1752,12 @@
     <string name="gif_open_settings">ترتیبات کھولیں۔</string>
     <string name="gif_no_results_query">\"%s\" کے لیے کوئی GIF نہیں ملا</string>
     <string name="gif_inserting">GIF بھیج رہا ہے…</string>
+    <string name="gif_category_gifs">GIFs</string>
+    <string name="gif_category_stickers">اسٹیکرز</string>
+    <string name="gif_category_memes">میمز</string>
+    <string name="gif_category_emojis">ایموجیز</string>
+    <string name="gif_enable">فعال کریں</string>
+    <string name="gif_disable">غیر فعال کریں</string>
+    <string name="gif_switched_to">%s پر تبدیل کر دیا گیا</string>
+    <string name="gif_disabled_message">GIF تلاش غیر فعال ہے</string>
 </resources>

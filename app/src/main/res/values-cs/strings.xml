@@ -1708,4 +1708,12 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_open_settings">Otevřete Nastavení</string>
     <string name="gif_no_results_query">Pro \"%s\" nebyly nalezeny žádné GIFy</string>
     <string name="gif_inserting">Odesílání GIF…</string>
+    <string name="gif_category_gifs">GIFy</string>
+    <string name="gif_category_stickers">Samolepky</string>
+    <string name="gif_category_memes">Memy</string>
+    <string name="gif_category_emojis">Emoji</string>
+    <string name="gif_enable">Povolit</string>
+    <string name="gif_disable">Zakázat</string>
+    <string name="gif_switched_to">Přepnuto na %s</string>
+    <string name="gif_disabled_message">Vyhledávání GIF je zakázáno</string>
 </resources>

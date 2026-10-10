@@ -1690,4 +1690,12 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_open_settings">Avage Seaded</string>
     <string name="gif_no_results_query">\"%s\" jaoks ei leitud ühtegi GIF-i</string>
     <string name="gif_inserting">GIF-i saatmine…</string>
+    <string name="gif_category_gifs">GIF-id</string>
+    <string name="gif_category_stickers">Kleebised</string>
+    <string name="gif_category_memes">Meemid</string>
+    <string name="gif_category_emojis">Emotikonid</string>
+    <string name="gif_enable">Luba</string>
+    <string name="gif_disable">Keela</string>
+    <string name="gif_switched_to">Lülitati %s-le</string>
+    <string name="gif_disabled_message">GIF-otsing on keelatud</string>
 </resources>

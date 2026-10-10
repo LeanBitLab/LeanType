@@ -1691,4 +1691,12 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_open_settings">Ayarları Aç</string>
     <string name="gif_no_results_query">\"%s\" için GIF bulunamadı</string>
     <string name="gif_inserting">GIF gönderiliyor…</string>
+    <string name="gif_category_gifs">GIF\'ler</string>
+    <string name="gif_category_stickers">Çıkartmalar</string>
+    <string name="gif_category_memes">Mizah</string>
+    <string name="gif_category_emojis">Emojiler</string>
+    <string name="gif_enable">Etkinleştir</string>
+    <string name="gif_disable">Devre dışı bırak</string>
+    <string name="gif_switched_to">%s olarak değiştirildi</string>
+    <string name="gif_disabled_message">GIF araması devre dışı bırakıldı</string>
 </resources>
