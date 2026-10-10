@@ -885,7 +885,7 @@ class VoiceInputManager(
 
         val isSmartPunctuationEnabled = ims.prefs().getBoolean(VoiceConstants.PREF_VOICE_SMART_PUNCTUATION, true)
         val processedRaw = if (!isSmartPunctuationEnabled) {
-            rawText.replace(Regex("[,.?!;:]"), "")
+            rawText.replace(PUNCTUATION_REGEX, "")
         } else {
             rawText
         }
@@ -1058,6 +1058,7 @@ class VoiceInputManager(
 
     companion object {
         private const val TAG = "VoiceInputManager"
+        private val PUNCTUATION_REGEX = Regex("[,.?!;:]")
         private const val SAMPLE_RATE = 16000
         private const val FRAME_SIZE_MS = 30
         private const val FRAME_SIZE_SHORTS = SAMPLE_RATE * FRAME_SIZE_MS / 1000 // 480 shorts
