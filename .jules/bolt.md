@@ -15,3 +15,6 @@
 ## 2024-05-18 - Pre-compile Regex in SpellCheckerSession
 **Learning:** `AndroidWordLevelSpellCheckerSession` previously instantiated new `Regex` objects for every quote matching and punctuation splitting operation during `onGetSuggestionsInternal`, which is a highly invoked method on the spellchecker hot-path.
 **Action:** Always extract frequently instantiated `Regex` objects from hot paths (like text replacement or splitting) into `companion object` private constants (e.g. `periodRegex`, `quotesStartRegex`) to reduce allocation and regex compilation overhead per keystroke.
+## 2024-05-18 - Pre-compile Regex in VoiceInputManager
+**Learning:** `VoiceInputManager.syncRecognizedText` instantiates `Regex("[,.?!;:]")` inside a frequent method call, increasing allocation pressure on voice typing hot paths.
+**Action:** Extract repeated `Regex` instantiations in input hot paths (such as `syncRecognizedText`) into companion object private constants to reduce memory allocation and compilation overhead.
