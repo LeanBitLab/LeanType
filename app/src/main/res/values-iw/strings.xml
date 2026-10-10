@@ -1077,8 +1077,8 @@
     <string name="app_quirks_enter_action_next">כפה הבא</string>
     <string name="app_quirks_enter_action_done">כפה בוצע</string>
     <string name="app_quirks_badge_web">אינטרנט</string>
-    <string name="app_quirks_badge_incognito">אינקוגניטו</string>
-    <string name="app_quirks_badge_non_incognito">לא-אינקוגניטו</string>
+    <string name="app_quirks_badge_incognito">גלישה בסתר</string>
+    <string name="app_quirks_badge_non_incognito">גלישה רגילה</string>
     <string name="app_quirks_badge_action">פעולה</string>
     <string name="app_quirks_badge_no_enter">הסרת No-Enter</string>
     <string name="app_quirks_badge_default">פרופיל ברירת מחדל</string>
@@ -1090,7 +1090,7 @@
     <string name="app_quirks_allow_symbol_composing_summary">שמור על סמלים כמו קווים תחתונים בתוך מילים מורכבות במקום לאשר מיידית (מתקן שדות משתנים של Tasker)</string>
     <string name="app_quirks_disable_auto_space">השבת רווח אוטומטי</string>
     <string name="app_quirks_disable_auto_space_summary">לעולם אל תוסיף רווחים אוטומטיים לפני או אחרי סימני פיסוק וסמלים</string>
-    <string name="app_quirks_badge_direct_commit">אישור ישיר</string>
+    <string name="app_quirks_badge_direct_commit">הזנה ישירה</string>
     <string name="app_quirks_badge_symbol_composing">הרכבת סמלים</string>
     <string name="app_quirks_badge_no_auto_space">ללא רווח אוטומטי</string>
     <string name="app_quirks_allow_type_null">אפשר בשדות שאינם ניתנים לעריכה</string>
@@ -1663,7 +1663,7 @@
     <string name="app_quirks_hide_toolbar">הסתר את סרגל הכלים</string>
     <string name="app_quirks_hide_toolbar_summary">הסתר מקשי סרגל כלים, פעולות וכפתור הרחבה בעת הקלדה באפליקציה זו</string>
     <string name="app_quirks_badge_no_suggestions">אין הצעות</string>
-    <string name="app_quirks_badge_no_toolbar">אין סרגל כלים</string>
+    <string name="app_quirks_badge_no_toolbar">ללא סרגל</string>
     <string name="text_expander_tag_desc_date_format">תאריך מעוצב (למשל%date:yyyy/MM/dd% או%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">הצג תמיד הצעות</string>
     <string name="app_quirks_always_show_suggestions_summary">התעלם מהבקשות של אפליקציה זו להשבית הצעות</string>
@@ -1718,4 +1718,6 @@
     <string name="gif_disable">השבת</string>
     <string name="gif_switched_to">עבר ל-%s</string>
     <string name="gif_disabled_message">חיפוש GIF מושבת</string>
+    <string name="app_quirks_filter_all">הצג את כל האפליקציות</string>
+    <string name="app_quirks_badge_custom">מותאם אישית</string>
 </resources>

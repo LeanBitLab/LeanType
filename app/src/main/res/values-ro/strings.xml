@@ -1065,7 +1065,7 @@
     <string name="app_quirks_enter_action_done">Forțează Gata</string>
     <string name="app_quirks_badge_web">Web</string>
     <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_non_incognito">Non-incognito</string>
     <string name="app_quirks_badge_action">Acțiune</string>
     <string name="app_quirks_badge_no_enter">Eliminare No-Enter</string>
     <string name="app_quirks_badge_default">Profil Implicit</string>
@@ -1077,9 +1077,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Păstrează simboluri precum liniuțele de subliniere în interiorul cuvintelor compuse în loc să le confirme imediat (remediază câmpurile de variabile Tasker)</string>
     <string name="app_quirks_disable_auto_space">Dezactivează Spațierea Automată</string>
     <string name="app_quirks_disable_auto_space_summary">Nu insera niciodată spații automate înainte sau după punctuație și simboluri</string>
-    <string name="app_quirks_badge_direct_commit">Confirmare Directă</string>
-    <string name="app_quirks_badge_symbol_composing">Compunere Simboluri</string>
-    <string name="app_quirks_badge_no_auto_space">Fără Spațiere Automată</string>
+    <string name="app_quirks_badge_direct_commit">Introducere directă</string>
+    <string name="app_quirks_badge_symbol_composing">Compunere simboluri</string>
+    <string name="app_quirks_badge_no_auto_space">Fără spațiere automată</string>
     <string name="app_quirks_allow_type_null">Permite pe Câmpuri Needitabile</string>
     <string name="app_quirks_allow_type_null_summary">Păstrează tastatura disponibilă chiar și atunci când aplicația nu specifică niciun câmp text editabil (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1643,7 +1643,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="app_quirks_hide_toolbar">Ascundeți bara de instrumente</string>
     <string name="app_quirks_hide_toolbar_summary">Ascunde tastele barei de instrumente, acțiunile și butonul de extindere atunci când tastați în această aplicație</string>
     <string name="app_quirks_badge_no_suggestions">Fără sugestii</string>
-    <string name="app_quirks_badge_no_toolbar">Fără bară de instrumente</string>
+    <string name="app_quirks_badge_no_toolbar">Fără bară</string>
     <string name="text_expander_tag_desc_date_format">Data formatată (de exemplu,%date:aaaa/LL/zz% sau%date:format(model)%)</string>
     <string name="app_quirks_always_show_suggestions">Afișați întotdeauna sugestii</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorați solicitările acestei aplicații pentru a dezactiva sugestiile</string>
@@ -1698,4 +1698,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="gif_disable">Dezactivează</string>
     <string name="gif_switched_to">Comutat la %s</string>
     <string name="gif_disabled_message">Căutarea GIF este dezactivată</string>
+    <string name="app_quirks_filter_all">Afișează toate aplicațiile</string>
+    <string name="app_quirks_badge_custom">Personalizat</string>
 </resources>

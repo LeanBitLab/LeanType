@@ -1075,9 +1075,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Захоўваць такія сімвалы, як падкрэсленні, унутры кампануемых слоў замест неадкладнай фіксацыі (выпраўляе палі зменных Tasker)</string>
     <string name="app_quirks_disable_auto_space">Адключыць аўтапрабелы</string>
     <string name="app_quirks_disable_auto_space_summary">Ніколі не ўстаўляць аўтаматычныя прабелы перад або пасля знакаў пунктуацыі і сімвалаў</string>
-    <string name="app_quirks_badge_direct_commit">Прамая фіксацыя</string>
-    <string name="app_quirks_badge_symbol_composing">Кампаноўка сімвалаў</string>
-    <string name="app_quirks_badge_no_auto_space">Без аўтапрабелаў</string>
+    <string name="app_quirks_badge_direct_commit">Прамы ўвод</string>
+    <string name="app_quirks_badge_symbol_composing">Сімвалы ў слове</string>
+    <string name="app_quirks_badge_no_auto_space">Без аўтапрабелу</string>
     <string name="app_quirks_allow_type_null">Дазволіць у нерэдагуемых палях</string>
     <string name="app_quirks_allow_type_null_summary">Захоўваць клавіятуру даступнай, нават калі праграма не паказвае рэдагуемае тэкставае поле (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1648,7 +1648,7 @@
     <string name="app_quirks_hide_toolbar">Схаваць панэль інструментаў</string>
     <string name="app_quirks_hide_toolbar_summary">Схаваць клавішы панэлі інструментаў, дзеянні і кнопку разгортвання падчас уводу ў гэтай праграме</string>
     <string name="app_quirks_badge_no_suggestions">Няма прапаноў</string>
-    <string name="app_quirks_badge_no_toolbar">Няма панэлі інструментаў</string>
+    <string name="app_quirks_badge_no_toolbar">Без панэлі</string>
     <string name="text_expander_tag_desc_date_format">Адфарматаваная дата (напрыклад,%date:yyyy/MM/dd% або%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Заўсёды паказваць прапановы</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігнараваць запыты гэтай праграмы аб адключэнні прапаноў</string>
@@ -1703,4 +1703,6 @@
     <string name="gif_disable">Адключыць</string>
     <string name="gif_switched_to">Пераключана на %s</string>
     <string name="gif_disabled_message">Пошук GIF адключаны</string>
+    <string name="app_quirks_filter_all">Паказаць усе праграмы</string>
+    <string name="app_quirks_badge_custom">Карыстальніцкі</string>
 </resources>

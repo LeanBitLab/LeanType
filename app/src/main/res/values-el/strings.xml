@@ -1135,8 +1135,8 @@
     <string name="app_quirks_enter_action_next">Επιβολή Επόμενου (Next)</string>
     <string name="app_quirks_enter_action_done">Επιβολή Τέλους (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">Ανώνυμη</string>
+    <string name="app_quirks_badge_non_incognito">Μη ανώνυμη</string>
     <string name="app_quirks_badge_action">Ενέργεια</string>
     <string name="app_quirks_badge_no_enter">Αφαίρεση No-Enter</string>
     <string name="app_quirks_badge_default">Προεπιλεγμένο προφίλ</string>
@@ -1148,9 +1148,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Διατήρηση συμβόλων όπως κάτω παύλες σε σύνθετες λέξεις (διορθώνει μεταβλητές Tasker)</string>
     <string name="app_quirks_disable_auto_space">Απενεργοποίηση αυτόματου διαστήματος</string>
     <string name="app_quirks_disable_auto_space_summary">Να μην εισάγονται ποτέ αυτόματα διαστήματα πριν ή μετά από σημεία στίξης και σύμβολα</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">Άμεση εισαγωγή</string>
+    <string name="app_quirks_badge_symbol_composing">Σύνθεση συμβόλων</string>
+    <string name="app_quirks_badge_no_auto_space">Χωρίς αυτόματο διάστημα</string>
     <string name="app_quirks_allow_type_null">Να επιτρέπεται σε μη επεξεργάσιμα πεδία</string>
     <string name="app_quirks_allow_type_null_summary">Διατήρηση του πληκτρολογίου προσβάσιμου ακόμα κι αν η εφαρμογή ορίζει InputType.TYPE_NULL</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1714,7 +1714,7 @@
     <string name="app_quirks_hide_toolbar">Απόκρυψη γραμμής εργαλείων</string>
     <string name="app_quirks_hide_toolbar_summary">Απόκρυψη πλήκτρων της γραμμής εργαλείων, ενεργειών και επέκταση του κουμπιού κατά την πληκτρολόγηση σε αυτήν την εφαρμογή</string>
     <string name="app_quirks_badge_no_suggestions">Δεν υπάρχουν προτάσεις</string>
-    <string name="app_quirks_badge_no_toolbar">Χωρίς γραμμή εργαλείων</string>
+    <string name="app_quirks_badge_no_toolbar">Χωρίς γραμμή</string>
     <string name="text_expander_tag_desc_date_format">Μορφοποιημένη ημερομηνία (π.χ.%date:yyyy/MM/dd% ή%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Να εμφανίζονται πάντα προτάσεις</string>
     <string name="app_quirks_always_show_suggestions_summary">Αγνοήστε τα αιτήματα αυτής της εφαρμογής για απενεργοποίηση προτάσεων</string>
@@ -1769,4 +1769,6 @@
     <string name="gif_disable">Απενεργοποίηση</string>
     <string name="gif_switched_to">Έγινε εναλλαγή σε %s</string>
     <string name="gif_disabled_message">Η αναζήτηση GIF είναι απενεργοποιημένη</string>
+    <string name="app_quirks_filter_all">Εμφάνιση όλων των εφαρμογών</string>
+    <string name="app_quirks_badge_custom">Προσαρμοσμένο</string>
 </resources>

@@ -1050,8 +1050,8 @@
     <string name="app_quirks_enter_action_next">Prisili sljedeće</string>
     <string name="app_quirks_enter_action_done">Prisili gotovo</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Inkognito</string>
-    <string name="app_quirks_badge_non_incognito">Ne-inkognito</string>
+    <string name="app_quirks_badge_incognito">Anonimno</string>
+    <string name="app_quirks_badge_non_incognito">Neanonimno</string>
     <string name="app_quirks_badge_action">Akcija</string>
     <string name="app_quirks_badge_no_enter">Uklanjanje No-Enter</string>
     <string name="app_quirks_badge_default">Zadani profil</string>
@@ -1063,9 +1063,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Zadržite simbole poput podvlaka unutar riječi koje se sastavljaju umjesto da ih odmah potvrdite (ispravlja Tasker varijabilna polja)</string>
     <string name="app_quirks_disable_auto_space">Isključi automatsko dodavanje razmaka</string>
     <string name="app_quirks_disable_auto_space_summary">Nikada ne umetajte automatske razmake prije ili poslije interpunkcije i simbola</string>
-    <string name="app_quirks_badge_direct_commit">Izravno potvrđivanje</string>
+    <string name="app_quirks_badge_direct_commit">Izravan unos</string>
     <string name="app_quirks_badge_symbol_composing">Sastavljanje simbola</string>
-    <string name="app_quirks_badge_no_auto_space">Bez auto-razmaka</string>
+    <string name="app_quirks_badge_no_auto_space">Bez automatskog razmaka</string>
     <string name="app_quirks_allow_type_null">Dopusti na poljima koja se ne mogu uređivati</string>
     <string name="app_quirks_allow_type_null_summary">Zadržite tipkovnicu dostupnom čak i kada aplikacija ne specificira tekstualno polje koje se može uređivati (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1636,7 +1636,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="app_quirks_hide_toolbar">Sakrij alatnu traku</string>
     <string name="app_quirks_hide_toolbar_summary">Sakrij tipke alatne trake, radnje i gumb za proširenje kada upisujete u ovu aplikaciju</string>
     <string name="app_quirks_badge_no_suggestions">Nema prijedloga</string>
-    <string name="app_quirks_badge_no_toolbar">Nema alatne trake</string>
+    <string name="app_quirks_badge_no_toolbar">Bez trake</string>
     <string name="text_expander_tag_desc_date_format">Formatirani datum (npr.%date:gggg/MM/dd% ili%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Uvijek prikaži prijedloge</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorirajte zahtjeve ove aplikacije za onemogućavanje prijedloga</string>
@@ -1691,4 +1691,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_disable">Onemogući</string>
     <string name="gif_switched_to">Prebačeno na %s</string>
     <string name="gif_disabled_message">Pretraživanje GIF-ova je onemogućeno</string>
+    <string name="app_quirks_filter_all">Prikaži sve aplikacije</string>
+    <string name="app_quirks_badge_custom">Prilagođeno</string>
 </resources>

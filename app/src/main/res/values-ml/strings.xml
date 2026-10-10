@@ -1134,8 +1134,8 @@
     <string name="app_quirks_enter_action_next">Next നിർബന്ധമാക്കുക</string>
     <string name="app_quirks_enter_action_done">Done നിർബന്ധമാക്കുക</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">ഇൻകോഗ്നിറ്റോ</string>
+    <string name="app_quirks_badge_non_incognito">നോൺ-ഇൻകോഗ്നിറ്റോ</string>
     <string name="app_quirks_badge_action">Action</string>
     <string name="app_quirks_badge_no_enter">No-Enter Strip</string>
     <string name="app_quirks_badge_default">ഡിഫോൾട്ട് പ്രൊഫൈൽ</string>
@@ -1147,9 +1147,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">അണ്ടർസ്‌കോർ പോലുള്ള ചിഹ്നങ്ങൾ ഉടൻ കമ്മിറ്റ് ചെയ്യുന്നതിന് പകരം കമ്പോസിംഗ് വാക്കുകൾക്കുള്ളിൽ സൂക്ഷിക്കുക (Tasker വേരിയബിൾ ഫീൽഡുകൾ പരിഹരിക്കുന്നു)</string>
     <string name="app_quirks_disable_auto_space">ഓട്ടോ-സ്പേസിംഗ് പ്രവർത്തനരഹിതമാക്കുക</string>
     <string name="app_quirks_disable_auto_space_summary">വിരാമചിഹ്നങ്ങൾക്കും ചിഹ്നങ്ങൾക്കും മുമ്പോ ശേഷമോ ഒരിക്കലും ഓട്ടോമാറ്റിക് സ്പേസുകൾ നൽകരുത്</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">നേരിട്ടുള്ള ഇൻപുട്ട്</string>
+    <string name="app_quirks_badge_symbol_composing">ചിഹ്ന സംയോജനം</string>
+    <string name="app_quirks_badge_no_auto_space">ഓട്ടോ-സ്പേസ് ഇല്ല</string>
     <string name="app_quirks_allow_type_null">എഡിറ്റ് ചെയ്യാനാവാത്ത ഫീൽഡുകളിൽ അനുവദിക്കുക</string>
     <string name="app_quirks_allow_type_null_summary">ആപ്പ് എഡിറ്റ് ചെയ്യാനാവാത്ത ടെക്സ്റ്റ് ഫീൽഡ് (InputType.TYPE_NULL) വ്യക്തമാക്കുമ്പോഴും കീബോർഡ് ലഭ്യമാക്കുക</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1769,4 +1769,6 @@
     <string name="gif_disable">പ്രവർത്തനരഹിതമാക്കുക</string>
     <string name="gif_switched_to">%s എന്നതിലേക്ക് മാറി</string>
     <string name="gif_disabled_message">GIF തിരയൽ പ്രവർത്തനരഹിതമാക്കി</string>
+    <string name="app_quirks_filter_all">എല്ലാ ആപ്പുകളും കാണിക്കുക</string>
+    <string name="app_quirks_badge_custom">ഇഷ്‌ടാനുസൃതം</string>
 </resources>

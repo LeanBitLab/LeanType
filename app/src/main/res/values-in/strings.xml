@@ -1033,8 +1033,8 @@
     <string name="app_quirks_enter_action_next">Paksa Berikutnya</string>
     <string name="app_quirks_enter_action_done">Paksa Selesai</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Inkognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Inkognito</string>
+    <string name="app_quirks_badge_incognito">Samaran</string>
+    <string name="app_quirks_badge_non_incognito">Bukan samaran</string>
     <string name="app_quirks_badge_action">Tindakan</string>
     <string name="app_quirks_badge_no_enter">Penghapusan No-Enter</string>
     <string name="app_quirks_badge_default">Profil Default</string>
@@ -1046,9 +1046,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Simpan simbol seperti garis bawah di dalam kata yang sedang disusun alih-alih langsung di-commit (memperbaiki kolom variabel Tasker)</string>
     <string name="app_quirks_disable_auto_space">Nonaktifkan Spasi Otomatis</string>
     <string name="app_quirks_disable_auto_space_summary">Jangan pernah menyisipkan spasi otomatis sebelum atau setelah tanda baca dan simbol</string>
-    <string name="app_quirks_badge_direct_commit">Commit Langsung</string>
-    <string name="app_quirks_badge_symbol_composing">Penyusunan Simbol</string>
-    <string name="app_quirks_badge_no_auto_space">Tanpa Spasi Otomatis</string>
+    <string name="app_quirks_badge_direct_commit">Kirim langsung</string>
+    <string name="app_quirks_badge_symbol_composing">Penyusunan simbol</string>
+    <string name="app_quirks_badge_no_auto_space">Tanpa spasi otomatis</string>
     <string name="app_quirks_allow_type_null">Izinkan di Kolom Non-Editable</string>
     <string name="app_quirks_allow_type_null_summary">Biarkan keyboard tetap tersedia bahkan ketika aplikasi tidak menentukan kolom teks yang dapat diedit (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1611,7 +1611,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="app_quirks_hide_toolbar">Sembunyikan bilah alat</string>
     <string name="app_quirks_hide_toolbar_summary">Sembunyikan tombol toolbar, tindakan, dan tombol perluas saat mengetik di aplikasi ini</string>
     <string name="app_quirks_badge_no_suggestions">Tidak Ada Saran</string>
-    <string name="app_quirks_badge_no_toolbar">Tidak Ada Bilah Alat</string>
+    <string name="app_quirks_badge_no_toolbar">Tanpa bilah alat</string>
     <string name="text_expander_tag_desc_date_format">Tanggal yang diformat (misalnya%dmakan:yyyy/MM/dd% atau%dmakan:format(pola)%)</string>
     <string name="app_quirks_always_show_suggestions">Selalu tampilkan saran</string>
     <string name="app_quirks_always_show_suggestions_summary">Abaikan permintaan aplikasi ini untuk menonaktifkan saran</string>
@@ -1666,4 +1666,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_disable">Nonaktifkan</string>
     <string name="gif_switched_to">Beralih ke %s</string>
     <string name="gif_disabled_message">Pencarian GIF dinonaktifkan</string>
+    <string name="app_quirks_filter_all">Tampilkan semua aplikasi</string>
+    <string name="app_quirks_badge_custom">Kustom</string>
 </resources>

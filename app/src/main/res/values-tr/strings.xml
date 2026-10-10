@@ -1065,8 +1065,8 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="app_quirks_enter_action_next">İleri eylemini zorla (Next)</string>
     <string name="app_quirks_enter_action_done">Bitti eylemini zorla (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">Gizli</string>
+    <string name="app_quirks_badge_non_incognito">Gizli değil</string>
     <string name="app_quirks_badge_action">Eylem</string>
     <string name="app_quirks_badge_no_enter">No-Enter Kaldır</string>
     <string name="app_quirks_badge_default">Varsayılan profil</string>
@@ -1078,9 +1078,9 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="app_quirks_allow_symbol_composing_summary">Alt çizgi gibi sembolleri bileşik kelimelerde tutun (Tasker değişkenlerini düzeltir)</string>
     <string name="app_quirks_disable_auto_space">Otomatik boşluğu kapat</string>
     <string name="app_quirks_disable_auto_space_summary">Noktalama işaretleri ve sembollerden önce veya sonra asla otomatik boşluk eklemeyin</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">Doğrudan giriş</string>
+    <string name="app_quirks_badge_symbol_composing">Sembol oluşturma</string>
+    <string name="app_quirks_badge_no_auto_space">Otomatik boşluksuz</string>
     <string name="app_quirks_allow_type_null">Düzenlenemeyen alanlarda izin ver</string>
     <string name="app_quirks_allow_type_null_summary">Uygulama InputType.TYPE_NULL belirtse bile klavyeyi erişilebilir tutun</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1644,7 +1644,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="app_quirks_hide_toolbar">Araç çubuğunu gizle</string>
     <string name="app_quirks_hide_toolbar_summary">Bu uygulamaya yazarken araç çubuğu tuşlarını, eylemleri ve genişletme düğmesini gizleyin</string>
     <string name="app_quirks_badge_no_suggestions">Öneri Yok</string>
-    <string name="app_quirks_badge_no_toolbar">Araç Çubuğu Yok</string>
+    <string name="app_quirks_badge_no_toolbar">Çubuksuz</string>
     <string name="text_expander_tag_desc_date_format">Biçimlendirilmiş tarih (ör.%date:yyyy/MM/gg% veya%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Önerileri her zaman göster</string>
     <string name="app_quirks_always_show_suggestions_summary">Bu uygulamanın önerileri devre dışı bırakma isteklerini göz ardı edin</string>
@@ -1699,4 +1699,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_disable">Devre dışı bırak</string>
     <string name="gif_switched_to">%s olarak değiştirildi</string>
     <string name="gif_disabled_message">GIF araması devre dışı bırakıldı</string>
+    <string name="app_quirks_filter_all">Tüm uygulamaları göster</string>
+    <string name="app_quirks_badge_custom">Özel</string>
 </resources>

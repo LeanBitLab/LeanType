@@ -1134,8 +1134,8 @@
     <string name="app_quirks_enter_action_next">اگلے پر مجبور کریں (Next)</string>
     <string name="app_quirks_enter_action_done">مکمل پر مجبور کریں (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">پوشیدہ</string>
+    <string name="app_quirks_badge_non_incognito">غیر پوشیدہ</string>
     <string name="app_quirks_badge_action">ایکشن</string>
     <string name="app_quirks_badge_no_enter">No-Enter ہٹائیں</string>
     <string name="app_quirks_badge_default">ڈیفالٹ پروفائل</string>
@@ -1147,9 +1147,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">مرکب الفاظ میں انڈر سکور جیسی علامتیں برقرار رکھیں (Tasker متغیرات کو ٹھیک کرتا ہے)</string>
     <string name="app_quirks_disable_auto_space">خودکار خالی جگہ بند کریں</string>
     <string name="app_quirks_disable_auto_space_summary">رموز اوقاف اور علامتوں سے پہلے یا بعد میں کبھی بھی خودکار خالی جگہ داخل نہ کریں</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">براہ راست ان پٹ</string>
+    <string name="app_quirks_badge_symbol_composing">علامتوں کی ترکیب</string>
+    <string name="app_quirks_badge_no_auto_space">بغیر خودکار فاصلہ</string>
     <string name="app_quirks_allow_type_null">ناقابل ترمیم فیلڈز میں اجازت دیں</string>
     <string name="app_quirks_allow_type_null_summary">کی بورڈ کو قابل رسائی رکھیں چاہے ایپ InputType.TYPE_NULL کی وضاحت کرے</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1705,7 +1705,7 @@
     <string name="app_quirks_hide_toolbar">ٹول بار چھپائیں۔</string>
     <string name="app_quirks_hide_toolbar_summary">اس ایپ میں ٹائپ کرتے وقت ٹول بار کیز، ایکشنز، اور ایکسپینڈ بٹن کو چھپائیں۔</string>
     <string name="app_quirks_badge_no_suggestions">کوئی تجاویز نہیں۔</string>
-    <string name="app_quirks_badge_no_toolbar">کوئی ٹول بار نہیں۔</string>
+    <string name="app_quirks_badge_no_toolbar">ٹول بار کے بغیر</string>
     <string name="text_expander_tag_desc_date_format">فارمیٹ شدہ تاریخ (جیسے%date:yyyy/MM/dd% یا%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">ہمیشہ تجاویز دکھائیں۔</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاویز کو غیر فعال کرنے کے لیے اس ایپ کی درخواستوں کو نظر انداز کریں۔</string>
@@ -1760,4 +1760,6 @@
     <string name="gif_disable">غیر فعال کریں</string>
     <string name="gif_switched_to">%s پر تبدیل کر دیا گیا</string>
     <string name="gif_disabled_message">GIF تلاش غیر فعال ہے</string>
+    <string name="app_quirks_filter_all">تمام ایپس دکھائیں</string>
+    <string name="app_quirks_badge_custom">حسب ضرورت</string>
 </resources>

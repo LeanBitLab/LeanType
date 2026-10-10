@@ -1149,10 +1149,10 @@
     <string name="app_quirks_enter_action_next">فرض التالي (Next)</string>
     <string name="app_quirks_enter_action_done">فرض تم (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">متخفٍ</string>
+    <string name="app_quirks_badge_non_incognito">غير متخفٍ</string>
     <string name="app_quirks_badge_action">إجراء</string>
-    <string name="app_quirks_badge_no_enter">إزالة No-Enter</string>
+    <string name="app_quirks_badge_no_enter">تجاوز بلا إدخال</string>
     <string name="app_quirks_badge_default">الملف الافتراضي</string>
     <string name="app_quirks_filter_configured">المكونة فقط</string>
     <string name="app_quirks_reset_default">إعادة التعيين إلى الافتراضي</string>
@@ -1162,9 +1162,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">الاحتفاظ بالرموز مثل الشرطات السفلية في الكلمات المركبة (يصلح متغيرات Tasker)</string>
     <string name="app_quirks_disable_auto_space">تعطيل المسافة التلقائية</string>
     <string name="app_quirks_disable_auto_space_summary">عدم إدراج مسافات تلقائيا قبل أو بعد علامات الترقيم والرموز</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">إدخال مباشر</string>
+    <string name="app_quirks_badge_symbol_composing">تركيب الرموز</string>
+    <string name="app_quirks_badge_no_auto_space">بلا مسافة تلقائية</string>
     <string name="app_quirks_allow_type_null">السماح في الحقول غير القابلة للتعديل</string>
     <string name="app_quirks_allow_type_null_summary">إبقاء لوحة المفاتيح قابلة للوصول حتى لو حدد التطبيق InputType.TYPE_NULL</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1719,7 +1719,7 @@
     <string name="app_quirks_hide_toolbar">إخفاء شريط الأدوات</string>
     <string name="app_quirks_hide_toolbar_summary">إخفاء مفاتيح شريط الأدوات والإجراءات وزر التوسيع عند الكتابة في هذا التطبيق</string>
     <string name="app_quirks_badge_no_suggestions">لا اقتراحات</string>
-    <string name="app_quirks_badge_no_toolbar">لا يوجد شريط أدوات</string>
+    <string name="app_quirks_badge_no_toolbar">بلا شريط أدوات</string>
     <string name="text_expander_tag_desc_date_format">التاريخ المنسق (على سبيل المثال%date:yyyy/MM/dd% أو%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">اعرض الاقتراحات دائمًا</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاهل طلبات هذا التطبيق لتعطيل الاقتراحات</string>
@@ -1774,4 +1774,6 @@
     <string name="gif_disable">تعطيل</string>
     <string name="gif_switched_to">تم التبديل إلى %s</string>
     <string name="gif_disabled_message">تم تعطيل بحث GIF</string>
+    <string name="app_quirks_filter_all">عرض كل التطبيقات</string>
+    <string name="app_quirks_badge_custom">مخصص</string>
 </resources>

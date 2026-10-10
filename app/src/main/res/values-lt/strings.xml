@@ -1059,8 +1059,8 @@
     <string name="app_quirks_enter_action_next">Priversti kitą</string>
     <string name="app_quirks_enter_action_done">Priversti atlikta</string>
     <string name="app_quirks_badge_web">Internetas</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Ne incognito</string>
+    <string name="app_quirks_badge_incognito">Inkognito</string>
+    <string name="app_quirks_badge_non_incognito">Ne inkognito</string>
     <string name="app_quirks_badge_action">Veiksmas</string>
     <string name="app_quirks_badge_no_enter">No-Enter pašalinimas</string>
     <string name="app_quirks_badge_default">Numatytasis profilis</string>
@@ -1072,9 +1072,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Išlaikyti simbolius, pvz., pabraukimus, kuriamų žodžių viduje, užuot fiksavus iš karto (pataiso Tasker kintamųjų laukus)</string>
     <string name="app_quirks_disable_auto_space">Išjungti automatinius tarpus</string>
     <string name="app_quirks_disable_auto_space_summary">Niekada neįterpti automatinių tarpų prieš arba po skyrybos ženklų ir simbolių</string>
-    <string name="app_quirks_badge_direct_commit">Tiesioginis fiksavimas</string>
-    <string name="app_quirks_badge_symbol_composing">Simbolių kūrimas</string>
-    <string name="app_quirks_badge_no_auto_space">Be automatinių tarpų</string>
+    <string name="app_quirks_badge_direct_commit">Tiesioginis įvedimas</string>
+    <string name="app_quirks_badge_symbol_composing">Simbolių komponavimas</string>
+    <string name="app_quirks_badge_no_auto_space">Be automatinio tarpo</string>
     <string name="app_quirks_allow_type_null">Leisti neredaguojamuose laukuose</string>
     <string name="app_quirks_allow_type_null_summary">Išlaikyti klaviatūrą prieinamą, net kai programėlė nenurodo redaguojamo teksto lauko (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1644,7 +1644,7 @@ Ar norite atnaujinti?</string>
     <string name="app_quirks_hide_toolbar">Slėpti įrankių juostą</string>
     <string name="app_quirks_hide_toolbar_summary">Slėpti įrankių juostos klavišus, veiksmus ir išplėtimo mygtuką, kai rašote šioje programoje</string>
     <string name="app_quirks_badge_no_suggestions">Jokių pasiūlymų</string>
-    <string name="app_quirks_badge_no_toolbar">Nėra įrankių juostos</string>
+    <string name="app_quirks_badge_no_toolbar">Be juostos</string>
     <string name="text_expander_tag_desc_date_format">Suformatuota data (pvz.,%date:yyyy/MM/dd% arba%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Visada rodyti pasiūlymus</string>
     <string name="app_quirks_always_show_suggestions_summary">Nepaisykite šios programos užklausų išjungti pasiūlymus</string>
@@ -1699,4 +1699,6 @@ Ar norite atnaujinti?</string>
     <string name="gif_disable">Išjungti</string>
     <string name="gif_switched_to">Perjungta į %s</string>
     <string name="gif_disabled_message">GIF paieška išjungta</string>
+    <string name="app_quirks_filter_all">Rodyti visas programas</string>
+    <string name="app_quirks_badge_custom">Tinkintas</string>
 </resources>

@@ -1812,7 +1812,9 @@ New dictionary:
     <string name="app_quirks_badge_action">Action</string>
     <string name="app_quirks_badge_no_enter">No-Enter Strip</string>
     <string name="app_quirks_badge_default">Default Profile</string>
+    <string name="app_quirks_badge_custom">Custom</string>
     <string name="app_quirks_filter_configured">Configured only</string>
+    <string name="app_quirks_filter_all">Show all apps</string>
     <string name="app_quirks_reset_default">Reset to Default</string>
     <string name="app_quirks_force_direct_commit">Force Direct Text Commit</string>
     <string name="app_quirks_force_direct_commit_summary">Bypass composing spans and commit characters directly to input connection (fixes broken text watchers)</string>

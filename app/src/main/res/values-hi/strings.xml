@@ -385,8 +385,8 @@
     <string name="app_quirks_enter_action_next">अगला बाध्य करें (Next)</string>
     <string name="app_quirks_enter_action_done">पूर्ण बाध्य करें (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">गुप्त</string>
+    <string name="app_quirks_badge_non_incognito">गैर-गुप्त</string>
     <string name="app_quirks_badge_action">एक्शन</string>
     <string name="app_quirks_badge_no_enter">No-Enter हटाएं</string>
     <string name="app_quirks_badge_default">डिफ़ॉल्ट प्रोफ़ाइल</string>
@@ -398,9 +398,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">मिश्रित शब्दों में अंडरस्कोर जैसे प्रतीक रखें (Tasker वेरिएबल्स ठीक करता है)</string>
     <string name="app_quirks_disable_auto_space">स्वतः स्पेस अक्षम करें</string>
     <string name="app_quirks_disable_auto_space_summary">विराम चिह्नों और प्रतीकों से पहले या बाद में कभी भी स्वतः स्पेस न डालें</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">सीधा इनपुट</string>
+    <string name="app_quirks_badge_symbol_composing">प्रतीक संयोजन</string>
+    <string name="app_quirks_badge_no_auto_space">बिना ऑटो-स्पेस</string>
     <string name="app_quirks_allow_type_null">गैर-संपादन योग्य फ़ील्ड में अनुमति दें</string>
     <string name="app_quirks_allow_type_null_summary">कीबोर्ड को सुलभ रखें भले ही ऐप InputType.TYPE_NULL निर्दिष्ट करे</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1640,7 +1640,7 @@
     <string name="app_quirks_hide_toolbar">उपकरण पट्टी छिपाओ</string>
     <string name="app_quirks_hide_toolbar_summary">इस ऐप में टाइप करते समय टूलबार कुंजियाँ, क्रियाएँ और विस्तृत बटन छिपाएँ</string>
     <string name="app_quirks_badge_no_suggestions">कोई सुझाव नहीं</string>
-    <string name="app_quirks_badge_no_toolbar">कोई टूलबार नहीं</string>
+    <string name="app_quirks_badge_no_toolbar">बिना टूलबार</string>
     <string name="text_expander_tag_desc_date_format">स्वरूपित दिनांक (उदा.%dखाया:yyyy/MM/dd% या%dखाया:प्रारूप(पैटर्न)%)</string>
     <string name="app_quirks_always_show_suggestions">हमेशा सुझाव दिखाएं</string>
     <string name="app_quirks_always_show_suggestions_summary">सुझावों को अक्षम करने के लिए इस ऐप के अनुरोधों पर ध्यान न दें</string>
@@ -1695,4 +1695,6 @@
     <string name="gif_disable">अक्षम करें</string>
     <string name="gif_switched_to">%s पर स्विच किया गया</string>
     <string name="gif_disabled_message">GIF खोज अक्षम है</string>
+    <string name="app_quirks_filter_all">सभी ऐप्स दिखाएं</string>
+    <string name="app_quirks_badge_custom">कस्टम</string>
 </resources>

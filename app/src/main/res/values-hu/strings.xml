@@ -1074,7 +1074,7 @@
     <string name="app_quirks_enter_action_done">Kész kényszerítése</string>
     <string name="app_quirks_badge_web">Web</string>
     <string name="app_quirks_badge_incognito">Inkognitó</string>
-    <string name="app_quirks_badge_non_incognito">Nem-inkognitó</string>
+    <string name="app_quirks_badge_non_incognito">Nem inkognitó</string>
     <string name="app_quirks_badge_action">Művelet</string>
     <string name="app_quirks_badge_no_enter">No-Enter eltávolítás</string>
     <string name="app_quirks_badge_default">Alapértelmezett profil</string>
@@ -1086,8 +1086,8 @@
     <string name="app_quirks_allow_symbol_composing_summary">A szimbólumok, mint az aláhúzások, az összeállított szavak belsejében maradnak az azonnali véglegesítés helyett (javítja a Tasker változó mezőket)</string>
     <string name="app_quirks_disable_auto_space">Automatikus szóközök letiltása</string>
     <string name="app_quirks_disable_auto_space_summary">Soha ne illesszen be automatikus szóközöket az írásjelek és szimbólumok elé vagy mögé</string>
-    <string name="app_quirks_badge_direct_commit">Közvetlen véglegesítés</string>
-    <string name="app_quirks_badge_symbol_composing">Szimbólum-összeállítás</string>
+    <string name="app_quirks_badge_direct_commit">Közvetlen bevitel</string>
+    <string name="app_quirks_badge_symbol_composing">Szimbólum-összetétel</string>
     <string name="app_quirks_badge_no_auto_space">Nincs automatikus szóköz</string>
     <string name="app_quirks_allow_type_null">Engedélyezés nem szerkeszthető mezőkön</string>
     <string name="app_quirks_allow_type_null_summary">A billentyűzet elérhető marad akkor is, ha az alkalmazás nem ad meg szerkeszthető szövegmezőt (InputType.TYPE_NULL)</string>
@@ -1652,7 +1652,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="app_quirks_hide_toolbar">Eszköztár elrejtése</string>
     <string name="app_quirks_hide_toolbar_summary">Az eszköztár billentyűinek, műveleteinek elrejtése és a kibontás gomb, amikor gépel ebben az alkalmazásban</string>
     <string name="app_quirks_badge_no_suggestions">Nincsenek javaslatok</string>
-    <string name="app_quirks_badge_no_toolbar">Nincs Eszköztár</string>
+    <string name="app_quirks_badge_no_toolbar">Nincs eszköztár</string>
     <string name="text_expander_tag_desc_date_format">Formázott dátum (pl.%devett:éééé/hh/nn% vagy%date:formátum(minta)%)</string>
     <string name="app_quirks_always_show_suggestions">Mindig mutasson javaslatokat</string>
     <string name="app_quirks_always_show_suggestions_summary">Hagyja figyelmen kívül az alkalmazás kéréseit a javaslatok letiltásához</string>
@@ -1707,4 +1707,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="gif_disable">Letiltás</string>
     <string name="gif_switched_to">Átváltva a következőre: %s</string>
     <string name="gif_disabled_message">A GIF-keresés le van tiltva</string>
+    <string name="app_quirks_filter_all">Összes alkalmazás megjelenítése</string>
+    <string name="app_quirks_badge_custom">Egyéni</string>
 </resources>

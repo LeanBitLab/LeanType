@@ -1075,10 +1075,10 @@
     <string name="app_quirks_enter_action_next">强制下一个</string>
     <string name="app_quirks_enter_action_done">强制完成</string>
     <string name="app_quirks_badge_web">网页</string>
-    <string name="app_quirks_badge_incognito">隐身</string>
-    <string name="app_quirks_badge_non_incognito">非隐身</string>
+    <string name="app_quirks_badge_incognito">无痕</string>
+    <string name="app_quirks_badge_non_incognito">非无痕</string>
     <string name="app_quirks_badge_action">操作</string>
-    <string name="app_quirks_badge_no_enter">去除 No-Enter</string>
+    <string name="app_quirks_badge_no_enter">强制Enter</string>
     <string name="app_quirks_badge_default">默认配置文件</string>
     <string name="app_quirks_filter_configured">仅已配置</string>
     <string name="app_quirks_reset_default">重置为默认</string>
@@ -1088,9 +1088,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">将下划线等符号保留在组合词内，而不是立即提交 (修复 Tasker 变量字段)</string>
     <string name="app_quirks_disable_auto_space">禁用自动空格</string>
     <string name="app_quirks_disable_auto_space_summary">永不在标点符号和符号前后插入自动空格</string>
-    <string name="app_quirks_badge_direct_commit">直接提交</string>
-    <string name="app_quirks_badge_symbol_composing">符号组合</string>
-    <string name="app_quirks_badge_no_auto_space">无自动空格</string>
+    <string name="app_quirks_badge_direct_commit">直接上屏</string>
+    <string name="app_quirks_badge_symbol_composing">符号连拼</string>
+    <string name="app_quirks_badge_no_auto_space">禁用自动空格</string>
     <string name="app_quirks_allow_type_null">允许在非可编辑字段上使用</string>
     <string name="app_quirks_allow_type_null_summary">即使应用未指定可编辑文本字段 (InputType.TYPE_NULL)，也保持键盘可用</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1717,4 +1717,6 @@
     <string name="gif_disable">禁用</string>
     <string name="gif_switched_to">已切换至 %s</string>
     <string name="gif_disabled_message">GIF 搜索已禁用</string>
+    <string name="app_quirks_filter_all">显示所有应用</string>
+    <string name="app_quirks_badge_custom">自定义</string>
 </resources>

@@ -1064,8 +1064,8 @@
     <string name="app_quirks_enter_action_next">Sunni järgmine</string>
     <string name="app_quirks_enter_action_done">Sunni valmis</string>
     <string name="app_quirks_badge_web">Veeb</string>
-    <string name="app_quirks_badge_incognito">Inkognito</string>
-    <string name="app_quirks_badge_non_incognito">Mitte-inkognito</string>
+    <string name="app_quirks_badge_incognito">Privaatne</string>
+    <string name="app_quirks_badge_non_incognito">Mitteprivaatne</string>
     <string name="app_quirks_badge_action">Toiming</string>
     <string name="app_quirks_badge_no_enter">No-Enter eemaldus</string>
     <string name="app_quirks_badge_default">Vaikeprofiil</string>
@@ -1077,9 +1077,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Hoia sümboleid nagu alakriipsud komponeeritavate sõnade sees, selle asemel et neid kohe kinnitada (parandab Taskeri muutujate väljad)</string>
     <string name="app_quirks_disable_auto_space">Keela automaatne tühikute lisamine</string>
     <string name="app_quirks_disable_auto_space_summary">Ära kunagi lisa automaatseid tühikuid enne ega pärast kirjavahemärke ja sümboleid</string>
-    <string name="app_quirks_badge_direct_commit">Otsene kinnitus</string>
-    <string name="app_quirks_badge_symbol_composing">Sümbolite komponeerimine</string>
-    <string name="app_quirks_badge_no_auto_space">Automaatne tühik puudub</string>
+    <string name="app_quirks_badge_direct_commit">Otsesisestus</string>
+    <string name="app_quirks_badge_symbol_composing">Sümbolite koostamine</string>
+    <string name="app_quirks_badge_no_auto_space">Ilma automaattühikuta</string>
     <string name="app_quirks_allow_type_null">Luba mitteredigeeritavatel väljadel</string>
     <string name="app_quirks_allow_type_null_summary">Hoia klaviatuur saadaval isegi siis, kui rakendus ei määra redigeeritavat tekstivälja (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1643,7 +1643,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="app_quirks_hide_toolbar">Peida tööriistariba</string>
     <string name="app_quirks_hide_toolbar_summary">Peida tööriistariba klahvid, toimingud ja laiendamisnupp sellesse rakendusse tippimisel</string>
     <string name="app_quirks_badge_no_suggestions">Soovitusi pole</string>
-    <string name="app_quirks_badge_no_toolbar">Tööriistariba pole</string>
+    <string name="app_quirks_badge_no_toolbar">Ilma ribata</string>
     <string name="text_expander_tag_desc_date_format">Vormindatud kuupäev (nt%date:yyyy/MM/dd% või%date:format(muster)%)</string>
     <string name="app_quirks_always_show_suggestions">Näita alati soovitusi</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignoreeri selle rakenduse taotlusi soovituste keelamiseks</string>
@@ -1698,4 +1698,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_disable">Keela</string>
     <string name="gif_switched_to">Lülitati %s-le</string>
     <string name="gif_disabled_message">GIF-otsing on keelatud</string>
+    <string name="app_quirks_filter_all">Kuva kõik rakendused</string>
+    <string name="app_quirks_badge_custom">Kohandatud</string>
 </resources>

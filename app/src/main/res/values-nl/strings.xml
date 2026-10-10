@@ -979,9 +979,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Symbolen zoals underscores binnen composing woorden behouden in plaats van ze direct door te voeren (lost Tasker variabele velden op)</string>
     <string name="app_quirks_disable_auto_space">Automatische spatiëring uitschakelen</string>
     <string name="app_quirks_disable_auto_space_summary">Nooit automatische spaties invoegen voor of na interpunctie en symbolen</string>
-    <string name="app_quirks_badge_direct_commit">Directe Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbool Composing</string>
-    <string name="app_quirks_badge_no_auto_space">Geen Auto-Spatie</string>
+    <string name="app_quirks_badge_direct_commit">Directe invoer</string>
+    <string name="app_quirks_badge_symbol_composing">Symboolopbouw</string>
+    <string name="app_quirks_badge_no_auto_space">Geen automatische spatie</string>
     <string name="app_quirks_allow_type_null">Toestaan op niet-bewerkbare velden</string>
     <string name="app_quirks_allow_type_null_summary">Toetsenbord beschikbaar houden zelfs wanneer de app geen bewerkbaar tekstveld specificeert (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1751,4 +1751,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_disable">Uitschakelen</string>
     <string name="gif_switched_to">Overgeschakeld naar %s</string>
     <string name="gif_disabled_message">GIF-zoeken is uitgeschakeld</string>
+    <string name="app_quirks_filter_all">Alle apps weergeven</string>
+    <string name="app_quirks_badge_custom">Aangepast</string>
 </resources>

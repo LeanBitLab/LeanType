@@ -1075,8 +1075,8 @@
     <string name="app_quirks_enter_action_next">Vynutit Další</string>
     <string name="app_quirks_enter_action_done">Vynutit Hotovo</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Inkognito</string>
-    <string name="app_quirks_badge_non_incognito">Ne-inkognito</string>
+    <string name="app_quirks_badge_incognito">Anonymní</string>
+    <string name="app_quirks_badge_non_incognito">Neanonymní</string>
     <string name="app_quirks_badge_action">Akce</string>
     <string name="app_quirks_badge_no_enter">Pás No-Enter</string>
     <string name="app_quirks_badge_default">Výchozí profil</string>
@@ -1088,9 +1088,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Ponechat symboly jako podtržítka uvnitř skládaných slov namísto jejich okamžitého potvrzení (opravuje proměnná pole Tasker)</string>
     <string name="app_quirks_disable_auto_space">Zakázat automatické mezery</string>
     <string name="app_quirks_disable_auto_space_summary">Nikdy nevkládat automatické mezery před nebo za interpunkci a symboly</string>
-    <string name="app_quirks_badge_direct_commit">Přímé potvrzení</string>
+    <string name="app_quirks_badge_direct_commit">Přímé vkládání</string>
     <string name="app_quirks_badge_symbol_composing">Skládání symbolů</string>
-    <string name="app_quirks_badge_no_auto_space">Žádné auto-mezery</string>
+    <string name="app_quirks_badge_no_auto_space">Bez automezer</string>
     <string name="app_quirks_allow_type_null">Povolit na neupravitelných polích</string>
     <string name="app_quirks_allow_type_null_summary">Ponechat klávesnici dostupnou, i když aplikace neurčuje žádné upravitelné textové pole (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1661,7 +1661,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="app_quirks_hide_toolbar">Skrýt panel nástrojů</string>
     <string name="app_quirks_hide_toolbar_summary">Při psaní v této aplikaci skryjte klávesy, akce a rozbalovací tlačítko na panelu nástrojů</string>
     <string name="app_quirks_badge_no_suggestions">Žádné návrhy</string>
-    <string name="app_quirks_badge_no_toolbar">Žádná lišta Toolbar</string>
+    <string name="app_quirks_badge_no_toolbar">Bez lišty</string>
     <string name="text_expander_tag_desc_date_format">Formátované datum (např.%date:yyyy/MM/dd% nebo%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vždy zobrazovat návrhy</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorujte požadavky této aplikace na deaktivaci návrhů</string>
@@ -1716,4 +1716,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_disable">Zakázat</string>
     <string name="gif_switched_to">Přepnuto na %s</string>
     <string name="gif_disabled_message">Vyhledávání GIF je zakázáno</string>
+    <string name="app_quirks_filter_all">Zobrazit všechny aplikace</string>
+    <string name="app_quirks_badge_custom">Vlastní</string>
 </resources>

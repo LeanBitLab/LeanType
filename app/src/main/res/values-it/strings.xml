@@ -1150,7 +1150,7 @@
     <string name="app_quirks_enter_action_done">Forza Fine (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
     <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_non_incognito">Non in incognito</string>
     <string name="app_quirks_badge_action">Azione</string>
     <string name="app_quirks_badge_no_enter">Rimuovi No-Enter</string>
     <string name="app_quirks_badge_default">Profilo predefinito</string>
@@ -1162,9 +1162,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Mantieni simboli come trattini bassi nelle parole in composizione (corregge campi Tasker)</string>
     <string name="app_quirks_disable_auto_space">Disabilita spaziatura automatica</string>
     <string name="app_quirks_disable_auto_space_summary">Non inserire spazi automatici prima o dopo punteggiatura e simboli</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">Inserimento diretto</string>
+    <string name="app_quirks_badge_symbol_composing">Composizione simboli</string>
+    <string name="app_quirks_badge_no_auto_space">Senza spazio automatico</string>
     <string name="app_quirks_allow_type_null">Consenti in campi non modificabili</string>
     <string name="app_quirks_allow_type_null_summary">Mantieni la tastiera accessibile anche se l\'app specifica InputType.TYPE_NULL</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1721,7 +1721,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="app_quirks_hide_toolbar">Nascondi barra degli strumenti</string>
     <string name="app_quirks_hide_toolbar_summary">Nascondi i tasti della barra degli strumenti, le azioni e il pulsante di espansione durante la digitazione in questa app</string>
     <string name="app_quirks_badge_no_suggestions">Nessun suggerimento</string>
-    <string name="app_quirks_badge_no_toolbar">Nessuna barra degli strumenti</string>
+    <string name="app_quirks_badge_no_toolbar">Senza barra</string>
     <string name="text_expander_tag_desc_date_format">Data formattata (ad esempio%date:aaaa/MM/gg% o%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Mostra sempre suggerimenti</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignora le richieste di questa app per disabilitare i suggerimenti</string>
@@ -1776,4 +1776,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="gif_disable">Disattiva</string>
     <string name="gif_switched_to">Passato a %s</string>
     <string name="gif_disabled_message">La ricerca GIF è disattivata</string>
+    <string name="app_quirks_filter_all">Mostra tutte le app</string>
+    <string name="app_quirks_badge_custom">Personalizzato</string>
 </resources>

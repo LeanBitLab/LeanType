@@ -1043,9 +1043,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Залишати символи, такі як підкреслення, всередині слів, що складаються, замість негайної фіксації (виправляє змінні поля Tasker)</string>
     <string name="app_quirks_disable_auto_space">Вимкнути автоматичні пробіли</string>
     <string name="app_quirks_disable_auto_space_summary">Ніколи не вставляти автоматичні пробіли перед або після розділових знаків та символів</string>
-    <string name="app_quirks_badge_direct_commit">Пряма фіксація</string>
-    <string name="app_quirks_badge_symbol_composing">Складання символів</string>
-    <string name="app_quirks_badge_no_auto_space">Без авто-пробілів</string>
+    <string name="app_quirks_badge_direct_commit">Пряме введення</string>
+    <string name="app_quirks_badge_symbol_composing">Символи у слові</string>
+    <string name="app_quirks_badge_no_auto_space">Без автопробілу</string>
     <string name="app_quirks_allow_type_null">Дозволити на нередагованих полях</string>
     <string name="app_quirks_allow_type_null_summary">Залишати клавіатуру доступною, навіть коли додаток не вказує редаговане текстове поле (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1616,7 +1616,7 @@
     <string name="app_quirks_hide_toolbar">Приховати панель інструментів</string>
     <string name="app_quirks_hide_toolbar_summary">Приховати клавіші панелі інструментів, дії та кнопку розгортання під час введення тексту в цій програмі</string>
     <string name="app_quirks_badge_no_suggestions">Немає пропозицій</string>
-    <string name="app_quirks_badge_no_toolbar">Немає панелі інструментів</string>
+    <string name="app_quirks_badge_no_toolbar">Без панелі</string>
     <string name="text_expander_tag_desc_date_format">Відформатована дата (наприклад,%date:yyyy/MM/dd% або%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Завжди показувати пропозиції</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігноруйте запити цієї програми щодо вимкнення пропозицій</string>
@@ -1671,4 +1671,6 @@
     <string name="gif_disable">Вимкнути</string>
     <string name="gif_switched_to">Переключено на %s</string>
     <string name="gif_disabled_message">Пошук GIF вимкнено</string>
+    <string name="app_quirks_filter_all">Показати всі програми</string>
+    <string name="app_quirks_badge_custom">Власний</string>
 </resources>

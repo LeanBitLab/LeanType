@@ -1148,9 +1148,9 @@ Nouveau dictionnaire:
     <string name="app_quirks_enter_action_done">Forcer Terminé</string>
     <string name="app_quirks_badge_web">Web</string>
     <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_non_incognito">Non-incognito</string>
     <string name="app_quirks_badge_action">Action</string>
-    <string name="app_quirks_badge_no_enter">Suppr. No-Enter</string>
+    <string name="app_quirks_badge_no_enter">Forcer Entrée</string>
     <string name="app_quirks_badge_default">Profil par défaut</string>
     <string name="app_quirks_filter_configured">Configurés uniquement</string>
     <string name="app_quirks_reset_default">Rétablir par défaut</string>
@@ -1160,9 +1160,9 @@ Nouveau dictionnaire:
     <string name="app_quirks_allow_symbol_composing_summary">Conserver les symboles comme les tirets bas dans les mots en cours de composition (corrige les variables Tasker)</string>
     <string name="app_quirks_disable_auto_space">Désactiver l\'espacement automatique</string>
     <string name="app_quirks_disable_auto_space_summary">Ne jamais insérer d\'espaces automatiques avant ou après ponctuation et symboles</string>
-    <string name="app_quirks_badge_direct_commit">Validation directe</string>
+    <string name="app_quirks_badge_direct_commit">Saisie directe</string>
     <string name="app_quirks_badge_symbol_composing">Composition symboles</string>
-    <string name="app_quirks_badge_no_auto_space">Sans auto-espace</string>
+    <string name="app_quirks_badge_no_auto_space">Sans espace auto</string>
     <string name="app_quirks_allow_type_null">Autoriser sur champs non éditables</string>
     <string name="app_quirks_allow_type_null_summary">Conserver le clavier accessible même si l\'application spécifie aucun champ éditable (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1710,7 +1710,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="app_quirks_hide_toolbar">Masquer la barre d\'outils</string>
     <string name="app_quirks_hide_toolbar_summary">Masquer les touches de la barre d\'outils, les actions et le bouton de développement lors de la saisie dans cette application</string>
     <string name="app_quirks_badge_no_suggestions">Aucune suggestion</string>
-    <string name="app_quirks_badge_no_toolbar">Aucune barre d\'outils</string>
+    <string name="app_quirks_badge_no_toolbar">Sans barre</string>
     <string name="text_expander_tag_desc_date_format">Date formatée (par exemple,%date:aaaa/MM/dd% ou%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Toujours afficher les suggestions</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorer les demandes de cette application pour désactiver les suggestions</string>
@@ -1765,4 +1765,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="gif_disable">Désactiver</string>
     <string name="gif_switched_to">Passé à %s</string>
     <string name="gif_disabled_message">La recherche GIF est désactivée</string>
+    <string name="app_quirks_filter_all">Afficher toutes les applis</string>
+    <string name="app_quirks_badge_custom">Personnalisé</string>
 </resources>

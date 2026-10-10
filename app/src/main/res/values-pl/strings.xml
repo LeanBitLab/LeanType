@@ -1093,7 +1093,7 @@
     <string name="app_quirks_enter_action_done">Wymuś Gotowe</string>
     <string name="app_quirks_badge_web">Sieć</string>
     <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Brak incognito</string>
+    <string name="app_quirks_badge_non_incognito">Nie-incognito</string>
     <string name="app_quirks_badge_action">Akcja</string>
     <string name="app_quirks_badge_no_enter">Usunięcie No-Enter</string>
     <string name="app_quirks_badge_default">Profil domyślny</string>
@@ -1105,9 +1105,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Zachowuj symbole takie jak podkreślniki wewnątrz komponowanych słów zamiast natychmiast je zatwierdzać (naprawia pola zmiennych Tasker)</string>
     <string name="app_quirks_disable_auto_space">Wyłącz automatyczne spacje</string>
     <string name="app_quirks_disable_auto_space_summary">Nigdy nie wstawiaj automatycznych spacji przed lub po znakach interpunkcyjnych i symbolach</string>
-    <string name="app_quirks_badge_direct_commit">Bezpośrednie zatwierdzenie</string>
-    <string name="app_quirks_badge_symbol_composing">Komponowanie symboli</string>
-    <string name="app_quirks_badge_no_auto_space">Brak auto-spacji</string>
+    <string name="app_quirks_badge_direct_commit">Wprowadzanie bezpośrednie</string>
+    <string name="app_quirks_badge_symbol_composing">Tworzenie symboli</string>
+    <string name="app_quirks_badge_no_auto_space">Bez autospacji</string>
     <string name="app_quirks_allow_type_null">Zezwalaj na polach nieedytowalnych</string>
     <string name="app_quirks_allow_type_null_summary">Utrzymuj klawiaturę dostępną, nawet gdy aplikacja nie określa edytowalnego pola tekstowego (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1698,7 +1698,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="app_quirks_hide_toolbar">Ukryj pasek narzędzi</string>
     <string name="app_quirks_hide_toolbar_summary">Ukryj klawisze paska narzędzi, akcje i przycisk rozwijania podczas pisania w tej aplikacji</string>
     <string name="app_quirks_badge_no_suggestions">Brak sugestii</string>
-    <string name="app_quirks_badge_no_toolbar">Brak paska narzędzi</string>
+    <string name="app_quirks_badge_no_toolbar">Bez paska</string>
     <string name="text_expander_tag_desc_date_format">Sformatowana data (np.%date:rrrr/MM/dd% lub%date:format(wzór)%)</string>
     <string name="app_quirks_always_show_suggestions">Zawsze pokazuj sugestie</string>
     <string name="app_quirks_always_show_suggestions_summary">Zignoruj ​​prośby tej aplikacji o wyłączenie sugestii</string>
@@ -1753,4 +1753,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="gif_disable">Wyłącz</string>
     <string name="gif_switched_to">Przełączono na %s</string>
     <string name="gif_disabled_message">Wyszukiwanie GIF jest wyłączone</string>
+    <string name="app_quirks_filter_all">Pokaż wszystkie aplikacje</string>
+    <string name="app_quirks_badge_custom">Niestandardowy</string>
 </resources>

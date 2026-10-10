@@ -1102,7 +1102,7 @@
     <string name="app_quirks_badge_incognito">Inkognito</string>
     <string name="app_quirks_badge_non_incognito">Nicht-Inkognito</string>
     <string name="app_quirks_badge_action">Aktion</string>
-    <string name="app_quirks_badge_no_enter">Kein Enter entfernen</string>
+    <string name="app_quirks_badge_no_enter">Enter erzwingen</string>
     <string name="app_quirks_badge_default">Standardprofil</string>
     <string name="app_quirks_filter_configured">Nur konfigurierte</string>
     <string name="app_quirks_reset_default">Auf Standard zurücksetzen</string>
@@ -1112,9 +1112,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Symbole wie Unterstriche innerhalb von Composing-Wörtern behalten, statt sie sofort zu übertragen (behebt Tasker-Variablenfelder)</string>
     <string name="app_quirks_disable_auto_space">Automatisches Leerzeichen deaktivieren</string>
     <string name="app_quirks_disable_auto_space_summary">Niemals automatische Leerzeichen vor oder nach Satzzeichen und Symbolen einfügen</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">Kein Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">Direkte Eingabe</string>
+    <string name="app_quirks_badge_symbol_composing">Symbol-Komposition</string>
+    <string name="app_quirks_badge_no_auto_space">Kein Auto-Abstand</string>
     <string name="app_quirks_allow_type_null">In nicht editierbaren Feldern zulassen</string>
     <string name="app_quirks_allow_type_null_summary">Tastatur auch dann verfügbar halten, wenn die App kein editierbares Textfeld angibt (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1658,7 +1658,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="app_quirks_hide_toolbar">Symbolleiste ausblenden</string>
     <string name="app_quirks_hide_toolbar_summary">Blenden Sie Symbolleistentasten, Aktionen und die Schaltfläche zum Erweitern aus, wenn Sie in dieser App etwas eingeben</string>
     <string name="app_quirks_badge_no_suggestions">Keine Vorschläge</string>
-    <string name="app_quirks_badge_no_toolbar">Keine Symbolleiste</string>
+    <string name="app_quirks_badge_no_toolbar">Keine Leiste</string>
     <string name="text_expander_tag_desc_date_format">Formatiertes Datum (z. B.%date:yyyy/MM/dd% oder%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vorschläge immer anzeigen</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorieren Sie die Aufforderungen dieser App, Vorschläge zu deaktivieren</string>
@@ -1713,4 +1713,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_disable">Deaktivieren</string>
     <string name="gif_switched_to">Zu %s gewechselt</string>
     <string name="gif_disabled_message">Die GIF-Suche ist deaktiviert</string>
+    <string name="app_quirks_filter_all">Alle Apps anzeigen</string>
+    <string name="app_quirks_badge_custom">Benutzerdefiniert</string>
 </resources>

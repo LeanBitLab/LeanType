@@ -1142,8 +1142,8 @@
     <string name="app_quirks_enter_action_next">Далее (Next)</string>
     <string name="app_quirks_enter_action_done">Готово (Done)</string>
     <string name="app_quirks_badge_web">Web</string>
-    <string name="app_quirks_badge_incognito">Incognito</string>
-    <string name="app_quirks_badge_non_incognito">Non-Incognito</string>
+    <string name="app_quirks_badge_incognito">Инкогнито</string>
+    <string name="app_quirks_badge_non_incognito">Не инкогнито</string>
     <string name="app_quirks_badge_action">Action</string>
     <string name="app_quirks_badge_no_enter">Снять No-Enter</string>
     <string name="app_quirks_badge_default">Профиль по умолчанию</string>
@@ -1155,9 +1155,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Удерживать символы вроде подчеркивания внутри набираемых слов (исправляет поля переменных Tasker)</string>
     <string name="app_quirks_disable_auto_space">Отключить автопробелы</string>
     <string name="app_quirks_disable_auto_space_summary">Никогда не вставлять автоматические пробелы до или после знаков препинания и символов</string>
-    <string name="app_quirks_badge_direct_commit">Direct Commit</string>
-    <string name="app_quirks_badge_symbol_composing">Symbol Composing</string>
-    <string name="app_quirks_badge_no_auto_space">No Auto-Space</string>
+    <string name="app_quirks_badge_direct_commit">Прямой ввод</string>
+    <string name="app_quirks_badge_symbol_composing">Символы в слове</string>
+    <string name="app_quirks_badge_no_auto_space">Без автопробела</string>
     <string name="app_quirks_allow_type_null">Разрешить в нередактируемых полях</string>
     <string name="app_quirks_allow_type_null_summary">Держать клавиатуру доступной, даже если приложение указывает InputType.TYPE_NULL</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1721,7 +1721,7 @@
     <string name="app_quirks_hide_toolbar">Скрыть панель инструментов</string>
     <string name="app_quirks_hide_toolbar_summary">Скрыть клавиши панели инструментов, действия и кнопку развертывания при вводе в этом приложении</string>
     <string name="app_quirks_badge_no_suggestions">Нет предложений</string>
-    <string name="app_quirks_badge_no_toolbar">Нет панели инструментов</string>
+    <string name="app_quirks_badge_no_toolbar">Без панели</string>
     <string name="text_expander_tag_desc_date_format">Форматированная дата (например,%date:гггг/ММ/дд% или%date:format(шаблон)%)</string>
     <string name="app_quirks_always_show_suggestions">Всегда показывать предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорируйте запросы этого приложения, чтобы отключить предложения.</string>
@@ -1776,4 +1776,6 @@
     <string name="gif_disable">Отключить</string>
     <string name="gif_switched_to">Переключено на %s</string>
     <string name="gif_disabled_message">Поиск GIF отключен</string>
+    <string name="app_quirks_filter_all">Показать все приложения</string>
+    <string name="app_quirks_badge_custom">Пользовательский</string>
 </resources>

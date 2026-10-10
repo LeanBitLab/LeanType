@@ -1123,9 +1123,9 @@
     <string name="app_quirks_allow_symbol_composing_summary">Запазване на символи като долни черти вътре в съставяите думи вместо незабавно потвърждаване (поправя полетата за променливи на Tasker)</string>
     <string name="app_quirks_disable_auto_space">Деактивиране на автоматичните интервали</string>
     <string name="app_quirks_disable_auto_space_summary">Никога да не се вмъкват автоматични интервали преди или след пунктуация и символи</string>
-    <string name="app_quirks_badge_direct_commit">Директно потвърждаване</string>
-    <string name="app_quirks_badge_symbol_composing">Съставяне на символи</string>
-    <string name="app_quirks_badge_no_auto_space">Без авто-интервал</string>
+    <string name="app_quirks_badge_direct_commit">Директно въвеждане</string>
+    <string name="app_quirks_badge_symbol_composing">Символи в думата</string>
+    <string name="app_quirks_badge_no_auto_space">Без автоинтервал</string>
     <string name="app_quirks_allow_type_null">Разрешаване в нередактируеми полета</string>
     <string name="app_quirks_allow_type_null_summary">Запазване на клавиатурата налична, дори когато приложението не указва редактируемо текстово поле (InputType.TYPE_NULL)</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
@@ -1696,7 +1696,7 @@
     <string name="app_quirks_hide_toolbar">Скриване на лентата с инструменти</string>
     <string name="app_quirks_hide_toolbar_summary">Скриване на бутоните на лентата с инструменти, действията и бутона за разширяване, когато пишете в това приложение</string>
     <string name="app_quirks_badge_no_suggestions">Няма предложения</string>
-    <string name="app_quirks_badge_no_toolbar">Няма лента с инструменти</string>
+    <string name="app_quirks_badge_no_toolbar">Без лента</string>
     <string name="text_expander_tag_desc_date_format">Форматирана дата (напр.%date:yyyy/MM/dd% или%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Винаги показвайте предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорирайте заявките на това приложение за деактивиране на предложенията</string>
@@ -1751,4 +1751,6 @@
     <string name="gif_disable">Изключване</string>
     <string name="gif_switched_to">Превключено към %s</string>
     <string name="gif_disabled_message">Търсенето на GIF е деактивирано</string>
+    <string name="app_quirks_filter_all">Показване на всички приложения</string>
+    <string name="app_quirks_badge_custom">Персонализиран</string>
 </resources>
