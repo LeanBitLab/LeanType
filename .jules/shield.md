@@ -5,3 +5,7 @@
 ## 2025-02-15 - Unit tests for CapsModeUtils
 **Learning:** Testing string utility logic like CapsModeUtils can still require the Robolectric framework since it often depends on Android-specific classes like `android.text.TextUtils` under the hood. Furthermore, checking combinations of logical states inside complex state machines like text capitalizer logic requires detailed parameter combinations, especially regarding abbreviation marker flags and German rule configurations.
 **Action:** When adding tests for classes that wrap around Android framework components such as `TextUtils`, `InputType`, or `Locale` classes, explicitly use `@RunWith(RobolectricTestRunner::class)` even for seemingly pure string logic utilities, to prevent missing framework components runtime exceptions.
+
+## 2025-02-17 - Unit tests for ScriptUtils
+**Learning:** Testing string utility logic involving scripts requires careful consideration of unsupported or invalid fallback scripts. For instance, testing `Locale("ja").script()` reveals that `ScriptUtils` gracefully falls back to `SCRIPT_LATIN` rather than breaking, even though Japanese is unsupported.
+**Action:** When creating tests for locale scripts or handling unknown/fallback contexts, include assertions to verify that invalid configurations gracefully fallback or throw exactly the expected exception without leaking framework level crashes.
