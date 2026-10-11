@@ -2397,4 +2397,11 @@ New dictionary:
     <string name="gif_disable">Disable</string>
     <string name="gif_switched_to">Switched to %s</string>
     <string name="gif_disabled_message">GIF search is disabled</string>
+
+    <string name="custom_language_hint" translatable="false" tools:ignore="MissingTranslation">Language name or code (e.g. Esperanto, Malayalam, de)</string>
+    <string name="add_custom_language" translatable="false" tools:ignore="MissingTranslation">Add Custom Language</string>
+    <string name="custom_target_language" translatable="false" tools:ignore="MissingTranslation">Custom Target Language</string>
+    <string name="model_name_hint" translatable="false" tools:ignore="MissingTranslation">model-name</string>
+    <string name="system_instruction" translatable="false" tools:ignore="MissingTranslation">System Instruction</string>
+    <string name="translate_system_instruction" translatable="false" tools:ignore="MissingTranslation">Translate System Instruction</string>
 </resources>

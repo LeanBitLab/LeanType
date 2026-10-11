@@ -657,7 +657,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
         if (showCustomDialog) {
             TextInputDialog(
                 onDismissRequest = { showCustomDialog = false },
-                textInputLabel = { Text("Language name or code (e.g. Esperanto, Malayalam, de)") },
+                textInputLabel = { Text(stringResource(R.string.custom_language_hint)) },
                 initialText = "",
                 onConfirmed = { customLang ->
                     val trimmed = customLang.trim()
@@ -672,7 +672,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                     }
                     showCustomDialog = false
                 },
-                title = { Text("Add Custom Language") }
+                title = { Text(stringResource(R.string.add_custom_language)) }
             )
         }
     },
@@ -812,7 +812,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
         if (showCustomDialog) {
             TextInputDialog(
                 onDismissRequest = { showCustomDialog = false },
-                textInputLabel = { Text("Language name or code (e.g. Esperanto, Malayalam, de)") },
+                textInputLabel = { Text(stringResource(R.string.custom_language_hint)) },
                 initialText = "",
                 onConfirmed = { customLang ->
                     val trimmed = customLang.trim()
@@ -827,7 +827,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                     }
                     showCustomDialog = false
                 },
-                title = { Text("Custom Target Language") }
+                title = { Text(stringResource(R.string.custom_target_language)) }
             )
         }
     },
@@ -886,7 +886,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
         if (showDialog) {
             TextInputDialog(
                 onDismissRequest = { showDialog = false },
-                textInputLabel = { Text("model-name") },
+                textInputLabel = { Text(stringResource(R.string.model_name_hint)) },
                 initialText = service.getTranslateHuggingFaceModel(),
                 onConfirmed = { service.setTranslateHuggingFaceModel(it) },
                 title = { Text(stringResource(R.string.translate_model_title)) }
@@ -950,7 +950,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
         if (showDialog) {
             TextInputDialog(
                 onDismissRequest = { showDialog = false },
-                textInputLabel = { Text("model-name") },
+                textInputLabel = { Text(stringResource(R.string.model_name_hint)) },
                 initialText = service.getVoiceHuggingFaceModel(),
                 onConfirmed = { service.setVoiceHuggingFaceModel(it) },
                 title = { Text(stringResource(R.string.voice_model_title)) }
@@ -1018,7 +1018,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             var showSystemPromptDialog by remember { mutableStateOf(false) }
             if (showSystemPromptDialog) {
                 TextInputDialog(
-                    title = { Text("System Instruction") },
+                    title = { Text(stringResource(R.string.system_instruction)) },
                     initialText = service.getSystemPrompt(),
                     checkTextValid = { true },
                     onConfirmed = { 
@@ -1030,7 +1030,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             }
 
             Preference(
-                name = "System Instruction",
+                name = stringResource(R.string.system_instruction),
                 description = service.getSystemPrompt().takeIf { it.isNotBlank() } ?: "Default",
                 onClick = { showSystemPromptDialog = true }
             )
@@ -1038,7 +1038,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             var showTranslateSystemPromptDialog by remember { mutableStateOf(false) }
             if (showTranslateSystemPromptDialog) {
                 TextInputDialog(
-                    title = { Text("Translate System Instruction") },
+                    title = { Text(stringResource(R.string.translate_system_instruction)) },
                     initialText = service.getTranslateSystemPrompt(),
                     checkTextValid = { true },
                     onConfirmed = { 
@@ -1050,7 +1050,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             }
 
             Preference(
-                name = "Translate Instruction",
+                name = stringResource(R.string.translate_system_instruction),
                 description = service.getTranslateSystemPrompt().takeIf { it.isNotBlank() } ?: "Default",
                 onClick = { showTranslateSystemPromptDialog = true }
             )
