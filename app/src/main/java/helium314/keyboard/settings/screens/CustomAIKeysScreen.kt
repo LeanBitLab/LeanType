@@ -504,14 +504,15 @@ private fun updateToolbarKeyStatus(context: Context, key: ToolbarKey, enable: Bo
     prefs.edit { putString(Settings.PREF_TOOLBAR_KEYS, entries.joinToString(";")) }
 }
 
+private val HASHTAG_REGEX = Regex("(#[a-zA-Z0-9_]+)")
+
 private class KeywordVisualTransformation(private val color: androidx.compose.ui.graphics.Color) : VisualTransformation {
     override fun filter(text: androidx.compose.ui.text.AnnotatedString): TransformedText {
         val annotatedString = buildAnnotatedString {
             val textStr = text.text
-            val regex = Regex("(#[a-zA-Z0-9_]+)")
             var lastIndex = 0
 
-            regex.findAll(textStr).forEach { matchResult ->
+            HASHTAG_REGEX.findAll(textStr).forEach { matchResult ->
                 // Append text before hashtag
                 append(textStr.substring(lastIndex, matchResult.range.first))
                 // Apply style to hashtag

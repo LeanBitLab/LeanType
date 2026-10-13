@@ -193,7 +193,7 @@ private fun parseAndInsert(context: android.content.Context, reader: BufferedRea
                 val columns = if (columnsStr.contains("\t")) {
                     columnsStr.split("\t")
                 } else {
-                    columnsStr.split(Regex("\\s+"))
+                    columnsStr.splitOnWhitespace()
                 }.map { it.trim() }
                 val wIdx = columns.indexOf("word")
                 val sIdx = columns.indexOf("shortcut")

@@ -18,3 +18,15 @@
 ## 2024-05-18 - Pre-compile Regex in VoiceInputManager
 **Learning:** `VoiceInputManager.syncRecognizedText` instantiates `Regex("[,.?!;:]")` inside a frequent method call, increasing allocation pressure on voice typing hot paths.
 **Action:** Extract repeated `Regex` instantiations in input hot paths (such as `syncRecognizedText`) into companion object private constants to reduce memory allocation and compilation overhead.
+
+## 2024-05-18 - String split regex allocation
+**Learning:** `columnsStr.split(Regex("\\s+"))` inside a parsing loop allocates a new `Regex` instance on every line processed.
+**Action:** Use the precompiled `String.splitOnWhitespace()` extension function from `StringUtils.kt` to avoid unnecessary regex allocations.
+
+## 2024-05-18 - VisualTransformation Regex allocation
+**Learning:** Instantiating `Regex("(#[a-zA-Z0-9_]+)")` inside `KeywordVisualTransformation.filter()` creates a new Regex object on every keystroke or recomposition when typing in the prompt field.
+**Action:** Extract the regex instantiation to a top-level `private val` to compile it only once.
+
+## 2024-05-18 - Hot path Character matching optimization
+**Learning:** In `isRegexPattern(pattern: String)`, calling `pattern.contains()` multiple times to match single characters creates significant overhead inside a heavily called method.
+**Action:** Use a manual character iteration loop over `String.indices` (`for (i in pattern.indices) { val c = pattern[i]; if (c == '*' || ...) }`) instead of multiple `contains()` calls to improve execution speed.
