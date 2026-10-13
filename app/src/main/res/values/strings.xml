@@ -2410,4 +2410,9 @@ New dictionary:
     <string name="gif_category_recent">Recent</string>
     <string name="gif_no_recent_items">No recent items</string>
     <string name="gif_manage_local_media">Manage Local Media</string>
+
+    <string name="translation_custom_language_label" tools:ignore="MissingTranslation">Language name or code (e.g. Esperanto, Malayalam, de)</string>
+    <string name="translation_custom_target_language_title" tools:ignore="MissingTranslation">Custom Target Language</string>
+    <string name="gemini_system_instruction_title" tools:ignore="MissingTranslation">System Instruction</string>
+    <string name="gemini_translate_system_instruction_title" tools:ignore="MissingTranslation">Translate System Instruction</string>
 </resources>
