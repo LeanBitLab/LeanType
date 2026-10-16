@@ -160,4 +160,35 @@ class WordDeleteSwipeTest {
             KeyboardActionListenerImpl.getWordBoundariesForwards(text, endOffset, startOffset)
         )
     }
+
+    @Test
+    fun `rightward step is scaled after a vertical-only swipe`() {
+        // on a line above the swipe start, nothing selected to the left of the line start
+        assertEquals(4, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 0, 4, 4))
+        assertEquals(12, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(3, 2, 0, 4, 4))
+        // already deselecting inside the line (negative offset)
+        assertEquals(8, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(2, 1, -5, 4, 4))
+    }
+
+    @Test
+    fun `rightward step is scaled after a slight diagonal swipe`() {
+        // up to the tolerance (inclusive) still counts as nearly vertical
+        assertEquals(4, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 2, 4, 4))
+        assertEquals(4, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 4, 4, 4))
+        // word mode: one word to the left is tolerated
+        assertEquals(2, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 1, 2, 1))
+    }
+
+    @Test
+    fun `rightward step is not scaled in other cases`() {
+        // first line, no vertical swipe (e.g. horizontal-left then right)
+        assertEquals(1, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 0, 0, 4, 4))
+        assertEquals(1, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 0, 6, 4, 4))
+        // sharper diagonal: more than the tolerance selected to the left
+        assertEquals(1, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 5, 4, 4))
+        assertEquals(1, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(1, 1, 2, 2, 1))
+        // leftward steps are never scaled
+        assertEquals(-2, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(-2, 1, 0, 4, 4))
+        assertEquals(0, KeyboardActionListenerImpl.scaleDeleteSwipeDeselectSteps(0, 1, 0, 4, 4))
+    }
 }

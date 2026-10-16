@@ -569,7 +569,11 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         }
 
         if (stepsX != 0) {
-            val actual = actualSteps(stepsX)
+            val scaledStepsX = scaleDeleteSwipeDeselectSteps(
+                stepsX, deleteSwipeLineIndex, deleteSwipeCharOffset,
+                DELETE_SWIPE_DESELECT_CHAR_MULTIPLIER, DELETE_SWIPE_DESELECT_CHAR_TOLERANCE
+            )
+            val actual = actualSteps(scaledStepsX)
             // Positive offset: selection start is left of the line start (selected more by swiping left).
             // Negative offset: selection start is right of the line start (deselected by swiping right
             // after a vertical swipe). It can never go past the position where the swipe started.
@@ -616,7 +620,11 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             val minIndex = -getWordBoundariesForwards(
                 deleteSwipeInitialText, deleteSwipeSelectionAnchor(), deleteSwipeLineBase()
             ).size
-            deleteSwipeWordIndex = (deleteSwipeWordIndex - stepsX).coerceAtLeast(minIndex)
+            val scaledStepsX = scaleDeleteSwipeDeselectSteps(
+                stepsX, deleteSwipeLineIndex, deleteSwipeWordIndex,
+                DELETE_SWIPE_DESELECT_WORD_MULTIPLIER, DELETE_SWIPE_DESELECT_WORD_TOLERANCE
+            )
+            deleteSwipeWordIndex = (deleteSwipeWordIndex - scaledStepsX).coerceAtLeast(minIndex)
         }
 
         if (deleteSwipeLineIndex != oldLineIndex || deleteSwipeWordIndex != oldWordIndex) {
@@ -1046,6 +1054,27 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         }
 
         private fun Int.isMetaLock() = this == KeyCode.CTRL_LOCK || this == KeyCode.ALT_LOCK || this == KeyCode.FN_LOCK || this == KeyCode.META_LOCK
+
+        /** Chars deselected per horizontal step when swiping right after a (nearly) vertical-only delete swipe. */
+        internal const val DELETE_SWIPE_DESELECT_CHAR_MULTIPLIER = 4
+        /** Words deselected per horizontal step when swiping right after a (nearly) vertical-only delete swipe. */
+        internal const val DELETE_SWIPE_DESELECT_WORD_MULTIPLIER = 2
+        /** Max chars selected to the left of the line start that still count as "nearly vertical" (slight diagonal). */
+        internal const val DELETE_SWIPE_DESELECT_CHAR_TOLERANCE = 4
+        /** Max words selected to the left of the line start that still count as "nearly vertical" (slight diagonal). */
+        internal const val DELETE_SWIPE_DESELECT_WORD_TOLERANCE = 1
+
+        /**
+         * Rightward steps get larger only after a (nearly) vertical-only swipe: the selection base is on a
+         * line above the swipe start ([lineIndex] > 0) and at most [tolerance] chars/words were added to the
+         * left of that line start ([horizontalOffset] <= [tolerance]). In that case the finger is still close
+         * to the right screen edge (the delete key is on the right) and has little room for the right swipe.
+         * Unchanged: leftward steps, the first line (no vertical swipe, e.g. horizontal-left then right),
+         * and sharper diagonals, where the finger already has room and precise control is more useful.
+         */
+        internal fun scaleDeleteSwipeDeselectSteps(
+            stepsX: Int, lineIndex: Int, horizontalOffset: Int, multiplier: Int, tolerance: Int
+        ): Int = if (stepsX > 0 && lineIndex > 0 && horizontalOffset <= tolerance) stepsX * multiplier else stepsX
 
         internal fun getLineBoundariesBackwards(text: String, endOffset: Int): List<Int> {
             val boundaries = mutableListOf<Int>()
