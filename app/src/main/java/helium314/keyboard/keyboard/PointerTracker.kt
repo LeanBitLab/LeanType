@@ -30,6 +30,7 @@ import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.CoordinateUtils
 import helium314.keyboard.latin.common.InputPointers
 import helium314.keyboard.latin.define.DebugFlags
+import helium314.keyboard.latin.heatmap.TouchAdaptation
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.settings.SettingsValues
 import helium314.keyboard.latin.utils.Log
@@ -195,7 +196,10 @@ class PointerTracker private constructor(
                 sListener.onTextInput(key.outputText)
             } else if (code != KeyCode.NOT_SPECIFIED) {
                 if (mKeyboard?.hasProximityCharsCorrection(code) == true) {
-                    sListener.onCodeInput(code, x, y, isKeyRepeat)
+                    val adjusted = mKeyboard?.let {
+                        TouchAdaptation.adjustedTouch(it, key, code, x, y, mKeyDetector.getTouchX(0), mKeyDetector.getTouchY(0))
+                    } ?: intArrayOf(x, y)
+                    sListener.onCodeInput(code, adjusted[0], adjusted[1], isKeyRepeat)
                 } else {
                     sListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat)
                 }

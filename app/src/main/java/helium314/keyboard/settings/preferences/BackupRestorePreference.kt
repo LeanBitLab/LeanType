@@ -62,6 +62,7 @@ import java.util.Locale
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipOutputStream
+import helium314.keyboard.latin.heatmap.TypingHeatmap
 import helium314.keyboard.settings.FeedbackManager
 
 @Composable
@@ -78,7 +79,8 @@ fun BackupRestorePreference(setting: Setting) {
                 BackupCategory.DICTIONARIES,
                 BackupCategory.TYPING_HISTORY,
                 BackupCategory.CLIPBOARD,
-                BackupCategory.GENERAL_SETTINGS
+                BackupCategory.GENERAL_SETTINGS,
+                BackupCategory.TYPING_PROFILE
             )
         )
     }
@@ -102,6 +104,7 @@ fun BackupRestorePreference(setting: Setting) {
                         BackupCategory.TYPING_HISTORY to R.string.backup_category_typing_history,
                         BackupCategory.CLIPBOARD to R.string.backup_category_clipboard,
                         BackupCategory.API_KEYS to R.string.backup_category_api_keys,
+                        BackupCategory.TYPING_PROFILE to R.string.backup_category_typing_profile,
                         BackupCategory.GENERAL_SETTINGS to R.string.backup_category_general
                     )
                     categories.forEach { (category, stringResId) ->
@@ -242,6 +245,16 @@ private fun backupLauncher(
                         fileStream.close()
                         zipStream.closeEntry()
                     }
+                    if (selectedCategories.contains(BackupCategory.TYPING_PROFILE)) {
+                        // stored outside the normal folders (excluded from Android backup), see TypingHeatmap
+                        TypingHeatmap.getFileForBackup(ctx)?.let { file ->
+                            val fileStream = FileInputStream(file).buffered()
+                            zipStream.putNextEntry(ZipEntry(TypingHeatmap.FILE_NAME))
+                            fileStream.copyTo(zipStream, 1024)
+                            fileStream.close()
+                            zipStream.closeEntry()
+                        }
+                    }
                     if (selectedCategories.contains(BackupCategory.CLIPBOARD)) {
                         val dbFile = ctx.getDatabasePath(Database.NAME)
                         if (dbFile.exists()) {
@@ -348,7 +361,12 @@ private fun restoreLauncher(
                         LayoutUtilsCustom.onLayoutFileChanged()
                         Settings.getInstance().stopListener()
                         while (entry != null) {
-                            if (entry.name.startsWith("unprotected${File.separator}")) {
+                            if (entry.name == TypingHeatmap.FILE_NAME || entry.name == "unprotected${File.separator}${TypingHeatmap.FILE_NAME}") {
+                                // validated and only replaced if the backup contains it; older backups have it in "unprotected"
+                                if (selectedCategories.contains(BackupCategory.TYPING_PROFILE)) {
+                                    TypingHeatmap.restore(ctx, zip)
+                                }
+                            } else if (entry.name.startsWith("unprotected${File.separator}")) {
                                 val adjustedName = entry.name.substringAfter("unprotected${File.separator}")
                                 if (backupFilePatterns.any { adjustedName.matches(it) }) {
                                     val cat = getCategoryForFilePath(adjustedName)
@@ -584,7 +602,8 @@ enum class BackupCategory {
     TYPING_HISTORY,
     CLIPBOARD,
     API_KEYS,
-    GENERAL_SETTINGS
+    GENERAL_SETTINGS,
+    TYPING_PROFILE
 }
 
 private fun getCategoryForPrefKey(key: String): BackupCategory {
@@ -648,6 +667,9 @@ private fun getCategoryForFilePath(path: String): BackupCategory? {
     }
     if (path == API_KEYS_FILE_NAME) {
         return BackupCategory.API_KEYS
+    }
+    if (path == TypingHeatmap.FILE_NAME) {
+        return BackupCategory.TYPING_PROFILE
     }
     return null
 }
