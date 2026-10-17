@@ -1776,6 +1776,34 @@ New dictionary:
     <string name="text_expander_regex_pattern_title">Regex Pattern</string>
     <string name="text_expander_regex_title">Regular Expression</string>
     <string name="text_expander_regex_invalid">⚠️ Invalid regular expression pattern</string>
+    <string name="text_expander_all_as_text">Edit all as text</string>
+    <string name="text_expander_all_title">All text shortcuts</string>
+    <string name="text_expander_all_hint">Each shortcut starts with a line === shortcut ===, followed by its text. Saving applies exactly this text: new blocks are added, changed ones updated, removed ones deleted.</string>
+    <string name="text_expander_copy_all">Copy all</string>
+    <string name="text_expander_paste_all">Paste all</string>
+    <string name="text_expander_share">Share</string>
+    <string name="text_expander_save_file">Save as file</string>
+    <string name="text_expander_load_file">Load from file</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Could not read or write the file</string>
+    <string name="text_expander_restore_previous">Restore previous</string>
+    <string name="text_expander_restore_previous_confirm">Restore the shortcuts as they were before the last save? The current state is kept, so you can switch back.</string>
+    <string name="text_expander_copied">Copied</string>
+    <string name="text_expander_clipboard_empty">Clipboard is empty</string>
+    <string name="text_expander_no_changes">No changes</string>
+    <string name="text_expander_saved">Saved</string>
+    <string name="text_expander_save_question">Save changes?</string>
+    <string name="text_expander_changes">%1$d new, %2$d changed, %3$d deleted</string>
+    <string name="text_expander_changes_deleted">Deleted: %s</string>
+    <string name="text_expander_errors_title">Please correct</string>
+    <string name="text_expander_error_text_before">Line %d: text before the first === shortcut === line</string>
+    <string name="text_expander_error_empty_shortcut">Line %d: shortcut missing</string>
+    <string name="text_expander_error_space">Line %1$d: no spaces allowed in \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Line %1$d: no text for \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Line %1$d: \"%2$s\" appears twice</string>
+    <string name="text_expander_error_regex">Line %1$d: invalid regex \"%2$s\"</string>
+    <string name="text_expander_discard_title">Discard your changes?</string>
+    <string name="text_expander_discard">Discard</string>
     <string name="text_expander_template_title">Template Expansion</string>
     <string name="text_expander_template_hint">Be right back! or My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Quick Placeholders (tap to insert at cursor):</string>
