@@ -270,6 +270,19 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         return true
     }
 
+    /**
+     * Synchronously asks the editor for its current selection as (anchor, extent) in absolute offsets.
+     * Returns null if the editor does not provide extracted text.
+     */
+    fun getEditorSelection(): Pair<Int, Int>? {
+        if (!isConnected()) return null
+        // only the selection is needed, so don't ask for the whole text of large fields
+        val request = ExtractedTextRequest().apply { hintMaxChars = 10240 }
+        val et = mIC?.getExtractedText(request, 0) ?: return null
+        if (et.selectionStart < 0 || et.selectionEnd < 0) return null
+        return Pair(et.selectionStart + et.startOffset, et.selectionEnd + et.startOffset)
+    }
+
     private fun reloadCursorPosition() {
         if (!isConnected()) return
 

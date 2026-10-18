@@ -525,6 +525,11 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     private var deleteSwipeLineIndex = 0
     private var deleteSwipeCharOffset = 0
     private var deleteSwipeStepCount = 0
+    // Vertical movement: when the editor can move by visual lines, deleteSwipeLineBoundaries holds the left end
+    // of the selection after 0, 1, 2... upward editor steps (index 0 = where the swipe started).
+    private var deleteSwipeApproxLineBoundaries = emptyList<Int>()
+    private var deleteSwipeUseEditorLines = false
+    private var deleteSwipeEditorTopReached = false
 
     override fun onMoveDeletePointer(steps: Int) {
         onMoveDeletePointer(steps, 0)
@@ -543,11 +548,19 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             deleteSwipeInitialText = textBefore
             val baseStart = connection.expectedSelectionStart
             deleteSwipeWordBoundaries = getWordBoundariesBackwards(textBefore, baseStart)
-            deleteSwipeLineBoundaries = getLineBoundariesBackwards(textBefore, baseStart)
+            deleteSwipeApproxLineBoundaries = getLineBoundariesBackwards(textBefore, baseStart)
+            // Only multi-line fields have visual lines the editor can move over; elsewhere keep the approximation.
+            deleteSwipeUseEditorLines = keyboardSwitcher.keyboard?.mId?.isMultiLine == true && baseStart >= 0
+            deleteSwipeEditorTopReached = false
+            deleteSwipeLineBoundaries = if (deleteSwipeUseEditorLines) listOf(baseStart) else deleteSwipeApproxLineBoundaries
             deleteSwipeWordIndex = 0
             deleteSwipeLineIndex = 0
             deleteSwipeCharOffset = 0
             deleteSwipeStepCount = 0
+        }
+
+        if (stepsY < 0 && deleteSwipeUseEditorLines && !deleteSwipeEditorTopReached) {
+            extendDeleteSwipeLinesByEditor(deleteSwipeLineIndex - stepsY)
         }
 
         if (settings.current.mDeleteSwipeWordByWord) {
@@ -555,6 +568,53 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         } else {
             onMoveDeletePointerChars2D(stepsX, stepsY)
         }
+    }
+
+    /**
+     * Makes sure [deleteSwipeLineBoundaries] has an entry for [targetIndex] by asking the editor to move the caret
+     * one visual line up (same as pressing the up arrow key), starting at the last known position.
+     * Moving down later just goes back to the already known entries, so up and down always match exactly.
+     * If the editor can't do this at all, the approximated boundaries are used for the rest of the swipe.
+     */
+    private fun extendDeleteSwipeLinesByEditor(targetIndex: Int) {
+        if (deleteSwipeLineBoundaries.size > targetIndex) return
+        val selectionStart = connection.expectedSelectionStart
+        val selectionEnd = connection.expectedSelectionEnd
+        val boundaries = deleteSwipeLineBoundaries.toMutableList()
+        // one batch edit, so the IME doesn't see the temporary carets as selection changes made by someone else
+        connection.beginBatchEdit()
+        val result = try {
+            extendLineBoundaries(boundaries, targetIndex) { position -> editorPositionOneLineUp(position) }
+        } finally {
+            connection.setSelection(selectionStart, selectionEnd) // restore what the user currently sees
+            connection.endBatchEdit()
+        }
+        when (result) {
+            LineExtendResult.REACHED -> deleteSwipeLineBoundaries = boundaries
+            LineExtendResult.TOP -> {
+                deleteSwipeLineBoundaries = boundaries
+                deleteSwipeEditorTopReached = true
+            }
+            LineExtendResult.FAILED -> if (boundaries.size <= 1) {
+                // editor doesn't support it (e.g. no extracted text): use the approximation as before
+                deleteSwipeUseEditorLines = false
+                deleteSwipeLineBoundaries = deleteSwipeApproxLineBoundaries
+            } else {
+                deleteSwipeLineBoundaries = boundaries
+                deleteSwipeEditorTopReached = true
+            }
+        }
+    }
+
+    /** Position of the caret after moving it one visual line up from [position] in the editor, or null if unknown. */
+    private fun editorPositionOneLineUp(position: Int): Int? {
+        if (!connection.setSelection(position, position)) return null
+        val eventTime = SystemClock.uptimeMillis()
+        connection.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_UP, 0))
+        connection.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_UP, 0))
+        val selection = connection.getEditorSelection() ?: return null
+        // still a selection (or not a caret at all): the editor didn't treat this as a plain arrow key
+        return if (selection.first == selection.second) selection.first else null
     }
 
     private fun onMoveDeletePointerChars2D(stepsX: Int, stepsY: Int) {
@@ -685,6 +745,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeInitialEnd = -1
         deleteSwipeWordBoundaries = emptyList()
         deleteSwipeLineBoundaries = emptyList()
+        deleteSwipeApproxLineBoundaries = emptyList()
+        deleteSwipeUseEditorLines = false
+        deleteSwipeEditorTopReached = false
         deleteSwipeWordIndex = 0
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
@@ -705,6 +768,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeInitialEnd = -1
         deleteSwipeWordBoundaries = emptyList()
         deleteSwipeLineBoundaries = emptyList()
+        deleteSwipeApproxLineBoundaries = emptyList()
+        deleteSwipeUseEditorLines = false
+        deleteSwipeEditorTopReached = false
         deleteSwipeWordIndex = 0
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
@@ -1046,6 +1112,25 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         }
 
         private fun Int.isMetaLock() = this == KeyCode.CTRL_LOCK || this == KeyCode.ALT_LOCK || this == KeyCode.FN_LOCK || this == KeyCode.META_LOCK
+
+        internal enum class LineExtendResult { REACHED, TOP, FAILED }
+
+        /**
+         * Appends to [boundaries] (index 0 = start position of the swipe) until it has an entry for [targetIndex].
+         * [oneLineUp] returns the position one visual line above the given position (same column), or null if
+         * the editor can't tell. Returns TOP if there is no further line above, FAILED if the editor can't tell.
+         */
+        internal fun extendLineBoundaries(
+            boundaries: MutableList<Int>, targetIndex: Int, oneLineUp: (Int) -> Int?
+        ): LineExtendResult {
+            while (boundaries.size <= targetIndex) {
+                val last = boundaries.last()
+                val up = oneLineUp(last) ?: return LineExtendResult.FAILED
+                if (up >= last) return LineExtendResult.TOP
+                boundaries.add(up.coerceAtLeast(0))
+            }
+            return LineExtendResult.REACHED
+        }
 
         internal fun getLineBoundariesBackwards(text: String, endOffset: Int): List<Int> {
             val boundaries = mutableListOf<Int>()

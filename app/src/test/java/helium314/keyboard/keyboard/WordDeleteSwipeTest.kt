@@ -160,4 +160,53 @@ class WordDeleteSwipeTest {
             KeyboardActionListenerImpl.getWordBoundariesForwards(text, endOffset, startOffset)
         )
     }
+
+    // fake editor with fixed-width visual lines of 10 chars: up keeps the column, first line goes to offset 0
+    private fun fakeLineUp(position: Int): Int? = if (position < 10) 0 else position - 10
+
+    @Test
+    fun `line boundaries are extended one visual line at a time`() {
+        val boundaries = mutableListOf(47) // swipe started at line 4, column 7
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 2) { fakeLineUp(it) }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.REACHED, result)
+        assertEquals(listOf(47, 37, 27), boundaries)
+    }
+
+    @Test
+    fun `line boundaries are not touched when the target already exists`() {
+        val boundaries = mutableListOf(47, 37)
+        var calls = 0
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 1) { calls++; fakeLineUp(it) }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.REACHED, result)
+        assertEquals(listOf(47, 37), boundaries)
+        assertEquals(0, calls)
+    }
+
+    @Test
+    fun `line boundaries stop at the top of the text`() {
+        val boundaries = mutableListOf(14) // line 1, column 4
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 5) { fakeLineUp(it) }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.TOP, result)
+        // first step keeps the column, second goes to the very start, then there is nothing above
+        assertEquals(listOf(14, 4, 0), boundaries)
+    }
+
+    @Test
+    fun `line boundaries report failure when the editor cannot move by lines`() {
+        val boundaries = mutableListOf(47)
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 1) { null }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.FAILED, result)
+        assertEquals(listOf(47), boundaries)
+    }
+
+    @Test
+    fun `line boundaries keep entries found before a failure`() {
+        val boundaries = mutableListOf(47)
+        var calls = 0
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 3) {
+            if (calls++ == 0) fakeLineUp(it) else null
+        }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.FAILED, result)
+        assertEquals(listOf(47, 37), boundaries)
+    }
 }
