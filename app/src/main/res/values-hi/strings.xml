@@ -1340,8 +1340,6 @@
     <string name="settings_screen_about">के बारे में</string>
     <string name="version">संस्करण</string>
     <string name="about_github_link">GitHub पर देखें</string>
-    <string name="about_sponsor_link">प्रायोजक परियोजना</string>
-    <string name="about_sponsor_link_description">लीनटाइप के विकास का समर्थन करें</string>
     <string name="sponsor_dialog_title">इस परियोजना को प्रायोजित करें</string>
     <string name="sponsor_dialog_message">यह परियोजना पूरी तरह से समुदाय-संचालित है और विकास को जीवित रखने के लिए दान पर निर्भर है। यदि आपको यह कीबोर्ड उपयोगी लगता है, तो कृपया प्रायोजन पर विचार करें!</string>
     <string name="sponsor_dialog_never_show_again">फिर कभी दिखाई मत देना</string>

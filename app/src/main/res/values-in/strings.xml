@@ -855,8 +855,6 @@
     <string name="theme_name_mint_and_pink">Mint dan Merah Muda</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
-    <string name="about_sponsor_link">Sponsori proyek</string>
-    <string name="about_sponsor_link_description">Dukung pengembangan LeanType</string>
     <string name="sponsor_dialog_title">Sponsori proyek ini</string>
     <string name="sponsor_dialog_message">Proyek ini sepenuhnya digerakkan oleh komunitas dan mengandalkan donasi untuk menjaga pengembangan tetap berjalan. Jika Anda merasa keyboard ini berguna, harap pertimbangkan untuk mensponsori!</string>
     <string name="sponsor_dialog_never_show_again">Jangan tampilkan lagi</string>

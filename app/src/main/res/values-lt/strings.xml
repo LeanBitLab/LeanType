@@ -847,8 +847,6 @@
     <string name="theme_name_mint_and_pink">Mėtų ir rožinė</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab šviesi</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab tamsi</string>
-    <string name="about_sponsor_link">Remti projektą</string>
-    <string name="about_sponsor_link_description">Palaikyti LeanType kūrimą</string>
     <string name="sponsor_dialog_title">Remti šį projektą</string>
     <string name="sponsor_dialog_message">Šis projektas yra visiškai bendruomenės valdomas ir priklauso nuo aukų, kad kūrimas išliktų gyvas. Jei ši klaviatūra jums naudinga, apsvarstykite galimybę paremti!</string>
     <string name="sponsor_dialog_never_show_again">Daugiau nerodyti</string>

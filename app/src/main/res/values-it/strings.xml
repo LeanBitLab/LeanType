@@ -747,8 +747,6 @@
     <string name="theme_name_mint_and_pink">Menta e rosa</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Chiaro</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Scuro</string>
-    <string name="about_sponsor_link">Sponsorizza il progetto</string>
-    <string name="about_sponsor_link_description">Supporta lo sviluppo di LeanType</string>
     <string name="sponsor_dialog_title">Sponsorizza questo progetto</string>
     <string name="sponsor_dialog_message">Questo progetto è completamente guidato dalla comunità e si basa sulle donazioni per mantenere vivo lo sviluppo. Se trovi utile questa tastiera, per favore considera di sponsorizzarlo!</string>
     <string name="sponsor_dialog_never_show_again">Non mostrare più</string>

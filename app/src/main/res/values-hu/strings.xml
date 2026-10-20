@@ -897,8 +897,6 @@
     <string name="theme_name_mint_and_pink">Menta és rózsaszín</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
-    <string name="about_sponsor_link">Projekt szponzorálása</string>
-    <string name="about_sponsor_link_description">Támogassa a LeanType fejlesztését</string>
     <string name="sponsor_dialog_title">Szponzorálja ezt a projektet</string>
     <string name="sponsor_dialog_message">Ezt a projektet teljes mértékben a közösség vezeti, és adományokból tartja fenn a fejlesztést. Ha hasznosnak találja ezt a billentyűzetet, kérjük, fontolja meg a szponzorálást!</string>
     <string name="sponsor_dialog_never_show_again">Soha többé ne jelenjen meg</string>

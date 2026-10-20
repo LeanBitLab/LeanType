@@ -648,8 +648,6 @@
     <string name="settings_screen_about">Σχετικά</string>
     <string name="version">Έκδοση</string>
     <string name="about_github_link">Προβολή στο GitHub</string>
-    <string name="about_sponsor_link">Χορηγία έργου</string>
-    <string name="about_sponsor_link_description">Υποστηρίξτε την ανάπτυξη του LeanType</string>
     <string name="sponsor_dialog_title">Χορηγία αυτού του έργου</string>
     <string name="sponsor_dialog_message">Αυτό το έργο είναι αποκλειστικά κοινοτικής υποστήριξης και βασίζεται σε δωρεές για να διατηρηθεί η ανάπτυξη. Αν βρίσκετε χρήσιμο αυτό το πληκτρολόγιο, παρακαλούμε σκεφτείτε να γίνετε χορηγός!</string>
     <string name="sponsor_dialog_never_show_again">Να μην εμφανιστεί ξανά</string>

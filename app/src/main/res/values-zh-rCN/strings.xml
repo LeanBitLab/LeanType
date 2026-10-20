@@ -900,8 +900,6 @@
     <string name="theme_name_mint_and_pink">薄荷绿与粉色</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab 浅色</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab 深色</string>
-    <string name="about_sponsor_link">赞助项目</string>
-    <string name="about_sponsor_link_description">支持 LeanType 的开发</string>
     <string name="sponsor_dialog_title">赞助此项目</string>
     <string name="sponsor_dialog_message">此项目完全由社区驱动，并依靠捐赠来维持开发。如果您觉得此键盘有用，请考虑赞助！</string>
     <string name="sponsor_dialog_never_show_again">不再显示</string>

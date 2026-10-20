@@ -693,8 +693,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="theme_name_mint_and_pink">Nane ve Pembe</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Açık</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Koyu</string>
-    <string name="about_sponsor_link">Projeye sponsor ol</string>
-    <string name="about_sponsor_link_description">LeanType\'ın geliştirilmesini destekleyin</string>
     <string name="sponsor_dialog_title">Bu projeye sponsor olun</string>
     <string name="sponsor_dialog_message">Bu proje tamamen topluluk tarafından yürütülmektedir ve geliştirmeyi sürdürebilmek için bağışlara dayanmaktadır. Bu klavyeyi yararlı buluyorsanız lütfen sponsor olmayı düşünün!</string>
     <string name="sponsor_dialog_never_show_again">Bir daha gösterme</string>

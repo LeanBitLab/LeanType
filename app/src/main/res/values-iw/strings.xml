@@ -901,8 +901,6 @@
     <string name="theme_name_mint_and_pink">מנטה וורוד</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
-    <string name="about_sponsor_link">תמוך בפרויקט</string>
-    <string name="about_sponsor_link_description">תמוך בפיתוח של LeanType</string>
     <string name="sponsor_dialog_title">תמוך בפרויקט זה</string>
     <string name="sponsor_dialog_message">פרויקט זה מונע לחלוטין על ידי הקהילה ומסתמך על תרומות כדי לשמור על הפיתוח בחיים. אם אתה מוצא מקלדת זו שימושית, אנא שקול לתמוך!</string>
     <string name="sponsor_dialog_never_show_again">אל תציג שוב לעולם</string>

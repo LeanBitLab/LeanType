@@ -29,3 +29,12 @@
 ## 2025-02-18 - Unit tests for LanguageDetector
 **Learning:** Testing string utility logic for language detection requires broad Unicode support. Testing these cases with Robolectric is useful because `LanguageDetector` depends on Android classes such as `android.view.textclassifier.TextClassificationManager` for fallback capabilities.
 **Action:** When adding tests for string utility logic involving language detection that uses Android framework features, use `@RunWith(RobolectricTestRunner::class)` to safely handle any dependencies on framework components like `TextClassificationManager`.
+
+## 2025-02-18 - Unit tests for ExecutorUtils
+**Learning:** Testing pure concurrency and task management utilities like `ExecutorUtils` which manage thread lifecycles, runnables, and interrupt exceptions requires carefully structured deterministic logic in test suites to prevent flakiness. Testing the `RunnableChain` inner component proves that standard Junit assertions combined with stateful counters and checking standard thread interruption flags reliably verify custom thread orchestration without external system or timing dependencies.
+**Action:** When adding unit tests for concurrency utilities and thread managers (like ExecutorUtils chaining logic), avoid using non-deterministic sleeps or complex mocks. Instead, rely on deterministic sequence flags, counters, and verifying correct handling of standard `Thread.interrupted()` signals to ensure fast, stable test executions.
+
+## 2026-10-17 - Unit tests for NgramContextUtils
+**Learning:** Testing string utility logic that handles boundary tracking for punctuation contexts, word connectors, and sentence terminators depends on `SpacingAndPunctuations`. `SpacingAndPunctuations` accesses string arrays using a standard Android `Resources` object. Thus, a valid Android configuration and initialized resources are required.
+**Action:** When adding tests for Ngram processing logic or utility methods that depend on `SpacingAndPunctuations`, use `@RunWith(RobolectricTestRunner::class)` to safely handle any dependencies on framework components such as Context and Resources for configuration arrays.
+

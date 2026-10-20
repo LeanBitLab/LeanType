@@ -874,8 +874,6 @@
     <string name="theme_name_mint_and_pink">Menta i roza</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
-    <string name="about_sponsor_link">Sponzoriraj projekt</string>
-    <string name="about_sponsor_link_description">Podržite razvoj LeanTypea</string>
     <string name="sponsor_dialog_title">Sponzorirajte ovaj projekt</string>
     <string name="sponsor_dialog_message">Ovaj projekt u potpunosti vodi zajednica i oslanja se na donacije kako bi razvoj ostao živ. Ako vam je ova tipkovnica korisna, molimo razmislite o sponzoriranju!</string>
     <string name="sponsor_dialog_never_show_again">Nikada više ne prikazuj</string>

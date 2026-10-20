@@ -24,3 +24,6 @@
 ## 2024-05-18 - Optimize Diacritic Stripping in Suggest
 **Learning:** In `Suggest.isSameIgnoringAccents`, `val DIACRITIC_REGEX = "\\p{M}+".toRegex()` was being used in combination with `Normalizer.normalize` and `replace` to strip accents. This created string allocations via `Normalizer.normalize` and `Regex.replace` even for plain ASCII strings that lack accents, which is a hot path during typing and suggestion processing.
 **Action:** Replace `Regex.replace` with a manual character loop that avoids `Normalizer.normalize` entirely for pure ASCII strings and strips `Character.NON_SPACING_MARK` without regex allocation when normalizing.
+## 2024-05-18 - Optimize Regex pattern detection in DictionaryFacilitatorImpl
+**Learning:** `DictionaryFacilitatorImpl.isRegexPattern` used chained `String.contains()` and `String.startsWith()` calls, which internally execute full loops over the string (or delegate to regex). Replacing these chained calls with a single manual O(N) iteration reduces overhead and prevents repeatedly traversing the string.
+**Action:** Replace chained string detection methods (`contains`, `startsWith`, `endsWith`) with a single manual loop over the string's indices when checking multiple characters in performance hot paths.

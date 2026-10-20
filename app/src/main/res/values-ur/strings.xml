@@ -647,8 +647,6 @@
     <string name="settings_screen_about">کے بارے میں</string>
     <string name="version">ورژن</string>
     <string name="about_github_link">GitHub پر دیکھیں</string>
-    <string name="about_sponsor_link">منصوبے کو سپانسر کریں</string>
-    <string name="about_sponsor_link_description">LeanType کی ترقی کی حمایت کریں</string>
     <string name="sponsor_dialog_title">اس منصوبے کو سپانسر کریں</string>
     <string name="sponsor_dialog_message">یہ منصوبہ مکمل طور پر کمیونٹی پر مبنی ہے اور ترقی کو جاری رکھنے کے لیے عطیات پر انحصار کرتا ہے۔ اگر آپ کو یہ کی بورڈ مفید لگتا ہے تو براہ کرم سپانسر کرنے پر غور کریں!</string>
     <string name="sponsor_dialog_never_show_again">دوبارہ کبھی نہ دکھائیں</string>

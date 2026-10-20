@@ -910,8 +910,6 @@
     <string name="social_reddit">Reddit</string>
     <string name="social_x">X</string>
     <string name="social_youtube">YouTube</string>
-    <string name="about_sponsor_link">Project sponsoren</string>
-    <string name="about_sponsor_link_description">Ondersteun de ontwikkeling van LeanType</string>
     <string name="sponsor_dialog_title">Sponsor dit project</string>
     <string name="sponsor_dialog_message">Dit project is volledig community-gedreven en vertrouwt op donaties om de ontwikkeling levend te houden. Als u dit toetsenbord nuttig vindt, overweeg dan om te sponsoren!</string>
     <string name="sponsor_dialog_never_show_again">Nooit meer tonen</string>

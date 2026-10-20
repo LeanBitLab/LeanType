@@ -852,8 +852,6 @@
     <string name="theme_name_mint_and_pink">Mentă și Roz</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab Light</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab Dark</string>
-    <string name="about_sponsor_link">Sponsorizează proiectul</string>
-    <string name="about_sponsor_link_description">Susține dezvoltarea LeanType</string>
     <string name="sponsor_dialog_title">Sponsorizează acest proiect</string>
     <string name="sponsor_dialog_message">Acest proiect este complet condus de comunitate și se bazează pe donații pentru a menține dezvoltarea activă. Dacă găsești această tastatură utilă, te rugăm să iei în considerare sponsorizarea!</string>
     <string name="sponsor_dialog_never_show_again">Nu mai afișa niciodată</string>

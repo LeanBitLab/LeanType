@@ -54,9 +54,6 @@
     <!-- Color resources for setup wizard, tutorial and settings -->
     <color name="accent">@color/highlight_color_lxx_light</color>
     <color name="setup_background">#FFFAFAFA</color>
-    <color name="setup_step_background">#FFD1E3FA</color>
-    <color name="setup_text_title">#FF1767CF</color>
-    <color name="setup_text_action">#FF1767CF</color>
     <color name="action_bar_color">#FFF5F5F5</color>
     <color name="navigation_bar_color">#B3888888</color>
 

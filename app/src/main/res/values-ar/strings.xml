@@ -747,8 +747,6 @@
     <string name="theme_name_mint_and_pink">نعناع وزهري</string>
     <string name="theme_name_leanbitlab_light">LeanBitLab فاتح</string>
     <string name="theme_name_leanbitlab_dark">LeanBitLab داكن</string>
-    <string name="about_sponsor_link">رعاية المشروع</string>
-    <string name="about_sponsor_link_description">دعم تطوير LeanType</string>
     <string name="sponsor_dialog_title">رعاية هذا المشروع</string>
     <string name="sponsor_dialog_message">هذا المشروع مجتمعي بالكامل ويعتمد على التبرعات لاستمرار التطوير. إذا وجدت لوحة المفاتيح هذه مفيدة، يرجى التفكير في الرعاية!</string>
     <string name="sponsor_dialog_never_show_again">عدم الإظهار مرة أخرى</string>

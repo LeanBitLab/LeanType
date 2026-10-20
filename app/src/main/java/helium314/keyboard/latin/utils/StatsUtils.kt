@@ -34,9 +34,6 @@ object StatsUtils {
     fun onBackspaceSelectedText(selectedTextLength: Int) {
     }
 
-    fun onDeleteMultiCharInput(multiCharLength: Int) {
-    }
-
     fun onRevertAutoCorrect() {
     }
 

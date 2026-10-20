@@ -1235,15 +1235,22 @@ private class DictionaryGroup(
     private var compiledBlacklistPatterns: List<Regex> = emptyList()
 
     private fun isRegexPattern(pattern: String): Boolean {
-        return pattern.contains(".*")
-            || pattern.contains(".+")
-            || pattern.startsWith("^")
-            || pattern.endsWith("$")
-            || pattern.contains("[")
-            || pattern.contains("(")
-            || pattern.contains("\\")
-            || pattern.contains("|")
-            || pattern.contains("{")
+        if (pattern.isEmpty()) return false
+        val len = pattern.length
+
+        // ⚡ Bolt: Optimize regex pattern detection
+        // Replaced chained String.contains() and startsWith() calls with a single
+        // manual character iteration loop to reduce method overhead and execution time.
+        if (pattern[0] == '^' || pattern[len - 1] == '$') return true
+        for (i in 0 until len) {
+            val c = pattern[i]
+            if (c == '[' || c == '(' || c == '\\' || c == '|' || c == '{') return true
+            if (c == '.' && i + 1 < len) {
+                val next = pattern[i + 1]
+                if (next == '*' || next == '+') return true
+            }
+        }
+        return false
     }
 
     private fun rebuildCompiledPatterns() {

@@ -647,8 +647,6 @@
     <string name="settings_screen_about">വിവരങ്ങൾ</string>
     <string name="version">പതിപ്പ്</string>
     <string name="about_github_link">GitHub-ൽ കാണുക</string>
-    <string name="about_sponsor_link">പദ്ധതി സ്പോൺസർ ചെയ്യുക</string>
-    <string name="about_sponsor_link_description">LeanType-ന്റെ വികസനത്തെ പിന്തുണയ്ക്കുക</string>
     <string name="sponsor_dialog_title">ഈ പദ്ധതി സ്പോൺസർ ചെയ്യുക</string>
     <string name="sponsor_dialog_message">ഈ പദ്ധതി പൂർണ്ണമായും കമ്മ്യൂണിറ്റി നയിക്കുന്നതും വികസനം നിലനിർത്താൻ സംഭാവനകളെ ആശ്രയിക്കുന്നതുമാണ്. ഈ കീബോർഡ് ഉപയോഗപ്രദമാണെന്ന് തോന്നിയാൽ, ദയവായി സ്പോൺസർ ചെയ്യുന്നത് പരിഗണിക്കുക!</string>
     <string name="sponsor_dialog_never_show_again">ഇനി ഒരിക്കലും കാണിക്കരുത്</string>
