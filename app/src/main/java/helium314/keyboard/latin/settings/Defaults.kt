@@ -137,6 +137,7 @@ object Defaults {
     const val PREF_VERTICAL_SWIPE_THRESHOLD = 24
     const val PREF_DELETE_SWIPE = true
     const val PREF_DELETE_SWIPE_WORD_BY_WORD = false
+    const val PREF_DELETE_SWIPE_EXACT_LINES = false
     const val PREF_AUTOSPACE_AFTER_PUNCTUATION = false
     const val PREF_AUTOSPACE_AFTER_EMOJI = false
     const val PREF_AUTOSPACE_AFTER_SUGGESTION = true

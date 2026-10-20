@@ -105,6 +105,7 @@ fun GestureTypingScreen(
         add(Settings.PREF_TOOLBAR_SWIPE_DOWN_GESTURE)
         add(Settings.PREF_VERTICAL_SWIPE_THRESHOLD)
         add(Settings.PREF_DELETE_SWIPE)
+        add(Settings.PREF_DELETE_SWIPE_EXACT_LINES)
 
         add(R.string.settings_category_touchpad)
         add(Settings.PREF_TOUCHPAD_SENSITIVITY)
@@ -353,6 +354,14 @@ fun createGestureTypingSettings(context: Context) = listOf(
         SwitchPreference(
             it,
             Defaults.PREF_DELETE_SWIPE_WORD_BY_WORD,
+            enabled = prefs.getBoolean(Settings.PREF_DELETE_SWIPE, Defaults.PREF_DELETE_SWIPE)
+        )
+    },
+    Setting(context, Settings.PREF_DELETE_SWIPE_EXACT_LINES, R.string.delete_swipe_exact_lines, R.string.delete_swipe_exact_lines_summary) {
+        val prefs = LocalContext.current.prefs()
+        SwitchPreference(
+            it,
+            Defaults.PREF_DELETE_SWIPE_EXACT_LINES,
             enabled = prefs.getBoolean(Settings.PREF_DELETE_SWIPE, Defaults.PREF_DELETE_SWIPE)
         )
     },

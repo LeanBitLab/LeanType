@@ -530,6 +530,11 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     private var deleteSwipeApproxLineBoundaries = emptyList<Int>()
     private var deleteSwipeUseEditorLines = false
     private var deleteSwipeEditorTopReached = false
+    // Left end of the selection as this swipe last set it. In editor line mode this is used instead of
+    // the selection reported back by the editor, which can briefly show the temporary carets used for probing.
+    private var deleteSwipeShownStart = -1
+    // Editor (app) in which probing was too slow: don't probe there again until the keyboard is restarted
+    private var slowEditorLinesPackage: String? = null
 
     override fun onMoveDeletePointer(steps: Int) {
         onMoveDeletePointer(steps, 0)
@@ -542,7 +547,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         }
         inputLogic.finishInput()
         val currentEnd = connection.expectedSelectionEnd
-        if (deleteSwipeInitialEnd == -1 || deleteSwipeInitialEnd != currentEnd) {
+        // In editor line mode our own temporary selections must not look like an external selection change
+        if (deleteSwipeInitialEnd == -1 || (!deleteSwipeUseEditorLines && deleteSwipeInitialEnd != currentEnd)) {
             deleteSwipeInitialEnd = currentEnd
             val textBefore = connection.getTextBeforeCursor(2000, 0)?.toString() ?: ""
             deleteSwipeInitialText = textBefore
@@ -550,7 +556,13 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             deleteSwipeWordBoundaries = getWordBoundariesBackwards(textBefore, baseStart)
             deleteSwipeApproxLineBoundaries = getLineBoundariesBackwards(textBefore, baseStart)
             // Only multi-line fields have visual lines the editor can move over; elsewhere keep the approximation.
-            deleteSwipeUseEditorLines = keyboardSwitcher.keyboard?.mId?.isMultiLine == true && baseStart >= 0
+            // This is opt-in (experimental): it sends arrow key events to the editor.
+            val editorPackage = keyboardSwitcher.keyboard?.mId?.mEditorInfo?.packageName
+            deleteSwipeUseEditorLines = settings.current.mDeleteSwipeExactLines
+                && keyboardSwitcher.keyboard?.mId?.isMultiLine == true
+                && baseStart >= 0
+                && (editorPackage == null || editorPackage != slowEditorLinesPackage)
+            deleteSwipeShownStart = baseStart
             deleteSwipeEditorTopReached = false
             deleteSwipeLineBoundaries = if (deleteSwipeUseEditorLines) listOf(baseStart) else deleteSwipeApproxLineBoundaries
             deleteSwipeWordIndex = 0
@@ -578,31 +590,30 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
      */
     private fun extendDeleteSwipeLinesByEditor(targetIndex: Int) {
         if (deleteSwipeLineBoundaries.size > targetIndex) return
-        val selectionStart = connection.expectedSelectionStart
-        val selectionEnd = connection.expectedSelectionEnd
         val boundaries = deleteSwipeLineBoundaries.toMutableList()
-        // one batch edit, so the IME doesn't see the temporary carets as selection changes made by someone else
-        connection.beginBatchEdit()
+        val startTime = SystemClock.elapsedRealtime()
         val result = try {
             extendLineBoundaries(boundaries, targetIndex) { position -> editorPositionOneLineUp(position) }
         } finally {
-            connection.setSelection(selectionStart, selectionEnd) // restore what the user currently sees
-            connection.endBatchEdit()
+            // restore what the user currently sees; our own value is used, the editor's report may be in between
+            connection.setSelection(deleteSwipeShownStart, deleteSwipeInitialEnd)
         }
-        when (result) {
-            LineExtendResult.REACHED -> deleteSwipeLineBoundaries = boundaries
-            LineExtendResult.TOP -> {
-                deleteSwipeLineBoundaries = boundaries
-                deleteSwipeEditorTopReached = true
-            }
-            LineExtendResult.FAILED -> if (boundaries.size <= 1) {
+        // the requests are synchronous: if the editor is slow, don't ask again in this app
+        val slow = SystemClock.elapsedRealtime() - startTime > MAX_EDITOR_LINE_PROBE_MILLIS * (boundaries.size - deleteSwipeLineBoundaries.size).coerceAtLeast(1)
+        when {
+            result == LineExtendResult.FAILED && boundaries.size <= 1 -> {
                 // editor doesn't support it (e.g. no extracted text): use the approximation as before
                 deleteSwipeUseEditorLines = false
                 deleteSwipeLineBoundaries = deleteSwipeApproxLineBoundaries
-            } else {
-                deleteSwipeLineBoundaries = boundaries
-                deleteSwipeEditorTopReached = true
             }
+            else -> {
+                deleteSwipeLineBoundaries = boundaries
+                if (result != LineExtendResult.REACHED) deleteSwipeEditorTopReached = true
+            }
+        }
+        if (slow) {
+            slowEditorLinesPackage = keyboardSwitcher.keyboard?.mId?.mEditorInfo?.packageName
+            deleteSwipeEditorTopReached = true
         }
     }
 
@@ -644,6 +655,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             if (deleteSwipeStepCount % 2 != 0) {
                 performHapticFeedback(HapticEvent.GESTURE_MOVE)
             }
+            deleteSwipeShownStart = finalStart
             connection.setSelection(finalStart, deleteSwipeInitialEnd)
         }
     }
@@ -713,7 +725,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             if (deleteSwipeStepCount % 2 != 0) {
                 performHapticFeedback(HapticEvent.GESTURE_MOVE)
             }
-            connection.setSelection(finalStart.coerceAtMost(deleteSwipeInitialEnd), deleteSwipeInitialEnd)
+            deleteSwipeShownStart = finalStart.coerceAtMost(deleteSwipeInitialEnd)
+            connection.setSelection(deleteSwipeShownStart, deleteSwipeInitialEnd)
         }
     }
 
@@ -741,6 +754,10 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             keyboardSwitcher.onGifUpWithDeletePointerActive()
             return
         }
+        // in editor line mode the reported selection may lag behind, so use what this swipe set itself
+        val editorLineMode = deleteSwipeUseEditorLines
+        val shownStart = deleteSwipeShownStart
+        val shownEnd = deleteSwipeInitialEnd
         deleteSwipeInitialText = ""
         deleteSwipeInitialEnd = -1
         deleteSwipeWordBoundaries = emptyList()
@@ -748,11 +765,15 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeApproxLineBoundaries = emptyList()
         deleteSwipeUseEditorLines = false
         deleteSwipeEditorTopReached = false
+        deleteSwipeShownStart = -1
         deleteSwipeWordIndex = 0
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
         deleteSwipeStepCount = 0
-        if (!connection.hasSelection()) return
+        if (editorLineMode) {
+            if (shownStart !in 0 until shownEnd) return // nothing selected
+            connection.setSelection(shownStart, shownEnd)
+        } else if (!connection.hasSelection()) return
         inputLogic.finishInput()
         onCodeInput(KeyCode.DELETE, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
         keyboardSwitcher.requestUpdatingShiftState(
@@ -771,6 +792,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeApproxLineBoundaries = emptyList()
         deleteSwipeUseEditorLines = false
         deleteSwipeEditorTopReached = false
+        deleteSwipeShownStart = -1
         deleteSwipeWordIndex = 0
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
@@ -1114,6 +1136,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         private fun Int.isMetaLock() = this == KeyCode.CTRL_LOCK || this == KeyCode.ALT_LOCK || this == KeyCode.FN_LOCK || this == KeyCode.META_LOCK
 
         internal enum class LineExtendResult { REACHED, TOP, FAILED }
+        /** Probing the editor for a line takes longer than this (ms, per line): stop asking in this app. */
+        private const val MAX_EDITOR_LINE_PROBE_MILLIS = 60L
 
         /**
          * Appends to [boundaries] (index 0 = start position of the swipe) until it has an entry for [targetIndex].
@@ -1125,6 +1149,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         ): LineExtendResult {
             while (boundaries.size <= targetIndex) {
                 val last = boundaries.last()
+                // at the very start of the text an up key can't move the caret, and the editor might use it to move focus
+                if (last <= 0) return LineExtendResult.TOP
                 val up = oneLineUp(last) ?: return LineExtendResult.FAILED
                 if (up >= last) return LineExtendResult.TOP
                 boundaries.add(up.coerceAtLeast(0))

@@ -209,4 +209,14 @@ class WordDeleteSwipeTest {
         assertEquals(KeyboardActionListenerImpl.LineExtendResult.FAILED, result)
         assertEquals(listOf(47, 37), boundaries)
     }
+
+    @Test
+    fun `editor is not asked for a line above the start of the text`() {
+        val boundaries = mutableListOf(0)
+        var calls = 0
+        val result = KeyboardActionListenerImpl.extendLineBoundaries(boundaries, 3) { calls++; fakeLineUp(it) }
+        assertEquals(KeyboardActionListenerImpl.LineExtendResult.TOP, result)
+        assertEquals(listOf(0), boundaries)
+        assertEquals(0, calls)
+    }
 }
