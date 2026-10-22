@@ -19,6 +19,7 @@ import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.EditorInfo
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.event.Event
+import helium314.keyboard.latin.heatmap.TypingRecorder
 import helium314.keyboard.event.InputTransaction
 import helium314.keyboard.latin.cjk.CjkInputManager
 import helium314.keyboard.keyboard.Keyboard
@@ -83,6 +84,7 @@ class InputLogic(
 
     private var mLastComposedWord: LastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD
     private val mWordComposer = WordComposer()
+    private val mTypingRecorder = TypingRecorder(mLatinIME, mWordComposer)
     private val mConnection = RichInputConnection(mLatinIME)
     private val mRecapitalizeStatus = RecapitalizeStatus()
     // the composing word at the time the shift key was pressed down, null if there was none
@@ -136,6 +138,7 @@ class InputLogic(
 
     fun startInput(combiningSpec: String?, settingsValues: SettingsValues) {
         mCapsLockFromRecapitalize = false
+        mTypingRecorder.onStartInput(settingsValues)
         mEnteredText = null
         mWordBeingCorrectedByCursor = null
         mConnection.onStartInput()
@@ -173,6 +176,7 @@ class InputLogic(
     }
 
     fun finishInput() {
+        mTypingRecorder.onFinishInput()
         if (mWordComposer.isComposingWord()) {
             mConnection.finishComposingText()
             StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
@@ -409,6 +413,7 @@ class InputLogic(
         mResumedWordStart = -1
         mResumedWordEnd = -1
         mJustRevertedACommit = false
+        mTypingRecorder.onEvent(event, settingsValues)
         val processedEvent = mWordComposer.processEvent(event)
         val inputTransaction = InputTransaction(
             settingsValues,
@@ -1502,6 +1507,7 @@ class InputLogic(
     }
 
     private fun handleBackspaceEvent(event: Event, inputTransaction: InputTransaction) {
+        mTypingRecorder.onBackspace()
         val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
         mSpaceState = SpaceState.NONE
         mDeleteCount++
@@ -2243,6 +2249,7 @@ class InputLogic(
     }
 
     private fun revertCommit(inputTransaction: InputTransaction) {
+        mTypingRecorder.onCommitReverted()
         val originallyTypedWord = mLastComposedWord.mTypedWord
         val committedWord = mLastComposedWord.mCommittedWord
         val committedWordString = committedWord.toString()
@@ -2385,6 +2392,7 @@ class InputLogic(
             val typedWord = mWordComposer.getTypedWord()
             val ngramContext = mConnection.getNgramContextFromNthPreviousWord(settingsValues.mSpacingAndPunctuations, 1)
             performAdditionToUserHistoryDictionary(settingsValues, typedWord, ngramContext)
+            mTypingRecorder.onWordCommitted(settingsValues, typedWord)
             mLastComposedWord = mWordComposer.commitWord(
                 LastComposedWord.COMMIT_TYPE_USER_TYPED_WORD, typedWord,
                 LastComposedWord.NOT_A_SEPARATOR, ngramContext
@@ -2655,6 +2663,7 @@ class InputLogic(
             Log.d(TAG, "commitChosenWord() : $runTimeMillis ms to run performAdditionToUserHistoryDictionary()")
             startTimeMillis = System.currentTimeMillis()
         }
+        mTypingRecorder.onWordCommitted(settingsValues, chosenWord)
         mLastComposedWord = mWordComposer.commitWord(commitType, chosenWord, separatorString, ngramContext)
         if (DebugFlags.DEBUG_ENABLED) {
             val runTimeMillis = System.currentTimeMillis() - startTimeMillis
