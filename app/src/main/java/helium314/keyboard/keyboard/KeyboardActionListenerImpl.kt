@@ -657,10 +657,10 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     /** Line boundaries (same layout as [getLineBoundariesBackwards]) from the editor's character geometry, or null. */
     private fun linesFromTextBoundsInfo(info: TextBoundsInfo, baseStart: Int): List<Int>? {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return null
-        if (info.end <= info.start || info.start > baseStart) return null
+        if (info.endIndex <= info.startIndex || info.startIndex > baseStart) return null
         // only characters before the swipe's start matter, and only the last ones if there are very many
-        val end = minOf(info.end, baseStart)
-        val start = maxOf(info.start, end - MAX_EXACT_LINES_CHARS)
+        val end = minOf(info.endIndex, baseStart)
+        val start = maxOf(info.startIndex, end - MAX_EXACT_LINES_CHARS)
         val count = end - start
         if (count <= 0) return null
         val tops = FloatArray(count)
