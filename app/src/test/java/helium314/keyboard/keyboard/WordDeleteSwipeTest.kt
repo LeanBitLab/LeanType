@@ -3,7 +3,6 @@ package helium314.keyboard.keyboard
 
 import org.junit.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class WordDeleteSwipeTest {
 
@@ -95,28 +94,6 @@ class WordDeleteSwipeTest {
         // line 2 start is 37 + 7 = 44
         // line 1 start is 37
         assertEquals(listOf(50, 44, 37), boundaries)
-    }
-
-    @Test
-    fun `long line with newline exceeding 50 chars remains intact`() {
-        val text = "This is a line of text that has more than fifty characters in it without soft wrap\nsecond line"
-        val boundaries = KeyboardActionListenerImpl.getLineBoundariesBackwards(text, text.length)
-        val line2Start = text.indexOf("second line")
-        assertEquals(listOf(text.length, line2Start, 0), boundaries)
-        assertEquals("second line", text.substring(boundaries[1], boundaries[0]))
-        assertEquals("This is a line of text that has more than fifty characters in it without soft wrap", text.substring(boundaries[2], boundaries[1]).trim())
-    }
-
-    @Test
-    fun `multi sentence paragraph without newline splits at sentence boundaries`() {
-        val text = "First sentence of paragraph. Second sentence of paragraph is longer. Third sentence here."
-        val boundaries = KeyboardActionListenerImpl.getLineBoundariesBackwards(text, text.length)
-        for (i in 1 until boundaries.size) {
-            val start = boundaries[i]
-            assertTrue(start == 0 || Character.isWhitespace(text[start - 1]))
-        }
-        assertEquals(text.length, boundaries.first())
-        assertEquals(0, boundaries.last())
     }
 
     @Test

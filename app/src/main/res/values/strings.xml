@@ -350,6 +350,10 @@
     <string name="delete_swipe_word_by_word">Delete word by word</string>
     <!-- Description for "delete_swipe_word_by_word" option. -->
     <string name="delete_swipe_word_by_word_summary">Select and delete whole words when swiping left from the delete key</string>
+    <!-- Preferences item for using the real visual lines when swiping up from the delete key (experimental) -->
+    <string name="delete_swipe_exact_lines">Exact lines when swiping up (experimental)</string>
+    <!-- Description for "delete_swipe_exact_lines" option. -->
+    <string name="delete_swipe_exact_lines_summary">Ask the text field where its lines break (Android 14 or newer, multi-line fields). If the field does not answer, lines are estimated as before</string>
     <!-- Preferences item and dialog title for backup and restore -->
     <string name="backup_restore_title">Backup and restore</string>
     <!-- Message for backup and restore dialog -->

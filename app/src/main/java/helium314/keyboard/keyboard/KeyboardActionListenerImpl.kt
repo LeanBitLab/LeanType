@@ -1,11 +1,16 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.keyboard
 
+import android.graphics.RectF
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.text.InputType
 import android.util.SparseArray
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodSubtype
+import android.view.inputmethod.TextBoundsInfo
 import androidx.core.util.forEach
 import helium314.keyboard.event.Event
 import helium314.keyboard.event.HangulEventDecoder
@@ -31,6 +36,7 @@ import helium314.keyboard.latin.inputlogic.InputLogic
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.SubtypeSettings
+import helium314.keyboard.latin.utils.VisualLines
 import kotlin.math.abs
 import kotlin.math.min
 
@@ -526,11 +532,24 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     private var deleteSwipeCharOffset = 0
     private var deleteSwipeStepCount = 0
 
+    // Exact visual lines (Android 14+, opt-in): the editor is asked once per swipe, asynchronously, where its lines
+    // break. Until the answer arrives vertical movement is held back (and applied afterwards); if there is no answer
+    // the estimated boundaries above are used, exactly as without this setting.
+    private val deleteSwipeHandler = Handler(Looper.getMainLooper())
+    private var deleteSwipeGeneration = 0
+    private var deleteSwipeExactRequested = false
+    private var deleteSwipeExactPending = false
+    private var deleteSwipePendingStepsY = 0
+    private var deleteSwipeTimeout: Runnable? = null
+    // Editor (app) that didn't answer or doesn't support it: don't ask again there until the keyboard is restarted
+    private var noTextBoundsPackage: String? = null
+
     override fun onMoveDeletePointer(steps: Int) {
         onMoveDeletePointer(steps, 0)
     }
 
     override fun onMoveDeletePointer(stepsX: Int, stepsY: Int) {
+        var stepsY = stepsY
         if (keyboardSwitcher.isGifPickerShowing) {
             keyboardSwitcher.onGifMoveDeletePointer(stepsX, stepsY)
             return
@@ -548,14 +567,121 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             deleteSwipeLineIndex = 0
             deleteSwipeCharOffset = 0
             deleteSwipeStepCount = 0
+            resetDeleteSwipeExactLines()
         }
 
+        if (stepsY != 0 && !deleteSwipeExactRequested) requestExactLines()
+        if (deleteSwipeExactPending && stepsY != 0) {
+            // wait for the editor's answer, vertical movement is applied then
+            deleteSwipePendingStepsY += stepsY
+            stepsY = 0
+        }
+        if (stepsX == 0 && stepsY == 0) return
+        moveDeletePointer(stepsX, stepsY)
+    }
+
+    private fun moveDeletePointer(stepsX: Int, stepsY: Int) {
         if (settings.current.mDeleteSwipeWordByWord) {
             onMoveDeletePointerWords2D(stepsX, stepsY)
         } else {
             onMoveDeletePointerChars2D(stepsX, stepsY)
         }
     }
+
+    private fun resetDeleteSwipeExactLines() {
+        deleteSwipeGeneration++
+        deleteSwipeExactRequested = false
+        deleteSwipeExactPending = false
+        deleteSwipePendingStepsY = 0
+        deleteSwipeTimeout?.let { deleteSwipeHandler.removeCallbacks(it) }
+        deleteSwipeTimeout = null
+    }
+
+    /**
+     * Once per swipe, on the first vertical movement: asks the editor where its visual lines break
+     * (`requestTextBoundsInfo`, Android 14+), for the lines just above the cursor. No key events and no
+     * selection changes are involved, and nothing blocks: the answer is handled in [onExactLinesResult].
+     */
+    private fun requestExactLines() {
+        deleteSwipeExactRequested = true
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return
+        if (!settings.current.mDeleteSwipeExactLines) return
+        val keyboardId = keyboardSwitcher.keyboard?.mId ?: return
+        if (!keyboardId.isMultiLine) return
+        val editorPackage = keyboardId.mEditorInfo.packageName
+        if (editorPackage != null && editorPackage == noTextBoundsPackage) return
+        // where the cursor line is, as reported by the editor (needs cursor updates, see InputLogic.startInput)
+        val anchor = connection.lastCursorAnchorInfo ?: return
+        val markerTop = anchor.insertionMarkerTop
+        val markerBottom = anchor.insertionMarkerBottom
+        val lineHeight = markerBottom - markerTop
+        if (markerTop.isNaN() || markerBottom.isNaN() || lineHeight <= 0f) return
+
+        val generation = deleteSwipeGeneration
+        val baseStart = deleteSwipeStartForExactLines()
+        val bounds = RectF(-HUGE_HORIZONTAL, markerTop - EXACT_LINES_LOOKUP * lineHeight, HUGE_HORIZONTAL, markerBottom)
+        deleteSwipeExactPending = true
+        val sent = connection.requestTextBoundsInfo(bounds) { info ->
+            if (generation == deleteSwipeGeneration && deleteSwipeExactPending)
+                onExactLinesResult(info, baseStart, editorPackage)
+        }
+        if (!sent) {
+            deleteSwipeExactPending = false
+            return
+        }
+        val timeout = Runnable {
+            if (generation == deleteSwipeGeneration && deleteSwipeExactPending) onExactLinesResult(null, baseStart, editorPackage)
+        }
+        deleteSwipeTimeout = timeout
+        deleteSwipeHandler.postDelayed(timeout, EXACT_LINES_TIMEOUT_MILLIS)
+    }
+
+    private fun deleteSwipeStartForExactLines() = deleteSwipeLineBoundaries.firstOrNull() ?: deleteSwipeInitialEnd
+
+    private fun onExactLinesResult(info: TextBoundsInfo?, baseStart: Int, editorPackage: String?) {
+        deleteSwipeExactPending = false
+        deleteSwipeTimeout?.let { deleteSwipeHandler.removeCallbacks(it) }
+        deleteSwipeTimeout = null
+        // vertical movement was held back while waiting, so the line index is still 0 and swapping is safe
+        if (info == null) {
+            noTextBoundsPackage = editorPackage
+        } else if (deleteSwipeLineIndex == 0 && deleteSwipeLineBoundaries.firstOrNull() == baseStart) {
+            val exact = linesFromTextBoundsInfo(info, baseStart)
+            if (exact != null && exact.size > 1) deleteSwipeLineBoundaries = exact
+        }
+        val pending = deleteSwipePendingStepsY
+        deleteSwipePendingStepsY = 0
+        if (pending != 0) moveDeletePointer(0, pending)
+    }
+
+    /** Line boundaries (same layout as [getLineBoundariesBackwards]) from the editor's character geometry, or null. */
+    private fun linesFromTextBoundsInfo(info: TextBoundsInfo, baseStart: Int): List<Int>? {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return null
+        if (info.end <= info.start || info.start > baseStart) return null
+        // only characters before the swipe's start matter, and only the last ones if there are very many
+        val end = minOf(info.end, baseStart)
+        val start = maxOf(info.start, end - MAX_EXACT_LINES_CHARS)
+        val count = end - start
+        if (count <= 0) return null
+        val tops = FloatArray(count)
+        val bottoms = FloatArray(count)
+        val lineFeed = BooleanArray(count)
+        val rect = RectF()
+        for (i in 0 until count) {
+            info.getCharacterBounds(start + i, rect)
+            tops[i] = rect.top
+            bottoms[i] = rect.bottom
+            lineFeed[i] = info.getCharacterFlags(start + i) and TextBoundsInfo.FLAG_CHARACTER_LINEFEED != 0
+        }
+        val starts = VisualLines.lineStarts(start, tops, bottoms, lineFeed)
+        if (starts.isEmpty()) return null
+        val textStartOffset = deleteSwipeInitialEnd - deleteSwipeInitialText.length
+        val charBefore = (start - 1 - textStartOffset).takeIf { it in deleteSwipeInitialText.indices }?.let { deleteSwipeInitialText[it] }
+        val firstIsRealLineStart = start == 0 || charBefore == '\n'
+        return VisualLines.buildBoundaries(baseStart, starts, firstIsRealLineStart, deleteSwipeApproxBoundaries(), textStartOffset.coerceAtLeast(0))
+    }
+
+    private fun deleteSwipeApproxBoundaries() = getLineBoundariesBackwards(deleteSwipeInitialText, deleteSwipeLineBoundaries.first())
 
     private fun onMoveDeletePointerChars2D(stepsX: Int, stepsY: Int) {
         val oldLineIndex = deleteSwipeLineIndex
@@ -689,6 +815,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
         deleteSwipeStepCount = 0
+        resetDeleteSwipeExactLines()
         if (!connection.hasSelection()) return
         inputLogic.finishInput()
         onCodeInput(KeyCode.DELETE, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
@@ -709,6 +836,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeLineIndex = 0
         deleteSwipeCharOffset = 0
         deleteSwipeStepCount = 0
+        resetDeleteSwipeExactLines()
     }
 
     private fun onLanguageSlide(steps: Int, isVertical: Boolean = false): Boolean {
@@ -1047,53 +1175,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
         private fun Int.isMetaLock() = this == KeyCode.CTRL_LOCK || this == KeyCode.ALT_LOCK || this == KeyCode.FN_LOCK || this == KeyCode.META_LOCK
 
-        private fun findSegmentBreaksBackwards(text: String, start: Int, end: Int): List<Int> {
-            val breaks = mutableListOf<Int>()
-            var subEnd = end
-            while (subEnd - start > 60) {
-                var breakPoint = -1
-                // Look for sentence terminators (. ! ? …) followed by whitespace
-                for (i in (subEnd - 15) downTo (start + 15)) {
-                    val c = text[i]
-                    if ((c == '.' || c == '!' || c == '?' || c == '…') && i + 1 < subEnd && Character.isWhitespace(text[i + 1])) {
-                        if (c == '.' && i > start && Character.isDigit(text[i - 1])) {
-                            continue
-                        }
-                        var nextStart = i + 1
-                        while (nextStart < subEnd && Character.isWhitespace(text[nextStart])) {
-                            nextStart++
-                        }
-                        if (nextStart < subEnd && nextStart - start >= 15 && subEnd - nextStart >= 15) {
-                            breakPoint = nextStart
-                            break
-                        }
-                    }
-                }
-                // If no sentence break found, check for clause punctuation (: ;)
-                if (breakPoint == -1) {
-                    for (i in (subEnd - 20) downTo (start + 20)) {
-                        val c = text[i]
-                        if ((c == ';' || c == ':') && i + 1 < subEnd && Character.isWhitespace(text[i + 1])) {
-                            var nextStart = i + 1
-                            while (nextStart < subEnd && Character.isWhitespace(text[nextStart])) {
-                                nextStart++
-                            }
-                            if (nextStart < subEnd && nextStart - start >= 15 && subEnd - nextStart >= 15) {
-                                breakPoint = nextStart
-                                break
-                            }
-                        }
-                    }
-                }
-                if (breakPoint != -1 && breakPoint < subEnd) {
-                    breaks.add(breakPoint)
-                    subEnd = breakPoint
-                } else {
-                    break
-                }
-            }
-            return breaks
-        }
+        /** How many lines above the cursor line the editor is asked about for exact lines (beyond that: estimate). */
+        private const val EXACT_LINES_LOOKUP = 40
+        /** At most this many characters of the editor's answer are looked at. */
+        private const val MAX_EXACT_LINES_CHARS = 4000
+        /** No answer from the editor within this time (ms): use the estimate for this swipe and app. */
+        private const val EXACT_LINES_TIMEOUT_MILLIS = 150L
+        /** Covers the full width of the editor, whatever its scroll position. */
+        private const val HUGE_HORIZONTAL = 100_000f
 
         internal fun getLineBoundariesBackwards(text: String, endOffset: Int): List<Int> {
             val boundaries = mutableListOf<Int>()
@@ -1106,11 +1195,20 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 if (lastNewline != -1) {
                     val lineStart = lastNewline + 1
                     if (currentEnd > lineStart) {
-                        val segBreaks = findSegmentBreaksBackwards(text, lineStart, currentEnd)
-                        for (bp in segBreaks) {
-                            val offset = endOffset - (text.length - bp)
-                            if (boundaries.last() != offset) {
+                        val segLength = currentEnd - lineStart
+                        if (segLength > 50) {
+                            var subEnd = currentEnd
+                            while (subEnd - lineStart > 50) {
+                                var breakPoint = (subEnd - 40).coerceAtLeast(lineStart)
+                                while (breakPoint > lineStart && !Character.isWhitespace(text[breakPoint])) {
+                                    breakPoint--
+                                }
+                                if (breakPoint <= lineStart) {
+                                    breakPoint = (subEnd - 40).coerceAtLeast(lineStart)
+                                }
+                                val offset = endOffset - (text.length - breakPoint)
                                 boundaries.add(offset)
+                                subEnd = breakPoint
                             }
                         }
                         val offset = endOffset - (text.length - lineStart)
@@ -1120,19 +1218,24 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                     }
                     currentEnd = lastNewline
                 } else {
-                    val lineStart = 0
-                    if (currentEnd > lineStart) {
-                        val segBreaks = findSegmentBreaksBackwards(text, lineStart, currentEnd)
-                        for (bp in segBreaks) {
-                            val offset = endOffset - (text.length - bp)
-                            if (boundaries.last() != offset) {
-                                boundaries.add(offset)
+                    if (currentEnd > 50) {
+                        var subEnd = currentEnd
+                        while (subEnd > 50) {
+                            var breakPoint = (subEnd - 40).coerceAtLeast(0)
+                            while (breakPoint > 0 && !Character.isWhitespace(text[breakPoint])) {
+                                breakPoint--
                             }
-                        }
-                        val offset = endOffset - text.length
-                        if (boundaries.last() != offset) {
+                            if (breakPoint <= 0) {
+                                breakPoint = (subEnd - 40).coerceAtLeast(0)
+                            }
+                            val offset = endOffset - (text.length - breakPoint)
                             boundaries.add(offset)
+                            subEnd = breakPoint
                         }
+                    }
+                    val offset = endOffset - text.length
+                    if (boundaries.last() != offset) {
+                        boundaries.add(offset)
                     }
                     break
                 }
