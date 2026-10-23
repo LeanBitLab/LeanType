@@ -45,3 +45,7 @@
 ## 2025-02-18 - Unit tests for SuggestionResults
 **Learning:** Testing data structures for suggestions like `SuggestionResults` (which wraps `TreeSet`) that take complex dependencies like `SuggestedWordInfo` (which in turn requires a `Dictionary`) can be difficult to construct due to circular dependencies or abstract classes.
 **Action:** Use a mocking framework like Mockito (`mock(Dictionary::class.java)`) to create simple dummy instances for complex framework-level dependencies when testing purely isolated structural or sorting logic, rather than fully implementing them.
+
+## 2024-05-18 - Unit tests for SubtypeLocaleUtils
+**Learning:** Testing pure logic utilities dealing with locales often depends on `android.content.res.Resources` and `Context` to resolve localized display names correctly, especially given the `SubtypeLocaleUtils.init()` method sets a static `Resources` instance.
+**Action:** Use `@RunWith(RobolectricTestRunner::class)` and `ApplicationProvider.getApplicationContext()` when adding unit tests for locale-related utilities that cache Android Resources or Context.
