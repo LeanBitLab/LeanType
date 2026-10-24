@@ -1045,6 +1045,12 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.deallocateMemory()
     }
 
+    override fun onUpdateCursorAnchorInfo(cursorAnchorInfo: android.view.inputmethod.CursorAnchorInfo) {
+        super.onUpdateCursorAnchorInfo(cursorAnchorInfo)
+        // only used by the delete swipe to know where the cursor line is, see KeyboardActionListenerImpl
+        inputLogic.connection.lastCursorAnchorInfo = cursorAnchorInfo
+    }
+
     override fun onUpdateSelection(
         oldSelStart: Int, oldSelEnd: Int,
         newSelStart: Int, newSelEnd: Int,

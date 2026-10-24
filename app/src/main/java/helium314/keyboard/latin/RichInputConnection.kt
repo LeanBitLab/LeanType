@@ -4,9 +4,12 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.Color
+import android.graphics.RectF
 import android.inputmethodservice.InputMethodService
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -15,12 +18,16 @@ import android.text.TextUtils
 import android.text.style.BackgroundColorSpan
 import android.text.style.CharacterStyle
 import android.view.KeyEvent
+import android.view.inputmethod.CursorAnchorInfo
 import android.view.inputmethod.CompletionInfo
 import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.ExtractedText
 import android.view.inputmethod.ExtractedTextRequest
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.TextBoundsInfo
+import android.view.inputmethod.TextBoundsInfoResult
+import androidx.annotation.RequiresApi
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.common.Constants
@@ -42,7 +49,9 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.NgramContextUtils
 import helium314.keyboard.latin.utils.StatsUtils
 import helium314.keyboard.latin.utils.TextRange
+import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 import kotlin.math.max
 
 /**
@@ -107,6 +116,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
         mIsActive = false
         mIC = null
+        lastCursorAnchorInfo = null
         mNestLevel = 0
         mPendingInFlightDeletions = 0
     }
@@ -1437,6 +1447,29 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mExpectedSelEnd != INVALID_CURSOR_POSITION
 
     fun isCursorPositionKnown(): Boolean = INVALID_CURSOR_POSITION != mExpectedSelStart
+
+    /** Latest cursor anchor info the editor sent (needs [requestCursorUpdates] with monitoring), or null. */
+    @Volatile var lastCursorAnchorInfo: CursorAnchorInfo? = null
+
+    /**
+     * Asks the editor for the geometry of the characters inside [bounds] (editor coordinates), without touching
+     * the selection or sending key events. Android 14+ only; [callback] runs on the main thread with null if the
+     * editor doesn't support the request or failed. Returns false if the request could not be sent at all.
+     */
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    fun requestTextBoundsInfo(bounds: RectF, callback: (TextBoundsInfo?) -> Unit): Boolean {
+        val ic = mIC ?: return false
+        val mainHandler = Handler(Looper.getMainLooper())
+        return try {
+            ic.requestTextBoundsInfo(bounds, Executor { mainHandler.post(it) }, Consumer<TextBoundsInfoResult> { result ->
+                callback(if (result.resultCode == TextBoundsInfoResult.CODE_SUCCESS) result.textBoundsInfo else null)
+            })
+            true
+        } catch (e: Exception) {
+            Log.w(TAG, "requestTextBoundsInfo failed", e)
+            false
+        }
+    }
 
     fun requestCursorUpdates(enableMonitor: Boolean, requestImmediateCallback: Boolean): Boolean {
         mIC = mParent.currentInputConnection
