@@ -62,6 +62,7 @@ import helium314.keyboard.latin.utils.RecapitalizeMode
 import helium314.keyboard.latin.utils.RecapitalizeStatus
 import helium314.keyboard.latin.utils.ScriptUtils
 import helium314.keyboard.latin.utils.StatsUtils
+import helium314.keyboard.latin.utils.CustomAIKeyText
 import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.latin.utils.TextPlacement
 import helium314.keyboard.latin.utils.TextRange
@@ -2935,7 +2936,7 @@ class InputLogic(
             return
         }
 
-        prompt += systemInstruction
+        prompt = CustomAIKeyText.withInstructions(prompt, systemInstruction)
 
         var textToProcess: String
         val hasSelection = mConnection.hasSelection()
@@ -3000,7 +3001,10 @@ class InputLogic(
                     Log.w(TAG, "Target editor changed during custom AI operation, ignoring result")
                     return@customAsync
                 }
-                if (!hasSelection && !shouldAppend) {
+                if (shouldAppend) {
+                    val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
+                    mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
+                } else if (!hasSelection) {
                     mConnection.replaceEntireText(resultText)
                 } else {
                     mLatinIME.onTextInput(resultText)

@@ -2173,7 +2173,7 @@ New dictionary:
     <string name="custom_ai_keyword_toneshift_desc">Changes the tone (e.g., professional, casual).</string>
     <string name="custom_ai_keyword_generate_desc">Generates new text completely ignoring selected text.</string>
     <string name="custom_ai_keyword_outputonly_desc">Returns only the modified text, without conversational fillers.</string>
-    <string name="custom_ai_keyword_append_desc">Appends the result to the end of the original text.</string>
+    <string name="custom_ai_keyword_append_desc">Appends the result to the end of the original text, separated by an empty line.</string>
     <string name="custom_ai_keyword_showthought_desc">Includes AI\'s reasoning process along with result.</string>
 
     <!-- Text Editing Layout Keys -->
