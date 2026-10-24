@@ -830,8 +830,6 @@
     <string name="clear_emoji_history_message">Sei sicuro di voler cancellare le tue emoji usate di recente?</string>
     <string name="floating_keyboard_drag_handle">Trascina per spostare la tastiera</string>
     <string name="floating_keyboard_resize_handle">Trascina per ridimensionare la tastiera</string>
-    <string name="persist_floating_keyboard_title">Mantieni tastiera fluttuante</string>
-    <string name="persist_floating_keyboard_summary">Non nascondere la tastiera fluttuante quando l\'input termina</string>
     <string name="persist_text_edit_mode_title">Mantieni modalità modifica testo</string>
     <string name="persist_text_edit_mode_summary">Non uscire dalla modalità modifica testo quando l\'input termina</string>
     <string name="disable_multi_word_suggestions_title">Disabilita suggerimenti multi-parola</string>

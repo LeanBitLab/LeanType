@@ -985,8 +985,6 @@
     <string name="floating_keyboard_drag_handle">Vilkite, kad perkeltumėte klaviatūrą</string>
     <string name="floating_keyboard_resize_handle">Vilkite, kad pakeistumėte klaviatūros dydį</string>
     <string name="floating_keyboard_dock_handle">Pritvirtinti klaviatūrą</string>
-    <string name="persist_floating_keyboard_title">Išlaikyti plaukiojančią klaviatūrą</string>
-    <string name="persist_floating_keyboard_summary">Neslėpti plaukiojančios klaviatūros, kai įvestis baigiama</string>
     <string name="remember_floating_keyboard_title">Prisiminti plaukiojantį režimą</string>
     <string name="remember_floating_keyboard_summary">Vėl atidaryti klaviatūrą plaukiojančiu režimu, kai rašymas prasideda iš naujo, jei ji buvo plaukiojanti paskutinį kartą</string>
     <string name="persist_text_edit_mode_title">Išlaikyti teksto redagavimo režimą</string>

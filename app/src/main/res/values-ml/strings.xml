@@ -815,8 +815,6 @@
     <string name="clear_emoji_history_message">നിങ്ങളുടെ അടുത്തിടെ ഉപയോഗിച്ച ഇമോജികൾ മായ്ക്കണമെന്ന് ഉറപ്പാണോ?</string>
     <string name="floating_keyboard_drag_handle">കീബോർഡ് നീക്കാൻ വലിക്കുക</string>
     <string name="floating_keyboard_resize_handle">കീബോർഡ് വലുപ്പം മാറ്റാൻ വലിക്കുക</string>
-    <string name="persist_floating_keyboard_title">ഫ്ലോട്ടിംഗ് കീബോർഡ് നിലനിർത്തുക</string>
-    <string name="persist_floating_keyboard_summary">ഇൻപുട്ട് പൂർത്തിയാകുമ്പോൾ ഫ്ലോട്ടിംഗ് കീബോർഡ് മറയ്ക്കരുത്</string>
     <string name="persist_text_edit_mode_title">ടെക്സ്റ്റ് എഡിറ്റിംഗ് മോഡ് നിലനിർത്തുക</string>
     <string name="persist_text_edit_mode_summary">ഇൻപുട്ട് പൂർത്തിയാകുമ്പോൾ ടെക്സ്റ്റ് എഡിറ്റിംഗ് മോഡിൽ നിന്ന് പുറത്തുകടക്കരുത്</string>
     <string name="disable_multi_word_suggestions_title">ഒന്നിലധികം-വാക്ക് നിർദ്ദേശങ്ങൾ പ്രവർത്തനരഹിതമാക്കുക</string>

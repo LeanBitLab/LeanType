@@ -1036,8 +1036,6 @@
     <string name="floating_keyboard_drag_handle">Плъзнете за преместване на клавиатурата</string>
     <string name="floating_keyboard_resize_handle">Плъзнете за преоразмеряване на клавиатурата</string>
     <string name="floating_keyboard_dock_handle">Закотвяне на клавиатурата</string>
-    <string name="persist_floating_keyboard_title">Запазване на плаващата клавиатура</string>
-    <string name="persist_floating_keyboard_summary">Да не се скрива плаващата клавиатура, когато въвеждането приключи</string>
     <string name="remember_floating_keyboard_title">Запомняне на плаващия режим</string>
     <string name="remember_floating_keyboard_summary">Повторно отваряне на клавиатурата в плаващ режим, когато писането започне отново, ако последния път е била плаваща</string>
     <string name="persist_text_edit_mode_title">Запазване на режима за редактиране на текст</string>

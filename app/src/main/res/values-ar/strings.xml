@@ -830,8 +830,6 @@
     <string name="clear_emoji_history_message">هل أنت متأكد أنك تريد مسح الرموز التعبيرية المستخدمة مؤخرًا؟</string>
     <string name="floating_keyboard_drag_handle">اسحب لتحريك لوحة المفاتيح</string>
     <string name="floating_keyboard_resize_handle">اسحب لتغيير حجم لوحة المفاتيح</string>
-    <string name="persist_floating_keyboard_title">الإبقاء على لوحة المفاتيح العائمة</string>
-    <string name="persist_floating_keyboard_summary">عدم إخفاء لوحة المفاتيح العائمة عند انتهاء الإدخال</string>
     <string name="persist_text_edit_mode_title">الإبقاء على وضع تحرير النص</string>
     <string name="persist_text_edit_mode_summary">عدم الخروج من وضع تحرير النص عند انتهاء الإدخال</string>
     <string name="disable_multi_word_suggestions_title">تعطيل اقتراحات الكلمات المتعددة</string>

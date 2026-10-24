@@ -828,8 +828,6 @@ Nouveau dictionnaire:
     <string name="clear_emoji_history_message">Êtes-vous sûr de vouloir effacer vos emojis récemment utilisés ?</string>
     <string name="floating_keyboard_drag_handle">Faites glisser pour déplacer le clavier</string>
     <string name="floating_keyboard_resize_handle">Faites glisser pour redimensionner le clavier</string>
-    <string name="persist_floating_keyboard_title">Maintenir le clavier flottant</string>
-    <string name="persist_floating_keyboard_summary">Ne pas masquer le clavier flottant lorsque la saisie se termine</string>
     <string name="persist_text_edit_mode_title">Maintenir le mode édition de texte</string>
     <string name="persist_text_edit_mode_summary">Ne pas quitter le mode édition de texte lorsque la saisie se termine</string>
     <string name="disable_multi_word_suggestions_title">Désactiver les suggestions de plusieurs mots</string>

@@ -1747,8 +1747,6 @@ New dictionary:
     <string name="floating_keyboard_drag_handle">Drag to move keyboard</string>
     <string name="floating_keyboard_resize_handle">Drag to resize keyboard</string>
     <string name="floating_keyboard_dock_handle">Dock keyboard</string>
-    <string name="persist_floating_keyboard_title">Persist floating keyboard</string>
-    <string name="persist_floating_keyboard_summary">Do not hide floating keyboard when input finishes</string>
     <string name="remember_floating_keyboard_title">Remember floating mode</string>
     <string name="remember_floating_keyboard_summary">Reopen the keyboard in floating mode when typing starts again if it was floating last time</string>
     <string name="floating_keyboard_landscape_title">Floating mode in landscape</string>

@@ -815,8 +815,6 @@
     <string name="clear_emoji_history_message">کیا آپ واقعی اپنی حال ہی میں استعمال کردہ ایموجیز صاف کرنا چاہتے ہیں؟</string>
     <string name="floating_keyboard_drag_handle">کی بورڈ منتقل کرنے کے لیے گھسیٹیں</string>
     <string name="floating_keyboard_resize_handle">کی بورڈ کا سائز تبدیل کرنے کے لیے گھسیٹیں</string>
-    <string name="persist_floating_keyboard_title">تیرتے کی بورڈ کو برقرار رکھیں</string>
-    <string name="persist_floating_keyboard_summary">جب ان پٹ ختم ہو جائے تو تیرتے کی بورڈ کو نہ چھپائیں</string>
     <string name="persist_text_edit_mode_title">متن کی تدوین کے موڈ کو برقرار رکھیں</string>
     <string name="persist_text_edit_mode_summary">جب ان پٹ ختم ہو جائے تو متن کی تدوین کے موڈ سے باہر نہ نکلیں</string>
     <string name="disable_multi_word_suggestions_title">کثیر الفاظ کی تجاویز غیر فعال کریں</string>

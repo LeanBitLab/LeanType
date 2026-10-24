@@ -959,8 +959,6 @@
     <string name="floating_keyboard_drag_handle">Seret untuk memindahkan keyboard</string>
     <string name="floating_keyboard_resize_handle">Seret untuk mengubah ukuran keyboard</string>
     <string name="floating_keyboard_dock_handle">Sandarkan keyboard</string>
-    <string name="persist_floating_keyboard_title">Pertahankan keyboard mengambang</string>
-    <string name="persist_floating_keyboard_summary">Jangan sembunyikan keyboard mengambang saat input selesai</string>
     <string name="remember_floating_keyboard_title">Ingat mode mengambang</string>
     <string name="remember_floating_keyboard_summary">Buka kembali keyboard dalam mode mengambang saat pengetikan dimulai lagi jika sebelumnya mengambang</string>
     <string name="persist_text_edit_mode_title">Pertahankan mode pengeditan teks</string>

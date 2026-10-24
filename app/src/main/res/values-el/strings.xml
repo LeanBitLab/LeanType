@@ -816,8 +816,6 @@
     <string name="clear_emoji_history_message">Είστε βέβαιοι ότι θέλετε να διαγράψετε τα emoji που χρησιμοποιήσατε πρόσφατα;</string>
     <string name="floating_keyboard_drag_handle">Σύρετε για να μετακινήσετε το πληκτρολόγιο</string>
     <string name="floating_keyboard_resize_handle">Σύρετε για να αλλάξετε το μέγεθος του πληκτρολογίου</string>
-    <string name="persist_floating_keyboard_title">Διατήρηση αιωρούμενου πληκτρολογίου</string>
-    <string name="persist_floating_keyboard_summary">Να μην αποκρύπτεται το αιωρούμενο πληκτρολόγιο όταν ολοκληρώνεται η εισαγωγή</string>
     <string name="persist_text_edit_mode_title">Διατήρηση λειτουργίας επεξεργασίας κειμένου</string>
     <string name="persist_text_edit_mode_summary">Να μην γίνεται έξοδος από τη λειτουργία επεξεργασίας κειμένου όταν ολοκληρώνεται η εισαγωγή</string>
     <string name="disable_multi_word_suggestions_title">Απενεργοποίηση προτάσεων πολλαπλών λέξεων</string>

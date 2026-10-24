@@ -999,8 +999,6 @@
     <string name="floating_keyboard_drag_handle">Húzza a billentyűzet mozgatásához</string>
     <string name="floating_keyboard_resize_handle">Húzza a billentyűzet átméretezéséhez</string>
     <string name="floating_keyboard_dock_handle">Billentyűzet dokkolása</string>
-    <string name="persist_floating_keyboard_title">Lebegő billentyűzet fenntartása</string>
-    <string name="persist_floating_keyboard_summary">Ne rejtse el a lebegő billentyűzetet a bevitel befejezésekor</string>
     <string name="remember_floating_keyboard_title">Lebegő mód megjegyzése</string>
     <string name="remember_floating_keyboard_summary">A billentyűzet újbóli megnyitása lebegő módban, amikor a gépelés újra elindul, ha legutóbb is lebegő volt</string>
     <string name="persist_text_edit_mode_title">Szövegszerkesztési mód fenntartása</string>

@@ -988,8 +988,6 @@
     <string name="floating_keyboard_drag_handle">Пацягніце, каб перамясціць клавіятуру</string>
     <string name="floating_keyboard_resize_handle">Пацягніце, каб змяніць памер клавіятуры</string>
     <string name="floating_keyboard_dock_handle">Замацаваць клавіятуру</string>
-    <string name="persist_floating_keyboard_title">Захоўваць плаваючую клавіятуру</string>
-    <string name="persist_floating_keyboard_summary">Не хаваць плаваючую клавіятуру пасля завяршэння ўводу</string>
     <string name="remember_floating_keyboard_title">Запамінаць плаваючы рэжым</string>
     <string name="remember_floating_keyboard_summary">Адкрываць клавіятуру ў плаваючым рэжыме пры паўторным пачатку набору тэксту, калі ў мінулы раз яна была плаваючай</string>
     <string name="persist_text_edit_mode_title">Захоўваць рэжым рэдагавання тэксту</string>

@@ -1001,8 +1001,6 @@
     <string name="floating_keyboard_drag_handle">Přetažením přesunout klávesnici</string>
     <string name="floating_keyboard_resize_handle">Přetažením změnit velikost klávesnice</string>
     <string name="floating_keyboard_dock_handle">Ukotvit klávesnici</string>
-    <string name="persist_floating_keyboard_title">Zachovat plovoucí klávesnici</string>
-    <string name="persist_floating_keyboard_summary">Neskrývat plovoucí klávesnici po dokončení zadávání</string>
     <string name="remember_floating_keyboard_title">Zapamatovat plovoucí režim</string>
     <string name="remember_floating_keyboard_summary">Znovu otevřít klávesnici v plovoucím režimu, když začne psaní znovu, pokud byla naposledy plovoucí</string>
     <string name="persist_text_edit_mode_title">Zachovat režim úpravy textu</string>

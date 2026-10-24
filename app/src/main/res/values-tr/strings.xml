@@ -737,8 +737,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="clear_emoji_history_message">Son kullandığınız emojileri silmek istediğinizden emin misiniz?</string>
     <string name="floating_keyboard_drag_handle">Klavyeyi taşımak için sürükleyin</string>
     <string name="floating_keyboard_resize_handle">Klavye boyutunu değiştirmek için sürükleyin</string>
-    <string name="persist_floating_keyboard_title">Yüzen klavyeyi açık tut</string>
-    <string name="persist_floating_keyboard_summary">Girdi tamamlandığında yüzen klavyeyi gizleme</string>
     <string name="persist_text_edit_mode_title">Metin düzenleme modunu koru</string>
     <string name="persist_text_edit_mode_summary">Girdi tamamlandığında metin düzenleme modundan çıkma</string>
     <string name="disable_multi_word_suggestions_title">Çok kelimeli önerileri devre dışı bırak</string>

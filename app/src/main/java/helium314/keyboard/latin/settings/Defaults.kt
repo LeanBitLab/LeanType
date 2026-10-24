@@ -117,7 +117,6 @@ object Defaults {
             "hu${Separators.SET}${ExtraValue.KEYBOARD_LAYOUT_SET}=MAIN:qwerty"
     const val PREF_ENABLE_SPLIT_KEYBOARD = false
     const val PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE = false
-    const val PREF_PERSIST_FLOATING_KEYBOARD = false
     const val PREF_REMEMBER_FLOATING_KEYBOARD = false
     const val PREF_FLOATING_KEYBOARD_LANDSCAPE = false
     // ponytail: persist text edit mode default

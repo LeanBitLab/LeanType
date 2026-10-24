@@ -976,8 +976,6 @@
     <string name="floating_keyboard_drag_handle">Povucite za pomicanje tipkovnice</string>
     <string name="floating_keyboard_resize_handle">Povucite za promjenu veličine tipkovnice</string>
     <string name="floating_keyboard_dock_handle">Usidri tipkovnicu</string>
-    <string name="persist_floating_keyboard_title">Zadrži plutajuću tipkovnicu</string>
-    <string name="persist_floating_keyboard_summary">Ne skrivajte plutajuću tipkovnicu kada unos završi</string>
     <string name="remember_floating_keyboard_title">Zapamti plutajući način</string>
     <string name="remember_floating_keyboard_summary">Ponovno otvorite tipkovnicu u plutajućem načinu kada tipkanje ponovno započne ako je zadnji put bila plutajuća</string>
     <string name="persist_text_edit_mode_title">Zadrži način uređivanja teksta</string>

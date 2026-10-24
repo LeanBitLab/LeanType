@@ -1003,8 +1003,6 @@
     <string name="floating_keyboard_drag_handle">גרור כדי להזיז את המקלדת</string>
     <string name="floating_keyboard_resize_handle">גרור כדי לשנות את גודל המקלדת</string>
     <string name="floating_keyboard_dock_handle">עגן מקלדת</string>
-    <string name="persist_floating_keyboard_title">שמור על מקלדת צפה</string>
-    <string name="persist_floating_keyboard_summary">אל תסתיר מקלדת צפה כאשר הקלט מסתיים</string>
     <string name="remember_floating_keyboard_title">זכור מצב צף</string>
     <string name="remember_floating_keyboard_summary">פתח מחדש את המקלדת במצב צף כאשר ההקלדה מתחילה שוב אם היא הייתה צפה בפעם האחרונה</string>
     <string name="persist_text_edit_mode_title">שמור על מצב עריכת טקסט</string>

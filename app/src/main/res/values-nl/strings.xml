@@ -1034,8 +1034,6 @@
     <string name="floating_keyboard_drag_handle">Sleep om toetsenbord te verplaatsen</string>
     <string name="floating_keyboard_resize_handle">Sleep om toetsenbordformaat te wijzigen</string>
     <string name="floating_keyboard_dock_handle">Toetsenbord docken</string>
-    <string name="persist_floating_keyboard_title">Zwevend toetsenbord behouden</string>
-    <string name="persist_floating_keyboard_summary">Zwevend toetsenbord niet verbergen wanneer invoer eindigt</string>
     <string name="remember_floating_keyboard_title">Zweefmodus onthouden</string>
     <string name="remember_floating_keyboard_summary">Toetsenbord opnieuw openen in zweefmodus wanneer het typen weer begint als het de vorige keer zweefde</string>
     <string name="persist_text_edit_mode_title">Tekstbewerkingsmodus behouden</string>

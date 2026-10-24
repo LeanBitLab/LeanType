@@ -1050,8 +1050,6 @@
     <string name="clear_emoji_history_message">Tem a certeza de que pretende limpar os seus emojis usados recentemente?</string>
     <string name="floating_keyboard_drag_handle">Arrastar para mover o teclado</string>
     <string name="floating_keyboard_resize_handle">Arrastar para redimensionar o teclado</string>
-    <string name="persist_floating_keyboard_title">Persistir teclado flutuante</string>
-    <string name="persist_floating_keyboard_summary">Não ocultar o teclado flutuante quando a entrada termina</string>
     <string name="persist_text_edit_mode_title">Persistir modo de edição de texto</string>
     <string name="persist_text_edit_mode_summary">Não sair do modo de edição de texto quando a entrada termina</string>
     <string name="disable_multi_word_suggestions_title">Desativar sugestões de múltiplas palavras</string>

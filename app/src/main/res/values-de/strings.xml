@@ -782,8 +782,6 @@
     <string name="clear_emoji_history_message">Möchten Sie wirklich Ihre zuletzt verwendeten Emojis löschen?</string>
     <string name="floating_keyboard_drag_handle">Ziehen, um die Tastatur zu verschieben</string>
     <string name="floating_keyboard_resize_handle">Ziehen, um die Tastaturgröße zu ändern</string>
-    <string name="persist_floating_keyboard_title">Schwebende Tastatur beibehalten</string>
-    <string name="persist_floating_keyboard_summary">Schwebende Tastatur nicht ausblenden, wenn die Eingabe beendet wird</string>
     <string name="persist_text_edit_mode_title">Textbearbeitungsmodus beibehalten</string>
     <string name="persist_text_edit_mode_summary">Textbearbeitungsmodus nicht verlassen, wenn die Eingabe beendet wird</string>
     <string name="disable_multi_word_suggestions_title">Mehrwort-Vorschläge deaktivieren</string>

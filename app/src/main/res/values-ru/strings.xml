@@ -536,8 +536,6 @@
 	<string name="suggest_screenshots">Предлагать недавние скриншоты</string>
     <string name="suggest_screenshots_summary">Показывать недавно сделанные скриншоты в панели подсказок</string>
 	<string name="clipboard_item_deleted">Объект удален</string>
-	<string name="persist_floating_keyboard_title">Закрепить плавающую клавиатуру</string>
-    <string name="persist_floating_keyboard_summary">Не скрывать плавающую клавиатуру после завершения ввода</string>
 	<string name="clipboard_fold_pinned">Сворачивать закреплённые по умолчанию</string>
 	<string name="sponsor_dialog_title">Поддержать проект</string>
     <string name="sponsor_dialog_message">Этот проект полностью развивается силами сообщества и существует благодаря пожертвованиям. Если вам нравится эта клавиатура, пожалуйста, поддержите её разработку!</string>

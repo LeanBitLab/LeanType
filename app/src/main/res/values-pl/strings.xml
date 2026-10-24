@@ -1018,8 +1018,6 @@
     <string name="floating_keyboard_drag_handle">Przeciągnij, aby przesunąć klawiaturę</string>
     <string name="floating_keyboard_resize_handle">Przeciągnij, aby zmienić rozmiar klawiatury</string>
     <string name="floating_keyboard_dock_handle">Zadokuj klawiaturę</string>
-    <string name="persist_floating_keyboard_title">Utrzymuj pływającą klawiaturę</string>
-    <string name="persist_floating_keyboard_summary">Nie ukrywaj pływającej klawiatury po zakończeniu wprowadzania</string>
     <string name="remember_floating_keyboard_title">Zapamiętuj tryb pływający</string>
     <string name="remember_floating_keyboard_summary">Otwieraj ponownie klawiaturę w trybie pływającym, jeśli była w nim ostatnim razem</string>
     <string name="persist_text_edit_mode_title">Utrzymuj tryb edycji tekstu</string>

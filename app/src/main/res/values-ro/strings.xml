@@ -990,8 +990,6 @@
     <string name="floating_keyboard_drag_handle">Trage pentru a muta tastatura</string>
     <string name="floating_keyboard_resize_handle">Trage pentru a redimensiona tastatura</string>
     <string name="floating_keyboard_dock_handle">Andochează tastatura</string>
-    <string name="persist_floating_keyboard_title">Păstrează tastatura plutitoare</string>
-    <string name="persist_floating_keyboard_summary">Nu ascunde tastatura plutitoare când introducerea se termină</string>
     <string name="remember_floating_keyboard_title">Reține modul plutitor</string>
     <string name="remember_floating_keyboard_summary">Redeschide tastatura în modul plutitor când tastarea începe din nou, dacă ultima dată a fost plutitoare</string>
     <string name="persist_text_edit_mode_title">Păstrează modul de editare text</string>

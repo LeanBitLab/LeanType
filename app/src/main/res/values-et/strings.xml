@@ -990,8 +990,6 @@
     <string name="floating_keyboard_drag_handle">Lohista klaviatuuri liigutamiseks</string>
     <string name="floating_keyboard_resize_handle">Lohista klaviatuuri suuruse muutmiseks</string>
     <string name="floating_keyboard_dock_handle">Dokkimisklahv</string>
-    <string name="persist_floating_keyboard_title">Säilita hõljuv klaviatuur</string>
-    <string name="persist_floating_keyboard_summary">Ära peida hõljuvat klaviatuuri, kui sisestus lõppeb</string>
     <string name="remember_floating_keyboard_title">Jäta hõljuv režiim meelde</string>
     <string name="remember_floating_keyboard_summary">Ava klaviatuur uuesti hõljuvas režiimis, kui tippimine algab uuesti ja see oli viimati hõljuv</string>
     <string name="persist_text_edit_mode_title">Säilita teksti muutmise režiim</string>

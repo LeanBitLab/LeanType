@@ -1001,8 +1001,6 @@
     <string name="floating_keyboard_drag_handle">拖动以移动键盘</string>
     <string name="floating_keyboard_resize_handle">拖动以调整键盘大小</string>
     <string name="floating_keyboard_dock_handle">停靠键盘</string>
-    <string name="persist_floating_keyboard_title">保持悬浮键盘</string>
-    <string name="persist_floating_keyboard_summary">输入结束时不隐藏悬浮键盘</string>
     <string name="remember_floating_keyboard_title">记住悬浮模式</string>
     <string name="remember_floating_keyboard_summary">如果上次是悬浮状态，再次开始输入时以悬浮模式重新打开键盘</string>
     <string name="persist_text_edit_mode_title">保持文本编辑模式</string>
