@@ -1125,7 +1125,6 @@ class InputLogic(
         }
 
         if (SpaceState.PHANTOM == inputTransaction.spaceState
-            && !settingsValues.isWordConnector(codePoint)
             && !settingsValues.isUsuallyFollowedBySpace(codePoint)
         ) {
             if (isComposingWord) {
