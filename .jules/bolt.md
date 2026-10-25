@@ -27,3 +27,7 @@
 ## 2024-05-18 - Optimize Regex pattern detection in DictionaryFacilitatorImpl
 **Learning:** `DictionaryFacilitatorImpl.isRegexPattern` used chained `String.contains()` and `String.startsWith()` calls, which internally execute full loops over the string (or delegate to regex). Replacing these chained calls with a single manual O(N) iteration reduces overhead and prevents repeatedly traversing the string.
 **Action:** Replace chained string detection methods (`contains`, `startsWith`, `endsWith`) with a single manual loop over the string's indices when checking multiple characters in performance hot paths.
+
+## 2024-05-18 - Optimize Regex split overhead
+**Learning:** `LanguageDetector.detectByHeuristics` used `text.lowercase().split(Regex("[^\\p{L}]+")).filter { it.length >= 2 }`. While the Regex was pre-compiled, the split and filter operations still allocated intermediate lists and required regex engine execution, causing GC pressure in a frequently invoked text processing path.
+**Action:** Replace `Regex.split` combined with `.filter` in hot paths with manual O(N) string index iteration using character checks (like `char.isLetter()`) and a `StringBuilder` to eliminate regex execution and avoid allocating intermediate collections.

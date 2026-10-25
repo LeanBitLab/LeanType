@@ -148,8 +148,6 @@ object LanguageDetector {
         return null
     }
 
-    private val NON_LETTER_REGEX = Regex("[^\\p{L}]+")
-
     private fun detectByHeuristics(text: String, targetLangCode: String?): String? {
         val scores = mutableMapOf<String, Int>()
 
@@ -175,18 +173,35 @@ object LanguageDetector {
             }
         }
 
-        val words = text.lowercase().split(NON_LETTER_REGEX).filter { it.length >= 2 }
-        for (word in words) {
-            if (SPANISH_WORDS.contains(word)) addScore("es", 2)
-            if (FRENCH_WORDS.contains(word)) addScore("fr", 2)
-            if (GERMAN_WORDS.contains(word)) addScore("de", 2)
-            if (ITALIAN_WORDS.contains(word)) addScore("it", 2)
-            if (PORTUGUESE_WORDS.contains(word)) addScore("pt", 2)
-            if (DUTCH_WORDS.contains(word)) addScore("nl", 2)
-            if (TURKISH_WORDS.contains(word)) addScore("tr", 2)
-            if (POLISH_WORDS.contains(word)) addScore("pl", 2)
-            if (ENGLISH_WORDS.contains(word)) addScore("en", 2)
+        val textLower = text.lowercase()
+        val len = textLower.length
+        val wordBuilder = StringBuilder()
+
+        fun processWord() {
+            if (wordBuilder.length >= 2) {
+                val word = wordBuilder.toString()
+                if (SPANISH_WORDS.contains(word)) addScore("es", 2)
+                if (FRENCH_WORDS.contains(word)) addScore("fr", 2)
+                if (GERMAN_WORDS.contains(word)) addScore("de", 2)
+                if (ITALIAN_WORDS.contains(word)) addScore("it", 2)
+                if (PORTUGUESE_WORDS.contains(word)) addScore("pt", 2)
+                if (DUTCH_WORDS.contains(word)) addScore("nl", 2)
+                if (TURKISH_WORDS.contains(word)) addScore("tr", 2)
+                if (POLISH_WORDS.contains(word)) addScore("pl", 2)
+                if (ENGLISH_WORDS.contains(word)) addScore("en", 2)
+            }
+            wordBuilder.clear()
         }
+
+        for (i in 0 until len) {
+            val char = textLower[i]
+            if (char.isLetter()) {
+                wordBuilder.append(char)
+            } else {
+                processWord()
+            }
+        }
+        processWord()
 
         if (scores.isEmpty()) return null
 
