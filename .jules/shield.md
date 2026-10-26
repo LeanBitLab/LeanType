@@ -49,3 +49,7 @@
 ## 2024-05-18 - Unit tests for SubtypeLocaleUtils
 **Learning:** Testing pure logic utilities dealing with locales often depends on `android.content.res.Resources` and `Context` to resolve localized display names correctly, especially given the `SubtypeLocaleUtils.init()` method sets a static `Resources` instance.
 **Action:** Use `@RunWith(RobolectricTestRunner::class)` and `ApplicationProvider.getApplicationContext()` when adding unit tests for locale-related utilities that cache Android Resources or Context.
+
+## 2025-02-18 - Unit tests for TranslationUtils
+**Learning:** Testing string utility logic for TranslationUtils which manages SharedPreferences dependencies requires correctly providing a mocked SharedPreferences to properly evaluate logic.
+**Action:** When adding tests for shared preference logic, use `@RunWith(RobolectricTestRunner::class)` and `ApplicationProvider.getApplicationContext().getSharedPreferences()` rather than complex mocking frameworks for simpler validation.
