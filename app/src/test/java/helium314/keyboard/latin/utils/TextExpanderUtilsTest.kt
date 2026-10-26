@@ -80,4 +80,30 @@ class TextExpanderUtilsTest {
         val tokens = TextExpanderUtils.parseModifierTokens("format(yyyy-MM-dd, HH:mm):upper:trim")
         assertEquals(listOf("format(yyyy-MM-dd, HH:mm)", "upper", "trim"), tokens)
     }
+
+    private val enter = TextExpanderUtils.ENTER_KEY_MARKER.toString()
+    private val tab = TextExpanderUtils.TAB_KEY_MARKER.toString()
+
+    @Test
+    fun testKeyPressStepsInOrder() {
+        val steps = TextExpanderUtils.splitKeyPresses(TextExpanderUtils.markKeyPresses("user%tabkey%%tabkey%pw%enter%"))
+        assertEquals(listOf("user", tab, tab, "pw", enter), steps)
+    }
+
+    @Test
+    fun testInsertedTextCannotPressKeys() {
+        // like %clipboard%: the template is marked first, then the text is inserted
+        val template = TextExpanderUtils.markKeyPresses("Hi %clipboard%%enter%")
+        val clipboard = TextExpanderUtils.withoutKeyPressMarkers("x %enter% %tabkey% y$enter$tab")
+        val steps = TextExpanderUtils.splitKeyPresses(template.replace("%clipboard%", clipboard))
+        assertEquals(listOf("Hi x %enter% %tabkey% y", enter), steps)
+    }
+
+    @Test
+    fun testOnlyVisiblePlaceholdersPressKeys() {
+        // a marker character in the template itself (e.g. from an imported file) is not a key press
+        val steps = TextExpanderUtils.splitKeyPresses(TextExpanderUtils.markKeyPresses("a${enter}b"))
+        assertEquals(listOf("ab"), steps)
+        assertEquals("plain text", TextExpanderUtils.markKeyPresses("plain text"))
+    }
 }
