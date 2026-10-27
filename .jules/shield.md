@@ -49,3 +49,7 @@
 ## 2024-05-18 - Unit tests for SubtypeLocaleUtils
 **Learning:** Testing pure logic utilities dealing with locales often depends on `android.content.res.Resources` and `Context` to resolve localized display names correctly, especially given the `SubtypeLocaleUtils.init()` method sets a static `Resources` instance.
 **Action:** Use `@RunWith(RobolectricTestRunner::class)` and `ApplicationProvider.getApplicationContext()` when adding unit tests for locale-related utilities that cache Android Resources or Context.
+
+## 2025-02-19 - Unit tests for AsyncResultHolder
+**Learning:** Testing concurrent utility classes like AsyncResultHolder requires handling interrupted threads properly. Furthermore, since the fallback catch block uses the internal Log wrapper which delegates to android.util.Log, Robolectric is necessary to avoid testing exceptions.
+**Action:** When adding tests for concurrency utilities that wrap or log via Android frameworks, use @RunWith(RobolectricTestRunner::class) and carefully structure deterministic thread interruptions.
