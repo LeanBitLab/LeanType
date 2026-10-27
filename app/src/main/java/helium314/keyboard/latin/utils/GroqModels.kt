@@ -21,7 +21,7 @@ object GroqModels {
         "canopylabs/orpheus-arabic-saudi",
         "allam-2-7b"
     )
-    const val DEFAULT_MODEL = "llama-3.1-8b-instant"
+    const val DEFAULT_MODEL = "openai/gpt-oss-20b"
 
     val VOICE_MODELS = listOf(
         "whisper-large-v3-turbo",
