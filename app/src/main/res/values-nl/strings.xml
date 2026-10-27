@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Geen potentieel aanstootgevende woorden voorstellen"</string>
     <string name="autocorrect">"Autocorrectie"</string>
     <string name="auto_correction_summary">"Met spatiebalk en interpunctie worden verkeerd gespelde woorden automatisch gecorrigeerd"</string>
-    <string name="auto_correction_threshold_mode_off">"Uitgeschakeld"</string>
     <string name="auto_correction_threshold_mode_modest">Bescheiden</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agressief"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Zeer agressief"</string>

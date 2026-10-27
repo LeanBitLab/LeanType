@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Visa inte förslag på ord som kan verka stötande"</string>
     <string name="autocorrect">"Autokorrigering"</string>
     <string name="auto_correction_summary">"Blanksteg/skiljetecken rättar felstavning"</string>
-    <string name="auto_correction_threshold_mode_off">"Av"</string>
     <string name="auto_correction_threshold_mode_modest">Måttligt</string>
     <string name="auto_correction_threshold_mode_aggressive">"Aggressivt"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Mycket aggressivt"</string>

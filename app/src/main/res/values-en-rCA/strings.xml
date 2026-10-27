@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Do not suggest potentially offensive words"</string>
     <string name="autocorrect">"Auto-correction"</string>
     <string name="auto_correction_summary">"Correct mistyped words automatically with spacebar and punctuation"</string>
-    <string name="auto_correction_threshold_mode_off">"Off"</string>
     <string name="auto_correction_threshold_mode_modest">"Modest"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Aggressive"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Very aggressive"</string>

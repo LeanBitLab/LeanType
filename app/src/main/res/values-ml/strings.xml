@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"നിന്ദ്യമാകാനിടയുള്ള വാക്കുകൾ നിർദ്ദേശിക്കരുത്"</string>
     <string name="autocorrect">"സ്വയം തിരുത്തൽ"</string>
     <string name="auto_correction_summary">"തെറ്റായി ടൈപ്പുചെയ്‌ത വാക്കുകളിൽ സ്‌പെയ്‌സ് ബാറും ചിഹ്‌നവും സ്വയമേവ തിരുത്തുന്നു"</string>
-    <string name="auto_correction_threshold_mode_off">"ഓഫാക്കുക"</string>
     <string name="auto_correction_threshold_mode_modest">"മിതമായി"</string>
     <string name="auto_correction_threshold_mode_aggressive">"നിർബന്ധിതമായി"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"വളരെ നിർബന്ധിതമായി"</string>

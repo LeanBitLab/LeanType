@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Ikke foreslå potensielt støtende ord"</string>
     <string name="autocorrect">"Autokorrektur"</string>
     <string name="auto_correction_summary">"Mellomromstast og skilletegn retter automatisk feilstavede ord"</string>
-    <string name="auto_correction_threshold_mode_off">"Av"</string>
     <string name="auto_correction_threshold_mode_modest">"Moderat"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Omfattende"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Veldig omfattende"</string>

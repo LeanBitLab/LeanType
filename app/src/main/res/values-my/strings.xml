@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">ဖရုသဝါစာများကို အကြံမပြုပါနှင့်</string>
     <string name="autocorrect">အလိုလျောက်သတ်ပုံပြင်ဆင်ခြင်း</string>
     <string name="auto_correction_summary">စာလုံးခြားခလုတ်နှင့် ပုဒ်ဖြတ်ပုဒ်ရပ်ခလုတ်များကိုနှိပ်ပါက မှာယွင်းရေးသားမိသော ဝေါဟာရများကို အလိုအလျောက်ပြင်ဆင်ခြင်း</string>
-    <string name="auto_correction_threshold_mode_off">ပိတ်မည်</string>
     <string name="auto_correction_threshold_mode_modest">တော်သင့်ရုံ</string>
     <string name="auto_correction_threshold_mode_aggressive">အလွန်အမင်း</string>
     <string name="auto_correction_threshold_mode_very_aggressive">သာ၍ အလွန်အမင်း</string>

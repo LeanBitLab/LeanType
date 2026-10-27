@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"විභව්‍යව අප්‍රසන්න වචන යෝජනා නොකරන්න"</string>
     <string name="autocorrect">"ස්වයං-නිවැරදි කිරීම"</string>
     <string name="auto_correction_summary">"ඉඩ යතුර සහ විරාම ලකුණ වැරදියට ටයිප් කළ වචන ස්වයංක්‍රියව නිවැරදි කරයි"</string>
-    <string name="auto_correction_threshold_mode_off">"අක්‍රියයි"</string>
     <string name="auto_correction_threshold_mode_modest">"මධ්‍යස්"</string>
     <string name="auto_correction_threshold_mode_aggressive">"ආක්‍රමණකාරී"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ඉතා ආක්‍රමණකාරී"</string>

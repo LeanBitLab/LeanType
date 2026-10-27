@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"不建議可能令人反感的字詞"</string>
     <string name="autocorrect">"自動修正"</string>
     <string name="auto_correction_summary">"按空白鍵或標點符號時，自動修正前面的錯字"</string>
-    <string name="auto_correction_threshold_mode_off">"關閉"</string>
     <string name="auto_correction_threshold_mode_modest">"更正範圍小"</string>
     <string name="auto_correction_threshold_mode_aggressive">"大幅更正"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"極大幅度更正"</string>

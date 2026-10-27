@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Nenavrhovať potenciálne urážlivé slová"</string>
     <string name="autocorrect">"Automatické opravy"</string>
     <string name="auto_correction_summary">"Medzerník s klávesom interpunkcie automaticky opraví chybné slovo"</string>
-    <string name="auto_correction_threshold_mode_off">"Vypnuté"</string>
     <string name="auto_correction_threshold_mode_modest">"Mierne"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresívne"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Veľmi agresívne"</string>

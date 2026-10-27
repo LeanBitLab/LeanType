@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Huwag magmungkahi ng mga maaaring nakakapanakit na salita"</string>
     <string name="autocorrect">"Auto na pagwawasto"</string>
     <string name="auto_correction_summary">"Awtomatikong tinatama ng spacebar at bantas ang maling na-type"</string>
-    <string name="auto_correction_threshold_mode_off">"Naka-off"</string>
     <string name="auto_correction_threshold_mode_modest">"Modest"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresibo"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Napaka-agresibo"</string>

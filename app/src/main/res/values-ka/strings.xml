@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"არ მოხდეს პოტენციურად შეურაცხმყოფელი სიტყვების შეთავაზება"</string>
     <string name="autocorrect">"ავტოკორექცია"</string>
     <string name="auto_correction_summary">"შორისი და პუნქტუაცია ავტომატურად ასწორებს არასწორად აკრეფილ სიტყვებს"</string>
-    <string name="auto_correction_threshold_mode_off">"გამორთვა"</string>
     <string name="auto_correction_threshold_mode_modest">"მოკრძალებული"</string>
     <string name="auto_correction_threshold_mode_aggressive">"აგრესიული"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ძალიან აგრესიული"</string>

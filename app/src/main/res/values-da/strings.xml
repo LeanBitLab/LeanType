@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Foreslå ikke potentielt stødende ord"</string>
     <string name="autocorrect">"Automatisk rettelse"</string>
     <string name="auto_correction_summary">Mellemrumstast og skilletegn retter automatisk forkerte ord</string>
-    <string name="auto_correction_threshold_mode_off">"Fra"</string>
     <string name="auto_correction_threshold_mode_modest">"Moderat"</string>
     <string name="auto_correction_threshold_mode_aggressive">Aggressiv</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Maksimal"</string>

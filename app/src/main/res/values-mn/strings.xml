@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Доромжилсон үгсийг санал болгохгүй байх"</string>
     <string name="autocorrect">"Авто-залруулга"</string>
     <string name="auto_correction_summary">"Хоосон зай болон цэг таслал нь буруу бичсэн үгсийг автоматаар залруулна"</string>
-    <string name="auto_correction_threshold_mode_off">"Идэвхгүй"</string>
     <string name="auto_correction_threshold_mode_modest">"Хүлээцтэй"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Хүчтэй"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Маш хүчтэй"</string>

@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"સંભવિત વાંધાજનક શબ્દો સૂચવશો નહીં"</string>
     <string name="autocorrect">"સ્વતઃ-સુધારો"</string>
     <string name="auto_correction_summary">"સ્પેસબાર અને વિરામચિહ્ન ખોટી રીતે લખાયેલ શબ્દોને આપમેળે સુધારે છે"</string>
-    <string name="auto_correction_threshold_mode_off">"બંધ"</string>
     <string name="auto_correction_threshold_mode_modest">"વિનમ્ર"</string>
     <string name="auto_correction_threshold_mode_aggressive">"જોરદાર"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ખૂબ ફરજ પાડીને"</string>

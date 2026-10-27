@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Usipendekeze maneno yanayoweza kukera"</string>
     <string name="autocorrect">"Sahihisha kiotomatiki"</string>
     <string name="auto_correction_summary">"Kiaamba na kiakifishi hurekebisha maneno ambayo yamechapishwa vibaya"</string>
-    <string name="auto_correction_threshold_mode_off">"Zima"</string>
     <string name="auto_correction_threshold_mode_modest">"Ya wastani"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Linalokaribia"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Linalokaribia sana"</string>

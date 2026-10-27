@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Không đề xuất các từ có thể gây xúc phạm"</string>
     <string name="autocorrect">"Tự động sửa"</string>
     <string name="auto_correction_summary">"Phím cách và dấu câu tự động sửa từ nhập sai"</string>
-    <string name="auto_correction_threshold_mode_off">"Tắt"</string>
     <string name="auto_correction_threshold_mode_modest">"Đơn giản"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Linh hoạt"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Rất linh hoạt"</string>

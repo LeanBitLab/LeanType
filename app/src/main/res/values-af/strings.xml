@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Moenie potensieel aanstootlike woorde voorstel nie"</string>
     <string name="autocorrect">"Outokorrigering"</string>
     <string name="auto_correction_summary">"Spasiebalk en leestekens korrigeer outomaties woorde wat verkeerd gespel is"</string>
-    <string name="auto_correction_threshold_mode_off">"Af"</string>
     <string name="auto_correction_threshold_mode_modest">"Matig"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Aggressief"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Baie aggressief"</string>

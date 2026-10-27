@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">Keine Vorschläge für potenziell anstößige Wörter anzeigen</string>
     <string name="autocorrect">"Autokorrektur"</string>
     <string name="auto_correction_summary">Leertaste und Satzzeichen korrigieren automatisch fehlerhafte Wörter</string>
-    <string name="auto_correction_threshold_mode_off">"Aus"</string>
     <string name="auto_correction_threshold_mode_modest">"Mäßig"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Stark"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Sehr stark"</string>

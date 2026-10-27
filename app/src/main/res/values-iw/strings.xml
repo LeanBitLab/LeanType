@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"אל תציע מילים שעלולות להיות פוגעניות"</string>
     <string name="autocorrect">"תיקון אוטומטי"</string>
     <string name="auto_correction_summary">"מקש הרווח ופיסוק מתקנים אוטומטית שגיאות הקלדה"</string>
-    <string name="auto_correction_threshold_mode_off">"כבוי"</string>
     <string name="auto_correction_threshold_mode_modest">"מצומצם"</string>
     <string name="auto_correction_threshold_mode_aggressive">"מחמיר"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"מחמיר מאוד"</string>

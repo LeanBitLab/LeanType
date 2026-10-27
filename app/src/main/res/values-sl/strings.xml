@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Ne predlagaj potencialno žaljivih besed"</string>
     <string name="autocorrect">"Samodejni popravek"</string>
     <string name="auto_correction_summary">"Preslednica in ločila samodejno popravijo napačno vtipkane besede"</string>
-    <string name="auto_correction_threshold_mode_off">"Izklopljeno"</string>
     <string name="auto_correction_threshold_mode_modest">"Zmerno"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresivno"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Zelo agresivno"</string>

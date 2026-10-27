@@ -43,7 +43,6 @@
     <string name="more_autocorrect">Higit pang auto na pagwawasto</string>
     <string name="more_autocorrect_summary">Awtomatikong iwasto kahit hindi malinaw hiniling ng input field</string>
     <string name="auto_correction_confidence">Tapang ng auto na pagwawasto</string>
-    <string name="auto_correction_threshold_mode_off">Off</string>
     <string name="auto_correction_threshold_mode_modest">Mababang-loob</string>
     <string name="auto_correction_threshold_mode_aggressive">Agresibo</string>
     <string name="spell_checker_service_name">Spell Checker ng LeanType</string>

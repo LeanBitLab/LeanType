@@ -26,7 +26,6 @@
     <string name="prefs_block_potentially_offensive_title">Bloquear palavras ofensivas</string>
     <string name="prefs_block_potentially_offensive_summary">Não sugerir palavras potencialmente ofensivas</string>
     <string name="autocorrect">Correção automática</string>
-    <string name="auto_correction_threshold_mode_off">Desligado</string>
     <string name="auto_correction_threshold_mode_modest">Modesto</string>
     <string name="auto_correction_threshold_mode_aggressive">Agressivo</string>
     <string name="auto_correction_threshold_mode_very_aggressive">Muito agressivo</string>

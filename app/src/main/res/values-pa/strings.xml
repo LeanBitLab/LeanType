@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"ਸੰਭਾਵੀ ਅਪਮਾਨਜਨਕ ਸ਼ਬਦਾਂ ਦਾ ਸੁਝਾਅ ਨਾ ਦਿਓ"</string>
     <string name="autocorrect">"ਆਟੋ-ਸੁਧਾਈ"</string>
     <string name="auto_correction_summary">"ਸਪੇਸਬਾਰ ਅਤੇ ਵਿਸ਼ਰਾਮ ਚਿੰਨ੍ਹ ਗ਼ਲਤ ਟਾਈਪ ਕੀਤੇ ਸ਼ਬਦਾਂ ਨੂੰ ਆਟੋਮੈਟਿਕਲੀ ਠੀਕ ਕਰਦੇ ਹਨ"</string>
-    <string name="auto_correction_threshold_mode_off">"ਬੰਦ"</string>
     <string name="auto_correction_threshold_mode_modest">"ਸੰਕੋਚਵਾਨ"</string>
     <string name="auto_correction_threshold_mode_aggressive">"ਆਕਰਮਣਸ਼ੀਲ"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ਬਹੁਤ ਆਕਰਮਣਸ਼ੀਲ"</string>

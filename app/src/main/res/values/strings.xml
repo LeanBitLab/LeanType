@@ -188,8 +188,6 @@
     <string name="backspace_repeat_deletes_words">Holding delete removes whole words</string>
     <!-- Description for "backspace_repeat_deletes_words" option -->
     <string name="backspace_repeat_deletes_words_summary">After holding the delete key for a moment, delete word by word with increasing speed</string>
-    <!-- Option to disable auto correction. -->
-    <string name="auto_correction_threshold_mode_off">Off</string> <!-- todo: use it or remove it -->
     <!-- Option to suggest auto correction suggestions modestly. Auto-corrects only to a word which has small edit distance from typed word. -->
     <string name="auto_correction_threshold_mode_modest">Modest</string>
     <!-- Option to suggest auto correction suggestions aggressively. Auto-corrects to a word which has even large edit distance from typed word. -->

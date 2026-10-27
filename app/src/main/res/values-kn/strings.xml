@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"ಸಂಭಾವ್ಯ ಆಕ್ಷೇಪಾರ್ಹ ಪದಗಳ ಸಲಹೆ ನೀಡದಿರು"</string>
     <string name="autocorrect">"ಸ್ವಯಂ-ತಿದ್ದುಪಡಿ"</string>
     <string name="auto_correction_summary">"ತಪ್ಪಾಗಿ ಟೈಪ್ ಮಾಡಿದ ಪದಗಳನ್ನು ಸ್ಪೇಸ್‌ಬಾರ್ ಮತ್ತು ವಿರಾಮಚಿಹ್ನೆಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸರಿಪಡಿಸುತ್ತವೆ"</string>
-    <string name="auto_correction_threshold_mode_off">"ಆಫ್ ಆಗಿದೆ"</string>
     <string name="auto_correction_threshold_mode_modest">"ಸಾಧಾರಣ"</string>
     <string name="auto_correction_threshold_mode_aggressive">"ಆಕ್ರಮಣಶೀಲ"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ಹೆಚ್ಚು ಆಕ್ರಮಣಶೀಲ"</string>

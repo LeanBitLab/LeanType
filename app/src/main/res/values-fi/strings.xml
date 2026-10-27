@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">Älä ehdota mahdollisesti loukkaavia sanoja</string>
     <string name="autocorrect">"Autom. korjaus"</string>
     <string name="auto_correction_summary">"Välilyönti ja -merkit korjaavat väärinkirjoitetut sanat"</string>
-    <string name="auto_correction_threshold_mode_off">"Ei käytössä"</string>
     <string name="auto_correction_threshold_mode_modest">"Osittainen"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Aggressiivinen"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Hyvin aggressiivinen"</string>

@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"ຫ້າມແນະນຳຄຳທີ່ບໍ່ສຸພາບ"</string>
     <string name="autocorrect">"ໂຕຊ່ວຍສະກົດຄຳ"</string>
     <string name="auto_correction_summary">"ການຍະຫວ່າງ ແລະ ການໃສ່ເຄື່ອງໝາຍຈະຖືກປ່ຽນແປງໃຫ້ຖືກຕ້ອງ ໃນຄຳທີ່ພິມຜິດໂດຍອັດຕະໂນມັດ"</string>
-    <string name="auto_correction_threshold_mode_off">"ປິດ"</string>
     <string name="auto_correction_threshold_mode_modest">"ປານກາງ"</string>
     <string name="auto_correction_threshold_mode_aggressive">"ສູງ"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ສູງສຸດ"</string>

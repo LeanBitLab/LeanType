@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"عدم اقتراح كلمات محتمل أن تكون مسيئة"</string>
     <string name="autocorrect">"التصحيح التلقائي"</string>
     <string name="auto_correction_summary">"تؤدي المسافة والترقيم إلى تصحيح الكلمات المكتوبة بشكل غير صحيح"</string>
-    <string name="auto_correction_threshold_mode_off">أوقف</string>
     <string name="auto_correction_threshold_mode_modest">"معتدل"</string>
     <string name="auto_correction_threshold_mode_aggressive">"صارم"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"شديد الصرامة"</string>

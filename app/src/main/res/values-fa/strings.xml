@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"کلمات توهین‌آمیز احتمالی پیشنهاد نشود"</string>
     <string name="autocorrect">"تصحیح خودکار"</string>
     <string name="auto_correction_summary">"کلید فاصله و علائم سجاوندی به‌صورت خودکار کلماتی را که غلط تایپ شده‌اند تصحیح می‌کند"</string>
-    <string name="auto_correction_threshold_mode_off">"خاموش"</string>
     <string name="auto_correction_threshold_mode_modest">"متوسط"</string>
     <string name="auto_correction_threshold_mode_aggressive">"شدید"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"بسیار شدید"</string>

@@ -42,7 +42,6 @@
     <string name="auto_correction_summary">"Corrige automatiquement l\'orthographe lors d\'un appui sur la barre d\'espace ou un signe de ponctuation"</string>
     <string name="more_autocorrect">Correction automatique avancée</string>
     <string name="more_autocorrect_summary">La correction automatique fonctionne même si le champ de saisie ne le demande pas explicitement</string>
-    <string name="auto_correction_threshold_mode_off">"Désactiver"</string>
     <string name="auto_correction_threshold_mode_modest">"Simple"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Forcée"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Très proactive"</string>

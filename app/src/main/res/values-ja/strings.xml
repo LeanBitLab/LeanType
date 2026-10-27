@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"不適切な可能性がある語句を候補にしない"</string>
     <string name="autocorrect">"自動修正"</string>
     <string name="auto_correction_summary">"誤入力をスペースまたは句読点キーで修正する"</string>
-    <string name="auto_correction_threshold_mode_off">オフ</string>
     <string name="auto_correction_threshold_mode_modest">"中"</string>
     <string name="auto_correction_threshold_mode_aggressive">"強"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"最も強い"</string>

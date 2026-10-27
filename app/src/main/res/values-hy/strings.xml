@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Չառաջարկել հավանական վիրավորական բառերը"</string>
     <string name="autocorrect">"Ինքնուղղում"</string>
     <string name="auto_correction_summary">"Տպագրական սխալով բառերում ավտոմատ տեղադրել բացակներն ու կետադրական նշանները"</string>
-    <string name="auto_correction_threshold_mode_off">"Անջատված"</string>
     <string name="auto_correction_threshold_mode_modest">"Համեստ"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Ագրեսիվ"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Շատ ագրեսիվ"</string>

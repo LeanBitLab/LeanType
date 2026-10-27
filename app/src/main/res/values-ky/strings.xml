@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Адепсиз сөздөр сунушталбайт"</string>
     <string name="autocorrect">"Авто оңдоо"</string>
     <string name="auto_correction_summary">"Боштук жана тыныш белгиси автоматтык түрдө туура эмес терилген сөздөрдү оңдойт"</string>
-    <string name="auto_correction_threshold_mode_off">"Өчүк"</string>
     <string name="auto_correction_threshold_mode_modest">"Жөнөкөй"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Күжүрмөн"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Аябай күжүрмөн"</string>

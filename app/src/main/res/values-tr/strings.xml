@@ -28,7 +28,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Rahatsız edici olabilecek kelimeleri önermez"</string>
     <string name="autocorrect">"Otomatik düzelt"</string>
     <string name="auto_correction_summary">Boşluk tuşu ve noktalama işaretleri yanlış yazılan kelimeleri otomatik düzeltir</string>
-    <string name="auto_correction_threshold_mode_off">"Kapalı"</string>
     <string name="auto_correction_threshold_mode_modest">"Ölçülü"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Geniş ölçekte"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Çok geniş ölçekte"</string>

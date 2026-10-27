@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Қорлаушы сөздерді ұсынбау"</string>
     <string name="autocorrect">"Авто түзету"</string>
     <string name="auto_correction_summary">"Бос орын және тыныс белгі автоматты түрде қателерді түзетеді"</string>
-    <string name="auto_correction_threshold_mode_off">"Өшірулі"</string>
     <string name="auto_correction_threshold_mode_modest">"Баяу"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Белсенді"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Өте белсенді"</string>

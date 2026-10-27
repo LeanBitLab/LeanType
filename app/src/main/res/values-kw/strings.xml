@@ -69,7 +69,6 @@
     <string name="auto_correct_shortcuts">Kesunyansow bysowek ewnheans awtomatek</string>
     <string name="auto_correct_shortcuts_summary">Pan byw kesunyansow a yll bos lesys gans an ewnhyell awtomatek</string>
     <string name="backspace_reverts_autocorrect">Trespas kildreylya ewnheans awtomatek</string>
-    <string name="auto_correction_threshold_mode_off">Marow</string>
     <string name="auto_correction_threshold_mode_modest">Isel</string>
     <string name="auto_correction_threshold_mode_aggressive">Argasus</string>
     <string name="auto_correction_threshold_mode_very_aggressive">Fest argasus</string>

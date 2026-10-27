@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"सम्भावित आपत्तिजनक शब्दहरू सुझाव नगर्नुहोस्"</string>
     <string name="autocorrect">"स्वतः सुधार"</string>
     <string name="auto_correction_summary">"गल्ती टाइप भएका शब्दहरूलाई स्पेसबार र पङ्चुएसनले स्वचालित रूपमा सच्याउँछन्।"</string>
-    <string name="auto_correction_threshold_mode_off">"बन्द"</string>
     <string name="auto_correction_threshold_mode_modest">"सामान्य"</string>
     <string name="auto_correction_threshold_mode_aggressive">"आक्रामक"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"ज्यादै आक्रामक"</string>

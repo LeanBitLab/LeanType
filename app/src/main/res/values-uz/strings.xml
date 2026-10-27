@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Haqoratomuz so‘zlar taklif qilinmasin"</string>
     <string name="autocorrect">"Avtomatik tuzatish"</string>
     <string name="auto_correction_summary">"Tinish belgisi kiritilganda yoki bo‘sh joy qoldirilganda, xato so‘zni avtomatik tuzatish"</string>
-    <string name="auto_correction_threshold_mode_off">"O‘ch."</string>
     <string name="auto_correction_threshold_mode_modest">"O‘rtacha"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Juda faol"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Juda faol"</string>

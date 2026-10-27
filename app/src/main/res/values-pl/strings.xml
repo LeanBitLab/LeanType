@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Nie proponuj słów potencjalnie obraźliwych"</string>
     <string name="autocorrect">"Autokorekta"</string>
     <string name="auto_correction_summary">"Spacja i znaki przestankowe poprawiają błędnie wpisane słowa"</string>
-    <string name="auto_correction_threshold_mode_off">"Wyłącz"</string>
     <string name="auto_correction_threshold_mode_modest">"Umiarkowana"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresywna"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Bardzo agresywna"</string>

@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Не прапануйце патэнцыяльна абразлівых слоў"</string>
     <string name="autocorrect">"Аўтавыпраўленне"</string>
     <string name="auto_correction_summary">"Прабелы і пунктуацыйныя знакі дазваляюць аўтаматычна выпраўляць памылкова ўведзеныя словы"</string>
-    <string name="auto_correction_threshold_mode_off">Адкл.</string>
     <string name="auto_correction_threshold_mode_modest">"Сціплы"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Агрэсіўна"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Вельмі агрэсіўна"</string>

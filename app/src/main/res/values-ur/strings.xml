@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"ممکنہ طور پر ناگوار الفاظ تجویز نہ کریں"</string>
     <string name="autocorrect">"خود کار اصلاح"</string>
     <string name="auto_correction_summary">"اسپیس بار اور رموز اوقاف غلط ٹائپ کردہ الفاظ کی اصلاح کرتے ہیں"</string>
-    <string name="auto_correction_threshold_mode_off">"آف"</string>
     <string name="auto_correction_threshold_mode_modest">"معتدل"</string>
     <string name="auto_correction_threshold_mode_aggressive">"پر جوش"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"بہت پر جوش"</string>

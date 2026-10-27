@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Não sugerir palavras potencialmente ofensivas"</string>
     <string name="autocorrect">"Correção automática"</string>
     <string name="auto_correction_summary">"A barra de espaço e a pontuação corrigem automaticamente palavras com erro de digitação"</string>
-    <string name="auto_correction_threshold_mode_off">"Desativado"</string>
     <string name="auto_correction_threshold_mode_modest">"Moderado"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agressivo"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Muito agressivo"</string>

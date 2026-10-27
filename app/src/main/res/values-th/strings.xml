@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"ไม่แนะนำคำที่อาจไม่เหมาะสม"</string>
     <string name="autocorrect">"การแก้ไขคำผิดอัตโนมัติ"</string>
     <string name="auto_correction_summary">"กดเว้นวรรคและเครื่องหมายจะแก้คำผิดอัตโนมัติ"</string>
-    <string name="auto_correction_threshold_mode_off">"ปิด"</string>
     <string name="auto_correction_threshold_mode_modest">"ปานกลาง"</string>
     <string name="auto_correction_threshold_mode_aggressive">"เข้มงวด"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"เข้มงวดมาก"</string>

@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"አጸያፊ ሊሆኑ የሚችሉ ቃላትን አትጠቁም"</string>
     <string name="autocorrect">"በራስ-ማስተካከል"</string>
     <string name="auto_correction_summary">"የቦታ ቁልፍ እና ሥርዓተ ነጥብ በስህተት የተተየቡ ቃላትን  በራስሰር ያስተካክላሉ ።"</string>
-    <string name="auto_correction_threshold_mode_off">"ውጪ"</string>
     <string name="auto_correction_threshold_mode_modest">"መጠነኛ"</string>
     <string name="auto_correction_threshold_mode_aggressive">"ኃይለኛ"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"በጣም ኃይለኛ"</string>

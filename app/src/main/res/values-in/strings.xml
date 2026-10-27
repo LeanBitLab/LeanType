@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Jangan sarankan kata yang berpotensi menyinggung"</string>
     <string name="autocorrect">"Koreksi otomatis"</string>
     <string name="auto_correction_summary">"Bilah spasi dan tanda baca secara otomatis dikoreksi pada kata yang salah ketik"</string>
-    <string name="auto_correction_threshold_mode_off">"Mati"</string>
     <string name="auto_correction_threshold_mode_modest">"Sederhana"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresif"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Sangat agresif"</string>

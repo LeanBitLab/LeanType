@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Jangan cadangkan perkataan yang boleh menyinggung"</string>
     <string name="autocorrect">"Auto pembetulan"</string>
     <string name="auto_correction_summary">"Bar ruang dan tanda baca secara automatik membetulkan perkataan yang ditaip salah"</string>
-    <string name="auto_correction_threshold_mode_off">"Dimati"</string>
     <string name="auto_correction_threshold_mode_modest">"Sederhana"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresif"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Sangat agresif"</string>

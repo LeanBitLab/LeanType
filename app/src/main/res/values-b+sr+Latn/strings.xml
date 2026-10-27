@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Nema predlaganja potencijalno uvredljivih reči"</string>
     <string name="autocorrect">"Autom. ispravljanje"</string>
     <string name="auto_correction_summary">"Razmak i interpunkcija automatski ispravljaju greške u kucanju"</string>
-    <string name="auto_correction_threshold_mode_off">"Isključi"</string>
     <string name="auto_correction_threshold_mode_modest">"Umereno"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Agresivno"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Veoma agresivno"</string>

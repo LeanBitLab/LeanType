@@ -33,7 +33,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Ungaphakamisi amagama angaba nokuhlaselayo"</string>
     <string name="autocorrect">"Ukulungisa okuzenzakalelayo"</string>
     <string name="auto_correction_summary">"Ibha yesikhala nokubhala ngamagama amakhulu kulungisa amaphutha amagama athayiphwe kabi"</string>
-    <string name="auto_correction_threshold_mode_off">"Valiwe"</string>
     <string name="auto_correction_threshold_mode_modest">"Thobekile"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Bukhali"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Bukhali kakhulu"</string>

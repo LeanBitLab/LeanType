@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Nu se sugerează cuvinte potențial jignitoare"</string>
     <string name="autocorrect">"Autocorectare"</string>
     <string name="auto_correction_summary">"Corectare automată cuvinte prin bară spațiu/semne punctuație"</string>
-    <string name="auto_correction_threshold_mode_off">"Dezactivată"</string>
     <string name="auto_correction_threshold_mode_modest">"Moderată"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Exigentă"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Foarte agresivă"</string>

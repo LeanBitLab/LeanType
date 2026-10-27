@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Potensial təhqiredici sözlər təklif etməyin"</string>
     <string name="autocorrect">"Avtomatik-korreksiya"</string>
     <string name="auto_correction_summary">"Boşluq və punktuasiya avtomatik yanlış sözləri düzəldir"</string>
-    <string name="auto_correction_threshold_mode_off">"Deaktiv"</string>
     <string name="auto_correction_threshold_mode_modest">"Orta"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Aqressiv"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Çox aqressiv"</string>

@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Nesiūlyti galimai įžeidžiančių žodžių"</string>
     <string name="autocorrect">"Automatinis taisymas"</string>
     <string name="auto_correction_summary">Tarpas ir skyrybos ženklai automatiškai pataiso kladingus žodžius</string>
-    <string name="auto_correction_threshold_mode_off">"Išjungta"</string>
     <string name="auto_correction_threshold_mode_modest">"Vidutinis"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Atkakliai"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Labai atkakliai"</string>

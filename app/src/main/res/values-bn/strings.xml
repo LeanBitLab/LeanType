@@ -50,7 +50,6 @@
     <string name="autocorrect">স্বতঃসংশোধন</string>
     <string name="auto_correction_summary">স্পেসবার ও যতিচিহ্নের মাধ্যমে ভুল টাইপ করা শব্দের স্বয়ংক্রিয় সংশোধন</string>
     <string name="auto_correction_confidence">স্বয়ংক্রিয় সংশোধনের দৃঢ়তা</string>
-    <string name="auto_correction_threshold_mode_off">বন্ধ</string>
     <string name="auto_correction_threshold_mode_modest">সংযত</string>
     <string name="auto_correction_threshold_mode_aggressive">আগ্রাসী</string>
     <string name="auto_correction_threshold_mode_very_aggressive">অতি আগ্রাসী</string>

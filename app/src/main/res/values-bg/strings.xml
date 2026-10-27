@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Без потенциално обидни думи"</string>
     <string name="autocorrect">"Автоматична поправка"</string>
     <string name="auto_correction_summary">"Клавишът за интервал и пунктуация авт. поправя сгрешени думи"</string>
-    <string name="auto_correction_threshold_mode_off">"Изкл."</string>
     <string name="auto_correction_threshold_mode_modest">"Умерено"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Агресивно"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Много агресивно"</string>

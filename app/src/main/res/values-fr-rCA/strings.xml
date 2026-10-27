@@ -32,7 +32,6 @@
     <string name="prefs_block_potentially_offensive_summary">"Pas de termes potentiellement choquants"</string>
     <string name="autocorrect">"Correction auto"</string>
     <string name="auto_correction_summary">"Corriger autom. orthographe (pression sur barre espace/signes ponctuation)"</string>
-    <string name="auto_correction_threshold_mode_off">"Désactiver"</string>
     <string name="auto_correction_threshold_mode_modest">"Simple"</string>
     <string name="auto_correction_threshold_mode_aggressive">"Proactive"</string>
     <string name="auto_correction_threshold_mode_very_aggressive">"Très exigeante"</string>
