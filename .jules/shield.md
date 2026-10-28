@@ -57,3 +57,7 @@
 ## 2025-02-19 - Unit tests for AsyncResultHolder
 **Learning:** Testing concurrent utility classes like AsyncResultHolder requires handling interrupted threads properly. Furthermore, since the fallback catch block uses the internal Log wrapper which delegates to android.util.Log, Robolectric is necessary to avoid testing exceptions.
 **Action:** When adding tests for concurrency utilities that wrap or log via Android frameworks, use @RunWith(RobolectricTestRunner::class) and carefully structure deterministic thread interruptions.
+
+## 2025-02-19 - Unit tests for IntentUtils
+**Learning:** Testing classes that emit system-wide broadcasts using Context (like `IntentUtils.handleSendIntentKey`) requires an application environment capable of intercepting and validating those broadcasts. The standard Android Context does not provide easy introspection of emitted intents.
+**Action:** When adding tests for components that send system broadcasts, use `@RunWith(RobolectricTestRunner::class)` and capture the intents using `org.robolectric.Shadows.shadowOf(context as Application).broadcastIntents` to assert on their actions and extras safely and deterministically without needing complex mocked Context wrappers.
