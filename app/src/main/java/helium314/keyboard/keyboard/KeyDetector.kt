@@ -6,6 +6,8 @@
 
 package helium314.keyboard.keyboard
 
+import helium314.keyboard.latin.heatmap.TouchAdaptation
+
 /**
  * This class handles key detection.
  */
@@ -110,6 +112,6 @@ open class KeyDetector {
                 primaryKey = key
             }
         }
-        return primaryKey
+        return TouchAdaptation.adaptedKey(keyboard, touchX, touchY, primaryKey) ?: primaryKey
     }
 }

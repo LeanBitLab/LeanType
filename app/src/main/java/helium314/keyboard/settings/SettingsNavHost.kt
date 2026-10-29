@@ -214,6 +214,9 @@ fun SettingsNavHost(
         composable(SettingsDestination.AppQuirks) {
             helium314.keyboard.settings.screens.AppQuirksScreen(onClickBack = ::goBack)
         }
+        composable(SettingsDestination.TypingHeatmap) {
+            helium314.keyboard.settings.screens.TypingHeatmapScreen(onClickBack = ::goBack)
+        }
         composable(SettingsDestination.Storage) {
             helium314.keyboard.settings.screens.StorageScreen(onClickBack = ::goBack)
         }
@@ -265,6 +268,7 @@ object SettingsDestination {
     const val AppQuirks = "app_quirks"
     const val Gif = "gif"
     const val Cjk = "cjk"
+    const val TypingHeatmap = "typing_heatmap"
     val navTarget = MutableStateFlow(Settings)
 
     // Use SupervisorJob so a cancellation in one navigation hop

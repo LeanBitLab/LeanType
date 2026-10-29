@@ -2508,4 +2508,35 @@ New dictionary:
     <!-- CJK Candidate Strip -->
     <string name="cjk_candidate_prev_page" tools:ignore="MissingTranslation">Previous candidates</string>
     <string name="cjk_candidate_next_page" tools:ignore="MissingTranslation">Next candidates</string>
+    <!-- Typing heatmap: records where keys are touched, labelled by the finally used text -->
+    <string name="typing_heatmap_category">Key zones</string>
+    <string name="adapt_to_typing">Adapt to my typing</string>
+    <string name="adapt_to_typing_summary">Learn where you touch the keys and recognize the key you meant near key borders, also for autocorrection. A key is adapted once it has 30 touches. Stored only locally, no cloud, no transfer</string>
+    <string name="typing_heatmap_title">Typing heatmap</string>
+    <string name="typing_heatmap_no_data">No data yet. Enable \"Adapt to my typing\" and type a few sentences as usual. Words typed with gestures or in incognito mode are not recorded.</string>
+    <string name="typing_heatmap_views">The keyboard learns separately for each way you hold it: normal, one-handed, floating and landscape.</string>
+    <string name="typing_heatmap_view_one_handed">One-handed</string>
+    <string name="typing_heatmap_view_floating">Floating</string>
+    <string name="typing_heatmap_view_landscape">Landscape</string>
+    <string name="typing_heatmap_all_touches">All touches</string>
+    <string name="typing_heatmap_only_misses">Only misses</string>
+    <string name="typing_heatmap_stats">%1$d touches, %2$d misses (%3$.1f %%)</string>
+    <string name="typing_heatmap_legend">Blue: touches that hit the intended key. Red: touches that hit another key. Line and dot: average touch position for the key.</string>
+    <string name="typing_heatmap_top_misses">Most frequent misses</string>
+    <string name="typing_heatmap_miss_line">%1$s meant, %2$s hit: %3$d×</string>
+    <string name="typing_heatmap_privacy">Stored only locally on this device: no cloud, no transfer, not included in Android backups or when moving to a new device, and only readable after unlocking the device. The data only leaves the device if you export a backup of the keyboard yourself. Nothing is recorded in password fields and incognito mode. The intended key is taken from the text you finally used: the autocorrected word or picked suggestion, what you typed if you reverted the correction, or the letter you typed after deleting a neighboring one. Touches are stored per key without their order, so your text cannot be reconstructed from them. Turning off \"Adapt to my typing\" stops collecting and adapting, learned data stays until you delete it here.</string>
+    <string name="typing_heatmap_clear">Delete typing data</string>
+    <string name="typing_heatmap_clear_confirm">Delete all recorded typing data?</string>
+    <string name="typing_heatmap_adapt_off">\"Adapt to my typing\" is off.</string>
+    <string name="typing_heatmap_adapt_waiting">Key zones are adapted as soon as a key has %1$d touches.</string>
+    <string name="typing_heatmap_adapt_on">%1$d keys are adapted. Tinted areas: here a touch is now assigned to a neighboring key.</string>
+    <string name="typing_heatmap_before_after">Misses before and after adaptation</string>
+    <string name="typing_heatmap_before_after_not_enough">Not enough data yet for a comparison (at least %1$d touches each).</string>
+    <string name="typing_heatmap_before_after_values">Before: %1$.1f %% (%2$d touches), after: %3$.1f %% (%4$d touches)</string>
+    <string name="typing_heatmap_other_device">This typing data was learned on another device (%1$s), this is %2$s. It may not fit here. The keyboard continues learning either way and replaces old touches over time.</string>
+    <string name="typing_heatmap_start_over">Start over</string>
+    <string name="typing_heatmap_keep">Keep</string>
+    <string name="backup_category_typing_profile">Typing profile (key zones)</string>
+    <string name="typing_heatmap_history">Misses per week</string>
+    <string name="typing_heatmap_history_value">%1$.1f %% (%2$d)</string>
 </resources>
