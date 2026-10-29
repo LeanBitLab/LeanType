@@ -27,14 +27,21 @@ import helium314.keyboard.settings.screens.createToolbarSettings
 import helium314.keyboard.latin.voice.createVoiceSettings
 
 class SettingsContainer(context: Context) {
-    private val list = createSettings(context)
+    private val settingsWithScreens = createSettings(context)
+    private val list = settingsWithScreens.map { it.first }
     private val map: Map<String, Setting> = HashMap<String, Setting>(list.size).apply {
         list.forEach {
             putIfAbsent(it.key, it)
         }
     }
+    /** settings screen (destination) that shows a setting, for jumping there from the search */
+    private val screens: Map<String, String> = HashMap<String, String>().apply {
+        settingsWithScreens.forEach { (setting, destination) -> if (destination != null) putIfAbsent(setting.key, destination) }
+    }
 
     operator fun get(key: Any): Setting? = map[key]
+
+    fun screenOf(key: String): String? = screens[key]
 
     // filtering could be more elaborate, but should be good enough for a start
     // always have all settings in search, because:
@@ -151,10 +158,11 @@ private val modules = listOf(
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_UPDATES, SettingsDestination.Updates, R.string.settings_screen_updates, iconRes = R.drawable.ic_settings_updates)
 )
 
-private fun createSettings(context: Context): List<Setting> = buildList {
+/** all settings, each with the destination of the screen that shows it (null for the navigation entries) */
+private fun createSettings(context: Context): List<Pair<Setting, String?>> = buildList {
     modules.forEach { module ->
-        add(module.createNavigationSetting(context))
-        module.provider?.invoke(context)?.let { addAll(it) }
+        add(module.createNavigationSetting(context) to null)
+        module.provider?.invoke(context)?.forEach { add(it to module.destination) }
     }
 }
 
