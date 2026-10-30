@@ -61,3 +61,7 @@
 ## 2025-02-19 - Unit tests for IntentUtils
 **Learning:** Testing classes that emit system-wide broadcasts using Context (like `IntentUtils.handleSendIntentKey`) requires an application environment capable of intercepting and validating those broadcasts. The standard Android Context does not provide easy introspection of emitted intents.
 **Action:** When adding tests for components that send system broadcasts, use `@RunWith(RobolectricTestRunner::class)` and capture the intents using `org.robolectric.Shadows.shadowOf(context as Application).broadcastIntents` to assert on their actions and extras safely and deterministically without needing complex mocked Context wrappers.
+
+## 2023-10-25 - Unit tests for Timestamp
+**Learning:** Testing simple preference extensions like `context.prefs()` inside utilities such as `Timestamp` requires valid Android Context and `SharedPreferences` implementations. Using Robolectric provides this out of the box.
+**Action:** When testing configuration and preference accessors, rely on `@RunWith(RobolectricTestRunner::class)` instead of manually mocking SharedPreferences, which can be verbose and prone to missed behaviors.
