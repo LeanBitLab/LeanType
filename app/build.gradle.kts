@@ -129,10 +129,8 @@ android {
             // Exclude all dictionary assets across all flavors (all downloaded on-demand)
             val dictsDir = project.file("src/main/assets/dicts")
             if (dictsDir.exists() && dictsDir.isDirectory) {
-                dictsDir.listFiles()?.forEach { file ->
-                    if (file.name.endsWith(".dict")) {
-                        patterns.add(file.name)
-                    }
+                dictsDir.listFiles()?.filter { it.name.endsWith(".dict") }?.sortedBy { it.name }?.forEach { file ->
+                    patterns.add(file.name)
                 }
             }
             if (patterns.isNotEmpty()) {
@@ -167,10 +165,16 @@ android {
             excludes += "META-INF/LICENSE"
             excludes += "META-INF/LICENSE.txt"
             excludes += "META-INF/license.txt"
+            excludes += "META-INF/**/LICENSE*"
+            excludes += "META-INF/**/license*"
             excludes += "META-INF/NOTICE"
             excludes += "META-INF/NOTICE.txt"
             excludes += "META-INF/notice.txt"
+            excludes += "META-INF/**/NOTICE*"
+            excludes += "META-INF/**/notice*"
             excludes += "META-INF/ASL2.0"
+            excludes += "META-INF/**/AL2.0"
+            excludes += "META-INF/**/LGPL2.1"
             excludes += "META-INF/*.kotlin_module"
             excludes += "META-INF/kotlin-project-structure-metadata.json"
             excludes += "**/*.proto"

@@ -48,8 +48,6 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
 
 @Composable
 fun LoadHandwritingPluginPreference(
@@ -83,27 +81,13 @@ fun LoadHandwritingPluginPreference(
         if (!hasInternet) return@LaunchedEffect
         isCheckingUpdate = true
         scope.launch(Dispatchers.IO) {
-            try {
-                val url = URL("https://api.github.com/repos/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest")
-                val conn = url.openConnection() as HttpURLConnection
-                conn.setRequestProperty("User-Agent", "HeliboardL")
-                conn.connect()
-                if (conn.responseCode == 200) {
-                    val response = conn.inputStream.bufferedReader().use { it.readText() }
-                    val match = tagNameRegex.find(response)
-                    if (match != null) {
-                        val tag = match.groupValues[1]
-                        remoteVersion = tag
-                        if (hasPlugin && localVersion != null) {
-                            updateAvailable = isUpdateAvailable(localVersion, tag)
-                        }
-                    }
+            PluginUpdateHelper.fetchLatestReleaseTag("LeanBitLab/Leantype-Handwriting-Plugin")?.let { tag ->
+                remoteVersion = tag
+                if (hasPlugin && localVersion != null) {
+                    updateAvailable = PluginUpdateHelper.isUpdateAvailable(localVersion, tag)
                 }
-            } catch (e: Exception) {
-                // ignore network errors
-            } finally {
-                isCheckingUpdate = false
             }
+            isCheckingUpdate = false
         }
     }
 
@@ -300,26 +284,6 @@ fun LoadHandwritingPluginPreference(
         }
     }
 }
-
-private fun isUpdateAvailable(local: String, remote: String): Boolean {
-    val cleanLocal = local.removePrefix("v").trim()
-    val cleanRemote = remote.removePrefix("v").trim()
-    if (cleanLocal == cleanRemote) return false
-
-    val localParts = cleanLocal.split(".").mapNotNull { it.toIntOrNull() }
-    val remoteParts = cleanRemote.split(".").mapNotNull { it.toIntOrNull() }
-
-    val maxLength = maxOf(localParts.size, remoteParts.size)
-    for (i in 0 until maxLength) {
-        val localPart = localParts.getOrElse(i) { 0 }
-        val remotePart = remoteParts.getOrElse(i) { 0 }
-        if (remotePart > localPart) return true
-        if (localPart > remotePart) return false
-    }
-    return false
-}
-
-private val tagNameRegex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()
 
 private fun buildLanguageEntries(context: Context): List<Pair<String, String>> {
     val sysLocale = context.resources.configuration.locales[0]

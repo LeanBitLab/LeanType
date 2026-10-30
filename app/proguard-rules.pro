@@ -77,12 +77,6 @@
 -keep class helium314.keyboard.latin.utils.ProofreadHelper { *; }
 -keep class helium314.keyboard.latin.utils.ProofreadHelper$* { *; }
 
-# Keep java-llama.cpp classes
--keep class de.kherud.llama.** { *; }
--keep class org.nehuatl.llamacpp.** { *; }
-
-
-
 # Fix correct service name
 -keep class helium314.keyboard.latin.utils.ProofreadService { *; }
 
@@ -91,8 +85,6 @@
 -dontwarn java.lang.management.**
 -dontwarn org.joda.time.**
 -dontwarn com.google.ai.client.generativeai.**
--dontwarn de.kherud.llama.**
--dontwarn org.nehuatl.llamacpp.**
 
 # Keep offline voice plugin AIDL interface, parcelables, and host managers
 -keep class com.leanbitlab.leantype.voice.** { *; }

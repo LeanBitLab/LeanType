@@ -44,8 +44,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.net.HttpURLConnection
-import java.net.URL
 
 @Composable
 fun LoadOcrPluginPreference(
@@ -76,7 +74,7 @@ fun LoadOcrPluginPreference(
     val updateAvailable = remember(localVersion, remoteVersion) {
         val remVersion = remoteVersion
         if (localVersion != null && remVersion != null) {
-            isUpdateAvailable(localVersion, remVersion)
+            PluginUpdateHelper.isUpdateAvailable(localVersion, remVersion)
         } else {
             false
         }
@@ -86,22 +84,10 @@ fun LoadOcrPluginPreference(
         if (!hasInternet) return@LaunchedEffect
         isCheckingUpdate = true
         scope.launch(Dispatchers.IO) {
-            try {
-                val url = URL("https://api.github.com/repos/LeanBitLab/LeanType-OCR-Plugin/releases/latest")
-                val conn = url.openConnection() as HttpURLConnection
-                conn.setRequestProperty("User-Agent", "HeliboardL")
-                conn.connect()
-                if (conn.responseCode == 200) {
-                    val response = conn.inputStream.bufferedReader().use { it.readText() }
-                    val match = tagNameRegex.find(response)
-                    if (match != null) {
-                        remoteVersion = match.groupValues[1]
-                    }
-                }
-            } catch (_: Exception) {
-            } finally {
-                isCheckingUpdate = false
+            PluginUpdateHelper.fetchLatestReleaseTag("LeanBitLab/LeanType-OCR-Plugin")?.let {
+                remoteVersion = it
             }
+            isCheckingUpdate = false
         }
     }
 
@@ -302,23 +288,3 @@ fun LoadOcrPluginPreference(
         }
     }
 }
-
-private fun isUpdateAvailable(local: String, remote: String): Boolean {
-    val cleanLocal = local.removePrefix("v").trim()
-    val cleanRemote = remote.removePrefix("v").trim()
-    if (cleanLocal == cleanRemote) return false
-
-    val localParts = cleanLocal.split(".").mapNotNull { it.toIntOrNull() }
-    val remoteParts = cleanRemote.split(".").mapNotNull { it.toIntOrNull() }
-
-    val maxLength = maxOf(localParts.size, remoteParts.size)
-    for (i in 0 until maxLength) {
-        val localPart = localParts.getOrElse(i) { 0 }
-        val remotePart = remoteParts.getOrElse(i) { 0 }
-        if (remotePart > localPart) return true
-        if (localPart > remotePart) return false
-    }
-    return false
-}
-
-private val tagNameRegex = "\"tag_name\"\\s*:\\s*\"([^\"]+)\"".toRegex()
