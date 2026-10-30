@@ -100,42 +100,42 @@ android {
             signingConfig = signingConfigs.getByName("debug")
             applicationIdSuffix = ".debug"
         }
-        // base.archivesBaseName = "HeliboardL_" + defaultConfig.versionName // replaced by dynamic naming below
-        applicationVariants.all {
-            val flavor = productFlavors.firstOrNull()?.name ?: ""
-            val number = when(flavor) {
-                "standard" -> "1"
-                "offline" -> "2"
-                else -> ""
-            }
-            if (number.isNotEmpty()) {
-                outputs.all {
-                    val output = this as? com.android.build.gradle.api.ApkVariantOutput
-                    output?.outputFileName = "$number-LeanType_${defaultConfig.versionName}-${flavor}-${buildType.name}.apk"
-                }
-            }
+    }
 
+    applicationVariants.all {
+        val flavor = productFlavors.firstOrNull()?.name ?: ""
+        val number = when(flavor) {
+            "standard" -> "1"
+            "offline" -> "2"
+            else -> ""
         }
-        // got a little too big for GitHub after some dependency upgrades, so we remove the largest dictionary
-        androidComponents.onVariants { variant: ApplicationVariant ->
-            val patterns = mutableListOf<String>()
-            if (variant.buildType == "debug") {
-                patterns.add("main_ro.dict")
-                variant.proguardFiles = emptyList()
-                //noinspection ProguardAndroidTxtUsage we intentionally use the "normal" file here
-                variant.proguardFiles.add(project.layout.buildDirectory.file(getDefaultProguardFile("proguard-android.txt").absolutePath))
-                variant.proguardFiles.add(project.layout.buildDirectory.file(project.buildFile.parent + "/proguard-rules.pro"))
+        if (number.isNotEmpty()) {
+            outputs.all {
+                val output = this as? com.android.build.gradle.api.ApkVariantOutput
+                output?.outputFileName = "$number-LeanType_${defaultConfig.versionName}-${flavor}-${buildType.name}.apk"
             }
-            // Exclude all dictionary assets across all flavors (all downloaded on-demand)
-            val dictsDir = project.file("src/main/assets/dicts")
-            if (dictsDir.exists() && dictsDir.isDirectory) {
-                dictsDir.listFiles()?.filter { it.name.endsWith(".dict") }?.sortedBy { it.name }?.forEach { file ->
-                    patterns.add(file.name)
-                }
+        }
+    }
+
+    // got a little too big for GitHub after some dependency upgrades, so we remove the largest dictionary
+    androidComponents.onVariants { variant: ApplicationVariant ->
+        val patterns = mutableListOf<String>()
+        if (variant.buildType == "debug") {
+            patterns.add("main_ro.dict")
+            variant.proguardFiles = emptyList()
+            //noinspection ProguardAndroidTxtUsage we intentionally use the "normal" file here
+            variant.proguardFiles.add(project.layout.buildDirectory.file(getDefaultProguardFile("proguard-android.txt").absolutePath))
+            variant.proguardFiles.add(project.layout.buildDirectory.file(project.buildFile.parent + "/proguard-rules.pro"))
+        }
+        // Exclude all dictionary assets across all flavors (all downloaded on-demand)
+        val dictsDir = project.file("src/main/assets/dicts")
+        if (dictsDir.exists() && dictsDir.isDirectory) {
+            dictsDir.listFiles()?.filter { it.name.endsWith(".dict") }?.sortedBy { it.name }?.forEach { file ->
+                patterns.add(file.name)
             }
-            if (patterns.isNotEmpty()) {
-                variant.androidResources.ignoreAssetsPatterns = patterns
-            }
+        }
+        if (patterns.isNotEmpty()) {
+            variant.androidResources.ignoreAssetsPatterns = patterns
         }
     }
 
