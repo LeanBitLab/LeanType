@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Verificare nume în agendă"</string>
     <string name="vibrate_on_keypress">"Vibrare la apăsarea tastei"</string>
     <string name="sound_on_keypress">"Sunet la apăsarea tastei"</string>
     <string name="popup_on_keypress">"Pop-up la apăsarea tastei"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Tastă comutare limbi"</string>
     <string name="abbreviation_unit_milliseconds">%s ms</string>
     <string name="settings_system_default">"Valoare prestabilită"</string>
-    <string name="use_contacts_dict_summary">Utilizează numele din Agendă pentru sugestii și corecții</string>
     <string name="use_personalized_dicts">"Sugestii personalizate"</string>
     <string name="use_double_space_period">"Inserează punct spațiu"</string>
     <string name="use_double_space_period_summary">"Dubla atingere a barei de spațiu inserează punct urmat de spațiu"</string>
@@ -423,8 +421,6 @@
     <string name="toolbar_mode_suggestion_strip">Doar sugestii</string>
     <string name="toolbar_mode_hidden">Ascuns</string>
     <string name="toolbar_hiding_global">Ascunde și barele de instrumente pentru clipboard și emoji-uri</string>
-    <string name="about_wiki_link">Mergi la Wiki</string>
-    <string name="about_wiki_link_description">Wiki-ul poate fi îmbunătățit de orice utilizator GitHub!</string>
     <string name="landscape">Peisaj</string>
     <string name="label_zwnj_key" tools:keep="@string/label_zwnj_key">Separare fără spațiu</string>
 <string name="ime_name">LeanType</string>

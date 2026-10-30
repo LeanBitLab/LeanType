@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Побарај имиња на контакти"</string>
     <string name="vibrate_on_keypress">"Вибрирање при притисок на копче"</string>
     <string name="sound_on_keypress">"Звук на притискање копче"</string>
     <string name="popup_on_keypress">"Појавен прозорец на притискање копче"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Копче за промена на јазик"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Стандардно за системот"</string>
-    <string name="use_contacts_dict_summary">"Употреби имиња од Контакти за предлози и корекции"</string>
     <string name="use_personalized_dicts">"Персонализирани предлози"</string>
     <string name="use_double_space_period">"Точка со два простора"</string>
     <string name="use_double_space_period_summary">"Со двоен допир на празно место се вметнува точка и празно место"</string>

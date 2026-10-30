@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:ns0="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Kişi adlarını denetle"</string>
     <string name="vibrate_on_keypress">"Tuşa basıldığında titret"</string>
     <string name="sound_on_keypress">"Tuşa basıldığında ses çıkar"</string>
     <string name="popup_on_keypress">Tuşa basıldığında açılır pencere aç</string>
@@ -14,7 +13,6 @@
     <string name="show_language_switch_key">"Dil değiştirme tuşu"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Sistem varsayılanı"</string>
-    <string name="use_contacts_dict_summary">"Öneri ve düzeltmeler için Kişiler\'deki adları kullan"</string>
     <string name="use_personalized_dicts">"Kişisel öneriler"</string>
     <string name="use_double_space_period">"Çift boşlukla nokta ekle"</string>
     <string name="use_double_space_period_summary">"Boşluk çubuğuna iki kez dokunmak nokta ve ardından bir boşluk ekler"</string>
@@ -409,8 +407,6 @@
     <string name="get_colors_message">%s içinde renkleri bulabilir ve paylaşabilirsiniz.</string>
     <string name="get_layouts_message">%s içinde düzenleri bulabilir ve paylaşabilirsiniz.</string>
     <string name="discussion_section_link">tartışma bölümü</string>
-    <string name="about_wiki_link">Wiki\'ye git</string>
-    <string name="about_wiki_link_description">Wiki, herhangi bir GitHub kullanıcısı tarafından geliştirilebilir!</string>
     <string name="label_stop_onehanded_mode_key" ns0:keep="@string/label_stop_onehanded_mode_key">Tek elle modunu sonlandır</string>
     <string name="label_resize_onehanded_key" ns0:keep="@string/label_resize_onehanded_key">Tek elle kullanım modunu yeniden boyutlandır</string>
     <string name="label_shortcut_key_disabled" ns0:keep="@string/label_shortcut_key_disabled">Ses girişi devre dışı</string>
@@ -1491,13 +1487,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="sound_pack_available_title">Kullanılabilir ses paketleri</string>
     <string name="sound_pack_imported_success">Ses paketi başarıyla içe aktarıldı</string>
     <string name="sound_pack_import_failed">Ses paketi içe aktarılamadı (geçerli ses dosyaları veya pack.json içermelidir)</string>
-    <string name="sound_pack_delete_title">Ses paketini sil</string>
-    <string name="sound_pack_delete_message">\'%s\' ses paketi silinsin mi?</string>
-    <string name="sound_pack_status_active">Etkin</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">Ses paketleri</string>
-    <string name="sound_pack_download_dialog_desc">Topluluk tuş ses paketlerini indirin veya kendi .zip paketlerinizi içe aktarın.</string>
-    <string name="sound_pack_delete_button">Sil</string>
 <string name="sound_pack_downloaded_activated">%s indirildi ve etkinleştirildi</string>
     <string name="sound_pack_download_failed">%s indirilemedi</string>
     <string name="sound_pack_deleted_format">%s silindi</string>

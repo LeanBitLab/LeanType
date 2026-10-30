@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"연락처 이름 조회"</string>
     <string name="vibrate_on_keypress">"키를 누를 때 진동 발생"</string>
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"언어 전환 키"</string>
     <string name="abbreviation_unit_milliseconds">"%sms"</string>
     <string name="settings_system_default">"시스템 기본값"</string>
-    <string name="use_contacts_dict_summary">"추천 및 수정에 주소록의 이름 사용"</string>
     <string name="use_personalized_dicts">"맞춤 추천 검색어"</string>
     <string name="use_double_space_period">"더블스페이스 마침표"</string>
     <string name="use_double_space_period_summary">"스페이스바를 두 번 탭하여 마침표와 공백 한 개 삽입"</string>

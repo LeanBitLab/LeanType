@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"ಸಂಪರ್ಕ ಹೆಸರುಗಳನ್ನು ಹುಡುಕಿ"</string>
     <string name="vibrate_on_keypress">"ಕೀಪ್ರೆಸ್‌ನ ವೈಬ್ರೇಟ್"</string>
     <string name="sound_on_keypress">"ಕೀಪ್ರೆಸ್ ಶಬ್ದ"</string>
     <string name="popup_on_keypress">"ಕೀಪ್ರೆಸ್‌ನಲ್ಲಿ ಪಾಪ್ಅಪ್"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"ಭಾಷೆ ಬದಲಾವಣೆ ಕೀ"</string>
     <string name="abbreviation_unit_milliseconds">"%sಮಿ.ಸೆ."</string>
     <string name="settings_system_default">"ಸಿಸ್ಟಂ ಡಿಫಾಲ್ಟ್"</string>
-    <string name="use_contacts_dict_summary">"ಸಲಹೆಗಳು ಮತ್ತು ತಿದ್ದುಪಡಿಗಳಿಗಾಗಿ ಸಂಪರ್ಕಗಳಲ್ಲಿನ ಹೆಸರುಗಳನ್ನು ಬಳಸಿ"</string>
     <string name="use_personalized_dicts">"ವೈಯುಕ್ತೀಕರಿಸಿದ ಸಲಹೆಗಳು"</string>
     <string name="use_double_space_period">"ಡಬಲ್-ಸ್ಪೇಸ್ ವಿರಾಮ"</string>
     <string name="use_double_space_period_summary">"ಸ್ಪೇಸ್‌ಬಾರ್ ಮೇಲೆ ಡಬಲ್ ಟ್ಯಾಪ್ ಮಾಡುವುದರಿಂದ ಸ್ಪೇಸ್ ನಂತರ ವಿರಾಮವನ್ನು ಸೇರಿಸುತ್ತದೆ"</string>

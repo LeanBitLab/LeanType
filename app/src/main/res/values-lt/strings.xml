@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Kontaktų vardų paieška"</string>
     <string name="vibrate_on_keypress">"Vibruoti, kai paspaudžiami klavišai"</string>
     <string name="sound_on_keypress">"Klavišo paspaudimo garsas"</string>
     <string name="popup_on_keypress">"Iššoka paspaudus klavišą"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Kalbos keitimo klavišas"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">Sistemos numatyta</string>
-    <string name="use_contacts_dict_summary">"Siūlant ir taisant naudoti vardus iš „Kontaktų“"</string>
     <string name="use_personalized_dicts">"Suasmeninti pasiūlymai"</string>
     <string name="use_double_space_period">"Tšk. ir tarp. pal. dukart"</string>
     <string name="use_double_space_period_summary">"Dukart palietus tarpo klavišą įterpiamas taškas ir tarpas."</string>
@@ -386,8 +384,6 @@
     <string name="settings_screen_about">Apie</string>
     <string name="version">Versija</string>
     <string name="about_github_link">Peržiūrėti GitHub</string>
-    <string name="about_wiki_link">Eiti į Wiki</string>
-    <string name="about_wiki_link_description">Wiki gali pagerinti betkuris Github naudotojas!</string>
     <string name="save_log">Išsaugoti žurnalą</string>
     <string name="license">Atviro kodo licencija</string>
     <string name="gnu_gpl">GNU General Public License v3.0</string>

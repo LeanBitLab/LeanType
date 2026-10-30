@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">Otsi nimesid kontaktidest</string>
     <string name="vibrate_on_keypress">"Vibreeri klahvivajutusel"</string>
     <string name="sound_on_keypress">"Heli klahvivajutusel"</string>
     <string name="popup_on_keypress">"Klahvivajutusel kuva hüpik"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Keelevahetuse nupp"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">Süsteemi väärtus</string>
-    <string name="use_contacts_dict_summary">"Kasuta soovitusteks ja parandusteks nimesid kontaktiloendist"</string>
     <string name="use_personalized_dicts">"Isikupärast. soovitused"</string>
     <string name="use_double_space_period">"Punkt tühikuklahviga"</string>
     <string name="use_double_space_period_summary">"Tühikuklahvi kaks korda puudutades sisestatakse punkt ja tühik"</string>
@@ -464,8 +462,6 @@
     <string name="space_swipe_hide_keyboard_entry">Peida klahvistik</string>
     <string name="suggest_punctuation">Kirjavahemärkide soovitused</string>
     <string name="suggest_punctuation_summary">Kui muid soovitusi ei leidu, siis näita kirjavahemärkide soovitusi</string>
-    <string name="about_wiki_link_description">Iga GitHubi kasutaja võib viki importida!</string>
-    <string name="about_wiki_link">Ava viki leht</string>
     <string name="clipboard_history_pinned_first">Näita esiletõstetud objekte ülal</string>
     <string name="save_subtype_per_app">Jäta kasutatud keel meelde rakendusekohaselt</string>
     <string name="subtype_khipro_bn">%s (khipro)</string>

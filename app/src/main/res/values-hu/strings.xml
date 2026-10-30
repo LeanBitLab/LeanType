@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Névjegyek keresése"</string>
     <string name="vibrate_on_keypress">Rezgés billentyűleütésre</string>
     <string name="sound_on_keypress">Hangjelzés billentyűleütésre</string>
     <string name="popup_on_keypress">Felugró ablak billentyűleütésre</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">Nyelvkapcsoló-billentyű</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">Rendszer alapértelmezett</string>
-    <string name="use_contacts_dict_summary">Névjegyek használata javaslatokhoz és javításokhoz</string>
     <string name="use_personalized_dicts">"Testreszabott javaslatok"</string>
     <string name="use_double_space_period">Dupla szóköz ponttá válik</string>
     <string name="use_double_space_period_summary">A szóköz kétszeri megérintése beszúr egy pontot és egy szóközt</string>
@@ -392,8 +390,6 @@
     <string name="all_colors_warning">Ez a beállítás felfedi az összes belsőleg használt színt. A színek listája bármikor megváltozhat. Az alapértelmezett beállítás a normál színekből származik, és a színek nevei nem lesznek lefordítva.</string>
     <string name="get_colors_message">A színeket a következő helyen találja és oszthatja meg: %s.</string>
     <string name="get_layouts_message">Az elrendezéseket a következő helyen találja és oszthatja meg: %s.</string>
-    <string name="about_wiki_link">Ugrás a Wikire</string>
-    <string name="about_wiki_link_description">A Wikit bármely GitHub-felhasználó javíthatja!</string>
     <string name="settings_screen_toolbar">Eszköztár</string>
     <string name="label_enter_key" tools:keep="@string/label_enter_key">Enter</string>
     <string name="label_delete_key" tools:keep="@string/label_delete_key">Törlés</string>
@@ -441,52 +437,6 @@
     <string name="number_row_in_symbols">Számsor megjelenítése a szimbólumnézetben</string>
     <string name="custom_emoji_font">Egyéni emodzsi-betűtípus beállítása fájlból</string>
     <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">Funkcióbillentyűk (Khipro)</string>
-    <string name="emoji_search_title">Emodzsi keresése</string>
-    <string name="search_field_placeholder">Keresés</string>
-    <string name="gesture_data_screen">Kézmozdulat-adatok gyűjtése</string>
-    <string name="gesture_data_description">Üdvözöljük az ujjmozdulat-adatgyűjtési képernyőn!&lt;br/&gt;&lt;br/&gt; Ez egy &lt;a href=https://nlnet.nl/project/GestureTyping&gt;NLnet által finanszírozott projekt&lt;/a&gt; része, amelynek célja egy teljesen nyílt forráskódú ujjmozdulat-gépelési könyvtár létrehozása, amely képes kiváltani a Google zárt forráskódú megoldását.&lt;br/&gt; Az eredmény a tervek szerint az AOSP-alapú billentyűzetek egyszerű helyettesítője lesz, de más billentyűzetekkel (pl. FlorisBoard) is használható lesz.&lt;br/&gt;&lt;br/&gt; A könyvtár fejlesztéséhez rendkívül hasznos, ha különböző nyelvű és különböző felhasználóktól származó részletes ujjmozdulat-adatok állnak rendelkezésre.&lt;br/&gt; Az adatok gyűjtésével és beküldésével Ön is hozzájárulhat egy nyílt adatkészlethez, amelyet a könyvtár fejlesztéséhez használunk fel. Az adatkészletet a gyűjtési fázis %s időpontban történő lezárása után CC BY-SA 4.0 licenc alatt tesszük közzé. A gyűjtött adatokat a képernyő alján található megosztás ikonnal küldheti be.</string>
-    <string name="gesture_data_info">Mi ez?</string>
-    <string name="gesture_data_description_modes">Jelenleg csak az aktív gyűjtési mód érhető el, ahol egy adott szót kell beírnia ujjmozdulat-gépeléssel.\n Később egy passzív gyűjtési mód is hozzáadásra kerül, ahol más alkalmazásokban végzett normál gépeléséből származó mintákat adhat meg. Ennek a módszernek az érzékenysége miatt ez választható és konfigurálható lesz, valamint egy ellenőrző képernyő is tartozik majd hozzá a beküldendő adatokhoz.</string>
-    <string name="gesture_data_description_privacy">Adatvédelem\n\n Az Ön által beküldött adatok a következőkből állnak: célszó, billentyűzetkiosztás és méretek, ujjmozdulat (időpontok és koordináták), a jelenlegi könyvtár javaslatai, a használt szótárak kivonata, alkalmazásverzió, adatgyűjtési mód, az ujjmozdulat-gépelési könyvtár típusa (alapértelmezett Google-e), valamint minden mozdulathoz egy azonosító.\n A beküldött adatokat a lehető leghamarabb letöltjük és töröljük a ProtonMail fiókból, ahol tároljuk őket. Az adatgyűjtési szakasz lezárulta után az összesített adatkészletet Creative Commons BY-SA 4.0 licenc alatt tesszük közzé.\n\n Az Ön magánéletének védelme érdekében nem szerepel majd név szerint szerzőként. Közreműködését „The LeanType Gesture Data Project Contributors” néven tüntetjük fel. Az ezen a képernyőn előállított adatok alapján nem lehet majd beazonosítani az Ön személyazonosságát. Azonban előfordulhat, hogy megállapítható, mely mozdulatok származnak ugyanattól a személytől (például egyedi billentyűzetkiosztás, méretek, nyelv vagy egyéni gépelési stílus alapján).</string>
-    <string name="gesture_data_privacy">Adatvédelem</string>
-    <string name="gesture_data_get_data">Újjmozdulat-adatfájl megosztása</string>
-    <string name="gesture_data_delete_data">Újjmozdulat-adatok törlése</string>
-    <string name="gesture_data_send_mail">Küldés e-mailben</string>
-    <string name="gesture_data_copy_mail">E-mail-cím másolása</string>
-    <string name="gesture_data_mail_use">Vegye figyelembe, hogy az e-mail-cím adatbeküldésre szolgál, ezért nem garantált a gyors vagy rendszeres válaszadás.</string>
-    <string name="gesture_data_please_type">Gépelje be ujjmozdulattal:</string>
-    <string name="gesture_data_next_save">Észlelt szó: %s. koppintson, ha biztos benne, hogy helyesen gépelt</string>
-    <string name="gesture_data_next">Szó kihagyása</string>
-    <string name="gesture_data_active_count">%1$s szó ebben a munkamenetben, %2$s szó összesen (%3$s már beküldve vagy törölve)</string>
-    <string name="gesture_data_review_screen_title">Ellenőrzés és ujjmozdulatok megosztása</string>
-    <string name="gesture_data_words_selected">%s szó</string>
-    <string name="gesture_data_date_range">Időszak</string>
-    <string name="gesture_data_much_data">Sok beküldetlen adata van. Küldje be, majd távolítsa el a régi adatokat.</string>
-    <string name="gesture_data_how_to_use">Használati útmutató</string>
-    <string name="gesture_data_active_description">Koppintson az „Aktív adatgyűjtés indítása” gombra, szükség esetén váltson szótárat, majd kezdje el beírni a megjelenített szót ujjmozdulattal.&lt;br/&gt; Ha a mozdulat egyezik a szóval, az adat el lesz mentve és megjelenik a következő szó. Ellenkező esetben újra próbálkozhat, kihagyhatja a szót, vagy megerősítheti a helyességet.&lt;br/&gt; Csak az alkalmazásba épített vagy a &lt;a href=%s&gt;szótár-tárhelyen&lt;/a&gt; elérhető szótárakat használhatja, más szavak nem kerülnek felhasználásra.</string>
-    <string name="gesture_data_active_start">Aktív adatgyűjtés indítása</string>
-    <string name="gesture_data_active_stop">Aktív adatgyűjtés leállítása</string>
-    <string name="gesture_data_ends_at">Az adatgyűjtési fázis %s időpontban véget ér. Addig lehet beküldenie a gyűjtött adatait.</string>
-    <string name="gesture_data_ended">Az adatgyűjtési fázis %s időpontban lezárult. Megoszthatja a meglévő adatait, de újakat már nem adhat hozzá.</string>
-    <string name="gesture_data_share_all">Mind a(z) %s szó megosztása</string>
-    <string name="gesture_data_share_new">%s korábban be nem küldött szó megosztása</string>
-    <string name="gesture_data_delete_dialog">Önnek %1$s új és %2$s már megosztott szóhoz van adata.</string>
-    <string name="gesture_data_delete_dialog_all">Mind a(z) %s szó törlése</string>
-    <string name="gesture_data_delete_dialog_confirm">Biztos benne? Ez a művelet %s szót fog törölni. Ellenőrizze, hogy a megosztott adatok valóban be lettek-e küldve!</string>
-    <string name="gesture_data_delete_dialog_submitted">%s beküldött szó törlése</string>
-    <string name="gesture_data_many_not_shared_words">Több mint %s szó vár beküldésre</string>
-    <string name="gesture_data_email_body">FONTOS:\n\n Üdvözöljük!\n Emlékeztetőül: ezeket az adatokat nyilvánosan közzétesszük CC BY-SA 4.0 licenc alatt, és az Ön magánéletének védelme érdekében nem tüntetjük fel szerzőként.\n\n Köszönjük, hogy megosztotta velünk az adatainak jogait. Jó célra fogjuk használni!\n\n Vegye figyelembe, hogy ezen értesítés szövegének módosítása nem változtatja meg az adatok felhasználási módját. Ez nem egy módosítható szerződés, csak egy baráti emlékeztető!\n Ha üzenetet is szeretne küldeni az adatok mellé, írja azt az alábbi vonal alá.\n ---------------------------------------------</string>
-    <string name="timestamp_description">Az időbélyeg kulcsot egy egyéni elrendezéssel adhatja hozzá a „timestamp” kulccsal vagy a -10043 kulcs kóddal</string>
-    <string name="gesture_data_promotion_message">Üdvözöljük!\n Mivel telepítette az ujjmozdulatokall történő íráshoz szükséges könyvtárat, talán érdekelheti a LeanType projektje, amelynek célja egy teljesen nyílt ujjmozdulat-gépelési könyvtár létrehozása. Ön is segítheti a munkánkat saját ujjmozdulataival. További információkért látogasson el az ujjmozdulatok gyűjtésének képernyőjére.</string>
-    <string name="gesture_data_reminder_message">Üdvözöljük!\n Korábban használta az ujjmozdulatok gyűjtését, de már jó ideje nem adott hozzá adatokat. Szeretne ismét közreműködni?</string>
-    <string name="ask_later">Később döntöm el</string>
-    <string name="gesture_data_take_me_there">Ugrás az ujjmozdulatok gyüjtésére</string>
-    <string name="prefs_bottom_row_scale">Alsó sor magassága</string>
-    <string name="gesture_data_links">Információk az ujjmozdulat-adatok gyűjtéséről:</string>
-    <string name="toolbar_swipe_down_to_hide">Billentyűzet elrejtése ujjmozdulattal</string>
-    <string name="toolbar_swipe_down_to_hide_summary">Csúsztassa lefelé az ujját az eszköztáron a billentyűzet bezárásához</string>
-    <string name="gesture_data_please_switch_keyboard">Váltson a következőre: %s</string>
-    <string name="gesture_data_share_limit">A méretkorlátok túllépésének elkerülése érdekében csak az első %s szó lesz exportálva</string>
 <string name="ime_name">LeanType</string>
     <string name="settings_screen_suggestions">Javaslatok</string>
     <string name="settings_category_prediction">Előrejelzés &amp; tanulás</string>

@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"పరిచయ పేర్లను వెతకండి"</string>
     <string name="vibrate_on_keypress">"కీని నొక్కినప్పుడు వైబ్రేట్"</string>
     <string name="sound_on_keypress">"కీని నొక్కినప్పుడు ధ్వని"</string>
     <string name="popup_on_keypress">"కీని నొక్కినప్పుడు పాప్‌అప్ చూపు"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"భాష మార్పు కీ"</string>
     <string name="abbreviation_unit_milliseconds">"%sమిసె"</string>
     <string name="settings_system_default">"సిస్టమ్ డిఫాల్ట్"</string>
-    <string name="use_contacts_dict_summary">"సూచనలు మరియు సవరణల కోసం పరిచయాల నుండి పేర్లను ఉపయోగించు"</string>
     <string name="use_personalized_dicts">"వ్యక్తిగతీకరించబడిన సూచనలు"</string>
     <string name="use_double_space_period">"రెండు-అంతరాల చుక్క గుర్తు"</string>
     <string name="use_double_space_period_summary">"స్పేస్ బార్‌పై రెండుసార్లు నొక్కడం వలన చుక్క, దాని ప్రక్కన అంతరం చొప్పించబడుతుంది"</string>

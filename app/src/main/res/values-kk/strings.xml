@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Контакт аттарын іздеу"</string>
     <string name="vibrate_on_keypress">"Пернені басқан кездегі діріл"</string>
     <string name="sound_on_keypress">"Пернені басу кезіндегі дыбыс"</string>
     <string name="popup_on_keypress">"Басылған пернені үлкейтіп көрсету"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Тілді ауыстыру пернесі"</string>
     <string name="abbreviation_unit_milliseconds">"%sмс"</string>
     <string name="settings_system_default">"Жүйенің әдепкі мәні"</string>
-    <string name="use_contacts_dict_summary">"Ұсыныстар мен түзетулер үшін контакт аттарын пайдалану"</string>
     <string name="use_personalized_dicts">"Жекелендірілген ұсыныстар"</string>
     <string name="use_double_space_period">"Нүкте мен бос орын қою"</string>
     <string name="use_double_space_period_summary">"Бос орын пернесін екі рет түртсе, нүкте мен бос орын қойылады"</string>

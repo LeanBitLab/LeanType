@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">Поиск в именах контактов</string>
     <string name="vibrate_on_keypress">Вибрировать при нажатии клавиш</string>
     <string name="sound_on_keypress">Звук при нажатии клавиш</string>
     <string name="popup_on_keypress">Визуальное увеличение клавиши при нажатии</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">Клавиша смены языка</string>
     <string name="abbreviation_unit_milliseconds">%s мс</string>
     <string name="settings_system_default">Системные настройки по умолчанию</string>
-    <string name="use_contacts_dict_summary">Использовать имена из \'Контактов\' для подсказок и исправлений</string>
     <string name="use_personalized_dicts">Персональные подсказки</string>
     <string name="use_double_space_period">Двойной пробел после точки</string>
     <string name="use_double_space_period_summary">Двойное нажатие на клавишу пробела вставляет точку и пробел</string>
@@ -427,8 +425,6 @@
     <string name="suggest_punctuation">Подсказки знаков препинания</string>
     <string name="suggest_punctuation_summary">Показывать знаки препинания, если нет других подсказок</string>
     <string name="space_swipe_hide_keyboard_entry">Скрыть клавиатуру</string>
-    <string name="about_wiki_link">Перейти на Wiki</string>
-    <string name="about_wiki_link_description">Любой пользователь GitHub может улучшить Wiki!</string>
     <string name="save_subtype_per_app">Запоминать язык для каждого приложения</string>
     <string name="subtype_khipro_bn">%s (Кипро)</string>
     <string name="clipboard_history_pinned_first">Показывать закреплённые элементы вверху</string>
@@ -441,52 +437,6 @@
     <string name="number_row_in_symbols">Показывать ряд с цифрами в режиме символов</string>
     <string name="custom_emoji_font">Установить пользовательский шрифт для эмодзи из файла</string>
     <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">Функциональные клавиши (Khipro)</string>
-    <string name="emoji_search_title">Поиск эмодзи</string>
-    <string name="search_field_placeholder">Поиск</string>
-    <string name="gesture_data_screen">Сбор данных о жестах</string>
-    <string name="gesture_data_description">Добро пожаловать на экран сбора данных о жестах!&lt;br/&gt;&lt;br/&gt; Это часть проекта, финансируемого NLnet &lt;a href=https://nlnet.nl/project/GestureTyping&gt;(NLnet-funded project)&lt;/a&gt;, направленного на создание полностью открытой библиотеки распознавания жестов, способной заменить закрытую библиотеку Google.&lt;br/&gt; Планируется, что результат станет простой заменой клавиатурам на базе AOSP, но также будет совместим и с другими клавиатурами, например, FlorisBoard.&lt;br/&gt;&lt;br/&gt; Для разработки библиотеки чрезвычайно полезно иметь подробные данные о жестах на разных языках и от разных пользователей.&lt;br/&gt; Собирая и отправляя данные о вводе текста с помощью жестов, вы можете внести вклад в создание открытого набора данных, который будет использоваться для разработки библиотеки. Набор данных будет опубликован под лицензией CC BY-SA 4.0 вскоре после завершения этапа сбора данных на %s. После сбора данных вы можете отправить их, воспользовавшись значком \'Поделиться\' в нижней части экрана.</string>
-    <string name="gesture_data_info">Что это?</string>
-    <string name="gesture_data_description_modes">В настоящее время реализован только режим \'активного ввода\', при котором вам предлагается конкретное слово для набора с помощью жестов.\nПозже будет добавлен режим \'пассивного обучения\', позволяющий использовать примеры вашего обычного набора текста жестами в других приложениях. Ввиду деликатности данного подхода, он будет доступен по желанию, настраиваемым и предусматривать предварительный просмотр отправляемых данных.</string>
-    <string name="gesture_data_description_privacy">Конфиденциальность\n\nДанные, которые вы отправляете, включают целевое слово, раскладку клавиатуры и её размеры, жест (время и координаты), подсказки от используемой библиотеки, хеш использованных словарей, версию приложения, режим сбора данных, информацию о том, является ли библиотека распознавания жестов стандартной библиотекой Google, а также идентификатор для каждого жеста.\nОтправленные данные будут загружены и удалены из почтового ящика ProtonMail, где они хранятся, в кратчайшие сроки. После завершения этапа сбора данных о жестах, накопленный набор данных от всех пользователей будет опубликован под лицензией Creative Commons BY-SA 4.0.\n\nВ целях защиты вашей конфиденциальности, вы не будете указаны в качестве автора. Ваш вклад будет указан как \"Участники проекта данных жестов LeanType\". Связать данные, сгенерированные вами на этом экране, с вашей личностью будет невозможно. Впрочем, существует вероятность установить, какие жесты принадлежали одному и тому же человеку. Это можно сделать, например, с помощью пользовательской раскладки клавиатуры, размеров клавиатуры, языка или индивидуального стиля жестов.</string>
-    <string name="gesture_data_privacy">Конфиденциальность</string>
-    <string name="gesture_data_get_data">Поделиться файлом данных жестов</string>
-    <string name="gesture_data_delete_data">Удалить данные о жестах</string>
-    <string name="gesture_data_send_mail">Отправить данные по электронной почте</string>
-    <string name="gesture_data_copy_mail">Копировать адрес электронной почты</string>
-    <string name="gesture_data_mail_use">Обратите внимание, что адрес электронной почты предназначен для отправки данных, поэтому вы можете не получать быстрых или регулярных ответов.</string>
-    <string name="gesture_data_please_type">Используйте ввод жестами:</string>
-    <string name="gesture_data_next_save">Получено %s. Нажмите, если уверены, что правильно выполнили жест</string>
-    <string name="gesture_data_next">Пропустить слово</string>
-    <string name="gesture_data_active_count">%1$s слов в этой сессии, %2$s слов всего (%3$s уже отправлено или удалено)</string>
-    <string name="gesture_data_review_screen_title">Просмотреть и передать данные жестов</string>
-    <string name="gesture_data_words_selected">Слов: %s</string>
-    <string name="gesture_data_date_range">Диапазон дат</string>
-    <string name="gesture_data_much_data">У вас накопилось много неподтверждённых данных. Пожалуйста, отправьте и затем удалите старые данные.</string>
-    <string name="gesture_data_how_to_use">Как использовать</string>
-    <string name="gesture_data_active_description">Нажмите \"Начать активный сбор\", при необходимости смените словарь и начните ввод жестами выведенного слова.&lt;br/&gt; Если ваш жест совпадает со словом, данные будут сохранены, затем будет показано следующее слово. В противном случае вы можете повторить попытку, пропустить слово или подтвердить правильность жеста.&lt;br/&gt; Вы можете использовать только встроенные в приложение словари, или доступные в &lt;a href=%s&gt;репозитории словарей&lt;/a&gt; - другие слова использоваться не будут.</string>
-    <string name="gesture_data_active_start">Начать активный сбор</string>
-    <string name="gesture_data_active_stop">Прервать активный сбор</string>
-    <string name="gesture_data_ends_at">Фаза сбора данных о жестах завершится: %s. Предоставьте ваши данные до указанной даты.</string>
-    <string name="gesture_data_ended">Фаза сбора данных о жестах завершена: %s. Вы можете поделиться имеющимися данными, но не можете добавить ничего нового.</string>
-    <string name="gesture_data_share_all">Поделиться всеми словами из %s</string>
-    <string name="gesture_data_share_new">Поделиться словами, которые ранее не были отправлены (%s)</string>
-    <string name="gesture_data_delete_dialog">У вас есть данные - %1$s новых и %2$s слов, которыми уже поделились.</string>
-    <string name="gesture_data_delete_dialog_all">Удалить все слова %s</string>
-    <string name="gesture_data_delete_dialog_confirm">Вы уверены? Вы удалите слова %s. Убедитесь, что ваши данные отправлены!</string>
-    <string name="gesture_data_delete_dialog_submitted">Удалить предложенные слова %s</string>
-    <string name="gesture_data_many_not_shared_words">У вас ожидают отправки более %s слов</string>
-    <string name="gesture_data_email_body">ВАЖНО:\n\nЗдравствуйте!\nНапоминаем, эти данные будут публично доступны по лицензии CC BY-SA 4.0 и вы не будете указаны в качестве автора, для защиты вашей конфиденциальности.\n\nСпасибо, что поделились с нами правами на эти данные. Мы обязательно используем это с пользой!\n\nОбратите внимание, что изменение формулировки этого уведомления не меняет того, что мы будем делать с вашими данными. Это не договор, который можно изменить, это просто дружеское напоминание!\nЕсли вы хотите отправить нам сообщение вместе со своими данными, напишите его ниже, под этой строкой.\n ---------------------------------------------</string>
-    <string name="timestamp_description">Вы можете добавить ключ временной метки, используя пользовательскую раскладку с ключом \'timestamp\' или кодом клавиши -10043</string>
-    <string name="gesture_data_promotion_message">Здравствуйте!\nПоскольку вы установили библиотеку распознавания жестов, вам может быть интересен проект LeanType по созданию полностью открытой библиотеки распознавания жестов. Вы можете помочь, предоставив данные о жестах. Для получения дополнительной информации посетите экран сбора данных о жестах.</string>
-    <string name="gesture_data_reminder_message">Здравствуйте!\nРанее вы использовали сбор данных о жестах, но уже довольно давно не добавляли новые данные. Хотите попробовать еще раз?</string>
-    <string name="ask_later">Спросить позже</string>
-    <string name="gesture_data_take_me_there">Перейти</string>
-    <string name="prefs_bottom_row_scale">Масштаб нижнего ряда</string>
-    <string name="gesture_data_links">Информация о сборе данных о жестах:</string>
-    <string name="toolbar_swipe_down_to_hide_summary">Чтобы закрыть клавиатуру, проведите пальцем вниз по панели инструментов</string>
-    <string name="toolbar_swipe_down_to_hide">Скрывать клавиатуру жестом смахивания</string>
-    <string name="gesture_data_please_switch_keyboard">Пожалуйста, переключитесь на %s</string>
-    <string name="gesture_data_share_limit">Чтобы не превысить лимит размера, будут экспортированы только первые %s слов(а)</string>
 	<string name="settings_screen_ai_integration">Интеграция AI</string>
 	<string name="ai_provider_title">Поставщик AI</string>
     <string name="custom_ai_keys_title">Пользовательские ключи AI</string>
@@ -1568,13 +1518,6 @@
     <string name="sound_pack_available_title">Доступные звуковые пакеты</string>
     <string name="sound_pack_imported_success">Звуковой пакет успешно импортирован</string>
     <string name="sound_pack_import_failed">Не удалось импортировать звуковой пакет (должен содержать корректные аудиофайлы или pack.json)</string>
-    <string name="sound_pack_delete_title">Удалить звуковой пакет</string>
-    <string name="sound_pack_delete_message">Удалить звуковой пакет «%s»?</string>
-    <string name="sound_pack_status_active">Активен</string>
-    <string name="sound_pack_size_mb_format">%.1f МБ</string>
-    <string name="sound_pack_download_dialog_title">Звуковые пакеты</string>
-    <string name="sound_pack_download_dialog_desc">Скачивайте звуковые пакеты клавиш от сообщества или импортируйте свои собственные .zip-пакеты.</string>
-    <string name="sound_pack_delete_button">Удалить</string>
 <string name="sound_pack_downloaded_activated">%s скачан и активирован</string>
     <string name="sound_pack_download_failed">Не удалось скачать %s</string>
     <string name="sound_pack_deleted_format">%s удален</string>

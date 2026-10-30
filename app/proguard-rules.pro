@@ -133,14 +133,7 @@
 -keep class * extends androidx.work.ListenableWorker {
     public <init>(android.content.Context, androidx.work.WorkerParameters);
 }
--keepnames class com.google.mlkit.** extends androidx.work.ListenableWorker
 -dontwarn androidx.work.**
-
-# Keep ML Kit, DataTransport, GMS Tasks, and Firebase components for plugin dynamic linkage
--keep class com.google.mlkit.** { *; }
--keep class com.google.android.datatransport.** { *; }
--keep class com.google.android.gms.** { *; }
--keep class com.google.firebase.** { *; }
 
 # Keep Kotlin standard library for dynamically loaded plugins
 # ponytail: keep kotlin stdlib classes to prevent NoSuchMethodError in plugin loading

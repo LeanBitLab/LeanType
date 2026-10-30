@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"የእውቅያ ስሞችን ተመልከት"</string>
     <string name="vibrate_on_keypress">"በቁልፍመጫንጊዜ አንዝር"</string>
     <string name="sound_on_keypress">"በቁልፍ መጫን ላይ የሚወጣ ድምፅ"</string>
     <string name="popup_on_keypress">"ቁልፍ ጫን ላይ ብቅ ባይ"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"የቋንቋ መቀየሪያ ቁልፍ"</string>
     <string name="abbreviation_unit_milliseconds">"%sሚሊሰከንድ"</string>
     <string name="settings_system_default">"የስርዓት ነባሪ"</string>
-    <string name="use_contacts_dict_summary">"ከዕውቂያዎች ለጥቆማዎች እና ማስተካከያዎች ስሞች ተጠቀም"</string>
     <string name="use_personalized_dicts">"ግላዊ የጥቆማ አስተያየቶች"</string>
     <string name="use_double_space_period">"የድርብ-ክፍተት ነጥብ"</string>
     <string name="use_double_space_period_summary">"የክፍተት አሞሌው ላይ ሁለቴ መታ ማድረግ አንድ ነጥብ እና ክፍተት አስከትሎ ያስገባል"</string>

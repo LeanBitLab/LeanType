@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Nombres de contactos"</string>
     <string name="vibrate_on_keypress">"Vibrar al presionar teclas"</string>
     <string name="sound_on_keypress">"Sonido al presionar teclas"</string>
     <string name="popup_on_keypress">"Ampliar al presionar teclas"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Tecla de selección de idioma"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Predeterminado/a"</string>
-    <string name="use_contacts_dict_summary">Usar nombres de los contactos para sugerencias y correcciones</string>
     <string name="use_personalized_dicts">"Sugerenc. personalizadas"</string>
     <string name="use_double_space_period">"Punto y doble espacio"</string>
     <string name="use_double_space_period_summary">"Tocar dos veces la barra espaciadora inserta un punto y espacio."</string>

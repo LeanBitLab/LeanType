@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Шукати імена контактів"</string>
     <string name="vibrate_on_keypress">Вібрація при натисканні клавіш</string>
     <string name="sound_on_keypress">Звук при натиску клавіш</string>
     <string name="popup_on_keypress">"Збільшення натиснутих"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"Клавіша зміни мови"</string>
     <string name="abbreviation_unit_milliseconds">%s мілісекунд</string>
     <string name="settings_system_default">Типово</string>
-    <string name="use_contacts_dict_summary">"Показувати виправлення на основі імен зі списку контактів"</string>
     <string name="use_personalized_dicts">"Персональні пропозиції"</string>
     <string name="use_double_space_period">"Крапка подвійним пробілом"</string>
     <string name="use_double_space_period_summary">"Подвійне натискання пробілу вставляє крапку з пробілом після неї"</string>
@@ -425,14 +423,11 @@
     <string name="get_colors_message">Ви можете знаходити та ділитися темами в %s .</string>
     <string name="get_layouts_message">Ви можете знайти та поділитися макетами клавіатури в %s .</string>
     <string name="discussion_section_link">обговорення</string>
-    <string name="about_wiki_link">Переглянути Вікі</string>
-    <string name="about_wiki_link_description">Вікі може бути покращена будь-яким користувачем GitHub!</string>
     <string name="space_swipe_hide_keyboard_entry">Приховати клавіатуру</string>
     <string name="delete_confirmation">Ви насправді хочете видалити %s ?</string>
     <string name="name_invalid">Недійсне ім\'я</string>
     <string name="custom_subtype">Власний макет</string>
     <string name="landscape">Горизонтальна</string>
-    <string name="ask_later">Спитати пізніше</string>
     <string name="clipboard_history_pinned_first">Показувати прикріплені об\'єкти вгорі</string>
 <string name="ime_name">LeanType</string>
     <string name="inline_emoji_search">Вбудований пошук емодзі</string>
@@ -1456,13 +1451,6 @@
     <string name="sound_pack_available_title">Доступні звукові пакети</string>
     <string name="sound_pack_imported_success">Звуковий пакет успішно імпортовано</string>
     <string name="sound_pack_import_failed">Не вдалося імпортувати звуковий пакет (повинен містити коректні аудіофайли або pack.json)</string>
-    <string name="sound_pack_delete_title">Видалити звуковий пакет</string>
-    <string name="sound_pack_delete_message">Видалити звуковий пакет «%s»?</string>
-    <string name="sound_pack_status_active">Активний</string>
-    <string name="sound_pack_size_mb_format">%.1f МБ</string>
-    <string name="sound_pack_download_dialog_title">Звукові пакети</string>
-    <string name="sound_pack_download_dialog_desc">Завантажуйте звукові пакети клавіш від спільноти або імпортуйте власні .zip-пакети.</string>
-    <string name="sound_pack_delete_button">Видалити</string>
 <string name="sound_pack_downloaded_activated">%s завантажено та активовано</string>
     <string name="sound_pack_download_failed">Не вдалося завантажити %s</string>
     <string name="sound_pack_deleted_format">%s видалено</string>

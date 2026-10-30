@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Look up contact names"</string>
     <string name="vibrate_on_keypress">"Vibrate on keypress"</string>
     <string name="sound_on_keypress">"Sound on keypress"</string>
     <string name="popup_on_keypress">"Pop-up on key press"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Language switch key"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"System default"</string>
-    <string name="use_contacts_dict_summary">"Use names from Contacts for suggestions and corrections"</string>
     <string name="use_personalized_dicts">"Personalised suggestions"</string>
     <string name="use_double_space_period">"Double-space full stop"</string>
     <string name="use_double_space_period_summary">"Double tap on spacebar inserts a full stop followed by a space"</string>

@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Hľadať mená kontaktov"</string>
     <string name="vibrate_on_keypress">"Pri stlačení klávesu vibrovať"</string>
     <string name="sound_on_keypress">"Zvuk pri stlačení klávesu"</string>
     <string name="popup_on_keypress">"Detail znaku pri stlačení"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Kľúč na prepínanie jazyka"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Predvolené"</string>
-    <string name="use_contacts_dict_summary">"Používať mená z kontaktov na návrhy a opravy"</string>
     <string name="use_personalized_dicts">"Prispôsobené návrhy"</string>
     <string name="use_double_space_period">"Bodka dvojitým medzerníkom"</string>
     <string name="use_double_space_period_summary">"Dvojitým klepnutím na medzerník vložíte bodku a medzeru."</string>

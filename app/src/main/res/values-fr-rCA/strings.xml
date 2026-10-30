@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Rechercher noms contacts"</string>
     <string name="vibrate_on_keypress">"Vibrer à chaque touche"</string>
     <string name="sound_on_keypress">"Son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Touche de sélection de langue"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Paramètres par défaut"</string>
-    <string name="use_contacts_dict_summary">"Utiliser des noms de contacts pour les suggestions et corrections"</string>
     <string name="use_personalized_dicts">"Suggestions personnalisées"</string>
     <string name="use_double_space_period">"Point et espace"</string>
     <string name="use_double_space_period_summary">"Appuyez deux fois sur la barre d\'espace pour insérer un point et une espace"</string>

@@ -5,7 +5,6 @@
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Αναζήτηση ονομάτων επαφών"</string>
     <string name="vibrate_on_keypress">"Δόνηση κατά το πάτημα πλήκτρων"</string>
     <string name="sound_on_keypress">"Ήχος πλήκτρων"</string>
     <string name="popup_on_keypress">"Εμφάνιση με το πάτημα πλήκτρου"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"Πλήκτρο εναλλαγής γλώσσας"</string>
     <string name="abbreviation_unit_milliseconds">"%sχλστ. δ."</string>
     <string name="settings_system_default">"Προεπιλογή"</string>
-    <string name="use_contacts_dict_summary">"Χρησιμοποιήστε ονόματα από τις Επαφές για προτάσεις και διορθ."</string>
     <string name="use_personalized_dicts">"Εξατομικευμένες προτάσεις"</string>
     <string name="use_double_space_period">"Τελεία με διπλό διάστημα"</string>
     <string name="use_double_space_period_summary">"Το διπλό πάτημα του πλήκτρ.διαστ. εισάγει μια τελεία και ένα κενό"</string>
@@ -1561,13 +1559,6 @@
     <string name="sound_pack_available_title">Διαθέσιμα πακέτα ήχων</string>
     <string name="sound_pack_imported_success">Το πακέτο ήχων εισήχθη με επιτυχία</string>
     <string name="sound_pack_import_failed">Αποτυχία εισαγωγής πακέτου ήχων (πρέπει να περιέχει έγκυρα αρχεία ήχου ή pack.json)</string>
-    <string name="sound_pack_delete_title">Διαγραφή πακέτου ήχων</string>
-    <string name="sound_pack_delete_message">Διαγραφή του πακέτου ήχων «%s»;</string>
-    <string name="sound_pack_status_active">Ενεργό</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">Πακέτα ήχων</string>
-    <string name="sound_pack_download_dialog_desc">Κατεβάστε πακέτα ήχων πλήκτρων από την κοινότητα ή εισαγάγετε τα δικά σας πακέτα .zip.</string>
-    <string name="sound_pack_delete_button">Διαγραφή</string>
 <string name="sound_pack_downloaded_activated">Το %s λήφθηκε και ενεργοποιήθηκε</string>
     <string name="sound_pack_download_failed">Αποτυχία λήψης %s</string>
     <string name="sound_pack_deleted_format">Το %s διαγράφηκε</string>

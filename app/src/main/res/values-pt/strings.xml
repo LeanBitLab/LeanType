@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Buscar nomes de contatos"</string>
     <string name="vibrate_on_keypress">"Vibrar ao digitar"</string>
     <string name="sound_on_keypress">"Som ao tocar a tecla"</string>
     <string name="popup_on_keypress">"Mostrar letra em pop-up ao digitar"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Tecla de seleção de idioma"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Padrão do sistema"</string>
-    <string name="use_contacts_dict_summary">"Usa nomes dos Contatos para sugestões e correções"</string>
     <string name="use_personalized_dicts">"Sugestões personalizadas"</string>
     <string name="use_double_space_period">"Duplo espaço para ponto"</string>
     <string name="use_double_space_period_summary">"Tocar duas vezes na barra de espaço insere um ponto seguido de espaço"</string>
@@ -370,7 +368,6 @@
     <string name="settings_screen_about">Sobre</string>
     <string name="version">Versão</string>
     <string name="about_github_link">Ver no GitHub</string>
-    <string name="about_wiki_link">Ir para a Wiki</string>
     <string name="icon_style">Estilo do ícone</string>
     <string name="user_dict_settings_add_weight_value">Peso:</string>
     <string name="theme_name_chocolate" tools:keep="@string/theme_name_chocolate">Chocolate</string>
@@ -398,7 +395,6 @@
     <string name="var_toolbar_direction">Direção da barra de ferramentas variável</string>
     <string name="auto_show_toolbar">Mostrar barra de ferramentas automáticamente</string>
     <string name="auto_show_toolbar_summary">Mostrar a barra de ferramentas se a escrita começar ou texto é selecionado</string>
-    <string name="about_wiki_link_description">A Wiki pode ser melhorada por qualquer utilizador do GitHub!</string>
     <string name="gnu_gpl">GNU General Public License v3.0</string>
     <string name="text_tap_languages">Toque o idioma para abrir as definições</string>
     <string name="hidden_features_text">armazenamento protegido pelo dispositivo</string>

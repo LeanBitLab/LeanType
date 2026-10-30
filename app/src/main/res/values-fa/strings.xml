@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"پیدا کردن نام مخاطبین"</string>
     <string name="vibrate_on_keypress">"لرزش با فشار کلید"</string>
     <string name="sound_on_keypress">"صدا با فشار کلید"</string>
     <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"کلید تغییر زبان"</string>
     <string name="abbreviation_unit_milliseconds">"%s میلی‌ثانیه"</string>
     <string name="settings_system_default">"پیش‌فرض سیستم"</string>
-    <string name="use_contacts_dict_summary">برای پیشنهاد و تصحیح از نام مخاطبین استفاده شود</string>
     <string name="use_personalized_dicts">"پیشنهادات شخصی شده"</string>
     <string name="use_double_space_period">"نقطه با دو فاصله"</string>
     <string name="use_double_space_period_summary">"با دو بار ضربه روی دکمه فاصله، نقطه بعلاوه فاصله‌ای بعد آن درج می‌شود"</string>

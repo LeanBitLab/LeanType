@@ -5,7 +5,6 @@
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"ຊອກຫາລາຍຊື່ຜູ້ຕິດຕໍ່"</string>
     <string name="vibrate_on_keypress">"ສັ່ນເຕືອນເມື່ອພິມ"</string>
     <string name="sound_on_keypress">"ສຽງໃນການກົດປຸ່ມ"</string>
     <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"ປຸ່ມປ່ຽນພາສາ"</string>
     <string name="abbreviation_unit_milliseconds">"%sms"</string>
     <string name="settings_system_default">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>
-    <string name="use_contacts_dict_summary">"ໃຊ້ຊື່ຈາກລາຍຊື່ຜູ່ຕິດຕໍ່ສຳລັບການແນະນຳ ແລະ ການຊ່ວຍແກ້ຄຳ"</string>
     <string name="use_personalized_dicts">"ຄຳແນະນຳຕາມການນຳໃຊ້ຂອງທ່ານ"</string>
     <string name="use_double_space_period">"ຍະຫວ່າງສອງເທື່ອເພື່ອໃສ່ຈ້ຳເມັດ"</string>
     <string name="use_double_space_period_summary">"ກົດທີ່ປຸ່ມຍະຫວ່າງສອງເທື່ອເພື່ອໃສ່ຈ້ຳເມັດແລ້ວຕາມດ້ວຍການຍະຫວ່າງ"</string>

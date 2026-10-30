@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"查找联系人姓名"</string>
     <string name="vibrate_on_keypress">"按键振动"</string>
     <string name="sound_on_keypress">"按键音效"</string>
     <string name="popup_on_keypress">按键弹出字符</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"语言切换键"</string>
     <string name="abbreviation_unit_milliseconds">%s 毫秒</string>
     <string name="settings_system_default">"系统默认值"</string>
-    <string name="use_contacts_dict_summary">使用联系人中的姓名提供建议和更正</string>
     <string name="use_personalized_dicts">"个性化建议"</string>
     <string name="use_double_space_period">双击空格插入句号</string>
     <string name="use_double_space_period_summary">双击空格键可插入句号并后跟空格</string>
@@ -431,8 +429,6 @@
     <string name="suggest_punctuation">标点建议</string>
     <string name="suggest_punctuation_summary">无其他建议时显示标点</string>
     <string name="space_swipe_hide_keyboard_entry">隐藏键盘</string>
-    <string name="about_wiki_link_description">任何 GitHub 用户都可以改进 Wiki！</string>
-    <string name="about_wiki_link">前往 Wiki</string>
     <string name="save_subtype_per_app">为每个应用记住语言设置</string>
     <string name="subtype_khipro_bn">%s (Khipro)</string>
     <string name="clipboard_history_pinned_first">在顶部显示已固定项目</string>
@@ -445,52 +441,6 @@
     <string name="number_row_in_symbols">在符号视图中显示数字行</string>
     <string name="custom_emoji_font">从文件设置自定义表情符号字体</string>
     <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">功能键（Khipro）</string>
-    <string name="emoji_search_title">搜索表情符号</string>
-    <string name="search_field_placeholder">搜索</string>
-    <string name="gesture_data_screen">滑行输入数据收集</string>
-    <string name="gesture_data_info">这是什么？</string>
-    <string name="gesture_data_privacy">隐私</string>
-    <string name="gesture_data_get_data">分享滑行输入数据文件</string>
-    <string name="gesture_data_delete_data">清除滑行输入数据</string>
-    <string name="gesture_data_send_mail">通过电子邮件发送数据</string>
-    <string name="gesture_data_copy_mail">复制电子邮件地址</string>
-    <string name="gesture_data_mail_use">请注意，此电子邮件地址仅用于数据提交，可能不会及时或定期回复。</string>
-    <string name="gesture_data_please_type">请滑行输入：</string>
-    <string name="gesture_data_next_save">已输入 %s。如果您确定滑行输入正确，请点击</string>
-    <string name="gesture_data_next">跳过字词</string>
-    <string name="gesture_data_active_count">本次会话已输入 %1$s 个字词，总计 %2$s 个字词（%3$s 个已提交或删除）</string>
-    <string name="gesture_data_review_screen_title">审阅和分享滑行输入数据</string>
-    <string name="gesture_data_words_selected">%s 个字词</string>
-    <string name="gesture_data_date_range">日期范围</string>
-    <string name="gesture_data_much_data">您有大量未提交的数据。请先提交，然后移除旧数据。</string>
-    <string name="gesture_data_how_to_use">使用方法</string>
-    <string name="gesture_data_active_start">开始主动收集</string>
-    <string name="gesture_data_active_stop">停止主动收集</string>
-    <string name="gesture_data_ends_at">滑行输入数据收集阶段将于 %s 结束。请在此日期之前提交您的数据。</string>
-    <string name="gesture_data_ended">滑行输入数据收集阶段已于 %s 结束。您可以分享现有数据，但不能添加任何新数据。</string>
-    <string name="gesture_data_share_all">分享全部 %s 个字词</string>
-    <string name="gesture_data_share_new">分享 %s 个未提交过的字词</string>
-    <string name="gesture_data_delete_dialog">您有 %1$s 个新字词和 %2$s 个已分享字词的数据。</string>
-    <string name="gesture_data_delete_dialog_all">删除全部 %s 个字词</string>
-    <string name="gesture_data_delete_dialog_confirm">您确定吗？这将删除 %s 个字词。请确保您已提交共享数据！</string>
-    <string name="gesture_data_delete_dialog_submitted">删除 %s 个已提交的字词</string>
-    <string name="gesture_data_many_not_shared_words">您有超过 %s 个字词等待提交</string>
-    <string name="ask_later">稍后询问</string>
-    <string name="gesture_data_take_me_there">前往查看</string>
-    <string name="gesture_data_description">欢迎来到滑行输入数据收集界面！&lt;br/&gt;&lt;br/&gt; 这是由 &lt;a href=https://nlnet.nl/project/GestureTyping&gt;NLnet 基金会资助的一个项目&lt;/a&gt;，旨在开发一个完全开源的滑行输入库，以替代闭源的 Google 库。&lt;br/&gt; 最终目标是使其成为基于 AOSP 的键盘的简单替代品，同时也适用于其他键盘，例如 FlorisBoard。&lt;br/&gt;&lt;br/&gt; 为了更好地开发该库，我们需要收集不同语言、不同用户的详细滑行输入数据。&lt;br/&gt; 通过收集和提交滑行输入数据，您可以为用于库开发的开放滑行输入数据集做出贡献。该数据集将于 %s 在数据收集阶段结束后，以 CC BY-SA 4.0 许可协议发布。收集完数据后，您可以使用此屏幕底部的分享图标提交数据。</string>
-    <string name="gesture_data_description_modes">目前仅提供主动收集模式，会显示一个特定字词，您需要使用滑行输入该字词。\n后续会添加被动收集模式，您可从其他应用中提取日常滑行输入的样本数据。由于此模式涉及敏感信息，因此需要用户选择是否启用，并且可以进行配置，在提交数据前提供审阅界面。</string>
-    <string name="gesture_data_description_privacy">隐私\n\n您提交的数据包括目标字词、键盘布局和尺寸、滑行输入（次数和坐标）、当前库的建议、所用字典的哈希值、应用版本、数据收集模式、滑行输入库是否为默认的 Google 库，以及每个滑行输入对应的 ID。\n提交的数据将被下载并从 ProtonMail 邮箱中尽快删除。滑行输入数据收集阶段结束后，所有用户汇总的数据集将根据知识共享署名-相同方式共享 4.0 国际许可协议发布。\n\n为了保护您的隐私，您不会被明确列为作者。您的贡献将统一记作“LeanType 滑行输入数据项目贡献者”。您在此界面生成的数据原则上无法与您的身份关联。但是，我们或许可以确定哪些滑行输入是由同一人完成的。例如，可以通过自定义键盘布局、键盘尺寸、语言或个人滑行输入风格来判断。</string>
-    <string name="gesture_data_active_description">点按“开始主动收集”，可选择切换字典，然后开始滑行输入显示的字词。&lt;br/&gt; 如果您的滑行输入与字词匹配，数据将被保存并显示下一个字词。否则，您可以重试、跳过该字词或确认您的滑行输入正确。&lt;br/&gt; 您只能使用应用内置或&lt;a href=%s&gt;字典仓库&lt;/a&gt;中的字典，不会使用其他字词。</string>
-    <string name="gesture_data_email_body">重要提示：\n\n 您好！\n 温馨提醒，您的数据将根据 CC BY-SA 4.0 许可协议公开分享，为保护您的隐私，您不会被列为作者。\n\n 感谢您与我们共享数据使用权，我们会妥善利用这些数据！\n\n 请注意，更改此提示的措辞不会改变我们对您数据的处理方式。本提示并非可修改的合同，仅为友好提醒！\n 如果您想随提交的数据一并给我们留言，请在下方横线处填写。\n ---------------------------------------------</string>
-    <string name="gesture_data_promotion_message">您好！\n 既然您已经安装了滑行输入库，您或许会对 LeanType 的完全开源滑行输入库项目感兴趣。您可以贡献滑行输入数据来提供帮助。如需了解详情，请访问滑行输入数据收集界面。</string>
-    <string name="gesture_data_reminder_message">您好！\n 您之前使用过滑行输入数据收集功能，但已经很久没有添加数据了。要再次贡献数据吗？</string>
-    <string name="timestamp_description">您可以使用自定义布局添加时间戳键，使用“timestamp”键或键码 -10043</string>
-    <string name="prefs_bottom_row_scale">底行比例</string>
-    <string name="gesture_data_links">关于滑行输入数据收集的信息：</string>
-    <string name="toolbar_swipe_down_to_hide">滑动隐藏键盘</string>
-    <string name="toolbar_swipe_down_to_hide_summary">在工具栏上向下滑动即可关闭键盘</string>
-    <string name="gesture_data_please_switch_keyboard">请切换到 %s</string>
-    <string name="gesture_data_share_limit">为避免超出大小限制，仅导出前 %s 个字词</string>
 <string name="ime_name">LeanType</string>
     <string name="settings_screen_suggestions">建议</string>
     <string name="settings_category_prediction">预测与学习</string>
@@ -1503,13 +1453,6 @@
     <string name="sound_pack_available_title">可用的音效包</string>
     <string name="sound_pack_imported_success">音效包导入成功</string>
     <string name="sound_pack_import_failed">导入音效包失败（必须包含有效的音频文件或 pack.json）</string>
-    <string name="sound_pack_delete_title">删除音效包</string>
-    <string name="sound_pack_delete_message">确定要删除音效包“%s”吗？</string>
-    <string name="sound_pack_status_active">已启用</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">按键音效包</string>
-    <string name="sound_pack_download_dialog_desc">下载社区按键音效包或导入自定义 .zip 压缩包。</string>
-    <string name="sound_pack_delete_button">删除</string>
 <string name="sound_pack_downloaded_activated">%s 已下载并启用</string>
     <string name="sound_pack_download_failed">下载 %s 失败</string>
     <string name="sound_pack_deleted_format">%s 已删除</string>

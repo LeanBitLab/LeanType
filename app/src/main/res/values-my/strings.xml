@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">ဖုန်းစာအုပ်ထဲမှ အမည်များကိုရှာရန်</string>
     <string name="vibrate_on_keypress">ခလုတ်နှိပ်သည်နှင့် တုန်ခါ၍ တုန့်ပြန်ပါ</string>
     <string name="sound_on_keypress">ခလုတ်နှိပ်လျှင် အသံမြည်ပါ</string>
     <string name="popup_on_keypress">"ခလုတ်နှိပ်လိုက်သည်နှင့် ပေါ်လာရန်"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">ဘာသာစကားပြောင်းခလုတ်</string>
     <string name="abbreviation_unit_milliseconds">%s မီလီစက္ကန့်</string>
     <string name="settings_system_default">မူလစနစ်အတိုင်း</string>
-    <string name="use_contacts_dict_summary">အကြံပြုချက်များနှင့် သတ်ပုံပြင်ဆင်ချက်များအတွက် ဖုန်းစာအုပ်မှအမည်များကို အသုံးပြုမည်</string>
     <string name="use_personalized_dicts">ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို အကြံပြုချက်များအတွက် အသုံးပြုမည်</string>
     <string name="use_double_space_period">စာလုံးခြားခလုတ်ကိုနှစ်ခါနှိပ်ပါက ပုဒ်ကြီးချမည်</string>
     <string name="use_double_space_period_summary">စာလုံးခြားခလုတ်ကိုနှစ်ခါနှိပ်ပါက ပုဒ်ကြီးချပြီးနောက် စာလုံးခြားတစ်နေရာယူမည်</string>
@@ -171,8 +169,6 @@
     <string name="more_colors">အခြားအရောင်များကိုကြည့်မည်</string>
     <string name="all_colors">အရောင်အားလုံးကိုကြည့်မည်</string>
     <string name="about_github_link">GitHub တွင်ကြည့်ပါ</string>
-    <string name="about_wiki_link">ဝီကီသို့သွားမည်</string>
-    <string name="about_wiki_link_description">ယင်းဝီကီစာမျက်နှာကို မည်သည့် GitHub အသုံးပြုသူမဆို ပိုမိုကောင်းမွန်အောင် မွမ်းမံခွင့်ရှိသည်!</string>
     <string name="save_log">အဖြစ်အပျက်မှတ်တမ်းများကိုသိမ်းမည်</string>
     <string name="license">လွတ်လပ်သောရင်းမြစ်လိုင်စင်</string>
     <string name="gnu_gpl">ဂျီအန်ယူ အများပြည်သူအသုံးပြုခွင့်လိုင်စင် မူ ၃.၀</string>

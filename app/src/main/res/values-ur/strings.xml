@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"رابطوں میں سے نام ڈھونڈیں"</string>
     <string name="vibrate_on_keypress">"کلید دبانے پر وائبریٹ کریں"</string>
     <string name="sound_on_keypress">"کلید دبانے پر آواز"</string>
     <string name="popup_on_keypress">"کلید دبانے پر پاپ اپ"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"زبان سوئچ کرنے کی کلید"</string>
     <string name="abbreviation_unit_milliseconds">"%sملی سیکنڈ"</string>
     <string name="settings_system_default">"سسٹم ڈیفالٹ"</string>
-    <string name="use_contacts_dict_summary">"تجاویز اور اصلاحات کیلئے رابطوں سے ناموں کی تجویز کریں"</string>
     <string name="use_personalized_dicts">"ذاتی نوعیت کی تجاویز"</string>
     <string name="use_double_space_period">"ڈبل اسپیس پیریڈ"</string>
     <string name="use_double_space_period_summary">"سپیس بار دو بار تھپتھپانے سے سپیس کے بعد پیریڈ داخل ہوجاتا ہے۔"</string>
@@ -1552,13 +1550,6 @@
     <string name="sound_pack_available_title">دستیاب صوتی پیک</string>
     <string name="sound_pack_imported_success">صوتی پیک کامیابی سے درآمد ہو گیا</string>
     <string name="sound_pack_import_failed">صوتی پیک درآمد کرنے میں ناکامی (درست آڈیو فائلیں یا pack.json ہونا ضروری ہے)</string>
-    <string name="sound_pack_delete_title">صوتی پیک حذف کریں</string>
-    <string name="sound_pack_delete_message">کیا آپ صوتی پیک \'%s\' حذف کرنا چاہتے ہیں؟</string>
-    <string name="sound_pack_status_active">فعال</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">صوتی پیک</string>
-    <string name="sound_pack_download_dialog_desc">کمیونٹی کی کیز صوتی پیک ڈاؤن لوڈ کریں یا اپنے ذاتی .zip پیک درآمد کریں۔</string>
-    <string name="sound_pack_delete_button">حذف کریں</string>
 <string name="sound_pack_downloaded_activated">%s ڈاؤن لوڈ اور فعال کر دیا گیا</string>
     <string name="sound_pack_download_failed">%s ڈاؤن لوڈ کرنے میں ناکامی</string>
     <string name="sound_pack_deleted_format">%s حذف کر دیا گیا</string>

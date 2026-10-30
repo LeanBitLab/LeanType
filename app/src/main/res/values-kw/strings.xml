@@ -39,8 +39,6 @@
     <string name="abbreviation_unit_minutes">%s myn</string>
     <string name="settings_system_default">Defowt system</string>
     <string name="settings_no_limit">Finweth vyth</string>
-    <string name="use_contacts_dict">Hwilas henwyn kestavow</string>
-    <string name="use_contacts_dict_summary">Devndyhya henwyn dhyworth Kestavow rag profyansow hag ewnansow</string>
     <string name="use_apps_dict">Hwilas henwyn app</string>
     <string name="use_apps_dict_summary">Devnydhya henwyn a appys leys rag profyansow hag ewnansow</string>
     <string name="use_personalized_dicts">Profyansow personelhys</string>

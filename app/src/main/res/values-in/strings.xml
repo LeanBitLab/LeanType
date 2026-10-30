@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Cari nama kontak"</string>
     <string name="vibrate_on_keypress">Bergetar saat tombol ditekan</string>
     <string name="sound_on_keypress">"Berbunyi jika tombol ditekan"</string>
     <string name="popup_on_keypress">"Muncul saat tombol ditekan"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Tombol pengalih bahasa"</string>
     <string name="abbreviation_unit_milliseconds">%s md</string>
     <string name="settings_system_default">Sistem bawaan</string>
-    <string name="use_contacts_dict_summary">"Menggunakan nama dari Kontak untuk saran dan koreksi"</string>
     <string name="use_personalized_dicts">"Saran hasil personalisasi"</string>
     <string name="use_double_space_period">"Titik spasi ganda"</string>
     <string name="use_double_space_period_summary">"Mengetuk tombol spasi dua kali akan memasukkan titik diikuti satu spasi"</string>
@@ -1451,13 +1449,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="sound_pack_available_title">Paket suara tersedia</string>
     <string name="sound_pack_imported_success">Paket suara berhasil diimpor</string>
     <string name="sound_pack_import_failed">Gagal mengimpor paket suara (harus berisi file audio yang valid atau pack.json)</string>
-    <string name="sound_pack_delete_title">Hapus paket suara</string>
-    <string name="sound_pack_delete_message">Hapus paket suara \'%s\'?</string>
-    <string name="sound_pack_status_active">Aktif</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">Paket suara</string>
-    <string name="sound_pack_download_dialog_desc">Unduh paket suara tombol dari komunitas atau impor paket .zip Anda sendiri.</string>
-    <string name="sound_pack_delete_button">Hapus</string>
 <string name="sound_pack_downloaded_activated">%s diunduh &amp; diaktifkan</string>
     <string name="sound_pack_download_failed">Gagal mengunduh %s</string>
     <string name="sound_pack_deleted_format">%s dihapus</string>

@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Шукаць імёны кантактаў"</string>
     <string name="vibrate_on_keypress">"Вібрацыя пры націску клавіш"</string>
     <string name="sound_on_keypress">"Гук пры націску"</string>
     <string name="popup_on_keypress">"Па націску на клавішы ўсплывае акно"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">Клавіша змены мовы</string>
     <string name="abbreviation_unit_milliseconds">%s мс.</string>
     <string name="settings_system_default">"Стандартныя сістэмныя"</string>
-    <string name="use_contacts_dict_summary">Падказваць выпраўленні на аснове імёнаў са спісу кантактаў</string>
     <string name="use_personalized_dicts">"Персанальныя прапановы"</string>
     <string name="use_double_space_period">"Падвойны iнтэрвал"</string>
     <string name="use_double_space_period_summary">"Падвойнае нацiсканне на клавішу прабелу ўстаўляе кропку з наступным прабелам"</string>
@@ -1488,13 +1486,6 @@
     <string name="sound_pack_available_title">Даступныя гукавыя пакеты</string>
     <string name="sound_pack_imported_success">Гукавы пакет паспяхова імпартаваны</string>
     <string name="sound_pack_import_failed">Не ўдалося імпартаваць гукавы пакет (павінен змяшчаць сапраўдныя аўдыяфайлы або pack.json)</string>
-    <string name="sound_pack_delete_title">Выдаліць гукавы пакет</string>
-    <string name="sound_pack_delete_message">Выдаліць гукавы пакет «%s»?</string>
-    <string name="sound_pack_status_active">Актыўны</string>
-    <string name="sound_pack_size_mb_format">%.1f МБ</string>
-    <string name="sound_pack_download_dialog_title">Гукавыя пакеты</string>
-    <string name="sound_pack_download_dialog_desc">Спампоўвайце гукавыя пакеты клавіш ад супольнасці або імпартуйце ўласныя .zip-пакеты.</string>
-    <string name="sound_pack_delete_button">Выдаліць</string>
 <string name="sound_pack_downloaded_activated">%s спампаваны і актываваны</string>
     <string name="sound_pack_download_failed">Не ўдалося спампаваць %s</string>
     <string name="sound_pack_deleted_format">%s выдалены</string>

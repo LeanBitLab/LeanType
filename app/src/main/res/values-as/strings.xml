@@ -6,7 +6,6 @@
 -->
 <resources>
     <string name="select_input_method">"ইনপুট পদ্ধতি বাছনি কৰক"</string>
-    <string name="use_contacts_dict">"সম্পৰ্কসূচীৰ নামবোৰত চাওক"</string>
     <string name="vibrate_on_keypress">"কী টিপিলে কম্পন কৰক"</string>
     <string name="sound_on_keypress">"কী টিপিলে শব্দ হ\'ব"</string>
     <string name="popup_on_keypress">"কী টিপিলে প\'পআপ ওলাব"</string>
@@ -19,7 +18,6 @@
     <string name="language_switch_key_switch_input_method">"আন ইনপুট পদ্ধতিলৈ সলনি কৰক"</string>
     <string name="show_language_switch_key">"ভাষা সলনি কৰা কী"</string>
     <string name="settings_system_default">"ছিষ্টেম ডিফ\'ল্ট"</string>
-    <string name="use_contacts_dict_summary">"পৰামৰ্শ আৰু শুধৰণিৰ বাবে সম্পৰ্কসূচীৰ পৰা নামবোৰ ব্যৱহাৰ কৰক"</string>
     <string name="use_personalized_dicts">"ব্যক্তিগতকৰণ কৰা পৰামর্শসমূহ"</string>
     <string name="use_double_space_period">"দুবাৰ স্পেচবাৰ টিপি দাড়ি দিয়াৰ সুবিধা"</string>
     <string name="use_double_space_period_summary">"স্পেচবাৰত দুবাৰ টিপিলে এডাল দাড়ি বহুৱাই তাৰ পিছত এটা স্পেচ ভৰায়"</string>

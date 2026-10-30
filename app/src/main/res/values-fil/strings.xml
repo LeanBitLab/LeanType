@@ -47,10 +47,8 @@
     <string name="auto_correction_threshold_mode_aggressive">Agresibo</string>
     <string name="spell_checker_service_name">Spell Checker ng LeanType</string>
     <string name="android_spell_checker_settings">Mga Setting ng Spell Checker ng LeanType</string>
-    <string name="use_contacts_dict">Hanapin ang mga pangalan ng contact</string>
     <string name="settings_category_suggestions">Mga mungkahi</string>
     <string name="abbreviation_unit_milliseconds">%s ms</string>
-    <string name="use_contacts_dict_summary">Gamitin ang pangalan mula sa Mga Contact para sa mungkahi at pagtatama</string>
     <string name="add_to_personal_dictionary">Idagdag ang mga salita sa personal na diksyunaryo</string>
     <string name="use_double_space_period_summary">Naglalagay ng tuldok na may puwang ang pag-double tap sa spacebar</string>
     <string name="prefs_block_potentially_offensive_summary">Huwag magmungkahi ng mga maaring nakakapanakit na salita</string>

@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Потражи имена контаката"</string>
     <string name="vibrate_on_keypress">"Вибрирај на притисак тастера"</string>
     <string name="sound_on_keypress">"Звук на притисак тастера"</string>
     <string name="popup_on_keypress">"Искачући прозор приликом притиска тастера"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Тастер за пребацивање језика"</string>
     <string name="abbreviation_unit_milliseconds">%s мс</string>
     <string name="settings_system_default">"Подразумевано"</string>
-    <string name="use_contacts_dict_summary">"Користи имена из Контаката за предлоге и исправке"</string>
     <string name="use_personalized_dicts">"Персонализовани предлози"</string>
     <string name="use_double_space_period">Дупли размак тачка</string>
     <string name="use_double_space_period_summary">"Двоструким додиром размака умеће се тачка праћена размаком"</string>

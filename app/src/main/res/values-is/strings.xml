@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Fletta upp tengiliðum"</string>
     <string name="vibrate_on_keypress">"Titringur þegar ýtt er á lykla"</string>
     <string name="sound_on_keypress">"Hljóð þegar ýtt er á lykil"</string>
     <string name="popup_on_keypress">Stafagluggi við innslátt</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Lykill til að breyta tungumáli"</string>
     <string name="abbreviation_unit_milliseconds">%s msek</string>
     <string name="settings_system_default">Sjálfgefið í kerfi</string>
-    <string name="use_contacts_dict_summary">"Nota nöfn úr tengiliðum fyrir tillögur og leiðréttingar"</string>
     <string name="use_personalized_dicts">"Persónulegar tillögur"</string>
     <string name="use_double_space_period">"Punktur við tvöfalt bil"</string>
     <string name="use_double_space_period_summary">"Ef ýtt er tvisvar á bilslána er settur inn punktur og svo bil"</string>

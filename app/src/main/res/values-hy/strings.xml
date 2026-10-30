@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Փնտրել կոնտակտային անուններ"</string>
     <string name="vibrate_on_keypress">"Թրթռալ սեղմման ժամանակ"</string>
     <string name="sound_on_keypress">"Ձայնը սեղմման ժամանակ"</string>
     <string name="popup_on_keypress">"Ելնող պատուհան՝ ստեղնի հպման դեպքում"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Լեզվի փոխարկման ստեղն"</string>
     <string name="abbreviation_unit_milliseconds">"%sմվ"</string>
     <string name="settings_system_default">"Համակարգի լռելյայնները"</string>
-    <string name="use_contacts_dict_summary">"Օգտագործել կոնտակտների անունները՝ առաջարկների և ուղղումների համար"</string>
     <string name="use_personalized_dicts">"Անհատականացված հուշումներ"</string>
     <string name="use_double_space_period">"Կրկնաբացատով վերջակետ"</string>
     <string name="use_double_space_period_summary">"Բացատի ստեղնի կրկնակի հպումը բացատից հետո վերջակետ է դնում"</string>

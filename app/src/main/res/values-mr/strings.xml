@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"संपर्क नावे शोधा"</string>
     <string name="vibrate_on_keypress">"की दाबताना व्हायब्रेट"</string>
     <string name="sound_on_keypress">"की दाबताना आवाज"</string>
     <string name="popup_on_keypress">"की दाबताना पॉपअप"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"भाषा स्विच की"</string>
     <string name="abbreviation_unit_milliseconds">"%sमिसे"</string>
     <string name="settings_system_default">"सिस्टम डीफॉल्ट"</string>
-    <string name="use_contacts_dict_summary">"सूचनांसाठी आणि सुधारणांसाठी संपर्कांमधील नावे वापरा"</string>
     <string name="use_personalized_dicts">"पर्सनलाइझ केलेल्या सूचना"</string>
     <string name="use_double_space_period">"डबल-स्पेस मोकळी जागा"</string>
     <string name="use_double_space_period_summary">"स्पेसबारवर डबल टॅप केल्याने पूर्णविरामचिन्ह व त्यापाठोपाठ स्पेस घातली जाते"</string>

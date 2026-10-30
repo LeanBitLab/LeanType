@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Anvend kontaktnavne"</string>
     <string name="vibrate_on_keypress">Vibrer ved tastetryk</string>
     <string name="sound_on_keypress">"Lyd ved tastetryk"</string>
     <string name="popup_on_keypress">"Pop op ved tastetryk"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">Tast til sprogskift</string>
     <string name="abbreviation_unit_milliseconds">%s ms</string>
     <string name="settings_system_default">"Systemstandard"</string>
-    <string name="use_contacts_dict_summary">"Brug navne fra Kontakter til forslag og rettelser"</string>
     <string name="use_personalized_dicts">Personlige forslag</string>
     <string name="use_double_space_period">"To mellemrum for punktum"</string>
     <string name="use_double_space_period_summary">"To tryk på mellemrumstasten indsætter et punktum og et mellemrum"</string>

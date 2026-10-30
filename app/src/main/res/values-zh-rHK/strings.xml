@@ -5,7 +5,6 @@
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"查找聯絡人姓名"</string>
     <string name="vibrate_on_keypress">"按鍵時震動"</string>
     <string name="sound_on_keypress">"按鍵時播放音效"</string>
     <string name="popup_on_keypress">"按鍵時顯示彈出式視窗"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"語言切換鍵"</string>
     <string name="abbreviation_unit_milliseconds">"%s 毫秒"</string>
     <string name="settings_system_default">"系統預設"</string>
-    <string name="use_contacts_dict_summary">"使用「聯絡人」的名稱提供建議與修正"</string>
     <string name="use_personalized_dicts">"個人化建議"</string>
     <string name="use_double_space_period">"連按兩下空白鍵插入句號"</string>
     <string name="use_double_space_period_summary">"只要連續輕按兩下空白鍵，即可插入句號並在後面加入空格"</string>

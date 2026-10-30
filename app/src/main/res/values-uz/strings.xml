@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Kontaktlar ichidan qidirish"</string>
     <string name="vibrate_on_keypress">"Tugma bosilganda tebranish"</string>
     <string name="sound_on_keypress">"Tugmalar tovushi"</string>
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Tilni almashtirish tugmasi"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Tizim standarti"</string>
-    <string name="use_contacts_dict_summary">"Kontaktlar ro‘yxatidagi ismlar asosida tuzatmalarni taklif qilish"</string>
     <string name="use_personalized_dicts">"Takliflarni moslashtirish"</string>
     <string name="use_double_space_period">"Nuqtani avtomatik qo‘yish"</string>
     <string name="use_double_space_period_summary">"Bo‘sh joy tugmasi ikki marta bosilsa, nuqta qo‘yiladi va bo‘sh joy tashlanadi"</string>

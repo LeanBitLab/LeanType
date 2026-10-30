@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Kontakt adlarına baxın"</string>
     <string name="vibrate_on_keypress">"Vibrasiyalı klikləmə"</string>
     <string name="sound_on_keypress">"Klikləmə səsi"</string>
     <string name="popup_on_keypress">"Klikləmədə popup"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"Dil keçidi düyməsi"</string>
     <string name="abbreviation_unit_milliseconds">"%s millisaniyə"</string>
     <string name="settings_system_default">"Sistem defoltu"</string>
-    <string name="use_contacts_dict_summary">"Təklif və korreksiya üçün Kontaktlardakı adlardan istifadə edin"</string>
     <string name="use_personalized_dicts">"Fərdiləşmiş təkliflər"</string>
     <string name="use_double_space_period">"İkili boşluq periodu"</string>
     <string name="use_double_space_period_summary">"Boşluqdakı iki klik boşluqdan sonra pauza daxil edir"</string>

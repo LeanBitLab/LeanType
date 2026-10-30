@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Rechercher les noms de contacts"</string>
     <string name="vibrate_on_keypress">"Vibrer à chaque touche"</string>
     <string name="sound_on_keypress">"Émettre un son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
@@ -21,7 +20,6 @@
     <string name="show_language_switch_key">"Touche de sélection de langue"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Paramètres par défaut"</string>
-    <string name="use_contacts_dict_summary">Utilise les noms de contacts pour les suggestions et les corrections</string>
     <string name="use_personalized_dicts">"Suggestions personnalisées"</string>
     <string name="disable_personalized_dicts_message">Attention : la désactivation de ce paramètre effacera les données apprises.</string>
     <string name="add_to_personal_dictionary">Ajouter les mots au dictionnaire personnel</string>
@@ -433,8 +431,6 @@ Nouveau dictionnaire:
     <string name="space_swipe_hide_keyboard_entry">Masquer le clavier</string>
     <string name="suggest_punctuation">Suggestions de ponctuation</string>
     <string name="suggest_punctuation_summary">Afficher la ponctuation lorsqu\'aucune autre suggestion n\'est disponible</string>
-    <string name="about_wiki_link_description">Le Wiki peut être amélioré par n\'importe quel utilisateur de GitHub !</string>
-    <string name="about_wiki_link">Accéder au Wiki</string>
     <string name="save_subtype_per_app">Mémoriser la langue par application</string>
     <string name="subtype_khipro_bn">%s (Khipro)</string>
     <string name="clipboard_history_pinned_first">Afficher les éléments épinglés en haut</string>
@@ -447,52 +443,6 @@ Nouveau dictionnaire:
     <string name="number_row_in_symbols">Afficher la ligne numérique en mode symboles</string>
     <string name="custom_emoji_font">Définir une police d\'emoji personnalisée à partir d\'un fichier</string>
     <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">Touches fonctionnelles (Khipro)</string>
-    <string name="emoji_search_title">Rechercher des emojis</string>
-    <string name="search_field_placeholder">Rechercher</string>
-    <string name="gesture_data_screen">Collecte de données gestuelles</string>
-    <string name="gesture_data_description">Bienvenue sur l\'écran de collecte de données gestuelles !&lt;br/&gt;&lt;br/&gt; Ceci fait partie d\'un &lt;a href=https://nlnet.nl/project/GestureTyping&gt;projet financé par NLnet&lt;/a&gt; visant à créer une bibliothèque de saisie gestuelle entièrement open source capable de remplacer la bibliothèque propriétaire de Google.&lt;br/&gt; Le résultat sera une alternative simple aux claviers AOSP, mais également compatible avec d\'autres claviers, comme FlorisBoard.&lt;br/&gt;&lt;br/&gt; Pour le développement de la bibliothèque, il est extrêmement utile de disposer de données gestuelles détaillées dans différentes langues et provenant de différents utilisateurs.&lt;br/&gt; En collectant et en soumettant des données de saisie gestuelle, vous contribuez à un ensemble de données ouvert qui sera utilisé pour le développement de la bibliothèque. Cet ensemble de données sera publié sous licence CC BY-SA 4.0 après la fin de la phase de collecte, le %s. Une fois vos données collectées, vous pouvez les soumettre à l\'aide de l\'icône de partage en bas de cet écran.</string>
-    <string name="gesture_data_info">Qu\'est-ce que c\'est ?</string>
-    <string name="gesture_data_description_modes">Actuellement, seul le mode de saisie active est disponible : un mot spécifique s’affiche et vous le saisissez à l’aide de la saisie gestuelle.\nUn mode de saisie passive sera ajouté ultérieurement. Il vous permettra de fournir des exemples de votre saisie gestuelle habituelle depuis d’autres applications. Compte tenu de la nature sensible de cette approche, son activation sera optionnelle, configurable et un écran de vérification des données avant leur envoi sera disponible.</string>
-    <string name="gesture_data_description_privacy">Confidentialité\n\nLes données que vous soumettez comprennent le mot cible, la disposition et les dimensions du clavier, le geste (heure et coordonnées), les suggestions de la bibliothèque actuelle, le hachage des dictionnaires utilisés, la version de l\'application, le mode de collecte des données, si la bibliothèque de saisie gestuelle est la bibliothèque Google par défaut, et un identifiant associé à chaque geste.\nLes données soumises seront téléchargées puis supprimées dès que possible de la boîte mail ProtonMail où elles sont stockées. Une fois la phase de collecte des données gestuelles terminée, l\'ensemble des données accumulées de tous les utilisateurs sera publié sous licence Creative Commons BY-SA 4.0.\n\nAfin de protéger votre vie privée, vous ne serez pas mentionné·e explicitement comme auteur·rice. Votre nom apparaîtra comme « Contributeur·rice au projet de données gestuelles LeanType ». Il ne devrait pas être possible de relier les données que vous générez sur cet écran à votre identité. Cependant, il pourrait être possible de déterminer quels gestes ont été effectués par une même personne, par exemple à partir d\'une disposition de clavier personnalisée, des dimensions du clavier, de la langue ou d\'un style de gestes particulier.</string>
-    <string name="gesture_data_privacy">Confidentialité</string>
-    <string name="gesture_data_get_data">Partager le fichier de données de geste</string>
-    <string name="gesture_data_delete_data">Effacer les données gestuelles</string>
-    <string name="gesture_data_send_mail">Envoyer les données par courriel</string>
-    <string name="gesture_data_copy_mail">Copier l\'adresse e-mail</string>
-    <string name="gesture_data_mail_use">Veuillez noter que cette adresse électronique est destinée à l\'envoi de données ; vous risquez de ne pas recevoir de réponses rapides ou régulières.</string>
-    <string name="gesture_data_please_type">Veuillez saisir le geste :</string>
-    <string name="gesture_data_next_save">J\'ai reçu %s. Cliquez si vous êtes sûr d\'avoir fait le geste correctement</string>
-    <string name="gesture_data_next">Passer ce mot</string>
-    <string name="gesture_data_active_count">%1$s mots dans cette session, %2$s mots au total (%3$s déjà soumis ou supprimés)</string>
-    <string name="gesture_data_review_screen_title">Examiner et partager les données gestuelles</string>
-    <string name="gesture_data_words_selected">%s mots</string>
-    <string name="gesture_data_date_range">Période couverte</string>
-    <string name="gesture_data_much_data">Vous avez de nombreuses données non soumises. Veuillez les soumettre puis supprimer les anciennes données.</string>
-    <string name="gesture_data_how_to_use">Comment utiliser</string>
-    <string name="gesture_data_active_description">Appuyez sur « Démarrer la saisie active », puis, si vous le souhaitez, changez de dictionnaire et commencez à saisir le mot affiché par gestes. Si votre geste correspond au mot, les données sont enregistrées et le mot suivant s\'affiche. Sinon, vous pouvez réessayer, passer au mot suivant ou vérifier que votre geste est correct. Seuls les dictionnaires intégrés à l\'application ou disponibles dans le &lt;a href=%s&gt;référentiel de dictionnaires&lt;/a&gt; peuvent être utilisés ; aucun autre dictionnaire ne sera pris en compte.</string>
-    <string name="gesture_data_active_start">Commencer la collecte active</string>
-    <string name="gesture_data_active_stop">Arrêter la collecte active</string>
-    <string name="gesture_data_ends_at">La phase de collecte des données gestuelles se terminera le %s. Veuillez soumettre vos données avant cette date.</string>
-    <string name="gesture_data_ended">La phase de collecte des données gestuelles s\'est terminée à %s. Vous pouvez partager vos données existantes, mais vous ne pouvez pas en ajouter de nouvelles.</string>
-    <string name="gesture_data_share_all">Partager %s mots</string>
-    <string name="gesture_data_share_new">Partager les %s mots non soumis précédemment</string>
-    <string name="gesture_data_delete_dialog">Vous disposez de données pour %1$s nouveaux mots et %2$s mots déjà partagés.</string>
-    <string name="gesture_data_delete_dialog_all">Supprimer %s mots</string>
-    <string name="gesture_data_delete_dialog_confirm">Êtes-vous sûr(e) ? Cette action supprimera %s mots. Assurez-vous que votre date partagée a été soumise !</string>
-    <string name="gesture_data_delete_dialog_submitted">Supprimer les %s mots soumis</string>
-    <string name="gesture_data_many_not_shared_words">Vous avez plus de %s mots à soumettre</string>
-    <string name="gesture_data_email_body">IMPORTANT :\n\nSalut !\nPour rappel, ces données seront partagées publiquement sous licence CC BY-SA 4.0 et vous ne serez pas mentionné(e) comme auteur(e) afin de protéger votre vie privée.\n\nMerci de nous avoir permis d’accéder à vos données. Nous en ferons bon usage !\n\nVeuillez noter que modifier le texte de cet avis n’aura aucune incidence sur l’utilisation de vos données. Il ne s’agit pas d’un contrat à modifier, mais simplement d’un rappel.\nSi vous souhaitez nous envoyer un message avec vos données, veuillez l’écrire ci-dessous.\n--------------------------------------------</string>
-    <string name="gesture_data_promotion_message">Salut !\nPuisque vous avez installé la bibliothèque de saisie gestuelle, le projet d\'LeanType visant à créer une bibliothèque de saisie gestuelle entièrement ouverte pourrait vous intéresser. Vous pouvez y contribuer en fournissant des données gestuelles. Pour plus d\'informations, consultez la page de collecte de données gestuelles.</string>
-    <string name="gesture_data_reminder_message">Salut !\nVous avez déjà utilisé la collecte de données gestuelles, mais vous n\'avez pas contribué depuis un certain temps. Souhaitez-vous participer à nouveau ?</string>
-    <string name="ask_later">Demandez-moi plus tard</string>
-    <string name="gesture_data_take_me_there">Y aller</string>
-    <string name="timestamp_description">Vous pouvez ajouter la clé d\'horodatage à l\'aide d\'une disposition personnalisée avec la clé « timestamp » ou le code de clé -10043</string>
-    <string name="prefs_bottom_row_scale">Échelle de la rangée du bas</string>
-    <string name="toolbar_swipe_down_to_hide">Masquer le clavier par balayage</string>
-    <string name="toolbar_swipe_down_to_hide_summary">Balayez la barre d\'outils vers le bas pour fermer le clavier</string>
-    <string name="gesture_data_please_switch_keyboard">Veuillez passer à %s</string>
-    <string name="gesture_data_share_limit">Pour éviter de dépasser les limites de taille, seuls les %s premiers mots seront exportés</string>
-    <string name="gesture_data_links">Informations sur la collecte de données gestuelles sur :</string>
 
     <string name="ime_name">LeanType</string>
     <string name="settings_category_configuration">Configuration</string>

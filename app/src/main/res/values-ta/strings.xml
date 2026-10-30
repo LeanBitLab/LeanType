@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"தொடர்பு பெயர்களை ஆய்வுசெய்"</string>
     <string name="vibrate_on_keypress">"விசையழுத்தின்போது அதிர்வுரு"</string>
     <string name="sound_on_keypress">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>
     <string name="popup_on_keypress">"விழை அழுத்தத்தின்போது பாப்அப் செய்"</string>
@@ -18,7 +17,6 @@
     <string name="show_language_switch_key">"மொழி மாற்ற விசை"</string>
     <string name="abbreviation_unit_milliseconds">%s மிவி</string>
     <string name="settings_system_default">"அமைப்பின் இயல்புநிலை"</string>
-    <string name="use_contacts_dict_summary">"பரிந்துரைகள், திருத்தங்கள் ஆகியவற்றிற்கு தொடர்புகளிலிருந்து பெயர்களை பயன்படுத்து"</string>
     <string name="use_personalized_dicts">"தனிப்பட்ட பரிந்துரைகள்"</string>
     <string name="use_double_space_period">"புள்ளியைத் தொடர்ந்து இடைவெளியை உள்ளிடு"</string>
     <string name="use_double_space_period_summary">"ஸ்பேஸ் பட்டியை இருமுறை தட்டுவது, புள்ளியை தொடர்ந்து இடைவெளியை உள்ளிடும்"</string>
@@ -386,8 +384,6 @@
     <string name="settings_screen_about">பற்றி</string>
     <string name="version">பதிப்பு</string>
     <string name="about_github_link">GitHub இல் காண்க</string>
-    <string name="about_wiki_link">விக்கிக்குச் செல்லவும்</string>
-    <string name="about_wiki_link_description">விக்கியை எந்த அறிவிலிமையம் பயனரும் மேம்படுத்தலாம்!</string>
     <string name="save_log">பதிவை சேமிக்கவும்</string>
     <string name="license">திறந்த மூல உரிமம்</string>
     <string name="gnu_gpl">குனு பொதுமக்கள் பொது உரிமம் v3.0</string>

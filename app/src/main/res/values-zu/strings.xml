@@ -5,7 +5,6 @@
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="use_contacts_dict">"Bheka amagama woxhumana nabo"</string>
     <string name="vibrate_on_keypress">"Dlidlizelisa ngokucindezela inkinobho"</string>
     <string name="sound_on_keypress">"Umsindo wokucindezela ukhiye"</string>
     <string name="popup_on_keypress">"Ugaxekile ngokucindezela ukhiye"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"Ukhiye wokushintsha ullimi"</string>
     <string name="abbreviation_unit_milliseconds">"%sms"</string>
     <string name="settings_system_default">"Okuzenzakalelayo kwesistimu"</string>
-    <string name="use_contacts_dict_summary">"Amagama abasebenzisi kusuka Kothintana nabo bokusikisela nokulungisa"</string>
     <string name="use_personalized_dicts">"Iziphakamiso ezenziwe okomuntu siqu"</string>
     <string name="use_double_space_period">"Isikhathi se-Double-space"</string>
     <string name="use_double_space_period_summary">"Ukuthepha kabili kubha yesikhala kufaka isikhathi esilandelwa yisikhala"</string>

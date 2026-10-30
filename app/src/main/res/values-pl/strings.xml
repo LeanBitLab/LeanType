@@ -4,7 +4,6 @@
     modified
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
-    <string name="use_contacts_dict">"Przeszukaj kontakty"</string>
     <string name="vibrate_on_keypress">"Wibracja przy naciśnięciu"</string>
     <string name="sound_on_keypress">"Dźwięk przy naciśnięciu"</string>
     <string name="popup_on_keypress">"Powiększ po naciśnięciu"</string>
@@ -19,7 +18,6 @@
     <string name="show_language_switch_key">"Klawisz zmiany języka"</string>
     <string name="abbreviation_unit_milliseconds">"%s ms"</string>
     <string name="settings_system_default">"Ustawienie domyślne"</string>
-    <string name="use_contacts_dict_summary">"W podpowiedziach i poprawkach używaj nazwisk z kontaktów"</string>
     <string name="use_personalized_dicts">"Dostosowane sugestie"</string>
     <string name="use_double_space_period">"Szybka kropka ze spacją"</string>
     <string name="use_double_space_period_summary">"Dwukrotne kliknięcie spacji wstawia kropkę ze spacją"</string>
@@ -471,8 +469,6 @@
     <string name="suggest_punctuation">Sugestie interpunkcji</string>
     <string name="suggest_punctuation_summary">Pokaż znaki interpunkcyjne, gdy nie ma innych sugestii</string>
     <string name="space_swipe_hide_keyboard_entry">Ukryj klawiaturę</string>
-    <string name="about_wiki_link">Przejdź do Wiki</string>
-    <string name="about_wiki_link_description">Każdy użytkownik GitHuba może ulepszać Wiki!</string>
     <string name="clipboard_history_pinned_first">Pokaż przypięte elementy na górze</string>
     <string name="save_subtype_per_app">Zapamiętaj język dla każdej aplikacji</string>
     <string name="subtype_mhr">Mari (wschodni)</string>
@@ -485,47 +481,6 @@
     <string name="layout_functional_keys_khipro" tools:keep="@string/layout_functional_keys">Klawisze funkcyjne (Khipro)</string>
     <string name="layout_emoji_bottom_row_with_action" tools:keep="@string/layout_emoji_bottom_row_with_action">Dolny rząd z klawiszem enter w widoku emotikonów</string>
     <string name="layout_clip_bottom_row_with_action" tools:keep="@string/layout_clip_bottom_row_with_action">Dolny rząd z klawiszem enter w widoku schowka</string>
-    <string name="emoji_search_title">Znajdź emotikon</string>
-    <string name="search_field_placeholder">Szukaj</string>
-    <string name="gesture_data_screen">Gromadzenie danych o gestach</string>
-    <string name="gesture_data_description">Witaj na ekranie gromadzenia danych o gestach!&lt;br/&gt;&lt;br/&gt; Jest to część &lt;a href=https://nlnet.nl/project/GestureTyping&gt;projektu finansowanego przez NLnet&lt;/a&gt;, którego celem jest stworzenie w pełni otwartoźródłowej biblioteki pisania gestami, która mogłaby zastąpić zamkniętą bibliotekę Google.&lt;br/&gt; Planuje się, że rezultatem będzie prosty zamiennik dla klawiatur opartych na AOSP, ale możliwy do użycia również z innymi klawiaturami, np. FlorisBoard.&lt;br/&gt;&lt;br/&gt; Przy rozwijaniu biblioteki niezwykle pomocne jest posiadanie szczegółowych danych o gestach w różnych językach i przez różnych użytkowników.&lt;br/&gt; Gromadząc i przesyłając dane o pisaniu gestami, możesz przyczynić się do tworzenia otwartego zbioru danych o gestach, które zostaną wykorzystane do rozwoju biblioteki. Zbiór danych zostanie opublikowany na licencji CC BY-SA 4.0 po zakończeniu fazy gromadzenia danych %s. Po zebraniu danych możesz je przesłać, korzystając z ikony udostępniania na dole tego ekranu.</string>
-    <string name="gesture_data_info">Co to jest?</string>
-    <string name="gesture_data_description_modes">Obecnie dostępny jest tylko tryb aktywnego gromadzenia, w którym wyświetlane jest konkretne słowo, które należy wpisać, używając gestów.\nPóźniej zostanie dodany pasywny tryb gromadzenia danych, w którym będziesz mógł udostępniać próbki swojego codziennego pisania gestami z innych aplikacji. Ze względu na wrażliwość tego podejścia, będzie to możliwe po wyrażeniu zgody, konfigurowalne i z ekranem podglądu danych, które zamierzasz przesłać.</string>
-    <string name="gesture_data_description_privacy">Prywatność\n\n Przesyłane dane składają się z konkretnego słowa, układu klawiatury i wymiarów, gestów (czas i współrzędne), sugestii z bieżącej biblioteki, skrótu użytych słowników, wersji aplikacji, trybu gromadzenia danych, informacji o tym, czy biblioteka pisania gestami jest domyślną biblioteką Google, a także identyfikatora przypisanego do każdego gestu.\n Przesłane dane zostaną pobrane i usunięte ze skrzynki pocztowej ProtonMail, gdzie są przechowywane, tak szybko jak to możliwe. Po zakończeniu fazy gromadzenia danych gestów, zebrany zestaw danych od wszystkich użytkowników zostanie opublikowany na licencji Creative Commons BY-SA 4.0.\n\n Aby chronić twoją prywatność, nie zostaniesz wymieniony jako autor. Twój wkład zostanie oznaczony jako \"Współtwórcy projektu LeanType Gesture Data\". Powiązanie z tobą danych generowanych na tym ekranie nie powinno być możliwe. Jednak możliwe może być ustalenie, które gesty wykonała ta sama osoba. Można to zrobić na przykład za pomocą niestandardowego układu klawiatury, wymiarów klawiatury, języka lub indywidualnego stylu gestów.</string>
-    <string name="gesture_data_privacy">Prywatność</string>
-    <string name="gesture_data_get_data">Udostępnij plik z danymi o gestach</string>
-    <string name="gesture_data_delete_data">Usuń dane gestów</string>
-    <string name="gesture_data_send_mail">Prześlij dane e-mailem</string>
-    <string name="gesture_data_copy_mail">Skopiuj adres e-mail</string>
-    <string name="gesture_data_please_type">Napisz gestem:</string>
-    <string name="gesture_data_next_save">Wpisano %s. Dotknij, jeśli masz pewność, że gest został wykonany poprawnie</string>
-    <string name="gesture_data_next">Pomiń słowo</string>
-    <string name="gesture_data_active_count">%1$s słów w tej sesji, łącznie %2$s słów (%3$s już przesłano lub usunięto)</string>
-    <string name="gesture_data_review_screen_title">Przeglądaj i udostępniaj dane gestów</string>
-    <string name="gesture_data_words_selected">%s słów</string>
-    <string name="gesture_data_much_data">Masz dużo nieprzesłanych danych. Prześlij, a następnie usuń stare dane.</string>
-    <string name="gesture_data_how_to_use">Jak to zrobić</string>
-    <string name="gesture_data_active_description">Dotknij \"Rozpocznij aktywne gromadzenie\", opcjonalnie zmień słownik i zacznij gestem wpisywać wyświetlone słowo.&lt;br/&gt; Jeśli gest pasuje do słowa, dane zostaną zapisane, a kolejne słowo zostanie wyświetlone. W przeciwnym razie możesz spróbować ponownie, pominąć słowo lub potwierdzić, że gest został wykonany poprawnie.&lt;br/&gt; Możesz używać tylko słowników wbudowanych w aplikację lub dostępnych w &lt;a href= %s &gt; repozytorium słowników&lt;/a&gt;, żadne inne słowa nie zostaną użyte.</string>
-    <string name="gesture_data_active_start">Rozpocznij aktywne gromadzenie</string>
-    <string name="gesture_data_active_stop">Zatrzymaj aktywne gromadzenie</string>
-    <string name="gesture_data_ends_at">Faza gromadzenia danych o gestach zakończy się %s. Prześlij swoje dane przed tą datą.</string>
-    <string name="gesture_data_ended">Faza gromadzenia danych gestów zakończyła się %s. Możesz udostępnić istniejące dane, ale nie możesz dodawać niczego nowego.</string>
-    <string name="gesture_data_share_all">Udostępnij wszystkie %s słowa</string>
-    <string name="gesture_data_share_new">Udostępnij %s słów, których wcześniej nie przesłano</string>
-    <string name="gesture_data_delete_dialog">Masz dane dla %1$s nowych i %2$s już udostępnionych słów.</string>
-    <string name="gesture_data_delete_dialog_all">Usuń wszystkie %s słowa</string>
-    <string name="gesture_data_delete_dialog_submitted">Usuń %s przesłanych słów</string>
-    <string name="gesture_data_many_not_shared_words">Masz ponad %s słów czekających na przesłanie</string>
-    <string name="gesture_data_date_range">Zakres danych</string>
-    <string name="gesture_data_email_body">WAŻNE:\n\n Cześć!\n Przypominamy, że te dane będą udostępniane publicznie na podstawie licencji CC BY-SA 4.0, a ty nie zostaniesz wymieniony jako autor, aby chronić twoją prywatność.\n\n Dziękujemy za udostępnienie nam praw do swoich danych. Zrobimy z nich dobry użytek!\n\n Pamiętaj, że zmiana treści niniejszego powiadomienia nie zmienia sposobu, w jaki będziemy używać twoich danych. To nie jest umowa, którą można modyfikować, a jedynie przypomnienie!\n Jeśli chcesz wysłać nam wiadomość zawierającą swoje dane, wpisz ją pod tą linią.\n ---------------------------------------------</string>
-    <string name="gesture_data_mail_use">Pamiętaj, że ten adres e-mail jest przeznaczony do przesyłania danych, więc odpowiedzi mogą nie być szybkie lub spójne.</string>
-    <string name="gesture_data_delete_dialog_confirm">Jesteś pewien? Spowoduje to usunięcie %s słów. Upewnij się, że udostępnione dane zostały przesłane!</string>
-    <string name="gesture_data_promotion_message">Cześć!\n Skoro zainstalowałeś bibliotekę pisania gestami, możesz być zainteresowany projektem LeanType, którego celem jest stworzenie w pełni otwartej biblioteki do pisania gestami. Możesz pomóc, udostępniając dane o gestach. Aby uzyskać więcej informacji, odwiedź ekran gromadzenia danych o gestach.</string>
-    <string name="gesture_data_reminder_message">Cześć!\n Wcześniej korzystałeś z funkcji gromadzenia danych o gestach, ale od dłuższego czasu nie dodawałeś żadnych danych. Czy chcesz ponownie wziąć udział w projekcie?</string>
-    <string name="ask_later">Zapytaj mnie później</string>
-    <string name="gesture_data_take_me_there">Zabierz mnie tam</string>
-    <string name="timestamp_description">Możesz dodać klawisz znacznika czasu, używając niestandardowego układu z klawiszem \"znacznik czasu\" lub kodem klawisza -10043</string>
-    <string name="prefs_bottom_row_scale">Rozmiar dolnego rzędu</string>
 <string name="ime_name">LeanType</string>
     <string name="settings_screen_suggestions">Sugestie</string>
     <string name="settings_category_prediction">Przewidywanie i uczenie</string>
@@ -1538,13 +1493,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="sound_pack_available_title">Dostępne pakiety dźwiękowe</string>
     <string name="sound_pack_imported_success">Pakiet dźwiękowy został pomyślnie zaimportowany</string>
     <string name="sound_pack_import_failed">Nie udało się zaimportować pakietu dźwiękowego (musi zawierać prawidłowe pliki audio lub pack.json)</string>
-    <string name="sound_pack_delete_title">Usuń pakiet dźwiękowy</string>
-    <string name="sound_pack_delete_message">Czy usunąć pakiet dźwiękowy „%s”?</string>
-    <string name="sound_pack_status_active">Aktywny</string>
-    <string name="sound_pack_size_mb_format">%.1f MB</string>
-    <string name="sound_pack_download_dialog_title">Pakiety dźwiękowe</string>
-    <string name="sound_pack_download_dialog_desc">Pobieraj pakiety dźwięków klawiszy od społeczności lub importuj własne pakiety .zip.</string>
-    <string name="sound_pack_delete_button">Usuń</string>
 <string name="sound_pack_downloaded_activated">Pobrano i aktywowano %s</string>
     <string name="sound_pack_download_failed">Nie udało się pobrać %s</string>
     <string name="sound_pack_deleted_format">Usunięto %s</string>
