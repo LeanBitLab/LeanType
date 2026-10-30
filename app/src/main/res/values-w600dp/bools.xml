@@ -4,5 +4,4 @@
     SPDX-License-Identifier: GPL-3.0-only
 -->
 <resources>
-    <bool name="config_default_split_keyboard">true</bool>
 </resources>
