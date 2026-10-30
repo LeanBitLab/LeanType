@@ -846,7 +846,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                 } else {
                     val blurFile = getCustomBackgroundBlurFile(context, night, landscape, blurAmount)
                     val blurredBm = if (blurFile.isFile) {
-                        BitmapFactory.decodeFile(blurFile.absolutePath)
+                        BitmapUtils.decodeSampledBitmap(blurFile, 1024, true)
                     } else {
                         val rawBm = BitmapUtils.decodeSampledBitmap(image, 1024, true)
                         if (rawBm != null) {
@@ -871,7 +871,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                     sCachedBackgroundImages[index] = CenterCropDrawable(blurredBm, scrimColor)
                 }
                 sCachedBackgroundImages[index]
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 null
             }
         }

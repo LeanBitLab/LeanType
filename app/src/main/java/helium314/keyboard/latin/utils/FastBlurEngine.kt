@@ -27,29 +27,34 @@ object FastBlurEngine {
         val srcHeight = source.height
         if (srcWidth <= 0 || srcHeight <= 0) return source
 
-        // 1. Progressive downscale to small thumbnail (~160-200px max dimension)
-        val scale = maxThumbnailDim.toFloat() / max(srcWidth, srcHeight).coerceAtLeast(1)
-        val targetWidth = max(1, (srcWidth * scale).toInt())
-        val targetHeight = max(1, (srcHeight * scale).toInt())
+        return try {
+            // 1. Progressive downscale to small thumbnail (~160-200px max dimension)
+            val scale = maxThumbnailDim.toFloat() / max(srcWidth, srcHeight).coerceAtLeast(1)
+            val targetWidth = max(1, (srcWidth * scale).toInt())
+            val targetHeight = max(1, (srcHeight * scale).toInt())
 
-        val smallBitmap = progressiveDownscale(source, targetWidth, targetHeight)
+            val smallBitmap = progressiveDownscale(source, targetWidth, targetHeight)
 
-        // 2. Sliding-window box blur passes (2-3 passes approximate Gaussian)
-        var current = smallBitmap
-        val passes = blurPasses.coerceIn(1, 4)
-        val blurRadius = radius.coerceIn(1, 15)
-        repeat(passes) {
-            val next = slidingBoxBlur(current, blurRadius)
-            if (current != smallBitmap && current != source) {
-                current.recycle()
+            // 2. Sliding-window box blur passes (2-3 passes approximate Gaussian)
+            var current = smallBitmap
+            val passes = blurPasses.coerceIn(1, 4)
+            val blurRadius = radius.coerceIn(1, 15)
+            repeat(passes) {
+                val next = slidingBoxBlur(current, blurRadius)
+                if (current != smallBitmap && current != source) {
+                    current.recycle()
+                }
+                current = next
             }
-            current = next
-        }
-        if (smallBitmap != current && smallBitmap != source) {
-            smallBitmap.recycle()
-        }
+            if (smallBitmap != current && smallBitmap != source) {
+                smallBitmap.recycle()
+            }
 
-        return current
+            current
+        } catch (e: Throwable) {
+            Log.w("FastBlurEngine", "OOM or error generating blurred thumbnail", e)
+            source
+        }
     }
 
     private fun progressiveDownscale(source: Bitmap, targetW: Int, targetH: Int): Bitmap {

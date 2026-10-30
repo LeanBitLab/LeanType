@@ -229,27 +229,27 @@ private fun backupLauncher(
                 ctx.getActivity()?.contentResolver?.openOutputStream(uri)?.use { os ->
                     val zipStream = ZipOutputStream(os)
                     files.forEach {
-                        val fileStream = FileInputStream(it).buffered()
-                        zipStream.putNextEntry(ZipEntry(it.path.replace(filesPath, "")))
-                        fileStream.copyTo(zipStream, 1024)
-                        fileStream.close()
-                        zipStream.closeEntry()
+                        FileInputStream(it).buffered().use { fileStream ->
+                            zipStream.putNextEntry(ZipEntry(it.path.replace(filesPath, "")))
+                            fileStream.copyTo(zipStream, 1024)
+                            zipStream.closeEntry()
+                        }
                     }
                     protectedFiles.forEach {
-                        val fileStream = FileInputStream(it).buffered()
-                        zipStream.putNextEntry(ZipEntry(it.path.replace(protectedFilesDir.path, "unprotected")))
-                        fileStream.copyTo(zipStream, 1024)
-                        fileStream.close()
-                        zipStream.closeEntry()
+                        FileInputStream(it).buffered().use { fileStream ->
+                            zipStream.putNextEntry(ZipEntry(it.path.replace(protectedFilesDir.path, "unprotected")))
+                            fileStream.copyTo(zipStream, 1024)
+                            zipStream.closeEntry()
+                        }
                     }
                     if (selectedCategories.contains(BackupCategory.CLIPBOARD)) {
                         val dbFile = ctx.getDatabasePath(Database.NAME)
                         if (dbFile.exists()) {
-                            val fileStream = FileInputStream(dbFile).buffered()
-                            zipStream.putNextEntry(ZipEntry(Database.NAME))
-                            fileStream.copyTo(zipStream, 1024)
-                            fileStream.close()
-                            zipStream.closeEntry()
+                            FileInputStream(dbFile).buffered().use { fileStream ->
+                                zipStream.putNextEntry(ZipEntry(Database.NAME))
+                                fileStream.copyTo(zipStream, 1024)
+                                zipStream.closeEntry()
+                            }
                         }
                     }
                     if (selectedCategories.contains(BackupCategory.API_KEYS)) {

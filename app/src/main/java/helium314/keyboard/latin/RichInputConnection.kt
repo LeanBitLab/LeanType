@@ -85,7 +85,15 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     fun isConnected(): Boolean {
         if (!mIsActive) return false
         if (mIC == null) {
-            mIC = mParent.currentInputConnection
+            mIC = try {
+                mParent.currentInputConnection
+            } catch (e: Exception) {
+                // Some host apps violate the InputConnection contract and throw
+                // RuntimeExceptions from their EditorInfo/InputConnection implementation.
+                // Never let that crash the long-running IME process.
+                Log.w(TAG, "currentInputConnection threw while connecting", e)
+                null
+            }
         }
         return mIC != null
     }
@@ -110,9 +118,15 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     fun onFinishInput() {
         // Close any active batch edit on the underlying InputConnection before releasing
         // the reference - prevents leaving the IC in a dangling open-batch state if a
-        // lifecycle interruption occurred mid-keystroke.
+        // lifecycle interruption occurred mid-keystroke. A host app that violates the
+        // InputConnection contract may throw here; swallow it so the IME service survives,
+        // and always reset mNestLevel so the next session starts balanced.
         if (mNestLevel > 0 && isConnected()) {
-            mIC?.endBatchEdit()
+            try {
+                mIC?.endBatchEdit()
+            } catch (e: Exception) {
+                Log.w(TAG, "endBatchEdit threw during onFinishInput", e)
+            }
         }
         mIsActive = false
         mIC = null
@@ -161,7 +175,21 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         if (++mNestLevel == 1) {
             mIC = mParent.currentInputConnection
             if (isConnected()) {
-                mIC?.beginBatchEdit()
+                try {
+                    mIC?.beginBatchEdit()
+                } catch (e: Exception) {
+                    // Contract-violating host app threw on beginBatchEdit. The underlying
+                    // IC did not open a batch, so reset the nest level; otherwise every
+                    // later endBatchEdit() would send an unmatched endBatchEdit over IPC,
+                    // which freezes the host editor's UI.
+                    Log.w(TAG, "beginBatchEdit threw, resetting nest level", e)
+                    mNestLevel = 0
+                }
+            } else {
+                // Not connected: no batch was opened on the IC. Roll the counter back so
+                // the matching endBatchEdit() does not send an unmatched endBatchEdit
+                // once the connection becomes available again.
+                mNestLevel = 0
             }
         } else if (mNestLevel > 10) {
             Log.w(TAG, "Nest level unusually high : $mNestLevel")
@@ -177,8 +205,14 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return
         }
 
-        if (--mNestLevel == 0 && isConnected()) {
-            mIC?.endBatchEdit()
+        if (--mNestLevel == 0) {
+            if (isConnected()) {
+                try {
+                    mIC?.endBatchEdit()
+                } catch (e: Exception) {
+                    Log.w(TAG, "endBatchEdit threw", e)
+                }
+            }
             if (!isSelectionUpdateInProgress && InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)) {
                 val now = SystemClock.uptimeMillis()
                 if (now - mLastCursorUpdateRequestTime >= 100L) {
@@ -197,7 +231,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
     fun ensureBatchEditClosed() {
         if (mNestLevel > 0 && isConnected()) {
-            mIC?.endBatchEdit()
+            try {
+                mIC?.endBatchEdit()
+            } catch (e: Exception) {
+                Log.w(TAG, "ensureBatchEditClosed: endBatchEdit threw", e)
+            }
         }
         mNestLevel = 0
     }
@@ -538,6 +576,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
     fun getTextBeforeCursor(n: Int, flags: Int): CharSequence? {
+        if (n <= 0) return "" // defensive: never forward a negative/zero request over IPC
         if (InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)) {
             // For web editors, bypass internal text cache because JS DOM updates asynchronously
             return getTextBeforeCursorAndDetectLaggyConnection(
@@ -580,14 +619,26 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         n: Int,
         flags: Int
     ): CharSequence? {
-        mIC = mParent.currentInputConnection
+        mIC = try {
+            mParent.currentInputConnection
+        } catch (e: Exception) {
+            Log.w(TAG, "currentInputConnection threw before getTextBeforeCursor", e)
+            null
+        }
 
         if (!isConnected()) {
             return null
         }
 
         val startTime = SystemClock.uptimeMillis()
-        val result = mIC?.getTextBeforeCursor(n, flags)
+        val result = try {
+            mIC?.getTextBeforeCursor(n, flags)
+        } catch (e: Exception) {
+            // Host apps frequently throw RuntimeExceptions here when their editor view was
+            // already destroyed but the framework still reports an active connection.
+            Log.w(TAG, "getTextBeforeCursor threw in host app", e)
+            null
+        }
 
         detectLaggyConnection(operation, timeout, startTime)
 
@@ -690,6 +741,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun getTextAfterCursor(n: Int, flags: Int): CharSequence? {
+        if (n <= 0) return "" // defensive: never forward a negative/zero request over IPC
         return getTextAfterCursorAndDetectLaggyConnection(
             OPERATION_GET_TEXT_AFTER_CURSOR,
             SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
@@ -704,14 +756,25 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         n: Int,
         flags: Int
     ): CharSequence? {
-        mIC = mParent.currentInputConnection
+        mIC = try {
+            mParent.currentInputConnection
+        } catch (e: Exception) {
+            Log.w(TAG, "currentInputConnection threw before getTextAfterCursor", e)
+            null
+        }
 
         if (!isConnected()) {
             return null
         }
 
         val startTime = SystemClock.uptimeMillis()
-        val result = mIC?.getTextAfterCursor(n, flags)
+        val result = try {
+            mIC?.getTextAfterCursor(n, flags)
+        } catch (e: Exception) {
+            // Same defense as getTextBeforeCursor: contract-violating hosts must not crash the IME.
+            Log.w(TAG, "getTextAfterCursor threw in host app", e)
+            null
+        }
 
         detectLaggyConnection(operation, timeout, startTime)
 
@@ -734,6 +797,8 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
     fun deleteTextBeforeCursor(beforeLength: Int) {
         if (DEBUG_BATCH_NESTING) checkBatchEdit()
+
+        if (beforeLength <= 0) return // defensive: negative lengths corrupt the local cache offsets
 
         if (DebugFlags.DEBUG_ENABLED) {
             Log.d(TAG, "deleting $beforeLength characters before cursor")
@@ -768,13 +833,19 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     fun deleteSurroundingText(beforeLength: Int, afterLength: Int) {
         if (DEBUG_BATCH_NESTING) checkBatchEdit()
 
+        // defensive: negative lengths corrupt the local cache offsets and are rejected
+        // (or crash) by many host InputConnection implementations
+        val safeBefore = beforeLength.coerceAtLeast(0)
+        val safeAfter = afterLength.coerceAtLeast(0)
+        if (safeBefore == 0 && safeAfter == 0) return
+
         if (DebugFlags.DEBUG_ENABLED) {
-            Log.d(TAG, "deleting $beforeLength before and $afterLength after cursor")
+            Log.d(TAG, "deleting $safeBefore before and $safeAfter after cursor")
         }
 
-        val remainingChars = mComposingText.length - beforeLength
-        if (beforeLength > 0) {
-            mPendingInFlightDeletions = minOf(mPendingInFlightDeletions + beforeLength, 32)
+        val remainingChars = mComposingText.length - safeBefore
+        if (safeBefore > 0) {
+            mPendingInFlightDeletions = minOf(mPendingInFlightDeletions + safeBefore, 32)
         }
 
         if (remainingChars >= 0) {
@@ -785,30 +856,44 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             mCommittedTextBeforeComposingText.setLength(len)
         }
 
-        if (mExpectedSelStart > beforeLength) {
-            mExpectedSelStart -= beforeLength
-            mExpectedSelEnd -= beforeLength
+        if (mExpectedSelStart > safeBefore) {
+            mExpectedSelStart -= safeBefore
+            mExpectedSelEnd -= safeBefore
         } else {
             mExpectedSelEnd -= mExpectedSelStart
             mExpectedSelStart = 0
         }
 
         if (isConnected()) {
-            mIC?.deleteSurroundingText(beforeLength, afterLength)
+            try {
+                mIC?.deleteSurroundingText(safeBefore, safeAfter)
+            } catch (e: Exception) {
+                Log.w(TAG, "deleteSurroundingText threw in host app", e)
+            }
         }
 
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
     }
 
     fun performEditorAction(actionId: Int) {
-        mIC = mParent.currentInputConnection
+        mIC = try {
+            mParent.currentInputConnection
+        } catch (e: Exception) {
+            Log.w(TAG, "currentInputConnection threw in performEditorAction", e)
+            null
+        }
         val ic = mIC ?: return
 
         if (mComposingText.isNotEmpty()) {
             finishComposingText()
         }
 
-        ic.performEditorAction(actionId)
+        try {
+            ic.performEditorAction(actionId)
+        } catch (e: Exception) {
+            // Some hosts throw on editor actions (e.g. custom action views already detached).
+            Log.w(TAG, "performEditorAction($actionId) threw in host app", e)
+        }
     }
 
     fun sendKeyEvent(keyEvent: KeyEvent) {

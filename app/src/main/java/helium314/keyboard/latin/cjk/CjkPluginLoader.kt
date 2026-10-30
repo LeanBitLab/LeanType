@@ -236,7 +236,7 @@ object CjkPluginLoader {
         if (!destLibDir.exists()) destLibDir.mkdirs()
         if (!destSharedDir.exists()) destSharedDir.mkdirs()
         try {
-            val zip = ZipFile(apkFile)
+            ZipFile(apkFile).use { zip ->
             val allEntries = zip.entries().asSequence().toList()
             val targetAbi = Build.SUPPORTED_ABIS.firstOrNull { abi ->
                 allEntries.any { it.name.startsWith("lib/$abi/") && it.name.endsWith(".so") }
@@ -275,8 +275,8 @@ object CjkPluginLoader {
                     }
                 }
             }
-            zip.close()
-        } catch (e: Exception) {
+        }
+    } catch (e: Exception) {
             Log.e(TAG, "Error extracting native libs and assets from CJK plugin", e)
         }
     }

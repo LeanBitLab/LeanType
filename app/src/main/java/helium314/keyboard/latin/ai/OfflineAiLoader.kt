@@ -151,27 +151,27 @@ object OfflineAiLoader {
     private fun extractNativeLibs(apkFile: File, destDir: File) {
         if (!destDir.exists()) destDir.mkdirs()
         try {
-            val zip = java.util.zip.ZipFile(apkFile)
-            val targetAbi = getTargetAbi()
-            val entries = zip.entries()
-            while (entries.hasMoreElements()) {
-                val entry = entries.nextElement()
-                if (entry.name.startsWith("lib/$targetAbi/") && entry.name.endsWith(".so")) {
-                    val libName = entry.name.substringAfterLast("/")
-                    val outFile = File(destDir, libName)
-                    if (!outFile.exists() || outFile.length() != entry.size) {
-                        zip.getInputStream(entry).use { input ->
-                            java.io.FileOutputStream(outFile).use { output ->
-                                input.copyTo(output)
+            java.util.zip.ZipFile(apkFile).use { zip ->
+                val targetAbi = getTargetAbi()
+                val entries = zip.entries()
+                while (entries.hasMoreElements()) {
+                    val entry = entries.nextElement()
+                    if (entry.name.startsWith("lib/$targetAbi/") && entry.name.endsWith(".so")) {
+                        val libName = entry.name.substringAfterLast("/")
+                        val outFile = File(destDir, libName)
+                        if (!outFile.exists() || outFile.length() != entry.size) {
+                            zip.getInputStream(entry).use { input ->
+                                java.io.FileOutputStream(outFile).use { output ->
+                                    input.copyTo(output)
+                                }
                             }
                         }
+                        outFile.setReadable(true, false)
+                        outFile.setExecutable(true, false)
+                        outFile.setReadOnly()
                     }
-                    outFile.setReadable(true, false)
-                    outFile.setExecutable(true, false)
-                    outFile.setReadOnly()
                 }
             }
-            zip.close()
         } catch (e: Exception) {
             Log.e(TAG, "Error extracting native libs from plugin APK", e)
         }

@@ -20,7 +20,7 @@ object WallpaperFetcher {
         } catch (e: SecurityException) {
             Log.w("WallpaperFetcher", "System wallpaper access restricted: ${e.message}")
             null
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             Log.w("WallpaperFetcher", "Failed to retrieve system wallpaper: ${e.message}")
             null
         }
