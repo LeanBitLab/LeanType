@@ -1767,4 +1767,8 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="blocked_words_export_failed">Izvoz blokiranih riječi nije uspio:%1$s</string>
     <string name="select_import_language">Odaberite zadani jezik za uvezene riječi bez jezičnih oznaka:</string>
     <string name="select_file">Odaberite datoteku</string>
+    <string name="clear_learned_words_title">Jasne naučene riječi</string>
+    <string name="clear_learned_words_summary">Izbrišite sve riječi i prijedloge sljedeće riječi naučene tijekom tipkanja</string>
+    <string name="clear_learned_words_confirmation">Jeste li sigurni da želite izbrisati sve naučene riječi i prijedloge?</string>
+    <string name="clear_learned_words_success">Naučene riječi izbrisane</string>
 </resources>

@@ -1870,4 +1870,8 @@
     <string name="blocked_words_export_failed">തടഞ്ഞ വാക്കുകൾ കയറ്റുമതി ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു:%1$s</string>
     <string name="select_import_language">ഭാഷാ ടാഗുകൾ ഇല്ലാതെ ഇറക്കുമതി ചെയ്ത വാക്കുകൾക്കായി ഡിഫോൾട്ട് ഭാഷ തിരഞ്ഞെടുക്കുക:</string>
     <string name="select_file">ഫയൽ തിരഞ്ഞെടുക്കുക</string>
+    <string name="clear_learned_words_title">വ്യക്തമായ പഠിച്ച വാക്കുകൾ</string>
+    <string name="clear_learned_words_summary">ടൈപ്പിംഗിൽ നിന്ന് പഠിച്ച എല്ലാ വാക്കുകളും അടുത്ത പദ നിർദ്ദേശങ്ങളും ഇല്ലാതാക്കുക</string>
+    <string name="clear_learned_words_confirmation">പഠിച്ച എല്ലാ വാക്കുകളും നിർദ്ദേശങ്ങളും മായ്‌ക്കണമെന്ന് തീർച്ചയാണോ?</string>
+    <string name="clear_learned_words_success">പഠിച്ച വാക്കുകൾ മായ്ച്ചു</string>
 </resources>

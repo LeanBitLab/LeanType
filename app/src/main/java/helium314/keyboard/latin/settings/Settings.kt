@@ -361,6 +361,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_ALWAYS_SHOW_SUGGESTIONS = "always_show_suggestions"
         const val PREF_ALWAYS_SHOW_SUGGESTIONS_EXCEPT_WEB_TEXT = "always_show_suggestions_except_web_text"
         const val PREF_KEY_USE_PERSONALIZED_DICTS = "use_personalized_dicts"
+        const val PREF_CLEAR_LEARNED_WORDS = "pref_clear_learned_words"
         const val PREF_KEY_USE_DOUBLE_SPACE_PERIOD = "use_double_space_period"
         const val PREF_BLOCK_POTENTIALLY_OFFENSIVE = "block_potentially_offensive"
         const val PREF_SHOW_LANGUAGE_SWITCH_KEY = "show_language_switch_key"

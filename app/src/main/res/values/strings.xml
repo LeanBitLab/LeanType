@@ -106,6 +106,10 @@
     <string name="use_personalized_dicts">Personalized suggestions</string>
     <!-- Dialog message informing that dictionaries will be deleted on changing the setting -->
     <string name="disable_personalized_dicts_message">Warning: Disabling this setting will clear learned data</string>
+    <string name="clear_learned_words_title">Clear learned words</string>
+    <string name="clear_learned_words_summary">Delete all words and next-word suggestions learned from typing</string>
+    <string name="clear_learned_words_confirmation">Are you sure you want to clear all learned words and suggestions?</string>
+    <string name="clear_learned_words_success">Learned words cleared</string>
     <!-- Option name for adding learned words to personal dictionary -->
     <string name="add_to_personal_dictionary">Add words to personal dictionary</string>
     <!-- Description for option to add learned words to system-wide user dictionary -->

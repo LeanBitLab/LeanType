@@ -1798,4 +1798,8 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="blocked_words_export_failed">Engellenen kelimeler dışa aktarılamadı:%1$s</string>
     <string name="select_import_language">Dil etiketi olmayan içe aktarılan kelimeler için varsayılan dili seçin:</string>
     <string name="select_file">Dosya seç</string>
+    <string name="clear_learned_words_title">Öğrenilen kelimeleri temizle</string>
+    <string name="clear_learned_words_summary">Yazarak öğrenilen tüm kelimeleri ve sonraki kelime önerilerini silin</string>
+    <string name="clear_learned_words_confirmation">Öğrenilen tüm kelimeleri ve önerileri temizlemek istediğinizden emin misiniz?</string>
+    <string name="clear_learned_words_success">Öğrenilen kelimeler temizlendi</string>
 </resources>

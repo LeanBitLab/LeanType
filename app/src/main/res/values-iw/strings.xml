@@ -1775,4 +1775,8 @@
     <string name="blocked_words_export_failed">ייצוא מילים חסומות נכשל:%1$s</string>
     <string name="select_import_language">בחר שפת ברירת מחדל עבור מילים מיובאות ללא תגי שפה:</string>
     <string name="select_file">בחר קובץ</string>
+    <string name="clear_learned_words_title">מילים נלמדות ברורות</string>
+    <string name="clear_learned_words_summary">מחק את כל המילים וההצעות למילה הבאה שנלמדו מהקלדה</string>
+    <string name="clear_learned_words_confirmation">האם אתה בטוח שברצונך לנקות את כל המילים וההצעות שנלמדו?</string>
+    <string name="clear_learned_words_success">מילים נלמדות נוקו</string>
 </resources>

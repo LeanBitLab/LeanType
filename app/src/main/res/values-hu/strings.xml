@@ -1767,4 +1767,8 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="blocked_words_export_failed">Nem sikerült a blokkolt szavak exportálása:%1$s</string>
     <string name="select_import_language">Válassza ki az alapértelmezett nyelvet a nyelvi címkék nélkül importált szavakhoz:</string>
     <string name="select_file">Válassza ki a fájlt</string>
+    <string name="clear_learned_words_title">Tisztítsa meg a tanult szavakat</string>
+    <string name="clear_learned_words_summary">Törölje a gépelésből tanult összes szót és a következő szóra vonatkozó javaslatot</string>
+    <string name="clear_learned_words_confirmation">Biztosan törölni szeretné az összes tanult szót és javaslatot?</string>
+    <string name="clear_learned_words_success">A tanult szavak tisztázva</string>
 </resources>

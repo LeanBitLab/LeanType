@@ -1804,4 +1804,8 @@
     <string name="blocked_words_export_failed">Не ўдалося экспартаваць заблакіраваныя словы:%1$s</string>
     <string name="select_import_language">Выберыце мову па змаўчанні для імпартаваных слоў без моўных тэгаў:</string>
     <string name="select_file">Выберыце файл</string>
+    <string name="clear_learned_words_title">Выразныя вывучаныя словы</string>
+    <string name="clear_learned_words_summary">Выдаліць усе словы і прапановы наступнага слова, атрыманыя падчас уводу</string>
+    <string name="clear_learned_words_confirmation">Вы ўпэўнены, што хочаце выдаліць усе вывучаныя словы і прапановы?</string>
+    <string name="clear_learned_words_success">Вывучаныя словы ачышчаны</string>
 </resources>

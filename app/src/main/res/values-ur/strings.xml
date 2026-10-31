@@ -1861,4 +1861,8 @@
     <string name="blocked_words_export_failed">مسدود الفاظ برآمد کرنے میں ناکام:%1$s</string>
     <string name="select_import_language">لینگویج ٹیگز کے بغیر درآمد شدہ الفاظ کے لیے ڈیفالٹ زبان منتخب کریں:</string>
     <string name="select_file">فائل منتخب کریں۔</string>
+    <string name="clear_learned_words_title">سیکھے ہوئے الفاظ کو صاف کریں۔</string>
+    <string name="clear_learned_words_summary">ٹائپنگ سے سیکھے گئے تمام الفاظ اور اگلے لفظ کی تجاویز کو حذف کریں۔</string>
+    <string name="clear_learned_words_confirmation">کیا آپ واقعی تمام سیکھے ہوئے الفاظ اور تجاویز کو صاف کرنا چاہتے ہیں؟</string>
+    <string name="clear_learned_words_success">سیکھے ہوئے الفاظ صاف ہو گئے۔</string>
 </resources>

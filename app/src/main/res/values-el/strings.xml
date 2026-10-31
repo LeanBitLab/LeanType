@@ -1870,4 +1870,8 @@
     <string name="blocked_words_export_failed">Απέτυχε η εξαγωγή αποκλεισμένων λέξεων:%1$s</string>
     <string name="select_import_language">Επιλέξτε προεπιλεγμένη γλώσσα για εισαγόμενες λέξεις χωρίς ετικέτες γλώσσας:</string>
     <string name="select_file">Επιλέξτε αρχείο</string>
+    <string name="clear_learned_words_title">Καθαρίστε τις μαθημένες λέξεις</string>
+    <string name="clear_learned_words_summary">Διαγράψτε όλες τις λέξεις και τις προτάσεις επόμενης λέξης που έχετε μάθει από την πληκτρολόγηση</string>
+    <string name="clear_learned_words_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις λέξεις και τις προτάσεις που έχετε μάθει;</string>
+    <string name="clear_learned_words_success">Οι μαθημένες λέξεις καθαρίστηκαν</string>
 </resources>

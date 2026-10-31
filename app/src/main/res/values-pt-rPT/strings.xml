@@ -1766,4 +1766,8 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="blocked_words_export_failed">Falha ao exportar palavras bloqueadas:%1$s</string>
     <string name="select_import_language">Selecione o idioma padrão para palavras importadas sem tags de idioma:</string>
     <string name="select_file">Selecione o arquivo</string>
+    <string name="clear_learned_words_title">Limpar palavras aprendidas</string>
+    <string name="clear_learned_words_summary">Exclua todas as palavras e sugestões de palavras seguintes aprendidas durante a digitação</string>
+    <string name="clear_learned_words_confirmation">Tem certeza de que deseja limpar todas as palavras e sugestões aprendidas?</string>
+    <string name="clear_learned_words_success">Palavras aprendidas apagadas</string>
 </resources>

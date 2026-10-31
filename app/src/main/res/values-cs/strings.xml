@@ -1769,4 +1769,8 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="blocked_words_export_failed">Nepodařilo se exportovat blokovaná slova:%1$s</string>
     <string name="select_import_language">Vyberte výchozí jazyk pro importovaná slova bez jazykových značek:</string>
     <string name="select_file">Vyberte soubor</string>
+    <string name="clear_learned_words_title">Jasná naučená slova</string>
+    <string name="clear_learned_words_summary">Odstraňte všechna slova a návrhy dalších slov naučené při psaní</string>
+    <string name="clear_learned_words_confirmation">Opravdu chcete vymazat všechna naučená slova a návrhy?</string>
+    <string name="clear_learned_words_success">Naučená slova vyčištěna</string>
 </resources>

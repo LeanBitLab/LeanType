@@ -1827,4 +1827,8 @@
     <string name="blocked_words_export_failed">فشل تصدير الكلمات المحظورة:%1$s</string>
     <string name="select_import_language">حدد اللغة الافتراضية للكلمات المستوردة بدون علامات اللغة:</string>
     <string name="select_file">حدد الملف</string>
+    <string name="clear_learned_words_title">مسح الكلمات المستفادة</string>
+    <string name="clear_learned_words_summary">احذف جميع الكلمات واقتراحات الكلمات التالية المستفادة من الكتابة</string>
+    <string name="clear_learned_words_confirmation">هل أنت متأكد أنك تريد مسح كافة الكلمات والاقتراحات التي تعلمتها؟</string>
+    <string name="clear_learned_words_success">تم مسح الكلمات التي تم تعلمها</string>
 </resources>

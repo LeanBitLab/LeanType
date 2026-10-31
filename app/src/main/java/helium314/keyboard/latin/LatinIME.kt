@@ -1842,6 +1842,13 @@ class LatinIME : InputMethodService(),
         inputLogic.suggest.clearNextWordSuggestionsCache()
     }
 
+    fun clearUserHistory() {
+        PersonalizationHelper.removeAllUserHistoryDictionaries(this)
+        dictionaryFacilitator.clearUserHistoryDictionary(this)
+        inputLogic.suggest.clearNextWordSuggestionsCache()
+        handler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_TYPING)
+    }
+
     fun getDictionaryFacilitator(): DictionaryFacilitator = dictionaryFacilitator
 
     override fun removeExternalSuggestions() {

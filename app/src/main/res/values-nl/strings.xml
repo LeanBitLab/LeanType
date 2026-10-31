@@ -1811,4 +1811,8 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="blocked_words_export_failed">Kan geblokkeerde woorden niet exporteren:%1$s</string>
     <string name="select_import_language">Selecteer de standaardtaal voor geïmporteerde woorden zonder taaltags:</string>
     <string name="select_file">Selecteer bestand</string>
+    <string name="clear_learned_words_title">Duidelijke geleerde woorden</string>
+    <string name="clear_learned_words_summary">Verwijder alle woorden en suggesties voor volgende woorden die u tijdens het typen hebt geleerd</string>
+    <string name="clear_learned_words_confirmation">Weet u zeker dat u alle geleerde woorden en suggesties wilt wissen?</string>
+    <string name="clear_learned_words_success">Geleerde woorden gewist</string>
 </resources>

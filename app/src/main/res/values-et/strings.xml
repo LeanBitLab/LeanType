@@ -1804,4 +1804,8 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="blocked_words_export_failed">Blokeeritud sõnade eksportimine ebaõnnestus:%1$s</string>
     <string name="select_import_language">Valige ilma keelemärgenditeta imporditud sõnade jaoks vaikekeel:</string>
     <string name="select_file">Valige fail</string>
+    <string name="clear_learned_words_title">Selge õpitud sõnad</string>
+    <string name="clear_learned_words_summary">Kustutage kõik tippimisel õpitud sõnad ja järgmise sõna soovitused</string>
+    <string name="clear_learned_words_confirmation">Kas olete kindel, et soovite kõik õpitud sõnad ja soovitused kustutada?</string>
+    <string name="clear_learned_words_success">Õpitud sõnad kustutatud</string>
 </resources>

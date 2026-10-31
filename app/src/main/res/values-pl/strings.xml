@@ -1811,4 +1811,8 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="blocked_words_export_failed">Nie udało się wyeksportować zablokowanych słów:%1$s</string>
     <string name="select_import_language">Wybierz domyślny język dla importowanych słów bez znaczników językowych:</string>
     <string name="select_file">Wybierz plik</string>
+    <string name="clear_learned_words_title">Wyczyść wyuczone słowa</string>
+    <string name="clear_learned_words_summary">Usuń wszystkie słowa i sugestie kolejnych słów wyciągnięte podczas pisania</string>
+    <string name="clear_learned_words_confirmation">Czy na pewno chcesz usunąć wszystkie poznane słowa i sugestie?</string>
+    <string name="clear_learned_words_success">Nauczone słowa zostały usunięte</string>
 </resources>

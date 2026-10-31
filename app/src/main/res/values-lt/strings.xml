@@ -1805,4 +1805,8 @@ Ar norite atnaujinti?</string>
     <string name="blocked_words_export_failed">Nepavyko eksportuoti užblokuotų žodžių:%1$s</string>
     <string name="select_import_language">Pasirinkite numatytąją kalbą importuojamiems žodžiams be kalbos žymų:</string>
     <string name="select_file">Pasirinkite failą</string>
+    <string name="clear_learned_words_title">Aiškūs išmokti žodžiai</string>
+    <string name="clear_learned_words_summary">Ištrinkite visus žodžius ir kito žodžio pasiūlymus, išmoktus įvedant tekstą</string>
+    <string name="clear_learned_words_confirmation">Ar tikrai norite išvalyti visus išmoktus žodžius ir pasiūlymus?</string>
+    <string name="clear_learned_words_success">Išmokti žodžiai išvalyti</string>
 </resources>

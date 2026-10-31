@@ -1769,4 +1769,8 @@
     <string name="blocked_words_export_failed">Не вдалося експортувати заблоковані слова:%1$s</string>
     <string name="select_import_language">Виберіть мову за умовчанням для імпортованих слів без мовних тегів:</string>
     <string name="select_file">Виберіть файл</string>
+    <string name="clear_learned_words_title">Чітко вивчені слова</string>
+    <string name="clear_learned_words_summary">Видаліть усі слова та пропозиції наступного слова, отримані під час введення</string>
+    <string name="clear_learned_words_confirmation">Ви впевнені, що бажаєте видалити всі вивчені слова та пропозиції?</string>
+    <string name="clear_learned_words_success">Вивчені слова очищені</string>
 </resources>

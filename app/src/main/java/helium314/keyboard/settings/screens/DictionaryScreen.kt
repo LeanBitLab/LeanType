@@ -3,6 +3,7 @@ package helium314.keyboard.settings.screens
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
 import helium314.keyboard.latin.dictionary.Dictionary
+import helium314.keyboard.latin.personalization.PersonalizationHelper
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.Links
 import helium314.keyboard.latin.common.LocaleUtils
@@ -86,6 +89,7 @@ fun DictionaryScreen(
         .sortedWith(comparer)
     var selectedLocale: Locale? by remember { mutableStateOf(null) }
     var showAddDictDialog by remember { mutableStateOf(false) }
+    var showClearHistoryDialog by rememberSaveable { mutableStateOf(false) }
     val dictPicker = dictionaryFilePicker(selectedLocale)
 
     SearchScreen(
@@ -135,6 +139,14 @@ fun DictionaryScreen(
                             icon = R.drawable.ic_bin,
                             onClick = { SettingsDestination.navigateTo(SettingsDestination.BlockedWords) },
                             value = { NextScreenIcon() }
+                        )
+
+                        // Clear Learned Words Entry
+                        Preference(
+                            name = stringResource(R.string.clear_learned_words_title),
+                            description = stringResource(R.string.clear_learned_words_summary),
+                            icon = R.drawable.ic_clear_all,
+                            onClick = { showClearHistoryDialog = true }
                         )
 
                         // Dictionary Source Entry
@@ -307,6 +319,16 @@ fun DictionaryScreen(
             }
         }
     )
+    if (showClearHistoryDialog) {
+        ConfirmationDialog(
+            onDismissRequest = { showClearHistoryDialog = false },
+            onConfirmed = {
+                PersonalizationHelper.clearUserHistory(ctx)
+                Toast.makeText(ctx, ctx.getString(R.string.clear_learned_words_success), Toast.LENGTH_SHORT).show()
+            },
+            content = { Text(stringResource(R.string.clear_learned_words_confirmation)) }
+        )
+    }
     if (showAddDictDialog) {
         PreferenceDialog(
             onDismissRequest = { showAddDictDialog = false },

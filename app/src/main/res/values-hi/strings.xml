@@ -1796,4 +1796,8 @@
     <string name="blocked_words_export_failed">अवरुद्ध शब्दों को निर्यात करने में विफल:%1$s</string>
     <string name="select_import_language">भाषा टैग के बिना आयातित शब्दों के लिए डिफ़ॉल्ट भाषा चुनें:</string>
     <string name="select_file">फ़ाइल चुनें</string>
+    <string name="clear_learned_words_title">स्पष्ट सीखे हुए शब्द</string>
+    <string name="clear_learned_words_summary">टाइपिंग से सीखे गए सभी शब्द और अगले शब्द के सुझाव हटा दें</string>
+    <string name="clear_learned_words_confirmation">क्या आप वाकई सीखे गए सभी शब्दों और सुझावों को साफ़ करना चाहते हैं?</string>
+    <string name="clear_learned_words_success">सीखे हुए शब्द साफ़ हो गए</string>
 </resources>

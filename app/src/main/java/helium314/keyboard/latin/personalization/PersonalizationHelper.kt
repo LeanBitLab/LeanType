@@ -7,6 +7,7 @@
 package helium314.keyboard.latin.personalization
 
 import android.content.Context
+import helium314.keyboard.latin.LatinIME
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.common.FileUtils
 import java.io.File
@@ -58,6 +59,15 @@ object PersonalizationHelper {
             if (!filesDeleted) {
                 Log.e(TAG, "Cannot remove dictionary files. filesDir: ${filesDir.absolutePath}" +
                         ", dictNamePrefix: ${UserHistoryDictionary.NAME}")
+            }
+        }
+    }
+
+    fun clearUserHistory(context: Context) {
+        removeAllUserHistoryDictionaries(context)
+        LatinIME.getInstance()?.let { ime ->
+            runCatching {
+                ime.clearUserHistory()
             }
         }
     }

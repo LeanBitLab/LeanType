@@ -1825,4 +1825,8 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="blocked_words_export_failed">Échec de l\'exportation des mots bloqués :%1$s</string>
     <string name="select_import_language">Sélectionnez la langue par défaut pour les mots importés sans balises de langue :</string>
     <string name="select_file">Sélectionner un fichier</string>
+    <string name="clear_learned_words_title">Mots clairs appris</string>
+    <string name="clear_learned_words_summary">Supprimez tous les mots et suggestions de mots suivants appris lors de la saisie</string>
+    <string name="clear_learned_words_confirmation">Êtes-vous sûr de vouloir effacer tous les mots et suggestions appris ?</string>
+    <string name="clear_learned_words_success">Mots appris effacés</string>
 </resources>

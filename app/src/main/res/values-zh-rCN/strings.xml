@@ -1770,4 +1770,8 @@
     <string name="blocked_words_export_failed">无法导出阻止的字词：%1$s</string>
     <string name="select_import_language">为没有语言标签的导入单词选择默认语言：</string>
     <string name="select_file">选择文件</string>
+    <string name="clear_learned_words_title">清晰学过的单词</string>
+    <string name="clear_learned_words_summary">删除从打字中学到的所有单词和下一个单词建议</string>
+    <string name="clear_learned_words_confirmation">您确定要清除所有已学单词和建议吗？</string>
+    <string name="clear_learned_words_success">已学单词清除</string>
 </resources>

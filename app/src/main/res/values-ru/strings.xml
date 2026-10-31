@@ -1829,4 +1829,8 @@
     <string name="blocked_words_export_failed">Не удалось экспортировать заблокированные слова:%1$s.</string>
     <string name="select_import_language">Выберите язык по умолчанию для импортированных слов без языковых тегов:</string>
     <string name="select_file">Выберите файл</string>
+    <string name="clear_learned_words_title">Четко выученные слова</string>
+    <string name="clear_learned_words_summary">Удалить все слова и предложения следующего слова, полученные при вводе</string>
+    <string name="clear_learned_words_confirmation">Вы уверены, что хотите удалить все выученные слова и предложения?</string>
+    <string name="clear_learned_words_success">Выученные слова очищены</string>
 </resources>

@@ -1804,4 +1804,8 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="blocked_words_export_failed">Nu s-au putut exporta cuvintele blocate:%1$s</string>
     <string name="select_import_language">Selectați limba implicită pentru cuvintele importate fără etichete de limbă:</string>
     <string name="select_file">Selectați fișierul</string>
+    <string name="clear_learned_words_title">Cuvinte clare învățate</string>
+    <string name="clear_learned_words_summary">Ștergeți toate cuvintele și sugestiile pentru cuvintele următoare învățate din tastare</string>
+    <string name="clear_learned_words_confirmation">Sigur doriți să ștergeți toate cuvintele și sugestiile învățate?</string>
+    <string name="clear_learned_words_success">Cuvintele învățate șterse</string>
 </resources>

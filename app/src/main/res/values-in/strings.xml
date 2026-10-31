@@ -1767,4 +1767,8 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="blocked_words_export_failed">Gagal mengekspor kata-kata yang diblokir:%1$s</string>
     <string name="select_import_language">Pilih bahasa default untuk kata-kata yang diimpor tanpa tag bahasa:</string>
     <string name="select_file">Pilih berkas</string>
+    <string name="clear_learned_words_title">Kata-kata yang dipelajari dengan jelas</string>
+    <string name="clear_learned_words_summary">Hapus semua kata dan saran kata berikutnya yang dipelajari dari mengetik</string>
+    <string name="clear_learned_words_confirmation">Apakah Anda yakin ingin menghapus semua kata dan saran yang dipelajari?</string>
+    <string name="clear_learned_words_success">Kata-kata yang dipelajari dibersihkan</string>
 </resources>

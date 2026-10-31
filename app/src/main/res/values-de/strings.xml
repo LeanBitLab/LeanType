@@ -1819,4 +1819,8 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="blocked_words_export_failed">Blockierte Wörter konnten nicht exportiert werden:%1$s</string>
     <string name="select_import_language">Wählen Sie die Standardsprache für importierte Wörter ohne Sprach-Tags:</string>
     <string name="select_file">Datei auswählen</string>
+    <string name="clear_learned_words_title">Klare gelernte Wörter</string>
+    <string name="clear_learned_words_summary">Löschen Sie alle beim Tippen gelernten Wörter und Vorschläge für das nächste Wort</string>
+    <string name="clear_learned_words_confirmation">Sind Sie sicher, dass Sie alle gelernten Wörter und Vorschläge löschen möchten?</string>
+    <string name="clear_learned_words_success">Gelernte Wörter gelöscht</string>
 </resources>

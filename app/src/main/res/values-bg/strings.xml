@@ -1804,4 +1804,8 @@
     <string name="blocked_words_export_failed">Неуспешно експортиране на блокирани думи:%1$s</string>
     <string name="select_import_language">Изберете език по подразбиране за импортирани думи без езикови тагове:</string>
     <string name="select_file">Изберете файл</string>
+    <string name="clear_learned_words_title">Ясно научени думи</string>
+    <string name="clear_learned_words_summary">Изтрийте всички думи и предложения за следваща дума, научени от въвеждането</string>
+    <string name="clear_learned_words_confirmation">Сигурни ли сте, че искате да изчистите всички научени думи и предложения?</string>
+    <string name="clear_learned_words_success">Научените думи са изчистени</string>
 </resources>
