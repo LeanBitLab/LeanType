@@ -21,7 +21,7 @@ abstract class AbstractDrawingPreview {
     }
 
     protected fun invalidateDrawingView() {
-        mDrawingView?.invalidate()
+        mDrawingView?.postInvalidateOnAnimation()
     }
 
     protected val isPreviewEnabled: Boolean

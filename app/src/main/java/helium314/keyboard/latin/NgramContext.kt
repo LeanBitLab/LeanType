@@ -152,10 +152,10 @@ class NgramContext {
     override fun hashCode(): Int {
         var hashValue = 0
         for (wordInfo in mPrevWordsInfo) {
-            if (WordInfo.EMPTY_WORD_INFO != wordInfo) {
+            if (WordInfo.EMPTY_WORD_INFO == wordInfo) {
                 break
             }
-            hashValue = hashValue xor wordInfo.hashCode()
+            hashValue = 31 * hashValue + wordInfo.hashCode()
         }
         return hashValue
     }
@@ -219,7 +219,11 @@ class NgramContext {
         val isValid: Boolean
             get() = mWord != null
 
-        override fun hashCode(): Int = Arrays.hashCode(arrayOf<Any?>(mWord, mIsBeginningOfSentence))
+        override fun hashCode(): Int {
+            var result = mWord?.hashCode() ?: 0
+            result = 31 * result + if (mIsBeginningOfSentence) 1231 else 1237
+            return result
+        }
 
         override fun equals(other: Any?): Boolean {
             if (this === other) return true

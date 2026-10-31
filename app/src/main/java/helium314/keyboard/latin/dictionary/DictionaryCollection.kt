@@ -54,15 +54,18 @@ class DictionaryCollection(
             composedData, ngramContext, proximityInfoHandle, settingsValuesForSuggestion,
             sessionId, weightForLocale * mWeights[0], inOutWeightOfLangModelVsSpatialModel
         )
-        if (suggestions == null) suggestions = ArrayList()
         
         val length = dictionaries.size
         for (i in 1 until length) {
             val sugg = dictionaries[i].getSuggestions(
                 composedData, ngramContext, proximityInfoHandle, settingsValuesForSuggestion,
                 sessionId, weightForLocale * mWeights[i], inOutWeightOfLangModelVsSpatialModel
-            )
-            if (sugg != null) suggestions.addAll(sugg)
+            ) ?: continue
+            if (suggestions == null) {
+                suggestions = ArrayList(sugg)
+            } else {
+                suggestions.addAll(sugg)
+            }
         }
         return suggestions
     }

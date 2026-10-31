@@ -55,7 +55,6 @@ class SessionWordBoost private constructor(
         val now = System.currentTimeMillis()
         val existing = entries[normalized]
             ?: entries[normalized.lowercase()]
-            ?: entries.entries.firstOrNull { it.key.equals(normalized, ignoreCase = true) }?.value
 
         if (existing != null) {
             existing.count++
@@ -94,7 +93,6 @@ class SessionWordBoost private constructor(
         val normalized = WordTokenizer.normalizeForLookup(word)
         return entries[normalized]?.count
             ?: entries[normalized.lowercase()]?.count
-            ?: entries.entries.firstOrNull { it.key.equals(normalized, ignoreCase = true) }?.value?.count
             ?: 0
     }
 
@@ -109,7 +107,6 @@ class SessionWordBoost private constructor(
         val normalized = WordTokenizer.normalizeForLookup(word)
         val entry = entries[normalized]
             ?: entries[normalized.lowercase()]
-            ?: entries.entries.firstOrNull { it.key.equals(normalized, ignoreCase = true) }?.value
             ?: return 0f
         val daysSinceLastUse = (System.currentTimeMillis() - entry.lastSeenMs) /
             MILLIS_PER_DAY.toFloat()

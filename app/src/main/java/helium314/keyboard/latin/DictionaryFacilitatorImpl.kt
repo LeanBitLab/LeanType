@@ -644,7 +644,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         val suggestionResults = SuggestionResults(
             SuggestedWords.MAX_SUGGESTIONS, ngramContext.isBeginningOfSentenceContext, false
         )
-        waitForOtherDicts?.await(500, TimeUnit.MILLISECONDS)
+        waitForOtherDicts?.await(120, TimeUnit.MILLISECONDS)
 
         suggestionsArray.forEach {
             if (it == null) return@forEach
