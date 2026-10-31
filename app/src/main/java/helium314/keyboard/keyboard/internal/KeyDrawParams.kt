@@ -7,6 +7,7 @@
 package helium314.keyboard.keyboard.internal
 
 import android.graphics.Typeface
+import android.util.SparseArray
 import helium314.keyboard.latin.utils.ResourceUtils
 
 class KeyDrawParams {
@@ -31,6 +32,12 @@ class KeyDrawParams {
     var mLabelOffCenterRatio: Float = 0f
     var mHintLabelOffCenterRatio: Float = 0f
     var mAnimAlpha: Int = 0
+
+    private val mClonedParamsCache = HashMap<KeyVisualAttributes, SparseArray<KeyDrawParams>>()
+
+    fun clearCache() {
+        mClonedParamsCache.clear()
+    }
 
     constructor()
 
@@ -59,6 +66,7 @@ class KeyDrawParams {
     }
 
     fun updateParams(keyHeight: Int, attr: KeyVisualAttributes?) {
+        clearCache()
         if (attr == null) return
         if (attr.mTypeface != null) mTypeface = attr.mTypeface
 
@@ -87,9 +95,18 @@ class KeyDrawParams {
 
     fun mayCloneAndUpdateParams(keyHeight: Int, attr: KeyVisualAttributes?): KeyDrawParams {
         if (attr == null) return this
-        val newParams = KeyDrawParams(this)
-        newParams.updateParams(keyHeight, attr)
-        return newParams
+        var heightMap = mClonedParamsCache[attr]
+        if (heightMap == null) {
+            heightMap = SparseArray()
+            mClonedParamsCache[attr] = heightMap
+        }
+        var cached = heightMap.get(keyHeight)
+        if (cached == null) {
+            cached = KeyDrawParams(this)
+            cached.updateParams(keyHeight, attr)
+            heightMap.put(keyHeight, cached)
+        }
+        return cached
     }
 
     companion object {

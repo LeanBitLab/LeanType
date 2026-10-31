@@ -222,19 +222,19 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         enabledToolKeyBackground.gradientType = GradientDrawable.RADIAL_GRADIENT
         enabledToolKeyBackground.gradientRadius = ResourceUtils.getSuggestionsStripHeight(resources) / 2.1f
 
-        val mToolbarMode = Settings.getValues().mToolbarMode
+        val mToolbarMode = settingsValues.mToolbarMode
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS) {
             setToolbarVisibility(true, saveState = false)
         } else if (mToolbarMode == ToolbarMode.EXPANDABLE) {
             // Always start with toolbar collapsed (unless auto-show is enabled)
-            isToolbarManuallyOpen = Settings.getValues().mAutoShowToolbar
+            isToolbarManuallyOpen = settingsValues.mAutoShowToolbar
             setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
         }
 
         // toolbar keys setup
         rebuildToolbarKeys()
 
-        if (Settings.getValues().mSplitToolbar) {
+        if (settingsValues.mSplitToolbar) {
             val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
             
             val wrapper = findViewById<LinearLayout>(R.id.suggestions_strip_wrapper)
@@ -549,9 +549,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         setRtl(isRtlLanguage)
         suggestedWords = suggestions
 
+        val settingsValues = Settings.getValues()
         val currentLocale = KeyboardSwitcher.getInstance().keyboard?.mId?.mSubtype?.locale
             ?: RichInputMethodManager.getInstance().currentSubtypeLocale
-        val isMissingDict = Settings.getValues().mShowDownloadButtonInToolbar && isMainDictionaryMissing(context, currentLocale)
+        val isMissingDict = settingsValues.mShowDownloadButtonInToolbar && isMainDictionaryMissing(context, currentLocale)
         val promptView = if (isMissingDict) {
             val isCompact = !suggestions.isEmpty && !suggestions.isPunctuationSuggestions && suggestions.getWordCountToShow() > 0
             getMissingDictPromptView(currentLocale, isCompact)
@@ -562,7 +563,6 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         )
         updateKeys()
         // Update toolbar visibility state
-        val settingsValues = Settings.getValues()
         if (settingsValues.mToolbarMode == ToolbarMode.EXPANDABLE && !settingsValues.mSplitToolbar) {
             val hasNoSuggestions = (suggestions.isEmpty || suggestions.isPunctuationSuggestions) && !isMissingDict
             val shouldShow = when {

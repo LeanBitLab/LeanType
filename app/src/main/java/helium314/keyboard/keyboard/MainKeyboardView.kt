@@ -72,6 +72,8 @@ class MainKeyboardView @JvmOverloads constructor(
 
     private val mPopupKeysKeyboardContainer: View
     private val mPopupKeysKeyboardForActionContainer: View
+    private val mPopupKeysKeyboardView: PopupKeysKeyboardView
+    private val mPopupKeysKeyboardForActionView: PopupKeysKeyboardView
     private val mPopupKeysKeyboardCache = WeakHashMap<Key, Keyboard>()
     private val mConfigShowPopupKeysKeyboardAtTouchedPoint: Boolean
     private var mPopupKeysPanel: PopupKeysPanel? = null
@@ -126,6 +128,8 @@ class MainKeyboardView @JvmOverloads constructor(
         val inflater = LayoutInflater.from(context)
         mPopupKeysKeyboardContainer = inflater.inflate(popupKeysKeyboardLayoutId, null)
         mPopupKeysKeyboardForActionContainer = inflater.inflate(popupKeysKeyboardForActionLayoutId, null)
+        mPopupKeysKeyboardView = mPopupKeysKeyboardContainer.findViewById(R.id.popup_keys_keyboard_view)
+        mPopupKeysKeyboardForActionView = mPopupKeysKeyboardForActionContainer.findViewById(R.id.popup_keys_keyboard_view)
         
         mLanguageOnSpacebarFadeoutAnimator = loadObjectAnimator(languageOnSpacebarFadeoutAnimatorResId, this)?.apply { setIntValues(255, mLanguageOnSpacebarFinalAlpha) }
         mAltCodeKeyWhileTypingFadeoutAnimator = loadObjectAnimator(altCodeKeyWhileTypingFadeoutAnimatorResId, this)
@@ -308,8 +312,9 @@ class MainKeyboardView @JvmOverloads constructor(
             mPopupKeysKeyboardCache[key] = popupKeysKeyboard
         }
 
-        val container = if (key.hasActionKeyPopups()) mPopupKeysKeyboardForActionContainer else mPopupKeysKeyboardContainer
-        val popupKeysKeyboardView = container.findViewById<PopupKeysKeyboardView>(R.id.popup_keys_keyboard_view)
+        val isAction = key.hasActionKeyPopups()
+        val container = if (isAction) mPopupKeysKeyboardForActionContainer else mPopupKeysKeyboardContainer
+        val popupKeysKeyboardView = if (isAction) mPopupKeysKeyboardForActionView else mPopupKeysKeyboardView
         popupKeysKeyboardView.setKeyboard(popupKeysKeyboard)
         container.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
@@ -445,7 +450,8 @@ class MainKeyboardView @JvmOverloads constructor(
         if (key.altCodeWhileTyping() && key.isEnabled) params.mAnimAlpha = Constants.Color.ALPHA_OPAQUE
         super.onDrawKeyTopVisuals(key, canvas, paint, params)
         if (key.code == Constants.CODE_SPACE) {
-            if (Settings.getValues().mIncognitoModeEnabled && mIncognitoIcon != null) drawIncognitoOnSpacebar(key, canvas)
+            val isIncognito = (mSettingsValues ?: Settings.getValues()).mIncognitoModeEnabled
+            if (isIncognito && mIncognitoIcon != null) drawIncognitoOnSpacebar(key, canvas)
             if (mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) drawLanguageOnSpacebar(key, canvas, paint)
             if (key.isLongPressEnabled && mHasMultipleEnabledIMEsOrSubtypes) drawKeyPopupHint(key, canvas, paint, params)
         } else if (key.code == KeyCode.LANGUAGE_SWITCH) {

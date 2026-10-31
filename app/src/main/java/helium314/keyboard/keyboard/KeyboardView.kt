@@ -21,6 +21,7 @@ import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.common.StringUtils
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.settings.SettingsValues
 import helium314.keyboard.latin.suggestions.MoreSuggestions
 import helium314.keyboard.latin.suggestions.MoreSuggestionsView
 import helium314.keyboard.latin.utils.TypefaceUtils
@@ -52,6 +53,7 @@ open class KeyboardView @JvmOverloads constructor(
     private val mKeyBackgroundPadding = Rect()
     private val mEditModeKeyBackgroundPadding = Rect()
     private val mColors = Settings.getValues().mColors
+    protected var mSettingsValues: SettingsValues? = null
     private var mKeyScaleForText = 0f
     protected var mFontSizeMultiplier = 0f
 
@@ -184,7 +186,9 @@ open class KeyboardView @JvmOverloads constructor(
             else -> setBackgroundColor(Color.TRANSPARENT)
         }
         mKeyboard = keyboard
-        mKeyScaleForText = sqrt(1f / Settings.getValues().mKeyboardHeightScale.toDouble()).toFloat()
+        val sv = Settings.getValues()
+        mSettingsValues = sv
+        mKeyScaleForText = sqrt(1f / sv.mKeyboardHeightScale.toDouble()).toFloat()
         val scaledKeyHeight = ((keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap) * mKeyScaleForText).toInt()
         keyDrawParams.updateParams(scaledKeyHeight, mKeyVisualAttributes)
         keyDrawParams.updateParams(scaledKeyHeight, keyboard.mKeyVisualAttributes)
@@ -192,9 +196,9 @@ open class KeyboardView @JvmOverloads constructor(
         if (isInLayout) post { requestLayout() } else requestLayout()
         
         mFontSizeMultiplier = if (keyboard.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10) {
-            Settings.getValues().mFontSizeMultiplierEmoji * 0.55f
+            sv.mFontSizeMultiplierEmoji * 0.55f
         } else {
-            if (keyboard.mId.isEmojiKeyboard) (if (Settings.getValues().mEmojiKeyFit) 1f else Settings.getValues().mFontSizeMultiplierEmoji) else Settings.getValues().mFontSizeMultiplier
+            if (keyboard.mId.isEmojiKeyboard) (if (sv.mEmojiKeyFit) 1f else sv.mFontSizeMultiplierEmoji) else sv.mFontSizeMultiplier
         }
     }
 
@@ -272,13 +276,14 @@ open class KeyboardView @JvmOverloads constructor(
     private fun onDrawKeyboard(canvas: Canvas) {
         val kb = keyboard ?: return
         val sv = Settings.getValues()
+        mSettingsValues = sv
         mShowsHints = sv.mShowsHints
         val scale = sv.mKeyboardHeightScale
         val floatingScale = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale()
         val floatingWidth = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardWidth()
-        val defaultWidth = helium314.keyboard.latin.utils.ResourceUtils.getDefaultKeyboardWidth(context)
         
         if (floatingScale > 0.0f || floatingWidth > 0) {
+            val defaultWidth = if (floatingWidth > 0) helium314.keyboard.latin.utils.ResourceUtils.getDefaultKeyboardWidth(context) else 0
             val heightScale = scale * (if (floatingScale > 0.0f) floatingScale else 1.0f)
             val widthScale = if (floatingWidth > 0 && defaultWidth > 0) (floatingWidth.toFloat() / defaultWidth) else 1.0f
             val effectiveKeyScale = min(heightScale, widthScale)
@@ -349,14 +354,16 @@ open class KeyboardView @JvmOverloads constructor(
             val isFunctional = key.hasFunctionalBackground() || key.isShift() || key.isModifier() || key.code == KeyCode.DELETE || key.code == KeyCode.SYMBOL_ALPHA
 
             val baseBg = mColors.get(ColorType.KEY_BACKGROUND)
-            val isDarkTheme = ColorUtils.calculateLuminance(baseBg) < 0.5
-            val spaceBlendColor = if (isDarkTheme) Color.WHITE else Color.BLACK
-            val spaceBlendRatio = if (isDarkTheme) 0.12f else 0.08f
 
             val bgColor = when {
                 key.isPressed -> mColors.getPressedColor(if (isActionKey) ColorType.ACTION_KEY_BACKGROUND else if (isFunctional) ColorType.FUNCTIONAL_KEY_BACKGROUND else ColorType.KEY_BACKGROUND)
                 isActionKey -> mColors.get(ColorType.ACTION_KEY_BACKGROUND)
-                isSpaceKey -> ColorUtils.blendARGB(baseBg, spaceBlendColor, spaceBlendRatio) // Subtle elevated gray for twin spacebars
+                isSpaceKey -> {
+                    val isDarkTheme = ColorUtils.calculateLuminance(baseBg) < 0.5
+                    val spaceBlendColor = if (isDarkTheme) Color.WHITE else Color.BLACK
+                    val spaceBlendRatio = if (isDarkTheme) 0.12f else 0.08f
+                    ColorUtils.blendARGB(baseBg, spaceBlendColor, spaceBlendRatio) // Subtle elevated gray for twin spacebars
+                }
                 isFunctional -> mColors.get(ColorType.FUNCTIONAL_KEY_BACKGROUND)
                 else -> baseBg
             }
@@ -421,10 +428,11 @@ open class KeyboardView @JvmOverloads constructor(
         }
         
         if (mColors.hasKeyBorders) {
+            val sv = mSettingsValues ?: Settings.getValues()
             val radiusDp = when {
-                key.hasActionKeyBackground() -> Settings.getValues().mKeyBorderRadiusAction
-                key.hasFunctionalBackground() -> Settings.getValues().mKeyBorderRadiusFunctional
-                else -> Settings.getValues().mKeyBorderRadius
+                key.hasActionKeyBackground() -> sv.mKeyBorderRadiusAction
+                key.hasFunctionalBackground() -> sv.mKeyBorderRadiusFunctional
+                else -> sv.mKeyBorderRadius
             }
             val isDefault = radiusDp < 0f || when {
                 key.hasActionKeyBackground() -> radiusDp == Defaults.PREF_KEY_BORDER_RADIUS_ACTION
@@ -486,12 +494,13 @@ open class KeyboardView @JvmOverloads constructor(
         val label = if (isHexSpace) null else key.label
         
         if (label != null) {
+            val sv = mSettingsValues ?: Settings.getValues()
             val isEmojiKey = isEmoji(label) || (this is EmojiPageKeyboardView && keyboard?.mId?.mElementId != KeyboardId.ELEMENT_EMOJI_CATEGORY10)
             val typeface = if (mEmojiTypeface != null && isEmojiKey) mEmojiTypeface else mTypeface
             paint.typeface = typeface ?: key.selectTypeface(params)
             val isEmoticonInEmojiKeyboard = this is EmojiPageKeyboardView && keyboard?.mId?.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10
             val fontMultiplier = if (isEmoticonInEmojiKeyboard) {
-                Settings.getValues().mFontSizeMultiplierEmoji * 0.55f
+                sv.mFontSizeMultiplierEmoji * 0.55f
             } else {
                 mFontSizeMultiplier
             }
@@ -508,13 +517,13 @@ open class KeyboardView @JvmOverloads constructor(
                 paint.textAlign = Paint.Align.CENTER
             }
             
-            if (key.needsAutoXScale() || (isEmojiKey && Settings.getValues().mEmojiKeyFit) || isEmoticonInEmojiKeyboard) {
+            if (key.needsAutoXScale() || (isEmojiKey && sv.mEmojiKeyFit) || isEmoticonInEmojiKeyboard) {
                 val width = if (key.needsToKeepBackgroundAspectRatio(mDefaultKeyLabelFlags) && !(KeyboardActionListenerImpl.sPersistentTextEditModeActive || (kb != null && kb.mId.mElementId == KeyboardId.ELEMENT_TEXT_EDIT))) {
                     val bg = key.selectBackgroundDrawable(mKeyBackground, mFunctionalKeyBackground, mSpacebarBackground, mActionKeyBackground)
                     min(bg.bounds.bottom, bg.bounds.right)
                 } else keyWidth
                 val ratio = min(1.0f, (width * 0.90f) / TypefaceUtils.getStringWidth(label, paint))
-                if (key.needsAutoScale() || (isEmojiKey && Settings.getValues().mEmojiKeyFit) || isEmoticonInEmojiKeyboard) {
+                if (key.needsAutoScale() || (isEmojiKey && sv.mEmojiKeyFit) || isEmoticonInEmojiKeyboard) {
                     paint.textSize = paint.textSize * ratio
                 } else {
                     paint.textScaleX = ratio
@@ -555,7 +564,8 @@ open class KeyboardView @JvmOverloads constructor(
 
         val hintLabel = key.hintLabel
         if (hintLabel != null && mShowsHints) {
-            paint.textSize = key.selectHintTextSize(params) * Settings.getValues().mSecondaryFontScale
+            val sv = mSettingsValues ?: Settings.getValues()
+            paint.textSize = key.selectHintTextSize(params) * sv.mSecondaryFontScale
             paint.color = key.selectHintTextColor(params)
             val typeface = if (mEmojiTypeface != null && isEmoji(hintLabel)) mEmojiTypeface else mTypeface
             paint.typeface = typeface ?: Typeface.DEFAULT_BOLD
