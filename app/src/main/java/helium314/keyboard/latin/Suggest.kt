@@ -98,6 +98,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 getNextWordSuggestions(ngramContext, keyboard, inputStyleIfNotPrediction, settingsValuesForSuggestion)
             else mDictionaryFacilitator.getSuggestionResults(wordComposer.getComposedDataSnapshot(), ngramContext, keyboard,
                 settingsValuesForSuggestion, SESSION_ID_TYPING, inputStyleIfNotPrediction)
+        // filter out blacklisted words
+        suggestionResults.removeAll { mDictionaryFacilitator.isBlacklisted(it.mWord) }
         // ponytail: filter out multi-word suggestions if enabled
         if (Settings.getValues().mDisableMultiWordSuggestions) {
             suggestionResults.removeAll { it.mWord.contains(' ') }
@@ -417,6 +419,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             wordComposer.getComposedDataSnapshot(), ngramContext, keyboard,
             settingsValuesForSuggestion, SESSION_ID_GESTURE, inputStyle
         )
+        // filter out blacklisted words
+        suggestionResults.removeAll { mDictionaryFacilitator.isBlacklisted(it.mWord) }
         // ponytail: filter out multi-word suggestions if enabled
         if (Settings.getValues().mDisableMultiWordSuggestions) {
             suggestionResults.removeAll { it.mWord.contains(' ') }
@@ -509,6 +513,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         }
         val newResults = mDictionaryFacilitator.getSuggestionResults(ComposedData(InputPointers(1),
             false, ""), ngramContext, keyboard, settingsValuesForSuggestion, SESSION_ID_TYPING, inputStyle)
+        // filter out blacklisted words
+        newResults.removeAll { mDictionaryFacilitator.isBlacklisted(it.mWord) }
         // ponytail: filter out multi-word suggestions if enabled
         if (Settings.getValues().mDisableMultiWordSuggestions) {
             newResults.removeAll { it.mWord.contains(' ') }

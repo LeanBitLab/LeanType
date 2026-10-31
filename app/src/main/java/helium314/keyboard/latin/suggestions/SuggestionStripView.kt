@@ -1252,9 +1252,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val suggestedWordInfos = ArrayList<SuggestedWordInfo>()
         for (i in 0..<suggestedWords.size()) {
             val info = suggestedWords.getInfo(i)
-            if (info.word != word) suggestedWordInfos.add(info)
+            if (!info.word.equals(word, ignoreCase = true)) suggestedWordInfos.add(info)
         }
-        suggestedWords.mRawSuggestions?.removeFirst { it.word == word }
+        suggestedWords.mRawSuggestions?.removeAll { it.word.equals(word, ignoreCase = true) }
 
         val newSuggestedWords = SuggestedWords(
             suggestedWordInfos, suggestedWords.mRawSuggestions, suggestedWords.typedWordInfo, suggestedWords.mTypedWordValid,

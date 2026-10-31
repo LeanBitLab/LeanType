@@ -1834,6 +1834,7 @@ class LatinIME : InputMethodService(),
         if (word == null) return
         dictionaryFacilitator.removeWord(word)
         inputLogic.suggest.clearNextWordSuggestionsCache()
+        handler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_TYPING)
     }
 
     fun reloadBlacklist() {

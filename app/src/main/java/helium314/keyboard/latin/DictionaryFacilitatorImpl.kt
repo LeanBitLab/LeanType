@@ -374,6 +374,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         suggestion: String, wasAutoCapitalized: Boolean, ngramContext: NgramContext,
         timeStampInSeconds: Long, blockPotentiallyOffensive: Boolean
     ) {
+        if (isBlacklisted(suggestion)) return
         // Update the spelling cache before learning. Words that are not yet added to user history
         // and appear in no other language model are not considered valid.
         putWordIntoValidSpellingWordCache("addToUserHistory", suggestion)
@@ -1135,7 +1136,7 @@ private class DictionaryGroup(
     val locale: Locale = Locale(""),
     private var mainDict: Dictionary? = null,
     subDicts: Map<String, ExpandableBinaryDictionary> = emptyMap(),
-    context: Context? = null
+    private val context: Context? = null
 ) {
     private val subDicts: ConcurrentHashMap<String, ExpandableBinaryDictionary> = ConcurrentHashMap(subDicts)
 
@@ -1161,6 +1162,20 @@ private class DictionaryGroup(
         getSubDict(Dictionary.TYPE_USER)?.removeUnigramEntryDynamically(word)
         if (word != lowercase) {
             getSubDict(Dictionary.TYPE_USER)?.removeUnigramEntryDynamically(lowercase)
+        }
+
+        context?.let { ctx ->
+            scope.launch {
+                runCatching {
+                    val resolver = ctx.contentResolver
+                    val localeStr = locale.toString()
+                    resolver.delete(
+                        UserDictionary.Words.CONTENT_URI,
+                        "(${UserDictionary.Words.WORD}=? OR ${UserDictionary.Words.WORD}=?) AND (${UserDictionary.Words.LOCALE}=? OR ${UserDictionary.Words.LOCALE} IS NULL)",
+                        arrayOf(word, lowercase, localeStr)
+                    )
+                }
+            }
         }
 
         val appsDict = getSubDict(Dictionary.TYPE_APPS)
@@ -1314,13 +1329,13 @@ private class DictionaryGroup(
     fun isBlacklisted(word: String): Boolean {
         if (word.isBlank()) return false
         val lowercased = word.lowercase(locale)
-        val userDict = getSubDict(Dictionary.TYPE_USER)
-        if (userDict != null && (userDict.isInDictionary(word) || userDict.isInDictionary(lowercased))) {
-            return false
-        }
         val exactWords = compiledExactBlacklist
         if (exactWords.contains(lowercased) || exactWords.contains(word)) {
             return true
+        }
+        val userDict = getSubDict(Dictionary.TYPE_USER)
+        if (userDict != null && (userDict.isInDictionary(word) || userDict.isInDictionary(lowercased))) {
+            return false
         }
         val patterns = compiledBlacklistPatterns
         if (patterns.isEmpty() || lowercased.length > 64) {
