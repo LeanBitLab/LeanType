@@ -1295,33 +1295,31 @@ private class DictionaryGroup(
     private val blacklist = hashSetOf<String>().apply {
         val file = blacklistFile
         if (file == null) return@apply
-        scope.launch {
-            synchronized(blacklistLock) {
-                try {
-                    val loadedWords = mutableSetOf<String>()
-                    if (file.isFile) {
+        synchronized(blacklistLock) {
+            try {
+                val loadedWords = mutableSetOf<String>()
+                if (file.isFile) {
+                    loadedWords.addAll(
+                        file.readLines()
+                            .map { it.trim().lowercase(locale) }
+                            .filter { it.isNotEmpty() }
+                    )
+                }
+                val langTag = locale.toLanguageTag()
+                if (locale.language.isNotEmpty() && locale.language != langTag) {
+                    val baseFile = File(file.parentFile, "${locale.language}.txt")
+                    if (baseFile.isFile) {
                         loadedWords.addAll(
-                            file.readLines()
+                            baseFile.readLines()
                                 .map { it.trim().lowercase(locale) }
                                 .filter { it.isNotEmpty() }
                         )
                     }
-                    val langTag = locale.toLanguageTag()
-                    if (locale.language.isNotEmpty() && locale.language != langTag) {
-                        val baseFile = File(file.parentFile, "${locale.language}.txt")
-                        if (baseFile.isFile) {
-                            loadedWords.addAll(
-                                baseFile.readLines()
-                                    .map { it.trim().lowercase(locale) }
-                                    .filter { it.isNotEmpty() }
-                            )
-                        }
-                    }
-                    addAll(loadedWords)
-                    rebuildCompiledPatterns(this@apply)
-                } catch (e: IOException) {
-                    Log.e(TAG, "Exception while trying to read blacklist from ${file.name}", e)
                 }
+                addAll(loadedWords)
+                rebuildCompiledPatterns(this@apply)
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception while trying to read blacklist from ${file.name}", e)
             }
         }
     }
@@ -1414,17 +1412,10 @@ private class DictionaryGroup(
 
     fun reloadBlacklist() {
         val file = blacklistFile
-        if (file == null) {
-            synchronized(blacklistLock) {
-                blacklist.clear()
-                rebuildCompiledPatterns()
-            }
-            return
-        }
-        scope.launch {
-            synchronized(blacklistLock) {
+        synchronized(blacklistLock) {
+            blacklist.clear()
+            if (file != null) {
                 try {
-                    blacklist.clear()
                     val loadedWords = mutableSetOf<String>()
                     if (file.isFile) {
                         loadedWords.addAll(
@@ -1445,11 +1436,11 @@ private class DictionaryGroup(
                         }
                     }
                     blacklist.addAll(loadedWords)
-                    rebuildCompiledPatterns()
-                } catch (e: IOException) {
+                } catch (e: Exception) {
                     Log.e(TAG, "Exception while trying to read blacklist from ${file.name}", e)
                 }
             }
+            rebuildCompiledPatterns()
         }
     }
 
