@@ -19,7 +19,8 @@ As an open-source, community-funded project, we operate on a very limited budget
 - **Draw-Loop IPC Elimination & Zero Key Allocations**: Removed Binder IPC queries from active keyboard canvas draw routines, eliminated temporary object allocations per key draw, and optimized gesture trail invalidation for smooth 60fps rendering.
 
 ### 🧹 Maintenance
-- **Resource & Build Hygiene**: Pruned orphaned translation strings, removed redundant ProGuard rules, and cleaned up build configuration scripts.
+- **Plugin Update Deduplication & Packaging**: Consolidated plugin update checks into a centralized `PluginUpdateHelper` and hardened build scripts for F-Droid reproducibility.
+- **Resource & Build Hygiene**: Pruned orphaned translation strings, removed redundant ProGuard rules, and removed unused legacy split keyboard configuration references (#751).
 
 ---
 
