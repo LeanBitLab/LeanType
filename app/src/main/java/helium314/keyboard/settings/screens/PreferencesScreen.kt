@@ -372,7 +372,8 @@ private fun getDirectImeSwitchItems(context: Context): List<Pair<String, String>
     items.add(context.getString(R.string.direct_ime_switch_none) to "")
 
     enabledImis.forEach { imi ->
-        val subtypes = if (imi != thisImi) richImm.getEnabledInputMethodSubtypes(imi, true)
+        val isThisIme = (thisImi != null && imi == thisImi) || imi.packageName == context.packageName
+        val subtypes = if (!isThisIme) richImm.getEnabledInputMethodSubtypes(imi, true)
             else richImm.getEnabledInputMethodSubtypes(imi, true).sortedBy { it.displayName() }
         if (subtypes.isEmpty()) {
             val label = imi.loadLabel(pm).toString()
@@ -381,7 +382,7 @@ private fun getDirectImeSwitchItems(context: Context): List<Pair<String, String>
         } else {
             subtypes.forEach { subtype ->
                 if (!subtype.isAuxiliary) {
-                    val subtypeName = if (imi == thisImi) {
+                    val subtypeName = if (isThisIme) {
                         subtype.displayName()
                     } else {
                         subtype.getDisplayName(context, imi.packageName, imi.serviceInfo.applicationInfo)

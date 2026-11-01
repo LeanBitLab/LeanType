@@ -1477,7 +1477,8 @@ class LatinIME : InputMethodService(),
             } catch (ignored: NumberFormatException) {}
         }
         
-        if (targetImi.id == richImm.inputMethodInfoOfThisIme.id) {
+        val thisImi = richImm.inputMethodInfoOfThisIme
+        if ((thisImi != null && targetImi.id == thisImi.id) || targetImi.packageName == packageName) {
             if (targetSubtype != null) switchToSubtype(targetSubtype)
         } else if (targetSubtype != null) {
             switchInputMethodAndSubtypeCompat(targetImi, targetSubtype)

@@ -28,7 +28,8 @@ fun createInputMethodPickerDialog(latinIme: LatinIME, richImm: RichInputMethodMa
     val enabledSubtypes = mutableListOf<Pair<InputMethodInfo, InputMethodSubtype?>>()
     var currentSubtypeIndex = 0
     enabledImis.forEach { imi ->
-        val subtypes = if (imi != thisImi) richImm.getEnabledInputMethodSubtypes(imi, true)
+        val isThisIme = (thisImi != null && imi == thisImi) || imi.packageName == latinIme.packageName
+        val subtypes = if (!isThisIme) richImm.getEnabledInputMethodSubtypes(imi, true)
             else richImm.getEnabledInputMethodSubtypes(imi, true).sortedBy { it.displayName() }
         if (subtypes.isEmpty()) {
             enabledSubtypes.add(imi to null)
@@ -36,7 +37,7 @@ fun createInputMethodPickerDialog(latinIme: LatinIME, richImm: RichInputMethodMa
             subtypes.forEach {
                 if (!it.isAuxiliary) {
                     enabledSubtypes.add(imi to it)
-                    if (imi == thisImi && it == currentSubtype)
+                    if (isThisIme && it == currentSubtype)
                         currentSubtypeIndex = enabledSubtypes.lastIndex
                 }
             }

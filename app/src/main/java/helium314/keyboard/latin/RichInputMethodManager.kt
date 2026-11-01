@@ -7,6 +7,8 @@ package helium314.keyboard.latin
 
 import android.content.ComponentName
 import android.content.Context
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.inputmethodservice.InputMethodService
 import android.os.Build
 import android.provider.Settings as AndroidSettings
@@ -55,7 +57,7 @@ class RichInputMethodManager private constructor() {
     val combiningRulesExtraValueOfCurrentSubtype get() =
         SubtypeLocaleUtils.getCombiningRulesExtraValue(currentSubtype.rawSubtype)
 
-    val inputMethodInfoOfThisIme get() = inputMethodInfoCache.inputMethodOfThisIme
+    val inputMethodInfoOfThisIme: InputMethodInfo? get() = inputMethodInfoCache.inputMethodOfThisIme
 
     val inputMethodManager: InputMethodManager get() {
         checkInitialized()
@@ -188,8 +190,15 @@ class RichInputMethodManager private constructor() {
     fun getEnabledInputMethodSubtypes(imi: InputMethodInfo, allowsImplicitlySelectedSubtypes: Boolean) =
         inputMethodInfoCache.getEnabledInputMethodSubtypeList(imi, allowsImplicitlySelectedSubtypes)
 
-    fun hasMultipleEnabledIMEsOrSubtypes(shouldIncludeAuxiliarySubtypes: Boolean) =
-        hasMultipleEnabledSubtypes(shouldIncludeAuxiliarySubtypes, imm.enabledInputMethodList)
+    fun hasMultipleEnabledIMEsOrSubtypes(shouldIncludeAuxiliarySubtypes: Boolean): Boolean {
+        val enabledImis = try {
+            imm.enabledInputMethodList
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get enabledInputMethodList", e)
+            emptyList()
+        }
+        return hasMultipleEnabledSubtypes(shouldIncludeAuxiliarySubtypes, enabledImis)
+    }
 
     fun hasMultipleEnabledSubtypesInThisIme(shouldIncludeAuxiliarySubtypes: Boolean) =
         SubtypeSettings.getEnabledSubtypes(shouldIncludeAuxiliarySubtypes).size > 1
@@ -381,7 +390,7 @@ class RichInputMethodManager private constructor() {
         }
         imm = ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         context = ctx
-        inputMethodInfoCache = InputMethodInfoCache(imm, ctx.packageName)
+        inputMethodInfoCache = InputMethodInfoCache(ctx, imm, ctx.packageName)
 
         // Initialize the current input method subtype and the shortcut IME.
         refreshSubtypeCaches()
@@ -413,25 +422,49 @@ class RichInputMethodManager private constructor() {
         fun canSwitchLanguage(): Boolean {
             if (!isInitialized()) return false
             if (Settings.getValues().mLanguageSwitchKeyToOtherSubtypes && instance.hasMultipleEnabledSubtypesInThisIme(false)) return true
-            if (Settings.getValues().mLanguageSwitchKeyToOtherImes && instance.imm.enabledInputMethodList.size > 1) return true
+            val hasMultipleImes = try {
+                instance.imm.enabledInputMethodList.size > 1
+            } catch (e: Exception) {
+                false
+            }
+            if (Settings.getValues().mLanguageSwitchKeyToOtherImes && hasMultipleImes) return true
             return false
         }
     }
 }
 
-private class InputMethodInfoCache(private val imm: InputMethodManager, private val imePackageName: String) {
+private class InputMethodInfoCache(
+    private val context: Context,
+    private val imm: InputMethodManager,
+    private val imePackageName: String
+) {
     private var cachedThisImeInfo: InputMethodInfo? = null
     private val cachedSubtypeListWithImplicitlySelected = HashMap<InputMethodInfo, List<InputMethodSubtype>>()
 
     private val cachedSubtypeListOnlyExplicitlySelected = HashMap<InputMethodInfo, List<InputMethodSubtype>>()
 
     @get:Synchronized
-    val inputMethodOfThisIme: InputMethodInfo get() {
-        if (cachedThisImeInfo == null)
-            cachedThisImeInfo = imm.inputMethodList.firstOrNull { it.packageName == imePackageName }
-        cachedThisImeInfo?.let { return it }
-        throw RuntimeException("Input method id for $imePackageName not found, only found " +
-                imm.inputMethodList.map { it.packageName })
+    val inputMethodOfThisIme: InputMethodInfo? get() {
+        if (cachedThisImeInfo == null) {
+            try {
+                cachedThisImeInfo = imm.inputMethodList.firstOrNull { it.packageName == imePackageName }
+            } catch (e: Exception) {
+                Log.w("RichInputMethodManager", "Failed to query inputMethodList from IMM", e)
+            }
+        }
+        if (cachedThisImeInfo == null) {
+            try {
+                val serviceInfo = context.packageManager.getServiceInfo(
+                    ComponentName(context, LatinIME::class.java),
+                    PackageManager.GET_META_DATA
+                )
+                val resolveInfo = ResolveInfo().apply { this.serviceInfo = serviceInfo }
+                cachedThisImeInfo = InputMethodInfo(context, resolveInfo)
+            } catch (e: Exception) {
+                Log.w("RichInputMethodManager", "Failed to resolve InputMethodInfo for $imePackageName via PackageManager", e)
+            }
+        }
+        return cachedThisImeInfo
     }
 
     @Synchronized
@@ -439,12 +472,17 @@ private class InputMethodInfoCache(private val imm: InputMethodManager, private 
         val cache = if (allowsImplicitlySelectedSubtypes) cachedSubtypeListWithImplicitlySelected
             else cachedSubtypeListOnlyExplicitlySelected
         cache[imi]?.let { return it }
-        val result = if (imi == inputMethodOfThisIme) {
+        val result = if (imi.packageName == imePackageName) {
             // allowsImplicitlySelectedSubtypes means system should choose if nothing is enabled,
             // use it to fall back to system locales or en_US to avoid returning an empty list
             SubtypeSettings.getEnabledSubtypes(allowsImplicitlySelectedSubtypes)
         } else {
-            imm.getEnabledInputMethodSubtypeList(imi, allowsImplicitlySelectedSubtypes)
+            try {
+                imm.getEnabledInputMethodSubtypeList(imi, allowsImplicitlySelectedSubtypes)
+            } catch (e: Exception) {
+                Log.w("RichInputMethodManager", "Failed to get enabled subtypes for ${imi.packageName}", e)
+                emptyList()
+            }
         }
         cache[imi] = result
         return result
@@ -452,7 +490,6 @@ private class InputMethodInfoCache(private val imm: InputMethodManager, private 
 
     @Synchronized
     fun clear() {
-        cachedThisImeInfo = null
         cachedSubtypeListWithImplicitlySelected.clear()
         cachedSubtypeListOnlyExplicitlySelected.clear()
     }
