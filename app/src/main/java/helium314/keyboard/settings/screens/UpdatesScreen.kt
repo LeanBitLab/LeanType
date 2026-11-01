@@ -64,17 +64,13 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Exact Visual Line Delete Swipe: Integrated platform-native requestTextBoundsInfo for accurate multi-line delete swipes on Android 14+ (#731)",
-    "• Foldable & Large Display Ergonomics: Added display fine-tuning controls and automatic screen profile detection (#400)",
-    "• Progressive Disclosure Settings: Clean settings architecture with expandable fine-tuning drawers across all categories",
-    "• Chinese Punctuation & CJK Symbols: Direct input of full-width punctuation marks and dedicated CJK symbols layout",
-    "• Offline AI Long Text Scaling: Dynamically scaled tokens and expanded context limit to 3,072 tokens for long paragraphs",
-    "• Blocked Words Import & Export: Added standalone blacklist text file import and export with duplicate filtering (#687)",
-    "• Tamil V4 Standard Layout: Standardized modern Tamil V4 layout option across Tamil locales",
-    "• Fast-Typing Shift & Chording Fix: Resolved multi-touch shift state reset and inadvertent capitalization (#743, #598)",
-    "• Chromium & Web Editor Reliability: Restored word suggestions on backspace (#692) and enabled soft input on TYPE_NULL fields",
-    "• Zero-Delay Keyboard Launch: Eliminated opening flashes with transparent platform theme and instant key previews",
-    "• 100% Global Translations: Complete translation coverage across 30 supported languages and regional variants"
+    "• Samsung & Multi-Profile IME Crash Resolution: Prevented fatal crash on Samsung and isolated profiles where inputMethodList excludes third-party IMEs",
+    "• InputConnection IPC Hardening: Protected against dead-process crashes and plugged resource stream memory leaks",
+    "• Clear Learned Words & History: Added settings option to clear learned words, personalized dictionary history, and session word boost caches",
+    "• Synchronous Blacklist Enforcement: Synchronously loaded blocked words to eliminate suggestion race conditions and fixed deletion persistence",
+    "• N-Gram Prediction Collision Fix: Resolved NgramContext hash collision bug for accurate next-word predictions",
+    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation",
+    "• Resource & Build Hygiene: Pruned orphaned translation strings, cleaned phantom ProGuard rules, and streamlined build scripts"
 )
 
 @Composable

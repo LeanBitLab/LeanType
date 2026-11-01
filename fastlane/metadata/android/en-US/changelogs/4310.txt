@@ -1,0 +1,7 @@
+- Fixed crash on Samsung devices and Knox/Secure Folder profiles where inputMethodList excludes the IME.
+- Hardened InputConnection IPC against dead processes and fixed resource stream leaks.
+- Added settings option to clear learned words, personalized history, and word boost caches.
+- Enforced synchronous blacklist loading to eliminate suggestion race conditions and deletion issues.
+- Fixed NgramContext hash collision in multi-word prediction lookups.
+- Optimized canvas rendering with zero draw-loop Binder IPC and per-key allocation elimination.
+- Cleaned up orphaned translation strings and ProGuard rules.
