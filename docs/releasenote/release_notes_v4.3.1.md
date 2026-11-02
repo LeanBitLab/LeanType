@@ -8,12 +8,17 @@ As an open-source, community-funded project, we operate on a very limited budget
 
 ### 🐛 Fixed
 - **Samsung & Multi-Profile IME Crash Resolution**: Prevented fatal `RuntimeException` on Samsung devices (such as Galaxy S25 Ultra) and isolated environments (Knox, Secure Folder, Work Profiles, Direct Boot) where system `inputMethodList` excludes third-party IMEs, by replacing rigid equality checks with direct package matching and resilient `PackageManager` fallbacks.
+- **Android 7.1.2 Compatibility Crash (#756)**: Avoided `ThreadLocal.withInitial` in Thai word break iterator to prevent fatal crashes on Android 7.1.2 (API 25) and below.
 - **InputConnection IPC Hardening & Memory Leak Prevention**: Hardened `RichInputConnection` against dead-process and remote app IPC crashes, safely closed unclosed dictionary and asset input streams, and eliminated memory leak vectors.
+- **Transient Shift State Reset on Input Restarts**: Cleared one-shot shift state on input restarts and text field switches to prevent inadvertent capitalization, while strictly preserving Caps Lock.
+- **NULL Input Type Auto-Capitalization Guard**: Guarded `TYPE_NULL` input fields and invalid editor selections (`initialSelStart == -1 && initialSelEnd == -1`) from receiving auto-capitalization flags.
+- **Spacebar Custom Pressed Background Color (#749)**: Preserved custom pressed background color on the spacebar when key borders are disabled in custom themes and color palettes.
 - **Synchronous Blacklist Enforcement**: Synchronously loads and reloads the blocked words blacklist to eliminate race conditions where blocked words could temporarily appear in suggestions, and resolved deletion persistence issues.
 - **N-Gram Context Hash Collision Fix**: Corrected hash collisions in `NgramContext` to ensure accurate next-word context lookups across multi-word prediction pipelines.
 
 ### ✨ Added
 - **Clear Learned Words & User History**: Added a dedicated option in Text Correction / Suggestions settings to reset learned words, personalized dictionary history, and session word boost caches.
+- **Irish & Group 1 Latin Input Subtypes**: Added input subtypes in `method.xml` for Irish (`ga`, `ga_IE`), Bosnian (`bs`, `bs_BA`), Norwegian Nynorsk (`nn`, `nn_NO`), Cebuano (`ceb`), Malagasy (`mg`), Sardinian (`sc`), and Toki Pona (`tok`).
 
 ### ⚡ Performance
 - **Draw-Loop IPC Elimination & Zero Key Allocations**: Removed Binder IPC queries from active keyboard canvas draw routines, eliminated temporary object allocations per key draw, and optimized gesture trail invalidation for smooth 60fps rendering.

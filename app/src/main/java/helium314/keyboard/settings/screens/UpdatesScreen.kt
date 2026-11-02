@@ -64,13 +64,14 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Samsung & Multi-Profile IME Crash Resolution: Prevented fatal crash on Samsung and isolated profiles where inputMethodList excludes third-party IMEs",
-    "• InputConnection IPC Hardening: Protected against dead-process crashes and plugged resource stream memory leaks",
-    "• Clear Learned Words & History: Added settings option to clear learned words, personalized dictionary history, and session word boost caches",
+    "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
+    "• Transient Shift State Reset: Cleared one-shot shift on input restarts and text field switches while preserving Caps Lock",
+    "• Spacebar Custom Pressed Background: Preserved custom pressed color on spacebar when key borders are disabled (#749)",
+    "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
+    "• Samsung & Multi-Profile IME Crash Fix: Prevented crash on Samsung and isolated profiles where inputMethodList excludes the IME",
+    "• Clear Learned Words & History: Added settings option to reset learned words, personalized dictionary history, and word boost caches",
     "• Synchronous Blacklist Enforcement: Synchronously loaded blocked words to eliminate suggestion race conditions and fixed deletion persistence",
-    "• N-Gram Prediction Collision Fix: Resolved NgramContext hash collision bug for accurate next-word predictions",
-    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation",
-    "• Resource & Build Hygiene: Pruned orphaned translation strings, cleaned phantom ProGuard rules, and streamlined build scripts"
+    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation"
 )
 
 @Composable
