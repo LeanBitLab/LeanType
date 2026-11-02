@@ -1,7 +1,11 @@
-- Fixed crash on Android 7.1.2 and below in Thai word break iterator (#756).
-- Cleared transient shift state on input restarts while preserving Caps Lock.
-- Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona.
+- Fixed native SIGSEGV crash during dictionary traversal in word suggestions (#759).
 - Fixed crash on Samsung devices and Knox/Secure Folder profiles where inputMethodList excludes the IME.
+- Fixed crash on Android 7.1.2 and below in Thai word break iterator (#756).
+- Isolated multilingual learned history per language (#763) and preserved primary locale order (#762).
+- Enabled immediate dictionary reload on download and deletion without app restart (#761).
+- Cleared transient shift state on input restarts while preserving Caps Lock.
 - Added settings option to clear learned words, personalized history, and word boost caches.
+- Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona.
 - Enforced synchronous blacklist loading to eliminate suggestion race conditions and deletion issues.
 - Optimized canvas rendering with zero draw-loop Binder IPC and per-key allocation elimination.
+- Restored missing preference options across Text Correction, Toolbar, Gesture Typing, and Sound screens.

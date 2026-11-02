@@ -64,13 +64,17 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
-    "• Transient Shift State Reset: Cleared one-shot shift on input restarts and text field switches while preserving Caps Lock",
-    "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
+    "• Dictionary Concurrency Crash (SIGSEGV) Fix: Synchronized traverse session during suggestions to eliminate native crashes (#759)",
     "• Samsung & Multi-Profile IME Crash Fix: Prevented crash on Samsung and isolated profiles where inputMethodList excludes the IME",
+    "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
+    "• Multilingual History & Locale Priority: Isolated learned vocabulary per language (#763) and preserved primary locale order (#762)",
+    "• Dynamic Dictionary Sync: Broadcast update intent on dictionary download and deletion for instant wordlist refreshes (#761)",
+    "• Transient Shift State Reset: Cleared one-shot shift on input restarts and text field switches while preserving Caps Lock",
     "• Clear Learned Words & History: Added settings option to reset learned words, personalized dictionary history, and word boost caches",
     "• Synchronous Blacklist Enforcement: Synchronously loaded blocked words to eliminate suggestion race conditions and fixed deletion persistence",
-    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation"
+    "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
+    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation",
+    "• Settings Menus Restoration: Restored missing preference options across Text Correction, Toolbar, Gesture Typing, and Sound screens"
 )
 
 @Composable
