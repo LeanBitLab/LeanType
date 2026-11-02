@@ -12,7 +12,6 @@ As an open-source, community-funded project, we operate on a very limited budget
 - **InputConnection IPC Hardening & Memory Leak Prevention**: Hardened `RichInputConnection` against dead-process and remote app IPC crashes, safely closed unclosed dictionary and asset input streams, and eliminated memory leak vectors.
 - **Transient Shift State Reset on Input Restarts**: Cleared one-shot shift state on input restarts and text field switches to prevent inadvertent capitalization, while strictly preserving Caps Lock.
 - **NULL Input Type Auto-Capitalization Guard**: Guarded `TYPE_NULL` input fields and invalid editor selections (`initialSelStart == -1 && initialSelEnd == -1`) from receiving auto-capitalization flags.
-- **Spacebar Custom Pressed Background Color (#749)**: Preserved custom pressed background color on the spacebar when key borders are disabled in custom themes and color palettes.
 - **Synchronous Blacklist Enforcement**: Synchronously loads and reloads the blocked words blacklist to eliminate race conditions where blocked words could temporarily appear in suggestions, and resolved deletion persistence issues.
 - **N-Gram Context Hash Collision Fix**: Corrected hash collisions in `NgramContext` to ensure accurate next-word context lookups across multi-word prediction pipelines.
 

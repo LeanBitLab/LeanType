@@ -66,7 +66,6 @@ import kotlinx.coroutines.launch
 private val currentChangelogItems = listOf(
     "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
     "• Transient Shift State Reset: Cleared one-shot shift on input restarts and text field switches while preserving Caps Lock",
-    "• Spacebar Custom Pressed Background: Preserved custom pressed color on spacebar when key borders are disabled (#749)",
     "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
     "• Samsung & Multi-Profile IME Crash Fix: Prevented crash on Samsung and isolated profiles where inputMethodList excludes the IME",
     "• Clear Learned Words & History: Added settings option to reset learned words, personalized dictionary history, and word boost caches",

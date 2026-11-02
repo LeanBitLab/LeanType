@@ -1,6 +1,5 @@
 - Fixed crash on Android 7.1.2 and below in Thai word break iterator (#756).
 - Cleared transient shift state on input restarts while preserving Caps Lock.
-- Fixed spacebar custom pressed background color in borderless themes (#749).
 - Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona.
 - Fixed crash on Samsung devices and Knox/Secure Folder profiles where inputMethodList excludes the IME.
 - Added settings option to clear learned words, personalized history, and word boost caches.
