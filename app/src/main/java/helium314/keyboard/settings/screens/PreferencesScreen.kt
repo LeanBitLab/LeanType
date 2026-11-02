@@ -169,9 +169,6 @@ fun createPreferencesSettings(context: Context) = listOf(
     Setting(context, Settings.PREF_VIBRATE_IN_DND_MODE, R.string.vibrate_in_dnd_mode) {
         SwitchPreference(it, Defaults.PREF_VIBRATE_IN_DND_MODE)
     },
-    Setting(context, Settings.PREF_SOUND_ON, R.string.sound_on_keypress) {
-        SwitchPreference(it, Defaults.PREF_SOUND_ON)
-    },
     Setting(context, Settings.PREF_SHOW_NUMBER_ROW, R.string.number_row, R.string.number_row_summary) {
         SwitchPreference(it, Defaults.PREF_SHOW_NUMBER_ROW) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },

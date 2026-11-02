@@ -81,6 +81,8 @@ fun ToolbarScreen(
             Settings.PREF_TOOLBAR_KEYS,
             Settings.PREF_PINNED_TOOLBAR_KEYS,
             Settings.PREF_CLIPBOARD_TOOLBAR_KEYS,
+            if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull")
+                Settings.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR else null,
             Settings.PREF_EXPAND_FINE_TUNE_TOOLBAR,
 
             // Fine-tune toolbar behavior
@@ -266,16 +268,18 @@ fun createToolbarSettings(context: Context): List<Setting> {
                 KeyboardSwitcher.getInstance().setThemeNeedsReload()
             }
         },
-        Setting(
-            context,
-            Settings.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR,
-            R.string.show_download_button_in_toolbar,
-            R.string.show_download_button_in_toolbar_summary
-        ) {
-            SwitchPreference(it, Defaults.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR) {
-                KeyboardSwitcher.getInstance().setThemeNeedsReload()
+        if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull") {
+            Setting(
+                context,
+                Settings.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR,
+                R.string.show_download_button_in_toolbar,
+                R.string.show_download_button_in_toolbar_summary
+            ) {
+                SwitchPreference(it, Defaults.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR) {
+                    KeyboardSwitcher.getInstance().setThemeNeedsReload()
+                }
             }
-        },
+        } else null,
         Setting(
             context,
             Settings.PREF_EXPAND_FINE_TUNE_TOOLBAR,

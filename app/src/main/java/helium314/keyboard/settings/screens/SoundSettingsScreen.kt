@@ -303,6 +303,9 @@ fun SoundSettingsScreen(
     }
 
 fun createSoundSettings(context: Context) = listOf(
+    Setting(context, Settings.PREF_SOUND_ON, R.string.sound_on_keypress) {
+        SwitchPreference(it, Defaults.PREF_SOUND_ON)
+    },
     Setting(context, Settings.PREF_KEYPRESS_SOUND_VOLUME, R.string.prefs_keypress_sound_volume_settings) { setting ->
         SliderPreference(
             name = setting.title,

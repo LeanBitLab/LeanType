@@ -109,6 +109,7 @@ fun GestureTypingScreen(
             add(R.string.settings_category_gestures_advanced)
             add(Settings.PREF_SPACE_HORIZONTAL_SWIPE)
             add(Settings.PREF_DELETE_SWIPE)
+            add(Settings.PREF_DELETE_SWIPE_WORD_BY_WORD)
             add(Settings.PREF_FULL_KEYBOARD_SWIPE)
             add(Settings.PREF_TOUCHPAD_FULLSCREEN)
             add(Settings.PREF_EXPAND_FINE_TUNE_SWIPES)

@@ -78,6 +78,7 @@ fun TextCorrectionScreen(
             Settings.PREF_AUTOSPACE_AFTER_PUNCTUATION,
             Settings.PREF_AUTOSPACE_AFTER_EMOJI,
             Settings.PREF_AUTOSPACE_AFTER_SUGGESTION,
+            Settings.PREF_IMMEDIATE_AUTO_SPACE,
             Settings.PREF_SHIFT_REMOVES_AUTOSPACE,
             Settings.PREF_PRESERVE_SPACE_BEFORE_PUNCTUATION,
 
@@ -233,7 +234,12 @@ fun createCorrectionSettings(context: Context) = listOf(
         SwitchPreference(it, Defaults.PREF_AUTOSPACE_AFTER_SUGGESTION)
     },
     Setting(context, Settings.PREF_IMMEDIATE_AUTO_SPACE, R.string.immediate_auto_space, R.string.immediate_auto_space_summary) {
-        SwitchPreference(it, Defaults.PREF_IMMEDIATE_AUTO_SPACE)
+        val prefs = LocalContext.current.prefs()
+        SwitchPreference(
+            it,
+            Defaults.PREF_IMMEDIATE_AUTO_SPACE,
+            enabled = prefs.getBoolean(Settings.PREF_AUTOSPACE_AFTER_SUGGESTION, Defaults.PREF_AUTOSPACE_AFTER_SUGGESTION)
+        )
     },
     Setting(context, Settings.PREF_SHIFT_REMOVES_AUTOSPACE, R.string.shift_removes_autospace, R.string.shift_removes_autospace_summary) {
         SwitchPreference(it, Defaults.PREF_SHIFT_REMOVES_AUTOSPACE)
