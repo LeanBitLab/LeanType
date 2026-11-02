@@ -398,9 +398,10 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         for (i in words.indices) {
             val currentWord = words[i]
             val wasCurrentWordAutoCapitalized = (i == 0) && wasAutoCapitalized
+            val targetGroup = groupForLearning(currentWord)
             // add to history for preferred dictionary group, to avoid mixing languages in history
             addWordToUserHistory(
-                preferredGroup, ngramContextForCurrentWord, currentWord,
+                targetGroup, ngramContextForCurrentWord, currentWord,
                 wasCurrentWordAutoCapitalized, timeStampInSeconds.toInt(), blockPotentiallyOffensive
             )
             ngramContextForCurrentWord = ngramContextForCurrentWord.getNextNgramContext(WordInfo(currentWord))
@@ -570,10 +571,23 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         return preferred
     }
 
+    private fun groupForLearning(word: String): DictionaryGroup {
+        val preferred = currentlyPreferredDictionaryGroup
+        if (dictionaryGroups.size <= 1) return preferred
+        fun belongsTo(group: DictionaryGroup): Boolean =
+            isValidWord(word, DICTIONARY_TYPES_EXCLUDING_HISTORY, group)
+                || isValidWord(word.lowercase(group.locale), DICTIONARY_TYPES_EXCLUDING_HISTORY, group)
+        if (belongsTo(preferred)) return preferred
+        return dictionaryGroups.filter { it !== preferred && belongsTo(it) }
+            .maxByOrNull { it.confidence } ?: preferred
+    }
+
     override fun unlearnFromUserHistory(word: String, ngramContext: NgramContext, timeStampInSeconds: Long, eventType: Int) {
         // TODO: Decide whether or not to remove the word on EVENT_BACKSPACE.
         if (eventType != Constants.EVENT_BACKSPACE) {
-            currentlyPreferredDictionaryGroup.getSubDict(Dictionary.TYPE_USER_HISTORY)?.removeUnigramEntryDynamically(word)
+            for (group in dictionaryGroups) {
+                group.getSubDict(Dictionary.TYPE_USER_HISTORY)?.removeUnigramEntryDynamically(word)
+            }
         }
         sessionWordBoost?.removeWord(word)
 
