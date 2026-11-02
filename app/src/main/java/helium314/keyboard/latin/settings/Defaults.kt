@@ -102,7 +102,7 @@ object Defaults {
     const val PREF_EXPAND_FINE_TUNE_ADVANCED = false
     const val PREF_AUTO_CORRECT_TRIGGER = "both"
     const val PREF_MORE_AUTO_CORRECTION = false
-    const val PREF_AUTO_CORRECT_THRESHOLD = 0.185f
+    const val PREF_AUTO_CORRECT_THRESHOLD = 0.067f
     const val PREF_AUTOCORRECT_SHORTCUTS = true
     const val PREF_BACKSPACE_REVERTS_AUTOCORRECT = true
     const val PREF_BACKSPACE_REPEAT_DELETES_WORDS = false
