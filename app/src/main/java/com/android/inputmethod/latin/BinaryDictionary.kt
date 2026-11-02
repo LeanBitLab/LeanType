@@ -217,63 +217,65 @@ class BinaryDictionary : Dictionary {
     ): ArrayList<SuggestedWordInfo>? {
         if (!isValidDictionary) return null
         val session = getTraverseSession(sessionId)
-        session.mInputCodePoints.fill(Constants.NOT_A_CODE)
-        ngramContext.outputToArray(session.mPrevWordCodePointArrays, session.mIsBeginningOfSentenceArray)
-        val inputPointers = composedData.mInputPointers
-        val isGesture = composedData.mIsBatchMode
-        val inputSize: Int = if (!isGesture) {
-            val size = composedData.copyCodePointsExceptTrailingSingleQuotesAndReturnCodePointCount(session.mInputCodePoints)
-            if (size < 0) return null
-            size
-        } else {
-            inputPointers.pointerSize
-        }
-        session.mNativeSuggestOptions.setUseFullEditDistance(mUseFullEditDistance)
-        session.mNativeSuggestOptions.setIsGesture(isGesture)
-        if (isGesture) session.mNativeSuggestOptions.setIsSpaceAwareGesture(settingsValuesForSuggestion.mSpaceAwareGesture)
-        session.mNativeSuggestOptions.setBlockOffensiveWords(settingsValuesForSuggestion.mBlockPotentiallyOffensive)
-        session.mNativeSuggestOptions.setWeightForLocale(weightForLocale)
-        
-        session.mInputOutputWeightOfLangModelVsSpatialModel[0] = inOutWeightOfLangModelVsSpatialModel?.get(0) 
-            ?: Dictionary.NOT_A_WEIGHT_OF_LANG_MODEL_VS_SPATIAL_MODEL
-
-        getSuggestionsNative(
-            mNativeDict, proximityInfoHandle, getTraverseSession(sessionId).getSession(),
-            inputPointers.xCoordinates, inputPointers.yCoordinates, inputPointers.times,
-            inputPointers.pointerIds, session.mInputCodePoints, inputSize,
-            session.mNativeSuggestOptions.options, session.mPrevWordCodePointArrays,
-            session.mIsBeginningOfSentenceArray, ngramContext.prevWordCount,
-            session.mOutputSuggestionCount, session.mOutputCodePoints, session.mOutputScores,
-            session.mSpaceIndices, session.mOutputTypes, session.mOutputAutoCommitFirstWordConfidence,
-            session.mInputOutputWeightOfLangModelVsSpatialModel
-        )
-
-        inOutWeightOfLangModelVsSpatialModel?.let { it[0] = session.mInputOutputWeightOfLangModelVsSpatialModel[0] }
-
-        val count = session.mOutputSuggestionCount[0]
-        if (BuildConfig.DEBUG && DebugFlags.SCORE_AUDIT && composedData.mTypedWord.isEmpty()) {
-            Log.i("ScoreAudit", "BinaryDict.getSuggestions type=$mDictType outputCount=$count prevWordCount=${ngramContext.prevWordCount} isBOS=${ngramContext.isBeginningOfSentenceContext}")
-        }
-        val suggestions = ArrayList<SuggestedWordInfo>()
-        for (j in 0 until count) {
-            val start = j * DICTIONARY_MAX_WORD_LENGTH
-            var len = 0
-            while (len < DICTIONARY_MAX_WORD_LENGTH && session.mOutputCodePoints[start + len] != 0) {
-                ++len
+        synchronized(session) {
+            session.mInputCodePoints.fill(Constants.NOT_A_CODE)
+            ngramContext.outputToArray(session.mPrevWordCodePointArrays, session.mIsBeginningOfSentenceArray)
+            val inputPointers = composedData.mInputPointers
+            val isGesture = composedData.mIsBatchMode
+            val inputSize: Int = if (!isGesture) {
+                val size = composedData.copyCodePointsExceptTrailingSingleQuotesAndReturnCodePointCount(session.mInputCodePoints)
+                if (size < 0) return null
+                size
+            } else {
+                inputPointers.pointerSize
             }
-            if (len > 0) {
-                suggestions.add(SuggestedWordInfo(
-                    String(session.mOutputCodePoints, start, len),
-                    "",
-                    (session.mOutputScores[j] * weightForLocale).toInt(),
-                    session.mOutputTypes[j],
-                    this,
-                    session.mSpaceIndices[j],
-                    session.mOutputAutoCommitFirstWordConfidence[0]
-                ))
+            session.mNativeSuggestOptions.setUseFullEditDistance(mUseFullEditDistance)
+            session.mNativeSuggestOptions.setIsGesture(isGesture)
+            if (isGesture) session.mNativeSuggestOptions.setIsSpaceAwareGesture(settingsValuesForSuggestion.mSpaceAwareGesture)
+            session.mNativeSuggestOptions.setBlockOffensiveWords(settingsValuesForSuggestion.mBlockPotentiallyOffensive)
+            session.mNativeSuggestOptions.setWeightForLocale(weightForLocale)
+            
+            session.mInputOutputWeightOfLangModelVsSpatialModel[0] = inOutWeightOfLangModelVsSpatialModel?.get(0) 
+                ?: Dictionary.NOT_A_WEIGHT_OF_LANG_MODEL_VS_SPATIAL_MODEL
+
+            getSuggestionsNative(
+                mNativeDict, proximityInfoHandle, session.getSession(),
+                inputPointers.xCoordinates, inputPointers.yCoordinates, inputPointers.times,
+                inputPointers.pointerIds, session.mInputCodePoints, inputSize,
+                session.mNativeSuggestOptions.options, session.mPrevWordCodePointArrays,
+                session.mIsBeginningOfSentenceArray, ngramContext.prevWordCount,
+                session.mOutputSuggestionCount, session.mOutputCodePoints, session.mOutputScores,
+                session.mSpaceIndices, session.mOutputTypes, session.mOutputAutoCommitFirstWordConfidence,
+                session.mInputOutputWeightOfLangModelVsSpatialModel
+            )
+
+            inOutWeightOfLangModelVsSpatialModel?.let { it[0] = session.mInputOutputWeightOfLangModelVsSpatialModel[0] }
+
+            val count = session.mOutputSuggestionCount[0]
+            if (BuildConfig.DEBUG && DebugFlags.SCORE_AUDIT && composedData.mTypedWord.isEmpty()) {
+                Log.i("ScoreAudit", "BinaryDict.getSuggestions type=$mDictType outputCount=$count prevWordCount=${ngramContext.prevWordCount} isBOS=${ngramContext.isBeginningOfSentenceContext}")
             }
+            val suggestions = ArrayList<SuggestedWordInfo>()
+            for (j in 0 until count) {
+                val start = j * DICTIONARY_MAX_WORD_LENGTH
+                var len = 0
+                while (len < DICTIONARY_MAX_WORD_LENGTH && session.mOutputCodePoints[start + len] != 0) {
+                    ++len
+                }
+                if (len > 0) {
+                    suggestions.add(SuggestedWordInfo(
+                        String(session.mOutputCodePoints, start, len),
+                        "",
+                        (session.mOutputScores[j] * weightForLocale).toInt(),
+                        session.mOutputTypes[j],
+                        this,
+                        session.mSpaceIndices[j],
+                        session.mOutputAutoCommitFirstWordConfidence[0]
+                    ))
+                }
+            }
+            return suggestions
         }
-        return suggestions
     }
 
     val isValidDictionary: Boolean
