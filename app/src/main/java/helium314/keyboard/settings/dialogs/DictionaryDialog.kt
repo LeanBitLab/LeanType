@@ -3,6 +3,7 @@ package helium314.keyboard.settings.dialogs
 
 import android.content.Intent
 import android.content.Context
+import helium314.keyboard.dictionarypack.DictionaryPackConstants
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -201,6 +202,7 @@ private fun DictionaryDetails(dict: File, onDelete: () -> Unit) {
                         dict.parentFile?.name?.constructLocale()?.let { dictLocale ->
                             ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
                         }
+                        ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                         onDelete()
                     },
                     colors = ButtonDefaults.buttonColors(

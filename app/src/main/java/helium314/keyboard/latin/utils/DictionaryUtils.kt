@@ -4,6 +4,7 @@ package helium314.keyboard.latin.utils
 
 import android.content.Context
 import android.content.Intent
+import helium314.keyboard.dictionarypack.DictionaryPackConstants
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -488,6 +489,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                                 downloading = false
                                 if (success) {
                                     ctx.prefs().edit().putString("pref_dict_download_link_${type}_${dictLocale}", link).apply()
+                                    ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                                     onRefresh()
                                 } else {
                                     android.widget.Toast.makeText(ctx, ctx.getString(R.string.download_failed), android.widget.Toast.LENGTH_SHORT).show()
@@ -503,6 +505,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                     onClick = {
                         file?.delete()
                         ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
+                        ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                         onRefresh()
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -519,6 +522,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                 onClick = {
                     file?.delete()
                     ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
+                    ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                     onRefresh()
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -545,6 +549,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                             downloading = false
                             if (success) {
                                 ctx.prefs().edit().putString("pref_dict_download_link_${type}_${dictLocale}", link).apply()
+                                ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                                 onRefresh()
                             } else {
                                 android.widget.Toast.makeText(ctx, ctx.getString(R.string.download_failed), android.widget.Toast.LENGTH_SHORT).show()
