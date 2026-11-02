@@ -3213,7 +3213,9 @@ class InputLogic(
         }
         private const val BACKSPACE_WORD_LOOKBACK = 200
         private val THAI_LOCALE = Locale.forLanguageTag("th")
-        private val THAI_WORD_BREAK_ITERATOR = ThreadLocal.withInitial { BreakIterator.getWordInstance(THAI_LOCALE) }
+        private val THAI_WORD_BREAK_ITERATOR = object : ThreadLocal<BreakIterator>() {
+            override fun initialValue(): BreakIterator = BreakIterator.getWordInstance(THAI_LOCALE)
+        }
         private val CURSOR_PATTERN = java.util.regex.Pattern.compile("%cursor(\\d+)%")
 
         /**
