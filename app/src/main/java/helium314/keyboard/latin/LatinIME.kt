@@ -880,14 +880,20 @@ class LatinIME : InputMethodService(),
             needToCallLoadKeyboardLater = false
         }
         
+        val isNullOrInvalidCursor = editorInfo.inputType == InputType.TYPE_NULL
+            || (editorInfo.initialSelStart == -1 && editorInfo.initialSelEnd == -1)
+            || isTransientFocusTypeNull(editorInfo)
+
         if (isDifferentTextField) {
             mainKeyboardView.closing()
             inputLogic.suggest.setAutoCorrectionThreshold(currentSettingsValues.mAutoCorrectionThreshold)
+            switcher.clearTransientShiftState()
             switcher.reloadMainKeyboard()
             if (needToCallLoadKeyboardLater) switcher.saveKeyboardState()
         } else if (restarting) {
+            switcher.clearTransientShiftState()
             if (!switcher.isSecondaryViewShowing) {
-                if (isTransientFocusTypeNull(editorInfo)) {
+                if (isNullOrInvalidCursor) {
                     switcher.resetKeyboardStateToAlphabet(Constants.TextUtils.CAP_MODE_OFF, currentRecapitalizeState)
                     switcher.requestUpdatingShiftState(Constants.TextUtils.CAP_MODE_OFF, currentRecapitalizeState)
                 } else {

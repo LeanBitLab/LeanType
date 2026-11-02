@@ -62,6 +62,8 @@ class KeyboardState(private val switchActions: SwitchActions) {
     val isShiftChording: Boolean get() = shiftKeyState.isChording
     private val symbolKeyState = ModifierKeyState("Symbol")
     private val alphabetShiftState = AlphabetShiftState()
+    val isAlphabetShiftLocked: Boolean get() = alphabetShiftState.isShiftLocked
+    val isAlphabetShifted: Boolean get() = alphabetShiftState.isShiftedOrShiftLocked
 
     private var switchState = SwitchState.ALPHA
 
@@ -521,6 +523,20 @@ class KeyboardState(private val switchActions: SwitchActions) {
             Log.d(TAG, "onResetKeyboardStateToAlphabet: ${stateToString(autoCapsFlags, recapitalizeMode)}")
         }
         resetKeyboardStateToAlphabet(autoCapsFlags, recapitalizeMode)
+        clearTransientShiftState()
+    }
+
+    fun clearTransientShiftState() {
+        isInDoubleTapShiftKey = false
+        isInAlphabetUnshiftedFromShifted = false
+        switchActions.cancelDoubleTapShiftKeyTimer()
+        shiftKeyState.onRelease()
+        if (savedKeyboardState.isValid && !savedKeyboardState.isAlphabetShiftLocked) {
+            savedKeyboardState.shiftMode = ShiftMode.UNSHIFT
+        }
+        if (mode == Mode.ALPHABET && !alphabetShiftState.isShiftLocked) {
+            setShifted(ShiftMode.UNSHIFT)
+        }
     }
 
     private fun updateShiftStateForRecapitalize(recapitalizeMode: RecapitalizeMode?) {

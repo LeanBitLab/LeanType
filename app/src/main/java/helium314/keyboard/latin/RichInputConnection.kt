@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.text.InputType
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -493,6 +494,9 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mIC = mParent.currentInputConnection
 
         if (!isConnected()) {
+            return Constants.TextUtils.CAP_MODE_OFF
+        }
+        if ((inputType and InputType.TYPE_MASK_CLASS) == InputType.TYPE_NULL) {
             return Constants.TextUtils.CAP_MODE_OFF
         }
 

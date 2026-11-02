@@ -268,6 +268,10 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mState?.onResetKeyboardStateToAlphabet(currentAutoCapsState, currentRecapitalizeState)
     }
 
+    fun clearTransientShiftState() {
+        mState?.clearTransientShiftState()
+    }
+
     // A secondary view may have been shown directly, without changing the keyboard state.
     fun returnToAlphabetKeyboard() {
         mState?.setAlphabetKeyboard(0, null)
@@ -890,6 +894,12 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     val isShiftChording: Boolean
         get() = mState?.isShiftChording == true
+
+    val isAlphabetShiftLocked: Boolean
+        get() = mState?.isAlphabetShiftLocked == true
+
+    val isAlphabetShifted: Boolean
+        get() = mState?.isAlphabetShifted == true
 
     override fun requestUpdatingShiftState(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?) {
         if (DEBUG_ACTION) {
