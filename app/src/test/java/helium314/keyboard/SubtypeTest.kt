@@ -109,4 +109,19 @@ class SubtypeTest {
         assertTrue(caFolder.exists(), "ca folder should not be deleted or renamed by legacy migration")
         assertTrue(caDictFile.exists(), "ca dictionary file should be preserved")
     }
+
+    @Test fun irishSubtypesAvailable() {
+        val gaSubtypes = SubtypeSettings.getResourceSubtypesForLocale("ga".constructLocale())
+        val gaIeSubtypes = SubtypeSettings.getResourceSubtypesForLocale("ga_IE".constructLocale())
+        assertTrue(gaSubtypes.isNotEmpty(), "Irish (ga) subtype must be available in resource subtypes")
+        assertTrue(gaIeSubtypes.isNotEmpty(), "Irish (ga_IE) subtype must be available in resource subtypes")
+    }
+
+    @Test fun group1SubtypesAvailable() {
+        val locales = listOf("bs", "bs_BA", "nn", "nn_NO", "ceb", "mg", "sc", "tok")
+        for (loc in locales) {
+            val subtypes = SubtypeSettings.getResourceSubtypesForLocale(loc.constructLocale())
+            assertTrue(subtypes.isNotEmpty(), "Subtype for $loc must be available in resource subtypes")
+        }
+    }
 }
