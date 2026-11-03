@@ -28,6 +28,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.dispose
 import coil.load
 import coil.size.Precision
 import com.leanbitlab.leantype.gif.Contract
@@ -1022,10 +1023,14 @@ class GifPickerView @JvmOverloads constructor(
             notifyItemRangeInserted(start, newItems.size)
         }
 
-        @SuppressLint("NotifyDataSetChanged")
         fun setInsertingId(id: String?) {
+            if (insertingId == id) return
+            val oldId = insertingId
             insertingId = id
-            notifyDataSetChanged()
+            val oldPos = items.indexOfFirst { it.id == oldId }
+            val newPos = items.indexOfFirst { it.id == insertingId }
+            if (oldPos != -1) notifyItemChanged(oldPos)
+            if (newPos != -1 && newPos != oldPos) notifyItemChanged(newPos)
         }
 
         class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -1042,6 +1047,7 @@ class GifPickerView @JvmOverloads constructor(
         override fun onViewRecycled(holder: VH) {
             super.onViewRecycled(holder)
             stopAnimation(holder.imageView)
+            holder.imageView.dispose()
             holder.imageView.setImageDrawable(null)
         }
 
@@ -1075,8 +1081,11 @@ class GifPickerView @JvmOverloads constructor(
             holder.liveBadge.visibility = if (isLive) View.VISIBLE else View.GONE
 
             if (isLive && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                holder.imageView.dispose()
+                stopAnimation(holder.imageView)
                 bindLive(holder, uri, item.id)
             } else {
+                holder.imageView.dispose()
                 stopAnimation(holder.imageView)
                 holder.imageView.load(uri, GifImageLoader.get(context)) {
                     placeholder(R.drawable.ic_gif_placeholder)
@@ -1109,6 +1118,7 @@ class GifPickerView @JvmOverloads constructor(
                 }
                 withContext(Dispatchers.Main) {
                     if (liveItemId == itemId && holder.bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                        holder.imageView.dispose()
                         if (drawable is AnimatedImageDrawable) {
                             holder.imageView.setImageDrawable(drawable)
                             drawable.repeatCount = AnimatedImageDrawable.REPEAT_INFINITE

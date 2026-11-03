@@ -39,6 +39,38 @@
             android:gravity="end" >
         </LinearLayout>
     </HorizontalScrollView>
+    <LinearLayout
+        android:id="@+id/clipboard_edit_strip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        style="?attr/suggestionStripViewStyle">
+        <helium314.keyboard.keyboard.InlineCursorTextView
+            android:id="@+id/clipboard_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start"
+            android:textSize="15sp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp" />
+        <ImageButton
+            android:id="@+id/clipboard_edit_save"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="@dimen/config_suggestions_strip_height"
+            android:src="@drawable/ic_setup_check"
+            android:background="@drawable/toolbar_key_background"
+            android:contentDescription="@string/save" />
+        <ImageButton
+            android:id="@+id/clipboard_edit_cancel"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="@dimen/config_suggestions_strip_height"
+            android:src="@drawable/ic_close"
+            android:background="@drawable/toolbar_key_background"
+            android:contentDescription="@android:string/cancel" />
+    </LinearLayout>
     <HorizontalScrollView
         android:id="@+id/ocr_strip_scroll_view"
         android:layout_width="match_parent"

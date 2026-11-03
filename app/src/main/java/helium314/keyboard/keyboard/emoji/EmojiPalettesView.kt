@@ -7,6 +7,7 @@
 
 package helium314.keyboard.keyboard.emoji
 
+import kotlin.math.abs
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -40,6 +41,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import helium314.keyboard.event.HapticEvent
+import helium314.keyboard.keyboard.InlineCursorTextView
 import helium314.keyboard.keyboard.Key
 import helium314.keyboard.keyboard.Keyboard
 import helium314.keyboard.keyboard.KeyboardActionListener
@@ -200,13 +202,33 @@ class EmojiPalettesView @JvmOverloads constructor(
     private var mSearchResultsList: RecyclerView? = null
     private var mSearchEmptyView: TextView? = null
     private var mSearchAdapter: EmojiSearchAdapter? = null
-    private var mSearchBar: EditText? = null
+    private var mSearchBar: InlineCursorTextView? = null
     private var mInSearchMode = false
     private var mIsDownloadingEmojiDict = false
     private var mDownloadBtn: Button? = null
     private var mOriginalActionListener: KeyboardActionListener? = null
     private var mSearchKeyboardLayoutSet: KeyboardLayoutSet? = null
     private var mSearchAlphabetKeyboardId = KeyboardId.ELEMENT_ALPHABET
+    private var isCursorBlinkVisible = true
+    private var mIgnoreNextShiftRelease = false
+    private var mDeleteSwipeStartSel = -1
+    private var mCurrentDeleteSwipeStart = -1
+
+    private val cursorBlinkRunnable = object : Runnable {
+        override fun run() {
+            if (!mInSearchMode) return
+            isCursorBlinkVisible = !isCursorBlinkVisible
+            mSearchBar?.showInlineCursor = isCursorBlinkVisible
+            postDelayed(this, 500)
+        }
+    }
+
+    private fun resetCursorBlink() {
+        isCursorBlinkVisible = true
+        mSearchBar?.showInlineCursor = true
+        removeCallbacks(cursorBlinkRunnable)
+        postDelayed(cursorBlinkRunnable, 500)
+    }
 
     val isInSearchMode: Boolean get() = mInSearchMode
 
@@ -217,6 +239,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         var sel = searchBar.selectionStart
         if (sel < 0) sel = content.length
         content.insert(sel, text)
+        resetCursorBlink()
     }
 
     private var mEditorInfo: EditorInfo? = null
@@ -295,7 +318,7 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         findViewById<View>(R.id.emoji_search_close_btn).setOnClickListener { stopSearchMode() }
 
-        val searchBar: EditText = findViewById(R.id.emoji_search_bar)
+        val searchBar: InlineCursorTextView = findViewById(R.id.emoji_search_bar)
         mSearchBar = searchBar
         searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -407,19 +430,47 @@ class EmojiPalettesView @JvmOverloads constructor(
         searchIcon.layoutParams = LayoutParams(iconSize, iconSize)
         inputContainer.addView(searchIcon)
 
-        val searchBar = EditText(ctx).apply {
+        val searchBar = InlineCursorTextView(ctx).apply {
             background = null
             hint = "Search"
-            setTextColor(mColors.get(ColorType.KEY_TEXT))
-            setHintTextColor(mColors.get(ColorType.KEY_TEXT) and 0x00FFFFFF or -0x80000000)
+            val textColor = mColors.get(ColorType.KEY_TEXT)
+            setTextColor(textColor)
+            cursorColor = textColor
+            setHintTextColor(textColor and 0x00FFFFFF or -0x80000000)
             textSize = 14f
-            setSingleLine(true)
-            imeOptions = EditorInfo.IME_ACTION_DONE or EditorInfo.IME_FLAG_NO_EXTRACT_UI
+            maxLines = 1
+            setHorizontallyScrolling(true)
+            isHorizontalScrollBarEnabled = false
             setPadding(toPx(4f), 0, toPx(4f), 0)
             layoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
             isFocusable = false
             isFocusableInTouchMode = false
-            showSoftInputOnFocus = false
+            var touchDownX = 0f
+            var touchDownY = 0f
+            val slop = android.view.ViewConfiguration.get(ctx).scaledTouchSlop
+            setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        touchDownX = event.x
+                        touchDownY = event.y
+                        parent?.requestDisallowInterceptTouchEvent(true)
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        if (abs(event.x - touchDownX) < slop && abs(event.y - touchDownY) < slop) {
+                            val l = layout
+                            if (l != null) {
+                                val x = event.x - totalPaddingLeft + scrollX
+                                val y = event.y - totalPaddingTop + scrollY
+                                val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
+                                val offset = l.getOffsetForHorizontal(line, x)
+                                setSelection(offset.coerceIn(0, text.length))
+                                resetCursorBlink()
+                            }
+                        }
+                    }
+                }
+                false
+            }
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -492,40 +543,53 @@ class EmojiPalettesView @JvmOverloads constructor(
         mPager?.visibility = View.GONE
         mSearchContainer?.visibility = View.GONE
 
+        mIgnoreNextShiftRelease = false
+        mDeleteSwipeStartSel = -1
+        mCurrentDeleteSwipeStart = -1
+        resetCursorBlink()
+
         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
         mOriginalActionListener = mKeyboardActionListener
 
         bottomRow.setKeyboardActionListener(object : KeyboardActionListener {
-            private var mDeleteSwipeStartSel = -1
-            private var mCurrentDeleteSwipeStart = -1
             private var mLastShiftPressTime = 0L
 
             override fun onCodeInput(primaryCode: Int, x: Int, y: Int, isKeyRepeat: Boolean) {
+                val searchBar = mSearchBar ?: return
+                val content = searchBar.text ?: return
+                var selStart = searchBar.selectionStart
+                var selEnd = searchBar.selectionEnd
+                if (selStart < 0) selStart = content.length
+                if (selEnd < 0) selEnd = content.length
+                val minSel = minOf(selStart, selEnd)
+                val maxSel = maxOf(selStart, selEnd)
+
                 if (primaryCode != KeyCode.SHIFT) {
                     mLastShiftPressTime = 0L
                 }
-                val searchBar = mSearchBar
                 if (primaryCode == KeyCode.DELETE) {
-                    val text = searchBar?.text ?: return
-                    if (text.isNotEmpty()) {
-                        val selStart = if (searchBar.selectionStart >= 0) searchBar.selectionStart else text.length
-                        val selEnd = if (searchBar.selectionEnd >= 0) searchBar.selectionEnd else text.length
-                        if (selEnd > selStart) {
-                            text.delete(selStart, selEnd)
-                        } else if (selStart > 0) {
-                            text.delete(selStart - 1, selStart)
-                        }
+                    if (minSel != maxSel) {
+                        content.delete(minSel, maxSel)
+                    } else if (minSel > 0) {
+                        content.delete(minSel - 1, minSel)
                     }
+                    resetCursorBlink()
                 } else if (primaryCode == Constants.CODE_SPACE) {
-                    val text = searchBar?.text ?: return
-                    var sel = searchBar.selectionStart
-                    if (sel < 0) sel = text.length
-                    text.insert(sel, " ")
+                    content.replace(minSel, maxSel, " ")
+                    resetCursorBlink()
+                } else if (primaryCode == KeyCode.ARROW_LEFT) {
+                    if (minSel > 0) {
+                        searchBar.setSelection(minSel - 1)
+                        resetCursorBlink()
+                    }
+                } else if (primaryCode == KeyCode.ARROW_RIGHT) {
+                    if (maxSel < content.length) {
+                        searchBar.setSelection(maxSel + 1)
+                        resetCursorBlink()
+                    }
                 } else if (primaryCode > 0) {
-                    val text = searchBar?.text ?: return
-                    var sel = searchBar.selectionStart
-                    if (sel < 0) sel = text.length
-                    text.insert(sel, primaryCode.toChar().toString())
+                    content.replace(minSel, maxSel, primaryCode.toChar().toString())
+                    resetCursorBlink()
                 } else if (primaryCode == Constants.CODE_ENTER) {
                     stopSearchMode()
                 } else if (primaryCode == KeyCode.SYMBOL || primaryCode == KeyCode.SYMBOL_ALPHA || primaryCode == KeyCode.ALPHA) {
@@ -539,6 +603,10 @@ class EmojiPalettesView @JvmOverloads constructor(
                         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
                     }
                 } else if (primaryCode == KeyCode.SHIFT || primaryCode == KeyCode.CAPS_LOCK) {
+                    if (mIgnoreNextShiftRelease) {
+                        mIgnoreNextShiftRelease = false
+                        return
+                    }
                     mSearchKeyboardLayoutSet?.let { layoutSet ->
                         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                         val currentElementId = bottomRow.keyboard?.mId?.mElementId ?: KeyboardId.ELEMENT_ALPHABET
@@ -604,17 +672,24 @@ class EmojiPalettesView @JvmOverloads constructor(
             }
 
             override fun onTextInput(t: String?) {
-                val searchBar = mSearchBar ?: return
-                val text = searchBar.text ?: return
-                if (t == null) return
-                var sel = searchBar.selectionStart
-                if (sel < 0) sel = text.length
-                text.insert(sel, t)
+                if (t != null) {
+                    val searchBar = mSearchBar ?: return
+                    val content = searchBar.text ?: return
+                    var selStart = searchBar.selectionStart
+                    var selEnd = searchBar.selectionEnd
+                    if (selStart < 0) selStart = content.length
+                    if (selEnd < 0) selEnd = content.length
+                    val minSel = minOf(selStart, selEnd)
+                    val maxSel = maxOf(selStart, selEnd)
+                    content.replace(minSel, maxSel, t)
+                    resetCursorBlink()
+                }
             }
 
             override fun onImageSelected(imageUri: String) {}
             override fun onLongPressKey(p: Int) {
                 if (p == KeyCode.SHIFT) {
+                    mIgnoreNextShiftRelease = true
                     mSearchKeyboardLayoutSet?.let { layoutSet ->
                         val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                         bottomRow.setKeyboard(layoutSet.getKeyboard(KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED))
@@ -632,8 +707,13 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onCancelBatchInput() { mOriginalActionListener?.onCancelBatchInput() }
             
             override fun onCancelInput() {
+                val searchBar = mSearchBar
+                if (mDeleteSwipeStartSel >= 0 && searchBar != null) {
+                    searchBar.setSelection(mDeleteSwipeStartSel.coerceIn(0, searchBar.text?.length ?: 0))
+                }
                 mDeleteSwipeStartSel = -1
                 mCurrentDeleteSwipeStart = -1
+                resetCursorBlink()
             }
 
             override fun onFinishSlidingInput() {}
@@ -642,19 +722,16 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onHorizontalSpaceSwipe(s: Int): Boolean {
                 val searchBar = mSearchBar ?: return false
                 val text = searchBar.text ?: return false
-                val len = text.length
-                val selStart = searchBar.selectionStart
-                val selEnd = searchBar.selectionEnd
-                if (selStart < 0 || selEnd < 0) return false
-
+                if (text.isEmpty()) return false
                 val rtl = RichInputMethodManager.getInstance().currentSubtype.isRtlSubtype
                 val steps = if (rtl) -s else s
 
-                var newSel = selStart + steps
-                if (newSel < 0) newSel = 0
-                if (newSel > len) newSel = len
-
-                searchBar.setSelection(newSel)
+                val cur = searchBar.selectionStart.takeIf { it >= 0 } ?: text.length
+                val newPos = (cur + steps).coerceIn(0, text.length)
+                if (newPos != cur) {
+                    searchBar.setSelection(newPos)
+                    resetCursorBlink()
+                }
                 return true
             }
 
@@ -668,9 +745,9 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (text.isEmpty()) return
 
                 if (mDeleteSwipeStartSel == -1) {
-                    val end = searchBar.selectionEnd
-                    mDeleteSwipeStartSel = if (end >= 0) end else text.length
-                    mCurrentDeleteSwipeStart = mDeleteSwipeStartSel
+                    val cur = searchBar.selectionStart.takeIf { it >= 0 } ?: text.length
+                    mDeleteSwipeStartSel = cur
+                    mCurrentDeleteSwipeStart = cur
                 }
 
                 val rtl = RichInputMethodManager.getInstance().currentSubtype.isRtlSubtype
@@ -686,13 +763,17 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onUpWithDeletePointerActive() {
                 val searchBar = mSearchBar ?: return
                 val text = searchBar.text ?: return
-                val selStart = searchBar.selectionStart
-                val selEnd = searchBar.selectionEnd
-                if (selStart >= 0 && selEnd > selStart) {
-                    text.delete(selStart, selEnd)
+                if (mDeleteSwipeStartSel != -1 && mCurrentDeleteSwipeStart != -1) {
+                    val start = minOf(mCurrentDeleteSwipeStart, mDeleteSwipeStartSel)
+                    val end = maxOf(mCurrentDeleteSwipeStart, mDeleteSwipeStartSel)
+                    if (end > start && start >= 0 && end <= text.length) {
+                        text.delete(start, end)
+                        searchBar.setSelection(start)
+                    }
                 }
                 mDeleteSwipeStartSel = -1
                 mCurrentDeleteSwipeStart = -1
+                resetCursorBlink()
             }
 
             override fun resetMetaState() {}
@@ -737,6 +818,10 @@ class EmojiPalettesView @JvmOverloads constructor(
         mPager?.visibility = View.VISIBLE
         mSearchContainer?.visibility = View.GONE
 
+        removeCallbacks(cursorBlinkRunnable)
+        mIgnoreNextShiftRelease = false
+        mDeleteSwipeStartSel = -1
+        mCurrentDeleteSwipeStart = -1
         mSearchBar?.clearFocus()
         mSearchBar?.setText("")
         mSearchBar = null
@@ -1320,6 +1405,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                                 stopSearchMode(returnToKeyboard = false)
                                 startSearchMode()
                                 mSearchBar?.setText(query)
+                                mSearchBar?.setSelection(query.length)
                             } else {
                                 performSearch(query)
                             }
@@ -1399,6 +1485,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                     val text = mSearchBar?.text
                     if (text != null && text.isNotEmpty()) {
                         text.delete(text.length - 1, text.length)
+                        resetCursorBlink()
                         return true
                     } else {
                         stopSearchMode(false)
@@ -1408,6 +1495,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 else -> {
                     if (keyEvent.isPrintingKey && keyEvent.unicodeChar != 0) {
                         mSearchBar?.text?.append(keyEvent.unicodeChar.toChar())
+                        resetCursorBlink()
                         return true
                     }
                 }
@@ -1479,6 +1567,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (keyEvent.isPrintingKey && (keyEvent.unicodeChar in 'a'.code..'z'.code || keyEvent.unicodeChar in 'A'.code..'Z'.code)) {
                     startSearchMode()
                     mSearchBar?.text?.append(keyEvent.unicodeChar.toChar())
+                    resetCursorBlink()
                     return true
                 }
             }

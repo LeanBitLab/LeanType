@@ -53,7 +53,7 @@
                 android:contentDescription="@null"
                 android:layout_marginEnd="4dp"/>
 
-            <EditText
+            <helium314.keyboard.keyboard.InlineCursorTextView
                 android:id="@+id/emoji_search_bar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -26,6 +26,7 @@ import android.graphics.drawable.GradientDrawable
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import helium314.keyboard.event.HapticEvent
+import helium314.keyboard.keyboard.InlineCursorTextView
 import helium314.keyboard.keyboard.KeyboardActionListener
 import helium314.keyboard.keyboard.KeyboardId
 import helium314.keyboard.keyboard.KeyboardLayoutSet
@@ -483,8 +484,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
     fun startEditMode(entry: ClipboardHistoryEntry) {
         clipboardRecyclerView.dismissUndoBar()
         dismissConfirmationBar()
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         val clipboardStripScrollView = KeyboardSwitcher.getInstance().clipboardStripScrollView
+        val editStrip = KeyboardSwitcher.getInstance().clipboardEditStrip ?: return
         if (inSearchMode) {
             stopSearchMode()
         }
@@ -494,112 +495,54 @@ class ClipboardHistoryView @JvmOverloads constructor(
         editCursorPos = editText.length
 
         val colors = Settings.getValues().mColors
-        val keyboardWidth = ResourceUtils.getKeyboardWidth(context, Settings.getValues())
-        val containerWidth = clipboardStripScrollView?.width?.takeIf { it > 0 }
-            ?: (clipboardStripScrollView?.parent as? View)?.width?.takeIf { it > 0 }
-            ?: keyboardWidth
-        val btnSize = kotlin.math.min(
-            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width),
-            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
-        )
-        val btnHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+        clipboardStripScrollView?.visibility = View.GONE
+        editStrip.visibility = View.VISIBLE
+        colors.setBackground(editStrip, ColorType.STRIP_BACKGROUND)
 
-        if (clipboardStripScrollView != null) {
-            val lp = clipboardStripScrollView.layoutParams
-            if (lp != null) {
-                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
-                clipboardStripScrollView.layoutParams = lp
-            }
-            clipboardStripScrollView.scrollTo(0, 0)
-            clipboardStripScrollView.overScrollMode = View.OVER_SCROLL_NEVER
-            clipboardStripScrollView.minimumHeight = btnHeight
-        }
-        val stripLp = clipboardStrip.layoutParams
-        if (stripLp != null) {
-            stripLp.width = containerWidth
-            stripLp.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            clipboardStrip.layoutParams = stripLp
-        }
-        clipboardStrip.minimumHeight = btnHeight
-        clipboardStrip.gravity = Gravity.START or Gravity.CENTER_VERTICAL
+        editTextView = editStrip.findViewById(R.id.clipboard_edit_text)
+        val saveButton = editStrip.findViewById<ImageButton>(R.id.clipboard_edit_save)
+        val cancelButton = editStrip.findViewById<ImageButton>(R.id.clipboard_edit_cancel)
 
-        val scrollPadding = (clipboardStripScrollView?.paddingLeft ?: 0) + (clipboardStripScrollView?.paddingRight ?: 0)
-        val stripPadding = clipboardStrip.paddingLeft + clipboardStrip.paddingRight
-        val maxTextWidth = (containerWidth - scrollPadding - stripPadding - (2 * btnSize)).coerceAtLeast(0)
+        colors.setColor(saveButton, ColorType.KEY_ICON)
+        colors.setColor(saveButton.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+        saveButton.setOnClickListener { stopEditMode(save = true) }
 
-        clipboardStrip.removeAllViews()
+        colors.setColor(cancelButton, ColorType.KEY_ICON)
+        colors.setColor(cancelButton.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+        cancelButton.setOnClickListener { stopEditMode(save = false) }
 
-        val density = resources.displayMetrics.density
-        val padHorizontal = (12 * density).toInt()
-        val padVertical = (8 * density).toInt()
+        val textColor = colors.get(ColorType.KEY_TEXT)
+        editTextView.setTextColor(textColor)
+        editTextView.cursorColor = textColor
+        editTextView.isCursorVisible = false
 
-        editTextView = InlineCursorTextView(context).apply {
-            layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f).apply {
-                gravity = Gravity.CENTER_VERTICAL
-            }
-            maxInlineWidth = maxTextWidth
-            gravity = Gravity.CENTER_VERTICAL or Gravity.START
-            textSize = 15f
-            val textColor = colors.get(ColorType.KEY_TEXT)
-            setTextColor(textColor)
-            cursorColor = textColor
-            isCursorVisible = false
-            setPadding(padHorizontal, padVertical, padHorizontal, padVertical)
-            var touchDownX = 0f
-            var touchDownY = 0f
-            val slop = ViewConfiguration.get(context).scaledTouchSlop
-            setOnTouchListener { _, event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        touchDownX = event.x
-                        touchDownY = event.y
-                        parent?.requestDisallowInterceptTouchEvent(true)
-                    }
-                    MotionEvent.ACTION_UP -> {
-                        if (abs(event.x - touchDownX) < slop && abs(event.y - touchDownY) < slop) {
-                            val l = layout
-                            if (l != null) {
-                                val x = event.x - totalPaddingLeft + scrollX
-                                val y = event.y - totalPaddingTop + scrollY
-                                val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
-                                val offset = l.getOffsetForHorizontal(line, x)
-                                editCursorPos = offset.coerceIn(0, editText.length)
-                                updateEditDisplay()
-                            }
+        var touchDownX = 0f
+        var touchDownY = 0f
+        val slop = ViewConfiguration.get(context).scaledTouchSlop
+        editTextView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    touchDownX = event.x
+                    touchDownY = event.y
+                    parent?.requestDisallowInterceptTouchEvent(true)
+                }
+                MotionEvent.ACTION_UP -> {
+                    if (abs(event.x - touchDownX) < slop && abs(event.y - touchDownY) < slop) {
+                        val l = editTextView.layout
+                        if (l != null) {
+                            val x = event.x - editTextView.totalPaddingLeft + editTextView.scrollX
+                            val y = event.y - editTextView.totalPaddingTop + editTextView.scrollY
+                            val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
+                            val offset = l.getOffsetForHorizontal(line, x)
+                            editCursorPos = offset.coerceIn(0, editText.length)
+                            updateEditDisplay()
                         }
                     }
                 }
-                false
             }
+            false
         }
         configureEditTextView(editTextView)
-        clipboardStrip.addView(editTextView)
-
-        val saveButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnSize, btnHeight).apply {
-                gravity = Gravity.CENTER_VERTICAL
-            }
-            setImageResource(R.drawable.ic_setup_check)
-            setBackgroundResource(R.drawable.toolbar_key_background)
-            setColorFilter(colors.get(ColorType.KEY_ICON))
-            colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
-            contentDescription = context.getString(R.string.save)
-            setOnClickListener { stopEditMode(save = true) }
-        }
-        clipboardStrip.addView(saveButton)
-
-        val cancelButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnSize, btnHeight).apply {
-                gravity = Gravity.CENTER_VERTICAL
-            }
-            setImageResource(R.drawable.ic_close)
-            setBackgroundResource(R.drawable.toolbar_key_background)
-            setColorFilter(colors.get(ColorType.KEY_ICON))
-            colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
-            contentDescription = context.getString(android.R.string.cancel)
-            setOnClickListener { stopEditMode(save = false) }
-        }
-        clipboardStrip.addView(cancelButton)
 
         findViewById<View>(R.id.clipboard_content_container)?.visibility = View.GONE
         clipboardRecyclerView.visibility = View.GONE
@@ -627,31 +570,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
         deleteSwipeStartPos = -1
         currentDeleteSwipePos = -1
 
-        val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val editStrip = KeyboardSwitcher.getInstance().clipboardEditStrip
+        editStrip?.visibility = View.GONE
+
         val clipboardStripScrollView = KeyboardSwitcher.getInstance().clipboardStripScrollView
-        val standardStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
-        if (clipboardStripScrollView != null) {
-            clipboardStripScrollView.minimumHeight = 0
-            clipboardStripScrollView.overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
-            val lp = clipboardStripScrollView.layoutParams
-            if (lp != null && lp.height != standardStripHeight) {
-                lp.height = standardStripHeight
-                clipboardStripScrollView.layoutParams = lp
-            }
-        }
-        if (clipboardStrip != null) {
-            clipboardStrip.minimumHeight = 0
-            val stripLp = clipboardStrip.layoutParams
-            if (stripLp != null && (stripLp.width != ViewGroup.LayoutParams.MATCH_PARENT || stripLp.height != ViewGroup.LayoutParams.MATCH_PARENT)) {
-                stripLp.width = ViewGroup.LayoutParams.MATCH_PARENT
-                stripLp.height = ViewGroup.LayoutParams.MATCH_PARENT
-                clipboardStrip.layoutParams = stripLp
-            }
-            clipboardStrip.removeAllViews()
-            toolbarKeys.forEach { clipboardStrip.addView(it) }
-            applyClipboardToolbarKeyLayoutParams()
-            clipboardStrip.post { applyClipboardToolbarKeyLayoutParams() }
-        }
+        clipboardStripScrollView?.visibility = View.VISIBLE
 
         setBottomRowLayout(KeyboardId.ELEMENT_CLIPBOARD_BOTTOM_ROW)
 
@@ -689,12 +612,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 selEnd,
                 android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-            editTextView.text = sb
+            editTextView.setText(sb)
             editTextView.showInlineCursor = false
             removeCallbacks(cursorBlinkRunnable)
             ensureCursorVisible(editTextView, selEnd)
         } else {
-            editTextView.text = editText
+            editTextView.setText(editText.toString())
             editTextView.cursorPos = editCursorPos
             editTextView.showInlineCursor = true
             ensureCursorVisible(editTextView, editCursorPos)
@@ -721,12 +644,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 selEnd,
                 android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-            searchBarTextView.text = sb
+            searchBarTextView.setText(sb)
             searchBarTextView.showInlineCursor = false
             removeCallbacks(cursorBlinkRunnable)
             ensureCursorVisible(searchBarTextView, selEnd)
         } else {
-            searchBarTextView.text = searchQuery
+            searchBarTextView.setText(searchQuery.toString())
             searchBarTextView.cursorPos = searchCursorPos
             searchBarTextView.showInlineCursor = true
             ensureCursorVisible(searchBarTextView, searchCursorPos)
@@ -1820,119 +1743,5 @@ class ClipboardHistoryView @JvmOverloads constructor(
         } else {
             updateClipboardGestureSuppression()
         }
-    }
-}
-
-private class InlineCursorTextView(context: Context) : TextView(context) {
-    var maxInlineWidth: Int = -1
-        set(value) {
-            if (field != value) {
-                field = value
-                requestLayout()
-            }
-        }
-
-    var showInlineCursor: Boolean = true
-        set(value) {
-            if (field != value) {
-                field = value
-                invalidate()
-            }
-        }
-
-    var cursorPos: Int = 0
-        set(value) {
-            if (field != value) {
-                field = value
-                invalidate()
-            }
-        }
-
-    var cursorColor: Int = Color.WHITE
-        set(value) {
-            if (field != value) {
-                field = value
-                cursorPaint.color = value
-                invalidate()
-            }
-        }
-
-    private val cursorPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.FILL
-    }
-    private val cursorWidth = (2 * resources.displayMetrics.density).coerceAtLeast(2f)
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        var targetWidth = maxInlineWidth
-        if (targetWidth > 0) {
-            val parentView = parent as? View
-            val grandparent = parentView?.parent as? View
-            val containerW = grandparent?.width?.takeIf { it > 0 }
-                ?: grandparent?.measuredWidth?.takeIf { it > 0 }
-                ?: parentView?.width?.takeIf { it > 0 }
-                ?: parentView?.measuredWidth?.takeIf { it > 0 }
-            if (containerW != null && containerW > 0) {
-                val siblingW = if (parentView is ViewGroup) {
-                    var sum = 0
-                    for (i in 0 until parentView.childCount) {
-                        val child = parentView.getChildAt(i)
-                        if (child !== this && child.visibility != View.GONE) {
-                            sum += child.layoutParams?.width?.takeIf { it > 0 } ?: child.measuredWidth
-                        }
-                    }
-                    sum
-                } else 0
-                val pad = (grandparent?.paddingLeft ?: 0) + (grandparent?.paddingRight ?: 0) +
-                        (parentView?.paddingLeft ?: 0) + (parentView?.paddingRight ?: 0)
-                val calculated = (containerW - siblingW - pad).coerceAtLeast(0)
-                if (calculated > 0) {
-                    targetWidth = calculated
-                }
-            }
-        }
-
-        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
-        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
-        val wSpec = if (targetWidth > 0 && (widthMode == MeasureSpec.UNSPECIFIED || widthSize > targetWidth || widthSize == 0)) {
-            MeasureSpec.makeMeasureSpec(targetWidth, MeasureSpec.EXACTLY)
-        } else {
-            widthMeasureSpec
-        }
-        super.onMeasure(wSpec, heightMeasureSpec)
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        if (!showInlineCursor) return
-        val l = layout
-        val len = l?.text?.length ?: text.length
-        val safePos = cursorPos.coerceIn(0, len)
-        val cursorX = totalPaddingLeft + (if (text.isNotEmpty() && l != null) l.getPrimaryHorizontal(safePos) else 0f)
-        val lineTop: Float
-        val lineBottom: Float
-        if (l != null && l.lineCount > 0) {
-            val line = l.getLineForOffset(safePos)
-            lineTop = totalPaddingTop + l.getLineTop(line).toFloat()
-            lineBottom = totalPaddingTop + l.getLineBottom(line).toFloat()
-        } else {
-            val midY = height / 2f
-            val halfH = textSize * 0.6f
-            lineTop = midY - halfH
-            lineBottom = midY + halfH
-        }
-        val inset = (lineBottom - lineTop) * 0.15f
-        val top = lineTop + inset
-        val bottom = lineBottom - inset
-
-        val clipLeft = scrollX.toFloat()
-        val clipTop = scrollY + totalPaddingTop.toFloat()
-        val clipRight = scrollX + width.toFloat()
-        val clipBottom = scrollY + (height - totalPaddingBottom).toFloat()
-        if (clipLeft >= clipRight || clipTop >= clipBottom) return
-
-        val saveCount = canvas.save()
-        canvas.clipRect(clipLeft, clipTop, clipRight, clipBottom)
-        canvas.drawRect(cursorX, top, cursorX + cursorWidth, bottom, cursorPaint)
-        canvas.restoreToCount(saveCount)
     }
 }
