@@ -687,6 +687,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                 "switch_language" -> KeyboardActionListener.SWIPE_SWITCH_LANGUAGE
                 "toggle_numpad" -> KeyboardActionListener.SWIPE_TOGGLE_NUMPAD
                 "hide_keyboard" -> KeyboardActionListener.SWIPE_HIDE_KEYBOARD
+                "delete_word" -> KeyboardActionListener.SWIPE_DELETE_WORD
                 else -> KeyboardActionListener.SWIPE_NO_ACTION
             }
         }

@@ -1831,4 +1831,5 @@
     <string name="clear_learned_words_summary">احذف جميع الكلمات واقتراحات الكلمات التالية المستفادة من الكتابة</string>
     <string name="clear_learned_words_confirmation">هل أنت متأكد أنك تريد مسح كافة الكلمات والاقتراحات التي تعلمتها؟</string>
     <string name="clear_learned_words_success">تم مسح الكلمات التي تم تعلمها</string>
+    <string name="space_swipe_delete_word_entry">حذف كلمة</string>
 </resources>

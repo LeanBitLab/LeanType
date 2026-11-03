@@ -1770,4 +1770,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="clear_learned_words_summary">Exclua todas as palavras e sugestões de palavras seguintes aprendidas durante a digitação</string>
     <string name="clear_learned_words_confirmation">Tem certeza de que deseja limpar todas as palavras e sugestões aprendidas?</string>
     <string name="clear_learned_words_success">Palavras aprendidas apagadas</string>
+    <string name="space_swipe_delete_word_entry">Excluir palavra</string>
 </resources>

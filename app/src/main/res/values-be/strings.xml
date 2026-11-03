@@ -1808,4 +1808,5 @@
     <string name="clear_learned_words_summary">Выдаліць усе словы і прапановы наступнага слова, атрыманыя падчас уводу</string>
     <string name="clear_learned_words_confirmation">Вы ўпэўнены, што хочаце выдаліць усе вывучаныя словы і прапановы?</string>
     <string name="clear_learned_words_success">Вывучаныя словы ачышчаны</string>
+    <string name="space_swipe_delete_word_entry">Выдаліць слова</string>
 </resources>

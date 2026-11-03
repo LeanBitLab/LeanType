@@ -197,6 +197,7 @@ interface KeyboardActionListener {
         const val SWIPE_HIDE_KEYBOARD = 4
         const val SWIPE_TOUCHPAD_MODE = 5
         const val SWIPE_MORE_SUGGESTIONS = 6
+        const val SWIPE_DELETE_WORD = 7
 
         const val CODE_TOUCHPAD_ON = 1000
         const val CODE_TOUCHPAD_OFF = 1001

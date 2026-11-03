@@ -515,6 +515,18 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             latinIME.requestHideSelf(0)
             true
         }
+        KeyboardActionListener.SWIPE_DELETE_WORD -> {
+            if (steps < 0) {
+                inputLogic.deleteWordBeforeCursor()
+                keyboardSwitcher.requestUpdatingShiftState(
+                    inputLogic.getCurrentAutoCapsState(settings.current),
+                    inputLogic.getCurrentRecapitalizeState()
+                )
+                true
+            } else {
+                false
+            }
+        }
         else -> false
     }
 

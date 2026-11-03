@@ -1808,4 +1808,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="clear_learned_words_summary">Ștergeți toate cuvintele și sugestiile pentru cuvintele următoare învățate din tastare</string>
     <string name="clear_learned_words_confirmation">Sigur doriți să ștergeți toate cuvintele și sugestiile învățate?</string>
     <string name="clear_learned_words_success">Cuvintele învățate șterse</string>
+    <string name="space_swipe_delete_word_entry">Șterge cuvântul</string>
 </resources>

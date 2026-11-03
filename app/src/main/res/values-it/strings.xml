@@ -1840,4 +1840,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="clear_learned_words_summary">Elimina tutte le parole e i suggerimenti relativi alla parola successiva appresi durante la digitazione</string>
     <string name="clear_learned_words_confirmation">Sei sicuro di voler cancellare tutte le parole e i suggerimenti appresi?</string>
     <string name="clear_learned_words_success">Le parole apprese vengono cancellate</string>
+    <string name="space_swipe_delete_word_entry">Elimina parola</string>
 </resources>

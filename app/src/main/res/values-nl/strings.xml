@@ -1815,4 +1815,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="clear_learned_words_summary">Verwijder alle woorden en suggesties voor volgende woorden die u tijdens het typen hebt geleerd</string>
     <string name="clear_learned_words_confirmation">Weet u zeker dat u alle geleerde woorden en suggesties wilt wissen?</string>
     <string name="clear_learned_words_success">Geleerde woorden gewist</string>
+    <string name="space_swipe_delete_word_entry">Woord verwijderen</string>
 </resources>

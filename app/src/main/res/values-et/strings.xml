@@ -1808,4 +1808,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="clear_learned_words_summary">Kustutage kõik tippimisel õpitud sõnad ja järgmise sõna soovitused</string>
     <string name="clear_learned_words_confirmation">Kas olete kindel, et soovite kõik õpitud sõnad ja soovitused kustutada?</string>
     <string name="clear_learned_words_success">Õpitud sõnad kustutatud</string>
+    <string name="space_swipe_delete_word_entry">Kustuta sõna</string>
 </resources>

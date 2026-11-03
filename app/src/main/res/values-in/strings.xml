@@ -1771,4 +1771,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="clear_learned_words_summary">Hapus semua kata dan saran kata berikutnya yang dipelajari dari mengetik</string>
     <string name="clear_learned_words_confirmation">Apakah Anda yakin ingin menghapus semua kata dan saran yang dipelajari?</string>
     <string name="clear_learned_words_success">Kata-kata yang dipelajari dibersihkan</string>
+    <string name="space_swipe_delete_word_entry">Hapus kata</string>
 </resources>

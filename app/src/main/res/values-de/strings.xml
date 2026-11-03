@@ -1823,4 +1823,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="clear_learned_words_summary">Löschen Sie alle beim Tippen gelernten Wörter und Vorschläge für das nächste Wort</string>
     <string name="clear_learned_words_confirmation">Sind Sie sicher, dass Sie alle gelernten Wörter und Vorschläge löschen möchten?</string>
     <string name="clear_learned_words_success">Gelernte Wörter gelöscht</string>
+    <string name="space_swipe_delete_word_entry">Wort löschen</string>
 </resources>

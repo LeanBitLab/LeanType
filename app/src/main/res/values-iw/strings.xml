@@ -1779,4 +1779,5 @@
     <string name="clear_learned_words_summary">מחק את כל המילים וההצעות למילה הבאה שנלמדו מהקלדה</string>
     <string name="clear_learned_words_confirmation">האם אתה בטוח שברצונך לנקות את כל המילים וההצעות שנלמדו?</string>
     <string name="clear_learned_words_success">מילים נלמדות נוקו</string>
+    <string name="space_swipe_delete_word_entry">מחק מילה</string>
 </resources>

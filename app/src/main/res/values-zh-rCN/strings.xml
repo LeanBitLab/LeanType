@@ -1774,4 +1774,5 @@
     <string name="clear_learned_words_summary">删除从打字中学到的所有单词和下一个单词建议</string>
     <string name="clear_learned_words_confirmation">您确定要清除所有已学单词和建议吗？</string>
     <string name="clear_learned_words_success">已学单词清除</string>
+    <string name="space_swipe_delete_word_entry">删除单词</string>
 </resources>

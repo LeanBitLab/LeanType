@@ -1840,4 +1840,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="clear_learned_words_summary">Elimine todas las palabras y sugerencias de palabras siguientes aprendidas al escribir</string>
     <string name="clear_learned_words_confirmation">¿Está seguro de que desea borrar todas las palabras y sugerencias aprendidas?</string>
     <string name="clear_learned_words_success">Palabras aprendidas borradas</string>
+    <string name="space_swipe_delete_word_entry">Eliminar palabra</string>
 </resources>

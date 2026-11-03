@@ -1771,4 +1771,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="clear_learned_words_summary">Törölje a gépelésből tanult összes szót és a következő szóra vonatkozó javaslatot</string>
     <string name="clear_learned_words_confirmation">Biztosan törölni szeretné az összes tanult szót és javaslatot?</string>
     <string name="clear_learned_words_success">A tanult szavak tisztázva</string>
+    <string name="space_swipe_delete_word_entry">Szó törlése</string>
 </resources>

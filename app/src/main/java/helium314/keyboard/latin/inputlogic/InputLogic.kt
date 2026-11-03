@@ -1515,6 +1515,51 @@ class InputLogic(
         return true
     }
 
+    fun deleteWordBeforeCursor() {
+        val settingsValues = Settings.getValues()
+        if (mConnection.hasSelection()) {
+            val selection = mConnection.getSelectedText(0)
+            if (!selection.isNullOrEmpty()) {
+                unlearnWord(selection.toString(), settingsValues, Constants.EVENT_BACKSPACE)
+            }
+            mWordComposer.reset()
+            sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
+            mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+            mLatinIME.feedbackForDeletedWord()
+            KeyboardActionListenerImpl.deactivateSelectionMode()
+            return
+        }
+
+        if (mWordComposer.isComposingWord()) {
+            val composingWord = mWordComposer.getTypedWord()
+            if (!TextUtils.isEmpty(composingWord)) {
+                unlearnWord(composingWord, settingsValues, Constants.EVENT_BACKSPACE)
+            }
+            mWordComposer.reset()
+            mConnection.finishComposingText()
+            mConnection.commitText("", 1)
+            resetComposingState(true)
+            mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+            mLatinIME.feedbackForDeletedWord()
+            return
+        }
+
+        val textBefore = mConnection.getTextBeforeCursor(BACKSPACE_WORD_LOOKBACK, 0)?.toString()
+        if (textBefore.isNullOrEmpty()) return
+
+        val length = textBefore.length - getStartOfPreviousWord(textBefore)
+        if (length <= 0) return
+
+        if (InputTypeUtils.isWebEditor(getCurrentInputEditorInfo())) {
+            repeat(length) { sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL) }
+        } else {
+            mConnection.deleteTextBeforeCursor(length)
+        }
+        StatsUtils.onBackspaceWordDelete(length)
+        mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+        mLatinIME.feedbackForDeletedWord()
+    }
+
     private fun handleBackspaceEvent(event: Event, inputTransaction: InputTransaction) {
         val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
         mSpaceState = SpaceState.NONE

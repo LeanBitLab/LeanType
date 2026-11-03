@@ -1833,4 +1833,5 @@
     <string name="clear_learned_words_summary">Удалить все слова и предложения следующего слова, полученные при вводе</string>
     <string name="clear_learned_words_confirmation">Вы уверены, что хотите удалить все выученные слова и предложения?</string>
     <string name="clear_learned_words_success">Выученные слова очищены</string>
+    <string name="space_swipe_delete_word_entry">Удалить слово</string>
 </resources>

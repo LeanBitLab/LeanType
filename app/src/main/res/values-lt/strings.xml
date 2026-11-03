@@ -1809,4 +1809,5 @@ Ar norite atnaujinti?</string>
     <string name="clear_learned_words_summary">Ištrinkite visus žodžius ir kito žodžio pasiūlymus, išmoktus įvedant tekstą</string>
     <string name="clear_learned_words_confirmation">Ar tikrai norite išvalyti visus išmoktus žodžius ir pasiūlymus?</string>
     <string name="clear_learned_words_success">Išmokti žodžiai išvalyti</string>
+    <string name="space_swipe_delete_word_entry">Ištrinti žodį</string>
 </resources>

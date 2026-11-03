@@ -1644,6 +1644,8 @@ New dictionary:
     <string name="space_swipe_toggle_numpad_entry">Toggle numpad</string>
     <!-- Option to hide the keyboard when swiping the spacebar -->
     <string name="space_swipe_hide_keyboard_entry">Hide keyboard</string>
+    <!-- Option to delete word when performing a swipe gesture -->
+    <string name="space_swipe_delete_word_entry">Delete word</string>
     <!-- Option to enable touchpad mode when swiping the spacebar -->
     <string name="space_swipe_touchpad_mode_entry">Touchpad mode</string>
     <string name="touchpad_sensitivity">Touchpad sensitivity</string>

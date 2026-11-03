@@ -1808,4 +1808,5 @@
     <string name="clear_learned_words_summary">Изтрийте всички думи и предложения за следваща дума, научени от въвеждането</string>
     <string name="clear_learned_words_confirmation">Сигурни ли сте, че искате да изчистите всички научени думи и предложения?</string>
     <string name="clear_learned_words_success">Научените думи са изчистени</string>
+    <string name="space_swipe_delete_word_entry">Изтриване на дума</string>
 </resources>

@@ -1874,4 +1874,5 @@
     <string name="clear_learned_words_summary">ടൈപ്പിംഗിൽ നിന്ന് പഠിച്ച എല്ലാ വാക്കുകളും അടുത്ത പദ നിർദ്ദേശങ്ങളും ഇല്ലാതാക്കുക</string>
     <string name="clear_learned_words_confirmation">പഠിച്ച എല്ലാ വാക്കുകളും നിർദ്ദേശങ്ങളും മായ്‌ക്കണമെന്ന് തീർച്ചയാണോ?</string>
     <string name="clear_learned_words_success">പഠിച്ച വാക്കുകൾ മായ്ച്ചു</string>
+    <string name="space_swipe_delete_word_entry">വാക്ക് ഇല്ലാതാക്കുക</string>
 </resources>

@@ -1773,4 +1773,5 @@
     <string name="clear_learned_words_summary">Видаліть усі слова та пропозиції наступного слова, отримані під час введення</string>
     <string name="clear_learned_words_confirmation">Ви впевнені, що бажаєте видалити всі вивчені слова та пропозиції?</string>
     <string name="clear_learned_words_success">Вивчені слова очищені</string>
+    <string name="space_swipe_delete_word_entry">Видалити слово</string>
 </resources>
