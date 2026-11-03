@@ -5,12 +5,16 @@ package helium314.keyboard.keyboard.clipboard
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import kotlin.math.abs
 import android.widget.ImageButton
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
@@ -306,16 +310,36 @@ class ClipboardHistoryView @JvmOverloads constructor(
         textView.overScrollMode = View.OVER_SCROLL_ALWAYS
     }
 
+    private fun configureEditTextView(textView: TextView) {
+        textView.minLines = 1
+        textView.maxLines = 4
+        textView.setHorizontallyScrolling(false)
+        textView.isVerticalScrollBarEnabled = true
+        textView.movementMethod = ScrollingMovementMethod.getInstance()
+        textView.overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
+        textView.isFocusable = false
+        textView.isFocusableInTouchMode = false
+    }
+
     private fun ensureCursorVisible(textView: TextView, cursorPos: Int) {
-        if (textView.layout == null) {
+        val layout = textView.layout
+        if (layout == null) {
             textView.post { ensureCursorVisible(textView, cursorPos) }
             return
         }
-        val safePos = cursorPos.coerceIn(0, textView.text.length)
+        val safePos = cursorPos.coerceIn(0, layout.text.length)
         textView.bringPointIntoView(safePos)
+        textView.post {
+            val postLayout = textView.layout ?: return@post
+            val postSafePos = cursorPos.coerceIn(0, postLayout.text.length)
+            textView.bringPointIntoView(postSafePos)
+        }
     }
     
     private fun startSearchMode() {
+        if (inEditMode) {
+            stopEditMode(save = false)
+        }
         val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
         clipboardStrip.removeAllViews()
         isSearchModeActive = true
@@ -327,12 +351,14 @@ class ClipboardHistoryView @JvmOverloads constructor(
             val textColor = Settings.getValues().mColors.get(ColorType.KEY_TEXT)
             setTextColor(textColor)
             cursorColor = textColor
+            isCursorVisible = false
             hint = context.getString(R.string.clipboard_search_hint)
             setHintTextColor(textColor and 0x00FFFFFF or 0x80000000.toInt())
-            setPadding(32, 0, 0, 0)
+            val density = resources.displayMetrics.density
+            setPadding((12 * density).toInt(), 0, 0, 0)
             setOnTouchListener { _, event ->
                 if (event.action == android.view.MotionEvent.ACTION_UP) {
-                    val l = getLayout()
+                    val l = layout
                     if (l != null) {
                         val x = event.x - totalPaddingLeft + scrollX
                         val y = event.y - totalPaddingTop + scrollY
@@ -428,9 +454,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
             if (!inEditMode && !inSearchMode) return
             isCursorBlinkVisible = !isCursorBlinkVisible
             if (inEditMode && this@ClipboardHistoryView::editTextView.isInitialized) {
-                editTextView.isCursorVisible = isCursorBlinkVisible
+                editTextView.showInlineCursor = isCursorBlinkVisible
             } else if (inSearchMode && this@ClipboardHistoryView::searchBarTextView.isInitialized) {
-                searchBarTextView.isCursorVisible = isCursorBlinkVisible
+                searchBarTextView.showInlineCursor = isCursorBlinkVisible
             }
             postDelayed(this, 500)
         }
@@ -439,9 +465,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
     private fun resetCursorBlink() {
         isCursorBlinkVisible = true
         if (inEditMode && this::editTextView.isInitialized) {
-            editTextView.isCursorVisible = true
+            editTextView.showInlineCursor = true
         } else if (inSearchMode && this::searchBarTextView.isInitialized) {
-            searchBarTextView.isCursorVisible = true
+            searchBarTextView.showInlineCursor = true
         }
         removeCallbacks(cursorBlinkRunnable)
         postDelayed(cursorBlinkRunnable, 500)
@@ -454,6 +480,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardRecyclerView.dismissUndoBar()
         dismissConfirmationBar()
         val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip ?: return
+        val clipboardStripScrollView = KeyboardSwitcher.getInstance().clipboardStripScrollView
         if (inSearchMode) {
             stopSearchMode()
         }
@@ -462,53 +489,95 @@ class ClipboardHistoryView @JvmOverloads constructor(
         editText = StringBuilder(entry.text)
         editCursorPos = editText.length
 
+        if (clipboardStripScrollView != null) {
+            val lp = clipboardStripScrollView.layoutParams
+            if (lp != null) {
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                clipboardStripScrollView.layoutParams = lp
+            }
+        }
+        val stripLp = clipboardStrip.layoutParams
+        if (stripLp != null) {
+            stripLp.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            clipboardStrip.layoutParams = stripLp
+        }
+        clipboardStrip.gravity = Gravity.CENTER_VERTICAL
+
         clipboardStrip.removeAllViews()
 
         val colors = Settings.getValues().mColors
         val btnWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
+        val btnHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+        clipboardStripScrollView?.minimumHeight = btnHeight
+        clipboardStrip.minimumHeight = btnHeight
+
+        val density = resources.displayMetrics.density
+        val padHorizontal = (12 * density).toInt()
+        val padVertical = (8 * density).toInt()
 
         editTextView = InlineCursorTextView(context).apply {
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f).apply {
+                gravity = Gravity.CENTER_VERTICAL
+            }
             gravity = Gravity.CENTER_VERTICAL or Gravity.START
-            textSize = 16f
+            textSize = 15f
             val textColor = colors.get(ColorType.KEY_TEXT)
             setTextColor(textColor)
             cursorColor = textColor
-            setPadding(32, 0, 0, 0)
+            isCursorVisible = false
+            setPadding(padHorizontal, padVertical, padHorizontal, padVertical)
+            var touchDownX = 0f
+            var touchDownY = 0f
+            val slop = ViewConfiguration.get(context).scaledTouchSlop
             setOnTouchListener { _, event ->
-                if (event.action == android.view.MotionEvent.ACTION_UP) {
-                    val l = getLayout()
-                    if (l != null) {
-                        val x = event.x - totalPaddingLeft + scrollX
-                        val y = event.y - totalPaddingTop + scrollY
-                        val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
-                        val offset = l.getOffsetForHorizontal(line, x)
-                        editCursorPos = offset.coerceIn(0, editText.length)
-                        updateEditDisplay()
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        touchDownX = event.x
+                        touchDownY = event.y
+                        parent?.requestDisallowInterceptTouchEvent(true)
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        if (abs(event.x - touchDownX) < slop && abs(event.y - touchDownY) < slop) {
+                            val l = layout
+                            if (l != null) {
+                                val x = event.x - totalPaddingLeft + scrollX
+                                val y = event.y - totalPaddingTop + scrollY
+                                val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
+                                val offset = l.getOffsetForHorizontal(line, x)
+                                editCursorPos = offset.coerceIn(0, editText.length)
+                                updateEditDisplay()
+                            }
+                        }
                     }
                 }
-                true
+                false
             }
         }
-        configureInlineTextView(editTextView)
+        configureEditTextView(editTextView)
         clipboardStrip.addView(editTextView)
 
         val saveButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(btnWidth, btnHeight).apply {
+                gravity = Gravity.CENTER_VERTICAL
+            }
             setImageResource(R.drawable.ic_setup_check)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
             colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+            contentDescription = context.getString(R.string.save)
             setOnClickListener { stopEditMode(save = true) }
         }
         clipboardStrip.addView(saveButton)
 
         val cancelButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(btnWidth, btnHeight).apply {
+                gravity = Gravity.CENTER_VERTICAL
+            }
             setImageResource(R.drawable.ic_close)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
             colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+            contentDescription = context.getString(android.R.string.cancel)
             setOnClickListener { stopEditMode(save = false) }
         }
         clipboardStrip.addView(cancelButton)
@@ -540,7 +609,23 @@ class ClipboardHistoryView @JvmOverloads constructor(
         currentDeleteSwipePos = -1
 
         val clipboardStrip = KeyboardSwitcher.getInstance().clipboardStrip
+        val clipboardStripScrollView = KeyboardSwitcher.getInstance().clipboardStripScrollView
+        val standardStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+        if (clipboardStripScrollView != null) {
+            clipboardStripScrollView.minimumHeight = 0
+            val lp = clipboardStripScrollView.layoutParams
+            if (lp != null && lp.height != standardStripHeight) {
+                lp.height = standardStripHeight
+                clipboardStripScrollView.layoutParams = lp
+            }
+        }
         if (clipboardStrip != null) {
+            clipboardStrip.minimumHeight = 0
+            val stripLp = clipboardStrip.layoutParams
+            if (stripLp != null && stripLp.height != ViewGroup.LayoutParams.MATCH_PARENT) {
+                stripLp.height = ViewGroup.LayoutParams.MATCH_PARENT
+                clipboardStrip.layoutParams = stripLp
+            }
             clipboardStrip.removeAllViews()
             toolbarKeys.forEach { clipboardStrip.addView(it) }
             applyClipboardToolbarKeyLayoutParams()
@@ -564,6 +649,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     }
 
     private fun updateEditDisplay() {
+        resetCursorBlink()
         updateEditDisplayWithSelection(-1, -1)
     }
 
@@ -584,16 +670,18 @@ class ClipboardHistoryView @JvmOverloads constructor(
             )
             editTextView.text = sb
             editTextView.showInlineCursor = false
+            removeCallbacks(cursorBlinkRunnable)
             ensureCursorVisible(editTextView, selEnd)
         } else {
             editTextView.text = editText
             editTextView.cursorPos = editCursorPos
-            editTextView.showInlineCursor = isCursorBlinkVisible
+            editTextView.showInlineCursor = true
             ensureCursorVisible(editTextView, editCursorPos)
         }
     }
 
     private fun updateSearchDisplay() {
+        resetCursorBlink()
         updateSearchDisplayWithSelection(-1, -1)
     }
 
@@ -614,11 +702,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
             )
             searchBarTextView.text = sb
             searchBarTextView.showInlineCursor = false
+            removeCallbacks(cursorBlinkRunnable)
             ensureCursorVisible(searchBarTextView, selEnd)
         } else {
             searchBarTextView.text = searchQuery
             searchBarTextView.cursorPos = searchCursorPos
-            searchBarTextView.showInlineCursor = isCursorBlinkVisible
+            searchBarTextView.showInlineCursor = true
             ensureCursorVisible(searchBarTextView, searchCursorPos)
         }
     }
@@ -1067,35 +1156,49 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 if (editCursorPos > 0) {
                     editText.deleteCharAt(editCursorPos - 1)
                     editCursorPos--
-                    resetCursorBlink()
                     updateEditDisplay()
                 }
             } else if (primaryCode == Constants.CODE_ENTER) {
                 editText.insert(editCursorPos, "\n")
                 editCursorPos++
-                resetCursorBlink()
                 updateEditDisplay()
             } else if (primaryCode == Constants.CODE_SPACE) {
                 editText.insert(editCursorPos, " ")
                 editCursorPos++
-                resetCursorBlink()
                 updateEditDisplay()
             } else if (primaryCode == KeyCode.ARROW_LEFT) {
                 if (editCursorPos > 0) {
                     editCursorPos--
-                    resetCursorBlink()
                     updateEditDisplay()
                 }
             } else if (primaryCode == KeyCode.ARROW_RIGHT) {
                 if (editCursorPos < editText.length) {
                     editCursorPos++
-                    resetCursorBlink()
                     updateEditDisplay()
+                }
+            } else if (primaryCode == KeyCode.ARROW_UP) {
+                val l = editTextView.layout
+                if (l != null) {
+                    val line = l.getLineForOffset(editCursorPos)
+                    if (line > 0) {
+                        val x = l.getPrimaryHorizontal(editCursorPos)
+                        editCursorPos = l.getOffsetForHorizontal(line - 1, x).coerceIn(0, editText.length)
+                        updateEditDisplay()
+                    }
+                }
+            } else if (primaryCode == KeyCode.ARROW_DOWN) {
+                val l = editTextView.layout
+                if (l != null) {
+                    val line = l.getLineForOffset(editCursorPos)
+                    if (line < l.lineCount - 1) {
+                        val x = l.getPrimaryHorizontal(editCursorPos)
+                        editCursorPos = l.getOffsetForHorizontal(line + 1, x).coerceIn(0, editText.length)
+                        updateEditDisplay()
+                    }
                 }
             } else if (char != null) {
                 editText.insert(editCursorPos, char.toString())
                 editCursorPos++
-                resetCursorBlink()
                 updateEditDisplay()
                 if (currentBottomRowLayout == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
                     setBottomRowLayout(KeyboardId.ELEMENT_ALPHABET)
@@ -1117,7 +1220,6 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 if (searchCursorPos > 0) {
                     searchQuery.deleteCharAt(searchCursorPos - 1)
                     searchCursorPos--
-                    resetCursorBlink()
                     updateSearchDisplay()
                     clipboardAdapter.filter(searchQuery.toString()) 
                 }
@@ -1126,25 +1228,21 @@ class ClipboardHistoryView @JvmOverloads constructor(
             } else if (primaryCode == Constants.CODE_SPACE) {
                 searchQuery.insert(searchCursorPos, " ")
                 searchCursorPos++
-                resetCursorBlink()
                 updateSearchDisplay()
                 clipboardAdapter.filter(searchQuery.toString())
             } else if (primaryCode == KeyCode.ARROW_LEFT) {
                 if (searchCursorPos > 0) {
                     searchCursorPos--
-                    resetCursorBlink()
                     updateSearchDisplay()
                 }
             } else if (primaryCode == KeyCode.ARROW_RIGHT) {
                 if (searchCursorPos < searchQuery.length) {
                     searchCursorPos++
-                    resetCursorBlink()
                     updateSearchDisplay()
                 }
             } else if (char != null) {
                 searchQuery.insert(searchCursorPos, char.toString())
                 searchCursorPos++
-                resetCursorBlink()
                 updateSearchDisplay()
                 clipboardAdapter.filter(searchQuery.toString())
                 if (currentBottomRowLayout == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
@@ -1205,6 +1303,14 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onKeyDown(keyCode: Int, keyEvent: android.view.KeyEvent): Boolean {
         if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
             if (dismissActionPill()) return true
+            if (inEditMode) {
+                stopEditMode(save = false)
+                return true
+            }
+            if (inSearchMode) {
+                stopSearchMode()
+                return true
+            }
             if (inSelectionMode) {
                 stopSelectionMode()
                 return true
@@ -1674,6 +1780,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
     }
 
     override fun onDetachedFromWindow() {
+        if (inEditMode) {
+            stopEditMode(save = false)
+        } else if (inSearchMode) {
+            stopSearchMode()
+        }
         dismissActionPill()
         PointerTracker.setClipboardInlineInputActive(false)
         super.onDetachedFromWindow()
@@ -1682,6 +1793,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
         if (!isShown) {
+            removeCallbacks(cursorBlinkRunnable)
             dismissActionPill()
             PointerTracker.setClipboardInlineInputActive(false)
         } else {
@@ -1724,8 +1836,9 @@ private class InlineCursorTextView(context: Context) : TextView(context) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (!showInlineCursor) return
-        val l = getLayout()
-        val safePos = cursorPos.coerceIn(0, text.length)
+        val l = layout
+        val len = l?.text?.length ?: text.length
+        val safePos = cursorPos.coerceIn(0, len)
         val cursorX = totalPaddingLeft + (if (text.isNotEmpty() && l != null) l.getPrimaryHorizontal(safePos) else 0f)
         val lineTop: Float
         val lineBottom: Float
@@ -1742,6 +1855,16 @@ private class InlineCursorTextView(context: Context) : TextView(context) {
         val inset = (lineBottom - lineTop) * 0.15f
         val top = lineTop + inset
         val bottom = lineBottom - inset
+
+        val clipLeft = scrollX + totalPaddingLeft.toFloat()
+        val clipTop = scrollY + totalPaddingTop.toFloat()
+        val clipRight = scrollX + (width - totalPaddingRight).toFloat()
+        val clipBottom = scrollY + (height - totalPaddingBottom).toFloat()
+        if (clipLeft >= clipRight || clipTop >= clipBottom) return
+
+        val saveCount = canvas.save()
+        canvas.clipRect(clipLeft, clipTop, clipRight, clipBottom)
         canvas.drawRect(cursorX, top, cursorX + cursorWidth, bottom, cursorPaint)
+        canvas.restoreToCount(saveCount)
     }
 }
