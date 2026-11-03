@@ -240,6 +240,14 @@ class EmojiPalettesView @JvmOverloads constructor(
         if (sel < 0) sel = content.length
         content.insert(sel, text)
         resetCursorBlink()
+        val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
+        if (bottomRow.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
+            mSearchKeyboardLayoutSet?.let { layoutSet ->
+                PointerTracker.switchTo(bottomRow)
+                bottomRow.setKeyboard(layoutSet.getKeyboard(mSearchAlphabetKeyboardId))
+                bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
+            }
+        }
     }
 
     private var mEditorInfo: EditorInfo? = null
@@ -590,6 +598,14 @@ class EmojiPalettesView @JvmOverloads constructor(
                 } else if (primaryCode > 0) {
                     content.replace(minSel, maxSel, primaryCode.toChar().toString())
                     resetCursorBlink()
+                    val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
+                    if (bottomRow.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
+                        mSearchKeyboardLayoutSet?.let { layoutSet ->
+                            PointerTracker.switchTo(bottomRow)
+                            bottomRow.setKeyboard(layoutSet.getKeyboard(mSearchAlphabetKeyboardId))
+                            bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
+                        }
+                    }
                 } else if (primaryCode == Constants.CODE_ENTER) {
                     stopSearchMode()
                 } else if (primaryCode == KeyCode.SYMBOL || primaryCode == KeyCode.SYMBOL_ALPHA || primaryCode == KeyCode.ALPHA) {
@@ -683,6 +699,14 @@ class EmojiPalettesView @JvmOverloads constructor(
                     val maxSel = maxOf(selStart, selEnd)
                     content.replace(minSel, maxSel, t)
                     resetCursorBlink()
+                    val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
+                    if (bottomRow.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
+                        mSearchKeyboardLayoutSet?.let { layoutSet ->
+                            PointerTracker.switchTo(bottomRow)
+                            bottomRow.setKeyboard(layoutSet.getKeyboard(mSearchAlphabetKeyboardId))
+                            bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
+                        }
+                    }
                 }
             }
 
