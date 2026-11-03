@@ -96,6 +96,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
     var editingTemplate by remember { mutableStateOf(TextFieldValue("")) }
     var originalShortcutToEdit by remember { mutableStateOf<String?>(null) }
     var editingIsRegex by remember { mutableStateOf(false) }
+    var showTextEditor by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         SearchScreen(
@@ -351,6 +352,14 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                         color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(top = 8.dp)
                     )
+                    androidx.compose.material3.OutlinedButton(
+                        onClick = { showTextEditor = true },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(painterResource(R.drawable.ic_open_in_full), null, Modifier.size(18.dp))
+                        Spacer(Modifier.size(8.dp))
+                        Text(stringResource(R.string.text_expander_all_as_text))
+                    }
 
                     // 4. List of saved shortcuts
                     if (shortcutsMap.isEmpty()) {
@@ -447,6 +456,13 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     .padding(all = 16.dp)
                     .then(Modifier.safeDrawingPadding())
             )
+        }
+    }
+
+    if (showTextEditor) {
+        TextExpanderTextEditor { changed ->
+            showTextEditor = false
+            if (changed) shortcutsMap = TextExpanderUtils.getShortcuts(context)
         }
     }
 
@@ -564,49 +580,57 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                         modifier = Modifier.padding(top = 4.dp)
                     )
                     
-                    androidx.compose.foundation.layout.Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .horizontalScroll(rememberScrollState()),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        val tags = listOf(
-                            "%clipboard%", "%clipboard:clean%", "%clipboard:singleline%",
-                            "%clipboard:title%", "%clipboard:slug%", "%clipboard:upper%",
-                            "%date%", "%date:yyyy/MM/dd%", "%date:dd-MM-yyyy%", "%time%", "%time12%",
-                            "%day%", "%month%", "%year%", "%week%",
-                            "%battery%", "%language%", "%cursor%", "%greeting%",
-                            "%tomorrow%", "%bullets%", "%list%"
-                        )
-                        tags.forEach { tag ->
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f))
-                                    .clickable {
-                                        val text = editingTemplate.text
-                                        val selection = editingTemplate.selection
-                                        val start = selection.start
-                                        val end = selection.end
-                                        val newText = text.substring(0, start) + tag + text.substring(end)
-                                        val newSelectionRange = androidx.compose.ui.text.TextRange(start + tag.length)
-                                        editingTemplate = TextFieldValue(text = newText, selection = newSelectionRange)
-                                    }
-                                    .padding(horizontal = 8.dp, vertical = 6.dp)
-                            ) {
-                                Text(
-                                    text = tag,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
-                                )
-                            }
-                        }
-                    }
+                    PlaceholderTagsRow(editingTemplate) { editingTemplate = it }
                 }
             }
         )
+    }
+}
+
+/** Placeholder tags, a tap inserts the tag at the cursor */
+@Composable
+internal fun PlaceholderTagsRow(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit) {
+    val editingTemplate = value
+    androidx.compose.foundation.layout.Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        val tags = listOf(
+            "%clipboard%", "%clipboard:clean%", "%clipboard:singleline%",
+            "%clipboard:title%", "%clipboard:slug%", "%clipboard:upper%",
+            "%date%", "%date:yyyy/MM/dd%", "%date:dd-MM-yyyy%", "%time%", "%time12%",
+            "%day%", "%month%", "%year%", "%week%",
+            "%battery%", "%language%", "%cursor%", "%greeting%",
+            "%tomorrow%", "%bullets%", "%list%",
+        "%tab%", "%tabkey%", "%enter%"
+        )
+        tags.forEach { tag ->
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f))
+                    .clickable {
+                        val text = editingTemplate.text
+                        val selection = editingTemplate.selection
+                        val start = selection.start
+                        val end = selection.end
+                        val newText = text.substring(0, start) + tag + text.substring(end)
+                        val newSelectionRange = androidx.compose.ui.text.TextRange(start + tag.length)
+                        onValueChange(TextFieldValue(text = newText, selection = newSelectionRange))
+                    }
+                    .padding(horizontal = 8.dp, vertical = 6.dp)
+            ) {
+                Text(
+                    text = tag,
+                    style = MaterialTheme.typography.bodySmall,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
+                )
+            }
+        }
     }
 }
 
