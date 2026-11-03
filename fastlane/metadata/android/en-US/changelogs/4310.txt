@@ -1,11 +1,9 @@
+- Added "Delete word" option to full keyboard swipe gesture (#757).
+- Improved voice input silence timeout with adaptive noise tracking and zombie state prevention (#765).
+- Rebuilt inline clipboard editor with dynamic multiline strip and cursor navigation.
+- Reverted shift key to lowercase after typing a character in emoji search bar.
+- Added interactive cursor and selection to emoji palette search.
+- Fixed GIF preview image swapping during live preview long-presses.
 - Fixed native SIGSEGV crash during dictionary traversal in word suggestions (#759).
-- Fixed crash on Samsung devices and Knox/Secure Folder profiles where inputMethodList excludes the IME.
-- Fixed crash on Android 7.1.2 and below in Thai word break iterator (#756).
 - Isolated multilingual learned history per language (#763) and preserved primary locale order (#762).
 - Enabled immediate dictionary reload on download and deletion without app restart (#761).
-- Cleared transient shift state on input restarts while preserving Caps Lock.
-- Added settings option to clear learned words, personalized history, and word boost caches.
-- Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona.
-- Enforced synchronous blacklist loading to eliminate suggestion race conditions and deletion issues.
-- Optimized canvas rendering with zero draw-loop Binder IPC and per-key allocation elimination.
-- Restored missing preference options across Text Correction, Toolbar, Gesture Typing, and Sound screens.

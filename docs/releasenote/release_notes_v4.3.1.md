@@ -12,6 +12,10 @@ As an open-source, community-funded project, we operate on a very limited budget
 - **Multilingual History Isolation & Learning (#763)**: Isolated learned and unlearned words to matching language dictionaries in multilingual setups instead of commingling vocabulary across unrelated language histories.
 - **Multilingual Locale Priority Order (#762)**: Preserved primary locale dictionary lookup order using a linked set, ensuring main language suggestions take precedence during multilingual typing.
 - **Android 7.1.2 Compatibility Crash (#756)**: Avoided `ThreadLocal.withInitial` in Thai word break iterator to prevent fatal crashes on Android 7.1.2 (API 25) and below.
+- **Voice Silence Timeout & Recording Cleanup (#765)**: Adaptively tracks ambient noise RMS floor to ensure silence detection works reliably in noisy environments, automatically cancels empty sessions on initial silence timeout, and eliminates zombie recording states when audio loops terminate.
+- **Dynamic Multiline Clipboard Editor & Cursor Navigation**: Rebuilt the inline clipboard editor with a dynamic multiline strip that expands smoothly up to 4 lines without hiding action buttons, added dedicated text wrapping, and integrated interactive cursor positioning with blinking cursor via `InlineCursorTextView`.
+- **Emoji Search Shift Auto-Reset & Cursor Positioning**: Automatically reverts the Shift key to unshifted lowercase layout after typing a character in the emoji palette search bar, and added interactive blinking caret positioning via `InlineCursorTextView`.
+- **GIF Picker Preview Frame Reload**: Fixed image swapping during GIF live preview long-presses in `GifPickerView`, ensuring subsequent previewed items correctly reload fresh media instead of displaying the first cached frame.
 - **InputConnection IPC Hardening & Memory Leak Prevention**: Hardened `RichInputConnection` against dead-process and remote app IPC crashes, safely closed unclosed dictionary and asset input streams, and eliminated memory leak vectors.
 - **Dynamic Dictionary Download & Deletion Reloads (#761)**: Broadcast dictionary update intents upon downloading or deleting user dictionaries, ensuring the keyboard engine immediately refreshes active wordlists without requiring a restart.
 - **Transient Shift State Reset on Input Restarts**: Cleared one-shot shift state on input restarts and text field switches to prevent inadvertent capitalization, while strictly preserving Caps Lock.
@@ -22,6 +26,7 @@ As an open-source, community-funded project, we operate on a very limited budget
 - **Missing Settings Menus & Sound Search Indexing**: Restored missing preference options across Text Correction, Toolbar, Gesture Typing, and Sound screens, and corrected sound settings indexing in search.
 
 ### ✨ Added
+- **Full Keyboard Swipe Delete Word Option (#757)**: Added "Delete word" as a selectable action for full keyboard horizontal swipe gestures, allowing users to quickly delete the preceding word (including composing word reset, selection deletion, dictionary unlearning, and web editor compatibility) with full localized translations across all 30 languages.
 - **Clear Learned Words & User History**: Added a dedicated option in Text Correction / Suggestions settings to reset learned words, personalized dictionary history, and session word boost caches.
 - **Irish & Group 1 Latin Input Subtypes**: Added input subtypes in `method.xml` for Irish (`ga`, `ga_IE`), Bosnian (`bs`, `bs_BA`), Norwegian Nynorsk (`nn`, `nn_NO`), Cebuano (`ceb`), Malagasy (`mg`), Sardinian (`sc`), and Toki Pona (`tok`).
 
