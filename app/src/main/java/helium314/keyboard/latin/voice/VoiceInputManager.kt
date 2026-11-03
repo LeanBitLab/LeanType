@@ -529,6 +529,7 @@ class VoiceInputManager(
             val sessionStartTime = System.currentTimeMillis()
             var lastSpeechTime = sessionStartTime
             var hasSpoken = false
+            var ambientNoiseRms = speechRmsThreshold * 0.5
 
             try {
                 if (!isOnline && writePfd != null) {
@@ -574,9 +575,13 @@ class VoiceInputManager(
                         currentAudioLevel = kotlin.math.sqrt(rawNormalized).toFloat()
 
                         if (silenceTimeoutMs > 0L) {
-                            if (rms > speechRmsThreshold) {
+                            // Adaptively track noise floor to avoid background noise holding silence timer
+                            val effectiveSpeechThreshold = maxOf(speechRmsThreshold, ambientNoiseRms * 1.75 + 30.0)
+                            if (rms > effectiveSpeechThreshold) {
                                 lastSpeechTime = now
                                 hasSpoken = true
+                            } else {
+                                ambientNoiseRms = 0.95 * ambientNoiseRms + 0.05 * rms
                             }
 
                             if (hasSpoken && (now - lastSpeechTime > silenceTimeoutMs)) {
@@ -584,8 +589,8 @@ class VoiceInputManager(
                                 mainHandler.post { stopVoice() }
                                 break
                             } else if (!hasSpoken && (now - sessionStartTime > initialTimeoutMs)) {
-                                Log.i(TAG, "Initial silence timeout (${initialTimeoutMs}ms) detected. Stopping voice input.")
-                                mainHandler.post { stopVoice() }
+                                Log.i(TAG, "Initial silence timeout (${initialTimeoutMs}ms) detected. Cancelling voice input.")
+                                mainHandler.post { cancelVoice() }
                                 break
                             }
                         }
@@ -602,6 +607,10 @@ class VoiceInputManager(
                 currentAudioLevel = 0f
                 try { outputStream?.close() } catch (_: Exception) {}
                 Log.i(TAG, "Audio loop ended. Total wrote: $totalBytesWritten bytes")
+                if (isRecording.get()) {
+                    Log.i(TAG, "Audio loop finished while isRecording=true. Dispatching stopVoice()")
+                    mainHandler.post { stopVoice() }
+                }
             }
         }, "VoiceAudioThread").apply {
             isDaemon = true
