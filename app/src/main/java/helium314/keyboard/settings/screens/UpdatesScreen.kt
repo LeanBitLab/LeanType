@@ -64,12 +64,17 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• Dictionary Concurrency Crash (SIGSEGV) Fix: Synchronized traverse session during suggestions to eliminate native crashes (#759)",
+    "• Samsung & Multi-Profile IME Crash Fix: Prevented crash on Samsung and isolated profiles where inputMethodList excludes the IME",
     "• Full Keyboard Swipe Word Deletion: Added 'Delete word' action to full keyboard swipe gestures (#757)",
+    "• Multilingual History & Locale Priority: Isolated learned vocabulary per language (#763) and preserved primary locale order (#762)",
     "• Voice Silence Timeout & Noise Floor: Adaptively tracked ambient noise to ensure reliable silence detection (#765)",
     "• Dynamic Multiline Clipboard Editor: Supported dynamic multiline expansion and cursor navigation without hiding action buttons",
-    "• Emoji Search Shift Auto-Reset: Automatically reverted shift to lowercase after character input in search",
-    "• Emoji Search Cursor Navigation: Added interactive caret positioning and blinking cursor in emoji search",
-    "• GIF Preview Image Swap: Fixed live preview frame caching when previewing multiple GIFs in sequence"
+    "• Clear Learned Words & History: Added settings option to reset learned words, personalized dictionary history, and word boost caches",
+    "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
+    "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
+    "• Dynamic Dictionary Sync: Broadcast update intent on dictionary download and deletion for instant wordlist refreshes (#761)",
+    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation"
 )
 
 @Composable
