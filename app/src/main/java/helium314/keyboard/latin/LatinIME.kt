@@ -111,6 +111,8 @@ import helium314.keyboard.latin.utils.StatsUtilsManager
 import helium314.keyboard.latin.utils.SubtypeLocaleUtils
 import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.latin.utils.SubtypeState
+import helium314.keyboard.latin.utils.locale
+import helium314.keyboard.latin.utils.mainLayoutName
 import helium314.keyboard.latin.translation.TranslationModelImporter
 import helium314.keyboard.latin.utils.ToolbarMode
 import helium314.keyboard.latin.voice.VoiceInputManager
@@ -265,6 +267,13 @@ class LatinIME : InputMethodService(),
         }
         ContextCompat.registerReceiver(this, restartAfterDeviceUnlockReceiver, restartAfterUnlockFilter, ContextCompat.RECEIVER_NOT_EXPORTED)
 
+        val layoutSwitchFilter = IntentFilter().apply {
+            addAction(ACTION_SWITCH_SUBTYPE)
+            addAction(ACTION_SWITCH_LAYOUT)
+            addAction(ACTION_SWITCH_MODE)
+        }
+        ContextCompat.registerReceiver(this, layoutSwitchReceiver, layoutSwitchFilter, ContextCompat.RECEIVER_EXPORTED)
+
         StatsUtils.onCreate(settings.current, richImm)
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
             TranslationModelImporter.migrateLegacyModels(this)
@@ -416,6 +425,7 @@ class LatinIME : InputMethodService(),
         try { unregisterReceiver(dictionaryPackInstallReceiver) } catch (e: Exception) {}
         try { unregisterReceiver(dictionaryDumpBroadcastReceiver) } catch (e: Exception) {}
         try { unregisterReceiver(restartAfterDeviceUnlockReceiver) } catch (e: Exception) {}
+        try { unregisterReceiver(layoutSwitchReceiver) } catch (e: Exception) {}
         
         statsUtilsManager.onDestroy(this)
         AudioAndHapticFeedbackManager.getInstance().onDestroy()
@@ -2360,6 +2370,90 @@ class LatinIME : InputMethodService(),
         }
     }
 
+    private val layoutSwitchReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action ?: return
+            if (action != ACTION_SWITCH_SUBTYPE && action != ACTION_SWITCH_LAYOUT && action != ACTION_SWITCH_MODE) return
+
+            val mode = intent.getStringExtra(EXTRA_KEYBOARD_MODE) ?: intent.getStringExtra("keyboard_mode")
+            if (mode != null) {
+                when (mode.lowercase()) {
+                    "alpha", "text", "letters" -> onCodeInput(KeyCode.ALPHA, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "symbols", "symbol", "sym" -> onCodeInput(KeyCode.SYMBOL, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "numpad", "num", "numbers", "number" -> onCodeInput(KeyCode.NUMPAD, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "emoji" -> onCodeInput(KeyCode.EMOJI, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "clipboard", "clip" -> onCodeInput(KeyCode.CLIPBOARD, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "text_edit", "edit" -> onCodeInput(KeyCode.TOGGLE_TEXT_EDIT_MODE, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+                    "one_handed", "onehanded" -> keyboardSwitcher.switchOneHandedMode()
+                }
+            }
+
+            val subtypes = SubtypeSettings.getEnabledSubtypes(true)
+            if (subtypes.isEmpty()) return
+
+            val direction = intent.getStringExtra(EXTRA_SUBTYPE_DIRECTION)
+            val step = intent.getIntExtra(EXTRA_SUBTYPE_STEP, 0).takeIf { it != 0 }
+                ?: intent.getStringExtra(EXTRA_SUBTYPE_STEP)?.toIntOrNull() ?: 0
+            val isNext = intent.getBooleanExtra("next", false)
+                || intent.getStringExtra("next")?.toBooleanStrictOrNull() == true
+                || direction.equals("next", ignoreCase = true)
+                || step > 0
+            val isPrev = intent.getBooleanExtra("prev", false)
+                || intent.getBooleanExtra("previous", false)
+                || intent.getStringExtra("prev")?.toBooleanStrictOrNull() == true
+                || intent.getStringExtra("previous")?.toBooleanStrictOrNull() == true
+                || direction.equals("prev", ignoreCase = true)
+                || direction.equals("previous", ignoreCase = true)
+                || step < 0
+
+            if (isNext || isPrev) {
+                val current = richImm.currentSubtype.rawSubtype
+                val currentIndex = subtypes.indexOf(current).let { if (it < 0) 0 else it }
+                val delta = if (step != 0) step else (if (isNext) 1 else -1)
+                var targetIndex = (currentIndex + delta) % subtypes.size
+                if (targetIndex < 0) targetIndex += subtypes.size
+                switchToSubtype(subtypes[targetIndex])
+                return
+            }
+
+            val rawIndex = intent.getIntExtra(EXTRA_SUBTYPE_INDEX, -1).takeIf { it != -1 }
+                ?: intent.getStringExtra(EXTRA_SUBTYPE_INDEX)?.toIntOrNull()
+                ?: intent.getIntExtra("subtype_index", -1).takeIf { it != -1 }
+                ?: intent.getStringExtra("subtype_index")?.toIntOrNull()
+
+            if (rawIndex != null) {
+                if (rawIndex in subtypes.indices) {
+                    switchToSubtype(subtypes[rawIndex])
+                    return
+                } else if (rawIndex in 1..subtypes.size) {
+                    switchToSubtype(subtypes[rawIndex - 1])
+                    return
+                }
+            }
+
+            val targetLocale = intent.getStringExtra(EXTRA_SUBTYPE_LOCALE) ?: intent.getStringExtra(EXTRA_SUBTYPE_LANGUAGE)
+            val targetLayout = intent.getStringExtra(EXTRA_SUBTYPE_LAYOUT)
+
+            if (targetLocale != null || targetLayout != null) {
+                val matched = subtypes.firstOrNull { subtype ->
+                    val localeMatches = targetLocale == null || run {
+                        val subLocale = subtype.locale()
+                        subLocale.toLanguageTag().equals(targetLocale, ignoreCase = true)
+                            || subLocale.language.equals(targetLocale, ignoreCase = true)
+                            || subLocale.toString().equals(targetLocale, ignoreCase = true)
+                    }
+                    val layoutMatches = targetLayout == null || run {
+                        subtype.mainLayoutName()?.equals(targetLayout, ignoreCase = true) == true
+                    }
+                    localeMatches && layoutMatches
+                }
+                if (matched != null) {
+                    switchToSubtype(matched)
+                }
+            }
+        }
+    }
+
     private class RestartAfterDeviceUnlockReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (Intent.ACTION_USER_UNLOCKED == intent.action) {
@@ -2386,6 +2480,18 @@ class LatinIME : InputMethodService(),
         
         @Volatile
         private var sInstance: LatinIME? = null
+
+        const val ACTION_SWITCH_SUBTYPE = "helium314.keyboard.ACTION_SWITCH_SUBTYPE"
+        const val ACTION_SWITCH_LAYOUT = "helium314.keyboard.ACTION_SWITCH_LAYOUT"
+        const val ACTION_SWITCH_MODE = "helium314.keyboard.ACTION_SWITCH_MODE"
+
+        const val EXTRA_SUBTYPE_INDEX = "index"
+        const val EXTRA_SUBTYPE_LOCALE = "locale"
+        const val EXTRA_SUBTYPE_LANGUAGE = "language"
+        const val EXTRA_SUBTYPE_LAYOUT = "layout"
+        const val EXTRA_SUBTYPE_DIRECTION = "direction"
+        const val EXTRA_SUBTYPE_STEP = "step"
+        const val EXTRA_KEYBOARD_MODE = "mode"
 
         val settings: Settings = Settings.getInstance()
 
