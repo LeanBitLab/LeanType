@@ -1809,4 +1809,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="clear_learned_words_confirmation">Sigur doriți să ștergeți toate cuvintele și sugestiile învățate?</string>
     <string name="clear_learned_words_success">Cuvintele învățate șterse</string>
     <string name="space_swipe_delete_word_entry">Șterge cuvântul</string>
+    <string name="personal_dict_export">Export dicționar</string>
+    <string name="personal_dict_exported_count">S-au exportat%1$dcuvinte</string>
+    <string name="personal_dict_export_failed">Export eșuat:%1$s</string>
 </resources>

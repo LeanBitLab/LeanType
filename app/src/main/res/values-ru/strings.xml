@@ -1834,4 +1834,7 @@
     <string name="clear_learned_words_confirmation">Вы уверены, что хотите удалить все выученные слова и предложения?</string>
     <string name="clear_learned_words_success">Выученные слова очищены</string>
     <string name="space_swipe_delete_word_entry">Удалить слово</string>
+    <string name="personal_dict_export">Экспортировать словарь</string>
+    <string name="personal_dict_exported_count">Экспортировано%1$dслов.</string>
+    <string name="personal_dict_export_failed">Не удалось экспортировать:%1$s</string>
 </resources>

@@ -1772,4 +1772,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="clear_learned_words_confirmation">Biztosan törölni szeretné az összes tanult szót és javaslatot?</string>
     <string name="clear_learned_words_success">A tanult szavak tisztázva</string>
     <string name="space_swipe_delete_word_entry">Szó törlése</string>
+    <string name="personal_dict_export">Szótár exportálása</string>
+    <string name="personal_dict_exported_count">%1$dszó exportálva</string>
+    <string name="personal_dict_export_failed">Az exportálás sikertelen:%1$s</string>
 </resources>

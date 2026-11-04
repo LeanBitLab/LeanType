@@ -1774,4 +1774,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="clear_learned_words_confirmation">Opravdu chcete vymazat všechna naučená slova a návrhy?</string>
     <string name="clear_learned_words_success">Naučená slova vyčištěna</string>
     <string name="space_swipe_delete_word_entry">Smazat slovo</string>
+    <string name="personal_dict_export">Exportovat slovník</string>
+    <string name="personal_dict_exported_count">Exportováno%1$dslov</string>
+    <string name="personal_dict_export_failed">Export se nezdařil:%1$s</string>
 </resources>

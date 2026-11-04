@@ -1809,4 +1809,7 @@
     <string name="clear_learned_words_confirmation">Вы ўпэўнены, што хочаце выдаліць усе вывучаныя словы і прапановы?</string>
     <string name="clear_learned_words_success">Вывучаныя словы ачышчаны</string>
     <string name="space_swipe_delete_word_entry">Выдаліць слова</string>
+    <string name="personal_dict_export">Экспарт слоўніка</string>
+    <string name="personal_dict_exported_count">Экспартавана%1$dслоў</string>
+    <string name="personal_dict_export_failed">Збой экспарту:%1$s</string>
 </resources>

@@ -1809,4 +1809,7 @@
     <string name="clear_learned_words_confirmation">Сигурни ли сте, че искате да изчистите всички научени думи и предложения?</string>
     <string name="clear_learned_words_success">Научените думи са изчистени</string>
     <string name="space_swipe_delete_word_entry">Изтриване на дума</string>
+    <string name="personal_dict_export">Експортиране на речник</string>
+    <string name="personal_dict_exported_count">Експортирани%1$dдуми</string>
+    <string name="personal_dict_export_failed">Неуспешно експортиране:%1$s</string>
 </resources>

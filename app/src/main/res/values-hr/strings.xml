@@ -1772,4 +1772,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="clear_learned_words_confirmation">Jeste li sigurni da želite izbrisati sve naučene riječi i prijedloge?</string>
     <string name="clear_learned_words_success">Naučene riječi izbrisane</string>
     <string name="space_swipe_delete_word_entry">Izbriši riječ</string>
+    <string name="personal_dict_export">Izvezi rječnik</string>
+    <string name="personal_dict_exported_count">Izvezeno je%1$driječi</string>
+    <string name="personal_dict_export_failed">Izvoz nije uspio:%1$s</string>
 </resources>

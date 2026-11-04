@@ -1832,4 +1832,7 @@
     <string name="clear_learned_words_confirmation">هل أنت متأكد أنك تريد مسح كافة الكلمات والاقتراحات التي تعلمتها؟</string>
     <string name="clear_learned_words_success">تم مسح الكلمات التي تم تعلمها</string>
     <string name="space_swipe_delete_word_entry">حذف كلمة</string>
+    <string name="personal_dict_export">تصدير القاموس</string>
+    <string name="personal_dict_exported_count">تم تصدير%1$dمن الكلمات</string>
+    <string name="personal_dict_export_failed">فشل التصدير:%1$s</string>
 </resources>

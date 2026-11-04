@@ -1841,4 +1841,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="clear_learned_words_confirmation">¿Está seguro de que desea borrar todas las palabras y sugerencias aprendidas?</string>
     <string name="clear_learned_words_success">Palabras aprendidas borradas</string>
     <string name="space_swipe_delete_word_entry">Eliminar palabra</string>
+    <string name="personal_dict_export">Exportar diccionario</string>
+    <string name="personal_dict_exported_count">Exportado%1$dpalabras</string>
+    <string name="personal_dict_export_failed">Error al exportar:%1$s</string>
 </resources>

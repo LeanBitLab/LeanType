@@ -1803,4 +1803,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="clear_learned_words_confirmation">Öğrenilen tüm kelimeleri ve önerileri temizlemek istediğinizden emin misiniz?</string>
     <string name="clear_learned_words_success">Öğrenilen kelimeler temizlendi</string>
     <string name="space_swipe_delete_word_entry">Kelimeyi sil</string>
+    <string name="personal_dict_export">Sözlüğü dışa aktar</string>
+    <string name="personal_dict_exported_count">%1$dkelime dışa aktarıldı</string>
+    <string name="personal_dict_export_failed">Dışa aktarma başarısız oldu:%1$s</string>
 </resources>

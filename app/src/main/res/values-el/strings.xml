@@ -1875,4 +1875,7 @@
     <string name="clear_learned_words_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις λέξεις και τις προτάσεις που έχετε μάθει;</string>
     <string name="clear_learned_words_success">Οι μαθημένες λέξεις καθαρίστηκαν</string>
     <string name="space_swipe_delete_word_entry">Διαγραφή λέξης</string>
+    <string name="personal_dict_export">Λεξικό εξαγωγής</string>
+    <string name="personal_dict_exported_count">Εξήχθησαν%1$dλέξεις</string>
+    <string name="personal_dict_export_failed">Η εξαγωγή απέτυχε:%1$s</string>
 </resources>

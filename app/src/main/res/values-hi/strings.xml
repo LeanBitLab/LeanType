@@ -1801,4 +1801,7 @@
     <string name="clear_learned_words_confirmation">क्या आप वाकई सीखे गए सभी शब्दों और सुझावों को साफ़ करना चाहते हैं?</string>
     <string name="clear_learned_words_success">सीखे हुए शब्द साफ़ हो गए</string>
     <string name="space_swipe_delete_word_entry">शब्द हटाएँ</string>
+    <string name="personal_dict_export">शब्दकोश निर्यात करें</string>
+    <string name="personal_dict_exported_count">%1$dशब्द निर्यात किए गए</string>
+    <string name="personal_dict_export_failed">निर्यात विफल:%1$s</string>
 </resources>

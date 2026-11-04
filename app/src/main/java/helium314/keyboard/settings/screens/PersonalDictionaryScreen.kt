@@ -5,6 +5,14 @@ import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
 import android.provider.UserDictionary
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.rememberCoroutineScope
+import helium314.keyboard.keyboard.KeyboardSwitcher
+import helium314.keyboard.latin.utils.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -66,6 +74,25 @@ fun PersonalDictionaryScreen(
     var selectedWord: Word? by remember { mutableStateOf(null) }
     var showClearAllDialog by remember { mutableStateOf(false) }
     var showSortDialog by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val exportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
+        if (uri != null) {
+            scope.launch(Dispatchers.IO) {
+                try {
+                    val localeTag = locale?.toLanguageTag() ?: ""
+                    val count = exportWords(ctx, uri, words, localeTag)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_exported_count, count), true)
+                    }
+                } catch (e: Exception) {
+                    Log.e("ExportDict", "Failed to export", e)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_export_failed, e.message ?: ""), true)
+                    }
+                }
+            }
+        }
+    }
 
     Box(Modifier.fillMaxSize()) {
         SearchScreen(
@@ -81,6 +108,10 @@ fun PersonalDictionaryScreen(
                 }
             },
             menu = listOf(
+                stringResource(R.string.personal_dict_export) to {
+                    val tag = locale?.toLanguageTag() ?: "all"
+                    exportLauncher.launch("dictionary_$tag.txt")
+                },
                 stringResource(R.string.user_dict_sort_title) to { showSortDialog = true },
                 stringResource(R.string.clear_all) to { showClearAllDialog = true }
             ),
@@ -467,5 +498,22 @@ private const val DELETE_SELECTION_WITHOUT_SHORTCUT_AND_WITH_ALL_LOCALES = (User
         + UserDictionary.Words.SHORTCUT + "='' AND "
         + UserDictionary.Words.FREQUENCY + "=? AND "
         + UserDictionary.Words.LOCALE + " is null")
+
+private suspend fun exportWords(
+    context: Context,
+    uri: android.net.Uri,
+    words: List<Word>,
+    localeTag: String
+): Int = withContext(Dispatchers.IO) {
+    var count = 0
+    context.contentResolver.openOutputStream(uri)?.bufferedWriter()?.use { writer ->
+        writer.write("# Gboard Dictionary format: word\tshortcut\tlocale\n")
+        for (w in words) {
+            writer.write("${w.word}\t${w.shortcut.orEmpty()}\t$localeTag\n")
+            count++
+        }
+    }
+    count
+}
 
 private const val WEIGHT_FOR_USER_DICTIONARY_ADDS = 250

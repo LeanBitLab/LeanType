@@ -1780,4 +1780,7 @@
     <string name="clear_learned_words_confirmation">האם אתה בטוח שברצונך לנקות את כל המילים וההצעות שנלמדו?</string>
     <string name="clear_learned_words_success">מילים נלמדות נוקו</string>
     <string name="space_swipe_delete_word_entry">מחק מילה</string>
+    <string name="personal_dict_export">ייצוא מילון</string>
+    <string name="personal_dict_exported_count">ייצאו%1$dמילים</string>
+    <string name="personal_dict_export_failed">הייצוא נכשל:%1$s</string>
 </resources>

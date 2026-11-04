@@ -1774,4 +1774,7 @@
     <string name="clear_learned_words_confirmation">Ви впевнені, що бажаєте видалити всі вивчені слова та пропозиції?</string>
     <string name="clear_learned_words_success">Вивчені слова очищені</string>
     <string name="space_swipe_delete_word_entry">Видалити слово</string>
+    <string name="personal_dict_export">Експорт словника</string>
+    <string name="personal_dict_exported_count">Експортовано%1$dслів</string>
+    <string name="personal_dict_export_failed">Помилка експорту:%1$s</string>
 </resources>

@@ -1830,4 +1830,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="clear_learned_words_confirmation">Êtes-vous sûr de vouloir effacer tous les mots et suggestions appris ?</string>
     <string name="clear_learned_words_success">Mots appris effacés</string>
     <string name="space_swipe_delete_word_entry">Supprimer le mot</string>
+    <string name="personal_dict_export">Exporter le dictionnaire</string>
+    <string name="personal_dict_exported_count">%1$dmots exportés</string>
+    <string name="personal_dict_export_failed">Échec de l\'exportation :%1$s</string>
 </resources>

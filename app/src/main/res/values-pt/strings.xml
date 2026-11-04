@@ -1832,4 +1832,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="clear_learned_words_confirmation">Tem certeza de que deseja limpar todas as palavras e sugestões aprendidas?</string>
     <string name="clear_learned_words_success">Palavras aprendidas apagadas</string>
     <string name="space_swipe_delete_word_entry">Excluir palavra</string>
+    <string name="personal_dict_export">Exportar dicionário</string>
+    <string name="personal_dict_exported_count">%1$dpalavras exportadas</string>
+    <string name="personal_dict_export_failed">Falha na exportação:%1$s</string>
 </resources>

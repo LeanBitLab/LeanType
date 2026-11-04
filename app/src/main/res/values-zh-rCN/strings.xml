@@ -1775,4 +1775,7 @@
     <string name="clear_learned_words_confirmation">您确定要清除所有已学单词和建议吗？</string>
     <string name="clear_learned_words_success">已学单词清除</string>
     <string name="space_swipe_delete_word_entry">删除单词</string>
+    <string name="personal_dict_export">导出词典</string>
+    <string name="personal_dict_exported_count">已导出%1$d个字</string>
+    <string name="personal_dict_export_failed">导出失败：%1$s</string>
 </resources>

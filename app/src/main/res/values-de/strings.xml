@@ -1824,4 +1824,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="clear_learned_words_confirmation">Sind Sie sicher, dass Sie alle gelernten Wörter und Vorschläge löschen möchten?</string>
     <string name="clear_learned_words_success">Gelernte Wörter gelöscht</string>
     <string name="space_swipe_delete_word_entry">Wort löschen</string>
+    <string name="personal_dict_export">Wörterbuch exportieren</string>
+    <string name="personal_dict_exported_count">%1$dWörter exportiert</string>
+    <string name="personal_dict_export_failed">Export fehlgeschlagen:%1$s</string>
 </resources>

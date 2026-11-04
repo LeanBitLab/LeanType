@@ -1816,4 +1816,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="clear_learned_words_confirmation">Czy na pewno chcesz usunąć wszystkie poznane słowa i sugestie?</string>
     <string name="clear_learned_words_success">Nauczone słowa zostały usunięte</string>
     <string name="space_swipe_delete_word_entry">Usuń słowo</string>
+    <string name="personal_dict_export">Eksportuj słownik</string>
+    <string name="personal_dict_exported_count">Wyeksportowano%1$dsłów</string>
+    <string name="personal_dict_export_failed">Eksport nie powiódł się:%1$s</string>
 </resources>

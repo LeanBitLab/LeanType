@@ -66,9 +66,57 @@ fun PersonalDictionariesScreen(
     val ctx = LocalContext.current
     val locales: MutableList<Locale?> = getSortedDictionaryLocales().toMutableList()
     locales.add(0, null)
+
+    var showImporting by remember { mutableStateOf(false) }
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+
+    val exportAllLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
+        if (uri != null) {
+            scope.launch(Dispatchers.IO) {
+                try {
+                    val count = exportAllDictionaries(ctx, uri)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_exported_count, count), true)
+                    }
+                } catch (e: Exception) {
+                    Log.e("ExportDict", "Failed to export", e)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_export_failed, e.message ?: ""), true)
+                    }
+                }
+            }
+        }
+    }
+
+    val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) {
+            showImporting = true
+            scope.launch(Dispatchers.IO) {
+                try {
+                    val count = importGboardDictionary(ctx, uri)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_imported_count, count), true)
+                        showImporting = false
+                    }
+                } catch (e: Exception) {
+                    Log.e("ImportDict", "Failed to import", e)
+                    withContext(Dispatchers.Main) {
+                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_import_failed, e.message ?: ""), true)
+                        showImporting = false
+                    }
+                }
+            }
+        }
+    }
+
     SearchScreen(
         onClickBack = onClickBack,
         title = { Text(stringResource(R.string.edit_personal_dictionary)) },
+        menu = listOf(
+            stringResource(R.string.personal_dict_export) to {
+                exportAllLauncher.launch("dictionary_all.txt")
+            }
+        ),
         filteredItems = { term ->
             locales.filter { locale ->
                 locale.getLocaleDisplayNameForUserDictSettings(ctx).replace("(", "")
@@ -101,30 +149,6 @@ fun PersonalDictionariesScreen(
             }
         }
     )
-    
-    var showImporting by remember { mutableStateOf(false) }
-    val scope = androidx.compose.runtime.rememberCoroutineScope()
-    
-    val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) {
-            showImporting = true
-            scope.launch(Dispatchers.IO) {
-                try {
-                    val count = importGboardDictionary(ctx, uri)
-                    withContext(Dispatchers.Main) {
-                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_imported_count, count), true)
-                        showImporting = false
-                    }
-                } catch (e: Exception) {
-                    Log.e("ImportDict", "Failed to import", e)
-                    withContext(Dispatchers.Main) {
-                        KeyboardSwitcher.getInstance().showToast(ctx.getString(R.string.personal_dict_import_failed, e.message ?: ""), true)
-                        showImporting = false
-                    }
-                }
-            }
-        }
-    }
 
     Box(Modifier.fillMaxSize()) {
         ExtendedFloatingActionButton(
@@ -266,6 +290,30 @@ fun getSortedDictionaryLocales(): TreeSet<Locale> {
 
     sortedLocales.addAll(getSystemLocales())
     return sortedLocales
+}
+
+private suspend fun exportAllDictionaries(context: android.content.Context, uri: android.net.Uri): Int = withContext(Dispatchers.IO) {
+    val cursor = context.contentResolver.query(
+        UserDictionary.Words.CONTENT_URI,
+        arrayOf(UserDictionary.Words.WORD, UserDictionary.Words.SHORTCUT, UserDictionary.Words.LOCALE),
+        null, null, UserDictionary.Words.DEFAULT_SORT_ORDER
+    ) ?: return@withContext 0
+    var count = 0
+    context.contentResolver.openOutputStream(uri)?.bufferedWriter()?.use { writer ->
+        writer.write("# Gboard Dictionary format: word\tshortcut\tlocale\n")
+        val wordIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.WORD)
+        val shortcutIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.SHORTCUT)
+        val localeIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.LOCALE)
+        while (cursor.moveToNext()) {
+            val word = cursor.getString(wordIndex) ?: continue
+            val shortcut = cursor.getString(shortcutIndex).orEmpty()
+            val loc = cursor.getString(localeIndex).orEmpty()
+            writer.write("$word\t$shortcut\t$loc\n")
+            count++
+        }
+    }
+    cursor.close()
+    count
 }
 
 @Preview

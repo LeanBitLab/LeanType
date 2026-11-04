@@ -1810,4 +1810,7 @@ Ar norite atnaujinti?</string>
     <string name="clear_learned_words_confirmation">Ar tikrai norite išvalyti visus išmoktus žodžius ir pasiūlymus?</string>
     <string name="clear_learned_words_success">Išmokti žodžiai išvalyti</string>
     <string name="space_swipe_delete_word_entry">Ištrinti žodį</string>
+    <string name="personal_dict_export">Eksportuoti žodyną</string>
+    <string name="personal_dict_exported_count">Eksportuota%1$džodžių</string>
+    <string name="personal_dict_export_failed">Eksportuoti nepavyko:%1$s</string>
 </resources>

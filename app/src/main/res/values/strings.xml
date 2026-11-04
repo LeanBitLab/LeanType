@@ -2030,6 +2030,9 @@ New dictionary:
     <string name="personal_dict_import_gboard">Import Gboard Dictionary</string>
     <string name="personal_dict_imported_count">Imported %1$d words</string>
     <string name="personal_dict_import_failed">Import failed: %1$s</string>
+    <string name="personal_dict_export">Export dictionary</string>
+    <string name="personal_dict_exported_count">Exported %1$d words</string>
+    <string name="personal_dict_export_failed">Export failed: %1$s</string>
 
     <!-- Libraries Hub -->
     <string name="libraries_active_engines_title">Active Engines &amp; Capabilities</string>

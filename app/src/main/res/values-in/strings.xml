@@ -1772,4 +1772,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="clear_learned_words_confirmation">Apakah Anda yakin ingin menghapus semua kata dan saran yang dipelajari?</string>
     <string name="clear_learned_words_success">Kata-kata yang dipelajari dibersihkan</string>
     <string name="space_swipe_delete_word_entry">Hapus kata</string>
+    <string name="personal_dict_export">Ekspor kamus</string>
+    <string name="personal_dict_exported_count">Mengekspor%1$dkata</string>
+    <string name="personal_dict_export_failed">Ekspor gagal:%1$s</string>
 </resources>
