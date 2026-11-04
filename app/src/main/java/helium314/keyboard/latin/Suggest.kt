@@ -26,6 +26,7 @@ import helium314.keyboard.latin.suggestions.SuggestionStripView
 import helium314.keyboard.latin.utils.AutoCorrectionUtils
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.JniUtils
+import helium314.keyboard.latin.utils.RevertedCorrectionHistory
 import helium314.keyboard.latin.utils.SuggestionResults
 import helium314.keyboard.latin.utils.ExecutorUtils
 import java.util.concurrent.atomic.AtomicInteger
@@ -315,6 +316,11 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 if (isCaseVariantOnly && !isWhitelist) {
                     return true to false
                 }
+            }
+
+            // Suppress repeating auto-corrections recently reverted by the user (Issue #415)
+            if (RevertedCorrectionHistory.isRecentlyReverted(consideredWord, firstSuggestion.mWord)) {
+                return true to false
             }
 
             if (!AutoCorrectionUtils.suggestionExceedsThreshold(firstSuggestion, consideredWord, mAutoCorrectionThreshold)) {

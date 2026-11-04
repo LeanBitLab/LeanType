@@ -105,6 +105,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ProofreadHelper
 import helium314.keyboard.latin.utils.RecapitalizeMode
 import helium314.keyboard.latin.utils.ResourceUtils
+import helium314.keyboard.latin.utils.RevertedCorrectionHistory
 import helium314.keyboard.latin.utils.ScreenProfileProvider
 import helium314.keyboard.latin.utils.StatsUtils
 import helium314.keyboard.latin.utils.StatsUtilsManager
@@ -728,6 +729,9 @@ class LatinIME : InputMethodService(),
     }
 
     override fun onFinishInputView(finishingInput: Boolean) {
+        if (finishingInput) {
+            RevertedCorrectionHistory.clear()
+        }
         isExplicitShowRequested = false
         StatsUtils.onFinishInputView()
         handler.onFinishInputView(finishingInput)

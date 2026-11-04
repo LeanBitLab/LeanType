@@ -60,6 +60,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ProofreadHelper
 import helium314.keyboard.latin.utils.RecapitalizeMode
 import helium314.keyboard.latin.utils.RecapitalizeStatus
+import helium314.keyboard.latin.utils.RevertedCorrectionHistory
 import helium314.keyboard.latin.utils.ScriptUtils
 import helium314.keyboard.latin.utils.StatsUtils
 import helium314.keyboard.latin.utils.CustomAIKeyText
@@ -335,6 +336,7 @@ class InputLogic(
             settingsValues,
             event, SystemClock.uptimeMillis(), mSpaceState, keyboardShiftState
         )
+        RevertedCorrectionHistory.remove(mWordComposer.getTypedWord())
         if (DebugFlags.DEBUG_ENABLED) {
             Log.i("SuggestTrace", "pickSuggestion: composingBefore=" + mWordComposer.isComposingWord())
         }
@@ -2401,6 +2403,7 @@ class InputLogic(
         mConnection.deleteTextBeforeCursor(deleteLength)
         if (!TextUtils.isEmpty(committedWord)) {
             unlearnWord(committedWordString, inputTransaction.settingsValues, Constants.EVENT_REVERT)
+            RevertedCorrectionHistory.record(originallyTypedWord, committedWordString)
         }
         val stringToCommit = originallyTypedWord + (if (usePhantomSpace) "" else separatorString)
         val textToCommit = SpannableString(stringToCommit)

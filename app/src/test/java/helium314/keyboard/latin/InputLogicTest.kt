@@ -1477,6 +1477,7 @@ class InputLogicTest {
         assertEquals("hello ", text)
         functionalKeyPress(KeyCode.DELETE)
         assertEquals("hullo", text)
+        assertTrue(helium314.keyboard.latin.utils.RevertedCorrectionHistory.isRecentlyReverted("hullo", "hello"))
 
         reset()
         setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_AUTO_CORRECT)
