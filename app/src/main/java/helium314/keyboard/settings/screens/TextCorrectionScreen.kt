@@ -75,6 +75,7 @@ fun TextCorrectionScreen(
             // Space
             R.string.settings_category_space,
             Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD,
+            Settings.PREF_AUTO_PAIR_SYMBOLS,
             Settings.PREF_AUTOSPACE_AFTER_PUNCTUATION,
             Settings.PREF_AUTOSPACE_AFTER_EMOJI,
             Settings.PREF_AUTOSPACE_AFTER_SUGGESTION,
@@ -219,6 +220,11 @@ fun createCorrectionSettings(context: Context) = listOf(
         R.string.use_double_space_period, R.string.use_double_space_period_summary
     ) {
         SwitchPreference(it, Defaults.PREF_KEY_USE_DOUBLE_SPACE_PERIOD)
+    },
+    Setting(context, Settings.PREF_AUTO_PAIR_SYMBOLS,
+        R.string.auto_pair_symbols_title, R.string.auto_pair_symbols_summary
+    ) {
+        SwitchPreference(it, Defaults.PREF_AUTO_PAIR_SYMBOLS)
     },
     Setting(context, Settings.PREF_AUTOSPACE_AFTER_PUNCTUATION,
         R.string.autospace_after_punctuation, R.string.autospace_after_punctuation_summary

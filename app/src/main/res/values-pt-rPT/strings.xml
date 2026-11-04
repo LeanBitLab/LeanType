@@ -1774,4 +1774,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="personal_dict_export">Exportar dicionário</string>
     <string name="personal_dict_exported_count">%1$dpalavras exportadas</string>
     <string name="personal_dict_export_failed">Falha na exportação:%1$s</string>
+    <string name="auto_pair_symbols_title">Símbolos de emparelhamento automático</string>
+    <string name="auto_pair_symbols_summary">Inserir colchetes, aspas e marcas de título automaticamente</string>
 </resources>

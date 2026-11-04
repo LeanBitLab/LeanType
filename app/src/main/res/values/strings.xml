@@ -2033,6 +2033,8 @@ New dictionary:
     <string name="personal_dict_export">Export dictionary</string>
     <string name="personal_dict_exported_count">Exported %1$d words</string>
     <string name="personal_dict_export_failed">Export failed: %1$s</string>
+    <string name="auto_pair_symbols_title">Auto-pair symbols</string>
+    <string name="auto_pair_symbols_summary">Automatically insert closing brackets, quotes, and title marks</string>
 
     <!-- Libraries Hub -->
     <string name="libraries_active_engines_title">Active Engines &amp; Capabilities</string>

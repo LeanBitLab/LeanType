@@ -1837,4 +1837,6 @@
     <string name="personal_dict_export">Экспортировать словарь</string>
     <string name="personal_dict_exported_count">Экспортировано%1$dслов.</string>
     <string name="personal_dict_export_failed">Не удалось экспортировать:%1$s</string>
+    <string name="auto_pair_symbols_title">Символы автоматического сопряжения</string>
+    <string name="auto_pair_symbols_summary">Автоматически вставлять закрывающие скобки, кавычки и знаки заголовков.</string>
 </resources>

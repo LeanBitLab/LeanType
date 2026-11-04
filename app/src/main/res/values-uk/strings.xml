@@ -1777,4 +1777,6 @@
     <string name="personal_dict_export">Експорт словника</string>
     <string name="personal_dict_exported_count">Експортовано%1$dслів</string>
     <string name="personal_dict_export_failed">Помилка експорту:%1$s</string>
+    <string name="auto_pair_symbols_title">Автоматичне парування символів</string>
+    <string name="auto_pair_symbols_summary">Автоматично вставляйте закриваючі дужки, лапки та знаки заголовка</string>
 </resources>

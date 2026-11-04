@@ -1775,4 +1775,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="personal_dict_export">Izvezi rječnik</string>
     <string name="personal_dict_exported_count">Izvezeno je%1$driječi</string>
     <string name="personal_dict_export_failed">Izvoz nije uspio:%1$s</string>
+    <string name="auto_pair_symbols_title">Simboli za automatsko uparivanje</string>
+    <string name="auto_pair_symbols_summary">Automatski umetnite zagrade, navodnike i oznake naslova</string>
 </resources>

@@ -1827,4 +1827,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="personal_dict_export">Wörterbuch exportieren</string>
     <string name="personal_dict_exported_count">%1$dWörter exportiert</string>
     <string name="personal_dict_export_failed">Export fehlgeschlagen:%1$s</string>
+    <string name="auto_pair_symbols_title">Symbole automatisch koppeln</string>
+    <string name="auto_pair_symbols_summary">Fügen Sie schließende Klammern, Anführungszeichen und Titelzeichen automatisch ein</string>
 </resources>

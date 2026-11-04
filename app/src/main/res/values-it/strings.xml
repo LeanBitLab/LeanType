@@ -1844,4 +1844,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="personal_dict_export">Esporta dizionario</string>
     <string name="personal_dict_exported_count">%1$dparole esportate</string>
     <string name="personal_dict_export_failed">Esportazione non riuscita:%1$s</string>
+    <string name="auto_pair_symbols_title">Simboli di accoppiamento automatico</string>
+    <string name="auto_pair_symbols_summary">Inserisci automaticamente parentesi di chiusura, virgolette e titoli</string>
 </resources>

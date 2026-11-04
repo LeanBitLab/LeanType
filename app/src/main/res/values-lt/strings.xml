@@ -1813,4 +1813,6 @@ Ar norite atnaujinti?</string>
     <string name="personal_dict_export">Eksportuoti žodyną</string>
     <string name="personal_dict_exported_count">Eksportuota%1$džodžių</string>
     <string name="personal_dict_export_failed">Eksportuoti nepavyko:%1$s</string>
+    <string name="auto_pair_symbols_title">Automatinio susiejimo simboliai</string>
+    <string name="auto_pair_symbols_summary">Automatiškai įterpkite uždaromuosius skliaustus, kabutes ir pavadinimo ženklus</string>
 </resources>

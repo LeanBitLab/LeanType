@@ -108,6 +108,7 @@ open class SettingsValues(
     val mClipboardSkipSensitive: Boolean
     val mDeleteSwipeEnabled: Boolean
     val mDeleteSwipeWordByWord: Boolean
+    val mAutoPairSymbols: Boolean
     val mAutospaceAfterPunctuation: Boolean
     val mAutospaceAfterEmoji: Boolean
     val mAutospaceAfterSuggestion: Boolean
@@ -447,6 +448,7 @@ open class SettingsValues(
         mClipboardSkipSensitive = prefs.getBoolean(Settings.PREF_CLIPBOARD_SKIP_SENSITIVE, Defaults.PREF_CLIPBOARD_SKIP_SENSITIVE)
         mDeleteSwipeEnabled = prefs.getBoolean(Settings.PREF_DELETE_SWIPE, Defaults.PREF_DELETE_SWIPE)
         mDeleteSwipeWordByWord = prefs.getBoolean(Settings.PREF_DELETE_SWIPE_WORD_BY_WORD, Defaults.PREF_DELETE_SWIPE_WORD_BY_WORD)
+        mAutoPairSymbols = prefs.getBoolean(Settings.PREF_AUTO_PAIR_SYMBOLS, Defaults.PREF_AUTO_PAIR_SYMBOLS)
         mAutospaceAfterPunctuation = prefs.getBoolean(Settings.PREF_AUTOSPACE_AFTER_PUNCTUATION, Defaults.PREF_AUTOSPACE_AFTER_PUNCTUATION)
         mAutospaceAfterEmoji = prefs.getBoolean(Settings.PREF_AUTOSPACE_AFTER_EMOJI, Defaults.PREF_AUTOSPACE_AFTER_EMOJI)
         mAutospaceAfterSuggestion = prefs.getBoolean(Settings.PREF_AUTOSPACE_AFTER_SUGGESTION, Defaults.PREF_AUTOSPACE_AFTER_SUGGESTION)

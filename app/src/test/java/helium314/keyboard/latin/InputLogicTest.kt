@@ -1835,7 +1835,12 @@ class InputLogicTest {
             else // in some cases autospace might be suppressed
                 assert(oldBefore + phantomSpaceToInsert + insert == textBeforeCursor || oldBefore + insert == textBeforeCursor)
         }
-        assertEquals(oldAfter, textAfterCursor)
+        val cp = if (insert.isNotEmpty()) insert.codePointAt(0) else Constants.NOT_A_CODE
+        val isClosingStepOver = latinIME.settings.current.mAutoPairSymbols && latinIME.settings.current.mSpacingAndPunctuations.isClosingSymbolInPair(cp)
+        val isOpeningPair = latinIME.settings.current.mAutoPairSymbols && latinIME.settings.current.mSpacingAndPunctuations.getSecondInSymbolPair(cp) != Constants.NOT_A_CODE
+        if (!isClosingStepOver && !isOpeningPair) {
+            assertEquals(oldAfter, textAfterCursor)
+        }
         assertEquals(textBeforeCursor + textAfterCursor, getText())
         checkConnectionConsistency()
     }
@@ -1867,7 +1872,12 @@ class InputLogicTest {
         else // in some cases autospace might be suppressed
             assert(oldBefore + phantomSpaceToInsert + insert == textBeforeCursor || oldBefore + insert == textBeforeCursor)
         assert(oldBefore + insert == textBeforeCursor || "$oldBefore $insert" == textBeforeCursor)
-        assertEquals(oldAfter, textAfterCursor)
+        val cp = if (insert.isNotEmpty()) insert.codePointAt(0) else Constants.NOT_A_CODE
+        val isClosingStepOver = latinIME.settings.current.mAutoPairSymbols && latinIME.settings.current.mSpacingAndPunctuations.isClosingSymbolInPair(cp)
+        val isOpeningPair = latinIME.settings.current.mAutoPairSymbols && latinIME.settings.current.mSpacingAndPunctuations.getSecondInSymbolPair(cp) != Constants.NOT_A_CODE
+        if (!isClosingStepOver && !isOpeningPair) {
+            assertEquals(oldAfter, textAfterCursor)
+        }
         assertEquals(textBeforeCursor + textAfterCursor, getText())
         checkConnectionConsistency()
     }
@@ -2036,6 +2046,44 @@ class InputLogicTest {
         connection.commitText("replacement", 1)
         assertEquals("prefix replacement", text)
         assertEquals("prefix replacement", connection.getTextBeforeCursor(100, 0)?.toString())
+    }
+
+    @Test
+    fun testAutoPairSymbols() {
+        reset()
+        latinIME.prefs().edit { putBoolean(Settings.PREF_AUTO_PAIR_SYMBOLS, true) }
+        setText("")
+        input('(')
+        assertEquals("()", text)
+        val connection = latinIME.mInputLogic.connection
+        assertEquals(1, connection.expectedSelectionStart)
+        assertEquals(1, connection.expectedSelectionEnd)
+
+        // Type inside parentheses
+        input('a')
+        assertEquals("(a)", text)
+        assertEquals(2, connection.expectedSelectionStart)
+
+        // Step over closing bracket
+        input(')')
+        assertEquals("(a)", text)
+        assertEquals(3, connection.expectedSelectionStart)
+
+        // Test backspace deletes both when empty
+        setText("")
+        input('(')
+        assertEquals("()", text)
+        assertEquals(1, connection.expectedSelectionStart)
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("", text)
+
+        // Test Chinese book quote 《》
+        setText("")
+        input('《')
+        assertEquals("《》", text)
+        assertEquals(1, connection.expectedSelectionStart)
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("", text)
     }
 
 }

@@ -1775,4 +1775,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="personal_dict_export">Szótár exportálása</string>
     <string name="personal_dict_exported_count">%1$dszó exportálva</string>
     <string name="personal_dict_export_failed">Az exportálás sikertelen:%1$s</string>
+    <string name="auto_pair_symbols_title">Automatikus párosítási szimbólumok</string>
+    <string name="auto_pair_symbols_summary">A záró zárójelek, idézőjelek és címjelek automatikus beszúrása</string>
 </resources>

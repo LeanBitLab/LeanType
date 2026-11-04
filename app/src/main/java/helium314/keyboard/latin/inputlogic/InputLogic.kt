@@ -1429,7 +1429,32 @@ class InputLogic(
             }
 
             enterInlineEmojiSearchIfNeeded(codePoint, settingsValues)
-            mConnection.commitCodePoint(codePoint)
+            val pairedCodepoint = if (settingsValues.mAutoPairSymbols && !settingsValues.isDirectCommitApp) {
+                settingsValues.mSpacingAndPunctuations.getSecondInSymbolPair(codePoint)
+            } else {
+                Constants.NOT_A_CODE
+            }
+            val shouldStepOver = if (settingsValues.mAutoPairSymbols && !settingsValues.isDirectCommitApp && !mConnection.hasSelection()) {
+                if (settingsValues.mSpacingAndPunctuations.isClosingSymbolInPair(codePoint)) {
+                    val textAfter = mConnection.getTextAfterCursor(2, 0)
+                    !textAfter.isNullOrEmpty() && Character.codePointAt(textAfter, 0) == codePoint
+                } else false
+            } else false
+
+            val canAutoPair = !shouldStepOver && pairedCodepoint != Constants.NOT_A_CODE && (
+                codePoint != pairedCodepoint || !Character.isLetterOrDigit(mConnection.codePointBeforeCursor)
+            )
+            if (shouldStepOver) {
+                val count = Character.charCount(codePoint)
+                mConnection.setSelection(mConnection.expectedSelectionStart + count, mConnection.expectedSelectionEnd + count)
+            } else if (canAutoPair) {
+                val pairString = StringUtils.newSingleCodePointString(codePoint) + StringUtils.newSingleCodePointString(pairedCodepoint)
+                mConnection.commitText(pairString, 1)
+                val backCount = Character.charCount(pairedCodepoint)
+                mConnection.setSelection(mConnection.expectedSelectionStart - backCount, mConnection.expectedSelectionEnd - backCount)
+            } else {
+                mConnection.commitCodePoint(codePoint)
+            }
 
             if (isInlineEmojiSearchAction()) {
                 inputTransaction.setRequiresUpdateSuggestions()
@@ -1795,6 +1820,20 @@ class InputLogic(
                     if (codePointBeforeCursor == Constants.NOT_A_CODE) {
                         mConnection.deleteTextBeforeCursor(1)
                         return
+                    }
+                    if (!event.isKeyRepeat && mDeleteCount <= 1 && inputTransaction.settingsValues.mAutoPairSymbols) {
+                        val pairedCodepoint = inputTransaction.settingsValues.mSpacingAndPunctuations.getSecondInSymbolPair(codePointBeforeCursor)
+                        if (pairedCodepoint != Constants.NOT_A_CODE) {
+                            val textAfter = mConnection.getTextAfterCursor(2, 0)
+                            if (!textAfter.isNullOrEmpty() && Character.codePointAt(textAfter, 0) == pairedCodepoint) {
+                                val beforeCount = Character.charCount(codePointBeforeCursor)
+                                val afterCount = Character.charCount(pairedCodepoint)
+                                mConnection.deleteSurroundingText(beforeCount, afterCount)
+                                StatsUtils.onBackspacePressed(beforeCount + afterCount)
+                                mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                                return
+                            }
+                        }
                     }
                     val isEmoji = codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)
                     val lengthToDelete = if (isEmoji) {

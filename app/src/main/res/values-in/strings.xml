@@ -1775,4 +1775,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="personal_dict_export">Ekspor kamus</string>
     <string name="personal_dict_exported_count">Mengekspor%1$dkata</string>
     <string name="personal_dict_export_failed">Ekspor gagal:%1$s</string>
+    <string name="auto_pair_symbols_title">Simbol pasangan otomatis</string>
+    <string name="auto_pair_symbols_summary">Secara otomatis menyisipkan tanda kurung tutup, tanda kutip, dan tanda judul</string>
 </resources>

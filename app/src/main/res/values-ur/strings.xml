@@ -1869,4 +1869,6 @@
     <string name="personal_dict_export">لغت برآمد کریں۔</string>
     <string name="personal_dict_exported_count">برآمد کردہ%1$dالفاظ</string>
     <string name="personal_dict_export_failed">ایکسپورٹ ناکام ہو گیا:%1$s</string>
+    <string name="auto_pair_symbols_title">خودکار جوڑی علامتیں</string>
+    <string name="auto_pair_symbols_summary">خودکار طور پر اختتامی بریکٹ، اقتباسات اور عنوان کے نشانات داخل کریں۔</string>
 </resources>

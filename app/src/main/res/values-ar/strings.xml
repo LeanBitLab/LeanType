@@ -1835,4 +1835,6 @@
     <string name="personal_dict_export">تصدير القاموس</string>
     <string name="personal_dict_exported_count">تم تصدير%1$dمن الكلمات</string>
     <string name="personal_dict_export_failed">فشل التصدير:%1$s</string>
+    <string name="auto_pair_symbols_title">رموز الاقتران التلقائي</string>
+    <string name="auto_pair_symbols_summary">إدراج أقواس الإغلاق وعلامات الاقتباس وعلامات العنوان تلقائيًا</string>
 </resources>

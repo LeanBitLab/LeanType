@@ -1783,4 +1783,6 @@
     <string name="personal_dict_export">ייצוא מילון</string>
     <string name="personal_dict_exported_count">ייצאו%1$dמילים</string>
     <string name="personal_dict_export_failed">הייצוא נכשל:%1$s</string>
+    <string name="auto_pair_symbols_title">התאמה אוטומטית של סמלים</string>
+    <string name="auto_pair_symbols_summary">הוסף אוטומטית סוגריים סוגרים, מרכאות וסימני כותרת</string>
 </resources>

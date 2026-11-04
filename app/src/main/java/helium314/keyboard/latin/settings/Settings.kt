@@ -414,6 +414,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_DELETE_SWIPE_WORD_BY_WORD = "delete_swipe_word_by_word"
         const val PREF_FULL_KEYBOARD_SWIPE = "full_keyboard_swipe"
         const val PREF_FULL_SWIPE_SWITCH_LANGUAGE = "full_swipe_switch_language"
+        const val PREF_AUTO_PAIR_SYMBOLS = "pref_auto_pair_symbols"
         const val PREF_AUTOSPACE_AFTER_PUNCTUATION = "autospace_after_punctuation"
         const val PREF_AUTOSPACE_AFTER_EMOJI = "autospace_after_emoji"
         const val PREF_AUTOSPACE_AFTER_SUGGESTION = "autospace_after_suggestion"

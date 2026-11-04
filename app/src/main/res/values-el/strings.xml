@@ -1878,4 +1878,6 @@
     <string name="personal_dict_export">Λεξικό εξαγωγής</string>
     <string name="personal_dict_exported_count">Εξήχθησαν%1$dλέξεις</string>
     <string name="personal_dict_export_failed">Η εξαγωγή απέτυχε:%1$s</string>
+    <string name="auto_pair_symbols_title">Αυτόματη σύζευξη συμβόλων</string>
+    <string name="auto_pair_symbols_summary">Εισαγάγετε αυτόματα αγκύλες, εισαγωγικά και σημάδια τίτλου</string>
 </resources>

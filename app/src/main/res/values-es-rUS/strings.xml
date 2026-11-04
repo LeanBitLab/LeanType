@@ -1844,4 +1844,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="personal_dict_export">Exportar diccionario</string>
     <string name="personal_dict_exported_count">Exportado%1$dpalabras</string>
     <string name="personal_dict_export_failed">Error al exportar:%1$s</string>
+    <string name="auto_pair_symbols_title">Símbolos de emparejamiento automático</string>
+    <string name="auto_pair_symbols_summary">Insertar automáticamente corchetes de cierre, comillas y marcas de título</string>
 </resources>

@@ -72,6 +72,10 @@ class SpacingAndPunctuations(res: Resources, urlDetection: Boolean, val composeU
         return helium314.keyboard.latin.common.getSecondInSymbolPair(mPairSymbols, code)
     }
 
+    fun isClosingSymbolInPair(code: Int): Boolean {
+        return helium314.keyboard.latin.common.isClosingSymbolInPair(mPairSymbols, code)
+    }
+
     fun isWordConnector(code: Int): Boolean {
         if (composeUnderscore && code == '_'.code) return true
         return Arrays.binarySearch(mSortedWordConnectors, code) >= 0

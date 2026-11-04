@@ -1804,4 +1804,6 @@
     <string name="personal_dict_export">शब्दकोश निर्यात करें</string>
     <string name="personal_dict_exported_count">%1$dशब्द निर्यात किए गए</string>
     <string name="personal_dict_export_failed">निर्यात विफल:%1$s</string>
+    <string name="auto_pair_symbols_title">प्रतीकों को स्वत: युग्मित करें</string>
+    <string name="auto_pair_symbols_summary">स्वचालित रूप से समापन कोष्ठक, उद्धरण और शीर्षक चिह्न डालें</string>
 </resources>

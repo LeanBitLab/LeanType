@@ -1812,4 +1812,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="personal_dict_export">Ekspordi sõnastik</string>
     <string name="personal_dict_exported_count">Eksporditud%1$dsõna</string>
     <string name="personal_dict_export_failed">Eksport ebaõnnestus:%1$s</string>
+    <string name="auto_pair_symbols_title">Automaatse sidumise sümbolid</string>
+    <string name="auto_pair_symbols_summary">Sisestage automaatselt sulud, jutumärgid ja pealkirjamärgid</string>
 </resources>

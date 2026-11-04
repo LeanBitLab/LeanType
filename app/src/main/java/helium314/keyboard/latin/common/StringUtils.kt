@@ -277,6 +277,11 @@ fun getSecondInSymbolPair(pairs: List<IntArray>, codePoint: Int): Int {
     return Constants.NOT_A_CODE
 }
 
+/** returns whether the codepoint is a closing symbol in any pair */
+fun isClosingSymbolInPair(pairs: List<IntArray>, codePoint: Int): Boolean {
+    return pairs.any { it[1] == codePoint }
+}
+
 /** returns whether the text contains a codepoint that might be an emoji */
 fun mightBeEmoji(text: CharSequence): Boolean {
     loopOverCodePoints(text) { cp, _ ->

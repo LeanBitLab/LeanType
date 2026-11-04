@@ -1777,4 +1777,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="personal_dict_export">Exportovat slovník</string>
     <string name="personal_dict_exported_count">Exportováno%1$dslov</string>
     <string name="personal_dict_export_failed">Export se nezdařil:%1$s</string>
+    <string name="auto_pair_symbols_title">Symboly automatického párování</string>
+    <string name="auto_pair_symbols_summary">Automaticky vkládat uzavírací závorky, uvozovky a značky názvu</string>
 </resources>

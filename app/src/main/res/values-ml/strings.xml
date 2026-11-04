@@ -1878,4 +1878,6 @@
     <string name="personal_dict_export">കയറ്റുമതി നിഘണ്ടു</string>
     <string name="personal_dict_exported_count">%1$dവാക്കുകൾ കയറ്റുമതി ചെയ്തു</string>
     <string name="personal_dict_export_failed">കയറ്റുമതി പരാജയപ്പെട്ടു:%1$s</string>
+    <string name="auto_pair_symbols_title">സ്വയമേവ ജോടി ചിഹ്നങ്ങൾ</string>
+    <string name="auto_pair_symbols_summary">ക്ലോസിംഗ് ബ്രാക്കറ്റുകൾ, ഉദ്ധരണികൾ, ടൈറ്റിൽ മാർക്കുകൾ എന്നിവ സ്വയമേവ ചേർക്കുക</string>
 </resources>

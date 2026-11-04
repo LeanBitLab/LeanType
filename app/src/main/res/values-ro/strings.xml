@@ -1812,4 +1812,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="personal_dict_export">Export dicționar</string>
     <string name="personal_dict_exported_count">S-au exportat%1$dcuvinte</string>
     <string name="personal_dict_export_failed">Export eșuat:%1$s</string>
+    <string name="auto_pair_symbols_title">Simboluri de pereche automată</string>
+    <string name="auto_pair_symbols_summary">Introduceți automat parantezele de închidere, ghilimele și semnele de titlu</string>
 </resources>

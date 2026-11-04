@@ -1778,4 +1778,6 @@
     <string name="personal_dict_export">导出词典</string>
     <string name="personal_dict_exported_count">已导出%1$d个字</string>
     <string name="personal_dict_export_failed">导出失败：%1$s</string>
+    <string name="auto_pair_symbols_title">自动配对符号</string>
+    <string name="auto_pair_symbols_summary">自动插入右括号、引号和标题标记</string>
 </resources>

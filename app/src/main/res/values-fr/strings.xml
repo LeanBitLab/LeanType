@@ -1833,4 +1833,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="personal_dict_export">Exporter le dictionnaire</string>
     <string name="personal_dict_exported_count">%1$dmots exportés</string>
     <string name="personal_dict_export_failed">Échec de l\'exportation :%1$s</string>
+    <string name="auto_pair_symbols_title">Symboles de couplage automatique</string>
+    <string name="auto_pair_symbols_summary">Insérer automatiquement des crochets fermants, des guillemets et des marques de titre</string>
 </resources>

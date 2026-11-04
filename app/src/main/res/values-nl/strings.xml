@@ -1819,4 +1819,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="personal_dict_export">Woordenboek exporteren</string>
     <string name="personal_dict_exported_count">%1$dwoorden geëxporteerd</string>
     <string name="personal_dict_export_failed">Exporteren mislukt:%1$s</string>
+    <string name="auto_pair_symbols_title">Symbolen voor automatisch koppelen</string>
+    <string name="auto_pair_symbols_summary">Voeg automatisch sluithaakjes, aanhalingstekens en titelmarkeringen in</string>
 </resources>

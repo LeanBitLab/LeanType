@@ -1819,4 +1819,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="personal_dict_export">Eksportuj słownik</string>
     <string name="personal_dict_exported_count">Wyeksportowano%1$dsłów</string>
     <string name="personal_dict_export_failed">Eksport nie powiódł się:%1$s</string>
+    <string name="auto_pair_symbols_title">Symbole automatycznego parowania</string>
+    <string name="auto_pair_symbols_summary">Automatycznie wstawiaj nawiasy zamykające, cudzysłowy i znaczniki tytułu</string>
 </resources>
