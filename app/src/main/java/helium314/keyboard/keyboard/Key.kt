@@ -1085,7 +1085,7 @@ open class Key : Comparable<Key> {
 
         private fun computeHashCode(key: Key): Int {
             return Arrays.hashCode(
-                arrayOf(
+                arrayOf<Any?>(
                     key.x,
                     key.y,
                     key.width,
