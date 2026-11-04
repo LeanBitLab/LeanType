@@ -1399,6 +1399,7 @@ class LatinIME : InputMethodService(),
         
         val inlineSuggestionView = InlineAutofillUtils.createView(inlineSuggestions, displayContext ?: this)
         handler.cancelResumeSuggestions()
+        suggestionStripView?.setToolbarVisibility(false)
         suggestionStripView?.setExternalSuggestionView(inlineSuggestionView, true)
         return true
     }
@@ -1773,7 +1774,7 @@ class LatinIME : InputMethodService(),
         if (cjkManager.isComposing) return
         val currentSettings = settings.current
         if (!skipExternalSuggestions && tryShowExternalSuggestion()) {
-            if (currentSettings.mAutoHideToolbar) suggestionStripView?.setToolbarVisibility(false)
+            suggestionStripView?.setToolbarVisibility(false)
             return
         }
         if (cjkManager.isCjkSubtypeActive(richImm.currentSubtype)) {
@@ -1792,7 +1793,9 @@ class LatinIME : InputMethodService(),
                     if (suggestedWords != null && !suggestedWords.isEmpty) {
                         setSuggestedWords(suggestedWords)
                         suggestionStripView?.let { strip ->
-                            if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
+                            if (currentSettings.mInputAttributes.mIsPasswordField && strip.isExternalSuggestionVisible) {
+                                strip.setToolbarVisibility(false)
+                            } else if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
                                 strip.setToolbarVisibility(true)
                             } else {
                                 val shouldShow = when {
@@ -1820,7 +1823,9 @@ class LatinIME : InputMethodService(),
         val neutralSuggestions = if (currentSettings.mSuggestPunctuation) currentSettings.mSpacingAndPunctuations.mSuggestPuncList else SuggestedWords.getEmptyInstance()
         setSuggestedWords(neutralSuggestions)
         suggestionStripView?.let { strip ->
-            if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
+            if (currentSettings.mInputAttributes.mIsPasswordField && strip.isExternalSuggestionVisible) {
+                strip.setToolbarVisibility(false)
+            } else if (currentSettings.mAutoShowToolbarOnSelect && inputLogic.connection.hasSelection()) {
                 strip.setToolbarVisibility(true)
             } else {
                 val shouldShow = when {

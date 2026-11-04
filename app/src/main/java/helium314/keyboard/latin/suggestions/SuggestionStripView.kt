@@ -398,8 +398,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             updateSplitToolbarState()
         } else {
             val mode = Settings.getValues().mToolbarMode
-            val forceToolbar = mode == ToolbarMode.TOOLBAR_KEYS
-            val effectiveToolbarVisible = forceToolbar || toolbarVisible
+            val isPassword = Settings.getValues().mInputAttributes.mIsPasswordField
+            val suppressToolbarForAutofill = isExternalSuggestionVisible && (isPassword || !isToolbarManuallyOpen)
+            val forceToolbar = mode == ToolbarMode.TOOLBAR_KEYS && !suppressToolbarForAutofill
+            val effectiveToolbarVisible = !suppressToolbarForAutofill && (forceToolbar || toolbarVisible)
             val showPinned = !locked && !effectiveToolbarVisible && mode != ToolbarMode.SUGGESTION_STRIP
             val duration = Settings.getAnimationDuration(60)
             val prevToolbarVisible = toolbarContainer.isVisible
@@ -596,6 +598,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             clear()
             isExternalSuggestionVisible = false
             updateSplitToolbarState()
+            setToolbarVisibility(isToolbarManuallyOpen || Settings.getValues().mAutoShowToolbar)
             return
         }
         if (isVoiceActive) return
@@ -608,7 +611,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         val targetView = if (addCloseButton) {
             val wrapper = LinearLayout(context)
-            wrapper.layoutParams = LinearLayout.LayoutParams(suggestionsStrip.width - 30.dpToPx(resources), LayoutParams.MATCH_PARENT)
+            val stripWidth = if (suggestionsStrip.width > 0) suggestionsStrip.width else resources.displayMetrics.widthPixels
+            val availableWidth = (stripWidth - 36.dpToPx(resources)).coerceAtLeast(100.dpToPx(resources))
+            wrapper.layoutParams = LinearLayout.LayoutParams(availableWidth, LayoutParams.MATCH_PARENT)
             wrapper.addView(view)
             suggestionsStrip.addView(wrapper)
 
@@ -624,6 +629,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             suggestionsStrip.addView(view)
             view
         }
+        setToolbarVisibility(false)
 
         val duration = Settings.getAnimationDuration(100)
         if (duration > 0L && suggestionsStrip.isAttachedToWindow) {
@@ -1754,7 +1760,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Clipboard/screenshot suggestions are LinearLayout roots, not TextViews -
         // skip placeholder logic entirely so the external view is not obscured.
         if (isExternalSuggestionVisible) {
-            suggestionsStrip.isVisible = !hideSuggestions
+            suggestionsStrip.isVisible = true
             return
         }
         suggestionsStrip.isVisible = !hideSuggestions
