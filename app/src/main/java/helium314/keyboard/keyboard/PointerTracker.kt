@@ -163,10 +163,10 @@ class PointerTracker private constructor(
             return false
         }
         if (key.isEnabled) {
-            sListener.onPressKey(key.code, repeatCount, getActivePointerTrackerCount() == 1, HapticEvent.KEY_PRESS)
+            val isSinglePointer = getActivePointerTrackerCount() == 1 || !hasOlderLetterKeyDown()
+            sListener.onPressKey(key.code, repeatCount, isSinglePointer, HapticEvent.KEY_PRESS)
             val keyboardLayoutHasBeenChanged = mKeyboardLayoutHasBeenChanged
             mKeyboardLayoutHasBeenChanged = false
-            mOnlyShiftStateHasChanged = true
             getTimerProxy().startTypingStateTimer(key)
             return keyboardLayoutHasBeenChanged
         }
@@ -279,16 +279,13 @@ class PointerTracker private constructor(
     }
 
     /**
-     * True if [newCode], found at the same position after the layout changed because of this key press, is the key that
-     * was pressed. Letters that only differ in case count as the same key only if another finger is still down on a
-     * letter key: that letter uses up the one-shot shift (it is typed in upper case), so this key has to be taken from the
-     * unshifted layout. Without such a finger (e.g. the initial capital of a sentence after a space is pressed while the
-     * space is still down) the pressed key stays as it is, so the capital is not lost.
+     * True if [newCode], found at the same position after the layout changed because of this key press,
+     * matches [pressedCode]. Letters that only differ in case match on alphabet shift changes.
      */
     private fun isSameKeyOnChangedLayout(newCode: Int, pressedCode: Int): Boolean {
         if (newCode == pressedCode) return true
-        if (newCode <= 0 || pressedCode <= 0 || Character.toLowerCase(newCode) != Character.toLowerCase(pressedCode)) return false
-        return hasOlderLetterKeyDown()
+        if (newCode <= 0 || pressedCode <= 0) return false
+        return Character.toLowerCase(newCode) == Character.toLowerCase(pressedCode)
     }
 
     private fun hasOlderLetterKeyDown(): Boolean = sPointerTrackerQueue.hasOlderNonModifierElementMatching(this) {
@@ -571,7 +568,7 @@ class PointerTracker private constructor(
             mKeySwipeAllowed = true
             sInKeySwipe = true
         }
-        mHadOlderNonModifierOnDown = sPointerTrackerQueue.hasNonModifierKeyOlderThan(this)
+        mHadOlderNonModifierOnDown = hasOlderLetterKeyDown()
         mKeyboardLayoutHasBeenChanged = false
         mOnlyShiftStateHasChanged = !mHadOlderNonModifierOnDown
         mIsTrackingForActionDisabled = false

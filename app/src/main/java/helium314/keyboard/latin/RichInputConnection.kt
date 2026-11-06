@@ -500,7 +500,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return Constants.TextUtils.CAP_MODE_OFF
         }
 
-        if (mComposingText.isNotEmpty()) {
+        if (mComposingText.isNotEmpty() || (mParent as? LatinIME)?.inputLogic?.isComposingWord == true) {
             if (hasSpaceBefore) {
                 return (TextUtils.CAP_MODE_CHARACTERS or TextUtils.CAP_MODE_WORDS) and inputType
             }
@@ -529,6 +529,10 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
                 }
             }
             mCommittedTextBeforeComposingText.toString()
+        }
+
+        if (mExpectedSelStart > 0 && text.isEmpty()) {
+            return TextUtils.CAP_MODE_CHARACTERS and inputType
         }
 
         return CapsModeUtils.getCapsMode(
