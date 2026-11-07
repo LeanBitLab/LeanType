@@ -399,6 +399,13 @@ open class KeyboardView @JvmOverloads constructor(
         } else if (this is PopupKeysKeyboardView && key.isPressed) {
             val pressedType = if (key.hasActionKeyBackground()) ColorType.ACTION_KEY_POPUP_KEYS_BACKGROUND else ColorType.POPUP_KEYS_BACKGROUND
             customColor = mColors.getPressedColor(pressedType)
+        } else if (key.isPressed) {
+            val pressedType = when {
+                key.hasFunctionalBackground() -> ColorType.FUNCTIONAL_KEY_BACKGROUND
+                key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR -> ColorType.SPACE_BAR_BACKGROUND
+                else -> ColorType.KEY_BACKGROUND
+            }
+            customColor = mColors.getPressedColor(pressedType)
         }
 
         val editBg = if (isTextEditMode) mEditModeKeyBackground else null

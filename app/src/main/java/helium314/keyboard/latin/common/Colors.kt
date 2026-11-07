@@ -420,6 +420,21 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
         if (color == ColorType.ACTION_KEY_POPUP_KEYS_BACKGROUND) {
             return if (themeStyle == STYLE_HOLO) adjustedBackground else accent
         }
+        if (color == ColorType.KEY_BACKGROUND) {
+            return if (!hasKeyBorders) (if (!isNight) adjustedFunctionalKey else functionalKey)
+            else (if (!isNight) adjustedBackground else adjustedKeyBackground)
+        }
+        if (color == ColorType.FUNCTIONAL_KEY_BACKGROUND) {
+            return if (!hasKeyBorders) (if (!isNight) adjustedFunctionalKey else functionalKey)
+            else (if (!isNight) doubleAdjustedFunctionalKey else doubleAdjustedKeyBackground)
+        }
+        if (color == ColorType.SPACE_BAR_BACKGROUND) {
+            return if (themeStyle == STYLE_HOLO) spaceBar
+            else if (!hasKeyBorders) {
+                val borderlessSpaceBar = androidx.core.graphics.ColorUtils.blendARGB(background, keyBackground, 0.45f)
+                brightenOrDarken(borderlessSpaceBar, true)
+            } else (if (!isNight) adjustedBackground else adjustedKeyBackground)
+        }
         return if (themeStyle == STYLE_HOLO) {
             accent
         } else if (isNight) {
@@ -635,6 +650,15 @@ class DefaultColors (
         if (color == ColorType.POPUP_KEYS_BACKGROUND || color == ColorType.ACTION_KEY_POPUP_KEYS_BACKGROUND) {
             return doubleAdjustedBackground
         }
+        if (!hasKeyBorders) {
+            if (color == ColorType.KEY_BACKGROUND || color == ColorType.FUNCTIONAL_KEY_BACKGROUND) {
+                return keyBackground
+            }
+            if (color == ColorType.SPACE_BAR_BACKGROUND) {
+                val borderlessSpaceBar = androidx.core.graphics.ColorUtils.blendARGB(background, spaceBar, 0.45f)
+                return brightenOrDarken(borderlessSpaceBar, true)
+            }
+        }
         return brightenOrDarken(get(color), true)
     }
 }
@@ -659,14 +683,23 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
         if (drawable == null) return
         val colorStateList = when (color) {
             ColorType.MORE_SUGGESTIONS_WORD_BACKGROUND,
-            ColorType.KEY_BACKGROUND,
-            ColorType.FUNCTIONAL_KEY_BACKGROUND,
             ColorType.ACTION_KEY_BACKGROUND,
-            ColorType.SPACE_BAR_BACKGROUND,
             ColorType.POPUP_KEYS_BACKGROUND,
             ColorType.STRIP_BACKGROUND,
             ColorType.ACTION_KEY_POPUP_KEYS_BACKGROUND -> stateListMap.getOrPut(color) {
                 pressedStateList(brightenOrDarken(get(color), true), get(color))
+            }
+            ColorType.KEY_BACKGROUND,
+            ColorType.FUNCTIONAL_KEY_BACKGROUND -> stateListMap.getOrPut(color) {
+                if (hasKeyBorders) pressedStateList(brightenOrDarken(get(color), true), get(color))
+                else pressedStateList(get(ColorType.KEY_BACKGROUND), Color.TRANSPARENT)
+            }
+            ColorType.SPACE_BAR_BACKGROUND -> stateListMap.getOrPut(color) {
+                if (hasKeyBorders) pressedStateList(brightenOrDarken(get(color), true), get(color))
+                else {
+                    val borderlessSpaceBar = androidx.core.graphics.ColorUtils.blendARGB(get(ColorType.MAIN_BACKGROUND), get(ColorType.SPACE_BAR_BACKGROUND), 0.45f)
+                    pressedStateList(brightenOrDarken(borderlessSpaceBar, true), borderlessSpaceBar)
+                }
             }
             ColorType.TOOL_BAR_KEY -> toolbarKeyStateList
             else -> null // use color filter
@@ -676,7 +709,6 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
             drawable.colorFilter = getColorFilter(color)
             return
         }
-        drawable.colorFilter = null
         DrawableCompat.setTintMode(drawable, PorterDuff.Mode.MULTIPLY)
         DrawableCompat.setTintList(drawable, colorStateList)
     }
@@ -722,6 +754,15 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
     }
 
     override fun getPressedColor(color: ColorType): Int {
+        if (!hasKeyBorders) {
+            if (color == ColorType.KEY_BACKGROUND || color == ColorType.FUNCTIONAL_KEY_BACKGROUND) {
+                return get(ColorType.KEY_BACKGROUND)
+            }
+            if (color == ColorType.SPACE_BAR_BACKGROUND) {
+                val borderlessSpaceBar = androidx.core.graphics.ColorUtils.blendARGB(get(ColorType.MAIN_BACKGROUND), get(ColorType.SPACE_BAR_BACKGROUND), 0.45f)
+                return brightenOrDarken(borderlessSpaceBar, true)
+            }
+        }
         return brightenOrDarken(get(color), true)
     }
 }
