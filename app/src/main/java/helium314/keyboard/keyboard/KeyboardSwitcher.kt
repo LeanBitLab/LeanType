@@ -907,6 +907,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     val isAlphabetShifted: Boolean
         get() = mState?.isAlphabetShifted == true
 
+    override val isDisplayedAlphabetShifted: Boolean
+        get() = keyboard?.mId?.isAlphabetShifted == true
+
     override fun requestUpdatingShiftState(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?) {
         if (DEBUG_ACTION) {
             Log.d(TAG, "requestUpdatingShiftState: autoCapsFlags=" + CapsModeUtils.flagsToString(autoCapsFlags) + " recapitalizeMode=" + recapitalizeMode)

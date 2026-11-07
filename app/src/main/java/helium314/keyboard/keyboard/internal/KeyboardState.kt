@@ -51,6 +51,7 @@ class KeyboardState(private val switchActions: SwitchActions) {
         fun setOneHandedModeEnabled(enabled: Boolean)
         fun switchOneHandedMode()
         fun toggleFloatingKeyboard()
+        val isDisplayedAlphabetShifted: Boolean get() = false
 
         companion object {
             const val DEBUG_ACTION = false
@@ -147,9 +148,10 @@ class KeyboardState(private val switchActions: SwitchActions) {
         when (savedKeyboardState.mode) {
             Mode.ALPHABET -> {
                 setAlphabetKeyboard(autoCapsFlags, recapitalizeMode)
-                setShiftLocked(savedKeyboardState.isAlphabetShiftLocked)
-                if (!savedKeyboardState.isAlphabetShiftLocked) {
-                    setShifted(savedKeyboardState.shiftMode)
+                if (savedKeyboardState.isAlphabetShiftLocked) {
+                    setShiftLocked(true)
+                } else if (savedKeyboardState.shiftMode == ShiftMode.MANUAL) {
+                    setShifted(ShiftMode.MANUAL)
                 }
             }
             Mode.SYMBOLS -> if (savedKeyboardState.shiftMode == ShiftMode.MANUAL) setSymbolsShiftedKeyboard() else setSymbolsKeyboard()
@@ -178,17 +180,17 @@ class KeyboardState(private val switchActions: SwitchActions) {
         when (shiftMode) {
             ShiftMode.UNSHIFT -> {
                 alphabetShiftState.setShifted(false)
-                if (shiftMode != prevShiftMode)
+                if (shiftMode != prevShiftMode || switchActions.isDisplayedAlphabetShifted)
                     switchActions.setAlphabetKeyboard()
             }
             ShiftMode.MANUAL -> {
                 alphabetShiftState.setShifted(true)
-                if (shiftMode != prevShiftMode)
+                if (shiftMode != prevShiftMode || !switchActions.isDisplayedAlphabetShifted)
                     switchActions.setAlphabetManualShiftedKeyboard()
             }
             ShiftMode.AUTOMATIC -> {
                 alphabetShiftState.setAutomaticShifted()
-                if (shiftMode != prevShiftMode)
+                if (shiftMode != prevShiftMode || !switchActions.isDisplayedAlphabetShifted)
                     switchActions.setAlphabetAutomaticShiftedKeyboard()
             }
             ShiftMode.SHIFT_LOCKED -> {
@@ -276,6 +278,7 @@ class KeyboardState(private val switchActions: SwitchActions) {
         isSymbolShifted = false
         this.recapitalizeMode = null
         switchState = SwitchState.ALPHA
+        alphabetShiftState.setShifted(false)
         switchActions.requestUpdatingShiftState(autoCapsFlags, recapitalizeMode)
     }
 

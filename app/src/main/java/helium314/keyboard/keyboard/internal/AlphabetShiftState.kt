@@ -35,7 +35,10 @@ class AlphabetShiftState {
                 UNSHIFTED, MANUAL_SHIFTED, MANUAL_SHIFTED_FROM_AUTO, AUTOMATIC_SHIFTED -> mState = SHIFT_LOCKED
             }
         } else {
-            mState = UNSHIFTED
+            when (oldState) {
+                SHIFT_LOCKED, SHIFT_LOCK_SHIFTED -> mState = UNSHIFTED
+                else -> {}
+            }
         }
         if (DEBUG) Log.d(TAG, "setShiftLocked($newShiftLockState): ${toString(oldState)} > $this")
     }

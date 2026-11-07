@@ -12,13 +12,28 @@ import org.junit.Test
 
 class KeyboardStateShiftTest {
     private var doubleTapTimerRunning = false
+    private var displayedAlphabetShifted = false
+    private var setAlphabetKeyboardCallCount = 0
+    private var setAlphabetAutomaticShiftedKeyboardCallCount = 0
 
     private val switchActions = object : KeyboardState.SwitchActions {
-        override fun setAlphabetKeyboard() {}
-        override fun setAlphabetManualShiftedKeyboard() {}
-        override fun setAlphabetAutomaticShiftedKeyboard() {}
-        override fun setAlphabetShiftLockedKeyboard() {}
-        override fun setAlphabetShiftLockShiftedKeyboard() {}
+        override fun setAlphabetKeyboard() {
+            displayedAlphabetShifted = false
+            setAlphabetKeyboardCallCount++
+        }
+        override fun setAlphabetManualShiftedKeyboard() {
+            displayedAlphabetShifted = true
+        }
+        override fun setAlphabetAutomaticShiftedKeyboard() {
+            displayedAlphabetShifted = true
+            setAlphabetAutomaticShiftedKeyboardCallCount++
+        }
+        override fun setAlphabetShiftLockedKeyboard() {
+            displayedAlphabetShifted = true
+        }
+        override fun setAlphabetShiftLockShiftedKeyboard() {
+            displayedAlphabetShifted = true
+        }
         override fun setEmojiKeyboard() {}
         override fun setClipboardKeyboard() {}
         override fun setNumpadKeyboard() {}
@@ -35,6 +50,7 @@ class KeyboardStateShiftTest {
         override fun setOneHandedModeEnabled(enabled: Boolean) {}
         override fun switchOneHandedMode() {}
         override fun toggleFloatingKeyboard() {}
+        override val isDisplayedAlphabetShifted: Boolean get() = displayedAlphabetShifted
     }
 
     private lateinit var keyboardState: KeyboardState
@@ -42,6 +58,9 @@ class KeyboardStateShiftTest {
     @Before
     fun setUp() {
         doubleTapTimerRunning = false
+        displayedAlphabetShifted = false
+        setAlphabetKeyboardCallCount = 0
+        setAlphabetAutomaticShiftedKeyboardCallCount = 0
         keyboardState = KeyboardState(switchActions)
         keyboardState.onLoadKeyboard(Constants.TextUtils.CAP_MODE_OFF, null, false)
     }
@@ -132,5 +151,43 @@ class KeyboardStateShiftTest {
         keyboardState.onPressKey('A'.code, false, Constants.TextUtils.CAP_MODE_OFF, null)
         assertTrue("Shift lock must remain active during multi-pointer typing", keyboardState.isAlphabetShiftLocked)
         assertTrue("Alphabet must remain shifted during multi-pointer typing in Caps Lock", keyboardState.isAlphabetShifted)
+    }
+
+    @Test
+    fun testSetShiftLockedFalsePreservesAutoCaps() {
+        val shiftState = AlphabetShiftState()
+        shiftState.setAutomaticShifted()
+        assertTrue(shiftState.isAutomaticShifted)
+
+        // Calling setShiftLocked(false) when not locked must not clear automatic shift
+        shiftState.setShiftLocked(false)
+        assertTrue("Disabling shift lock must not clear automatic shift mode", shiftState.isAutomaticShifted)
+    }
+
+    @Test
+    fun testOnRestoreKeyboardStatePreservesAutoCaps() {
+        // Load initial state with auto-caps
+        keyboardState.onLoadKeyboard(TextUtils.CAP_MODE_SENTENCES, null, false)
+        assertTrue("Keyboard should be auto-shifted", keyboardState.isAlphabetShifted)
+
+        // Save keyboard state
+        keyboardState.onSaveKeyboardState()
+
+        // Reload keyboard with auto-caps flags active: auto-caps must be preserved across cache reloads
+        keyboardState.onLoadKeyboard(TextUtils.CAP_MODE_SENTENCES, null, false)
+        assertTrue("Auto-caps must be preserved after reloadMainKeyboard", keyboardState.isAlphabetShifted)
+    }
+
+    @Test
+    fun testUnshiftEnforcesLayoutSwitchWhenDisplayedLayoutShifted() {
+        // Load initial auto-shifted keyboard
+        keyboardState.onLoadKeyboard(TextUtils.CAP_MODE_SENTENCES, null, false)
+        assertTrue("Visual layout should be shifted", displayedAlphabetShifted)
+        assertTrue("KeyboardState should be shifted", keyboardState.isAlphabetShifted)
+
+        // Selection update reports sentence auto-caps turned off after typing
+        keyboardState.onUpdateShiftState(Constants.TextUtils.CAP_MODE_OFF, null)
+        assertFalse("Visual layout must switch to unshifted", displayedAlphabetShifted)
+        assertFalse("KeyboardState must be unshifted", keyboardState.isAlphabetShifted)
     }
 }
