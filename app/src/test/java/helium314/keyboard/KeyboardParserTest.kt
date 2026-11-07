@@ -686,6 +686,18 @@ f""", // no newline at the end
         assertTrue(qPopupLabels.contains("~"))
     }
 
+    @Test fun bengaliUnijoyPopupKeysPrioritizeLayoutOverSymbols() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale("bn"), "bengali_unijoy", true)
+        val (_, keys) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+        val allKeys = keys.flatten()
+
+        val kKey = allKeys.first { it.mLabel == "ক" }
+        assertEquals("খ", kKey.mHintLabel)
+        val kPopupLabels = kKey.mPopupKeys?.mapNotNull { it.mLabel } ?: emptyList()
+        assertEquals("খ", kPopupLabels.firstOrNull(), "Layout popup key 'খ' must precede symbols in popup keys")
+        assertTrue(kPopupLabels.contains("+"), "Symbols should still be available after layout keys")
+    }
+
     @Test fun turkishLayoutCustomMoreSymbolsAffectsButtons() {
         val customName = LayoutUtilsCustom.getLayoutName("custom_more_tr", LayoutType.MORE_SYMBOLS)
         // 12 keys in row 0 (with '[' on 11th and ']' on 12th), 11 keys in row 1, 9 keys in row 2 (with '<' on 8th and '>' on 9th)

@@ -643,6 +643,12 @@ object AppUpgrade {
                     !prefs.getBoolean(Settings.PREF_BIGRAM_PREDICTIONS, Defaults.PREF_BIGRAM_PREDICTIONS))
             }
         }
+        if (oldVersion < 4311) {
+            val oldDefaultOrder = "language_priority:true|number:true|symbols:true|layout:true|language:true"
+            if (prefs.getString(Settings.PREF_POPUP_KEYS_ORDER, null) == oldDefaultOrder) {
+                prefs.edit { remove(Settings.PREF_POPUP_KEYS_ORDER) }
+            }
+        }
         upgradeToolbarPrefs(prefs)
         LayoutUtilsCustom.onLayoutFileChanged() // just to be sure
         prefs.edit { putInt(Settings.PREF_VERSION_CODE, BuildConfig.VERSION_CODE) }
