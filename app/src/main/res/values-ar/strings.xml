@@ -1837,4 +1837,15 @@
     <string name="personal_dict_export_failed">فشل التصدير:%1$s</string>
     <string name="auto_pair_symbols_title">رموز الاقتران التلقائي</string>
     <string name="auto_pair_symbols_summary">إدراج أقواس الإغلاق وعلامات الاقتباس وعلامات العنوان تلقائيًا</string>
+    <string name="font_style">نمط الخط</string>
+    <string name="unicode_panel">رموز يونيكود</string>
+    <string name="style_hub_title">الطباعة والأنماط</string>
+    <string name="style_hub_summary">أنماط نص Unicode الفاخرة ولوحة الرموز</string>
+    <string name="style_accessibility_warning">قد لا يتم نطق رموز Unicode الرياضية المزخرفة بشكل صحيح بواسطة برامج قراءة الشاشة (TalkBack). يرجى استخدامها مع مراعاة إمكانية الوصول.</string>
+    <string name="style_preview_hint">اكتب النص لمعاينة الأنماط</string>
+    <string name="style_revert_plain">العودة إلى النص العادي</string>
+    <string name="style_active_indicator">النمط النشط:%s</string>
+    <string name="style_live_typing">عيش الكتابة الأنيقة</string>
+    <string name="style_live_typing_summary">الكتابة مباشرة بالنمط المحدد (الأنماط المعينة 1:1 فقط)</string>
+    <string name="style_active_none">لا شيء (نص عادي)</string>
 </resources>

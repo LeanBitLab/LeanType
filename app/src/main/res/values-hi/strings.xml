@@ -1806,4 +1806,15 @@
     <string name="personal_dict_export_failed">निर्यात विफल:%1$s</string>
     <string name="auto_pair_symbols_title">प्रतीकों को स्वत: युग्मित करें</string>
     <string name="auto_pair_symbols_summary">स्वचालित रूप से समापन कोष्ठक, उद्धरण और शीर्षक चिह्न डालें</string>
+    <string name="font_style">लिपि शैली</string>
+    <string name="unicode_panel">यूनिकोड प्रतीक</string>
+    <string name="style_hub_title">टाइपोग्राफी और शैलियाँ</string>
+    <string name="style_hub_summary">फैंसी यूनिकोड पाठ शैलियाँ और प्रतीक पैलेट</string>
+    <string name="style_accessibility_warning">स्क्रीन रीडर्स (टॉकबैक) द्वारा सजावटी यूनिकोड गणितीय प्रतीकों का सही उच्चारण नहीं किया जा सकता है। कृपया पहुंच को ध्यान में रखते हुए उपयोग करें।</string>
+    <string name="style_preview_hint">शैलियों का पूर्वावलोकन करने के लिए टेक्स्ट टाइप करें</string>
+    <string name="style_revert_plain">सादे पाठ पर वापस लौटें</string>
+    <string name="style_active_indicator">सक्रिय शैली:%s</string>
+    <string name="style_live_typing">लाइव स्टाइलिश टाइपिंग</string>
+    <string name="style_live_typing_summary">सीधे चयनित शैली में टाइप करें (केवल 1:1 मैप की गई शैलियाँ)</string>
+    <string name="style_active_none">कोई नहीं (सादा पाठ)</string>
 </resources>

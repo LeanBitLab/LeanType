@@ -1871,4 +1871,15 @@
     <string name="personal_dict_export_failed">ایکسپورٹ ناکام ہو گیا:%1$s</string>
     <string name="auto_pair_symbols_title">خودکار جوڑی علامتیں</string>
     <string name="auto_pair_symbols_summary">خودکار طور پر اختتامی بریکٹ، اقتباسات اور عنوان کے نشانات داخل کریں۔</string>
+    <string name="font_style">فونٹ اسٹائل</string>
+    <string name="unicode_panel">یونیکوڈ سمبلز</string>
+    <string name="style_hub_title">نوع ٹائپ اور طرزیں</string>
+    <string name="style_hub_summary">فینسی یونیکوڈ ٹیکسٹ اسٹائل اور علامت پیلیٹ</string>
+    <string name="style_accessibility_warning">اسکرین ریڈرز (TalkBack) کے ذریعہ آرائشی یونیکوڈ ریاضی کی علامتوں کا صحیح تلفظ نہیں کیا جاسکتا ہے۔ رسائی کے لئے غور کے ساتھ استعمال کریں.</string>
+    <string name="style_preview_hint">اسٹائل کا پیش نظارہ کرنے کے لیے متن ٹائپ کریں۔</string>
+    <string name="style_revert_plain">سادہ متن پر واپس جائیں۔</string>
+    <string name="style_active_indicator">فعال انداز:%s</string>
+    <string name="style_live_typing">لائیو اسٹائلش ٹائپنگ</string>
+    <string name="style_live_typing_summary">براہ راست منتخب انداز میں ٹائپ کریں (صرف 1:1 میپ شدہ طرزیں)</string>
+    <string name="style_active_none">کوئی نہیں (سادہ متن)</string>
 </resources>

@@ -1,0 +1,13 @@
+<!--
+    Vector icon representing font style (rounded)
+    SPDX-License-Identifier: Apache-2.0
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M9.62,13.83h4.75L12,6.96 9.62,13.83zM18.86,18H20.5c0.28,0 0.5,0.22 0.5,0.5v1c0,0.28 -0.22,0.5 -0.5,0.5h-5c-0.28,0 -0.5,-0.22 -0.5,-0.5v-1c0,-0.28 0.22,-0.5 0.5,-0.5h1.11l-1.39,-4h-6.44l-1.39,4H8.5c0.28,0 0.5,0.22 0.5,0.5v1c0,0.28 -0.22,0.5 -0.5,0.5h-5c-0.28,0 -0.5,-0.22 -0.5,-0.5v-1c0,-0.28 0.22,-0.5 0.5,-0.5h1.64L11.08,4.35c0.12,-0.22 0.44,-0.35 0.92,-0.35s0.8,0.13 0.92,0.35l5.94,13.65z" />
+</vector>

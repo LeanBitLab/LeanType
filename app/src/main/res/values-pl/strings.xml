@@ -1821,4 +1821,15 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="personal_dict_export_failed">Eksport nie powiódł się:%1$s</string>
     <string name="auto_pair_symbols_title">Symbole automatycznego parowania</string>
     <string name="auto_pair_symbols_summary">Automatycznie wstawiaj nawiasy zamykające, cudzysłowy i znaczniki tytułu</string>
+    <string name="font_style">Styl czcionki</string>
+    <string name="unicode_panel">Symbole Unicode</string>
+    <string name="style_hub_title">Typografia i style</string>
+    <string name="style_hub_summary">Fantazyjne style tekstu Unicode i paleta symboli</string>
+    <string name="style_accessibility_warning">Dekoracyjne symbole matematyczne Unicode mogą nie być poprawnie wymawiane przez czytniki ekranu (TalkBack). Prosimy o korzystanie z uwzględnieniem dostępności.</string>
+    <string name="style_preview_hint">Wpisz tekst, aby wyświetlić podgląd stylów</string>
+    <string name="style_revert_plain">Przywróć zwykły tekst</string>
+    <string name="style_active_indicator">Aktywny styl:%s</string>
+    <string name="style_live_typing">Stylowe pisanie na żywo</string>
+    <string name="style_live_typing_summary">Wpisz bezpośrednio w wybranym stylu (tylko style mapowane 1:1)</string>
+    <string name="style_active_none">Brak (zwykły tekst)</string>
 </resources>

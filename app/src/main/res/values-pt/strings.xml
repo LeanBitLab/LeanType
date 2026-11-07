@@ -1837,4 +1837,15 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="personal_dict_export_failed">Falha na exportação:%1$s</string>
     <string name="auto_pair_symbols_title">Símbolos de emparelhamento automático</string>
     <string name="auto_pair_symbols_summary">Inserir colchetes, aspas e marcas de título automaticamente</string>
+    <string name="font_style">Estilo da fonte</string>
+    <string name="unicode_panel">Símbolos Unicode</string>
+    <string name="style_hub_title">Tipografia e estilos</string>
+    <string name="style_hub_summary">Estilos de texto Unicode sofisticados e paleta de símbolos</string>
+    <string name="style_accessibility_warning">Os símbolos matemáticos decorativos Unicode podem não ser pronunciados corretamente pelos leitores de tela (TalkBack). Use levando em consideração a acessibilidade.</string>
+    <string name="style_preview_hint">Digite texto para visualizar estilos</string>
+    <string name="style_revert_plain">Reverter para texto simples</string>
+    <string name="style_active_indicator">Estilo ativo:%s</string>
+    <string name="style_live_typing">Digitação elegante ao vivo</string>
+    <string name="style_live_typing_summary">Digite diretamente no estilo selecionado (apenas estilos mapeados 1:1)</string>
+    <string name="style_active_none">Nenhum (texto simples)</string>
 </resources>

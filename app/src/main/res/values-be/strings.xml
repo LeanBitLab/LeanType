@@ -1814,4 +1814,15 @@
     <string name="personal_dict_export_failed">Збой экспарту:%1$s</string>
     <string name="auto_pair_symbols_title">Сімвалы аўтаматычнай пары</string>
     <string name="auto_pair_symbols_summary">Аўтаматычна ўстаўляць закрывальныя дужкі, двукоссі і знакі загалоўка</string>
+    <string name="font_style">Стыль шрыфта</string>
+    <string name="unicode_panel">Сімвалы Unicode</string>
+    <string name="style_hub_title">Тыпаграфіка і стылі</string>
+    <string name="style_hub_summary">Модныя стылі тэксту Unicode і палітра сімвалаў</string>
+    <string name="style_accessibility_warning">Дэкаратыўныя матэматычныя сімвалы Unicode могуць няправільна вымаўляцца праграмамі чытання з экрана (TalkBack). Калі ласка, выкарыстоўвайце з улікам даступнасці.</string>
+    <string name="style_preview_hint">Увядзіце тэкст для папярэдняга прагляду стыляў</string>
+    <string name="style_revert_plain">Вярнуцца да звычайнага тэксту</string>
+    <string name="style_active_indicator">Актыўны стыль:%s</string>
+    <string name="style_live_typing">Жывы стыльны набор тэксту</string>
+    <string name="style_live_typing_summary">Увядзіце непасрэдна ў абраным стылі (толькі стылі з супастаўленнем 1:1)</string>
+    <string name="style_active_none">Няма (звычайны тэкст)</string>
 </resources>

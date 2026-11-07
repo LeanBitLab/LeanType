@@ -1779,4 +1779,15 @@
     <string name="personal_dict_export_failed">Помилка експорту:%1$s</string>
     <string name="auto_pair_symbols_title">Автоматичне парування символів</string>
     <string name="auto_pair_symbols_summary">Автоматично вставляйте закриваючі дужки, лапки та знаки заголовка</string>
+    <string name="font_style">Стиль шрифту</string>
+    <string name="unicode_panel">Символи Unicode</string>
+    <string name="style_hub_title">Типографіка та стилі</string>
+    <string name="style_hub_summary">Чудові стилі тексту Unicode та палітра символів</string>
+    <string name="style_accessibility_warning">Декоративні математичні символи Unicode можуть неправильно вимовлятися програмами зчитування з екрана (TalkBack). Будь ласка, використовуйте з урахуванням доступності.</string>
+    <string name="style_preview_hint">Введіть текст для попереднього перегляду стилів</string>
+    <string name="style_revert_plain">Повернутися до звичайного тексту</string>
+    <string name="style_active_indicator">Активний стиль:%s</string>
+    <string name="style_live_typing">Живий стильний набір</string>
+    <string name="style_live_typing_summary">Введіть безпосередньо у вибраному стилі (тільки для стилів із відображенням 1:1)</string>
+    <string name="style_active_none">Немає (звичайний текст)</string>
 </resources>

@@ -1777,4 +1777,15 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="personal_dict_export_failed">Az exportálás sikertelen:%1$s</string>
     <string name="auto_pair_symbols_title">Automatikus párosítási szimbólumok</string>
     <string name="auto_pair_symbols_summary">A záró zárójelek, idézőjelek és címjelek automatikus beszúrása</string>
+    <string name="font_style">Betűstílus</string>
+    <string name="unicode_panel">Unicode szimbólumok</string>
+    <string name="style_hub_title">Tipográfia és stílusok</string>
+    <string name="style_hub_summary">Díszes Unicode szövegstílusok és szimbólumpaletta</string>
+    <string name="style_accessibility_warning">Előfordulhat, hogy a képernyőolvasók (TalkBack) nem ejtik ki megfelelően a dekoratív Unicode matematikai szimbólumokat. Kérjük, használja a hozzáférhetőség figyelembevételével.</string>
+    <string name="style_preview_hint">Írjon be szöveget a stílusok előnézetéhez</string>
+    <string name="style_revert_plain">Visszatérés egyszerű szöveghez</string>
+    <string name="style_active_indicator">Aktív stílus:%s</string>
+    <string name="style_live_typing">Élő stílusos gépelés</string>
+    <string name="style_live_typing_summary">Gépeljen közvetlenül a kiválasztott stílusban (csak 1:1 leképezett stílusok esetén)</string>
+    <string name="style_active_none">Nincs (egyszerű szöveg)</string>
 </resources>

@@ -1779,4 +1779,15 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="personal_dict_export_failed">Export se nezdařil:%1$s</string>
     <string name="auto_pair_symbols_title">Symboly automatického párování</string>
     <string name="auto_pair_symbols_summary">Automaticky vkládat uzavírací závorky, uvozovky a značky názvu</string>
+    <string name="font_style">Styl písma</string>
+    <string name="unicode_panel">Unicode symboly</string>
+    <string name="style_hub_title">Typografie a styly</string>
+    <string name="style_hub_summary">Efektní styly textu Unicode a paleta symbolů</string>
+    <string name="style_accessibility_warning">Ozdobné matematické symboly Unicode nemusí být čtečkami obrazovky (TalkBack) vyslovovány správně. Používejte prosím s ohledem na přístupnost.</string>
+    <string name="style_preview_hint">Chcete-li zobrazit náhled stylů, zadejte text</string>
+    <string name="style_revert_plain">Vrátit se k prostému textu</string>
+    <string name="style_active_indicator">Aktivní styl:%s</string>
+    <string name="style_live_typing">Živé stylové psaní</string>
+    <string name="style_live_typing_summary">Pište přímo ve vybraném stylu (pouze mapované styly 1:1)</string>
+    <string name="style_active_none">Žádné (prostý text)</string>
 </resources>

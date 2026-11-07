@@ -1814,4 +1814,15 @@
     <string name="personal_dict_export_failed">Неуспешно експортиране:%1$s</string>
     <string name="auto_pair_symbols_title">Автоматично сдвояване на символи</string>
     <string name="auto_pair_symbols_summary">Автоматично вмъкване на затварящи скоби, кавички и знаци за заглавие</string>
+    <string name="font_style">Стил на шрифта</string>
+    <string name="unicode_panel">Unicode символи</string>
+    <string name="style_hub_title">Типография и стилове</string>
+    <string name="style_hub_summary">Изискани стилове на текст Unicode и палитра от символи</string>
+    <string name="style_accessibility_warning">Декоративните Unicode математически символи може да не се произнасят правилно от екранни четци (TalkBack). Моля, използвайте с оглед на достъпността.</string>
+    <string name="style_preview_hint">Въведете текст, за да прегледате стиловете</string>
+    <string name="style_revert_plain">Връщане към обикновен текст</string>
+    <string name="style_active_indicator">Активен стил:%s</string>
+    <string name="style_live_typing">Живейте стилно писане</string>
+    <string name="style_live_typing_summary">Въведете директно в избрания стил (само картографирани стилове 1:1)</string>
+    <string name="style_active_none">Няма (обикновен текст)</string>
 </resources>

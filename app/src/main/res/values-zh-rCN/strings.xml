@@ -1780,4 +1780,15 @@
     <string name="personal_dict_export_failed">导出失败：%1$s</string>
     <string name="auto_pair_symbols_title">自动配对符号</string>
     <string name="auto_pair_symbols_summary">自动插入右括号、引号和标题标记</string>
+    <string name="font_style">字体样式</string>
+    <string name="unicode_panel">统一码符号</string>
+    <string name="style_hub_title">版式和风格</string>
+    <string name="style_hub_summary">精美的 Unicode 文本样式和符号调色板</string>
+    <string name="style_accessibility_warning">屏幕阅读器 (TalkBack) 可能无法正确发音装饰性 Unicode 数学符号。请在使用时考虑到可访问性。</string>
+    <string name="style_preview_hint">输入文本以预览样式</string>
+    <string name="style_revert_plain">恢复为纯文本</string>
+    <string name="style_active_indicator">活跃风格：%s</string>
+    <string name="style_live_typing">实时时尚打字</string>
+    <string name="style_live_typing_summary">直接输入所选样式（仅限 1:1 映射样式）</string>
+    <string name="style_active_none">无（纯文本）</string>
 </resources>

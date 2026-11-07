@@ -1808,4 +1808,15 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="personal_dict_export_failed">Dışa aktarma başarısız oldu:%1$s</string>
     <string name="auto_pair_symbols_title">Otomatik eşleştirme sembolleri</string>
     <string name="auto_pair_symbols_summary">Kapanış parantezlerini, tırnak işaretlerini ve başlık işaretlerini otomatik olarak ekleyin</string>
+    <string name="font_style">Yazı Tipi Stili</string>
+    <string name="unicode_panel">Unicode Sembolleri</string>
+    <string name="style_hub_title">Tipografi ve Stiller</string>
+    <string name="style_hub_summary">Süslü Unicode metin stilleri ve sembol paleti</string>
+    <string name="style_accessibility_warning">Dekoratif Unicode matematik sembolleri ekran okuyucular (TalkBack) tarafından doğru şekilde telaffuz edilmeyebilir. Lütfen erişilebilirliği dikkate alarak kullanın.</string>
+    <string name="style_preview_hint">Stilleri önizlemek için metni yazın</string>
+    <string name="style_revert_plain">Düz metne geri dön</string>
+    <string name="style_active_indicator">Aktif stil:%s</string>
+    <string name="style_live_typing">Canlı şık yazma</string>
+    <string name="style_live_typing_summary">Seçilen stile doğrudan yazın (yalnızca 1:1 eşlenmiş stiller)</string>
+    <string name="style_active_none">Yok (Düz metin)</string>
 </resources>

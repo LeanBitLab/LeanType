@@ -1814,4 +1814,15 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="personal_dict_export_failed">Eksport ebaõnnestus:%1$s</string>
     <string name="auto_pair_symbols_title">Automaatse sidumise sümbolid</string>
     <string name="auto_pair_symbols_summary">Sisestage automaatselt sulud, jutumärgid ja pealkirjamärgid</string>
+    <string name="font_style">Fondi stiil</string>
+    <string name="unicode_panel">Unicode\'i sümbolid</string>
+    <string name="style_hub_title">Tüpograafia ja stiilid</string>
+    <string name="style_hub_summary">Väljamõeldud Unicode\'i tekstistiilid ja sümbolipalett</string>
+    <string name="style_accessibility_warning">Dekoratiivseid Unicode\'i matemaatilisi sümboleid ei pruugi ekraanilugejad (TalkBack) õigesti hääldada. Kasutage juurdepääsetavust silmas pidades.</string>
+    <string name="style_preview_hint">Stiilide eelvaate kuvamiseks tippige tekst</string>
+    <string name="style_revert_plain">Ennista lihtteksti</string>
+    <string name="style_active_indicator">Aktiivne stiil:%s</string>
+    <string name="style_live_typing">Stiilne tippimine</string>
+    <string name="style_live_typing_summary">Sisestage otse valitud stiilis (ainult 1:1 vastendatud stiilid)</string>
+    <string name="style_active_none">Puudub (lihttekst)</string>
 </resources>

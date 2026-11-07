@@ -1880,4 +1880,15 @@
     <string name="personal_dict_export_failed">കയറ്റുമതി പരാജയപ്പെട്ടു:%1$s</string>
     <string name="auto_pair_symbols_title">സ്വയമേവ ജോടി ചിഹ്നങ്ങൾ</string>
     <string name="auto_pair_symbols_summary">ക്ലോസിംഗ് ബ്രാക്കറ്റുകൾ, ഉദ്ധരണികൾ, ടൈറ്റിൽ മാർക്കുകൾ എന്നിവ സ്വയമേവ ചേർക്കുക</string>
+    <string name="font_style">ഫോണ്ട് ശൈലി</string>
+    <string name="unicode_panel">യൂണികോഡ് ചിഹ്നങ്ങൾ</string>
+    <string name="style_hub_title">ടൈപ്പോഗ്രാഫി &amp; ശൈലികൾ</string>
+    <string name="style_hub_summary">ഫാൻസി യൂണികോഡ് ടെക്സ്റ്റ് ശൈലികളും ചിഹ്ന പാലറ്റും</string>
+    <string name="style_accessibility_warning">അലങ്കാര യൂണിക്കോഡ് ഗണിത ചിഹ്നങ്ങൾ സ്‌ക്രീൻ റീഡറുകൾ (TalkBack) ശരിയായി ഉച്ചരിക്കണമെന്നില്ല. പ്രവേശനക്ഷമതയ്ക്കായി ദയവായി പരിഗണിക്കുക.</string>
+    <string name="style_preview_hint">ശൈലികൾ പ്രിവ്യൂ ചെയ്യാൻ ടെക്സ്റ്റ് ടൈപ്പ് ചെയ്യുക</string>
+    <string name="style_revert_plain">പ്ലെയിൻ ടെക്‌സ്‌റ്റിലേക്ക് മടങ്ങുക</string>
+    <string name="style_active_indicator">സജീവ ശൈലി:%s</string>
+    <string name="style_live_typing">തത്സമയ സ്റ്റൈലിഷ് ടൈപ്പിംഗ്</string>
+    <string name="style_live_typing_summary">തിരഞ്ഞെടുത്ത ശൈലിയിൽ നേരിട്ട് ടൈപ്പ് ചെയ്യുക (1:1 മാപ്പ് ചെയ്ത ശൈലികൾ മാത്രം)</string>
+    <string name="style_active_none">ഒന്നുമില്ല (പ്ലെയിൻ ടെക്സ്റ്റ്)</string>
 </resources>

@@ -1821,4 +1821,15 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="personal_dict_export_failed">Exporteren mislukt:%1$s</string>
     <string name="auto_pair_symbols_title">Symbolen voor automatisch koppelen</string>
     <string name="auto_pair_symbols_summary">Voeg automatisch sluithaakjes, aanhalingstekens en titelmarkeringen in</string>
+    <string name="font_style">Lettertypestijl</string>
+    <string name="unicode_panel">Unicode-symbolen</string>
+    <string name="style_hub_title">Typografie en stijlen</string>
+    <string name="style_hub_summary">Fancy Unicode-tekststijlen en symboolpalet</string>
+    <string name="style_accessibility_warning">Decoratieve wiskundige Unicode-symbolen worden mogelijk niet correct uitgesproken door schermlezers (TalkBack). Houd bij gebruik rekening met de toegankelijkheid.</string>
+    <string name="style_preview_hint">Typ tekst om een ​​voorbeeld van stijlen te bekijken</string>
+    <string name="style_revert_plain">Keer terug naar platte tekst</string>
+    <string name="style_active_indicator">Actieve stijl:%s</string>
+    <string name="style_live_typing">Live stijlvol typen</string>
+    <string name="style_live_typing_summary">Typ rechtstreeks de geselecteerde stijl (alleen 1:1 toegewezen stijlen)</string>
+    <string name="style_active_none">Geen (platte tekst)</string>
 </resources>

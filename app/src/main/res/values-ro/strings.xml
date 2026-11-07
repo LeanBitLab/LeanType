@@ -1814,4 +1814,15 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="personal_dict_export_failed">Export eșuat:%1$s</string>
     <string name="auto_pair_symbols_title">Simboluri de pereche automată</string>
     <string name="auto_pair_symbols_summary">Introduceți automat parantezele de închidere, ghilimele și semnele de titlu</string>
+    <string name="font_style">Stilul fontului</string>
+    <string name="unicode_panel">Simboluri Unicode</string>
+    <string name="style_hub_title">Tipografie și stiluri</string>
+    <string name="style_hub_summary">Stiluri de text Unicode și paletă de simboluri</string>
+    <string name="style_accessibility_warning">Este posibil ca simbolurile matematice decorative Unicode să nu fie pronunțate corect de cititoarele de ecran (TalkBack). Vă rugăm să utilizați cu atenție pentru accesibilitate.</string>
+    <string name="style_preview_hint">Tastați text pentru a previzualiza stilurile</string>
+    <string name="style_revert_plain">Reveniți la text simplu</string>
+    <string name="style_active_indicator">Stil activ:%s</string>
+    <string name="style_live_typing">Trăiește tastare elegantă</string>
+    <string name="style_live_typing_summary">Tastați direct în stilul selectat (numai stiluri mapate 1:1)</string>
+    <string name="style_active_none">Niciunul (text simplu)</string>
 </resources>

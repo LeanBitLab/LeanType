@@ -1777,4 +1777,15 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="personal_dict_export_failed">Ekspor gagal:%1$s</string>
     <string name="auto_pair_symbols_title">Simbol pasangan otomatis</string>
     <string name="auto_pair_symbols_summary">Secara otomatis menyisipkan tanda kurung tutup, tanda kutip, dan tanda judul</string>
+    <string name="font_style">Gaya Font</string>
+    <string name="unicode_panel">Simbol Unicode</string>
+    <string name="style_hub_title">Tipografi &amp; Gaya</string>
+    <string name="style_hub_summary">Gaya teks Unicode dan palet simbol yang mewah</string>
+    <string name="style_accessibility_warning">Simbol matematika Unicode dekoratif mungkin tidak diucapkan dengan benar oleh pembaca layar (TalkBack). Silakan gunakan dengan mempertimbangkan aksesibilitas.</string>
+    <string name="style_preview_hint">Ketik teks untuk melihat pratinjau gaya</string>
+    <string name="style_revert_plain">Kembali ke teks biasa</string>
+    <string name="style_active_indicator">Gaya aktif:%s</string>
+    <string name="style_live_typing">Pengetikan penuh gaya secara langsung</string>
+    <string name="style_live_typing_summary">Ketik langsung gaya yang dipilih (hanya gaya yang dipetakan 1:1)</string>
+    <string name="style_active_none">Tidak ada (Teks biasa)</string>
 </resources>

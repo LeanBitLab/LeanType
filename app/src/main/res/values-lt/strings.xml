@@ -1815,4 +1815,15 @@ Ar norite atnaujinti?</string>
     <string name="personal_dict_export_failed">Eksportuoti nepavyko:%1$s</string>
     <string name="auto_pair_symbols_title">Automatinio susiejimo simboliai</string>
     <string name="auto_pair_symbols_summary">Automatiškai įterpkite uždaromuosius skliaustus, kabutes ir pavadinimo ženklus</string>
+    <string name="font_style">Šrifto stilius</string>
+    <string name="unicode_panel">Unicode simboliai</string>
+    <string name="style_hub_title">Tipografija ir stiliai</string>
+    <string name="style_hub_summary">Išgalvoti Unicode teksto stiliai ir simbolių paletė</string>
+    <string name="style_accessibility_warning">Ekrano skaitytuvai („TalkBack“) gali netinkamai ištarti dekoratyvinius unikodo matematinius simbolius. Naudokite atsižvelgdami į prieinamumą.</string>
+    <string name="style_preview_hint">Įveskite tekstą, kad peržiūrėtumėte stilius</string>
+    <string name="style_revert_plain">Grįžti į paprastą tekstą</string>
+    <string name="style_active_indicator">Aktyvus stilius:%s</string>
+    <string name="style_live_typing">Tiesiogiai stilingai veskite tekstą</string>
+    <string name="style_live_typing_summary">Įveskite tiesiai į pasirinktą stilių (tik 1:1 susieti stiliai)</string>
+    <string name="style_active_none">Nėra (paprastas tekstas)</string>
 </resources>

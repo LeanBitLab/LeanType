@@ -1839,4 +1839,15 @@
     <string name="personal_dict_export_failed">Не удалось экспортировать:%1$s</string>
     <string name="auto_pair_symbols_title">Символы автоматического сопряжения</string>
     <string name="auto_pair_symbols_summary">Автоматически вставлять закрывающие скобки, кавычки и знаки заголовков.</string>
+    <string name="font_style">Стиль шрифта</string>
+    <string name="unicode_panel">Символы Юникода</string>
+    <string name="style_hub_title">Типографика и стили</string>
+    <string name="style_hub_summary">Необычные стили текста и палитра символов Unicode</string>
+    <string name="style_accessibility_warning">Декоративные математические символы Юникода могут неправильно произноситься программами чтения с экрана (TalkBack). Пожалуйста, используйте с учетом доступности.</string>
+    <string name="style_preview_hint">Введите текст для предварительного просмотра стилей</string>
+    <string name="style_revert_plain">Вернуться к обычному тексту</string>
+    <string name="style_active_indicator">Активный стиль:%s</string>
+    <string name="style_live_typing">Живой стильный набор текста</string>
+    <string name="style_live_typing_summary">Введите выбранный стиль напрямую (только стили, сопоставленные 1:1).</string>
+    <string name="style_active_none">Нет (обычный текст)</string>
 </resources>

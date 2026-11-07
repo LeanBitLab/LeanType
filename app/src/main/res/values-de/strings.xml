@@ -1829,4 +1829,15 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="personal_dict_export_failed">Export fehlgeschlagen:%1$s</string>
     <string name="auto_pair_symbols_title">Symbole automatisch koppeln</string>
     <string name="auto_pair_symbols_summary">Fügen Sie schließende Klammern, Anführungszeichen und Titelzeichen automatisch ein</string>
+    <string name="font_style">Schriftstil</string>
+    <string name="unicode_panel">Unicode-Symbole</string>
+    <string name="style_hub_title">Typografie und Stile</string>
+    <string name="style_hub_summary">Ausgefallene Unicode-Textstile und Symbolpalette</string>
+    <string name="style_accessibility_warning">Dekorative mathematische Unicode-Symbole werden von Bildschirmleseprogrammen (TalkBack) möglicherweise nicht richtig ausgesprochen. Bitte nutzen Sie diese unter Berücksichtigung der Barrierefreiheit.</string>
+    <string name="style_preview_hint">Geben Sie Text ein, um eine Vorschau der Stile anzuzeigen</string>
+    <string name="style_revert_plain">Zurück zum Klartext</string>
+    <string name="style_active_indicator">Aktiver Stil:%s</string>
+    <string name="style_live_typing">Lebe stilvolles Tippen</string>
+    <string name="style_live_typing_summary">Geben Sie den ausgewählten Stil direkt ein (nur 1:1 zugeordnete Stile)</string>
+    <string name="style_active_none">Keine (Klartext)</string>
 </resources>

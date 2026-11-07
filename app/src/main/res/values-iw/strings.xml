@@ -1785,4 +1785,15 @@
     <string name="personal_dict_export_failed">הייצוא נכשל:%1$s</string>
     <string name="auto_pair_symbols_title">התאמה אוטומטית של סמלים</string>
     <string name="auto_pair_symbols_summary">הוסף אוטומטית סוגריים סוגרים, מרכאות וסימני כותרת</string>
+    <string name="font_style">סגנון גופן</string>
+    <string name="unicode_panel">סמלי יוניקוד</string>
+    <string name="style_hub_title">טיפוגרפיה וסגנונות</string>
+    <string name="style_hub_summary">סגנונות טקסט מפוארים של Unicode ופלטת סמלים</string>
+    <string name="style_accessibility_warning">ייתכן שסמלים מתמטיים דקורטיביים של Unicode לא יובעו כהלכה על ידי קוראי מסך (TalkBack). נא להשתמש תוך התחשבות בנגישות.</string>
+    <string name="style_preview_hint">הקלד טקסט לתצוגה מקדימה של סגנונות</string>
+    <string name="style_revert_plain">חזור לטקסט רגיל</string>
+    <string name="style_active_indicator">סגנון פעיל:%s</string>
+    <string name="style_live_typing">הקלדה מסוגננת חיה</string>
+    <string name="style_live_typing_summary">הקלד ישירות בסגנון שנבחר (סגנונות ממופים 1:1 בלבד)</string>
+    <string name="style_active_none">אין (טקסט רגיל)</string>
 </resources>

@@ -1777,4 +1777,15 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="personal_dict_export_failed">Izvoz nije uspio:%1$s</string>
     <string name="auto_pair_symbols_title">Simboli za automatsko uparivanje</string>
     <string name="auto_pair_symbols_summary">Automatski umetnite zagrade, navodnike i oznake naslova</string>
+    <string name="font_style">Stil fonta</string>
+    <string name="unicode_panel">Unicode simboli</string>
+    <string name="style_hub_title">Tipografija i stilovi</string>
+    <string name="style_hub_summary">Fancy Unicode stilovi teksta i paleta simbola</string>
+    <string name="style_accessibility_warning">Čitači zaslona (TalkBack) možda neće ispravno izgovoriti ukrasne Unicode matematičke simbole. Molimo koristite s obzirom na pristupačnost.</string>
+    <string name="style_preview_hint">Upišite tekst za pregled stilova</string>
+    <string name="style_revert_plain">Vrati na čisti tekst</string>
+    <string name="style_active_indicator">Aktivni stil:%s</string>
+    <string name="style_live_typing">Uživo stilizirano tipkanje</string>
+    <string name="style_live_typing_summary">Upišite izravno u odabranom stilu (samo mapirani stilovi 1:1)</string>
+    <string name="style_active_none">Ništa (običan tekst)</string>
 </resources>

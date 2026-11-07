@@ -1846,4 +1846,15 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="personal_dict_export_failed">Esportazione non riuscita:%1$s</string>
     <string name="auto_pair_symbols_title">Simboli di accoppiamento automatico</string>
     <string name="auto_pair_symbols_summary">Inserisci automaticamente parentesi di chiusura, virgolette e titoli</string>
+    <string name="font_style">Stile carattere</string>
+    <string name="unicode_panel">Simboli Unicode</string>
+    <string name="style_hub_title">Tipografia e stili</string>
+    <string name="style_hub_summary">Stili di testo Unicode fantasiosi e tavolozza dei simboli</string>
+    <string name="style_accessibility_warning">I simboli matematici Unicode decorativi potrebbero non essere pronunciati correttamente dagli screen reader (TalkBack). Si prega di utilizzare tenendo conto dell\'accessibilità.</string>
+    <string name="style_preview_hint">Digita il testo per visualizzare l\'anteprima degli stili</string>
+    <string name="style_revert_plain">Ripristina il testo normale</string>
+    <string name="style_active_indicator">Stile attivo:%s</string>
+    <string name="style_live_typing">Digitazione elegante e dal vivo</string>
+    <string name="style_live_typing_summary">Digita direttamente nello stile selezionato (solo stili mappati 1:1)</string>
+    <string name="style_active_none">Nessuno (testo normale)</string>
 </resources>
