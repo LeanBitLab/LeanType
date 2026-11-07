@@ -1434,6 +1434,23 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         get() {
             val lastCodePoint = codePointBeforeCursor
 
+            if (lastCodePoint in 0x0300..0x036F || lastCodePoint in 0x1AB0..0x1DFF || lastCodePoint in 0x20D0..0x20FF) {
+                val text = (getTextBeforeCursor(16, 0) ?: "").toString()
+                if (text.isNotEmpty()) {
+                    var count = 0
+                    var i = text.length
+                    while (i > 0) {
+                        val cp = text.codePointBefore(i)
+                        val charCount = Character.charCount(cp)
+                        count += charCount
+                        i -= charCount
+                        val isCombining = cp in 0x0300..0x036F || cp in 0x1AB0..0x1DFF || cp in 0x20D0..0x20FF
+                        if (!isCombining) break
+                    }
+                    if (count > 0) return count
+                }
+            }
+
             if (StringUtils.mightBeEmoji(lastCodePoint)) {
                 val text = if (InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)) {
                     (getTextBeforeCursor(32, 0) ?: "").toString()

@@ -38,6 +38,7 @@ import helium314.keyboard.latin.Suggest
 import helium314.keyboard.latin.SuggestedWords
 import helium314.keyboard.latin.SuggestedWords.SuggestedWordInfo
 import helium314.keyboard.latin.WordComposer
+import helium314.keyboard.latin.style.UnicodeStyleEngine
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.InputPointers
 import helium314.keyboard.latin.common.StringUtils
@@ -787,6 +788,59 @@ class InputLogic(
         mLatinIME.showTranslateLanguageSelector()
     }
 
+    private fun handleFontStyle(settingsValues: SettingsValues) {
+        val switcher = KeyboardSwitcher.getInstance()
+        if (switcher.isShowingStyleStrip) {
+            switcher.hideStyleStrip()
+            return
+        }
+
+        // 1. If selection exists
+        if (mConnection.hasSelection()) {
+            val selectedText = mConnection.getSelectedText(0)?.toString() ?: ""
+            if (selectedText.isNotEmpty()) {
+                switcher.showStyleStrip(selectedText) { transformed ->
+                    mConnection.commitText(transformed, 1)
+                    KeyboardActionListenerImpl.deactivateSelectionMode()
+                }
+                return
+            }
+        }
+
+        // 2. If composing word exists
+        if (mWordComposer.isComposingWord()) {
+            val typedWord = mWordComposer.getTypedWord() ?: ""
+            if (typedWord.isNotEmpty()) {
+                switcher.showStyleStrip(typedWord) { transformed ->
+                    mConnection.finishComposingText()
+                    mConnection.deleteSurroundingText(typedWord.length, 0)
+                    mConnection.commitText(transformed, 1)
+                    resetComposingState(true)
+                }
+                return
+            }
+        }
+
+        // 3. If word under cursor exists
+        val wordRange = mConnection.getWordRangeAtCursor(
+            settingsValues.mSpacingAndPunctuations,
+            settingsValues.mCurrentKeyboardScript
+        )
+        if (wordRange != null && wordRange.length() > 0) {
+            val word = wordRange.mWord.toString()
+            val before = wordRange.getNumberOfCharsInWordBeforeCursor()
+            val after = wordRange.getNumberOfCharsInWordAfterCursor()
+            switcher.showStyleStrip(word) { transformed ->
+                mConnection.deleteSurroundingText(before, after)
+                mConnection.commitText(transformed, 1)
+            }
+            return
+        }
+
+        // 4. No active text - open strip to choose or toggle live style
+        switcher.showStyleStrip("") { /* no-op */ }
+    }
+
     private fun handleFunctionalEvent(
         event: Event,
         inputTransaction: InputTransaction,
@@ -955,11 +1009,14 @@ class InputLogic(
                 setInlineEmojiSearchAction(false)
                 inputTransaction.setRequiresUpdateSuggestions()
             }
+            KeyCode.FONT_STYLE -> {
+                handleFontStyle(inputTransaction.settingsValues)
+            }
             KeyCode.VOICE_INPUT, KeyCode.EMOJI, KeyCode.TOGGLE_ONE_HANDED_MODE, KeyCode.SWITCH_ONE_HANDED_MODE,
             KeyCode.TOGGLE_FLOATING_KEYBOARD, KeyCode.HANDWRITING, KeyCode.CLEAR_HANDWRITING, KeyCode.CLIPBOARD_SEARCH,
             KeyCode.TOGGLE_TOUCHPAD_MODE, KeyCode.TOGGLE_TEXT_EDIT_MODE, KeyCode.TOGGLE_SELECTION_MODE, KeyCode.SWITCH_TO_USER_IME,
             KeyCode.CUSTOM1, KeyCode.CUSTOM2, KeyCode.CUSTOM3, KeyCode.CUSTOM4, KeyCode.CUSTOM5,
-            KeyCode.OCR, KeyCode.TOGGLE_INCOGNITO_MODE, KeyCode.TOGGLE_AUTOCORRECT, KeyCode.NOT_SPECIFIED -> {
+            KeyCode.OCR, KeyCode.TOGGLE_INCOGNITO_MODE, KeyCode.TOGGLE_AUTOCORRECT, KeyCode.NOT_SPECIFIED, KeyCode.UNICODE_PANEL -> {
                 // Handled elsewhere
             }
             KeyCode.CAPS_LOCK -> {
@@ -1053,6 +1110,21 @@ class InputLogic(
         val codePoint = event.codePoint
         mSpaceState = SpaceState.NONE
         val sv = inputTransaction.settingsValues
+
+        if (UnicodeStyleEngine.isLiveStyleActive() && codePoint in 0x21..0x7E) {
+            if (mWordComposer.isComposingWord()) {
+                commitTyped(sv, LastComposedWord.NOT_A_SEPARATOR)
+            }
+            if (SpaceState.PHANTOM == inputTransaction.spaceState) {
+                insertAutomaticSpaceIfOptionsAndTextAllow(sv)
+            }
+            val mapped = UnicodeStyleEngine.mapKeystroke(codePoint)
+            mConnection.commitText(mapped, 1)
+            inputTransaction.setDidAffectContents()
+            inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
+            return
+        }
+
         if (Character.getType(codePoint) == Character.OTHER_SYMBOL.toInt()
             || (Character.getType(codePoint) == Character.UNASSIGNED.toInt() && StringUtils.mightBeEmoji(codePoint))
             || (sv.isWordSeparator(codePoint)

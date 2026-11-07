@@ -18,6 +18,7 @@ import helium314.keyboard.event.HapticEvent
 import helium314.keyboard.event.HardwareEventDecoder
 import helium314.keyboard.event.HardwareKeyboardEventDecoder
 import helium314.keyboard.event.PhysicalKeyboardLayouts
+import helium314.keyboard.keyboard.emoji.EmojiCategory
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.AudioAndHapticFeedbackManager
 import helium314.keyboard.latin.EmojiAltPhysicalKeyDetector
@@ -248,6 +249,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                     keyboardSwitcher.setAlphabetKeyboard()
                 } else {
                     keyboardSwitcher.setGifPickerKeyboard()
+                }
+                return
+            }
+            KeyCode.UNICODE_PANEL -> {
+                if (keyboardSwitcher.isShowingEmojiPalettes && keyboardSwitcher.emojiPalettesView?.currentCategoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
+                    keyboardSwitcher.setAlphabetKeyboard()
+                } else {
+                    keyboardSwitcher.setUnicodeSymbolsKeyboard()
                 }
                 return
             }

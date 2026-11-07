@@ -1145,6 +1145,13 @@ class EmojiPalettesView @JvmOverloads constructor(
         )
     }
 
+    val currentCategoryId: Int
+        get() = mEmojiCategory.getCurrentCategoryId()
+
+    fun switchToCategory(categoryId: Int) {
+        setCurrentCategoryId(categoryId, false)
+    }
+
     private fun setCurrentCategoryId(categoryId: Int, initial: Boolean) {
         val oldCategoryId = mEmojiCategory.getCurrentCategoryId()
         if (initial || oldCategoryId != categoryId) {

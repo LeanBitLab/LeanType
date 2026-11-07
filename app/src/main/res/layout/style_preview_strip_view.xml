@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton
+        android:id="@+id/style_strip_close"
+        android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_close"
+        android:background="@drawable/toolbar_key_background"
+        android:contentDescription="@android:string/cancel" />
+    <HorizontalScrollView
+        android:id="@+id/style_strip_scroll"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/style_strip_chips_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical" />
+    </HorizontalScrollView>
+</merge>

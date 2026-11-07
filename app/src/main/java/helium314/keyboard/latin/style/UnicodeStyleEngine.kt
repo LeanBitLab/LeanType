@@ -12,6 +12,16 @@ object UnicodeStyleEngine {
     private val STYLES_BY_ID: Map<String, StyleDefinition> by lazy { STYLES.associateBy { it.id } }
     private val REVERSE_MAP: Map<Int, Int> by lazy { initializeReverseMap() }
 
+    var activeLiveStyleId: String? = null
+
+    fun isLiveStyleActive(): Boolean = activeLiveStyleId != null
+
+    fun getActiveLiveStyle(): StyleDefinition? = activeLiveStyleId?.let { getStyle(it) }
+
+    fun clearActiveLiveStyle() {
+        activeLiveStyleId = null
+    }
+
     fun getStyle(styleId: String): StyleDefinition? = STYLES_BY_ID[styleId]
 
     fun getAllStyles(): List<StyleDefinition> = STYLES
@@ -41,8 +51,9 @@ object UnicodeStyleEngine {
      * Real-time keystroke mapping for LIVE typing mode.
      * Returns the mapped character string for a given input codepoint.
      */
-    fun mapKeystroke(codePoint: Int, styleId: String): String {
-        val style = getStyle(styleId) ?: return String(Character.toChars(codePoint))
+    fun mapKeystroke(codePoint: Int, styleId: String? = activeLiveStyleId): String {
+        val id = styleId ?: return String(Character.toChars(codePoint))
+        val style = getStyle(id) ?: return String(Character.toChars(codePoint))
         if (!style.supportsLiveTyping) return String(Character.toChars(codePoint))
 
         val mapped = style.mapCodePoint(codePoint)

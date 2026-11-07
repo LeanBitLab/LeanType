@@ -30,6 +30,8 @@ import android.widget.Toast
 import helium314.keyboard.event.Event
 import helium314.keyboard.keyboard.KeyboardLayoutSet.KeyboardLayoutSetException
 import helium314.keyboard.keyboard.clipboard.ClipboardHistoryView
+import helium314.keyboard.keyboard.emoji.EmojiCategory
+import helium314.keyboard.latin.style.StylePreviewStripView
 import helium314.keyboard.keyboard.emoji.EmojiPalettesView
 import helium314.keyboard.keyboard.internal.KeyboardState
 import helium314.keyboard.latin.FloatingKeyboardManager
@@ -80,6 +82,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     private var mOcrStripScrollView: HorizontalScrollView? = null
     private var mSuggestionStripView: SuggestionStripView? = null
     private var mCjkCandidateStripView: CjkCandidateStripView? = null
+    private var mStylePreviewStripView: StylePreviewStripView? = null
     private var mStripContainer: LinearLayout? = null
     private var mClipboardHistoryView: ClipboardHistoryView? = null
     private var mHandwritingView: HandwritingView? = null
@@ -479,6 +482,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
         mOcrStripScrollView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         val isCjkComposing = mLatinIME?.let { CjkInputManager.getInstance(it).isComposing } == true
         if (isCjkComposing) {
             mSuggestionStripView?.visibility = View.GONE
@@ -544,6 +548,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         mEmojiTabStripView?.visibility = View.VISIBLE
         mClipboardHistoryView?.let {
             it.animate()?.cancel()
@@ -593,6 +598,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mEmojiTabStripView?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         mStripContainer?.visibility = getSecondaryStripVisibility()
         mClipboardStripScrollView?.let { scrollView ->
             scrollView.post { scrollView.scrollTo(0, 0) }
@@ -695,6 +701,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mStripContainer?.visibility = View.GONE
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         mEmojiPalettesView?.visibility = View.GONE
         mClipboardHistoryView?.visibility = View.GONE
         mHandwritingView?.let {
@@ -732,6 +739,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mSuggestionStripView?.visibility = View.GONE
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         mEmojiPalettesView?.visibility = View.GONE
         mClipboardHistoryView?.visibility = View.GONE
         mHandwritingView?.let {
@@ -771,6 +779,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     fun hideOcrPanels() {
         mOcrStripScrollView?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
+        mStylePreviewStripView?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.VISIBLE
         mStripContainer?.visibility = View.VISIBLE
         mOcrCameraView?.let {
@@ -822,6 +831,41 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             val result = mOcrResultView ?: return false
             return result.isShown || result.visibility == View.VISIBLE
         }
+
+    fun showStyleStrip(targetText: String, onApply: (String) -> Unit) {
+        val strip = mStylePreviewStripView ?: return
+        mSuggestionStripView?.visibility = View.GONE
+        mCjkCandidateStripView?.visibility = View.GONE
+        mClipboardStripScrollView?.visibility = View.GONE
+        mClipboardEditStripView?.visibility = View.GONE
+        mOcrStripScrollView?.visibility = View.GONE
+        strip.applyTheme()
+        strip.setTargetText(
+            targetText = targetText,
+            onApply = onApply,
+            onDismiss = { hideStyleStrip() }
+        )
+        strip.visibility = View.VISIBLE
+        mStripContainer?.visibility = View.VISIBLE
+    }
+
+    fun hideStyleStrip() {
+        mStylePreviewStripView?.visibility = View.GONE
+        val isCjkComposing = mLatinIME?.let { CjkInputManager.getInstance(it).isComposing } == true
+        if (isCjkComposing) {
+            mSuggestionStripView?.visibility = View.GONE
+            mCjkCandidateStripView?.visibility = View.VISIBLE
+        } else {
+            mCjkCandidateStripView?.visibility = View.GONE
+            val stripVisibility = if (Settings.getValues().mToolbarMode == ToolbarMode.HIDDEN) View.GONE else View.VISIBLE
+            mSuggestionStripView?.visibility = stripVisibility
+        }
+    }
+
+    fun setUnicodeSymbolsKeyboard() {
+        setEmojiKeyboard()
+        mEmojiPalettesView?.switchToCategory(EmojiCategory.ID_UNICODE_SYMBOLS)
+    }
 
     override fun setNumpadKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setNumpadKeyboard")
@@ -1219,9 +1263,18 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     val stripContainer: LinearLayout? get() = mStripContainer
 
+    val stylePreviewStripView: StylePreviewStripView? get() = mStylePreviewStripView
+
+    val isShowingStyleStrip: Boolean
+        get() = mStylePreviewStripView?.visibility == View.VISIBLE
+
     fun updateStripVisibility(settingsValues: SettingsValues = Settings.getValues()) {
         if (isGifPickerShowing) {
             mStripContainer?.visibility = View.GONE
+            return
+        }
+        if (isShowingStyleStrip) {
+            mStripContainer?.visibility = View.VISIBLE
             return
         }
         if (isShowingClipboardHistory || isShowingEmojiPalettes) {
@@ -1333,6 +1386,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mOcrStripScrollView = inputView.findViewById(R.id.ocr_strip_scroll_view)
         mSuggestionStripView = inputView.findViewById(R.id.suggestion_strip_view)
         mCjkCandidateStripView = inputView.findViewById(R.id.cjk_candidate_strip_view)
+        mStylePreviewStripView = inputView.findViewById(R.id.style_preview_strip_view)
         mStripContainer = inputView.findViewById(R.id.strip_container)
 
         prefs.registerOnSharedPreferenceChangeListener(mSuggestionStripView)

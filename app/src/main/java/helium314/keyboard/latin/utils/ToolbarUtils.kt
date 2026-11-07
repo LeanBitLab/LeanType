@@ -210,6 +210,7 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         AUTO_CAP -> Settings.getValues().mAutoCap
         FORCE_AUTO_CAPS -> Settings.getValues().mAutoCap && Settings.getValues().mForceAutoCaps
         SELECT_MODE -> helium314.keyboard.keyboard.KeyboardActionListenerImpl.sPersistentSelectionModeActive
+        FONT_STYLE -> helium314.keyboard.latin.style.UnicodeStyleEngine.isLiveStyleActive()
         else -> true
     }
     button.isActivated = activated
@@ -226,7 +227,7 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         ViewCompat.setStateDescription(button, button.context.getString(state))
     }
     val colors = Settings.getValues().mColors
-    if (activated && button.tag in listOf(INCOGNITO, ONE_HANDED, SPLIT, AUTOCORRECT, AUTO_CAP, FORCE_AUTO_CAPS, SELECT_MODE)) {
+    if (activated && button.tag in listOf(INCOGNITO, ONE_HANDED, SPLIT, AUTOCORRECT, AUTO_CAP, FORCE_AUTO_CAPS, SELECT_MODE, FONT_STYLE)) {
         colors.setColor(button.background, ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
         if (button.drawable != null) {
             button.clearColorFilter()

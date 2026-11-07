@@ -92,4 +92,10 @@
         android:layout_height="@dimen/config_suggestions_strip_height"
         android:visibility="gone"
         style="?attr/suggestionStripViewStyle" />
+    <helium314.keyboard.latin.style.StylePreviewStripView
+        android:id="@+id/style_preview_strip_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/config_suggestions_strip_height"
+        android:visibility="gone"
+        style="?attr/suggestionStripViewStyle" />
 </LinearLayout>
