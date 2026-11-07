@@ -1,0 +1,8 @@
+- Fixed duplicate capitalization and auto-caps sync during fast typing (#598, #743).
+- Fixed layout popup keys priority over auto-generated symbols (#772).
+- Fixed functional key and spacebar pressed color in custom themes (#771).
+- Added automation broadcast receiver for layout, subtype, and mode switching (#501).
+- Added bracket, symbol, and CJK quote auto-pairing with step-over (#754).
+- Added plain text export for user dictionaries (#431).
+- Suppressed repeating auto-correction reverted by backspace (#415).
+- Prioritized inline autofill chips on password fields (#416).

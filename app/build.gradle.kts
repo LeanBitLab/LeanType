@@ -23,9 +23,9 @@ android {
         applicationId = "com.leanbitlab.leantype"
         minSdk = 21
         targetSdk = 35
-        // ponytail: release version 4.3.1
-        versionCode = 4310
-        versionName = "4.3.1"
+        // ponytail: release version 4.3.2
+        versionCode = 4320
+        versionName = "4.3.2"
 
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         
@@ -251,7 +251,7 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     implementation("androidx.camera:camera-view:$cameraxVersion")
 
-    // WorkManager — required by plugins loaded via DexClassLoader.
+    // WorkManager - required by plugins loaded via DexClassLoader.
     // ML Kit internally calls WorkManager.getInstance(context) using the host app context,
     // so the host app must have WorkManagerInitializer registered in its manifest.
     implementation("androidx.work:work-runtime-ktx:2.10.1")

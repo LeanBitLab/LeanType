@@ -64,17 +64,14 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Dictionary Concurrency Crash (SIGSEGV) Fix: Synchronized traverse session during suggestions to eliminate native crashes (#759)",
-    "• Samsung & Multi-Profile IME Crash Fix: Prevented crash on Samsung and isolated profiles where inputMethodList excludes the IME",
-    "• Full Keyboard Swipe Word Deletion: Added 'Delete word' action to full keyboard swipe gestures (#757)",
-    "• Multilingual History & Locale Priority: Isolated learned vocabulary per language (#763) and preserved primary locale order (#762)",
-    "• Voice Silence Timeout & Noise Floor: Adaptively tracked ambient noise to ensure reliable silence detection (#765)",
-    "• Dynamic Multiline Clipboard Editor: Supported dynamic multiline expansion and cursor navigation without hiding action buttons",
-    "• Clear Learned Words & History: Added settings option to reset learned words, personalized dictionary history, and word boost caches",
-    "• Irish & Latin Input Subtypes: Added input subtypes for Irish, Bosnian, Norwegian Nynorsk, Cebuano, Malagasy, Sardinian, and Toki Pona",
-    "• Android 7.1.2 Compatibility Fix: Prevented crash on Android 7.1.2 and below in word break iterator (#756)",
-    "• Dynamic Dictionary Sync: Broadcast update intent on dictionary download and deletion for instant wordlist refreshes (#761)",
-    "• 60fps Canvas Draw Optimization: Pruned draw-loop Binder IPC, eliminated per-key allocations, and optimized gesture trail invalidation"
+    "• Fast Typing Capitalization: Prevented duplicate caps and auto-caps desync during rapid typing (#598, #743)",
+    "• Layout Popup Key Priority: Prioritized layout-defined popup keys over auto-generated symbols (#772)",
+    "• Automation Broadcasts: Added broadcast receiver for external subtype, layout, and mode switching (#501)",
+    "• Bracket & Quote Auto-Pairing: Added auto-closing brackets and CJK quotes with step-over (#754)",
+    "• Plain Text Dictionary Export: Added export option for user dictionaries to plain text format (#431)",
+    "• Smart Correction Suppression: Prevented repeating auto-corrections reverted by backspace (#415)",
+    "• Inline Autofill Priority: Prioritized inline autofill chips on password and account fields (#416)",
+    "• Theme Pressed Colors: Fixed functional key and spacebar pressed feedback in custom themes (#771)"
 )
 
 @Composable
