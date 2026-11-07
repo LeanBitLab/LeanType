@@ -228,6 +228,8 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
     }
     val colors = Settings.getValues().mColors
     if (activated && button.tag in listOf(INCOGNITO, ONE_HANDED, SPLIT, AUTOCORRECT, AUTO_CAP, FORCE_AUTO_CAPS, SELECT_MODE, FONT_STYLE)) {
+        val enabledBgColor = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+        button.background?.let { DrawableCompat.setTint(it, enabledBgColor) }
         colors.setColor(button.background, ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
         if (button.drawable != null) {
             button.clearColorFilter()
@@ -235,6 +237,10 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
             colors.setColor(button, ColorType.ACTION_KEY_ICON)
         }
     } else {
+        button.background?.let {
+            DrawableCompat.setTintList(it, null)
+            it.clearColorFilter()
+        }
         colors.setColor(button.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
         if (button.drawable != null) {
             button.clearColorFilter()

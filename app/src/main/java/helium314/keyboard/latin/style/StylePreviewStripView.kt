@@ -2,20 +2,33 @@
 package helium314.keyboard.latin.style
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.RippleDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import helium314.keyboard.keyboard.KeyboardSwitcher
+import helium314.keyboard.keyboard.internal.KeyboardIconsSet
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
+import helium314.keyboard.latin.common.Colors
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.utils.ResourceUtils
+import helium314.keyboard.latin.utils.ToolbarKey
+import helium314.keyboard.latin.utils.dpToPx
 
 /**
  * Interactive strip displaying preview candidate chips for Unicode styles.
@@ -48,7 +61,38 @@ class StylePreviewStripView @JvmOverloads constructor(
     fun applyTheme() {
         val colors = Settings.getValues().mColors
         colors.setBackground(this, ColorType.STRIP_BACKGROUND)
+
+        // Dynamically compute strip height and button dimensions
+        val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
+        val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
+        val effectiveScale = if (defaultStripHeight > 0f) stripHeight.toFloat() / defaultStripHeight else 1.0f
+        val expandPadding = (9 * effectiveScale).toInt().dpToPx(resources).coerceAtLeast(2)
+
+        val lp = closeButton.layoutParams
+        if (lp != null) {
+            lp.width = stripHeight
+            lp.height = stripHeight
+            closeButton.layoutParams = lp
+        }
+        closeButton.setPadding(expandPadding, expandPadding, expandPadding, expandPadding)
+        closeButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
+
+        // Themed close icon matching the active keyboard theme (e.g. ic_close_rounded on rounded themes)
+        val closeDrawable = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name, context)
+            ?: ContextCompat.getDrawable(context, R.drawable.ic_close)
+        closeButton.setImageDrawable(closeDrawable)
         colors.setColor(closeButton, ColorType.TOOL_BAR_KEY)
+
+        // Close button background matching toolbar button background
+        val density = resources.displayMetrics.density
+        val btnCornerRadius = 8f * density
+        val btnBgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+        val rippleColor = colors.get(ColorType.KEY_TEXT)
+        closeButton.background = createChipDrawable(
+            bgColor = btnBgColor,
+            cornerRadiusPx = btnCornerRadius,
+            rippleColor = rippleColor
+        )
     }
 
     /**
@@ -64,9 +108,10 @@ class StylePreviewStripView @JvmOverloads constructor(
 
         chipsContainer.removeAllViews()
         val density = resources.displayMetrics.density
-        val chipHeight = (32 * density).toInt()
+        val chipHeight = (30 * density).toInt()
+        val cornerRadius = chipHeight / 2f
         val marginH = (4 * density).toInt()
-        val padH = (12 * density).toInt()
+        val padH = (14 * density).toInt()
         val colors = Settings.getValues().mColors
 
         val isDefaultWord = targetText.isBlank()
@@ -82,9 +127,14 @@ class StylePreviewStripView @JvmOverloads constructor(
                 gravity = Gravity.CENTER
                 includeFontPadding = false
                 setPadding(padH, 0, padH, 0)
-                setBackgroundResource(R.drawable.toolbar_key_background)
                 setTextColor(colors.get(ColorType.KEY_TEXT))
-                colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+                background = createChipDrawable(
+                    bgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND),
+                    cornerRadiusPx = cornerRadius,
+                    rippleColor = colors.get(ColorType.KEY_TEXT),
+                    strokeColor = ColorUtils.setAlphaComponent(colors.get(ColorType.KEY_TEXT), 70),
+                    strokeWidthPx = (1 * density).toInt().coerceAtLeast(1)
+                )
                 setOnClickListener {
                     onApplyListener?.invoke(plainText)
                     onDismissListener?.invoke()
@@ -105,18 +155,31 @@ class StylePreviewStripView @JvmOverloads constructor(
             val isCurrentLive = UnicodeStyleEngine.activeLiveStyleId == style.id
 
             val chip = TextView(context).apply {
-                text = transformedPreview
+                text = if (isCurrentLive) "✓ $transformedPreview" else transformedPreview
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
                 gravity = Gravity.CENTER
                 includeFontPadding = false
                 setPadding(padH, 0, padH, 0)
-                setBackgroundResource(R.drawable.toolbar_key_background)
+
                 if (isCurrentLive) {
-                    setTextColor(colors.get(ColorType.EMOJI_CATEGORY_SELECTED))
-                    colors.setColor(background, ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+                    setTypeface(null, Typeface.BOLD)
+                    // High-contrast live indicator: Accent background with contrasting actionKeyIcon text
+                    val accentBg = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+                    val actionIconColor = colors.get(ColorType.ACTION_KEY_ICON)
+                    setTextColor(actionIconColor)
+                    background = createChipDrawable(
+                        bgColor = accentBg,
+                        cornerRadiusPx = cornerRadius,
+                        rippleColor = actionIconColor
+                    )
                 } else {
+                    setTypeface(null, Typeface.NORMAL)
                     setTextColor(colors.get(ColorType.KEY_TEXT))
-                    colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+                    background = createChipDrawable(
+                        bgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND),
+                        cornerRadiusPx = cornerRadius,
+                        rippleColor = colors.get(ColorType.KEY_TEXT)
+                    )
                 }
 
                 setOnClickListener {
@@ -165,6 +228,30 @@ class StylePreviewStripView @JvmOverloads constructor(
             UnicodeStyleEngine.activeLiveStyleId = style.id
             Toast.makeText(context, context.getString(R.string.style_active_indicator, style.name), Toast.LENGTH_SHORT).show()
         }
-        helium314.keyboard.keyboard.KeyboardSwitcher.getInstance().suggestionStripView?.updateToolbarButtonsActivatedState()
+        KeyboardSwitcher.getInstance().suggestionStripView?.updateToolbarButtonsActivatedState()
+    }
+
+    private fun createChipDrawable(
+        bgColor: Int,
+        cornerRadiusPx: Float,
+        rippleColor: Int,
+        strokeColor: Int = Color.TRANSPARENT,
+        strokeWidthPx: Int = 0
+    ): Drawable {
+        val shape = GradientDrawable().apply {
+            this.shape = GradientDrawable.RECTANGLE
+            cornerRadius = cornerRadiusPx
+            setColor(bgColor)
+            if (strokeWidthPx > 0 && strokeColor != Color.TRANSPARENT) {
+                setStroke(strokeWidthPx, strokeColor)
+            }
+        }
+        val mask = GradientDrawable().apply {
+            this.shape = GradientDrawable.RECTANGLE
+            cornerRadius = cornerRadiusPx
+            setColor(Color.WHITE)
+        }
+        val rippleAlpha = ColorUtils.setAlphaComponent(rippleColor, 40)
+        return RippleDrawable(ColorStateList.valueOf(rippleAlpha), shape, mask)
     }
 }
