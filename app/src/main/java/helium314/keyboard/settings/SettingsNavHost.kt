@@ -128,7 +128,8 @@ fun SettingsNavHost(
                 onClickAIIntegration = { navController.navigate(SettingsDestination.AIIntegration) },
                 onClickSound = { navController.navigate(SettingsDestination.Sound) },
                 onClickAppProfiles = { navController.navigate(SettingsDestination.AppQuirks) },
-                onClickCjk = { navController.navigate(SettingsDestination.Cjk) }
+                onClickCjk = { navController.navigate(SettingsDestination.Cjk) },
+                onClickStyles = { navController.navigate(SettingsDestination.Styles) }
             )
         }
         composable(SettingsDestination.Sound) {
@@ -223,6 +224,9 @@ fun SettingsNavHost(
         composable(SettingsDestination.Cjk) {
             helium314.keyboard.settings.screens.CjkSettingsScreen(onClickBack = ::goBack)
         }
+        composable(SettingsDestination.Styles) {
+            helium314.keyboard.settings.screens.StyleSettingsScreen(onClickBack = ::goBack)
+        }
     }
     if (target.value != SettingsDestination.Settings/* && target.value != navController.currentBackStackEntry?.destination?.route*/)
         navController.navigate(route = target.value)
@@ -265,6 +269,7 @@ object SettingsDestination {
     const val AppQuirks = "app_quirks"
     const val Gif = "gif"
     const val Cjk = "cjk"
+    const val Styles = "styles"
     val navTarget = MutableStateFlow(Settings)
 
     // Use SupervisorJob so a cancellation in one navigation hop
