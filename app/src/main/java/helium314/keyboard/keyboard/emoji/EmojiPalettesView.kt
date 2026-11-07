@@ -141,7 +141,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             val recyclerView = getRecyclerView(holder.itemView)
             mViews[position] = recyclerView
             recyclerView.adapter = EmojiPalettesAdapter(mEmojiCategory, holder.mCategoryId.toInt(), this@EmojiPalettesView)
-            setupEmoticonGroups(holder.itemView, recyclerView, holder.mCategoryId.toInt() == EmojiCategory.ID_EMOTICONS)
+            setupEmoticonGroups(holder.itemView, recyclerView, holder.mCategoryId.toInt())
 
             if (!mInitialized) {
                 recyclerView.scrollToPosition(mEmojiCategory.getCurrentCategoryPageId())
@@ -1182,10 +1182,14 @@ class EmojiPalettesView @JvmOverloads constructor(
      * The strip lives in the category page layout and is hidden for every other category
      * (pages are reused, so this also has to reset it). Without groups in EMOTICONS.txt nothing is shown.
      */
-    private fun setupEmoticonGroups(page: View, recyclerView: RecyclerView, isEmoticons: Boolean) {
+    private fun setupEmoticonGroups(page: View, recyclerView: RecyclerView, categoryId: Int) {
         val scroll = page.findViewById<HorizontalScrollView>(R.id.emoticon_group_scroll) ?: return
         val strip = page.findViewById<LinearLayout>(R.id.emoticon_group_strip) ?: return
-        val groups = if (isEmoticons) mEmojiCategory.getEmoticonGroups() else emptyList()
+        val groups = when (categoryId) {
+            EmojiCategory.ID_EMOTICONS -> mEmojiCategory.getEmoticonGroups()
+            EmojiCategory.ID_UNICODE_SYMBOLS -> mEmojiCategory.getUnicodeSymbolGroups()
+            else -> emptyList()
+        }
         val lp = recyclerView.layoutParams as? FrameLayout.LayoutParams
         val density = resources.displayMetrics.density
         val topMargin = if (groups.isEmpty()) 0 else (40 * density).toInt()
@@ -1204,7 +1208,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         scroll.visibility = View.VISIBLE
         mColors.setBackground(scroll, ColorType.STRIP_BACKGROUND)
 
-        // Disallow ViewPager2 horizontal intercept when touching or scrolling emoticon sub-categories
+        // Disallow ViewPager2 horizontal intercept when touching or scrolling sub-categories
         scroll.setOnTouchListener { v, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
@@ -1220,7 +1224,11 @@ class EmojiPalettesView @JvmOverloads constructor(
         val chipHeight = (30 * density).toInt()
         val marginH = (4 * density).toInt()
         val padH = (15 * density).toInt()
-        val currentGroup = mEmojiCategory.getCurrentEmoticonGroup()
+        val currentGroup = if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
+            mEmojiCategory.getCurrentUnicodeSymbolGroup()
+        } else {
+            mEmojiCategory.getCurrentEmoticonGroup()
+        }
 
         // Reuse existing child views if the strip is already populated with matching count
         if (strip.childCount != groups.size) {
@@ -1234,8 +1242,12 @@ class EmojiPalettesView @JvmOverloads constructor(
                     includeFontPadding = false
                     setPadding(padH, 0, padH, 0)
                     setOnClickListener { v ->
-                        mEmojiCategory.setCurrentEmoticonGroup(index)
-                        styleEmoticonGroupTabs(strip)
+                        if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
+                            mEmojiCategory.setCurrentUnicodeSymbolGroup(index)
+                        } else {
+                            mEmojiCategory.setCurrentEmoticonGroup(index)
+                        }
+                        styleEmoticonGroupTabs(strip, categoryId)
                         recyclerView.adapter?.notifyDataSetChanged()
                         recyclerView.scrollToPosition(0)
                         mEmojiCategoryPageIndicatorView?.setCategoryPageId(mEmojiCategory.getCurrentCategoryPageCount(), 0, 0f)
@@ -1256,8 +1268,12 @@ class EmojiPalettesView @JvmOverloads constructor(
                     text = EmojiCategory.getEmoticonGroupDisplayName(context, group.name)
                     setPadding(padH, 0, padH, 0)
                     setOnClickListener { v ->
-                        mEmojiCategory.setCurrentEmoticonGroup(index)
-                        styleEmoticonGroupTabs(strip)
+                        if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
+                            mEmojiCategory.setCurrentUnicodeSymbolGroup(index)
+                        } else {
+                            mEmojiCategory.setCurrentEmoticonGroup(index)
+                        }
+                        styleEmoticonGroupTabs(strip, categoryId)
                         recyclerView.adapter?.notifyDataSetChanged()
                         recyclerView.scrollToPosition(0)
                         mEmojiCategoryPageIndicatorView?.setCategoryPageId(mEmojiCategory.getCurrentCategoryPageCount(), 0, 0f)
@@ -1267,7 +1283,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 }
             }
         }
-        styleEmoticonGroupTabs(strip)
+        styleEmoticonGroupTabs(strip, categoryId)
 
         // Ensure the selected tab is scrolled into view
         scroll.post {
@@ -1279,8 +1295,12 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
     }
 
-    private fun styleEmoticonGroupTabs(strip: LinearLayout) {
-        val current = mEmojiCategory.getCurrentEmoticonGroup()
+    private fun styleEmoticonGroupTabs(strip: LinearLayout, categoryId: Int = EmojiCategory.ID_EMOTICONS) {
+        val current = if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
+            mEmojiCategory.getCurrentUnicodeSymbolGroup()
+        } else {
+            mEmojiCategory.getCurrentEmoticonGroup()
+        }
         for (i in 0 until strip.childCount) {
             val tab = strip.getChildAt(i) as? TextView ?: continue
             if (i == current) {
@@ -1319,7 +1339,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
         mEmoticonGroupStrip?.let { strip ->
             (strip.parent as? View)?.let { mColors.setBackground(it, ColorType.STRIP_BACKGROUND) }
-            styleEmoticonGroupTabs(strip)
+            styleEmoticonGroupTabs(strip, mEmojiCategory.getCurrentCategoryId())
         }
         mEmojiCategoryPageIndicatorView?.setColors(
             mColors.get(ColorType.EMOJI_CATEGORY_SELECTED),

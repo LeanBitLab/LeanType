@@ -80,6 +80,7 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons</item>
+        <item name="iconEmojiCategory11Tab">@drawable/ic_emoji_unicode</item>
     </style>
     <style
             name="ClipboardHistoryView.HoloBase"

@@ -125,6 +125,8 @@
     <string name="spoken_description_emoji_category_eight_activity">Activity</string>
     <!-- Description of the emoji category icon of Emoticons. -->
     <string name="spoken_description_emoji_category_emoticons">Emoticons</string>
+    <!-- Description of the emoji category icon of Unicode symbols. -->
+    <string name="spoken_description_emoji_category_unicode">Unicode symbols</string>
 
     <!-- Description of an upper case letter of LOWER_LETTER. -->
     <string name="spoken_description_upper_case">Capital <xliff:g id="LOWER_LETTER" example="A, E, ligature">%s</xliff:g></string>

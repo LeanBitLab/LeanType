@@ -168,6 +168,7 @@
         <attr name="iconEmojiCategory8Tab" format="reference" />
         <attr name="iconEmojiCategory9Tab" format="reference" />
         <attr name="iconEmojiCategory10Tab" format="reference" />
+        <attr name="iconEmojiCategory11Tab" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ClipboardHistoryView">

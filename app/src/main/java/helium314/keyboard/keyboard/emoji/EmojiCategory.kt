@@ -48,6 +48,9 @@ class EmojiCategory(
     private val mEmoticonGroups: List<EmoticonGroup> by lazy { loadEmoticonGroups() }
     private var mCurrentEmoticonGroup = mPrefs.getInt(PREF_LAST_SHOWN_EMOTICON_GROUP, 0)
 
+    private val mUnicodeSymbolGroups: List<EmoticonGroup> by lazy { loadUnicodeSymbolGroups() }
+    private var mCurrentUnicodeSymbolGroup = mPrefs.getInt(PREF_LAST_SHOWN_UNICODE_SYMBOL_GROUP, 0)
+
     private fun loadEmoticonGroups(): List<EmoticonGroup> = runCatching {
         val result = ArrayList<EmoticonGroup>()
         var name: String? = null
@@ -65,6 +68,26 @@ class EmojiCategory(
         result.filter { it.items.isNotEmpty() }
     }.getOrElse {
         Log.w(TAG, "could not read emoticon groups: ${it.message}")
+        emptyList()
+    }
+
+    private fun loadUnicodeSymbolGroups(): List<EmoticonGroup> = runCatching {
+        val result = ArrayList<EmoticonGroup>()
+        var name: String? = null
+        var items = LinkedHashSet<String>()
+        mContext.assets.open("emoji/UNICODE_SYMBOLS.txt").reader().use { it.readLines() }.forEach { line ->
+            if (line.startsWith("#")) {
+                name?.let { result.add(EmoticonGroup(it, items)) }
+                name = line.removePrefix("#").trim()
+                items = LinkedHashSet()
+            } else if (name != null && line.isNotEmpty()) {
+                items.add(line)
+            }
+        }
+        name?.let { result.add(EmoticonGroup(it, items)) }
+        result.filter { it.items.isNotEmpty() }
+    }.getOrElse {
+        Log.w(TAG, "could not read unicode symbol groups: ${it.message}")
         emptyList()
     }
 
@@ -86,12 +109,35 @@ class EmojiCategory(
         setCurrentCategoryPageId(0)
     }
 
-    /** keys of the category, for emoticons only those of the selected group */
+    fun getUnicodeSymbolGroups(): List<EmoticonGroup> = mUnicodeSymbolGroups
+
+    fun getCurrentUnicodeSymbolGroup(): Int = mCurrentUnicodeSymbolGroup.coerceIn(0, (mUnicodeSymbolGroups.size - 1).coerceAtLeast(0))
+
+    fun setCurrentUnicodeSymbolGroup(index: Int) {
+        if (index == getCurrentUnicodeSymbolGroup() || index !in mUnicodeSymbolGroups.indices) return
+        mCurrentUnicodeSymbolGroup = index
+        mPrefs.edit().putInt(PREF_LAST_SHOWN_UNICODE_SYMBOL_GROUP, index).apply()
+        synchronized(mCategoryKeyboardMap) {
+            mCategoryKeyboardMap.keys.removeAll { (it shr Integer.SIZE).toInt() == ID_UNICODE_SYMBOLS }
+        }
+        for (props in mShownCategories) {
+            if (props.mCategoryId == ID_UNICODE_SYMBOLS) props.mPageCount = -1
+        }
+        setCurrentCategoryPageId(0)
+    }
+
+    /** keys of the category, for emoticons and unicode symbols only those of the selected group */
     private fun getCategoryKeys(categoryId: Int): List<Key> {
         val keys = mLayoutSet.getKeyboard(sCategoryElementId[categoryId]).sortedKeys
-        if (categoryId != ID_EMOTICONS || mEmoticonGroups.isEmpty()) return keys
-        val items = mEmoticonGroups[getCurrentEmoticonGroup()].items
-        return keys.filter { (it.outputText ?: it.label) in items }
+        if (categoryId == ID_EMOTICONS && mEmoticonGroups.isNotEmpty()) {
+            val items = mEmoticonGroups[getCurrentEmoticonGroup()].items
+            return keys.filter { (it.outputText ?: it.label) in items }
+        }
+        if (categoryId == ID_UNICODE_SYMBOLS && mUnicodeSymbolGroups.isNotEmpty()) {
+            val items = mUnicodeSymbolGroups[getCurrentUnicodeSymbolGroup()].items
+            return keys.filter { (it.outputText ?: it.label) in items }
+        }
+        return keys
     }
 
     init {
@@ -127,6 +173,7 @@ class EmojiCategory(
             addShownCategoryId(ID_FLAGS)
         }
         addShownCategoryId(ID_EMOTICONS)
+        addShownCategoryId(ID_UNICODE_SYMBOLS)
 
         val recentsKbd = getKeyboard(ID_RECENTS, 0)
         mCurrentCategoryId = mPrefs.getInt(Settings.PREF_LAST_SHOWN_EMOJI_CATEGORY_ID, defaultCategoryId)
@@ -276,6 +323,7 @@ class EmojiCategory(
     companion object {
         private const val TAG = "EmojiCategory"
         private const val PREF_LAST_SHOWN_EMOTICON_GROUP = "last_shown_emoticon_group"
+        private const val PREF_LAST_SHOWN_UNICODE_SYMBOL_GROUP = "last_shown_unicode_symbol_group"
 
         fun getEmoticonGroupDisplayName(context: Context, rawName: String): String {
             val resId = when (rawName.lowercase().replace(" ", "_")) {
@@ -311,12 +359,13 @@ class EmojiCategory(
         const val ID_SYMBOLS = 8
         const val ID_FLAGS = 9
         const val ID_EMOTICONS = 10
+        const val ID_UNICODE_SYMBOLS = 11
 
         private const val MAX_LINE_COUNT_PER_PAGE = 3
 
         private val sCategoryName = arrayOf(
             "recents", "smileys & emotion", "people & body", "animals & nature",
-            "food & drink", "travel & places", "activities", "objects", "symbols", "flags", "emoticons"
+            "food & drink", "travel & places", "activities", "objects", "symbols", "flags", "emoticons", "unicode"
         )
 
         private val sCategoryTabIconAttr = intArrayOf(
@@ -330,7 +379,8 @@ class EmojiCategory(
             R.styleable.EmojiPalettesView_iconEmojiCategory7Tab,
             R.styleable.EmojiPalettesView_iconEmojiCategory8Tab,
             R.styleable.EmojiPalettesView_iconEmojiCategory9Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory10Tab
+            R.styleable.EmojiPalettesView_iconEmojiCategory10Tab,
+            R.styleable.EmojiPalettesView_iconEmojiCategory11Tab
         )
 
         private val sAccessibilityDescriptionResourceIdsForCategories = intArrayOf(
@@ -344,7 +394,8 @@ class EmojiCategory(
             R.string.spoken_description_emoji_category_objects,
             R.string.spoken_description_emoji_category_symbols,
             R.string.spoken_description_emoji_category_flags,
-            R.string.spoken_description_emoji_category_emoticons
+            R.string.spoken_description_emoji_category_emoticons,
+            R.string.spoken_description_emoji_category_unicode
         )
 
         private val sCategoryElementId = intArrayOf(
@@ -358,7 +409,8 @@ class EmojiCategory(
             KeyboardId.ELEMENT_EMOJI_CATEGORY7,
             KeyboardId.ELEMENT_EMOJI_CATEGORY8,
             KeyboardId.ELEMENT_EMOJI_CATEGORY9,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY10
+            KeyboardId.ELEMENT_EMOJI_CATEGORY10,
+            KeyboardId.ELEMENT_EMOJI_CATEGORY11
         )
 
         fun getCategoryName(categoryId: Int, categoryPageId: Int): String {

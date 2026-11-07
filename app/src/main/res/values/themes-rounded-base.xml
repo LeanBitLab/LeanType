@@ -74,6 +74,7 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_rounded</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_rounded</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_rounded</item>
+        <item name="iconEmojiCategory11Tab">@drawable/ic_emoji_unicode</item>
     </style>
 
     <style

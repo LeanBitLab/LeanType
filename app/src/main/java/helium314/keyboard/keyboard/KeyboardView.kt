@@ -502,7 +502,7 @@ open class KeyboardView @JvmOverloads constructor(
         
         if (label != null) {
             val sv = mSettingsValues ?: Settings.getValues()
-            val isEmojiKey = isEmoji(label) || (this is EmojiPageKeyboardView && keyboard?.mId?.mElementId != KeyboardId.ELEMENT_EMOJI_CATEGORY10)
+            val isEmojiKey = isEmoji(label) || (this is EmojiPageKeyboardView && keyboard?.mId?.mElementId != KeyboardId.ELEMENT_EMOJI_CATEGORY10 && keyboard?.mId?.mElementId != KeyboardId.ELEMENT_EMOJI_CATEGORY11)
             val typeface = if (mEmojiTypeface != null && isEmojiKey) mEmojiTypeface else mTypeface
             paint.typeface = typeface ?: key.selectTypeface(params)
             val isEmoticonInEmojiKeyboard = this is EmojiPageKeyboardView && keyboard?.mId?.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10

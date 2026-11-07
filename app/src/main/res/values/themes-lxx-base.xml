@@ -67,6 +67,7 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_lxx</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_lxx</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_lxx</item>
+        <item name="iconEmojiCategory11Tab">@drawable/ic_emoji_unicode</item>
     </style>
     <style
         name="ClipboardHistoryView.LXX_Base"

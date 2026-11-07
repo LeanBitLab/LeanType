@@ -33,6 +33,7 @@ class EmojiParser(private val params: KeyboardParams, private val context: Conte
             KeyboardId.ELEMENT_EMOJI_CATEGORY8 -> "SYMBOLS.txt"
             KeyboardId.ELEMENT_EMOJI_CATEGORY9 -> "FLAGS.txt"
             KeyboardId.ELEMENT_EMOJI_CATEGORY10 -> "EMOTICONS.txt"
+            KeyboardId.ELEMENT_EMOJI_CATEGORY11 -> "UNICODE_SYMBOLS.txt"
             else -> null
         }
         val emojiLines = if (emojiFileName == null) {
@@ -78,10 +79,10 @@ class EmojiParser(private val params: KeyboardParams, private val context: Conte
 
 
 
-        val isEmoticons = params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10
+        val isGrouped = params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10 || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY11
         lines.forEach { line ->
-            // lines starting with "#" are group headers in EMOTICONS.txt (see EmojiCategory.getEmoticonGroups)
-            if (isEmoticons && line.startsWith("#")) return@forEach
+            // lines starting with "#" are group headers (see EmojiCategory.getEmoticonGroups / getUnicodeSymbolGroups)
+            if (isGrouped && line.startsWith("#")) return@forEach
             val keyParams = parseEmojiKeyNew(line) ?: return@forEach
             keyParams.xPos = currentX
             keyParams.yPos = currentY
@@ -94,8 +95,8 @@ class EmojiParser(private val params: KeyboardParams, private val context: Conte
     }
 
     private fun parseEmojiKeyNew(line: String): KeyParams? {
-        if (!line.contains(" ") || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10) {
-            // single emoji without popups, or emoticons (there is one that contains space...)
+        if (!line.contains(" ") || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY10 || params.mId.mElementId == KeyboardId.ELEMENT_EMOJI_CATEGORY11) {
+            // single emoji without popups, emoticons, or unicode symbols
             return if (SupportedEmojis.isUnsupported(line)) null
             else {
                 // Emoticons get AUTO_X_SCALE so long text shrinks to fit
