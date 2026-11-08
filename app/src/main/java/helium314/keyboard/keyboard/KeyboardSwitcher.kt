@@ -74,7 +74,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     private var mMainKeyboardFrame: View? = null
     private var mKeyboardView: MainKeyboardView? = null
     private var mEmojiPalettesView: EmojiPalettesView? = null
-    private var mEmojiTabStripView: View? = null
+    private var mEmojiTabStripView: LinearLayout? = null
+    private var mEmojiTabStripScrollView: HorizontalScrollView? = null
     private var mClipboardStripView: LinearLayout? = null
     private var mClipboardStripScrollView: HorizontalScrollView? = null
     private var mClipboardEditStripView: LinearLayout? = null
@@ -478,7 +479,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             it.visibility = View.GONE
             it.stopEmojiPalettes()
         }
-        mEmojiTabStripView?.visibility = View.GONE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.GONE
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
         mOcrStripScrollView?.visibility = View.GONE
@@ -549,7 +550,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mClipboardEditStripView?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
         mStylePreviewStripView?.visibility = View.GONE
-        mEmojiTabStripView?.visibility = View.VISIBLE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.VISIBLE
         mClipboardHistoryView?.let {
             it.animate()?.cancel()
             it.alpha = 1f
@@ -595,7 +596,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         (mCurrentInputView as? InputView)?.updateBottomPadding()
         mKeyboardView?.animate()?.cancel()
         mKeyboardView?.visibility = View.GONE
-        mEmojiTabStripView?.visibility = View.GONE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.GONE
         mStylePreviewStripView?.visibility = View.GONE
@@ -653,7 +654,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mKeyboardViewWrapper?.visibility = View.VISIBLE
         (mCurrentInputView as? InputView)?.updateBottomPadding()
         mKeyboardView?.visibility = View.GONE
-        mEmojiTabStripView?.visibility = View.GONE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.GONE
         mCjkCandidateStripView?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.VISIBLE
         mStripContainer?.visibility = View.VISIBLE
@@ -696,7 +697,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             it.isClickable = false
             it.isFocusable = false
         }
-        mEmojiTabStripView?.visibility = View.GONE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.GONE
         mStripContainer?.visibility = View.GONE
         mClipboardStripScrollView?.visibility = View.GONE
@@ -735,7 +736,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             it.isClickable = false
             it.isFocusable = false
         }
-        mEmojiTabStripView?.visibility = View.GONE
+        (mEmojiTabStripScrollView ?: mEmojiTabStripView)?.visibility = View.GONE
         mSuggestionStripView?.visibility = View.GONE
         mClipboardStripScrollView?.visibility = View.GONE
         mClipboardEditStripView?.visibility = View.GONE
@@ -1245,7 +1246,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     val wrapperView: View? get() = mKeyboardViewWrapper
 
-    val emojiTabStrip: View? get() = mEmojiTabStripView
+    val emojiTabStrip: LinearLayout? get() = mEmojiTabStripView
+
+    val emojiTabStripScrollView: HorizontalScrollView? get() = mEmojiTabStripScrollView
 
     val clipboardStrip: LinearLayout? get() = mClipboardStripView
 
@@ -1379,6 +1382,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mHandwritingView?.setHardwareAcceleratedDrawingEnabled(isHardwareAcceleratedDrawingEnabled)
 
         mEmojiTabStripView = inputView.findViewById(R.id.emoji_tab_strip)
+        mEmojiTabStripScrollView = inputView.findViewById(R.id.emoji_tab_strip_scroll_view)
         mClipboardStripView = inputView.findViewById(R.id.clipboard_strip)
         mClipboardStripScrollView = inputView.findViewById(R.id.clipboard_strip_scroll_view)
         mClipboardEditStripView = inputView.findViewById(R.id.clipboard_edit_strip)

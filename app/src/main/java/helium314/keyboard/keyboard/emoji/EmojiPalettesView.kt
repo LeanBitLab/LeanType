@@ -8,6 +8,7 @@
 package helium314.keyboard.keyboard.emoji
 
 import kotlin.math.abs
+import kotlin.math.max
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -360,7 +361,11 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         iconView.tag = categoryId.toLong()
         host.addView(iconView)
-        iconView.layoutParams = LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f)
+        val tabWidth = max(
+            ResourceUtils.getSuggestionsStripHeight(resources),
+            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
+        )
+        iconView.layoutParams = LayoutParams(tabWidth, ViewGroup.LayoutParams.MATCH_PARENT)
         iconView.setOnClickListener(this)
 
         if (categoryId == mEmojiCategory.getCurrentCategoryId()) {
@@ -407,6 +412,9 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (splitToolbar && properties.mCategoryId == EmojiCategory.ID_RECENTS) continue
                 addTab(tabStrip, properties.mCategoryId)
             }
+            tabStrip.findViewWithTag<View>(mEmojiCategory.getCurrentCategoryId().toLong())?.let {
+                scrollToTab(it, smooth = false)
+            }
         }
     }
 
@@ -415,12 +423,15 @@ class EmojiPalettesView @JvmOverloads constructor(
         if (mInSearchMode) return
         mInSearchMode = true
 
+        (mTabStrip?.parent as? HorizontalScrollView)?.scrollTo(0, 0)
         mTabStrip?.removeAllViews()
         val ctx = context
 
+        val containerWidth = (mTabStrip?.parent as? View)?.width?.takeIf { it > 0 }
+            ?: ResourceUtils.getKeyboardWidth(ctx, Settings.getValues())
         val stripContainer = LinearLayout(ctx)
         stripContainer.orientation = HORIZONTAL
-        stripContainer.layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        stripContainer.layoutParams = LayoutParams(containerWidth, ViewGroup.LayoutParams.MATCH_PARENT)
         mTabStrip?.addView(stripContainer)
 
         val inputContainer = LinearLayout(ctx)
@@ -919,6 +930,9 @@ class EmojiPalettesView @JvmOverloads constructor(
             setCurrentCategoryId(EmojiCategory.ID_SMILEYS_EMOTION, true)
         }
         updateColors()
+        mTabStrip?.findViewWithTag<View>(mEmojiCategory.getCurrentCategoryId().toLong())?.let {
+            scrollToTab(it, smooth = false)
+        }
         setupBottomRowKeyboard(editorInfo, mKeyboardActionListener)
         val params = KeyDrawParams()
         params.updateParams(mEmojiLayoutParams.bottomRowKeyHeight, keyVisualAttr)
@@ -1177,8 +1191,23 @@ class EmojiPalettesView @JvmOverloads constructor(
                 if (current is ImageView) {
                     current.setBackgroundResource(R.drawable.toolbar_key_background)
                     Settings.getValues().mColors.setColor(current.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+                    scrollToTab(current, smooth = !initial)
                 }
             }
+        }
+    }
+
+    private fun scrollToTab(tabView: View, smooth: Boolean = true) {
+        val scrollView = mTabStrip?.parent as? HorizontalScrollView ?: return
+        if (scrollView.width <= 0 || tabView.width <= 0) {
+            scrollView.post { scrollToTab(tabView, smooth) }
+            return
+        }
+        val targetX = (tabView.left - (scrollView.width - tabView.width) / 2).coerceAtLeast(0)
+        if (smooth) {
+            scrollView.smoothScrollTo(targetX, 0)
+        } else {
+            scrollView.scrollTo(targetX, 0)
         }
     }
 
@@ -1328,6 +1357,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         val tabStrip = mTabStrip
         if (tabStrip != null) {
             mColors.setBackground(tabStrip, ColorType.STRIP_BACKGROUND)
+            (tabStrip.parent as? View)?.let { mColors.setBackground(it, ColorType.STRIP_BACKGROUND) }
             for (i in 0 until tabStrip.childCount) {
                 val child = tabStrip.getChildAt(i)
                 if (child is ImageView) {
@@ -1367,6 +1397,9 @@ class EmojiPalettesView @JvmOverloads constructor(
         mEmojiCategory.clearKeyboardCache()
         setupCategoryTabs()
         updateColors()
+        mTabStrip?.findViewWithTag<View>(mEmojiCategory.getCurrentCategoryId().toLong())?.let {
+            scrollToTab(it, smooth = false)
+        }
         mDownloadBtn?.let { btn ->
             if (!mIsDownloadingEmojiDict) {
                 btn.text = context.getString(R.string.button_download)
