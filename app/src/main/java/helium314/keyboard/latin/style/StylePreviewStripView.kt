@@ -119,7 +119,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         val isLiveActive = UnicodeStyleEngine.isLiveStyleActive()
 
         // 1. Normal / Plain text chip (always available to revert text or disable live style)
-        val isNormalActive = !isLiveActive && isDefaultWord
+        val isNormalActive = !isLiveActive
         val normalChip = TextView(context).apply {
             text = if (isNormalActive) "✓ ${context.getString(R.string.style_plain)}" else context.getString(R.string.style_plain)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
@@ -130,8 +130,9 @@ class StylePreviewStripView @JvmOverloads constructor(
 
             if (isNormalActive) {
                 val accentBg = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+                val opaqueBg = if (Color.alpha(accentBg) < 255) ColorUtils.compositeColors(accentBg, Color.BLACK) else accentBg
                 val isLightBg = isBrightColor(accentBg) ||
-                    ColorUtils.calculateContrast(Color.DKGRAY, accentBg) > ColorUtils.calculateContrast(Color.WHITE, accentBg)
+                    ColorUtils.calculateContrast(Color.DKGRAY, opaqueBg) > ColorUtils.calculateContrast(Color.WHITE, opaqueBg)
                 val actionIconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
                 setTextColor(actionIconColor)
                 background = createChipDrawable(
@@ -185,8 +186,9 @@ class StylePreviewStripView @JvmOverloads constructor(
                     setTypeface(null, Typeface.BOLD)
                     // High-contrast live indicator: Accent background with contrasting actionKeyIcon text
                     val accentBg = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+                    val opaqueBg = if (Color.alpha(accentBg) < 255) ColorUtils.compositeColors(accentBg, Color.BLACK) else accentBg
                     val isLightBg = isBrightColor(accentBg) ||
-                        ColorUtils.calculateContrast(Color.DKGRAY, accentBg) > ColorUtils.calculateContrast(Color.WHITE, accentBg)
+                        ColorUtils.calculateContrast(Color.DKGRAY, opaqueBg) > ColorUtils.calculateContrast(Color.WHITE, opaqueBg)
                     val actionIconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
                     setTextColor(actionIconColor)
                     background = createChipDrawable(
@@ -208,34 +210,21 @@ class StylePreviewStripView @JvmOverloads constructor(
                     if (isCurrentLive) {
                         // Tapping the active live style turns it OFF
                         toggleLiveStyle(style)
-                        onDismissListener?.invoke()
-                        return@setOnClickListener
-                    }
-
-                    if (isDefaultWord) {
-                        // User clicked a style without text: toggle live style
+                    } else {
+                        // Activate style for all subsequent typing
                         if (style.supportsLiveTyping) {
                             toggleLiveStyle(style)
                         } else {
                             Toast.makeText(context, "${style.name} can only convert typed text", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        val fullTransformed = UnicodeStyleEngine.transformText(plainTargetText, style.id)
-                        if (fullTransformed.isNotEmpty()) {
-                            onApplyListener?.invoke(fullTransformed)
+                        if (!isDefaultWord) {
+                            val fullTransformed = UnicodeStyleEngine.transformText(plainTargetText, style.id)
+                            if (fullTransformed.isNotEmpty()) {
+                                onApplyListener?.invoke(fullTransformed)
+                            }
                         }
                     }
                     onDismissListener?.invoke()
-                }
-
-                setOnLongClickListener {
-                    if (style.supportsLiveTyping) {
-                        toggleLiveStyle(style)
-                        onDismissListener?.invoke()
-                        true
-                    } else {
-                        false
-                    }
                 }
             }
 

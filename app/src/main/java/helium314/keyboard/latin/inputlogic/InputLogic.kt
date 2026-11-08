@@ -321,7 +321,14 @@ class InputLogic(
         }
 
         val suggestedWords = mSuggestedWords
-        val suggestion = suggestionInfo.mWord
+        val rawSuggestion = suggestionInfo.mWord
+        val isLiveStyle = UnicodeStyleEngine.isLiveStyleActive() && UnicodeStyleEngine.isLiveStyleAllowed(getCurrentInputEditorInfo())
+        val suggestion = if (isLiveStyle && !suggestionInfo.isEmoji) {
+            val styleId = UnicodeStyleEngine.activeLiveStyleId
+            if (styleId != null) UnicodeStyleEngine.transformText(rawSuggestion, styleId) else rawSuggestion
+        } else {
+            rawSuggestion
+        }
         // If this is a punctuation picked from the suggestion strip, pass it to onCodeInput
         if (suggestion.length == 1 && suggestedWords.isPunctuationSuggestions) {
             // We still want to log a suggestion click.
@@ -795,7 +802,7 @@ class InputLogic(
             return
         }
 
-        // 1. If selection exists
+        // 1. If explicit selection exists: transform selected text
         if (mConnection.hasSelection()) {
             val selectedText = mConnection.getSelectedText(0)?.toString() ?: ""
             if (selectedText.isNotEmpty()) {
@@ -807,37 +814,7 @@ class InputLogic(
             }
         }
 
-        // 2. If composing word exists
-        if (mWordComposer.isComposingWord()) {
-            val typedWord = mWordComposer.getTypedWord() ?: ""
-            if (typedWord.isNotEmpty()) {
-                switcher.showStyleStrip(typedWord) { transformed ->
-                    mConnection.finishComposingText()
-                    mConnection.deleteSurroundingText(typedWord.length, 0)
-                    mConnection.commitText(transformed, 1)
-                    resetComposingState(true)
-                }
-                return
-            }
-        }
-
-        // 3. If word under cursor exists
-        val wordRange = mConnection.getWordRangeAtCursor(
-            settingsValues.mSpacingAndPunctuations,
-            settingsValues.mCurrentKeyboardScript
-        )
-        if (wordRange != null && wordRange.length() > 0) {
-            val word = wordRange.mWord.toString()
-            val before = wordRange.getNumberOfCharsInWordBeforeCursor()
-            val after = wordRange.getNumberOfCharsInWordAfterCursor()
-            switcher.showStyleStrip(word) { transformed ->
-                mConnection.deleteSurroundingText(before, after)
-                mConnection.commitText(transformed, 1)
-            }
-            return
-        }
-
-        // 4. No active text - open strip to choose or toggle live style
+        // 2. No explicit selection: open strip to choose active font style for all subsequent typing
         switcher.showStyleStrip("") { /* no-op */ }
     }
 
@@ -1016,7 +993,7 @@ class InputLogic(
             KeyCode.TOGGLE_FLOATING_KEYBOARD, KeyCode.HANDWRITING, KeyCode.CLEAR_HANDWRITING, KeyCode.CLIPBOARD_SEARCH,
             KeyCode.TOGGLE_TOUCHPAD_MODE, KeyCode.TOGGLE_TEXT_EDIT_MODE, KeyCode.TOGGLE_SELECTION_MODE, KeyCode.SWITCH_TO_USER_IME,
             KeyCode.CUSTOM1, KeyCode.CUSTOM2, KeyCode.CUSTOM3, KeyCode.CUSTOM4, KeyCode.CUSTOM5,
-            KeyCode.OCR, KeyCode.TOGGLE_INCOGNITO_MODE, KeyCode.TOGGLE_AUTOCORRECT, KeyCode.NOT_SPECIFIED, KeyCode.UNICODE_PANEL -> {
+            KeyCode.OCR, KeyCode.TOGGLE_INCOGNITO_MODE, KeyCode.TOGGLE_AUTOCORRECT, KeyCode.NOT_SPECIFIED, KeyCode.UNICODE_PANEL, KeyCode.RESET_FONT_STYLE -> {
                 // Handled elsewhere
             }
             KeyCode.CAPS_LOCK -> {
@@ -2245,7 +2222,8 @@ class InputLogic(
             return
         }
         val wasAutoCapitalized = mWordComposer.wasAutoCapitalized() && !mWordComposer.isMostlyCaps()
-        val word = stripWordSeparatorsFromEnd(suggestion, settingsValues)
+        val plainSuggestion = UnicodeStyleEngine.toPlainText(suggestion)
+        val word = stripWordSeparatorsFromEnd(plainSuggestion, settingsValues)
         if (settingsValues.mIncognitoModeEnabled) {
             mDictionaryFacilitator.adjustConfidences(word, wasAutoCapitalized)
             return
@@ -2729,9 +2707,16 @@ class InputLogic(
         suggestedWords: SuggestedWords,
         keyboardSwitcher: KeyboardSwitcher
     ) {
-        val batchInputText = if (suggestedWords.isEmpty) null else suggestedWords.getWord(0)
-        if (batchInputText.isNullOrEmpty()) {
+        val rawBatchInputText = if (suggestedWords.isEmpty) null else suggestedWords.getWord(0)
+        if (rawBatchInputText.isNullOrEmpty()) {
             return
+        }
+        val isLiveStyle = UnicodeStyleEngine.isLiveStyleActive() && UnicodeStyleEngine.isLiveStyleAllowed(getCurrentInputEditorInfo())
+        val batchInputText = if (isLiveStyle) {
+            val styleId = UnicodeStyleEngine.activeLiveStyleId
+            if (styleId != null) UnicodeStyleEngine.transformText(rawBatchInputText, styleId) else rawBatchInputText
+        } else {
+            rawBatchInputText
         }
         mConnection.beginBatchEdit()
         try {
@@ -2739,7 +2724,7 @@ class InputLogic(
                 insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues)
                 mSpaceState = SpaceState.NONE
             }
-            enterInlineEmojiSearchIfNeeded(batchInputText.codePointAt(0), settingsValues)
+            enterInlineEmojiSearchIfNeeded(rawBatchInputText.codePointAt(0), settingsValues)
             mWordComposer.setBatchInputWord(batchInputText)
             setComposingTextInternal(batchInputText, 1)
         } finally {
@@ -2824,7 +2809,8 @@ class InputLogic(
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {
                 val textStr = textBefore.toString()
-                val result = TextExpanderUtils.getExpandedWordForTyped(chosenWord, textStr, mLatinIME)
+                val plainWord = UnicodeStyleEngine.toPlainText(chosenWord)
+                val result = TextExpanderUtils.getExpandedWordForTyped(plainWord, textStr, mLatinIME)
                 if (result != null) {
                     if (mJustRevertedExpandedShortcut != null
                         && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)

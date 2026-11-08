@@ -194,4 +194,17 @@ class UnicodeStyleEngineTest {
         }
         assertTrue(UnicodeStyleEngine.isLiveStyleAllowed(normalInfo))
     }
+
+    @Test
+    fun testLiveStyleBatchTransformAndDictionaryIsolation() {
+        UnicodeStyleEngine.activeLiveStyleId = "math_fraktur"
+        val rawBatch = "hello"
+        val styled = UnicodeStyleEngine.transformText(rawBatch, UnicodeStyleEngine.activeLiveStyleId!!)
+        assertEquals("𝔥𝔢𝔩𝔩𝔬", styled)
+
+        // Ensure toPlainText normalizes it back for dictionary learning and text expander
+        val plain = UnicodeStyleEngine.toPlainText(styled)
+        assertEquals("hello", plain)
+        UnicodeStyleEngine.clearActiveLiveStyle()
+    }
 }

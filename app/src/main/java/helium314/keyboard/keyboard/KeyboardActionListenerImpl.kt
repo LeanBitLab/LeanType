@@ -36,6 +36,7 @@ import helium314.keyboard.latin.define.ProductionFlags
 import helium314.keyboard.latin.inputlogic.InputLogic
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.style.UnicodeStyleEngine
 import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.latin.utils.VisualLines
 import kotlin.math.abs
@@ -258,6 +259,12 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 } else {
                     keyboardSwitcher.setUnicodeSymbolsKeyboard()
                 }
+                return
+            }
+            KeyCode.RESET_FONT_STYLE -> {
+                UnicodeStyleEngine.clearActiveLiveStyle()
+                keyboardSwitcher.suggestionStripView?.updateToolbarButtonsActivatedState()
+                android.widget.Toast.makeText(latinIME, latinIME.getString(R.string.style_active_none), android.widget.Toast.LENGTH_SHORT).show()
                 return
             }
             KeyCode.TOGGLE_AUTOCORRECT -> return settings.toggleAutoCorrect()

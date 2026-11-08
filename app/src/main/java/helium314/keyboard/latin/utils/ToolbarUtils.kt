@@ -241,8 +241,9 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
             button.drawable.clearColorFilter()
             button.drawable.colorFilter = null
             DrawableCompat.setTintList(button.drawable, null)
+            val opaqueBg = if (Color.alpha(enabledBgColor) < 255) ColorUtils.compositeColors(enabledBgColor, Color.BLACK) else enabledBgColor
             val isLightBg = isBrightColor(enabledBgColor) ||
-                ColorUtils.calculateContrast(Color.DKGRAY, enabledBgColor) > ColorUtils.calculateContrast(Color.WHITE, enabledBgColor)
+                ColorUtils.calculateContrast(Color.DKGRAY, opaqueBg) > ColorUtils.calculateContrast(Color.WHITE, opaqueBg)
             val iconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
             button.drawable.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(iconColor, BlendModeCompat.SRC_IN)
         }
@@ -336,7 +337,7 @@ fun getCodeForToolbarKeyLongClick(key: ToolbarKey) = Settings.getInstance().getC
     PAGE_UP -> KeyCode.MOVE_START_OF_PAGE
     PAGE_DOWN -> KeyCode.MOVE_END_OF_PAGE
     TRANSLATE -> KeyCode.SHOW_TRANSLATE_LANGUAGES
-    FONT_STYLE -> KeyCode.UNICODE_PANEL
+    FONT_STYLE -> KeyCode.RESET_FONT_STYLE
     else -> KeyCode.UNSPECIFIED
 }
 
