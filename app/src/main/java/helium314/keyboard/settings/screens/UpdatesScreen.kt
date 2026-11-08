@@ -64,14 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• Unicode Font Styles: Added 26+ typographic font styles with interactive preview strip and live typing",
+    "• Unicode Symbol Palette: Added topic-categorized Unicode symbols and scrollable emoji category bar (#776)",
+    "• Foldable Split Keyboard: Fixed unfolded split keyboard detection and decoupled preferences on foldables (#778)",
+    "• Shift & Auto-Caps Sync: Prevented shift state desynchronization during reload and unshift (#598)",
     "• Fast Typing Capitalization: Prevented duplicate caps and auto-caps desync during rapid typing (#598, #743)",
     "• Layout Popup Key Priority: Prioritized layout-defined popup keys over auto-generated symbols (#772)",
     "• Automation Broadcasts: Added broadcast receiver for external subtype, layout, and mode switching (#501)",
     "• Bracket & Quote Auto-Pairing: Added auto-closing brackets and CJK quotes with step-over (#754)",
     "• Plain Text Dictionary Export: Added export option for user dictionaries to plain text format (#431)",
-    "• Smart Correction Suppression: Prevented repeating auto-corrections reverted by backspace (#415)",
-    "• Inline Autofill Priority: Prioritized inline autofill chips on password and account fields (#416)",
-    "• Theme Pressed Colors: Fixed functional key and spacebar pressed feedback in custom themes (#771)"
+    "• Smart Correction Suppression: Prevented repeating auto-corrections reverted by backspace (#415)"
 )
 
 @Composable

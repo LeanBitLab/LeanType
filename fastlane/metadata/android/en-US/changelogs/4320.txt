@@ -1,8 +1,9 @@
-- Fixed duplicate capitalization and auto-caps sync during fast typing (#598, #743).
-- Fixed layout popup keys priority over auto-generated symbols (#772).
-- Fixed functional key and spacebar pressed color in custom themes (#771).
+- Added Unicode Font Style engine with 26+ typographic styles and live typing strip.
+- Added topic-categorized Unicode symbol palette and horizontally scrollable emoji bar (#776).
+- Fixed unfolded split keyboard detection and decoupled preferences on foldables (#778).
+- Prevented shift and auto-caps state desynchronization during reload and unshift (#598).
 - Added automation broadcast receiver for layout, subtype, and mode switching (#501).
 - Added bracket, symbol, and CJK quote auto-pairing with step-over (#754).
 - Added plain text export for user dictionaries (#431).
 - Suppressed repeating auto-correction reverted by backspace (#415).
-- Prioritized inline autofill chips on password fields (#416).
+- Prioritized layout popup keys over auto-generated symbols (#772).
