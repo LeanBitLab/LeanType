@@ -57,7 +57,9 @@ object ScreenProfileProvider {
         val heightPx = context.resources.displayMetrics.heightPixels
         val availableHeightDp = if (config.screenHeightDp > 0) config.screenHeightDp else if (density > 0f) (heightPx / density).roundToInt() else 0
 
-        val isBothDimensionsLarge = availableWidthDp >= 600 && availableHeightDp >= 600
+        val isFoldable = isFoldableDevice(context)
+        val isBothDimensionsLarge = (availableWidthDp >= 500 && availableHeightDp >= 500)
+            || (isFoldable && availableWidthDp >= 500 && availableHeightDp >= 450)
         val isSmallestWidthLarge = config.smallestScreenWidthDp >= 600
 
         // For phones (including foldables when folded in landscape or portrait):

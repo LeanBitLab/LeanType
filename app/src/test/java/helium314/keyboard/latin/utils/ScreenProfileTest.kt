@@ -60,6 +60,32 @@ class ScreenProfileTest {
     }
 
     @Test
+    fun testScreenProfileFoldableUnfoldedPortraitRealisticIsLarge() {
+        // Realistic book-style foldable unfolded in portrait (e.g. Galaxy Z Fold: width 588dp, height 706dp, smallestWidth 360dp)
+        ScreenProfileProvider.isFoldableDeviceOverride = true
+        val config = Configuration().apply {
+            screenWidthDp = 588
+            screenHeightDp = 706
+            smallestScreenWidthDp = 360
+        }
+        val profile = ScreenProfileProvider.getScreenProfile(context, config)
+        assertEquals(ScreenProfile.LARGE, profile)
+    }
+
+    @Test
+    fun testScreenProfileFoldableUnfoldedWithoutHingeSensorIsLarge() {
+        // Even when hinge sensor is unavailable, realistic unfolded dimensions (both >= 500dp) yield LARGE profile
+        ScreenProfileProvider.isFoldableDeviceOverride = false
+        val config = Configuration().apply {
+            screenWidthDp = 588
+            screenHeightDp = 706
+            smallestScreenWidthDp = 360
+        }
+        val profile = ScreenProfileProvider.getScreenProfile(context, config)
+        assertEquals(ScreenProfile.LARGE, profile)
+    }
+
+    @Test
     fun testScreenProfileFoldableFoldedLandscapeIsCompact() {
         // Foldable device when folded in landscape (width >= 600, but height < 600 and smallestScreenWidthDp < 600) gets COMPACT profile
         ScreenProfileProvider.isFoldableDeviceOverride = true
@@ -109,6 +135,7 @@ class ScreenProfileTest {
     @Test
     fun testUnfoldedSplitKeyboardPreference() {
         val prefs = context.prefs()
+        // Case 1: Compact split disabled, unfolded explicitly enabled
         prefs.edit().putBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, false).apply()
         prefs.edit().putBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, true).apply()
 
@@ -117,6 +144,23 @@ class ScreenProfileTest {
 
         val unfoldedSplit = Settings.readSplitKeyboardEnabled(prefs, isLandscape = false, profile = ScreenProfile.LARGE)
         assertEquals(true, unfoldedSplit)
+
+        // Case 2: Compact split disabled, unfolded not explicitly set (must default to true independently)
+        prefs.edit().clear().putBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, false).apply()
+        val compactSplitDefault = Settings.readSplitKeyboardEnabled(prefs, isLandscape = false, profile = ScreenProfile.COMPACT)
+        val unfoldedSplitDefault = Settings.readSplitKeyboardEnabled(prefs, isLandscape = false, profile = ScreenProfile.LARGE)
+        assertEquals(false, compactSplitDefault)
+        assertEquals(true, unfoldedSplitDefault)
+
+        // Case 3: Compact split enabled, unfolded explicitly disabled
+        prefs.edit().clear()
+            .putBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, true)
+            .putBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, false)
+            .apply()
+        val compactSplitEnabled = Settings.readSplitKeyboardEnabled(prefs, isLandscape = false, profile = ScreenProfile.COMPACT)
+        val unfoldedSplitDisabled = Settings.readSplitKeyboardEnabled(prefs, isLandscape = false, profile = ScreenProfile.LARGE)
+        assertEquals(true, compactSplitEnabled)
+        assertEquals(false, unfoldedSplitDisabled)
     }
 
     @Test

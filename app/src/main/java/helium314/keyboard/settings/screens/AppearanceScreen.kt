@@ -46,6 +46,8 @@ import helium314.keyboard.settings.preferences.TextInputPreference
 import helium314.keyboard.settings.previewDark
 import androidx.core.content.edit
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.settings.getProfileAwarePrefKey
+import helium314.keyboard.latin.utils.ScreenProfile
 import helium314.keyboard.latin.utils.WallpaperFetcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.Locale
@@ -367,7 +369,13 @@ fun createAppearanceSettings(context: Context) = listOf(
         }
     },
     Setting(context, Settings.PREF_ENABLE_SPLIT_KEYBOARD, R.string.enable_split_keyboard) {
-        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD) { KeyboardSwitcher.getInstance().reloadKeyboard() }
+        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD) {
+            val prefs = context.prefs()
+            val enabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, Defaults.PREF_ENABLE_SPLIT_KEYBOARD)
+            val profilePref = getProfileAwarePrefKey(Settings.PREF_ENABLE_SPLIT_KEYBOARD, ScreenProfile.COMPACT)
+            prefs.edit().putBoolean(profilePref, enabled).apply()
+            KeyboardSwitcher.getInstance().reloadKeyboard()
+        }
     },
     Setting(context, Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE,
         R.string.fine_tune_foldable_title, R.string.fine_tune_foldable_summary
@@ -385,7 +393,13 @@ fun createAppearanceSettings(context: Context) = listOf(
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
     Setting(context, Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, R.string.unfolded_split_keyboard) {
-        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED) { KeyboardSwitcher.getInstance().reloadKeyboard() }
+        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED) {
+            val prefs = context.prefs()
+            val enabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)
+            val profilePref = getProfileAwarePrefKey(Settings.PREF_ENABLE_SPLIT_KEYBOARD, ScreenProfile.LARGE)
+            prefs.edit().putBoolean(profilePref, enabled).apply()
+            KeyboardSwitcher.getInstance().reloadKeyboard()
+        }
     },
     Setting(context, Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX, R.string.unfolded_split_spacer_scale) { setting ->
         MultiSliderPreference(

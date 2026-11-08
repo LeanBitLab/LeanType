@@ -187,7 +187,13 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         val prefs = mPrefs ?: return
         val basePref = if (isLandscape) PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else PREF_ENABLE_SPLIT_KEYBOARD
         val profilePref = getProfileAwarePrefKey(basePref, settingsValues.mScreenProfile)
-        prefs.edit().putBoolean(profilePref, enabled).apply()
+        val editor = prefs.edit()
+            .putBoolean(profilePref, enabled)
+            .putBoolean(basePref, enabled)
+        if (settingsValues.mScreenProfile.isLarge() && !isLandscape) {
+            editor.putBoolean(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, enabled)
+        }
+        editor.apply()
     }
 
     fun readShowToolbarOnly(): Boolean {
@@ -751,11 +757,16 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             val defaultValue = if (isLandscape) Defaults.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else Defaults.PREF_ENABLE_SPLIT_KEYBOARD
             if (profile.isLarge()) {
                 val profileKey = getProfileAwarePrefKey(basePref, profile)
-                if (prefs.contains(profileKey)) return prefs.getBoolean(profileKey, defaultValue)
-                if (prefs.contains(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)) return prefs.getBoolean(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, defaultValue)
+                if (prefs.contains(profileKey)) {
+                    return prefs.getBoolean(profileKey, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)
+                }
+                if (prefs.contains(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)) {
+                    return prefs.getBoolean(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)
+                }
                 val portraitPref = getProfileAwarePrefKey(PREF_ENABLE_SPLIT_KEYBOARD, profile)
-                if (prefs.contains(portraitPref)) return prefs.getBoolean(portraitPref, defaultValue)
-                if (prefs.contains(PREF_ENABLE_SPLIT_KEYBOARD)) return prefs.getBoolean(PREF_ENABLE_SPLIT_KEYBOARD, defaultValue)
+                if (prefs.contains(portraitPref)) {
+                    return prefs.getBoolean(portraitPref, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)
+                }
                 return Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED
             }
             return getProfileAwareBoolean(prefs, basePref, profile, defaultValue)
