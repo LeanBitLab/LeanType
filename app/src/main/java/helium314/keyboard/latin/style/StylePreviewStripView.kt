@@ -29,6 +29,7 @@ import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ResourceUtils
 import helium314.keyboard.latin.utils.ToolbarKey
 import helium314.keyboard.latin.utils.dpToPx
+import helium314.keyboard.latin.utils.isBrightColor
 
 /**
  * Interactive strip displaying preview candidate chips for Unicode styles.
@@ -159,7 +160,9 @@ class StylePreviewStripView @JvmOverloads constructor(
                     setTypeface(null, Typeface.BOLD)
                     // High-contrast live indicator: Accent background with contrasting actionKeyIcon text
                     val accentBg = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
-                    val actionIconColor = colors.get(ColorType.ACTION_KEY_ICON)
+                    val isLightBg = isBrightColor(accentBg) ||
+                        ColorUtils.calculateContrast(Color.DKGRAY, accentBg) > ColorUtils.calculateContrast(Color.WHITE, accentBg)
+                    val actionIconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
                     setTextColor(actionIconColor)
                     background = createChipDrawable(
                         bgColor = accentBg,

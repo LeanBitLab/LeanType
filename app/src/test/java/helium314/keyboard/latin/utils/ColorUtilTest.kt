@@ -53,4 +53,19 @@ class ColorUtilTest {
         // Pure blue: 255*255 * .068 = 4421 (< 44100) -> not bright
         assertFalse("Pure blue should not be bright", isBrightColor(Color.BLUE))
     }
+
+    @Test
+    fun testLightAccentContrastPreference() {
+        // LeanType light theme accent (#9AA0A6 - Google Grey 500)
+        val lightGreyAccent = Color.parseColor("#9AA0A6")
+        val dkgrayContrast = androidx.core.graphics.ColorUtils.calculateContrast(Color.DKGRAY, lightGreyAccent)
+        val whiteContrast = androidx.core.graphics.ColorUtils.calculateContrast(Color.WHITE, lightGreyAccent)
+        assertTrue("Dark gray should have better contrast on #9AA0A6 than white", dkgrayContrast > whiteContrast)
+
+        // Dark theme / dark accent (#1A73E8 - Google Blue)
+        val darkBlueAccent = Color.parseColor("#1A73E8")
+        val dkgrayContrastDark = androidx.core.graphics.ColorUtils.calculateContrast(Color.DKGRAY, darkBlueAccent)
+        val whiteContrastDark = androidx.core.graphics.ColorUtils.calculateContrast(Color.WHITE, darkBlueAccent)
+        assertTrue("White should have better contrast on #1A73E8 than dark gray", whiteContrastDark > dkgrayContrastDark)
+    }
 }

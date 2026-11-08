@@ -13,6 +13,9 @@ import android.view.MotionEvent
 import android.os.Handler
 import android.os.Looper
 import android.annotation.SuppressLint
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.forEach
 import androidx.core.view.ViewCompat
 import helium314.keyboard.keyboard.internal.KeyboardIconsSet
@@ -234,7 +237,10 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         if (button.drawable != null) {
             button.clearColorFilter()
             DrawableCompat.setTintList(button.drawable, null)
-            colors.setColor(button, ColorType.ACTION_KEY_ICON)
+            val isLightBg = isBrightColor(enabledBgColor) ||
+                ColorUtils.calculateContrast(Color.DKGRAY, enabledBgColor) > ColorUtils.calculateContrast(Color.WHITE, enabledBgColor)
+            val iconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
+            button.drawable.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(iconColor, BlendModeCompat.SRC_IN)
         }
     } else {
         button.background?.let {

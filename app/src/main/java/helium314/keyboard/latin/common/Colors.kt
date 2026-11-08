@@ -316,9 +316,7 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
         actionKeyIconColorFilter = when {
             themeStyle == STYLE_HOLO -> keyTextFilter
             // the white icon may not have enough contrast, and can't be adjusted by the user
-            // Use 0.65 as threshold (white(1.0) on light accent > 0.65 is bad)
-            // Or easier: if accent is bright, use dark icon
-            androidx.core.graphics.ColorUtils.calculateLuminance(accent) > 0.5 -> colorFilter(Color.DKGRAY)
+            isLightAccent(accent) -> colorFilter(Color.DKGRAY)
             else -> colorFilter(Color.WHITE)
         }
     }
@@ -344,7 +342,7 @@ class DynamicColors(context: Context, override val themeStyle: String, override 
         NAVIGATION_BAR -> navBar
         MORE_SUGGESTIONS_HINT, SUGGESTED_WORD, SUGGESTION_TYPED_WORD, SUGGESTION_VALID_WORD -> adjustedKeyText
         TOOL_BAR_EXPAND_KEY -> Color.WHITE
-        ACTION_KEY_ICON -> if (isBrightColor(accent)) Color.DKGRAY else Color.WHITE
+        ACTION_KEY_ICON -> if (isLightAccent(accent)) Color.DKGRAY else Color.WHITE
         EDIT_MODE_DELETE_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.4f)
         EDIT_MODE_FUNC_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.2f)
         EDIT_MODE_ALPHA_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.6f)
@@ -551,7 +549,7 @@ class DefaultColors (
         actionKeyIconColorFilter = when {
             themeStyle == STYLE_HOLO -> keyTextFilter
             // the white icon may not have enough contrast, and can't be adjusted by the user
-            isBrightColor(accent) -> colorFilter(Color.DKGRAY)
+            isLightAccent(accent) -> colorFilter(Color.DKGRAY)
             else -> colorFilter(Color.WHITE)
         }
     }
@@ -577,7 +575,7 @@ class DefaultColors (
         SUGGESTION_AUTO_CORRECT, EMOJI_CATEGORY, TOOL_BAR_EXPAND_KEY, ONE_HANDED_MODE_BUTTON -> suggestionText
         TOOL_BAR_KEY -> toolbarKeyOverride ?: suggestionText
         MORE_SUGGESTIONS_HINT, SUGGESTED_WORD, SUGGESTION_TYPED_WORD, SUGGESTION_VALID_WORD -> adjustedSuggestionText
-        ACTION_KEY_ICON -> if (isBrightColor(accent)) Color.DKGRAY else Color.WHITE
+        ACTION_KEY_ICON -> if (isLightAccent(accent)) Color.DKGRAY else Color.WHITE
         EDIT_MODE_DELETE_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.4f)
         EDIT_MODE_FUNC_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.2f)
         EDIT_MODE_ALPHA_BACKGROUND -> androidx.core.graphics.ColorUtils.blendARGB(accent, functionalKey, 0.6f)
@@ -677,7 +675,13 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
         )
     }
 
-    override fun get(color: ColorType): Int = colorMap[color] ?: color.default()
+    override fun get(color: ColorType): Int {
+        if (color == ColorType.ACTION_KEY_ICON && !colorMap.containsKey(ColorType.ACTION_KEY_ICON)) {
+            val accent = get(ColorType.ACTION_KEY_BACKGROUND)
+            return if (isLightAccent(accent)) Color.DKGRAY else Color.WHITE
+        }
+        return colorMap[color] ?: color.default()
+    }
 
     override fun setColor(drawable: Drawable?, color: ColorType) {
         if (drawable == null) return
@@ -747,7 +751,7 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
         val c = get(color)
         if (color == ColorType.ACTION_KEY_ICON && !colorMap.containsKey(ColorType.ACTION_KEY_ICON)) {
             val accent = get(ColorType.ACTION_KEY_BACKGROUND)
-            if (isBrightColor(accent)) colorFilter(Color.DKGRAY) else colorFilter(Color.WHITE)
+            if (isLightAccent(accent)) colorFilter(Color.DKGRAY) else colorFilter(Color.WHITE)
         } else {
             colorFilter(c)
         }
@@ -766,6 +770,9 @@ class AllColors(private val colorMap: EnumMap<ColorType, Int>, override val them
         return brightenOrDarken(get(color), true)
     }
 }
+
+private fun isLightAccent(accent: Int): Boolean =
+    isBrightColor(accent) || ColorUtils.calculateContrast(Color.DKGRAY, accent) > ColorUtils.calculateContrast(Color.WHITE, accent)
 
 private fun colorFilter(color: Int, mode: BlendModeCompat = BlendModeCompat.MODULATE): ColorFilter {
     // null is only returned for unsupported blend modes, which are not used here
