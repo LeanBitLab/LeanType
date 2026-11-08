@@ -1790,4 +1790,5 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="style_live_typing">Živé stylové psaní</string>
     <string name="style_live_typing_summary">Pište přímo ve vybraném stylu (pouze mapované styly 1:1)</string>
     <string name="style_active_none">Žádné (prostý text)</string>
+    <string name="style_plain">Normální</string>
 </resources>

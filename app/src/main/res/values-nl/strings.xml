@@ -1832,4 +1832,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="style_live_typing">Live stijlvol typen</string>
     <string name="style_live_typing_summary">Typ rechtstreeks de geselecteerde stijl (alleen 1:1 toegewezen stijlen)</string>
     <string name="style_active_none">Geen (platte tekst)</string>
+    <string name="style_plain">Normaal</string>
 </resources>

@@ -1848,4 +1848,5 @@
     <string name="style_live_typing">عيش الكتابة الأنيقة</string>
     <string name="style_live_typing_summary">الكتابة مباشرة بالنمط المحدد (الأنماط المعينة 1:1 فقط)</string>
     <string name="style_active_none">لا شيء (نص عادي)</string>
+    <string name="style_plain">طبيعي</string>
 </resources>

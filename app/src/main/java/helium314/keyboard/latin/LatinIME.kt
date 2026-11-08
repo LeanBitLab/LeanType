@@ -48,6 +48,7 @@ import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.compat.BrowserDetector
 import helium314.keyboard.compat.EditorInfoCompatUtils
+import helium314.keyboard.latin.style.UnicodeStyleEngine
 import helium314.keyboard.compat.ImeCompat.shouldSwitchToOtherInputMethods
 import helium314.keyboard.compat.ImeCompat.switchInputMethod
 import helium314.keyboard.compat.ImeCompat.switchInputMethodAndSubtypeCompat
@@ -844,6 +845,10 @@ class LatinIME : InputMethodService(),
         val inputTypeChanged = !currentSettingsValues.isSameInputType(editorInfo)
         val packageChanged = editorInfo.packageName != lastInputPackageName
         lastInputPackageName = editorInfo.packageName
+        if (packageChanged && UnicodeStyleEngine.isLiveStyleActive()) {
+            UnicodeStyleEngine.clearActiveLiveStyle()
+            switcher.suggestionStripView?.updateToolbarButtonsActivatedState()
+        }
         val isDifferentTextField = !restarting || inputTypeChanged || packageChanged
 
         val currentEditorKey = EditorKey(

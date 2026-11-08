@@ -1825,4 +1825,5 @@
     <string name="style_live_typing">Живейте стилно писане</string>
     <string name="style_live_typing_summary">Въведете директно в избрания стил (само картографирани стилове 1:1)</string>
     <string name="style_active_none">Няма (обикновен текст)</string>
+    <string name="style_plain">нормално</string>
 </resources>

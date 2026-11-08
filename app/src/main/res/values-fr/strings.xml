@@ -1846,4 +1846,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="style_live_typing">Dactylographie élégante en direct</string>
     <string name="style_live_typing_summary">Tapez directement le style sélectionné (styles mappés 1:1 uniquement)</string>
     <string name="style_active_none">Aucun (texte brut)</string>
+    <string name="style_plain">Normale</string>
 </resources>

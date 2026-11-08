@@ -1788,4 +1788,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="style_live_typing">Élő stílusos gépelés</string>
     <string name="style_live_typing_summary">Gépeljen közvetlenül a kiválasztott stílusban (csak 1:1 leképezett stílusok esetén)</string>
     <string name="style_active_none">Nincs (egyszerű szöveg)</string>
+    <string name="style_plain">Normál</string>
 </resources>

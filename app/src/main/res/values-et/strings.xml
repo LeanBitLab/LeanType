@@ -1825,4 +1825,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="style_live_typing">Stiilne tippimine</string>
     <string name="style_live_typing_summary">Sisestage otse valitud stiilis (ainult 1:1 vastendatud stiilid)</string>
     <string name="style_active_none">Puudub (lihttekst)</string>
+    <string name="style_plain">Tavaline</string>
 </resources>

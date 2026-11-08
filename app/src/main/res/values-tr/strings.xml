@@ -1819,4 +1819,5 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="style_live_typing">Canlı şık yazma</string>
     <string name="style_live_typing_summary">Seçilen stile doğrudan yazın (yalnızca 1:1 eşlenmiş stiller)</string>
     <string name="style_active_none">Yok (Düz metin)</string>
+    <string name="style_plain">Normal</string>
 </resources>

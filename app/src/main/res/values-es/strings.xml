@@ -1787,4 +1787,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="style_live_typing">Escritura con estilo en vivo</string>
     <string name="style_live_typing_summary">Escriba directamente el estilo seleccionado (solo estilos asignados 1:1)</string>
     <string name="style_active_none">Ninguno (texto sin formato)</string>
+    <string name="style_plain">Normal</string>
 </resources>

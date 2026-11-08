@@ -2527,6 +2527,7 @@ New dictionary:
     <string name="style_hub_summary">Fancy Unicode text styles and symbol palette</string>
     <string name="style_accessibility_warning">Decorative Unicode mathematical symbols may not be pronounced correctly by screen readers (TalkBack). Please use with consideration for accessibility.</string>
     <string name="style_preview_hint">Type text to preview styles</string>
+    <string name="style_plain">Normal</string>
     <string name="style_revert_plain">Revert to plain text</string>
     <string name="style_active_indicator">Active style: %s</string>
     <string name="style_live_typing">Live stylish typing</string>

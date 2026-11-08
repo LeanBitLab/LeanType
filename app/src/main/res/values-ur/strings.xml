@@ -1882,4 +1882,5 @@
     <string name="style_live_typing">لائیو اسٹائلش ٹائپنگ</string>
     <string name="style_live_typing_summary">براہ راست منتخب انداز میں ٹائپ کریں (صرف 1:1 میپ شدہ طرزیں)</string>
     <string name="style_active_none">کوئی نہیں (سادہ متن)</string>
+    <string name="style_plain">نارمل</string>
 </resources>

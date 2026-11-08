@@ -1796,4 +1796,5 @@
     <string name="style_live_typing">הקלדה מסוגננת חיה</string>
     <string name="style_live_typing_summary">הקלד ישירות בסגנון שנבחר (סגנונות ממופים 1:1 בלבד)</string>
     <string name="style_active_none">אין (טקסט רגיל)</string>
+    <string name="style_plain">נוֹרמָלִי</string>
 </resources>

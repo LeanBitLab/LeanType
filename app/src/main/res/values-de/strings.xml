@@ -1840,4 +1840,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="style_live_typing">Lebe stilvolles Tippen</string>
     <string name="style_live_typing_summary">Geben Sie den ausgewählten Stil direkt ein (nur 1:1 zugeordnete Stile)</string>
     <string name="style_active_none">Keine (Klartext)</string>
+    <string name="style_plain">Normal</string>
 </resources>

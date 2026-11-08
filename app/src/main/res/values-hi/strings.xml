@@ -1817,4 +1817,5 @@
     <string name="style_live_typing">लाइव स्टाइलिश टाइपिंग</string>
     <string name="style_live_typing_summary">सीधे चयनित शैली में टाइप करें (केवल 1:1 मैप की गई शैलियाँ)</string>
     <string name="style_active_none">कोई नहीं (सादा पाठ)</string>
+    <string name="style_plain">सामान्य</string>
 </resources>

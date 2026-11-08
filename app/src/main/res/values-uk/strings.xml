@@ -1790,4 +1790,5 @@
     <string name="style_live_typing">Живий стильний набір</string>
     <string name="style_live_typing_summary">Введіть безпосередньо у вибраному стилі (тільки для стилів із відображенням 1:1)</string>
     <string name="style_active_none">Немає (звичайний текст)</string>
+    <string name="style_plain">нормальний</string>
 </resources>

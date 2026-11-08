@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.style
 
+import android.text.InputType
+import android.view.inputmethod.EditorInfo
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -137,5 +139,59 @@ class UnicodeStyleEngineTest {
             assertTrue(style.name.isNotBlank())
             assertTrue(style.samplePreview.isNotBlank())
         }
+    }
+
+    @Test
+    fun testTransformAlreadyStyledText() {
+        // Direct conversion of already-styled text into another style
+        val fraktur = UnicodeStyleEngine.transformText("Hello", "math_fraktur")
+        assertEquals("ℌ𝔢𝔩𝔩𝔬", fraktur)
+
+        val scriptFromFraktur = UnicodeStyleEngine.transformText(fraktur, "math_script")
+        assertEquals("ℋℯ𝓁𝓁ℴ", scriptFromFraktur)
+
+        val boldFromScript = UnicodeStyleEngine.transformText(scriptFromFraktur, "math_bold")
+        assertEquals("𝐇𝐞𝐥𝐥𝐨", boldFromScript)
+
+        val plainFromBold = UnicodeStyleEngine.toPlainText(boldFromScript)
+        assertEquals("Hello", plainFromBold)
+    }
+
+    @Test
+    fun testIsStyledCharacter() {
+        assertTrue(UnicodeStyleEngine.isStyledCharacter(0x1D505)) // 𝔅 Fraktur B
+        assertTrue(UnicodeStyleEngine.isStyledCharacter(0x1D524)) // 𝔤 Fraktur g
+        assertTrue(UnicodeStyleEngine.isStyledCharacter(0x210C))  // ℌ Fraktur H (Letterlike BMP)
+        assertTrue(UnicodeStyleEngine.isStyledCharacter(0x0336))  // Combining Strikethrough
+
+        assertFalse(UnicodeStyleEngine.isStyledCharacter('A'.code))
+        assertFalse(UnicodeStyleEngine.isStyledCharacter('z'.code))
+        assertFalse(UnicodeStyleEngine.isStyledCharacter('5'.code))
+        assertFalse(UnicodeStyleEngine.isStyledCharacter(' '.code))
+    }
+
+    @Test
+    fun testIsLiveStyleAllowed() {
+        assertFalse(UnicodeStyleEngine.isLiveStyleAllowed(null))
+
+        val passwordInfo = EditorInfo().apply {
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        assertFalse(UnicodeStyleEngine.isLiveStyleAllowed(passwordInfo))
+
+        val uriInfo = EditorInfo().apply {
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_URI
+        }
+        assertFalse(UnicodeStyleEngine.isLiveStyleAllowed(uriInfo))
+
+        val emailInfo = EditorInfo().apply {
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+        }
+        assertFalse(UnicodeStyleEngine.isLiveStyleAllowed(emailInfo))
+
+        val normalInfo = EditorInfo().apply {
+            inputType = InputType.TYPE_CLASS_TEXT
+        }
+        assertTrue(UnicodeStyleEngine.isLiveStyleAllowed(normalInfo))
     }
 }

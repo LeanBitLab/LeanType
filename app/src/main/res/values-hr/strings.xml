@@ -1788,4 +1788,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="style_live_typing">Uživo stilizirano tipkanje</string>
     <string name="style_live_typing_summary">Upišite izravno u odabranom stilu (samo mapirani stilovi 1:1)</string>
     <string name="style_active_none">Ništa (običan tekst)</string>
+    <string name="style_plain">Normalan</string>
 </resources>

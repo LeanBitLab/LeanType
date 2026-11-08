@@ -1111,7 +1111,7 @@ class InputLogic(
         mSpaceState = SpaceState.NONE
         val sv = inputTransaction.settingsValues
 
-        if (UnicodeStyleEngine.isLiveStyleActive() && codePoint in 0x21..0x7E) {
+        if (UnicodeStyleEngine.isLiveStyleActive() && codePoint in 0x21..0x7E && UnicodeStyleEngine.isLiveStyleAllowed(getCurrentInputEditorInfo())) {
             if (mWordComposer.isComposingWord()) {
                 commitTyped(sv, LastComposedWord.NOT_A_SEPARATOR)
             }
@@ -1909,8 +1909,11 @@ class InputLogic(
                             }
                         }
                     }
-                    val isEmoji = codePointBeforeCursor > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursor)
-                    val lengthToDelete = if (isEmoji) {
+                    val isComplexChar = codePointBeforeCursor > 0xFE00
+                        || StringUtils.mightBeEmoji(codePointBeforeCursor)
+                        || Character.isSupplementaryCodePoint(codePointBeforeCursor)
+                        || UnicodeStyleEngine.isStyledCharacter(codePointBeforeCursor)
+                    val lengthToDelete = if (isComplexChar) {
                         mConnection.charCountToDeleteBeforeCursor
                     } else {
                         1
@@ -1927,8 +1930,11 @@ class InputLogic(
                             repeat(extraDeletes) {
                                 val codePointBeforeCursorToDeleteAgain = mConnection.codePointBeforeCursor
                                 if (codePointBeforeCursorToDeleteAgain == Constants.NOT_A_CODE) return@repeat
-                                val isEmojiAgain = codePointBeforeCursorToDeleteAgain > 0xFE00 || StringUtils.mightBeEmoji(codePointBeforeCursorToDeleteAgain)
-                                val lengthToDeleteAgain = if (isEmojiAgain) {
+                                val isComplexCharAgain = codePointBeforeCursorToDeleteAgain > 0xFE00
+                                    || StringUtils.mightBeEmoji(codePointBeforeCursorToDeleteAgain)
+                                    || Character.isSupplementaryCodePoint(codePointBeforeCursorToDeleteAgain)
+                                    || UnicodeStyleEngine.isStyledCharacter(codePointBeforeCursorToDeleteAgain)
+                                val lengthToDeleteAgain = if (isComplexCharAgain) {
                                     mConnection.charCountToDeleteBeforeCursor
                                 } else {
                                     1

@@ -13,6 +13,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -42,6 +43,7 @@ class StylePreviewStripView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val closeButton: ImageButton
+    private val scrollView: HorizontalScrollView
     private val chipsContainer: LinearLayout
     private var onApplyListener: ((String) -> Unit)? = null
     private var onDismissListener: (() -> Unit)? = null
@@ -51,6 +53,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.style_preview_strip_view, this, true)
 
         closeButton = findViewById(R.id.style_strip_close)
+        scrollView = findViewById(R.id.style_strip_scroll)
         chipsContainer = findViewById(R.id.style_strip_chips_container)
 
         closeButton.setOnClickListener {
@@ -101,6 +104,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         this.onApplyListener = onApply
         this.onDismissListener = onDismiss
 
+        scrollView.scrollTo(0, 0)
         chipsContainer.removeAllViews()
         val density = resources.displayMetrics.density
         val chipHeight = (30 * density).toInt()
@@ -110,18 +114,32 @@ class StylePreviewStripView @JvmOverloads constructor(
         val colors = Settings.getValues().mColors
 
         val isDefaultWord = targetText.isBlank()
-        val previewWord = if (isDefaultWord) "Style" else targetText.take(18)
+        val plainTargetText = UnicodeStyleEngine.toPlainText(targetText)
+        val previewWord = if (isDefaultWord) "Style" else plainTargetText.take(18)
+        val isLiveActive = UnicodeStyleEngine.isLiveStyleActive()
 
-        // 1. Revert to plain text chip (if target text is not blank)
-        if (!isDefaultWord) {
-            val plainText = UnicodeStyleEngine.toPlainText(targetText)
-            val revertChip = TextView(context).apply {
-                text = context.getString(R.string.style_revert_plain)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-                setTypeface(null, Typeface.BOLD)
-                gravity = Gravity.CENTER
-                includeFontPadding = false
-                setPadding(padH, 0, padH, 0)
+        // 1. Normal / Plain text chip (always available to revert text or disable live style)
+        val isNormalActive = !isLiveActive && isDefaultWord
+        val normalChip = TextView(context).apply {
+            text = if (isNormalActive) "✓ ${context.getString(R.string.style_plain)}" else context.getString(R.string.style_plain)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+            setTypeface(null, if (isNormalActive) Typeface.BOLD else Typeface.NORMAL)
+            gravity = Gravity.CENTER
+            includeFontPadding = false
+            setPadding(padH, 0, padH, 0)
+
+            if (isNormalActive) {
+                val accentBg = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
+                val isLightBg = isBrightColor(accentBg) ||
+                    ColorUtils.calculateContrast(Color.DKGRAY, accentBg) > ColorUtils.calculateContrast(Color.WHITE, accentBg)
+                val actionIconColor = if (isLightBg) Color.DKGRAY else colors.get(ColorType.ACTION_KEY_ICON)
+                setTextColor(actionIconColor)
+                background = createChipDrawable(
+                    bgColor = accentBg,
+                    cornerRadiusPx = cornerRadius,
+                    rippleColor = actionIconColor
+                )
+            } else {
                 setTextColor(colors.get(ColorType.KEY_TEXT))
                 background = createChipDrawable(
                     bgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND),
@@ -130,18 +148,26 @@ class StylePreviewStripView @JvmOverloads constructor(
                     strokeColor = ColorUtils.setAlphaComponent(colors.get(ColorType.KEY_TEXT), 70),
                     strokeWidthPx = (1 * density).toInt().coerceAtLeast(1)
                 )
-                setOnClickListener {
-                    onApplyListener?.invoke(plainText)
-                    onDismissListener?.invoke()
+            }
+
+            setOnClickListener {
+                if (UnicodeStyleEngine.isLiveStyleActive()) {
+                    UnicodeStyleEngine.clearActiveLiveStyle()
+                    KeyboardSwitcher.getInstance().suggestionStripView?.updateToolbarButtonsActivatedState()
+                    Toast.makeText(context, context.getString(R.string.style_active_none), Toast.LENGTH_SHORT).show()
                 }
+                if (!isDefaultWord) {
+                    onApplyListener?.invoke(plainTargetText)
+                }
+                onDismissListener?.invoke()
             }
-            val lp = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, chipHeight).apply {
-                marginStart = marginH
-                marginEnd = marginH
-                gravity = Gravity.CENTER_VERTICAL
-            }
-            chipsContainer.addView(revertChip, lp)
         }
+        val lpNormal = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, chipHeight).apply {
+            marginStart = marginH
+            marginEnd = marginH
+            gravity = Gravity.CENTER_VERTICAL
+        }
+        chipsContainer.addView(normalChip, lpNormal)
 
         // 2. Style preview chips
         val allStyles = UnicodeStyleEngine.getAllStyles()
@@ -180,19 +206,25 @@ class StylePreviewStripView @JvmOverloads constructor(
                 }
 
                 setOnClickListener {
-                    val fullTransformed = if (isDefaultWord) {
+                    if (isCurrentLive) {
+                        // Tapping the active live style turns it OFF
+                        toggleLiveStyle(style)
+                        onDismissListener?.invoke()
+                        return@setOnClickListener
+                    }
+
+                    if (isDefaultWord) {
                         // User clicked a style without text: toggle live style
                         if (style.supportsLiveTyping) {
                             toggleLiveStyle(style)
                         } else {
                             Toast.makeText(context, "${style.name} can only convert typed text", Toast.LENGTH_SHORT).show()
                         }
-                        ""
                     } else {
-                        UnicodeStyleEngine.transformText(targetText, style.id)
-                    }
-                    if (fullTransformed.isNotEmpty()) {
-                        onApplyListener?.invoke(fullTransformed)
+                        val fullTransformed = UnicodeStyleEngine.transformText(plainTargetText, style.id)
+                        if (fullTransformed.isNotEmpty()) {
+                            onApplyListener?.invoke(fullTransformed)
+                        }
                     }
                     onDismissListener?.invoke()
                 }

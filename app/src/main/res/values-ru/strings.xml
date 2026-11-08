@@ -1850,4 +1850,5 @@
     <string name="style_live_typing">Живой стильный набор текста</string>
     <string name="style_live_typing_summary">Введите выбранный стиль напрямую (только стили, сопоставленные 1:1).</string>
     <string name="style_active_none">Нет (обычный текст)</string>
+    <string name="style_plain">Нормальный</string>
 </resources>

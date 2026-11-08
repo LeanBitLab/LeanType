@@ -1891,4 +1891,5 @@
     <string name="style_live_typing">Ζωντανή κομψή πληκτρολόγηση</string>
     <string name="style_live_typing_summary">Πληκτρολογήστε απευθείας στο επιλεγμένο στυλ (μόνο αντιστοιχισμένα στυλ 1:1)</string>
     <string name="style_active_none">Κανένα (Απλό κείμενο)</string>
+    <string name="style_plain">Κανονικός</string>
 </resources>

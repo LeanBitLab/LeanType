@@ -1826,4 +1826,5 @@ Ar norite atnaujinti?</string>
     <string name="style_live_typing">Tiesiogiai stilingai veskite tekstą</string>
     <string name="style_live_typing_summary">Įveskite tiesiai į pasirinktą stilių (tik 1:1 susieti stiliai)</string>
     <string name="style_active_none">Nėra (paprastas tekstas)</string>
+    <string name="style_plain">Normalus</string>
 </resources>

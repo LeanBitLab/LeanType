@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.style
 
+import android.text.InputType
+import android.view.inputmethod.EditorInfo
+import helium314.keyboard.latin.utils.InputTypeUtils
+
 /**
  * High-performance, zero-allocation Unicode text transformation engine.
  * Maps ASCII characters to decorative Unicode blocks with canonical handling
@@ -22,6 +26,32 @@ object UnicodeStyleEngine {
         activeLiveStyleId = null
     }
 
+    /**
+     * Checks whether live styling is safe and appropriate for the given input field.
+     * Prevents corrupting passwords, URLs, emails, phone numbers, and non-text inputs.
+     */
+    fun isLiveStyleAllowed(editorInfo: EditorInfo?): Boolean {
+        if (editorInfo == null) return false
+        val inputType = editorInfo.inputType
+        if (InputTypeUtils.isAnyPasswordInputType(inputType)) return false
+        val inputClass = inputType and InputType.TYPE_MASK_CLASS
+        if (inputClass != InputType.TYPE_CLASS_TEXT) return false
+        val variation = inputType and InputType.TYPE_MASK_VARIATION
+        return variation != InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+            && variation != InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS
+            && variation != InputType.TYPE_TEXT_VARIATION_URI
+            && variation != InputType.TYPE_TEXT_VARIATION_PASSWORD
+            && variation != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            && variation != InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD
+    }
+
+    /**
+     * Checks whether a codepoint is a styled Unicode character or combining mark.
+     */
+    fun isStyledCharacter(codePoint: Int): Boolean {
+        return REVERSE_MAP.containsKey(codePoint) || isCombiningMark(codePoint)
+    }
+
     fun getStyle(styleId: String): StyleDefinition? = STYLES_BY_ID[styleId]
 
     fun getAllStyles(): List<StyleDefinition> = STYLES
@@ -29,14 +59,17 @@ object UnicodeStyleEngine {
     /**
      * Transforms an entire text string to the target style safely.
      * Operates on 32-bit codepoints to prevent UTF-16 surrogate pair tearing.
+     * Normalizes any pre-existing styled characters back to plain text first so styles
+     * can be changed or chained seamlessly.
      */
     fun transformText(text: String, styleId: String): String {
         val style = getStyle(styleId) ?: return text
-        val sb = StringBuilder(text.length * 2)
+        val plainText = toPlainText(text)
+        val sb = StringBuilder(plainText.length * 2)
         var i = 0
-        val len = text.length
+        val len = plainText.length
         while (i < len) {
-            val cp = text.codePointAt(i)
+            val cp = plainText.codePointAt(i)
             val mapped = style.mapCodePoint(cp)
             sb.appendCodePoint(mapped)
             if (style.combiningMark != 0 && cp != ' '.code && cp != '\n'.code) {

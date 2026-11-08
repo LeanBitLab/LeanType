@@ -1788,4 +1788,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="style_live_typing">Pengetikan penuh gaya secara langsung</string>
     <string name="style_live_typing_summary">Ketik langsung gaya yang dipilih (hanya gaya yang dipetakan 1:1)</string>
     <string name="style_active_none">Tidak ada (Teks biasa)</string>
+    <string name="style_plain">Normal</string>
 </resources>

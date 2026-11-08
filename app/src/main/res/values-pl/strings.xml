@@ -1832,4 +1832,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="style_live_typing">Stylowe pisanie na żywo</string>
     <string name="style_live_typing_summary">Wpisz bezpośrednio w wybranym stylu (tylko style mapowane 1:1)</string>
     <string name="style_active_none">Brak (zwykły tekst)</string>
+    <string name="style_plain">Normalna</string>
 </resources>

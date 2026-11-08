@@ -1891,4 +1891,5 @@
     <string name="style_live_typing">തത്സമയ സ്റ്റൈലിഷ് ടൈപ്പിംഗ്</string>
     <string name="style_live_typing_summary">തിരഞ്ഞെടുത്ത ശൈലിയിൽ നേരിട്ട് ടൈപ്പ് ചെയ്യുക (1:1 മാപ്പ് ചെയ്ത ശൈലികൾ മാത്രം)</string>
     <string name="style_active_none">ഒന്നുമില്ല (പ്ലെയിൻ ടെക്സ്റ്റ്)</string>
+    <string name="style_plain">സാധാരണ</string>
 </resources>

@@ -1848,4 +1848,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="style_live_typing">Digitação elegante ao vivo</string>
     <string name="style_live_typing_summary">Digite diretamente no estilo selecionado (apenas estilos mapeados 1:1)</string>
     <string name="style_active_none">Nenhum (texto simples)</string>
+    <string name="style_plain">Normal</string>
 </resources>

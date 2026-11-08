@@ -1825,4 +1825,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="style_live_typing">Trăiește tastare elegantă</string>
     <string name="style_live_typing_summary">Tastați direct în stilul selectat (numai stiluri mapate 1:1)</string>
     <string name="style_active_none">Niciunul (text simplu)</string>
+    <string name="style_plain">Normal</string>
 </resources>

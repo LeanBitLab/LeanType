@@ -1791,4 +1791,5 @@
     <string name="style_live_typing">实时时尚打字</string>
     <string name="style_live_typing_summary">直接输入所选样式（仅限 1:1 映射样式）</string>
     <string name="style_active_none">无（纯文本）</string>
+    <string name="style_plain">普通的</string>
 </resources>

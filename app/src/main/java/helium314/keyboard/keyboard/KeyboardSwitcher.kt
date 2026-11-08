@@ -860,6 +860,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             mCjkCandidateStripView?.visibility = View.GONE
             val stripVisibility = if (Settings.getValues().mToolbarMode == ToolbarMode.HIDDEN) View.GONE else View.VISIBLE
             mSuggestionStripView?.visibility = stripVisibility
+            mSuggestionStripView?.updateToolbarButtonsActivatedState()
         }
     }
 

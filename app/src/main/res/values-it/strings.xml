@@ -1857,4 +1857,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="style_live_typing">Digitazione elegante e dal vivo</string>
     <string name="style_live_typing_summary">Digita direttamente nello stile selezionato (solo stili mappati 1:1)</string>
     <string name="style_active_none">Nessuno (testo normale)</string>
+    <string name="style_plain">Normale</string>
 </resources>
