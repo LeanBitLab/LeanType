@@ -122,7 +122,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         val isNormalActive = !isLiveActive && isDefaultWord
         val normalChip = TextView(context).apply {
             text = if (isNormalActive) "✓ ${context.getString(R.string.style_plain)}" else context.getString(R.string.style_plain)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
             setTypeface(null, if (isNormalActive) Typeface.BOLD else Typeface.NORMAL)
             gravity = Gravity.CENTER
             includeFontPadding = false
@@ -140,13 +140,12 @@ class StylePreviewStripView @JvmOverloads constructor(
                     rippleColor = actionIconColor
                 )
             } else {
+                setTypeface(null, Typeface.NORMAL)
                 setTextColor(colors.get(ColorType.KEY_TEXT))
                 background = createChipDrawable(
                     bgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND),
                     cornerRadiusPx = cornerRadius,
-                    rippleColor = colors.get(ColorType.KEY_TEXT),
-                    strokeColor = ColorUtils.setAlphaComponent(colors.get(ColorType.KEY_TEXT), 70),
-                    strokeWidthPx = (1 * density).toInt().coerceAtLeast(1)
+                    rippleColor = colors.get(ColorType.KEY_TEXT)
                 )
             }
 

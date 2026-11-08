@@ -7,16 +7,11 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
-    <!-- Stylized Serif A -->
+    <!-- Simple Outlined Capital 'A' -->
     <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M9.5,4.5h1l6,14h1.5v1.5h-5v-1.5h1.5l-1.4,-3.5H6.9l-1.4,3.5H7v1.5H2v-1.5h1.5zM10,7.5L7.7,13.2h4.6z" />
-    <!-- Primary Magic Sparkle -->
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M19,1.5Q19,5 22.5,5Q19,5 19,8.5Q19,5 15.5,5Q19,5 19,1.5z" />
-    <!-- Secondary Accent Sparkle -->
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M20.5,12.5Q20.5,14.5 22.5,14.5Q20.5,14.5 20.5,16.5Q20.5,14.5 18.5,14.5Q20.5,14.5 20.5,12.5z" />
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M5,19 L12,4 L19,19 M7.5,14 L16.5,14" />
 </vector>

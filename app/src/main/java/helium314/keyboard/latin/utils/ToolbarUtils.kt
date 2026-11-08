@@ -205,6 +205,7 @@ fun setToolbarButtonsActivatedStateOnPrefChange(buttonsGroup: ViewGroup, key: St
 }
 
 fun setToolbarButtonActivatedState(button: ImageButton) {
+    val isLiveStyle = button.tag == FONT_STYLE && helium314.keyboard.latin.style.UnicodeStyleEngine.isLiveStyleActive()
     val activated = when (button.tag) {
         INCOGNITO -> button.context.prefs().getBoolean(Settings.PREF_ALWAYS_INCOGNITO_MODE, Defaults.PREF_ALWAYS_INCOGNITO_MODE)
         ONE_HANDED -> Settings.getValues().mOneHandedModeEnabled
@@ -213,7 +214,7 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         AUTO_CAP -> Settings.getValues().mAutoCap
         FORCE_AUTO_CAPS -> Settings.getValues().mAutoCap && Settings.getValues().mForceAutoCaps
         SELECT_MODE -> helium314.keyboard.keyboard.KeyboardActionListenerImpl.sPersistentSelectionModeActive
-        FONT_STYLE -> helium314.keyboard.latin.style.UnicodeStyleEngine.isLiveStyleActive()
+        FONT_STYLE -> true // Keep toolbar icon visible as keyText when not in live style mode
         else -> true
     }
     button.isActivated = activated
@@ -230,12 +231,15 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         ViewCompat.setStateDescription(button, button.context.getString(state))
     }
     val colors = Settings.getValues().mColors
-    if (activated && button.tag in listOf(INCOGNITO, ONE_HANDED, SPLIT, AUTOCORRECT, AUTO_CAP, FORCE_AUTO_CAPS, SELECT_MODE, FONT_STYLE)) {
+    val hasActiveBackground = isLiveStyle || (activated && button.tag in listOf(INCOGNITO, ONE_HANDED, SPLIT, AUTOCORRECT, AUTO_CAP, FORCE_AUTO_CAPS, SELECT_MODE))
+    if (hasActiveBackground) {
         val enabledBgColor = colors.get(ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
         button.background?.let { DrawableCompat.setTint(it, enabledBgColor) }
         colors.setColor(button.background, ColorType.TOOL_BAR_KEY_ENABLED_BACKGROUND)
         if (button.drawable != null) {
             button.clearColorFilter()
+            button.drawable.clearColorFilter()
+            button.drawable.colorFilter = null
             DrawableCompat.setTintList(button.drawable, null)
             val isLightBg = isBrightColor(enabledBgColor) ||
                 ColorUtils.calculateContrast(Color.DKGRAY, enabledBgColor) > ColorUtils.calculateContrast(Color.WHITE, enabledBgColor)
@@ -250,6 +254,9 @@ fun setToolbarButtonActivatedState(button: ImageButton) {
         colors.setColor(button.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
         if (button.drawable != null) {
             button.clearColorFilter()
+            button.drawable.clearColorFilter()
+            button.drawable.colorFilter = null
+            DrawableCompat.setTintList(button.drawable, null)
             colors.setColor(button, ColorType.TOOL_BAR_KEY)
         }
     }
