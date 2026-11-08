@@ -65,15 +65,18 @@ class StylePreviewStripView @JvmOverloads constructor(
         // Dynamically compute strip height and button dimensions
         val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
         val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
+        val defaultEdgeWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
+        val ratio = if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
+        val keyDimension = (stripHeight * ratio).toInt()
         val effectiveScale = if (defaultStripHeight > 0f) stripHeight.toFloat() / defaultStripHeight else 1.0f
         val expandPadding = (9 * effectiveScale).toInt().dpToPx(resources).coerceAtLeast(2)
 
-        val lp = closeButton.layoutParams
-        if (lp != null) {
-            lp.width = stripHeight
-            lp.height = stripHeight
-            closeButton.layoutParams = lp
-        }
+        val lp = closeButton.layoutParams as? LayoutParams ?: LayoutParams(keyDimension, keyDimension)
+        lp.width = keyDimension
+        lp.height = keyDimension
+        lp.gravity = Gravity.CENTER_VERTICAL
+        closeButton.layoutParams = lp
+
         closeButton.setPadding(expandPadding, expandPadding, expandPadding, expandPadding)
         closeButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
 
@@ -81,18 +84,9 @@ class StylePreviewStripView @JvmOverloads constructor(
         val closeDrawable = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name, context)
             ?: ContextCompat.getDrawable(context, R.drawable.ic_close)
         closeButton.setImageDrawable(closeDrawable)
+        closeButton.setBackgroundResource(R.drawable.toolbar_key_background)
         colors.setColor(closeButton, ColorType.TOOL_BAR_KEY)
-
-        // Close button background matching toolbar button background
-        val density = resources.displayMetrics.density
-        val btnCornerRadius = 8f * density
-        val btnBgColor = colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
-        val rippleColor = colors.get(ColorType.KEY_TEXT)
-        closeButton.background = createChipDrawable(
-            bgColor = btnBgColor,
-            cornerRadiusPx = btnCornerRadius,
-            rippleColor = rippleColor
-        )
+        colors.setColor(closeButton.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
     }
 
     /**
