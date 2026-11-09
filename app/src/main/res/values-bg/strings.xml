@@ -1704,18 +1704,13 @@
     <string name="text_expander_all_as_text">Редактирайте всичко като текст</string>
     <string name="text_expander_all_title">Всички текстови преки пътища</string>
     <string name="text_expander_shortcuts_count">%d преки пътища</string>
-    <string name="text_expander_all_hint">Всеки пряк път започва с ред === пряк път ===, последван от неговия текст. Запазването важи точно за този текст: нови блокове се добавят, променените се актуализират, премахнатите се изтриват.</string>
-    <string name="text_expander_copy_all">Копирайте всички</string>
-    <string name="text_expander_paste_all">Поставете всички</string>
-    <string name="text_expander_share">Споделете</string>
+    <string name="text_expander_all_hint">Формат: === пряк път === последван от текста за разширяване</string>
     <string name="text_expander_save_file">Запазете като файл</string>
     <string name="text_expander_load_file">Зареждане от файл</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Файлът не можа да се прочете или запише</string>
     <string name="text_expander_restore_previous">Възстановяване на предишното</string>
     <string name="text_expander_restore_previous_confirm">Да се ​​възстановят ли преките пътища както са били преди последното записване? Текущото състояние се запазва, така че можете да превключите обратно.</string>
-    <string name="text_expander_copied">Копирано</string>
-    <string name="text_expander_clipboard_empty">Клипбордът е празен</string>
     <string name="text_expander_no_changes">Без промени</string>
     <string name="text_expander_saved">Запазено</string>
     <string name="text_expander_save_question">Запазване на промените?</string>

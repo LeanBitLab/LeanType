@@ -1725,18 +1725,13 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_all_as_text">Modifier tout sous forme de texte</string>
     <string name="text_expander_all_title">Tous les raccourcis texte</string>
     <string name="text_expander_shortcuts_count">%d raccourcis</string>
-    <string name="text_expander_all_hint">Chaque raccourci commence par une ligne === raccourci ===, suivie de son texte. La sauvegarde applique exactement ce texte : les nouveaux blocs sont ajoutés, ceux modifiés sont mis à jour, ceux supprimés sont supprimés.</string>
-    <string name="text_expander_copy_all">Copier tout</string>
-    <string name="text_expander_paste_all">Coller tout</string>
-    <string name="text_expander_share">Partager</string>
+    <string name="text_expander_all_hint">Format : === raccourci === suivi du texte de développement</string>
     <string name="text_expander_save_file">Enregistrer sous fichier</string>
     <string name="text_expander_load_file">Charger à partir d\'un fichier</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Impossible de lire ou d\'écrire le fichier</string>
     <string name="text_expander_restore_previous">Restaurer le précédent</string>
     <string name="text_expander_restore_previous_confirm">Restaurer les raccourcis tels qu\'ils étaient avant la dernière sauvegarde ? L\'état actuel est conservé, vous pouvez donc revenir en arrière.</string>
-    <string name="text_expander_copied">Copié</string>
-    <string name="text_expander_clipboard_empty">Le presse-papiers est vide</string>
     <string name="text_expander_no_changes">Aucun changement</string>
     <string name="text_expander_saved">Enregistré</string>
     <string name="text_expander_save_question">Enregistrer les modifications ?</string>

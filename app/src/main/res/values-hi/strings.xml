@@ -1696,18 +1696,13 @@
     <string name="text_expander_all_as_text">सभी को पाठ के रूप में संपादित करें</string>
     <string name="text_expander_all_title">सभी टेक्स्ट शॉर्टकट</string>
     <string name="text_expander_shortcuts_count">%d शॉर्टकट</string>
-    <string name="text_expander_all_hint">प्रत्येक शॉर्टकट एक पंक्ति === शॉर्टकट === से शुरू होता है, उसके बाद उसका टेक्स्ट आता है। बचत बिल्कुल इस पाठ पर लागू होती है: नए ब्लॉक जोड़े जाते हैं, बदले गए अपडेट किए जाते हैं, हटाए गए ब्लॉक हटाए जाते हैं।</string>
-    <string name="text_expander_copy_all">सभी को कॉपी करें</string>
-    <string name="text_expander_paste_all">सभी चिपकाएँ</string>
-    <string name="text_expander_share">शेयर करना</string>
+    <string name="text_expander_all_hint">प्रारूप: === शॉर्टकट === और उसके बाद विस्तार पाठ</string>
     <string name="text_expander_save_file">फ़ाइल के रूप में सहेजें</string>
     <string name="text_expander_load_file">फ़ाइल से लोड करें</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">फ़ाइल को पढ़ या लिख ​​नहीं सका</string>
     <string name="text_expander_restore_previous">पहला वाला बहाल करें</string>
     <string name="text_expander_restore_previous_confirm">शॉर्टकट को वैसे ही पुनर्स्थापित करें जैसे वे अंतिम सहेजने से पहले थे? वर्तमान स्थिति बरकरार रखी गई है, ताकि आप वापस स्विच कर सकें।</string>
-    <string name="text_expander_copied">कॉपी किया गया</string>
-    <string name="text_expander_clipboard_empty">क्लिपबोर्ड खाली है</string>
     <string name="text_expander_no_changes">कोई परिवर्तन नहीं</string>
     <string name="text_expander_saved">सहेजा गया</string>
     <string name="text_expander_save_question">परिवर्तनों को सुरक्षित करें?</string>

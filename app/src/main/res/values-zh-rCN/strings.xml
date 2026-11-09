@@ -1670,18 +1670,13 @@
     <string name="text_expander_all_as_text">全部编辑为文本</string>
     <string name="text_expander_all_title">所有文本快捷方式</string>
     <string name="text_expander_shortcuts_count">%d 个快捷方式</string>
-    <string name="text_expander_all_hint">每个快捷方式都以一行 === 快捷方式 === 开头，后跟其文本。保存完全应用此文本：添加新块，更新更改的块，删除删除的块。</string>
-    <string name="text_expander_copy_all">全部复制</string>
-    <string name="text_expander_paste_all">全部粘贴</string>
-    <string name="text_expander_share">分享</string>
+    <string name="text_expander_all_hint">格式：=== 快捷方式 === 后跟扩展文本</string>
     <string name="text_expander_save_file">另存为文件</string>
     <string name="text_expander_load_file">从文件加载</string>
     <string name="text_expander_file_name">文本快捷方式.txt</string>
     <string name="text_expander_file_error">无法读取或写入文件</string>
     <string name="text_expander_restore_previous">恢复以前的</string>
     <string name="text_expander_restore_previous_confirm">将快捷方式恢复为上次保存之前的状态？当前状态将被保留，因此您可以切换回来。</string>
-    <string name="text_expander_copied">已复制</string>
-    <string name="text_expander_clipboard_empty">剪贴板为空</string>
     <string name="text_expander_no_changes">没有变化</string>
     <string name="text_expander_saved">已保存</string>
     <string name="text_expander_save_question">保存更改吗？</string>

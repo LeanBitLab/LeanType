@@ -1727,18 +1727,13 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_all_as_text">Editar tudo como texto</string>
     <string name="text_expander_all_title">Todos os atalhos de texto</string>
     <string name="text_expander_shortcuts_count">%d atalhos</string>
-    <string name="text_expander_all_hint">Cada atalho começa com uma linha === atalho ===, seguida por seu texto. Salvar se aplica exatamente a este texto: novos blocos são adicionados, os alterados são atualizados, os removidos são excluídos.</string>
-    <string name="text_expander_copy_all">Copiar tudo</string>
-    <string name="text_expander_paste_all">Colar tudo</string>
-    <string name="text_expander_share">Compartilhar</string>
+    <string name="text_expander_all_hint">Formato: === atalho === seguido pelo texto de expansão</string>
     <string name="text_expander_save_file">Salvar como arquivo</string>
     <string name="text_expander_load_file">Carregar do arquivo</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Não foi possível ler ou gravar o arquivo</string>
     <string name="text_expander_restore_previous">Restaurar anterior</string>
     <string name="text_expander_restore_previous_confirm">Restaurar os atalhos como estavam antes do último salvamento? O estado atual é mantido, para que você possa voltar.</string>
-    <string name="text_expander_copied">Copiado</string>
-    <string name="text_expander_clipboard_empty">A área de transferência está vazia</string>
     <string name="text_expander_no_changes">Sem alterações</string>
     <string name="text_expander_saved">Salvo</string>
     <string name="text_expander_save_question">Salvar alterações?</string>

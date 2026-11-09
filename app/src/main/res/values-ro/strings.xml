@@ -1704,18 +1704,13 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_all_as_text">Editați totul ca text</string>
     <string name="text_expander_all_title">Toate comenzile rapide pentru text</string>
     <string name="text_expander_shortcuts_count">%d comenzi rapide</string>
-    <string name="text_expander_all_hint">Fiecare comandă rapidă începe cu o linie === scurtătură ===, urmată de textul acesteia. Salvarea se aplică exact acest text: blocurile noi sunt adăugate, cele modificate actualizate, cele eliminate sunt șterse.</string>
-    <string name="text_expander_copy_all">Copiați tot</string>
-    <string name="text_expander_paste_all">Lipiți toate</string>
-    <string name="text_expander_share">Distribuie</string>
+    <string name="text_expander_all_hint">Format: === comandă rapidă === urmată de textul extinderii</string>
     <string name="text_expander_save_file">Salvați ca fișier</string>
     <string name="text_expander_load_file">Încărcați din fișier</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Nu s-a putut citi sau scrie fișierul</string>
     <string name="text_expander_restore_previous">Restaurați anterior</string>
     <string name="text_expander_restore_previous_confirm">Restabiliți comenzile rapide așa cum erau înainte de ultima salvare? Starea actuală este păstrată, astfel încât să puteți comuta înapoi.</string>
-    <string name="text_expander_copied">Copiat</string>
-    <string name="text_expander_clipboard_empty">Clipboard-ul este gol</string>
     <string name="text_expander_no_changes">Fără modificări</string>
     <string name="text_expander_saved">Salvat</string>
     <string name="text_expander_save_question">Salvați modificările?</string>

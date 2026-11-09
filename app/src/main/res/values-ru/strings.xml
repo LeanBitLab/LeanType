@@ -1729,18 +1729,13 @@
     <string name="text_expander_all_as_text">Редактировать все как текст</string>
     <string name="text_expander_all_title">Все текстовые ярлыки</string>
     <string name="text_expander_shortcuts_count">%d сокращений</string>
-    <string name="text_expander_all_hint">Каждый ярлык начинается со строки === ярлык ===, за которой следует его текст. При сохранении применяется именно этот текст: добавляются новые блоки, обновляются измененные, удаляются удаленные.</string>
-    <string name="text_expander_copy_all">Скопировать все</string>
-    <string name="text_expander_paste_all">Вставить все</string>
-    <string name="text_expander_share">Делиться</string>
+    <string name="text_expander_all_hint">Формат: === ярлык === затем текст расширения</string>
     <string name="text_expander_save_file">Сохранить как файл</string>
     <string name="text_expander_load_file">Загрузить из файла</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Не удалось прочитать или записать файл</string>
     <string name="text_expander_restore_previous">Восстановить предыдущее</string>
     <string name="text_expander_restore_previous_confirm">Восстановить ярлыки такими, какими они были до последнего сохранения? Текущее состояние сохраняется, поэтому вы можете переключиться обратно.</string>
-    <string name="text_expander_copied">Скопировано</string>
-    <string name="text_expander_clipboard_empty">Буфер обмена пуст</string>
     <string name="text_expander_no_changes">Никаких изменений</string>
     <string name="text_expander_saved">Сохранено</string>
     <string name="text_expander_save_question">Сохранить изменения?</string>

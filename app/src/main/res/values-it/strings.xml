@@ -1736,18 +1736,13 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_all_as_text">Modifica tutto come testo</string>
     <string name="text_expander_all_title">Tutte le scorciatoie di testo</string>
     <string name="text_expander_shortcuts_count">%d scorciatoie</string>
-    <string name="text_expander_all_hint">Ogni scorciatoia inizia con una riga === scorciatoia ===, seguita dal suo testo. Al salvataggio vale esattamente questo testo: i nuovi blocchi vengono aggiunti, quelli modificati aggiornati, quelli rimossi cancellati.</string>
-    <string name="text_expander_copy_all">Copia tutto</string>
-    <string name="text_expander_paste_all">Incolla tutto</string>
-    <string name="text_expander_share">Condividere</string>
+    <string name="text_expander_all_hint">Formato: === scorciatoie === seguito dal testo di espansione</string>
     <string name="text_expander_save_file">Salva come file</string>
     <string name="text_expander_load_file">Carica da file</string>
     <string name="text_expander_file_name">testo_scorciatoie.txt</string>
     <string name="text_expander_file_error">Impossibile leggere o scrivere il file</string>
     <string name="text_expander_restore_previous">Ripristina precedente</string>
     <string name="text_expander_restore_previous_confirm">Ripristinare le scorciatoie com\'erano prima dell\'ultimo salvataggio? Lo stato corrente viene mantenuto, quindi puoi tornare indietro.</string>
-    <string name="text_expander_copied">Copiato</string>
-    <string name="text_expander_clipboard_empty">Gli appunti sono vuoti</string>
     <string name="text_expander_no_changes">Nessun cambiamento</string>
     <string name="text_expander_saved">Salvato</string>
     <string name="text_expander_save_question">Vuoi salvare le modifiche?</string>

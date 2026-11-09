@@ -1669,18 +1669,13 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_all_as_text">Upravit vše jako text</string>
     <string name="text_expander_all_title">Všechny textové zkratky</string>
     <string name="text_expander_shortcuts_count">%d zkratek</string>
-    <string name="text_expander_all_hint">Každá zkratka začíná řádkem === zkratka ===, za kterou následuje její text. Ukládání platí přesně pro tento text: nové bloky se přidávají, změněné aktualizují, odebrané se smažou.</string>
-    <string name="text_expander_copy_all">Zkopírujte vše</string>
-    <string name="text_expander_paste_all">Vložit vše</string>
-    <string name="text_expander_share">Podíl</string>
+    <string name="text_expander_all_hint">Formát: === zkratka === následovaná textem pro rozšíření</string>
     <string name="text_expander_save_file">Uložit jako soubor</string>
     <string name="text_expander_load_file">Načíst ze souboru</string>
     <string name="text_expander_file_name">text_shorcuts.txt</string>
     <string name="text_expander_file_error">Soubor nelze číst ani zapisovat</string>
     <string name="text_expander_restore_previous">Obnovit předchozí</string>
     <string name="text_expander_restore_previous_confirm">Obnovit zástupce tak, jak byly před posledním uložením? Aktuální stav je zachován, takže můžete přepnout zpět.</string>
-    <string name="text_expander_copied">Zkopírováno</string>
-    <string name="text_expander_clipboard_empty">Schránka je prázdná</string>
     <string name="text_expander_no_changes">Žádné změny</string>
     <string name="text_expander_saved">Uloženo</string>
     <string name="text_expander_save_question">Uložit změny?</string>

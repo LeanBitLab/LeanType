@@ -1705,18 +1705,13 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_all_as_text">Redaguoti viską kaip tekstą</string>
     <string name="text_expander_all_title">Visi teksto spartieji klavišai</string>
     <string name="text_expander_shortcuts_count">%d spartieji klavišai</string>
-    <string name="text_expander_all_hint">Kiekvienas spartusis klavišas prasideda eilute === spartusis klavišas ===, po kurio eina jos tekstas. Išsaugant taikomas būtent šis tekstas: pridedami nauji blokai, atnaujinami pakeisti blokai, ištrinami pašalinti.</string>
-    <string name="text_expander_copy_all">Nukopijuoti viską</string>
-    <string name="text_expander_paste_all">Įklijuoti viską</string>
-    <string name="text_expander_share">Dalintis</string>
+    <string name="text_expander_all_hint">Formatas: === spartusis klavišas === po kurio eina išplėtimo tekstas</string>
     <string name="text_expander_save_file">Išsaugoti kaip failą</string>
     <string name="text_expander_load_file">Įkelti iš failo</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Nepavyko nuskaityti ar parašyti failo</string>
     <string name="text_expander_restore_previous">Atkurti ankstesnį</string>
     <string name="text_expander_restore_previous_confirm">Atkurti sparčiuosius klavišus, kurie buvo prieš paskutinį išsaugojimą? Dabartinė būsena išlaikoma, todėl galite grįžti atgal.</string>
-    <string name="text_expander_copied">Nukopijuota</string>
-    <string name="text_expander_clipboard_empty">Iškarpinė tuščia</string>
     <string name="text_expander_no_changes">Jokių pakeitimų</string>
     <string name="text_expander_saved">Išsaugota</string>
     <string name="text_expander_save_question">Išsaugoti pakeitimus?</string>

@@ -1,10 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.settings.screens
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,14 +14,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -167,14 +162,8 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                                     else pending = result to diff
                                 }
                             },
-                            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp)
                         ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_setup_check),
-                                contentDescription = null,
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
                             Text(
                                 text = stringResource(R.string.text_expander_save),
                                 fontWeight = FontWeight.SemiBold
@@ -198,47 +187,6 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     AssistChip(
-                        onClick = {
-                            val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            cm.setPrimaryClip(ClipData.newPlainText("LeanType", value.text).apply {
-                                description.extras = android.os.PersistableBundle().apply {
-                                    putBoolean(
-                                        if (android.os.Build.VERSION.SDK_INT >= 33) android.content.ClipDescription.EXTRA_IS_SENSITIVE
-                                        else "android.content.extra.IS_SENSITIVE", true
-                                    )
-                                }
-                            })
-                            toast(context, R.string.text_expander_copied)
-                        },
-                        label = { Text(stringResource(R.string.text_expander_copy_all)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.sym_keyboard_copy), null, Modifier.size(18.dp))
-                        }
-                    )
-                    AssistChip(
-                        onClick = {
-                            val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            val text = cm.primaryClip?.takeIf { it.itemCount > 0 }?.getItemAt(0)?.coerceToText(context)?.toString()
-                            if (text.isNullOrEmpty()) toast(context, R.string.text_expander_clipboard_empty) else replaceText(text)
-                        },
-                        label = { Text(stringResource(R.string.text_expander_paste_all)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.sym_keyboard_paste), null, Modifier.size(18.dp))
-                        }
-                    )
-                    AssistChip(
-                        onClick = {
-                            val intent = Intent(Intent.ACTION_SEND).setType("text/plain")
-                                .putExtra(Intent.EXTRA_TEXT, value.text)
-                                .putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.text_expander_all_title))
-                            context.startActivity(Intent.createChooser(intent, null))
-                        },
-                        label = { Text(stringResource(R.string.text_expander_share)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_share), null, Modifier.size(18.dp))
-                        }
-                    )
-                    AssistChip(
                         onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) },
                         label = { Text(stringResource(R.string.text_expander_save_file)) },
                         leadingIcon = {
@@ -252,14 +200,15 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                             Icon(painterResource(R.drawable.ic_file_upload), null, Modifier.size(18.dp))
                         }
                     )
-                    AssistChip(
-                        onClick = { askRestore = true },
-                        enabled = hasPrevious,
-                        label = { Text(stringResource(R.string.text_expander_restore_previous)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_undo), null, Modifier.size(18.dp))
-                        }
-                    )
+                    if (hasPrevious) {
+                        AssistChip(
+                            onClick = { askRestore = true },
+                            label = { Text(stringResource(R.string.text_expander_restore_previous)) },
+                            leadingIcon = {
+                                Icon(painterResource(R.drawable.ic_undo), null, Modifier.size(18.dp))
+                            }
+                        )
+                    }
                 }
 
                 // Jump navigation bar
@@ -293,12 +242,20 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     }
                 }
 
+                // Format hint
+                Text(
+                    text = stringResource(R.string.text_expander_all_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp)
+                )
+
                 // Code-style Editor box
                 Surface(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 6.dp),
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
                     shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
@@ -325,14 +282,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     )
                 }
 
-                Text(
-                    text = stringResource(R.string.text_expander_all_hint),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-                )
-
-                Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)) {
+                Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 8.dp)) {
                     PlaceholderTagsRow(value) { value = it }
                 }
             }

@@ -747,18 +747,13 @@
     <string name="text_expander_regex_invalid">⚠️ Ungültiges reguläres Ausdrucksmuster</string>
     <string name="text_expander_all_as_text">Alle als Text bearbeiten</string>
     <string name="text_expander_all_title">Alle Textbausteine</string>
-    <string name="text_expander_all_hint">Jeder Baustein beginnt mit einer Zeile === Kürzel ===, darunter steht sein Text. Speichern übernimmt genau diesen Text: neue Blöcke werden angelegt, geänderte aktualisiert, entfernte gelöscht.</string>
-    <string name="text_expander_copy_all">Alles kopieren</string>
-    <string name="text_expander_paste_all">Alles einfügen</string>
-    <string name="text_expander_share">Teilen</string>
+    <string name="text_expander_all_hint">Format: === Kürzel === gefolgt vom Erweiterungstext</string>
     <string name="text_expander_save_file">Als Datei speichern</string>
     <string name="text_expander_load_file">Aus Datei laden</string>
     <string name="text_expander_file_name">Textbausteine.txt</string>
     <string name="text_expander_file_error">Datei konnte nicht gelesen oder geschrieben werden</string>
     <string name="text_expander_restore_previous">Letzten Stand</string>
     <string name="text_expander_restore_previous_confirm">Die Bausteine so wiederherstellen, wie sie vor dem letzten Speichern waren? Der aktuelle Stand wird gemerkt, Du kannst also zurückwechseln.</string>
-    <string name="text_expander_copied">Kopiert</string>
-    <string name="text_expander_clipboard_empty">Zwischenablage ist leer</string>
     <string name="text_expander_no_changes">Keine Änderungen</string>
     <string name="text_expander_saved">Gespeichert</string>
     <string name="text_expander_save_question">Änderungen speichern?</string>

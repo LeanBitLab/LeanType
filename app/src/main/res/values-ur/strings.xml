@@ -1761,18 +1761,13 @@
     <string name="text_expander_all_as_text">سبھی کو متن کے بطور ترمیم کریں۔</string>
     <string name="text_expander_all_title">تمام ٹیکسٹ شارٹ کٹس</string>
     <string name="text_expander_shortcuts_count">%d شارٹ کٹس</string>
-    <string name="text_expander_all_hint">ہر شارٹ کٹ ایک لائن === شارٹ کٹ === سے شروع ہوتا ہے، اس کے بعد اس کا متن آتا ہے۔ محفوظ کرنا بالکل اسی متن پر لاگو ہوتا ہے: نئے بلاکس شامل کیے جاتے ہیں، تبدیل کیے گئے اپ ڈیٹ کیے جاتے ہیں، حذف کیے جاتے ہیں۔</string>
-    <string name="text_expander_copy_all">سب کاپی کریں۔</string>
-    <string name="text_expander_paste_all">سب چسپاں کریں۔</string>
-    <string name="text_expander_share">شیئر کریں۔</string>
+    <string name="text_expander_all_hint">فارمیٹ: === شارٹ کٹ === بعد میں توسیع کا متن</string>
     <string name="text_expander_save_file">فائل کے طور پر محفوظ کریں۔</string>
     <string name="text_expander_load_file">فائل سے لوڈ کریں۔</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">فائل کو پڑھ یا لکھ نہیں سکا</string>
     <string name="text_expander_restore_previous">سابقہ ​​کو بحال کریں۔</string>
     <string name="text_expander_restore_previous_confirm">شارٹ کٹس کو بحال کریں جیسا کہ وہ آخری محفوظ کرنے سے پہلے تھے؟ موجودہ حالت برقرار ہے، لہذا آپ واپس جا سکتے ہیں۔</string>
-    <string name="text_expander_copied">کاپی</string>
-    <string name="text_expander_clipboard_empty">کلپ بورڈ خالی ہے۔</string>
     <string name="text_expander_no_changes">کوئی تبدیلی نہیں۔</string>
     <string name="text_expander_saved">محفوظ کیا گیا۔</string>
     <string name="text_expander_save_question">تبدیلیاں محفوظ کریں؟</string>

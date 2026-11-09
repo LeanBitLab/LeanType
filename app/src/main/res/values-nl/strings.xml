@@ -1711,18 +1711,13 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_all_as_text">Bewerk alles als tekst</string>
     <string name="text_expander_all_title">Alle tekstsnelkoppelingen</string>
     <string name="text_expander_shortcuts_count">%d snelkoppelingen</string>
-    <string name="text_expander_all_hint">Elke snelkoppeling begint met een regel === snelkoppeling ===, gevolgd door de tekst ervan. Bij het opslaan wordt precies deze tekst toegepast: nieuwe blokken worden toegevoegd, gewijzigde blokken bijgewerkt, verwijderde blokken verwijderd.</string>
-    <string name="text_expander_copy_all">Kopieer alles</string>
-    <string name="text_expander_paste_all">Plak alles</string>
-    <string name="text_expander_share">Deel</string>
+    <string name="text_expander_all_hint">Formaat: === snelkoppeling === gevolgd door uitbreidingstekst</string>
     <string name="text_expander_save_file">Opslaan als bestand</string>
     <string name="text_expander_load_file">Laden uit bestand</string>
     <string name="text_expander_file_name">tekst_snelkoppelingen.txt</string>
     <string name="text_expander_file_error">Kan het bestand niet lezen of schrijven</string>
     <string name="text_expander_restore_previous">Vorige herstellen</string>
     <string name="text_expander_restore_previous_confirm">De snelkoppelingen herstellen zoals ze waren vóór de laatste keer opslaan? De huidige status blijft behouden, zodat u terug kunt schakelen.</string>
-    <string name="text_expander_copied">Gekopieerd</string>
-    <string name="text_expander_clipboard_empty">Klembord is leeg</string>
     <string name="text_expander_no_changes">Geen wijzigingen</string>
     <string name="text_expander_saved">Opgeslagen</string>
     <string name="text_expander_save_question">Wijzigingen opslaan?</string>

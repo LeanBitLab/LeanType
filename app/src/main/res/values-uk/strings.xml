@@ -1669,18 +1669,13 @@
     <string name="text_expander_all_as_text">Редагувати все як текст</string>
     <string name="text_expander_all_title">Усі текстові ярлики</string>
     <string name="text_expander_shortcuts_count">%d скорочень</string>
-    <string name="text_expander_all_hint">Кожен ярлик починається з рядка === ярлик ===, після якого йде його текст. Збереження стосується саме цього тексту: нові блоки додаються, змінені оновлюються, видалені видаляються.</string>
-    <string name="text_expander_copy_all">Копіювати все</string>
-    <string name="text_expander_paste_all">Вставити все</string>
-    <string name="text_expander_share">Поділіться</string>
+    <string name="text_expander_all_hint">Формат: === ярлык === потім текст розширення</string>
     <string name="text_expander_save_file">Зберегти як файл</string>
     <string name="text_expander_load_file">Завантажити з файлу</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Не вдалося прочитати або записати файл</string>
     <string name="text_expander_restore_previous">Відновити попереднє</string>
     <string name="text_expander_restore_previous_confirm">Відновити ярлики, як вони були до останнього збереження? Поточний стан зберігається, тому ви можете повернутися назад.</string>
-    <string name="text_expander_copied">Скопійовано</string>
-    <string name="text_expander_clipboard_empty">Буфер обміну порожній</string>
     <string name="text_expander_no_changes">Без змін</string>
     <string name="text_expander_saved">Збережено</string>
     <string name="text_expander_save_question">Зберегти зміни?</string>

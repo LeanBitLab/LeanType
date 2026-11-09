@@ -1770,18 +1770,13 @@
     <string name="text_expander_all_as_text">Επεξεργαστείτε όλα ως κείμενο</string>
     <string name="text_expander_all_title">Όλες οι συντομεύσεις κειμένου</string>
     <string name="text_expander_shortcuts_count">%d συντομεύσεις</string>
-    <string name="text_expander_all_hint">Κάθε συντόμευση ξεκινά με μια γραμμή === συντόμευση ===, ακολουθούμενη από το κείμενό της. Η αποθήκευση ισχύει ακριβώς αυτό το κείμενο: νέα μπλοκ προστίθενται, τροποποιούνται ενημερώνονται, αφαιρούνται διαγράφονται.</string>
-    <string name="text_expander_copy_all">Αντιγράψτε όλα</string>
-    <string name="text_expander_paste_all">Επικόλληση όλων</string>
-    <string name="text_expander_share">Μερίδιο</string>
+    <string name="text_expander_all_hint">Μορφή: === συντόμευση === ακολουθούμενη από το κείμενο επέκτασης</string>
     <string name="text_expander_save_file">Αποθήκευση ως αρχείο</string>
     <string name="text_expander_load_file">Φόρτωση από αρχείο</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Δεν ήταν δυνατή η ανάγνωση ή η εγγραφή του αρχείου</string>
     <string name="text_expander_restore_previous">Επαναφορά προηγούμενου</string>
     <string name="text_expander_restore_previous_confirm">Επαναφορά των συντομεύσεων όπως ήταν πριν από την τελευταία αποθήκευση; Η τρέχουσα κατάσταση διατηρείται, ώστε να μπορείτε να επιστρέψετε.</string>
-    <string name="text_expander_copied">Αντιγράφηκε</string>
-    <string name="text_expander_clipboard_empty">Το πρόχειρο είναι κενό</string>
     <string name="text_expander_no_changes">Καμία αλλαγή</string>
     <string name="text_expander_saved">Αποθηκεύτηκε</string>
     <string name="text_expander_save_question">Αποθήκευση αλλαγών;</string>

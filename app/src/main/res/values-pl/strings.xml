@@ -1711,18 +1711,13 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_all_as_text">Edytuj wszystko jako tekst</string>
     <string name="text_expander_all_title">Wszystkie skróty tekstowe</string>
     <string name="text_expander_shortcuts_count">%d skrótów</string>
-    <string name="text_expander_all_hint">Każdy skrót zaczyna się od linii === skrót ===, po której następuje jego tekst. Zapisywanie dotyczy dokładnie tego tekstu: dodawane są nowe bloki, aktualizowane zmienione, usuwane usuwane.</string>
-    <string name="text_expander_copy_all">Skopiuj wszystko</string>
-    <string name="text_expander_paste_all">Wklej wszystko</string>
-    <string name="text_expander_share">Udział</string>
+    <string name="text_expander_all_hint">Format: === skrót === po którym następuje tekst rozwinięcia</string>
     <string name="text_expander_save_file">Zapisz jako plik</string>
     <string name="text_expander_load_file">Załaduj z pliku</string>
     <string name="text_expander_file_name">tekst_skróty.txt</string>
     <string name="text_expander_file_error">Nie można odczytać ani zapisać pliku</string>
     <string name="text_expander_restore_previous">Przywróć poprzednie</string>
     <string name="text_expander_restore_previous_confirm">Przywrócić skróty tak, jak były przed ostatnim zapisem? Bieżący stan zostanie zachowany, więc możesz przełączyć się z powrotem.</string>
-    <string name="text_expander_copied">Skopiowano</string>
-    <string name="text_expander_clipboard_empty">Schowek jest pusty</string>
     <string name="text_expander_no_changes">Żadnych zmian</string>
     <string name="text_expander_saved">Zapisano</string>
     <string name="text_expander_save_question">Zapisać zmiany?</string>

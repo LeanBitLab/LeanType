@@ -1727,18 +1727,13 @@
     <string name="text_expander_all_as_text">تحرير الكل كنص</string>
     <string name="text_expander_all_title">جميع اختصارات النص</string>
     <string name="text_expander_shortcuts_count">%d اختصار</string>
-    <string name="text_expander_all_hint">يبدأ كل اختصار بسطر === اختصار ===، متبوعًا بالنص الخاص به. ينطبق الحفظ على هذا النص تمامًا: تتم إضافة الكتل الجديدة، وتحديث الكتل التي تم تغييرها، وحذف الكتل التي تمت إزالتها.</string>
-    <string name="text_expander_copy_all">انسخ الكل</string>
-    <string name="text_expander_paste_all">لصق الكل</string>
-    <string name="text_expander_share">يشارك</string>
+    <string name="text_expander_all_hint">الصيغة: === اختصار === متبوعًا بنص التوسيع</string>
     <string name="text_expander_save_file">حفظ كملف</string>
     <string name="text_expander_load_file">تحميل من الملف</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">لا يمكن قراءة أو كتابة الملف</string>
     <string name="text_expander_restore_previous">استعادة السابقة</string>
     <string name="text_expander_restore_previous_confirm">هل تريد استعادة الاختصارات كما كانت قبل عملية الحفظ الأخيرة؟ يتم الاحتفاظ بالحالة الحالية، حتى تتمكن من العودة مرة أخرى.</string>
-    <string name="text_expander_copied">منقول</string>
-    <string name="text_expander_clipboard_empty">الحافظة فارغة</string>
     <string name="text_expander_no_changes">لا تغييرات</string>
     <string name="text_expander_saved">أنقذ</string>
     <string name="text_expander_save_question">هل تريد حفظ التغييرات؟</string>

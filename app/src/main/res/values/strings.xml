@@ -1754,18 +1754,13 @@ New dictionary:
     <string name="text_expander_all_as_text">Edit all as text</string>
     <string name="text_expander_all_title">All text shortcuts</string>
     <string name="text_expander_shortcuts_count">%d shortcuts</string>
-    <string name="text_expander_all_hint">Each shortcut starts with a line === shortcut ===, followed by its text. Saving applies exactly this text: new blocks are added, changed ones updated, removed ones deleted.</string>
-    <string name="text_expander_copy_all">Copy all</string>
-    <string name="text_expander_paste_all">Paste all</string>
-    <string name="text_expander_share">Share</string>
+    <string name="text_expander_all_hint">Format: === shortcut === followed by expansion text</string>
     <string name="text_expander_save_file">Save as file</string>
     <string name="text_expander_load_file">Load from file</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Could not read or write the file</string>
     <string name="text_expander_restore_previous">Restore previous</string>
     <string name="text_expander_restore_previous_confirm">Restore the shortcuts as they were before the last save? The current state is kept, so you can switch back.</string>
-    <string name="text_expander_copied">Copied</string>
-    <string name="text_expander_clipboard_empty">Clipboard is empty</string>
     <string name="text_expander_no_changes">No changes</string>
     <string name="text_expander_saved">Saved</string>
     <string name="text_expander_save_question">Save changes?</string>

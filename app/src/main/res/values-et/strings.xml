@@ -1704,18 +1704,13 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_all_as_text">Muutke kõike tekstina</string>
     <string name="text_expander_all_title">Kõik teksti otseteed</string>
     <string name="text_expander_shortcuts_count">%d otseteed</string>
-    <string name="text_expander_all_hint">Iga otsetee algab reaga === otsetee ===, millele järgneb selle tekst. Salvestamine rakendab täpselt seda teksti: lisatakse uusi plokke, muudetud plokke värskendatakse, eemaldatud kustutatakse.</string>
-    <string name="text_expander_copy_all">Kopeeri kõik</string>
-    <string name="text_expander_paste_all">Kleebi kõik</string>
-    <string name="text_expander_share">Jaga</string>
+    <string name="text_expander_all_hint">Vorming: === otsetee === millele järgneb laienduse tekst</string>
     <string name="text_expander_save_file">Salvesta failina</string>
     <string name="text_expander_load_file">Laadi failist</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Faili ei saanud lugeda ega kirjutada</string>
     <string name="text_expander_restore_previous">Taasta eelmine</string>
     <string name="text_expander_restore_previous_confirm">Kas taastada otseteed nii, nagu need olid enne viimast salvestamist? Praegune olek jääb alles, nii et saate tagasi lülituda.</string>
-    <string name="text_expander_copied">Kopeeritud</string>
-    <string name="text_expander_clipboard_empty">Lõikelaud on tühi</string>
     <string name="text_expander_no_changes">Muudatusi pole</string>
     <string name="text_expander_saved">Salvestatud</string>
     <string name="text_expander_save_question">Kas salvestada muudatused?</string>

@@ -1667,18 +1667,13 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_all_as_text">Uredi sve kao tekst</string>
     <string name="text_expander_all_title">Sve tekstualne prečice</string>
     <string name="text_expander_shortcuts_count">%d prečaca</string>
-    <string name="text_expander_all_hint">Svaki prečac počinje linijom === prečac ===, nakon čega slijedi tekst. Spremanje se odnosi upravo na ovaj tekst: novi blokovi se dodaju, promijenjeni se ažuriraju, uklonjeni se brišu.</string>
-    <string name="text_expander_copy_all">Kopiraj sve</string>
-    <string name="text_expander_paste_all">Zalijepi sve</string>
-    <string name="text_expander_share">Udio</string>
+    <string name="text_expander_all_hint">Format: === prečac === praćen tekstom proširenja</string>
     <string name="text_expander_save_file">Spremi kao datoteku</string>
     <string name="text_expander_load_file">Učitaj iz datoteke</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="text_expander_file_error">Nije moguće pročitati ili napisati datoteku</string>
     <string name="text_expander_restore_previous">Vrati prethodno</string>
     <string name="text_expander_restore_previous_confirm">Vratiti prečace kakvi su bili prije posljednjeg spremanja? Trenutno stanje se zadržava, tako da se možete vratiti.</string>
-    <string name="text_expander_copied">Kopirano</string>
-    <string name="text_expander_clipboard_empty">Međuspremnik je prazan</string>
     <string name="text_expander_no_changes">Nema promjena</string>
     <string name="text_expander_saved">Spremljeno</string>
     <string name="text_expander_save_question">Spremiti promjene?</string>
