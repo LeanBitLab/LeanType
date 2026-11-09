@@ -1802,4 +1802,5 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_suggestions_summary">Zobrazovat rozbalitelné úryvky textu v pruhu návrhů při psaní.</string>
     <string name="text_expander_suggestions_only_title">Pouze návrh (bez automatického rozbalování)</string>
     <string name="text_expander_suggestions_only_summary">Rozbalit text pouze tehdy, je-li vybrán z návrhů, čímž se zabrání automatickému vkládání.</string>
+    <string name="portrait">Portrét</string>
 </resources>

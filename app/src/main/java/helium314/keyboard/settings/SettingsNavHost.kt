@@ -85,9 +85,7 @@ fun SettingsNavHost(
                 onClickAdvanced = { navController.navigate(SettingsDestination.Advanced) },
                 onClickAppearance = { navController.navigate(SettingsDestination.Appearance) },
                 onClickLanguage = { navController.navigate(SettingsDestination.Languages) },
-                onClickDictionaries = { navController.navigate(SettingsDestination.Dictionaries) },
                 onClickAIIntegration = { navController.navigate(SettingsDestination.AIIntegration) },
-                onClickGesture = { navController.navigate(SettingsDestination.GestureTyping) },
                 onClickBack = ::goBack,
             )
         }

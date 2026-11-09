@@ -1837,4 +1837,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_suggestions_summary">Kuvage tippimise ajal soovitusribal laiendatavaid tekstilõike.</string>
     <string name="text_expander_suggestions_only_title">Ainult soovitus (automaatset laiendamist pole)</string>
     <string name="text_expander_suggestions_only_summary">Laiendage teksti ainult siis, kui see on valitud soovituste hulgast, vältides automaatset sisestamist.</string>
+    <string name="portrait">Portree</string>
 </resources>

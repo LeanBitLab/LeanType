@@ -1831,4 +1831,5 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_suggestions_summary">Yazarken öneri şeridinde genişletilebilir metin parçacıklarını gösterin.</string>
     <string name="text_expander_suggestions_only_title">Yalnızca öneri (otomatik genişletme yok)</string>
     <string name="text_expander_suggestions_only_summary">Metni yalnızca önerilerden seçildiğinde genişleterek otomatik eklemeyi önleyin.</string>
+    <string name="portrait">Portre</string>
 </resources>

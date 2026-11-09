@@ -1860,4 +1860,5 @@
     <string name="text_expander_suggestions_summary">إظهار مقتطفات نصية قابلة للتوسيع في شريط الاقتراحات أثناء الكتابة.</string>
     <string name="text_expander_suggestions_only_title">اقتراح فقط (لا يوجد توسيع تلقائي)</string>
     <string name="text_expander_suggestions_only_summary">قم بتوسيع النص فقط عند تحديده من الاقتراحات، مما يمنع الإدراج التلقائي.</string>
+    <string name="portrait">لَوحَة</string>
 </resources>

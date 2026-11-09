@@ -1844,4 +1844,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_suggestions_summary">Wyświetlaj rozwijane fragmenty tekstu na pasku sugestii podczas pisania.</string>
     <string name="text_expander_suggestions_only_title">Tylko sugestia (bez automatycznego rozwijania)</string>
     <string name="text_expander_suggestions_only_summary">Rozwiń tekst tylko wtedy, gdy zostanie on wybrany z sugestii, co zapobiega automatycznemu wstawieniu.</string>
+    <string name="portrait">Portret</string>
 </resources>

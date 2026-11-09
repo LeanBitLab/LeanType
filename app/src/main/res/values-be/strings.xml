@@ -1837,4 +1837,5 @@
     <string name="text_expander_suggestions_summary"></string>
     <string name="text_expander_suggestions_only_title">Толькі прапанова (без аўтаматычнага разгортвання)</string>
     <string name="text_expander_suggestions_only_summary">Разгортваць тэкст толькі тады, калі выбраны з прапаноў, прадухіляючы аўтаматычную ўстаўку.</string>
+    <string name="portrait">Партрэт</string>
 </resources>

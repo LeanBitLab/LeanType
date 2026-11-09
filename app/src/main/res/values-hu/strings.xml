@@ -1800,4 +1800,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_suggestions_summary">Kibontható szövegrészletek megjelenítése a javaslatsávban gépelés közben.</string>
     <string name="text_expander_suggestions_only_title">Csak javaslat (nincs automatikus kibontás)</string>
     <string name="text_expander_suggestions_only_summary">Csak akkor bontsa ki a szöveget, ha a javaslatok közül kiválasztotta, így megakadályozza az automatikus beillesztést.</string>
+    <string name="portrait">Portré</string>
 </resources>

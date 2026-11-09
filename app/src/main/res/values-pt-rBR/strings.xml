@@ -427,6 +427,7 @@
     <string name="toolbar_mode_suggestion_strip">Somente sugestões</string>
     <string name="toolbar_mode_hidden">Oculta</string>
     <string name="landscape">Paisagem</string>
+    <string name="portrait">Retrato</string>
     <string name="popup_order_and_hint_source">Ordem das teclas de pop-up e fonte de dicas</string>
     <string name="show_emoji_descriptions">Mostrar descrição do emoji ao pressionar</string>
     <string name="suggest_emojis">Sugerir emojis</string>

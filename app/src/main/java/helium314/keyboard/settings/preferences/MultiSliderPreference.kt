@@ -58,6 +58,7 @@ fun MultiSliderPreference(
     defaults: Array<Float>,
     range:  ClosedFloatingPointRange<Float>,
     description: (Float) -> String,
+    defaultVariantName: String? = null,
     onDone: () -> Unit
 ) {
     if (defaults.size != 1.shl(dimensions.size))
@@ -79,6 +80,7 @@ fun MultiSliderPreference(
             defaultValues = defaults,
             range = range,
             dimensions = dimensions,
+            defaultVariantName = defaultVariantName,
             positionString = description
         )
 }
@@ -94,12 +96,19 @@ private fun MultiSliderDialog(
     range: ClosedFloatingPointRange<Float>,
     dimensions: List<String>,
     modifier: Modifier = Modifier,
+    defaultVariantName: String? = null,
     positionString: (Float) -> String,
 ) {
     val (variants, keys) = createVariantsAndKeys(dimensions, baseKey)
     var checked by remember { mutableStateOf(List(variants.size) { true }) }
     val prefs = LocalContext.current.prefs()
     val done = remember { mutableMapOf<String, () -> Unit>() }
+    val fallbackDefaultName = if (dimensions.size == 1 && dimensions.first() == stringResource(R.string.landscape)) {
+        stringResource(R.string.portrait)
+    } else {
+        stringResource(R.string.button_default)
+    }
+    val defaultName = defaultVariantName ?: fallbackDefaultName
 
     ThreeButtonAlertDialog(
         onDismissRequest = onDismissRequest,
@@ -133,7 +142,7 @@ private fun MultiSliderDialog(
                         val visible = variant.split(SPLIT).none { it in forbiddenDimensions }
                         // default animations make the dialog flash (see also DictionaryDialog)
                         AnimatedVisibility(visible, exit = fadeOut(), enter = fadeIn()) {
-                            WithSmallTitle(variant.ifEmpty { stringResource(R.string.button_default) }) {
+                            WithSmallTitle(variant.ifEmpty { defaultName }) {
                                 Slider(
                                     value = sliderPosition,
                                     onValueChange = { sliderPosition = it },

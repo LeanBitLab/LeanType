@@ -1800,4 +1800,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_suggestions_summary">Tampilkan cuplikan teks yang dapat diperluas di strip saran saat mengetik.</string>
     <string name="text_expander_suggestions_only_title">Hanya saran (tidak ada perluasan otomatis)</string>
     <string name="text_expander_suggestions_only_summary">Perluas teks hanya ketika dipilih dari saran, mencegah penyisipan otomatis.</string>
+    <string name="portrait">Potret</string>
 </resources>

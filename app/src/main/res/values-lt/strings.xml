@@ -1838,4 +1838,5 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_suggestions_summary">Vedant pasiūlymų juostoje rodyti išplečiamus teksto fragmentus.</string>
     <string name="text_expander_suggestions_only_title">Tik pasiūlymas (be automatinio išplėtimo)</string>
     <string name="text_expander_suggestions_only_summary">Išskleisti tekstą tik tada, kai pasirinktas iš pasiūlymų, taip išvengiant automatinio įterpimo.</string>
+    <string name="portrait">Portretas</string>
 </resources>

@@ -424,6 +424,7 @@
     <string name="toolbar_mode_hidden">Nascosta</string>
     <string name="toolbar_hiding_global">Nascondi anche le barre degli appunti e delle emoji</string>
     <string name="landscape">Orizzontale</string>
+    <string name="portrait">Verticale</string>
     <string name="popup_order_and_hint_source">Ordine dei caratteri popup e fonti dei suggerimenti</string>
     <string name="toolbar_mode_suggestion_strip">Solo suggerimenti</string>
     <string name="toolbar_mode">Modalità</string>

@@ -1800,4 +1800,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_suggestions_summary">Prikažite proširive isječke teksta u traci s prijedlozima tijekom tipkanja.</string>
     <string name="text_expander_suggestions_only_title">Samo prijedlog (bez automatskog proširivanja)</string>
     <string name="text_expander_suggestions_only_summary">Proširi tekst samo kada je odabran iz prijedloga, sprječavajući automatsko umetanje.</string>
+    <string name="portrait">Portret</string>
 </resources>

@@ -69,9 +69,7 @@ fun MainSettingsScreen(
     onClickAdvanced: () -> Unit,
     onClickAppearance: () -> Unit,
     onClickLanguage: () -> Unit,
-    onClickGesture: () -> Unit,
     onClickLibraries: () -> Unit,
-    onClickDictionaries: () -> Unit,
     onClickAIIntegration: () -> Unit,
     onClickBack: () -> Unit,
 ) {
@@ -309,7 +307,7 @@ private fun PreviewScreen() {
     initPreview(LocalContext.current)
     Theme(previewDark) {
         Surface {
-            MainSettingsScreen({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
+            MainSettingsScreen({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
         }
     }
 }

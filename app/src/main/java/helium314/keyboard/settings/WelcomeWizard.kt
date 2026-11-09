@@ -53,6 +53,7 @@ import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.permissions.PermissionsUtil
 import helium314.keyboard.latin.settings.Defaults
+import helium314.keyboard.latin.settings.createPrefKeyForBooleanSettings
 import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.settings.dialogs.MultiListPickerDialog
@@ -588,7 +589,10 @@ fun WelcomeWizard(
                         { step++ },
                         { step-- }
                     ) {
-                        val heightSet = ctx.prefs().contains(Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX + "0")
+                        val trigger = refreshTrigger
+                        val portraitHeightKey = createPrefKeyForBooleanSettings(Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX, 0, 1)
+                        val landscapeHeightKey = createPrefKeyForBooleanSettings(Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX, 1, 1)
+                        val heightSet = ctx.prefs().contains(portraitHeightKey) || ctx.prefs().contains(landscapeHeightKey)
 
                         Box(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.shapes.medium)) {
                             helium314.keyboard.settings.Setting(ctx, Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX, R.string.prefs_keyboard_height_scale) { setting ->
@@ -598,8 +602,11 @@ fun WelcomeWizard(
                                     dimensions = listOf(stringResource(R.string.landscape)),
                                     defaults = Defaults.PREF_KEYBOARD_HEIGHT_SCALE,
                                     range = 0.3f..1.5f,
-                                    description = { "${(100 * it).roundToInt()}%" }
-                                ) {}
+                                    description = { "${(100 * it).roundToInt()}%" },
+                                    defaultVariantName = stringResource(R.string.portrait)
+                                ) {
+                                    refreshTrigger++
+                                }
                             }.Preference()
                             
                             if (heightSet) {

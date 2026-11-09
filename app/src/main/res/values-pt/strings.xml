@@ -377,6 +377,7 @@
     <string name="select_color_key_hint">Texto da dica da tecla</string>
     <string name="theme_name_user" tools:keep="@string/theme_name_user">Definido pelo Utilizador</string>
     <string name="landscape">Paisagem</string>
+    <string name="portrait">Retrato</string>
     <string name="name_invalid">Nome inválido</string>
     <string name="license">Licença de open-source</string>
     <string name="space_swipe_move_cursor_entry">Mover cursor</string>

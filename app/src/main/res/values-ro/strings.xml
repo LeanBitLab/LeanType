@@ -1837,4 +1837,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_suggestions_summary">Afișați fragmente de text extensibile în banda de sugestii în timp ce introduceți text.</string>
     <string name="text_expander_suggestions_only_title">Numai sugestie (fără extindere automată)</string>
     <string name="text_expander_suggestions_only_summary">Extindeți textul numai atunci când este selectat din sugestii, împiedicând inserarea automată.</string>
+    <string name="portrait">Portret</string>
 </resources>

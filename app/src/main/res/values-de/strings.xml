@@ -421,6 +421,7 @@
     <string name="toolbar_hiding_global">Auch Zwischenablage und Emoji Symbolleisten verstecken</string>
     <string name="subtype_with_layout_generic">%1$s (%2$s)</string>
     <string name="landscape">Querformat</string>
+    <string name="portrait">Hochformat</string>
     <string name="toolbar_mode_suggestion_strip">Nur Vorschläge</string>
     <string name="toolbar_mode">Symbolleiste Modus</string>
     <string name="show_emoji_descriptions">Zeige Emoji-Beschreibung bei langem gedrückt halten</string>

@@ -1829,4 +1829,5 @@
     <string name="text_expander_suggestions_summary">टाइप करते समय सुझाव पट्टी में विस्तार योग्य टेक्स्ट स्निपेट दिखाएं।</string>
     <string name="text_expander_suggestions_only_title">केवल सुझाव (कोई स्वत: विस्तार नहीं)</string>
     <string name="text_expander_suggestions_only_summary">सुझावों में से चयनित होने पर ही टेक्स्ट का विस्तार करें, स्वचालित प्रविष्टि को रोकें।</string>
+    <string name="portrait">चित्र</string>
 </resources>

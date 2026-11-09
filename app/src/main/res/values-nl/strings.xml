@@ -1844,4 +1844,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_suggestions_summary">Toon uitvouwbare tekstfragmenten in de suggestiestrook tijdens het typen.</string>
     <string name="text_expander_suggestions_only_title">Alleen suggestie (niet automatisch uitvouwen)</string>
     <string name="text_expander_suggestions_only_summary">Vouw tekst alleen uit als deze is geselecteerd uit suggesties, waardoor automatische invoeging wordt voorkomen.</string>
+    <string name="portrait">Portret</string>
 </resources>

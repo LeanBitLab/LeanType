@@ -1869,4 +1869,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_suggestions_summary">Muestra fragmentos de texto expandibles en la barra de sugerencias mientras escribes.</string>
     <string name="text_expander_suggestions_only_title">Solo sugerencia (sin expansión automática)</string>
     <string name="text_expander_suggestions_only_summary">Expanda el texto solo cuando se seleccione entre las sugerencias, evitando la inserción automática.</string>
+    <string name="portrait">Retrato</string>
 </resources>

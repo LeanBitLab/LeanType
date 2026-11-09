@@ -1808,4 +1808,5 @@
     <string name="text_expander_suggestions_summary">הצג קטעי טקסט הניתנים להרחבה ברצועת ההצעות בזמן ההקלדה.</string>
     <string name="text_expander_suggestions_only_title">הצעה בלבד (ללא הרחבה אוטומטית)</string>
     <string name="text_expander_suggestions_only_summary">הרחב טקסט רק כאשר הוא נבחר מתוך הצעות, מניעת הכנסה אוטומטית.</string>
+    <string name="portrait">דְיוֹקָן</string>
 </resources>

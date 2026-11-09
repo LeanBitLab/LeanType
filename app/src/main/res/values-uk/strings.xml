@@ -1802,4 +1802,5 @@
     <string name="text_expander_suggestions_summary">Показувати фрагменти тексту, що розгортаються, у смузі пропозицій під час введення.</string>
     <string name="text_expander_suggestions_only_title">Лише пропозиція (без автоматичного розгортання)</string>
     <string name="text_expander_suggestions_only_summary">Розгортати текст лише тоді, коли вибрано з пропозицій, запобігаючи автоматичному вставленню.</string>
+    <string name="portrait">Портрет</string>
 </resources>

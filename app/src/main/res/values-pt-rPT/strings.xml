@@ -1799,4 +1799,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_suggestions_summary">Mostre trechos de texto expansíveis na faixa de sugestões enquanto digita.</string>
     <string name="text_expander_suggestions_only_title">Apenas sugestões (sem expansão automática)</string>
     <string name="text_expander_suggestions_only_summary">Expanda o texto somente quando selecionado nas sugestões, evitando a inserção automática.</string>
+    <string name="portrait">Retrato</string>
 </resources>

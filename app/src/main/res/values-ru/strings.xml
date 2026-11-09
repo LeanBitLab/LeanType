@@ -419,6 +419,7 @@
     <string name="toolbar_hiding_global">Скрыть панели инструментов буфера обмена и эмодзи</string>
     <string name="popup_order_and_hint_source">Порядок всплывающих клавиш и источник подсказок</string>
     <string name="landscape">Альбомный режим</string>
+    <string name="portrait">Книжный режим</string>
     <string name="show_emoji_descriptions">Показывать описание эмодзи при долгом нажатии</string>
     <string name="suggest_emojis">Предлагать эмодзи</string>
     <string name="suggest_emojis_summary">Использовать словарь эмодзи в обычных подсказках</string>

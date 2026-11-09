@@ -420,6 +420,7 @@
     <string name="layout_clip_bottom_row_with_action" tools:keep="@string/layout_clip_bottom_row_with_action">Sección inferior de portapapeles con tecla de acción</string>
     <string name="space_swipe_hide_keyboard_entry">Ocultar el teclado</string>
     <string name="landscape">Horizontal</string>
+    <string name="portrait">Vertical</string>
     <string name="toolbar_mode_suggestion_strip" tools:keep="@string/toolbar_mode_suggestion_strip">Solo sugerencias</string>
     <string name="toolbar_mode_hidden" tools:keep="@string/toolbar_mode_hidden">Oculto</string>
     <string name="toolbar_hiding_global">Oculta también las barras del portapapeles y los emojis</string>

@@ -1903,4 +1903,5 @@
     <string name="text_expander_suggestions_summary">Εμφάνιση επεκτάσιμων αποσπασμάτων κειμένου στη γραμμή προτάσεων κατά την πληκτρολόγηση.</string>
     <string name="text_expander_suggestions_only_title">Μόνο πρόταση (χωρίς αυτόματη επέκταση)</string>
     <string name="text_expander_suggestions_only_summary">Αναπτύξτε το κείμενο μόνο όταν επιλέγεται από προτάσεις, αποτρέποντας την αυτόματη εισαγωγή.</string>
+    <string name="portrait">Πορτρέτο</string>
 </resources>

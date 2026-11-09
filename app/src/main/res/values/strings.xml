@@ -1738,6 +1738,8 @@ New dictionary:
     <string name="custom_subtype">Custom subtype</string>
     <!-- Name for landscape orientation, used in various settings -->
     <string name="landscape">Landscape</string>
+    <!-- Name for portrait orientation, used in various settings -->
+    <string name="portrait">Portrait</string>
     <string name="offline_model_title">Offline Model</string>
     <string name="offline_model_summary">Manage local LLM</string>
     <string name="offline_max_tokens_title">Offline AI Max Tokens</string>
