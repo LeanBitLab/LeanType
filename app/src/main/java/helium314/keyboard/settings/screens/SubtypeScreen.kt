@@ -199,6 +199,7 @@ fun SubtypeScreen(
                         }
                         if (hasLocalizedNumberRow(currentSubtype.locale, ctx)) {
                             val checked = currentSubtype.getExtraValueOf(ExtraValue.LOCALIZED_NUMBER_ROW)?.toBoolean()
+                            val checkedPopups = currentSubtype.getExtraValueOf(ExtraValue.LOCALIZED_NUMBERS_IN_POPUPS)?.toBoolean()
                             WithSmallTitle(stringResource(R.string.number_row)) {
                                 ActionRow {
                                     Text(stringResource(R.string.localized_number_row),
@@ -217,6 +218,25 @@ fun SubtypeScreen(
                                     )
                                     DefaultButton(checked == null) {
                                         setCurrentSubtype(currentSubtype.without(ExtraValue.LOCALIZED_NUMBER_ROW))
+                                    }
+                                }
+                                ActionRow {
+                                    Text(stringResource(R.string.localized_numbers_in_popups),
+                                        modifier = Modifier
+                                            .weight(1f)
+                                            .padding(start = 10.dp)
+                                    )
+                                    Switch(
+                                        checked = checkedPopups ?: prefs.getBoolean(
+                                            Settings.PREF_LOCALIZED_NUMBERS_IN_POPUPS,
+                                            Defaults.PREF_LOCALIZED_NUMBERS_IN_POPUPS
+                                        ),
+                                        onCheckedChange = {
+                                            setCurrentSubtype(currentSubtype.with(ExtraValue.LOCALIZED_NUMBERS_IN_POPUPS, it.toString()))
+                                        }
+                                    )
+                                    DefaultButton(checkedPopups == null) {
+                                        setCurrentSubtype(currentSubtype.without(ExtraValue.LOCALIZED_NUMBERS_IN_POPUPS))
                                     }
                                 }
                             }

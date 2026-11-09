@@ -1796,4 +1796,6 @@
     <string name="setup_not_active_title">Увімкнути%s</string>
     <string name="setup_not_active_summary">Торкніться, щоб завершити налаштування клавіатури</string>
     <string name="setup_welcome_summary">Запустіть майстер початкового налаштування та налаштування</string>
+    <string name="localized_numbers_in_popups"></string>
+    <string name="localized_numbers_in_popups_summary">Показувати локалізовані цифри у спливаючих вікнах номерного рядка, якщо номерний рядок використовує латинські цифри</string>
 </resources>

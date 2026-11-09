@@ -1897,4 +1897,6 @@
     <string name="setup_not_active_title">%sപ്രവർത്തനക്ഷമമാക്കുക</string>
     <string name="setup_not_active_summary">കീബോർഡ് സജ്ജീകരണം പൂർത്തിയാക്കാൻ ടാപ്പ് ചെയ്യുക</string>
     <string name="setup_welcome_summary">പ്രാരംഭ സജ്ജീകരണവും കോൺഫിഗറേഷൻ വിസാർഡും പ്രവർത്തിപ്പിക്കുക</string>
+    <string name="localized_numbers_in_popups">പോപ്പ്അപ്പുകളിൽ പ്രാദേശികവൽക്കരിച്ച നമ്പറുകൾ</string>
+    <string name="localized_numbers_in_popups_summary">നമ്പർ വരി ലാറ്റിൻ അക്കങ്ങൾ ഉപയോഗിക്കുമ്പോൾ നമ്പർ വരി പോപ്പ്അപ്പുകളിൽ പ്രാദേശികവൽക്കരിച്ച അക്കങ്ങൾ കാണിക്കുക</string>
 </resources>

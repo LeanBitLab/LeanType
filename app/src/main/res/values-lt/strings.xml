@@ -1832,4 +1832,6 @@ Ar norite atnaujinti?</string>
     <string name="setup_not_active_title">Įgalinti%s</string>
     <string name="setup_not_active_summary">Bakstelėkite, kad užbaigtumėte klaviatūros sąranką</string>
     <string name="setup_welcome_summary">Paleiskite pradinį sąrankos ir konfigūravimo vedlį</string>
+    <string name="localized_numbers_in_popups">Lokalizuoti numeriai iššokančiuose languose</string>
+    <string name="localized_numbers_in_popups_summary">Rodyti lokalizuotus skaitmenis skaičių eilutės iššokančiuose languose, kai skaičių eilutėje naudojami lotyniški skaitmenys</string>
 </resources>

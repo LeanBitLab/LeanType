@@ -1794,4 +1794,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="setup_not_active_title">%sengedélyezése</string>
     <string name="setup_not_active_summary">Érintse meg a billentyűzet beállításának befejezéséhez</string>
     <string name="setup_welcome_summary">Futtassa a kezdeti beállítási és konfigurációs varázslót</string>
+    <string name="localized_numbers_in_popups">Lokalizált számok a felugró ablakokban</string>
+    <string name="localized_numbers_in_popups_summary">Lokalizált számjegyek megjelenítése a számsor előugró ablakaiban, ha a számsor latin számjegyeket használ</string>
 </resources>

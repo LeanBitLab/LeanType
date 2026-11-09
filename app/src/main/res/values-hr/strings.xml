@@ -1794,4 +1794,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="setup_not_active_title">Omogući%s</string>
     <string name="setup_not_active_summary">Dodirnite za dovršetak postavljanja tipkovnice</string>
     <string name="setup_welcome_summary">Pokrenite čarobnjaka za početno postavljanje i konfiguraciju</string>
+    <string name="localized_numbers_in_popups">Lokalizirani brojevi u skočnim prozorima</string>
+    <string name="localized_numbers_in_popups_summary">Prikaži lokalizirane znamenke u skočnim prozorima redova brojeva kada redak brojeva koristi latinične znamenke</string>
 </resources>

@@ -1897,4 +1897,6 @@
     <string name="setup_not_active_title">Ενεργοποίηση%s</string>
     <string name="setup_not_active_summary">Πατήστε για να ολοκληρώσετε τη ρύθμιση του πληκτρολογίου</string>
     <string name="setup_welcome_summary">Εκτελέστε τον οδηγό αρχικής εγκατάστασης και διαμόρφωσης</string>
+    <string name="localized_numbers_in_popups">Τοπικοί αριθμοί σε αναδυόμενα παράθυρα</string>
+    <string name="localized_numbers_in_popups_summary">Εμφάνιση τοπικών ψηφίων στα αναδυόμενα παράθυρα της σειράς αριθμών όταν η αριθμητική σειρά χρησιμοποιεί λατινικά ψηφία</string>
 </resources>

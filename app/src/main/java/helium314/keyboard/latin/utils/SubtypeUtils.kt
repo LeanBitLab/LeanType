@@ -72,6 +72,10 @@ fun getHasLocalizedNumberRow(subtype: InputMethodSubtype, prefs: SharedPreferenc
     subtype.getExtraValueOf(ExtraValue.LOCALIZED_NUMBER_ROW)?.toBoolean()
         ?: prefs.getBoolean(Settings.PREF_LOCALIZED_NUMBER_ROW, Defaults.PREF_LOCALIZED_NUMBER_ROW)
 
+fun getHasLocalizedNumbersInPopups(subtype: InputMethodSubtype, prefs: SharedPreferences): Boolean =
+    subtype.getExtraValueOf(ExtraValue.LOCALIZED_NUMBERS_IN_POPUPS)?.toBoolean()
+        ?: prefs.getBoolean(Settings.PREF_LOCALIZED_NUMBERS_IN_POPUPS, Defaults.PREF_LOCALIZED_NUMBERS_IN_POPUPS)
+
 fun getPopupKeyTypes(subtype: InputMethodSubtype, prefs: SharedPreferences): List<String> {
     val string = subtype.getExtraValueOf(ExtraValue.POPUP_ORDER)
         ?: prefs.getString(Settings.PREF_POPUP_KEYS_ORDER, Defaults.PREF_POPUP_KEYS_ORDER)

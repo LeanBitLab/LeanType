@@ -1863,4 +1863,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="setup_not_active_title">Abilita%s</string>
     <string name="setup_not_active_summary">Tocca per completare la configurazione della tastiera</string>
     <string name="setup_welcome_summary">Eseguire la procedura guidata di installazione e configurazione iniziale</string>
+    <string name="localized_numbers_in_popups">Numeri localizzati nei popup</string>
+    <string name="localized_numbers_in_popups_summary">Mostra le cifre localizzate nei popup della riga numerica quando la riga numerica utilizza cifre latine</string>
 </resources>

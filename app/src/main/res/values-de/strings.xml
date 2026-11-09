@@ -1846,4 +1846,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="setup_not_active_title">%saktivieren</string>
     <string name="setup_not_active_summary">Tippen Sie hier, um die Tastatureinrichtung abzuschließen</string>
     <string name="setup_welcome_summary"></string>
+    <string name="localized_numbers_in_popups">Lokalisierte Nummern in Popups</string>
+    <string name="localized_numbers_in_popups_summary">Zeigen Sie lokalisierte Ziffern in Zahlenzeilen-Popups an, wenn die Zahlenzeile lateinische Ziffern verwendet</string>
 </resources>

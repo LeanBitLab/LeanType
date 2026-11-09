@@ -1831,4 +1831,6 @@
     <string name="setup_not_active_title">Уключыць%s</string>
     <string name="setup_not_active_summary">Націсніце, каб завяршыць наладку клавіятуры</string>
     <string name="setup_welcome_summary">Запусціце майстар першапачатковай налады і канфігурацыі</string>
+    <string name="localized_numbers_in_popups">Лакалізаваныя лічбы ва ўсплываючых вокнах</string>
+    <string name="localized_numbers_in_popups_summary">Паказваць лакалізаваныя лічбы ва ўсплывальных вокнах з лікавым радком, калі ў радку з нумарамі выкарыстоўваюцца лацінскія лічбы</string>
 </resources>

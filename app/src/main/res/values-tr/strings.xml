@@ -1825,4 +1825,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="setup_not_active_title">%s\'yi etkinleştir</string>
     <string name="setup_not_active_summary">Klavye kurulumunu tamamlamak için dokunun</string>
     <string name="setup_welcome_summary">İlk kurulum ve yapılandırma sihirbazını çalıştırın</string>
+    <string name="localized_numbers_in_popups">Açılır pencerelerde yerelleştirilmiş sayılar</string>
+    <string name="localized_numbers_in_popups_summary">Sayı satırı Latin rakamları kullandığında, sayı satırı açılır pencerelerinde yerelleştirilmiş rakamları göster</string>
 </resources>

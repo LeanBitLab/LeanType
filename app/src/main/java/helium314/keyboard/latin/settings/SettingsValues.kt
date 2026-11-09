@@ -30,6 +30,7 @@ import helium314.keyboard.latin.utils.ScriptUtils
 import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.latin.utils.ToolbarMode
 import helium314.keyboard.latin.utils.getHasLocalizedNumberRow
+import helium314.keyboard.latin.utils.getHasLocalizedNumbersInPopups
 import helium314.keyboard.latin.utils.getMoreKeys
 import helium314.keyboard.latin.utils.getPopupKeyLabelSources
 import helium314.keyboard.latin.utils.getPopupKeyTypes
@@ -80,6 +81,7 @@ open class SettingsValues(
     val mShowsNumberRowInSymbols: Boolean
     val mCompactNumberRowInSymbols: Boolean
     val mLocalizedNumberRow: Boolean
+    val mLocalizedNumbersInPopups: Boolean
     val mShowNumberRowHints: Boolean
     val mShowsHints: Boolean
     val mShowsPopupHints: Boolean
@@ -308,6 +310,7 @@ open class SettingsValues(
         mShowsNumberRowInSymbols = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW_IN_SYMBOLS, Defaults.PREF_SHOW_NUMBER_ROW_IN_SYMBOLS)
         mCompactNumberRowInSymbols = prefs.getBoolean(Settings.PREF_COMPACT_NUMBER_ROW_IN_SYMBOLS, Defaults.PREF_COMPACT_NUMBER_ROW_IN_SYMBOLS)
         mLocalizedNumberRow = getHasLocalizedNumberRow(selectedSubtype, prefs)
+        mLocalizedNumbersInPopups = getHasLocalizedNumbersInPopups(selectedSubtype, prefs)
         mShowNumberRowHints = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW_HINTS, Defaults.PREF_SHOW_NUMBER_ROW_HINTS)
         mShowsHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, Defaults.PREF_SHOW_HINTS)
         mShowsPopupHints = prefs.getBoolean(Settings.PREF_SHOW_POPUP_HINTS, Defaults.PREF_SHOW_POPUP_HINTS)

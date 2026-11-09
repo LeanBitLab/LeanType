@@ -1888,4 +1888,6 @@
     <string name="setup_not_active_title">فعال کریں%s</string>
     <string name="setup_not_active_summary">کی بورڈ سیٹ اپ مکمل کرنے کے لیے تھپتھپائیں۔</string>
     <string name="setup_welcome_summary">ابتدائی سیٹ اپ اور کنفیگریشن وزرڈ چلائیں۔</string>
+    <string name="localized_numbers_in_popups">پاپ اپ میں مقامی نمبرز</string>
+    <string name="localized_numbers_in_popups_summary">جب نمبر قطار لاطینی ہندسوں کا استعمال کرتی ہے تو نمبر قطار کے پاپ اپ میں مقامی ہندسے دکھائیں۔</string>
 </resources>

@@ -485,6 +485,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_SHOW_NUMBER_ROW_IN_SYMBOLS = "show_number_row_in_symbols"
         const val PREF_COMPACT_NUMBER_ROW_IN_SYMBOLS = "compact_number_row_in_symbols"
         const val PREF_LOCALIZED_NUMBER_ROW = "localized_number_row"
+        const val PREF_LOCALIZED_NUMBERS_IN_POPUPS = "localized_numbers_in_popups"
         const val PREF_SHOW_NUMBER_ROW_HINTS = "show_number_row_hints"
         const val PREF_CUSTOM_CURRENCY_KEY = "custom_currency_key"
 

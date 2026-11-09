@@ -1831,4 +1831,6 @@
     <string name="setup_not_active_title">Активиране на%s</string>
     <string name="setup_not_active_summary">Докоснете, за да завършите настройката на клавиатурата</string>
     <string name="setup_welcome_summary">Стартирайте съветника за първоначална настройка и конфигурация</string>
+    <string name="localized_numbers_in_popups">Локализирани числа в изскачащи прозорци</string>
+    <string name="localized_numbers_in_popups_summary">Показване на локализирани цифри в изскачащите прозорци на числовия ред, когато числовият ред използва латински цифри</string>
 </resources>

@@ -1838,4 +1838,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="setup_not_active_title">Schakel%sin</string>
     <string name="setup_not_active_summary">Tik om de toetsenbordconfiguratie te voltooien</string>
     <string name="setup_welcome_summary">Voer de initiële installatie- en configuratiewizard uit</string>
+    <string name="localized_numbers_in_popups">Gelokaliseerde nummers in pop-ups</string>
+    <string name="localized_numbers_in_popups_summary">Toon gelokaliseerde cijfers in pop-ups met getallenrijen wanneer de getallenrij Latijnse cijfers gebruikt</string>
 </resources>

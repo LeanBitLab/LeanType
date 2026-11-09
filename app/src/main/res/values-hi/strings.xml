@@ -1823,4 +1823,6 @@
     <string name="setup_not_active_title">%sसक्षम करें</string>
     <string name="setup_not_active_summary">कीबोर्ड सेटअप पूरा करने के लिए टैप करें</string>
     <string name="setup_welcome_summary">प्रारंभिक सेटअप और कॉन्फ़िगरेशन विज़ार्ड चलाएँ</string>
+    <string name="localized_numbers_in_popups">पॉपअप में स्थानीयकृत संख्याएँ</string>
+    <string name="localized_numbers_in_popups_summary">जब संख्या पंक्ति लैटिन अंकों का उपयोग करती है तो संख्या पंक्ति पॉपअप में स्थानीयकृत अंक दिखाएं</string>
 </resources>

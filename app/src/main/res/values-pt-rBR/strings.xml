@@ -1801,4 +1801,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="setup_not_active_title">Ativar%s</string>
     <string name="setup_not_active_summary">Toque para concluir a configuração do teclado</string>
     <string name="setup_welcome_summary">Execute a instalação inicial e o assistente de configuração</string>
+    <string name="localized_numbers_in_popups">Números localizados em pop-ups</string>
+    <string name="localized_numbers_in_popups_summary"></string>
 </resources>

@@ -1796,4 +1796,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="setup_not_active_title">Povolit%s</string>
     <string name="setup_not_active_summary">Klepnutím dokončete nastavení klávesnice</string>
     <string name="setup_welcome_summary">Spusťte průvodce počátečním nastavením a konfigurací</string>
+    <string name="localized_numbers_in_popups">Lokalizovaná čísla ve vyskakovacích oknech</string>
+    <string name="localized_numbers_in_popups_summary">Zobrazovat lokalizované číslice ve vyskakovacích oknech čísel, pokud řada čísel používá latinské číslice</string>
 </resources>

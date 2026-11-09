@@ -117,6 +117,9 @@ object Constants {
 
             /** Overrides the general "localized number row" setting */
             const val LOCALIZED_NUMBER_ROW = "LocalizedNumberRow"
+
+            /** Overrides the general "localized numbers in popups" setting */
+            const val LOCALIZED_NUMBERS_IN_POPUPS = "LocalizedNumbersInPopups"
         }
     }
 

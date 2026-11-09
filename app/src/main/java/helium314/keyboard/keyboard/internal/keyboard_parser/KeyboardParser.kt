@@ -365,14 +365,14 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
                             in 1..9 -> row[i] = key.copy(newLabel = localizedNumbers[number - 1], newCode = KeyCode.UNSPECIFIED, newPopup = SimplePopups(listOf(key.label)).merge(key.popup))
                         }
                     }
-                } else {
-                    // add localized numbers to popups on 0-9
+                } else if (Settings.getValues().mLocalizedNumbersInPopups) {
+                    // add localized numbers to popups on 0-9 after symbols
                     for (i in row.indices) {
                         val key = row[i]
                         val number = key.label.toIntOrNull() ?: continue
                         when (number) {
-                            0 -> row[i] = key.copy(newPopup = SimplePopups(listOf(localizedNumbers[9])).merge(key.popup))
-                            in 1..9 -> row[i] = key.copy(newPopup = SimplePopups(listOf(localizedNumbers[number - 1])).merge(key.popup))
+                            0 -> row[i] = key.copy(newPopup = key.popup.merge(SimplePopups(listOf(localizedNumbers[9]))))
+                            in 1..9 -> row[i] = key.copy(newPopup = key.popup.merge(SimplePopups(listOf(localizedNumbers[number - 1]))))
                         }
                     }
                 }

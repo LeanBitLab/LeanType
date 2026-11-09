@@ -1854,4 +1854,6 @@
     <string name="setup_not_active_title">تمكين%s</string>
     <string name="setup_not_active_summary">انقر لإكمال إعداد لوحة المفاتيح</string>
     <string name="setup_welcome_summary">قم بتشغيل معالج الإعداد والتكوين الأولي</string>
+    <string name="localized_numbers_in_popups">الأرقام المترجمة في النوافذ المنبثقة</string>
+    <string name="localized_numbers_in_popups_summary">إظهار الأرقام المترجمة في النوافذ المنبثقة لصف الأرقام عندما يستخدم صف الأرقام أرقامًا لاتينية</string>
 </resources>

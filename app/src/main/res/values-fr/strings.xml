@@ -1852,4 +1852,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="setup_not_active_title">Activer%s</string>
     <string name="setup_not_active_summary">Appuyez pour terminer la configuration du clavier</string>
     <string name="setup_welcome_summary">Exécutez l\'assistant d\'installation et de configuration initiale</string>
+    <string name="localized_numbers_in_popups">Numéros localisés dans les popups</string>
+    <string name="localized_numbers_in_popups_summary">Afficher les chiffres localisés dans les fenêtres contextuelles des lignes numériques lorsque la ligne numérique utilise des chiffres latins</string>
 </resources>

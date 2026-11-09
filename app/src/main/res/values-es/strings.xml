@@ -1793,4 +1793,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="setup_not_active_title">Habilitar%s</string>
     <string name="setup_not_active_summary">Toque para completar la configuración del teclado</string>
     <string name="setup_welcome_summary">Ejecute el asistente de instalación y configuración inicial</string>
+    <string name="localized_numbers_in_popups"></string>
+    <string name="localized_numbers_in_popups_summary"></string>
 </resources>

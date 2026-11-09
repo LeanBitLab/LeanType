@@ -1831,4 +1831,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="setup_not_active_title">Luba%s</string>
     <string name="setup_not_active_summary">Puudutage klaviatuuri seadistamise lõpetamiseks</string>
     <string name="setup_welcome_summary">Käivitage algseadistuse ja konfiguratsiooni viisard</string>
+    <string name="localized_numbers_in_popups">Lokaliseeritud numbrid hüpikakendes</string>
+    <string name="localized_numbers_in_popups_summary">Kui numbririda kasutab ladina numbreid, kuvatakse numbrirea hüpikakendes lokaliseeritud numbrid</string>
 </resources>

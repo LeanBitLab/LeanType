@@ -1794,4 +1794,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="setup_not_active_title">Aktifkan%s</string>
     <string name="setup_not_active_summary">Ketuk untuk menyelesaikan pengaturan keyboard</string>
     <string name="setup_welcome_summary"></string>
+    <string name="localized_numbers_in_popups"></string>
+    <string name="localized_numbers_in_popups_summary">Tampilkan digit yang dilokalkan dalam popup baris nomor ketika baris nomor menggunakan digit Latin</string>
 </resources>

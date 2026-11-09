@@ -1838,4 +1838,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="setup_not_active_title">Włącz%s</string>
     <string name="setup_not_active_summary">Kliknij, aby dokończyć konfigurację klawiatury</string>
     <string name="setup_welcome_summary">Uruchom kreator wstępnej instalacji i konfiguracji</string>
+    <string name="localized_numbers_in_popups">Zlokalizowane numery w wyskakujących okienkach</string>
+    <string name="localized_numbers_in_popups_summary">Pokaż zlokalizowane cyfry w wyskakujących okienkach wierszy numerów, gdy w wierszu numerów używane są cyfry łacińskie</string>
 </resources>

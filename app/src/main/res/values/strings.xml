@@ -600,6 +600,10 @@
     <string name="localized_number_row">Localize number row</string>
     <!-- Description of the settings to localize number row -->
     <string name="localized_number_row_summary">Prefer localized over latin numbers</string>
+    <!-- Title of the setting to include localized numbers in number row popups -->
+    <string name="localized_numbers_in_popups">Localized numbers in popups</string>
+    <!-- Description of the setting to include localized numbers in number row popups -->
+    <string name="localized_numbers_in_popups_summary">Show localized digits in number row popups when number row uses Latin digits</string>
     <!-- Title of the setting to enable number row hints -->
     <string name="number_row_hints">Show hints on number row</string>
     <!-- Title of the setting to save subtype per app -->

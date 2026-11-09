@@ -97,6 +97,8 @@ fun PreferencesScreen(
             Settings.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS,
             if (fineTuneAdditionalKeysExpanded && SubtypeSettings.getEnabledSubtypes(true).any { it.locale().language in localesWithLocalizedNumberRow })
                 Settings.PREF_LOCALIZED_NUMBER_ROW else null,
+            if (fineTuneAdditionalKeysExpanded && SubtypeSettings.getEnabledSubtypes(true).any { it.locale().language in localesWithLocalizedNumberRow })
+                Settings.PREF_LOCALIZED_NUMBERS_IN_POPUPS else null,
             if (fineTuneAdditionalKeysExpanded && showHints && showNumberRow)
                 Settings.PREF_SHOW_NUMBER_ROW_HINTS else null,
             if (fineTuneAdditionalKeysExpanded && !showNumberRow)
@@ -180,6 +182,12 @@ fun createPreferencesSettings(context: Context) = listOf(
     },
     Setting(context, Settings.PREF_LOCALIZED_NUMBER_ROW, R.string.localized_number_row, R.string.localized_number_row_summary) {
         SwitchPreference(it, Defaults.PREF_LOCALIZED_NUMBER_ROW) {
+            KeyboardLayoutSet.onSystemLocaleChanged()
+            KeyboardSwitcher.getInstance().reloadKeyboard()
+        }
+    },
+    Setting(context, Settings.PREF_LOCALIZED_NUMBERS_IN_POPUPS, R.string.localized_numbers_in_popups, R.string.localized_numbers_in_popups_summary) {
+        SwitchPreference(it, Defaults.PREF_LOCALIZED_NUMBERS_IN_POPUPS) {
             KeyboardLayoutSet.onSystemLocaleChanged()
             KeyboardSwitcher.getInstance().reloadKeyboard()
         }
