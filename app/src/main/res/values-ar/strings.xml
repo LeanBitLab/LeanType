@@ -1849,4 +1849,9 @@
     <string name="style_live_typing_summary">الكتابة مباشرة بالنمط المحدد (الأنماط المعينة 1:1 فقط)</string>
     <string name="style_active_none">لا شيء (نص عادي)</string>
     <string name="style_plain">طبيعي</string>
+    <string name="setup_skip_action">انتقل إلى الإعدادات</string>
+    <string name="setup_wizard_title">معالج الإعداد</string>
+    <string name="setup_not_active_title">تمكين%s</string>
+    <string name="setup_not_active_summary">انقر لإكمال إعداد لوحة المفاتيح</string>
+    <string name="setup_welcome_summary">قم بتشغيل معالج الإعداد والتكوين الأولي</string>
 </resources>

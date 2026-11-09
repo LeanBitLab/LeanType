@@ -1820,4 +1820,9 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="style_live_typing_summary">Seçilen stile doğrudan yazın (yalnızca 1:1 eşlenmiş stiller)</string>
     <string name="style_active_none">Yok (Düz metin)</string>
     <string name="style_plain">Normal</string>
+    <string name="setup_skip_action">Ayarlara atla</string>
+    <string name="setup_wizard_title">Kurulum sihirbazı</string>
+    <string name="setup_not_active_title">%s\'yi etkinleştir</string>
+    <string name="setup_not_active_summary">Klavye kurulumunu tamamlamak için dokunun</string>
+    <string name="setup_welcome_summary">İlk kurulum ve yapılandırma sihirbazını çalıştırın</string>
 </resources>

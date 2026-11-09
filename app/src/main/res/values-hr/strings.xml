@@ -1789,4 +1789,9 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="style_live_typing_summary">Upišite izravno u odabranom stilu (samo mapirani stilovi 1:1)</string>
     <string name="style_active_none">Ništa (običan tekst)</string>
     <string name="style_plain">Normalan</string>
+    <string name="setup_skip_action">Prijeđi na postavke</string>
+    <string name="setup_wizard_title">Čarobnjak za postavljanje</string>
+    <string name="setup_not_active_title">Omogući%s</string>
+    <string name="setup_not_active_summary">Dodirnite za dovršetak postavljanja tipkovnice</string>
+    <string name="setup_welcome_summary">Pokrenite čarobnjaka za početno postavljanje i konfiguraciju</string>
 </resources>

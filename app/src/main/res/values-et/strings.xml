@@ -1826,4 +1826,9 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="style_live_typing_summary">Sisestage otse valitud stiilis (ainult 1:1 vastendatud stiilid)</string>
     <string name="style_active_none">Puudub (lihttekst)</string>
     <string name="style_plain">Tavaline</string>
+    <string name="setup_skip_action">Liikuge seadete juurde</string>
+    <string name="setup_wizard_title">Seadistusviisard</string>
+    <string name="setup_not_active_title">Luba%s</string>
+    <string name="setup_not_active_summary">Puudutage klaviatuuri seadistamise lõpetamiseks</string>
+    <string name="setup_welcome_summary">Käivitage algseadistuse ja konfiguratsiooni viisard</string>
 </resources>

@@ -1791,4 +1791,9 @@
     <string name="style_live_typing_summary">Введіть безпосередньо у вибраному стилі (тільки для стилів із відображенням 1:1)</string>
     <string name="style_active_none">Немає (звичайний текст)</string>
     <string name="style_plain">нормальний</string>
+    <string name="setup_skip_action">Перейти до налаштувань</string>
+    <string name="setup_wizard_title">Майстер налаштування</string>
+    <string name="setup_not_active_title">Увімкнути%s</string>
+    <string name="setup_not_active_summary">Торкніться, щоб завершити налаштування клавіатури</string>
+    <string name="setup_welcome_summary">Запустіть майстер початкового налаштування та налаштування</string>
 </resources>

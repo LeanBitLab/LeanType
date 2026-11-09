@@ -1841,4 +1841,9 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="style_live_typing_summary">Geben Sie den ausgewählten Stil direkt ein (nur 1:1 zugeordnete Stile)</string>
     <string name="style_active_none">Keine (Klartext)</string>
     <string name="style_plain">Normal</string>
+    <string name="setup_skip_action">Springe zu den Einstellungen</string>
+    <string name="setup_wizard_title">Einrichtungsassistent</string>
+    <string name="setup_not_active_title">%saktivieren</string>
+    <string name="setup_not_active_summary">Tippen Sie hier, um die Tastatureinrichtung abzuschließen</string>
+    <string name="setup_welcome_summary"></string>
 </resources>

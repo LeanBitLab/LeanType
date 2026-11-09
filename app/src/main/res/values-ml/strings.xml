@@ -1892,4 +1892,9 @@
     <string name="style_live_typing_summary">തിരഞ്ഞെടുത്ത ശൈലിയിൽ നേരിട്ട് ടൈപ്പ് ചെയ്യുക (1:1 മാപ്പ് ചെയ്ത ശൈലികൾ മാത്രം)</string>
     <string name="style_active_none">ഒന്നുമില്ല (പ്ലെയിൻ ടെക്സ്റ്റ്)</string>
     <string name="style_plain">സാധാരണ</string>
+    <string name="setup_skip_action">ക്രമീകരണങ്ങളിലേക്ക് പോകുക</string>
+    <string name="setup_wizard_title">സെറ്റപ്പ് വിസാർഡ്</string>
+    <string name="setup_not_active_title">%sപ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="setup_not_active_summary">കീബോർഡ് സജ്ജീകരണം പൂർത്തിയാക്കാൻ ടാപ്പ് ചെയ്യുക</string>
+    <string name="setup_welcome_summary">പ്രാരംഭ സജ്ജീകരണവും കോൺഫിഗറേഷൻ വിസാർഡും പ്രവർത്തിപ്പിക്കുക</string>
 </resources>

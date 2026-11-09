@@ -1883,4 +1883,9 @@
     <string name="style_live_typing_summary">براہ راست منتخب انداز میں ٹائپ کریں (صرف 1:1 میپ شدہ طرزیں)</string>
     <string name="style_active_none">کوئی نہیں (سادہ متن)</string>
     <string name="style_plain">نارمل</string>
+    <string name="setup_skip_action">ترتیبات پر جائیں۔</string>
+    <string name="setup_wizard_title">سیٹ اپ وزرڈ</string>
+    <string name="setup_not_active_title">فعال کریں%s</string>
+    <string name="setup_not_active_summary">کی بورڈ سیٹ اپ مکمل کرنے کے لیے تھپتھپائیں۔</string>
+    <string name="setup_welcome_summary">ابتدائی سیٹ اپ اور کنفیگریشن وزرڈ چلائیں۔</string>
 </resources>

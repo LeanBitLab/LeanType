@@ -508,6 +508,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_FORCE_AUTO_CAPS = "force_auto_caps"
         const val PREF_SHIFT_RECAPITALIZES_WORD = "shift_recapitalizes_word"
         const val PREF_CLIPBOARD_SKIP_SENSITIVE = "clipboard_skip_sensitive"
+        const val PREF_SETUP_WIZARD_DISMISSED = "setup_wizard_dismissed"
         const val PREF_OFFLINE_TEMP = "offline_temp"
         const val PREF_OFFLINE_TOP_P = "offline_top_p"
         const val PREF_OFFLINE_TOP_K = "offline_top_k"

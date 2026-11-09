@@ -1796,4 +1796,9 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="style_live_typing_summary">Digite diretamente no estilo selecionado (apenas estilos mapeados 1:1)</string>
     <string name="style_active_none">Nenhum (texto simples)</string>
     <string name="style_plain">Normal</string>
+    <string name="setup_skip_action">Pular para configurações</string>
+    <string name="setup_wizard_title">Assistente de configuração</string>
+    <string name="setup_not_active_title">Ativar%s</string>
+    <string name="setup_not_active_summary">Toque para concluir a configuração do teclado</string>
+    <string name="setup_welcome_summary">Execute a instalação inicial e o assistente de configuração</string>
 </resources>

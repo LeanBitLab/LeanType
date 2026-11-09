@@ -1847,4 +1847,9 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="style_live_typing_summary">Tapez directement le style sélectionné (styles mappés 1:1 uniquement)</string>
     <string name="style_active_none">Aucun (texte brut)</string>
     <string name="style_plain">Normale</string>
+    <string name="setup_skip_action">Passer aux paramètres</string>
+    <string name="setup_wizard_title">Assistant de configuration</string>
+    <string name="setup_not_active_title">Activer%s</string>
+    <string name="setup_not_active_summary">Appuyez pour terminer la configuration du clavier</string>
+    <string name="setup_welcome_summary">Exécutez l\'assistant d\'installation et de configuration initiale</string>
 </resources>

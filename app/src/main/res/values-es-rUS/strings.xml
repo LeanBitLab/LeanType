@@ -1858,4 +1858,9 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="style_live_typing_summary">Escriba directamente el estilo seleccionado (solo estilos asignados 1:1)</string>
     <string name="style_active_none">Ninguno (texto sin formato)</string>
     <string name="style_plain">Normal</string>
+    <string name="setup_skip_action">Saltar a configuración</string>
+    <string name="setup_wizard_title">Asistente de configuración</string>
+    <string name="setup_not_active_title">Habilitar%s</string>
+    <string name="setup_not_active_summary">Toque para completar la configuración del teclado</string>
+    <string name="setup_welcome_summary">Ejecute el asistente de instalación y configuración inicial</string>
 </resources>

@@ -1892,4 +1892,9 @@
     <string name="style_live_typing_summary">Πληκτρολογήστε απευθείας στο επιλεγμένο στυλ (μόνο αντιστοιχισμένα στυλ 1:1)</string>
     <string name="style_active_none">Κανένα (Απλό κείμενο)</string>
     <string name="style_plain">Κανονικός</string>
+    <string name="setup_skip_action">Μετάβαση στις ρυθμίσεις</string>
+    <string name="setup_wizard_title">Οδηγός εγκατάστασης</string>
+    <string name="setup_not_active_title">Ενεργοποίηση%s</string>
+    <string name="setup_not_active_summary">Πατήστε για να ολοκληρώσετε τη ρύθμιση του πληκτρολογίου</string>
+    <string name="setup_welcome_summary">Εκτελέστε τον οδηγό αρχικής εγκατάστασης και διαμόρφωσης</string>
 </resources>

@@ -66,6 +66,7 @@ fun AboutScreen(
 ) {
     val items = listOf(
         SettingsWithoutKey.APP,
+        SettingsWithoutKey.SETUP_WIZARD,
         SettingsWithoutKey.VERSION,
         SettingsWithoutKey.LICENSE,
         SettingsWithoutKey.HIDDEN_FEATURES,
@@ -87,6 +88,17 @@ fun createAboutSettings(context: Context) = listOf(
             description = it.description,
             onClick = { },
             icon = R.mipmap.ic_launcher_round
+        )
+    },
+    Setting(context, SettingsWithoutKey.SETUP_WIZARD, R.string.setup_wizard_title, R.string.setup_welcome_summary) {
+        val ctx = LocalContext.current
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = {
+                (ctx.getActivity() as? SettingsActivity)?.reopenWelcomeWizard()
+            },
+            icon = R.drawable.ic_ime_switcher
         )
     },
     Setting(context, SettingsWithoutKey.VERSION, R.string.version) {

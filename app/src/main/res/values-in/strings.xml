@@ -1789,4 +1789,9 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="style_live_typing_summary">Ketik langsung gaya yang dipilih (hanya gaya yang dipetakan 1:1)</string>
     <string name="style_active_none">Tidak ada (Teks biasa)</string>
     <string name="style_plain">Normal</string>
+    <string name="setup_skip_action">Lewati ke pengaturan</string>
+    <string name="setup_wizard_title">Panduan pengaturan</string>
+    <string name="setup_not_active_title">Aktifkan%s</string>
+    <string name="setup_not_active_summary">Ketuk untuk menyelesaikan pengaturan keyboard</string>
+    <string name="setup_welcome_summary"></string>
 </resources>

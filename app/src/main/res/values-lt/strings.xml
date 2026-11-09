@@ -1827,4 +1827,9 @@ Ar norite atnaujinti?</string>
     <string name="style_live_typing_summary">Įveskite tiesiai į pasirinktą stilių (tik 1:1 susieti stiliai)</string>
     <string name="style_active_none">Nėra (paprastas tekstas)</string>
     <string name="style_plain">Normalus</string>
+    <string name="setup_skip_action">Pereiti prie nustatymų</string>
+    <string name="setup_wizard_title">Sąrankos vedlys</string>
+    <string name="setup_not_active_title">Įgalinti%s</string>
+    <string name="setup_not_active_summary">Bakstelėkite, kad užbaigtumėte klaviatūros sąranką</string>
+    <string name="setup_welcome_summary">Paleiskite pradinį sąrankos ir konfigūravimo vedlį</string>
 </resources>

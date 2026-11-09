@@ -1789,4 +1789,9 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="style_live_typing_summary">Gépeljen közvetlenül a kiválasztott stílusban (csak 1:1 leképezett stílusok esetén)</string>
     <string name="style_active_none">Nincs (egyszerű szöveg)</string>
     <string name="style_plain">Normál</string>
+    <string name="setup_skip_action">Ugrás a beállításokhoz</string>
+    <string name="setup_wizard_title">Telepítő varázsló</string>
+    <string name="setup_not_active_title">%sengedélyezése</string>
+    <string name="setup_not_active_summary">Érintse meg a billentyűzet beállításának befejezéséhez</string>
+    <string name="setup_welcome_summary">Futtassa a kezdeti beállítási és konfigurációs varázslót</string>
 </resources>

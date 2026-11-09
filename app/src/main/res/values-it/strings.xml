@@ -1858,4 +1858,9 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="style_live_typing_summary">Digita direttamente nello stile selezionato (solo stili mappati 1:1)</string>
     <string name="style_active_none">Nessuno (testo normale)</string>
     <string name="style_plain">Normale</string>
+    <string name="setup_skip_action">Passa alle impostazioni</string>
+    <string name="setup_wizard_title">Procedura guidata di configurazione</string>
+    <string name="setup_not_active_title">Abilita%s</string>
+    <string name="setup_not_active_summary">Tocca per completare la configurazione della tastiera</string>
+    <string name="setup_welcome_summary">Eseguire la procedura guidata di installazione e configurazione iniziale</string>
 </resources>

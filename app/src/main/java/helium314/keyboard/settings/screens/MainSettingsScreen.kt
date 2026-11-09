@@ -1,18 +1,24 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.settings.screens
 
+import android.content.Context
 import android.content.Intent
+import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -21,24 +27,29 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
 import androidx.core.net.toUri
+import helium314.keyboard.latin.utils.UncachedInputMethodManagerUtils
 import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.Links
 import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.utils.SubtypeLocaleUtils.displayName
 import helium314.keyboard.latin.utils.SubtypeSettings
+import helium314.keyboard.latin.utils.getActivity
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SearchSettingsScreen
+import helium314.keyboard.settings.SettingsActivity
 import helium314.keyboard.settings.updates.AppUpdatesManager
 import helium314.keyboard.settings.Theme
 import helium314.keyboard.settings.dialogs.SponsorDialog
@@ -127,6 +138,10 @@ fun MainSettingsScreen(
             )
         }
         
+        val imm = remember { ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
+        val isImeEnabled = UncachedInputMethodManagerUtils.isThisImeEnabled(ctx, imm)
+        val isImeCurrent = UncachedInputMethodManagerUtils.isThisImeCurrent(ctx, imm)
+
         Scaffold(contentWindowInsets = WindowInsets(0)) { innerPadding ->
             Column(
                 Modifier
@@ -134,6 +149,49 @@ fun MainSettingsScreen(
                     .padding(innerPadding)
                     .padding(vertical = 8.dp)
             ) {
+                if (!isImeEnabled || !isImeCurrent) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer
+                        ),
+                        onClick = {
+                            (ctx.getActivity() as? SettingsActivity)?.reopenWelcomeWizard()
+                        }
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_ime_switcher),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(32.dp)
+                                    .padding(end = 12.dp),
+                                tint = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = stringResource(R.string.setup_not_active_title, stringResource(R.string.english_ime_name)),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                                Text(
+                                    text = stringResource(R.string.setup_not_active_summary),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            }
+                            NextScreenIcon()
+                        }
+                    }
+                }
+
                 // Group 1: General (AI, Languages, Preferences, Appearance, Toolbar)
                 Card(
                     modifier = Modifier

@@ -1792,4 +1792,9 @@
     <string name="style_live_typing_summary">直接输入所选样式（仅限 1:1 映射样式）</string>
     <string name="style_active_none">无（纯文本）</string>
     <string name="style_plain">普通的</string>
+    <string name="setup_skip_action">跳至设置</string>
+    <string name="setup_wizard_title">设置向导</string>
+    <string name="setup_not_active_title">启用%s</string>
+    <string name="setup_not_active_summary">点击完成键盘设置</string>
+    <string name="setup_welcome_summary">运行初始设置和配置向导</string>
 </resources>

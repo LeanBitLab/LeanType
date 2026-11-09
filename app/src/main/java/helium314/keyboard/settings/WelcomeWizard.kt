@@ -176,7 +176,9 @@ fun WelcomeWizard(
                             Text(stringResource(R.string.setup_step_previous))
                         }
                     } else {
-                        Spacer(Modifier.weight(0.1f)) // Placeholder to maintain spacing
+                        androidx.compose.material3.TextButton(onClick = close) {
+                            Text(stringResource(R.string.setup_skip_action))
+                        }
                     }
                     
                     Spacer(Modifier.weight(1f))
@@ -192,7 +194,7 @@ fun WelcomeWizard(
 
     @Composable fun steps() {
         if (step == 0)
-            Step0 { step = 1 }
+            Step0(onClick = { step = 1 }, onSkip = close)
         else
             Column(Modifier.verticalScroll(rememberScrollState())) {
                 val launcher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -652,7 +654,7 @@ fun WelcomeWizard(
 }
 
 @Composable
-fun Step0(onClick: () -> Unit) {
+fun Step0(onClick: () -> Unit, onSkip: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -705,6 +707,17 @@ fun Step0(onClick: () -> Unit) {
                         stringResource(R.string.setup_start_action),
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                }
+
+                androidx.compose.material3.TextButton(
+                    onClick = onSkip,
+                    modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+                ) {
+                    Text(
+                        stringResource(R.string.setup_skip_action),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.secondary
                     )
                 }
             }

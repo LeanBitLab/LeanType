@@ -87,6 +87,19 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
     private val cachedDictionaryFile by lazy { File(this.cacheDir.path + File.separator + "temp_dict") }
     private val crashReportFiles = MutableStateFlow<List<File>>(emptyList())
     private var paused = true
+    private var onReopenWelcomeWizard: (() -> Unit)? = null
+
+    fun reopenWelcomeWizard() {
+        onReopenWelcomeWizard?.invoke()
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        if (intent.getBooleanExtra("open_setup_wizard", false)) {
+            reopenWelcomeWizard()
+        }
+    }
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,12 +128,17 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
                     val crashReports by crashReportFiles.collectAsState()
                     val crashFilePicker = filePicker { saveCrashReports(it) }
                     val launchedFromIme = intent?.getBooleanExtra("from_ime", false) ?: false
+                    val openSetupWizard = intent?.getBooleanExtra("open_setup_wizard", false) ?: false
+                    val setupDismissed = prefs.getBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, false)
                     var showWelcomeWizard by rememberSaveable { mutableStateOf(
-                        !launchedFromIme && (
+                        openSetupWizard || (!launchedFromIme && !setupDismissed && (
                             !UncachedInputMethodManagerUtils.isThisImeCurrent(this, imm)
                                     || !UncachedInputMethodManagerUtils.isThisImeEnabled(this, imm)
-                        )
+                        ))
                     ) }
+                    onReopenWelcomeWizard = {
+                        showWelcomeWizard = true
+                    }
                     val snackbarHostState = androidx.compose.runtime.remember { androidx.compose.material3.SnackbarHostState() }
                     androidx.compose.runtime.LaunchedEffect(Unit) {
                         FeedbackManager.messages.collect { message ->
@@ -170,7 +188,16 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
                             androidx.compose.foundation.layout.Box(Modifier.padding(scaffoldPadding)) { 
                                 SettingsNavHost(onClickBack = { this@SettingsActivity.finish() }, startDestination = startScreen)
                                 if (showWelcomeWizard) {
-                                    WelcomeWizard(close = { showWelcomeWizard = false }, finish = this@SettingsActivity::finish)
+                                    WelcomeWizard(
+                                        close = {
+                                            prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
+                                            showWelcomeWizard = false
+                                        },
+                                        finish = {
+                                            prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
+                                            this@SettingsActivity.finish()
+                                        }
+                                    )
                                 } else if (crashReports.isNotEmpty()) {
                                     PreferenceDialog(
                                         onDismissRequest = { crashReportFiles.value = emptyList() },

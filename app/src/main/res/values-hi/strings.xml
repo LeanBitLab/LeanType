@@ -1818,4 +1818,9 @@
     <string name="style_live_typing_summary">सीधे चयनित शैली में टाइप करें (केवल 1:1 मैप की गई शैलियाँ)</string>
     <string name="style_active_none">कोई नहीं (सादा पाठ)</string>
     <string name="style_plain">सामान्य</string>
+    <string name="setup_skip_action">सेटिंग्स पर जाएं</string>
+    <string name="setup_wizard_title">स्थापना विज़ार्ड</string>
+    <string name="setup_not_active_title">%sसक्षम करें</string>
+    <string name="setup_not_active_summary">कीबोर्ड सेटअप पूरा करने के लिए टैप करें</string>
+    <string name="setup_welcome_summary">प्रारंभिक सेटअप और कॉन्फ़िगरेशन विज़ार्ड चलाएँ</string>
 </resources>

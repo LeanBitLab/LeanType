@@ -1263,6 +1263,11 @@ language, hence "No language". -->
     <string name="setup_step3_action">Configure the keyboard</string>
     <!-- The label of the button that finishes the setup wizard. -->
     <string name="setup_finish_action">Finished</string>
+    <string name="setup_skip_action">Skip to settings</string>
+    <string name="setup_wizard_title">Setup wizard</string>
+    <string name="setup_not_active_title">Enable %s</string>
+    <string name="setup_not_active_summary">Tap to complete keyboard setup</string>
+    <string name="setup_welcome_summary">Run the initial setup and configuration wizard</string>
     <!-- Option to show setup wizard icon. Legacy setting only displayed for Android 9 and older. -->
     <string name="show_setup_wizard_icon">Show app icon</string>
     <!-- Description for the option to show setup wizard application icon of this IME in the launcher. -->
