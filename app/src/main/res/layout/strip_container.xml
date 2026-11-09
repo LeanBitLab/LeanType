@@ -67,6 +67,15 @@
             android:textSize="15sp"
             android:paddingHorizontal="12dp"
             android:paddingVertical="8dp" />
+        <TextView
+            android:id="@+id/clipboard_edit_char_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:paddingHorizontal="6dp"
+            android:singleLine="true"
+            android:gravity="center"
+            android:visibility="gone" />
         <ImageButton
             android:id="@+id/clipboard_edit_save"
             android:layout_width="@dimen/config_suggestions_strip_edge_key_width"

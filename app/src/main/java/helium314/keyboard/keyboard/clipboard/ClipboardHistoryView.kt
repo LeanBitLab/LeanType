@@ -3,6 +3,8 @@
 package helium314.keyboard.keyboard.clipboard
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.method.ScrollingMovementMethod
@@ -333,11 +335,34 @@ class ClipboardHistoryView @JvmOverloads constructor(
             return
         }
         val safePos = cursorPos.coerceIn(0, layout.text.length)
-        textView.bringPointIntoView(safePos)
-        textView.post {
-            val postLayout = textView.layout ?: return@post
-            val postSafePos = cursorPos.coerceIn(0, postLayout.text.length)
-            textView.bringPointIntoView(postSafePos)
+        val density = textView.resources.displayMetrics.density
+        val padH = (32 * density).toInt()
+        val availableWidth = textView.width - textView.totalPaddingLeft - textView.totalPaddingRight
+        if (availableWidth > 0 && layout.lineCount > 0) {
+            val x = layout.getPrimaryHorizontal(safePos).toInt()
+            val scrollX = textView.scrollX
+            if (x - scrollX < padH) {
+                textView.scrollTo((x - padH).coerceAtLeast(0), textView.scrollY)
+            } else if (x - scrollX > availableWidth - padH) {
+                textView.scrollTo(x - availableWidth + padH, textView.scrollY)
+            }
+        }
+        val availableHeight = textView.height - textView.totalPaddingTop - textView.totalPaddingBottom
+        if (availableHeight > 0 && layout.lineCount > 0) {
+            val line = layout.getLineForOffset(safePos)
+            val lineTop = layout.getLineTop(line)
+            val lineBottom = layout.getLineBottom(line)
+            val scrollY = textView.scrollY
+            if (lineTop < scrollY) {
+                textView.scrollTo(textView.scrollX, lineTop)
+            } else if (lineBottom > scrollY + availableHeight) {
+                textView.scrollTo(textView.scrollX, lineBottom - availableHeight)
+            }
+        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            try {
+                textView.bringPointIntoView(safePos)
+            } catch (_: Throwable) {}
         }
     }
     
@@ -449,6 +474,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
     private var editEntry: ClipboardHistoryEntry? = null
     private var editText = StringBuilder()
     private var editCursorPos = 0
+    private var editSelectionStart = -1
+    private var editSelectionEnd = -1
+    private var editCharCountView: TextView? = null
     private var deleteSwipeStartPos = -1
     private var currentDeleteSwipePos = -1
     private lateinit var editTextView: InlineCursorTextView
@@ -493,6 +521,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
         editEntry = entry
         editText = StringBuilder(entry.text)
         editCursorPos = editText.length
+        editSelectionStart = -1
+        editSelectionEnd = -1
 
         val colors = Settings.getValues().mColors
         clipboardStripScrollView?.visibility = View.GONE
@@ -500,6 +530,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         colors.setBackground(editStrip, ColorType.STRIP_BACKGROUND)
 
         editTextView = editStrip.findViewById(R.id.clipboard_edit_text)
+        editCharCountView = editStrip.findViewById(R.id.clipboard_edit_char_count)
         val saveButton = editStrip.findViewById<ImageButton>(R.id.clipboard_edit_save)
         val cancelButton = editStrip.findViewById<ImageButton>(R.id.clipboard_edit_cancel)
 
@@ -515,6 +546,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
         editTextView.setTextColor(textColor)
         editTextView.cursorColor = textColor
         editTextView.isCursorVisible = false
+
+        editCharCountView?.apply {
+            visibility = View.VISIBLE
+            setTextColor((textColor and 0x00FFFFFF) or 0x80000000.toInt())
+        }
 
         var touchDownX = 0f
         var touchDownY = 0f
@@ -535,6 +571,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
                             val line = l.getLineForVertical(y.toInt().coerceIn(0, (l.height - 1).coerceAtLeast(0)))
                             val offset = l.getOffsetForHorizontal(line, x)
                             editCursorPos = offset.coerceIn(0, editText.length)
+                            editSelectionStart = -1
+                            editSelectionEnd = -1
                             updateEditDisplay()
                         }
                     }
@@ -569,6 +607,10 @@ class ClipboardHistoryView @JvmOverloads constructor(
         editEntry = null
         deleteSwipeStartPos = -1
         currentDeleteSwipePos = -1
+        editSelectionStart = -1
+        editSelectionEnd = -1
+        editCharCountView?.visibility = View.GONE
+        editCharCountView = null
 
         val editStrip = KeyboardSwitcher.getInstance().clipboardEditStrip
         editStrip?.visibility = View.GONE
@@ -602,6 +644,14 @@ class ClipboardHistoryView @JvmOverloads constructor(
         val colors = Settings.getValues().mColors
         val textColor = colors.get(ColorType.KEY_TEXT)
         editTextView.cursorColor = textColor
+
+        val charCount = editText.length
+        val charCountText = if (selStart >= 0 && selEnd > selStart && selEnd <= charCount) {
+            "${selEnd - selStart}/$charCount"
+        } else {
+            "$charCount"
+        }
+        editCharCountView?.text = charCountText
 
         if (selStart >= 0 && selEnd > selStart && selEnd <= editText.length) {
             val sb = android.text.SpannableStringBuilder(editText)
@@ -1094,61 +1144,216 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 return
             }
 
+            val hasSelection = editSelectionStart >= 0 && editSelectionEnd > editSelectionStart && editSelectionEnd <= editText.length
+
+            fun clearSelection() {
+                editSelectionStart = -1
+                editSelectionEnd = -1
+            }
+
+            fun deleteSelection() {
+                if (hasSelection) {
+                    editText.delete(editSelectionStart, editSelectionEnd)
+                    editCursorPos = editSelectionStart
+                    clearSelection()
+                }
+            }
+
             val char = if (primaryCode > 0) primaryCode.toChar() else null
 
-            if (primaryCode == KeyCode.DELETE) {
-                if (editCursorPos > 0) {
-                    editText.deleteCharAt(editCursorPos - 1)
-                    editCursorPos--
-                    updateEditDisplay()
+            when (primaryCode) {
+                KeyCode.DELETE -> {
+                    if (hasSelection) {
+                        deleteSelection()
+                        updateEditDisplay()
+                    } else if (editCursorPos > 0) {
+                        editText.deleteCharAt(editCursorPos - 1)
+                        editCursorPos--
+                        updateEditDisplay()
+                    }
                 }
-            } else if (primaryCode == Constants.CODE_ENTER) {
-                editText.insert(editCursorPos, "\n")
-                editCursorPos++
-                updateEditDisplay()
-            } else if (primaryCode == Constants.CODE_SPACE) {
-                editText.insert(editCursorPos, " ")
-                editCursorPos++
-                updateEditDisplay()
-            } else if (primaryCode == KeyCode.ARROW_LEFT) {
-                if (editCursorPos > 0) {
-                    editCursorPos--
-                    updateEditDisplay()
+                KeyCode.FORWARD_DELETE -> {
+                    if (hasSelection) {
+                        deleteSelection()
+                        updateEditDisplay()
+                    } else if (editCursorPos < editText.length) {
+                        editText.deleteCharAt(editCursorPos)
+                        updateEditDisplay()
+                    }
                 }
-            } else if (primaryCode == KeyCode.ARROW_RIGHT) {
-                if (editCursorPos < editText.length) {
+                KeyCode.DELETE_WORD -> {
+                    if (hasSelection) {
+                        deleteSelection()
+                        updateEditDisplay()
+                    } else if (editCursorPos > 0) {
+                        var i = editCursorPos - 1
+                        while (i > 0 && editText[i].isWhitespace()) i--
+                        while (i > 0 && !editText[i - 1].isWhitespace()) i--
+                        editText.delete(i, editCursorPos)
+                        editCursorPos = i
+                        updateEditDisplay()
+                    }
+                }
+                KeyCode.FORWARD_DELETE_WORD -> {
+                    if (hasSelection) {
+                        deleteSelection()
+                        updateEditDisplay()
+                    } else if (editCursorPos < editText.length) {
+                        var i = editCursorPos
+                        while (i < editText.length && !editText[i].isWhitespace()) i++
+                        while (i < editText.length && editText[i].isWhitespace()) i++
+                        editText.delete(editCursorPos, i)
+                        updateEditDisplay()
+                    }
+                }
+                Constants.CODE_ENTER -> {
+                    deleteSelection()
+                    editText.insert(editCursorPos, "\n")
                     editCursorPos++
                     updateEditDisplay()
                 }
-            } else if (primaryCode == KeyCode.ARROW_UP) {
-                val l = editTextView.layout
-                if (l != null) {
-                    val line = l.getLineForOffset(editCursorPos)
-                    if (line > 0) {
-                        val x = l.getPrimaryHorizontal(editCursorPos)
-                        editCursorPos = l.getOffsetForHorizontal(line - 1, x).coerceIn(0, editText.length)
+                Constants.CODE_SPACE -> {
+                    deleteSelection()
+                    editText.insert(editCursorPos, " ")
+                    editCursorPos++
+                    updateEditDisplay()
+                }
+                KeyCode.ARROW_LEFT -> {
+                    clearSelection()
+                    if (editCursorPos > 0) {
+                        editCursorPos--
                         updateEditDisplay()
                     }
                 }
-            } else if (primaryCode == KeyCode.ARROW_DOWN) {
-                val l = editTextView.layout
-                if (l != null) {
-                    val line = l.getLineForOffset(editCursorPos)
-                    if (line < l.lineCount - 1) {
-                        val x = l.getPrimaryHorizontal(editCursorPos)
-                        editCursorPos = l.getOffsetForHorizontal(line + 1, x).coerceIn(0, editText.length)
+                KeyCode.ARROW_RIGHT -> {
+                    clearSelection()
+                    if (editCursorPos < editText.length) {
+                        editCursorPos++
                         updateEditDisplay()
                     }
                 }
-            } else if (char != null) {
-                editText.insert(editCursorPos, char.toString())
-                editCursorPos++
-                updateEditDisplay()
-                if (currentBottomRowLayout == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
-                    setBottomRowLayout(KeyboardId.ELEMENT_ALPHABET)
+                KeyCode.ARROW_UP -> {
+                    clearSelection()
+                    val l = editTextView.layout
+                    if (l != null) {
+                        val line = l.getLineForOffset(editCursorPos)
+                        if (line > 0) {
+                            val x = l.getPrimaryHorizontal(editCursorPos)
+                            editCursorPos = l.getOffsetForHorizontal(line - 1, x).coerceIn(0, editText.length)
+                            updateEditDisplay()
+                        }
+                    }
                 }
-            } else {
-                keyboardActionListener.onCodeInput(primaryCode, x, y, isKeyRepeat)
+                KeyCode.ARROW_DOWN -> {
+                    clearSelection()
+                    val l = editTextView.layout
+                    if (l != null) {
+                        val line = l.getLineForOffset(editCursorPos)
+                        if (line < l.lineCount - 1) {
+                            val x = l.getPrimaryHorizontal(editCursorPos)
+                            editCursorPos = l.getOffsetForHorizontal(line + 1, x).coerceIn(0, editText.length)
+                            updateEditDisplay()
+                        }
+                    }
+                }
+                KeyCode.WORD_LEFT -> {
+                    clearSelection()
+                    if (editCursorPos > 0) {
+                        var i = editCursorPos - 1
+                        while (i > 0 && editText[i].isWhitespace()) i--
+                        while (i > 0 && !editText[i - 1].isWhitespace()) i--
+                        editCursorPos = i
+                        updateEditDisplay()
+                    }
+                }
+                KeyCode.WORD_RIGHT -> {
+                    clearSelection()
+                    if (editCursorPos < editText.length) {
+                        var i = editCursorPos
+                        while (i < editText.length && !editText[i].isWhitespace()) i++
+                        while (i < editText.length && editText[i].isWhitespace()) i++
+                        editCursorPos = i
+                        updateEditDisplay()
+                    }
+                }
+                KeyCode.MOVE_START_OF_LINE, KeyCode.MOVE_START_OF_PAGE -> {
+                    clearSelection()
+                    val l = editTextView.layout
+                    if (l != null && primaryCode == KeyCode.MOVE_START_OF_LINE) {
+                        val line = l.getLineForOffset(editCursorPos)
+                        editCursorPos = l.getLineStart(line).coerceIn(0, editText.length)
+                    } else {
+                        editCursorPos = 0
+                    }
+                    updateEditDisplay()
+                }
+                KeyCode.MOVE_END_OF_LINE, KeyCode.MOVE_END_OF_PAGE -> {
+                    clearSelection()
+                    val l = editTextView.layout
+                    if (l != null && primaryCode == KeyCode.MOVE_END_OF_LINE) {
+                        val line = l.getLineForOffset(editCursorPos)
+                        editCursorPos = l.getLineEnd(line).coerceIn(0, editText.length)
+                    } else {
+                        editCursorPos = editText.length
+                    }
+                    updateEditDisplay()
+                }
+                KeyCode.CLIPBOARD_SELECT_ALL -> {
+                    editSelectionStart = 0
+                    editSelectionEnd = editText.length
+                    editCursorPos = editText.length
+                    updateEditDisplayWithSelection(0, editText.length)
+                }
+                KeyCode.CLIPBOARD_COPY -> {
+                    val textToCopy = if (hasSelection) {
+                        editText.substring(editSelectionStart, editSelectionEnd)
+                    } else {
+                        editText.toString()
+                    }
+                    val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                    cm?.setPrimaryClip(ClipData.newPlainText("LeanType", textToCopy))
+                }
+                KeyCode.CLIPBOARD_CUT -> {
+                    val textToCopy = if (hasSelection) {
+                        val sub = editText.substring(editSelectionStart, editSelectionEnd)
+                        deleteSelection()
+                        updateEditDisplay()
+                        sub
+                    } else {
+                        val all = editText.toString()
+                        editText.setLength(0)
+                        editCursorPos = 0
+                        clearSelection()
+                        updateEditDisplay()
+                        all
+                    }
+                    val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                    cm?.setPrimaryClip(ClipData.newPlainText("LeanType", textToCopy))
+                }
+                KeyCode.CLIPBOARD_PASTE -> {
+                    val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                    val pasteText = cm?.primaryClip?.getItemAt(0)?.text?.toString()
+                    if (!pasteText.isNullOrEmpty()) {
+                        deleteSelection()
+                        editText.insert(editCursorPos, pasteText)
+                        editCursorPos += pasteText.length
+                        updateEditDisplay()
+                    }
+                }
+                KeyCode.ESCAPE -> {
+                    stopEditMode(save = false)
+                }
+                else -> {
+                    if (char != null) {
+                        deleteSelection()
+                        editText.insert(editCursorPos, char.toString())
+                        editCursorPos++
+                        updateEditDisplay()
+                        if (currentBottomRowLayout == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
+                            setBottomRowLayout(KeyboardId.ELEMENT_ALPHABET)
+                        }
+                    }
+                }
             }
             return
         }
@@ -1205,6 +1410,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onTextInput(text: String?) {
          if (text == null) return
          if (inEditMode) {
+              if (editSelectionStart >= 0 && editSelectionEnd > editSelectionStart && editSelectionEnd <= editText.length) {
+                  editText.delete(editSelectionStart, editSelectionEnd)
+                  editCursorPos = editSelectionStart
+                  editSelectionStart = -1
+                  editSelectionEnd = -1
+              }
               editText.insert(editCursorPos, text)
               editCursorPos += text.length
               updateEditDisplay()
@@ -1274,6 +1485,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onCustomRequest(requestCode: Int): Boolean { return keyboardActionListener.onCustomRequest(requestCode) }
     override fun onHorizontalSpaceSwipe(steps: Int): Boolean {
         if (inEditMode) {
+            editSelectionStart = -1
+            editSelectionEnd = -1
             val newPos = (editCursorPos + steps).coerceIn(0, editText.length)
             if (newPos != editCursorPos) {
                 editCursorPos = newPos
@@ -1317,9 +1530,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 currentDeleteSwipePos = editCursorPos
             }
             currentDeleteSwipePos = (currentDeleteSwipePos + steps).coerceIn(0, editText.length)
+            editSelectionStart = minOf(deleteSwipeStartPos, currentDeleteSwipePos)
+            editSelectionEnd = maxOf(deleteSwipeStartPos, currentDeleteSwipePos)
             updateEditDisplayWithSelection(
-                minOf(deleteSwipeStartPos, currentDeleteSwipePos),
-                maxOf(deleteSwipeStartPos, currentDeleteSwipePos)
+                editSelectionStart,
+                editSelectionEnd
             )
             return
         }
@@ -1351,6 +1566,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
             }
             deleteSwipeStartPos = -1
             currentDeleteSwipePos = -1
+            editSelectionStart = -1
+            editSelectionEnd = -1
             updateEditDisplay()
             return
         }
