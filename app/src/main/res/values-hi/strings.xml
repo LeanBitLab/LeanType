@@ -1825,4 +1825,8 @@
     <string name="setup_welcome_summary">प्रारंभिक सेटअप और कॉन्फ़िगरेशन विज़ार्ड चलाएँ</string>
     <string name="localized_numbers_in_popups">पॉपअप में स्थानीयकृत संख्याएँ</string>
     <string name="localized_numbers_in_popups_summary">जब संख्या पंक्ति लैटिन अंकों का उपयोग करती है तो संख्या पंक्ति पॉपअप में स्थानीयकृत अंक दिखाएं</string>
+    <string name="text_expander_suggestions_title">सुझावों में दिखाएँ</string>
+    <string name="text_expander_suggestions_summary">टाइप करते समय सुझाव पट्टी में विस्तार योग्य टेक्स्ट स्निपेट दिखाएं।</string>
+    <string name="text_expander_suggestions_only_title">केवल सुझाव (कोई स्वत: विस्तार नहीं)</string>
+    <string name="text_expander_suggestions_only_summary">सुझावों में से चयनित होने पर ही टेक्स्ट का विस्तार करें, स्वचालित प्रविष्टि को रोकें।</string>
 </resources>

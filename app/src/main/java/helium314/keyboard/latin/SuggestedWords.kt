@@ -50,7 +50,7 @@ open class SuggestedWords(
         get() = mTypedWordInfo
 
     open fun getWord(index: Int): String = mSuggestedWordInfoList[index].mWord
-    open fun getLabel(index: Int): String = mSuggestedWordInfoList[index].mWord
+    open fun getLabel(index: Int): String = mSuggestedWordInfoList[index].mDisplayLabel ?: mSuggestedWordInfoList[index].mWord
     open fun getInfo(index: Int): SuggestedWordInfo = mSuggestedWordInfoList[index]
     open fun indexOf(suggestedWordInfo: SuggestedWordInfo): Int = mSuggestedWordInfoList.indexOf(suggestedWordInfo)
 
@@ -90,6 +90,8 @@ open class SuggestedWords(
 
         private var mDebugString = ""
         private var mIsEmoji: Boolean? = null
+        var mDisplayLabel: String? = null
+        var mShortcutPrefixLength: Int = 0
 
         constructor(
             word: String,
@@ -109,6 +111,21 @@ open class SuggestedWords(
             mCodePointCount = StringUtils.codePointCount(mWord)
             mIndexOfTouchPointOfSecondWord = indexOfTouchPointOfSecondWord
             mAutoCommitFirstWordConfidence = autoCommitFirstWordConfidence
+        }
+
+        constructor(
+            word: String,
+            prevWordsContext: String,
+            score: Int,
+            kindAndFlags: Int,
+            sourceDict: Dictionary,
+            indexOfTouchPointOfSecondWord: Int,
+            autoCommitFirstWordConfidence: Int,
+            displayLabel: String?,
+            shortcutPrefixLength: Int = 0
+        ) : this(word, prevWordsContext, score, kindAndFlags, sourceDict, indexOfTouchPointOfSecondWord, autoCommitFirstWordConfidence) {
+            mDisplayLabel = displayLabel
+            mShortcutPrefixLength = shortcutPrefixLength
         }
 
         constructor(applicationSpecifiedCompletion: CompletionInfo) {

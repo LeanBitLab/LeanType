@@ -28,6 +28,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.utils.RevertedCorrectionHistory
 import helium314.keyboard.latin.utils.SuggestionResults
+import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.latin.utils.ExecutorUtils
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.Locale
@@ -159,6 +160,29 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             )
             val insertIdx = if (suggestionsContainer.isNotEmpty()) 1 else 0
             suggestionsContainer.add(insertIdx, mathSuggestion)
+        }
+
+        // Text Expander: offer matching expandable text snippet chips in suggestion strip
+        val ime = LatinIME.getInstance()
+        if (ime != null && TextExpanderUtils.isEnabled(ime) && TextExpanderUtils.isSuggestionsEnabled(ime) && typedWordString.isNotEmpty()) {
+            val textBefore = ime.inputLogic.connection.getTextBeforeCursor(50, 0)?.toString() ?: ""
+            val matches = TextExpanderUtils.getMatchingSuggestions(typedWordString, textBefore, ime)
+            var insertPos = if (suggestionsContainer.isNotEmpty()) 1 else 0
+            for (match in matches) {
+                val expanderSuggestion = SuggestedWordInfo(
+                    match.template,
+                    "",
+                    SuggestedWordInfo.MAX_SCORE,
+                    SuggestedWordInfo.KIND_SHORTCUT,
+                    Dictionary.DICTIONARY_USER_TYPED,
+                    SuggestedWordInfo.NOT_AN_INDEX,
+                    SuggestedWordInfo.NOT_A_CONFIDENCE,
+                    match.previewLabel,
+                    match.prefixLength
+                )
+                suggestionsContainer.add(insertPos, expanderSuggestion)
+                insertPos++
+            }
         }
 
         val suggestionsList = if (SuggestionStripView.DEBUG_SUGGESTIONS && suggestionsContainer.isNotEmpty())

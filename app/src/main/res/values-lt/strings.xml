@@ -1834,4 +1834,8 @@ Ar norite atnaujinti?</string>
     <string name="setup_welcome_summary">Paleiskite pradinį sąrankos ir konfigūravimo vedlį</string>
     <string name="localized_numbers_in_popups">Lokalizuoti numeriai iššokančiuose languose</string>
     <string name="localized_numbers_in_popups_summary">Rodyti lokalizuotus skaitmenis skaičių eilutės iššokančiuose languose, kai skaičių eilutėje naudojami lotyniški skaitmenys</string>
+    <string name="text_expander_suggestions_title">Rodyti pasiūlymuose</string>
+    <string name="text_expander_suggestions_summary">Vedant pasiūlymų juostoje rodyti išplečiamus teksto fragmentus.</string>
+    <string name="text_expander_suggestions_only_title">Tik pasiūlymas (be automatinio išplėtimo)</string>
+    <string name="text_expander_suggestions_only_summary">Išskleisti tekstą tik tada, kai pasirinktas iš pasiūlymų, taip išvengiant automatinio įterpimo.</string>
 </resources>

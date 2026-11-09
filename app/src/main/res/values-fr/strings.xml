@@ -1854,4 +1854,8 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="setup_welcome_summary">Exécutez l\'assistant d\'installation et de configuration initiale</string>
     <string name="localized_numbers_in_popups">Numéros localisés dans les popups</string>
     <string name="localized_numbers_in_popups_summary">Afficher les chiffres localisés dans les fenêtres contextuelles des lignes numériques lorsque la ligne numérique utilise des chiffres latins</string>
+    <string name="text_expander_suggestions_title">Afficher dans les suggestions</string>
+    <string name="text_expander_suggestions_summary">Afficher des extraits de texte extensibles dans la bande de suggestions lors de la saisie.</string>
+    <string name="text_expander_suggestions_only_title">Suggestion uniquement (pas de développement automatique)</string>
+    <string name="text_expander_suggestions_only_summary">Développez le texte uniquement lorsqu\'il est sélectionné parmi les suggestions, empêchant ainsi l\'insertion automatique.</string>
 </resources>

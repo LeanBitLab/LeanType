@@ -1856,4 +1856,8 @@
     <string name="setup_welcome_summary">قم بتشغيل معالج الإعداد والتكوين الأولي</string>
     <string name="localized_numbers_in_popups">الأرقام المترجمة في النوافذ المنبثقة</string>
     <string name="localized_numbers_in_popups_summary">إظهار الأرقام المترجمة في النوافذ المنبثقة لصف الأرقام عندما يستخدم صف الأرقام أرقامًا لاتينية</string>
+    <string name="text_expander_suggestions_title"></string>
+    <string name="text_expander_suggestions_summary">إظهار مقتطفات نصية قابلة للتوسيع في شريط الاقتراحات أثناء الكتابة.</string>
+    <string name="text_expander_suggestions_only_title">اقتراح فقط (لا يوجد توسيع تلقائي)</string>
+    <string name="text_expander_suggestions_only_summary">قم بتوسيع النص فقط عند تحديده من الاقتراحات، مما يمنع الإدراج التلقائي.</string>
 </resources>

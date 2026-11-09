@@ -1833,4 +1833,8 @@
     <string name="setup_welcome_summary">Запусціце майстар першапачатковай налады і канфігурацыі</string>
     <string name="localized_numbers_in_popups">Лакалізаваныя лічбы ва ўсплываючых вокнах</string>
     <string name="localized_numbers_in_popups_summary">Паказваць лакалізаваныя лічбы ва ўсплывальных вокнах з лікавым радком, калі ў радку з нумарамі выкарыстоўваюцца лацінскія лічбы</string>
+    <string name="text_expander_suggestions_title">Паказаць у прапановах</string>
+    <string name="text_expander_suggestions_summary"></string>
+    <string name="text_expander_suggestions_only_title">Толькі прапанова (без аўтаматычнага разгортвання)</string>
+    <string name="text_expander_suggestions_only_summary">Разгортваць тэкст толькі тады, калі выбраны з прапаноў, прадухіляючы аўтаматычную ўстаўку.</string>
 </resources>

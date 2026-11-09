@@ -1827,4 +1827,8 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="setup_welcome_summary">İlk kurulum ve yapılandırma sihirbazını çalıştırın</string>
     <string name="localized_numbers_in_popups">Açılır pencerelerde yerelleştirilmiş sayılar</string>
     <string name="localized_numbers_in_popups_summary">Sayı satırı Latin rakamları kullandığında, sayı satırı açılır pencerelerinde yerelleştirilmiş rakamları göster</string>
+    <string name="text_expander_suggestions_title">Önerilerde göster</string>
+    <string name="text_expander_suggestions_summary">Yazarken öneri şeridinde genişletilebilir metin parçacıklarını gösterin.</string>
+    <string name="text_expander_suggestions_only_title">Yalnızca öneri (otomatik genişletme yok)</string>
+    <string name="text_expander_suggestions_only_summary">Metni yalnızca önerilerden seçildiğinde genişleterek otomatik eklemeyi önleyin.</string>
 </resources>

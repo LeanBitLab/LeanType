@@ -1848,4 +1848,8 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="setup_welcome_summary"></string>
     <string name="localized_numbers_in_popups">Lokalisierte Nummern in Popups</string>
     <string name="localized_numbers_in_popups_summary">Zeigen Sie lokalisierte Ziffern in Zahlenzeilen-Popups an, wenn die Zahlenzeile lateinische Ziffern verwendet</string>
+    <string name="text_expander_suggestions_title">In Vorschlägen anzeigen</string>
+    <string name="text_expander_suggestions_summary">Zeigen Sie während der Eingabe erweiterbare Textausschnitte in der Vorschlagsleiste an.</string>
+    <string name="text_expander_suggestions_only_title">Nur Vorschlag (keine automatische Erweiterung)</string>
+    <string name="text_expander_suggestions_only_summary">Erweitern Sie Text nur, wenn er aus Vorschlägen ausgewählt wird, und verhindern Sie so das automatische Einfügen.</string>
 </resources>

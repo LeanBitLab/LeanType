@@ -1796,4 +1796,8 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="setup_welcome_summary">Futtassa a kezdeti beállítási és konfigurációs varázslót</string>
     <string name="localized_numbers_in_popups">Lokalizált számok a felugró ablakokban</string>
     <string name="localized_numbers_in_popups_summary">Lokalizált számjegyek megjelenítése a számsor előugró ablakaiban, ha a számsor latin számjegyeket használ</string>
+    <string name="text_expander_suggestions_title">Megjelenítés a javaslatokban</string>
+    <string name="text_expander_suggestions_summary">Kibontható szövegrészletek megjelenítése a javaslatsávban gépelés közben.</string>
+    <string name="text_expander_suggestions_only_title">Csak javaslat (nincs automatikus kibontás)</string>
+    <string name="text_expander_suggestions_only_summary">Csak akkor bontsa ki a szöveget, ha a javaslatok közül kiválasztotta, így megakadályozza az automatikus beillesztést.</string>
 </resources>

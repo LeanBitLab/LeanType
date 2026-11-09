@@ -84,6 +84,14 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         mutableStateOf(TextExpanderUtils.isBackspaceRevertsEnabled(context))
     }
 
+    var isSuggestionsEnabled by remember {
+        mutableStateOf(TextExpanderUtils.isSuggestionsEnabled(context))
+    }
+
+    var isSuggestionsOnly by remember {
+        mutableStateOf(TextExpanderUtils.isSuggestionsOnly(context))
+    }
+
     var shortcutsMap by remember {
         mutableStateOf(TextExpanderUtils.getShortcuts(context))
     }
@@ -340,6 +348,24 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                         description = stringResource(R.string.text_expander_backspace_undo_summary),
                         enabled = isExpanderEnabled,
                         onCheckedChange = { isBackspaceRevertsEnabled = it }
+                    )
+
+                    SwitchPreference(
+                        name = stringResource(R.string.text_expander_suggestions_title),
+                        key = TextExpanderUtils.PREF_SUGGESTIONS,
+                        default = true,
+                        description = stringResource(R.string.text_expander_suggestions_summary),
+                        enabled = isExpanderEnabled,
+                        onCheckedChange = { isSuggestionsEnabled = it }
+                    )
+
+                    SwitchPreference(
+                        name = stringResource(R.string.text_expander_suggestions_only_title),
+                        key = TextExpanderUtils.PREF_SUGGESTIONS_ONLY,
+                        default = false,
+                        description = stringResource(R.string.text_expander_suggestions_only_summary),
+                        enabled = isExpanderEnabled && isSuggestionsEnabled,
+                        onCheckedChange = { isSuggestionsOnly = it }
                     )
 
                     // global prefix config removed
@@ -803,6 +829,40 @@ fun createTextExpanderSettings(context: Context): List<helium314.keyboard.settin
             onCheckedChange = {
                 isReverts = it
                 context.prefs().edit { putBoolean(TextExpanderUtils.PREF_BACKSPACE_REVERTS, it) }
+            }
+        )
+    },
+    helium314.keyboard.settings.Setting(
+        key = TextExpanderUtils.PREF_SUGGESTIONS,
+        title = context.getString(R.string.text_expander_suggestions_title),
+        description = context.getString(R.string.text_expander_suggestions_summary)
+    ) { setting ->
+        var isSuggestions by remember { mutableStateOf(TextExpanderUtils.isSuggestionsEnabled(context)) }
+        SwitchPreference(
+            name = setting.title,
+            key = setting.key,
+            default = true,
+            description = setting.description,
+            onCheckedChange = {
+                isSuggestions = it
+                context.prefs().edit { putBoolean(TextExpanderUtils.PREF_SUGGESTIONS, it) }
+            }
+        )
+    },
+    helium314.keyboard.settings.Setting(
+        key = TextExpanderUtils.PREF_SUGGESTIONS_ONLY,
+        title = context.getString(R.string.text_expander_suggestions_only_title),
+        description = context.getString(R.string.text_expander_suggestions_only_summary)
+    ) { setting ->
+        var isSuggestionsOnly by remember { mutableStateOf(TextExpanderUtils.isSuggestionsOnly(context)) }
+        SwitchPreference(
+            name = setting.title,
+            key = setting.key,
+            default = false,
+            description = setting.description,
+            onCheckedChange = {
+                isSuggestionsOnly = it
+                context.prefs().edit { putBoolean(TextExpanderUtils.PREF_SUGGESTIONS_ONLY, it) }
             }
         )
     }

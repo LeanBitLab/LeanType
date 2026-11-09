@@ -365,6 +365,29 @@ class InputLogic(
             }
             mJustRevertedACommit = false
 
+            if (suggestionInfo.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && suggestionInfo.mDisplayLabel != null) {
+                mSuggestedWords = SuggestedWords.getEmptyInstance()
+                mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                val typedWord = mWordComposer.getTypedWord()
+                val prefixLength = suggestionInfo.mShortcutPrefixLength
+                if (mWordComposer.isComposingWord()) {
+                    mConnection.commitText("", 1)
+                } else {
+                    mConnection.deleteTextBeforeCursor(typedWord.length)
+                }
+                if (prefixLength > 0) {
+                    mConnection.deleteTextBeforeCursor(prefixLength)
+                }
+                val expandedText = TextExpanderUtils.expand(suggestionInfo.mWord, mLatinIME)
+                val cursorMovedBack = commitExpandedText(typedWord, expandedText)
+                resetComposingState(true)
+                if (cursorMovedBack) {
+                    mSpaceState = SpaceState.NONE
+                }
+                inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
+                return inputTransaction
+            }
+
             if (suggestionInfo.isKindOf(SuggestedWordInfo.KIND_APP_DEFINED)) {
                 mSuggestedWords = SuggestedWords.getEmptyInstance()
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
@@ -1219,6 +1242,7 @@ class InputLogic(
             var shouldDeferSegmentation = false
             if (TextExpanderUtils.isEnabled(mLatinIME)
                 && TextExpanderUtils.isImmediateEnabled(mLatinIME)
+                && !TextExpanderUtils.isSuggestionsOnly(mLatinIME)
             ) {
                 val typedWord = mWordComposer.getTypedWord()
                 setComposingTextInternal(getTextWithUnderline(typedWord), 1)
@@ -1271,6 +1295,7 @@ class InputLogic(
             }
             if (TextExpanderUtils.isEnabled(mLatinIME)
                 && TextExpanderUtils.isImmediateEnabled(mLatinIME)
+                && !TextExpanderUtils.isSuggestionsOnly(mLatinIME)
             ) {
                 val textBefore = mConnection.getTextBeforeCursor(50, 0)
                 if (textBefore != null) {
@@ -1398,7 +1423,7 @@ class InputLogic(
                 inputTransaction.setRequiresUpdateSuggestions()
                 return
             }
-        } else if (TextExpanderUtils.isEnabled(mLatinIME)) {
+        } else if (TextExpanderUtils.isEnabled(mLatinIME) && !TextExpanderUtils.isSuggestionsOnly(mLatinIME)) {
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {
                 val result = TextExpanderUtils.getExpandedWordForTyped(null, textBefore.toString(), mLatinIME)
@@ -2804,7 +2829,7 @@ class InputLogic(
             startTimeMillis = System.currentTimeMillis()
             Log.d(TAG, "commitChosenWord() : [$chosenWord]")
         }
-        val isEnabled = TextExpanderUtils.isEnabled(mLatinIME)
+        val isEnabled = TextExpanderUtils.isEnabled(mLatinIME) && !TextExpanderUtils.isSuggestionsOnly(mLatinIME)
         if (isEnabled) {
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {

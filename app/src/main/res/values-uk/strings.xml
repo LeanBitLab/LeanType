@@ -1798,4 +1798,8 @@
     <string name="setup_welcome_summary">Запустіть майстер початкового налаштування та налаштування</string>
     <string name="localized_numbers_in_popups"></string>
     <string name="localized_numbers_in_popups_summary">Показувати локалізовані цифри у спливаючих вікнах номерного рядка, якщо номерний рядок використовує латинські цифри</string>
+    <string name="text_expander_suggestions_title">Показати в пропозиціях</string>
+    <string name="text_expander_suggestions_summary">Показувати фрагменти тексту, що розгортаються, у смузі пропозицій під час введення.</string>
+    <string name="text_expander_suggestions_only_title">Лише пропозиція (без автоматичного розгортання)</string>
+    <string name="text_expander_suggestions_only_summary">Розгортати текст лише тоді, коли вибрано з пропозицій, запобігаючи автоматичному вставленню.</string>
 </resources>

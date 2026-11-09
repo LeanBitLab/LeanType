@@ -1796,4 +1796,8 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="setup_welcome_summary"></string>
     <string name="localized_numbers_in_popups"></string>
     <string name="localized_numbers_in_popups_summary">Tampilkan digit yang dilokalkan dalam popup baris nomor ketika baris nomor menggunakan digit Latin</string>
+    <string name="text_expander_suggestions_title">Tampilkan di saran</string>
+    <string name="text_expander_suggestions_summary">Tampilkan cuplikan teks yang dapat diperluas di strip saran saat mengetik.</string>
+    <string name="text_expander_suggestions_only_title">Hanya saran (tidak ada perluasan otomatis)</string>
+    <string name="text_expander_suggestions_only_summary">Perluas teks hanya ketika dipilih dari saran, mencegah penyisipan otomatis.</string>
 </resources>

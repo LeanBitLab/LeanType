@@ -1833,4 +1833,8 @@
     <string name="setup_welcome_summary">Стартирайте съветника за първоначална настройка и конфигурация</string>
     <string name="localized_numbers_in_popups">Локализирани числа в изскачащи прозорци</string>
     <string name="localized_numbers_in_popups_summary">Показване на локализирани цифри в изскачащите прозорци на числовия ред, когато числовият ред използва латински цифри</string>
+    <string name="text_expander_suggestions_title"></string>
+    <string name="text_expander_suggestions_summary">Показване на разгъващи се текстови фрагменти в лентата с предложения, докато пишете.</string>
+    <string name="text_expander_suggestions_only_title">Само предложение (без автоматично разширяване)</string>
+    <string name="text_expander_suggestions_only_summary">Разгъване на текст само когато е избран от предложения, предотвратявайки автоматично вмъкване.</string>
 </resources>

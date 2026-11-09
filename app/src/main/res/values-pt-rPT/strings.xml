@@ -1795,4 +1795,8 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="setup_welcome_summary">Execute a instalação inicial e o assistente de configuração</string>
     <string name="localized_numbers_in_popups"></string>
     <string name="localized_numbers_in_popups_summary"></string>
+    <string name="text_expander_suggestions_title">Mostrar em sugestões</string>
+    <string name="text_expander_suggestions_summary">Mostre trechos de texto expansíveis na faixa de sugestões enquanto digita.</string>
+    <string name="text_expander_suggestions_only_title">Apenas sugestões (sem expansão automática)</string>
+    <string name="text_expander_suggestions_only_summary">Expanda o texto somente quando selecionado nas sugestões, evitando a inserção automática.</string>
 </resources>

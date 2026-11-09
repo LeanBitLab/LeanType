@@ -1799,4 +1799,8 @@
     <string name="setup_welcome_summary">运行初始设置和配置向导</string>
     <string name="localized_numbers_in_popups">弹出窗口中的本地化数字</string>
     <string name="localized_numbers_in_popups_summary">当数字行使用拉丁数字时，在数字行弹出窗口中显示本地化数字</string>
+    <string name="text_expander_suggestions_title">在建议中显示</string>
+    <string name="text_expander_suggestions_summary">键入时在建议条中显示可扩展的文本片段。</string>
+    <string name="text_expander_suggestions_only_title">仅建议（无自动扩展）</string>
+    <string name="text_expander_suggestions_only_summary">仅当从建议中选择时才展开文本，从而防止自动插入。</string>
 </resources>

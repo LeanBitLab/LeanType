@@ -1899,4 +1899,8 @@
     <string name="setup_welcome_summary">Εκτελέστε τον οδηγό αρχικής εγκατάστασης και διαμόρφωσης</string>
     <string name="localized_numbers_in_popups">Τοπικοί αριθμοί σε αναδυόμενα παράθυρα</string>
     <string name="localized_numbers_in_popups_summary">Εμφάνιση τοπικών ψηφίων στα αναδυόμενα παράθυρα της σειράς αριθμών όταν η αριθμητική σειρά χρησιμοποιεί λατινικά ψηφία</string>
+    <string name="text_expander_suggestions_title">Εμφάνιση στις προτάσεις</string>
+    <string name="text_expander_suggestions_summary">Εμφάνιση επεκτάσιμων αποσπασμάτων κειμένου στη γραμμή προτάσεων κατά την πληκτρολόγηση.</string>
+    <string name="text_expander_suggestions_only_title">Μόνο πρόταση (χωρίς αυτόματη επέκταση)</string>
+    <string name="text_expander_suggestions_only_summary">Αναπτύξτε το κείμενο μόνο όταν επιλέγεται από προτάσεις, αποτρέποντας την αυτόματη εισαγωγή.</string>
 </resources>

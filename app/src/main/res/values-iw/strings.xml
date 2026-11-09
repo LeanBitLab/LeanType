@@ -1804,4 +1804,8 @@
     <string name="setup_welcome_summary">הפעל את אשף ההגדרה והתצורה הראשוניים</string>
     <string name="localized_numbers_in_popups">מספרים מקומיים בחלונות קופצים</string>
     <string name="localized_numbers_in_popups_summary">הצג ספרות מקומיות בחלונות קופצים של שורת מספרים כאשר שורת המספרים משתמשת בספרות לטיניות</string>
+    <string name="text_expander_suggestions_title">הצג בהצעות</string>
+    <string name="text_expander_suggestions_summary">הצג קטעי טקסט הניתנים להרחבה ברצועת ההצעות בזמן ההקלדה.</string>
+    <string name="text_expander_suggestions_only_title">הצעה בלבד (ללא הרחבה אוטומטית)</string>
+    <string name="text_expander_suggestions_only_summary">הרחב טקסט רק כאשר הוא נבחר מתוך הצעות, מניעת הכנסה אוטומטית.</string>
 </resources>

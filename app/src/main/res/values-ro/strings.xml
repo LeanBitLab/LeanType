@@ -1833,4 +1833,8 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="setup_welcome_summary">Rulați vrăjitorul de configurare și configurare inițială</string>
     <string name="localized_numbers_in_popups"></string>
     <string name="localized_numbers_in_popups_summary"></string>
+    <string name="text_expander_suggestions_title">Afișați în sugestii</string>
+    <string name="text_expander_suggestions_summary">Afișați fragmente de text extensibile în banda de sugestii în timp ce introduceți text.</string>
+    <string name="text_expander_suggestions_only_title">Numai sugestie (fără extindere automată)</string>
+    <string name="text_expander_suggestions_only_summary">Extindeți textul numai atunci când este selectat din sugestii, împiedicând inserarea automată.</string>
 </resources>

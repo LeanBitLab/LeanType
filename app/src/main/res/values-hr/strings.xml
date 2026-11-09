@@ -1796,4 +1796,8 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="setup_welcome_summary">Pokrenite čarobnjaka za početno postavljanje i konfiguraciju</string>
     <string name="localized_numbers_in_popups">Lokalizirani brojevi u skočnim prozorima</string>
     <string name="localized_numbers_in_popups_summary">Prikaži lokalizirane znamenke u skočnim prozorima redova brojeva kada redak brojeva koristi latinične znamenke</string>
+    <string name="text_expander_suggestions_title">Prikaži u prijedlozima</string>
+    <string name="text_expander_suggestions_summary">Prikažite proširive isječke teksta u traci s prijedlozima tijekom tipkanja.</string>
+    <string name="text_expander_suggestions_only_title">Samo prijedlog (bez automatskog proširivanja)</string>
+    <string name="text_expander_suggestions_only_summary">Proširi tekst samo kada je odabran iz prijedloga, sprječavajući automatsko umetanje.</string>
 </resources>

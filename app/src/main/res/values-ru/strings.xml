@@ -1858,4 +1858,8 @@
     <string name="setup_welcome_summary">Запустите мастер первоначальной установки и настройки.</string>
     <string name="localized_numbers_in_popups">Локализованные номера во всплывающих окнах</string>
     <string name="localized_numbers_in_popups_summary">Показывать локализованные цифры во всплывающих окнах числовых строк, если в числовой строке используются латинские цифры</string>
+    <string name="text_expander_suggestions_title">Показать в предложениях</string>
+    <string name="text_expander_suggestions_summary">Показывать расширяемые фрагменты текста в полосе подсказок во время ввода.</string>
+    <string name="text_expander_suggestions_only_title">Только предложение (без автоматического расширения)</string>
+    <string name="text_expander_suggestions_only_summary">Развертывание текста только в том случае, если он выбран из предложенных, что предотвращает автоматическую вставку.</string>
 </resources>

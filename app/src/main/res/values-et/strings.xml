@@ -1833,4 +1833,8 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="setup_welcome_summary">Käivitage algseadistuse ja konfiguratsiooni viisard</string>
     <string name="localized_numbers_in_popups">Lokaliseeritud numbrid hüpikakendes</string>
     <string name="localized_numbers_in_popups_summary">Kui numbririda kasutab ladina numbreid, kuvatakse numbrirea hüpikakendes lokaliseeritud numbrid</string>
+    <string name="text_expander_suggestions_title">Kuva soovitustes</string>
+    <string name="text_expander_suggestions_summary">Kuvage tippimise ajal soovitusribal laiendatavaid tekstilõike.</string>
+    <string name="text_expander_suggestions_only_title">Ainult soovitus (automaatset laiendamist pole)</string>
+    <string name="text_expander_suggestions_only_summary">Laiendage teksti ainult siis, kui see on valitud soovituste hulgast, vältides automaatset sisestamist.</string>
 </resources>

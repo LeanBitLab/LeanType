@@ -1899,4 +1899,8 @@
     <string name="setup_welcome_summary">പ്രാരംഭ സജ്ജീകരണവും കോൺഫിഗറേഷൻ വിസാർഡും പ്രവർത്തിപ്പിക്കുക</string>
     <string name="localized_numbers_in_popups">പോപ്പ്അപ്പുകളിൽ പ്രാദേശികവൽക്കരിച്ച നമ്പറുകൾ</string>
     <string name="localized_numbers_in_popups_summary">നമ്പർ വരി ലാറ്റിൻ അക്കങ്ങൾ ഉപയോഗിക്കുമ്പോൾ നമ്പർ വരി പോപ്പ്അപ്പുകളിൽ പ്രാദേശികവൽക്കരിച്ച അക്കങ്ങൾ കാണിക്കുക</string>
+    <string name="text_expander_suggestions_title">നിർദ്ദേശങ്ങളിൽ കാണിക്കുക</string>
+    <string name="text_expander_suggestions_summary">ടൈപ്പ് ചെയ്യുമ്പോൾ നിർദ്ദേശ സ്ട്രിപ്പിൽ വികസിപ്പിക്കാവുന്ന ടെക്‌സ്‌റ്റ് സ്‌നിപ്പെറ്റുകൾ കാണിക്കുക.</string>
+    <string name="text_expander_suggestions_only_title">നിർദ്ദേശം മാത്രം (യാന്ത്രിക-വികസനം ഇല്ല)</string>
+    <string name="text_expander_suggestions_only_summary">നിർദ്ദേശങ്ങളിൽ നിന്ന് തിരഞ്ഞെടുക്കുമ്പോൾ മാത്രം ടെക്സ്റ്റ് വികസിപ്പിക്കുക, സ്വയമേവ ചേർക്കുന്നത് തടയുക.</string>
 </resources>

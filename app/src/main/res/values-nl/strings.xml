@@ -1840,4 +1840,8 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="setup_welcome_summary">Voer de initiële installatie- en configuratiewizard uit</string>
     <string name="localized_numbers_in_popups">Gelokaliseerde nummers in pop-ups</string>
     <string name="localized_numbers_in_popups_summary">Toon gelokaliseerde cijfers in pop-ups met getallenrijen wanneer de getallenrij Latijnse cijfers gebruikt</string>
+    <string name="text_expander_suggestions_title">Toon in suggesties</string>
+    <string name="text_expander_suggestions_summary">Toon uitvouwbare tekstfragmenten in de suggestiestrook tijdens het typen.</string>
+    <string name="text_expander_suggestions_only_title">Alleen suggestie (niet automatisch uitvouwen)</string>
+    <string name="text_expander_suggestions_only_summary">Vouw tekst alleen uit als deze is geselecteerd uit suggesties, waardoor automatische invoeging wordt voorkomen.</string>
 </resources>

@@ -19,6 +19,8 @@ object TextExpanderUtils {
     const val PREF_PREFIX = "pref_text_expander_prefix"
     const val PREF_IMMEDIATE = "pref_text_expander_immediate"
     const val PREF_BACKSPACE_REVERTS = "pref_text_expander_backspace_reverts"
+    const val PREF_SUGGESTIONS = "pref_text_expander_suggestions"
+    const val PREF_SUGGESTIONS_ONLY = "pref_text_expander_suggestions_only"
     const val PREF_DATA = "pref_text_expander_data"
     const val REGEX_PREFIX = "__regex__:"
 
@@ -48,6 +50,8 @@ object TextExpanderUtils {
 
     @Volatile private var cachedEnabled: Boolean? = null
     @Volatile private var cachedImmediateEnabled: Boolean? = null
+    @Volatile private var cachedSuggestionsEnabled: Boolean? = null
+    @Volatile private var cachedSuggestionsOnly: Boolean? = null
     @Volatile private var cachedRawJson: String? = null
     @Volatile private var cachedShortcuts: Map<String, ShortcutEntry>? = null
     @Volatile private var cachedCompiledList: List<CompiledShortcut>? = null
@@ -57,6 +61,8 @@ object TextExpanderUtils {
         if (key == null) {
             cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
             cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
+            cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+            cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
             cachedRawJson = null
             cachedShortcuts = null
             cachedCompiledList = null
@@ -65,6 +71,8 @@ object TextExpanderUtils {
         when (key) {
             PREF_ENABLED -> cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
             PREF_IMMEDIATE -> cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
+            PREF_SUGGESTIONS -> cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+            PREF_SUGGESTIONS_ONLY -> cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
             PREF_DATA -> {
                 cachedRawJson = null
                 cachedShortcuts = null
@@ -81,6 +89,8 @@ object TextExpanderUtils {
                     cachedPrefs = prefs
                     cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
                     cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
+                    cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+                    cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
                     cachedRawJson = null
                     cachedShortcuts = null
                     cachedCompiledList = null
@@ -99,6 +109,18 @@ object TextExpanderUtils {
         val prefs = context.prefs()
         ensureListener(prefs)
         return cachedImmediateEnabled ?: prefs.getBoolean(PREF_IMMEDIATE, false).also { cachedImmediateEnabled = it }
+    }
+
+    fun isSuggestionsEnabled(context: Context): Boolean {
+        val prefs = context.prefs()
+        ensureListener(prefs)
+        return cachedSuggestionsEnabled ?: prefs.getBoolean(PREF_SUGGESTIONS, true).also { cachedSuggestionsEnabled = it }
+    }
+
+    fun isSuggestionsOnly(context: Context): Boolean {
+        val prefs = context.prefs()
+        ensureListener(prefs)
+        return cachedSuggestionsOnly ?: prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false).also { cachedSuggestionsOnly = it }
     }
 
     fun isBackspaceRevertsEnabled(context: Context): Boolean {
@@ -124,9 +146,18 @@ object TextExpanderUtils {
         val entry: ShortcutEntry
     )
 
+    data class SuggestionMatch(
+        val template: String,
+        val previewLabel: String,
+        val prefixLength: Int,
+        val key: String
+    )
+
     fun clearCache() {
         cachedEnabled = null
         cachedImmediateEnabled = null
+        cachedSuggestionsEnabled = null
+        cachedSuggestionsOnly = null
         cachedRawJson = null
         cachedShortcuts = null
         cachedCompiledList = null
@@ -596,5 +627,68 @@ object TextExpanderUtils {
             return expand(entry.template, context)
         }
         return null
+    }
+
+    fun getMatchingSuggestions(
+        typedWord: String,
+        textBeforeCursor: String,
+        context: Context
+    ): List<SuggestionMatch> {
+        if (!isEnabled(context) || !isSuggestionsEnabled(context) || typedWord.isEmpty()) {
+            return emptyList()
+        }
+        getShortcuts(context)
+        val compiledList = cachedCompiledList ?: return emptyList()
+        val matches = mutableListOf<SuggestionMatch>()
+
+        for (item in compiledList) {
+            val entry = item.entry
+            if (item.isRegex) {
+                val regex = item.regex ?: continue
+                try {
+                    val match = regex.findAll(textBeforeCursor).lastOrNull { it.range.last == textBeforeCursor.length - 1 }
+                    if (match != null && match.value.isNotEmpty()) {
+                        val preview = formatPreview(entry.template)
+                        matches.add(SuggestionMatch(entry.template, preview, 0, item.cleanKey))
+                    }
+                } catch (_: Exception) {}
+            } else {
+                val prefix = entry.prefix
+                val shortcut = item.cleanKey
+                val fullTrigger = prefix + shortcut
+                val matchesPrefix = if (prefix.isNotEmpty()) {
+                    textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)
+                } else {
+                    true
+                }
+                if (matchesPrefix) {
+                    val isMatch = (shortcut.length >= typedWord.length && shortcut.startsWith(typedWord, ignoreCase = true)) ||
+                                  (fullTrigger.length >= typedWord.length && fullTrigger.startsWith(typedWord, ignoreCase = true))
+                    if (isMatch) {
+                        val prefixLen = if (prefix.isNotEmpty() && textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)) {
+                            prefix.length
+                        } else 0
+                        val preview = formatPreview(entry.template)
+                        val label = if (shortcut.equals(typedWord, ignoreCase = true)) {
+                            preview
+                        } else {
+                            "$shortcut: $preview"
+                        }
+                        matches.add(SuggestionMatch(entry.template, label, prefixLen, shortcut))
+                    }
+                }
+            }
+        }
+        matches.sortByDescending { it.key.equals(typedWord, ignoreCase = true) }
+        return matches.take(3)
+    }
+
+    private fun formatPreview(template: String): String {
+        var preview = template.replace('\n', ' ').replace('\r', ' ').trim()
+        preview = preview.replace("%cursor%", "").replace(Regex("""%cursor_\d+?%"""), "")
+        if (preview.length > 28) {
+            preview = preview.take(27) + "…"
+        }
+        return preview
     }
 }

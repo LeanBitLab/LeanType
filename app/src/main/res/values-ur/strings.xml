@@ -1890,4 +1890,8 @@
     <string name="setup_welcome_summary">ابتدائی سیٹ اپ اور کنفیگریشن وزرڈ چلائیں۔</string>
     <string name="localized_numbers_in_popups">پاپ اپ میں مقامی نمبرز</string>
     <string name="localized_numbers_in_popups_summary">جب نمبر قطار لاطینی ہندسوں کا استعمال کرتی ہے تو نمبر قطار کے پاپ اپ میں مقامی ہندسے دکھائیں۔</string>
+    <string name="text_expander_suggestions_title"></string>
+    <string name="text_expander_suggestions_summary">ٹائپ کرتے وقت تجویز کی پٹی میں قابل توسیع متن کے ٹکڑوں کو دکھائیں۔</string>
+    <string name="text_expander_suggestions_only_title">صرف تجویز (کوئی خودکار توسیع نہیں)</string>
+    <string name="text_expander_suggestions_only_summary">خودکار داخل کو روکتے ہوئے، صرف تجاویز میں سے منتخب ہونے پر متن کو پھیلائیں۔</string>
 </resources>

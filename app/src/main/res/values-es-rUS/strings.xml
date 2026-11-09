@@ -1865,4 +1865,8 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="setup_welcome_summary">Ejecute el asistente de instalación y configuración inicial</string>
     <string name="localized_numbers_in_popups">Números localizados en ventanas emergentes</string>
     <string name="localized_numbers_in_popups_summary">Mostrar dígitos localizados en ventanas emergentes de filas numéricas cuando la fila numérica usa dígitos latinos</string>
+    <string name="text_expander_suggestions_title"></string>
+    <string name="text_expander_suggestions_summary">Muestra fragmentos de texto expandibles en la barra de sugerencias mientras escribes.</string>
+    <string name="text_expander_suggestions_only_title">Solo sugerencia (sin expansión automática)</string>
+    <string name="text_expander_suggestions_only_summary">Expanda el texto solo cuando se seleccione entre las sugerencias, evitando la inserción automática.</string>
 </resources>

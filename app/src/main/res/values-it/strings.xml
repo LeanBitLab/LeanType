@@ -1865,4 +1865,8 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="setup_welcome_summary">Eseguire la procedura guidata di installazione e configurazione iniziale</string>
     <string name="localized_numbers_in_popups">Numeri localizzati nei popup</string>
     <string name="localized_numbers_in_popups_summary">Mostra le cifre localizzate nei popup della riga numerica quando la riga numerica utilizza cifre latine</string>
+    <string name="text_expander_suggestions_title">Mostra nei suggerimenti</string>
+    <string name="text_expander_suggestions_summary">Mostra snippet di testo espandibili nella striscia dei suggerimenti durante la digitazione.</string>
+    <string name="text_expander_suggestions_only_title">Solo suggerimento (nessuna espansione automatica)</string>
+    <string name="text_expander_suggestions_only_summary"></string>
 </resources>
