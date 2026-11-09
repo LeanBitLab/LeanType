@@ -869,8 +869,6 @@
     <string name="text_expander_custom_shortcuts_title">Aangepaste snelkoppelingen</string>
     <string name="text_expander_add_shortcut">Snelkoppeling toevoegen</string>
     <string name="text_expander_edit_shortcut">Snelkoppeling bewerken</string>
-    <string name="text_expander_quick_guide">💡 Snelle functiegids</string>
-    <string name="text_expander_template_placeholders_title">Ondersteunde sjabloonplaceholders:</string>
     <string name="text_expander_prefix_title">Voorvoegsel (optioneel)</string>
     <string name="text_expander_shortcut_title">Snelkoppeling (bijv. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex-patroon</string>
@@ -1086,32 +1084,6 @@ Geen AI op de achtergrond of netwerkgebruik.</string>
     <string name="setup_step0_feature3_desc">Snelle woordsuggesties, klembordbeheer, spraakinvoer en uitgebreide bewerkingssnelkoppelingen.</string>
     <string name="text_expander_no_shortcuts_title">Nog geen snelkoppelingen geconfigureerd.</string>
     <string name="text_expander_no_shortcuts_desc">Tik op de zwevende knop \'Snelkoppeling toevoegen\' onderaan om snel je eerste slimme tekstuitbreidingssjabloon te maken.</string>
-    <string name="text_expander_how_it_works_title">Hoe het werkt:</string>
-    <string name="text_expander_step1_title">Snelkoppelingsvoorvoegsel opgeven</string>
-    <string name="text_expander_step1_desc">Stel een optioneel voorvoegsel zoals \'.\' of \';\' per snelkoppeling in op het bewerkscherm om onbedoelde uitbreidingen te voorkomen.</string>
-    <string name="text_expander_step2_title">Aangepaste snelkoppelingen toevoegen</string>
-    <string name="text_expander_step2_desc">Definieer triggers (bijv. \'brb\') en hun uitgevouwen sjablonen (bijv. \'Ben zo terug!\').</string>
-    <string name="text_expander_step3_title">Typ voorvoegsel + snelkoppeling</string>
-    <string name="text_expander_step3_desc">Typ je voorvoegsel gevolgd door het snelkoppelingszoekwoord (bijv. \'.brb\') en druk op Spatie of leestekens om direct uit te vouwen.</string>
-    <string name="text_expander_tag_desc_date">Datum (JJJJ-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Tijd (24u, UU:MM)</string>
-    <string name="text_expander_tag_desc_time12">Tijd (12u, uu:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Jaar (JJJJ)</string>
-    <string name="text_expander_tag_desc_week">Week van het jaar (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Batterijniveau (bijv. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Begroeting op basis van tijdstip</string>
-    <string name="text_expander_tag_desc_tomorrow">Datum van morgen (JJJJ-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Klembordinhoud</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Klembord (bronvermeldingen verwijderd)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Klembord (enkele regel)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Klembord (Hoofdletter Elk Woord)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Klembord (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Dagnaam (bijv. Maandag)</string>
-    <string name="text_expander_tag_desc_month">Maand (bijv. Juni)</string>
-    <string name="text_expander_tag_desc_language">Toetsenbordtaal (bijv. Nederlands)</string>
-    <string name="text_expander_tag_desc_cursor">Cursorpositie na uitbreiding</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Opsommingslijst (bijv. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Genummerde lijst (bijv. %list_5%)</string>
     <string name="updates_new_update_title">Nieuwe update beschikbaar</string>
     <string name="updates_new_update_desc">Versie %s is klaar om te installeren</string>
     <string name="updates_view_release">Versie bekijken</string>
@@ -1537,7 +1509,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="app_quirks_hide_toolbar_summary">Verberg werkbalktoetsen, acties en uitvouwknop tijdens het typen in deze app</string>
     <string name="app_quirks_badge_no_suggestions">Geen suggesties</string>
     <string name="app_quirks_badge_no_toolbar">Geen werkbalk</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Opgemaakte datum (bijvoorbeeld%dat:jjjj/MM/dd% of%dat:format(patroon)%)</string>
     <string name="app_quirks_always_show_suggestions">Laat altijd suggesties zien</string>
     <string name="app_quirks_always_show_suggestions_summary">Negeer de verzoeken van deze app om suggesties uit te schakelen</string>
     <string name="app_quirks_badge_always_suggestions">Altijd suggesties</string>
@@ -1765,4 +1736,9 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_error_regex">Regel%1$d: ongeldige regex \"%2$s\"</string>
     <string name="text_expander_discard_title">Uw wijzigingen annuleren?</string>
     <string name="text_expander_discard">Weggooien</string>
+    <string name="text_expander_options_category">Configuratie</string>
+    <string name="text_expander_tools_category">Beheer en hulpmiddelen</string>
+    <string name="text_expander_guide_title">Onlinegids en syntaxisreferentie</string>
+    <string name="text_expander_guide_summary">Volledige gids voor dynamische tijdelijke aanduidingen, regex-patronen en modifiers</string>
+    <string name="text_expander_all_as_text_summary">Snelkoppelingen in platte tekst in bulk bewerken, delen, back-uppen of importeren</string>
 </resources>

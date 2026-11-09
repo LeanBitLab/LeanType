@@ -775,8 +775,6 @@
     <string name="text_expander_custom_shortcuts_title">Προσαρμοσμένες Συντομεύσεις</string>
     <string name="text_expander_add_shortcut">Προσθήκη Συντόμευσης</string>
     <string name="text_expander_edit_shortcut">Επεξεργασία Συντόμευσης</string>
-    <string name="text_expander_quick_guide">💡 Γρήγορος Οδηγός Λειτουργίας</string>
-    <string name="text_expander_template_placeholders_title">Υποστηριζόμενα Σύμβολα Κράτησης Θέσης Προτύπου:</string>
     <string name="text_expander_prefix_title">Πρόθεμα (προαιρετικό)</string>
     <string name="text_expander_shortcut_title">Συντόμευση (π.χ. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Μοτίβο Regex</string>
@@ -1152,32 +1150,6 @@
     <string name="setup_step0_feature3_desc">Γρήγορες προτάσεις λέξεων, διαχειριστής προχείρου, φωνητική εισαγωγή και πλούσιες συντομεύσεις επεξεργασίας.</string>
     <string name="text_expander_no_shortcuts_title">Δεν έχουν διαμορφωθεί ακόμη συντομεύσεις.</string>
     <string name="text_expander_no_shortcuts_desc">Πατήστε το αιωρούμενο κουμπί \'Προσθήκη συντόμευσης\' στην κάτω γωνία για να δημιουργήσετε γρήγορα το πρώτο σας πρότυπο επέκτασης κειμένου.</string>
-    <string name="text_expander_how_it_works_title">Πώς λειτουργεί:</string>
-    <string name="text_expander_step1_title">Καθορίστε πρόθεμα συντόμευσης</string>
-    <string name="text_expander_step1_desc">Διαμορφώστε ένα προαιρετικό πρόθεμα όπως \'.\' ή \';\' ανά συντόμευση στην οθόνη επεξεργασίας για να αποτρέψετε τυχαίες επεκτάσεις.</string>
-    <string name="text_expander_step2_title">Προσθέστε προσαρμοσμένες συντομεύσεις</string>
-    <string name="text_expander_step2_desc">Ορίστε λέξεις ενεργοποίησης (π.χ. \'brb\') και τα αναπτυγμένα πρότυπά τους (π.χ. \'Επιστρέφω αμέσως!\').</string>
-    <string name="text_expander_step3_title">Πληκτρολογήστε πρόθεμα + συντόμευση</string>
-    <string name="text_expander_step3_desc">Πληκτρολογήστε το πρόθεμα ακολουθούμενο από τη λέξη-κλειδί (π.χ. \'.brb\') και πατήστε Διάστημα ή στίξη για άμεση ανάπτυξη.</string>
-    <string name="text_expander_tag_desc_date">Ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)</string>
-    <string name="text_expander_tag_desc_time">Ώρα (24ωρη, ΩΩ:ΛΛ)</string>
-    <string name="text_expander_tag_desc_time12">Ώρα (12ωρη, ωω:λλ ΠΜ/ΜΜ)</string>
-    <string name="text_expander_tag_desc_year">Έτος (ΕΕΕΕ)</string>
-    <string name="text_expander_tag_desc_week">Εβδομάδα του έτους (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Επίπεδο μπαταρίας (π.χ. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Χαιρετισμός βάσει ώρας</string>
-    <string name="text_expander_tag_desc_tomorrow">Αυριανή ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)</string>
-    <string name="text_expander_tag_desc_clipboard">Περιεχόμενο προχείρου</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Πρόχειρο (αφαίρεση παραπομπών)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Πρόχειρο (μονή γραμμή)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Πρόχειρο (Κεφαλαία Αρχικά)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Πρόχειρο (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Όνομα ημέρας (π.χ. Δευτέρα)</string>
-    <string name="text_expander_tag_desc_month">Μήνας (π.χ. Ιούνιος)</string>
-    <string name="text_expander_tag_desc_language">Γλώσσα πληκτρολογίου (π.χ. Ελληνικά)</string>
-    <string name="text_expander_tag_desc_cursor">Θέση δρομέα μετά την επέκταση</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Λίστα με κουκκίδες (π.χ. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Αριθμημένη λίστα (π.χ. %list_5%)</string>
     <string name="updates_new_update_title">Νέα ενημέρωση διαθέσιμη</string>
     <string name="updates_new_update_desc">Η έκδοση %s είναι έτοιμη για εγκατάσταση</string>
     <string name="updates_view_release">Προβολή έκδοσης</string>
@@ -1596,7 +1568,6 @@
     <string name="app_quirks_hide_toolbar_summary">Απόκρυψη πλήκτρων της γραμμής εργαλείων, ενεργειών και επέκταση του κουμπιού κατά την πληκτρολόγηση σε αυτήν την εφαρμογή</string>
     <string name="app_quirks_badge_no_suggestions">Δεν υπάρχουν προτάσεις</string>
     <string name="app_quirks_badge_no_toolbar">Χωρίς γραμμή</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Μορφοποιημένη ημερομηνία (π.χ.%date:yyyy/MM/dd% ή%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Να εμφανίζονται πάντα προτάσεις</string>
     <string name="app_quirks_always_show_suggestions_summary">Αγνοήστε τα αιτήματα αυτής της εφαρμογής για απενεργοποίηση προτάσεων</string>
     <string name="app_quirks_badge_always_suggestions">Πάντα Προτάσεις</string>
@@ -1824,4 +1795,9 @@
     <string name="text_expander_error_regex">Γραμμή%1$d: μη έγκυρο regex \"%2$s\"</string>
     <string name="text_expander_discard_title">Απόρριψη των αλλαγών σας;</string>
     <string name="text_expander_discard">Απορρίπτω</string>
+    <string name="text_expander_options_category">Διαμόρφωση</string>
+    <string name="text_expander_tools_category">Διαχείριση &amp; Εργαλεία</string>
+    <string name="text_expander_guide_title">Διαδικτυακός οδηγός και αναφορά σύνταξης</string>
+    <string name="text_expander_guide_summary">Πλήρης οδηγός για δυναμικά σύμβολα κράτησης θέσης, regex μοτίβα και τροποποιητές</string>
+    <string name="text_expander_all_as_text_summary">Μαζική επεξεργασία, κοινή χρήση, δημιουργία αντιγράφων ασφαλείας ή εισαγωγή συντομεύσεων σε απλό κείμενο</string>
 </resources>

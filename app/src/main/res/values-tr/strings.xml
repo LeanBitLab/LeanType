@@ -700,8 +700,6 @@
     <string name="text_expander_custom_shortcuts_title">Özel Kısayollar</string>
     <string name="text_expander_add_shortcut">Kısayol Ekle</string>
     <string name="text_expander_edit_shortcut">Kısayolu Düzenle</string>
-    <string name="text_expander_quick_guide">💡 Hızlı Özellik Kılavuzu</string>
-    <string name="text_expander_template_placeholders_title">Desteklenen Şablon Yer Tutucuları:</string>
     <string name="text_expander_prefix_title">Önek (isteğe bağlı)</string>
     <string name="text_expander_shortcut_title">Kısayol (ör. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex Deseni</string>
@@ -1078,32 +1076,6 @@ Arka plan AI veya ağ kullanımı yok.</string>
     <string name="setup_step0_feature3_desc">Hızlı kelime önerileri, pano yöneticisi, sesli giriş ve zengin düzenleme kısayolları.</string>
     <string name="text_expander_no_shortcuts_title">Henüz yapılandırılmış kısayol yok.</string>
     <string name="text_expander_no_shortcuts_desc">İlk akıllı metin genişletme şablonunuzu hızla oluşturmak için alt köşedeki \'Kısayol Ekle\' kayan düğmesine dokunun.</string>
-    <string name="text_expander_how_it_works_title">Nasıl çalışır:</string>
-    <string name="text_expander_step1_title">Kısayol Önekini Belirtin</string>
-    <string name="text_expander_step1_desc">Yanlışlıkla genişletmeleri önlemek için düzenleme ekranında kısayol başına \'.\' veya \';\' gibi isteğe bağlı bir önek ayarlayın.</string>
-    <string name="text_expander_step2_title">Özel Kısayollar Ekleyin</string>
-    <string name="text_expander_step2_desc">Tetikleyicileri (örn. \'brb\') ve genişletilmiş şablonlarını (örn. \'Hemen döneceğim!\') tanımlayın.</string>
-    <string name="text_expander_step3_title">Önek + Kısayol Yazın</string>
-    <string name="text_expander_step3_desc">Önekinizi ve ardından kısayol anahtar kelimesini (örn. \'.brb\') yazın ve anında genişletmek için Boşluk veya noktalama işaretine basın.</string>
-    <string name="text_expander_tag_desc_date">Tarih (YYYY-AA-GG)</string>
-    <string name="text_expander_tag_desc_time">Saat (24s, SS:DD)</string>
-    <string name="text_expander_tag_desc_time12">Saat (12s, ss:dd AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Yıl (YYYY)</string>
-    <string name="text_expander_tag_desc_week">Yılın haftası (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Pil seviyesi (örn. %85)</string>
-    <string name="text_expander_tag_desc_greeting">Günün saatine göre selamlama</string>
-    <string name="text_expander_tag_desc_tomorrow">Yarının tarihi (YYYY-AA-GG)</string>
-    <string name="text_expander_tag_desc_clipboard">Pano içeriği</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Pano (alıntılar temizlenmiş)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Pano (tek satır)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Pano (Başlık Düzeni)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Pano (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Gün adı (örn. Pazartesi)</string>
-    <string name="text_expander_tag_desc_month">Ay (örn. Haziran)</string>
-    <string name="text_expander_tag_desc_language">Klavye dili (örn. Türkçe)</string>
-    <string name="text_expander_tag_desc_cursor">Genişletmeden sonraki imleç konumu</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Madde işaretli liste (örn. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Numaralandırılmış liste (örn. %list_5%)</string>
     <string name="updates_new_update_title">Yeni Güncelleme Mevcut</string>
     <string name="updates_new_update_desc">Sürüm %s yüklenmeye hazır</string>
     <string name="updates_view_release">Sürümü Görüntüle</string>
@@ -1522,7 +1494,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="app_quirks_hide_toolbar_summary">Bu uygulamaya yazarken araç çubuğu tuşlarını, eylemleri ve genişletme düğmesini gizleyin</string>
     <string name="app_quirks_badge_no_suggestions">Öneri Yok</string>
     <string name="app_quirks_badge_no_toolbar">Çubuksuz</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Biçimlendirilmiş tarih (ör.%date:yyyy/MM/gg% veya%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Önerileri her zaman göster</string>
     <string name="app_quirks_always_show_suggestions_summary">Bu uygulamanın önerileri devre dışı bırakma isteklerini göz ardı edin</string>
     <string name="app_quirks_badge_always_suggestions">Her zaman Öneriler</string>
@@ -1750,4 +1721,9 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_error_regex">Satır%1$d: geçersiz normal ifade \"%2$s\"</string>
     <string name="text_expander_discard_title">Değişiklikleriniz silinsin mi?</string>
     <string name="text_expander_discard">At</string>
+    <string name="text_expander_options_category">Yapılandırma</string>
+    <string name="text_expander_tools_category">Yönetim ve Araçlar</string>
+    <string name="text_expander_guide_title">Çevrimiçi Kılavuz ve Sözdizimi Referansı</string>
+    <string name="text_expander_guide_summary">Dinamik yer tutucular, normal ifade kalıpları ve değiştiriciler için eksiksiz kılavuz</string>
+    <string name="text_expander_all_as_text_summary">Kısayolları düz metin olarak toplu olarak düzenleyin, paylaşın, yedekleyin veya içe aktarın</string>
 </resources>

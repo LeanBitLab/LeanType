@@ -903,8 +903,6 @@
     <string name="text_expander_custom_shortcuts_title">Niestandardowe skróty</string>
     <string name="text_expander_add_shortcut">Dodaj skrót</string>
     <string name="text_expander_edit_shortcut">Edytuj skrót</string>
-    <string name="text_expander_quick_guide">💡 Szybki przewodnik po funkcjach</string>
-    <string name="text_expander_template_placeholders_title">Obsługiwane symbole zastępcze szablonów:</string>
     <string name="text_expander_prefix_title">Prefiks (opcjonalny)</string>
     <string name="text_expander_shortcut_title">Skrót (np. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Wzorzec Regex</string>
@@ -1086,32 +1084,6 @@ Zero AI w tle i zużycia sieci.</string>
     <string name="setup_step0_feature3_desc">Szybkie podpowiedzi słów, menedżer schowka, pisanie głosowe i bogate skróty edycyjne.</string>
     <string name="text_expander_no_shortcuts_title">Brak skonfigurowanych skrótów.</string>
     <string name="text_expander_no_shortcuts_desc">Dotknij pływającego przycisku \'Dodaj skrót\' w dolnym rogu, aby szybko utworzyć swój pierwszy szablon rozwijania tekstu.</string>
-    <string name="text_expander_how_it_works_title">Jak to działa:</string>
-    <string name="text_expander_step1_title">Określ prefiks skrótu</string>
-    <string name="text_expander_step1_desc">Skonfiguruj opcjonalny prefiks, np. \'.\' lub \';\' dla każdego skrótu na ekranie edycji, aby zapobiec przypadkowemu rozwinięciu.</string>
-    <string name="text_expander_step2_title">Dodaj własne skróty</string>
-    <string name="text_expander_step2_desc">Zdefiniuj wyzwalacze (np. \'brb\') i ich rozwinięcia (np. \'Zaraz wracam!\').</string>
-    <string name="text_expander_step3_title">Wpisz prefiks + skrót</string>
-    <string name="text_expander_step3_desc">Wpisz prefiks ze słowem kluczowym skrótu (np. \'.brb\') i naciśnij Spację lub znak interpunkcyjny, aby natychmiast rozwinąć.</string>
-    <string name="text_expander_tag_desc_date">Data (RRRR-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Godzina (24h, GG:MM)</string>
-    <string name="text_expander_tag_desc_time12">Godzina (12h, gg:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Rok (RRRR)</string>
-    <string name="text_expander_tag_desc_week">Tydzień roku (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Poziom baterii (np. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Powitanie zależne od pory dnia</string>
-    <string name="text_expander_tag_desc_tomorrow">Jutrzejsza data (RRRR-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Zawartość schowka</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Schowek (bez cytowań)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Schowek (pojedyncza linia)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Schowek (Wielkie Litery Słów)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Schowek (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Nazwa dnia (np. Poniedziałek)</string>
-    <string name="text_expander_tag_desc_month">Miesiąc (np. Czerwiec)</string>
-    <string name="text_expander_tag_desc_language">Język klawiatury (np. Polski)</string>
-    <string name="text_expander_tag_desc_cursor">Pozycja kursora po rozwinięciu</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Lista punktowana (np. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Lista numerowana (np. %list_5%)</string>
     <string name="updates_new_update_title">Dostępna nowa aktualizacja</string>
     <string name="updates_new_update_desc">Wersja %s jest gotowa do instalacji</string>
     <string name="updates_view_release">Zobacz wydanie</string>
@@ -1537,7 +1509,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="app_quirks_hide_toolbar_summary">Ukryj klawisze paska narzędzi, akcje i przycisk rozwijania podczas pisania w tej aplikacji</string>
     <string name="app_quirks_badge_no_suggestions">Brak sugestii</string>
     <string name="app_quirks_badge_no_toolbar">Bez paska</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Sformatowana data (np.%date:rrrr/MM/dd% lub%date:format(wzór)%)</string>
     <string name="app_quirks_always_show_suggestions">Zawsze pokazuj sugestie</string>
     <string name="app_quirks_always_show_suggestions_summary">Zignoruj ​​prośby tej aplikacji o wyłączenie sugestii</string>
     <string name="app_quirks_badge_always_suggestions">Zawsze sugestie</string>
@@ -1765,4 +1736,9 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_error_regex">Linia%1$d: nieprawidłowe wyrażenie regularne \"%2$s\"</string>
     <string name="text_expander_discard_title">Odrzucić zmiany?</string>
     <string name="text_expander_discard">Wyrzucać</string>
+    <string name="text_expander_options_category">Konfiguracja</string>
+    <string name="text_expander_tools_category">Zarządzanie i narzędzia</string>
+    <string name="text_expander_guide_title">Przewodnik online i informacje o składni</string>
+    <string name="text_expander_guide_summary">Kompletny przewodnik po dynamicznych symbolach zastępczych, wzorach wyrażeń regularnych i modyfikatorach</string>
+    <string name="text_expander_all_as_text_summary">Zbiorcza edycja, udostępnianie, tworzenie kopii zapasowych i importowanie skrótów w postaci zwykłego tekstu</string>
 </resources>

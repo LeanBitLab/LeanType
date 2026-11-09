@@ -879,8 +879,6 @@
     <string name="text_expander_custom_shortcuts_title">קיצורי דרך מותאמים אישית</string>
     <string name="text_expander_add_shortcut">הוסף קיצור דרך</string>
     <string name="text_expander_edit_shortcut">ערוך קיצור דרך</string>
-    <string name="text_expander_quick_guide">💡 מדריך תכונות מהיר</string>
-    <string name="text_expander_template_placeholders_title">מחזיקי מקום לתבניות נתמכים:</string>
     <string name="text_expander_prefix_title">קידומת (אופציונלי)</string>
     <string name="text_expander_shortcut_title">קיצור דרך (למשל \'brb\')</string>
     <string name="text_expander_regex_pattern_title">תבנית Regex</string>
@@ -1050,32 +1048,6 @@
     <string name="setup_step0_feature3_desc">הצעות מילים מהירות, מנהל לוח גזירים, קלט קולי וקיצורי עריכה עשירים.</string>
     <string name="text_expander_no_shortcuts_title">עדיין לא הוגדרו קיצורי דרך.</string>
     <string name="text_expander_no_shortcuts_desc">הקש על הכפתור הצף \'הוסף קיצור דרך\' בפינה התחתונה כדי ליצור במהירות את תבנית הרחבת הטקסט הראשונה שלך.</string>
-    <string name="text_expander_how_it_works_title">איך זה עובד:</string>
-    <string name="text_expander_step1_title">ציין קידומת קיצור דרך</string>
-    <string name="text_expander_step1_desc">הגדר קידומת אופציונלית כמו \'.\' או \';\' לכל קיצור במסך העריכה כדי למנוע הרחבות בשוגג.</string>
-    <string name="text_expander_step2_title">הוסף קיצורי דרך מותאמים אישית</string>
-    <string name="text_expander_step2_desc">הגדר טריגרים (למשל \'brb\') ואת התבניות המורחבות שלהם (למשל \'אחזור מיד!\').</string>
-    <string name="text_expander_step3_title">הקלד קידומת + קיצור דרך</string>
-    <string name="text_expander_step3_desc">הקלד את הקידומת ולאחריה את מילת המפתח (למשל \'.brb\') ולחץ על רווח או סימן פיסוק להרחבה מיידית.</string>
-    <string name="text_expander_tag_desc_date">תאריך (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">שעה (24 שעות, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">שעה (12 שעות, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">שנה (YYYY)</string>
-    <string name="text_expander_tag_desc_week">שבוע בשנה (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">רמת סוללה (למשל 85%)</string>
-    <string name="text_expander_tag_desc_greeting">ברכה מותאמת לשעה</string>
-    <string name="text_expander_tag_desc_tomorrow">תאריך מחר (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">תוכן לוח הגזירים</string>
-    <string name="text_expander_tag_desc_clipboard_clean">לוח גזירים (ללא ציטוטים)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">לוח גזירים (שורה אחת)</string>
-    <string name="text_expander_tag_desc_clipboard_title">לוח גזירים (אות גדולה בראש מילה)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">לוח גזירים (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">שם היום (למשל יום שני)</string>
-    <string name="text_expander_tag_desc_month">חודש (למשל יוני)</string>
-    <string name="text_expander_tag_desc_language">שפת מקלדת (למשל עברית)</string>
-    <string name="text_expander_tag_desc_cursor">מיקום הסמן לאחר ההרחבה</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">רשימת תבליטים (למשל %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">רשימה ממוספרת (למשל %list_5%)</string>
     <string name="updates_new_update_title">עדכון חדש זמין</string>
     <string name="updates_new_update_desc">גרסה %s מוכנה להתקנה</string>
     <string name="updates_view_release">הצג גרסה</string>
@@ -1501,7 +1473,6 @@
     <string name="app_quirks_hide_toolbar_summary">הסתר מקשי סרגל כלים, פעולות וכפתור הרחבה בעת הקלדה באפליקציה זו</string>
     <string name="app_quirks_badge_no_suggestions">אין הצעות</string>
     <string name="app_quirks_badge_no_toolbar">ללא סרגל</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">תאריך מעוצב (למשל%date:yyyy/MM/dd% או%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">הצג תמיד הצעות</string>
     <string name="app_quirks_always_show_suggestions_summary">התעלם מהבקשות של אפליקציה זו להשבית הצעות</string>
     <string name="app_quirks_badge_always_suggestions">תמיד הצעות</string>
@@ -1729,4 +1700,9 @@
     <string name="text_expander_error_regex">שורה%1$d: ביטוי רגולרי לא חוקי \"%2$s\"</string>
     <string name="text_expander_discard_title">למחוק את השינויים שלך?</string>
     <string name="text_expander_discard">לְהַשְׁלִיך</string>
+    <string name="text_expander_options_category">תְצוּרָה</string>
+    <string name="text_expander_tools_category">ניהול וכלים</string>
+    <string name="text_expander_guide_title">מדריך מקוון והתייחסות תחביר</string>
+    <string name="text_expander_guide_summary">מדריך שלם למצייני מיקום דינמיים, דפוסי ביטויים רגילים ומשתנים</string>
+    <string name="text_expander_all_as_text_summary">ערוך, שיתוף, גיבוי או ייבוא ​​של קיצורי דרך בכמות גדולה בטקסט רגיל</string>
 </resources>

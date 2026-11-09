@@ -908,8 +908,6 @@
     <string name="text_expander_custom_shortcuts_title">Персонализирани преки пътища</string>
     <string name="text_expander_add_shortcut">Добавяне на пряк път</string>
     <string name="text_expander_edit_shortcut">Редактиране на пряк път</string>
-    <string name="text_expander_quick_guide">💡 Бързо ръководство за функциите</string>
-    <string name="text_expander_template_placeholders_title">Поддържани заместители в шаблоните:</string>
     <string name="text_expander_prefix_title">Префикс (по избор)</string>
     <string name="text_expander_shortcut_title">Пряк път (напр. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex шаблон</string>
@@ -1079,32 +1077,6 @@
     <string name="setup_step0_feature3_desc">Бързи предложения за думи, мениджър на клипборда, гласово въвеждане и богати преки пътища за редактиране.</string>
     <string name="text_expander_no_shortcuts_title">Все още няма конфигурирани преки пътища.</string>
     <string name="text_expander_no_shortcuts_desc">Докоснете плаващия бутон \'Добавяне на пряк път\' в долния ъгъл, за да създадете първия си интелигентен шаблон за разширяване на текст.</string>
-    <string name="text_expander_how_it_works_title">Как работи:</string>
-    <string name="text_expander_step1_title">Задайте префикс на пряк път</string>
-    <string name="text_expander_step1_desc">Конфигурирайте незадължителен префикс като \'.\' или \';\' за всеки пряк път в екрана за редактиране, за да предотвратите случайно разширяване.</string>
-    <string name="text_expander_step2_title">Добавете персонализирани преки пътища</string>
-    <string name="text_expander_step2_desc">Дефинирайте задействащи думи (напр. \'brb\') и техните разширени шаблони (напр. \'Връщам се веднага!\').</string>
-    <string name="text_expander_step3_title">Въведете префикс + пряк път</string>
-    <string name="text_expander_step3_desc">Въведете префикса, последван от ключовата дума (напр. \'.brb\'), и натиснете Интервал или препинателен знак за моментално разширяване.</string>
-    <string name="text_expander_tag_desc_date">Дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_time">Час (24ч, ЧЧ:ММ)</string>
-    <string name="text_expander_tag_desc_time12">Час (12ч, чч:мм AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Година (ГГГГ)</string>
-    <string name="text_expander_tag_desc_week">Седмица от годината (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Ниво на батерията (напр. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Поздрав според часа</string>
-    <string name="text_expander_tag_desc_tomorrow">Утрешна дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_clipboard">Съдържание на клипборда</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Клипборд (изчистени цитати)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Клипборд (един ред)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Клипборд (Главни Букви За Думи)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Клипборд (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Име на деня (напр. Понеделник)</string>
-    <string name="text_expander_tag_desc_month">Месец (напр. Юни)</string>
-    <string name="text_expander_tag_desc_language">Език на клавиатурата (напр. Български)</string>
-    <string name="text_expander_tag_desc_cursor">Позиция на курсора след разширяване</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Списък с водещи символи (напр. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Номериран списък (напр. %list_5%)</string>
     <string name="updates_new_update_title">Налична е нова актуализация</string>
     <string name="updates_new_update_desc">Версия %s е готова за инсталиране</string>
     <string name="updates_view_release">Преглед на изданието</string>
@@ -1530,7 +1502,6 @@
     <string name="app_quirks_hide_toolbar_summary">Скриване на бутоните на лентата с инструменти, действията и бутона за разширяване, когато пишете в това приложение</string>
     <string name="app_quirks_badge_no_suggestions">Няма предложения</string>
     <string name="app_quirks_badge_no_toolbar">Без лента</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Форматирана дата (напр.%date:yyyy/MM/dd% или%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Винаги показвайте предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорирайте заявките на това приложение за деактивиране на предложенията</string>
     <string name="app_quirks_badge_always_suggestions">Винаги предложения</string>
@@ -1758,4 +1729,9 @@
     <string name="text_expander_error_regex">Ред%1$d: невалиден регулярен израз \"%2$s\"</string>
     <string name="text_expander_discard_title">Да се ​​отхвърлят промените ви?</string>
     <string name="text_expander_discard">Изхвърлете</string>
+    <string name="text_expander_options_category">Конфигурация</string>
+    <string name="text_expander_tools_category">Управление и инструменти</string>
+    <string name="text_expander_guide_title">Онлайн ръководство и справочник по синтаксис</string>
+    <string name="text_expander_guide_summary">Пълно ръководство за динамични заместители, модели на регулярни изрази и модификатори</string>
+    <string name="text_expander_all_as_text_summary">Групово редактиране, споделяне, архивиране или импортиране на преки пътища в обикновен текст</string>
 </resources>

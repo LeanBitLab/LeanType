@@ -918,8 +918,6 @@
     <string name="text_expander_custom_shortcuts_title">Atalhos Personalizados</string>
     <string name="text_expander_add_shortcut">Adicionar Atalho</string>
     <string name="text_expander_edit_shortcut">Editar Atalho</string>
-    <string name="text_expander_quick_guide">💡 Guia Rápido de Funcionalidades</string>
-    <string name="text_expander_template_placeholders_title">Espaços Reservados de Modelo Suportados:</string>
     <string name="text_expander_prefix_title">Prefixo (opcional)</string>
     <string name="text_expander_shortcut_title">Atalho (ex.: \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Padrão Regex</string>
@@ -1041,32 +1039,6 @@
     <string name="setup_step0_feature3_desc">Sugestões rápidas de palavras, gestor da área de transferência, introdução por voz e atalhos avançados de edição.</string>
     <string name="text_expander_no_shortcuts_title">Ainda não há atalhos configurados.</string>
     <string name="text_expander_no_shortcuts_desc">Toque no botão flutuante \'Adicionar atalho\' no canto inferior para criar rapidamente o seu primeiro modelo inteligente de expansão de texto.</string>
-    <string name="text_expander_how_it_works_title">Como funciona:</string>
-    <string name="text_expander_step1_title">Especificar prefixo de atalho</string>
-    <string name="text_expander_step1_desc">Configure um prefixo opcional como \'.\' ou \';\' por atalho no ecrã de edição para evitar expansões acidentais.</string>
-    <string name="text_expander_step2_title">Adicionar atalhos personalizados</string>
-    <string name="text_expander_step2_desc">Defina acionadores (ex.: \'voltoja\') e os respetivos modelos expandidos (ex.: \'Volto já!\').</string>
-    <string name="text_expander_step3_title">Escrever prefixo + atalho</string>
-    <string name="text_expander_step3_desc">Escreva o seu prefixo seguido da palavra-chave do atalho (ex.: \'.voltoja\') e prima Espaço ou pontuação no teclado para expandir instantaneamente.</string>
-    <string name="text_expander_tag_desc_date">Data (AAAA-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Hora (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Hora (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Ano (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Semana do ano (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Nível da bateria (ex.: 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Saudação de acordo com a hora</string>
-    <string name="text_expander_tag_desc_tomorrow">Data de amanhã (AAAA-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Conteúdo da área de transferência</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Área de transferência (sem citações)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Área de transferência (linha única)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Área de transferência (Iniciais Maiúsculas)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Área de transferência (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Nome do dia (ex.: Segunda-feira)</string>
-    <string name="text_expander_tag_desc_month">Mês (ex.: Junho)</string>
-    <string name="text_expander_tag_desc_language">Idioma do teclado (ex.: Português)</string>
-    <string name="text_expander_tag_desc_cursor">Posição do cursor após expansão</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Lista de marcadores (ex.: %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Lista numerada (ex.: %list_5%)</string>
     <string name="updates_new_update_title">Nova atualização disponível</string>
     <string name="updates_new_update_desc">A versão %s está pronta para instalar</string>
     <string name="updates_view_release">Ver versão</string>
@@ -1492,7 +1464,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="app_quirks_hide_toolbar_summary">Ocultar teclas da barra de ferramentas, ações e botão de expansão ao digitar neste aplicativo</string>
     <string name="app_quirks_badge_no_suggestions">Sem sugestões</string>
     <string name="app_quirks_badge_no_toolbar">Sem barra</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Data formatada (por exemplo,%date:yyyy/MM/dd% ou%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Sempre mostrar sugestões</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignore as solicitações deste aplicativo para desativar sugestões</string>
     <string name="app_quirks_badge_always_suggestions">Sempre sugerir</string>
@@ -1720,4 +1691,9 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_error_regex">Linha%1$d: regex inválida \"%2$s\"</string>
     <string name="text_expander_discard_title">Descartar suas alterações?</string>
     <string name="text_expander_discard">Descartar</string>
+    <string name="text_expander_options_category">Configuração</string>
+    <string name="text_expander_tools_category">Gestão e Ferramentas</string>
+    <string name="text_expander_guide_title">Guia on-line e referência de sintaxe</string>
+    <string name="text_expander_guide_summary">Guia completo para espaços reservados dinâmicos, padrões regex e modificadores</string>
+    <string name="text_expander_all_as_text_summary">Edite, compartilhe, faça backup ou importe atalhos em massa em texto simples</string>
 </resources>

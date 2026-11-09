@@ -740,8 +740,6 @@
     <string name="text_expander_custom_shortcuts_title">Benutzerdefinierte Kürzel</string>
     <string name="text_expander_add_shortcut">Kürzel hinzufügen</string>
     <string name="text_expander_edit_shortcut">Kürzel bearbeiten</string>
-    <string name="text_expander_quick_guide">💡 Schnellhilfe</string>
-    <string name="text_expander_template_placeholders_title">Unterstützte Vorlagen-Platzhalter:</string>
     <string name="text_expander_prefix_title">Präfix (optional)</string>
     <string name="text_expander_shortcut_title">Kürzel (z. B. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex-Muster</string>
@@ -1144,32 +1142,6 @@
     <string name="setup_step0_feature3_desc">Schnelle Wortvorschläge, Zwischenablage-Manager, Spracheingabe und vielseitige Bearbeitungskürzel.</string>
     <string name="text_expander_no_shortcuts_title">Noch keine Kürzel konfiguriert.</string>
     <string name="text_expander_no_shortcuts_desc">Tippe unten auf die schwebende Schaltfläche \'Kürzel hinzufügen\', um deine erste intelligente Texterweiterungsvorlage zu erstellen.</string>
-    <string name="text_expander_how_it_works_title">So funktioniert es:</string>
-    <string name="text_expander_step1_title">Kürzel-Präfix festlegen</string>
-    <string name="text_expander_step1_desc">Konfiguriere pro Kürzel im Bearbeitungsbildschirm ein optionales Präfix wie \'.\' oder \';\', um versehentliche Erweiterungen zu verhindern.</string>
-    <string name="text_expander_step2_title">Eigene Kürzel hinzufügen</string>
-    <string name="text_expander_step2_desc">Definiere Auslöser (z. B. \'brb\') und deren erweiterte Texte (z. B. \'Gleich wieder da!\').</string>
-    <string name="text_expander_step3_title">Präfix + Kürzel tippen</string>
-    <string name="text_expander_step3_desc">Tippe dein Präfix gefolgt vom Kürzel (z. B. \'.brb\') und drücke Leertaste oder ein Satzzeichen, um es sofort zu erweitern.</string>
-    <string name="text_expander_tag_desc_date">Datum (JJJJ-MM-TT)</string>
-    <string name="text_expander_tag_desc_time">Uhrzeit (24 Std., HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Uhrzeit (12 Std., hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Jahr (JJJJ)</string>
-    <string name="text_expander_tag_desc_week">Kalenderwoche (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Akkustand (z. B. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Tageszeitabhängige Begrüßung</string>
-    <string name="text_expander_tag_desc_tomorrow">Morgiges Datum (JJJJ-MM-TT)</string>
-    <string name="text_expander_tag_desc_clipboard">Inhalt der Zwischenablage</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Zwischenablage (Zitate entfernt)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Zwischenablage (einzeilig)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Zwischenablage (Groß-/Kleinschreibung wie Titel)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Zwischenablage (URL-Kebab-Slug)</string>
-    <string name="text_expander_tag_desc_day">Wochentag (z. B. Montag)</string>
-    <string name="text_expander_tag_desc_month">Monat (z. B. Juni)</string>
-    <string name="text_expander_tag_desc_language">Tastatursprache (z. B. Deutsch)</string>
-    <string name="text_expander_tag_desc_cursor">Cursorposition nach der Erweiterung</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Aufzählungsliste (z. B. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Nummerierte Liste (z. B. %list_5%)</string>
     <string name="updates_new_update_title">Neues Update verfügbar</string>
     <string name="updates_new_update_desc">Version %s ist bereit zur Installation</string>
     <string name="updates_view_release">Release ansehen</string>
@@ -1576,7 +1548,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="app_quirks_hide_toolbar_summary">Blenden Sie Symbolleistentasten, Aktionen und die Schaltfläche zum Erweitern aus, wenn Sie in dieser App etwas eingeben</string>
     <string name="app_quirks_badge_no_suggestions">Keine Vorschläge</string>
     <string name="app_quirks_badge_no_toolbar">Keine Leiste</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Formatiertes Datum (z. B.%date:yyyy/MM/dd% oder%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vorschläge immer anzeigen</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorieren Sie die Aufforderungen dieser App, Vorschläge zu deaktivieren</string>
     <string name="app_quirks_badge_always_suggestions">Immer Vorschläge</string>
@@ -1773,4 +1744,9 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="restart_ime_dialog_title">Prozess neu laden</string>
     <string name="restart_ime_dialog_message">Dadurch wird der Tastaturvorgang beendet und die Einstellungen neu gestartet. Alle Modelle, Plugins und Hintergrunddienste werden sauber neu geladen.</string>
     <string name="restart_ime_confirm">Starten Sie jetzt neu</string>
+    <string name="text_expander_options_category">Konfiguration</string>
+    <string name="text_expander_tools_category">Management &amp; Tools</string>
+    <string name="text_expander_guide_title">Online-Anleitung und Syntaxreferenz</string>
+    <string name="text_expander_guide_summary">Vollständiger Leitfaden für dynamische Platzhalter, Regex-Muster und Modifikatoren</string>
+    <string name="text_expander_all_as_text_summary">Massenbearbeitung, Freigabe, Sicherung oder Import von Verknüpfungen im Nur-Text-Format</string>
 </resources>

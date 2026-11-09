@@ -875,8 +875,6 @@
     <string name="text_expander_custom_shortcuts_title">自定义快捷方式</string>
     <string name="text_expander_add_shortcut">添加快捷方式</string>
     <string name="text_expander_edit_shortcut">编辑快捷方式</string>
-    <string name="text_expander_quick_guide">💡 快速功能指南</string>
-    <string name="text_expander_template_placeholders_title">支持的模板占位符：</string>
     <string name="text_expander_prefix_title">前缀 (可选)</string>
     <string name="text_expander_shortcut_title">快捷方式 (例如 \'brb\')</string>
     <string name="text_expander_regex_pattern_title">正则表达式模式</string>
@@ -1047,32 +1045,6 @@
     <string name="setup_step0_feature3_desc">快速词语建议、剪贴板管理器、语音输入及丰富的编辑快捷键。</string>
     <string name="text_expander_no_shortcuts_title">尚未配置任何快捷短语。</string>
     <string name="text_expander_no_shortcuts_desc">点击底部的“添加快捷短语”浮动按钮，快速创建您的第一个智能文本扩展模板。</string>
-    <string name="text_expander_how_it_works_title">工作原理：</string>
-    <string name="text_expander_step1_title">指定快捷前缀</string>
-    <string name="text_expander_step1_desc">在编辑界面为每个快捷短语配置可选前缀（如 \'.\' 或 \';\'），以防意外展开。</string>
-    <string name="text_expander_step2_title">添加自定义快捷短语</string>
-    <string name="text_expander_step2_desc">定义触发词（例如 \'brb\'）及其扩展模板（例如 \'马上回来！\'）。</string>
-    <string name="text_expander_step3_title">输入前缀 + 快捷短语</string>
-    <string name="text_expander_step3_desc">输入前缀和快捷短语关键词（例如 \'.brb\'），然后按空格键或标点符号即可瞬间展开。</string>
-    <string name="text_expander_tag_desc_date">日期 (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">时间 (24小时制, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">时间 (12小时制, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">年份 (YYYY)</string>
-    <string name="text_expander_tag_desc_week">年内周数 (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">电池电量 (例如 85%)</string>
-    <string name="text_expander_tag_desc_greeting">分时段问候语</string>
-    <string name="text_expander_tag_desc_tomorrow">明天日期 (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">剪贴板内容</string>
-    <string name="text_expander_tag_desc_clipboard_clean">剪贴板（去除引用来源）</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">剪贴板（单行）</string>
-    <string name="text_expander_tag_desc_clipboard_title">剪贴板（首字母大写）</string>
-    <string name="text_expander_tag_desc_clipboard_slug">剪贴板（URL kebab-slug）</string>
-    <string name="text_expander_tag_desc_day">星期名称（例如 星期一）</string>
-    <string name="text_expander_tag_desc_month">月份（例如 六月）</string>
-    <string name="text_expander_tag_desc_language">键盘语言（例如 中文）</string>
-    <string name="text_expander_tag_desc_cursor">展开后光标位置</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">项目符号列表 (例如 %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">编号列表 (例如 %list_5%)</string>
     <string name="updates_new_update_title">发现新版本</string>
     <string name="updates_new_update_desc">版本 %s 已准备好安装</string>
     <string name="updates_view_release">查看版本详情</string>
@@ -1498,7 +1470,6 @@
     <string name="app_quirks_hide_toolbar_summary">在此应用程序中键入内容时隐藏工具栏键、操作和展开按钮</string>
     <string name="app_quirks_badge_no_suggestions">没有建议</string>
     <string name="app_quirks_badge_no_toolbar">无工具栏</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">格式化日期（例如%date:yyyy/MM/dd% 或%date:format(pattern)%）</string>
     <string name="app_quirks_always_show_suggestions">始终显示建议</string>
     <string name="app_quirks_always_show_suggestions_summary">忽略此应用程序的禁用建议的请求</string>
     <string name="app_quirks_badge_always_suggestions">总是建议</string>
@@ -1724,4 +1695,9 @@
     <string name="text_expander_error_regex">第%1$d行：无效的正则表达式 \"%2$s\"</string>
     <string name="text_expander_discard_title">放弃您的更改吗？</string>
     <string name="text_expander_discard">丢弃</string>
+    <string name="text_expander_options_category">配置</string>
+    <string name="text_expander_tools_category">管理与工具</string>
+    <string name="text_expander_guide_title">在线指南和语法参考</string>
+    <string name="text_expander_guide_summary">动态占位符、正则表达式模式和修饰符的完整指南</string>
+    <string name="text_expander_all_as_text_summary">以纯文本形式批量编辑、共享、备份或导入快捷方式</string>
 </resources>

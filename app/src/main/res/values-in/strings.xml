@@ -879,8 +879,6 @@
     <string name="text_expander_custom_shortcuts_title">Pintasan Kustom</string>
     <string name="text_expander_add_shortcut">Tambahkan Pintasan</string>
     <string name="text_expander_edit_shortcut">Edit Pintasan</string>
-    <string name="text_expander_quick_guide">💡 Panduan Fitur Cepat</string>
-    <string name="text_expander_template_placeholders_title">Placeholder Template yang Didukung:</string>
     <string name="text_expander_prefix_title">Awalan (opsional)</string>
     <string name="text_expander_shortcut_title">Pintasan (misalnya \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Pola Regex</string>
@@ -1050,32 +1048,6 @@
     <string name="setup_step0_feature3_desc">Saran kata cepat, pengelola papan klip, masukan suara, dan pintasan pengeditan lengkap.</string>
     <string name="text_expander_no_shortcuts_title">Belum ada pintasan yang dikonfigurasi.</string>
     <string name="text_expander_no_shortcuts_desc">Ketuk tombol mengambang \'Tambah Pintasan\' di sudut bawah untuk membuat templat ekspansi teks cerdas pertama Anda dengan cepat.</string>
-    <string name="text_expander_how_it_works_title">Cara kerjanya:</string>
-    <string name="text_expander_step1_title">Tentukan Awalan Pintasan</string>
-    <string name="text_expander_step1_desc">Konfigurasikan awalan opsional seperti \'.\' atau \';\' per pintasan pada layar edit untuk mencegah ekspansi yang tidak disengaja.</string>
-    <string name="text_expander_step2_title">Tambah Pintasan Kustom</string>
-    <string name="text_expander_step2_desc">Tentukan pemicu (mis. \'brb\') dan templat ekspansinya (mis. \'Segera kembali!\').</string>
-    <string name="text_expander_step3_title">Ketik Awalan + Pintasan</string>
-    <string name="text_expander_step3_desc">Ketik awalan Anda diikuti dengan kata kunci pintasan (mis. \'.brb\') dan tekan Spasi atau tanda baca pada papan ketik untuk memperluas secara instan.</string>
-    <string name="text_expander_tag_desc_date">Tanggal (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Waktu (24 jam, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Waktu (12 jam, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Tahun (YYYY)</string>
-    <string name="text_expander_tag_desc_week">Minggu dalam tahun (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Tingkat baterai (mis. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Salam berdasarkan waktu</string>
-    <string name="text_expander_tag_desc_tomorrow">Tanggal besok (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Konten papan klip</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Papan klip (sitasi dibersihkan)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Papan klip (satu baris)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Papan klip (Huruf Judul)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Papan klip (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Nama hari (mis. Senin)</string>
-    <string name="text_expander_tag_desc_month">Bulan (mis. Juni)</string>
-    <string name="text_expander_tag_desc_language">Bahasa papan ketik (mis. Indonesia)</string>
-    <string name="text_expander_tag_desc_cursor">Posisi kursor setelah ekspansi</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Daftar poin (mis. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Daftar bernomor (mis. %list_5%)</string>
     <string name="updates_new_update_title">Pembaruan Baru Tersedia</string>
     <string name="updates_new_update_desc">Versi %s siap untuk dipasang</string>
     <string name="updates_view_release">Lihat Rilis</string>
@@ -1493,7 +1465,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="app_quirks_hide_toolbar_summary">Sembunyikan tombol toolbar, tindakan, dan tombol perluas saat mengetik di aplikasi ini</string>
     <string name="app_quirks_badge_no_suggestions">Tidak Ada Saran</string>
     <string name="app_quirks_badge_no_toolbar">Tanpa bilah alat</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Tanggal yang diformat (misalnya%dmakan:yyyy/MM/dd% atau%dmakan:format(pola)%)</string>
     <string name="app_quirks_always_show_suggestions">Selalu tampilkan saran</string>
     <string name="app_quirks_always_show_suggestions_summary">Abaikan permintaan aplikasi ini untuk menonaktifkan saran</string>
     <string name="app_quirks_badge_always_suggestions">Selalu Saran</string>
@@ -1721,4 +1692,9 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_error_regex">Baris%1$d: regex tidak valid \"%2$s\"</string>
     <string name="text_expander_discard_title">Hapus perubahan Anda?</string>
     <string name="text_expander_discard">Membuang</string>
+    <string name="text_expander_options_category">Konfigurasi</string>
+    <string name="text_expander_tools_category">Manajemen &amp; Alat</string>
+    <string name="text_expander_guide_title">Panduan Online &amp; Referensi Sintaks</string>
+    <string name="text_expander_guide_summary">Panduan lengkap untuk placeholder dinamis, pola regex, dan pengubah</string>
+    <string name="text_expander_all_as_text_summary">Edit massal, bagikan, buat cadangan, atau impor pintasan dalam teks biasa</string>
 </resources>

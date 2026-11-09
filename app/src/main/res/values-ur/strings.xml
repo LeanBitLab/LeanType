@@ -774,8 +774,6 @@
     <string name="text_expander_custom_shortcuts_title">حسب ضرورت شارٹ کٹس</string>
     <string name="text_expander_add_shortcut">شارٹ کٹ شامل کریں</string>
     <string name="text_expander_edit_shortcut">شارٹ کٹ میں ترمیم کریں</string>
-    <string name="text_expander_quick_guide">💡 فوری فیچر گائیڈ</string>
-    <string name="text_expander_template_placeholders_title">معاون ٹیمپلیٹ پلیس ہولڈرز:</string>
     <string name="text_expander_prefix_title">سابقہ (اختیاری)</string>
     <string name="text_expander_shortcut_title">شارٹ کٹ (مثلاً \'brb\')</string>
     <string name="text_expander_regex_pattern_title">ریجیکس پیٹرن</string>
@@ -1151,32 +1149,6 @@
     <string name="setup_step0_feature3_desc">تیز رفتار لفظی تجاویز، کلپ بورڈ مینیجر، صوتی ان پٹ، اور بھرپور ترمیمی شارٹ کٹس۔</string>
     <string name="text_expander_no_shortcuts_title">ابھی تک کوئی شارٹ کٹ تشکیل نہیں دیا گیا۔</string>
     <string name="text_expander_no_shortcuts_desc">اپنا پہلا سمارٹ ٹیکسٹ ایکسپینشن ٹیمپلیٹ بنانے کے لیے نیچے والے کونے میں \'شارٹ کٹ شامل کریں\' کے بٹن کو ٹیپ کریں۔</string>
-    <string name="text_expander_how_it_works_title">یہ کیسے کام کرتا ہے:</string>
-    <string name="text_expander_step1_title">شارٹ کٹ کا سابقہ (پریفکس) متعین کریں</string>
-    <string name="text_expander_step1_desc">غیر ارادی توسیع کو روکنے کے لیے ایڈٹ اسکرین پر فی شارٹ کٹ اختیاری پریفکس جیسے \'.\' یا \';\' ترتیب دیں۔</string>
-    <string name="text_expander_step2_title">حسب ضرورت شارٹ کٹس شامل کریں</string>
-    <string name="text_expander_step2_desc">ٹرگرز (مثلاً \'brb\') اور ان کے توسیعی ٹیمپلیٹس (مثلاً \'جلد واپس آتا ہوں!\') کی وضاحت کریں۔</string>
-    <string name="text_expander_step3_title">پریفکس + شارٹ کٹ ٹائپ کریں</string>
-    <string name="text_expander_step3_desc">اپنا پریفکس اور اس کے بعد شارٹ کٹ لفظ (مثلاً \'.brb\') ٹائپ کریں اور فوری توسیع کے لیے کی بورڈ پر اسپیس یا اوقاف کا نشان دبائیں۔</string>
-    <string name="text_expander_tag_desc_date">تاریخ (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">وقت (24 گھنٹے، HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">وقت (12 گھنٹے، hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">سال (YYYY)</string>
-    <string name="text_expander_tag_desc_week">سال کا ہفتہ (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">بیٹری لیول (مثلاً 85%)</string>
-    <string name="text_expander_tag_desc_greeting">وقت کے مطابق مبارکباد</string>
-    <string name="text_expander_tag_desc_tomorrow">کل کی تاریخ (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">کلپ بورڈ کا مواد</string>
-    <string name="text_expander_tag_desc_clipboard_clean">کلپ بورڈ (حوالے ہٹا دیے گئے)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">کلپ بورڈ (ایک سطر)</string>
-    <string name="text_expander_tag_desc_clipboard_title">کلپ بورڈ (عنوان کیس)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">کلپ بورڈ (URL کیباب سلیگ)</string>
-    <string name="text_expander_tag_desc_day">دن کا نام (مثلاً پیر)</string>
-    <string name="text_expander_tag_desc_month">مہینہ (مثلاً جون)</string>
-    <string name="text_expander_tag_desc_language">کی بورڈ کی زبان (مثلاً انگریزی)</string>
-    <string name="text_expander_tag_desc_cursor">توسیع کے بعد کرسر کی پوزیشن</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">بلٹ لسٹ (مثلاً %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">نمبر والی فہرست (مثلاً %list_5%)</string>
     <string name="updates_new_update_title">نئی اپ ڈیٹ دستیاب ہے</string>
     <string name="updates_new_update_desc">ورژن %s انسٹال کے لیے تیار ہے</string>
     <string name="updates_view_release">ریلیز دیکھیں</string>
@@ -1587,7 +1559,6 @@
     <string name="app_quirks_hide_toolbar_summary">اس ایپ میں ٹائپ کرتے وقت ٹول بار کیز، ایکشنز، اور ایکسپینڈ بٹن کو چھپائیں۔</string>
     <string name="app_quirks_badge_no_suggestions">کوئی تجاویز نہیں۔</string>
     <string name="app_quirks_badge_no_toolbar">ٹول بار کے بغیر</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">فارمیٹ شدہ تاریخ (جیسے%date:yyyy/MM/dd% یا%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">ہمیشہ تجاویز دکھائیں۔</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاویز کو غیر فعال کرنے کے لیے اس ایپ کی درخواستوں کو نظر انداز کریں۔</string>
     <string name="app_quirks_badge_always_suggestions">ہمیشہ تجاویز</string>
@@ -1815,4 +1786,9 @@
     <string name="text_expander_error_regex">لائن%1$d: غلط ریجیکس \"%2$s\"</string>
     <string name="text_expander_discard_title">اپنی تبدیلیوں کو مسترد کریں؟</string>
     <string name="text_expander_discard">رد کر دیں۔</string>
+    <string name="text_expander_options_category">کنفیگریشن</string>
+    <string name="text_expander_tools_category">مینجمنٹ اور ٹولز</string>
+    <string name="text_expander_guide_title">آن لائن گائیڈ اور نحو کا حوالہ</string>
+    <string name="text_expander_guide_summary">ڈائنامک پلیس ہولڈرز، ریجیکس پیٹرنز اور موڈیفائرز کے لیے مکمل گائیڈ</string>
+    <string name="text_expander_all_as_text_summary">سادہ متن میں بڑی تعداد میں ترمیم، اشتراک، بیک اپ، یا شارٹ کٹ درآمد کریں۔</string>
 </resources>

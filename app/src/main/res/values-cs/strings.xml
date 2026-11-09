@@ -873,8 +873,6 @@
     <string name="text_expander_custom_shortcuts_title">Vlastní zkratky</string>
     <string name="text_expander_add_shortcut">Přidat zkratku</string>
     <string name="text_expander_edit_shortcut">Upravit zkratku</string>
-    <string name="text_expander_quick_guide">💡 Rychlý průvodce funkcemi</string>
-    <string name="text_expander_template_placeholders_title">Podporované zástupné symboly šablon:</string>
     <string name="text_expander_prefix_title">Předpona (volitelné)</string>
     <string name="text_expander_shortcut_title">Zkratka (např. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex vzor</string>
@@ -1044,32 +1042,6 @@
     <string name="setup_step0_feature3_desc">Rychlé návrhy slov, správce schránky, hlasové zadávání a bohaté klávesové zkratky pro úpravy.</string>
     <string name="text_expander_no_shortcuts_title">Zatím nejsou nakonfigurovány žádné zkratky.</string>
     <string name="text_expander_no_shortcuts_desc">Klepnutím na plovoucí tlačítko \'Přidat zkratku\' v dolním rohu rychle vytvoříte svou první chytrou šablonu pro rozšiřování textu.</string>
-    <string name="text_expander_how_it_works_title">Jak to funguje:</string>
-    <string name="text_expander_step1_title">Zadejte předponu zkratky</string>
-    <string name="text_expander_step1_desc">Nakonfigurujte volitelnou předponu jako \'.\' nebo \';\' pro každou zkratku na obrazovce úprav, abyste zabránili nechtěnému rozšíření.</string>
-    <string name="text_expander_step2_title">Přidat vlastní zkratky</string>
-    <string name="text_expander_step2_desc">Definujte spouštěče (např. \'brb\') a jejich rozšířené šablony (např. \'Hned jsem zpět!\').</string>
-    <string name="text_expander_step3_title">Napište předponu + zkratku</string>
-    <string name="text_expander_step3_desc">Napište předponu následovanou klíčovým slovem zkratky (např. \'.brb\') a stisknutím mezerníku nebo interpunkce okamžitě rozbalte text.</string>
-    <string name="text_expander_tag_desc_date">Datum (RRRR-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Čas (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Čas (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Rok (RRRR)</string>
-    <string name="text_expander_tag_desc_week">Týden v roce (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Úroveň baterie (např. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Pozdrav podle denní doby</string>
-    <string name="text_expander_tag_desc_tomorrow">Zítřejší datum (RRRR-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Obsah schránky</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Schránka (očištěno od citací)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Schránka (jeden řádek)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Schránka (Velká Písmena Slov)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Schránka (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Název dne (např. Pondělí)</string>
-    <string name="text_expander_tag_desc_month">Měsíc (např. Červen)</string>
-    <string name="text_expander_tag_desc_language">Jazyk klávesnice (např. Čeština)</string>
-    <string name="text_expander_tag_desc_cursor">Pozice kurzoru po rozšíření</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Odrážkový seznam (např. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Číslovaný seznam (např. %list_5%)</string>
     <string name="updates_new_update_title">K dispozici je nová aktualizace</string>
     <string name="updates_new_update_desc">Verze %s je připravena k instalaci</string>
     <string name="updates_view_release">Zobrazit vydání</string>
@@ -1495,7 +1467,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="app_quirks_hide_toolbar_summary">Při psaní v této aplikaci skryjte klávesy, akce a rozbalovací tlačítko na panelu nástrojů</string>
     <string name="app_quirks_badge_no_suggestions">Žádné návrhy</string>
     <string name="app_quirks_badge_no_toolbar">Bez lišty</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Formátované datum (např.%date:yyyy/MM/dd% nebo%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vždy zobrazovat návrhy</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorujte požadavky této aplikace na deaktivaci návrhů</string>
     <string name="app_quirks_badge_always_suggestions">Vždy návrhy</string>
@@ -1723,4 +1694,9 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_error_regex">Řádek%1$d: neplatný regulární výraz \"%2$s\"</string>
     <string name="text_expander_discard_title">Zahodit změny?</string>
     <string name="text_expander_discard">Vyřadit</string>
+    <string name="text_expander_options_category">Konfigurace</string>
+    <string name="text_expander_tools_category">Správa a nástroje</string>
+    <string name="text_expander_guide_title">Online průvodce a reference syntaxe</string>
+    <string name="text_expander_guide_summary">Kompletní průvodce pro dynamické zástupné symboly, vzory regulárních výrazů a modifikátory</string>
+    <string name="text_expander_all_as_text_summary">Hromadné úpravy, sdílení, zálohování nebo import zástupců v prostém textu</string>
 </resources>

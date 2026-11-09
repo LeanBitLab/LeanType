@@ -742,8 +742,6 @@
     <string name="text_expander_custom_shortcuts_title">Atajos personalizados</string>
     <string name="text_expander_add_shortcut">Añadir atajo</string>
     <string name="text_expander_edit_shortcut">Editar atajo</string>
-    <string name="text_expander_quick_guide">💡 Guía rápida de funciones</string>
-    <string name="text_expander_template_placeholders_title">Marcadores de plantilla soportados:</string>
     <string name="text_expander_prefix_title">Prefijo (opcional)</string>
     <string name="text_expander_shortcut_title">Atajo (ej. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Patrón Regex</string>
@@ -1118,32 +1116,6 @@
     <string name="setup_step0_feature3_desc">Sugerencias rápidas de palabras, gestor de portapapeles, entrada de voz y prácticos atajos de edición.</string>
     <string name="text_expander_no_shortcuts_title">Aún no hay atajos configurados.</string>
     <string name="text_expander_no_shortcuts_desc">Toca el botón flotante \'Añadir atajo\' en la esquina inferior para crear rápidamente tu primera plantilla inteligente de expansión de texto.</string>
-    <string name="text_expander_how_it_works_title">Cómo funciona:</string>
-    <string name="text_expander_step1_title">Especificar prefijo del atajo</string>
-    <string name="text_expander_step1_desc">Configura un prefijo opcional como \'.\' o \';\' por atajo en la pantalla de edición para evitar expansiones accidentales.</string>
-    <string name="text_expander_step2_title">Añadir atajos personalizados</string>
-    <string name="text_expander_step2_desc">Define activadores (ej. \'ya vuelvo\') y sus textos expandidos (ej. \'¡Ya vuelvo en un momento!\').</string>
-    <string name="text_expander_step3_title">Escribir prefijo + atajo</string>
-    <string name="text_expander_step3_desc">Escribe tu prefijo seguido de la palabra clave del atajo (ej. \'.brb\') y pulsa Espacio o un signo de puntuación para expandirlo al instante.</string>
-    <string name="text_expander_tag_desc_date">Fecha (AAAA-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Hora (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Hora (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Año (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Semana del año (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Nivel de batería (ej. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Saludo según la hora del día</string>
-    <string name="text_expander_tag_desc_tomorrow">Fecha de mañana (AAAA-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Contenido del portapapeles</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Portapapeles (sin citas)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Portapapeles (en una sola línea)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Portapapeles (Mayúsculas Iniciales)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Portapapeles (slug URL con guiones)</string>
-    <string name="text_expander_tag_desc_day">Nombre del día (ej. Lunes)</string>
-    <string name="text_expander_tag_desc_month">Mes (ej. Junio)</string>
-    <string name="text_expander_tag_desc_language">Idioma del teclado (ej. Español)</string>
-    <string name="text_expander_tag_desc_cursor">Posición del cursor tras la expansión</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Lista con viñetas (ej. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Lista numerada (ej. %list_5%)</string>
     <string name="updates_new_update_title">Nueva actualización disponible</string>
     <string name="updates_new_update_desc">La versión %s está lista para instalar</string>
     <string name="updates_view_release">Ver versión</string>
@@ -1562,7 +1534,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="app_quirks_hide_toolbar_summary">Oculte las teclas de la barra de herramientas, las acciones y el botón de expandir al escribir en esta aplicación</string>
     <string name="app_quirks_badge_no_suggestions">Sin sugerencias</string>
     <string name="app_quirks_badge_no_toolbar">Sin barra</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Fecha formateada (por ejemplo,%dcomió:aaaa/MM/dd% o%dcomió:formato(patrón)%)</string>
     <string name="app_quirks_always_show_suggestions">Mostrar siempre sugerencias</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignora las solicitudes de esta aplicación para desactivar las sugerencias</string>
     <string name="app_quirks_badge_always_suggestions">Siempre sugerencias</string>
@@ -1790,4 +1761,9 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_error_regex">Línea%1$d: expresión regular no válida \"%2$s\"</string>
     <string name="text_expander_discard_title">¿Descartar tus cambios?</string>
     <string name="text_expander_discard">Desechar</string>
+    <string name="text_expander_options_category">Configuración</string>
+    <string name="text_expander_tools_category">Gestión y herramientas</string>
+    <string name="text_expander_guide_title">Guía en línea y referencia de sintaxis</string>
+    <string name="text_expander_guide_summary">Guía completa para marcadores de posición dinámicos, patrones de expresiones regulares y modificadores</string>
+    <string name="text_expander_all_as_text_summary">Edite, comparta, haga copias de seguridad o importe accesos directos en masa en texto sin formato</string>
 </resources>

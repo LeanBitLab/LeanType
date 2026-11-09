@@ -740,8 +740,6 @@ Nouveau dictionnaire:
     <string name="text_expander_custom_shortcuts_title">Raccourcis personnalisés</string>
     <string name="text_expander_add_shortcut">Ajouter un raccourci</string>
     <string name="text_expander_edit_shortcut">Modifier le raccourci</string>
-    <string name="text_expander_quick_guide">💡 Guide rapide des fonctionnalités</string>
-    <string name="text_expander_template_placeholders_title">Espaces réservés de modèle pris en charge :</string>
     <string name="text_expander_prefix_title">Préfixe (facultatif)</string>
     <string name="text_expander_shortcut_title">Raccourci (par ex. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Motif Regex</string>
@@ -1116,32 +1114,6 @@ Nouveau dictionnaire:
     <string name="setup_step0_feature3_desc">Suggestions de mots rapides, gestionnaire de presse-papier, saisie vocale et raccourcis d\'édition complets.</string>
     <string name="text_expander_no_shortcuts_title">Aucun raccourci configuré pour le moment.</string>
     <string name="text_expander_no_shortcuts_desc">Appuyez sur le bouton flottant \'Ajouter un raccourci\' dans le coin inférieur pour créer rapidement votre premier modèle d\'expansion de texte intelligent.</string>
-    <string name="text_expander_how_it_works_title">Comment ça marche :</string>
-    <string name="text_expander_step1_title">Définir un préfixe de raccourci</string>
-    <string name="text_expander_step1_desc">Configurez un préfixe facultatif comme \'.\' ou \';\' par raccourci sur l\'écran d\'édition pour éviter les expansions involontaires.</string>
-    <string name="text_expander_step2_title">Ajouter des raccourcis personnalisés</string>
-    <string name="text_expander_step2_desc">Définissez des déclencheurs (ex. \'brb\') et leurs modèles développés (ex. \'Je reviens tout de suite !\').</string>
-    <string name="text_expander_step3_title">Taper Préfixe + Raccourci</string>
-    <string name="text_expander_step3_desc">Tapez votre préfixe suivi du mot-clé du raccourci (ex. \'.brb\') et appuyez sur Espace ou une ponctuation sur le clavier pour le développer instantanément.</string>
-    <string name="text_expander_tag_desc_date">Date (AAAA-MM-JJ)</string>
-    <string name="text_expander_tag_desc_time">Heure (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Heure (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Année (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Semaine de l\'année (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Niveau de batterie (ex. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Salutation selon le moment de la journée</string>
-    <string name="text_expander_tag_desc_tomorrow">Date de demain (AAAA-MM-JJ)</string>
-    <string name="text_expander_tag_desc_clipboard">Contenu du presse-papier</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Presse-papier (citations supprimées)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Presse-papier (une seule ligne)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Presse-papier (Casse Du Titre)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Presse-papier (slug d\'URL)</string>
-    <string name="text_expander_tag_desc_day">Nom du jour (ex. Lundi)</string>
-    <string name="text_expander_tag_desc_month">Mois (ex. Juin)</string>
-    <string name="text_expander_tag_desc_language">Langue du clavier (ex. Français)</string>
-    <string name="text_expander_tag_desc_cursor">Position du curseur après expansion</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Liste à puces (ex. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Liste numérotée (ex. %list_5%)</string>
     <string name="updates_new_update_title">Nouvelle mise à jour disponible</string>
     <string name="updates_new_update_desc">La version %s est prête à être installée</string>
     <string name="updates_view_release">Voir la version</string>
@@ -1552,7 +1524,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="app_quirks_hide_toolbar_summary">Masquer les touches de la barre d\'outils, les actions et le bouton de développement lors de la saisie dans cette application</string>
     <string name="app_quirks_badge_no_suggestions">Aucune suggestion</string>
     <string name="app_quirks_badge_no_toolbar">Sans barre</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Date formatée (par exemple,%date:aaaa/MM/dd% ou%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Toujours afficher les suggestions</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorer les demandes de cette application pour désactiver les suggestions</string>
     <string name="app_quirks_badge_always_suggestions">Toujours des suggestions</string>
@@ -1779,4 +1750,9 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_error_regex">Ligne%1$d: regex invalide \"%2$s\"</string>
     <string name="text_expander_discard_title">Supprimer vos modifications ?</string>
     <string name="text_expander_discard">Jeter</string>
+    <string name="text_expander_options_category">Configuration</string>
+    <string name="text_expander_tools_category">Gestion et outils</string>
+    <string name="text_expander_guide_title">Guide en ligne et référence de syntaxe</string>
+    <string name="text_expander_guide_summary">Guide complet pour les espaces réservés dynamiques, les modèles d\'expressions régulières et les modificateurs</string>
+    <string name="text_expander_all_as_text_summary">Modification, partage, sauvegarde ou importation groupée de raccourcis en texte brut</string>
 </resources>

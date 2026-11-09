@@ -908,8 +908,6 @@
     <string name="text_expander_custom_shortcuts_title">Карыстальніцкія цэтлікі</string>
     <string name="text_expander_add_shortcut">Дадаць цэтлік</string>
     <string name="text_expander_edit_shortcut">Рэдагаваць цэтлік</string>
-    <string name="text_expander_quick_guide">💡 Кароткі даведнік па функцыях</string>
-    <string name="text_expander_template_placeholders_title">Падтрымліваныя запаўняльнікі шаблонаў:</string>
     <string name="text_expander_prefix_title">Прэфікс (неабавязкова)</string>
     <string name="text_expander_shortcut_title">Цэтлік (напрыклад, \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Шаблон Regex</string>
@@ -1079,32 +1077,6 @@
     <string name="setup_step0_feature3_desc">Хуткія падказкі слоў, менеджэр буфера абмену, галасавы ўвод і багатыя спалучэнні клавіш для рэдагавання.</string>
     <string name="text_expander_no_shortcuts_title">Скароты яшчэ не настроены.</string>
     <string name="text_expander_no_shortcuts_desc">Націсніце плаваючую кнопку \'Дадаць скарот\' унізе, каб хутка стварыць свой першы разумны шаблон аўтападстаноўкі тэксту.</string>
-    <string name="text_expander_how_it_works_title">Як гэта працуе:</string>
-    <string name="text_expander_step1_title">Задайце прэфікс скароту</string>
-    <string name="text_expander_step1_desc">Наладзьце дадатковы прэфікс, напрыклад \'.\' ці \';\' для скароту на экране рэдагавання, каб прадухіліць выпадковае пашырэнне.</string>
-    <string name="text_expander_step2_title">Дадайце ўласныя скароты</string>
-    <string name="text_expander_step2_desc">Вызначце трыгеры (напр. \'зв\') і іх пашыраныя шаблоны (напр. \'Зараз вярнуся!\').</string>
-    <string name="text_expander_step3_title">Увядзіце прэфікс + скарот</string>
-    <string name="text_expander_step3_desc">Увядзіце прэфікс і ключавое слова скароту (напр. \'.зв\') і націсніце Прабел або знак прыпынку для імгненнага пашырэння.</string>
-    <string name="text_expander_tag_desc_date">Дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_time">Час (24г, ГГ:ХХ)</string>
-    <string name="text_expander_tag_desc_time12">Час (12г, гг:хх AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Год (ГГГГ)</string>
-    <string name="text_expander_tag_desc_week">Тыдзень года (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Узровень зараду батарэі (напр. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Прывітанне паводле часу сутак</string>
-    <string name="text_expander_tag_desc_tomorrow">Заўтрашняя дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_clipboard">Змесціва буфера абмену</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Буфер абмену (без цытат)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Буфер абмену (адзін радок)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Буфер абмену (Кожнае Слова З Вялікай)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Буфер абмену (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Назва дня (напр. Панядзелак)</string>
-    <string name="text_expander_tag_desc_month">Месяц (напр. Чэрвень)</string>
-    <string name="text_expander_tag_desc_language">Мова клавіятуры (напр. Беларуская)</string>
-    <string name="text_expander_tag_desc_cursor">Пазіцыя курсора пасля падстаноўкі</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Маркіраваны спіс (напр. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Нумараваны спіс (напр. %list_5%)</string>
     <string name="updates_new_update_title">Даступна новае абнаўленне</string>
     <string name="updates_new_update_desc">Версія %s гатовая да ўсталявання</string>
     <string name="updates_view_release">Паглядзець рэліз</string>
@@ -1530,7 +1502,6 @@
     <string name="app_quirks_hide_toolbar_summary">Схаваць клавішы панэлі інструментаў, дзеянні і кнопку разгортвання падчас уводу ў гэтай праграме</string>
     <string name="app_quirks_badge_no_suggestions">Няма прапаноў</string>
     <string name="app_quirks_badge_no_toolbar">Без панэлі</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Адфарматаваная дата (напрыклад,%date:yyyy/MM/dd% або%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Заўсёды паказваць прапановы</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігнараваць запыты гэтай праграмы аб адключэнні прапаноў</string>
     <string name="app_quirks_badge_always_suggestions">Заўсёды прапановы</string>
@@ -1758,4 +1729,9 @@
     <string name="text_expander_error_regex">Радок%1$d: няправільны рэгулярны выраз \"%2$s\"</string>
     <string name="text_expander_discard_title">Адхіліць змены?</string>
     <string name="text_expander_discard">Адкідаць</string>
+    <string name="text_expander_options_category">Канфігурацыя</string>
+    <string name="text_expander_tools_category">Кіраванне і інструменты</string>
+    <string name="text_expander_guide_title">Інтэрнэт-даведнік і сінтаксіс</string>
+    <string name="text_expander_guide_summary">Поўнае кіраўніцтва для дынамічных запаўняльнікаў, шаблонаў рэгулярных выразаў і мадыфікатараў</string>
+    <string name="text_expander_all_as_text_summary">Масавае рэдагаванне, абмен, рэзервовае капіраванне або імпарт ярлыкоў у выглядзе звычайнага тэксту</string>
 </resources>

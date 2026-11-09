@@ -774,8 +774,6 @@
     <string name="text_expander_custom_shortcuts_title">ഇഷ്ടാനുസൃത കുറുക്കുവഴികൾ</string>
     <string name="text_expander_add_shortcut">കുറുക്കുവഴി ചേർക്കുക</string>
     <string name="text_expander_edit_shortcut">കുറുക്കുവഴി എഡിറ്റുചെയ്യുക</string>
-    <string name="text_expander_quick_guide">💡 ദ്രുത ഫീച്ചർ ഗൈഡ്</string>
-    <string name="text_expander_template_placeholders_title">പിന്തുണയ്ക്കുന്ന ടെംപ്ലേറ്റ് പ്ലെയ്സ്ഹോൾഡറുകൾ:</string>
     <string name="text_expander_prefix_title">ഉപസർഗ്ഗം (ഐച്ഛികം)</string>
     <string name="text_expander_shortcut_title">കുറുക്കുവഴി (ഉദാ. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">റെജക്സ് പാറ്റേൺ</string>
@@ -1152,32 +1150,6 @@
     <string name="setup_step0_feature3_desc">വേഗത്തിലുള്ള വാക്ക് നിർദ്ദേശങ്ങൾ, ക്ലിപ്പ്ബോർഡ് മാനേജർ, വോയ്‌സ് ഇൻപുട്ട്, എഡിറ്റിംഗ് കുറുക്കുവഴികൾ.</string>
     <string name="text_expander_no_shortcuts_title">ഇതുവരെ കുറുക്കുവഴികളൊന്നും കോൺഫിഗർ ചെയ്തിട്ടില്ല.</string>
     <string name="text_expander_no_shortcuts_desc">നിങ്ങളുടെ ആദ്യ സ്മാർട്ട് ടെക്സ്റ്റ് വിപുലീകരണ ടെംപ്ലേറ്റ് വേഗത്തിൽ സൃഷ്ടിക്കാൻ താഴത്തെ കോണിലുള്ള \'കുറുക്കുവഴി ചേർക്കുക\' ഫ്ലോട്ടിംഗ് ബട്ടൺ ടാപ്പ് ചെയ്യുക.</string>
-    <string name="text_expander_how_it_works_title">ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു:</string>
-    <string name="text_expander_step1_title">കുറുക്കുവഴി പ്രിഫിക്സ് വ്യക്തമാക്കുക</string>
-    <string name="text_expander_step1_desc">അബദ്ധത്തിൽ വികസിക്കുന്നത് തടയാൻ എഡിറ്റ് സ്ക്രീനിൽ ഓരോ കുറുക്കുവഴിക്കും \'.\' അല്ലെങ്കിൽ \';\' പോലുള്ള പ്രിഫിക്സ് കോൺഫിഗർ ചെയ്യുക.</string>
-    <string name="text_expander_step2_title">ഇഷ്‌ടാനുസൃത കുറുക്കുവഴികൾ ചേർക്കുക</string>
-    <string name="text_expander_step2_desc">ട്രിഗറുകളും (ഉദാ. \'brb\') അവയുടെ വിപുലീകരിച്ച ടെംപ്ലേറ്റുകളും (ഉദാ. \'ഉടൻ തിരികെ വരാം!\') നിർവ്വചിക്കുക.</string>
-    <string name="text_expander_step3_title">പ്രിഫിക്സ് + കുറുക്കുവഴി ടൈപ്പ് ചെയ്യുക</string>
-    <string name="text_expander_step3_desc">പ്രിഫിക്സും കുറുക്കുവഴി വാക്കും (ഉദാ. \'.brb\') ടൈപ്പ് ചെയ്ത് തൽക്ഷണം വിപുലീകരിക്കാൻ സ്പേസോ വിരാമചിഹ്നമോ അമർത്തുക.</string>
-    <string name="text_expander_tag_desc_date">തീയതി (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">സമയം (24 മണിക്കൂർ, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">സമയം (12 മണിക്കൂർ, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">വർഷം (YYYY)</string>
-    <string name="text_expander_tag_desc_week">വർഷത്തിലെ ആഴ്ച (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">ബാറ്ററി നില (ഉദാ. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">സമയത്തിനനുസരിച്ചുള്ള ആശംസ</string>
-    <string name="text_expander_tag_desc_tomorrow">നാളത്തെ തീയതി (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">ക്ലിപ്പ്ബോർഡ് ഉള്ളടക്കം</string>
-    <string name="text_expander_tag_desc_clipboard_clean">ക്ലിപ്പ്ബോർഡ് (സൈറ്റേഷനുകൾ ഒഴിവാക്കിയത്)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">ക്ലിപ്പ്ബോർഡ് (ഒറ്റ വരി)</string>
-    <string name="text_expander_tag_desc_clipboard_title">ക്ലിപ്പ്ബോർഡ് (ഓരോ വാക്കിന്റെയും ആദ്യക്ഷരം വലുതാക്കിയത്)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">ക്ലിപ്പ്ബോർഡ് (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">ദിവസത്തിന്റെ പേര് (ഉദാ. തിങ്കൾ)</string>
-    <string name="text_expander_tag_desc_month">മാസം (ഉദാ. ജൂൺ)</string>
-    <string name="text_expander_tag_desc_language">കീബോർഡ് ഭാഷ (ഉദാ. മലയാളം)</string>
-    <string name="text_expander_tag_desc_cursor">വിപുലീകരണത്തിന് ശേഷമുള്ള കർസർ സ്ഥാനം</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">ബുള്ളറ്റ് ലിസ്റ്റ് (ഉദാ. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">നമ്പർ ചെയ്ത ലിസ്റ്റ് (ഉദാ. %list_5%)</string>
     <string name="updates_new_update_title">പുതിയ അപ്‌ഡേറ്റ് ലഭ്യമാണ്</string>
     <string name="updates_new_update_desc">പതിപ്പ് %s ഇൻസ്റ്റാൾ ചെയ്യാൻ തയ്യാറാണ്</string>
     <string name="updates_view_release">റിലീസ് കാണുക</string>
@@ -1596,7 +1568,6 @@
     <string name="app_quirks_hide_toolbar_summary">ഈ ആപ്പിൽ ടൈപ്പ് ചെയ്യുമ്പോൾ ടൂൾബാർ കീകൾ, പ്രവർത്തനങ്ങൾ, വിപുലീകരിക്കുക ബട്ടൺ എന്നിവ മറയ്ക്കുക</string>
     <string name="app_quirks_badge_no_suggestions">നിർദ്ദേശങ്ങളൊന്നുമില്ല</string>
     <string name="app_quirks_badge_no_toolbar">ടൂൾബാർ ഇല്ല</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">ഫോർമാറ്റ് ചെയ്ത തീയതി (ഉദാ.%dകഴിച്ചത്:yyyy/MM/dd% അല്ലെങ്കിൽ%date:ഫോർമാറ്റ്(പാറ്റേൺ)%)</string>
     <string name="app_quirks_always_show_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ കാണിക്കുക</string>
     <string name="app_quirks_always_show_suggestions_summary">നിർദ്ദേശങ്ങൾ പ്രവർത്തനരഹിതമാക്കാനുള്ള ഈ ആപ്പിൻ്റെ അഭ്യർത്ഥനകൾ അവഗണിക്കുക</string>
     <string name="app_quirks_badge_always_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ</string>
@@ -1824,4 +1795,9 @@
     <string name="text_expander_error_regex">ലൈൻ%1$d: അസാധുവായ റീജക്സ് \"%2$s\"</string>
     <string name="text_expander_discard_title">നിങ്ങളുടെ മാറ്റങ്ങൾ തള്ളിക്കളയണോ?</string>
     <string name="text_expander_discard">നിരസിക്കുക</string>
+    <string name="text_expander_options_category">കോൺഫിഗറേഷൻ</string>
+    <string name="text_expander_tools_category">മാനേജ്മെൻ്റ് &amp; ടൂളുകൾ</string>
+    <string name="text_expander_guide_title">ഓൺലൈൻ ഗൈഡും വാക്യഘടനയും</string>
+    <string name="text_expander_guide_summary">ഡൈനാമിക് പ്ലെയ്‌സ്‌ഹോൾഡറുകൾ, റീജക്‌സ് പാറ്റേണുകൾ, മോഡിഫയറുകൾ എന്നിവയ്‌ക്കായുള്ള പൂർണ്ണ ഗൈഡ്</string>
+    <string name="text_expander_all_as_text_summary">പ്ലെയിൻ ടെക്സ്റ്റിൽ കുറുക്കുവഴികൾ ബൾക്ക് എഡിറ്റ് ചെയ്യുക, പങ്കിടുക, ബാക്കപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ഇറക്കുമതി ചെയ്യുക</string>
 </resources>

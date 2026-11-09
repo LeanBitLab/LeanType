@@ -1741,8 +1741,11 @@ New dictionary:
     <string name="text_expander_custom_shortcuts_title">Custom Shortcuts</string>
     <string name="text_expander_add_shortcut">Add Shortcut</string>
     <string name="text_expander_edit_shortcut">Edit Shortcut</string>
-    <string name="text_expander_quick_guide">💡 Quick Feature Guide</string>
-    <string name="text_expander_template_placeholders_title">Supported Template Placeholders:</string>
+    <string name="text_expander_options_category">Configuration</string>
+    <string name="text_expander_tools_category">Management &amp; Tools</string>
+    <string name="text_expander_guide_title">Online Guide &amp; Syntax Reference</string>
+    <string name="text_expander_guide_summary">Complete guide for dynamic placeholders, regex patterns, and modifiers</string>
+    <string name="text_expander_all_as_text_summary">Bulk edit, share, backup, or import shortcuts in plain text</string>
     <string name="text_expander_prefix_title">Prefix (optional)</string>
     <string name="text_expander_shortcut_title">Shortcut (e.g. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex Pattern</string>
@@ -1915,33 +1918,7 @@ New dictionary:
     <!-- Text Expander -->
     <string name="text_expander_no_shortcuts_title">No shortcuts configured yet.</string>
     <string name="text_expander_no_shortcuts_desc">Tap the \'Add Shortcut\' floating button in the bottom corner to quickly create your first smart text expansion template.</string>
-    <string name="text_expander_how_it_works_title">How it works:</string>
-    <string name="text_expander_step1_title">Specify Shortcut Prefix</string>
-    <string name="text_expander_step1_desc">Configure an optional prefix like \'.\' or \';\' per shortcut on the edit screen to prevent accidental expansions.</string>
-    <string name="text_expander_step2_title">Add Custom Shortcuts</string>
-    <string name="text_expander_step2_desc">Define triggers (e.g. \'brb\') and their expanded templates (e.g. \'Be right back!\').</string>
-    <string name="text_expander_step3_title">Type Prefix + Shortcut</string>
-    <string name="text_expander_step3_desc">Type your prefix followed by the shortcut keyword (e.g., \'.brb\') and press Space or punctuation on the keyboard to expand instantly.</string>
-    <string name="text_expander_tag_desc_date">Date (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Formatted date (e.g. %date:yyyy/MM/dd% or %date:format(pattern)%)</string>
-    <string name="text_expander_tag_desc_time">Time (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Time (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Year (YYYY)</string>
-    <string name="text_expander_tag_desc_week">Week of year (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Battery level (e.g. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Time-gated greeting</string>
-    <string name="text_expander_tag_desc_tomorrow">Tomorrow\'s date (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Clipboard content</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Clipboard (citations stripped)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Clipboard (single-line)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Clipboard (Title Case)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Clipboard (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Day name (e.g. Monday)</string>
-    <string name="text_expander_tag_desc_month">Month (e.g. June)</string>
-    <string name="text_expander_tag_desc_language">Keyboard language (e.g. English)</string>
-    <string name="text_expander_tag_desc_cursor">Cursor position after expansion</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Bullet list (e.g. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Numbered list (e.g. %list_5%)</string>
+
 
     <!-- Updates Screen -->
     <string name="updates_new_update_title">New Update Available</string>

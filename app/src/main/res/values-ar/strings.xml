@@ -741,8 +741,6 @@
     <string name="text_expander_custom_shortcuts_title">اختصارات مخصصة</string>
     <string name="text_expander_add_shortcut">إضافة اختصار</string>
     <string name="text_expander_edit_shortcut">تعديل الاختصار</string>
-    <string name="text_expander_quick_guide">💡 دليل الميزة السريع</string>
-    <string name="text_expander_template_placeholders_title">العناصر النائبة المدعومة في القالب:</string>
     <string name="text_expander_prefix_title">البادئة (اختياري)</string>
     <string name="text_expander_shortcut_title">الاختصار (مثال: \'brb\')</string>
     <string name="text_expander_regex_pattern_title">نمط Regex</string>
@@ -1117,32 +1115,6 @@
     <string name="setup_step0_feature3_desc">اقتراحات سريعة للكلمات، ومدير الحافظة، وإدخال صوتي، واختصارات تحرير غنية.</string>
     <string name="text_expander_no_shortcuts_title">لم يتم تكوين أي اختصارات بعد.</string>
     <string name="text_expander_no_shortcuts_desc">انقر على زر \'إضافة اختصار\' العائم في الزاوية السفلية لإنشاء أول قالب ذكي لتوسيع النص بسرعة.</string>
-    <string name="text_expander_how_it_works_title">كيف يعمل:</string>
-    <string name="text_expander_step1_title">تحديد بادئة الاختصار</string>
-    <string name="text_expander_step1_desc">قم بتهيئة بادئة اختيارية مثل \'.\' أو \';\' لكل اختصار في شاشة التعديل لمنع التوسيع العرضي.</string>
-    <string name="text_expander_step2_title">إضافة اختصارات مخصصة</string>
-    <string name="text_expander_step2_desc">حدد المحفزات (مثل \'brb\') وقوالبها الموسعة (مثل \'سأعود قريبًا!\').</string>
-    <string name="text_expander_step3_title">اكتب البادئة + الاختصار</string>
-    <string name="text_expander_step3_desc">اكتب البادئة متبوعة بالكلمة المفتاحية للاختصار (مثل \'.brb\') واضغط على مسافة أو علامة ترقيم على لوحة المفاتيح للتوسيع فورًا.</string>
-    <string name="text_expander_tag_desc_date">التاريخ (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">الوقت (24 ساعة، HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">الوقت (12 ساعة، hh:mm ص/م)</string>
-    <string name="text_expander_tag_desc_year">السنة (YYYY)</string>
-    <string name="text_expander_tag_desc_week">أسبوع من السنة (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">مستوى البطارية (مثل 85%)</string>
-    <string name="text_expander_tag_desc_greeting">تحية معتمدة على الوقت</string>
-    <string name="text_expander_tag_desc_tomorrow">تاريخ الغد (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">محتوى الحافظة</string>
-    <string name="text_expander_tag_desc_clipboard_clean">الحافظة (تمت إزالة الاستشهادات)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">الحافظة (سطر واحد)</string>
-    <string name="text_expander_tag_desc_clipboard_title">الحافظة (حالة العنوان)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">الحافظة (رابط URL بنمط kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">اسم اليوم (مثل الاثنين)</string>
-    <string name="text_expander_tag_desc_month">الشهر (مثل يونيو)</string>
-    <string name="text_expander_tag_desc_language">لغة لوحة المفاتيح (مثل الإنجليزية)</string>
-    <string name="text_expander_tag_desc_cursor">موضع المؤشر بعد التوسيع</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">قائمة نقطية (مثل %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">قائمة مرقمة (مثل %list_5%)</string>
     <string name="updates_new_update_title">يتوفر تحديث جديد</string>
     <string name="updates_new_update_desc">الإصدار %s جاهز للتثبيت</string>
     <string name="updates_view_release">عرض الإصدار</string>
@@ -1553,7 +1525,6 @@
     <string name="app_quirks_hide_toolbar_summary">إخفاء مفاتيح شريط الأدوات والإجراءات وزر التوسيع عند الكتابة في هذا التطبيق</string>
     <string name="app_quirks_badge_no_suggestions">لا اقتراحات</string>
     <string name="app_quirks_badge_no_toolbar">بلا شريط أدوات</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">التاريخ المنسق (على سبيل المثال%date:yyyy/MM/dd% أو%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">اعرض الاقتراحات دائمًا</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاهل طلبات هذا التطبيق لتعطيل الاقتراحات</string>
     <string name="app_quirks_badge_always_suggestions">دائما الاقتراحات</string>
@@ -1781,4 +1752,9 @@
     <string name="text_expander_error_regex">السطر%1$d: التعبير العادي غير صالح \"%2$s\"</string>
     <string name="text_expander_discard_title">هل تريد تجاهل تغييراتك؟</string>
     <string name="text_expander_discard">ينبذ</string>
+    <string name="text_expander_options_category">إعدادات</string>
+    <string name="text_expander_tools_category">الإدارة والأدوات</string>
+    <string name="text_expander_guide_title">دليل على الانترنت ومرجع بناء الجملة</string>
+    <string name="text_expander_guide_summary">الدليل الكامل للعناصر النائبة الديناميكية وأنماط التعبير العادي والمعدلات</string>
+    <string name="text_expander_all_as_text_summary">تحرير الاختصارات أو مشاركتها أو نسخها احتياطيًا أو استيرادها بشكل مجمّع بنص عادي</string>
 </resources>

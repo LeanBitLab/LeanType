@@ -908,8 +908,6 @@
     <string name="text_expander_custom_shortcuts_title">Comenzi rapide personalizate</string>
     <string name="text_expander_add_shortcut">Adaugă comandă rapidă</string>
     <string name="text_expander_edit_shortcut">Editează comandă rapidă</string>
-    <string name="text_expander_quick_guide">💡 Ghid rapid al funcțiilor</string>
-    <string name="text_expander_template_placeholders_title">Substituenți de șablon acceptați:</string>
     <string name="text_expander_prefix_title">Prefix (opțional)</string>
     <string name="text_expander_shortcut_title">Comandă rapidă (de ex. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Model Regex</string>
@@ -1079,32 +1077,6 @@ Fără AI în fundal sau utilizare de rețea.</string>
     <string name="setup_step0_feature3_desc">Sugestii rapide de cuvinte, manager de clipboard, introducere vocală și comenzi rapide de editare bogate.</string>
     <string name="text_expander_no_shortcuts_title">Nu există comenzi rapide configurate încă.</string>
     <string name="text_expander_no_shortcuts_desc">Atingeți butonul plutitor \'Adăugați comandă rapidă\' din colțul de jos pentru a crea primul șablon inteligent de expansiune a textului.</string>
-    <string name="text_expander_how_it_works_title">Cum funcționează:</string>
-    <string name="text_expander_step1_title">Specificați prefixul comenzii rapide</string>
-    <string name="text_expander_step1_desc">Configurați un prefix opțional cum ar fi \'.\' sau \';\' per comandă rapidă în ecranul de editare pentru a preveni expansiunile accidentale.</string>
-    <string name="text_expander_step2_title">Adăugați comenzi rapide personalizate</string>
-    <string name="text_expander_step2_desc">Definiți declanșatori (de ex. \'brb\') și șabloanele lor extinse (de ex. \'Revin imediat!\').</string>
-    <string name="text_expander_step3_title">Tastați prefix + comandă rapidă</string>
-    <string name="text_expander_step3_desc">Tastați prefixul urmat de cuvântul cheie al comenzii rapide (de ex. \'.brb\') și apăsați Spațiu sau punctuație pentru a extinde instantaneu.</string>
-    <string name="text_expander_tag_desc_date">Dată (AAAA-LL-ZZ)</string>
-    <string name="text_expander_tag_desc_time">Oră (24h, OO:MM)</string>
-    <string name="text_expander_tag_desc_time12">Oră (12h, oo:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">An (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Săptămâna din an (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Nivel baterie (de ex. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Salutare în funcție de oră</string>
-    <string name="text_expander_tag_desc_tomorrow">Data de mâine (AAAA-LL-ZZ)</string>
-    <string name="text_expander_tag_desc_clipboard">Conținut clipboard</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Clipboard (citări eliminate)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Clipboard (o singură linie)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Clipboard (Majusculă Fiecare Cuvânt)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Clipboard (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Numele zilei (de ex. Luni)</string>
-    <string name="text_expander_tag_desc_month">Lună (de ex. Iunie)</string>
-    <string name="text_expander_tag_desc_language">Limba tastaturii (de ex. Română)</string>
-    <string name="text_expander_tag_desc_cursor">Poziția cursorului după expansiune</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Listă cu puncte (de ex. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Listă numerotată (de ex. %list_5%)</string>
     <string name="updates_new_update_title">Actualizare nouă disponibilă</string>
     <string name="updates_new_update_desc">Versiunea %s este gata de instalare</string>
     <string name="updates_view_release">Vizualizați lansarea</string>
@@ -1530,7 +1502,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="app_quirks_hide_toolbar_summary">Ascunde tastele barei de instrumente, acțiunile și butonul de extindere atunci când tastați în această aplicație</string>
     <string name="app_quirks_badge_no_suggestions">Fără sugestii</string>
     <string name="app_quirks_badge_no_toolbar">Fără bară</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Data formatată (de exemplu,%date:aaaa/LL/zz% sau%date:format(model)%)</string>
     <string name="app_quirks_always_show_suggestions">Afișați întotdeauna sugestii</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorați solicitările acestei aplicații pentru a dezactiva sugestiile</string>
     <string name="app_quirks_badge_always_suggestions">Întotdeauna sugestii</string>
@@ -1758,4 +1729,9 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_error_regex">Linia%1$d: expresie regex nevalidă \"%2$s\"</string>
     <string name="text_expander_discard_title">Renunțați la modificări?</string>
     <string name="text_expander_discard">Aruncă</string>
+    <string name="text_expander_options_category">Configurare</string>
+    <string name="text_expander_tools_category">Management și instrumente</string>
+    <string name="text_expander_guide_title">Ghid online și referință de sintaxă</string>
+    <string name="text_expander_guide_summary">Ghid complet pentru substituenți dinamici, modele regex și modificatori</string>
+    <string name="text_expander_all_as_text_summary">Editați, partajați, faceți backup sau importați comenzile rapide în text simplu</string>
 </resources>

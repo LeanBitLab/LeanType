@@ -871,8 +871,6 @@
     <string name="text_expander_custom_shortcuts_title">Egyéni parancsikonok</string>
     <string name="text_expander_add_shortcut">Parancsikon hozzáadása</string>
     <string name="text_expander_edit_shortcut">Parancsikon szerkesztése</string>
-    <string name="text_expander_quick_guide">💡 Gyors funkció útmutató</string>
-    <string name="text_expander_template_placeholders_title">Támogatott sablon helyőrzők:</string>
     <string name="text_expander_prefix_title">Előtag (opcionális)</string>
     <string name="text_expander_shortcut_title">Parancsikon (pl. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex minta</string>
@@ -1042,32 +1040,6 @@ Nincs háttérbeli AI vagy hálózati használat.</string>
     <string name="setup_step0_feature3_desc">Gyors szójavaslatok, vágólapkezelő, hangbevitel és gazdag szerkesztési billentyűparancsok.</string>
     <string name="text_expander_no_shortcuts_title">Még nincsenek billentyűparancsok konfigurálva.</string>
     <string name="text_expander_no_shortcuts_desc">Koppintson a lebegő \'Billentyűparancs hozzáadása\' gombra az alsó sarokban az első intelligens szövegkiegészítő sablon gyors létrehozásához.</string>
-    <string name="text_expander_how_it_works_title">Hogyan működik:</string>
-    <string name="text_expander_step1_title">Előtag megadása</string>
-    <string name="text_expander_step1_desc">Konfiguráljon egy opcionális előtagot, például \'.\' vagy \';\' a szerkesztési képernyőn a véletlen kiegészítések megelőzésére.</string>
-    <string name="text_expander_step2_title">Egyéni billentyűparancsok hozzáadása</string>
-    <string name="text_expander_step2_desc">Határozzon meg indítószavakat (pl. \'brb\') és azok kibontott sablonjait (pl. \'Mindjárt visszajövök!\').</string>
-    <string name="text_expander_step3_title">Előtag + billentyűparancs beírása</string>
-    <string name="text_expander_step3_desc">Írja be az előtagot és a billentyűparancs kulcsszavát (pl. \'.brb\'), majd nyomja meg a Szóközt vagy egy írásjelet az azonnali kibontáshoz.</string>
-    <string name="text_expander_tag_desc_date">Dátum (ÉÉÉÉ-HH-NN)</string>
-    <string name="text_expander_tag_desc_time">Idő (24 órás, ÓÓ:PP)</string>
-    <string name="text_expander_tag_desc_time12">Idő (12 órás, óó:pp AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Év (ÉÉÉÉ)</string>
-    <string name="text_expander_tag_desc_week">Az év hete (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Akkumulátorszint (pl. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Napszaknak megfelelő üdvözlés</string>
-    <string name="text_expander_tag_desc_tomorrow">Holnapi dátum (ÉÉÉÉ-HH-NN)</string>
-    <string name="text_expander_tag_desc_clipboard">Vágólap tartalma</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Vágólap (idézetek eltávolítva)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Vágólap (egysoros)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Vágólap (Kezdőbetűk Nagybetűsek)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Vágólap (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Nap neve (pl. Hétfő)</string>
-    <string name="text_expander_tag_desc_month">Hónap (pl. Június)</string>
-    <string name="text_expander_tag_desc_language">Billentyűzet nyelve (pl. Angol)</string>
-    <string name="text_expander_tag_desc_cursor">Kurzor pozíciója a kibontás után</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Felsorolásjeles lista (pl. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Számozott lista (pl. %list_5%)</string>
     <string name="updates_new_update_title">Új frissítés érhető el</string>
     <string name="updates_new_update_desc">A(z) %s verzió készen áll a telepítésre</string>
     <string name="updates_view_release">Kiadás megtekintése</string>
@@ -1493,7 +1465,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="app_quirks_hide_toolbar_summary">Az eszköztár billentyűinek, műveleteinek elrejtése és a kibontás gomb, amikor gépel ebben az alkalmazásban</string>
     <string name="app_quirks_badge_no_suggestions">Nincsenek javaslatok</string>
     <string name="app_quirks_badge_no_toolbar">Nincs eszköztár</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Formázott dátum (pl.%devett:éééé/hh/nn% vagy%date:formátum(minta)%)</string>
     <string name="app_quirks_always_show_suggestions">Mindig mutasson javaslatokat</string>
     <string name="app_quirks_always_show_suggestions_summary">Hagyja figyelmen kívül az alkalmazás kéréseit a javaslatok letiltásához</string>
     <string name="app_quirks_badge_always_suggestions">Mindig javaslatok</string>
@@ -1721,4 +1692,9 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_error_regex">%1$d. sor: érvénytelen reguláris kifejezés \"%2$s\"</string>
     <string name="text_expander_discard_title">Elveti a módosításokat?</string>
     <string name="text_expander_discard">Eldobni</string>
+    <string name="text_expander_options_category">Konfiguráció</string>
+    <string name="text_expander_tools_category">Kezelés és eszközök</string>
+    <string name="text_expander_guide_title">Online útmutató és szintaktikai referencia</string>
+    <string name="text_expander_guide_summary">Teljes útmutató dinamikus helyőrzőkhöz, reguláris kifejezési mintákhoz és módosítókhoz</string>
+    <string name="text_expander_all_as_text_summary">Parancsikonok tömeges szerkesztése, megosztása, biztonsági mentése vagy importálása egyszerű szövegben</string>
 </resources>

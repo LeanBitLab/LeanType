@@ -908,8 +908,6 @@
     <string name="text_expander_custom_shortcuts_title">Kohandatud otseteed</string>
     <string name="text_expander_add_shortcut">Lisa otsetee</string>
     <string name="text_expander_edit_shortcut">Muuda otseteed</string>
-    <string name="text_expander_quick_guide">💡 Kiire funktsioonide juhend</string>
-    <string name="text_expander_template_placeholders_title">Toetatud malli kohahoidjad:</string>
     <string name="text_expander_prefix_title">Eesliide (valikuline)</string>
     <string name="text_expander_shortcut_title">Otsetee (nt \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regexi muster</string>
@@ -1079,32 +1077,6 @@ Taustal ei tööta AI ega kasutata võrku.</string>
     <string name="setup_step0_feature3_desc">Kiired sõnasoovitused, lõikelauahaldur, häälsisestus ja rikkalikud redigeerimise otseteed.</string>
     <string name="text_expander_no_shortcuts_title">Otseteid pole veel seadistatud.</string>
     <string name="text_expander_no_shortcuts_desc">Puuduta alumises nurgas ujuvat nuppu \'Lisa otsetee\', et luua kiiresti oma esimene nutika teksti laiendamise mall.</string>
-    <string name="text_expander_how_it_works_title">Kuidas see töötab:</string>
-    <string name="text_expander_step1_title">Määra otsetee eesliide</string>
-    <string name="text_expander_step1_desc">Seadista redigeerimisekraanil iga otsetee jaoks valikuline eesliide, näiteks \'.\' või \';\', et vältida soovimatut teksti laiendamist.</string>
-    <string name="text_expander_step2_title">Lisa kohandatud otseteed</string>
-    <string name="text_expander_step2_desc">Määra käivitajad (nt \'brb\') ja nende laiendatud mallid (nt \'Tulen kohe tagasi!\').</string>
-    <string name="text_expander_step3_title">Tipi eesliide + otsetee</string>
-    <string name="text_expander_step3_desc">Tipi oma eesliide koos otsetee märksõnaga (nt \'.brb\') ja vajuta koheseks laiendamiseks klaviatuuril tühikut või kirjavahemärki.</string>
-    <string name="text_expander_tag_desc_date">Kuupäev (AAAA-KK-PP)</string>
-    <string name="text_expander_tag_desc_time">Kellaaeg (24h, TT:MM)</string>
-    <string name="text_expander_tag_desc_time12">Kellaaeg (12h, tt:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Aasta (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Aasta nädal (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Aku tase (nt 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Aastapäevast või kellaajast sõltuv tervitus</string>
-    <string name="text_expander_tag_desc_tomorrow">Homne kuupäev (AAAA-KK-PP)</string>
-    <string name="text_expander_tag_desc_clipboard">Lõikelaua sisu</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Lõikelaud (tsitaatideta)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Lõikelaud (üherealine)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Lõikelaud (suurtähtedega pealkiri)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Lõikelaud (URL-i kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Nädalapäeva nimi (nt Esmaspäev)</string>
-    <string name="text_expander_tag_desc_month">Kuu (nt Juuni)</string>
-    <string name="text_expander_tag_desc_language">Klaviatuuri keel (nt Inglise)</string>
-    <string name="text_expander_tag_desc_cursor">Kursori asukoht pärast laiendamist</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Täpploend (nt %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Nummerdatud loend (nt %list_5%)</string>
     <string name="updates_new_update_title">Uus värskendus on saadaval</string>
     <string name="updates_new_update_desc">Versioon %s on installimiseks valmis</string>
     <string name="updates_view_release">Vaata väljalaset</string>
@@ -1530,7 +1502,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="app_quirks_hide_toolbar_summary">Peida tööriistariba klahvid, toimingud ja laiendamisnupp sellesse rakendusse tippimisel</string>
     <string name="app_quirks_badge_no_suggestions">Soovitusi pole</string>
     <string name="app_quirks_badge_no_toolbar">Ilma ribata</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Vormindatud kuupäev (nt%date:yyyy/MM/dd% või%date:format(muster)%)</string>
     <string name="app_quirks_always_show_suggestions">Näita alati soovitusi</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignoreeri selle rakenduse taotlusi soovituste keelamiseks</string>
     <string name="app_quirks_badge_always_suggestions">Alati soovitused</string>
@@ -1758,4 +1729,9 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_error_regex">Rida%1$d: kehtetu regex \"%2$s\"</string>
     <string name="text_expander_discard_title">Kas loobuda muudatustest?</string>
     <string name="text_expander_discard">Visake ära</string>
+    <string name="text_expander_options_category">Seadistamine</string>
+    <string name="text_expander_tools_category">Juhtimine ja tööriistad</string>
+    <string name="text_expander_guide_title">Veebijuhend ja süntaksiviide</string>
+    <string name="text_expander_guide_summary">Täielik juhend dünaamiliste kohahoidjate, regex-mustrite ja modifikaatorite jaoks</string>
+    <string name="text_expander_all_as_text_summary">Otseteed lihttekstina hulgimuutmine, jagamine, varundamine või importimine</string>
 </resources>

@@ -742,8 +742,6 @@
     <string name="text_expander_custom_shortcuts_title">Abbreviazioni personalizzate</string>
     <string name="text_expander_add_shortcut">Aggiungi abbreviazione</string>
     <string name="text_expander_edit_shortcut">Modifica abbreviazione</string>
-    <string name="text_expander_quick_guide">💡 Guida rapida alle funzionalità</string>
-    <string name="text_expander_template_placeholders_title">Segnaposto modello supportati:</string>
     <string name="text_expander_prefix_title">Prefisso (opzionale)</string>
     <string name="text_expander_shortcut_title">Abbreviazione (es. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Pattern Regex</string>
@@ -1119,32 +1117,6 @@ Zero AI in background o utilizzo di rete.</string>
     <string name="setup_step0_feature3_desc">Suggerimenti rapidi di parole, gestore appunti, digitazione vocale e ricche scorciatoie di modifica.</string>
     <string name="text_expander_no_shortcuts_title">Nessuna scorciatoia configurata.</string>
     <string name="text_expander_no_shortcuts_desc">Tocca il pulsante mobile \'Aggiungi scorciatoia\' in basso per creare rapidamente il tuo primo modello di espansione testo.</string>
-    <string name="text_expander_how_it_works_title">Come funziona:</string>
-    <string name="text_expander_step1_title">Specifica prefisso scorciatoia</string>
-    <string name="text_expander_step1_desc">Configura un prefisso opzionale come \'.\' o \';\' per scorciatoia nella schermata di modifica per evitare espansioni accidentali.</string>
-    <string name="text_expander_step2_title">Aggiungi scorciatoie personalizzate</string>
-    <string name="text_expander_step2_desc">Definisci attivatori (es. \'brb\') e i relativi modelli espansi (es. \'Torno subito!\').</string>
-    <string name="text_expander_step3_title">Digita prefisso + scorciatoia</string>
-    <string name="text_expander_step3_desc">Digita il prefisso seguito dalla parola chiave della scorciatoia (es. \'.brb\') e premi Spazio o punteggiatura per espandere istantaneamente.</string>
-    <string name="text_expander_tag_desc_date">Data (AAAA-MM-GG)</string>
-    <string name="text_expander_tag_desc_time">Ora (24h, HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Ora (12h, hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Anno (AAAA)</string>
-    <string name="text_expander_tag_desc_week">Settimana dell\'anno (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Livello batteria (es. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Saluto in base all\'orario</string>
-    <string name="text_expander_tag_desc_tomorrow">Data di domani (AAAA-MM-GG)</string>
-    <string name="text_expander_tag_desc_clipboard">Contenuto degli appunti</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Appunti (senza citazioni)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Appunti (riga singola)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Appunti (Iniziali Maiuscole)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Appunti (slug URL)</string>
-    <string name="text_expander_tag_desc_day">Nome del giorno (es. Lunedì)</string>
-    <string name="text_expander_tag_desc_month">Mese (es. Giugno)</string>
-    <string name="text_expander_tag_desc_language">Lingua tastiera (es. Italiano)</string>
-    <string name="text_expander_tag_desc_cursor">Posizione del cursore dopo l\'espansione</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Elenco puntato (es. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Elenco numerato (es. %list_5%)</string>
     <string name="updates_new_update_title">Nuovo aggiornamento disponibile</string>
     <string name="updates_new_update_desc">La versione %s è pronta per l\'installazione</string>
     <string name="updates_view_release">Visualizza rilascio</string>
@@ -1563,7 +1535,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="app_quirks_hide_toolbar_summary">Nascondi i tasti della barra degli strumenti, le azioni e il pulsante di espansione durante la digitazione in questa app</string>
     <string name="app_quirks_badge_no_suggestions">Nessun suggerimento</string>
     <string name="app_quirks_badge_no_toolbar">Senza barra</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Data formattata (ad esempio%date:aaaa/MM/gg% o%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Mostra sempre suggerimenti</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignora le richieste di questa app per disabilitare i suggerimenti</string>
     <string name="app_quirks_badge_always_suggestions">Sempre suggerimenti</string>
@@ -1790,4 +1761,9 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_error_regex">Riga%1$d: espressione regolare non valida \"%2$s\"</string>
     <string name="text_expander_discard_title">Annullare le modifiche?</string>
     <string name="text_expander_discard">Scartare</string>
+    <string name="text_expander_options_category">Configurazione</string>
+    <string name="text_expander_tools_category">Gestione e strumenti</string>
+    <string name="text_expander_guide_title">Guida in linea e riferimento alla sintassi</string>
+    <string name="text_expander_guide_summary">Guida completa per segnaposto dinamici, modelli regex e modificatori</string>
+    <string name="text_expander_all_as_text_summary">Modifica, condividi, esegui il backup o importa in blocco scorciatoie in testo semplice</string>
 </resources>

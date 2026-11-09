@@ -903,8 +903,6 @@
     <string name="text_expander_custom_shortcuts_title">Pasirinktiniai spartieji klavišai</string>
     <string name="text_expander_add_shortcut">Pridėti spartųjį klavišą</string>
     <string name="text_expander_edit_shortcut">Redaguoti spartųjį klavišą</string>
-    <string name="text_expander_quick_guide">💡 Greitas funkcijų vadovas</string>
-    <string name="text_expander_template_placeholders_title">Palaikomi šablono užpildai:</string>
     <string name="text_expander_prefix_title">Priešdėlis (neprivaloma)</string>
     <string name="text_expander_shortcut_title">Spartusis klavišas (pvz., \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex šablonas</string>
@@ -1080,32 +1078,6 @@ Jokio foninio AI ar tinklo pėdsako.</string>
     <string name="setup_step0_feature3_desc">Greiti žodžių pasiūlymai, iškarpinės tvarkyklė, balso įvestis ir raiškūs redagavimo spartieji klavišai.</string>
     <string name="text_expander_no_shortcuts_title">Spartieji klavišai dar nesukonfigūruoti.</string>
     <string name="text_expander_no_shortcuts_desc">Palieskite slankųjį mygtuką „Pridėti spartųjį klavišą“ apatiniame kampe, kad greitai sukurtumėte pirmąjį išmaniojo teksto išplėtimo šabloną.</string>
-    <string name="text_expander_how_it_works_title">Kaip tai veikia:</string>
-    <string name="text_expander_step1_title">Nurodykite sparčiojo klavišo priešdėlį</string>
-    <string name="text_expander_step1_desc">Redagavimo ekrane sukonfigūruokite pasirinktinį priešdėlį, pvz., \'.\' arba \';\' kiekvienam sparčiajam klavišui, kad išvengtumėte atsitiktinių išplėtimų.</string>
-    <string name="text_expander_step2_title">Pridėkite pasirinktinius sparčiuosius klavišus</string>
-    <string name="text_expander_step2_desc">Apibrėžkite paleidiklius (pvz., \'brb\') ir jų išplėstus šablonus (pvz., \'Tuoj grįšiu!\').</string>
-    <string name="text_expander_step3_title">Įveskite priešdėlį + spartųjį klavišą</string>
-    <string name="text_expander_step3_desc">Įveskite priešdėlį ir sparčiojo klavišo raktinį žodį (pvz., \'.brb\'), tada klaviatūroje paspauskite tarpo klavišą arba skyrybos ženklą, kad akimirksniu išplėstumėte.</string>
-    <string name="text_expander_tag_desc_date">Data (MMMM-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Laikas (24 val., HH:MM)</string>
-    <string name="text_expander_tag_desc_time12">Laikas (12 val., hh:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Metai (MMMM)</string>
-    <string name="text_expander_tag_desc_week">Metų savaitė (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Akumuliatoriaus lygis (pvz., 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Pasisveikinimas pagal paros laiką</string>
-    <string name="text_expander_tag_desc_tomorrow">Rytojaus data (MMMM-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Iškarpinės turinys</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Iškarpinė (be citatų)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Iškarpinė (viena eilutė)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Iškarpinė (iš didžiųjų raidžių)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Iškarpinė (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Savaitės dienos pavadinimas (pvz., Pirmadienis)</string>
-    <string name="text_expander_tag_desc_month">Mėnuo (pvz., Birželis)</string>
-    <string name="text_expander_tag_desc_language">Klaviatūros kalba (pvz., Anglų)</string>
-    <string name="text_expander_tag_desc_cursor">Žymeklio vieta po išplėtimo</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Ženklelių sąrašas (pvz., %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Numeruotas sąrašas (pvz., %list_5%)</string>
     <string name="updates_new_update_title">Prieinamas naujas atnaujinimas</string>
     <string name="updates_new_update_desc">%s versija paruošta diegti</string>
     <string name="updates_view_release">Peržiūrėti leidimą</string>
@@ -1531,7 +1503,6 @@ Ar norite atnaujinti?</string>
     <string name="app_quirks_hide_toolbar_summary">Slėpti įrankių juostos klavišus, veiksmus ir išplėtimo mygtuką, kai rašote šioje programoje</string>
     <string name="app_quirks_badge_no_suggestions">Jokių pasiūlymų</string>
     <string name="app_quirks_badge_no_toolbar">Be juostos</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Suformatuota data (pvz.,%date:yyyy/MM/dd% arba%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Visada rodyti pasiūlymus</string>
     <string name="app_quirks_always_show_suggestions_summary">Nepaisykite šios programos užklausų išjungti pasiūlymus</string>
     <string name="app_quirks_badge_always_suggestions">Visada Pasiūlymai</string>
@@ -1759,4 +1730,9 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_error_regex">%1$deilutė: netinkamas reguliarusis reiškinys \"%2$s\"</string>
     <string name="text_expander_discard_title">Atmesti pakeitimus?</string>
     <string name="text_expander_discard">Išmesti</string>
+    <string name="text_expander_options_category">Konfigūracija</string>
+    <string name="text_expander_tools_category">Valdymas ir įrankiai</string>
+    <string name="text_expander_guide_title">Internetinis vadovas ir sintaksės nuoroda</string>
+    <string name="text_expander_guide_summary">Išsamus dinaminių rezervuotųjų ženklų, reguliariųjų reiškinių šablonų ir modifikatorių vadovas</string>
+    <string name="text_expander_all_as_text_summary">Masiškai redaguokite, bendrinkite, kurkite atsargines kopijas arba importuokite sparčiuosius klavišus paprastu tekstu</string>
 </resources>

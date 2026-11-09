@@ -5,11 +5,12 @@
 package helium314.keyboard.settings.screens
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,9 +30,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,15 +55,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.core.content.edit
 import helium314.keyboard.latin.R
+import helium314.keyboard.latin.common.Links
 import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.SearchScreen
 import helium314.keyboard.settings.SettingsActivity
 import helium314.keyboard.settings.dialogs.ThreeButtonAlertDialog
+import helium314.keyboard.settings.preferences.Preference
+import helium314.keyboard.settings.preferences.PreferenceCategory
 import helium314.keyboard.settings.preferences.SwitchPreference
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -96,8 +100,6 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         mutableStateOf(TextExpanderUtils.getShortcuts(context))
     }
 
-    var isGuideExpanded by remember { mutableStateOf(false) }
-
     var showAddDialog by remember { mutableStateOf(false) }
     var editingPrefix by remember { mutableStateOf("") }
     var editingShortcut by remember { mutableStateOf("") }
@@ -105,6 +107,12 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
     var originalShortcutToEdit by remember { mutableStateOf<String?>(null) }
     var editingIsRegex by remember { mutableStateOf(false) }
     var showTextEditor by remember { mutableStateOf(false) }
+
+    val openGuide = {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Links.TEXT_EXPANDER_GUIDE_URL))
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        runCatching { context.startActivity(intent) }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         SearchScreen(
@@ -117,6 +125,10 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     fontWeight = FontWeight.Bold
                 )
             },
+            menu = listOf(
+                stringResource(R.string.text_expander_all_as_text) to { showTextEditor = true },
+                stringResource(R.string.text_expander_guide_title) to { openGuide() }
+            ),
             filteredItems = { term ->
                 shortcutsMap.entries
                     .filter { (shortcut, entry) ->
@@ -130,7 +142,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     .map { Pair(it.key, it.value) }
             },
             itemContent = { (shortcut, entry) ->
-                Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp)) {
+                Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
                     ShortcutItem(
                         shortcut = shortcut,
                         entry = entry,
@@ -156,175 +168,13 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
             content = {
                 Column(
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
                         .verticalScroll(rememberScrollState()),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // Premium Collapsible Feature Guide Card
-                    androidx.compose.material3.Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(20.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.12f)
-                        ),
-                        border = androidx.compose.foundation.BorderStroke(
-                            1.dp,
-                            MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
-                        )
-                    ) {
-                        Column(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            // Clickable Header Row
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { isGuideExpanded = !isGuideExpanded }
-                                    .padding(16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.text_expander_quick_guide),
-                                        style = MaterialTheme.typography.titleMedium,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                }
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_arrow_left),
-                                    contentDescription = if (isGuideExpanded) "Collapse" else "Expand",
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.rotate(if (isGuideExpanded) -90f else 180f)
-                                )
-                            }
-                            
-                            AnimatedVisibility(visible = isGuideExpanded) {
-                                Column(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
-                                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.text_expander_how_it_works_title),
-                                        style = MaterialTheme.typography.titleSmall,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
-                                    
-                                    // Step 1
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                    ) {
-                                        StepBadge(num = "1")
-                                        Column(modifier = Modifier.weight(1f)) {
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step1_title),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.Bold,
-                                                color = MaterialTheme.colorScheme.onSurface
-                                            )
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step1_desc),
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                            )
-                                        }
-                                    }
+                    // 1. Behavior & Options
+                    PreferenceCategory(stringResource(R.string.text_expander_options_category))
 
-                                    // Step 2
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                    ) {
-                                        StepBadge(num = "2")
-                                        Column(modifier = Modifier.weight(1f)) {
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step2_title),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.Bold,
-                                                color = MaterialTheme.colorScheme.onSurface
-                                            )
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step2_desc),
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                            )
-                                        }
-                                    }
-
-                                    // Step 3
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                    ) {
-                                        StepBadge(num = "3")
-                                        Column(modifier = Modifier.weight(1f)) {
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step3_title),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.Bold,
-                                                color = MaterialTheme.colorScheme.onSurface
-                                            )
-                                            Text(
-                                                text = stringResource(R.string.text_expander_step3_desc),
-                                                style = MaterialTheme.typography.bodySmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                            )
-                                        }
-                                    }
-
-                                    HorizontalDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f))
-                                    
-                                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        Text(
-                                            text = stringResource(R.string.text_expander_template_placeholders_title),
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Row(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                        ) {
-                                            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                                                PlaceholderChip(tag = "%date%", desc = stringResource(R.string.text_expander_tag_desc_date))
-                                                PlaceholderChip(tag = "%date:yyyy/MM/dd%", desc = stringResource(R.string.text_expander_tag_desc_date_format))
-                                                PlaceholderChip(tag = "%time%", desc = stringResource(R.string.text_expander_tag_desc_time))
-                                                PlaceholderChip(tag = "%time12%", desc = stringResource(R.string.text_expander_tag_desc_time12))
-                                                PlaceholderChip(tag = "%year%", desc = stringResource(R.string.text_expander_tag_desc_year))
-                                                PlaceholderChip(tag = "%week%", desc = stringResource(R.string.text_expander_tag_desc_week))
-                                                PlaceholderChip(tag = "%battery%", desc = stringResource(R.string.text_expander_tag_desc_battery))
-                                                PlaceholderChip(tag = "%greeting%", desc = stringResource(R.string.text_expander_tag_desc_greeting))
-                                                PlaceholderChip(tag = "%tomorrow%", desc = stringResource(R.string.text_expander_tag_desc_tomorrow))
-                                            }
-                                            Column(modifier = Modifier.weight(1.1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                                                PlaceholderChip(tag = "%clipboard%", desc = stringResource(R.string.text_expander_tag_desc_clipboard))
-                                                PlaceholderChip(tag = "%clipboard:clean%", desc = stringResource(R.string.text_expander_tag_desc_clipboard_clean))
-                                                PlaceholderChip(tag = "%clipboard:singleline%", desc = stringResource(R.string.text_expander_tag_desc_clipboard_singleline))
-                                                PlaceholderChip(tag = "%clipboard:title%", desc = stringResource(R.string.text_expander_tag_desc_clipboard_title))
-                                                PlaceholderChip(tag = "%clipboard:slug%", desc = stringResource(R.string.text_expander_tag_desc_clipboard_slug))
-                                                PlaceholderChip(tag = "%day%", desc = stringResource(R.string.text_expander_tag_desc_day))
-                                                PlaceholderChip(tag = "%month%", desc = stringResource(R.string.text_expander_tag_desc_month))
-                                                PlaceholderChip(tag = "%language%", desc = stringResource(R.string.text_expander_tag_desc_language))
-                                                PlaceholderChip(tag = "%cursor%", desc = stringResource(R.string.text_expander_tag_desc_cursor))
-                                                PlaceholderChip(tag = "%bullets%", desc = stringResource(R.string.text_expander_tag_desc_bullets))
-                                                PlaceholderChip(tag = "%list%", desc = stringResource(R.string.text_expander_tag_desc_list))
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    // 1. Master Switch Toggle
                     SwitchPreference(
                         name = stringResource(R.string.text_expander_enable_title),
                         key = TextExpanderUtils.PREF_ENABLED,
@@ -369,56 +219,43 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                         onCheckedChange = { isSuggestionsOnly = it }
                     )
 
-                    // global prefix config removed
+                    // 2. Tools & Documentation
+                    PreferenceCategory(stringResource(R.string.text_expander_tools_category))
 
-                    // 3. Section Title / Header for shortcuts
-                    Text(
-                        text = stringResource(R.string.text_expander_custom_shortcuts_title),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(top = 8.dp)
+                    Preference(
+                        name = stringResource(R.string.text_expander_all_as_text),
+                        description = stringResource(R.string.text_expander_all_as_text_summary),
+                        icon = R.drawable.ic_open_in_full,
+                        onClick = { showTextEditor = true }
                     )
-                    androidx.compose.material3.OutlinedButton(
-                        onClick = { showTextEditor = true },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Icon(painterResource(R.drawable.ic_open_in_full), null, Modifier.size(18.dp))
-                        Spacer(Modifier.size(8.dp))
-                        Text(stringResource(R.string.text_expander_all_as_text))
-                    }
 
-                    // 4. List of saved shortcuts
+                    Preference(
+                        name = stringResource(R.string.text_expander_guide_title),
+                        description = stringResource(R.string.text_expander_guide_summary),
+                        icon = R.drawable.ic_settings_about_wiki,
+                        onClick = { openGuide() }
+                    )
+
+                    // 3. Shortcuts List
+                    PreferenceCategory("${stringResource(R.string.text_expander_custom_shortcuts_title)} (${shortcutsMap.size})")
+
                     if (shortcutsMap.isEmpty()) {
-                        androidx.compose.material3.Card(
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(24.dp),
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 12.dp),
+                            shape = RoundedCornerShape(16.dp),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f)
-                            ),
-                            border = androidx.compose.foundation.BorderStroke(
-                                1.dp,
-                                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.05f)
+                                containerColor = MaterialTheme.colorScheme.surfaceContainer
                             )
                         ) {
                             Column(
-                                modifier = Modifier.padding(vertical = 32.dp, horizontal = 24.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 28.dp, horizontal = 24.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(12.dp)
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(56.dp)
-                                        .clip(androidx.compose.foundation.shape.CircleShape)
-                                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_edit),
-                                        contentDescription = "Edit",
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                }
                                 Text(
                                     text = stringResource(R.string.text_expander_no_shortcuts_title),
                                     style = MaterialTheme.typography.titleMedium,
@@ -430,13 +267,12 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                                     text = stringResource(R.string.text_expander_no_shortcuts_desc),
                                     style = MaterialTheme.typography.bodyMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    textAlign = TextAlign.Center,
-                                    lineHeight = MaterialTheme.typography.bodyMedium.lineHeight * 1.25f
+                                    textAlign = TextAlign.Center
                                 )
                             }
                         }
                     } else {
-                        shortcutsMap.forEach { (shortcut, entry) ->
+                        shortcutsMap.entries.forEach { (shortcut, entry) ->
                             ShortcutItem(
                                 shortcut = shortcut,
                                 entry = entry,
@@ -672,20 +508,19 @@ private fun ShortcutItem(
     val rawShortcut = cleanKey.substring(entry.prefix.length)
     val displayShortcut = entry.prefix + rawShortcut
 
-    ElevatedCard(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onEdit() },
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        ),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(vertical = 12.dp, horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -703,7 +538,7 @@ private fun ShortcutItem(
                         Text(
                             text = displayShortcut,
                             style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             fontWeight = FontWeight.Bold,
                             fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
                         )
@@ -711,7 +546,7 @@ private fun ShortcutItem(
                     if (isRegex) {
                         Box(
                             modifier = Modifier
-                                .clip(RoundedCornerShape(4.dp))
+                                .clip(RoundedCornerShape(6.dp))
                                 .background(MaterialTheme.colorScheme.tertiaryContainer)
                                 .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
@@ -724,81 +559,24 @@ private fun ShortcutItem(
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = entry.template,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 2,
-                    fontFamily = if (entry.template.contains("%")) androidx.compose.ui.text.font.FontFamily.Monospace else null
+                    overflow = TextOverflow.Ellipsis,
+                    fontFamily = if (entry.template.contains("%") || entry.template.contains("\t")) androidx.compose.ui.text.font.FontFamily.Monospace else null
                 )
             }
             
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                IconButton(onClick = onDelete) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_bin),
-                        contentDescription = "Delete shortcut",
-                        tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
-                    )
-                }
+            IconButton(onClick = onDelete) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_arrow_left),
-                    contentDescription = "Edit shortcut",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
-                    modifier = Modifier.rotate(180f)
+                    painter = painterResource(R.drawable.ic_bin),
+                    contentDescription = stringResource(R.string.text_expander_delete),
+                    tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun StepBadge(num: String) {
-    Box(
-        modifier = Modifier
-            .size(24.dp)
-            .clip(androidx.compose.foundation.shape.CircleShape)
-            .background(MaterialTheme.colorScheme.primary)
-            .padding(top = 1.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = num,
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimary,
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
-@Composable
-private fun PlaceholderChip(tag: String, desc: String) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f))
-            .padding(horizontal = 8.dp, vertical = 6.dp)
-    ) {
-        Column {
-            Text(
-                text = tag,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary,
-                fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
-            )
-            Text(
-                text = desc,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = MaterialTheme.typography.bodySmall.fontSize * 0.9f
-            )
         }
     }
 }

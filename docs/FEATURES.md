@@ -88,7 +88,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | **Hardware Keyboard Support** | Full predictive suggestions, auto-correction, candidate shortcuts (`1`, `2`, `3`), and D-PAD emoji navigation for external keyboards. | `Languages > Physical keyboard` / Auto-detected |
 | **Appearance & Key Ergonomics** | Independent key corner radius sliders, adjustable key gaps, customizable padding scales, and distinct Shift/Caps visual indicators. | `Appearance > Key borders` / `Theme` |
 | **Split Toolbar & Suggestions** | Separates suggestions from the toolbar into a dual-row view. | `Appearance > Split toolbar & suggestions` |
-| **Versatile Text Expander** | Expand shortcuts with dynamic variables, citation stripper (`%clipboard:clean%`), and modifiers. | `Text correction > Text Expander` |
+| **Versatile Text Expander** | Expand shortcuts with dynamic variables, citation stripper (`%clipboard:clean%`), bulk plain-text editor, and modifiers. | `Text correction > Text Expander` |
 | **Clipboard History & Inline Edit** | Search history, swipe-right to edit inline, swipe-left to delete with undo, fold pinned clips, and slide-select. | Clipboard Toolbar > Search / Swipe items |
 | **Screenshot Suggestions** | Instant 1-tap sharing of recently taken screenshots via the suggestion strip. | `Text correction > Suggest recent screenshots` |
 | **Emoji Search** | Search emojis by name/keyword directly from the emoji palette. | `Emoji Key > Search Icon` |
@@ -383,16 +383,26 @@ Split your toolbar and suggestion strip into two independent rows for fast, unhi
 
 ## 12. Versatile Text Expander & Modifiers
 
-Define custom abbreviations that instantly expand into rich text templates with dynamic variables, citation cleaning, and chained text modifiers:
+Define custom abbreviations that instantly expand into rich text templates with dynamic variables, citation cleaning, chained text modifiers, regex pattern matching, and a full-screen bulk editor:
 
 ### Supported Dynamic Placeholders
-- `%date%`: Inserts current date (YYYY-MM-DD).
-- `%time%`: Inserts current local time (HH:MM).
-- `%tomorrow%`: Inserts tomorrow's date.
-- `%clipboard%`: Inserts latest copied clipboard content.
+- `%date%`: Inserts current date in `YYYY-MM-DD` format.
+- `%date:format(pattern)%` or `%date:<pattern>%`: Formats current date with custom patterns (e.g. `%date:yyyy/MM/dd%` or `%date:dd-MM-yyyy%`).
+- `%time%`: Inserts current local time in 24-hour format (`HH:MM`).
+- `%time12%`: Inserts current local time in 12-hour format with AM/PM (`hh:mm a`).
+- `%day%`: Inserts current day name (e.g. `Monday`).
+- `%month%`: Inserts current month name (e.g. `June`).
+- `%year%`: Inserts current 4-digit year (`YYYY`).
+- `%week%`: Inserts current week of the year (`1-53`).
+- `%tomorrow%`: Inserts tomorrow's date (`YYYY-MM-DD`).
+- `%battery%`: Inserts current device battery percentage (e.g. `85%`).
+- `%language%`: Inserts active keyboard language / subtype (e.g. `English`).
+- `%clipboard%`: Inserts latest copied clipboard text content.
+- `%tab%`: Inserts a standard tab character (`\t`) for formatted table columns, code indents, or structured entries.
 - `%cursor%`: Places typing cursor at this exact position after expansion.
-- `%greeting%`: Inserts time-appropriate greeting (*Good morning*, *Good afternoon*, *Good evening*).
-- `%bullets%` / `%list%`: Inserts templated bulleted or numbered lists.
+- `%greeting%`: Inserts time-appropriate greeting (*Good morning*, *Good afternoon*, *Good evening*, *Good night*).
+- `%bullets%` / `%bullets_<N>%`: Inserts templated bulleted list items (e.g. `%bullets_3%` generates 3 bullet points).
+- `%list%` / `%list_<N>%`: Inserts numbered list items (e.g. `%list_5%`).
 - `%custom_variable%`: Prompts an interactive popup to fill in custom text on the fly.
 
 ### Composable Clipboard Modifiers
@@ -408,9 +418,42 @@ Transform clipboard content on the fly by appending modifiers (`%clipboard:<mod1
 - `%clipboard:nourl%`: Removes URLs from text.
 - `%clipboard:replace(pattern, replacement)%`: Performs custom regex find-and-replace.
 
+### Regular Expression (Regex) Expansions
+Create dynamic expansions matching regex patterns instead of exact keywords:
+- Select the **Regex** toggle in the add/edit dialog or prefix the header with `regex: ` in the bulk editor.
+- Example: A regex trigger `\d+eur` expanding to `Euro` automatically matches numbers like `50eur` and expands appropriately.
+
+### Full-Screen Bulk Text Editor ("Edit all as text")
+Manage your entire shortcut collection simultaneously as plain text:
+- **Plain-Text Format**: Each entry starts with `=== shortcut ===` followed by its expansion template:
+  ```text
+  === ;email ===
+  john.doe@example.com
+
+  === ;date ===
+  Today is %date% and time is %time12%.
+
+  === regex: \d+eur ===
+  Euro
+  ```
+- **Jump Bar Navigation**: Instant navigation pills (`# ;email`, `# ;date`) jump and smoothly scroll to any shortcut block.
+- **Privacy-First Copy All**: Copies all shortcuts with Android 13+ sensitive content flag (`EXTRA_IS_SENSITIVE`) to prevent leaks into clipboard preview popups.
+- **File Export & Import**: Save your shortcuts to `.txt` files or import existing collections using the Android Storage Access Framework (SAF).
+- **Line-Numbered Validation**: Pre-checks for syntax errors, spaces in shortcut triggers, empty templates, duplicate shortcuts, or invalid regex patterns before saving.
+- **Diff Confirmation**: Shows a breakdown of added, updated, and deleted shortcuts before applying changes.
+- **Safety Net (1-Tap Undo)**: Automatically saves a snapshot before every save, allowing you to instantly restore the previous state.
+
+### Configuration & Trigger Options
+- **Enable Text Expander**: Master switch to turn auto-expansion on or off.
+- **Expand Immediately**: Expand shortcuts the moment their characters are typed without requiring Space or punctuation.
+- **Backspace Undoes Expansion**: Pressing Backspace right after an expansion immediately reverts the text back to the original shortcut trigger.
+- **Show in Suggestions**: Shows expandable shortcuts in the keyboard suggestion strip while typing for quick 1-tap insertion.
+- **Suggestion Only Mode**: Disables automatic insertion so expansions only trigger when explicitly tapped in the suggestion strip.
+- **Custom Prefixes**: Add custom characters (e.g. `;`, `//`, `.` or blank) to prevent accidental expansions during everyday typing.
+
 ### Setup Instructions
-1. Open **Settings → Text correction → Text Expander**.
-2. Tap **+ (Add)**, define the shortcut (e.g. `cite`), and enter your expansion template (e.g. `%clipboard:clean%`).
+1. Open **Settings -> Text correction -> Text Expander**.
+2. Tap **+ (Add)** to add a shortcut dialog, or tap **Edit all as text** to manage shortcuts in bulk.
 
 ---
 

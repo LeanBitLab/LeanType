@@ -871,8 +871,6 @@
     <string name="text_expander_custom_shortcuts_title">Prilagođeni prečaci</string>
     <string name="text_expander_add_shortcut">Dodaj prečac</string>
     <string name="text_expander_edit_shortcut">Uredi prečac</string>
-    <string name="text_expander_quick_guide">💡 Brzi vodič kroz značajke</string>
-    <string name="text_expander_template_placeholders_title">Podržane oznake mjesta u predlošcima:</string>
     <string name="text_expander_prefix_title">Prefiks (opcionalno)</string>
     <string name="text_expander_shortcut_title">Prečac (npr. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex uzorak</string>
@@ -1042,32 +1040,6 @@ Bez AI u pozadini ili korištenja mreže.</string>
     <string name="setup_step0_feature3_desc">Brzi prijedlozi riječi, upravitelj međuspremnika, glasovni unos i bogati prečaci za uređivanje.</string>
     <string name="text_expander_no_shortcuts_title">Još nema konfiguriranih prečaca.</string>
     <string name="text_expander_no_shortcuts_desc">Dodirnite plutajući gumb \'Dodaj prečac\' u donjem kutu kako biste brzo stvorili svoj prvi pametni predložak za proširenje teksta.</string>
-    <string name="text_expander_how_it_works_title">Kako funkcionira:</string>
-    <string name="text_expander_step1_title">Odredite prefiks prečaca</string>
-    <string name="text_expander_step1_desc">Konfigurirajte neobavezni prefiks poput \'.\' ili \';\' po prečacu na zaslonu za uređivanje kako biste spriječili slučajna proširenja.</string>
-    <string name="text_expander_step2_title">Dodajte prilagođene prečace</string>
-    <string name="text_expander_step2_desc">Definirajte okidače (npr. \'brb\') i njihove proširene predloške (npr. \'Odmah se vraćam!\').</string>
-    <string name="text_expander_step3_title">Upišite prefiks + prečac</string>
-    <string name="text_expander_step3_desc">Upišite prefiks praćen ključnom riječju prečaca (npr. \'.brb\') i pritisnite razmaknicu ili interpunkciju za trenutačno proširenje.</string>
-    <string name="text_expander_tag_desc_date">Datum (GGGG-MM-DD)</string>
-    <string name="text_expander_tag_desc_time">Vrijeme (24h, SS:MM)</string>
-    <string name="text_expander_tag_desc_time12">Vrijeme (12h, ss:mm AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Godina (GGGG)</string>
-    <string name="text_expander_tag_desc_week">Tjedan u godini (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Razina baterije (npr. 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Pozdrav ovisno o dobu dana</string>
-    <string name="text_expander_tag_desc_tomorrow">Sutrašnji datum (GGGG-MM-DD)</string>
-    <string name="text_expander_tag_desc_clipboard">Sadržaj međuspremnika</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Međuspremnik (bez citata)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Međuspremnik (jedan redak)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Međuspremnik (Velika Početna Slova)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Međuspremnik (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Naziv dana (npr. Ponedjeljak)</string>
-    <string name="text_expander_tag_desc_month">Mjesec (npr. Lipanj)</string>
-    <string name="text_expander_tag_desc_language">Jezik tipkovnice (npr. Hrvatski)</string>
-    <string name="text_expander_tag_desc_cursor">Položaj pokazivača nakon proširenja</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Popis s grafičkim oznakama (npr. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Numerirani popis (npr. %list_5%)</string>
     <string name="updates_new_update_title">Dostupno je novo ažuriranje</string>
     <string name="updates_new_update_desc">Verzija %s je spremna za instalaciju</string>
     <string name="updates_view_release">Prikaži izdanje</string>
@@ -1493,7 +1465,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="app_quirks_hide_toolbar_summary">Sakrij tipke alatne trake, radnje i gumb za proširenje kada upisujete u ovu aplikaciju</string>
     <string name="app_quirks_badge_no_suggestions">Nema prijedloga</string>
     <string name="app_quirks_badge_no_toolbar">Bez trake</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Formatirani datum (npr.%date:gggg/MM/dd% ili%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Uvijek prikaži prijedloge</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorirajte zahtjeve ove aplikacije za onemogućavanje prijedloga</string>
     <string name="app_quirks_badge_always_suggestions">Uvijek prijedlozi</string>
@@ -1721,4 +1692,9 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_error_regex">Redak%1$d: nevažeći regularni izraz \"%2$s\"</string>
     <string name="text_expander_discard_title">Odbaciti promjene?</string>
     <string name="text_expander_discard">Odbaciti</string>
+    <string name="text_expander_options_category">Konfiguracija</string>
+    <string name="text_expander_tools_category">Upravljanje i alati</string>
+    <string name="text_expander_guide_title">Online vodič i referenca sintakse</string>
+    <string name="text_expander_guide_summary">Potpuni vodič za dinamička rezervirana mjesta, uzorke regularnih izraza i modifikatore</string>
+    <string name="text_expander_all_as_text_summary">Skupno uređivanje, dijeljenje, sigurnosno kopiranje ili uvoz prečaca u običnom tekstu</string>
 </resources>

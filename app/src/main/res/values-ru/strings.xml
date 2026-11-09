@@ -734,8 +734,6 @@
     <string name="text_expander_custom_shortcuts_title">Пользовательские ярлыки</string>
     <string name="text_expander_add_shortcut">Добавить ярлык</string>
     <string name="text_expander_edit_shortcut">Редактировать ярлык</string>
-    <string name="text_expander_quick_guide">💡 Краткое руководство</string>
-    <string name="text_expander_template_placeholders_title">Поддерживаемые шаблоны:</string>
     <string name="text_expander_prefix_title">Префикс (необязательно)</string>
     <string name="text_expander_shortcut_title">Ярлык (напр. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Шаблон Regex</string>
@@ -1112,32 +1110,6 @@
     <string name="setup_step0_feature3_desc">Быстрые подсказки слов, менеджер буфера обмена, голосовой ввод и удобные сочетания клавиш для редактирования.</string>
     <string name="text_expander_no_shortcuts_title">Сокращения еще не настроены.</string>
     <string name="text_expander_no_shortcuts_desc">Нажмите кнопку «Добавить сокращение» в нижнем углу, чтобы быстро создать первый умный шаблон автозамены текста.</string>
-    <string name="text_expander_how_it_works_title">Как это работает:</string>
-    <string name="text_expander_step1_title">Укажите префикс сокращения</string>
-    <string name="text_expander_step1_desc">Настройте необязательный префикс (например, \'.\' или \';\') для сокращения на экране редактирования, чтобы избежать случайных срабатываний.</string>
-    <string name="text_expander_step2_title">Добавьте пользовательские сокращения</string>
-    <string name="text_expander_step2_desc">Задайте триггеры (например, \'спс\') и их развернутые шаблоны (например, \'Большое спасибо!\').</string>
-    <string name="text_expander_step3_title">Введите префикс + сокращение</string>
-    <string name="text_expander_step3_desc">Введите префикс и ключевое слово сокращения (например, \'.спс\') и нажмите Пробел или знак препинания на клавиатуре для мгновенной вставки.</string>
-    <string name="text_expander_tag_desc_date">Дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_time">Время (24 ч, ЧЧ:ММ)</string>
-    <string name="text_expander_tag_desc_time12">Время (12 ч, чч:мм AM/PM)</string>
-    <string name="text_expander_tag_desc_year">Год (ГГГГ)</string>
-    <string name="text_expander_tag_desc_week">Неделя года (1-53)</string>
-    <string name="text_expander_tag_desc_battery" formatted="false">Уровень заряда батареи (напр., 85%)</string>
-    <string name="text_expander_tag_desc_greeting">Приветствие по времени суток</string>
-    <string name="text_expander_tag_desc_tomorrow">Завтрашняя дата (ГГГГ-ММ-ДД)</string>
-    <string name="text_expander_tag_desc_clipboard">Содержимое буфера обмена</string>
-    <string name="text_expander_tag_desc_clipboard_clean">Буфер обмена (без цитат)</string>
-    <string name="text_expander_tag_desc_clipboard_singleline">Буфер обмена (одна строка)</string>
-    <string name="text_expander_tag_desc_clipboard_title">Буфер обмена (как заголовок)</string>
-    <string name="text_expander_tag_desc_clipboard_slug">Буфер обмена (URL kebab-slug)</string>
-    <string name="text_expander_tag_desc_day">Название дня недели (напр., Понедельник)</string>
-    <string name="text_expander_tag_desc_month">Месяц (напр., Июнь)</string>
-    <string name="text_expander_tag_desc_language">Язык клавиатуры (напр., Русский)</string>
-    <string name="text_expander_tag_desc_cursor">Позиция курсора после вставки</string>
-    <string name="text_expander_tag_desc_bullets" formatted="false">Маркированный список (напр. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list" formatted="false">Нумерованный список (напр. %list_5%)</string>
     <string name="updates_new_update_title">Доступно новое обновление</string>
     <string name="updates_new_update_desc">Версия %s готова к установке</string>
     <string name="updates_view_release">Посмотреть релиз</string>
@@ -1556,7 +1528,6 @@
     <string name="app_quirks_hide_toolbar_summary">Скрыть клавиши панели инструментов, действия и кнопку развертывания при вводе в этом приложении</string>
     <string name="app_quirks_badge_no_suggestions">Нет предложений</string>
     <string name="app_quirks_badge_no_toolbar">Без панели</string>
-    <string name="text_expander_tag_desc_date_format" formatted="false">Форматированная дата (например,%date:гггг/ММ/дд% или%date:format(шаблон)%)</string>
     <string name="app_quirks_always_show_suggestions">Всегда показывать предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорируйте запросы этого приложения, чтобы отключить предложения.</string>
     <string name="app_quirks_badge_always_suggestions">Всегда предложения</string>
@@ -1783,4 +1754,9 @@
     <string name="text_expander_error_regex">Строка%1$d: недопустимое регулярное выражение \"%2$s\"</string>
     <string name="text_expander_discard_title">Отменить изменения?</string>
     <string name="text_expander_discard">Отказаться</string>
+    <string name="text_expander_options_category">Конфигурация</string>
+    <string name="text_expander_tools_category">Управление и инструменты</string>
+    <string name="text_expander_guide_title">Онлайн-руководство и справочник по синтаксису</string>
+    <string name="text_expander_guide_summary">Полное руководство по динамическим заполнителям, шаблонам регулярных выражений и модификаторам</string>
+    <string name="text_expander_all_as_text_summary">Массовое редактирование, совместное использование, резервное копирование или импорт ярлыков в виде обычного текста.</string>
 </resources>
