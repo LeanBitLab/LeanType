@@ -1737,4 +1737,32 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="restart_ime_dialog_title">Proces herladen</string>
     <string name="restart_ime_dialog_message">Hiermee wordt het toetsenbordproces beëindigd en wordt Instellingen opnieuw gestart. Alle modellen, plug-ins en achtergrondservices worden netjes opnieuw geladen.</string>
     <string name="restart_ime_confirm">Start nu opnieuw op</string>
+    <string name="text_expander_all_as_text">Bewerk alles als tekst</string>
+    <string name="text_expander_all_title">Alle tekstsnelkoppelingen</string>
+    <string name="text_expander_all_hint">Elke snelkoppeling begint met een regel === snelkoppeling ===, gevolgd door de tekst ervan. Bij het opslaan wordt precies deze tekst toegepast: nieuwe blokken worden toegevoegd, gewijzigde blokken bijgewerkt, verwijderde blokken verwijderd.</string>
+    <string name="text_expander_copy_all">Kopieer alles</string>
+    <string name="text_expander_paste_all">Plak alles</string>
+    <string name="text_expander_share">Deel</string>
+    <string name="text_expander_save_file">Opslaan als bestand</string>
+    <string name="text_expander_load_file">Laden uit bestand</string>
+    <string name="text_expander_file_name">tekst_snelkoppelingen.txt</string>
+    <string name="text_expander_file_error">Kan het bestand niet lezen of schrijven</string>
+    <string name="text_expander_restore_previous">Vorige herstellen</string>
+    <string name="text_expander_restore_previous_confirm">De snelkoppelingen herstellen zoals ze waren vóór de laatste keer opslaan? De huidige status blijft behouden, zodat u terug kunt schakelen.</string>
+    <string name="text_expander_copied">Gekopieerd</string>
+    <string name="text_expander_clipboard_empty">Klembord is leeg</string>
+    <string name="text_expander_no_changes">Geen wijzigingen</string>
+    <string name="text_expander_saved">Opgeslagen</string>
+    <string name="text_expander_save_question">Wijzigingen opslaan?</string>
+    <string name="text_expander_changes">%1$dnieuw,%2$dgewijzigd,%3$dverwijderd</string>
+    <string name="text_expander_changes_deleted">Verwijderd:%s</string>
+    <string name="text_expander_errors_title">Corrigeer alstublieft</string>
+    <string name="text_expander_error_text_before">Regel%d: tekst vóór de eerste === sneltoets === regel</string>
+    <string name="text_expander_error_empty_shortcut">Regel%d: snelkoppeling ontbreekt</string>
+    <string name="text_expander_error_space">Regel%1$d: geen spaties toegestaan ​​in \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Regel%1$d: geen tekst voor \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Regel%1$d: \"%2$s\" verschijnt tweemaal</string>
+    <string name="text_expander_error_regex">Regel%1$d: ongeldige regex \"%2$s\"</string>
+    <string name="text_expander_discard_title">Uw wijzigingen annuleren?</string>
+    <string name="text_expander_discard">Weggooien</string>
 </resources>

@@ -1722,4 +1722,32 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="restart_ime_dialog_title">İşlem yeniden yükleme</string>
     <string name="restart_ime_dialog_message">Bu, klavye işlemini sonlandıracak ve Ayarlar\'ı yeniden başlatacaktır. Tüm modeller, eklentiler ve arka plan hizmetleri temiz bir şekilde yeniden yüklenecektir.</string>
     <string name="restart_ime_confirm">Şimdi yeniden başlat</string>
+    <string name="text_expander_all_as_text">Tümünü metin olarak düzenle</string>
+    <string name="text_expander_all_title">Tüm metin kısayolları</string>
+    <string name="text_expander_all_hint">Her kısayol bir satır === kısayol === ile başlar ve ardından metni gelir. Kaydetme tam olarak bu metni uygular: yeni bloklar eklenir, değiştirilenler güncellenir, kaldırılanlar silinir.</string>
+    <string name="text_expander_copy_all">Tümünü kopyala</string>
+    <string name="text_expander_paste_all">Tümünü yapıştır</string>
+    <string name="text_expander_share">Paylaşmak</string>
+    <string name="text_expander_save_file">Dosya olarak kaydet</string>
+    <string name="text_expander_load_file">Dosyadan yükle</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Dosya okunamadı veya yazılamadı</string>
+    <string name="text_expander_restore_previous">Öncekini geri yükle</string>
+    <string name="text_expander_restore_previous_confirm">Kısayollar son kaydetmeden önceki hallerine geri yüklensin mi? Mevcut durum korunur, böylece geri dönebilirsiniz.</string>
+    <string name="text_expander_copied">Kopyalandı</string>
+    <string name="text_expander_clipboard_empty">Pano boş</string>
+    <string name="text_expander_no_changes">Değişiklik yok</string>
+    <string name="text_expander_saved">Kaydedildi</string>
+    <string name="text_expander_save_question">Değişiklikler kaydedilsin mi?</string>
+    <string name="text_expander_changes">%1$dyeni,%2$ddeğiştirildi,%3$dsilindi</string>
+    <string name="text_expander_changes_deleted">Silindi:%s</string>
+    <string name="text_expander_errors_title">Lütfen düzeltin</string>
+    <string name="text_expander_error_text_before">Satır%d: ilk === kısayol === satırından önceki metin</string>
+    <string name="text_expander_error_empty_shortcut">%dsatırı: kısayol eksik</string>
+    <string name="text_expander_error_space">Satır%1$d: \"%2$s\" içinde boşluğa izin verilmez</string>
+    <string name="text_expander_error_empty_text">Satır%1$d: \"%2$s\" için metin yok</string>
+    <string name="text_expander_error_duplicate">%1$d: \"%2$s\" satırı iki kez görünüyor</string>
+    <string name="text_expander_error_regex">Satır%1$d: geçersiz normal ifade \"%2$s\"</string>
+    <string name="text_expander_discard_title">Değişiklikleriniz silinsin mi?</string>
+    <string name="text_expander_discard">At</string>
 </resources>

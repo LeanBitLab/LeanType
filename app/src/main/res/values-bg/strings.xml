@@ -1730,4 +1730,32 @@
     <string name="restart_ime_dialog_title">Процес презареждане</string>
     <string name="restart_ime_dialog_message">Това ще прекрати процеса на клавиатурата и ще стартира повторно настройките. Всички модели, плъгини и фонови услуги ще бъдат чисто презаредени.</string>
     <string name="restart_ime_confirm">Рестартирайте сега</string>
+    <string name="text_expander_all_as_text">Редактирайте всичко като текст</string>
+    <string name="text_expander_all_title">Всички текстови преки пътища</string>
+    <string name="text_expander_all_hint">Всеки пряк път започва с ред === пряк път ===, последван от неговия текст. Запазването важи точно за този текст: нови блокове се добавят, променените се актуализират, премахнатите се изтриват.</string>
+    <string name="text_expander_copy_all">Копирайте всички</string>
+    <string name="text_expander_paste_all">Поставете всички</string>
+    <string name="text_expander_share">Споделете</string>
+    <string name="text_expander_save_file">Запазете като файл</string>
+    <string name="text_expander_load_file">Зареждане от файл</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Файлът не можа да се прочете или запише</string>
+    <string name="text_expander_restore_previous">Възстановяване на предишното</string>
+    <string name="text_expander_restore_previous_confirm">Да се ​​възстановят ли преките пътища както са били преди последното записване? Текущото състояние се запазва, така че можете да превключите обратно.</string>
+    <string name="text_expander_copied">Копирано</string>
+    <string name="text_expander_clipboard_empty">Клипбордът е празен</string>
+    <string name="text_expander_no_changes">Без промени</string>
+    <string name="text_expander_saved">Запазено</string>
+    <string name="text_expander_save_question">Запазване на промените?</string>
+    <string name="text_expander_changes">%1$dнови,%2$dпроменени,%3$dизтрити</string>
+    <string name="text_expander_changes_deleted">Изтрито:%s</string>
+    <string name="text_expander_errors_title">Моля коригирайте</string>
+    <string name="text_expander_error_text_before">Ред%d: текст преди първия === пряк път === ред</string>
+    <string name="text_expander_error_empty_shortcut">Ред%d: липсва пряк път</string>
+    <string name="text_expander_error_space">Ред%1$d: не са разрешени интервали в \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Ред%1$d: няма текст за \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Ред%1$d: \"%2$s\" се появява два пъти</string>
+    <string name="text_expander_error_regex">Ред%1$d: невалиден регулярен израз \"%2$s\"</string>
+    <string name="text_expander_discard_title">Да се ​​отхвърлят промените ви?</string>
+    <string name="text_expander_discard">Изхвърлете</string>
 </resources>

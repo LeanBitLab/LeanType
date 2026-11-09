@@ -1722,4 +1722,32 @@
     <string name="restart_ime_dialog_title">प्रक्रिया पुनः लोड करें</string>
     <string name="restart_ime_dialog_message">इससे कीबोर्ड प्रक्रिया समाप्त हो जाएगी और सेटिंग्स पुनः लॉन्च हो जाएंगी। सभी मॉडल, प्लगइन्स और पृष्ठभूमि सेवाओं को साफ़-साफ़ पुनः लोड किया जाएगा।</string>
     <string name="restart_ime_confirm">अब पुनःचालू करें</string>
+    <string name="text_expander_all_as_text">सभी को पाठ के रूप में संपादित करें</string>
+    <string name="text_expander_all_title">सभी टेक्स्ट शॉर्टकट</string>
+    <string name="text_expander_all_hint">प्रत्येक शॉर्टकट एक पंक्ति === शॉर्टकट === से शुरू होता है, उसके बाद उसका टेक्स्ट आता है। बचत बिल्कुल इस पाठ पर लागू होती है: नए ब्लॉक जोड़े जाते हैं, बदले गए अपडेट किए जाते हैं, हटाए गए ब्लॉक हटाए जाते हैं।</string>
+    <string name="text_expander_copy_all">सभी को कॉपी करें</string>
+    <string name="text_expander_paste_all">सभी चिपकाएँ</string>
+    <string name="text_expander_share">शेयर करना</string>
+    <string name="text_expander_save_file">फ़ाइल के रूप में सहेजें</string>
+    <string name="text_expander_load_file">फ़ाइल से लोड करें</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">फ़ाइल को पढ़ या लिख ​​नहीं सका</string>
+    <string name="text_expander_restore_previous">पहला वाला बहाल करें</string>
+    <string name="text_expander_restore_previous_confirm">शॉर्टकट को वैसे ही पुनर्स्थापित करें जैसे वे अंतिम सहेजने से पहले थे? वर्तमान स्थिति बरकरार रखी गई है, ताकि आप वापस स्विच कर सकें।</string>
+    <string name="text_expander_copied">कॉपी किया गया</string>
+    <string name="text_expander_clipboard_empty">क्लिपबोर्ड खाली है</string>
+    <string name="text_expander_no_changes">कोई परिवर्तन नहीं</string>
+    <string name="text_expander_saved">सहेजा गया</string>
+    <string name="text_expander_save_question">परिवर्तनों को सुरक्षित करें?</string>
+    <string name="text_expander_changes">%1$dनया,%2$dबदला गया,%3$dहटाया गया</string>
+    <string name="text_expander_changes_deleted">हटाया गया:%s</string>
+    <string name="text_expander_errors_title">कृपया सही करें</string>
+    <string name="text_expander_error_text_before">पंक्ति%d: पहली === शॉर्टकट === पंक्ति से पहले का पाठ</string>
+    <string name="text_expander_error_empty_shortcut">लाइन%d: शॉर्टकट गायब है</string>
+    <string name="text_expander_error_space">पंक्ति%1$d: \"%2$s\" में कोई रिक्त स्थान की अनुमति नहीं है</string>
+    <string name="text_expander_error_empty_text">पंक्ति%1$d: \"%2$s\" के लिए कोई पाठ नहीं</string>
+    <string name="text_expander_error_duplicate">पंक्ति%1$d: \"%2$s\" दो बार प्रकट होती है</string>
+    <string name="text_expander_error_regex">पंक्ति%1$d: अमान्य रेगेक्स \"%2$s\"</string>
+    <string name="text_expander_discard_title">अपने परिवर्तन त्यागें?</string>
+    <string name="text_expander_discard">खारिज करना</string>
 </resources>

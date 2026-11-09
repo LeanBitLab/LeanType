@@ -1701,4 +1701,32 @@
     <string name="restart_ime_dialog_title">תהליך טעינה מחדש</string>
     <string name="restart_ime_dialog_message">פעולה זו תסיים את תהליך המקלדת ותפעיל מחדש את ההגדרות. כל הדגמים, התוספים ושירותי הרקע ייטענו מחדש בצורה נקייה.</string>
     <string name="restart_ime_confirm">הפעל מחדש עכשיו</string>
+    <string name="text_expander_all_as_text">ערוך הכל כטקסט</string>
+    <string name="text_expander_all_title">כל קיצורי הטקסט</string>
+    <string name="text_expander_all_hint">כל קיצור דרך מתחיל בשורה === קיצור דרך ===, ואחריה הטקסט שלו. שמירה חלה בדיוק על הטקסט הזה: בלוקים חדשים מתווספים, משנים מתעדכנים, מוסרים נמחקים.</string>
+    <string name="text_expander_copy_all">תעתיק הכל</string>
+    <string name="text_expander_paste_all">הדבק הכל</string>
+    <string name="text_expander_share">לַחֲלוֹק</string>
+    <string name="text_expander_save_file">שמור כקובץ</string>
+    <string name="text_expander_load_file">טען מהקובץ</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">לא ניתן היה לקרוא או לכתוב את הקובץ</string>
+    <string name="text_expander_restore_previous">שחזר את הקודם</string>
+    <string name="text_expander_restore_previous_confirm">לשחזר את קיצורי הדרך כפי שהיו לפני השמירה האחרונה? המצב הנוכחי נשמר, כך שתוכל לחזור אחורה.</string>
+    <string name="text_expander_copied">מוּעֲתָק</string>
+    <string name="text_expander_clipboard_empty">הלוח ריק</string>
+    <string name="text_expander_no_changes">אין שינויים</string>
+    <string name="text_expander_saved">נשמר</string>
+    <string name="text_expander_save_question">לשמור שינויים?</string>
+    <string name="text_expander_changes">%1$dחדש,%2$dהשתנה,%3$dנמחק</string>
+    <string name="text_expander_changes_deleted">נמחק:%s</string>
+    <string name="text_expander_errors_title">נא לתקן</string>
+    <string name="text_expander_error_text_before">שורה%d: טקסט לפני === קיצור הדרך === השורה הראשונה</string>
+    <string name="text_expander_error_empty_shortcut">שורה%d: קיצור דרך חסר</string>
+    <string name="text_expander_error_space">שורה%1$d: אין רווחים ב- \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">שורה%1$d: אין טקסט עבור \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">שורה%1$d: \"%2$s\" מופיעה פעמיים</string>
+    <string name="text_expander_error_regex">שורה%1$d: ביטוי רגולרי לא חוקי \"%2$s\"</string>
+    <string name="text_expander_discard_title">למחוק את השינויים שלך?</string>
+    <string name="text_expander_discard">לְהַשְׁלִיך</string>
 </resources>

@@ -1695,4 +1695,32 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="restart_ime_dialog_title">Znovu načíst proces</string>
     <string name="restart_ime_dialog_message">Tím se ukončí proces klávesnice a znovu se spustí Nastavení. Všechny modely, pluginy a služby na pozadí budou čistě znovu načteny.</string>
     <string name="restart_ime_confirm">Restartujte nyní</string>
+    <string name="text_expander_all_as_text">Upravit vše jako text</string>
+    <string name="text_expander_all_title">Všechny textové zkratky</string>
+    <string name="text_expander_all_hint">Každá zkratka začíná řádkem === zkratka ===, za kterou následuje její text. Ukládání platí přesně pro tento text: nové bloky se přidávají, změněné aktualizují, odebrané se smažou.</string>
+    <string name="text_expander_copy_all">Zkopírujte vše</string>
+    <string name="text_expander_paste_all">Vložit vše</string>
+    <string name="text_expander_share">Podíl</string>
+    <string name="text_expander_save_file">Uložit jako soubor</string>
+    <string name="text_expander_load_file">Načíst ze souboru</string>
+    <string name="text_expander_file_name">text_shorcuts.txt</string>
+    <string name="text_expander_file_error">Soubor nelze číst ani zapisovat</string>
+    <string name="text_expander_restore_previous">Obnovit předchozí</string>
+    <string name="text_expander_restore_previous_confirm">Obnovit zástupce tak, jak byly před posledním uložením? Aktuální stav je zachován, takže můžete přepnout zpět.</string>
+    <string name="text_expander_copied">Zkopírováno</string>
+    <string name="text_expander_clipboard_empty">Schránka je prázdná</string>
+    <string name="text_expander_no_changes">Žádné změny</string>
+    <string name="text_expander_saved">Uloženo</string>
+    <string name="text_expander_save_question">Uložit změny?</string>
+    <string name="text_expander_changes">%1$dnové,%2$dzměněno,%3$dsmazáno</string>
+    <string name="text_expander_changes_deleted">Smazáno:%s</string>
+    <string name="text_expander_errors_title">Prosím o opravu</string>
+    <string name="text_expander_error_text_before">Řádek%d: text před prvním === zástupcem === řádkem</string>
+    <string name="text_expander_error_empty_shortcut">Řádek%d: chybí zástupce</string>
+    <string name="text_expander_error_space">Řádek%1$d: v \"%2$s\" nejsou povoleny žádné mezery</string>
+    <string name="text_expander_error_empty_text">Řádek%1$d: žádný text pro \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Řádek%1$d: \"%2$s\" se zobrazí dvakrát</string>
+    <string name="text_expander_error_regex">Řádek%1$d: neplatný regulární výraz \"%2$s\"</string>
+    <string name="text_expander_discard_title">Zahodit změny?</string>
+    <string name="text_expander_discard">Vyřadit</string>
 </resources>

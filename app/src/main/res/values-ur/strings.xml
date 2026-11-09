@@ -1787,4 +1787,32 @@
     <string name="restart_ime_dialog_title">دوبارہ لوڈ کرنے کا عمل</string>
     <string name="restart_ime_dialog_message">اس سے کی بورڈ کا عمل ختم ہو جائے گا اور سیٹنگز دوبارہ شروع ہو جائیں گی۔ تمام ماڈلز، پلگ انز، اور بیک گراؤنڈ سروسز کو صاف طور پر دوبارہ لوڈ کیا جائے گا۔</string>
     <string name="restart_ime_confirm">ابھی دوبارہ شروع کریں۔</string>
+    <string name="text_expander_all_as_text">سبھی کو متن کے بطور ترمیم کریں۔</string>
+    <string name="text_expander_all_title">تمام ٹیکسٹ شارٹ کٹس</string>
+    <string name="text_expander_all_hint">ہر شارٹ کٹ ایک لائن === شارٹ کٹ === سے شروع ہوتا ہے، اس کے بعد اس کا متن آتا ہے۔ محفوظ کرنا بالکل اسی متن پر لاگو ہوتا ہے: نئے بلاکس شامل کیے جاتے ہیں، تبدیل کیے گئے اپ ڈیٹ کیے جاتے ہیں، حذف کیے جاتے ہیں۔</string>
+    <string name="text_expander_copy_all">سب کاپی کریں۔</string>
+    <string name="text_expander_paste_all">سب چسپاں کریں۔</string>
+    <string name="text_expander_share">شیئر کریں۔</string>
+    <string name="text_expander_save_file">فائل کے طور پر محفوظ کریں۔</string>
+    <string name="text_expander_load_file">فائل سے لوڈ کریں۔</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">فائل کو پڑھ یا لکھ نہیں سکا</string>
+    <string name="text_expander_restore_previous">سابقہ ​​کو بحال کریں۔</string>
+    <string name="text_expander_restore_previous_confirm">شارٹ کٹس کو بحال کریں جیسا کہ وہ آخری محفوظ کرنے سے پہلے تھے؟ موجودہ حالت برقرار ہے، لہذا آپ واپس جا سکتے ہیں۔</string>
+    <string name="text_expander_copied">کاپی</string>
+    <string name="text_expander_clipboard_empty">کلپ بورڈ خالی ہے۔</string>
+    <string name="text_expander_no_changes">کوئی تبدیلی نہیں۔</string>
+    <string name="text_expander_saved">محفوظ کیا گیا۔</string>
+    <string name="text_expander_save_question">تبدیلیاں محفوظ کریں؟</string>
+    <string name="text_expander_changes">%1$dنیا،%2$dتبدیل،%3$dحذف کر دیا گیا۔</string>
+    <string name="text_expander_changes_deleted">حذف شدہ:%s</string>
+    <string name="text_expander_errors_title">براہ کرم درست کریں۔</string>
+    <string name="text_expander_error_text_before">لائن%d: پہلی === شارٹ کٹ === لائن سے پہلے متن</string>
+    <string name="text_expander_error_empty_shortcut">لائن%d: شارٹ کٹ غائب ہے۔</string>
+    <string name="text_expander_error_space">لائن%1$d: \"%2$s\" میں خالی جگہوں کی اجازت نہیں ہے</string>
+    <string name="text_expander_error_empty_text">لائن%1$d: \"%2$s\" کے لیے کوئی متن نہیں</string>
+    <string name="text_expander_error_duplicate">لائن%1$d: \"%2$s\" دو بار ظاہر ہوتی ہے۔</string>
+    <string name="text_expander_error_regex">لائن%1$d: غلط ریجیکس \"%2$s\"</string>
+    <string name="text_expander_discard_title">اپنی تبدیلیوں کو مسترد کریں؟</string>
+    <string name="text_expander_discard">رد کر دیں۔</string>
 </resources>

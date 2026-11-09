@@ -1753,4 +1753,32 @@
     <string name="restart_ime_dialog_title">إعادة تحميل العملية</string>
     <string name="restart_ime_dialog_message">سيؤدي هذا إلى إنهاء عملية لوحة المفاتيح وإعادة تشغيل الإعدادات. سيتم إعادة تحميل جميع النماذج والمكونات الإضافية وخدمات الخلفية بشكل نظيف.</string>
     <string name="restart_ime_confirm">أعد التشغيل الآن</string>
+    <string name="text_expander_all_as_text">تحرير الكل كنص</string>
+    <string name="text_expander_all_title">جميع اختصارات النص</string>
+    <string name="text_expander_all_hint">يبدأ كل اختصار بسطر === اختصار ===، متبوعًا بالنص الخاص به. ينطبق الحفظ على هذا النص تمامًا: تتم إضافة الكتل الجديدة، وتحديث الكتل التي تم تغييرها، وحذف الكتل التي تمت إزالتها.</string>
+    <string name="text_expander_copy_all">انسخ الكل</string>
+    <string name="text_expander_paste_all">لصق الكل</string>
+    <string name="text_expander_share">يشارك</string>
+    <string name="text_expander_save_file">حفظ كملف</string>
+    <string name="text_expander_load_file">تحميل من الملف</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">لا يمكن قراءة أو كتابة الملف</string>
+    <string name="text_expander_restore_previous">استعادة السابقة</string>
+    <string name="text_expander_restore_previous_confirm">هل تريد استعادة الاختصارات كما كانت قبل عملية الحفظ الأخيرة؟ يتم الاحتفاظ بالحالة الحالية، حتى تتمكن من العودة مرة أخرى.</string>
+    <string name="text_expander_copied">منقول</string>
+    <string name="text_expander_clipboard_empty">الحافظة فارغة</string>
+    <string name="text_expander_no_changes">لا تغييرات</string>
+    <string name="text_expander_saved">أنقذ</string>
+    <string name="text_expander_save_question">هل تريد حفظ التغييرات؟</string>
+    <string name="text_expander_changes">%1$dجديد،%2$dتم التغيير،%3$dمحذوف</string>
+    <string name="text_expander_changes_deleted">تم حذفه:%s</string>
+    <string name="text_expander_errors_title">يرجى التصحيح</string>
+    <string name="text_expander_error_text_before">السطر%d: النص قبل السطر الأول === الاختصار ===</string>
+    <string name="text_expander_error_empty_shortcut">السطر%d: الاختصار مفقود</string>
+    <string name="text_expander_error_space">السطر%1$d: غير مسموح بالمسافات في \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">السطر%1$d: لا يوجد نص لـ \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">السطر%1$d: \"%2$s\" يظهر مرتين</string>
+    <string name="text_expander_error_regex">السطر%1$d: التعبير العادي غير صالح \"%2$s\"</string>
+    <string name="text_expander_discard_title">هل تريد تجاهل تغييراتك؟</string>
+    <string name="text_expander_discard">ينبذ</string>
 </resources>

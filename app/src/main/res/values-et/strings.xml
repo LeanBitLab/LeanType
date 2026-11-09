@@ -1730,4 +1730,32 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="restart_ime_dialog_title">Protsessi uuesti laadimine</string>
     <string name="restart_ime_dialog_message">See lõpetab klaviatuuri protsessi ja taaskäivitab seaded. Kõik mudelid, pistikprogrammid ja taustteenused laaditakse puhtalt uuesti.</string>
     <string name="restart_ime_confirm">Taaskäivitage kohe</string>
+    <string name="text_expander_all_as_text">Muutke kõike tekstina</string>
+    <string name="text_expander_all_title">Kõik teksti otseteed</string>
+    <string name="text_expander_all_hint">Iga otsetee algab reaga === otsetee ===, millele järgneb selle tekst. Salvestamine rakendab täpselt seda teksti: lisatakse uusi plokke, muudetud plokke värskendatakse, eemaldatud kustutatakse.</string>
+    <string name="text_expander_copy_all">Kopeeri kõik</string>
+    <string name="text_expander_paste_all">Kleebi kõik</string>
+    <string name="text_expander_share">Jaga</string>
+    <string name="text_expander_save_file">Salvesta failina</string>
+    <string name="text_expander_load_file">Laadi failist</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Faili ei saanud lugeda ega kirjutada</string>
+    <string name="text_expander_restore_previous">Taasta eelmine</string>
+    <string name="text_expander_restore_previous_confirm">Kas taastada otseteed nii, nagu need olid enne viimast salvestamist? Praegune olek jääb alles, nii et saate tagasi lülituda.</string>
+    <string name="text_expander_copied">Kopeeritud</string>
+    <string name="text_expander_clipboard_empty">Lõikelaud on tühi</string>
+    <string name="text_expander_no_changes">Muudatusi pole</string>
+    <string name="text_expander_saved">Salvestatud</string>
+    <string name="text_expander_save_question">Kas salvestada muudatused?</string>
+    <string name="text_expander_changes">%1$duus,%2$dmuudetud,%3$dkustutatud</string>
+    <string name="text_expander_changes_deleted">Kustutatud:%s</string>
+    <string name="text_expander_errors_title">Palun paranda</string>
+    <string name="text_expander_error_text_before">Rida%d: tekst enne esimest === otseteed === rida</string>
+    <string name="text_expander_error_empty_shortcut">Rida%d: otsetee puudub</string>
+    <string name="text_expander_error_space">Rida%1$d: \"%2$s\" tühikud pole lubatud</string>
+    <string name="text_expander_error_empty_text">Rida%1$d: puudub tekst päringule \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Rida%1$d: \"%2$s\" ilmub kaks korda</string>
+    <string name="text_expander_error_regex">Rida%1$d: kehtetu regex \"%2$s\"</string>
+    <string name="text_expander_discard_title">Kas loobuda muudatustest?</string>
+    <string name="text_expander_discard">Visake ära</string>
 </resources>

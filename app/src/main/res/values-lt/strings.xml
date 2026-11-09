@@ -1731,4 +1731,32 @@ Ar norite atnaujinti?</string>
     <string name="restart_ime_dialog_title">Proceso įkėlimas iš naujo</string>
     <string name="restart_ime_dialog_message">Tai nutrauks klaviatūros procesą ir iš naujo paleis nustatymus. Visi modeliai, papildiniai ir foninės paslaugos bus švariai įkelti iš naujo.</string>
     <string name="restart_ime_confirm">Paleiskite iš naujo dabar</string>
+    <string name="text_expander_all_as_text">Redaguoti viską kaip tekstą</string>
+    <string name="text_expander_all_title">Visi teksto spartieji klavišai</string>
+    <string name="text_expander_all_hint">Kiekvienas spartusis klavišas prasideda eilute === spartusis klavišas ===, po kurio eina jos tekstas. Išsaugant taikomas būtent šis tekstas: pridedami nauji blokai, atnaujinami pakeisti blokai, ištrinami pašalinti.</string>
+    <string name="text_expander_copy_all">Nukopijuoti viską</string>
+    <string name="text_expander_paste_all">Įklijuoti viską</string>
+    <string name="text_expander_share">Dalintis</string>
+    <string name="text_expander_save_file">Išsaugoti kaip failą</string>
+    <string name="text_expander_load_file">Įkelti iš failo</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Nepavyko nuskaityti ar parašyti failo</string>
+    <string name="text_expander_restore_previous">Atkurti ankstesnį</string>
+    <string name="text_expander_restore_previous_confirm">Atkurti sparčiuosius klavišus, kurie buvo prieš paskutinį išsaugojimą? Dabartinė būsena išlaikoma, todėl galite grįžti atgal.</string>
+    <string name="text_expander_copied">Nukopijuota</string>
+    <string name="text_expander_clipboard_empty">Iškarpinė tuščia</string>
+    <string name="text_expander_no_changes">Jokių pakeitimų</string>
+    <string name="text_expander_saved">Išsaugota</string>
+    <string name="text_expander_save_question">Išsaugoti pakeitimus?</string>
+    <string name="text_expander_changes">%1$dnaujas,%2$dpakeistas,%3$dištrintas</string>
+    <string name="text_expander_changes_deleted">Ištrinta:%s</string>
+    <string name="text_expander_errors_title">Prašau pataisyti</string>
+    <string name="text_expander_error_text_before">%deilutė: tekstas prieš pirmą === spartųjį klavišą === eilutę</string>
+    <string name="text_expander_error_empty_shortcut">%deilutė: trūksta nuorodos</string>
+    <string name="text_expander_error_space">%1$deilutė: tarpai neleidžiami \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">%1$deilutė: nėra teksto \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">%1$deilutė: \"%2$s\" pasirodo du kartus</string>
+    <string name="text_expander_error_regex">%1$deilutė: netinkamas reguliarusis reiškinys \"%2$s\"</string>
+    <string name="text_expander_discard_title">Atmesti pakeitimus?</string>
+    <string name="text_expander_discard">Išmesti</string>
 </resources>

@@ -1695,4 +1695,32 @@
     <string name="restart_ime_dialog_title">Перезавантаження процесу</string>
     <string name="restart_ime_dialog_message">Це завершить процес клавіатури та перезапустить налаштування. Усі моделі, плагіни та фонові служби буде чисто перезавантажено.</string>
     <string name="restart_ime_confirm">Перезапустіть зараз</string>
+    <string name="text_expander_all_as_text">Редагувати все як текст</string>
+    <string name="text_expander_all_title">Усі текстові ярлики</string>
+    <string name="text_expander_all_hint">Кожен ярлик починається з рядка === ярлик ===, після якого йде його текст. Збереження стосується саме цього тексту: нові блоки додаються, змінені оновлюються, видалені видаляються.</string>
+    <string name="text_expander_copy_all">Копіювати все</string>
+    <string name="text_expander_paste_all">Вставити все</string>
+    <string name="text_expander_share">Поділіться</string>
+    <string name="text_expander_save_file">Зберегти як файл</string>
+    <string name="text_expander_load_file">Завантажити з файлу</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Не вдалося прочитати або записати файл</string>
+    <string name="text_expander_restore_previous">Відновити попереднє</string>
+    <string name="text_expander_restore_previous_confirm">Відновити ярлики, як вони були до останнього збереження? Поточний стан зберігається, тому ви можете повернутися назад.</string>
+    <string name="text_expander_copied">Скопійовано</string>
+    <string name="text_expander_clipboard_empty">Буфер обміну порожній</string>
+    <string name="text_expander_no_changes">Без змін</string>
+    <string name="text_expander_saved">Збережено</string>
+    <string name="text_expander_save_question">Зберегти зміни?</string>
+    <string name="text_expander_changes">%1$dнових,%2$dзмінених,%3$dвидалених</string>
+    <string name="text_expander_changes_deleted">Видалено:%s</string>
+    <string name="text_expander_errors_title">Будь ласка, виправте</string>
+    <string name="text_expander_error_text_before">Рядок%d: текст перед першим рядком === ярлика ===</string>
+    <string name="text_expander_error_empty_shortcut">Рядок%d: відсутній ярлик</string>
+    <string name="text_expander_error_space">Рядок%1$d: у \"%2$s\" не допускаються пробіли</string>
+    <string name="text_expander_error_empty_text">Рядок%1$d: немає тексту для \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Рядок%1$d: \"%2$s\" з\'являється двічі</string>
+    <string name="text_expander_error_regex">Рядок%1$d: недійсний регулярний вираз \"%2$s\"</string>
+    <string name="text_expander_discard_title">Скасувати зміни?</string>
+    <string name="text_expander_discard">Відкинути</string>
 </resources>

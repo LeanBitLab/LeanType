@@ -1737,4 +1737,32 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="restart_ime_dialog_title">Przeładuj proces</string>
     <string name="restart_ime_dialog_message">Spowoduje to zakończenie procesu klawiatury i ponowne uruchomienie Ustawień. Wszystkie modele, wtyczki i usługi w tle zostaną ponownie załadowane.</string>
     <string name="restart_ime_confirm">Uruchom ponownie teraz</string>
+    <string name="text_expander_all_as_text">Edytuj wszystko jako tekst</string>
+    <string name="text_expander_all_title">Wszystkie skróty tekstowe</string>
+    <string name="text_expander_all_hint">Każdy skrót zaczyna się od linii === skrót ===, po której następuje jego tekst. Zapisywanie dotyczy dokładnie tego tekstu: dodawane są nowe bloki, aktualizowane zmienione, usuwane usuwane.</string>
+    <string name="text_expander_copy_all">Skopiuj wszystko</string>
+    <string name="text_expander_paste_all">Wklej wszystko</string>
+    <string name="text_expander_share">Udział</string>
+    <string name="text_expander_save_file">Zapisz jako plik</string>
+    <string name="text_expander_load_file">Załaduj z pliku</string>
+    <string name="text_expander_file_name">tekst_skróty.txt</string>
+    <string name="text_expander_file_error">Nie można odczytać ani zapisać pliku</string>
+    <string name="text_expander_restore_previous">Przywróć poprzednie</string>
+    <string name="text_expander_restore_previous_confirm">Przywrócić skróty tak, jak były przed ostatnim zapisem? Bieżący stan zostanie zachowany, więc możesz przełączyć się z powrotem.</string>
+    <string name="text_expander_copied">Skopiowano</string>
+    <string name="text_expander_clipboard_empty">Schowek jest pusty</string>
+    <string name="text_expander_no_changes">Żadnych zmian</string>
+    <string name="text_expander_saved">Zapisano</string>
+    <string name="text_expander_save_question">Zapisać zmiany?</string>
+    <string name="text_expander_changes">%1$dnowy,%2$dzmieniony,%3$dusunięty</string>
+    <string name="text_expander_changes_deleted">Usunięto:%s</string>
+    <string name="text_expander_errors_title">Proszę poprawić</string>
+    <string name="text_expander_error_text_before"></string>
+    <string name="text_expander_error_empty_shortcut">Linia%d: brak skrótu</string>
+    <string name="text_expander_error_space">Wiersz%1$d: w \"%2$s\" nie można spować</string>
+    <string name="text_expander_error_empty_text">Linia%1$d: brak tekstu dla „%2$s”</string>
+    <string name="text_expander_error_duplicate">Linia%1$d: \"%2$s\" pojawia się dwukrotnie</string>
+    <string name="text_expander_error_regex">Linia%1$d: nieprawidłowe wyrażenie regularne \"%2$s\"</string>
+    <string name="text_expander_discard_title">Odrzucić zmiany?</string>
+    <string name="text_expander_discard">Wyrzucać</string>
 </resources>

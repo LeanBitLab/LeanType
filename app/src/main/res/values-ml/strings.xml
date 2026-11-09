@@ -1796,4 +1796,32 @@
     <string name="restart_ime_dialog_title">റീലോഡ് പ്രോസസ്സ് ചെയ്യുക</string>
     <string name="restart_ime_dialog_message">ഇത് കീബോർഡ് പ്രോസസ്സ് അവസാനിപ്പിക്കുകയും ക്രമീകരണങ്ങൾ വീണ്ടും സമാരംഭിക്കുകയും ചെയ്യും. എല്ലാ മോഡലുകളും പ്ലഗിനുകളും പശ്ചാത്തല സേവനങ്ങളും വൃത്തിയായി റീലോഡ് ചെയ്യും.</string>
     <string name="restart_ime_confirm">ഇപ്പോൾ പുനരാരംഭിക്കുക</string>
+    <string name="text_expander_all_as_text">എല്ലാം ടെക്‌സ്‌റ്റായി എഡിറ്റ് ചെയ്യുക</string>
+    <string name="text_expander_all_title">എല്ലാ ടെക്സ്റ്റ് കുറുക്കുവഴികളും</string>
+    <string name="text_expander_all_hint">ഓരോ കുറുക്കുവഴിയും === കുറുക്കുവഴി === എന്ന വരിയിൽ ആരംഭിക്കുന്നു, തുടർന്ന് അതിൻ്റെ വാചകം. സംരക്ഷിക്കുന്നത് ഈ ടെക്‌സ്‌റ്റിന് കൃത്യമായി ബാധകമാണ്: പുതിയ ബ്ലോക്കുകൾ ചേർത്തു, മാറ്റിയവ അപ്‌ഡേറ്റുചെയ്‌തു, നീക്കം ചെയ്‌തവ ഇല്ലാതാക്കി.</string>
+    <string name="text_expander_copy_all">എല്ലാം പകർത്തുക</string>
+    <string name="text_expander_paste_all">എല്ലാം ഒട്ടിക്കുക</string>
+    <string name="text_expander_share">പങ്കിടുക</string>
+    <string name="text_expander_save_file">ഫയലായി സേവ് ചെയ്യുക</string>
+    <string name="text_expander_load_file">ഫയലിൽ നിന്ന് ലോഡ് ചെയ്യുക</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">ഫയൽ വായിക്കാനോ എഴുതാനോ കഴിഞ്ഞില്ല</string>
+    <string name="text_expander_restore_previous">മുമ്പത്തെ പുനഃസ്ഥാപിക്കുക</string>
+    <string name="text_expander_restore_previous_confirm">കുറുക്കുവഴികൾ അവസാനത്തെ സേവിന് മുമ്പുള്ളതുപോലെ പുനഃസ്ഥാപിക്കണോ? നിലവിലെ അവസ്ഥ നിലനിർത്തിയതിനാൽ നിങ്ങൾക്ക് തിരികെ മാറാം.</string>
+    <string name="text_expander_copied">പകർത്തി</string>
+    <string name="text_expander_clipboard_empty">ക്ലിപ്പ്ബോർഡ് ശൂന്യമാണ്</string>
+    <string name="text_expander_no_changes">മാറ്റങ്ങളൊന്നുമില്ല</string>
+    <string name="text_expander_saved">സംരക്ഷിച്ചു</string>
+    <string name="text_expander_save_question">മാറ്റങ്ങൾ സംരക്ഷിക്കണോ?</string>
+    <string name="text_expander_changes">%1$dപുതിയത്,%2$dമാറ്റി,%3$dഇല്ലാതാക്കി</string>
+    <string name="text_expander_changes_deleted">ഇല്ലാതാക്കി:%s</string>
+    <string name="text_expander_errors_title">ദയവായി ശരിയാക്കുക</string>
+    <string name="text_expander_error_text_before">ലൈൻ%d: ആദ്യത്തെ === കുറുക്കുവഴി === ലൈനിന് മുമ്പുള്ള വാചകം</string>
+    <string name="text_expander_error_empty_shortcut">ലൈൻ%d: കുറുക്കുവഴി കാണുന്നില്ല</string>
+    <string name="text_expander_error_space">ലൈൻ%1$d: \"%2$s\" എന്നതിൽ സ്‌പെയ്‌സുകളൊന്നും അനുവദനീയമല്ല</string>
+    <string name="text_expander_error_empty_text">ലൈൻ%1$d: \"%2$s\" എന്നതിന് വാചകമില്ല</string>
+    <string name="text_expander_error_duplicate">ലൈൻ%1$d: \"%2$s\" രണ്ടുതവണ ദൃശ്യമാകുന്നു</string>
+    <string name="text_expander_error_regex">ലൈൻ%1$d: അസാധുവായ റീജക്സ് \"%2$s\"</string>
+    <string name="text_expander_discard_title">നിങ്ങളുടെ മാറ്റങ്ങൾ തള്ളിക്കളയണോ?</string>
+    <string name="text_expander_discard">നിരസിക്കുക</string>
 </resources>

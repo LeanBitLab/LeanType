@@ -1796,4 +1796,32 @@
     <string name="restart_ime_dialog_title">Επαναφόρτωση διαδικασίας</string>
     <string name="restart_ime_dialog_message">Αυτό θα τερματίσει τη διαδικασία του πληκτρολογίου και θα επανεκκινήσει τις Ρυθμίσεις. Όλα τα μοντέλα, οι προσθήκες και οι υπηρεσίες παρασκηνίου θα επαναφορτωθούν καθαρά.</string>
     <string name="restart_ime_confirm">Κάντε επανεκκίνηση τώρα</string>
+    <string name="text_expander_all_as_text">Επεξεργαστείτε όλα ως κείμενο</string>
+    <string name="text_expander_all_title">Όλες οι συντομεύσεις κειμένου</string>
+    <string name="text_expander_all_hint">Κάθε συντόμευση ξεκινά με μια γραμμή === συντόμευση ===, ακολουθούμενη από το κείμενό της. Η αποθήκευση ισχύει ακριβώς αυτό το κείμενο: νέα μπλοκ προστίθενται, τροποποιούνται ενημερώνονται, αφαιρούνται διαγράφονται.</string>
+    <string name="text_expander_copy_all">Αντιγράψτε όλα</string>
+    <string name="text_expander_paste_all">Επικόλληση όλων</string>
+    <string name="text_expander_share">Μερίδιο</string>
+    <string name="text_expander_save_file">Αποθήκευση ως αρχείο</string>
+    <string name="text_expander_load_file">Φόρτωση από αρχείο</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Δεν ήταν δυνατή η ανάγνωση ή η εγγραφή του αρχείου</string>
+    <string name="text_expander_restore_previous">Επαναφορά προηγούμενου</string>
+    <string name="text_expander_restore_previous_confirm">Επαναφορά των συντομεύσεων όπως ήταν πριν από την τελευταία αποθήκευση; Η τρέχουσα κατάσταση διατηρείται, ώστε να μπορείτε να επιστρέψετε.</string>
+    <string name="text_expander_copied">Αντιγράφηκε</string>
+    <string name="text_expander_clipboard_empty">Το πρόχειρο είναι κενό</string>
+    <string name="text_expander_no_changes">Καμία αλλαγή</string>
+    <string name="text_expander_saved">Αποθηκεύτηκε</string>
+    <string name="text_expander_save_question">Αποθήκευση αλλαγών;</string>
+    <string name="text_expander_changes">%1$dνέο,%2$dάλλαξε,%3$dδιαγράφηκε</string>
+    <string name="text_expander_changes_deleted">Διαγράφηκε:%s</string>
+    <string name="text_expander_errors_title">Διορθώστε</string>
+    <string name="text_expander_error_text_before">Γραμμή%d: κείμενο πριν από την πρώτη === συντόμευση === γραμμή</string>
+    <string name="text_expander_error_empty_shortcut">Γραμμή%d: λείπει η συντόμευση</string>
+    <string name="text_expander_error_space">Γραμμή%1$d: δεν επιτρέπονται κενά στο \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Γραμμή%1$d: δεν υπάρχει κείμενο για \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Γραμμή%1$d: Το \"%2$s\" εμφανίζεται δύο φορές</string>
+    <string name="text_expander_error_regex">Γραμμή%1$d: μη έγκυρο regex \"%2$s\"</string>
+    <string name="text_expander_discard_title">Απόρριψη των αλλαγών σας;</string>
+    <string name="text_expander_discard">Απορρίπτω</string>
 </resources>

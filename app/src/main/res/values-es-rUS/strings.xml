@@ -1762,4 +1762,32 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="restart_ime_dialog_title">recarga de proceso</string>
     <string name="restart_ime_dialog_message">Esto finalizará el proceso del teclado y reiniciará la Configuración. Todos los modelos, complementos y servicios en segundo plano se recargarán limpiamente.</string>
     <string name="restart_ime_confirm">Reiniciar ahora</string>
+    <string name="text_expander_all_as_text">Editar todo como texto</string>
+    <string name="text_expander_all_title">Todos los atajos de texto</string>
+    <string name="text_expander_all_hint">Cada atajo comienza con una línea === atajo ===, seguida de su texto. Al guardar se aplica exactamente este texto: se agregan nuevos bloques, se actualizan los modificados y se eliminan los eliminados.</string>
+    <string name="text_expander_copy_all">Copiar todo</string>
+    <string name="text_expander_paste_all">Pegar todo</string>
+    <string name="text_expander_share">Compartir</string>
+    <string name="text_expander_save_file">Guardar como archivo</string>
+    <string name="text_expander_load_file">Cargar desde archivo</string>
+    <string name="text_expander_file_name">texto_atajos.txt</string>
+    <string name="text_expander_file_error">No se pudo leer ni escribir el archivo</string>
+    <string name="text_expander_restore_previous">Restaurar anterior</string>
+    <string name="text_expander_restore_previous_confirm">¿Restaurar los atajos como estaban antes del último guardado? El estado actual se mantiene, por lo que puede volver atrás.</string>
+    <string name="text_expander_copied">copiado</string>
+    <string name="text_expander_clipboard_empty">El portapapeles está vacío.</string>
+    <string name="text_expander_no_changes">Sin cambios</string>
+    <string name="text_expander_saved">Guardado</string>
+    <string name="text_expander_save_question">¿Guardar cambios?</string>
+    <string name="text_expander_changes">%1$dnuevo,%2$dcambiado,%3$deliminado</string>
+    <string name="text_expander_changes_deleted">Eliminado:%s</string>
+    <string name="text_expander_errors_title">Por favor corrija</string>
+    <string name="text_expander_error_text_before">Línea%d: texto antes de la primera === acceso directo === línea</string>
+    <string name="text_expander_error_empty_shortcut">Línea%d: falta el acceso directo</string>
+    <string name="text_expander_error_space">Línea%1$d: no se permiten espacios en \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Línea%1$d: sin texto para \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Línea%1$d: \"%2$s\" aparece dos veces</string>
+    <string name="text_expander_error_regex">Línea%1$d: expresión regular no válida \"%2$s\"</string>
+    <string name="text_expander_discard_title">¿Descartar tus cambios?</string>
+    <string name="text_expander_discard">Desechar</string>
 </resources>

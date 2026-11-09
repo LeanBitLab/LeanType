@@ -1730,4 +1730,32 @@
     <string name="restart_ime_dialog_title">Перазагрузка працэсу</string>
     <string name="restart_ime_dialog_message">Гэта спыніць працэс клавіятуры і перазапусціць Налады. Усе мадэлі, плагіны і фонавыя службы будуць чыста перазагружаны.</string>
     <string name="restart_ime_confirm">Перазапусціце зараз</string>
+    <string name="text_expander_all_as_text">Рэдагаваць усё як тэкст</string>
+    <string name="text_expander_all_title">Усе тэкставыя цэтлікі</string>
+    <string name="text_expander_all_hint">Кожны ярлык пачынаецца з радка === ярлык ===, за якім ідзе тэкст. Захаванне тычыцца менавіта гэтага тэксту: новыя блокі дадаюцца, змененыя абнаўляюцца, выдаленыя выдаляюцца.</string>
+    <string name="text_expander_copy_all">Скапіраваць усё</string>
+    <string name="text_expander_paste_all">Уставіць усё</string>
+    <string name="text_expander_share">падзяліцца</string>
+    <string name="text_expander_save_file">Захаваць як файл</string>
+    <string name="text_expander_load_file">Загрузіць з файла</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Немагчыма прачытаць або запісаць файл</string>
+    <string name="text_expander_restore_previous">Аднавіць папярэдняе</string>
+    <string name="text_expander_restore_previous_confirm">Аднавіць цэтлікі, як яны былі да апошняга захавання? Бягучы стан захоўваецца, так што вы можаце пераключыцца назад.</string>
+    <string name="text_expander_copied">Скапіравана</string>
+    <string name="text_expander_clipboard_empty">Буфер абмену пусты</string>
+    <string name="text_expander_no_changes">Без змен</string>
+    <string name="text_expander_saved">Захавана</string>
+    <string name="text_expander_save_question">Захаваць змены?</string>
+    <string name="text_expander_changes">%1$dновых,%2$dзмененых,%3$dвыдаленых</string>
+    <string name="text_expander_changes_deleted">Выдалена:%s</string>
+    <string name="text_expander_errors_title">Калі ласка, папраўце</string>
+    <string name="text_expander_error_text_before">Радок%d: тэкст перад першым === цэтлікам === радком</string>
+    <string name="text_expander_error_empty_shortcut">Радок%d: адсутнічае ярлык</string>
+    <string name="text_expander_error_space">Радок%1$d: у \"%2$s\" не дапускаюцца прабелы</string>
+    <string name="text_expander_error_empty_text">Радок%1$d: няма тэксту для \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Радок%1$d: \"%2$s\" з\'яўляецца двойчы</string>
+    <string name="text_expander_error_regex">Радок%1$d: няправільны рэгулярны выраз \"%2$s\"</string>
+    <string name="text_expander_discard_title">Адхіліць змены?</string>
+    <string name="text_expander_discard">Адкідаць</string>
 </resources>

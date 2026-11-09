@@ -1693,4 +1693,32 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="restart_ime_dialog_title">Proses memuat ulang</string>
     <string name="restart_ime_dialog_message">Ini akan menghentikan proses keyboard dan meluncurkan kembali Pengaturan. Semua model, plugin, dan layanan latar belakang akan dimuat ulang dengan rapi.</string>
     <string name="restart_ime_confirm">Mulai ulang sekarang</string>
+    <string name="text_expander_all_as_text">Edit semua sebagai teks</string>
+    <string name="text_expander_all_title">Semua pintasan teks</string>
+    <string name="text_expander_all_hint">Setiap pintasan dimulai dengan baris === pintasan ===, diikuti dengan teksnya. Menyimpan berlaku persis dengan teks ini: blok baru ditambahkan, blok yang diubah diperbarui, blok yang dihapus dihapus.</string>
+    <string name="text_expander_copy_all">Salin semua</string>
+    <string name="text_expander_paste_all">Tempel semua</string>
+    <string name="text_expander_share">Membagikan</string>
+    <string name="text_expander_save_file">Simpan sebagai file</string>
+    <string name="text_expander_load_file">Muat dari file</string>
+    <string name="text_expander_file_name">teks_shortcuts.txt</string>
+    <string name="text_expander_file_error">Tidak dapat membaca atau menulis file</string>
+    <string name="text_expander_restore_previous">Pulihkan sebelumnya</string>
+    <string name="text_expander_restore_previous_confirm">Kembalikan pintasan seperti sebelum penyimpanan terakhir? Status saat ini dipertahankan, sehingga Anda dapat beralih kembali.</string>
+    <string name="text_expander_copied">Disalin</string>
+    <string name="text_expander_clipboard_empty">Papan klip kosong</string>
+    <string name="text_expander_no_changes">Tidak ada perubahan</string>
+    <string name="text_expander_saved">Disimpan</string>
+    <string name="text_expander_save_question">Simpan perubahan?</string>
+    <string name="text_expander_changes">%1$dbaru,%2$ddiubah,%3$ddihapus</string>
+    <string name="text_expander_changes_deleted">Dihapus:%s</string>
+    <string name="text_expander_errors_title">Mohon dikoreksi</string>
+    <string name="text_expander_error_text_before">Baris%d: teks sebelum baris === shortcut === pertama</string>
+    <string name="text_expander_error_empty_shortcut">Baris%d: pintasan tidak ada</string>
+    <string name="text_expander_error_space">Baris%1$d: tidak boleh ada spasi di \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Baris%1$d: tidak ada teks untuk \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">Baris%1$d: \"%2$s\" muncul dua kali</string>
+    <string name="text_expander_error_regex">Baris%1$d: regex tidak valid \"%2$s\"</string>
+    <string name="text_expander_discard_title">Hapus perubahan Anda?</string>
+    <string name="text_expander_discard">Membuang</string>
 </resources>

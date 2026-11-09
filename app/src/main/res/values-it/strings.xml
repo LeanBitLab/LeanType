@@ -1762,4 +1762,32 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="restart_ime_dialog_title">Ricaricamento del processo</string>
     <string name="restart_ime_dialog_message">Ciò terminerà il processo della tastiera e riavvierà le Impostazioni. Tutti i modelli, i plugin e i servizi in background verranno ricaricati in modo pulito.</string>
     <string name="restart_ime_confirm">Ricomincia adesso</string>
+    <string name="text_expander_all_as_text">Modifica tutto come testo</string>
+    <string name="text_expander_all_title">Tutte le scorciatoie di testo</string>
+    <string name="text_expander_all_hint">Ogni scorciatoia inizia con una riga === scorciatoia ===, seguita dal suo testo. Al salvataggio vale esattamente questo testo: i nuovi blocchi vengono aggiunti, quelli modificati aggiornati, quelli rimossi cancellati.</string>
+    <string name="text_expander_copy_all">Copia tutto</string>
+    <string name="text_expander_paste_all">Incolla tutto</string>
+    <string name="text_expander_share">Condividere</string>
+    <string name="text_expander_save_file">Salva come file</string>
+    <string name="text_expander_load_file">Carica da file</string>
+    <string name="text_expander_file_name">testo_scorciatoie.txt</string>
+    <string name="text_expander_file_error">Impossibile leggere o scrivere il file</string>
+    <string name="text_expander_restore_previous">Ripristina precedente</string>
+    <string name="text_expander_restore_previous_confirm">Ripristinare le scorciatoie com\'erano prima dell\'ultimo salvataggio? Lo stato corrente viene mantenuto, quindi puoi tornare indietro.</string>
+    <string name="text_expander_copied">Copiato</string>
+    <string name="text_expander_clipboard_empty">Gli appunti sono vuoti</string>
+    <string name="text_expander_no_changes">Nessun cambiamento</string>
+    <string name="text_expander_saved">Salvato</string>
+    <string name="text_expander_save_question">Vuoi salvare le modifiche?</string>
+    <string name="text_expander_changes">%1$dnuovo,%2$dmodificato,%3$deliminato</string>
+    <string name="text_expander_changes_deleted">Eliminato:%s</string>
+    <string name="text_expander_errors_title">Per favore correggi</string>
+    <string name="text_expander_error_text_before">Riga%d: testo prima della prima === scorciatoia === riga</string>
+    <string name="text_expander_error_empty_shortcut">Riga%d: scorciatoia mancante</string>
+    <string name="text_expander_error_space">Riga%1$d: non sono ammessi spazi in \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Riga%1$d: nessun testo per \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">La riga%1$d: \"%2$s\" appare due volte</string>
+    <string name="text_expander_error_regex">Riga%1$d: espressione regolare non valida \"%2$s\"</string>
+    <string name="text_expander_discard_title">Annullare le modifiche?</string>
+    <string name="text_expander_discard">Scartare</string>
 </resources>

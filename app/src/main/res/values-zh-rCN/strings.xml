@@ -1696,4 +1696,32 @@
     <string name="restart_ime_dialog_title">进程重新加载</string>
     <string name="restart_ime_dialog_message">这将终止键盘进程并重新启动“设置”。所有模型、插件和后台服务都将被干净地重新加载。</string>
     <string name="restart_ime_confirm">立即重新启动</string>
+    <string name="text_expander_all_as_text">全部编辑为文本</string>
+    <string name="text_expander_all_title">所有文本快捷方式</string>
+    <string name="text_expander_all_hint">每个快捷方式都以一行 === 快捷方式 === 开头，后跟其文本。保存完全应用此文本：添加新块，更新更改的块，删除删除的块。</string>
+    <string name="text_expander_copy_all">全部复制</string>
+    <string name="text_expander_paste_all">全部粘贴</string>
+    <string name="text_expander_share">分享</string>
+    <string name="text_expander_save_file">另存为文件</string>
+    <string name="text_expander_load_file">从文件加载</string>
+    <string name="text_expander_file_name">文本快捷方式.txt</string>
+    <string name="text_expander_file_error">无法读取或写入文件</string>
+    <string name="text_expander_restore_previous">恢复以前的</string>
+    <string name="text_expander_restore_previous_confirm">将快捷方式恢复为上次保存之前的状态？当前状态将被保留，因此您可以切换回来。</string>
+    <string name="text_expander_copied">已复制</string>
+    <string name="text_expander_clipboard_empty">剪贴板为空</string>
+    <string name="text_expander_no_changes">没有变化</string>
+    <string name="text_expander_saved">已保存</string>
+    <string name="text_expander_save_question">保存更改吗？</string>
+    <string name="text_expander_changes">%1$d新，%2$d已更改，%3$d已删除</string>
+    <string name="text_expander_changes_deleted">已删除：%s</string>
+    <string name="text_expander_errors_title">请更正</string>
+    <string name="text_expander_error_text_before">第%d行：第一行 === 快捷方式 === 行之前的文本</string>
+    <string name="text_expander_error_empty_shortcut">第%d行：缺少快捷方式</string>
+    <string name="text_expander_error_space">第%1$d行：\"%2$s\" 中不允许有空格</string>
+    <string name="text_expander_error_empty_text">第%1$d行：\"%2$s\" 没有文本</string>
+    <string name="text_expander_error_duplicate">第%1$d行：\"%2$s\" 出现两次</string>
+    <string name="text_expander_error_regex">第%1$d行：无效的正则表达式 \"%2$s\"</string>
+    <string name="text_expander_discard_title">放弃您的更改吗？</string>
+    <string name="text_expander_discard">丢弃</string>
 </resources>

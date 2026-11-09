@@ -1751,4 +1751,32 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="restart_ime_dialog_title">Rechargement du processus</string>
     <string name="restart_ime_dialog_message">Cela mettra fin au processus de clavier et relancera les paramètres. Tous les modèles, plugins et services d’arrière-plan seront proprement rechargés.</string>
     <string name="restart_ime_confirm">Redémarrez maintenant</string>
+    <string name="text_expander_all_as_text">Modifier tout sous forme de texte</string>
+    <string name="text_expander_all_title">Tous les raccourcis texte</string>
+    <string name="text_expander_all_hint">Chaque raccourci commence par une ligne === raccourci ===, suivie de son texte. La sauvegarde applique exactement ce texte : les nouveaux blocs sont ajoutés, ceux modifiés sont mis à jour, ceux supprimés sont supprimés.</string>
+    <string name="text_expander_copy_all">Copier tout</string>
+    <string name="text_expander_paste_all">Coller tout</string>
+    <string name="text_expander_share">Partager</string>
+    <string name="text_expander_save_file">Enregistrer sous fichier</string>
+    <string name="text_expander_load_file">Charger à partir d\'un fichier</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Impossible de lire ou d\'écrire le fichier</string>
+    <string name="text_expander_restore_previous">Restaurer le précédent</string>
+    <string name="text_expander_restore_previous_confirm">Restaurer les raccourcis tels qu\'ils étaient avant la dernière sauvegarde ? L\'état actuel est conservé, vous pouvez donc revenir en arrière.</string>
+    <string name="text_expander_copied">Copié</string>
+    <string name="text_expander_clipboard_empty">Le presse-papiers est vide</string>
+    <string name="text_expander_no_changes">Aucun changement</string>
+    <string name="text_expander_saved">Enregistré</string>
+    <string name="text_expander_save_question">Enregistrer les modifications ?</string>
+    <string name="text_expander_changes">%1$dnouveau,%2$dmodifié,%3$dsupprimé</string>
+    <string name="text_expander_changes_deleted">Supprimé :%s</string>
+    <string name="text_expander_errors_title">Veuillez corriger</string>
+    <string name="text_expander_error_text_before">Ligne%d: texte avant la première === raccourci === ligne</string>
+    <string name="text_expander_error_empty_shortcut">Ligne%d: raccourci manquant</string>
+    <string name="text_expander_error_space">Ligne%1$d: aucun espace autorisé dans \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">Ligne%1$d: pas de texte pour \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">La ligne%1$d: \"%2$s\" apparaît deux fois</string>
+    <string name="text_expander_error_regex">Ligne%1$d: regex invalide \"%2$s\"</string>
+    <string name="text_expander_discard_title">Supprimer vos modifications ?</string>
+    <string name="text_expander_discard">Jeter</string>
 </resources>

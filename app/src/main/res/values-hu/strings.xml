@@ -1693,4 +1693,32 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="restart_ime_dialog_title">Folyamat újratöltése</string>
     <string name="restart_ime_dialog_message">Ezzel leállítja a billentyűzet folyamatát, és újraindítja a Beállításokat. Minden modell, beépülő modul és háttérszolgáltatás tisztán újratöltve lesz.</string>
     <string name="restart_ime_confirm">Indítsa újra most</string>
+    <string name="text_expander_all_as_text">Az összes szerkesztése szövegként</string>
+    <string name="text_expander_all_title">Minden szöveges billentyűparancs</string>
+    <string name="text_expander_all_hint">Minden parancsikon egy === parancsikon === sorral kezdődik, amelyet a szöveg követ. A mentés pontosan ezt a szöveget alkalmazza: új blokkok kerülnek hozzáadásra, megváltoztak frissítésre, eltávolítottak törlése.</string>
+    <string name="text_expander_copy_all">Az összes másolása</string>
+    <string name="text_expander_paste_all">Az összes beillesztése</string>
+    <string name="text_expander_share">Részesedés</string>
+    <string name="text_expander_save_file">Mentés fájlként</string>
+    <string name="text_expander_load_file">Betöltés fájlból</string>
+    <string name="text_expander_file_name">text_shortcuts.txt</string>
+    <string name="text_expander_file_error">Nem lehetett olvasni vagy írni a fájlt</string>
+    <string name="text_expander_restore_previous">Az előző visszaállítása</string>
+    <string name="text_expander_restore_previous_confirm">Visszaállítja a parancsikonokat úgy, ahogy az utolsó mentés előtt voltak? A jelenlegi állapot megmarad, így vissza lehet váltani.</string>
+    <string name="text_expander_copied">Másolva</string>
+    <string name="text_expander_clipboard_empty">A vágólap üres</string>
+    <string name="text_expander_no_changes">Nincs változás</string>
+    <string name="text_expander_saved">Mentve</string>
+    <string name="text_expander_save_question">Menti a változtatásokat?</string>
+    <string name="text_expander_changes">%1$dúj,%2$dmegváltozott,%3$dtörölve</string>
+    <string name="text_expander_changes_deleted">Törölve:%s</string>
+    <string name="text_expander_errors_title">Kérlek javítsd ki</string>
+    <string name="text_expander_error_text_before">%dsor: szöveg az első === parancsikon === sor előtt</string>
+    <string name="text_expander_error_empty_shortcut">%d. sor: hiányzik a parancsikon</string>
+    <string name="text_expander_error_space">%1$d. sor: nem engedélyezettek szóközök a következőben: \"%2$s\"</string>
+    <string name="text_expander_error_empty_text">%1$d. sor: nincs szöveg ehhez: \"%2$s\"</string>
+    <string name="text_expander_error_duplicate">%1$dsor: \"%2$s\" kétszer jelenik meg</string>
+    <string name="text_expander_error_regex">%1$d. sor: érvénytelen reguláris kifejezés \"%2$s\"</string>
+    <string name="text_expander_discard_title">Elveti a módosításokat?</string>
+    <string name="text_expander_discard">Eldobni</string>
 </resources>
