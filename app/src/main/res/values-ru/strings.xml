@@ -1726,8 +1726,8 @@
     <string name="restart_ime_dialog_title">Перезагрузка процесса</string>
     <string name="restart_ime_dialog_message">Это завершит процесс клавиатуры и перезапустит Настройки. Все модели, плагины и фоновые службы будут перезагружены.</string>
     <string name="restart_ime_confirm">Перезагрузить сейчас</string>
-    <string name="text_expander_all_as_text">Редактировать все как текст</string>
-    <string name="text_expander_all_title">Все текстовые ярлыки</string>
+    <string name="text_expander_all_as_text">Массовый редактор</string>
+    <string name="text_expander_all_title">Массовый редактор</string>
     <string name="text_expander_shortcuts_count">%d сокращений</string>
     <string name="text_expander_all_hint">Формат: === ярлык === затем текст расширения</string>
     <string name="text_expander_save_file">Сохранить как файл</string>
@@ -1754,5 +1754,5 @@
     <string name="text_expander_tools_category">Управление и инструменты</string>
     <string name="text_expander_guide_title">Онлайн-руководство и справочник по синтаксису</string>
     <string name="text_expander_guide_summary">Полное руководство по динамическим заполнителям, шаблонам регулярных выражений и модификаторам</string>
-    <string name="text_expander_all_as_text_summary">Массовое редактирование, совместное использование, резервное копирование или импорт ярлыков в виде обычного текста.</string>
+    <string name="text_expander_all_as_text_summary">Редактирование, экспорт и импорт ярлыков в виде обычного текста</string>
 </resources>

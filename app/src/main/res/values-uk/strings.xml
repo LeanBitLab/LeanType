@@ -1666,8 +1666,8 @@
     <string name="restart_ime_dialog_title">Перезавантаження процесу</string>
     <string name="restart_ime_dialog_message">Це завершить процес клавіатури та перезапустить налаштування. Усі моделі, плагіни та фонові служби буде чисто перезавантажено.</string>
     <string name="restart_ime_confirm">Перезапустіть зараз</string>
-    <string name="text_expander_all_as_text">Редагувати все як текст</string>
-    <string name="text_expander_all_title">Усі текстові ярлики</string>
+    <string name="text_expander_all_as_text">Масовий редактор</string>
+    <string name="text_expander_all_title">Масовий редактор</string>
     <string name="text_expander_shortcuts_count">%d скорочень</string>
     <string name="text_expander_all_hint">Формат: === ярлык === потім текст розширення</string>
     <string name="text_expander_save_file">Зберегти як файл</string>
@@ -1694,5 +1694,5 @@
     <string name="text_expander_tools_category">Керування та інструменти</string>
     <string name="text_expander_guide_title">Онлайн-довідник і довідник із синтаксису</string>
     <string name="text_expander_guide_summary">Повний посібник для динамічних заповнювачів, шаблонів регулярних виразів і модифікаторів</string>
-    <string name="text_expander_all_as_text_summary">Масове редагування, обмін, створення резервних копій або імпорт ярликів у вигляді звичайного тексту</string>
+    <string name="text_expander_all_as_text_summary">Редагування, експорт та імпорт ярликів у вигляді простого тексту</string>
 </resources>

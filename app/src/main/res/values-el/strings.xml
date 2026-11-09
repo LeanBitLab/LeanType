@@ -1767,8 +1767,8 @@
     <string name="restart_ime_dialog_title">Επαναφόρτωση διαδικασίας</string>
     <string name="restart_ime_dialog_message">Αυτό θα τερματίσει τη διαδικασία του πληκτρολογίου και θα επανεκκινήσει τις Ρυθμίσεις. Όλα τα μοντέλα, οι προσθήκες και οι υπηρεσίες παρασκηνίου θα επαναφορτωθούν καθαρά.</string>
     <string name="restart_ime_confirm">Κάντε επανεκκίνηση τώρα</string>
-    <string name="text_expander_all_as_text">Επεξεργαστείτε όλα ως κείμενο</string>
-    <string name="text_expander_all_title">Όλες οι συντομεύσεις κειμένου</string>
+    <string name="text_expander_all_as_text">Μαζικός επεξεργαστής</string>
+    <string name="text_expander_all_title">Μαζικός επεξεργαστής</string>
     <string name="text_expander_shortcuts_count">%d συντομεύσεις</string>
     <string name="text_expander_all_hint">Μορφή: === συντόμευση === ακολουθούμενη από το κείμενο επέκτασης</string>
     <string name="text_expander_save_file">Αποθήκευση ως αρχείο</string>
@@ -1795,5 +1795,5 @@
     <string name="text_expander_tools_category">Διαχείριση &amp; Εργαλεία</string>
     <string name="text_expander_guide_title">Διαδικτυακός οδηγός και αναφορά σύνταξης</string>
     <string name="text_expander_guide_summary">Πλήρης οδηγός για δυναμικά σύμβολα κράτησης θέσης, regex μοτίβα και τροποποιητές</string>
-    <string name="text_expander_all_as_text_summary">Μαζική επεξεργασία, κοινή χρήση, δημιουργία αντιγράφων ασφαλείας ή εισαγωγή συντομεύσεων σε απλό κείμενο</string>
+    <string name="text_expander_all_as_text_summary">Επεξεργασία, εξαγωγή και εισαγωγή συντομεύσεων σε απλό κείμενο</string>
 </resources>

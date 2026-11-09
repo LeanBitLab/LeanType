@@ -1767,8 +1767,8 @@
     <string name="restart_ime_dialog_title">റീലോഡ് പ്രോസസ്സ് ചെയ്യുക</string>
     <string name="restart_ime_dialog_message">ഇത് കീബോർഡ് പ്രോസസ്സ് അവസാനിപ്പിക്കുകയും ക്രമീകരണങ്ങൾ വീണ്ടും സമാരംഭിക്കുകയും ചെയ്യും. എല്ലാ മോഡലുകളും പ്ലഗിനുകളും പശ്ചാത്തല സേവനങ്ങളും വൃത്തിയായി റീലോഡ് ചെയ്യും.</string>
     <string name="restart_ime_confirm">ഇപ്പോൾ പുനരാരംഭിക്കുക</string>
-    <string name="text_expander_all_as_text">എല്ലാം ടെക്‌സ്‌റ്റായി എഡിറ്റ് ചെയ്യുക</string>
-    <string name="text_expander_all_title">എല്ലാ ടെക്സ്റ്റ് കുറുക്കുവഴികളും</string>
+    <string name="text_expander_all_as_text">ബൾക്ക് എഡിറ്റർ</string>
+    <string name="text_expander_all_title">ബൾക്ക് എഡിറ്റർ</string>
     <string name="text_expander_shortcuts_count">%d കുറുക്കുവഴികൾ</string>
     <string name="text_expander_all_hint">ഫോർമാറ്റ്: === കുറുക്കുവഴി === തുടർന്ന് വിപുലീകരണ വാചകം</string>
     <string name="text_expander_save_file">ഫയലായി സേവ് ചെയ്യുക</string>
@@ -1795,5 +1795,5 @@
     <string name="text_expander_tools_category">മാനേജ്മെൻ്റ് &amp; ടൂളുകൾ</string>
     <string name="text_expander_guide_title">ഓൺലൈൻ ഗൈഡും വാക്യഘടനയും</string>
     <string name="text_expander_guide_summary">ഡൈനാമിക് പ്ലെയ്‌സ്‌ഹോൾഡറുകൾ, റീജക്‌സ് പാറ്റേണുകൾ, മോഡിഫയറുകൾ എന്നിവയ്‌ക്കായുള്ള പൂർണ്ണ ഗൈഡ്</string>
-    <string name="text_expander_all_as_text_summary">പ്ലെയിൻ ടെക്സ്റ്റിൽ കുറുക്കുവഴികൾ ബൾക്ക് എഡിറ്റ് ചെയ്യുക, പങ്കിടുക, ബാക്കപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ഇറക്കുമതി ചെയ്യുക</string>
+    <string name="text_expander_all_as_text_summary">പ്ലെയിൻ ടെക്സ്റ്റിൽ കുറുക്കുവഴികൾ എഡിറ്റ് ചെയ്യുക, കയറ്റുമതി ചെയ്യുക, ഇറക്കുമതി ചെയ്യുക</string>
 </resources>

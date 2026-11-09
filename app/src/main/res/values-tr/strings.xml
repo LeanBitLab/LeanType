@@ -1693,8 +1693,8 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="restart_ime_dialog_title">İşlem yeniden yükleme</string>
     <string name="restart_ime_dialog_message">Bu, klavye işlemini sonlandıracak ve Ayarlar\'ı yeniden başlatacaktır. Tüm modeller, eklentiler ve arka plan hizmetleri temiz bir şekilde yeniden yüklenecektir.</string>
     <string name="restart_ime_confirm">Şimdi yeniden başlat</string>
-    <string name="text_expander_all_as_text">Tümünü metin olarak düzenle</string>
-    <string name="text_expander_all_title">Tüm metin kısayolları</string>
+    <string name="text_expander_all_as_text">Toplu düzenleyici</string>
+    <string name="text_expander_all_title">Toplu düzenleyici</string>
     <string name="text_expander_shortcuts_count">%d kısayol</string>
     <string name="text_expander_all_hint">Biçim: === kısayol === ardından genişletme metni</string>
     <string name="text_expander_save_file">Dosya olarak kaydet</string>
@@ -1721,5 +1721,5 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_tools_category">Yönetim ve Araçlar</string>
     <string name="text_expander_guide_title">Çevrimiçi Kılavuz ve Sözdizimi Referansı</string>
     <string name="text_expander_guide_summary">Dinamik yer tutucular, normal ifade kalıpları ve değiştiriciler için eksiksiz kılavuz</string>
-    <string name="text_expander_all_as_text_summary">Kısayolları düz metin olarak toplu olarak düzenleyin, paylaşın, yedekleyin veya içe aktarın</string>
+    <string name="text_expander_all_as_text_summary">Kısayolları düz metin olarak düzenleyin, dışa aktarın ve içe aktarın</string>
 </resources>

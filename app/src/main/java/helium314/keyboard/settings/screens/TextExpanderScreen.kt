@@ -221,7 +221,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     Preference(
                         name = stringResource(R.string.text_expander_all_as_text),
                         description = stringResource(R.string.text_expander_all_as_text_summary),
-                        icon = R.drawable.ic_open_in_full,
+                        icon = R.drawable.ic_text_edit,
                         onClick = { showTextEditor = true }
                     )
 

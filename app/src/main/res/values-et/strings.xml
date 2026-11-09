@@ -1701,8 +1701,8 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="restart_ime_dialog_title">Protsessi uuesti laadimine</string>
     <string name="restart_ime_dialog_message">See lõpetab klaviatuuri protsessi ja taaskäivitab seaded. Kõik mudelid, pistikprogrammid ja taustteenused laaditakse puhtalt uuesti.</string>
     <string name="restart_ime_confirm">Taaskäivitage kohe</string>
-    <string name="text_expander_all_as_text">Muutke kõike tekstina</string>
-    <string name="text_expander_all_title">Kõik teksti otseteed</string>
+    <string name="text_expander_all_as_text">Hulgiredaktor</string>
+    <string name="text_expander_all_title">Hulgiredaktor</string>
     <string name="text_expander_shortcuts_count">%d otseteed</string>
     <string name="text_expander_all_hint">Vorming: === otsetee === millele järgneb laienduse tekst</string>
     <string name="text_expander_save_file">Salvesta failina</string>
@@ -1729,5 +1729,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_tools_category">Juhtimine ja tööriistad</string>
     <string name="text_expander_guide_title">Veebijuhend ja süntaksiviide</string>
     <string name="text_expander_guide_summary">Täielik juhend dünaamiliste kohahoidjate, regex-mustrite ja modifikaatorite jaoks</string>
-    <string name="text_expander_all_as_text_summary">Otseteed lihttekstina hulgimuutmine, jagamine, varundamine või importimine</string>
+    <string name="text_expander_all_as_text_summary">Otseteede muutmine, eksportimine ja importimine lihttekstina</string>
 </resources>

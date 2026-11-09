@@ -1733,8 +1733,8 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="restart_ime_dialog_title">recarga de proceso</string>
     <string name="restart_ime_dialog_message">Esto finalizará el proceso del teclado y reiniciará la Configuración. Todos los modelos, complementos y servicios en segundo plano se recargarán limpiamente.</string>
     <string name="restart_ime_confirm">Reiniciar ahora</string>
-    <string name="text_expander_all_as_text">Editar todo como texto</string>
-    <string name="text_expander_all_title">Todos los atajos de texto</string>
+    <string name="text_expander_all_as_text">Editor masivo</string>
+    <string name="text_expander_all_title">Editor masivo</string>
     <string name="text_expander_shortcuts_count">%d atajos</string>
     <string name="text_expander_all_hint">Formato: === atajo === seguido del texto de expansión</string>
     <string name="text_expander_save_file">Guardar como archivo</string>
@@ -1761,5 +1761,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_tools_category">Gestión y herramientas</string>
     <string name="text_expander_guide_title">Guía en línea y referencia de sintaxis</string>
     <string name="text_expander_guide_summary">Guía completa para marcadores de posición dinámicos, patrones de expresiones regulares y modificadores</string>
-    <string name="text_expander_all_as_text_summary">Edite, comparta, haga copias de seguridad o importe accesos directos en masa en texto sin formato</string>
+    <string name="text_expander_all_as_text_summary">Editar, exportar e importar atajos en texto sin formato</string>
 </resources>

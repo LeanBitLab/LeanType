@@ -1672,8 +1672,8 @@
     <string name="restart_ime_dialog_title">תהליך טעינה מחדש</string>
     <string name="restart_ime_dialog_message">פעולה זו תסיים את תהליך המקלדת ותפעיל מחדש את ההגדרות. כל הדגמים, התוספים ושירותי הרקע ייטענו מחדש בצורה נקייה.</string>
     <string name="restart_ime_confirm">הפעל מחדש עכשיו</string>
-    <string name="text_expander_all_as_text">ערוך הכל כטקסט</string>
-    <string name="text_expander_all_title">כל קיצורי הטקסט</string>
+    <string name="text_expander_all_as_text">עורך קבוצתי</string>
+    <string name="text_expander_all_title">עורך קבוצתי</string>
     <string name="text_expander_shortcuts_count">%d קיצורי דרך</string>
     <string name="text_expander_all_hint">פורמט: === קיצור דרך === ולאחריו טקסט ההרחבה</string>
     <string name="text_expander_save_file">שמור כקובץ</string>
@@ -1700,5 +1700,5 @@
     <string name="text_expander_tools_category">ניהול וכלים</string>
     <string name="text_expander_guide_title">מדריך מקוון והתייחסות תחביר</string>
     <string name="text_expander_guide_summary">מדריך שלם למצייני מיקום דינמיים, דפוסי ביטויים רגילים ומשתנים</string>
-    <string name="text_expander_all_as_text_summary">ערוך, שיתוף, גיבוי או ייבוא ​​של קיצורי דרך בכמות גדולה בטקסט רגיל</string>
+    <string name="text_expander_all_as_text_summary">עריכה, ייצוא וייבוא קיצורי דרך בטקסט רגיל</string>
 </resources>

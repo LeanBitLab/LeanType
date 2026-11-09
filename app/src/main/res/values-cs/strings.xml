@@ -1666,8 +1666,8 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="restart_ime_dialog_title">Znovu načíst proces</string>
     <string name="restart_ime_dialog_message">Tím se ukončí proces klávesnice a znovu se spustí Nastavení. Všechny modely, pluginy a služby na pozadí budou čistě znovu načteny.</string>
     <string name="restart_ime_confirm">Restartujte nyní</string>
-    <string name="text_expander_all_as_text">Upravit vše jako text</string>
-    <string name="text_expander_all_title">Všechny textové zkratky</string>
+    <string name="text_expander_all_as_text">Hromadný editor</string>
+    <string name="text_expander_all_title">Hromadný editor</string>
     <string name="text_expander_shortcuts_count">%d zkratek</string>
     <string name="text_expander_all_hint">Formát: === zkratka === následovaná textem pro rozšíření</string>
     <string name="text_expander_save_file">Uložit jako soubor</string>
@@ -1694,5 +1694,5 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_tools_category">Správa a nástroje</string>
     <string name="text_expander_guide_title">Online průvodce a reference syntaxe</string>
     <string name="text_expander_guide_summary">Kompletní průvodce pro dynamické zástupné symboly, vzory regulárních výrazů a modifikátory</string>
-    <string name="text_expander_all_as_text_summary">Hromadné úpravy, sdílení, zálohování nebo import zástupců v prostém textu</string>
+    <string name="text_expander_all_as_text_summary">Úprava, export a import zkratek v prostém textu</string>
 </resources>

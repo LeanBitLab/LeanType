@@ -1693,8 +1693,8 @@
     <string name="restart_ime_dialog_title">प्रक्रिया पुनः लोड करें</string>
     <string name="restart_ime_dialog_message">इससे कीबोर्ड प्रक्रिया समाप्त हो जाएगी और सेटिंग्स पुनः लॉन्च हो जाएंगी। सभी मॉडल, प्लगइन्स और पृष्ठभूमि सेवाओं को साफ़-साफ़ पुनः लोड किया जाएगा।</string>
     <string name="restart_ime_confirm">अब पुनःचालू करें</string>
-    <string name="text_expander_all_as_text">सभी को पाठ के रूप में संपादित करें</string>
-    <string name="text_expander_all_title">सभी टेक्स्ट शॉर्टकट</string>
+    <string name="text_expander_all_as_text">बल्क संपादक</string>
+    <string name="text_expander_all_title">बल्क संपादक</string>
     <string name="text_expander_shortcuts_count">%d शॉर्टकट</string>
     <string name="text_expander_all_hint">प्रारूप: === शॉर्टकट === और उसके बाद विस्तार पाठ</string>
     <string name="text_expander_save_file">फ़ाइल के रूप में सहेजें</string>
@@ -1721,5 +1721,5 @@
     <string name="text_expander_tools_category">प्रबंधन टूल</string>
     <string name="text_expander_guide_title">ऑनलाइन गाइड एवं सिंटैक्स संदर्भ</string>
     <string name="text_expander_guide_summary">डायनामिक प्लेसहोल्डर्स, रेगेक्स पैटर्न और संशोधक के लिए संपूर्ण मार्गदर्शिका</string>
-    <string name="text_expander_all_as_text_summary">सादे पाठ में थोक संपादन, साझा, बैकअप या शॉर्टकट आयात करें</string>
+    <string name="text_expander_all_as_text_summary">सादे पाठ में शॉर्टकट संपादित, निर्यात और आयात करें</string>
 </resources>

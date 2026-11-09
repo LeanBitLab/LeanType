@@ -1708,8 +1708,8 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="restart_ime_dialog_title">Proces herladen</string>
     <string name="restart_ime_dialog_message">Hiermee wordt het toetsenbordproces beëindigd en wordt Instellingen opnieuw gestart. Alle modellen, plug-ins en achtergrondservices worden netjes opnieuw geladen.</string>
     <string name="restart_ime_confirm">Start nu opnieuw op</string>
-    <string name="text_expander_all_as_text">Bewerk alles als tekst</string>
-    <string name="text_expander_all_title">Alle tekstsnelkoppelingen</string>
+    <string name="text_expander_all_as_text">Bulk-editor</string>
+    <string name="text_expander_all_title">Bulk-editor</string>
     <string name="text_expander_shortcuts_count">%d snelkoppelingen</string>
     <string name="text_expander_all_hint">Formaat: === snelkoppeling === gevolgd door uitbreidingstekst</string>
     <string name="text_expander_save_file">Opslaan als bestand</string>
@@ -1736,5 +1736,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_tools_category">Beheer en hulpmiddelen</string>
     <string name="text_expander_guide_title">Onlinegids en syntaxisreferentie</string>
     <string name="text_expander_guide_summary">Volledige gids voor dynamische tijdelijke aanduidingen, regex-patronen en modifiers</string>
-    <string name="text_expander_all_as_text_summary">Snelkoppelingen in platte tekst in bulk bewerken, delen, back-uppen of importeren</string>
+    <string name="text_expander_all_as_text_summary">Snelkoppelingen in platte tekst bewerken, exporteren en importeren</string>
 </resources>

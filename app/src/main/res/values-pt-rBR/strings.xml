@@ -1671,8 +1671,8 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="restart_ime_dialog_title">Recarregamento de processo</string>
     <string name="restart_ime_dialog_message">Isso encerrará o processo do teclado e reiniciará as Configurações. Todos os modelos, plug-ins e serviços em segundo plano serão recarregados de forma limpa.</string>
     <string name="restart_ime_confirm">Reinicie agora</string>
-    <string name="text_expander_all_as_text">Editar tudo como texto</string>
-    <string name="text_expander_all_title">Todos os atalhos de texto</string>
+    <string name="text_expander_all_as_text">Editor em massa</string>
+    <string name="text_expander_all_title">Editor em massa</string>
     <string name="text_expander_shortcuts_count">%d atalhos</string>
     <string name="text_expander_all_hint">Formato: === atalho === seguido pelo texto de expansão</string>
     <string name="text_expander_save_file">Salvar como arquivo</string>
@@ -1699,5 +1699,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_tools_category">Gestão e Ferramentas</string>
     <string name="text_expander_guide_title">Guia on-line e referência de sintaxe</string>
     <string name="text_expander_guide_summary">Guia completo para espaços reservados dinâmicos, padrões regex e modificadores</string>
-    <string name="text_expander_all_as_text_summary">Edite, compartilhe, faça backup ou importe atalhos em massa em texto simples</string>
+    <string name="text_expander_all_as_text_summary">Editar, exportar e importar atalhos em texto simples</string>
 </resources>

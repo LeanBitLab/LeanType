@@ -1733,8 +1733,8 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="restart_ime_dialog_title">Ricaricamento del processo</string>
     <string name="restart_ime_dialog_message">Ciò terminerà il processo della tastiera e riavvierà le Impostazioni. Tutti i modelli, i plugin e i servizi in background verranno ricaricati in modo pulito.</string>
     <string name="restart_ime_confirm">Ricomincia adesso</string>
-    <string name="text_expander_all_as_text">Modifica tutto come testo</string>
-    <string name="text_expander_all_title">Tutte le scorciatoie di testo</string>
+    <string name="text_expander_all_as_text">Editor di massa</string>
+    <string name="text_expander_all_title">Editor di massa</string>
     <string name="text_expander_shortcuts_count">%d scorciatoie</string>
     <string name="text_expander_all_hint">Formato: === scorciatoie === seguito dal testo di espansione</string>
     <string name="text_expander_save_file">Salva come file</string>
@@ -1761,5 +1761,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_tools_category">Gestione e strumenti</string>
     <string name="text_expander_guide_title">Guida in linea e riferimento alla sintassi</string>
     <string name="text_expander_guide_summary">Guida completa per segnaposto dinamici, modelli regex e modificatori</string>
-    <string name="text_expander_all_as_text_summary">Modifica, condividi, esegui il backup o importa in blocco scorciatoie in testo semplice</string>
+    <string name="text_expander_all_as_text_summary">Modifica, esporta e importa scorciatoie in testo semplice</string>
 </resources>

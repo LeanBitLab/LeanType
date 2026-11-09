@@ -1664,8 +1664,8 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="restart_ime_dialog_title">Proses memuat ulang</string>
     <string name="restart_ime_dialog_message">Ini akan menghentikan proses keyboard dan meluncurkan kembali Pengaturan. Semua model, plugin, dan layanan latar belakang akan dimuat ulang dengan rapi.</string>
     <string name="restart_ime_confirm">Mulai ulang sekarang</string>
-    <string name="text_expander_all_as_text">Edit semua sebagai teks</string>
-    <string name="text_expander_all_title">Semua pintasan teks</string>
+    <string name="text_expander_all_as_text">Editor massal</string>
+    <string name="text_expander_all_title">Editor massal</string>
     <string name="text_expander_shortcuts_count">%d pintasan</string>
     <string name="text_expander_all_hint">Format: === pintasan === diikuti teks ekspansi</string>
     <string name="text_expander_save_file">Simpan sebagai file</string>
@@ -1692,5 +1692,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_tools_category">Manajemen &amp; Alat</string>
     <string name="text_expander_guide_title">Panduan Online &amp; Referensi Sintaks</string>
     <string name="text_expander_guide_summary">Panduan lengkap untuk placeholder dinamis, pola regex, dan pengubah</string>
-    <string name="text_expander_all_as_text_summary">Edit massal, bagikan, buat cadangan, atau impor pintasan dalam teks biasa</string>
+    <string name="text_expander_all_as_text_summary">Edit, ekspor, dan impor pintasan dalam teks biasa</string>
 </resources>

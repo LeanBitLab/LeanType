@@ -745,8 +745,8 @@
     <string name="text_expander_regex_pattern_title">Regex-Muster</string>
     <string name="text_expander_regex_title">Regulärer Ausdruck</string>
     <string name="text_expander_regex_invalid">⚠️ Ungültiges reguläres Ausdrucksmuster</string>
-    <string name="text_expander_all_as_text">Alle als Text bearbeiten</string>
-    <string name="text_expander_all_title">Alle Textbausteine</string>
+    <string name="text_expander_all_as_text">Massen-Editor</string>
+    <string name="text_expander_all_title">Massen-Editor</string>
     <string name="text_expander_all_hint">Format: === Kürzel === gefolgt vom Erweiterungstext</string>
     <string name="text_expander_save_file">Als Datei speichern</string>
     <string name="text_expander_load_file">Aus Datei laden</string>
@@ -1743,6 +1743,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_tools_category">Management &amp; Tools</string>
     <string name="text_expander_guide_title">Online-Anleitung und Syntaxreferenz</string>
     <string name="text_expander_guide_summary">Vollständiger Leitfaden für dynamische Platzhalter, Regex-Muster und Modifikatoren</string>
-    <string name="text_expander_all_as_text_summary">Massenbearbeitung, Freigabe, Sicherung oder Import von Verknüpfungen im Nur-Text-Format</string>
+    <string name="text_expander_all_as_text_summary">Kürzel im Nur-Text-Format bearbeiten, exportieren und importieren</string>
     <string name="text_expander_shortcuts_count">%dVerknüpfungen</string>
 </resources>

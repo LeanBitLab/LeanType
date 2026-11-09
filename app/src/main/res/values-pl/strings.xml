@@ -1708,8 +1708,8 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="restart_ime_dialog_title">Przeładuj proces</string>
     <string name="restart_ime_dialog_message">Spowoduje to zakończenie procesu klawiatury i ponowne uruchomienie Ustawień. Wszystkie modele, wtyczki i usługi w tle zostaną ponownie załadowane.</string>
     <string name="restart_ime_confirm">Uruchom ponownie teraz</string>
-    <string name="text_expander_all_as_text">Edytuj wszystko jako tekst</string>
-    <string name="text_expander_all_title">Wszystkie skróty tekstowe</string>
+    <string name="text_expander_all_as_text">Edytor zbiorczy</string>
+    <string name="text_expander_all_title">Edytor zbiorczy</string>
     <string name="text_expander_shortcuts_count">%d skrótów</string>
     <string name="text_expander_all_hint">Format: === skrót === po którym następuje tekst rozwinięcia</string>
     <string name="text_expander_save_file">Zapisz jako plik</string>
@@ -1736,5 +1736,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_tools_category">Zarządzanie i narzędzia</string>
     <string name="text_expander_guide_title">Przewodnik online i informacje o składni</string>
     <string name="text_expander_guide_summary">Kompletny przewodnik po dynamicznych symbolach zastępczych, wzorach wyrażeń regularnych i modyfikatorach</string>
-    <string name="text_expander_all_as_text_summary">Zbiorcza edycja, udostępnianie, tworzenie kopii zapasowych i importowanie skrótów w postaci zwykłego tekstu</string>
+    <string name="text_expander_all_as_text_summary">Edytuj, eksportuj i importuj skróty w postaci zwykłego tekstu</string>
 </resources>

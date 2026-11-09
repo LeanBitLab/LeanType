@@ -1701,8 +1701,8 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="restart_ime_dialog_title">Reîncărcarea procesului</string>
     <string name="restart_ime_dialog_message">Acest lucru va încheia procesul de la tastatură și va relansa Setări. Toate modelele, pluginurile și serviciile de fundal vor fi reîncărcate curat.</string>
     <string name="restart_ime_confirm">Reporniți acum</string>
-    <string name="text_expander_all_as_text">Editați totul ca text</string>
-    <string name="text_expander_all_title">Toate comenzile rapide pentru text</string>
+    <string name="text_expander_all_as_text">Editor în masă</string>
+    <string name="text_expander_all_title">Editor în masă</string>
     <string name="text_expander_shortcuts_count">%d comenzi rapide</string>
     <string name="text_expander_all_hint">Format: === comandă rapidă === urmată de textul extinderii</string>
     <string name="text_expander_save_file">Salvați ca fișier</string>
@@ -1729,5 +1729,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_tools_category">Management și instrumente</string>
     <string name="text_expander_guide_title">Ghid online și referință de sintaxă</string>
     <string name="text_expander_guide_summary">Ghid complet pentru substituenți dinamici, modele regex și modificatori</string>
-    <string name="text_expander_all_as_text_summary">Editați, partajați, faceți backup sau importați comenzile rapide în text simplu</string>
+    <string name="text_expander_all_as_text_summary">Editați, exportați și importați comenzi rapide în text simplu</string>
 </resources>

@@ -1745,14 +1745,14 @@ New dictionary:
     <string name="text_expander_tools_category">Management &amp; Tools</string>
     <string name="text_expander_guide_title">Online Guide &amp; Syntax Reference</string>
     <string name="text_expander_guide_summary">Complete guide for dynamic placeholders, regex patterns, and modifiers</string>
-    <string name="text_expander_all_as_text_summary">Bulk edit, share, backup, or import shortcuts in plain text</string>
+    <string name="text_expander_all_as_text_summary">Edit, export, and import shortcuts in plain text</string>
     <string name="text_expander_prefix_title">Prefix (optional)</string>
     <string name="text_expander_shortcut_title">Shortcut (e.g. \'brb\')</string>
     <string name="text_expander_regex_pattern_title">Regex Pattern</string>
     <string name="text_expander_regex_title">Regular Expression</string>
     <string name="text_expander_regex_invalid">⚠️ Invalid regular expression pattern</string>
-    <string name="text_expander_all_as_text">Edit all as text</string>
-    <string name="text_expander_all_title">All text shortcuts</string>
+    <string name="text_expander_all_as_text">Bulk editor</string>
+    <string name="text_expander_all_title">Bulk editor</string>
     <string name="text_expander_shortcuts_count">%d shortcuts</string>
     <string name="text_expander_all_hint">Format: === shortcut === followed by expansion text</string>
     <string name="text_expander_save_file">Save as file</string>

@@ -1758,8 +1758,8 @@
     <string name="restart_ime_dialog_title">دوبارہ لوڈ کرنے کا عمل</string>
     <string name="restart_ime_dialog_message">اس سے کی بورڈ کا عمل ختم ہو جائے گا اور سیٹنگز دوبارہ شروع ہو جائیں گی۔ تمام ماڈلز، پلگ انز، اور بیک گراؤنڈ سروسز کو صاف طور پر دوبارہ لوڈ کیا جائے گا۔</string>
     <string name="restart_ime_confirm">ابھی دوبارہ شروع کریں۔</string>
-    <string name="text_expander_all_as_text">سبھی کو متن کے بطور ترمیم کریں۔</string>
-    <string name="text_expander_all_title">تمام ٹیکسٹ شارٹ کٹس</string>
+    <string name="text_expander_all_as_text">بلک ایڈیٹر</string>
+    <string name="text_expander_all_title">بلک ایڈیٹر</string>
     <string name="text_expander_shortcuts_count">%d شارٹ کٹس</string>
     <string name="text_expander_all_hint">فارمیٹ: === شارٹ کٹ === بعد میں توسیع کا متن</string>
     <string name="text_expander_save_file">فائل کے طور پر محفوظ کریں۔</string>
@@ -1786,5 +1786,5 @@
     <string name="text_expander_tools_category">مینجمنٹ اور ٹولز</string>
     <string name="text_expander_guide_title">آن لائن گائیڈ اور نحو کا حوالہ</string>
     <string name="text_expander_guide_summary">ڈائنامک پلیس ہولڈرز، ریجیکس پیٹرنز اور موڈیفائرز کے لیے مکمل گائیڈ</string>
-    <string name="text_expander_all_as_text_summary">سادہ متن میں بڑی تعداد میں ترمیم، اشتراک، بیک اپ، یا شارٹ کٹ درآمد کریں۔</string>
+    <string name="text_expander_all_as_text_summary">سادہ متن میں شارٹ کٹس میں ترمیم، برآمد اور درآمد کریں</string>
 </resources>

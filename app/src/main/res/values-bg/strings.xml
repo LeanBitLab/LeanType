@@ -1701,8 +1701,8 @@
     <string name="restart_ime_dialog_title">Процес презареждане</string>
     <string name="restart_ime_dialog_message">Това ще прекрати процеса на клавиатурата и ще стартира повторно настройките. Всички модели, плъгини и фонови услуги ще бъдат чисто презаредени.</string>
     <string name="restart_ime_confirm">Рестартирайте сега</string>
-    <string name="text_expander_all_as_text">Редактирайте всичко като текст</string>
-    <string name="text_expander_all_title">Всички текстови преки пътища</string>
+    <string name="text_expander_all_as_text">Групов редактор</string>
+    <string name="text_expander_all_title">Групов редактор</string>
     <string name="text_expander_shortcuts_count">%d преки пътища</string>
     <string name="text_expander_all_hint">Формат: === пряк път === последван от текста за разширяване</string>
     <string name="text_expander_save_file">Запазете като файл</string>
@@ -1729,5 +1729,5 @@
     <string name="text_expander_tools_category">Управление и инструменти</string>
     <string name="text_expander_guide_title">Онлайн ръководство и справочник по синтаксис</string>
     <string name="text_expander_guide_summary">Пълно ръководство за динамични заместители, модели на регулярни изрази и модификатори</string>
-    <string name="text_expander_all_as_text_summary">Групово редактиране, споделяне, архивиране или импортиране на преки пътища в обикновен текст</string>
+    <string name="text_expander_all_as_text_summary">Редактиране, експортиране и импортиране на преки пътища в обикновен текст</string>
 </resources>

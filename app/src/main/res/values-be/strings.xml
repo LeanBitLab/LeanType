@@ -1701,8 +1701,8 @@
     <string name="restart_ime_dialog_title">Перазагрузка працэсу</string>
     <string name="restart_ime_dialog_message">Гэта спыніць працэс клавіятуры і перазапусціць Налады. Усе мадэлі, плагіны і фонавыя службы будуць чыста перазагружаны.</string>
     <string name="restart_ime_confirm">Перазапусціце зараз</string>
-    <string name="text_expander_all_as_text">Рэдагаваць усё як тэкст</string>
-    <string name="text_expander_all_title">Усе тэкставыя цэтлікі</string>
+    <string name="text_expander_all_as_text">Масавы рэдактар</string>
+    <string name="text_expander_all_title">Масавы рэдактар</string>
     <string name="text_expander_shortcuts_count">%d скарачэнняў</string>
     <string name="text_expander_all_hint">Фармат: === ярлык === з тэкстам пашырэння</string>
     <string name="text_expander_save_file">Захаваць як файл</string>
@@ -1729,5 +1729,5 @@
     <string name="text_expander_tools_category">Кіраванне і інструменты</string>
     <string name="text_expander_guide_title">Інтэрнэт-даведнік і сінтаксіс</string>
     <string name="text_expander_guide_summary">Поўнае кіраўніцтва для дынамічных запаўняльнікаў, шаблонаў рэгулярных выразаў і мадыфікатараў</string>
-    <string name="text_expander_all_as_text_summary">Масавае рэдагаванне, абмен, рэзервовае капіраванне або імпарт ярлыкоў у выглядзе звычайнага тэксту</string>
+    <string name="text_expander_all_as_text_summary">Рэдагаванне, экспарт і імпарт ярлыкоў у выглядзе простага тэксту</string>
 </resources>

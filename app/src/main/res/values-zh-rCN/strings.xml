@@ -1667,8 +1667,8 @@
     <string name="restart_ime_dialog_title">进程重新加载</string>
     <string name="restart_ime_dialog_message">这将终止键盘进程并重新启动“设置”。所有模型、插件和后台服务都将被干净地重新加载。</string>
     <string name="restart_ime_confirm">立即重新启动</string>
-    <string name="text_expander_all_as_text">全部编辑为文本</string>
-    <string name="text_expander_all_title">所有文本快捷方式</string>
+    <string name="text_expander_all_as_text">批量编辑器</string>
+    <string name="text_expander_all_title">批量编辑器</string>
     <string name="text_expander_shortcuts_count">%d 个快捷方式</string>
     <string name="text_expander_all_hint">格式：=== 快捷方式 === 后跟扩展文本</string>
     <string name="text_expander_save_file">另存为文件</string>
@@ -1695,5 +1695,5 @@
     <string name="text_expander_tools_category">管理与工具</string>
     <string name="text_expander_guide_title">在线指南和语法参考</string>
     <string name="text_expander_guide_summary">动态占位符、正则表达式模式和修饰符的完整指南</string>
-    <string name="text_expander_all_as_text_summary">以纯文本形式批量编辑、共享、备份或导入快捷方式</string>
+    <string name="text_expander_all_as_text_summary">以纯文本形式编辑、导出和导入快捷方式</string>
 </resources>

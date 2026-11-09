@@ -1702,8 +1702,8 @@ Ar norite atnaujinti?</string>
     <string name="restart_ime_dialog_title">Proceso įkėlimas iš naujo</string>
     <string name="restart_ime_dialog_message">Tai nutrauks klaviatūros procesą ir iš naujo paleis nustatymus. Visi modeliai, papildiniai ir foninės paslaugos bus švariai įkelti iš naujo.</string>
     <string name="restart_ime_confirm">Paleiskite iš naujo dabar</string>
-    <string name="text_expander_all_as_text">Redaguoti viską kaip tekstą</string>
-    <string name="text_expander_all_title">Visi teksto spartieji klavišai</string>
+    <string name="text_expander_all_as_text">Masinis redaktorius</string>
+    <string name="text_expander_all_title">Masinis redaktorius</string>
     <string name="text_expander_shortcuts_count">%d spartieji klavišai</string>
     <string name="text_expander_all_hint">Formatas: === spartusis klavišas === po kurio eina išplėtimo tekstas</string>
     <string name="text_expander_save_file">Išsaugoti kaip failą</string>
@@ -1730,5 +1730,5 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_tools_category">Valdymas ir įrankiai</string>
     <string name="text_expander_guide_title">Internetinis vadovas ir sintaksės nuoroda</string>
     <string name="text_expander_guide_summary">Išsamus dinaminių rezervuotųjų ženklų, reguliariųjų reiškinių šablonų ir modifikatorių vadovas</string>
-    <string name="text_expander_all_as_text_summary">Masiškai redaguokite, bendrinkite, kurkite atsargines kopijas arba importuokite sparčiuosius klavišus paprastu tekstu</string>
+    <string name="text_expander_all_as_text_summary">Redaguoti, eksportuoti ir importuoti sparčiuosius klavišus paprastuoju tekstu</string>
 </resources>

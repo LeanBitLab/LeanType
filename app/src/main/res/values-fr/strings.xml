@@ -1722,8 +1722,8 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="restart_ime_dialog_title">Rechargement du processus</string>
     <string name="restart_ime_dialog_message">Cela mettra fin au processus de clavier et relancera les paramètres. Tous les modèles, plugins et services d’arrière-plan seront proprement rechargés.</string>
     <string name="restart_ime_confirm">Redémarrez maintenant</string>
-    <string name="text_expander_all_as_text">Modifier tout sous forme de texte</string>
-    <string name="text_expander_all_title">Tous les raccourcis texte</string>
+    <string name="text_expander_all_as_text">Éditeur en masse</string>
+    <string name="text_expander_all_title">Éditeur en masse</string>
     <string name="text_expander_shortcuts_count">%d raccourcis</string>
     <string name="text_expander_all_hint">Format : === raccourci === suivi du texte de développement</string>
     <string name="text_expander_save_file">Enregistrer sous fichier</string>
@@ -1750,5 +1750,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_tools_category">Gestion et outils</string>
     <string name="text_expander_guide_title">Guide en ligne et référence de syntaxe</string>
     <string name="text_expander_guide_summary">Guide complet pour les espaces réservés dynamiques, les modèles d\'expressions régulières et les modificateurs</string>
-    <string name="text_expander_all_as_text_summary">Modification, partage, sauvegarde ou importation groupée de raccourcis en texte brut</string>
+    <string name="text_expander_all_as_text_summary">Modifier, exporter et importer des raccourcis en texte brut</string>
 </resources>

@@ -1724,8 +1724,8 @@
     <string name="restart_ime_dialog_title">إعادة تحميل العملية</string>
     <string name="restart_ime_dialog_message">سيؤدي هذا إلى إنهاء عملية لوحة المفاتيح وإعادة تشغيل الإعدادات. سيتم إعادة تحميل جميع النماذج والمكونات الإضافية وخدمات الخلفية بشكل نظيف.</string>
     <string name="restart_ime_confirm">أعد التشغيل الآن</string>
-    <string name="text_expander_all_as_text">تحرير الكل كنص</string>
-    <string name="text_expander_all_title">جميع اختصارات النص</string>
+    <string name="text_expander_all_as_text">محرر مجمع</string>
+    <string name="text_expander_all_title">محرر مجمع</string>
     <string name="text_expander_shortcuts_count">%d اختصار</string>
     <string name="text_expander_all_hint">الصيغة: === اختصار === متبوعًا بنص التوسيع</string>
     <string name="text_expander_save_file">حفظ كملف</string>
@@ -1752,5 +1752,5 @@
     <string name="text_expander_tools_category">الإدارة والأدوات</string>
     <string name="text_expander_guide_title">دليل على الانترنت ومرجع بناء الجملة</string>
     <string name="text_expander_guide_summary">الدليل الكامل للعناصر النائبة الديناميكية وأنماط التعبير العادي والمعدلات</string>
-    <string name="text_expander_all_as_text_summary">تحرير الاختصارات أو مشاركتها أو نسخها احتياطيًا أو استيرادها بشكل مجمّع بنص عادي</string>
+    <string name="text_expander_all_as_text_summary">تعديل وتصدير واستيراد الاختصارات بنص عادي</string>
 </resources>

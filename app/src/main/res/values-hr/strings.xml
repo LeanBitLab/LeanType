@@ -1664,8 +1664,8 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="restart_ime_dialog_title">Ponovno učitavanje procesa</string>
     <string name="restart_ime_dialog_message">Ovo će prekinuti proces tipkovnice i ponovno pokrenuti Postavke. Svi modeli, dodaci i pozadinske usluge bit će ponovno učitani.</string>
     <string name="restart_ime_confirm">Ponovno pokrenite sada</string>
-    <string name="text_expander_all_as_text">Uredi sve kao tekst</string>
-    <string name="text_expander_all_title">Sve tekstualne prečice</string>
+    <string name="text_expander_all_as_text">Grupni uređivač</string>
+    <string name="text_expander_all_title">Grupni uređivač</string>
     <string name="text_expander_shortcuts_count">%d prečaca</string>
     <string name="text_expander_all_hint">Format: === prečac === praćen tekstom proširenja</string>
     <string name="text_expander_save_file">Spremi kao datoteku</string>
@@ -1692,5 +1692,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_tools_category">Upravljanje i alati</string>
     <string name="text_expander_guide_title">Online vodič i referenca sintakse</string>
     <string name="text_expander_guide_summary">Potpuni vodič za dinamička rezervirana mjesta, uzorke regularnih izraza i modifikatore</string>
-    <string name="text_expander_all_as_text_summary">Skupno uređivanje, dijeljenje, sigurnosno kopiranje ili uvoz prečaca u običnom tekstu</string>
+    <string name="text_expander_all_as_text_summary">Uređivanje, izvoz i uvoz prečaca u običnom tekstu</string>
 </resources>

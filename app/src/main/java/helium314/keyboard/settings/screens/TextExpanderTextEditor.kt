@@ -14,22 +14,24 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SuggestionChip
@@ -130,44 +132,80 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
         Scaffold(
             contentWindowInsets = WindowInsets.safeDrawing,
             topBar = {
-                val headerCount = remember(value.text) { TextExpanderText.headers(value.text).size }
                 TopAppBar(
                     title = {
-                        Column {
-                            Text(
-                                text = stringResource(R.string.text_expander_all_title),
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.SemiBold,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                            Text(
-                                text = stringResource(R.string.text_expander_shortcuts_count, headerCount),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        Text(
+                            text = stringResource(R.string.text_expander_all_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
                     },
                     navigationIcon = {
                         BackButton(onClick = ::close)
                     },
                     actions = {
-                        FilledTonalButton(
-                            onClick = {
-                                val result = TextExpanderText.parse(value.text, current)
-                                if (result.errors.isNotEmpty()) errors = result.errors
-                                else {
-                                    val diff = TextExpanderText.diff(current, result.entries)
-                                    if (diff.isEmpty) { toast(context, R.string.text_expander_no_changes); original = value.text }
-                                    else pending = result to diff
-                                }
-                            },
-                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp)
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(end = 8.dp)
                         ) {
-                            Text(
-                                text = stringResource(R.string.text_expander_save),
-                                fontWeight = FontWeight.SemiBold
-                            )
+                            if (hasPrevious) {
+                                IconButton(
+                                    onClick = { askRestore = true },
+                                    modifier = Modifier.size(38.dp)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_undo),
+                                        contentDescription = stringResource(R.string.text_expander_restore_previous),
+                                        modifier = Modifier.size(20.dp),
+                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            IconButton(
+                                onClick = { loadFile.launch(arrayOf("text/*")) },
+                                modifier = Modifier.size(38.dp)
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_file_upload),
+                                    contentDescription = stringResource(R.string.text_expander_load_file),
+                                    modifier = Modifier.size(20.dp),
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            IconButton(
+                                onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) },
+                                modifier = Modifier.size(38.dp)
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_file_download),
+                                    contentDescription = stringResource(R.string.text_expander_save_file),
+                                    modifier = Modifier.size(20.dp),
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Button(
+                                onClick = {
+                                    val result = TextExpanderText.parse(value.text, current)
+                                    if (result.errors.isNotEmpty()) errors = result.errors
+                                    else {
+                                        val diff = TextExpanderText.diff(current, result.entries)
+                                        if (diff.isEmpty) { toast(context, R.string.text_expander_no_changes); original = value.text }
+                                        else pending = result to diff
+                                    }
+                                },
+                                modifier = Modifier.height(36.dp),
+                                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 0.dp),
+                                shape = RoundedCornerShape(10.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.text_expander_save),
+                                    style = MaterialTheme.typography.labelLarge,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                         }
                     }
                 )
@@ -178,39 +216,6 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-                // Actions toolbar
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .horizontalScroll(rememberScrollState())
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    AssistChip(
-                        onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) },
-                        label = { Text(stringResource(R.string.text_expander_save_file)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_file_download), null, Modifier.size(18.dp))
-                        }
-                    )
-                    AssistChip(
-                        onClick = { loadFile.launch(arrayOf("text/*")) },
-                        label = { Text(stringResource(R.string.text_expander_load_file)) },
-                        leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_file_upload), null, Modifier.size(18.dp))
-                        }
-                    )
-                    if (hasPrevious) {
-                        AssistChip(
-                            onClick = { askRestore = true },
-                            label = { Text(stringResource(R.string.text_expander_restore_previous)) },
-                            leadingIcon = {
-                                Icon(painterResource(R.drawable.ic_undo), null, Modifier.size(18.dp))
-                            }
-                        )
-                    }
-                }
-
                 // Jump navigation bar
                 val headers = remember(value.text) { TextExpanderText.headers(value.text) }
                 if (headers.isNotEmpty()) {
@@ -218,7 +223,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .horizontalScroll(rememberScrollState())
-                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                            .padding(horizontal = 16.dp, vertical = 2.dp),
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         headers.forEach { (name, offset) ->
@@ -242,13 +247,27 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     }
                 }
 
-                // Format hint
-                Text(
-                    text = stringResource(R.string.text_expander_all_hint),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp)
-                )
+                // Format hint & shortcut count
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.text_expander_all_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    val headerCount = remember(value.text) { TextExpanderText.headers(value.text).size }
+                    Text(
+                        text = stringResource(R.string.text_expander_shortcuts_count, headerCount),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
 
                 // Code-style Editor box
                 Surface(

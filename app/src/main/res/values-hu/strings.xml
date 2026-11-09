@@ -1664,8 +1664,8 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="restart_ime_dialog_title">Folyamat újratöltése</string>
     <string name="restart_ime_dialog_message">Ezzel leállítja a billentyűzet folyamatát, és újraindítja a Beállításokat. Minden modell, beépülő modul és háttérszolgáltatás tisztán újratöltve lesz.</string>
     <string name="restart_ime_confirm">Indítsa újra most</string>
-    <string name="text_expander_all_as_text">Az összes szerkesztése szövegként</string>
-    <string name="text_expander_all_title">Minden szöveges billentyűparancs</string>
+    <string name="text_expander_all_as_text">Tömeges szerkesztő</string>
+    <string name="text_expander_all_title">Tömeges szerkesztő</string>
     <string name="text_expander_shortcuts_count">%d billentyűparancs</string>
     <string name="text_expander_all_hint">Formátum: === billentyűparancs === a kibontandó szöveggel</string>
     <string name="text_expander_save_file">Mentés fájlként</string>
@@ -1692,5 +1692,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_tools_category">Kezelés és eszközök</string>
     <string name="text_expander_guide_title">Online útmutató és szintaktikai referencia</string>
     <string name="text_expander_guide_summary">Teljes útmutató dinamikus helyőrzőkhöz, reguláris kifejezési mintákhoz és módosítókhoz</string>
-    <string name="text_expander_all_as_text_summary">Parancsikonok tömeges szerkesztése, megosztása, biztonsági mentése vagy importálása egyszerű szövegben</string>
+    <string name="text_expander_all_as_text_summary">Billentyűparancsok szerkesztése, exportálása és importálása egyszerű szövegben</string>
 </resources>
