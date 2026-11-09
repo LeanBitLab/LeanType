@@ -862,7 +862,7 @@
     <string name="updates_frequency_title">Frecvența verificării</string>
     <string name="updates_changelog_title">Jurnal de modificări</string>
     <string name="updates_support_title">Susține dezvoltarea</string>
-    <string name="updates_support_summary">LeanType este 100% gratuit, open-source și independent. Sprijinul tău ne ajută direct să continuăm dezvoltarea activă!</string>
+    <string name="updates_support_summary" formatted="false">LeanType este 100% gratuit, open-source și independent. Sprijinul tău ne ajută direct să continuăm dezvoltarea activă!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Sponsorizează lunar sau o singură dată prin GitHub Sponsors</string>
     <string name="updates_opencollective_title">Donează pe Open Collective</string>
@@ -1011,7 +1011,7 @@
     <string name="text_expander_regex_title">Expresie regulată</string>
     <string name="text_expander_regex_invalid">⚠️ Model de expresie regulată nevalid</string>
     <string name="text_expander_template_title">Extindere șablon</string>
-    <string name="text_expander_template_hint">Mă întorc imediat! sau Emailul meu este %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Mă întorc imediat! sau Emailul meu este %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Substituenți rapizi (atinge pentru a insera la cursor):</string>
     <string name="text_expander_save">Salvează</string>
     <string name="text_expander_add">Adaugă</string>
@@ -1165,10 +1165,10 @@ Fără AI în fundal sau utilizare de rețea.</string>
     <string name="setup_step6_title_screenshots">Sugestii capturi de ecran</string>
     <string name="setup_step6_instruction_screenshots">Sugerează capturile de ecran recente în bara de sugestii. Notă: Această permisiune permite și salvarea capturilor de ecran în clipboard.</string>
     <string name="setup_step7_title_height">Înălțime tastatură</string>
-    <string name="setup_step7_instruction_height">Ajustați înălțimea tastaturii. Recomandat: 77% pentru taste mai pătrate, 100% pentru taste mai înalte.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Ajustați înălțimea tastaturii. Recomandat: 77% pentru taste mai pătrate, 100% pentru taste mai înalte.</string>
     <string name="setup_step0_headline">Bun venit la o experiență de tastare mai bună</string>
     <string name="setup_step0_subtitle">LeanType este conceput de la zero pentru confidențialitate, viteză și personalizare profundă.</string>
-    <string name="setup_step0_feature1_title">100% Privat și securizat</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Privat și securizat</string>
     <string name="setup_step0_feature1_desc">Zero telemetrie, urmărire de rețea sau jurnalizare în cloud. Tastarea dvs. rămâne pe dispozitiv.</string>
     <string name="setup_step0_feature2_title">Profund personalizabil</string>
     <string name="setup_step0_feature2_desc">Personalizați aspectele, temele tastaturii, dimensiunile, gesturile și tastarea multilingvă după preferințe.</string>
@@ -1188,7 +1188,7 @@ Fără AI în fundal sau utilizare de rețea.</string>
     <string name="text_expander_tag_desc_time12">Oră (12h, oo:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">An (AAAA)</string>
     <string name="text_expander_tag_desc_week">Săptămâna din an (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Nivel baterie (de ex. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Nivel baterie (de ex. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Salutare în funcție de oră</string>
     <string name="text_expander_tag_desc_tomorrow">Data de mâine (AAAA-LL-ZZ)</string>
     <string name="text_expander_tag_desc_clipboard">Conținut clipboard</string>
@@ -1200,8 +1200,8 @@ Fără AI în fundal sau utilizare de rețea.</string>
     <string name="text_expander_tag_desc_month">Lună (de ex. Iunie)</string>
     <string name="text_expander_tag_desc_language">Limba tastaturii (de ex. Română)</string>
     <string name="text_expander_tag_desc_cursor">Poziția cursorului după expansiune</string>
-    <string name="text_expander_tag_desc_bullets">Listă cu puncte (de ex. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Listă numerotată (de ex. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Listă cu puncte (de ex. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Listă numerotată (de ex. %list_5%)</string>
     <string name="updates_new_update_title">Actualizare nouă disponibilă</string>
     <string name="updates_new_update_desc">Versiunea %s este gata de instalare</string>
     <string name="updates_view_release">Vizualizați lansarea</string>
@@ -1630,7 +1630,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="app_quirks_hide_toolbar_summary">Ascunde tastele barei de instrumente, acțiunile și butonul de extindere atunci când tastați în această aplicație</string>
     <string name="app_quirks_badge_no_suggestions">Fără sugestii</string>
     <string name="app_quirks_badge_no_toolbar">Fără bară</string>
-    <string name="text_expander_tag_desc_date_format">Data formatată (de exemplu,%date:aaaa/LL/zz% sau%date:format(model)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Data formatată (de exemplu,%date:aaaa/LL/zz% sau%date:format(model)%)</string>
     <string name="app_quirks_always_show_suggestions">Afișați întotdeauna sugestii</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorați solicitările acestei aplicații pentru a dezactiva sugestiile</string>
     <string name="app_quirks_badge_always_suggestions">Întotdeauna sugestii</string>

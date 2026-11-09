@@ -803,7 +803,7 @@ Nouveau dictionnaire:
     <string name="text_expander_regex_title">Expression régulière</string>
     <string name="text_expander_regex_invalid">⚠️ Motif d\'expression régulière non valide</string>
     <string name="text_expander_template_title">Expansion du modèle</string>
-    <string name="text_expander_template_hint">Je reviens tout de suite ! ou Mon email est %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Je reviens tout de suite ! ou Mon email est %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Espaces réservés rapides (appuyez pour insérer au curseur) :</string>
     <string name="text_expander_save">Enregistrer</string>
     <string name="text_expander_add">Ajouter</string>
@@ -1038,7 +1038,7 @@ Nouveau dictionnaire:
     <string name="updates_frequency_title">Fréquence de vérification</string>
     <string name="updates_changelog_title">Journal des modifications</string>
     <string name="updates_support_title">Soutenir le développement</string>
-    <string name="updates_support_summary">LeanType est 100 % gratuit, open-source et indépendant. Votre soutien nous aide directement à poursuivre le développement actif !</string>
+    <string name="updates_support_summary" formatted="false">LeanType est 100 % gratuit, open-source et indépendant. Votre soutien nous aide directement à poursuivre le développement actif !</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Soutenez mensuellement ou ponctuellement via GitHub Sponsors</string>
     <string name="updates_opencollective_title">Faire un don sur Open Collective</string>
@@ -1201,10 +1201,10 @@ Nouveau dictionnaire:
     <string name="setup_step6_title_screenshots">Suggestions de captures d\'écran</string>
     <string name="setup_step6_instruction_screenshots">Suggérer les captures d\'écran récentes dans la barre de suggestions. Remarque : cette autorisation permet également d\'enregistrer les captures d\'écran dans le presse-papier.</string>
     <string name="setup_step7_title_height">Hauteur du clavier</string>
-    <string name="setup_step7_instruction_height">Ajustez la hauteur du clavier. Recommandé : 77% pour des touches plus carrées, 100% pour des touches plus hautes.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Ajustez la hauteur du clavier. Recommandé : 77% pour des touches plus carrées, 100% pour des touches plus hautes.</string>
     <string name="setup_step0_headline">Bienvenue dans une meilleure expérience de frappe</string>
     <string name="setup_step0_subtitle">LeanType est conçu dès le départ pour la confidentialité, la rapidité et une personnalisation poussée.</string>
-    <string name="setup_step0_feature1_title">100% privé et sécurisé</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% privé et sécurisé</string>
     <string name="setup_step0_feature1_desc">Zéro télémétrie, suivi réseau ou journalisation dans le cloud. Vos frappes restent sur votre appareil.</string>
     <string name="setup_step0_feature2_title">Hautement personnalisable</string>
     <string name="setup_step0_feature2_desc">Adaptez les dispositions, thèmes du clavier, tailles, gestes et la saisie multilingue selon vos préférences.</string>
@@ -1224,7 +1224,7 @@ Nouveau dictionnaire:
     <string name="text_expander_tag_desc_time12">Heure (12h, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Année (AAAA)</string>
     <string name="text_expander_tag_desc_week">Semaine de l\'année (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Niveau de batterie (ex. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Niveau de batterie (ex. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Salutation selon le moment de la journée</string>
     <string name="text_expander_tag_desc_tomorrow">Date de demain (AAAA-MM-JJ)</string>
     <string name="text_expander_tag_desc_clipboard">Contenu du presse-papier</string>
@@ -1236,8 +1236,8 @@ Nouveau dictionnaire:
     <string name="text_expander_tag_desc_month">Mois (ex. Juin)</string>
     <string name="text_expander_tag_desc_language">Langue du clavier (ex. Français)</string>
     <string name="text_expander_tag_desc_cursor">Position du curseur après expansion</string>
-    <string name="text_expander_tag_desc_bullets">Liste à puces (ex. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Liste numérotée (ex. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Liste à puces (ex. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Liste numérotée (ex. %list_5%)</string>
     <string name="updates_new_update_title">Nouvelle mise à jour disponible</string>
     <string name="updates_new_update_desc">La version %s est prête à être installée</string>
     <string name="updates_view_release">Voir la version</string>
@@ -1651,7 +1651,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="app_quirks_hide_toolbar_summary">Masquer les touches de la barre d\'outils, les actions et le bouton de développement lors de la saisie dans cette application</string>
     <string name="app_quirks_badge_no_suggestions">Aucune suggestion</string>
     <string name="app_quirks_badge_no_toolbar">Sans barre</string>
-    <string name="text_expander_tag_desc_date_format">Date formatée (par exemple,%date:aaaa/MM/dd% ou%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Date formatée (par exemple,%date:aaaa/MM/dd% ou%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Toujours afficher les suggestions</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorer les demandes de cette application pour désactiver les suggestions</string>
     <string name="app_quirks_badge_always_suggestions">Toujours des suggestions</string>

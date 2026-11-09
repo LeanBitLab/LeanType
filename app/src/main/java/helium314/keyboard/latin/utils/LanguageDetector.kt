@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.view.textclassifier.TextClassificationManager
 import android.view.textclassifier.TextLanguage
+import helium314.keyboard.latin.common.loopOverCodePoints
 import helium314.keyboard.latin.RichInputMethodManager
 
 /**
@@ -73,7 +74,7 @@ object LanguageDetector {
         var japaneseKana = 0
         var cjkHan = 0
 
-        for (cp in text.codePoints()) {
+        loopOverCodePoints(text) { cp, _ ->
             when {
                 ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_TAMIL) -> tamil++
                 ScriptUtils.isLetterPartOfScript(cp, ScriptUtils.SCRIPT_MALAYALAM) -> malayalam++
@@ -97,6 +98,7 @@ object LanguageDetector {
                 (cp in 0x3040..0x309F) || (cp in 0x30A0..0x30FF) -> japaneseKana++
                 (cp in 0x4E00..0x9FFF) || (cp in 0x3400..0x4DBF) -> cjkHan++
             }
+            false
         }
 
         // Japanese takes precedence if kana is present with Han ideographs

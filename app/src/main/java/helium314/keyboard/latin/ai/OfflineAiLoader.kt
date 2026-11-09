@@ -4,6 +4,7 @@ package helium314.keyboard.latin.ai
 import android.content.Context
 import android.net.Uri
 import dalvik.system.DexClassLoader
+import helium314.keyboard.compat.contentLengthLongCompat
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.prefs
 import java.io.File
@@ -70,7 +71,7 @@ object OfflineAiLoader {
                 }
 
                 if (status == java.net.HttpURLConnection.HTTP_OK) {
-                    val totalBytes = redirectConn.contentLengthLong
+                    val totalBytes = redirectConn.contentLengthLongCompat()
                     redirectConn.inputStream.use { input ->
                         java.io.FileOutputStream(tempFile).use { output ->
                             helium314.keyboard.latin.common.FileUtils.copyStreamWithProgress(input, output, totalBytes, onProgress = onProgress)

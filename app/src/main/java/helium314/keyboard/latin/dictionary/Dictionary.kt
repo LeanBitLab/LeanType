@@ -18,7 +18,12 @@ import helium314.keyboard.latin.settings.SettingsValuesForSuggestion
  * Abstract base class for a dictionary that can do a fuzzy search for words based on a set of key
  * strokes.
  */
+fun interface WordConsumer {
+    fun accept(word: String, frequency: Int)
+}
+
 abstract class Dictionary(
+
     val mDictType: String,
     val mLocale: Locale?
 ) {
@@ -70,7 +75,7 @@ abstract class Dictionary(
         return Collections.emptyMap()
     }
 
-    open fun forEachWord(consumer: java.util.function.BiConsumer<String, Int>) {
+    open fun forEachWord(consumer: WordConsumer) {
         for (entry in getAllWordsWithFrequency().entries) {
             consumer.accept(entry.key, entry.value)
         }

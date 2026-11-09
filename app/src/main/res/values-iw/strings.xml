@@ -869,7 +869,7 @@
     <string name="updates_frequency_title">תדירות בדיקה</string>
     <string name="updates_changelog_title">יומן שינויים</string>
     <string name="updates_support_title">תמוך בפיתוח</string>
-    <string name="updates_support_summary">LeanType היא 100% חינמית, קוד פתוח ועצמאית. התמיכה שלך עוזרת לנו ישירות להמשיך בפיתוח פעיל!</string>
+    <string name="updates_support_summary" formatted="false">LeanType היא 100% חינמית, קוד פתוח ועצמאית. התמיכה שלך עוזרת לנו ישירות להמשיך בפיתוח פעיל!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">תמוך חודשית או חד-פעמית דרך GitHub Sponsors</string>
     <string name="updates_opencollective_title">תרום ב-Open Collective</string>
@@ -982,7 +982,7 @@
     <string name="text_expander_regex_title">ביטוי רגולרי</string>
     <string name="text_expander_regex_invalid">⚠️ תבנית ביטוי רגולרי לא חוקית</string>
     <string name="text_expander_template_title">הרחבת תבנית</string>
-    <string name="text_expander_template_hint">מיד חוזר! או שהאימייל שלי הוא %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">מיד חוזר! או שהאימייל שלי הוא %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">מחזיקי מקום מהירים (הקש כדי להוסיף בסמן):</string>
     <string name="text_expander_save">שמור</string>
     <string name="text_expander_add">הוסף</string>
@@ -1136,10 +1136,10 @@
     <string name="setup_step6_title_screenshots">הצעות צילומי מסך</string>
     <string name="setup_step6_instruction_screenshots">הצע צילומי מסך אחרונים בסרגל ההצעות. הערה: הרשאה זו מאפשרת גם שמירת צילומי מסך ללוח הגזירים.</string>
     <string name="setup_step7_title_height">גובה המקלדת</string>
-    <string name="setup_step7_instruction_height">התאם את גובה המקלדת. מומלץ: 77% למקשים מרובעים יותר, 100% למקשים גבוהים יותר.</string>
+    <string name="setup_step7_instruction_height" formatted="false">התאם את גובה המקלדת. מומלץ: 77% למקשים מרובעים יותר, 100% למקשים גבוהים יותר.</string>
     <string name="setup_step0_headline">ברוכים הבאים לחוויית הקלדה טובה יותר</string>
     <string name="setup_step0_subtitle">LeanType עוצבה מהיסוד לפרטיות, מהירות והתאמה אישית עמוקה.</string>
-    <string name="setup_step0_feature1_title">100% פרטית ומאובטחת</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% פרטית ומאובטחת</string>
     <string name="setup_step0_feature1_desc">ללא טלמטריה, מעקב רשת או רישום בענן. ההקלדה שלך נשארת במכשיר שלך.</string>
     <string name="setup_step0_feature2_title">התאמה אישית עמוקה</string>
     <string name="setup_step0_feature2_desc">התאם פריסות, ערכות נושא, גדלים, מחוות והקלדה רב-לשונית להעדפותיך.</string>
@@ -1159,7 +1159,7 @@
     <string name="text_expander_tag_desc_time12">שעה (12 שעות, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">שנה (YYYY)</string>
     <string name="text_expander_tag_desc_week">שבוע בשנה (1-53)</string>
-    <string name="text_expander_tag_desc_battery">רמת סוללה (למשל 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">רמת סוללה (למשל 85%)</string>
     <string name="text_expander_tag_desc_greeting">ברכה מותאמת לשעה</string>
     <string name="text_expander_tag_desc_tomorrow">תאריך מחר (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">תוכן לוח הגזירים</string>
@@ -1171,8 +1171,8 @@
     <string name="text_expander_tag_desc_month">חודש (למשל יוני)</string>
     <string name="text_expander_tag_desc_language">שפת מקלדת (למשל עברית)</string>
     <string name="text_expander_tag_desc_cursor">מיקום הסמן לאחר ההרחבה</string>
-    <string name="text_expander_tag_desc_bullets">רשימת תבליטים (למשל %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">רשימה ממוספרת (למשל %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">רשימת תבליטים (למשל %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">רשימה ממוספרת (למשל %list_5%)</string>
     <string name="updates_new_update_title">עדכון חדש זמין</string>
     <string name="updates_new_update_desc">גרסה %s מוכנה להתקנה</string>
     <string name="updates_view_release">הצג גרסה</string>
@@ -1601,7 +1601,7 @@
     <string name="app_quirks_hide_toolbar_summary">הסתר מקשי סרגל כלים, פעולות וכפתור הרחבה בעת הקלדה באפליקציה זו</string>
     <string name="app_quirks_badge_no_suggestions">אין הצעות</string>
     <string name="app_quirks_badge_no_toolbar">ללא סרגל</string>
-    <string name="text_expander_tag_desc_date_format">תאריך מעוצב (למשל%date:yyyy/MM/dd% או%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">תאריך מעוצב (למשל%date:yyyy/MM/dd% או%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">הצג תמיד הצעות</string>
     <string name="app_quirks_always_show_suggestions_summary">התעלם מהבקשות של אפליקציה זו להשבית הצעות</string>
     <string name="app_quirks_badge_always_suggestions">תמיד הצעות</string>

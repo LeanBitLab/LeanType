@@ -330,7 +330,7 @@
     <string name="updates_frequency_title">जांच आवृत्ति</string>
     <string name="updates_changelog_title">परिवर्तन लॉग</string>
     <string name="updates_support_title">विकास का समर्थन करें</string>
-    <string name="updates_support_summary">LeanType 100% मुफ़्त, ओपन सोर्स और स्वतंत्र है। आपका समर्थन सक्रिय विकास जारी रखने में सीधे मदद करता है!</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% मुफ़्त, ओपन सोर्स और स्वतंत्र है। आपका समर्थन सक्रिय विकास जारी रखने में सीधे मदद करता है!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors के माध्यम से मासिक या एकमुश्त दान करें</string>
     <string name="updates_opencollective_title">Open Collective पर दान करें</string>
@@ -495,10 +495,10 @@
     <string name="setup_step6_title_screenshots">स्क्रीनशॉट सुझाव</string>
     <string name="setup_step6_instruction_screenshots">सुझाव पट्टी में हाल ही में लिए गए स्क्रीनशॉट का सुझाव दें। नोट: यह अनुमति क्लिपबोर्ड पर स्क्रीनशॉट सहेजने की भी अनुमति देती है।</string>
     <string name="setup_step7_title_height">कीबोर्ड की ऊंचाई</string>
-    <string name="setup_step7_instruction_height">कीबोर्ड की ऊंचाई समायोजित करें। अनुशंसित: अधिक चौकोर कुंजियों के लिए 77%, लंबी कुंजियों के लिए 100%।</string>
+    <string name="setup_step7_instruction_height" formatted="false">कीबोर्ड की ऊंचाई समायोजित करें। अनुशंसित: अधिक चौकोर कुंजियों के लिए 77%, लंबी कुंजियों के लिए 100%।</string>
     <string name="setup_step0_headline">बेहतर टाइपिंग अनुभव में आपका स्वागत है</string>
     <string name="setup_step0_subtitle">LeanType को गोपनीयता, गति और गहन अनुकूलन के लिए शुरुआत से डिज़ाइन किया गया है।</string>
-    <string name="setup_step0_feature1_title">100% निजी और सुरक्षित</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% निजी और सुरक्षित</string>
     <string name="setup_step0_feature1_desc">शून्य टेलीमेट्री, नेटवर्क ट्रैकिंग या क्लाउड लॉगिंग। आपकी टाइपिंग आपके डिवाइस पर ही रहती है।</string>
     <string name="setup_step0_feature2_title">गहन रूप से अनुकूलन योग्य</string>
     <string name="setup_step0_feature2_desc">अपनी प्राथमिकताओं के अनुसार लेआउट, कीबोर्ड थीम, आकार, जेस्चर और बहुभाषी टाइपिंग को अनुकूलित करें।</string>
@@ -518,7 +518,7 @@
     <string name="text_expander_tag_desc_time12">समय (12 घंटे, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">वर्ष (YYYY)</string>
     <string name="text_expander_tag_desc_week">वर्ष का सप्ताह (1-53)</string>
-    <string name="text_expander_tag_desc_battery">बैटरी स्तर (उदा. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">बैटरी स्तर (उदा. 85%)</string>
     <string name="text_expander_tag_desc_greeting">समय के अनुसार अभिवादन</string>
     <string name="text_expander_tag_desc_tomorrow">कल का दिनांक (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">क्लिपबोर्ड सामग्री</string>
@@ -530,8 +530,8 @@
     <string name="text_expander_tag_desc_month">महीना (उदा. जून)</string>
     <string name="text_expander_tag_desc_language">कीबोर्ड भाषा (उदा. हिंदी)</string>
     <string name="text_expander_tag_desc_cursor">विस्तार के बाद कर्सर की स्थिति</string>
-    <string name="text_expander_tag_desc_bullets">बुलेट सूची (उदा. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">क्रमांकित सूची (उदा. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">बुलेट सूची (उदा. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">क्रमांकित सूची (उदा. %list_5%)</string>
     <string name="updates_new_update_title">नया अपडेट उपलब्ध है</string>
     <string name="updates_new_update_desc">संस्करण %s स्थापित करने के लिए तैयार है</string>
     <string name="updates_view_release">रिलीज़ देखें</string>
@@ -1507,7 +1507,7 @@
     <string name="text_expander_regex_title">नियमित अभिव्यक्ति</string>
     <string name="text_expander_regex_invalid">⚠️अमान्य नियमित अभिव्यक्ति पैटर्न</string>
     <string name="text_expander_template_title">टेम्पलेट विस्तार</string>
-    <string name="text_expander_template_hint">तुरंत वापस आ जाओ! या मेरा ईमेल%cलिपबोर्ड% है</string>
+    <string name="text_expander_template_hint" formatted="false">तुरंत वापस आ जाओ! या मेरा ईमेल%cलिपबोर्ड% है</string>
     <string name="text_expander_quick_placeholders_title">त्वरित प्लेसहोल्डर (कर्सर पर डालने के लिए टैप करें):</string>
     <string name="text_expander_save">बचाना</string>
     <string name="text_expander_add">जोड़ना</string>
@@ -1622,7 +1622,7 @@
     <string name="app_quirks_hide_toolbar_summary">इस ऐप में टाइप करते समय टूलबार कुंजियाँ, क्रियाएँ और विस्तृत बटन छिपाएँ</string>
     <string name="app_quirks_badge_no_suggestions">कोई सुझाव नहीं</string>
     <string name="app_quirks_badge_no_toolbar">बिना टूलबार</string>
-    <string name="text_expander_tag_desc_date_format">स्वरूपित दिनांक (उदा.%dखाया:yyyy/MM/dd% या%dखाया:प्रारूप(पैटर्न)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">स्वरूपित दिनांक (उदा.%dखाया:yyyy/MM/dd% या%dखाया:प्रारूप(पैटर्न)%)</string>
     <string name="app_quirks_always_show_suggestions">हमेशा सुझाव दिखाएं</string>
     <string name="app_quirks_always_show_suggestions_summary">सुझावों को अक्षम करने के लिए इस ऐप के अनुरोधों पर ध्यान न दें</string>
     <string name="app_quirks_badge_always_suggestions">हमेशा सुझाव</string>

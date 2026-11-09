@@ -867,7 +867,7 @@
     <string name="updates_frequency_title">Frekuensi pemeriksaan</string>
     <string name="updates_changelog_title">Catatan perubahan</string>
     <string name="updates_support_title">Dukung pengembangan</string>
-    <string name="updates_support_summary">LeanType 100% gratis, sumber terbuka, dan independen. Dukungan Anda secara langsung membantu kami melanjutkan pengembangan aktif!</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% gratis, sumber terbuka, dan independen. Dukungan Anda secara langsung membantu kami melanjutkan pengembangan aktif!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Sponsori bulanan atau satu kali melalui GitHub Sponsors</string>
     <string name="updates_opencollective_title">Donasi di Open Collective</string>
@@ -982,7 +982,7 @@
     <string name="text_expander_regex_title">Ekspresi Reguler</string>
     <string name="text_expander_regex_invalid">⚠️ Pola ekspresi reguler tidak valid</string>
     <string name="text_expander_template_title">Ekspansi Template</string>
-    <string name="text_expander_template_hint">Segera kembali! atau Email saya adalah %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Segera kembali! atau Email saya adalah %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Placeholder Cepat (ketuk untuk menyisipkan di kursor):</string>
     <string name="text_expander_save">Simpan</string>
     <string name="text_expander_add">Tambahkan</string>
@@ -1136,10 +1136,10 @@
     <string name="setup_step6_title_screenshots">Saran Tangkapan Layar</string>
     <string name="setup_step6_instruction_screenshots">Sarankan tangkapan layar yang baru diambil di bilah saran. Catatan: Izin ini juga memungkinkan penyimpanan tangkapan layar ke papan klip.</string>
     <string name="setup_step7_title_height">Tinggi Papan Ketik</string>
-    <string name="setup_step7_instruction_height">Sesuaikan tinggi papan ketik. Disarankan: 77% untuk tombol yang lebih persegi, 100% untuk tombol yang lebih tinggi.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Sesuaikan tinggi papan ketik. Disarankan: 77% untuk tombol yang lebih persegi, 100% untuk tombol yang lebih tinggi.</string>
     <string name="setup_step0_headline">Selamat datang di pengalaman mengetik yang lebih baik</string>
     <string name="setup_step0_subtitle">LeanType dirancang dari awal untuk privasi, kecepatan, dan kustomisasi mendalam.</string>
-    <string name="setup_step0_feature1_title">100% Pribadi &amp; Aman</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Pribadi &amp; Aman</string>
     <string name="setup_step0_feature1_desc">Nol telemetri, pelacakan jaringan, atau pencatatan cloud. Pengetikan Anda tetap berada di perangkat Anda.</string>
     <string name="setup_step0_feature2_title">Sangat Dapat Disesuaikan</string>
     <string name="setup_step0_feature2_desc">Sesuaikan tata letak, tema papan ketik, ukuran, gestur, dan pengetikan multibahasa sesuai preferensi Anda.</string>
@@ -1159,7 +1159,7 @@
     <string name="text_expander_tag_desc_time12">Waktu (12 jam, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Tahun (YYYY)</string>
     <string name="text_expander_tag_desc_week">Minggu dalam tahun (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Tingkat baterai (mis. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Tingkat baterai (mis. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Salam berdasarkan waktu</string>
     <string name="text_expander_tag_desc_tomorrow">Tanggal besok (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Konten papan klip</string>
@@ -1171,8 +1171,8 @@
     <string name="text_expander_tag_desc_month">Bulan (mis. Juni)</string>
     <string name="text_expander_tag_desc_language">Bahasa papan ketik (mis. Indonesia)</string>
     <string name="text_expander_tag_desc_cursor">Posisi kursor setelah ekspansi</string>
-    <string name="text_expander_tag_desc_bullets">Daftar poin (mis. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Daftar bernomor (mis. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Daftar poin (mis. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Daftar bernomor (mis. %list_5%)</string>
     <string name="updates_new_update_title">Pembaruan Baru Tersedia</string>
     <string name="updates_new_update_desc">Versi %s siap untuk dipasang</string>
     <string name="updates_view_release">Lihat Rilis</string>
@@ -1593,7 +1593,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="app_quirks_hide_toolbar_summary">Sembunyikan tombol toolbar, tindakan, dan tombol perluas saat mengetik di aplikasi ini</string>
     <string name="app_quirks_badge_no_suggestions">Tidak Ada Saran</string>
     <string name="app_quirks_badge_no_toolbar">Tanpa bilah alat</string>
-    <string name="text_expander_tag_desc_date_format">Tanggal yang diformat (misalnya%dmakan:yyyy/MM/dd% atau%dmakan:format(pola)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Tanggal yang diformat (misalnya%dmakan:yyyy/MM/dd% atau%dmakan:format(pola)%)</string>
     <string name="app_quirks_always_show_suggestions">Selalu tampilkan saran</string>
     <string name="app_quirks_always_show_suggestions_summary">Abaikan permintaan aplikasi ini untuk menonaktifkan saran</string>
     <string name="app_quirks_badge_always_suggestions">Selalu Saran</string>

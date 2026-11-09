@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <helium314.keyboard.latin.gif.GifPickerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/gif_picker_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
             android:contentDescription="@string/action_back"
-            android:tint="?android:attr/textColorPrimary" />
+            app:tint="?android:attr/textColorPrimary" />
 
         <LinearLayout
             android:id="@+id/searchContainer"
@@ -39,7 +40,7 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/sym_keyboard_search_rounded"
-                android:tint="?android:attr/textColorSecondary"
+                app:tint="?android:attr/textColorSecondary"
                 android:contentDescription="@null" />
 
             <FrameLayout
@@ -91,7 +92,7 @@
                 android:layout_height="28dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_close_rounded"
-                android:tint="?android:attr/textColorSecondary"
+                app:tint="?android:attr/textColorSecondary"
                 android:contentDescription="@string/gif_search_clear"
                 android:visibility="gone" />
         </LinearLayout>

@@ -805,7 +805,7 @@
     <string name="text_expander_regex_title">تعبير نمطي</string>
     <string name="text_expander_regex_invalid">⚠️ نمط تعبير نمطي غير صالح</string>
     <string name="text_expander_template_title">توسيع القالب</string>
-    <string name="text_expander_template_hint">سأعود حالاً! أو بريدي الإلكتروني هو %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">سأعود حالاً! أو بريدي الإلكتروني هو %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">العناصر النائبة السريعة (اضغط للإدراج عند المؤشر):</string>
     <string name="text_expander_save">حفظ</string>
     <string name="text_expander_add">إضافة</string>
@@ -1040,7 +1040,7 @@
     <string name="updates_frequency_title">تكرار التحقق</string>
     <string name="updates_changelog_title">سجل التغييرات</string>
     <string name="updates_support_title">دعم التطوير</string>
-    <string name="updates_support_summary">LeanType مجاني بنسبة 100% ومفتوح المصدر ومستقل. دعمكم يساعدنا مباشرة على مواصلة التطوير النشط!</string>
+    <string name="updates_support_summary" formatted="false">LeanType مجاني بنسبة 100% ومفتوح المصدر ومستقل. دعمكم يساعدنا مباشرة على مواصلة التطوير النشط!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">رعاية شهرية أو تبرع لمرة واحدة عبر GitHub Sponsors</string>
     <string name="updates_opencollective_title">التبرع عبر Open Collective</string>
@@ -1203,10 +1203,10 @@
     <string name="setup_step6_title_screenshots">اقتراحات لقطات الشاشة</string>
     <string name="setup_step6_instruction_screenshots">اقتراح لقطات الشاشة الملتقطة حديثًا في شريط الاقتراحات. ملاحظة: يتيح هذا الإذن أيضًا حفظ لقطات الشاشة في الحافظة.</string>
     <string name="setup_step7_title_height">ارتفاع لوحة المفاتيح</string>
-    <string name="setup_step7_instruction_height">اضبط ارتفاع لوحة المفاتيح. المستحسن: 77% لمفاتيح أكثر تربيعًا، 100% لمفاتيح أطول.</string>
+    <string name="setup_step7_instruction_height" formatted="false">اضبط ارتفاع لوحة المفاتيح. المستحسن: 77% لمفاتيح أكثر تربيعًا، 100% لمفاتيح أطول.</string>
     <string name="setup_step0_headline">مرحبًا بك في تجربة كتابة أفضل</string>
     <string name="setup_step0_subtitle">تم تصميم LeanType من الألف إلى الياء لتوفير الخصوصية، والسرعة، والتخصيص العميق.</string>
-    <string name="setup_step0_feature1_title">خاص وآمن بنسبة 100%</string>
+    <string name="setup_step0_feature1_title" formatted="false">خاص وآمن بنسبة 100%</string>
     <string name="setup_step0_feature1_desc">بدون قياس عن بعد، أو تتبع شبكة، أو تسجيل سحابي. تظل كتابتك على جهازك.</string>
     <string name="setup_step0_feature2_title">قابل للتخصيص بعمق</string>
     <string name="setup_step0_feature2_desc">خصص التخطيطات، وسمات لوحة المفاتيح، والأحجام، والإيماءات، والكتابة متعددة اللغات وفقًا لتفضيلاتك.</string>
@@ -1226,7 +1226,7 @@
     <string name="text_expander_tag_desc_time12">الوقت (12 ساعة، hh:mm ص/م)</string>
     <string name="text_expander_tag_desc_year">السنة (YYYY)</string>
     <string name="text_expander_tag_desc_week">أسبوع من السنة (1-53)</string>
-    <string name="text_expander_tag_desc_battery">مستوى البطارية (مثل 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">مستوى البطارية (مثل 85%)</string>
     <string name="text_expander_tag_desc_greeting">تحية معتمدة على الوقت</string>
     <string name="text_expander_tag_desc_tomorrow">تاريخ الغد (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">محتوى الحافظة</string>
@@ -1238,8 +1238,8 @@
     <string name="text_expander_tag_desc_month">الشهر (مثل يونيو)</string>
     <string name="text_expander_tag_desc_language">لغة لوحة المفاتيح (مثل الإنجليزية)</string>
     <string name="text_expander_tag_desc_cursor">موضع المؤشر بعد التوسيع</string>
-    <string name="text_expander_tag_desc_bullets">قائمة نقطية (مثل %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">قائمة مرقمة (مثل %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">قائمة نقطية (مثل %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">قائمة مرقمة (مثل %list_5%)</string>
     <string name="updates_new_update_title">يتوفر تحديث جديد</string>
     <string name="updates_new_update_desc">الإصدار %s جاهز للتثبيت</string>
     <string name="updates_view_release">عرض الإصدار</string>
@@ -1653,7 +1653,7 @@
     <string name="app_quirks_hide_toolbar_summary">إخفاء مفاتيح شريط الأدوات والإجراءات وزر التوسيع عند الكتابة في هذا التطبيق</string>
     <string name="app_quirks_badge_no_suggestions">لا اقتراحات</string>
     <string name="app_quirks_badge_no_toolbar">بلا شريط أدوات</string>
-    <string name="text_expander_tag_desc_date_format">التاريخ المنسق (على سبيل المثال%date:yyyy/MM/dd% أو%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">التاريخ المنسق (على سبيل المثال%date:yyyy/MM/dd% أو%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">اعرض الاقتراحات دائمًا</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاهل طلبات هذا التطبيق لتعطيل الاقتراحات</string>
     <string name="app_quirks_badge_always_suggestions">دائما الاقتراحات</string>

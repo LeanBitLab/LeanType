@@ -30,7 +30,9 @@ class SettingsContainer(context: Context) {
     private val list = createSettings(context)
     private val map: Map<String, Setting> = HashMap<String, Setting>(list.size).apply {
         list.forEach {
-            putIfAbsent(it.key, it)
+            if (!containsKey(it.key)) {
+                put(it.key, it)
+            }
         }
     }
 

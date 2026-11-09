@@ -898,7 +898,7 @@
     <string name="updates_frequency_title">Честота на проверка</string>
     <string name="updates_changelog_title">Дневник на промените</string>
     <string name="updates_support_title">Подкрепа за разработката</string>
-    <string name="updates_support_summary">LeanType е 100% безплатен, с отворен код и независим. Вашата подкрепа директно ни помага да продължим активната разработка!</string>
+    <string name="updates_support_summary" formatted="false">LeanType е 100% безплатен, с отворен код и независим. Вашата подкрепа директно ни помага да продължим активната разработка!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Спонсорирайте месечно или еднократно чрез GitHub Sponsors</string>
     <string name="updates_opencollective_title">Дарете в Open Collective</string>
@@ -1011,7 +1011,7 @@
     <string name="text_expander_regex_title">Регулярен израз</string>
     <string name="text_expander_regex_invalid">⚠️ Невалиден шаблон на регулярен израз</string>
     <string name="text_expander_template_title">Разгъване на шаблон</string>
-    <string name="text_expander_template_hint">Веднага се връщам! или Моят имейл е %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Веднага се връщам! или Моят имейл е %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Бързи заместители (докоснете за вмъкване при курсора):</string>
     <string name="text_expander_save">Запазване</string>
     <string name="text_expander_add">Добавяне</string>
@@ -1165,10 +1165,10 @@
     <string name="setup_step6_title_screenshots">Предложения за екранни снимки</string>
     <string name="setup_step6_instruction_screenshots">Предлагане на скорошни екранни снимки в лентата за предложения. Забележка: Това разрешение също така позволява запазване на екранни снимки в клипборда.</string>
     <string name="setup_step7_title_height">Височина на клавиатурата</string>
-    <string name="setup_step7_instruction_height">Регулирайте височината на клавиатурата. Препоръчително: 77% за по-квадратни клавиши, 100% за по-високи клавиши.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Регулирайте височината на клавиатурата. Препоръчително: 77% за по-квадратни клавиши, 100% за по-високи клавиши.</string>
     <string name="setup_step0_headline">Добре дошли в по-добро изживяване при писане</string>
     <string name="setup_step0_subtitle">LeanType е създаден от основата с фокус върху поверителността, скоростта и дълбоката персонализация.</string>
-    <string name="setup_step0_feature1_title">100% Поверителна и сигурна</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Поверителна и сигурна</string>
     <string name="setup_step0_feature1_desc">Без телеметрия, мрежово проследяване или облачни логове. Вашето писане остава само на устройството ви.</string>
     <string name="setup_step0_feature2_title">Дълбоко персонализирана</string>
     <string name="setup_step0_feature2_desc">Персонализирайте подредби, теми, размери, жестове и многоезично писане според вашите предпочитания.</string>
@@ -1188,7 +1188,7 @@
     <string name="text_expander_tag_desc_time12">Час (12ч, чч:мм AM/PM)</string>
     <string name="text_expander_tag_desc_year">Година (ГГГГ)</string>
     <string name="text_expander_tag_desc_week">Седмица от годината (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Ниво на батерията (напр. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Ниво на батерията (напр. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Поздрав според часа</string>
     <string name="text_expander_tag_desc_tomorrow">Утрешна дата (ГГГГ-ММ-ДД)</string>
     <string name="text_expander_tag_desc_clipboard">Съдържание на клипборда</string>
@@ -1200,8 +1200,8 @@
     <string name="text_expander_tag_desc_month">Месец (напр. Юни)</string>
     <string name="text_expander_tag_desc_language">Език на клавиатурата (напр. Български)</string>
     <string name="text_expander_tag_desc_cursor">Позиция на курсора след разширяване</string>
-    <string name="text_expander_tag_desc_bullets">Списък с водещи символи (напр. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Номериран списък (напр. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Списък с водещи символи (напр. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Номериран списък (напр. %list_5%)</string>
     <string name="updates_new_update_title">Налична е нова актуализация</string>
     <string name="updates_new_update_desc">Версия %s е готова за инсталиране</string>
     <string name="updates_view_release">Преглед на изданието</string>
@@ -1630,7 +1630,7 @@
     <string name="app_quirks_hide_toolbar_summary">Скриване на бутоните на лентата с инструменти, действията и бутона за разширяване, когато пишете в това приложение</string>
     <string name="app_quirks_badge_no_suggestions">Няма предложения</string>
     <string name="app_quirks_badge_no_toolbar">Без лента</string>
-    <string name="text_expander_tag_desc_date_format">Форматирана дата (напр.%date:yyyy/MM/dd% или%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Форматирана дата (напр.%date:yyyy/MM/dd% или%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Винаги показвайте предложения</string>
     <string name="app_quirks_always_show_suggestions_summary">Игнорирайте заявките на това приложение за деактивиране на предложенията</string>
     <string name="app_quirks_badge_always_suggestions">Винаги предложения</string>

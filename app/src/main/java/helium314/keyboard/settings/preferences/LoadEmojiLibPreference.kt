@@ -5,6 +5,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.core.content.edit
+import helium314.keyboard.compat.contentLengthLongCompat
 import helium314.keyboard.latin.utils.protectedPrefs
 import helium314.keyboard.latin.utils.getActivity
 import androidx.compose.foundation.layout.Arrangement
@@ -103,7 +104,7 @@ fun LoadEmojiLibPreference(
 
                 if (cachePath != null) {
                     val targetFile = File(cachePath, dictName)
-                    val contentLength = conn.contentLengthLong.takeIf { it > 0 } ?: conn.contentLength.toLong()
+                    val contentLength = conn.contentLengthLongCompat().takeIf { it > 0 } ?: conn.contentLength.toLong()
                     conn.inputStream.use { input ->
                         FileOutputStream(targetFile).use { output ->
                             FileUtils.copyStreamWithProgress(input, output, contentLength) { prog ->

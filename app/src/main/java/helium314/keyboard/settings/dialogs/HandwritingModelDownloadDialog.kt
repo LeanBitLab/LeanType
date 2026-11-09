@@ -4,6 +4,7 @@ package helium314.keyboard.settings.dialogs
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import helium314.keyboard.compat.locale
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +34,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -69,6 +71,7 @@ fun HandwritingModelDownloadDialog(
     onModelChanged: (() -> Unit)? = null
 ) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
     val scope = rememberCoroutineScope()
     var searchQuery by remember { mutableStateOf("") }
 
@@ -168,7 +171,7 @@ fun HandwritingModelDownloadDialog(
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
             val enabledSubtypes = SubtypeSettings.getEnabledSubtypes(true).map { it.locale() }
-            val sysLocale = context.resources.configuration.locales[0] ?: Locale.getDefault()
+            val sysLocale = configuration.locale()
 
             val supportedCodes = HandwritingModelPackData.LANGUAGE_PACKS.keys.toList()
 

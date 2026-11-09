@@ -4,6 +4,7 @@ package helium314.keyboard.latin.handwriting
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import helium314.keyboard.compat.contentLengthLongCompat
 import helium314.keyboard.latin.common.FileUtils
 import helium314.keyboard.latin.utils.locale
 import java.io.File
@@ -391,7 +392,7 @@ object HandwritingModelImporter {
                     val filename = urlStr.substringAfterLast('/')
                     val baseProgress = index.toFloat() / total
                     val weight = 1f / total
-                    val contentLength = conn.contentLengthLong.takeIf { it > 0 } ?: conn.contentLength.toLong()
+                    val contentLength = conn.contentLengthLongCompat().takeIf { it > 0 } ?: conn.contentLength.toLong()
                     conn.inputStream.use { stream ->
                         FileOutputStream(tempZip).use { fileOut ->
                             FileUtils.copyStreamWithProgress(stream, fileOut, contentLength) { prog ->

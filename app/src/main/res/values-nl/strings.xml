@@ -844,7 +844,7 @@
     <string name="updates_frequency_title">Controlefrequentie</string>
     <string name="updates_changelog_title">Wijzigingsoverzicht</string>
     <string name="updates_support_title">Ontwikkeling ondersteunen</string>
-    <string name="updates_support_summary">LeanType is 100% gratis, open-source en onafhankelijk. Uw steun helpt ons direct om de actieve ontwikkeling voort te zetten!</string>
+    <string name="updates_support_summary" formatted="false">LeanType is 100% gratis, open-source en onafhankelijk. Uw steun helpt ons direct om de actieve ontwikkeling voort te zetten!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Maandelijks of eenmalig sponsoren via GitHub Sponsors</string>
     <string name="updates_opencollective_title">Doneren op Open Collective</string>
@@ -951,7 +951,7 @@
     <string name="text_expander_regex_title">Reguliere expressie</string>
     <string name="text_expander_regex_invalid">⚠️ Ongeldig reguliere expressie patroon</string>
     <string name="text_expander_template_title">Sjabloonuitbreiding</string>
-    <string name="text_expander_template_hint">Ben zo terug! of Mijn e-mail is %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Ben zo terug! of Mijn e-mail is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Snelle placeholders (tik om in te voegen bij cursor):</string>
     <string name="text_expander_save">Opslaan</string>
     <string name="text_expander_add">Toevoegen</string>
@@ -1172,10 +1172,10 @@ Geen AI op de achtergrond of netwerkgebruik.</string>
     <string name="setup_step6_title_screenshots">Screenshotsuggesties</string>
     <string name="setup_step6_instruction_screenshots">Stel recent gemaakte screenshots voor in de suggestiebalk. Opmerking: Deze machtiging staat ook het opslaan van screenshots op het klembord toe.</string>
     <string name="setup_step7_title_height">Toetsenbordhoogte</string>
-    <string name="setup_step7_instruction_height">Pas de hoogte van het toetsenbord aan. Aanbevolen: 77% voor meer vierkante toetsen, 100% voor hogere toetsen.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Pas de hoogte van het toetsenbord aan. Aanbevolen: 77% voor meer vierkante toetsen, 100% voor hogere toetsen.</string>
     <string name="setup_step0_headline">Welkom bij een betere typervaring</string>
     <string name="setup_step0_subtitle">LeanType is van de grond af ontworpen voor privacy, snelheid en diepe aanpasbaarheid.</string>
-    <string name="setup_step0_feature1_title">100% Privé en veilig</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Privé en veilig</string>
     <string name="setup_step0_feature1_desc">Geen telemetrie, netwerktracking of cloudregistratie. Je getypte tekst blijft op je apparaat.</string>
     <string name="setup_step0_feature2_title">Diep aanpasbaar</string>
     <string name="setup_step0_feature2_desc">Pas lay-outs, toetsenbordthema\'s, groottes, gebaren en meertalig typen aan jouw voorkeuren aan.</string>
@@ -1195,7 +1195,7 @@ Geen AI op de achtergrond of netwerkgebruik.</string>
     <string name="text_expander_tag_desc_time12">Tijd (12u, uu:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Jaar (JJJJ)</string>
     <string name="text_expander_tag_desc_week">Week van het jaar (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Batterijniveau (bijv. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Batterijniveau (bijv. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Begroeting op basis van tijdstip</string>
     <string name="text_expander_tag_desc_tomorrow">Datum van morgen (JJJJ-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Klembordinhoud</string>
@@ -1207,8 +1207,8 @@ Geen AI op de achtergrond of netwerkgebruik.</string>
     <string name="text_expander_tag_desc_month">Maand (bijv. Juni)</string>
     <string name="text_expander_tag_desc_language">Toetsenbordtaal (bijv. Nederlands)</string>
     <string name="text_expander_tag_desc_cursor">Cursorpositie na uitbreiding</string>
-    <string name="text_expander_tag_desc_bullets">Opsommingslijst (bijv. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Genummerde lijst (bijv. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Opsommingslijst (bijv. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Genummerde lijst (bijv. %list_5%)</string>
     <string name="updates_new_update_title">Nieuwe update beschikbaar</string>
     <string name="updates_new_update_desc">Versie %s is klaar om te installeren</string>
     <string name="updates_view_release">Versie bekijken</string>
@@ -1637,7 +1637,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="app_quirks_hide_toolbar_summary">Verberg werkbalktoetsen, acties en uitvouwknop tijdens het typen in deze app</string>
     <string name="app_quirks_badge_no_suggestions">Geen suggesties</string>
     <string name="app_quirks_badge_no_toolbar">Geen werkbalk</string>
-    <string name="text_expander_tag_desc_date_format">Opgemaakte datum (bijvoorbeeld%dat:jjjj/MM/dd% of%dat:format(patroon)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Opgemaakte datum (bijvoorbeeld%dat:jjjj/MM/dd% of%dat:format(patroon)%)</string>
     <string name="app_quirks_always_show_suggestions">Laat altijd suggesties zien</string>
     <string name="app_quirks_always_show_suggestions_summary">Negeer de verzoeken van deze app om suggesties uit te schakelen</string>
     <string name="app_quirks_badge_always_suggestions">Altijd suggesties</string>

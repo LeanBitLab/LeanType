@@ -898,7 +898,7 @@
     <string name="updates_frequency_title">Kontrollimise sagedus</string>
     <string name="updates_changelog_title">Muudatuste logi</string>
     <string name="updates_support_title">Toeta arendust</string>
-    <string name="updates_support_summary">LeanType on 100% tasuta, avatud lähtekoodiga ja sõltumatu. Teie toetus aitab meil otseselt jätkata aktiivset arendust!</string>
+    <string name="updates_support_summary" formatted="false">LeanType on 100% tasuta, avatud lähtekoodiga ja sõltumatu. Teie toetus aitab meil otseselt jätkata aktiivset arendust!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Toeta igakuiselt või ühekordselt GitHub Sponsorsi kaudu</string>
     <string name="updates_opencollective_title">Anneta Open Collective\'is</string>
@@ -1011,7 +1011,7 @@
     <string name="text_expander_regex_title">Regulaaravaldis</string>
     <string name="text_expander_regex_invalid">⚠️ Vigane regulaaravaldise muster</string>
     <string name="text_expander_template_title">Malli laiendus</string>
-    <string name="text_expander_template_hint">Olen kohe tagasi! või Minu e-post on %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Olen kohe tagasi! või Minu e-post on %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Kiired kohahoidjad (puudutage kursori asukohta sisestamiseks):</string>
     <string name="text_expander_save">Salvesta</string>
     <string name="text_expander_add">Lisa</string>
@@ -1165,10 +1165,10 @@ Taustal ei tööta AI ega kasutata võrku.</string>
     <string name="setup_step6_title_screenshots">Ekraanipiltide soovitused</string>
     <string name="setup_step6_instruction_screenshots">Soovita hiljuti tehtud ekraanipilte soovituste ribal. Märkus: see luba võimaldab ka ekraanipiltide salvestamist lõikelauale.</string>
     <string name="setup_step7_title_height">Klaviatuuri kõrgus</string>
-    <string name="setup_step7_instruction_height">Kohanda klaviatuuri kõrgust. Soovitatav: 77% kandilisemate klahvide jaoks, 100% kõrgemate klahvide jaoks.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Kohanda klaviatuuri kõrgust. Soovitatav: 77% kandilisemate klahvide jaoks, 100% kõrgemate klahvide jaoks.</string>
     <string name="setup_step0_headline">Tere tulemast parema tippimiskogemuse juurde</string>
     <string name="setup_step0_subtitle">LeanType on algusest peale loodud privaatsust, kiirust ja sügavat kohandatavust silmas pidades.</string>
-    <string name="setup_step0_feature1_title">100% privaatne ja turvaline</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% privaatne ja turvaline</string>
     <string name="setup_step0_feature1_desc">Telemeetria, võrgujälgimise ja pilvelogimise täielik puudumine. Sinu tippimine jääb sinu seadmesse.</string>
     <string name="setup_step0_feature2_title">Sügavalt kohandatav</string>
     <string name="setup_step0_feature2_desc">Kohanda paigutusi, klaviatuuri teemasid, suurusi, viipeid ja mitmekeelset tippimist vastavalt oma eelistustele.</string>
@@ -1188,7 +1188,7 @@ Taustal ei tööta AI ega kasutata võrku.</string>
     <string name="text_expander_tag_desc_time12">Kellaaeg (12h, tt:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Aasta (AAAA)</string>
     <string name="text_expander_tag_desc_week">Aasta nädal (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Aku tase (nt 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Aku tase (nt 85%)</string>
     <string name="text_expander_tag_desc_greeting">Aastapäevast või kellaajast sõltuv tervitus</string>
     <string name="text_expander_tag_desc_tomorrow">Homne kuupäev (AAAA-KK-PP)</string>
     <string name="text_expander_tag_desc_clipboard">Lõikelaua sisu</string>
@@ -1200,8 +1200,8 @@ Taustal ei tööta AI ega kasutata võrku.</string>
     <string name="text_expander_tag_desc_month">Kuu (nt Juuni)</string>
     <string name="text_expander_tag_desc_language">Klaviatuuri keel (nt Inglise)</string>
     <string name="text_expander_tag_desc_cursor">Kursori asukoht pärast laiendamist</string>
-    <string name="text_expander_tag_desc_bullets">Täpploend (nt %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Nummerdatud loend (nt %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Täpploend (nt %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Nummerdatud loend (nt %list_5%)</string>
     <string name="updates_new_update_title">Uus värskendus on saadaval</string>
     <string name="updates_new_update_desc">Versioon %s on installimiseks valmis</string>
     <string name="updates_view_release">Vaata väljalaset</string>
@@ -1630,7 +1630,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="app_quirks_hide_toolbar_summary">Peida tööriistariba klahvid, toimingud ja laiendamisnupp sellesse rakendusse tippimisel</string>
     <string name="app_quirks_badge_no_suggestions">Soovitusi pole</string>
     <string name="app_quirks_badge_no_toolbar">Ilma ribata</string>
-    <string name="text_expander_tag_desc_date_format">Vormindatud kuupäev (nt%date:yyyy/MM/dd% või%date:format(muster)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Vormindatud kuupäev (nt%date:yyyy/MM/dd% või%date:format(muster)%)</string>
     <string name="app_quirks_always_show_suggestions">Näita alati soovitusi</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignoreeri selle rakenduse taotlusi soovituste keelamiseks</string>
     <string name="app_quirks_badge_always_suggestions">Alati soovitused</string>

@@ -676,7 +676,7 @@
     <string name="updates_frequency_title">Frequência de verificação</string>
     <string name="updates_changelog_title">Registro de alterações</string>
     <string name="updates_support_title">Apoiar o desenvolvimento</string>
-    <string name="updates_support_summary">O LeanType é 100% gratuito, de código aberto e independente. Seu apoio nos ajuda diretamente a continuar o desenvolvimento ativo!</string>
+    <string name="updates_support_summary" formatted="false">O LeanType é 100% gratuito, de código aberto e independente. Seu apoio nos ajuda diretamente a continuar o desenvolvimento ativo!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Patrocine mensalmente ou com doação única via GitHub Sponsors</string>
     <string name="updates_opencollective_title">Doar no Open Collective</string>
@@ -1031,7 +1031,7 @@
     <string name="text_expander_regex_title">Expressão Regular</string>
     <string name="text_expander_regex_invalid">⚠️ Padrão de expressão regular inválido</string>
     <string name="text_expander_template_title">Expansão de Modelo</string>
-    <string name="text_expander_template_hint">Volto já! ou O meu email é %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Volto já! ou O meu email é %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Espaços Reservados Rápidos (toque para inserir no cursor):</string>
     <string name="text_expander_save">Guardar</string>
     <string name="text_expander_add">Adicionar</string>
@@ -1135,10 +1135,10 @@
     <string name="setup_step6_title_screenshots">Sugestões de capturas de tela</string>
     <string name="setup_step6_instruction_screenshots">Sugerir capturas de tela recentes na barra de sugestões. Nota: esta permissão também permite salvar capturas de tela na área de transferência.</string>
     <string name="setup_step7_title_height">Altura do teclado</string>
-    <string name="setup_step7_instruction_height">Ajuste a altura do teclado. Recomendado: 77% para teclas mais quadradas, 100% para teclas mais altas.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Ajuste a altura do teclado. Recomendado: 77% para teclas mais quadradas, 100% para teclas mais altas.</string>
     <string name="setup_step0_headline">Boas-vindas a uma experiência de digitação melhor</string>
     <string name="setup_step0_subtitle">O LeanType foi projetado do zero para privacidade, velocidade e personalização profunda.</string>
-    <string name="setup_step0_feature1_title">100% Privado e Seguro</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Privado e Seguro</string>
     <string name="setup_step0_feature1_desc">Sem telemetria, rastreamento de rede ou registros na nuvem. Sua digitação fica no seu dispositivo.</string>
     <string name="setup_step0_feature2_title">Profundamente personalizável</string>
     <string name="setup_step0_feature2_desc">Adapte layouts, temas do teclado, tamanhos, gestos e digitação multilíngue às suas preferências.</string>
@@ -1158,7 +1158,7 @@
     <string name="text_expander_tag_desc_time12">Hora (12h, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Ano (AAAA)</string>
     <string name="text_expander_tag_desc_week">Semana do ano (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Nível da bateria (ex.: 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Nível da bateria (ex.: 85%)</string>
     <string name="text_expander_tag_desc_greeting">Saudação de acordo com a hora</string>
     <string name="text_expander_tag_desc_tomorrow">Data de amanhã (AAAA-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Conteúdo da área de transferência</string>
@@ -1170,8 +1170,8 @@
     <string name="text_expander_tag_desc_month">Mês (ex.: Junho)</string>
     <string name="text_expander_tag_desc_language">Idioma do teclado (ex.: Português)</string>
     <string name="text_expander_tag_desc_cursor">Posição do cursor após expansão</string>
-    <string name="text_expander_tag_desc_bullets">Lista com marcadores (ex.: %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Lista numerada (ex.: %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Lista com marcadores (ex.: %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Lista numerada (ex.: %list_5%)</string>
     <string name="updates_new_update_title">Nova atualização disponível</string>
     <string name="updates_new_update_desc">A versão %s está pronta para instalar</string>
     <string name="updates_view_release">Ver versão</string>
@@ -1600,7 +1600,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="app_quirks_hide_toolbar_summary">Ocultar teclas da barra de ferramentas, ações e botão de expansão ao digitar neste aplicativo</string>
     <string name="app_quirks_badge_no_suggestions">Sem sugestões</string>
     <string name="app_quirks_badge_no_toolbar">Sem barra</string>
-    <string name="text_expander_tag_desc_date_format">Data formatada (por exemplo,%date:yyyy/MM/dd% ou%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Data formatada (por exemplo,%date:yyyy/MM/dd% ou%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Sempre mostrar sugestões</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignore as solicitações deste aplicativo para desativar sugestões</string>
     <string name="app_quirks_badge_always_suggestions">Sempre sugerir</string>

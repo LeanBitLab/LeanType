@@ -11,6 +11,7 @@ import android.util.SparseArray
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodSubtype
 import android.view.inputmethod.TextBoundsInfo
+import androidx.annotation.RequiresApi
 import androidx.core.util.forEach
 import helium314.keyboard.event.Event
 import helium314.keyboard.event.HangulEventDecoder
@@ -687,6 +688,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         sendExactLinesRequest(bounds, generation, baseStart, editorPackage)
     }
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private fun sendExactLinesRequest(bounds: RectF, generation: Int, baseStart: Int, editorPackage: String?): Boolean {
         deleteSwipeExactPending = true
         val sent = connection.requestTextBoundsInfo(bounds) { info ->
@@ -710,6 +712,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     private fun deleteSwipeStartForExactLines() = deleteSwipeLineBoundaries.firstOrNull() ?: deleteSwipeInitialEnd
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private fun onExactLinesResult(info: TextBoundsInfo?, baseStart: Int, editorPackage: String?) {
         deleteSwipeExactPending = false
         deleteSwipeTimeout?.let { deleteSwipeHandler.removeCallbacks(it) }
@@ -741,8 +744,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     }
 
     /** Geometry of the characters the editor reported (up to the swipe's start), or null if unusable. */
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private fun geometryFromTextBoundsInfo(info: TextBoundsInfo, baseStart: Int): VisualLines.LineGeometry? {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return null
         if (info.endIndex <= info.startIndex || info.startIndex > baseStart || info.endIndex < baseStart) {
             return null
         }

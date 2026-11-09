@@ -313,6 +313,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         textView.overScrollMode = View.OVER_SCROLL_ALWAYS
     }
 
+    @SuppressLint("WrongConstant")
     private fun configureEditTextView(textView: TextView) {
         textView.minLines = 1
         textView.maxLines = 4

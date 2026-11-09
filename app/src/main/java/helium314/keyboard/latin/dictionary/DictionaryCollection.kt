@@ -101,7 +101,7 @@ class DictionaryCollection(
         return result
     }
 
-    override fun forEachWord(consumer: java.util.function.BiConsumer<String, Int>) {
+    override fun forEachWord(consumer: WordConsumer) {
         for (dict in mDictionaries) {
             dict.forEachWord(consumer)
         }

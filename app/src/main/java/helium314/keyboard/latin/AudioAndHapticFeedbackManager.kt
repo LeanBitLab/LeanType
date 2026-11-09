@@ -14,6 +14,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.HapticFeedbackConstants
 import android.view.View
+import androidx.annotation.RequiresApi
 import helium314.keyboard.event.HapticEvent
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.common.Constants
@@ -284,19 +285,18 @@ class AudioAndHapticFeedbackManager private constructor() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun vibrateWithAttributes(vibrator: Vibrator, effect: VibrationEffect) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 val attributes = android.os.VibrationAttributes.createForUsage(android.os.VibrationAttributes.USAGE_TOUCH)
                 vibrator.vibrate(effect, attributes)
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            } else {
                 val attributes = android.media.AudioAttributes.Builder()
                     .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .setUsage(android.media.AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .build()
                 vibrator.vibrate(effect, attributes)
-            } else {
-                vibrator.vibrate(effect)
             }
         } catch (_: Throwable) {
             try {

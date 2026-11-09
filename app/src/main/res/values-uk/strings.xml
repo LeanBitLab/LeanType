@@ -863,7 +863,7 @@
     <string name="updates_frequency_title">Частота перевірки</string>
     <string name="updates_changelog_title">Список змін</string>
     <string name="updates_support_title">Підтримати розробку</string>
-    <string name="updates_support_summary">LeanType на 100% безкоштовний, з відкритим вихідним кодом та незалежний. Ваша підтримка безпосередньо допомагає нам продовжувати активну розробку!</string>
+    <string name="updates_support_summary" formatted="false">LeanType на 100% безкоштовний, з відкритим вихідним кодом та незалежний. Ваша підтримка безпосередньо допомагає нам продовжувати активну розробку!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Підтримуйте щомісяця або одноразово через GitHub Sponsors</string>
     <string name="updates_opencollective_title">Пожертвувати на Open Collective</string>
@@ -976,7 +976,7 @@
     <string name="text_expander_regex_title">Регулярний вираз</string>
     <string name="text_expander_regex_invalid">⚠️ Неправильний шаблон регулярного виразу</string>
     <string name="text_expander_template_title">Розгортання шаблону</string>
-    <string name="text_expander_template_hint">Зараз повернусь! або Моя електронна пошта %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Зараз повернусь! або Моя електронна пошта %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Швидкі заповнювачі (натисніть, щоб вставити в позицію курсора):</string>
     <string name="text_expander_save">Зберегти</string>
     <string name="text_expander_add">Додати</string>
@@ -1130,10 +1130,10 @@
     <string name="setup_step6_title_screenshots">Підказки зі знімків екрана</string>
     <string name="setup_step6_instruction_screenshots">Пропонувати нещодавні знімки екрана на панелі підказок. Примітка: цей дозвіл також дозволяє зберігати знімки екрана в буфер обміну.</string>
     <string name="setup_step7_title_height">Висота клавіатури</string>
-    <string name="setup_step7_instruction_height">Налаштуйте висоту клавіатури. Рекомендовано: 77% для більш квадратних клавіш, 100% для вищих.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Налаштуйте висоту клавіатури. Рекомендовано: 77% для більш квадратних клавіш, 100% для вищих.</string>
     <string name="setup_step0_headline">Ласкаво просимо до зручного набору тексту</string>
     <string name="setup_step0_subtitle">LeanType створено з нуля для приватності, швидкості та глибокого налаштування.</string>
-    <string name="setup_step0_feature1_title">100% приватність і безпека</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% приватність і безпека</string>
     <string name="setup_step0_feature1_desc">Жодної телеметрії, мережевого відстеження чи хмарних журналів. Ваш набір тексту залишається на пристрої.</string>
     <string name="setup_step0_feature2_title">Гнучке налаштування</string>
     <string name="setup_step0_feature2_desc">Налаштовуйте розкладки, теми клавіатури, розміри, жести та багатомовне введення відповідно до своїх уподобань.</string>
@@ -1153,7 +1153,7 @@
     <string name="text_expander_tag_desc_time12">Час (12 год, гг:хх AM/PM)</string>
     <string name="text_expander_tag_desc_year">Рік (РРРР)</string>
     <string name="text_expander_tag_desc_week">Тиждень року (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Рівень заряду батареї (напр., 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Рівень заряду батареї (напр., 85%)</string>
     <string name="text_expander_tag_desc_greeting">Привітання залежно від часу доби</string>
     <string name="text_expander_tag_desc_tomorrow">Завтрашня дата (РРРР-ММ-ДД)</string>
     <string name="text_expander_tag_desc_clipboard">Вміст буфера обміну</string>
@@ -1165,8 +1165,8 @@
     <string name="text_expander_tag_desc_month">Місяць (напр., Червень)</string>
     <string name="text_expander_tag_desc_language">Мова клавіатури (напр., Українська)</string>
     <string name="text_expander_tag_desc_cursor">Позиція курсора після вставки</string>
-    <string name="text_expander_tag_desc_bullets">Маркований список (напр. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Нумерований список (напр. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Маркований список (напр. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Нумерований список (напр. %list_5%)</string>
     <string name="updates_new_update_title">Доступне нове оновлення</string>
     <string name="updates_new_update_desc">Версія %s готова до встановлення</string>
     <string name="updates_view_release">Переглянути випуск</string>
@@ -1595,7 +1595,7 @@
     <string name="app_quirks_hide_toolbar_summary">Приховати клавіші панелі інструментів, дії та кнопку розгортання під час введення тексту в цій програмі</string>
     <string name="app_quirks_badge_no_suggestions">Немає пропозицій</string>
     <string name="app_quirks_badge_no_toolbar">Без панелі</string>
-    <string name="text_expander_tag_desc_date_format">Відформатована дата (наприклад,%date:yyyy/MM/dd% або%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Відформатована дата (наприклад,%date:yyyy/MM/dd% або%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Завжди показувати пропозиції</string>
     <string name="app_quirks_always_show_suggestions_summary">Ігноруйте запити цієї програми щодо вимкнення пропозицій</string>
     <string name="app_quirks_badge_always_suggestions">Завжди пропозиції</string>

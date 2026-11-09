@@ -766,7 +766,7 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="text_expander_regex_title">Düzenli İfade (Regex)</string>
     <string name="text_expander_regex_invalid">⚠️ Geçersiz düzenli ifade deseni</string>
     <string name="text_expander_template_title">Şablon Genişletme</string>
-    <string name="text_expander_template_hint">Hemen döneceğim! veya E-postam %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Hemen döneceğim! veya E-postam %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Hızlı Yer Tutucular (imleç konumuna eklemek için dokunun):</string>
     <string name="text_expander_save">Kaydet</string>
     <string name="text_expander_add">Ekle</string>
@@ -1002,7 +1002,7 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="updates_frequency_title">Denetleme sıklığı</string>
     <string name="updates_changelog_title">Değişiklik günlüğü</string>
     <string name="updates_support_title">Geliştirmeyi destekleyin</string>
-    <string name="updates_support_summary">LeanType %100 ücretsiz, açık kaynaklı ve bağımsızdır. Desteğiniz aktif geliştirmeyi sürdürmemize doğrudan katkı sağlar!</string>
+    <string name="updates_support_summary" formatted="false">LeanType %100 ücretsiz, açık kaynaklı ve bağımsızdır. Desteğiniz aktif geliştirmeyi sürdürmemize doğrudan katkı sağlar!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors ile aylık veya tek seferlik bağışta bulunun</string>
     <string name="updates_opencollective_title">Open Collective üzerinden bağış yapın</string>
@@ -1166,10 +1166,10 @@ Arka plan AI veya ağ kullanımı yok.</string>
     <string name="setup_step6_title_screenshots">Ekran Görüntüsü Önerileri</string>
     <string name="setup_step6_instruction_screenshots">Son alınan ekran görüntülerini öneri çubuğunda öner. Not: Bu izin ayrıca ekran görüntülerinin panoya kaydedilmesini sağlar.</string>
     <string name="setup_step7_title_height">Klavye Yüksekliği</string>
-    <string name="setup_step7_instruction_height">Klavye yüksekliğini ayarlayın. Önerilen: daha kare tuşlar için %77, daha uzun tuşlar için %100.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Klavye yüksekliğini ayarlayın. Önerilen: daha kare tuşlar için %77, daha uzun tuşlar için %100.</string>
     <string name="setup_step0_headline">Daha iyi bir yazma deneyimine hoş geldiniz</string>
     <string name="setup_step0_subtitle">LeanType gizlilik, hız ve derin özelleştirme için sıfırdan tasarlandı.</string>
-    <string name="setup_step0_feature1_title">%100 Gizli ve Güvenli</string>
+    <string name="setup_step0_feature1_title" formatted="false">%100 Gizli ve Güvenli</string>
     <string name="setup_step0_feature1_desc">Telemetri, ağ takibi veya bulut kaydı yok. Yazdıklarınız yalnızca cihazınızda kalır.</string>
     <string name="setup_step0_feature2_title">Derinlemesine Özelleştirilebilir</string>
     <string name="setup_step0_feature2_desc">Düzenleri, klavye temalarını, boyutları, hareketleri ve çok dilli yazmayı tercihlerinize göre uyarlayın.</string>
@@ -1189,7 +1189,7 @@ Arka plan AI veya ağ kullanımı yok.</string>
     <string name="text_expander_tag_desc_time12">Saat (12s, ss:dd AM/PM)</string>
     <string name="text_expander_tag_desc_year">Yıl (YYYY)</string>
     <string name="text_expander_tag_desc_week">Yılın haftası (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Pil seviyesi (örn. %85)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Pil seviyesi (örn. %85)</string>
     <string name="text_expander_tag_desc_greeting">Günün saatine göre selamlama</string>
     <string name="text_expander_tag_desc_tomorrow">Yarının tarihi (YYYY-AA-GG)</string>
     <string name="text_expander_tag_desc_clipboard">Pano içeriği</string>
@@ -1201,8 +1201,8 @@ Arka plan AI veya ağ kullanımı yok.</string>
     <string name="text_expander_tag_desc_month">Ay (örn. Haziran)</string>
     <string name="text_expander_tag_desc_language">Klavye dili (örn. Türkçe)</string>
     <string name="text_expander_tag_desc_cursor">Genişletmeden sonraki imleç konumu</string>
-    <string name="text_expander_tag_desc_bullets">Madde işaretli liste (örn. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Numaralandırılmış liste (örn. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Madde işaretli liste (örn. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Numaralandırılmış liste (örn. %list_5%)</string>
     <string name="updates_new_update_title">Yeni Güncelleme Mevcut</string>
     <string name="updates_new_update_desc">Sürüm %s yüklenmeye hazır</string>
     <string name="updates_view_release">Sürümü Görüntüle</string>
@@ -1624,7 +1624,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="app_quirks_hide_toolbar_summary">Bu uygulamaya yazarken araç çubuğu tuşlarını, eylemleri ve genişletme düğmesini gizleyin</string>
     <string name="app_quirks_badge_no_suggestions">Öneri Yok</string>
     <string name="app_quirks_badge_no_toolbar">Çubuksuz</string>
-    <string name="text_expander_tag_desc_date_format">Biçimlendirilmiş tarih (ör.%date:yyyy/MM/gg% veya%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Biçimlendirilmiş tarih (ör.%date:yyyy/MM/gg% veya%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Önerileri her zaman göster</string>
     <string name="app_quirks_always_show_suggestions_summary">Bu uygulamanın önerileri devre dışı bırakma isteklerini göz ardı edin</string>
     <string name="app_quirks_badge_always_suggestions">Her zaman Öneriler</string>

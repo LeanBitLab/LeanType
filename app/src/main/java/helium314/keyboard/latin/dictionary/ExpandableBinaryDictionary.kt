@@ -317,7 +317,7 @@ abstract class ExpandableBinaryDictionary(
         }
     }
 
-    override fun forEachWord(consumer: java.util.function.BiConsumer<String, Int>) {
+    override fun forEachWord(consumer: WordConsumer) {
         synchronized(mIterationLock) {
             var lockAcquired = false
             try {

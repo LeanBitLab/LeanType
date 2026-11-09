@@ -1780,7 +1780,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
      * @param emojis List of emoji strings to display
      * @param onEmojiClick Callback when an emoji is tapped
      */
-    fun setEmojiSuggestions(emojis: List<String>, onEmojiClick: java.util.function.Consumer<String>) {
+    fun setEmojiSuggestions(emojis: List<String>, onEmojiClick: (String) -> Unit) {
         if (isVoiceActive) return
         if (!Settings.getValues().mSplitToolbar) return
         isShowingEmojiSuggestions = true
@@ -1831,7 +1831,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             emojiView.setOnClickListener {
                 AudioAndHapticFeedbackManager.getInstance()
                     .performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this, HapticEvent.KEY_PRESS)
-                onEmojiClick.accept(emoji)
+                onEmojiClick(emoji)
             }
             emojiContainer.addView(emojiView)
         }

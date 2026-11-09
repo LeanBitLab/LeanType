@@ -838,7 +838,7 @@
     <string name="text_expander_regex_title">റെഗുലർ എക്സ്പ്രഷൻ</string>
     <string name="text_expander_regex_invalid">⚠️ അസാധുവായ റെഗുലർ എക്സ്പ്രഷൻ പാറ്റേൺ</string>
     <string name="text_expander_template_title">ടെംപ്ലേറ്റ് വികാസം</string>
-    <string name="text_expander_template_hint">Be right back! അല്ലെങ്കിൽ My email is %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Be right back! അല്ലെങ്കിൽ My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">ദ്രുത പ്ലെയ്സ്ഹോൾഡറുകൾ (കഴ്സറിൽ ചേർക്കാൻ ടാപ്പുചെയ്യുക):</string>
     <string name="text_expander_save">സംരക്ഷിക്കുക</string>
     <string name="text_expander_add">ചേർക്കുക</string>
@@ -1073,7 +1073,7 @@
     <string name="updates_frequency_title">പരിശോധന ആവൃത്തി</string>
     <string name="updates_changelog_title">ചേഞ്ച്‍ലോഗ്</string>
     <string name="updates_support_title">വികസനത്തെ പിന്തുണയ്ക്കുക</string>
-    <string name="updates_support_summary">LeanType 100% സൗജന്യവും ഓപ്പൺ സോഴ്സും സ്വതന്ത്രവുമാണ്. നിങ്ങളുടെ പിന്തുണ സജീവമായ വികസനം തുടരാൻ ഞങ്ങളെ നേരിട്ട് സഹായിക്കുന്നു!</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% സൗജന്യവും ഓപ്പൺ സോഴ്സും സ്വതന്ത്രവുമാണ്. നിങ്ങളുടെ പിന്തുണ സജീവമായ വികസനം തുടരാൻ ഞങ്ങളെ നേരിട്ട് സഹായിക്കുന്നു!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors വഴി പ്രതിമാസമോ ഒറ്റത്തവണയോ സ്പോൺസർ ചെയ്യുക</string>
     <string name="updates_opencollective_title">Open Collective വഴി സംഭാവന ചെയ്യുക</string>
@@ -1238,10 +1238,10 @@
     <string name="setup_step6_title_screenshots">സ്ക്രീൻഷോട്ട് നിർദ്ദേശങ്ങൾ</string>
     <string name="setup_step6_instruction_screenshots">നിർദ്ദേശ ബാറിൽ അടുത്തിടെ എടുത്ത സ്ക്രീൻഷോട്ടുകൾ നിർദ്ദേശിക്കുക. കുറിപ്പ്: ഈ അനുമതി സ്ക്രീൻഷോട്ടുകൾ ക്ലിപ്പ്ബോർഡിലേക്ക് സംരക്ഷിക്കാനും അനുവദിക്കുന്നു.</string>
     <string name="setup_step7_title_height">കീബോർഡ് ഉയരം</string>
-    <string name="setup_step7_instruction_height">കീബോർഡിന്റെ ഉയരം ക്രമീകരിക്കുക. ശുപാർശ ചെയ്യുന്നത്: സമചതുര കീകൾക്കായി 77%, ഉയരമുള്ള കീകൾക്കായി 100%.</string>
+    <string name="setup_step7_instruction_height" formatted="false">കീബോർഡിന്റെ ഉയരം ക്രമീകരിക്കുക. ശുപാർശ ചെയ്യുന്നത്: സമചതുര കീകൾക്കായി 77%, ഉയരമുള്ള കീകൾക്കായി 100%.</string>
     <string name="setup_step0_headline">മെച്ചപ്പെട്ട ടൈപ്പിംഗ് അനുഭവത്തിലേക്ക് സ്വാഗതം</string>
     <string name="setup_step0_subtitle">സ്വകാര്യത, വേഗത, ആഴത്തിലുള്ള ഇഷ്ടാനുസൃതമാക്കൽ എന്നിവയ്ക്കായി തുടക്കം മുതൽ രൂപകൽപ്പന ചെയ്തതാണ് LeanType.</string>
-    <string name="setup_step0_feature1_title">100% സ്വകാര്യവും സുരക്ഷിതവും</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% സ്വകാര്യവും സുരക്ഷിതവും</string>
     <string name="setup_step0_feature1_desc">ടെലിമെട്രി, നെറ്റ്‌വർക്ക് ട്രാക്കിംഗ്, ക്ലൗഡ് ലോഗിംഗ് എന്നിവയില്ല. നിങ്ങളുടെ ടൈപ്പിംഗ് നിങ്ങളുടെ ഉപകരണത്തിൽ തന്നെ നിലനിൽക്കും.</string>
     <string name="setup_step0_feature2_title">ആഴത്തിൽ ഇഷ്ടാനുസൃതമാക്കാവുന്നത്</string>
     <string name="setup_step0_feature2_desc">ലേഔട്ടുകൾ, കീബോർഡ് തീമുകൾ, വലുപ്പങ്ങൾ, ജെസ്റ്ററുകൾ, ബഹുഭാഷാ ടൈപ്പിംഗ് എന്നിവ നിങ്ങളുടെ താൽപ്പര്യത്തിനനുസരിച്ച് ക്രമീകരിക്കുക.</string>
@@ -1261,7 +1261,7 @@
     <string name="text_expander_tag_desc_time12">സമയം (12 മണിക്കൂർ, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">വർഷം (YYYY)</string>
     <string name="text_expander_tag_desc_week">വർഷത്തിലെ ആഴ്ച (1-53)</string>
-    <string name="text_expander_tag_desc_battery">ബാറ്ററി നില (ഉദാ. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">ബാറ്ററി നില (ഉദാ. 85%)</string>
     <string name="text_expander_tag_desc_greeting">സമയത്തിനനുസരിച്ചുള്ള ആശംസ</string>
     <string name="text_expander_tag_desc_tomorrow">നാളത്തെ തീയതി (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">ക്ലിപ്പ്ബോർഡ് ഉള്ളടക്കം</string>
@@ -1273,8 +1273,8 @@
     <string name="text_expander_tag_desc_month">മാസം (ഉദാ. ജൂൺ)</string>
     <string name="text_expander_tag_desc_language">കീബോർഡ് ഭാഷ (ഉദാ. മലയാളം)</string>
     <string name="text_expander_tag_desc_cursor">വിപുലീകരണത്തിന് ശേഷമുള്ള കർസർ സ്ഥാനം</string>
-    <string name="text_expander_tag_desc_bullets">ബുള്ളറ്റ് ലിസ്റ്റ് (ഉദാ. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">നമ്പർ ചെയ്ത ലിസ്റ്റ് (ഉദാ. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">ബുള്ളറ്റ് ലിസ്റ്റ് (ഉദാ. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">നമ്പർ ചെയ്ത ലിസ്റ്റ് (ഉദാ. %list_5%)</string>
     <string name="updates_new_update_title">പുതിയ അപ്‌ഡേറ്റ് ലഭ്യമാണ്</string>
     <string name="updates_new_update_desc">പതിപ്പ് %s ഇൻസ്റ്റാൾ ചെയ്യാൻ തയ്യാറാണ്</string>
     <string name="updates_view_release">റിലീസ് കാണുക</string>
@@ -1696,7 +1696,7 @@
     <string name="app_quirks_hide_toolbar_summary">ഈ ആപ്പിൽ ടൈപ്പ് ചെയ്യുമ്പോൾ ടൂൾബാർ കീകൾ, പ്രവർത്തനങ്ങൾ, വിപുലീകരിക്കുക ബട്ടൺ എന്നിവ മറയ്ക്കുക</string>
     <string name="app_quirks_badge_no_suggestions">നിർദ്ദേശങ്ങളൊന്നുമില്ല</string>
     <string name="app_quirks_badge_no_toolbar">ടൂൾബാർ ഇല്ല</string>
-    <string name="text_expander_tag_desc_date_format">ഫോർമാറ്റ് ചെയ്ത തീയതി (ഉദാ.%dകഴിച്ചത്:yyyy/MM/dd% അല്ലെങ്കിൽ%date:ഫോർമാറ്റ്(പാറ്റേൺ)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">ഫോർമാറ്റ് ചെയ്ത തീയതി (ഉദാ.%dകഴിച്ചത്:yyyy/MM/dd% അല്ലെങ്കിൽ%date:ഫോർമാറ്റ്(പാറ്റേൺ)%)</string>
     <string name="app_quirks_always_show_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ കാണിക്കുക</string>
     <string name="app_quirks_always_show_suggestions_summary">നിർദ്ദേശങ്ങൾ പ്രവർത്തനരഹിതമാക്കാനുള്ള ഈ ആപ്പിൻ്റെ അഭ്യർത്ഥനകൾ അവഗണിക്കുക</string>
     <string name="app_quirks_badge_always_suggestions">എപ്പോഴും നിർദ്ദേശങ്ങൾ</string>

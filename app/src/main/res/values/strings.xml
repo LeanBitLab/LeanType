@@ -1482,7 +1482,7 @@ New dictionary:
     <string name="updates_frequency_title">Check frequency</string>
     <string name="updates_changelog_title">Changelog</string>
     <string name="updates_support_title">Support development</string>
-    <string name="updates_support_summary">LeanType is 100% free, open-source, and independent. Your support directly helps us continue active development!</string>
+    <string name="updates_support_summary" formatted="false">LeanType is 100% free, open-source, and independent. Your support directly helps us continue active development!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Sponsor monthly or one-time via GitHub Sponsors</string>
     <string name="updates_opencollective_title">Donate on Open Collective</string>
@@ -1836,7 +1836,7 @@ New dictionary:
     <string name="text_expander_regex_title">Regular Expression</string>
     <string name="text_expander_regex_invalid">⚠️ Invalid regular expression pattern</string>
     <string name="text_expander_template_title">Template Expansion</string>
-    <string name="text_expander_template_hint">Be right back! or My email is %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Be right back! or My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Quick Placeholders (tap to insert at cursor):</string>
     <string name="text_expander_save">Save</string>
     <string name="text_expander_add">Add</string>
@@ -1963,10 +1963,10 @@ New dictionary:
     <string name="setup_step6_title_screenshots">Screenshot Suggestions</string>
     <string name="setup_step6_instruction_screenshots">Suggest recently taken screenshots in the suggestion strip. Note: This permission also allows saving screenshots to the clipboard.</string>
     <string name="setup_step7_title_height">Keyboard Height</string>
-    <string name="setup_step7_instruction_height">Adjust the height of the keyboard. Recommended: 77% for more square keys, 100% for taller keys.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Adjust the height of the keyboard. Recommended: 77% for more square keys, 100% for taller keys.</string>
     <string name="setup_step0_headline">Welcome to a better typing experience</string>
     <string name="setup_step0_subtitle">LeanType is designed from the ground up for privacy, speed, and deep customization.</string>
-    <string name="setup_step0_feature1_title">100% Private &amp; Secure</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Private &amp; Secure</string>
     <string name="setup_step0_feature1_desc">Zero telemetry, network tracking, or cloud logging. Your typing stays on your device.</string>
     <string name="setup_step0_feature2_title">Deeply Customizable</string>
     <string name="setup_step0_feature2_desc">Tailor layouts, keyboard themes, sizes, gestures, and multilingual typing to your preferences.</string>
@@ -1984,12 +1984,12 @@ New dictionary:
     <string name="text_expander_step3_title">Type Prefix + Shortcut</string>
     <string name="text_expander_step3_desc">Type your prefix followed by the shortcut keyword (e.g., \'.brb\') and press Space or punctuation on the keyboard to expand instantly.</string>
     <string name="text_expander_tag_desc_date">Date (YYYY-MM-DD)</string>
-    <string name="text_expander_tag_desc_date_format">Formatted date (e.g. %date:yyyy/MM/dd% or %date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Formatted date (e.g. %date:yyyy/MM/dd% or %date:format(pattern)%)</string>
     <string name="text_expander_tag_desc_time">Time (24h, HH:MM)</string>
     <string name="text_expander_tag_desc_time12">Time (12h, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Year (YYYY)</string>
     <string name="text_expander_tag_desc_week">Week of year (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Battery level (e.g. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Battery level (e.g. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Time-gated greeting</string>
     <string name="text_expander_tag_desc_tomorrow">Tomorrow\'s date (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Clipboard content</string>
@@ -2001,8 +2001,8 @@ New dictionary:
     <string name="text_expander_tag_desc_month">Month (e.g. June)</string>
     <string name="text_expander_tag_desc_language">Keyboard language (e.g. English)</string>
     <string name="text_expander_tag_desc_cursor">Cursor position after expansion</string>
-    <string name="text_expander_tag_desc_bullets">Bullet list (e.g. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Numbered list (e.g. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Bullet list (e.g. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Numbered list (e.g. %list_5%)</string>
 
     <!-- Updates Screen -->
     <string name="updates_new_update_title">New Update Available</string>

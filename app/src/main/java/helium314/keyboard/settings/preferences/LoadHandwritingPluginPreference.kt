@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import helium314.keyboard.compat.locale
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -286,7 +287,7 @@ fun LoadHandwritingPluginPreference(
 }
 
 private fun buildLanguageEntries(context: Context): List<Pair<String, String>> {
-    val sysLocale = context.resources.configuration.locales[0]
+    val sysLocale = context.resources.configuration.locale()
     val locales = java.util.Locale.getAvailableLocales()
         .filter { !it.language.isNullOrEmpty() && it.toLanguageTag() != "und" }
         .distinctBy { it.toLanguageTag() }

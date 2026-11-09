@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import com.leanbitlab.leantype.voice.ModelImportRequest
+import helium314.keyboard.compat.contentLengthLongCompat
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.NetworkUtils
@@ -104,7 +105,7 @@ object VoiceDownloadDispatcher {
                 throw Exception("Server returned HTTP ${conn.responseCode}")
             }
 
-            val totalBytes = conn.contentLengthLong
+            val totalBytes = conn.contentLengthLongCompat()
             var downloadedBytes = 0L
 
             conn.inputStream.use { input ->

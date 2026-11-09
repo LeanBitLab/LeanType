@@ -861,7 +861,7 @@
     <string name="updates_frequency_title">Ellenőrzés gyakorisága</string>
     <string name="updates_changelog_title">Változásnapló</string>
     <string name="updates_support_title">Fejlesztés támogatása</string>
-    <string name="updates_support_summary">A LeanType 100%-ban ingyenes, nyílt forráskódú és független. Támogatása közvetlenül segít nekünk az aktív fejlesztés folytatásában!</string>
+    <string name="updates_support_summary" formatted="false">A LeanType 100%-ban ingyenes, nyílt forráskódú és független. Támogatása közvetlenül segít nekünk az aktív fejlesztés folytatásában!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Szponzoráljon havonta vagy egyszeri alkalommal a GitHub Sponsors-on keresztül</string>
     <string name="updates_opencollective_title">Adományozás az Open Collective-en</string>
@@ -974,7 +974,7 @@
     <string name="text_expander_regex_title">Reguláris kifejezés</string>
     <string name="text_expander_regex_invalid">⚠️ Érvénytelen reguláris kifejezés minta</string>
     <string name="text_expander_template_title">Sablon kibontása</string>
-    <string name="text_expander_template_hint">Mindjárt jövök! vagy Az e-mail címem %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Mindjárt jövök! vagy Az e-mail címem %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Gyors helyőrzők (koppintson a kurzorhoz való beszúráshoz):</string>
     <string name="text_expander_save">Mentés</string>
     <string name="text_expander_add">Hozzáadás</string>
@@ -1128,10 +1128,10 @@ Nincs háttérbeli AI vagy hálózati használat.</string>
     <string name="setup_step6_title_screenshots">Képernyőkép javaslatok</string>
     <string name="setup_step6_instruction_screenshots">A közelmúltban készült képernyőképek megjelenítése a javaslati sávban. Megjegyzés: ez az engedély lehetővé teszi a képernyőképek vágólapra mentését is.</string>
     <string name="setup_step7_title_height">Billentyűzet magassága</string>
-    <string name="setup_step7_instruction_height">Állítsa be a billentyűzet magasságát. Javasolt: 77% a szögletesebb billentyűkhöz, 100% a magasabb billentyűkhöz.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Állítsa be a billentyűzet magasságát. Javasolt: 77% a szögletesebb billentyűkhöz, 100% a magasabb billentyűkhöz.</string>
     <string name="setup_step0_headline">Üdvözöljük a jobb gépelési élményben</string>
     <string name="setup_step0_subtitle">LeanType az alapoktól kezdve az adatvédelemre, a sebességre és a mély testreszabhatóságra lett tervezve.</string>
-    <string name="setup_step0_feature1_title">100% privát és biztonságos</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% privát és biztonságos</string>
     <string name="setup_step0_feature1_desc">Nincs telemetria, hálózati követés vagy felhőbeli naplózás. A beírt szöveg az eszközén marad.</string>
     <string name="setup_step0_feature2_title">Mélyen testreszabható</string>
     <string name="setup_step0_feature2_desc">Szabja testre az elrendezéseket, billentyűzettémákat, méreteket, gesztusokat és a többnyelvű gépelést igényei szerint.</string>
@@ -1151,7 +1151,7 @@ Nincs háttérbeli AI vagy hálózati használat.</string>
     <string name="text_expander_tag_desc_time12">Idő (12 órás, óó:pp AM/PM)</string>
     <string name="text_expander_tag_desc_year">Év (ÉÉÉÉ)</string>
     <string name="text_expander_tag_desc_week">Az év hete (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Akkumulátorszint (pl. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Akkumulátorszint (pl. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Napszaknak megfelelő üdvözlés</string>
     <string name="text_expander_tag_desc_tomorrow">Holnapi dátum (ÉÉÉÉ-HH-NN)</string>
     <string name="text_expander_tag_desc_clipboard">Vágólap tartalma</string>
@@ -1163,8 +1163,8 @@ Nincs háttérbeli AI vagy hálózati használat.</string>
     <string name="text_expander_tag_desc_month">Hónap (pl. Június)</string>
     <string name="text_expander_tag_desc_language">Billentyűzet nyelve (pl. Angol)</string>
     <string name="text_expander_tag_desc_cursor">Kurzor pozíciója a kibontás után</string>
-    <string name="text_expander_tag_desc_bullets">Felsorolásjeles lista (pl. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Számozott lista (pl. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Felsorolásjeles lista (pl. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Számozott lista (pl. %list_5%)</string>
     <string name="updates_new_update_title">Új frissítés érhető el</string>
     <string name="updates_new_update_desc">A(z) %s verzió készen áll a telepítésre</string>
     <string name="updates_view_release">Kiadás megtekintése</string>
@@ -1593,7 +1593,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="app_quirks_hide_toolbar_summary">Az eszköztár billentyűinek, műveleteinek elrejtése és a kibontás gomb, amikor gépel ebben az alkalmazásban</string>
     <string name="app_quirks_badge_no_suggestions">Nincsenek javaslatok</string>
     <string name="app_quirks_badge_no_toolbar">Nincs eszköztár</string>
-    <string name="text_expander_tag_desc_date_format">Formázott dátum (pl.%devett:éééé/hh/nn% vagy%date:formátum(minta)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Formázott dátum (pl.%devett:éééé/hh/nn% vagy%date:formátum(minta)%)</string>
     <string name="app_quirks_always_show_suggestions">Mindig mutasson javaslatokat</string>
     <string name="app_quirks_always_show_suggestions_summary">Hagyja figyelmen kívül az alkalmazás kéréseit a javaslatok letiltásához</string>
     <string name="app_quirks_badge_always_suggestions">Mindig javaslatok</string>

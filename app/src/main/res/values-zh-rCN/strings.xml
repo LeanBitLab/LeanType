@@ -865,7 +865,7 @@
     <string name="updates_frequency_title">检查频率</string>
     <string name="updates_changelog_title">更新日志</string>
     <string name="updates_support_title">支持开发</string>
-    <string name="updates_support_summary">LeanType 100% 免费、开源且独立。您的支持直接帮助我们继续积极开发！</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% 免费、开源且独立。您的支持直接帮助我们继续积极开发！</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">通过 GitHub Sponsors 按月或一次性赞助</string>
     <string name="updates_opencollective_title">在 Open Collective 上捐赠</string>
@@ -977,7 +977,7 @@
     <string name="text_expander_regex_title">正则表达式</string>
     <string name="text_expander_regex_invalid">⚠️ 无效的正则表达式模式</string>
     <string name="text_expander_template_title">模板展开</string>
-    <string name="text_expander_template_hint">马上回来！或我的电子邮件是 %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">马上回来！或我的电子邮件是 %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">快速占位符 (点击以在光标处插入)：</string>
     <string name="text_expander_save">保存</string>
     <string name="text_expander_add">添加</string>
@@ -1132,10 +1132,10 @@
     <string name="setup_step6_title_screenshots">截图建议</string>
     <string name="setup_step6_instruction_screenshots">在建议栏中建议最近截取的屏幕截图。注意：此权限还允许将截图保存到剪贴板。</string>
     <string name="setup_step7_title_height">键盘高度</string>
-    <string name="setup_step7_instruction_height">调整键盘高度。建议：77% 适合更方正的按键，100% 适合更高的按键。</string>
+    <string name="setup_step7_instruction_height" formatted="false">调整键盘高度。建议：77% 适合更方正的按键，100% 适合更高的按键。</string>
     <string name="setup_step0_headline">欢迎体验更出色的打字方式</string>
     <string name="setup_step0_subtitle">LeanType 从底层专为隐私、速度和深度定制而设计。</string>
-    <string name="setup_step0_feature1_title">100% 私密且安全</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% 私密且安全</string>
     <string name="setup_step0_feature1_desc">无遥测、无网络追踪、无云端日志。您的输入始终留在设备本地。</string>
     <string name="setup_step0_feature2_title">深度可定制</string>
     <string name="setup_step0_feature2_desc">根据个人喜好定制布局、键盘主题、尺寸、手势及多语言输入。</string>
@@ -1155,7 +1155,7 @@
     <string name="text_expander_tag_desc_time12">时间 (12小时制, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">年份 (YYYY)</string>
     <string name="text_expander_tag_desc_week">年内周数 (1-53)</string>
-    <string name="text_expander_tag_desc_battery">电池电量 (例如 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">电池电量 (例如 85%)</string>
     <string name="text_expander_tag_desc_greeting">分时段问候语</string>
     <string name="text_expander_tag_desc_tomorrow">明天日期 (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">剪贴板内容</string>
@@ -1167,8 +1167,8 @@
     <string name="text_expander_tag_desc_month">月份（例如 六月）</string>
     <string name="text_expander_tag_desc_language">键盘语言（例如 中文）</string>
     <string name="text_expander_tag_desc_cursor">展开后光标位置</string>
-    <string name="text_expander_tag_desc_bullets">项目符号列表 (例如 %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">编号列表 (例如 %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">项目符号列表 (例如 %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">编号列表 (例如 %list_5%)</string>
     <string name="updates_new_update_title">发现新版本</string>
     <string name="updates_new_update_desc">版本 %s 已准备好安装</string>
     <string name="updates_view_release">查看版本详情</string>
@@ -1597,7 +1597,7 @@
     <string name="app_quirks_hide_toolbar_summary">在此应用程序中键入内容时隐藏工具栏键、操作和展开按钮</string>
     <string name="app_quirks_badge_no_suggestions">没有建议</string>
     <string name="app_quirks_badge_no_toolbar">无工具栏</string>
-    <string name="text_expander_tag_desc_date_format">格式化日期（例如%date:yyyy/MM/dd% 或%date:format(pattern)%）</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">格式化日期（例如%date:yyyy/MM/dd% 或%date:format(pattern)%）</string>
     <string name="app_quirks_always_show_suggestions">始终显示建议</string>
     <string name="app_quirks_always_show_suggestions_summary">忽略此应用程序的禁用建议的请求</string>
     <string name="app_quirks_badge_always_suggestions">总是建议</string>

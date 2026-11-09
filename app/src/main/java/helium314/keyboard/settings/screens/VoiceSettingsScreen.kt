@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
+import helium314.keyboard.compat.locale
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -823,7 +824,7 @@ private val WHISPER_LANGUAGE_CODES = arrayOf(
 )
 
 private fun buildVoiceLanguageEntries(context: android.content.Context): List<Pair<String, String>> {
-    val sysLocale = context.resources.configuration.locales[0]
+    val sysLocale = context.resources.configuration.locale()
     val list = mutableListOf<Pair<String, String>>()
     list.add(context.getString(R.string.voice_lang_follow_keyboard) to VoiceConstants.VOICE_LANG_FOLLOW_KEYBOARD)
     list.add(context.getString(R.string.voice_lang_auto_detect) to VoiceConstants.VOICE_LANG_AUTO)

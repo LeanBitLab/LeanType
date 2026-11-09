@@ -857,7 +857,7 @@
     <string name="updates_frequency_title">Tikrinimo dažnumas</string>
     <string name="updates_changelog_title">Pakeitimų žurnalas</string>
     <string name="updates_support_title">Paremti kūrimą</string>
-    <string name="updates_support_summary">LeanType yra 100% nemokama, atvirojo kodo ir nepriklausoma. Jūsų parama tiesiogiai padeda mums tęsti aktyvų kūrimą!</string>
+    <string name="updates_support_summary" formatted="false">LeanType yra 100% nemokama, atvirojo kodo ir nepriklausoma. Jūsų parama tiesiogiai padeda mums tęsti aktyvų kūrimą!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Remkite kas mėnesį arba vieną kartą per GitHub Sponsors</string>
     <string name="updates_opencollective_title">Paaukoti per Open Collective</string>
@@ -1006,7 +1006,7 @@
     <string name="text_expander_regex_title">Reguliarusis reiškinys</string>
     <string name="text_expander_regex_invalid">⚠️ Neteisingas reguliariojo reiškinio šablonas</string>
     <string name="text_expander_template_title">Šablono išplėtimas</string>
-    <string name="text_expander_template_hint">Tuoj grįšiu! arba Mano el. paštas yra %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Tuoj grįšiu! arba Mano el. paštas yra %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Greiti užpildai (paspauskite, kad įterptumėte žymekliu):</string>
     <string name="text_expander_save">Išsaugoti</string>
     <string name="text_expander_add">Pridėti</string>
@@ -1166,10 +1166,10 @@ Jokio foninio AI ar tinklo pėdsako.</string>
     <string name="setup_step6_title_screenshots">Ekrano kopijų pasiūlymai</string>
     <string name="setup_step6_instruction_screenshots">Pasiūlyti neseniai darytas ekrano kopijas pasiūlymų juostoje. Pastaba: šis leidimas taip pat leidžia išsaugoti ekrano kopijas iškarpinėje.</string>
     <string name="setup_step7_title_height">Klaviatūros aukštis</string>
-    <string name="setup_step7_instruction_height">Koreguokite klaviatūros aukštį. Rekomenduojama: 77% labiau kvadratiniams klavišams, 100% aukštesniems klavišams.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Koreguokite klaviatūros aukštį. Rekomenduojama: 77% labiau kvadratiniams klavišams, 100% aukštesniems klavišams.</string>
     <string name="setup_step0_headline">Sveiki atvykę į geresnę rašymo patirtį</string>
     <string name="setup_step0_subtitle">LeanType sukurta nuo pagrindų privatumui, greičiui ir giliam pritaikymui.</string>
-    <string name="setup_step0_feature1_title">100% privati ir saugi</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% privati ir saugi</string>
     <string name="setup_step0_feature1_desc">Jokios telemetrijos, tinklo sekimo ar registravimo debesyje. Jūsų rašymas lieka jūsų įrenginyje.</string>
     <string name="setup_step0_feature2_title">Giliai pritaikoma</string>
     <string name="setup_step0_feature2_desc">Pritaikykite išdėstymus, klaviatūros temas, dydžius, gestus ir daugiakalbį rašymą pagal savo pageidavimus.</string>
@@ -1189,7 +1189,7 @@ Jokio foninio AI ar tinklo pėdsako.</string>
     <string name="text_expander_tag_desc_time12">Laikas (12 val., hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Metai (MMMM)</string>
     <string name="text_expander_tag_desc_week">Metų savaitė (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Akumuliatoriaus lygis (pvz., 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Akumuliatoriaus lygis (pvz., 85%)</string>
     <string name="text_expander_tag_desc_greeting">Pasisveikinimas pagal paros laiką</string>
     <string name="text_expander_tag_desc_tomorrow">Rytojaus data (MMMM-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Iškarpinės turinys</string>
@@ -1201,8 +1201,8 @@ Jokio foninio AI ar tinklo pėdsako.</string>
     <string name="text_expander_tag_desc_month">Mėnuo (pvz., Birželis)</string>
     <string name="text_expander_tag_desc_language">Klaviatūros kalba (pvz., Anglų)</string>
     <string name="text_expander_tag_desc_cursor">Žymeklio vieta po išplėtimo</string>
-    <string name="text_expander_tag_desc_bullets">Ženklelių sąrašas (pvz., %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Numeruotas sąrašas (pvz., %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Ženklelių sąrašas (pvz., %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Numeruotas sąrašas (pvz., %list_5%)</string>
     <string name="updates_new_update_title">Prieinamas naujas atnaujinimas</string>
     <string name="updates_new_update_desc">%s versija paruošta diegti</string>
     <string name="updates_view_release">Peržiūrėti leidimą</string>
@@ -1631,7 +1631,7 @@ Ar norite atnaujinti?</string>
     <string name="app_quirks_hide_toolbar_summary">Slėpti įrankių juostos klavišus, veiksmus ir išplėtimo mygtuką, kai rašote šioje programoje</string>
     <string name="app_quirks_badge_no_suggestions">Jokių pasiūlymų</string>
     <string name="app_quirks_badge_no_toolbar">Be juostos</string>
-    <string name="text_expander_tag_desc_date_format">Suformatuota data (pvz.,%date:yyyy/MM/dd% arba%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Suformatuota data (pvz.,%date:yyyy/MM/dd% arba%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Visada rodyti pasiūlymus</string>
     <string name="app_quirks_always_show_suggestions_summary">Nepaisykite šios programos užklausų išjungti pasiūlymus</string>
     <string name="app_quirks_badge_always_suggestions">Visada Pasiūlymai</string>

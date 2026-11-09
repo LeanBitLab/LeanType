@@ -863,7 +863,7 @@
     <string name="updates_frequency_title">Frekvence kontroly</string>
     <string name="updates_changelog_title">Seznam změn</string>
     <string name="updates_support_title">Podpořit vývoj</string>
-    <string name="updates_support_summary">LeanType je 100% zdarma, open-source a nezávislý. Vaše podpora nám přímo pomáhá pokračovat v aktivním vývoji!</string>
+    <string name="updates_support_summary" formatted="false">LeanType je 100% zdarma, open-source a nezávislý. Vaše podpora nám přímo pomáhá pokračovat v aktivním vývoji!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Sponzorujte měsíčně nebo jednorázově přes GitHub Sponsors</string>
     <string name="updates_opencollective_title">Přispět na Open Collective</string>
@@ -976,7 +976,7 @@
     <string name="text_expander_regex_title">Regulární výraz</string>
     <string name="text_expander_regex_invalid">⚠️ Neplatný vzor regulárního výrazu</string>
     <string name="text_expander_template_title">Rozbalení šablony</string>
-    <string name="text_expander_template_hint">Hned jsem zpět! nebo Můj e-mail je %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Hned jsem zpět! nebo Můj e-mail je %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Rychlé zástupné symboly (klepnutím vložíte na pozici kurzoru):</string>
     <string name="text_expander_save">Uložit</string>
     <string name="text_expander_add">Přidat</string>
@@ -1130,10 +1130,10 @@
     <string name="setup_step6_title_screenshots">Návrhy snímků obrazovky</string>
     <string name="setup_step6_instruction_screenshots">Navrhovat nedávno pořízené snímky obrazovky v pruhu návrhů. Poznámka: Toto oprávnění také umožňuje ukládání snímků do schránky.</string>
     <string name="setup_step7_title_height">Výška klávesnice</string>
-    <string name="setup_step7_instruction_height">Upravte výšku klávesnice. Doporučeno: 77% pro čtvercovější klávesy, 100% pro vyšší klávesy.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Upravte výšku klávesnice. Doporučeno: 77% pro čtvercovější klávesy, 100% pro vyšší klávesy.</string>
     <string name="setup_step0_headline">Vítejte v lepším zážitku z psaní</string>
     <string name="setup_step0_subtitle">LeanType je od základů navržen pro soukromí, rychlost a hluboké přizpůsobení.</string>
-    <string name="setup_step0_feature1_title">100% Soukromá a bezpečná</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Soukromá a bezpečná</string>
     <string name="setup_step0_feature1_desc">Žádná telemetrie, sledování sítě ani ukládání do cloudu. Vaše psaní zůstává ve vašem zařízení.</string>
     <string name="setup_step0_feature2_title">Hluboce přizpůsobitelná</string>
     <string name="setup_step0_feature2_desc">Přizpůsobte rozvržení, motivy klávesnice, velikosti, gesta a vícejazyčné psaní podle svých preferencí.</string>
@@ -1153,7 +1153,7 @@
     <string name="text_expander_tag_desc_time12">Čas (12h, hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Rok (RRRR)</string>
     <string name="text_expander_tag_desc_week">Týden v roce (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Úroveň baterie (např. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Úroveň baterie (např. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Pozdrav podle denní doby</string>
     <string name="text_expander_tag_desc_tomorrow">Zítřejší datum (RRRR-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Obsah schránky</string>
@@ -1165,8 +1165,8 @@
     <string name="text_expander_tag_desc_month">Měsíc (např. Červen)</string>
     <string name="text_expander_tag_desc_language">Jazyk klávesnice (např. Čeština)</string>
     <string name="text_expander_tag_desc_cursor">Pozice kurzoru po rozšíření</string>
-    <string name="text_expander_tag_desc_bullets">Odrážkový seznam (např. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Číslovaný seznam (např. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Odrážkový seznam (např. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Číslovaný seznam (např. %list_5%)</string>
     <string name="updates_new_update_title">K dispozici je nová aktualizace</string>
     <string name="updates_new_update_desc">Verze %s je připravena k instalaci</string>
     <string name="updates_view_release">Zobrazit vydání</string>
@@ -1595,7 +1595,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="app_quirks_hide_toolbar_summary">Při psaní v této aplikaci skryjte klávesy, akce a rozbalovací tlačítko na panelu nástrojů</string>
     <string name="app_quirks_badge_no_suggestions">Žádné návrhy</string>
     <string name="app_quirks_badge_no_toolbar">Bez lišty</string>
-    <string name="text_expander_tag_desc_date_format">Formátované datum (např.%date:yyyy/MM/dd% nebo%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Formátované datum (např.%date:yyyy/MM/dd% nebo%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vždy zobrazovat návrhy</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorujte požadavky této aplikace na deaktivaci návrhů</string>
     <string name="app_quirks_badge_always_suggestions">Vždy návrhy</string>

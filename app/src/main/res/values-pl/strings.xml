@@ -885,7 +885,7 @@
     <string name="updates_frequency_title">Częstotliwość sprawdzania</string>
     <string name="updates_changelog_title">Lista zmian</string>
     <string name="updates_support_title">Wesprzyj rozwój</string>
-    <string name="updates_support_summary">LeanType jest w 100% darmowy, otwartoźródłowy i niezależny. Twoje wsparcie bezpośrednio pomaga nam kontynuować aktywny rozwój!</string>
+    <string name="updates_support_summary" formatted="false">LeanType jest w 100% darmowy, otwartoźródłowy i niezależny. Twoje wsparcie bezpośrednio pomaga nam kontynuować aktywny rozwój!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Wspieraj co miesiąc lub jednorazowo przez GitHub Sponsors</string>
     <string name="updates_opencollective_title">Przekaż darowiznę na Open Collective</string>
@@ -998,7 +998,7 @@
     <string name="text_expander_regex_title">Wyrażenie regularne</string>
     <string name="text_expander_regex_invalid">⚠️ Nieprawidłowy wzorzec wyrażenia regularnego</string>
     <string name="text_expander_template_title">Rozwinięcie szablonu</string>
-    <string name="text_expander_template_hint">Zaraz wracam! lub Mój e-mail to %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Zaraz wracam! lub Mój e-mail to %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Szybkie symbole zastępcze (dotknij, aby wstawić przy kursorze):</string>
     <string name="text_expander_save">Zapisz</string>
     <string name="text_expander_add">Dodaj</string>
@@ -1172,10 +1172,10 @@ Zero AI w tle i zużycia sieci.</string>
     <string name="setup_step6_title_screenshots">Sugestie zrzutów ekranu</string>
     <string name="setup_step6_instruction_screenshots">Sugeruj ostatnio zrobione zrzuty ekranu na pasku podpowiedzi. Uwaga: to uprawnienie pozwala także zapisywać zrzuty ekranu do schowka.</string>
     <string name="setup_step7_title_height">Wysokość klawiatury</string>
-    <string name="setup_step7_instruction_height">Dostosuj wysokość klawiatury. Zalecane: 77% dla bardziej kwadratowych klawiszy, 100% dla wyższych klawiszy.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Dostosuj wysokość klawiatury. Zalecane: 77% dla bardziej kwadratowych klawiszy, 100% dla wyższych klawiszy.</string>
     <string name="setup_step0_headline">Witaj w lepszym doświadczeniu pisania</string>
     <string name="setup_step0_subtitle">LeanType powstał od podstaw z myślą o prywatności, szybkości i głębokiej personalizacji.</string>
-    <string name="setup_step0_feature1_title">100% Prywatna i bezpieczna</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Prywatna i bezpieczna</string>
     <string name="setup_step0_feature1_desc">Zero telemetrii, śledzenia sieciowego czy rejestrowania w chmurze. Twoje pisanie pozostaje na urządzeniu.</string>
     <string name="setup_step0_feature2_title">Głęboko konfigurowalna</string>
     <string name="setup_step0_feature2_desc">Dostosuj układy, motywy klawiatury, rozmiary, gesty i pisanie wielojęzyczne do własnych upodobań.</string>
@@ -1195,7 +1195,7 @@ Zero AI w tle i zużycia sieci.</string>
     <string name="text_expander_tag_desc_time12">Godzina (12h, gg:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Rok (RRRR)</string>
     <string name="text_expander_tag_desc_week">Tydzień roku (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Poziom baterii (np. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Poziom baterii (np. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Powitanie zależne od pory dnia</string>
     <string name="text_expander_tag_desc_tomorrow">Jutrzejsza data (RRRR-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Zawartość schowka</string>
@@ -1207,8 +1207,8 @@ Zero AI w tle i zużycia sieci.</string>
     <string name="text_expander_tag_desc_month">Miesiąc (np. Czerwiec)</string>
     <string name="text_expander_tag_desc_language">Język klawiatury (np. Polski)</string>
     <string name="text_expander_tag_desc_cursor">Pozycja kursora po rozwinięciu</string>
-    <string name="text_expander_tag_desc_bullets">Lista punktowana (np. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Lista numerowana (np. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Lista punktowana (np. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Lista numerowana (np. %list_5%)</string>
     <string name="updates_new_update_title">Dostępna nowa aktualizacja</string>
     <string name="updates_new_update_desc">Wersja %s jest gotowa do instalacji</string>
     <string name="updates_view_release">Zobacz wydanie</string>
@@ -1637,7 +1637,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="app_quirks_hide_toolbar_summary">Ukryj klawisze paska narzędzi, akcje i przycisk rozwijania podczas pisania w tej aplikacji</string>
     <string name="app_quirks_badge_no_suggestions">Brak sugestii</string>
     <string name="app_quirks_badge_no_toolbar">Bez paska</string>
-    <string name="text_expander_tag_desc_date_format">Sformatowana data (np.%date:rrrr/MM/dd% lub%date:format(wzór)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Sformatowana data (np.%date:rrrr/MM/dd% lub%date:format(wzór)%)</string>
     <string name="app_quirks_always_show_suggestions">Zawsze pokazuj sugestie</string>
     <string name="app_quirks_always_show_suggestions_summary">Zignoruj ​​prośby tej aplikacji o wyłączenie sugestii</string>
     <string name="app_quirks_badge_always_suggestions">Zawsze sugestie</string>

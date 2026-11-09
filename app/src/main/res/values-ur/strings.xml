@@ -1073,7 +1073,7 @@
     <string name="updates_frequency_title">چیک کرنے کی فریکوئنسی</string>
     <string name="updates_changelog_title">تبدیلیوں کا لاگ</string>
     <string name="updates_support_title">ترقی کی حمایت کریں</string>
-    <string name="updates_support_summary">LeanType 100% مفت، اوپن سورس اور خود مختار ہے۔ آپ کا تعاون فعال ترقی کو جاری رکھنے میں براہ راست مدد کرتا ہے!</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% مفت، اوپن سورس اور خود مختار ہے۔ آپ کا تعاون فعال ترقی کو جاری رکھنے میں براہ راست مدد کرتا ہے!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors کے ذریعے ماہانہ یا یک وقتی عطیہ دیں</string>
     <string name="updates_opencollective_title">Open Collective پر عطیہ دیں</string>
@@ -1237,10 +1237,10 @@
     <string name="setup_step6_title_screenshots">اسکرین شاٹ کی تجاویز</string>
     <string name="setup_step6_instruction_screenshots">تجاویز کی پٹی میں حال ہی میں لیے گئے اسکرین شاٹس تجویز کریں۔ نوٹ: یہ اجازت اسکرین شاٹس کو کلپ بورڈ میں محفوظ کرنے کی بھی اجازت دیتی ہے۔</string>
     <string name="setup_step7_title_height">کی بورڈ کی اونچائی</string>
-    <string name="setup_step7_instruction_height">کی بورڈ کی اونچائی ایڈجسٹ کریں۔ تجویز کردہ: زیادہ چوکور کیز کے لیے 77%، لمبی کیز کے لیے 100%۔</string>
+    <string name="setup_step7_instruction_height" formatted="false">کی بورڈ کی اونچائی ایڈجسٹ کریں۔ تجویز کردہ: زیادہ چوکور کیز کے لیے 77%، لمبی کیز کے لیے 100%۔</string>
     <string name="setup_step0_headline">ٹائپنگ کے ایک بہتر تجربے میں خوش آمدید</string>
     <string name="setup_step0_subtitle">LeanType کو رازداری، رفتار اور گہری تخصیص کے لیے شروع سے ڈیزائن کیا گیا ہے۔</string>
-    <string name="setup_step0_feature1_title">100% نجی اور محفوظ</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% نجی اور محفوظ</string>
     <string name="setup_step0_feature1_desc">صفر ٹیلی میٹری، نیٹ ورک ٹریکنگ، یا کلاؤڈ لاگنگ۔ آپ کی ٹائپنگ آپ کی ڈیوائس پر ہی رہتی ہے۔</string>
     <string name="setup_step0_feature2_title">انتہائی حسب ضرورت</string>
     <string name="setup_step0_feature2_desc">لے آؤٹس، کی بورڈ تھیمز، سائزز، اشاروں اور کثیر لسانی ٹائپنگ کو اپنی ترجیحات کے مطابق ڈھالیں۔</string>
@@ -1260,7 +1260,7 @@
     <string name="text_expander_tag_desc_time12">وقت (12 گھنٹے، hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">سال (YYYY)</string>
     <string name="text_expander_tag_desc_week">سال کا ہفتہ (1-53)</string>
-    <string name="text_expander_tag_desc_battery">بیٹری لیول (مثلاً 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">بیٹری لیول (مثلاً 85%)</string>
     <string name="text_expander_tag_desc_greeting">وقت کے مطابق مبارکباد</string>
     <string name="text_expander_tag_desc_tomorrow">کل کی تاریخ (YYYY-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">کلپ بورڈ کا مواد</string>
@@ -1272,8 +1272,8 @@
     <string name="text_expander_tag_desc_month">مہینہ (مثلاً جون)</string>
     <string name="text_expander_tag_desc_language">کی بورڈ کی زبان (مثلاً انگریزی)</string>
     <string name="text_expander_tag_desc_cursor">توسیع کے بعد کرسر کی پوزیشن</string>
-    <string name="text_expander_tag_desc_bullets">بلٹ لسٹ (مثلاً %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">نمبر والی فہرست (مثلاً %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">بلٹ لسٹ (مثلاً %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">نمبر والی فہرست (مثلاً %list_5%)</string>
     <string name="updates_new_update_title">نئی اپ ڈیٹ دستیاب ہے</string>
     <string name="updates_new_update_desc">ورژن %s انسٹال کے لیے تیار ہے</string>
     <string name="updates_view_release">ریلیز دیکھیں</string>
@@ -1687,7 +1687,7 @@
     <string name="app_quirks_hide_toolbar_summary">اس ایپ میں ٹائپ کرتے وقت ٹول بار کیز، ایکشنز، اور ایکسپینڈ بٹن کو چھپائیں۔</string>
     <string name="app_quirks_badge_no_suggestions">کوئی تجاویز نہیں۔</string>
     <string name="app_quirks_badge_no_toolbar">ٹول بار کے بغیر</string>
-    <string name="text_expander_tag_desc_date_format">فارمیٹ شدہ تاریخ (جیسے%date:yyyy/MM/dd% یا%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">فارمیٹ شدہ تاریخ (جیسے%date:yyyy/MM/dd% یا%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">ہمیشہ تجاویز دکھائیں۔</string>
     <string name="app_quirks_always_show_suggestions_summary">تجاویز کو غیر فعال کرنے کے لیے اس ایپ کی درخواستوں کو نظر انداز کریں۔</string>
     <string name="app_quirks_badge_always_suggestions">ہمیشہ تجاویز</string>

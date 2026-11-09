@@ -160,7 +160,7 @@ class ReadOnlyBinaryDictionary(
         }
     }
 
-    override fun forEachWord(consumer: java.util.function.BiConsumer<String, Int>) {
+    override fun forEachWord(consumer: WordConsumer) {
         synchronized(mIterationLock) {
             var token = 0
             var count = 0

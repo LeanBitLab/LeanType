@@ -861,7 +861,7 @@
     <string name="updates_frequency_title">Učestalost provjere</string>
     <string name="updates_changelog_title">Zapisnik promjena</string>
     <string name="updates_support_title">Podržite razvoj</string>
-    <string name="updates_support_summary">LeanType je 100% besplatan, otvorenog koda i neovisan. Vaša podrška izravno nam pomaže da nastavimo aktivni razvoj!</string>
+    <string name="updates_support_summary" formatted="false">LeanType je 100% besplatan, otvorenog koda i neovisan. Vaša podrška izravno nam pomaže da nastavimo aktivni razvoj!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Sponzorirajte mjesečno ili jednokratno putem GitHub Sponsorsa</string>
     <string name="updates_opencollective_title">Donirajte na Open Collective</string>
@@ -974,7 +974,7 @@
     <string name="text_expander_regex_title">Regularni izraz</string>
     <string name="text_expander_regex_invalid">⚠️ Neispravan uzorak regularnog izraza</string>
     <string name="text_expander_template_title">Proširenje predloška</string>
-    <string name="text_expander_template_hint">Odmah se vraćam! ili Moj e-mail je %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Odmah se vraćam! ili Moj e-mail je %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Brze oznake mjesta (dodirnite za unos na kursor):</string>
     <string name="text_expander_save">Spremi</string>
     <string name="text_expander_add">Dodaj</string>
@@ -1128,10 +1128,10 @@ Bez AI u pozadini ili korištenja mreže.</string>
     <string name="setup_step6_title_screenshots">Prijedlozi snimki zaslona</string>
     <string name="setup_step6_instruction_screenshots">Predloži nedavno snimljene snimke zaslona u traci s prijedlozima. Napomena: Ova dozvola također omogućuje spremanje snimki zaslona u međuspremnik.</string>
     <string name="setup_step7_title_height">Visina tipkovnice</string>
-    <string name="setup_step7_instruction_height">Prilagodite visinu tipkovnice. Preporučeno: 77% za kvadratnije tipke, 100% za više tipke.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Prilagodite visinu tipkovnice. Preporučeno: 77% za kvadratnije tipke, 100% za više tipke.</string>
     <string name="setup_step0_headline">Dobrodošli u bolje iskustvo tipkanja</string>
     <string name="setup_step0_subtitle">LeanType je dizajniran od nule za privatnost, brzinu i duboko prilagođavanje.</string>
-    <string name="setup_step0_feature1_title">100% Privatno i sigurno</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Privatno i sigurno</string>
     <string name="setup_step0_feature1_desc">Nula telemetrije, mrežnog praćenja ili bilježenja u oblaku. Vaše tipkanje ostaje na vašem uređaju.</string>
     <string name="setup_step0_feature2_title">Duboko prilagodljivo</string>
     <string name="setup_step0_feature2_desc">Prilagodite rasporede, teme tipkovnice, veličine, geste i višejezično tipkanje prema svojim željama.</string>
@@ -1151,7 +1151,7 @@ Bez AI u pozadini ili korištenja mreže.</string>
     <string name="text_expander_tag_desc_time12">Vrijeme (12h, ss:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Godina (GGGG)</string>
     <string name="text_expander_tag_desc_week">Tjedan u godini (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Razina baterije (npr. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Razina baterije (npr. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Pozdrav ovisno o dobu dana</string>
     <string name="text_expander_tag_desc_tomorrow">Sutrašnji datum (GGGG-MM-DD)</string>
     <string name="text_expander_tag_desc_clipboard">Sadržaj međuspremnika</string>
@@ -1163,8 +1163,8 @@ Bez AI u pozadini ili korištenja mreže.</string>
     <string name="text_expander_tag_desc_month">Mjesec (npr. Lipanj)</string>
     <string name="text_expander_tag_desc_language">Jezik tipkovnice (npr. Hrvatski)</string>
     <string name="text_expander_tag_desc_cursor">Položaj pokazivača nakon proširenja</string>
-    <string name="text_expander_tag_desc_bullets">Popis s grafičkim oznakama (npr. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Numerirani popis (npr. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Popis s grafičkim oznakama (npr. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Numerirani popis (npr. %list_5%)</string>
     <string name="updates_new_update_title">Dostupno je novo ažuriranje</string>
     <string name="updates_new_update_desc">Verzija %s je spremna za instalaciju</string>
     <string name="updates_view_release">Prikaži izdanje</string>
@@ -1593,7 +1593,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="app_quirks_hide_toolbar_summary">Sakrij tipke alatne trake, radnje i gumb za proširenje kada upisujete u ovu aplikaciju</string>
     <string name="app_quirks_badge_no_suggestions">Nema prijedloga</string>
     <string name="app_quirks_badge_no_toolbar">Bez trake</string>
-    <string name="text_expander_tag_desc_date_format">Formatirani datum (npr.%date:gggg/MM/dd% ili%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Formatirani datum (npr.%date:gggg/MM/dd% ili%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Uvijek prikaži prijedloge</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorirajte zahtjeve ove aplikacije za onemogućavanje prijedloga</string>
     <string name="app_quirks_badge_always_suggestions">Uvijek prijedlozi</string>

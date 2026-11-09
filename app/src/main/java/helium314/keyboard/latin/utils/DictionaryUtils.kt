@@ -4,6 +4,7 @@ package helium314.keyboard.latin.utils
 
 import android.content.Context
 import android.content.Intent
+import helium314.keyboard.compat.contentLengthLongCompat
 import helium314.keyboard.dictionarypack.DictionaryPackConstants
 import android.net.Uri
 import android.os.Handler
@@ -298,7 +299,7 @@ fun downloadDictionary(
             }
             
             if (status == java.net.HttpURLConnection.HTTP_OK) {
-                val expectedLength = conn.contentLengthLong.takeIf { it > 0 } ?: conn.contentLength.toLong()
+                val expectedLength = conn.contentLengthLongCompat().takeIf { it > 0 } ?: conn.contentLength.toLong()
                 val lastModified = conn.lastModified
                 val mainHandler = Handler(Looper.getMainLooper())
                 var lastProgressTime = 0L

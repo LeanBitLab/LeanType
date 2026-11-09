@@ -803,7 +803,7 @@
     <string name="text_expander_regex_title">Regulärer Ausdruck</string>
     <string name="text_expander_regex_invalid">⚠️ Ungültiges reguläres Ausdrucksmuster</string>
     <string name="text_expander_template_title">Vorlagenerweiterung</string>
-    <string name="text_expander_template_hint">Be right back! oder Meine E-Mail ist %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Be right back! oder Meine E-Mail ist %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Schnelle Platzhalter (zum Einfügen am Cursor tippen):</string>
     <string name="text_expander_save">Speichern</string>
     <string name="text_expander_add">Hinzufügen</string>
@@ -1038,7 +1038,7 @@
     <string name="updates_frequency_title">Prüfhäufigkeit</string>
     <string name="updates_changelog_title">Änderungsprotokoll</string>
     <string name="updates_support_title">Entwicklung unterstützen</string>
-    <string name="updates_support_summary">LeanType ist 100 % kostenlos, quelloffen und unabhängig. Ihre Unterstützung hilft uns direkt, die aktive Entwicklung fortzusetzen!</string>
+    <string name="updates_support_summary" formatted="false">LeanType ist 100 % kostenlos, quelloffen und unabhängig. Ihre Unterstützung hilft uns direkt, die aktive Entwicklung fortzusetzen!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Monatlich oder einmalig über GitHub Sponsors unterstützen</string>
     <string name="updates_opencollective_title">Auf Open Collective spenden</string>
@@ -1201,10 +1201,10 @@
     <string name="setup_step6_title_screenshots">Screenshot-Vorschläge</string>
     <string name="setup_step6_instruction_screenshots">Kürzlich aufgenommene Screenshots in der Vorschlagsleiste vorschlagen. Hinweis: Diese Berechtigung erlaubt auch das Speichern von Screenshots in der Zwischenablage.</string>
     <string name="setup_step7_title_height">Tastaturhöhe</string>
-    <string name="setup_step7_instruction_height">Höhe der Tastatur anpassen. Empfohlen: 77% für eher quadratische Tasten, 100% für höhere Tasten.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Höhe der Tastatur anpassen. Empfohlen: 77% für eher quadratische Tasten, 100% für höhere Tasten.</string>
     <string name="setup_step0_headline">Willkommen zu einem besseren Tipp-Erlebnis</string>
     <string name="setup_step0_subtitle">LeanType wurde von Grund auf für Privatsphäre, Geschwindigkeit und tiefe Anpassbarkeit entwickelt.</string>
-    <string name="setup_step0_feature1_title">100% privat &amp; sicher</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% privat &amp; sicher</string>
     <string name="setup_step0_feature1_desc">Keine Telemetrie, kein Netzwerk-Tracking oder Cloud-Logging. Deine Eingaben bleiben auf deinem Gerät.</string>
     <string name="setup_step0_feature2_title">Tiefgehend anpassbar</string>
     <string name="setup_step0_feature2_desc">Passe Layouts, Tastaturthemen, Größen, Gesten und mehrsprachiges Tippen deinen Wünschen an.</string>
@@ -1224,7 +1224,7 @@
     <string name="text_expander_tag_desc_time12">Uhrzeit (12 Std., hh:mm AM/PM)</string>
     <string name="text_expander_tag_desc_year">Jahr (JJJJ)</string>
     <string name="text_expander_tag_desc_week">Kalenderwoche (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Akkustand (z. B. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Akkustand (z. B. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Tageszeitabhängige Begrüßung</string>
     <string name="text_expander_tag_desc_tomorrow">Morgiges Datum (JJJJ-MM-TT)</string>
     <string name="text_expander_tag_desc_clipboard">Inhalt der Zwischenablage</string>
@@ -1236,8 +1236,8 @@
     <string name="text_expander_tag_desc_month">Monat (z. B. Juni)</string>
     <string name="text_expander_tag_desc_language">Tastatursprache (z. B. Deutsch)</string>
     <string name="text_expander_tag_desc_cursor">Cursorposition nach der Erweiterung</string>
-    <string name="text_expander_tag_desc_bullets">Aufzählungsliste (z. B. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Nummerierte Liste (z. B. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Aufzählungsliste (z. B. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Nummerierte Liste (z. B. %list_5%)</string>
     <string name="updates_new_update_title">Neues Update verfügbar</string>
     <string name="updates_new_update_desc">Version %s ist bereit zur Installation</string>
     <string name="updates_view_release">Release ansehen</string>
@@ -1647,7 +1647,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="app_quirks_hide_toolbar_summary">Blenden Sie Symbolleistentasten, Aktionen und die Schaltfläche zum Erweitern aus, wenn Sie in dieser App etwas eingeben</string>
     <string name="app_quirks_badge_no_suggestions">Keine Vorschläge</string>
     <string name="app_quirks_badge_no_toolbar">Keine Leiste</string>
-    <string name="text_expander_tag_desc_date_format">Formatiertes Datum (z. B.%date:yyyy/MM/dd% oder%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Formatiertes Datum (z. B.%date:yyyy/MM/dd% oder%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Vorschläge immer anzeigen</string>
     <string name="app_quirks_always_show_suggestions_summary">Ignorieren Sie die Aufforderungen dieser App, Vorschläge zu deaktivieren</string>
     <string name="app_quirks_badge_always_suggestions">Immer Vorschläge</string>

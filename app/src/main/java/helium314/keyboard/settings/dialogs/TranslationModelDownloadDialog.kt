@@ -4,6 +4,7 @@ package helium314.keyboard.settings.dialogs
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import helium314.keyboard.compat.locale
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +35,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -67,6 +69,7 @@ fun TranslationModelDownloadDialog(
     onDismissRequest: () -> Unit
 ) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
     val scope = rememberCoroutineScope()
     val isOffline = BuildConfig.FLAVOR == "offline"
     var searchQuery by remember { mutableStateOf("") }
@@ -171,7 +174,7 @@ fun TranslationModelDownloadDialog(
                     "sw", "sv", "tl", "ta", "te", "th", "tr", "uk", "ur", "vi", "cy"
                 )
             }
-            val sysLocale = context.resources.configuration.locales[0] ?: Locale.getDefault()
+            val sysLocale = configuration.locale()
             val list = codes.map { code ->
                 val locale = Locale.forLanguageTag(code)
                 val name = locale.getDisplayName(sysLocale).ifBlank {

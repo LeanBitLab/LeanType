@@ -28,6 +28,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import helium314.keyboard.latin.common.loopOverCodePoints
 import coil.dispose
 import coil.load
 import coil.size.Precision
@@ -301,13 +302,14 @@ class GifPickerView @JvmOverloads constructor(
 
     fun onHostText(text: String): Boolean {
         var added = false
-        for (cp in text.codePoints()) {
+        loopOverCodePoints(text) { cp, _ ->
             if (query.codePointCount(0, query.length) < MAX_QUERY_CODE_POINTS) {
                 val str = String(Character.toChars(cp))
                 query.insert(cursorPos, str)
                 cursorPos += str.length
                 added = true
             }
+            false
         }
         if (added) {
             renderQuery()

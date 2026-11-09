@@ -839,7 +839,7 @@
     <string name="text_expander_regex_title">Κανονική Έκφραση</string>
     <string name="text_expander_regex_invalid">⚠️ Μη έγκυρο μοτίβο κανονικής έκφρασης</string>
     <string name="text_expander_template_title">Επέκταση Προτύπου</string>
-    <string name="text_expander_template_hint">Be right back! ή My email is %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Be right back! ή My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Γρήγορα Σύμβολα Κράτησης Θέσης (πατήστε για εισαγωγή στον δρομέα):</string>
     <string name="text_expander_save">Αποθήκευση</string>
     <string name="text_expander_add">Προσθήκη</string>
@@ -1074,7 +1074,7 @@
     <string name="updates_frequency_title">Συχνότητα ελέγχου</string>
     <string name="updates_changelog_title">Αρχείο καταγραφής αλλαγών</string>
     <string name="updates_support_title">Υποστήριξη ανάπτυξης</string>
-    <string name="updates_support_summary">Το LeanType είναι 100% δωρεάν, ανοιχτού κώδικα και ανεξάρτητο. Η υποστήριξή σας μας βοηθά άμεσα να συνεχίσουμε την ενεργή ανάπτυξη!</string>
+    <string name="updates_support_summary" formatted="false">Το LeanType είναι 100% δωρεάν, ανοιχτού κώδικα και ανεξάρτητο. Η υποστήριξή σας μας βοηθά άμεσα να συνεχίσουμε την ενεργή ανάπτυξη!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Χορηγία μηνιαίως ή εφάπαξ δωρεά μέσω GitHub Sponsors</string>
     <string name="updates_opencollective_title">Δωρεά στο Open Collective</string>
@@ -1238,10 +1238,10 @@
     <string name="setup_step6_title_screenshots">Προτάσεις στιγμιότυπων οθόνης</string>
     <string name="setup_step6_instruction_screenshots">Πρόταση πρόσφατων στιγμιότυπων στη γραμμή προτάσεων. Σημείωση: Αυτή η άδεια επιτρέπει επίσης την αποθήκευση στιγμιότυπων στο πρόχειρο.</string>
     <string name="setup_step7_title_height">Ύψος πληκτρολογίου</string>
-    <string name="setup_step7_instruction_height">Προσαρμόστε το ύψος του πληκτρολογίου. Συνιστάται: 77% για πιο τετράγωνα πλήκτρα, 100% για ψηλότερα πλήκτρα.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Προσαρμόστε το ύψος του πληκτρολογίου. Συνιστάται: 77% για πιο τετράγωνα πλήκτρα, 100% για ψηλότερα πλήκτρα.</string>
     <string name="setup_step0_headline">Καλώς ορίσατε σε μια καλύτερη εμπειρία πληκτρολόγησης</string>
     <string name="setup_step0_subtitle">Το LeanType έχει σχεδιαστεί από την αρχή για προστασία της ιδιωτικότητας, ταχύτητα και βαθιά προσαρμογή.</string>
-    <string name="setup_step0_feature1_title">100% Ιδιωτικό και ασφαλές</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Ιδιωτικό και ασφαλές</string>
     <string name="setup_step0_feature1_desc">Μηδενική τηλεμετρία, παρακολούθηση δικτύου ή καταγραφή στο cloud. Ό,τι πληκτρολογείτε παραμένει στη συσκευή σας.</string>
     <string name="setup_step0_feature2_title">Βαθιά προσαρμόσιμο</string>
     <string name="setup_step0_feature2_desc">Προσαρμόστε διατάξεις, θέματα πληκτρολογίου, μεγέθη, χειρονομίες και πολύγλωσση πληκτρολόγηση.</string>
@@ -1261,7 +1261,7 @@
     <string name="text_expander_tag_desc_time12">Ώρα (12ωρη, ωω:λλ ΠΜ/ΜΜ)</string>
     <string name="text_expander_tag_desc_year">Έτος (ΕΕΕΕ)</string>
     <string name="text_expander_tag_desc_week">Εβδομάδα του έτους (1-53)</string>
-    <string name="text_expander_tag_desc_battery">Επίπεδο μπαταρίας (π.χ. 85%)</string>
+    <string name="text_expander_tag_desc_battery" formatted="false">Επίπεδο μπαταρίας (π.χ. 85%)</string>
     <string name="text_expander_tag_desc_greeting">Χαιρετισμός βάσει ώρας</string>
     <string name="text_expander_tag_desc_tomorrow">Αυριανή ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)</string>
     <string name="text_expander_tag_desc_clipboard">Περιεχόμενο προχείρου</string>
@@ -1273,8 +1273,8 @@
     <string name="text_expander_tag_desc_month">Μήνας (π.χ. Ιούνιος)</string>
     <string name="text_expander_tag_desc_language">Γλώσσα πληκτρολογίου (π.χ. Ελληνικά)</string>
     <string name="text_expander_tag_desc_cursor">Θέση δρομέα μετά την επέκταση</string>
-    <string name="text_expander_tag_desc_bullets">Λίστα με κουκκίδες (π.χ. %bullets_5%)</string>
-    <string name="text_expander_tag_desc_list">Αριθμημένη λίστα (π.χ. %list_5%)</string>
+    <string name="text_expander_tag_desc_bullets" formatted="false">Λίστα με κουκκίδες (π.χ. %bullets_5%)</string>
+    <string name="text_expander_tag_desc_list" formatted="false">Αριθμημένη λίστα (π.χ. %list_5%)</string>
     <string name="updates_new_update_title">Νέα ενημέρωση διαθέσιμη</string>
     <string name="updates_new_update_desc">Η έκδοση %s είναι έτοιμη για εγκατάσταση</string>
     <string name="updates_view_release">Προβολή έκδοσης</string>
@@ -1696,7 +1696,7 @@
     <string name="app_quirks_hide_toolbar_summary">Απόκρυψη πλήκτρων της γραμμής εργαλείων, ενεργειών και επέκταση του κουμπιού κατά την πληκτρολόγηση σε αυτήν την εφαρμογή</string>
     <string name="app_quirks_badge_no_suggestions">Δεν υπάρχουν προτάσεις</string>
     <string name="app_quirks_badge_no_toolbar">Χωρίς γραμμή</string>
-    <string name="text_expander_tag_desc_date_format">Μορφοποιημένη ημερομηνία (π.χ.%date:yyyy/MM/dd% ή%date:format(pattern)%)</string>
+    <string name="text_expander_tag_desc_date_format" formatted="false">Μορφοποιημένη ημερομηνία (π.χ.%date:yyyy/MM/dd% ή%date:format(pattern)%)</string>
     <string name="app_quirks_always_show_suggestions">Να εμφανίζονται πάντα προτάσεις</string>
     <string name="app_quirks_always_show_suggestions_summary">Αγνοήστε τα αιτήματα αυτής της εφαρμογής για απενεργοποίηση προτάσεων</string>
     <string name="app_quirks_badge_always_suggestions">Πάντα Προτάσεις</string>

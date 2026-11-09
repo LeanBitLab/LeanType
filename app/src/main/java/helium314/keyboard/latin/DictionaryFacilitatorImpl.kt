@@ -29,6 +29,7 @@ import helium314.keyboard.latin.dictionary.DictionaryFactory
 import helium314.keyboard.latin.dictionary.DictionaryStats
 import helium314.keyboard.latin.dictionary.ExpandableBinaryDictionary
 import helium314.keyboard.latin.dictionary.UserBinaryDictionary
+import helium314.keyboard.latin.dictionary.WordConsumer
 import helium314.keyboard.latin.permissions.PermissionsUtil
 import helium314.keyboard.latin.personalization.SessionWordBoost
 import helium314.keyboard.latin.personalization.UserHistoryDictionary
@@ -614,7 +615,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         return result;
     }
 
-    override fun forEachMainDictionaryWord(consumer: java.util.function.BiConsumer<String, Int>) {
+    override fun forEachMainDictionaryWord(consumer: WordConsumer) {
         val dictGroup = dictionaryGroups.firstOrNull() ?: return
         val mainDict = dictGroup.getDict(Dictionary.TYPE_MAIN)
         mainDict?.forEachWord(consumer)
