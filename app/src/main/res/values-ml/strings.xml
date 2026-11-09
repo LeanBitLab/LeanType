@@ -1791,4 +1791,9 @@
     <string name="proofread_error">പ്രൂഫ് റീഡിംഗ് പരാജയപ്പെട്ടു:%s</string>
     <string name="proofread_no_text">പ്രൂഫ് റീഡ് ചെയ്യാൻ വാചകമില്ല</string>
     <string name="proofread_no_api_key">ജെമിനി API കീ സജ്ജീകരിച്ചിട്ടില്ല. ക്രമീകരണങ്ങൾ → AI ഏകീകരണം എന്നതിലേക്ക് പോകുക.</string>
+    <string name="restart_ime_title">കീബോർഡ് പുനരാരംഭിക്കുക</string>
+    <string name="restart_ime_summary">എല്ലാ മോഡലുകളും പ്ലഗിനുകളും പശ്ചാത്തല സേവനങ്ങളും വീണ്ടും ലോഡുചെയ്യുക</string>
+    <string name="restart_ime_dialog_title">റീലോഡ് പ്രോസസ്സ് ചെയ്യുക</string>
+    <string name="restart_ime_dialog_message">ഇത് കീബോർഡ് പ്രോസസ്സ് അവസാനിപ്പിക്കുകയും ക്രമീകരണങ്ങൾ വീണ്ടും സമാരംഭിക്കുകയും ചെയ്യും. എല്ലാ മോഡലുകളും പ്ലഗിനുകളും പശ്ചാത്തല സേവനങ്ങളും വൃത്തിയായി റീലോഡ് ചെയ്യും.</string>
+    <string name="restart_ime_confirm">ഇപ്പോൾ പുനരാരംഭിക്കുക</string>
 </resources>

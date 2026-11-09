@@ -1757,4 +1757,9 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="proofread_error">Error de revisión:%s</string>
     <string name="proofread_no_text">No hay texto para corregir</string>
     <string name="proofread_no_api_key">Clave API de Gemini no configurada. Vaya a Configuración → Integración de IA.</string>
+    <string name="restart_ime_title">Reiniciar teclado</string>
+    <string name="restart_ime_summary">Vuelva a cargar todos los modelos, complementos y servicios en segundo plano.</string>
+    <string name="restart_ime_dialog_title">recarga de proceso</string>
+    <string name="restart_ime_dialog_message">Esto finalizará el proceso del teclado y reiniciará la Configuración. Todos los modelos, complementos y servicios en segundo plano se recargarán limpiamente.</string>
+    <string name="restart_ime_confirm">Reiniciar ahora</string>
 </resources>

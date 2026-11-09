@@ -1725,4 +1725,9 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="proofread_error">Korrektuur ebaõnnestus:%s</string>
     <string name="proofread_no_text">Korrigeeritavat teksti pole</string>
     <string name="proofread_no_api_key">Gemini API võtit pole määratud. Avage Seaded → AI integreerimine.</string>
+    <string name="restart_ime_title">Taaskäivitage klaviatuur</string>
+    <string name="restart_ime_summary">Laadige uuesti kõik mudelid, pistikprogrammid ja taustateenused</string>
+    <string name="restart_ime_dialog_title">Protsessi uuesti laadimine</string>
+    <string name="restart_ime_dialog_message">See lõpetab klaviatuuri protsessi ja taaskäivitab seaded. Kõik mudelid, pistikprogrammid ja taustteenused laaditakse puhtalt uuesti.</string>
+    <string name="restart_ime_confirm">Taaskäivitage kohe</string>
 </resources>

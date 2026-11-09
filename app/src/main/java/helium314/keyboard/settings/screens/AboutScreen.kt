@@ -68,6 +68,7 @@ fun AboutScreen(
         SettingsWithoutKey.APP,
         SettingsWithoutKey.SETUP_WIZARD,
         SettingsWithoutKey.VERSION,
+        SettingsWithoutKey.RESTART_IME,
         SettingsWithoutKey.LICENSE,
         SettingsWithoutKey.HIDDEN_FEATURES,
         SettingsWithoutKey.GITHUB_FEATURES,
@@ -119,6 +120,34 @@ fun createAboutSettings(context: Context) = listOf(
             },
             icon = R.drawable.ic_settings_about
         )
+    },
+    Setting(context, SettingsWithoutKey.RESTART_IME, R.string.restart_ime_title, R.string.restart_ime_summary) {
+        val ctx = LocalContext.current
+        var showDialog by rememberSaveable { mutableStateOf(false) }
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = { showDialog = true },
+            icon = R.drawable.ic_redo
+        )
+        if (showDialog) {
+            ThreeButtonAlertDialog(
+                onDismissRequest = { showDialog = false },
+                onConfirmed = {
+                    showDialog = false
+                    val intent = Intent(ctx, SettingsActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    }
+                    ctx.startActivity(intent)
+                    Runtime.getRuntime().exit(0)
+                },
+                title = { Text(stringResource(R.string.restart_ime_dialog_title)) },
+                icon = { Icon(painterResource(R.drawable.ic_redo), null) },
+                content = { Text(stringResource(R.string.restart_ime_dialog_message)) },
+                confirmButtonText = stringResource(R.string.restart_ime_confirm),
+                cancelButtonText = stringResource(android.R.string.cancel)
+            )
+        }
     },
     Setting(context, SettingsWithoutKey.LICENSE, R.string.license, R.string.gnu_gpl) {
         val ctx = LocalContext.current

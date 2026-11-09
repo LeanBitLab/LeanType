@@ -1782,4 +1782,9 @@
     <string name="proofread_error">پروف ریڈنگ ناکام ہوگئی:%s</string>
     <string name="proofread_no_text">پروف ریڈ کرنے کے لیے کوئی متن نہیں ہے۔</string>
     <string name="proofread_no_api_key">Gemini API کلید سیٹ نہیں ہے۔ ترتیبات → AI انٹیگریشن پر جائیں۔</string>
+    <string name="restart_ime_title">کی بورڈ کو دوبارہ شروع کریں۔</string>
+    <string name="restart_ime_summary">تمام ماڈلز، پلگ انز، اور بیک گراؤنڈ سروسز کو دوبارہ لوڈ کریں۔</string>
+    <string name="restart_ime_dialog_title">دوبارہ لوڈ کرنے کا عمل</string>
+    <string name="restart_ime_dialog_message">اس سے کی بورڈ کا عمل ختم ہو جائے گا اور سیٹنگز دوبارہ شروع ہو جائیں گی۔ تمام ماڈلز، پلگ انز، اور بیک گراؤنڈ سروسز کو صاف طور پر دوبارہ لوڈ کیا جائے گا۔</string>
+    <string name="restart_ime_confirm">ابھی دوبارہ شروع کریں۔</string>
 </resources>

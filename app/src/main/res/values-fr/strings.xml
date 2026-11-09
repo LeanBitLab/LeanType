@@ -1746,4 +1746,9 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="proofread_error">Échec de la relecture :%s</string>
     <string name="proofread_no_text">Aucun texte à relire</string>
     <string name="proofread_no_api_key">Clé API Gemini non définie. Accédez à Paramètres → Intégration IA.</string>
+    <string name="restart_ime_title">Redémarrer le clavier</string>
+    <string name="restart_ime_summary">Recharger tous les modèles, plugins et services d\'arrière-plan</string>
+    <string name="restart_ime_dialog_title">Rechargement du processus</string>
+    <string name="restart_ime_dialog_message">Cela mettra fin au processus de clavier et relancera les paramètres. Tous les modèles, plugins et services d’arrière-plan seront proprement rechargés.</string>
+    <string name="restart_ime_confirm">Redémarrez maintenant</string>
 </resources>

@@ -1696,4 +1696,9 @@
     <string name="proofread_error">הגהה נכשלה:%s</string>
     <string name="proofread_no_text">אין טקסט להגהה</string>
     <string name="proofread_no_api_key">מפתח API של Gemini לא מוגדר. עבור אל הגדרות ← שילוב AI.</string>
+    <string name="restart_ime_title">הפעל מחדש את המקלדת</string>
+    <string name="restart_ime_summary">טען מחדש את כל הדגמים, התוספים ושירותי הרקע</string>
+    <string name="restart_ime_dialog_title">תהליך טעינה מחדש</string>
+    <string name="restart_ime_dialog_message">פעולה זו תסיים את תהליך המקלדת ותפעיל מחדש את ההגדרות. כל הדגמים, התוספים ושירותי הרקע ייטענו מחדש בצורה נקייה.</string>
+    <string name="restart_ime_confirm">הפעל מחדש עכשיו</string>
 </resources>

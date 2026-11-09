@@ -1750,4 +1750,9 @@
     <string name="proofread_error">Ошибка корректуры:%s</string>
     <string name="proofread_no_text">Нет текста для корректуры</string>
     <string name="proofread_no_api_key">Ключ Gemini API не установлен. Откройте «Настройки» → «Интеграция с AI».</string>
+    <string name="restart_ime_title">Перезапустить клавиатуру</string>
+    <string name="restart_ime_summary">Перезагрузите все модели, плагины и фоновые службы.</string>
+    <string name="restart_ime_dialog_title">Перезагрузка процесса</string>
+    <string name="restart_ime_dialog_message">Это завершит процесс клавиатуры и перезапустит Настройки. Все модели, плагины и фоновые службы будут перезагружены.</string>
+    <string name="restart_ime_confirm">Перезагрузить сейчас</string>
 </resources>

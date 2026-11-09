@@ -1726,4 +1726,9 @@ Ar norite atnaujinti?</string>
     <string name="proofread_error">Korektūra nepavyko:%s</string>
     <string name="proofread_no_text">Nėra teksto, kurį būtų galima perskaityti</string>
     <string name="proofread_no_api_key">Gemini API raktas nenustatytas. Eikite į Nustatymai → AI integravimas.</string>
+    <string name="restart_ime_title">Iš naujo paleiskite klaviatūrą</string>
+    <string name="restart_ime_summary">Iš naujo įkelkite visus modelius, papildinius ir fonines paslaugas</string>
+    <string name="restart_ime_dialog_title">Proceso įkėlimas iš naujo</string>
+    <string name="restart_ime_dialog_message">Tai nutrauks klaviatūros procesą ir iš naujo paleis nustatymus. Visi modeliai, papildiniai ir foninės paslaugos bus švariai įkelti iš naujo.</string>
+    <string name="restart_ime_confirm">Paleiskite iš naujo dabar</string>
 </resources>

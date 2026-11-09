@@ -1688,4 +1688,9 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="proofread_error">A lektorálás sikertelen:%s</string>
     <string name="proofread_no_text">Nincs lektorálandó szöveg</string>
     <string name="proofread_no_api_key">A Gemini API kulcs nincs beállítva. Lépjen a Beállítások → AI integráció menüpontra.</string>
+    <string name="restart_ime_title">Indítsa újra a billentyűzetet</string>
+    <string name="restart_ime_summary">Töltse be újra az összes modellt, beépülő modult és háttérszolgáltatást</string>
+    <string name="restart_ime_dialog_title">Folyamat újratöltése</string>
+    <string name="restart_ime_dialog_message">Ezzel leállítja a billentyűzet folyamatát, és újraindítja a Beállításokat. Minden modell, beépülő modul és háttérszolgáltatás tisztán újratöltve lesz.</string>
+    <string name="restart_ime_confirm">Indítsa újra most</string>
 </resources>

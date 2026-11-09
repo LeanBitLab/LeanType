@@ -1695,4 +1695,9 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="proofread_error">Falha na revisão:%s</string>
     <string name="proofread_no_text">Nenhum texto para revisar</string>
     <string name="proofread_no_api_key">Chave de API Gemini não definida. Vá para Configurações → Integração de IA.</string>
+    <string name="restart_ime_title">Reinicie o teclado</string>
+    <string name="restart_ime_summary">Recarregue todos os modelos, plug-ins e serviços em segundo plano</string>
+    <string name="restart_ime_dialog_title">Recarregamento de processo</string>
+    <string name="restart_ime_dialog_message">Isso encerrará o processo do teclado e reiniciará as Configurações. Todos os modelos, plug-ins e serviços em segundo plano serão recarregados de forma limpa.</string>
+    <string name="restart_ime_confirm">Reinicie agora</string>
 </resources>

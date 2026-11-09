@@ -1691,4 +1691,9 @@
     <string name="proofread_error">校对失败：%s</string>
     <string name="proofread_no_text">没有文字需要校对</string>
     <string name="proofread_no_api_key">Gemini API 密钥未设置。进入设置 → AI 集成。</string>
+    <string name="restart_ime_title">重启键盘</string>
+    <string name="restart_ime_summary">重新加载所有模型、插件和后台服务</string>
+    <string name="restart_ime_dialog_title">进程重新加载</string>
+    <string name="restart_ime_dialog_message">这将终止键盘进程并重新启动“设置”。所有模型、插件和后台服务都将被干净地重新加载。</string>
+    <string name="restart_ime_confirm">立即重新启动</string>
 </resources>

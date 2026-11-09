@@ -1690,4 +1690,9 @@
     <string name="proofread_error">Помилка перевірки:%s</string>
     <string name="proofread_no_text">Немає тексту для перевірки</string>
     <string name="proofread_no_api_key">Ключ API Gemini не встановлено. Перейдіть до Налаштування → Інтеграція ШІ.</string>
+    <string name="restart_ime_title">Перезапустіть клавіатуру</string>
+    <string name="restart_ime_summary">Перезавантажте всі моделі, плагіни та фонові служби</string>
+    <string name="restart_ime_dialog_title">Перезавантаження процесу</string>
+    <string name="restart_ime_dialog_message">Це завершить процес клавіатури та перезапустить налаштування. Усі моделі, плагіни та фонові служби буде чисто перезавантажено.</string>
+    <string name="restart_ime_confirm">Перезапустіть зараз</string>
 </resources>

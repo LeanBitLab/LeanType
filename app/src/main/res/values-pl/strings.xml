@@ -1732,4 +1732,9 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="proofread_error">Korekta nie powiodła się:%s</string>
     <string name="proofread_no_text">Brak tekstu do korekty</string>
     <string name="proofread_no_api_key">Nie ustawiono klucza API Gemini. Przejdź do Ustawienia → Integracja AI.</string>
+    <string name="restart_ime_title">Uruchom ponownie klawiaturę</string>
+    <string name="restart_ime_summary">Załaduj ponownie wszystkie modele, wtyczki i usługi działające w tle</string>
+    <string name="restart_ime_dialog_title">Przeładuj proces</string>
+    <string name="restart_ime_dialog_message">Spowoduje to zakończenie procesu klawiatury i ponowne uruchomienie Ustawień. Wszystkie modele, wtyczki i usługi w tle zostaną ponownie załadowane.</string>
+    <string name="restart_ime_confirm">Uruchom ponownie teraz</string>
 </resources>

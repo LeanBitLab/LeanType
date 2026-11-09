@@ -1740,4 +1740,9 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="proofread_error">Korrekturlesen fehlgeschlagen:%s</string>
     <string name="proofread_no_text">Kein Text zum Korrekturlesen</string>
     <string name="proofread_no_api_key">Gemini-API-Schlüssel nicht festgelegt. Gehen Sie zu Einstellungen → KI-Integration.</string>
+    <string name="restart_ime_title">Starten Sie die Tastatur neu</string>
+    <string name="restart_ime_summary">Laden Sie alle Modelle, Plugins und Hintergrunddienste neu</string>
+    <string name="restart_ime_dialog_title">Prozess neu laden</string>
+    <string name="restart_ime_dialog_message">Dadurch wird der Tastaturvorgang beendet und die Einstellungen neu gestartet. Alle Modelle, Plugins und Hintergrunddienste werden sauber neu geladen.</string>
+    <string name="restart_ime_confirm">Starten Sie jetzt neu</string>
 </resources>

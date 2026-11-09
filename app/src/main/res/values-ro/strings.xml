@@ -1725,4 +1725,9 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="proofread_error">Corectarea nu a reușit:%s</string>
     <string name="proofread_no_text">Niciun text de corectat</string>
     <string name="proofread_no_api_key">Cheia API Gemini nu este setată. Accesați Setări → Integrare AI.</string>
+    <string name="restart_ime_title">Reporniți tastatura</string>
+    <string name="restart_ime_summary">Reîncărcați toate modelele, pluginurile și serviciile de fundal</string>
+    <string name="restart_ime_dialog_title">Reîncărcarea procesului</string>
+    <string name="restart_ime_dialog_message">Acest lucru va încheia procesul de la tastatură și va relansa Setări. Toate modelele, pluginurile și serviciile de fundal vor fi reîncărcate curat.</string>
+    <string name="restart_ime_confirm">Reporniți acum</string>
 </resources>

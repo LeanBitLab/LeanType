@@ -1717,4 +1717,9 @@
     <string name="proofread_error">प्रूफ़रीडिंग विफल:%s</string>
     <string name="proofread_no_text">प्रूफ़रीड करने के लिए कोई पाठ नहीं</string>
     <string name="proofread_no_api_key">जेमिनी एपीआई कुंजी सेट नहीं है। सेटिंग्स → एआई एकीकरण पर जाएं।</string>
+    <string name="restart_ime_title">कीबोर्ड पुनः प्रारंभ करें</string>
+    <string name="restart_ime_summary">सभी मॉडल, प्लगइन्स और पृष्ठभूमि सेवाओं को पुनः लोड करें</string>
+    <string name="restart_ime_dialog_title">प्रक्रिया पुनः लोड करें</string>
+    <string name="restart_ime_dialog_message">इससे कीबोर्ड प्रक्रिया समाप्त हो जाएगी और सेटिंग्स पुनः लॉन्च हो जाएंगी। सभी मॉडल, प्लगइन्स और पृष्ठभूमि सेवाओं को साफ़-साफ़ पुनः लोड किया जाएगा।</string>
+    <string name="restart_ime_confirm">अब पुनःचालू करें</string>
 </resources>

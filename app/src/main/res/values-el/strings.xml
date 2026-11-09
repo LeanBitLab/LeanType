@@ -1791,4 +1791,9 @@
     <string name="proofread_error">Η διόρθωση απέτυχε:%s</string>
     <string name="proofread_no_text">Δεν υπάρχει κείμενο για διόρθωση</string>
     <string name="proofread_no_api_key">Το κλειδί API Gemini δεν έχει οριστεί. Μεταβείτε στις Ρυθμίσεις → Ενσωμάτωση AI.</string>
+    <string name="restart_ime_title">Επανεκκινήστε το πληκτρολόγιο</string>
+    <string name="restart_ime_summary">Επαναλάβετε τη φόρτωση όλων των μοντέλων, των προσθηκών και των υπηρεσιών παρασκηνίου</string>
+    <string name="restart_ime_dialog_title">Επαναφόρτωση διαδικασίας</string>
+    <string name="restart_ime_dialog_message">Αυτό θα τερματίσει τη διαδικασία του πληκτρολογίου και θα επανεκκινήσει τις Ρυθμίσεις. Όλα τα μοντέλα, οι προσθήκες και οι υπηρεσίες παρασκηνίου θα επαναφορτωθούν καθαρά.</string>
+    <string name="restart_ime_confirm">Κάντε επανεκκίνηση τώρα</string>
 </resources>

@@ -165,6 +165,7 @@ object SettingsWithoutKey {
     const val SETUP_WIZARD = "setup_wizard"
     const val APP = "app"
     const val VERSION = "version"
+    const val RESTART_IME = "restart_ime"
     const val LICENSE = "license"
     const val HIDDEN_FEATURES = "hidden_features"
     const val GITHUB = "github"

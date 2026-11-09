@@ -1757,4 +1757,9 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="proofread_error">Correzione di bozze non riuscita:%s</string>
     <string name="proofread_no_text">Nessun testo da correggere</string>
     <string name="proofread_no_api_key">Chiave API Gemini non impostata. Vai su Impostazioni → Integrazione AI.</string>
+    <string name="restart_ime_title">Riavvia la tastiera</string>
+    <string name="restart_ime_summary">Ricarica tutti i modelli, i plugin e i servizi in background</string>
+    <string name="restart_ime_dialog_title">Ricaricamento del processo</string>
+    <string name="restart_ime_dialog_message">Ciò terminerà il processo della tastiera e riavvierà le Impostazioni. Tutti i modelli, i plugin e i servizi in background verranno ricaricati in modo pulito.</string>
+    <string name="restart_ime_confirm">Ricomincia adesso</string>
 </resources>

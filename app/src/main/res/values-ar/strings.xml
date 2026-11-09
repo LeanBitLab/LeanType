@@ -1748,4 +1748,9 @@
     <string name="proofread_error">فشل التدقيق اللغوي:%s</string>
     <string name="proofread_no_text">لا يوجد نص للتدقيق</string>
     <string name="proofread_no_api_key">لم يتم تعيين مفتاح Gemini API. انتقل إلى الإعدادات → تكامل الذكاء الاصطناعي.</string>
+    <string name="restart_ime_title">إعادة تشغيل لوحة المفاتيح</string>
+    <string name="restart_ime_summary">أعد تحميل جميع النماذج والمكونات الإضافية وخدمات الخلفية</string>
+    <string name="restart_ime_dialog_title">إعادة تحميل العملية</string>
+    <string name="restart_ime_dialog_message">سيؤدي هذا إلى إنهاء عملية لوحة المفاتيح وإعادة تشغيل الإعدادات. سيتم إعادة تحميل جميع النماذج والمكونات الإضافية وخدمات الخلفية بشكل نظيف.</string>
+    <string name="restart_ime_confirm">أعد التشغيل الآن</string>
 </resources>

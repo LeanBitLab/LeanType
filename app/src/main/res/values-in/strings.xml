@@ -1688,4 +1688,9 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="proofread_error">Pengoreksian gagal:%s</string>
     <string name="proofread_no_text">Tidak ada teks untuk dikoreksi</string>
     <string name="proofread_no_api_key">Kunci API Gemini tidak disetel. Buka Pengaturan → Integrasi AI.</string>
+    <string name="restart_ime_title">Mulai ulang papan ketik</string>
+    <string name="restart_ime_summary">Muat ulang semua model, plugin, dan layanan latar belakang</string>
+    <string name="restart_ime_dialog_title">Proses memuat ulang</string>
+    <string name="restart_ime_dialog_message">Ini akan menghentikan proses keyboard dan meluncurkan kembali Pengaturan. Semua model, plugin, dan layanan latar belakang akan dimuat ulang dengan rapi.</string>
+    <string name="restart_ime_confirm">Mulai ulang sekarang</string>
 </resources>

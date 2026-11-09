@@ -1688,4 +1688,9 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="proofread_error">Lektoriranje nije uspjelo:%s</string>
     <string name="proofread_no_text">Nema teksta za lekturu</string>
     <string name="proofread_no_api_key">Gemini API ključ nije postavljen. Idite na Postavke → AI integracija.</string>
+    <string name="restart_ime_title">Ponovno pokrenite tipkovnicu</string>
+    <string name="restart_ime_summary">Ponovno učitajte sve modele, dodatke i pozadinske usluge</string>
+    <string name="restart_ime_dialog_title">Ponovno učitavanje procesa</string>
+    <string name="restart_ime_dialog_message">Ovo će prekinuti proces tipkovnice i ponovno pokrenuti Postavke. Svi modeli, dodaci i pozadinske usluge bit će ponovno učitani.</string>
+    <string name="restart_ime_confirm">Ponovno pokrenite sada</string>
 </resources>

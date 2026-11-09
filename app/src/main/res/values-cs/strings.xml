@@ -1690,4 +1690,9 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="proofread_error">Korektura se nezdařila:%s</string>
     <string name="proofread_no_text">Žádný text ke korektuře</string>
     <string name="proofread_no_api_key">Gemini API klíč není nastaven. Přejděte do Nastavení → Integrace AI.</string>
+    <string name="restart_ime_title">Restartujte klávesnici</string>
+    <string name="restart_ime_summary">Znovu načtěte všechny modely, pluginy a služby na pozadí</string>
+    <string name="restart_ime_dialog_title">Znovu načíst proces</string>
+    <string name="restart_ime_dialog_message">Tím se ukončí proces klávesnice a znovu se spustí Nastavení. Všechny modely, pluginy a služby na pozadí budou čistě znovu načteny.</string>
+    <string name="restart_ime_confirm">Restartujte nyní</string>
 </resources>

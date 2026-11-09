@@ -1725,4 +1725,9 @@
     <string name="proofread_error">Неуспешна корекция:%s</string>
     <string name="proofread_no_text">Няма текст за корекция</string>
     <string name="proofread_no_api_key">Ключът за API на Gemini не е зададен. Отидете в Настройки → AI интеграция.</string>
+    <string name="restart_ime_title">Рестартирайте клавиатурата</string>
+    <string name="restart_ime_summary">Презаредете всички модели, плъгини и фонови услуги</string>
+    <string name="restart_ime_dialog_title">Процес презареждане</string>
+    <string name="restart_ime_dialog_message">Това ще прекрати процеса на клавиатурата и ще стартира повторно настройките. Всички модели, плъгини и фонови услуги ще бъдат чисто презаредени.</string>
+    <string name="restart_ime_confirm">Рестартирайте сега</string>
 </resources>

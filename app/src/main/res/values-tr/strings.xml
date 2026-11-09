@@ -1717,4 +1717,9 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="proofread_error">Düzeltme başarısız oldu:%s</string>
     <string name="proofread_no_text">Düzeltilecek metin yok</string>
     <string name="proofread_no_api_key">Gemini API anahtarı ayarlanmadı. Ayarlar → AI entegrasyonu\'na gidin.</string>
+    <string name="restart_ime_title">Klavyeyi yeniden başlat</string>
+    <string name="restart_ime_summary">Tüm modelleri, eklentileri ve arka plan hizmetlerini yeniden yükleyin</string>
+    <string name="restart_ime_dialog_title">İşlem yeniden yükleme</string>
+    <string name="restart_ime_dialog_message">Bu, klavye işlemini sonlandıracak ve Ayarlar\'ı yeniden başlatacaktır. Tüm modeller, eklentiler ve arka plan hizmetleri temiz bir şekilde yeniden yüklenecektir.</string>
+    <string name="restart_ime_confirm">Şimdi yeniden başlat</string>
 </resources>

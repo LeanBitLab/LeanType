@@ -1725,4 +1725,9 @@
     <string name="proofread_error">Памылка карэктуры:%s</string>
     <string name="proofread_no_text">Няма тэксту для карэктуры</string>
     <string name="proofread_no_api_key">Ключ Gemini API не ўстаноўлены. Перайдзіце ў Налады → Інтэграцыя штучнага інтэлекту.</string>
+    <string name="restart_ime_title">Перазапусціць клавіятуру</string>
+    <string name="restart_ime_summary">Перазагрузіце ўсе мадэлі, плагіны і фонавыя службы</string>
+    <string name="restart_ime_dialog_title">Перазагрузка працэсу</string>
+    <string name="restart_ime_dialog_message">Гэта спыніць працэс клавіятуры і перазапусціць Налады. Усе мадэлі, плагіны і фонавыя службы будуць чыста перазагружаны.</string>
+    <string name="restart_ime_confirm">Перазапусціце зараз</string>
 </resources>

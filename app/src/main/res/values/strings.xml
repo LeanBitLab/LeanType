@@ -1389,6 +1389,12 @@ New dictionary:
     <string name="about_features_link">Go to FEATURES.md</string>
     <!-- description for features.md link -->
     <string name="about_features_link_description">List of main features and keyboard manual</string>
+    <!-- Restart IME preference in about screen -->
+    <string name="restart_ime_title">Restart keyboard</string>
+    <string name="restart_ime_summary">Reload all models, plugins, and background services</string>
+    <string name="restart_ime_dialog_title">Process reload</string>
+    <string name="restart_ime_dialog_message">This will terminate the keyboard process and relaunch Settings. All models, plugins, and background services will be cleanly reloaded.</string>
+    <string name="restart_ime_confirm">Restart now</string>
 
     <!-- Updates Screen -->
     <string name="settings_screen_updates">Updates</string>
