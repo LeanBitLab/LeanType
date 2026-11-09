@@ -371,6 +371,9 @@ object TextExpanderUtils {
     fun expand(template: String, context: Context): String {
         var result = template
 
+        // tab character, e.g. for columns in a table
+        if (result.contains("%tab%")) result = result.replace("%tab%", "\t")
+
         // Resolve %date[:modifiers]%
         if (result.contains("%date")) {
             result = DATE_REGEX.replace(result) { match ->
