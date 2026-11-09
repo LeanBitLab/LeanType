@@ -27,6 +27,7 @@ import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import helium314.keyboard.compat.isDeviceLocked
 import helium314.keyboard.event.Event
 import helium314.keyboard.keyboard.KeyboardLayoutSet.KeyboardLayoutSetException
 import helium314.keyboard.keyboard.clipboard.ClipboardHistoryView
@@ -584,6 +585,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     override fun setClipboardKeyboard() {
         if (DEBUG_ACTION) Log.d(TAG, "setClipboardKeyboard")
+        val ime = mLatinIME ?: return
+        if (isDeviceLocked(ime)) return
         hideGifPicker()
         mLatinIME?.let { ime ->
             ime.inputLogic.commitTyped(Settings.getValues(), LastComposedWord.NOT_A_SEPARATOR)

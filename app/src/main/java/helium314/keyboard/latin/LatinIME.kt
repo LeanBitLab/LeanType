@@ -48,6 +48,7 @@ import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.compat.BrowserDetector
 import helium314.keyboard.compat.EditorInfoCompatUtils
+import helium314.keyboard.compat.isDeviceLocked
 import helium314.keyboard.latin.style.UnicodeStyleEngine
 import helium314.keyboard.compat.ImeCompat.shouldSwitchToOtherInputMethods
 import helium314.keyboard.compat.ImeCompat.switchInputMethod
@@ -1553,7 +1554,11 @@ class LatinIME : InputMethodService(),
                 }
             }
         }
-        if (event.keyCode == KeyCode.SWITCH_TO_USER_IME) { switchToUserIme(); return }
+        if (event.keyCode == KeyCode.SWITCH_TO_USER_IME) {
+            if (isDeviceLocked(this)) return
+            switchToUserIme()
+            return
+        }
         if (event.keyCode == KeyCode.VOICE_INPUT) {
             when (richImm.currentVoiceProvider) {
                 VoiceConstants.VOICE_PROVIDER_OFFLINE, VoiceConstants.VOICE_PROVIDER_ONLINE -> {
@@ -2388,6 +2393,9 @@ class LatinIME : InputMethodService(),
         override fun onReceive(context: Context, intent: Intent) {
             val action = intent.action ?: return
             if (action != ACTION_SWITCH_SUBTYPE && action != ACTION_SWITCH_LAYOUT && action != ACTION_SWITCH_MODE) return
+
+            val editorInfo = currentInputEditorInfo
+            if (isDeviceLocked(this@LatinIME) || InputTypeUtils.isAnyPasswordInputType(editorInfo?.inputType ?: 0)) return
 
             val mode = intent.getStringExtra(EXTRA_KEYBOARD_MODE) ?: intent.getStringExtra("keyboard_mode")
             if (mode != null) {

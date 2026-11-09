@@ -18,6 +18,7 @@ import android.view.KeyEvent
 import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.EditorInfo
 import helium314.keyboard.compat.AppQuirksManager
+import helium314.keyboard.compat.isDeviceLocked
 import helium314.keyboard.event.Event
 import helium314.keyboard.event.InputTransaction
 import helium314.keyboard.latin.cjk.CjkInputManager
@@ -872,18 +873,20 @@ class InputLogic(
                     mSpaceState = SpaceState.NONE
                 }
             }
-            KeyCode.SETTINGS -> onSettingsKeyPressed()
+            KeyCode.SETTINGS -> if (!isDeviceLocked(mLatinIME)) onSettingsKeyPressed()
             KeyCode.ACTION_NEXT -> performEditorAction(EditorInfo.IME_ACTION_NEXT, inputTransaction.settingsValues, handler)
             KeyCode.ACTION_PREVIOUS -> performEditorAction(EditorInfo.IME_ACTION_PREVIOUS, inputTransaction.settingsValues, handler)
             KeyCode.LANGUAGE_SWITCH -> handleLanguageSwitchKey()
             KeyCode.CLIPBOARD -> {
                 if (!inputTransaction.settingsValues.mClipboardHistoryEnabled) {
-                    handleClipboardPaste()
+                    if (!isDeviceLocked(mLatinIME)) handleClipboardPaste()
                 }
             }
             KeyCode.CLIPBOARD_PASTE -> {
-                handleClipboardPaste()
-                KeyboardActionListenerImpl.deactivateSelectionMode()
+                if (!isDeviceLocked(mLatinIME)) {
+                    handleClipboardPaste()
+                    KeyboardActionListenerImpl.deactivateSelectionMode()
+                }
             }
             KeyCode.SHIFT_ENTER -> {
                 val tmpEvent = Event.createSoftwareKeypressEvent(
@@ -912,7 +915,7 @@ class InputLogic(
                 KeyboardActionListenerImpl.deactivateSelectionMode()
                 mLatinIME.mHandler.post { mLatinIME.tryShowClipboardSuggestion() }
             }
-            KeyCode.CLIPBOARD_CLEAR_HISTORY -> mLatinIME.clipboardHistoryManager.clearHistory()
+            KeyCode.CLIPBOARD_CLEAR_HISTORY -> if (!isDeviceLocked(mLatinIME)) mLatinIME.clipboardHistoryManager.clearHistory()
             KeyCode.CLIPBOARD_CUT -> {
                 if (mConnection.hasSelection()) {
                     mConnection.copyText(true)
@@ -986,23 +989,25 @@ class InputLogic(
             }
             KeyCode.UNDO -> sendDownUpKeyEventWithMetaState(KeyEvent.KEYCODE_Z, KeyEvent.META_CTRL_ON)
             KeyCode.REDO -> sendDownUpKeyEventWithMetaState(KeyEvent.KEYCODE_Z, KeyEvent.META_CTRL_ON or KeyEvent.META_SHIFT_ON)
-            KeyCode.CUSTOM_AI_1 -> handleCustomAIKey(1)
-            KeyCode.CUSTOM_AI_2 -> handleCustomAIKey(2)
-            KeyCode.CUSTOM_AI_3 -> handleCustomAIKey(3)
-            KeyCode.CUSTOM_AI_4 -> handleCustomAIKey(4)
-            KeyCode.CUSTOM_AI_5 -> handleCustomAIKey(5)
-            KeyCode.CUSTOM_AI_6 -> handleCustomAIKey(6)
-            KeyCode.CUSTOM_AI_7 -> handleCustomAIKey(7)
-            KeyCode.CUSTOM_AI_8 -> handleCustomAIKey(8)
-            KeyCode.CUSTOM_AI_9 -> handleCustomAIKey(9)
-            KeyCode.CUSTOM_AI_10 -> handleCustomAIKey(10)
-            KeyCode.PROOFREAD -> handleProofread()
-            KeyCode.TRANSLATE -> handleTranslate()
-            KeyCode.SHOW_TRANSLATE_LANGUAGES -> handleShowTranslateLanguages()
+            KeyCode.CUSTOM_AI_1 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(1)
+            KeyCode.CUSTOM_AI_2 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(2)
+            KeyCode.CUSTOM_AI_3 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(3)
+            KeyCode.CUSTOM_AI_4 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(4)
+            KeyCode.CUSTOM_AI_5 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(5)
+            KeyCode.CUSTOM_AI_6 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(6)
+            KeyCode.CUSTOM_AI_7 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(7)
+            KeyCode.CUSTOM_AI_8 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(8)
+            KeyCode.CUSTOM_AI_9 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(9)
+            KeyCode.CUSTOM_AI_10 -> if (!isDeviceLocked(mLatinIME)) handleCustomAIKey(10)
+            KeyCode.PROOFREAD -> if (!isDeviceLocked(mLatinIME)) handleProofread()
+            KeyCode.TRANSLATE -> if (!isDeviceLocked(mLatinIME)) handleTranslate()
+            KeyCode.SHOW_TRANSLATE_LANGUAGES -> if (!isDeviceLocked(mLatinIME)) handleShowTranslateLanguages()
             KeyCode.SPLIT_LAYOUT -> KeyboardSwitcher.getInstance().toggleSplitKeyboardMode()
             KeyCode.TIMESTAMP -> mLatinIME.onTextInput(getTimestamp(mLatinIME))
             KeyCode.SEND_INTENT_ONE, KeyCode.SEND_INTENT_TWO, KeyCode.SEND_INTENT_THREE -> {
-                IntentUtils.handleSendIntentKey(mLatinIME, event.keyCode)
+                if (!isDeviceLocked(mLatinIME)) {
+                    IntentUtils.handleSendIntentKey(mLatinIME, event.keyCode)
+                }
             }
             KeyCode.IME_HIDE_UI -> mLatinIME.requestHideSelf(0)
             KeyCode.INLINE_EMOJI_SEARCH_DONE -> {
