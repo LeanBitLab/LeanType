@@ -1735,6 +1735,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="restart_ime_confirm">Reiniciar ahora</string>
     <string name="text_expander_all_as_text">Editar todo como texto</string>
     <string name="text_expander_all_title">Todos los atajos de texto</string>
+    <string name="text_expander_shortcuts_count">%d atajos</string>
     <string name="text_expander_all_hint">Cada atajo comienza con una línea === atajo ===, seguida de su texto. Al guardar se aplica exactamente este texto: se agregan nuevos bloques, se actualizan los modificados y se eliminan los eliminados.</string>
     <string name="text_expander_copy_all">Copiar todo</string>
     <string name="text_expander_paste_all">Pegar todo</string>

@@ -1710,6 +1710,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="restart_ime_confirm">Start nu opnieuw op</string>
     <string name="text_expander_all_as_text">Bewerk alles als tekst</string>
     <string name="text_expander_all_title">Alle tekstsnelkoppelingen</string>
+    <string name="text_expander_shortcuts_count">%d snelkoppelingen</string>
     <string name="text_expander_all_hint">Elke snelkoppeling begint met een regel === snelkoppeling ===, gevolgd door de tekst ervan. Bij het opslaan wordt precies deze tekst toegepast: nieuwe blokken worden toegevoegd, gewijzigde blokken bijgewerkt, verwijderde blokken verwijderd.</string>
     <string name="text_expander_copy_all">Kopieer alles</string>
     <string name="text_expander_paste_all">Plak alles</string>

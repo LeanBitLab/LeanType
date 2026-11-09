@@ -1666,6 +1666,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="restart_ime_confirm">Mulai ulang sekarang</string>
     <string name="text_expander_all_as_text">Edit semua sebagai teks</string>
     <string name="text_expander_all_title">Semua pintasan teks</string>
+    <string name="text_expander_shortcuts_count">%d pintasan</string>
     <string name="text_expander_all_hint">Setiap pintasan dimulai dengan baris === pintasan ===, diikuti dengan teksnya. Menyimpan berlaku persis dengan teks ini: blok baru ditambahkan, blok yang diubah diperbarui, blok yang dihapus dihapus.</string>
     <string name="text_expander_copy_all">Salin semua</string>
     <string name="text_expander_paste_all">Tempel semua</string>

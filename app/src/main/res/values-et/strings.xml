@@ -1703,6 +1703,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="restart_ime_confirm">Taaskäivitage kohe</string>
     <string name="text_expander_all_as_text">Muutke kõike tekstina</string>
     <string name="text_expander_all_title">Kõik teksti otseteed</string>
+    <string name="text_expander_shortcuts_count">%d otseteed</string>
     <string name="text_expander_all_hint">Iga otsetee algab reaga === otsetee ===, millele järgneb selle tekst. Salvestamine rakendab täpselt seda teksti: lisatakse uusi plokke, muudetud plokke värskendatakse, eemaldatud kustutatakse.</string>
     <string name="text_expander_copy_all">Kopeeri kõik</string>
     <string name="text_expander_paste_all">Kleebi kõik</string>

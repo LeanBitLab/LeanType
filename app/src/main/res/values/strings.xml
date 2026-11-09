@@ -1753,6 +1753,7 @@ New dictionary:
     <string name="text_expander_regex_invalid">⚠️ Invalid regular expression pattern</string>
     <string name="text_expander_all_as_text">Edit all as text</string>
     <string name="text_expander_all_title">All text shortcuts</string>
+    <string name="text_expander_shortcuts_count">%d shortcuts</string>
     <string name="text_expander_all_hint">Each shortcut starts with a line === shortcut ===, followed by its text. Saving applies exactly this text: new blocks are added, changed ones updated, removed ones deleted.</string>
     <string name="text_expander_copy_all">Copy all</string>
     <string name="text_expander_paste_all">Paste all</string>

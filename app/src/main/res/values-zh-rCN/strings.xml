@@ -1669,6 +1669,7 @@
     <string name="restart_ime_confirm">立即重新启动</string>
     <string name="text_expander_all_as_text">全部编辑为文本</string>
     <string name="text_expander_all_title">所有文本快捷方式</string>
+    <string name="text_expander_shortcuts_count">%d 个快捷方式</string>
     <string name="text_expander_all_hint">每个快捷方式都以一行 === 快捷方式 === 开头，后跟其文本。保存完全应用此文本：添加新块，更新更改的块，删除删除的块。</string>
     <string name="text_expander_copy_all">全部复制</string>
     <string name="text_expander_paste_all">全部粘贴</string>

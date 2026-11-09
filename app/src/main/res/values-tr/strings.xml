@@ -1695,6 +1695,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="restart_ime_confirm">Şimdi yeniden başlat</string>
     <string name="text_expander_all_as_text">Tümünü metin olarak düzenle</string>
     <string name="text_expander_all_title">Tüm metin kısayolları</string>
+    <string name="text_expander_shortcuts_count">%d kısayol</string>
     <string name="text_expander_all_hint">Her kısayol bir satır === kısayol === ile başlar ve ardından metni gelir. Kaydetme tam olarak bu metni uygular: yeni bloklar eklenir, değiştirilenler güncellenir, kaldırılanlar silinir.</string>
     <string name="text_expander_copy_all">Tümünü kopyala</string>
     <string name="text_expander_paste_all">Tümünü yapıştır</string>

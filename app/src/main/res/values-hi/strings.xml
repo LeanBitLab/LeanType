@@ -1695,6 +1695,7 @@
     <string name="restart_ime_confirm">अब पुनःचालू करें</string>
     <string name="text_expander_all_as_text">सभी को पाठ के रूप में संपादित करें</string>
     <string name="text_expander_all_title">सभी टेक्स्ट शॉर्टकट</string>
+    <string name="text_expander_shortcuts_count">%d शॉर्टकट</string>
     <string name="text_expander_all_hint">प्रत्येक शॉर्टकट एक पंक्ति === शॉर्टकट === से शुरू होता है, उसके बाद उसका टेक्स्ट आता है। बचत बिल्कुल इस पाठ पर लागू होती है: नए ब्लॉक जोड़े जाते हैं, बदले गए अपडेट किए जाते हैं, हटाए गए ब्लॉक हटाए जाते हैं।</string>
     <string name="text_expander_copy_all">सभी को कॉपी करें</string>
     <string name="text_expander_paste_all">सभी चिपकाएँ</string>

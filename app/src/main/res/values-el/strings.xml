@@ -1769,6 +1769,7 @@
     <string name="restart_ime_confirm">Κάντε επανεκκίνηση τώρα</string>
     <string name="text_expander_all_as_text">Επεξεργαστείτε όλα ως κείμενο</string>
     <string name="text_expander_all_title">Όλες οι συντομεύσεις κειμένου</string>
+    <string name="text_expander_shortcuts_count">%d συντομεύσεις</string>
     <string name="text_expander_all_hint">Κάθε συντόμευση ξεκινά με μια γραμμή === συντόμευση ===, ακολουθούμενη από το κείμενό της. Η αποθήκευση ισχύει ακριβώς αυτό το κείμενο: νέα μπλοκ προστίθενται, τροποποιούνται ενημερώνονται, αφαιρούνται διαγράφονται.</string>
     <string name="text_expander_copy_all">Αντιγράψτε όλα</string>
     <string name="text_expander_paste_all">Επικόλληση όλων</string>

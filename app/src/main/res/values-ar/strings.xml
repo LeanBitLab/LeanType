@@ -1726,6 +1726,7 @@
     <string name="restart_ime_confirm">أعد التشغيل الآن</string>
     <string name="text_expander_all_as_text">تحرير الكل كنص</string>
     <string name="text_expander_all_title">جميع اختصارات النص</string>
+    <string name="text_expander_shortcuts_count">%d اختصار</string>
     <string name="text_expander_all_hint">يبدأ كل اختصار بسطر === اختصار ===، متبوعًا بالنص الخاص به. ينطبق الحفظ على هذا النص تمامًا: تتم إضافة الكتل الجديدة، وتحديث الكتل التي تم تغييرها، وحذف الكتل التي تمت إزالتها.</string>
     <string name="text_expander_copy_all">انسخ الكل</string>
     <string name="text_expander_paste_all">لصق الكل</string>

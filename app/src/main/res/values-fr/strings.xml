@@ -1724,6 +1724,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="restart_ime_confirm">Redémarrez maintenant</string>
     <string name="text_expander_all_as_text">Modifier tout sous forme de texte</string>
     <string name="text_expander_all_title">Tous les raccourcis texte</string>
+    <string name="text_expander_shortcuts_count">%d raccourcis</string>
     <string name="text_expander_all_hint">Chaque raccourci commence par une ligne === raccourci ===, suivie de son texte. La sauvegarde applique exactement ce texte : les nouveaux blocs sont ajoutés, ceux modifiés sont mis à jour, ceux supprimés sont supprimés.</string>
     <string name="text_expander_copy_all">Copier tout</string>
     <string name="text_expander_paste_all">Coller tout</string>

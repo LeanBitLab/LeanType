@@ -1668,6 +1668,7 @@
     <string name="restart_ime_confirm">Перезапустіть зараз</string>
     <string name="text_expander_all_as_text">Редагувати все як текст</string>
     <string name="text_expander_all_title">Усі текстові ярлики</string>
+    <string name="text_expander_shortcuts_count">%d скорочень</string>
     <string name="text_expander_all_hint">Кожен ярлик починається з рядка === ярлик ===, після якого йде його текст. Збереження стосується саме цього тексту: нові блоки додаються, змінені оновлюються, видалені видаляються.</string>
     <string name="text_expander_copy_all">Копіювати все</string>
     <string name="text_expander_paste_all">Вставити все</string>

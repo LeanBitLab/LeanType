@@ -1726,6 +1726,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="restart_ime_confirm">Reinicie agora</string>
     <string name="text_expander_all_as_text">Editar tudo como texto</string>
     <string name="text_expander_all_title">Todos os atalhos de texto</string>
+    <string name="text_expander_shortcuts_count">%d atalhos</string>
     <string name="text_expander_all_hint">Cada atalho começa com uma linha === atalho ===, seguida por seu texto. Salvar se aplica exatamente a este texto: novos blocos são adicionados, os alterados são atualizados, os removidos são excluídos.</string>
     <string name="text_expander_copy_all">Copiar tudo</string>
     <string name="text_expander_paste_all">Colar tudo</string>

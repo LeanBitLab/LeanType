@@ -1666,6 +1666,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="restart_ime_confirm">Ponovno pokrenite sada</string>
     <string name="text_expander_all_as_text">Uredi sve kao tekst</string>
     <string name="text_expander_all_title">Sve tekstualne prečice</string>
+    <string name="text_expander_shortcuts_count">%d prečaca</string>
     <string name="text_expander_all_hint">Svaki prečac počinje linijom === prečac ===, nakon čega slijedi tekst. Spremanje se odnosi upravo na ovaj tekst: novi blokovi se dodaju, promijenjeni se ažuriraju, uklonjeni se brišu.</string>
     <string name="text_expander_copy_all">Kopiraj sve</string>
     <string name="text_expander_paste_all">Zalijepi sve</string>

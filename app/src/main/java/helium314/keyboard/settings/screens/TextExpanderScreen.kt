@@ -125,10 +125,6 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     fontWeight = FontWeight.Bold
                 )
             },
-            menu = listOf(
-                stringResource(R.string.text_expander_all_as_text) to { showTextEditor = true },
-                stringResource(R.string.text_expander_guide_title) to { openGuide() }
-            ),
             filteredItems = { term ->
                 shortcutsMap.entries
                     .filter { (shortcut, entry) ->

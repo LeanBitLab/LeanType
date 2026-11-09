@@ -1703,6 +1703,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="restart_ime_confirm">Reporniți acum</string>
     <string name="text_expander_all_as_text">Editați totul ca text</string>
     <string name="text_expander_all_title">Toate comenzile rapide pentru text</string>
+    <string name="text_expander_shortcuts_count">%d comenzi rapide</string>
     <string name="text_expander_all_hint">Fiecare comandă rapidă începe cu o linie === scurtătură ===, urmată de textul acesteia. Salvarea se aplică exact acest text: blocurile noi sunt adăugate, cele modificate actualizate, cele eliminate sunt șterse.</string>
     <string name="text_expander_copy_all">Copiați tot</string>
     <string name="text_expander_paste_all">Lipiți toate</string>

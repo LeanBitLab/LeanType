@@ -1703,6 +1703,7 @@
     <string name="restart_ime_confirm">Рестартирайте сега</string>
     <string name="text_expander_all_as_text">Редактирайте всичко като текст</string>
     <string name="text_expander_all_title">Всички текстови преки пътища</string>
+    <string name="text_expander_shortcuts_count">%d преки пътища</string>
     <string name="text_expander_all_hint">Всеки пряк път започва с ред === пряк път ===, последван от неговия текст. Запазването важи точно за този текст: нови блокове се добавят, променените се актуализират, премахнатите се изтриват.</string>
     <string name="text_expander_copy_all">Копирайте всички</string>
     <string name="text_expander_paste_all">Поставете всички</string>

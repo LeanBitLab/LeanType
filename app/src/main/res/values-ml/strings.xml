@@ -1769,6 +1769,7 @@
     <string name="restart_ime_confirm">ഇപ്പോൾ പുനരാരംഭിക്കുക</string>
     <string name="text_expander_all_as_text">എല്ലാം ടെക്‌സ്‌റ്റായി എഡിറ്റ് ചെയ്യുക</string>
     <string name="text_expander_all_title">എല്ലാ ടെക്സ്റ്റ് കുറുക്കുവഴികളും</string>
+    <string name="text_expander_shortcuts_count">%d കുറുക്കുവഴികൾ</string>
     <string name="text_expander_all_hint">ഓരോ കുറുക്കുവഴിയും === കുറുക്കുവഴി === എന്ന വരിയിൽ ആരംഭിക്കുന്നു, തുടർന്ന് അതിൻ്റെ വാചകം. സംരക്ഷിക്കുന്നത് ഈ ടെക്‌സ്‌റ്റിന് കൃത്യമായി ബാധകമാണ്: പുതിയ ബ്ലോക്കുകൾ ചേർത്തു, മാറ്റിയവ അപ്‌ഡേറ്റുചെയ്‌തു, നീക്കം ചെയ്‌തവ ഇല്ലാതാക്കി.</string>
     <string name="text_expander_copy_all">എല്ലാം പകർത്തുക</string>
     <string name="text_expander_paste_all">എല്ലാം ഒട്ടിക്കുക</string>

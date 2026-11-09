@@ -1735,6 +1735,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="restart_ime_confirm">Ricomincia adesso</string>
     <string name="text_expander_all_as_text">Modifica tutto come testo</string>
     <string name="text_expander_all_title">Tutte le scorciatoie di testo</string>
+    <string name="text_expander_shortcuts_count">%d scorciatoie</string>
     <string name="text_expander_all_hint">Ogni scorciatoia inizia con una riga === scorciatoia ===, seguita dal suo testo. Al salvataggio vale esattamente questo testo: i nuovi blocchi vengono aggiunti, quelli modificati aggiornati, quelli rimossi cancellati.</string>
     <string name="text_expander_copy_all">Copia tutto</string>
     <string name="text_expander_paste_all">Incolla tutto</string>

@@ -10,12 +10,12 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -25,7 +25,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -33,12 +32,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -47,7 +50,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -73,6 +75,7 @@ import helium314.keyboard.latin.R
 import helium314.keyboard.latin.utils.TextExpanderText
 import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.BackButton
 import kotlinx.coroutines.launch
 
 /** previous state of the text expander data, kept when saving in the text editor, for restoring it */
@@ -83,6 +86,7 @@ private const val MAX_FILE_SIZE = 2 * 1024 * 1024
  * All text expander shortcuts as one text, see [TextExpanderText].
  * [onClose] gets whether the shortcuts were changed.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     val context = LocalContext.current
@@ -128,73 +132,69 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     }
 
     Dialog(onDismissRequest = ::close, properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-                // Header bar
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 8.dp, vertical = 6.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(onClick = ::close) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_arrow_back),
-                            contentDescription = stringResource(android.R.string.cancel),
-                            tint = MaterialTheme.colorScheme.onSurface
-                        )
+        Scaffold(
+            contentWindowInsets = WindowInsets.safeDrawing,
+            topBar = {
+                val headerCount = remember(value.text) { TextExpanderText.headers(value.text).size }
+                TopAppBar(
+                    title = {
+                        Column {
+                            Text(
+                                text = stringResource(R.string.text_expander_all_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = stringResource(R.string.text_expander_shortcuts_count, headerCount),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    },
+                    navigationIcon = {
+                        BackButton(onClick = ::close)
+                    },
+                    actions = {
+                        FilledTonalButton(
+                            onClick = {
+                                val result = TextExpanderText.parse(value.text, current)
+                                if (result.errors.isNotEmpty()) errors = result.errors
+                                else {
+                                    val diff = TextExpanderText.diff(current, result.entries)
+                                    if (diff.isEmpty) { toast(context, R.string.text_expander_no_changes); original = value.text }
+                                    else pending = result to diff
+                                }
+                            },
+                            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_setup_check),
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = stringResource(R.string.text_expander_save),
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
                     }
-                    val headerCount = remember(value.text) { TextExpanderText.headers(value.text).size }
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(start = 4.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.text_expander_all_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Text(
-                            text = "$headerCount ${if (headerCount == 1) "shortcut" else "shortcuts"}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Button(
-                        onClick = {
-                            val result = TextExpanderText.parse(value.text, current)
-                            if (result.errors.isNotEmpty()) errors = result.errors
-                            else {
-                                val diff = TextExpanderText.diff(current, result.entries)
-                                if (diff.isEmpty) { toast(context, R.string.text_expander_no_changes); original = value.text }
-                                else pending = result to diff
-                            }
-                        },
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_setup_check),
-                            contentDescription = null,
-                            modifier = Modifier.size(16.dp)
-                        )
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text(
-                            text = stringResource(R.string.text_expander_save),
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
-                }
-
+                )
+            }
+        ) { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            ) {
                 // Actions toolbar
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .horizontalScroll(rememberScrollState())
-                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     AssistChip(
@@ -212,9 +212,8 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         },
                         label = { Text(stringResource(R.string.text_expander_copy_all)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.sym_keyboard_copy), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.sym_keyboard_copy), null, Modifier.size(18.dp))
+                        }
                     )
                     AssistChip(
                         onClick = {
@@ -224,9 +223,8 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         },
                         label = { Text(stringResource(R.string.text_expander_paste_all)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.sym_keyboard_paste), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.sym_keyboard_paste), null, Modifier.size(18.dp))
+                        }
                     )
                     AssistChip(
                         onClick = {
@@ -237,34 +235,30 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         },
                         label = { Text(stringResource(R.string.text_expander_share)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_select_all), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.ic_share), null, Modifier.size(18.dp))
+                        }
                     )
                     AssistChip(
                         onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) },
                         label = { Text(stringResource(R.string.text_expander_save_file)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_page_down), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.ic_file_download), null, Modifier.size(18.dp))
+                        }
                     )
                     AssistChip(
                         onClick = { loadFile.launch(arrayOf("text/*")) },
                         label = { Text(stringResource(R.string.text_expander_load_file)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_page_up), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.ic_file_upload), null, Modifier.size(18.dp))
+                        }
                     )
                     AssistChip(
                         onClick = { askRestore = true },
                         enabled = hasPrevious,
                         label = { Text(stringResource(R.string.text_expander_restore_previous)) },
                         leadingIcon = {
-                            Icon(painterResource(R.drawable.ic_undo), null, Modifier.size(16.dp))
-                        },
-                        shape = RoundedCornerShape(10.dp)
+                            Icon(painterResource(R.drawable.ic_undo), null, Modifier.size(18.dp))
+                        }
                     )
                 }
 
@@ -275,72 +269,60 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .horizontalScroll(rememberScrollState())
-                            .padding(horizontal = 12.dp, vertical = 4.dp),
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         headers.forEach { (name, offset) ->
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.8f))
-                                    .clickable {
-                                        val l = layout ?: return@clickable
-                                        val line = l.getLineForOffset(offset.coerceAtMost(value.text.length))
-                                        val lineEnd = value.text.indexOf('\n', offset).let { if (it < 0) value.text.length else it + 1 }
-                                        value = value.copy(selection = TextRange(lineEnd))
-                                        scope.launch { scroll.animateScrollTo(l.getLineTop(line).toInt()) }
-                                    }
-                                    .padding(horizontal = 10.dp, vertical = 5.dp)
-                            ) {
-                                Text(
-                                    text = "# ${name.ifEmpty { "?" }}",
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontFamily = FontFamily.Monospace,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onSecondaryContainer
-                                )
-                            }
+                            SuggestionChip(
+                                onClick = {
+                                    val l = layout ?: return@SuggestionChip
+                                    val line = l.getLineForOffset(offset.coerceAtMost(value.text.length))
+                                    val lineEnd = value.text.indexOf('\n', offset).let { if (it < 0) value.text.length else it + 1 }
+                                    value = value.copy(selection = TextRange(lineEnd))
+                                    scope.launch { scroll.animateScrollTo(l.getLineTop(line).toInt()) }
+                                },
+                                label = {
+                                    Text(
+                                        text = "# ${name.ifEmpty { "?" }}",
+                                        fontFamily = FontFamily.Monospace,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
+                            )
                         }
                     }
                 }
 
                 // Code-style Editor box
-                Box(
+                Surface(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
-                        .padding(horizontal = 12.dp, vertical = 4.dp)
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(MaterialTheme.colorScheme.surfaceContainerLowest)
-                        .border(
-                            BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
-                            RoundedCornerShape(16.dp)
-                        )
+                        .padding(horizontal = 16.dp, vertical = 6.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
                 ) {
-                    Column(
+                    val headerStyle = SpanStyle(
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Bold
+                    )
+                    BasicTextField(
+                        value = value,
+                        onValueChange = { value = it },
                         modifier = Modifier
                             .fillMaxSize()
                             .verticalScroll(scroll)
-                            .padding(14.dp)
-                    ) {
-                        val headerStyle = SpanStyle(
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                        BasicTextField(
-                            value = value,
-                            onValueChange = { value = it },
-                            modifier = Modifier.fillMaxWidth(),
-                            textStyle = MaterialTheme.typography.bodyMedium.copy(
-                                color = MaterialTheme.colorScheme.onSurface,
-                                fontFamily = FontFamily.Monospace,
-                                lineHeight = 22.sp
-                            ),
-                            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-                            visualTransformation = remember(headerStyle) { HeaderHighlight(headerStyle) },
-                            onTextLayout = { layout = it }
-                        )
-                    }
+                            .padding(14.dp),
+                        textStyle = MaterialTheme.typography.bodyMedium.copy(
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontFamily = FontFamily.Monospace,
+                            lineHeight = 22.sp
+                        ),
+                        cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                        visualTransformation = remember(headerStyle) { HeaderHighlight(headerStyle) },
+                        onTextLayout = { layout = it }
+                    )
                 }
 
                 Text(
@@ -350,7 +332,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
                 )
 
-                Box(modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 8.dp)) {
+                Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)) {
                     PlaceholderTagsRow(value) { value = it }
                 }
             }

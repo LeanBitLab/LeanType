@@ -1760,6 +1760,7 @@
     <string name="restart_ime_confirm">ابھی دوبارہ شروع کریں۔</string>
     <string name="text_expander_all_as_text">سبھی کو متن کے بطور ترمیم کریں۔</string>
     <string name="text_expander_all_title">تمام ٹیکسٹ شارٹ کٹس</string>
+    <string name="text_expander_shortcuts_count">%d شارٹ کٹس</string>
     <string name="text_expander_all_hint">ہر شارٹ کٹ ایک لائن === شارٹ کٹ === سے شروع ہوتا ہے، اس کے بعد اس کا متن آتا ہے۔ محفوظ کرنا بالکل اسی متن پر لاگو ہوتا ہے: نئے بلاکس شامل کیے جاتے ہیں، تبدیل کیے گئے اپ ڈیٹ کیے جاتے ہیں، حذف کیے جاتے ہیں۔</string>
     <string name="text_expander_copy_all">سب کاپی کریں۔</string>
     <string name="text_expander_paste_all">سب چسپاں کریں۔</string>

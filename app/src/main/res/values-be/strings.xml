@@ -1703,6 +1703,7 @@
     <string name="restart_ime_confirm">Перазапусціце зараз</string>
     <string name="text_expander_all_as_text">Рэдагаваць усё як тэкст</string>
     <string name="text_expander_all_title">Усе тэкставыя цэтлікі</string>
+    <string name="text_expander_shortcuts_count">%d скарачэнняў</string>
     <string name="text_expander_all_hint">Кожны ярлык пачынаецца з радка === ярлык ===, за якім ідзе тэкст. Захаванне тычыцца менавіта гэтага тэксту: новыя блокі дадаюцца, змененыя абнаўляюцца, выдаленыя выдаляюцца.</string>
     <string name="text_expander_copy_all">Скапіраваць усё</string>
     <string name="text_expander_paste_all">Уставіць усё</string>

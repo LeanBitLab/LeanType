@@ -1674,6 +1674,7 @@
     <string name="restart_ime_confirm">הפעל מחדש עכשיו</string>
     <string name="text_expander_all_as_text">ערוך הכל כטקסט</string>
     <string name="text_expander_all_title">כל קיצורי הטקסט</string>
+    <string name="text_expander_shortcuts_count">%d קיצורי דרך</string>
     <string name="text_expander_all_hint">כל קיצור דרך מתחיל בשורה === קיצור דרך ===, ואחריה הטקסט שלו. שמירה חלה בדיוק על הטקסט הזה: בלוקים חדשים מתווספים, משנים מתעדכנים, מוסרים נמחקים.</string>
     <string name="text_expander_copy_all">תעתיק הכל</string>
     <string name="text_expander_paste_all">הדבק הכל</string>

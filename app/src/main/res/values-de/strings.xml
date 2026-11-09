@@ -1749,4 +1749,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_guide_title">Online-Anleitung und Syntaxreferenz</string>
     <string name="text_expander_guide_summary">Vollständiger Leitfaden für dynamische Platzhalter, Regex-Muster und Modifikatoren</string>
     <string name="text_expander_all_as_text_summary">Massenbearbeitung, Freigabe, Sicherung oder Import von Verknüpfungen im Nur-Text-Format</string>
+    <string name="text_expander_shortcuts_count">%dVerknüpfungen</string>
 </resources>

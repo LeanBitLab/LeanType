@@ -1704,6 +1704,7 @@ Ar norite atnaujinti?</string>
     <string name="restart_ime_confirm">Paleiskite iš naujo dabar</string>
     <string name="text_expander_all_as_text">Redaguoti viską kaip tekstą</string>
     <string name="text_expander_all_title">Visi teksto spartieji klavišai</string>
+    <string name="text_expander_shortcuts_count">%d spartieji klavišai</string>
     <string name="text_expander_all_hint">Kiekvienas spartusis klavišas prasideda eilute === spartusis klavišas ===, po kurio eina jos tekstas. Išsaugant taikomas būtent šis tekstas: pridedami nauji blokai, atnaujinami pakeisti blokai, ištrinami pašalinti.</string>
     <string name="text_expander_copy_all">Nukopijuoti viską</string>
     <string name="text_expander_paste_all">Įklijuoti viską</string>

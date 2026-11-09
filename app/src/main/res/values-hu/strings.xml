@@ -1666,6 +1666,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="restart_ime_confirm">Indítsa újra most</string>
     <string name="text_expander_all_as_text">Az összes szerkesztése szövegként</string>
     <string name="text_expander_all_title">Minden szöveges billentyűparancs</string>
+    <string name="text_expander_shortcuts_count">%d billentyűparancs</string>
     <string name="text_expander_all_hint">Minden parancsikon egy === parancsikon === sorral kezdődik, amelyet a szöveg követ. A mentés pontosan ezt a szöveget alkalmazza: új blokkok kerülnek hozzáadásra, megváltoztak frissítésre, eltávolítottak törlése.</string>
     <string name="text_expander_copy_all">Az összes másolása</string>
     <string name="text_expander_paste_all">Az összes beillesztése</string>
