@@ -305,7 +305,9 @@ object KeyCode {
      *  Fallback to KeyEvent.KEYCODE_UNKNOWN.
      *  To be uses for fake hardware key press.
      */
-    fun codePointToKeyEventCode(codePoint: Int): Int = when (codePoint.toChar().uppercaseChar()) {
+    fun codePointToKeyEventCode(codePoint: Int): Int {
+        if (codePoint < 0 || codePoint > 0x7F) return KeyEvent.KEYCODE_UNKNOWN
+        return when (codePoint.toChar().uppercaseChar()) {
         '/' -> KeyEvent.KEYCODE_SLASH
         '\\' -> KeyEvent.KEYCODE_BACKSLASH
         ';' -> KeyEvent.KEYCODE_SEMICOLON
@@ -364,4 +366,5 @@ object KeyCode {
         'Z' -> KeyEvent.KEYCODE_Z
         else -> KeyEvent.KEYCODE_UNKNOWN
     }
+}
 }
