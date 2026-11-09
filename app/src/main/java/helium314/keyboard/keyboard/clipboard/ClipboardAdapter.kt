@@ -331,6 +331,11 @@ class ClipboardAdapter(
             val isSelected = isSelectionMode && selectedEntryIds.contains(id)
             val colors = Settings.getValues().mColors
 
+            if (pinnedIconResId != 0) {
+                pinnedIconView.setImageResource(pinnedIconResId)
+            }
+            colors.setColor(pinnedIconView, ColorType.CLIPBOARD_PIN)
+
             if (isSelectionMode) {
                 selectIconView.visibility = View.VISIBLE
                 if (isSelected) {
