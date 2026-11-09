@@ -18,6 +18,7 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.LayoutParser
 import helium314.keyboard.keyboard.internal.keyboard_parser.LocaleKeyboardInfos
 import helium314.keyboard.keyboard.internal.keyboard_parser.clearCache
 import helium314.keyboard.keyboard.internal.keyboard_parser.getOrCreate
+import helium314.keyboard.latin.FloatingKeyboardManager
 import helium314.keyboard.latin.RichInputMethodManager
 import helium314.keyboard.latin.RichInputMethodSubtype
 import helium314.keyboard.latin.settings.Settings
@@ -232,7 +233,7 @@ class KeyboardLayoutSet internal constructor(
                 .setCompactNumberRowInSymbolsEnabled(settingsValues.mCompactNumberRowInSymbols)
                 .setLanguageSwitchKeyEnabled(settingsValues.isLanguageSwitchKeyEnabled())
                 .setEmojiKeyEnabled(settingsValues.mShowsEmojiKey)
-                .setSplitLayoutEnabled(settingsValues.mIsSplitKeyboardEnabled)
+                .setSplitLayoutEnabled(settingsValues.mIsSplitKeyboardEnabled && !FloatingKeyboardManager.isFloatingMode(mContext))
                 .setOneHandedModeEnabled(settingsValues.mOneHandedModeEnabled)
 
         fun build(): KeyboardLayoutSet {
