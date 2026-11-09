@@ -16,44 +16,14 @@ def check_git():
             sys.exit()
 
 
-# download and update translations
-def update_translations():
-    import urllib.request
-    url = "https://translate.codeberg.org/download/heliboard/?format=zip"
-    zip_file_name = "translations.zip"
-    req = urllib.request.Request(url, headers={'Cookie': 'x-robot-challenge-2=passed'})
-    with urllib.request.urlopen(req) as response, open(zip_file_name, 'wb') as out_file:
-        out_file.write(response.read())
-    # extract all in heliboard/heliboard/app/src/main/res and heliboard/heliboard/fastlane/metadata
-    with zipfile.ZipFile(zip_file_name, "r") as f:
-        for file in f.filelist:
-            # We ONLY want the app/src/main/res translations, NOT fastlane/metadata (which contains Heliboard's titles & descriptions)
-            if not file.filename.startswith("heliboard/heliboard/app/src/main/res"):
-                continue
-            # Block extracting Heliboard's base string files, which would overwrite LeanType's English variants
-            if file.filename.startswith("heliboard/heliboard/app/src/main/res/values/"):
-                continue
-            # Block extracting upstream release changelogs since LeanType tracks its own release cycle
-            if "/changelogs/" in file.filename:
-                continue
-            file.filename = file.filename.replace("heliboard/heliboard/", "")
-            f.extract(file)
-    os.remove(zip_file_name)
-    
-    # Replace "HeliBoard" with "LeanType" in all extracted translation files
-    # This ensures brand name consistency across all languages
-    import re
-    for root, dirs, files in os.walk("app/src/main/res"):
-        for file in files:
-            if file == "strings.xml":
-                file_path = os.path.join(root, file)
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                # Replace HeliBoard with LeanType (preserving case variations)
-                content = re.sub(r'HeliBoard', 'LeanType', content)
-                content = re.sub(r'Heliboard', 'LeanType', content)
-                with open(file_path, 'w', encoding='utf-8') as f:
-                    f.write(content)
+# verify that all required translation strings are populated
+def check_translations():
+    result = subprocess.run([sys.executable, "tools/check_missing_translations.py", "--summary"], capture_output=True, text=True)
+    if result.returncode != 0:
+        print("Warning: Missing translation strings found:")
+        print(result.stdout)
+    else:
+        print("Translations check passed.")
 
 
 # git diff to make sure default strings are the same
@@ -175,7 +145,7 @@ def main():
     if os.getcwd().endswith("tools"):
         os.chdir("../")
     check_git()
-    update_translations()
+    check_translations()
     check_default_values_diff()
     update_dict_list()
     update_khipro_mappings()

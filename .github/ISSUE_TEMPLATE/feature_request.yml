@@ -1,0 +1,66 @@
+name: Feature Request
+description: Propose an idea, capability, or improvement for LeanType
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### LeanType Feature Policy & Anti-Bloat Screening
+        LeanType is engineered for **speed, privacy, stability, and zero typing latency**.
+
+        To maintain a responsive and clean keyboard:
+        - Features must benefit general typing efficiency, precision, privacy, or stability for a broad user base.
+        - We strictly reject features that add typing latency, background polling, or high maintenance complexity.
+        - Personal niche workflows that can already be achieved with custom JSON layouts, text expander shortcuts, user dictionaries, or Android system settings will not be accepted.
+
+  - type: checkboxes
+    id: gatekeeper_checklist
+    attributes:
+      label: Feature Screening Checklist
+      description: Please verify that your proposal satisfies LeanType design principles before submitting.
+      options:
+        - label: I have verified this is not a personal niche workflow and benefits a wide user base.
+          required: true
+        - label: This cannot be achieved using existing tools (custom layouts, text expander shortcuts, user dictionaries, or system settings).
+          required: true
+        - label: This will not introduce typing lag, delay loops, or degrade typing responsiveness on low-end devices.
+          required: true
+        - label: I have searched existing open and closed issues and discussions to confirm this has not been requested or rejected before.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What limitation or inconvenience are you trying to resolve?
+      placeholder: Currently, when typing...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: Describe the feature or improvement in clear detail.
+      placeholder: I propose adding...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Target Audience & Benefits
+      description: Who will benefit from this feature, and how does it improve everyday typing?
+      placeholder: This benefits users who...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives & Workarounds Considered
+      description: What other approaches or workarounds have you tried or evaluated?
+      placeholder: I have tried using...
+    validations:
+      required: false

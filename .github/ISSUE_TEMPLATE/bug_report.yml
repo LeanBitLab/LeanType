@@ -1,0 +1,121 @@
+name: Bug Report
+description: Report a bug, crash, or unexpected behavior to help improve LeanType
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Before Submitting a Bug Report
+        Please check existing issues and discussions before opening a new one to avoid duplicates.
+
+        **Troubleshooting steps to try first:**
+        1. **Check version**: Ensure you are using the latest release or beta.
+        2. **Restart / Clear Cache**: Go to device Settings > Apps > LeanType > Force Stop, and test again.
+        3. **Test with default theme**: Custom themes or outdated user styling can cause visual glitches.
+        4. **Check permissions**: Features like voice typing require microphone permission; screenshot suggestions require media / storage permissions.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Preliminary Verification
+      description: Please verify each point below before submitting.
+      options:
+        - label: I have searched existing open and closed issues and discussions to verify this bug is not already reported.
+          required: true
+        - label: I have tested or verified this behavior on the latest release or beta version.
+          required: true
+        - label: I have tried clearing app cache or testing with default settings.
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Bug
+      description: A clear and concise description of the bug.
+      placeholder: What went wrong, and what happened instead of the expected behavior?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reproduce the issue.
+      placeholder: |
+        1. Open any text field (e.g. in app X)
+        2. Type "..."
+        3. Switch to layout or tap key Y
+        4. Observe the glitch
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: The keyboard should...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Crash Report
+      description: |
+        **How to retrieve logs:**
+        - **In-App**: Open LeanType Settings > About > "Save log", or copy crash details if a crash prompt appeared.
+        - **ADB Logcat**: Run `adb logcat -d -s LatinIME:* InputLogic:* Keyboard:* > logcat.txt` and attach or paste the relevant snippet.
+      placeholder: Paste crash log or logcat output here...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: flavor
+    attributes:
+      label: Build Flavor
+      description: Which build flavor of LeanType are you using?
+      options:
+        - Standard (with local AI, voice, and OCR support)
+        - Offline (zero network permissions, privacy focused)
+        - GooglePlay
+        - Custom / Self-compiled build
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: App Version
+      description: Version number from LeanType Settings > About (e.g. v4.3.2-beta2).
+      placeholder: v4.3.2-beta2
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device & Android Version
+      description: Device model and Android version / custom ROM.
+      placeholder: Pixel 8 / Android 15 (or Samsung S23 / OneUI 6.1, LineageOS 21)
+    validations:
+      required: true
+
+  - type: input
+    id: target_app
+    attributes:
+      label: Target App (if applicable)
+      description: App name and package where the issue occurs (e.g. Telegram / org.telegram.messenger, Firefox).
+      placeholder: Telegram / org.telegram.messenger
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Screen Recordings
+      description: Attach screenshots or screen recordings only if they help explain a visual glitch (keep file size small).
+      placeholder: Drag and drop media here...
+    validations:
+      required: false

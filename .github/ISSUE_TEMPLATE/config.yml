@@ -1,11 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Dictionary request
-    url: https://codeberg.org/Helium314/aosp-dictionaries
-    about: Requests for dictionaries (used for suggestions / autocompletion) will be handled in the linked dictionary repository. You can check whether a dictionary for the language you want already exists there.
-  - name: Discussion
-    url: https://github.com/LeanBitLab/HeliboardL/discussions
-    about: For discussions and feedback about this app, asking questions or talking about ideas which are not yet actionable (i.e. not suitable for an issue).
-  - name: Question
-    url: https://github.com/LeanBitLab/HeliboardL/discussions/new?category=q-a
-    about: For questions please use the discussions section. You may also want to search your question in the FAQ (see readme).
+  - name: Discussions & General Ideas
+    url: https://github.com/LeanBitLab/LeanType/discussions
+    about: For general discussions, brainstorming, or early ideas that are not yet actionable.
+  - name: Questions & Help (Q&A)
+    url: https://github.com/LeanBitLab/LeanType/discussions/categories/q-a
+    about: For troubleshooting, setup help, or questions. Please search the documentation before asking.

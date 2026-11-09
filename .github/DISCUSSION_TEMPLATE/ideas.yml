@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting an idea! Please verify that your idea is not already defined in the [Roadmap](https://github.com/LeanBitLab/HeliboardL/projects) or existing discussions.
+        Thanks for suggesting an idea! Please verify that your idea is not already defined in the [Roadmap](https://github.com/LeanBitLab/LeanType/discussions) or existing discussions.
   - type: textarea
     id: problem
     attributes:

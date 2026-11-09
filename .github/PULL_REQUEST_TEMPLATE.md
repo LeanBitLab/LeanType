@@ -1,3 +1,22 @@
-Please make sure you are at least reasonably close to the contribution guidelines: https://github.com/Helium314/HeliBoard/blob/main/CONTRIBUTING.md#guidelines
-Due to maintainer availability, your PR may take quite some time to be addressed
-<!-- (please remove the text above before submitting the PR) -->
+## Summary of Changes
+<!-- A clear, concise overview of what this pull request modifies and why. -->
+
+## Motivation & Context
+<!-- Which issue does this fix? Use "Fixes #123" or "Closes #123". -->
+Closes #
+
+## Changes Made
+- 
+
+## Verification & Testing
+<!-- How did you test and verify your changes? -->
+- [ ] Build compiles cleanly via `./gradlew :app:assembleStandardDebug`
+- [ ] Tested on device / emulator
+- [ ] Verified zero typing latency impact on the input path
+- [ ] Checked for regressions across light and dark themes
+
+## Guidelines Checklist
+- [ ] This PR addresses a single focused concern.
+- [ ] Follows coding guidelines in [CONTRIBUTING.md](CONTRIBUTING.md).
+- [ ] Does not add unnecessary dependencies or binary blobs.
+- [ ] No em dashes used in comments, descriptions, or documentation.
