@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Fysisk Alt-tast som viser emojiutvalget"</string>
     <string name="button_default">"Standard"</string>
     <string name="setup_welcome_title">"Velkommen til %s"</string>
-    <string name="setup_welcome_additional_description">"med Ordføring"</string>
     <string name="setup_start_action">"Startveiledning"</string>
     <string name="setup_steps_title">Sett opp %s</string>
     <string name="setup_step1_title">Skru på %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Gratulerer, du er klar!"</string>
     <string name="setup_step3_instruction">"Nå kan du skrive inn alle favorittappene dine med %s."</string>
     <string name="setup_finish_action">"Ferdig"</string>
-    <string name="show_setup_wizard_icon">"Vis app-ikonet"</string>
-    <string name="show_setup_wizard_icon_summary">"Vis app-ikonet i appoversikten"</string>
     <string name="dictionary_category_title">"Tilleggsordlister"</string>
     <string name="dictionary_available">"Ordliste tilgjengelig"</string>
     <string name="settings">"Innstillinger"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Valgfri snarvei"</string>
     <string name="user_dict_settings_edit_dialog_title">"Rediger ord"</string>
     <string name="user_dict_settings_all_languages">"For alle språk"</string>
-    <string name="user_dict_settings_more_languages">Flere språk…</string>
     <string name="day_night_mode_summary">Basert på systeminnstillinger</string>
     <string name="number_row_summary">Alltid vis tallraden</string>
     <string name="day_night_mode">Automatisk dag/nattmodus</string>
@@ -159,7 +155,6 @@
     <string name="voice" tools:keep="@string/voice">Stemmestyring</string>
     <string name="full_left" tools:keep="@string/full_left">Helt venstre</string>
     <string name="full_right" tools:keep="@string/full_right">Helt høyre</string>
-    <string name="setup_step3_action">Konfigurere tastaturet</string>
     <string name="internal_dictionary_summary">Intern hovedordbok</string>
     <string name="add_new_dictionary_title">Legg til ordbok fra fil</string>
     <string name="dictionary_link_text">her</string>
@@ -237,8 +232,6 @@
 \nNy ordbok:
 \n%3$s</string>
     <string name="replace_dictionary">Erstatt ordbok</string>
-    <string name="remove_dictionary_message">Virkelig fjerne brukertillagt ordbok \"%s\"?</string>
-    <string name="no_dictionary_dont_show_again_button">Ikke vis igjen</string>
     <string name="available_dictionary_experimental">%s (eksperimentell)</string>
     <string name="user_dict_settings_add_weight_value">Vekt:</string>
     <string name="user_dict_add_word_button">Legg til ord</string>

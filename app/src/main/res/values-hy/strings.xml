@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Alt ստեղնը ցուցադրում է զմայլիկների պնակը"</string>
     <string name="button_default">"Լռելյայնը"</string>
     <string name="setup_welcome_title">"Բարի գալուստ %s"</string>
-    <string name="setup_welcome_additional_description">"Ժեստային մուտքագրմամբ"</string>
     <string name="setup_start_action">"Սկսել"</string>
     <string name="setup_steps_title">"Տեղադրվում է %s-ը"</string>
     <string name="setup_step1_title">"Միացնել %s-ը"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Շնորհավորում ենք, դուք տեղադրեցիք բոլորը:"</string>
     <string name="setup_step3_instruction">"Այժմ դուք կարող եք մուտքագրել ձեր բոլոր սիրելի հավելվածներում %s-ով:"</string>
     <string name="setup_finish_action">"Ավարտված"</string>
-    <string name="show_setup_wizard_icon">"Ցույց տալ հավելվածի պատկերակը"</string>
-    <string name="show_setup_wizard_icon_summary">"Ցուցադրել հավելվածի պատկերակը գործարկիչում"</string>
     <string name="dictionary_category_title">"Հավելյալ բառարաններ"</string>
     <string name="dictionary_available">"Բառարանն առկա է"</string>
     <string name="settings">"Կարգավորումներ"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Ընտրովի դյուրանցում"</string>
     <string name="user_dict_settings_edit_dialog_title">"Խմբագրել բառը"</string>
     <string name="user_dict_settings_all_languages">"Բոլոր լեզուներով"</string>
-    <string name="user_dict_settings_more_languages">"Ավելի շատ լեզուներով…"</string>
     <string name="select_input_method">"Ընտրեք ներածման եղանակը"</string>
     <string name="settings_screen_appearance">"Արտաքին տեսք"</string>
     <string name="undo">"Հետարկել"</string>

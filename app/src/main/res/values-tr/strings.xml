@@ -58,7 +58,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Fiziksel Alt tuşu, emoji paletini gösterir"</string>
     <string name="button_default">"Varsayılan"</string>
     <string name="setup_welcome_title">%s uygulamasına hoş geldiniz</string>
-    <string name="setup_welcome_additional_description">"Hareketle Yazmayı içerir"</string>
     <string name="setup_start_action">"Başlayın"</string>
     <string name="setup_steps_title">%s uygulamasını kurma</string>
     <string name="setup_step1_title">%s uygulamasını etkinleştirin</string>
@@ -70,8 +69,6 @@
     <string name="setup_step3_title">Tebrikler, artık hazırsın!</string>
     <string name="setup_step3_instruction">Artık %s ile tüm favori uygulamalarınızda yazabilirsiniz.</string>
     <string name="setup_finish_action">"Tamamlandı"</string>
-    <string name="show_setup_wizard_icon">"Uygulama simgesini göster"</string>
-    <string name="show_setup_wizard_icon_summary">"Uygulama simgesini başlatıcıda gösterir"</string>
     <string name="dictionary_category_title">"Ek sözlükler"</string>
     <string name="dictionary_available">"Sözlük mevcut"</string>
     <string name="settings">"Ayarlar"</string>
@@ -83,7 +80,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"İsteğe bağlı kısayol"</string>
     <string name="user_dict_settings_edit_dialog_title">"Kelimeyi düzenle"</string>
     <string name="user_dict_settings_all_languages">"Tüm diller için"</string>
-    <string name="user_dict_settings_more_languages">"Diğer diller…"</string>
     <string name="settings_category_clipboard_history">Pano geçmişi</string>
     <string name="settings_category_correction">Düzeltmeler</string>
     <string name="settings_category_experimental">Deneysel</string>
@@ -175,7 +171,6 @@
     <string name="layout_numpad" ns0:keep="@string/layout_numpad">Sayısal tuş takımı</string>
     <string name="customize_background_image">Arka plan görseli ayarla</string>
     <string name="layout_numpad_landscape" ns0:keep="@string/layout_numpad_landscape">Sayısal tuş takımı (yatay)</string>
-    <string name="no_dictionary_dont_show_again_button">Bir daha gösterme</string>
     <string name="available_dictionary_experimental">%s (deneysel)</string>
     <string name="theme_name_black" ns0:keep="@string/theme_name_black">Siyah</string>
     <string name="auto_show_toolbar_summary">Giriş başlarsa veya metin seçilirse araç çubuğunu göster</string>
@@ -199,7 +194,6 @@
     <string name="edit_layout">Ham düzeni düzenlemek için dokun</string>
     <string name="day_or_night_image">Görsel gündüz veya gece modu için ayarlansın mı?</string>
     <string name="day_or_night_day">Gündüz</string>
-    <string name="remove_dictionary_message">Kullanıcı tarafından eklenen \"%s\" sözlüğü kaldırılsın mı?</string>
     <string name="theme_name_holo_white" ns0:keep="@string/theme_name_holo_white">Holo Beyaz</string>
     <string name="theme_navbar">Renkli gezinme çubuğu</string>
     <string name="theme_name_user" ns0:keep="@string/theme_name_user">Kullanıcı tanımlı</string>
@@ -236,7 +230,6 @@
     <string name="load">Yükle</string>
     <string name="button_save_file">Dosyaya kaydet</string>
     <string name="dictionary_settings_category">Sözlükler</string>
-    <string name="setup_step3_action">Klavyeyi yapılandır</string>
     <string name="add_new_dictionary_title">Dosyadan sözlük ekle</string>
     <string name="user_dict_settings_add_weight_value">Sıklık:</string>
     <string name="theme_colors">Renkler</string>
@@ -437,24 +430,15 @@
     <string name="label_shift_key_shifted" ns0:keep="@string/label_shift_key_shifted">Shift (kaydırılmış)</string>
     
     <string name="libraries_hub_title">Sözlük Kütüphaneleri</string>
-    <string name="libraries_hub_summary">Hareketle yazma kütüphanesini, sözlükleri ve emoji kütüphanelerini yönetin.</string>
-    <string name="libraries_hub_gesture_title">Hareketle Yazma Kütüphanesi</string>
-    <string name="libraries_hub_dictionary_title">Ana Sözlükler</string>
     <string name="libraries_hub_emoji_title">Emoji Kütüphaneleri</string>
     <string name="libraries_hub_handwriting_title">El Yazısı Giriş Eklentisi</string>
-    <string name="libraries_hub_dict_guide_title">Sözlük Yükleme Kılavuzu</string>
-    <string name="libraries_hub_dict_guide_text">Yeni bir sözlük ekle:\n1. Obtain a .dict file for your language.\n2. Tap \"Manage Dictionaries\".\n3. Use the plus (+) button to import the file.</string>
     <string name="libraries_status_active">Aktif</string>
     <string name="libraries_status_not_installed">indirilmedi</string>
 
-    <string name="ime_name">LeanType</string>
     <string name="settings_category_configuration">Yapılandırma</string>
     <string name="settings_category_visuals">Görseller ve Önizleme</string>
-    <string name="settings_category_behavior">Davranış</string>
     <string name="settings_category_gestures_advanced">Gelişmiş Hareketler</string>
-    <string name="settings_category_touchpad">Dokunmatik Yüzey</string>
     <string name="edit_blocked_words">Engellenen kelimeler</string>
-    <string name="blocked_words_summary">Önerilerden engellenen kelimeleri yönet</string>
     <string name="add_blocked_word">Kelime engelle</string>
     <string name="blocked_word_already_present">Kelime zaten engellenmiş</string>
     <string name="clear_all_blocked_words_confirmation">Tüm kelimelerin engelini kaldırmak istediğinizden emin misiniz?</string>
@@ -465,7 +449,6 @@
     <string name="prioritize_personal_suggestions">Kişisel ve öğrenilen kelimeleri önceliklendir</string>
     <string name="prioritize_personal_suggestions_summary">Sonraki kelime tahmininde kişisel sözlük ve öğrenilen kelimelere daha yüksek puan önceliği ver</string>
     <string name="next_word_boost_level">Öğrenilen kelime destek seviyesi</string>
-    <string name="next_word_boost_level_summary">Öğrenilen ve kişisel sözlük girdileri için puan önceliği destek gücünü ayarla</string>
     <string name="next_word_strict_ngram">Öğrenilen kelimeler için bağlam eşleşmesi gerektir</string>
     <string name="next_word_strict_ngram_summary">Öğrenilen kelimeleri yalnızca önceki kelime bağlamı eşleştiğinde öner</string>
     <string name="immediate_auto_space">Anlık otomatik boşluk</string>
@@ -479,7 +462,6 @@
     <string name="compress_screenshots_summary">Yerden tasarruf etmek için ekran görüntüsü önerilerinin kalitesini ve boyutunu düşür</string>
     <string name="clipboard_fold_pinned">Sabitlenmiş öğeleri varsayılan olarak daralt</string>
     <string name="clear_clipboard_icon">Panoyu temizle simgesi</string>
-    <string name="clear_clipboard_icon_summary">Panoyu temizle düğmesi için simge stilini seç</string>
     <string name="clear_clipboard_icon_bin">Çöp kutusu</string>
     <string name="clear_clipboard_icon_sweep">Süpür / Tümünü temizle</string>
     <string name="clear_clipboard_icon_sweep_slanted">Eğik çizgiler</string>
@@ -494,26 +476,15 @@
     <string name="clear_all">Tümünü Temizle</string>
     <string name="clipboard_search">Pano araması</string>
     <string name="gesture_method">Hareketle yazma yöntemi</string>
-    <string name="gesture_method_summary">Kaydırarak yazma için algoritma seç</string>
-    <string name="gesture_method_native">Yerel kütüphane (swypelib gerektirir)</string>
-    <string name="gesture_method_fallback">Yedek motor (saf Java)</string>
     <string name="load_gesture_library_button_download">Kütüphaneyi indir</string>
     <string name="load_gesture_library_downloading">Hareket kütüphanesi indiriliyor…</string>
     <string name="load_gesture_library_download_success">İndirme tamamlandı! Yeniden başlatılıyor…</string>
     <string name="load_gesture_library_download_failed">İndirme başarısız: %s</string>
     <string name="load_handwriting_plugin">El yazısı eklentisini yükle</string>
-    <string name="load_handwriting_plugin_summary">El yazısı girişini etkinleştirmek için bir APK eklentisi sağla</string>
-    <string name="load_handwriting_plugin_message">Bir el yazısı eklentisi APK\'sı sağlayın.
-
-Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendiğiniz bir kaynaktan gelen eklentiyi kullanın.</string>
-    <string name="load_handwriting_plugin_button_load">Eklenti APK\'sını yükle</string>
     <string name="load_handwriting_plugin_button_delete">Eklentiyi sil</string>
-    <string name="load_handwriting_plugin_success">El yazısı eklentisi başarıyla içe aktarıldı</string>
     <string name="load_handwriting_plugin_failed">El yazısı eklentisi APK\'sı yüklenemedi</string>
     <string name="load_translation_plugin">Çeviri eklentisini yükle</string>
-    <string name="load_translation_plugin_summary">Çeviri motorunu etkinleştirmek için bir APK eklentisi sağla</string>
     <string name="load_translation_plugin_button_delete">Eklentiyi sil</string>
-    <string name="load_translation_plugin_success">Çeviri eklentisi başarıyla içe aktarıldı</string>
     <string name="load_translation_plugin_failed">Çeviri eklentisi APK\'sı yüklenemedi</string>
     <string name="handwriting">El yazısı</string>
     <string name="delete_handwriting_model">İndirilen modeli sil</string>
@@ -556,26 +527,13 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Yüzen</string>
     <string name="proofread">Yazım denetimi</string>
-    <string name="proofread_loading">Yazım denetimi yapılıyor…</string>
-    <string name="proofread_success">Metin denetlendi</string>
-    <string name="proofread_error">Yazım denetimi başarısız: %s</string>
-    <string name="proofread_no_text">Yazım denetimi yapılacak metin yok</string>
-    <string name="proofread_no_api_key">Gemini API anahtarı ayarlanmadı. Ayarlar → AI entegrasyonu\'na gidin.</string>
     <string name="gemini_api_key_title">Gemini API Anahtarı</string>
     <string name="gemini_api_key_summary">Yazım denetimi için Google Gemini API anahtarınızı girin</string>
     <string name="gemini_api_key_hint">API anahtarını girin</string>
     <string name="get_api_key">API Anahtarı Al</string>
     <string name="gemini_model_title">Gemini Modeli</string>
     <string name="gemini_model_summary">Yazım denetimi için AI modelini seçin</string>
-    <string name="gemini_test_api_key">API Anahtarını Test Et</string>
     <string name="gemini_api_key_valid">API anahtarı geçerli!</string>
-    <string name="gemini_api_key_invalid">API anahtarı testi başarısız: %s</string>
-    <string name="gemini_testing_api_key">API anahtarı test ediliyor…</string>
-    <string name="disable_network_title">Tüm ağ erişimini devre dışı bırak</string>
-    <string name="disable_network_summary">Dahili kilit: Bu uygulamadan gelen tüm ağ isteklerini engeller. İzni tamamen iptal etmek için sistem Uygulama Bilgisi ayarlarını kullanın.</string>
-    <string name="open_app_info">Sistem Uygulama Bilgisini Aç</string>
-    <string name="open_app_info_summary">Android ayarlarında izinleri ve pil kullanımını yönet</string>
-    <string name="gemini_network_disabled">LeanType ayarlarında ağ erişimi devre dışı</string>
     <string name="ai_provider_title">AI Sağlayıcısı</string>
     <string name="ai_provider_summary">Yazım denetimi için AI hizmetini seçin</string>
     <string name="ai_provider_gemini">Google Gemini</string>
@@ -608,7 +566,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="ai_allow_insecure_connections_summary">HTTP bağlantılarına izin ver ve SSL sertifika hatalarını yoksay. Uyarı: Giriş verilerini yerel ağ dinlemelerine karşı savunmasız bırakır.</string>
     <string name="backup_category_layouts">Düzenler</string>
     <string name="backup_category_theme">Tema ve Özel Arka Planlar</string>
-    <string name="backup_category_dictionary">Sözlükler ve Yazım Geçmişi</string>
     <string name="backup_category_clipboard">Pano Geçmişi</string>
     <string name="backup_category_general">Genel Ayarlar</string>
     <string name="backup_select_items">Dahil edilecek öğeleri seçin:</string>
@@ -621,17 +578,12 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="offline_model_title">Çevrimdışı Model</string>
     <string name="offline_model_summary">Yerel LLM\'yi yönet</string>
     <string name="offline_max_tokens_title">Çevrimdışı AI Maksimum Token</string>
-    <string name="offline_max_tokens_summary">Oluşturulan düzeltmenin maksimum uzunluğu</string>
     <string name="offline_max_tokens_custom_option">Özel…</string>
     <string name="offline_max_tokens_custom_desc">Özel (%1$d Token)</string>
     <string name="offline_temp_title">Sıcaklık</string>
-    <string name="offline_temp_summary">Rastgeleliği kontrol eder: daha düşük değerler daha odaklı ve öngörülebilir sonuçlar üretir</string>
     <string name="offline_top_p_title">Top-P (Nucleus Sampling)</string>
-    <string name="offline_top_p_summary">Kelime çeşitliliğini kontrol eder: daha düşük değerler daha az olası seçenekleri eler</string>
     <string name="offline_top_k_title">Top-K</string>
-    <string name="offline_top_k_summary">Seçimleri en olası K token ile sınırlar</string>
     <string name="offline_min_p_title">Min-P</string>
-    <string name="offline_min_p_summary">En olası token\'a göreli minimum olasılık eşiği</string>
     <string name="offline_show_thinking_title">Düşünme Sürecini Göster</string>
     <string name="offline_show_thinking_summary">Model üretirse akıl yürütme sürecini ve içsel düşünme token\'larını göster</string>
     <string-array name="offline_max_tokens_entries">
@@ -649,8 +601,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
         <item>128</item>
     </string-array>
     <string name="translate">Çevir</string>
-    <string name="translate_loading">Çevriliyor…</string>
-    <string name="translate_success">Metin çevrildi</string>
     <string name="translate_error">Çeviri başarısız: %s</string>
     <string name="translate_no_text">Çevrilecek metin yok</string>
     <string name="translate_target_language_title">Çeviri hedef dili</string>
@@ -675,11 +625,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="toolbar_long_press_hint">Uzun basma ipucu noktalarını göster</string>
     <string name="toolbar_long_press_hint_summary">Uzun basma eylemi olan araç çubuğu tuşlarında noktalar göster</string>
     <string name="prefs_narrow_key_gaps_level">Darlık seviyesi</string>
-    <string name="narrowness_level_low">En küçük</string>
-    <string name="narrowness_level_medium_low">Küçük</string>
-    <string name="narrowness_level_medium">Orta</string>
-    <string name="narrowness_level_medium_high">Büyük</string>
-    <string name="narrowness_level_high">En büyük</string>
     <string name="custom_emoji_font">Dosyadan özel emoji yazı tipi ayarla</string>
     <string name="prefs_use_system_emoji">Sistem emoji yazı tipini kullan</string>
     <string name="prefs_use_system_emoji_summary">Ayarlarda ve aramada sistem emoji yazı tipini kullan (uygulamayı yeniden başlatır)</string>
@@ -691,7 +636,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="sponsor_dialog_title">Bu projeye sponsor olun</string>
     <string name="sponsor_dialog_message">Bu proje tamamen topluluk tarafından yürütülmektedir ve geliştirmeyi sürdürebilmek için bağışlara dayanmaktadır. Bu klavyeyi yararlı buluyorsanız lütfen sponsor olmayı düşünün!</string>
     <string name="sponsor_dialog_never_show_again">Bir daha gösterme</string>
-    <string name="sponsor_dialog_sponsor">Sponsor Ol</string>
     <string name="sponsor_dialog_not_now">Şimdi değil</string>
     <string name="about_features_link">FEATURES.md\'ye git</string>
     <string name="about_features_link_description">Ana özelliklerin listesi ve klavye kılavuzu</string>
@@ -721,7 +665,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="auto_show_toolbar_select">Seçildiğinde araç çubuğunu otomatik göster</string>
     <string name="auto_show_toolbar_select_summary">Metin seçildiğinde araç çubuğunu göster</string>
     <string name="toolbar_swipe_down_dismiss">Kapatmak için aşağı kaydır</string>
-    <string name="toolbar_swipe_down_dismiss_summary">Klavyeyi gizlemek için araç çubuğunu aşağı kaydırın</string>
     <string name="auto_hide_pinned_keys">Sabitlenmiş tuşları otomatik gizle</string>
     <string name="auto_hide_pinned_keys_summary">Araç çubuğu genişletildiğinde sabitlenmiş tuşları gizle</string>
     <string name="remember_toolbar_state">Araç çubuğu durumunu hatırla</string>
@@ -744,7 +687,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="physical_keyboard_shortcut_alt">Alt + Sayı (Alt+1, Alt+2, Alt+3)</string>
     <string name="physical_keyboard_shortcut_ctrl">Ctrl + Sayı (Ctrl+1, Ctrl+2, Ctrl+3)</string>
     <string name="physical_keyboard_shortcut_number">Sayı Tuşu (yazım sırasında 1, 2, 3)</string>
-    <string name="large_screen_layout_note">Bu ekrandaki ayarlar büyük ekran düzeni için geçerlidir</string>
     <string name="prefs_physical_keyboard_suggestion_shortcuts">Fiziksel klavye öneri kısayolları</string>
     <string name="prefs_physical_keyboard_suggestion_shortcuts_summary">Klavye kısayollarını kullanarak öneri adaylarını seç ve sayı rozetlerini göster</string>
 
@@ -789,10 +731,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="add_to_personal_dict_threshold_times_1">1 kez yazıldıktan sonra ekle</string>
     <string name="add_to_personal_dict_threshold_times_many">%d kez yazıldıktan sonra ekle</string>
     <string name="auto_correct_aggressiveness_title">Otomatik düzeltme agresifliği</string>
-    <string name="auto_correct_aggressiveness_1">Hafif</string>
-    <string name="auto_correct_aggressiveness_2">Dengeli (Varsayılan)</string>
-    <string name="auto_correct_aggressiveness_3">Agresif</string>
-    <string name="auto_correct_aggressiveness_4">Çok agresif</string>
     <string name="auto_correct_aggressiveness_desc_1">Hafif\nYalnızca standart alanlarda yazımı çok yakın kelimeleri düzeltir.</string>
     <string name="auto_correct_aggressiveness_desc_2">Dengeli (Varsayılan)\nDesteklenen giriş alanlarında standart düzeltme güvenilirliği.</string>
     <string name="auto_correct_aggressiveness_desc_3">Agresif\nOtomatik düzeltmeyi daha fazla uygulamaya ve yardımcı olmayan alanlara genişletir.</string>
@@ -801,47 +739,30 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="fine_tune_prediction_summary">Kişisel kelime önceliğini, bağlamı ve cümle başlangıçlarını manuel olarak ayarlayın</string>
     <string name="suggestion_balance_title">Öneri dengesi</string>
     <string name="suggestion_balance_summary">Sözlük doğruluğu ile kişisel yazma geçmişi arasındaki dengeyi ayarlayın</string>
-    <string name="suggestion_balance_1">Sözlük odaklı</string>
-    <string name="suggestion_balance_2">Muhafazakar</string>
-    <string name="suggestion_balance_3">Dengeli (Varsayılan)</string>
-    <string name="suggestion_balance_4">Kişiselleştirilmiş</string>
-    <string name="suggestion_balance_5">Yüksek oranda kişiselleştirilmiş</string>
     <string name="suggestion_balance_desc_1">Sözlük odaklı\nStandart dil sözlüklerine öncelik verir; doğrulanmamış öğrenilmiş kelimeleri en aza indirir.</string>
     <string name="suggestion_balance_desc_2">Muhafazakar\nKişisel kelimeler için düşük takviye ile standart sözlükleri biraz tercih eder.</string>
     <string name="suggestion_balance_desc_3">Dengeli (Varsayılan)\nSözlük kelime hazinesi ile kişisel yazma alışkanlıkları arasında standart denge.</string>
     <string name="suggestion_balance_desc_4">Kişiselleştirilmiş\nSık yazdığınız kelimelere ve ifadelere öncelik verir.</string>
     <string name="suggestion_balance_desc_5">Yüksek oranda kişiselleştirilmiş\nSözlük yerine öğrenilmiş geçmişi ve kişisel kelimeleri güçlü bir şekilde tercih eder.</string>
-    <string name="pref_foldable_mode_title">Katlanabilir ekran profili</string>
-    <string name="pref_foldable_mode_summary">Katlanabilir cihazlar için otomatik ekran profili algılamayı ve bölünmüş klavye ölçeklendirmesini etkinleştirin</string>
     <string name="load_offline_ai_plugin">Çevrimdışı AI eklentisi</string>
     <string name="load_offline_ai_plugin_summary">Cihaz üzerinde yerel GGUF modellerini etkinleştirmek için bir eklenti APK\'sı sağlayın</string>
     <string name="load_offline_ai_plugin_button_delete">Eklentiyi sil</string>
-    <string name="load_offline_ai_plugin_success">Çevrimdışı AI eklentisi başarıyla içe aktarıldı</string>
     <string name="load_offline_ai_plugin_failed">Çevrimdışı AI eklentisi APK\'sı yüklenemedi</string>
     <string name="ocr">Metin tanıma (OCR)</string>
     <string name="ocr_title">Metin tanıma (OCR)</string>
     <string name="ocr_settings_title">Metin tanıma ayarları</string>
-    <string name="ocr_settings_summary">Kamera ve ekran görüntülerinden çevrimdışı metin ayıklayın</string>
     <string name="load_ocr_plugin">OCR eklentisi yükle</string>
-    <string name="load_ocr_plugin_summary">Cihaz üzerinde metin tanımayı etkinleştirmek için bir eklenti APK\'sı sağlayın</string>
     <string name="load_ocr_plugin_button_delete">Eklentiyi sil</string>
     <string name="load_ocr_plugin_success">OCR eklentisi başarıyla içe aktarıldı</string>
     <string name="load_ocr_plugin_failed">OCR eklentisi APK\'sı yüklenemedi</string>
     <string name="ocr_plugin_required_title">OCR eklentisi gerekli</string>
     <string name="ocr_plugin_required_summary">Kamera ve ekran görüntüsü OCR özelliklerini etkinleştirmek için metin tanıma eklentisi APK\'sını yükleyin.</string>
     <string name="ocr_plugin_open_settings">OCR ayarlarını aç</string>
-    <string name="ocr_result_title">Ayıklanan metin</string>
-    <string name="ocr_insert_button">Metni ekle</string>
-    <string name="ocr_retake_button">Yeniden çek</string>
-    <string name="ocr_screenshot_button_desc">En son ekran görüntüsünden metin ayıkla</string>
     <string name="ocr_flash_button_desc">Kamera flaşını aç/kapat</string>
     <string name="ocr_shutter_button_desc">Kamera ile metin yakala</string>
     <string name="ocr_camera_permission_required">OCR vizörü için kamera izni gereklidir</string>
-    <string name="ocr_camera_start_error">Kamera vizörü başlatılamadı</string>
-    <string name="ocr_no_screenshot_found">Yakın zamanda çekilmiş ekran görüntüsü bulunamadı</string>
     <string name="ocr_screenshot_load_failed">Ekran görüntüsü resmi yüklenemedi</string>
     <string name="ocr_no_text_detected">Metin algılanmadı</string>
-    <string name="ocr_processing_text">Metin tanınıyor…</string>
     <string name="ocr_keep_line_breaks">Satır sonlarını koru</string>
     <string name="ocr_keep_line_breaks_summary">Tanınan metin bloklarındaki satır sonlarını koruyun</string>
     <string name="ocr_suggest_screenshot_text">Ekran görüntüsü metin ayıklamayı öner</string>
@@ -895,31 +816,20 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="pref_inline_calculator_suggestions">Satır içi matematik hesaplama</string>
     <string name="pref_inline_calculator_suggestions_summary">Yazarken hesaplanan sonuçları önerin (örn. 25*4=)</string>
     <string name="voice_input_title">Sesli giriş</string>
-    <string name="offline_voice_title">Çevrimdışı sesli giriş</string>
-    <string name="pref_offline_voice_summary">Yerel ses modelleriyle çevrimdışı metin dikte edin</string>
     <string name="pref_voice_language_title">Ses tanıma dili</string>
     <string name="voice_lang_follow_keyboard">Klavye dilini takip et</string>
     <string name="voice_lang_auto_detect">Konuşulan dili otomatik algıla</string>
-    <string name="voice_commands_title">Ses komutları</string>
-    <string name="voice_commands_summary">Sesle düzenleme eylemleri yürütün (örn. "yeni satır", "kelimeyi sil", "tümünü temizle", "gönder")</string>
-    <string name="voice_smart_punctuation_title">Akıllı sözlü noktalama</string>
-    <string name="voice_smart_punctuation_summary">Söylenen kelimeleri ("virgül", "soru işareti", "nokta") sembollere dönüştürün</string>
     <string name="voice_command_executed">Ses komutu yürütüldü</string>
     <string name="voice_status_connecting">Ses motoruna bağlanılıyor…</string>
     <string name="voice_status_listening">Dinleniyor… şimdi konuşun</string>
     <string name="voice_status_processing">İşleniyor…</string>
     <string name="voice_action_done">Bitti</string>
     <string name="voice_action_cancel">İptal</string>
-    <string name="online_voice_title">Çevrimiçi konuşmayı metne dönüştürme</string>
-    <string name="pref_online_voice_summary">Yapılandırılmış AI sağlayıcınızı ve ses modelinizi kullanarak çevrimiçi dikte edin</string>
     <string name="voice_provider_title">Ses girişi sağlayıcısı</string>
     <string name="voice_provider_summary">Ses diktesinin nasıl işleneceğini seçin</string>
     <string name="voice_provider_offline">Çevrimdışı ses girişi (Eklenti)</string>
-    <string name="voice_provider_offline_summary">Cihaz üzerinde özel Whisper tanıma</string>
     <string name="voice_provider_online">Çevrimiçi AI ses girişi</string>
-    <string name="voice_provider_online_summary">Yüksek doğrulukta bulut AI ses tanıma</string>
     <string name="voice_provider_third_party">Sistem / Üçüncü taraf ses girişi</string>
-    <string name="voice_provider_third_party_summary">Varsayılan veya yüklü sesle yazma uygulamasını kullanın</string>
     <string name="voice_provider_none">Devre dışı</string>
     <string name="voice_provider_none_summary">Ses girişini kapat ve mikrofon tuşunu gizle</string>
     <string name="voice_third_party_app_title">Sesle yazma uygulaması</string>
@@ -956,16 +866,12 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="toolbar_keys_alignment_center">Ortalanmış</string>
     <string name="toolbar_keys_alignment_right">Sağa yaslı</string>
     <string name="clipboard_keys_alignment">Pano tuşları hizalaması</string>
-    <string name="clipboard_keys_alignment_left">Sola yaslı</string>
-    <string name="clipboard_keys_alignment_center">Ortalanmış</string>
-    <string name="clipboard_keys_alignment_right">Sağa yaslı</string>
     <string name="prefs_popup_keys_vertical_offset">Basılı tutma açılır pencere konumu</string>
     <string name="edit">Düzenle</string>
     <string name="prefs_keypress_sound_style_settings">Tuş basma ses stili</string>
     <string name="prefs_keypress_sound_style_system">Sistem varsayılanı</string>
     <string name="prefs_keypress_sound_style_dialog_title">Tuş basma ses stili</string>
     <string name="sound_packs_title">Tuş basma sesi</string>
-    <string name="sound_pack_import_button">Ses paketi içe aktar</string>
     <string name="prefs_sound_acoustics_category">Akustik &amp; oynatma</string>
     <string name="prefs_sound_pitch_scale">Perde ayarı (Pitch)</string>
     <string name="prefs_sound_random_pitch">Rastgele perde çeşitliliği</string>
@@ -996,11 +902,9 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="updates_check_title">Güncellemeleri denetle</string>
     <string name="updates_checking">Güncellemeler denetleniyor…</string>
     <string name="updates_up_to_date">En son sürümü kullanıyorsunuz</string>
-    <string name="updates_available">Yeni sürüm mevcut: %s</string>
     <string name="updates_auto_check_title">Otomatik güncelleme denetimi</string>
     <string name="updates_auto_check_summary">Yeni sürümler için arka planda periyodik olarak kontrol edin</string>
     <string name="updates_frequency_title">Denetleme sıklığı</string>
-    <string name="updates_changelog_title">Değişiklik günlüğü</string>
     <string name="updates_support_title">Geliştirmeyi destekleyin</string>
     <string name="updates_support_summary" formatted="false">LeanType %100 ücretsiz, açık kaynaklı ve bağımsızdır. Desteğiniz aktif geliştirmeyi sürdürmemize doğrudan katkı sağlar!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
@@ -1016,7 +920,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="social_x">X</string>
     <string name="social_youtube">YouTube</string>
     <string name="pref_handwriting_language_title">El yazısı dili</string>
-    <string name="pref_handwriting_language_summary">El yazısı tanıma için özel bir dil seçin</string>
     <string name="handwriting_lang_follow_keyboard">Klavye dilini takip et</string>
     <string name="auto_show_toolbar_no_suggestions">Öneri yokken araç çubuğunu göster</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Kullanılabilir kelime önerisi olmadığında araç çubuğunu görüntüleyin</string>
@@ -1032,8 +935,6 @@ Uyarı: Harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendi�
     <string name="settings_category_key_appearance">Tuş görünümü &amp; ipuçları</string>
     <string name="app_quirks_title">Uygulama profilleri</string>
     <string name="app_quirks_summary">Uygulama bazlı davranışlar, web uyumluluğu ve otomatik gizli mod</string>
-    <string name="app_quirks_search_hint">Uygulamaları ada veya pakete göre arayın</string>
-    <string name="app_quirks_empty">Hiçbir uygulama bulunamadı</string>
     <string name="app_quirks_force_web_editor">Web düzenleyici uyumluluğu</string>
     <string name="app_quirks_force_web_editor_summary">Web için güvenli Backspace, toplu eşitleme ve önbelleği atlamayı zorla</string>
     <string name="app_quirks_force_incognito">Otomatik gizli mod</string>
@@ -1214,7 +1115,6 @@ Arka plan AI veya ağ kullanımı yok.</string>
     <string name="updates_frequency_daily">Günlük</string>
     <string name="updates_frequency_weekly">Haftalık</string>
     <string name="updates_frequency_monthly">Aylık</string>
-    <string name="updates_check_failed_http">Kontrol başarısız (HTTP %d)</string>
     <string name="updates_network_error">Güncellemeler kontrol edilirken ağ hatası</string>
     <string name="updates_update_available">Güncelleme mevcut: %s</string>
     <string name="sponsor_github_button">GitHub\'da Destek Olun</string>
@@ -1351,7 +1251,6 @@ Uyarı: harici kod yüklemek bir güvenlik riski olabilir. Yalnızca güvendiği
     <string name="error_getting_suggestions">Öneriler alınırken hata oluştu</string>
     <string name="ai_error_format">AI Hatası: %s</string>
     <string name="suggestion_word_removed">\"%1$s\" kaldırıldı</string>
-    <string name="error_loading_keyboard_fallback">Klavye yüklenirken hata oluştu, varsayılanlara dönülüyor</string>
     <string name="key_set">Tuş ayarlandı</string>
     <string name="key_not_set">Ayarlanmadı</string>
     <string name="default_proofreading">Varsayılan (Redaksiyon)</string>
@@ -1535,7 +1434,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="clipboard_action_edit">Düzenlemek</string>
     <string name="clipboard_action_delete">Silmek</string>
     <string name="clipboard_action_select">Seçme</string>
-    <string name="clipboard_options_title">Klip seçenekleri</string>
     <string name="clipboard_items_deleted">%1$d öğe silindi</string>
     <string name="shift_recapitalizes_word">Shift, yazılan kelimenin büyük harf kullanımını değiştirir</string>
     <string name="shift_recapitalizes_word_summary">Bir sözcüğün sonunda Shift tuşuna basıldığında küçük harf, Büyük Harf ve BÜYÜK HARF (büyük harf kilitli) arasında geçiş yapılır</string>
@@ -1644,8 +1542,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_error_timeout">Zaman aşımına uğradı</string>
     <string name="gif_error_busy">GIF eklentisi meşgul, tekrar deneyin</string>
     <string name="gif_error_generic">GIF\'ler yüklenemedi</string>
-    <string name="gif_insertion_unsupported">Uygulama GIF eklemeyi desteklemiyor</string>
-    <string name="gif_install_plugin">GIF eklentisini yükleyin</string>
     <string name="gif_settings_title">GIF Arama</string>
     <string name="gif_plugin_status_title">Eklenti Durumu</string>
     <string name="gif_plugin_not_installed_desc">GIF eklentisi, klavyeye ağ erişimi izni vermeden GIPHY, Klipy ve diğer sağlayıcılar için arama ve ekleme olanağı sağlar.</string>
@@ -1663,13 +1559,10 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_api_key_saved">API anahtarı kaydedildi</string>
     <string name="gif_api_key_cleared">API anahtarı temizlendi</string>
     <string name="gif_provider_active">Aktif</string>
-    <string name="gif_set_as_active">Etkin olarak ayarla</string>
-    <string name="gif_search_hint_provider">%sara…</string>
     <string name="gif_search_clear">Aramayı temizle</string>
     <string name="gif_retry">Yeniden dene</string>
     <string name="gif_open_settings">Ayarları Aç</string>
     <string name="gif_no_results_query">\"%s\" için GIF bulunamadı</string>
-    <string name="gif_inserting">GIF gönderiliyor…</string>
     <string name="gif_category_gifs">GIF\'ler</string>
     <string name="gif_category_stickers">Çıkartmalar</string>
     <string name="gif_category_memes">Mizah</string>
@@ -1707,16 +1600,13 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="cjk_candidate_prev_page">Önceki adaylar</string>
     <string name="cjk_candidate_next_page">Sonraki adaylar</string>
     <string name="cjk_settings_title">CJK Girişi</string>
-    <string name="cjk_settings_summary">Çince, Japonca ve Korece kompozisyon motoru</string>
     <string name="cjk_plugin_management">Eklenti Yönetimi</string>
     <string name="load_cjk_plugin">CJK tamamlayıcı eklentisini yükleyin</string>
-    <string name="load_cjk_plugin_summary">Çin Pinyin ve Japon Romaji-Kana-Kanji dönüşümünü sağlar</string>
     <string name="load_cjk_plugin_button_delete">Eklentiyi sil</string>
     <string name="load_cjk_plugin_success">CJK eklentisi başarıyla içe aktarıldı</string>
     <string name="load_cjk_plugin_failed">CJK eklentisi APK yüklenemedi</string>
     <string name="cjk_plugin_active_status">Eklenti etkin</string>
     <string name="cjk_plugin_active_version_status">Eklenti etkin (v%s)</string>
-    <string name="cjk_plugin_not_installed">Eklenti yüklü değil</string>
     <string name="cjk_plugin_downloading">CJK eklentisi indiriliyor…</string>
     <string name="cjk_plugin_update_available_dialog">CJK eklentisi için bir güncelleme mevcut!\nYerel sürüm:%1$s\nEn son sürüm:%2$s\n\nİndirmek ve güncellemek istiyor musunuz?</string>
     <string name="cjk_plugin_active_warning">CJK yardımcı eklentisi etkin (sürüm%s).\n\nUyarı: harici kod yüklemek güvenlik riski oluşturabilir. Yalnızca güvendiğiniz bir kaynaktan gelen eklentiyi kullanın.</string>
@@ -1759,7 +1649,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="message_keycodes_reference">Anahtar kodlar ve işlemler referansı:%s</string>
     <string name="updates_plugins_title">Tamamlayıcı eklentiler</string>
     <string name="updates_plugin_update_available">Yeni sürüm%smevcut</string>
-    <string name="updates_plugin_updates_found">Eklenti güncellemeleri mevcut</string>
     <string name="fine_tune_theme_summary">Köşe yarıçapını, gezinme çubuğu rengini, arka plan bulanıklığını ve özel simgeleri ayarlayın</string>
     <string name="fine_tune_key_previews_summary">Açılır pencere önizleme boyutunu, yarıçapını, dikey uzaklığını ve animasyon hızını yapılandırın</string>
     <string name="fine_tune_keyboard_layout_summary">Yan ve alt dolguyu ayarlayın, tuş boşluklarını daraltın, aralığı bölün ve yazı tipi ölçeğini ayarlayın</string>
@@ -1810,14 +1699,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="auto_pair_symbols_summary">Kapanış parantezlerini, tırnak işaretlerini ve başlık işaretlerini otomatik olarak ekleyin</string>
     <string name="font_style">Yazı Tipi Stili</string>
     <string name="unicode_panel">Unicode Sembolleri</string>
-    <string name="style_hub_title">Tipografi ve Stiller</string>
-    <string name="style_hub_summary">Süslü Unicode metin stilleri ve sembol paleti</string>
-    <string name="style_accessibility_warning">Dekoratif Unicode matematik sembolleri ekran okuyucular (TalkBack) tarafından doğru şekilde telaffuz edilmeyebilir. Lütfen erişilebilirliği dikkate alarak kullanın.</string>
-    <string name="style_preview_hint">Stilleri önizlemek için metni yazın</string>
-    <string name="style_revert_plain">Düz metne geri dön</string>
     <string name="style_active_indicator">Aktif stil:%s</string>
-    <string name="style_live_typing">Canlı şık yazma</string>
-    <string name="style_live_typing_summary">Seçilen stile doğrudan yazın (yalnızca 1:1 eşlenmiş stiller)</string>
     <string name="style_active_none">Yok (Düz metin)</string>
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Ayarlara atla</string>
@@ -1832,4 +1714,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_suggestions_only_title">Yalnızca öneri (otomatik genişletme yok)</string>
     <string name="text_expander_suggestions_only_summary">Metni yalnızca önerilerden seçildiğinde genişleterek otomatik eklemeyi önleyin.</string>
     <string name="portrait">Portre</string>
+    <string name="proofread_error">Düzeltme başarısız oldu:%s</string>
+    <string name="proofread_no_text">Düzeltilecek metin yok</string>
+    <string name="proofread_no_api_key">Gemini API anahtarı ayarlanmadı. Ayarlar → AI entegrasyonu\'na gidin.</string>
 </resources>

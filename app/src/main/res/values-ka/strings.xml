@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"ფიზიკური ღილაკი Alt აჩვენებს სიცილაკების პალიტრას"</string>
     <string name="button_default">"ნაგულისხმევი"</string>
     <string name="setup_welcome_title">მოგესალმებათ %s</string>
-    <string name="setup_welcome_additional_description">"ჟესტებით წერით"</string>
     <string name="setup_start_action">"დაწყება"</string>
     <string name="setup_steps_title">%s-ის მორგება</string>
     <string name="setup_step1_title">%s-ის ჩართვა</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"გილოცავთ, პროცესი დასრულდა!"</string>
     <string name="setup_step3_instruction">ახლა თქვენს საყვარელ აპებში შეგიძლიათ %s-ით აკრიფოთ.</string>
     <string name="setup_finish_action">"დასრულებული"</string>
-    <string name="show_setup_wizard_icon">"აპის ხატულის ჩვენება"</string>
-    <string name="show_setup_wizard_icon_summary">"აპის ხატულის ჩვენება გამშვებში"</string>
     <string name="dictionary_category_title">"დამატებითი ლექსიკონები"</string>
     <string name="dictionary_available">"ხელმისაწვდომია ლექსიკონი"</string>
     <string name="settings">"პარამეტრები"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"არასავალდებულო მალსა"</string>
     <string name="user_dict_settings_edit_dialog_title">"სიტყვის შესწორება"</string>
     <string name="user_dict_settings_all_languages">"ყველა ენისთვის"</string>
-    <string name="user_dict_settings_more_languages">"სხვა ენები…"</string>
     <string name="auto_correction_confidence">ავტოკორექციის სანდოობა</string>
     <string name="enable_clipboard_history">ბუფერის ისტორიის ჩართვა</string>
     <string name="enable_clipboard_history_summary">თუ გამორთულია, ბუფერის ღილაკი ბუფერის შემცველობას ჩასვამს, თუ ის არსებობს</string>

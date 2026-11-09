@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"အီမိုဂျီ ဘုတ်ပြားပြသော Alt ခလုတ်"</string>
     <string name="button_default">"ပုံသေ"</string>
     <string name="setup_welcome_title">%s မှကြိုဆိုပါသည်\"</string>
-    <string name="setup_welcome_additional_description">"အမူယာ ရိုက်ခြင်းဖြင့်"</string>
     <string name="setup_start_action">"စတင်ပါတော့"</string>
     <string name="setup_steps_title">%s တပ်ဆင်ရန်\"</string>
     <string name="setup_step1_title">%s ဖွင့်ရန်\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"ဝမ်းသာပါသည်၊ သင်အားလုံးသတ်မှတ်ပြီးပါပြီ!"</string>
     <string name="setup_step3_instruction">"%s ဖြင့်သင့် ကြိုက်နှစ်သက်ရာ အပလီကေးရှင်းများအားလုံးအား ရိုက်ထည့်နိုင်ပါပြီ။"</string>
     <string name="setup_finish_action">"ပြီးဆုံးသွားပြီ"</string>
-    <string name="show_setup_wizard_icon">"အက်ပ်သင်္ကေတပြခြင်း"</string>
-    <string name="show_setup_wizard_icon_summary">"launcher တွင် အပလီကေးရှင်း သင်္ကေတကိုပြရန်"</string>
     <string name="dictionary_category_title">"ပေါင်းထည့်ထားသည့် အဘိဓါန်များ"</string>
     <string name="dictionary_available">"အဘိဓါန်ရရှိနိုင်"</string>
     <string name="settings">"ဆက်တင်များ"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ရွေးစရာအတိုကောက်"</string>
     <string name="user_dict_settings_edit_dialog_title">"စာလုံးကို ပြင်ဆင်မည်"</string>
     <string name="user_dict_settings_all_languages">"ဘာသာစကားအားလုံးအတွက်"</string>
-    <string name="user_dict_settings_more_languages">"ဘာသာစကားပိုများများ…"</string>
     <string name="select_input_method">လက်ကွက်စနစ်‌ရွေးမည်</string>
     <string name="undo">"ပြန်ဖျက်ရန်"</string>
     <string name="redo">"ထပ်လုပ်ပါ"</string>

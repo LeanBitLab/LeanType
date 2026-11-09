@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Физички тастер Alt показује палету емоџија"</string>
     <string name="button_default">"Подразумевано"</string>
     <string name="setup_welcome_title">Добро дошли у %s</string>
-    <string name="setup_welcome_additional_description">"помоћу Куцања покретима"</string>
     <string name="setup_start_action">"Започнимо"</string>
     <string name="setup_steps_title">Подешавање апликације %s</string>
     <string name="setup_step1_title">Омогућите апликацију %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Честитамо, све је спремно!"</string>
     <string name="setup_step3_instruction">"Сада можете да куцате у свим омиљеним апликацијама помоћу %s."</string>
     <string name="setup_finish_action">"Завршено"</string>
-    <string name="show_setup_wizard_icon">"Прикажи икону апликације"</string>
-    <string name="show_setup_wizard_icon_summary">"Икона апликације се приказује у покретачу"</string>
     <string name="dictionary_category_title">"Помоћни речници"</string>
     <string name="dictionary_available">"Речник је доступан"</string>
     <string name="settings">"Подешавања"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Опционална пречица"</string>
     <string name="user_dict_settings_edit_dialog_title">"Измена речи"</string>
     <string name="user_dict_settings_all_languages">"За све језике"</string>
-    <string name="user_dict_settings_more_languages">"Још језика…"</string>
     <string name="select_input_method">"Избор метода уноса"</string>
     <string name="spell_checker_service_name">LeanType провера правописа</string>
     <string name="android_spell_checker_settings">LeanType подешавања провере правописа</string>

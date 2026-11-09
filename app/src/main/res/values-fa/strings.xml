@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"‏کلید Alt صفحه‌کلید فیزیکی، پالت اموجی را نشان می‌دهد"</string>
     <string name="button_default">"پیش‌فرض"</string>
     <string name="setup_welcome_title">به %s خوش آمدید</string>
-    <string name="setup_welcome_additional_description">"با ورودی اشاره‌ای"</string>
     <string name="setup_start_action">"شروع به کار"</string>
     <string name="setup_steps_title">راه‌اندازی %s</string>
     <string name="setup_step1_title">فعال‌سازی %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"تبریک می‌گوییم، اکنون کاملاً آماده هستید!"</string>
     <string name="setup_step3_instruction">اکنون می‌توانید در همه برنامه‌های دلخواه خود با %s تایپ کنید.</string>
     <string name="setup_finish_action">"تمام شد"</string>
-    <string name="show_setup_wizard_icon">"نمایش نماد برنامه"</string>
-    <string name="show_setup_wizard_icon_summary">"نمایش نماد برنامه در راه‌انداز"</string>
     <string name="dictionary_category_title">"واژه‌نامه‌های برافزا"</string>
     <string name="dictionary_available">"واژه‌نامه موجود است"</string>
     <string name="settings">"تنظیمات"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"میان‌بر اختیاری"</string>
     <string name="user_dict_settings_edit_dialog_title">"ویرایش کلمه"</string>
     <string name="user_dict_settings_all_languages">"برای همه زبان‌ها"</string>
-    <string name="user_dict_settings_more_languages">"زبان‌های بیشتر…"</string>
     <string name="settings_no_limit">بی‌محدودیت</string>
     <string name="enable_clipboard_history">فعال‌کردن تاریخچهٔ تخته‌گیره</string>
     <string name="select_input_method">"انتخاب روش ورودی"</string>

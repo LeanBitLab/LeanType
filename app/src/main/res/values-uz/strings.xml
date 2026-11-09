@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Jismoniy klaviaturadagi Alt tugmasi emojilarni ochadi"</string>
     <string name="button_default">"Standart"</string>
     <string name="setup_welcome_title">%s ilovasiga xush kelibsiz!</string>
-    <string name="setup_welcome_additional_description">"qo‘l uzmasdan yozish"</string>
     <string name="setup_start_action">"Boshladik"</string>
     <string name="setup_steps_title">%s sozlanmoqda</string>
     <string name="setup_step1_title">Yoqish %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Tabriklaymiz, hammasi tayyor!"</string>
     <string name="setup_step3_instruction">Endi, matn kiritish uchun %s ilovasidan foydalanishingiz mumkin.</string>
     <string name="setup_finish_action">"Tugallandi"</string>
-    <string name="show_setup_wizard_icon">"Ilova ikonkasini chiqarish"</string>
-    <string name="show_setup_wizard_icon_summary">"Launcherga ilova ikonkasini chiqarish"</string>
     <string name="dictionary_category_title">"Qo‘shimcha lug‘atlar"</string>
     <string name="dictionary_available">"Lug‘at mavjud"</string>
     <string name="settings">"Sozlamalar"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Ibora uchun qisqartma (ixtiyoriy)"</string>
     <string name="user_dict_settings_edit_dialog_title">"So‘zni tahrirlash"</string>
     <string name="user_dict_settings_all_languages">"Barcha tillar uchun"</string>
-    <string name="user_dict_settings_more_languages">"Ko‘proq tillar…"</string>
     <string name="settings_category_clipboard_history">Bufer tarixi</string>
     <string name="show_emoji_key">Emoji kaliti</string>
     <string name="select_input_method">"Matn kiritish usulini tanlang"</string>

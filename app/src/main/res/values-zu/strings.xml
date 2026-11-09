@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Ukhiye we-Alt woqobo ubonisa i-emoji palette"</string>
     <string name="button_default">"Okuzenzakalelayo"</string>
     <string name="setup_welcome_title">"Siyakwamukela ku-%s"</string>
-    <string name="setup_welcome_additional_description">"nokuthayipha ngokuthinta"</string>
     <string name="setup_start_action">"Qalisa"</string>
     <string name="setup_steps_title">"Kusethwa i-%s"</string>
     <string name="setup_step1_title">"Nika amandla i-%s"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"Siyakuhalalisela, usumi ngomumo!"</string>
     <string name="setup_step3_instruction">"Manje usungathayipha ngokufaka zonke izinhlelo zokusebenza eziyizintandokazi zakho nge-%s."</string>
     <string name="setup_finish_action">"Iqedile"</string>
-    <string name="show_setup_wizard_icon">"Bonisa isithonjana sohlelo lokusebenza"</string>
-    <string name="show_setup_wizard_icon_summary">"Bonisa isithonjana sohlelo lokusebenza kusiqalisi"</string>
     <string name="dictionary_category_title">"Izichazamazwi ezingezwayo"</string>
     <string name="dictionary_available">"Isichazamazwi siyatholakala"</string>
     <string name="settings">"Izilungiselelo"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Ukunqamulela okukhethekayo"</string>
     <string name="user_dict_settings_edit_dialog_title">"Hlela igama"</string>
     <string name="user_dict_settings_all_languages">"Okwazo zonke izilimi"</string>
-    <string name="user_dict_settings_more_languages">"Izilimi eziningi…"</string>
     <string name="select_input_method">"Khetha indlela yokufaka"</string>
     <string name="undo">"Hlehlisa"</string>
     <string name="redo">"Yenza futhi"</string>

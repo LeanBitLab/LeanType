@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Kekunci Alt fizikal menunjukkan palet emoji"</string>
     <string name="button_default">"Lalai"</string>
     <string name="setup_welcome_title">"Selamat datang ke %s"</string>
-    <string name="setup_welcome_additional_description">"dengan Taipan Gerak Isyarat"</string>
     <string name="setup_start_action">"Bermula"</string>
     <string name="setup_steps_title">"Menyediakan %s"</string>
     <string name="setup_step1_title">"Dayakan %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Tahniah, anda sudah sedia!"</string>
     <string name="setup_step3_instruction">"Kini anda boleh menaip dalam semua apl kegemaran anda dengan %s."</string>
     <string name="setup_finish_action">"Selesai"</string>
-    <string name="show_setup_wizard_icon">"Tunjukkan ikon apl"</string>
-    <string name="show_setup_wizard_icon_summary">"Paparkan ikon apl dalam pelancar"</string>
     <string name="dictionary_category_title">"Kamus tambahan"</string>
     <string name="dictionary_available">"Kamus tersedia"</string>
     <string name="settings">"Tetapan"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Pintasan pilihan"</string>
     <string name="user_dict_settings_edit_dialog_title">"Edit perkataan"</string>
     <string name="user_dict_settings_all_languages">"Untuk semua bahasa"</string>
-    <string name="user_dict_settings_more_languages">"Lebih banyak bahasa…"</string>
     <string name="select_input_method">"Pilih kaedah input"</string>
     <string name="settings_screen_appearance">"Tampilan"</string>
     <string name="undo">"Buat asal"</string>

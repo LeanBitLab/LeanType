@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"按下實體 Alt 鍵即顯示表情符號面板"</string>
     <string name="button_default">"預設"</string>
     <string name="setup_welcome_title">"歡迎使用 %s"</string>
-    <string name="setup_welcome_additional_description">"含滑行輸入功能"</string>
     <string name="setup_start_action">"開始設定"</string>
     <string name="setup_steps_title">"正在設定「%s」"</string>
     <string name="setup_step1_title">"啟用「%s」"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"恭喜，你已完成設定！"</string>
     <string name="setup_step3_instruction">現在您可以在所有您喜歡的應用程式中使用 %s 輸入。</string>
     <string name="setup_finish_action">"完成"</string>
-    <string name="show_setup_wizard_icon">"顯示應用程式圖示"</string>
-    <string name="show_setup_wizard_icon_summary">"在啟動器中顯示應用程式圖示"</string>
     <string name="dictionary_category_title">"外掛字典"</string>
     <string name="dictionary_available">"可用的字典"</string>
     <string name="settings">"設定"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"可選用的快速鍵"</string>
     <string name="user_dict_settings_edit_dialog_title">"編輯字詞"</string>
     <string name="user_dict_settings_all_languages">"所有語言"</string>
-    <string name="user_dict_settings_more_languages">"更多語言…"</string>
     <string name="select_input_method">"選擇輸入法"</string>
     <string name="undo">"復原"</string>
     <string name="redo">"重做"</string>

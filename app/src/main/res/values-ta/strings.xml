@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"ஈமோஜி பலகத்தைக் காட்டும் கைமுறை Alt விசை"</string>
     <string name="button_default">"இயல்புநிலை"</string>
     <string name="setup_welcome_title">%s பயன்பாட்டிற்கு வரவேற்கிறோம்\"</string>
-    <string name="setup_welcome_additional_description">"ஸ்வைப் உள்ளீடு மூலம்"</string>
     <string name="setup_start_action">"தொடங்குக"</string>
     <string name="setup_steps_title">%s ஆப்ஸை அமைக்கிறது\"</string>
     <string name="setup_step1_title">%s ஆப்ஸை இயக்கவும்\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"வாழ்த்துகள், தயாராகிவிட்டீர்கள்!"</string>
     <string name="setup_step3_instruction">"%s ஆப்ஸ் மூலம் உங்களுக்கு விருப்பமான எல்லா ஆப்ஸ்களிலும் நீங்கள் உள்ளிடலாம்."</string>
     <string name="setup_finish_action">"முடிந்தது"</string>
-    <string name="show_setup_wizard_icon">"ஆப்ஸ் ஐகானைக் காட்டு"</string>
-    <string name="show_setup_wizard_icon_summary">"துவக்கியில் ஆப்ஸ் ஐகானைக் காட்டும்"</string>
     <string name="dictionary_category_title">"துணை அகராதிகள்"</string>
     <string name="dictionary_available">"அகராதி கிடைக்கிறது"</string>
     <string name="settings">"அமைப்பு"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"விருப்பத்திற்குரிய ஷார்ட்கட்"</string>
     <string name="user_dict_settings_edit_dialog_title">"வார்த்தையைத் திருத்து"</string>
     <string name="user_dict_settings_all_languages">"எல்லா மொழிகளுக்கும்"</string>
-    <string name="user_dict_settings_more_languages">"மேலும் மொழிகள்…"</string>
     <string name="select_input_method">"உள்ளீட்டு முறையைத் தேர்வுசெய்க"</string>
     <string name="undo">"செயல்தவிர்"</string>
     <string name="redo">"மீண்டும்செய்"</string>
@@ -319,16 +315,13 @@
     <string name="day_or_night_day">நாள்</string>
     <string name="day_or_night_night">இரவு</string>
     <string name="prefs_key_emoji_max_sdk">ஈமோசி பதிப்பை மேலெழுதவும்</string>
-    <string name="setup_step3_action">விசைப்பலகையை உள்ளமைக்கவும்</string>
     <string name="dictionary_settings_category">அகராதிகள்</string>
     <string name="internal_dictionary_summary">உள் முக்கிய அகராதி</string>
     <string name="add_new_dictionary_title">கோப்பிலிருந்து அகராதியைச் சேர்க்கவும்</string>
     <string name="button_select_language">மொழியைத் தேர்ந்தெடுக்கவும்</string>
     <string name="replace_dictionary_message">\"%1$s\" என்ற பயனர் சேர்த்த அகராதியை உண்மையில் மாற்றவா? \n\nதற்போதைய அகராதி: \n%2$s \n\nபுதிய அகராதி: \n%3$s</string>
     <string name="replace_dictionary">அகராதியை மாற்றவும்</string>
-    <string name="remove_dictionary_message">பயனர் சேர்த்த அகராதி \"%s\" ஐ உண்மையில் அகற்றவா?</string>
     <string name="no_dictionary_message">அகராதி இல்லாமல், நீங்கள் முன்பு உள்ளிட்ட உரைக்கான பரிந்துரைகளை மட்டுமே பெறுவீர்கள்.&lt;br&gt; \nநீங்கள் அகராதிகளை %1$s பதிவிறக்கம் செய்யலாம் அல்லது \"%2$s\"க்கான அகராதியை நேரடியாக %3$s பதிவிறக்க முடியுமா எனச் சரிபார்க்கலாம்.</string>
-    <string name="no_dictionary_dont_show_again_button">மீண்டும் காட்டாதே</string>
     <string name="add_dictionary">சேர்க்க அகராதியைத் தேர்ந்தெடுக்கவும். .dict வடிவத்தில் உள்ள அகராதிகளை %s பதிவிறக்கம் செய்யலாம்.</string>
     <string name="dictionary_link_text">இங்கே</string>
     <string name="available_dictionary_experimental">%s (சோதனை)</string>

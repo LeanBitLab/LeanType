@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"ਭੌਤਿਕ Alt ਕੁੰਜੀ ਇਮੋਜੀ ਪੈਲੇਟ ਦਿਖਾਉਂਦੀ ਹੈ"</string>
     <string name="button_default">"ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
     <string name="setup_welcome_title">%s ਤੇ ਸੁਆਗਤ ਹੈ\"</string>
-    <string name="setup_welcome_additional_description">"ਸੰਕੇਤ ਟਾਈਪਿੰਗ ਨਾਲ"</string>
     <string name="setup_start_action">"ਸ਼ੁਰੂਆਤ ਕਰੋ"</string>
     <string name="setup_steps_title">%s ਸੈਟ ਅਪ ਕਰ ਰਿਹਾ ਹੈ\"</string>
     <string name="setup_step1_title">%s ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"ਵਧਾਈ ਹੋਵੇ, ਤੁਸੀਂ ਸਾਰਾ ਸੈਟ ਕਰ ਲਿਆ ਹੈ!"</string>
     <string name="setup_step3_instruction">"ਹੁਣ ਤੁਸੀਂ %s ਨਾਲ ਆਪਣੇ ਸਾਰੇ ਮਨਪਸੰਦ ਐਪਸ ਨੂੰ ਟਾਈਪ ਕਰ ਸਕਦੇ ਹੋ।"</string>
     <string name="setup_finish_action">"ਪੂਰਾ ਹੋਇਆ"</string>
-    <string name="show_setup_wizard_icon">"ਐਪ ਪ੍ਰਤੀਕ ਦਿਖਾਓ"</string>
-    <string name="show_setup_wizard_icon_summary">"ਲਾਂਚਰ ਵਿੱਚ ਐਪਲੀਕੇਸ਼ਨ ਪ੍ਰਤੀਕ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰੋ"</string>
     <string name="dictionary_category_title">"ਐਡ-ਆਨ ਸ਼ਬਦਕੋਸ਼"</string>
     <string name="dictionary_available">"ਸ਼ਬਦਕੋਸ਼ ਉਪਲਬਧ"</string>
     <string name="settings">"ਸੈਟਿੰਗਾਂ"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ਵਿਕਲਪਕ ਸ਼ਾਰਟਕੱਟ"</string>
     <string name="user_dict_settings_edit_dialog_title">"ਸ਼ਬਦ ਦਾ ਸੰਪਾਦਨ ਕਰੋ"</string>
     <string name="user_dict_settings_all_languages">"ਸਾਰੀਆਂ ਭਾਸ਼ਾਵਾਂ ਲਈ"</string>
-    <string name="user_dict_settings_more_languages">"ਹੋਰ ਭਾਸ਼ਾਵਾਂ…"</string>
     <string name="select_input_method">"ਇਨਪੁਟ ਵਿਧੀ ਚੁਣੋ"</string>
     <string name="undo">"ਅਣਕੀਤਾ ਕਰੋ"</string>
     <string name="redo">"ਮੁੜ-ਓਹੀ ਕਰੋ"</string>

@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Fiziki ALt düyməsi emoji palletini göstərir"</string>
     <string name="button_default">"Defolt"</string>
     <string name="setup_welcome_title">%s təbiqinə xoş gəlmisiniz\"</string>
-    <string name="setup_welcome_additional_description">"Jest Yazısı ilə"</string>
     <string name="setup_start_action">"Başlayın"</string>
     <string name="setup_steps_title">%s quraşdırılır\"</string>
     <string name="setup_step1_title">%s tətbiqini aktivləşdir\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Təbrik edirik, tam hazırsınız!"</string>
     <string name="setup_step3_instruction">"İndi siz %s ilə bütün sevimli tətbiqlərinizdə yaza bilərsiniz."</string>
     <string name="setup_finish_action">"Sona çatdı"</string>
-    <string name="show_setup_wizard_icon">"Tətbiq ikonasını göstər"</string>
-    <string name="show_setup_wizard_icon_summary">"Başlatma panelində tətbiq ikonasını göstər"</string>
     <string name="dictionary_category_title">"Əlavə lüğətlər"</string>
     <string name="dictionary_available">"Lüğət mövcuddur"</string>
     <string name="settings">"Ayarlar"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Qısayol"</string>
     <string name="user_dict_settings_edit_dialog_title">"Sözü redaktə edin"</string>
     <string name="user_dict_settings_all_languages">"Bütün dillər üçün"</string>
-    <string name="user_dict_settings_more_languages">"Digər dillər…"</string>
     <string name="settings_category_clipboard_history">Pano keçmişi</string>
     <string name="spell_checker_service_name">LeanType Yazı Yoxlayıcısı</string>
     <string name="android_spell_checker_settings">LeanType Yazı Yoxlayıcısı Parametrləri</string>

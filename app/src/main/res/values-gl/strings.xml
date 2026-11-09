@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"A tecla Alt física mostra a paleta de emoji"</string>
     <string name="button_default">"Predeterminado"</string>
     <string name="setup_welcome_title">Ben vida a %s</string>
-    <string name="setup_welcome_additional_description">"con escritura por xestos"</string>
     <string name="setup_start_action">"Comezar"</string>
     <string name="setup_steps_title">"Configurando %s"</string>
     <string name="setup_step1_title">"Activar %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Parabéns, está todo listo!"</string>
     <string name="setup_step3_instruction">"Agora podes escribir en todas as túas aplicacións favoritas con %s."</string>
     <string name="setup_finish_action">"Finalizado"</string>
-    <string name="show_setup_wizard_icon">"Mostrar icona da aplicación"</string>
-    <string name="show_setup_wizard_icon_summary">"Mostra a icona da aplicación no Launcher"</string>
     <string name="dictionary_category_title">"Dicionarios complementarios"</string>
     <string name="dictionary_available">"Dicionario dispoñible"</string>
     <string name="settings">"Configuración"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Atallo opcional"</string>
     <string name="user_dict_settings_edit_dialog_title">"Editar palabra"</string>
     <string name="user_dict_settings_all_languages">"Para todos os idiomas"</string>
-    <string name="user_dict_settings_more_languages">"Máis idiomas…"</string>
     <string name="select_input_method">"Escoller método de introdución de texto"</string>
     <string name="undo">"Desfacer"</string>
     <string name="redo">"Refacer"</string>
@@ -240,14 +236,11 @@
     <string name="day_or_night_image">Establecer para o modo diurno ou nocturno?</string>
     <string name="day_or_night_day">Día</string>
     <string name="day_or_night_night">Noite</string>
-    <string name="setup_step3_action">Configurar o teclado</string>
     <string name="dictionary_settings_category">Dicionarios</string>
     <string name="internal_dictionary_summary">Dicionario interno principal</string>
     <string name="add_new_dictionary_title">Engadir dicionario desde ficheiro</string>
     <string name="button_select_language">Elixir idioma</string>
     <string name="replace_dictionary">Substituír dicionario</string>
-    <string name="remove_dictionary_message">Tes certeza de querer substituír o dicionario engadido \"%s\"?</string>
-    <string name="no_dictionary_dont_show_again_button">Non volver mostrar</string>
     <string name="add_dictionary">Elixe o dicionario a engadir. Os dicionarios en formato .dict están dispoñibles en %s.</string>
     <string name="dictionary_file_error">Erro: o ficheiro seleccionado non é un dicionario válido</string>
     <string name="dictionary_file_wrong_script">Erro: o script non é compatible con este teclado</string>

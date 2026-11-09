@@ -64,7 +64,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Physical Alt key shows the emoji palette"</string>
     <string name="button_default">"Default"</string>
     <string name="setup_welcome_title">"Welcome to %s"</string>
-    <string name="setup_welcome_additional_description">"with Gesture Typing"</string>
     <string name="setup_start_action">"Get started"</string>
     <string name="setup_steps_title">"Setting up %s"</string>
     <string name="setup_step1_title">"Enable %s"</string>
@@ -76,8 +75,6 @@
     <string name="setup_step3_title">"Congratulations, you\'re all set!"</string>
     <string name="setup_step3_instruction">"Now you can type in all your favourite apps with %s."</string>
     <string name="setup_finish_action">"Finished"</string>
-    <string name="show_setup_wizard_icon">"Show app icon"</string>
-    <string name="show_setup_wizard_icon_summary">"Display application icon in the launcher"</string>
     <string name="dictionary_category_title">"Add-on dictionaries"</string>
     <string name="dictionary_available">"Dictionary available"</string>
     <string name="settings">"Settings"</string>
@@ -89,7 +86,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Optional shortcut"</string>
     <string name="user_dict_settings_edit_dialog_title">"Edit word"</string>
     <string name="user_dict_settings_all_languages">"For all languages"</string>
-    <string name="user_dict_settings_more_languages">"More languages…"</string>
     <string name="select_input_method">"Choose input method"</string>
     <string name="settings_screen_appearance">"Appearance"</string>
     <string name="undo">"Undo"</string>

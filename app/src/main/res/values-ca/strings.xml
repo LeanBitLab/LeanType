@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">Amb la tecla Alt del teclat físic es mostra la paleta d\'emojis</string>
     <string name="button_default">"Predeterminat"</string>
     <string name="setup_welcome_title">Us donem la benvinguda a %s</string>
-    <string name="setup_welcome_additional_description">amb escriptura gestual</string>
     <string name="setup_start_action">"Comença"</string>
     <string name="setup_steps_title">S\'està configurant %s</string>
     <string name="setup_step1_title">Habilitar %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Enhorabona, ja has acabat!"</string>
     <string name="setup_step3_instruction">Ara ja podeu escriure en totes les vostres aplicacions preferides amb %s.</string>
     <string name="setup_finish_action">"Finalitzat"</string>
-    <string name="show_setup_wizard_icon">"Mostra la icona de l\'aplicació"</string>
-    <string name="show_setup_wizard_icon_summary">"Mostra la icona de l\'aplicació al menú d\'aplicacions"</string>
     <string name="dictionary_category_title">"Diccionaris complementaris"</string>
     <string name="dictionary_available">"Diccionari disponible"</string>
     <string name="settings">"Configuració"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Drecera opcional"</string>
     <string name="user_dict_settings_edit_dialog_title">"Edició de la paraula"</string>
     <string name="user_dict_settings_all_languages">"Per a tots els idiomes"</string>
-    <string name="user_dict_settings_more_languages">"Més idiomes…"</string>
     <string name="settings_category_clipboard_history">Historial del porta-retalls</string>
     <string name="settings_no_limit">Sense límit</string>
     <string name="enable_clipboard_history_summary">Si es desactiva, la tecla del porta-retalls enganxarà el contingut del porta-retalls si n\'hi ha</string>
@@ -179,13 +175,11 @@
     <string name="select_word" tools:keep="@string/select_word">Selecciona la paraula</string>
     <string name="layout_clip_bottom_row" tools:keep="@string/layout_clip_bottom_row">Fila inferior del porta-retalls</string>
     <string name="layout_emoji_bottom_row" tools:keep="@string/layout_emoji_bottom_row">Fila inferior d\'emojis</string>
-    <string name="setup_step3_action">Configura el teclat</string>
     <string name="internal_dictionary_summary">Diccionari principal intern</string>
     <string name="add_new_dictionary_title">Afegeix diccionari des de fitxer</string>
     <string name="button_select_language">Selecciona l\'idioma</string>
     <string name="replace_dictionary_message">Realment substituir el diccionari afegit per l\'usuari «%1$s»?\n\nDiccionari actual:\n%2$s\n\nNou diccionari:\n%3$s</string>
     <string name="replace_dictionary">Substitueix diccionari</string>
-    <string name="remove_dictionary_message">Eliminar realment el diccionari afegit per l\'usuari «%s»?</string>
     <string name="clipboard_toolbar_keys">Selecciona les tecles de la barra d\'eines del porta-retalls</string>
     <string name="close_history" tools:keep="@string/close_history">Tanca l\'historial del porta-retalls</string>
     <string name="layout_symbols_arabic" tools:keep="@string/layout_symbols_arabic">Símbols (Àrab)</string>
@@ -321,7 +315,6 @@
     <string name="main_colors">Mostra només els colors principals</string>
     <string name="all_colors_warning">Aquesta configuració exposa tots els colors que s\'utilitzen internament. La llista de colors pot canviar en qualsevol moment. El color predeterminat és derivat dels colors normals i els noms no es traduiran.</string>
     <string name="hidden_features_title">Descripció de les característiques ocultes</string>
-    <string name="no_dictionary_dont_show_again_button">No tornis a mostrar</string>
     <string name="add_dictionary">Seleccioneu un diccionari per afegir. Els diccionaris en format .dict es poden baixar %s.</string>
     <string name="dictionary_link_text">aquí</string>
     <string name="available_dictionary_experimental">%s (experimental)</string>

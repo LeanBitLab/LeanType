@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"以實體 Alt 鍵顯示表情圖案選項"</string>
     <string name="button_default">"預設"</string>
     <string name="setup_welcome_title">"歡迎使用「%s」"</string>
-    <string name="setup_welcome_additional_description">"配備手勢輸入功能"</string>
     <string name="setup_start_action">"開始"</string>
     <string name="setup_steps_title">"設定「%s」"</string>
     <string name="setup_step1_title">"啟用「%s」"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"恭喜，一切就緒！"</string>
     <string name="setup_step3_instruction">"現在，您可以在所有最愛的應用程式中使用「%s」輸入文字。"</string>
     <string name="setup_finish_action">"完成"</string>
-    <string name="show_setup_wizard_icon">"顯示應用程式圖示"</string>
-    <string name="show_setup_wizard_icon_summary">"在啟動器中顯示圖示"</string>
     <string name="dictionary_category_title">"附加字典"</string>
     <string name="dictionary_available">"可使用字典"</string>
     <string name="settings">"設定"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"自選快速鍵"</string>
     <string name="user_dict_settings_edit_dialog_title">"編輯字詞"</string>
     <string name="user_dict_settings_all_languages">"所有語言"</string>
-    <string name="user_dict_settings_more_languages">"更多語言…"</string>
     <string name="settings_category_experimental">實驗功能</string>
     <string name="abbreviation_unit_minutes">%s分鐘</string>
     <string name="spell_checker_service_name">拼字檢查</string>

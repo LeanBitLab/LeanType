@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"አካላዊ Alt ቁልፍ የስሜት ገላጭ ቤተ-ስዕልን ያሳያል"</string>
     <string name="button_default">"ነባሪ"</string>
     <string name="setup_welcome_title">"እንኳን ወደ %s በደህና መጡ"</string>
-    <string name="setup_welcome_additional_description">"በጣት ምልክት መተየብ"</string>
     <string name="setup_start_action">"ጀምር"</string>
     <string name="setup_steps_title">%sን በማዋቀር ላይ\"</string>
     <string name="setup_step1_title">%sን ያንቁ\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"እንኳን ደስ አለዎት፣ በቃ ጨርሰዋል!"</string>
     <string name="setup_step3_instruction">"አሁን በሁሉም ተወዳጅ መተግበሪያዎችዎ ላይ በ%s መተየብ ይችላሉ።"</string>
     <string name="setup_finish_action">"ጨርሷል"</string>
-    <string name="show_setup_wizard_icon">"የመተግበሪያ አዶ አሳይ"</string>
-    <string name="show_setup_wizard_icon_summary">"የመተግበሪያ አዶውን በማስጀመሪያው ውስጥ አሳይ"</string>
     <string name="dictionary_category_title">"ጭማሪ መዝገበ-ቃላት"</string>
     <string name="dictionary_available">"መዝገበ-ቃላት ይገኛል"</string>
     <string name="settings">"ቅንብሮች"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"አማራጭ አቋራጭ"</string>
     <string name="user_dict_settings_edit_dialog_title">"ቃሉን አርትዕ"</string>
     <string name="user_dict_settings_all_languages">"ለሁሉም ቋንቋዎች"</string>
-    <string name="user_dict_settings_more_languages">"ተጨማሪ ቋንቋዎች…"</string>
     <string name="select_input_method">"የግቤት ስልት ምረጥ"</string>
     <string name="undo">"ቀልብስ"</string>
     <string name="redo">"ድገም"</string>

@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Fisieke Alt-sleutel wys die emosiekoon-palet"</string>
     <string name="button_default">"Verstek"</string>
     <string name="setup_welcome_title">Welkom by %s</string>
-    <string name="setup_welcome_additional_description">"met Gebaar-tik"</string>
     <string name="setup_start_action">"Kom aan die gang"</string>
     <string name="setup_steps_title">Stel %s op</string>
     <string name="setup_step1_title">Aktiveer %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Veels geluk, jy\'s gereed!"</string>
     <string name="setup_step3_instruction">Nou kan jy in al jou gunsteling-programme tik met %s.</string>
     <string name="setup_finish_action">"Klaar"</string>
-    <string name="show_setup_wizard_icon">"Wys program-ikoon"</string>
-    <string name="show_setup_wizard_icon_summary">"Wys program-ikoon in die lanseerpoort"</string>
     <string name="dictionary_category_title">"Voeg woordeboeke by"</string>
     <string name="dictionary_available">"Woordeboek beskikbaar"</string>
     <string name="settings">"Instellings"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Opsionele kortpad"</string>
     <string name="user_dict_settings_edit_dialog_title">"Redigeer woord"</string>
     <string name="user_dict_settings_all_languages">"Vir alle tale"</string>
-    <string name="user_dict_settings_more_languages">"Nog tale…"</string>
     <string name="settings_category_clipboard_history">Knipbord geskiedenis</string>
     <string name="settings_category_suggestions">Voorstelle</string>
     <string name="settings_category_experimental">Eksperimenteel</string>

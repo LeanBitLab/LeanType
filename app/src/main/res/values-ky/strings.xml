@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Alt баскычы басылганда быйтыкчалар тактасы көрүнөт"</string>
     <string name="button_default">"Демейки"</string>
     <string name="setup_welcome_title">%s кош келиңиз\"</string>
-    <string name="setup_welcome_additional_description">"Жаңсап терүү менен"</string>
     <string name="setup_start_action">"Баштоо"</string>
     <string name="setup_steps_title">%s орнотулууда\"</string>
     <string name="setup_step1_title">%s иштетүү\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Куттуктайбыз, бардыгы коюлду!"</string>
     <string name="setup_step3_instruction">"Эми бардык сүйүктүү колдонмолоруңузда %s менен тере аласыз."</string>
     <string name="setup_finish_action">"Аяктады"</string>
-    <string name="show_setup_wizard_icon">"Колдонмонун сүрөтчөсүн көрсөтүү"</string>
-    <string name="show_setup_wizard_icon_summary">"Колдонмонун сүрөтчөсү иштетүү тактасында көрүнөт"</string>
     <string name="dictionary_category_title">"Кошумча сөздүктөр"</string>
     <string name="dictionary_available">"Сөздүк бар"</string>
     <string name="settings">"Жөндөөлөр"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Кошумча кыска жол"</string>
     <string name="user_dict_settings_edit_dialog_title">"Сөздү түзөтүү"</string>
     <string name="user_dict_settings_all_languages">"Бардык тилдер үчүн"</string>
-    <string name="user_dict_settings_more_languages">"Дагы тилдер…"</string>
     <string name="select_input_method">"Дайын киргизүү ыкмасын тандаңыз"</string>
     <string name="undo">"Артка кайтаруу"</string>
     <string name="redo">"Кайталоо"</string>

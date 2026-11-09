@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"แป้น Alt บนเครื่องแสดงชุดอีโมจิ"</string>
     <string name="button_default">"ค่าเริ่มต้น"</string>
     <string name="setup_welcome_title">"ยินดีต้อนรับสู่ %s"</string>
-    <string name="setup_welcome_additional_description">"พร้อมการป้อนข้อมูลด้วยท่าทาง"</string>
     <string name="setup_start_action">"เริ่มต้นใช้งาน"</string>
     <string name="setup_steps_title">"การตั้งค่า %s"</string>
     <string name="setup_step1_title">"เปิดใช้งาน %s"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"ยินดีด้วย คุณพร้อมใช้งานแล้ว!"</string>
     <string name="setup_step3_instruction">"ตอนนี้คุณสามารถพิมพ์ข้อมูลลงในแอปที่ชื่นชอบทั้งหมดด้วย %s"</string>
     <string name="setup_finish_action">"เสร็จสิ้น"</string>
-    <string name="show_setup_wizard_icon">"แสดงไอคอนแอป"</string>
-    <string name="show_setup_wizard_icon_summary">"แสดงไอคอนแอปพลิเคชันในตัวเรียกใช้งาน"</string>
     <string name="dictionary_category_title">"พจนานุกรมส่วนเสริม"</string>
     <string name="dictionary_available">"มีพจนานุกรมให้ใช้งาน"</string>
     <string name="settings">"การตั้งค่า"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ทางลัดที่ไม่บังคับ"</string>
     <string name="user_dict_settings_edit_dialog_title">"แก้ไขคำ"</string>
     <string name="user_dict_settings_all_languages">"สำหรับทุกภาษา"</string>
-    <string name="user_dict_settings_more_languages">"ภาษาเพิ่มเติม…"</string>
     <string name="select_input_method">"เลือกวิธีการป้อนข้อมูล"</string>
     <string name="undo">"เลิกทำ"</string>
     <string name="redo">"ทำซ้ำ"</string>

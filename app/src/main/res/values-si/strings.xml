@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"භෞතික Alt යතුර ඉමොජි පෙන්වයි"</string>
     <string name="button_default">"සුපුරුදු"</string>
     <string name="setup_welcome_title">%s වෙත සාදරයෙන් පිළිගනිමු\"</string>
-    <string name="setup_welcome_additional_description">"ඉංගිත ටයිප් කිරීම් සමග"</string>
     <string name="setup_start_action">"අරඹන්න"</string>
     <string name="setup_steps_title">%s සැකසෙමින් පවතී\"</string>
     <string name="setup_step1_title">%s සබල කරන්න\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"සුබපැතුම්, ඔබ සියල්ල පිහිටුවා ඇත!"</string>
     <string name="setup_step3_instruction">"දැන් ඔබට %s සමගින් ඔබගේ  සියළුම ප්‍රියතම යෙදුම් වලින් ටයිප් කළ හැක."</string>
     <string name="setup_finish_action">"අවසන්"</string>
-    <string name="show_setup_wizard_icon">"යෙදුම් නිරූපකය පෙන්වන්න"</string>
-    <string name="show_setup_wizard_icon_summary">"දියත්කරනය තුළ යෙදුම් නිරූපකය දර්ශනය කරන්න"</string>
     <string name="dictionary_category_title">"ඈඳුම් ශබ්ද කෝෂ"</string>
     <string name="dictionary_available">"ශබ්දකෝෂය ලබාගත හැක"</string>
     <string name="settings">"සැකසීම්"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"විකල්පමය කෙටිමග"</string>
     <string name="user_dict_settings_edit_dialog_title">"වචනය සංස්කරණය කරන්න"</string>
     <string name="user_dict_settings_all_languages">"සියලු භාෂාවන් සඳහා"</string>
-    <string name="user_dict_settings_more_languages">"තවත් භාෂා…"</string>
     <string name="select_input_method">"ආදාන ක්‍රමයක් තෝරන්න"</string>
     <string name="settings_screen_appearance">"පෙනුම"</string>
     <string name="undo">"අස් කරන්න"</string>

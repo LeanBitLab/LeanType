@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Den fysiska Alt-tangenten visar emoji-paletten"</string>
     <string name="button_default">"Standard"</string>
     <string name="setup_welcome_title">Välkommen till %s</string>
-    <string name="setup_welcome_additional_description">"med svepskrivning"</string>
     <string name="setup_start_action">"Kom igång"</string>
     <string name="setup_steps_title">Konfigurerar %s</string>
     <string name="setup_step1_title">Aktivera %s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">Grattis, nu är allt klart!</string>
     <string name="setup_step3_instruction">Nu kan du skriva i alla dina favoritappar med %s.</string>
     <string name="setup_finish_action">Slutförd</string>
-    <string name="show_setup_wizard_icon">"Visa appikon"</string>
-    <string name="show_setup_wizard_icon_summary">"Visa appikonen i startprogrammet"</string>
     <string name="dictionary_category_title">"Tilläggsordlistor"</string>
     <string name="dictionary_available">Ordlista tillgänglig</string>
     <string name="settings">"Inställningar"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Valfri genväg"</string>
     <string name="user_dict_settings_edit_dialog_title">"Redigera ord"</string>
     <string name="user_dict_settings_all_languages">"För alla språk"</string>
-    <string name="user_dict_settings_more_languages">"Fler språk …"</string>
     <string name="settings_category_correction">Korrigeringar</string>
     <string name="settings_category_suggestions">Förslag</string>
     <string name="settings_category_experimental">Experimentella</string>
@@ -248,7 +244,6 @@
     <string name="quick_pin_toolbar_keys_summary">Detta kommer att inaktivera andra långtryckningsåtgärder för verktygsfältstangenter som inte är fästa</string>
     <string name="pinned_toolbar_keys">Välj fästa verktygsfältstangenter</string>
     <string name="quick_pin_toolbar_keys">Fäst verktygsfältstangent genom långtryckning</string>
-    <string name="setup_step3_action">Konfigurera tangentbordet</string>
     <string name="page_down" tools:keep="@string/page_down">Sida ner</string>
     <string name="remove_redundant_popups">Ta bort överflödiga popuper</string>
     <string name="remove_redundant_popups_summary">Dämpa popup-tangenter som finns i grundlayouten</string>

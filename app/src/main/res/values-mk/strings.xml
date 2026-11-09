@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Физичкото копче Alt ја прикажува палетата емотикони"</string>
     <string name="button_default">"Стандардно"</string>
     <string name="setup_welcome_title">"Добре дојдовте во %s"</string>
-    <string name="setup_welcome_additional_description">"со Пишување со движење"</string>
     <string name="setup_start_action">"Започнете"</string>
     <string name="setup_steps_title">"Се поставува %s"</string>
     <string name="setup_step1_title">"Овозможи %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Честитки, завршивте!"</string>
     <string name="setup_step3_instruction">"Сега може да ги впишете сите омилени апликации со %s."</string>
     <string name="setup_finish_action">"Завршено"</string>
-    <string name="show_setup_wizard_icon">"Покажи икона на апликација"</string>
-    <string name="show_setup_wizard_icon_summary">"Прикажи икона на апликација во стартувачот"</string>
     <string name="dictionary_category_title">"Додатоци за речници"</string>
     <string name="dictionary_available">"Речникот е достапен"</string>
     <string name="settings">"Поставки"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Изборна кратенка"</string>
     <string name="user_dict_settings_edit_dialog_title">"Измени збор"</string>
     <string name="user_dict_settings_all_languages">"За сите јазици"</string>
-    <string name="user_dict_settings_more_languages">"Повеќе јазици…"</string>
     <string name="select_input_method">"Одбери метод на внес"</string>
     <string name="undo">"Врати"</string>
     <string name="redo">"Повтори"</string>

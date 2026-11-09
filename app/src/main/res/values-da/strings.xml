@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">Alt-tast på fysisk tastatur viser emoji-paletten</string>
     <string name="button_default">"Standard"</string>
     <string name="setup_welcome_title">Velkommen til%s</string>
-    <string name="setup_welcome_additional_description">"med glidende indtastning"</string>
     <string name="setup_start_action">Kom i gang</string>
     <string name="setup_steps_title">%s konfigureres</string>
     <string name="setup_step1_title">Aktivér%s</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">Tillykke, du er klar!</string>
     <string name="setup_step3_instruction">Nu kan du skrive i alle dine favoritapps med %s.</string>
     <string name="setup_finish_action">"Afslut"</string>
-    <string name="show_setup_wizard_icon">"Vis appikon"</string>
-    <string name="show_setup_wizard_icon_summary">Vis applikationsikon i launcheren</string>
     <string name="dictionary_category_title">"Ekstra ordbøger"</string>
     <string name="dictionary_available">Ordbog tilgængelig</string>
     <string name="settings">"Indstillinger"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Valgfri genvej"</string>
     <string name="user_dict_settings_edit_dialog_title">"Rediger ord"</string>
     <string name="user_dict_settings_all_languages">Til alle sprog</string>
-    <string name="user_dict_settings_more_languages">"Flere sprog…"</string>
     <string name="settings_category_clipboard_history">Historik for udklipsholder</string>
     <string name="settings_category_correction">Rettelser</string>
     <string name="settings_category_suggestions">Forslag</string>
@@ -158,7 +154,6 @@
     <string name="layout_functional_keys" tools:keep="@string/layout_functional_keys">Funktionelle taster</string>
     <string name="dictionary_file_wrong_script">Fejl: Scriptet er ikke kompatibelt med dette tastatur</string>
     <string name="customize_currencies">Tilpas valutaer</string>
-    <string name="remove_dictionary_message">Fjern brugertilføjet ordbog \"%s\"?</string>
     <string name="dictionary_link_text">her</string>
     <string name="language_switch_key_behavior">Sprogskifte-tastens adfærd</string>
     <string name="backup_restore_title">Backup og gendannelse</string>
@@ -205,7 +200,6 @@
     <string name="prefs_bottom_padding_scale">Skala for padding i bunden</string>
     <string name="layout_functional_keys_symbols" tools:keep="@string/layout_functional_keys_symbols">Funktionelle taster (symboler)</string>
     <string name="layout_functional_keys_symbols_shifted" tools:keep="@string/layout_functional_keys_symbols_shifted">Funktionelle taster (flere symboler)</string>
-    <string name="setup_step3_action">Konfigurer tastaturet</string>
     <string name="user_dict_add_word_button">Tilføj et ord</string>
     <string name="theme_style">Stil</string>
     <string name="theme_colors_night">Farver (nat)</string>
@@ -238,7 +232,6 @@
     <string name="dictionary_settings_category">Ordbøger</string>
     <string name="internal_dictionary_summary">Intern hovedordbog</string>
     <string name="replace_dictionary">Erstat ordbog</string>
-    <string name="no_dictionary_dont_show_again_button">Vis ikke igen</string>
     <string name="add_dictionary">Vælg en ordbog at tilføje. Ordbøger i .dict-format kan hentes %s.</string>
     <string name="dictionary_load_error">Fejl under indlæsning af ordbogsfil</string>
     <string name="backup_error">Backup-fejl: %s</string>

@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"ປຸ່ມ Alt ແທ້​ສະ​ແດງ​ແຜ່ນ​ຮອງ emoji"</string>
     <string name="button_default">"ຄ່າເລີ່ມຕົ້ນ"</string>
     <string name="setup_welcome_title">"ຍິນ​ດີ​ຕ້ອນ​ຮັບສູ່ %s"</string>
-    <string name="setup_welcome_additional_description">"ດ້ວຍການພິມແບບ Gesture"</string>
     <string name="setup_start_action">"ເລີ່ມຕົ້ນ"</string>
     <string name="setup_steps_title">"ຕັ້ງຄ່າ %s"</string>
     <string name="setup_step1_title">"ເປີດນຳໃຊ້ %s"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"ຍິນດີດ້ວຍ, ທ່ານເຮັດແລ້ວໆ!"</string>
     <string name="setup_step3_instruction">"ຕອນນີ້ທ່ານສາມາດພິມໃນແອັບຯທີ່ທ່ານມັກໄດ້ທຸກແອັບຯດ້ວຍ %s."</string>
     <string name="setup_finish_action">"ສຳເລັດແລ້ວ"</string>
-    <string name="show_setup_wizard_icon">"ສະແດງໄອຄອນຂອງແອັບ"</string>
-    <string name="show_setup_wizard_icon_summary">"ສະແດງໄອຄອນຂອງແອັບໃນ Launcher"</string>
     <string name="dictionary_category_title">"ໂຕເສີມວັດຈະນານຸກົມ"</string>
     <string name="dictionary_available">"ມີວັດຈະນານຸກົມ"</string>
     <string name="settings">"ການຕັ້ງຄ່າ"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ຕົວເລືອກທາງລັດ"</string>
     <string name="user_dict_settings_edit_dialog_title">"ແກ້ໄຂຄຳສັບ"</string>
     <string name="user_dict_settings_all_languages">"ສໍາ​ລັບ​ທຸກໆ​ພາ​ສາ"</string>
-    <string name="user_dict_settings_more_languages">"ພາສາອື່ນໆ…"</string>
     <string name="select_input_method">"ເລືອກຮູບແບບການປ້ອນ"</string>
     <string name="settings_screen_appearance">"​ຮູບ​ແບບ​ໜ້າ​ຕາ"</string>
     <string name="redo">"ເຮັດໃໝ່"</string>

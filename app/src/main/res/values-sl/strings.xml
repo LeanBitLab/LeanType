@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Fizična tipka Alt prikaže nabor emodžijev"</string>
     <string name="button_default">"Privzeto"</string>
     <string name="setup_welcome_title">"Pozdravljeni v aplikaciji %s"</string>
-    <string name="setup_welcome_additional_description">"s pisanjem s kretnjami"</string>
     <string name="setup_start_action">"Začnite"</string>
     <string name="setup_steps_title">"Nastavitev aplikacije %s"</string>
     <string name="setup_step1_title">"Omogočanje aplikacije %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Čestitamo, pripravljeni ste."</string>
     <string name="setup_step3_instruction">"Zdaj lahko z aplikacijo %s tipkate v vseh svojih priljubljenih aplikacijah."</string>
     <string name="setup_finish_action">"Končano"</string>
-    <string name="show_setup_wizard_icon">"Pokaži ikono aplikacije"</string>
-    <string name="show_setup_wizard_icon_summary">"Prikaz ikone aplikacije v zaganjalniku"</string>
     <string name="dictionary_category_title">"Dodatni slovarji"</string>
     <string name="dictionary_available">"Slovar je na voljo"</string>
     <string name="settings">"Nastavitve"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Izbirna bližnjica"</string>
     <string name="user_dict_settings_edit_dialog_title">"Uredi besedo"</string>
     <string name="user_dict_settings_all_languages">"Za vse jezike"</string>
-    <string name="user_dict_settings_more_languages">"Več jezikov …"</string>
     <string name="select_input_method">"Izberite način vnosa"</string>
     <string name="auto_correction_confidence">Interval zaupanja samodejnih popravkov</string>
     <string name="delete_swipe_summary">Podrsaj z vračalke, da izbereš in izbrišeš večje dele besedila naenkrat</string>

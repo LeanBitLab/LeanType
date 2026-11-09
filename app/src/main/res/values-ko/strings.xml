@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"물리적 Alt 키로 그림 이모티콘 팔레트 표시"</string>
     <string name="button_default">"기본값"</string>
     <string name="setup_welcome_title">%s에 오신 것을 환영합니다</string>
-    <string name="setup_welcome_additional_description">"제스처 타이핑 사용"</string>
     <string name="setup_start_action">"시작하기"</string>
     <string name="setup_steps_title">%s 설정</string>
     <string name="setup_step1_title">%s 사용 설정</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">모든 설정이 완료되었습니다!</string>
     <string name="setup_step3_instruction">이제 즐겨찾는 앱을 %s과 함께 입력할 수 있습니다.</string>
     <string name="setup_finish_action">"완료됨"</string>
-    <string name="show_setup_wizard_icon">"앱 아이콘 표시"</string>
-    <string name="show_setup_wizard_icon_summary">"런처에 애플리케이션 아이콘 표시"</string>
     <string name="dictionary_category_title">"사전 추가"</string>
     <string name="dictionary_available">"사전 사용 가능"</string>
     <string name="settings">"설정"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"선택적 단축키"</string>
     <string name="user_dict_settings_edit_dialog_title">"단어 수정"</string>
     <string name="user_dict_settings_all_languages">"모든 언어"</string>
-    <string name="user_dict_settings_more_languages">"더보기…"</string>
     <string name="autospace_after_punctuation">마침표 후 자동 띄어쓰기</string>
     <string name="autospace_after_punctuation_summary">새로운 단어를 입력할 때 마침표가 앞에 있다면 자동으로 띄어쓰기 하기</string>
     <string name="select_input_method">"입력 방법 선택"</string>

@@ -52,11 +52,8 @@
     <string name="prefs_enable_emoji_alt_physical_key">"কায়িক কীব\'ৰ্ডৰ বাবে ইম\'জী"</string>
     <string name="prefs_enable_emoji_alt_physical_key_summary">"কায়িক Alt কীয়ে ইম\'জী পেলেট দেখুৱায়"</string>
     <string name="button_default">"ডিফ\'ল্ট"</string>
-    <string name="setup_welcome_additional_description">"আঙুলি পিছলাই দিয়া নিৰ্দেশেৰে টাইপ কৰাৰ সুবিধাৰ সৈতে"</string>
     <string name="setup_start_action">"আৰম্ভ কৰক"</string>
     <string name="setup_finish_action">"সম্পূৰ্ণ হ’ল"</string>
-    <string name="show_setup_wizard_icon">"এপৰ আইকন দেখুৱাওক"</string>
-    <string name="show_setup_wizard_icon_summary">"লঞ্চাৰত এপ্লিকেশ্বন আইকন দেখুৱাওক"</string>
     <string name="dictionary_category_title">"অতিৰিক্ত অভিধান"</string>
     <string name="dictionary_available">"অভিধান উপলব্ধ"</string>
     <string name="settings">"ছেটিংসমূহ"</string>
@@ -67,7 +64,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ঐচ্ছিক শ্বৰ্টকাট"</string>
     <string name="user_dict_settings_edit_dialog_title">"শব্দ সম্পাদনা কৰক"</string>
     <string name="user_dict_settings_all_languages">"সকলো ভাষাৰ বাবে"</string>
-    <string name="user_dict_settings_more_languages">"অধিক ভাষা…"</string>
     <string name="undo">"আনডু কৰক"</string>
     <string name="redo">"ৰিডু"</string>
 </resources>

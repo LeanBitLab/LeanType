@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Teklatu fisikoko Alt tekla sakatuta emojiak agertzen dira"</string>
     <string name="button_default">"Lehenetsia"</string>
     <string name="setup_welcome_title">Ongi etorri %s aplikaziora</string>
-    <string name="setup_welcome_additional_description">Keinu-idazketarekin</string>
     <string name="setup_start_action">"Hasi erabiltzen"</string>
     <string name="setup_steps_title">%s konfiguratzen</string>
     <string name="setup_step1_title">%s gaitu</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Dena prest duzu!"</string>
     <string name="setup_step3_instruction">Gogokoen dituzun aplikazioetan idatz dezakezu dagoeneko %s erabilita.</string>
     <string name="setup_finish_action">"Amaituta"</string>
-    <string name="show_setup_wizard_icon">"Erakutsi aplikazioaren ikonoa"</string>
-    <string name="show_setup_wizard_icon_summary">Bistaratu aplikazioaren ikonoa panelean</string>
     <string name="dictionary_category_title">"Hiztegi gehigarriak"</string>
     <string name="dictionary_available">"Hiztegia erabilgarri"</string>
     <string name="settings">"Ezarpenak"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Aukerako lasterbidea"</string>
     <string name="user_dict_settings_edit_dialog_title">"Editatu hitza"</string>
     <string name="user_dict_settings_all_languages">"Hizkuntza guztietan"</string>
-    <string name="user_dict_settings_more_languages">"Hizkuntza gehiago…"</string>
     <string name="settings_category_clipboard_history">Arbelaren historia</string>
     <string name="settings_category_correction">Zuzenketak</string>
     <string name="settings_category_suggestions">Iradokizunak</string>
@@ -233,10 +229,7 @@
     <string name="day_or_night_image">Irudia eguneko edo gaueko moduan ezarri nahi duzu?</string>
     <string name="day_or_night_day">Eguna</string>
     <string name="day_or_night_night">Gaua</string>
-    <string name="setup_step3_action">Konfiguratu teklatua</string>
     <string name="replace_dictionary">Ordeztu hiztegia</string>
-    <string name="remove_dictionary_message">Erabiltzaileak gehitutako \"%s\" hiztegia benetan kendu?</string>
-    <string name="no_dictionary_dont_show_again_button">Ez erakutsi berriro</string>
     <string name="dictionary_link_text">hemen</string>
     <string name="available_dictionary_experimental">%s (esperimentala)</string>
     <string name="dictionary_file_error">Errorea: hautatutako fitxategia ez da baliozko hiztegi-fitxategi bat</string>

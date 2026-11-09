@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"ಭೌತಿಕ Alt ಕೀ ಎಮೋಜಿ ಪ್ಯಾಲೆಟ್ ತೋರಿಸುತ್ತದೆ"</string>
     <string name="button_default">"ಡಿಫಾಲ್ಟ್"</string>
     <string name="setup_welcome_title">%s ಗೆ ಸುಸ್ವಾಗತ\"</string>
-    <string name="setup_welcome_additional_description">"ಗೆಶ್ಚರ್ ಟೈಪಿಂಗ್‌ನೊಂದಿಗೆ"</string>
     <string name="setup_start_action">"ಪ್ರಾರಂಭ"</string>
     <string name="setup_steps_title">%s ಅನ್ನು ಹೊಂದಿಸಲಾಗುತ್ತಿದೆ\"</string>
     <string name="setup_step1_title">%s ಸಕ್ರಿಯಗೊಳಿಸಿ\"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"ಅಭಿನಂದನೆಗಳು, ನೀವೀಗ ಎಲ್ಲವನ್ನೂ ಹೊಂದಿಸಿರುವಿರಿ!"</string>
     <string name="setup_step3_instruction">"ಈಗ ನೀವು %s ನೊಂದಿಗೆ ನಿಮ್ಮ ಎಲ್ಲ ಮೆಚ್ಚಿನ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಲ್ಲಿ ಟೈಪ್ ಮಾಡಬಹುದು."</string>
     <string name="setup_finish_action">"ಮುಕ್ತಾಯಗೊಂಡಿದೆ"</string>
-    <string name="show_setup_wizard_icon">"ಅಪ್ಲಿಕೇಶನ್ ಐಕಾನ್ ತೋರಿಸು"</string>
-    <string name="show_setup_wizard_icon_summary">"ಲಾಂಚರ್‌ನಲ್ಲಿ ಅಪ್ಲಿಕೇಶನ್ ಐಕಾನ್ ಪ್ರದರ್ಶಿಸು"</string>
     <string name="dictionary_category_title">"ಆಡ್-ಆನ್ ನಿಘಂಟುಗಳು"</string>
     <string name="dictionary_available">"ನಿಘಂಟು ಲಭ್ಯವಿದೆ"</string>
     <string name="settings">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ಐಚ್ಛಿಕ ಶಾರ್ಟ್‌ಕಟ್"</string>
     <string name="user_dict_settings_edit_dialog_title">"ಪದವನ್ನು ಎಡಿಟ್ ಮಾಡಿ"</string>
     <string name="user_dict_settings_all_languages">"ಎಲ್ಲ ಭಾಷೆಗಳಿಗೆ"</string>
-    <string name="user_dict_settings_more_languages">"ಇನ್ನಷ್ಟು ಭಾಷೆಗಳು…"</string>
     <string name="select_input_method">"ಇನ್‌ಪುಟ್‌‌ ವಿಧಾನವನ್ನು ಆರಿಸಿ"</string>
     <string name="undo">"ರದ್ದುಗೊಳಿಸಿ"</string>
     <string name="redo">"ಪುನಃ ಮಾಡು"</string>

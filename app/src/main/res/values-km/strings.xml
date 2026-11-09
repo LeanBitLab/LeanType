@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"គ្រាប់ចុច Alt បង្ហាញផ្ទាំងសញ្ញាអារម្មណ៍"</string>
     <string name="button_default">"លំនាំដើម"</string>
     <string name="setup_welcome_title">"សូម​ស្វាគមន៍​មក​កាន់ %s"</string>
-    <string name="setup_welcome_additional_description">"ជាមួយ​​​ការ​វាយ​បញ្ចូល​ដោយ​ប្រើ​​​កាយវិការ"</string>
     <string name="setup_start_action">"បាន​ចាប់ផ្ដើម"</string>
     <string name="setup_steps_title">"រៀបចំ %s"</string>
     <string name="setup_step1_title">"បើក %s"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"សូម​អបអរ​សាទរ,​ អ្នក​​បាន​កំណត់​​រួចរាល់​ហើយ!"</string>
     <string name="setup_step3_instruction">"ឥឡូវ​​អ្នក​អាច​​វាយ​បញ្ចូល​នៅ​ក្នុង​​កម្មវិធី​​ពេញ​ចិត្ត​របស់​អ្នក​ទាំងអស់​ជាមួយ %s ។"</string>
     <string name="setup_finish_action">"បាន​បញ្ចប់"</string>
-    <string name="show_setup_wizard_icon">"បង្ហាញ​រូប​កម្មវិធី"</string>
-    <string name="show_setup_wizard_icon_summary">"បង្ហាញ​រូប​កម្មវិធី​នៅ​ក្នុង​កម្ម​​វិធី​ចាប់ផ្ដើម"</string>
     <string name="dictionary_category_title">"ផ្នែក​បន្ថែម​វចនានុក្រម​​"</string>
     <string name="dictionary_available">"វចនានុក្រម​​​អាច​ប្រើ​បាន"</string>
     <string name="settings">"ការ​កំណត់"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"ផ្លូវកាត់​ជា​ជម្រើស"</string>
     <string name="user_dict_settings_edit_dialog_title">"កែ​ពាក្យ"</string>
     <string name="user_dict_settings_all_languages">"សម្រាប់​ភាសា​ទាំងអស់"</string>
-    <string name="user_dict_settings_more_languages">"ភាសា​ច្រើន​ទៀត…"</string>
     <string name="select_input_method">"ជ្រើស​វិធីសាស្ត្រ​បញ្ចូល"</string>
     <string name="settings_screen_appearance">"រូបរាង"</string>
     <string name="undo">"មិនធ្វើវិញ"</string>

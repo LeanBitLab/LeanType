@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">Fyysinen Alt-näppäin näyttää emoji-paletin</string>
     <string name="button_default">"Oletusarvot"</string>
     <string name="setup_welcome_title">"Tervetuloa käyttämään sovellusta %s"</string>
-    <string name="setup_welcome_additional_description">"ja piirtokirjoitus"</string>
     <string name="setup_start_action">"Aloita"</string>
     <string name="setup_steps_title">"Sovelluksen %s asetukset"</string>
     <string name="setup_step1_title">"Ota %s käyttöön"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Onneksi olkoon, valmista tuli!"</string>
     <string name="setup_step3_instruction">Nyt voit kirjoittaa kaikki suosikkisovelluksesi %s.</string>
     <string name="setup_finish_action">"Valmis"</string>
-    <string name="show_setup_wizard_icon">"Näytä sovelluskuvake"</string>
-    <string name="show_setup_wizard_icon_summary">Näytä sovelluskuvake käynnistysohjelmassa</string>
     <string name="dictionary_category_title">"Sanakirjalisäosat"</string>
     <string name="dictionary_available">"Sanakirja saatavilla"</string>
     <string name="settings">"Asetukset"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Valinnainen pikanäppäin"</string>
     <string name="user_dict_settings_edit_dialog_title">"Muokkaa sanaa"</string>
     <string name="user_dict_settings_all_languages">"Kaikille kielille"</string>
-    <string name="user_dict_settings_more_languages">"Lisää kieliä…"</string>
     <string name="select_input_method">"Valitse syöttötapa"</string>
     <string name="settings_screen_appearance">Ulkoasu</string>
     <string name="undo">"Kumoa"</string>
@@ -119,7 +115,6 @@
     <string name="button_load_custom">Lataa tiedosto</string>
     <string name="file_read_error">Tiedostoa ei voi lukea</string>
     <string name="layout_phone" tools:keep="@string/layout_phone">Puhelin</string>
-    <string name="no_dictionary_dont_show_again_button">Älä näytä uudelleen</string>
     <string name="add_dictionary">Valitse lisättävä sanakirja. Sanakirjoja .dict-muodossa voi ladata %s.</string>
     <string name="select_color_key_background">Näppäimen tausta</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Pyöristetty</string>
@@ -179,7 +174,6 @@
     <string name="select_color_background">Näppäimistön tausta</string>
     <string name="emoji" tools:keep="@string/emoji">Emoji</string>
     <string name="clipboard_toolbar_keys">Valitse leikepöydän työkalupalkin näppäimet</string>
-    <string name="setup_step3_action">Muokkaa näppäimistöä</string>
     <string name="text_tap_languages">Napauta kieltä avataksesi sen asetukset</string>
     <string name="save_log">Tallenna loki</string>
     <string name="gnu_gpl">GNU General Public License v3.0</string>
@@ -319,7 +313,6 @@
     <string name="layout_numpad_landscape" tools:keep="@string/layout_numpad_landscape">Numeronäppäimistö (vaakataso)</string>
     <string name="layout_number_row_basic" tools:keep="@string/layout_number_row_basic">Numerorivi (perus)</string>
     <string name="customize_background_image_landscape">Aseta taustakuva (vaakataso)</string>
-    <string name="remove_dictionary_message">Haluatko varmasti poistaa käyttäjän lisäämän sanaston \"%s\"?</string>
     <string name="select_color_spacebar_text">Välilyönnin teksti</string>
     <string name="space_swipe_hide_keyboard_entry">Piilota näppäimistö</string>
     <string name="delete_confirmation">Haluatko varmasti poistaa %s?</string>

@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"物理Altキーによって絵文字パレットが表示されます"</string>
     <string name="button_default">"デフォルト"</string>
     <string name="setup_welcome_title">%sへようこそ\"</string>
-    <string name="setup_welcome_additional_description">"新しいジェスチャー入力をお試しください"</string>
     <string name="setup_start_action">"開始"</string>
     <string name="setup_steps_title">%sの設定\"</string>
     <string name="setup_step1_title">%sの有効化\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">設定完了！</string>
     <string name="setup_step3_instruction">"これで、お気に入りのすべてのアプリで%sを使用して入力できます。"</string>
     <string name="setup_finish_action">"完了"</string>
-    <string name="show_setup_wizard_icon">"アプリアイコンを表示"</string>
-    <string name="show_setup_wizard_icon_summary">"ランチャーにアプリアイコンを表示します"</string>
     <string name="dictionary_category_title">"アドオン辞書"</string>
     <string name="dictionary_available">"辞書を利用できます"</string>
     <string name="settings">"設定"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"オプションのショートカット"</string>
     <string name="user_dict_settings_edit_dialog_title">"語句の編集"</string>
     <string name="user_dict_settings_all_languages">"すべての言語用"</string>
-    <string name="user_dict_settings_more_languages">"その他の言語…"</string>
     <string name="select_input_method">"入力方法の選択"</string>
     <string name="undo">"元に戻す"</string>
     <string name="redo">"やり直し"</string>

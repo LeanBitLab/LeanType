@@ -7,7 +7,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Name of Android spell checker service. The app name should not be translated. -->
     <string name="spell_checker_service_name">LeanType Spell Checker</string>
-    <string name="ime_name">LeanType</string>
     <!-- Title for IME settings screen. The app name should not be translated. -->
     <string name="ime_settings">LeanType Settings</string>
     <!-- Title for the spell checking service settings screen. The app name should not be translated. -->
@@ -67,11 +66,9 @@
     <!-- Settings category title for Gesture Typing/Visuals -->
     <string name="settings_category_visuals">Visuals &amp; Preview</string>
     <!-- Settings category title for Gesture Typing/Behavior -->
-    <string name="settings_category_behavior">Behavior</string>
     <!-- Settings category title for Gesture Typing/Advanced -->
     <string name="settings_category_gestures_advanced">Advanced Gestures</string>
     <!-- Settings category title for Touchpad options -->
-    <string name="settings_category_touchpad">Touchpad</string>
     <!--  Option for enabling or disabling the split keyboard layout in portrait mode.-->
     <string name="enable_split_keyboard">Enable split keyboard</string>
     <!--  Option for enabling or disabling the split keyboard layout in landscape mode.-->
@@ -129,7 +126,6 @@
     <!-- Option to edit personal dictionary.-->
     <string name="edit_personal_dictionary">Personal dictionary</string>
     <string name="edit_blocked_words">Blocked words</string>
-    <string name="blocked_words_summary">Manage words blocked from suggestions</string>
     <string name="add_blocked_word">Block a word</string>
     <string name="blocked_word_already_present">Word is already blocked</string>
     <string name="clear_all_blocked_words_confirmation">Are you sure you want to unblock all words?</string>
@@ -194,7 +190,6 @@
     <string name="prefs_physical_keyboard_layout_summary">Choose layout mapping for external hardware keyboards (e.g. AZERTY, QWERTZ, Dvorak)</string>
     <string name="physical_keyboard_layout_match_soft">Match on-screen keyboard (Auto)</string>
     <string name="physical_keyboard_layout_system_default">System default</string>
-    <string name="large_screen_layout_note">Settings on this screen apply to large-screen layout</string>
     <!-- Option to undo auto correction with backspace -->
     <string name="backspace_reverts_autocorrect">Backspace reverts autocorrect</string>
     <!-- Option to delete whole words when holding the delete key -->
@@ -209,10 +204,6 @@
     <string name="auto_correction_threshold_mode_very_aggressive">Very aggressive</string>
     <!-- Options and descriptions for consolidated auto-correction aggressiveness slider -->
     <string name="auto_correct_aggressiveness_title">Auto-correction aggressiveness</string>
-    <string name="auto_correct_aggressiveness_1">Modest</string>
-    <string name="auto_correct_aggressiveness_2">Balanced (Default)</string>
-    <string name="auto_correct_aggressiveness_3">Aggressive</string>
-    <string name="auto_correct_aggressiveness_4">Very aggressive</string>
     <string name="auto_correct_aggressiveness_desc_1">Modest\nAuto-corrects only words with very close spelling in standard input fields.</string>
     <string name="auto_correct_aggressiveness_desc_2">Balanced (Default)\nStandard correction confidence in supported input fields.</string>
     <string name="auto_correct_aggressiveness_desc_3">Aggressive\nExtends auto-correction across more apps and unassisted text fields.</string>
@@ -267,11 +258,6 @@
     <!-- Option to adjust suggestion balance between dictionary and personal history -->
     <string name="suggestion_balance_title">Suggestion balance</string>
     <string name="suggestion_balance_summary">Adjust the balance between dictionary accuracy and personal typing history</string>
-    <string name="suggestion_balance_1">Dictionary-focused</string>
-    <string name="suggestion_balance_2">Conservative</string>
-    <string name="suggestion_balance_3">Balanced (Default)</string>
-    <string name="suggestion_balance_4">Personalized</string>
-    <string name="suggestion_balance_5">Highly personalized</string>
     <string name="suggestion_balance_desc_1">Dictionary-focused\nPrioritizes standard language dictionaries; minimizes unverified learned words.</string>
     <string name="suggestion_balance_desc_2">Conservative\nMild preference for standard dictionaries with low personal word boost.</string>
     <string name="suggestion_balance_desc_3">Balanced (Default)\nStandard balance between dictionary vocabulary and personal typing habits.</string>
@@ -279,7 +265,6 @@
     <string name="suggestion_balance_desc_5">Highly personalized\nStrongly favors learned history and personal words over standard vocabulary.</string>
     <!-- Legacy option kept for translation compatibility -->
     <string name="next_word_boost_level">Learned word boost level</string>
-    <string name="next_word_boost_level_summary">Set score priority boost strength for learned and personal dictionary entries</string>
     <!-- Option to require strict preceding context for learned word suggestions. -->
     <string name="next_word_strict_ngram">Require context match for learned words</string>
     <!-- Description for strict ngram option. -->
@@ -287,8 +272,6 @@
 
     <string name="immediate_auto_space">Immediate auto-space</string>
     <string name="immediate_auto_space_summary">Commit space instantly when picking a suggestion to prevent delay on next typed letter</string>
-    <string name="pref_foldable_mode_title">Foldable screen profile</string>
-    <string name="pref_foldable_mode_summary">Enable automatic screen profile detection and split keyboard scaling for foldable devices</string>
 
     <!-- Option to enable using punctuation suggestions. -->
     <string name="suggest_punctuation">Punctuation suggestions</string>
@@ -350,7 +333,6 @@
     <string name="clipboard_history_pinned_first">Show pinned items on top</string>
     <string name="clipboard_fold_pinned">Fold pinned items by default</string>
     <string name="clear_clipboard_icon">Clear clipboard icon</string>
-    <string name="clear_clipboard_icon_summary">Select the icon style for the clear clipboard button</string>
     <string name="clear_clipboard_icon_bin">Trash bin</string>
     <string name="clear_clipboard_icon_sweep">Sweep / Clear all</string>
     <string name="clear_clipboard_icon_sweep_slanted">Slanted lines</string>
@@ -377,7 +359,6 @@
     <string name="clipboard_action_edit">Edit</string>
     <string name="clipboard_action_delete">Delete</string>
     <string name="clipboard_action_select">Select</string>
-    <string name="clipboard_options_title">Clip options</string>
     <string name="clipboard_items_deleted">%1$d items deleted</string>
     <!-- Preferences item for enabling swipe deletion -->
     <string name="delete_swipe">Delete swipe</string>
@@ -414,9 +395,6 @@
 
     <!-- ponytail: gesture engine/method selection preferences -->
     <string name="gesture_method">Gesture typing method</string>
-    <string name="gesture_method_summary">Choose algorithm for swipe typing</string>
-    <string name="gesture_method_native">Native library (requires swypelib)</string>
-    <string name="gesture_method_fallback">Fallback engine (pure Java)</string>
     <!-- Message in load gesture library dialog -->
     <string name="load_gesture_library_message">You will need the library for \'%s\'. Incompatible libraries may crash when using gesture typing.
         \n\nWarning: loading external code can be a security risk. Only use a library from a source you trust.</string>
@@ -436,48 +414,32 @@
     <string name="load_gesture_library_download_failed">Download failed: %s</string>
     <!-- Preferences item for loading an external handwriting plugin -->
     <string name="load_handwriting_plugin">Load handwriting plugin</string>
-    <string name="load_handwriting_plugin_summary">Provide an APK plugin to enable handwriting input</string>
-    <string name="load_handwriting_plugin_message">Provide a handwriting plugin APK.\n\nWarning: loading external code can be a security risk. Only use a plugin from a source you trust.</string>
-    <string name="load_handwriting_plugin_button_load">Load plugin APK</string>
     <string name="load_handwriting_plugin_button_delete">Delete plugin</string>
-    <string name="load_handwriting_plugin_success">Handwriting plugin imported successfully</string>
     <string name="load_handwriting_plugin_failed">Failed to load handwriting plugin APK</string>
     <!-- Preferences item for loading an external translation plugin -->
     <string name="load_translation_plugin">Load translation plugin</string>
-    <string name="load_translation_plugin_summary">Provide an APK plugin to enable translation engine</string>
     <string name="load_translation_plugin_button_delete">Delete plugin</string>
-    <string name="load_translation_plugin_success">Translation plugin imported successfully</string>
     <string name="load_translation_plugin_failed">Failed to load translation plugin APK</string>
     <string name="load_offline_ai_plugin">Offline AI Plugin</string>
     <string name="load_offline_ai_plugin_summary">Provide an APK plugin to enable on-device GGUF models</string>
     <string name="load_offline_ai_plugin_button_delete">Delete plugin</string>
-    <string name="load_offline_ai_plugin_success">Offline AI plugin imported successfully</string>
     <string name="load_offline_ai_plugin_failed">Failed to load Offline AI plugin APK</string>
     <!-- Preferences item for loading an external OCR plugin -->
     <string name="ocr">Text Recognition (OCR)</string>
     <string name="ocr_title">Text Recognition (OCR)</string>
     <string name="ocr_settings_title">Text Recognition Settings</string>
-    <string name="ocr_settings_summary">Extract text from camera and screenshots offline</string>
     <string name="load_ocr_plugin">Load OCR plugin</string>
-    <string name="load_ocr_plugin_summary">Provide an APK plugin to enable on-device text recognition</string>
     <string name="load_ocr_plugin_button_delete">Delete plugin</string>
     <string name="load_ocr_plugin_success">OCR plugin imported successfully</string>
     <string name="load_ocr_plugin_failed">Failed to load OCR plugin APK</string>
     <string name="ocr_plugin_required_title">OCR Plugin Required</string>
     <string name="ocr_plugin_required_summary">Install the Text Recognition plugin APK to enable camera and screenshot OCR.</string>
     <string name="ocr_plugin_open_settings">Open OCR Settings</string>
-    <string name="ocr_result_title">Extracted Text</string>
-    <string name="ocr_insert_button">Insert Text</string>
-    <string name="ocr_retake_button">Retake</string>
-    <string name="ocr_screenshot_button_desc">Extract text from latest screenshot</string>
     <string name="ocr_flash_button_desc">Toggle camera flash</string>
     <string name="ocr_shutter_button_desc">Capture text from camera</string>
     <string name="ocr_camera_permission_required">Camera permission is required for OCR viewfinder</string>
-    <string name="ocr_camera_start_error">Unable to start camera viewfinder</string>
-    <string name="ocr_no_screenshot_found">No recent screenshot found</string>
     <string name="ocr_screenshot_load_failed">Failed to load screenshot image</string>
     <string name="ocr_no_text_detected">No text detected</string>
-    <string name="ocr_processing_text">Recognizing text…</string>
     <string name="ocr_keep_line_breaks">Preserve line breaks</string>
     <string name="ocr_keep_line_breaks_summary">Keep line breaks in recognized text blocks</string>
     <string name="ocr_suggest_screenshot_text">Suggest text extraction from screenshots</string>
@@ -660,23 +622,15 @@
     <string name="installed">Installed</string>
     <string name="voice" tools:keep="@string/voice">Voice input</string>
     <string name="voice_input_title">Voice Input</string>
-    <string name="offline_voice_title">Offline Voice Input</string>
-    <string name="pref_offline_voice_summary">Dictate text offline using local speech models</string>
     <string name="pref_voice_language_title">Voice Recognition Language</string>
     <string name="voice_lang_follow_keyboard">Follow keyboard language</string>
     <string name="voice_lang_auto_detect">Auto-detect spoken language</string>
-    <string name="voice_commands_title">Voice Commands</string>
-    <string name="voice_commands_summary">Perform editing actions by voice (e.g. \"new line\", \"delete word\", \"clear all\", \"send\")</string>
-    <string name="voice_smart_punctuation_title">Smart Spoken Punctuation</string>
-    <string name="voice_smart_punctuation_summary">Convert spoken words (\"comma\", \"question mark\", \"period\") into punctuation symbols</string>
     <string name="voice_command_executed">Voice command executed</string>
     <string name="voice_status_connecting">Connecting speech engine…</string>
     <string name="voice_status_listening">Listening… speak now</string>
     <string name="voice_status_processing">Processing…</string>
     <string name="voice_action_done">Done</string>
     <string name="voice_action_cancel">Cancel</string>
-    <string name="online_voice_title">Online Voice-to-Text</string>
-    <string name="pref_online_voice_summary">Dictate text online using your configured AI provider and voice model</string>
     <string name="pref_voice_auto_retry_title">Auto-retry failed voice typing</string>
     <string name="pref_voice_auto_retry_summary">Automatically retry transcription when a temporary network dropout occurs</string>
     <string name="voice_no_internet_warning">No internet connection</string>
@@ -684,11 +638,8 @@
     <string name="voice_provider_title">Voice Input Provider</string>
     <string name="voice_provider_summary">Select how voice dictation is processed</string>
     <string name="voice_provider_offline">Offline Voice Input (Plugin)</string>
-    <string name="voice_provider_offline_summary">Private on-device Whisper speech-to-text</string>
     <string name="voice_provider_online">Online AI Voice Input</string>
-    <string name="voice_provider_online_summary">High-accuracy cloud AI speech-to-text</string>
     <string name="voice_provider_third_party">System / Third-Party Voice Input</string>
-    <string name="voice_provider_third_party_summary">Use your system default or installed voice typing app</string>
     <string name="voice_provider_none">Disabled</string>
     <string name="voice_provider_none_summary">Turn off voice input and hide microphone key</string>
     <string name="voice_third_party_app_title">Voice Typing App</string>
@@ -723,28 +674,15 @@
     <string name="emoji" tools:keep="@string/emoji">Emoji</string>
     <!-- Proofreading feature strings -->
     <string name="proofread" tools:keep="@string/proofread">Proofread</string>
-    <string name="proofread_loading">Proofreading…</string>
-    <string name="proofread_success">Text proofread</string>
-    <string name="proofread_error">Proofreading failed: %s</string>
-    <string name="proofread_no_text">No text to proofread</string>
     <string name="api_error_rate_limit">Rate limit reached. Please wait a moment and try again.</string>
     <string name="api_error_service_unavailable">Service temporarily unavailable. Please try again later.</string>
-    <string name="proofread_no_api_key">Gemini API key not set. Go to Settings → AI integration.</string>
     <string name="gemini_api_key_title">Gemini API Key</string>
     <string name="gemini_api_key_summary">Enter your Google Gemini API key for proofreading</string>
     <string name="gemini_api_key_hint">Enter API key</string>
     <string name="get_api_key">Get API Key</string>
     <string name="gemini_model_title">Gemini Model</string>
     <string name="gemini_model_summary">Select the AI model for proofreading</string>
-    <string name="gemini_test_api_key">Test API Key</string>
     <string name="gemini_api_key_valid">API key is valid!</string>
-    <string name="gemini_api_key_invalid">API key test failed: %s</string>
-    <string name="gemini_testing_api_key">Testing API key…</string>
-    <string name="disable_network_title">Disable all network access</string>
-    <string name="disable_network_summary">Internal lock: Blocks all network requests from this app. To revoke permission entirely, use system App Info settings.</string>
-    <string name="open_app_info">Open System App Info</string>
-    <string name="open_app_info_summary">Manage permissions and battery usage in Android settings</string>
-    <string name="gemini_network_disabled">Network access is disabled in LeanType settings</string>
     <string name="ai_provider_title">AI Provider</string>
     <string name="ai_provider_summary">Select AI service for proofreading</string>
     <string name="ai_provider_gemini">Google Gemini</string>
@@ -777,7 +715,6 @@
     <string name="ai_allow_insecure_connections_summary">Allow HTTP connections and ignore SSL certificate errors. Warning: exposes input to local network eavesdropping.</string>
     <string name="backup_category_layouts">Layouts</string>
     <string name="backup_category_theme">Theme &amp; Custom Backgrounds</string>
-    <string name="backup_category_dictionary">Dictionaries &amp; Typing History</string>
     <string name="backup_category_dictionaries">Dictionaries</string>
     <string name="backup_category_typing_history">Typing History</string>
     <string name="backup_category_api_keys">API Keys</string>
@@ -797,8 +734,6 @@
     <string name="offline_keep_model_loaded_summary">Keep the offline AI model in memory to avoid reloading delay (uses more RAM)</string>
     <!-- Translation feature strings -->
     <string name="translate" tools:keep="@string/translate">Translate</string>
-    <string name="translate_loading">Translating…</string>
-    <string name="translate_success">Text translated</string>
     <string name="translate_error">Translation failed: %s</string>
     <string name="translate_no_text">No text to translate</string>
     <string name="translate_target_language_title">Translation target language</string>
@@ -944,9 +879,6 @@
     <string name="toolbar_keys_alignment_center">Center</string>
     <string name="toolbar_keys_alignment_right">Right</string>
     <string name="clipboard_keys_alignment">Toolbar keys alignment</string>
-    <string name="clipboard_keys_alignment_left">Left</string>
-    <string name="clipboard_keys_alignment_center">Center</string>
-    <string name="clipboard_keys_alignment_right">Right</string>
     <!-- Title of the setting to set pinned toolbar keys -->
     <string name="pinned_toolbar_keys">Select pinned toolbar keys</string>
     <!-- Title of the setting to quick-pin toolbar keys -->
@@ -981,11 +913,6 @@
     <!-- Title of the setting for reduced distance between keys -->
     <string name="prefs_narrow_key_gaps">Narrow key gaps</string>
     <string name="prefs_narrow_key_gaps_level">Narrowness level</string>
-    <string name="narrowness_level_low">Smallest</string>
-    <string name="narrowness_level_medium_low">Small</string>
-    <string name="narrowness_level_medium">Medium</string>
-    <string name="narrowness_level_medium_high">Large</string>
-    <string name="narrowness_level_high">Largest</string>
     <!-- Title of the setting for setting keyboard height -->
     <string name="prefs_keyboard_height_scale">Keyboard height scale</string>
     <!-- Title of the setting for setting bottom padding height -->
@@ -1208,7 +1135,6 @@ language, hence "No language". -->
     <string name="prefs_keypress_sound_style_system">System default</string>
     <string name="prefs_keypress_sound_style_dialog_title">Keypress Sound Style</string>
     <string name="sound_packs_title">Keypress Audio</string>
-    <string name="sound_pack_import_button">Import Sound Pack</string>
     <string name="prefs_sound_acoustics_category">Acoustics &amp; Playback</string>
     <string name="prefs_sound_pitch_scale">Pitch Shift</string>
     <string name="prefs_sound_random_pitch">Random pitch variation</string>
@@ -1242,7 +1168,6 @@ language, hence "No language". -->
     <!-- Title of the setup wizard welcome screen. %s is the application name. -->
     <string name="setup_welcome_title">"Welcome to %s"</string>
     <!-- Additional title of the setup wizard welcome screen, just below the setup_welcome_title. -->
-    <string name="setup_welcome_additional_description">with Gesture Typing</string>
     <!-- The label of the button that starts the setup wizard. -->
     <string name="setup_start_action">Get started</string>
     <!-- Title of the setup wizard. %s is the application name. -->
@@ -1264,7 +1189,6 @@ language, hence "No language". -->
     <!-- Detailed instruction of the 3rd step in the setup wizard. %s is the application name. -->
     <string name="setup_step3_instruction">Now you can type in all your favorite apps with %s.</string>
     <!-- The label of the button that triggers the settings screen for the keyboard. -->
-    <string name="setup_step3_action">Configure the keyboard</string>
     <!-- The label of the button that finishes the setup wizard. -->
     <string name="setup_finish_action">Finished</string>
     <string name="setup_skip_action">Skip to settings</string>
@@ -1273,9 +1197,7 @@ language, hence "No language". -->
     <string name="setup_not_active_summary">Tap to complete keyboard setup</string>
     <string name="setup_welcome_summary">Run the initial setup and configuration wizard</string>
     <!-- Option to show setup wizard icon. Legacy setting only displayed for Android 9 and older. -->
-    <string name="show_setup_wizard_icon">Show app icon</string>
     <!-- Description for the option to show setup wizard application icon of this IME in the launcher. -->
-    <string name="show_setup_wizard_icon_summary">Display application icon in the launcher</string>
     <!-- Headline for the section listing the user-added dictionaries for the language -->
     <string name="dictionary_category_title">Add-on dictionaries</string>
     <!-- Title for dictionaries preference screen -->
@@ -1295,14 +1217,12 @@ New dictionary:
     <!-- Title and confirm button text for user dictionary replacement dialog -->
     <string name="replace_dictionary">"Replace dictionary"</string>
     <!-- Message for user dictionary remove dialog -->
-    <string name="remove_dictionary_message">"Really remove user-added dictionary \"%s\"?"</string>
     <!-- Message when no dictionary is available for the selected language, with no_dictionaries_available as title.
      %1$s will be replaced by dictionary_link_text, %2$s by the language code, %3$s by dictionary_link_text again.
      This string will be interpreted as HTML -->
     <string name="no_dictionary_message">"Without a dictionary, you will only get suggestions for text you entered before.&lt;br&gt;
         You can download dictionaries %1$s, or check if a dictionary for \"%2$s\" can be downloaded directly %3$s."</string>
     <!-- Button to never show the no_dictionary_message when enabling a language that has no dictionary -->
-    <string name="no_dictionary_dont_show_again_button">"Don't show again"</string>
     <!-- Message for the user dictionary selection dialog, %s will be replaced by dictionary_link_text. -->
     <string name="add_dictionary">"Select a dictionary to add. Dictionaries in .dict format can be downloaded %s."</string>
     <!-- Title of the link to the download page inserted into several messages -->
@@ -1337,7 +1257,7 @@ New dictionary:
     <!-- User dictionary settings. The list item to choose to insert a word into the user dictionary for all languages -->
     <string name="user_dict_settings_all_languages">For all languages</string>
     <!-- User dictionary settings. The text to show for the option that shows the entire list of supported locales to choose one -->
-    <string name="user_dict_settings_more_languages">More languages…</string> <!-- todo: use it or remove it -->
+<!-- todo: use it or remove it -->
     <!-- Message in user dictionary dialog -->
     <string name="user_dict_word_already_present">This word is already present in the %s user dictionary. Please type another one.</string>
     <!-- User dictionary settings. Text button to add a word -->
@@ -1464,7 +1384,6 @@ New dictionary:
     <string name="sponsor_dialog_title">Sponsor this project</string>
     <string name="sponsor_dialog_message">This project is completely community-driven and relies on donations to keep development alive. If you find this keyboard useful, please consider sponsoring!</string>
     <string name="sponsor_dialog_never_show_again">Never show again</string>
-    <string name="sponsor_dialog_sponsor">Sponsor</string>
     <string name="sponsor_dialog_not_now">Not now</string>
     <!-- link to features.md for about screen -->
     <string name="about_features_link">Go to FEATURES.md</string>
@@ -1476,11 +1395,9 @@ New dictionary:
     <string name="updates_check_title">Check for updates</string>
     <string name="updates_checking">Checking for updates…</string>
     <string name="updates_up_to_date">You are using the latest version</string>
-    <string name="updates_available">New version available: %s</string>
     <string name="updates_auto_check_title">Auto check for updates</string>
     <string name="updates_auto_check_summary">Periodically check for new releases in the background</string>
     <string name="updates_frequency_title">Check frequency</string>
-    <string name="updates_changelog_title">Changelog</string>
     <string name="updates_support_title">Support development</string>
     <string name="updates_support_summary" formatted="false">LeanType is 100% free, open-source, and independent. Your support directly helps us continue active development!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
@@ -1498,16 +1415,10 @@ New dictionary:
 
     <!-- Libraries Hub -->
     <string name="libraries_hub_title">Libraries</string>
-    <string name="libraries_hub_summary">Manage gesture typing library, dictionaries, and emoji libraries.</string>
-    <string name="libraries_hub_gesture_title">Gesture Typing Library</string>
-    <string name="libraries_hub_dictionary_title">Main Dictionaries</string>
     <string name="libraries_hub_emoji_title">Emoji Libraries</string>
     <string name="libraries_hub_handwriting_title">Handwriting Input Plugin</string>
     <string name="pref_handwriting_language_title">Handwriting Language</string>
-    <string name="pref_handwriting_language_summary">Select a dedicated language for handwriting recognition</string>
     <string name="handwriting_lang_follow_keyboard">Follow keyboard language</string>
-    <string name="libraries_hub_dict_guide_title">Dictionary Loading Guide</string>
-    <string name="libraries_hub_dict_guide_text">To add a new dictionary:\n1. Obtain a .dict file for your language.\n2. Tap \"Manage Dictionaries\".\n3. Use the plus (+) button to import the file.</string>
     <string name="libraries_status_active">Active</string>
     <string name="libraries_status_not_installed">Not Installed</string>
     <!-- preference title for saving the log to a file -->
@@ -1708,7 +1619,6 @@ New dictionary:
     <string name="action_clear_search" tools:ignore="MissingTranslation">Clear search</string>
     <string name="touchpad_close" tools:ignore="MissingTranslation">Close touchpad mode</string>
     <!-- Description of the setting for swiping down on toolbar to dismiss keyboard -->
-    <string name="toolbar_swipe_down_dismiss_summary">Swipe down on toolbar to hide keyboard</string>
     <string name="toolbar_swipe_up_gesture">Toolbar swipe up gesture</string>
     <string name="toolbar_swipe_down_gesture">Toolbar swipe down gesture</string>
     <string name="toolbar_swipe_more_suggestions_entry">More suggestions</string>
@@ -1743,17 +1653,12 @@ New dictionary:
     <string name="offline_model_title">Offline Model</string>
     <string name="offline_model_summary">Manage local LLM</string>
     <string name="offline_max_tokens_title">Offline AI Max Tokens</string>
-    <string name="offline_max_tokens_summary">Maximum length of the generated correction</string>
     <string name="offline_max_tokens_custom_option">Custom…</string>
     <string name="offline_max_tokens_custom_desc">Custom (%1$d tokens)</string>
     <string name="offline_temp_title">Temperature</string>
-    <string name="offline_temp_summary">Controls randomness: lower is more focused and deterministic</string>
     <string name="offline_top_p_title">Top-P (Nucleus Sampling)</string>
-    <string name="offline_top_p_summary">Controls diversity of vocabulary: lower cuts off less likely options</string>
     <string name="offline_top_k_title">Top-K</string>
-    <string name="offline_top_k_summary">Limits choices to K most probable tokens</string>
     <string name="offline_min_p_title">Min-P</string>
-    <string name="offline_min_p_summary">Minimum probability threshold relative to most likely token</string>
     <string name="offline_show_thinking_title">Show Thinking</string>
     <string name="offline_show_thinking_summary">Display reasoning process and internal thinking tokens if the model generates them</string>
     <!-- Placeholder for token options if using a list, but I'll use a Slider or similar if possible. 
@@ -1863,8 +1768,6 @@ New dictionary:
     <!-- App Profiles Screen -->
     <string name="app_quirks_title">App Profiles</string>
     <string name="app_quirks_summary">Per-app keyboard behavior, web compatibility, and auto-incognito</string>
-    <string name="app_quirks_search_hint">Search apps by name or package</string>
-    <string name="app_quirks_empty">No applications found</string>
     <string name="app_quirks_force_web_editor">Web Editor Compatibility</string>
     <string name="app_quirks_force_web_editor_summary">Force web-safe backspace, batch sync, and cache bypass for text fields</string>
     <string name="app_quirks_force_incognito">Automatic Incognito</string>
@@ -2018,12 +1921,10 @@ New dictionary:
     <string name="updates_frequency_daily">Daily</string>
     <string name="updates_frequency_weekly">Weekly</string>
     <string name="updates_frequency_monthly">Monthly</string>
-    <string name="updates_check_failed_http">Check failed (HTTP %d)</string>
     <string name="updates_network_error">Network error checking updates</string>
     <string name="updates_update_available">Update available: %s</string>
     <string name="updates_plugins_title">Companion plugins</string>
     <string name="updates_plugin_update_available">New version %s available</string>
-    <string name="updates_plugin_updates_found">Plugin updates available</string>
 
     <!-- Sponsor Buttons -->
     <string name="sponsor_github_button">Sponsor on GitHub</string>
@@ -2094,16 +1995,13 @@ New dictionary:
 
     <!-- CJK Input Engine -->
     <string name="cjk_settings_title">CJK Input</string>
-    <string name="cjk_settings_summary">Chinese, Japanese and Korean composition engine</string>
     <string name="cjk_plugin_management">Plugin Management</string>
     <string name="load_cjk_plugin">Load CJK companion plugin</string>
-    <string name="load_cjk_plugin_summary">Provides Chinese Pinyin and Japanese Romaji-Kana-Kanji conversion</string>
     <string name="load_cjk_plugin_button_delete">Delete plugin</string>
     <string name="load_cjk_plugin_success">CJK plugin imported successfully</string>
     <string name="load_cjk_plugin_failed">Failed to load CJK plugin APK</string>
     <string name="cjk_plugin_active_status">Plugin active</string>
     <string name="cjk_plugin_active_version_status">Plugin active (v%s)</string>
-    <string name="cjk_plugin_not_installed">Plugin not installed</string>
     <string name="cjk_plugin_downloading">Downloading CJK plugin…</string>
     <string name="cjk_plugin_update_available_dialog">An update is available for the CJK plugin!\nLocal version: %1$s\nLatest version: %2$s\n\nDo you want to download and update?</string>
     <string name="cjk_plugin_active_warning">CJK companion plugin is active (version %s).\n\nWarning: loading external code can be a security risk. Only use a plugin from a source you trust.</string>
@@ -2205,13 +2103,15 @@ New dictionary:
     <string name="custom_ai_10">Custom AI 10</string>
     <string name="custom_ai_key_format">Key %1$d</string>
     <string name="custom_ai_key_not_set">Custom AI key is not set. Long-press to configure.</string>
+    <string name="proofread_error">Proofreading failed: %s</string>
+    <string name="proofread_no_text">No text to proofread</string>
+    <string name="proofread_no_api_key">Gemini API key not set. Go to Settings → AI integration.</string>
     <string name="proofread_output_truncated">Proofread output truncated by model; replacement aborted.</string>
     <string name="translation_output_truncated">Translation output truncated by model; replacement aborted.</string>
     <string name="translation_unchanged">Translation unchanged or identical to source text.</string>
     <string name="error_getting_suggestions">Error getting suggestions</string>
     <string name="ai_error_format">AI Error: %s</string>
     <string name="suggestion_word_removed">\"%1$s\" removed</string>
-    <string name="error_loading_keyboard_fallback">Error loading the keyboard, falling back to defaults</string>
     <string name="key_set">Key set</string>
     <string name="key_not_set">Not set</string>
     <string name="default_proofreading">Default (Proofreading)</string>
@@ -2486,8 +2386,6 @@ New dictionary:
     <string name="gif_error_timeout">Timed out</string>
     <string name="gif_error_busy">GIF plugin busy, try again</string>
     <string name="gif_error_generic">Couldn\'t load GIFs</string>
-    <string name="gif_insertion_unsupported">App does not support GIF insertion</string>
-    <string name="gif_install_plugin">Install GIF plugin</string>
     <string name="gif_settings_title">GIF Search</string>
     <string name="gif_plugin_status_title">Plugin Status</string>
     <string name="gif_plugin_not_installed_desc">The GIF plugin provides search and insertion for GIPHY, Klipy, and other providers without granting network access to the keyboard.</string>
@@ -2497,8 +2395,6 @@ New dictionary:
     <string name="gif_providers_title">Available Providers</string>
     <string name="gif_dialog_title">Configure API Key</string>
     <string name="gif_provider_active">Active</string>
-    <string name="gif_set_as_active">Set as active</string>
-    <string name="gif_search_hint_provider">Search %s…</string>
     <string name="gif_provider_configured">Configured</string>
     <string name="gif_provider_not_configured">API key required</string>
     <string name="gif_enter_api_key">Enter API key</string>
@@ -2511,7 +2407,6 @@ New dictionary:
     <string name="gif_retry">Retry</string>
     <string name="gif_open_settings">Open Settings</string>
     <string name="gif_no_results_query">No GIFs found for \"%s\"</string>
-    <string name="gif_inserting">Sending GIF…</string>
     <string name="gif_category_gifs">GIFs</string>
     <string name="gif_category_stickers">Stickers</string>
     <string name="gif_category_memes">Memes</string>
@@ -2538,14 +2433,7 @@ New dictionary:
     <!-- Typography & Font Styles -->
     <string name="font_style">Font Style</string>
     <string name="unicode_panel">Unicode Symbols</string>
-    <string name="style_hub_title">Typography &amp; Styles</string>
-    <string name="style_hub_summary">Fancy Unicode text styles and symbol palette</string>
-    <string name="style_accessibility_warning">Decorative Unicode mathematical symbols may not be pronounced correctly by screen readers (TalkBack). Please use with consideration for accessibility.</string>
-    <string name="style_preview_hint">Type text to preview styles</string>
     <string name="style_plain">Normal</string>
-    <string name="style_revert_plain">Revert to plain text</string>
     <string name="style_active_indicator">Active style: %s</string>
-    <string name="style_live_typing">Live stylish typing</string>
-    <string name="style_live_typing_summary">Type directly in the selected style (1:1 mapped styles only)</string>
     <string name="style_active_none">None (Plain text)</string>
 </resources>

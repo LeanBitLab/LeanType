@@ -53,7 +53,6 @@ fun LibrariesHubScreen(
     onClickAppProfiles: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.AppQuirks) },
     onClickGif: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.Gif) },
     onClickCjk: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.Cjk) },
-    onClickStyles: () -> Unit = { SettingsDestination.navigateTo(SettingsDestination.Styles) },
 ) {
     val context = LocalContext.current
     val prefs = remember { context.prefs() }
@@ -227,14 +226,6 @@ fun LibrariesHubScreen(
                             description = soundSummary,
                             onClick = onClickSound,
                             icon = R.drawable.ic_play_arrow
-                        ) { NextScreenIcon() }
-
-                        // Typography & Styles (Unicode decorative fonts & symbol palette)
-                        Preference(
-                            name = stringResource(R.string.style_hub_title),
-                            description = stringResource(R.string.style_hub_summary),
-                            onClick = onClickStyles,
-                            icon = R.drawable.ic_font_style
                         ) { NextScreenIcon() }
                     }
                 }

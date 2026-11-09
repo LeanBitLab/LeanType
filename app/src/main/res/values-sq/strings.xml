@@ -63,7 +63,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Tasti fizik Alt shfaq paletën me emoji"</string>
     <string name="button_default">"I parazgjedhur"</string>
     <string name="setup_welcome_title">"Mirë se erdhe në %s"</string>
-    <string name="setup_welcome_additional_description">"me \"Shkrimin me gjeste\""</string>
     <string name="setup_start_action">"Fillo"</string>
     <string name="setup_steps_title">"Po konfiguron %s"</string>
     <string name="setup_step1_title">"Aktivizo %s"</string>
@@ -75,8 +74,6 @@
     <string name="setup_step3_title">"Urime, tani je gati!"</string>
     <string name="setup_step3_instruction">"Tani mund të shkruash të gjitha aplikacionet e tua të preferuara me %s."</string>
     <string name="setup_finish_action">"U përfundua"</string>
-    <string name="show_setup_wizard_icon">"Shfaq ikonën e aplikacionit"</string>
-    <string name="show_setup_wizard_icon_summary">"Shfaq ikonën e aplikacionit në mekanizimin e nisjes"</string>
     <string name="dictionary_category_title">"Fjalorë shtesë"</string>
     <string name="dictionary_available">"Fjalor i përdorshëm"</string>
     <string name="settings">"Cilësimet"</string>
@@ -88,7 +85,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Shkurtore opsionale"</string>
     <string name="user_dict_settings_edit_dialog_title">"Redakto fjalën"</string>
     <string name="user_dict_settings_all_languages">"Për të gjitha gjuhët"</string>
-    <string name="user_dict_settings_more_languages">"Gjuhë të tjera…"</string>
     <string name="select_input_method">"Zgjidh metodën e hyrjes"</string>
     <string name="undo">"Zhbëj"</string>
     <string name="redo">"Ribëj"</string>

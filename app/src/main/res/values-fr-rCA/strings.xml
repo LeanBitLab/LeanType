@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"La touche Alt affiche la palette d\'emoji"</string>
     <string name="button_default">"Par défaut"</string>
     <string name="setup_welcome_title">"Bienvenue dans %s"</string>
-    <string name="setup_welcome_additional_description">"avec la saisie gestuelle"</string>
     <string name="setup_start_action">"Commencer"</string>
     <string name="setup_steps_title">"Configurer %s"</string>
     <string name="setup_step1_title">"Activer %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Félicitations, l\'opération est terminée"</string>
     <string name="setup_step3_instruction">"Avec %s, vous pouvez saisir du texte dans toutes vos applications préférées."</string>
     <string name="setup_finish_action">"OK"</string>
-    <string name="show_setup_wizard_icon">"Afficher icône application"</string>
-    <string name="show_setup_wizard_icon_summary">"Afficher l\'icône de l\'application dans le lanceur"</string>
     <string name="dictionary_category_title">"Dictionnaires complémentaires"</string>
     <string name="dictionary_available">"Dictionnaire disponible"</string>
     <string name="settings">"Paramètres"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Raccourci facultatif"</string>
     <string name="user_dict_settings_edit_dialog_title">"Modifier le mot"</string>
     <string name="user_dict_settings_all_languages">"Pour toutes les langues"</string>
-    <string name="user_dict_settings_more_languages">"Plus de langues…"</string>
     <string name="select_input_method">"Sélectionnez le mode de saisie"</string>
     <string name="undo">"Annuler"</string>
     <string name="redo">"Répéter"</string>

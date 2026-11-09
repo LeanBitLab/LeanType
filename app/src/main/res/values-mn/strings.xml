@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Бодит Alt товчлуур нь эможи палитрыг харуулдаг"</string>
     <string name="button_default">"Үндсэн"</string>
     <string name="setup_welcome_title">"Та %s-д тавтай морилно уу"</string>
-    <string name="setup_welcome_additional_description">"Зангаагаар бичихээр"</string>
     <string name="setup_start_action">"Эхлэх"</string>
     <string name="setup_steps_title">%s-г тохируулж байна\"</string>
     <string name="setup_step1_title">%s-г идэвхжүүлэх\"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Баяр хүргэе, та бүгдийг нь тохируулчихлаа!"</string>
     <string name="setup_step3_instruction">"Та одоо өөрийн дуртай апп-ууд дотроо %s ашиглан бичих болохоор боллоо."</string>
     <string name="setup_finish_action">"Дууссан"</string>
-    <string name="show_setup_wizard_icon">"Апп дүрсийг харуулах"</string>
-    <string name="show_setup_wizard_icon_summary">"Эхлүүлэгч дээр аппликейшний дүрсийг харуулах"</string>
     <string name="dictionary_category_title">"Нэмэлт толь бичгүүд"</string>
     <string name="dictionary_available">"Толь бичиг байна"</string>
     <string name="settings">"Тохиргоо"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Зайлшгүй биш товчилбор"</string>
     <string name="user_dict_settings_edit_dialog_title">"Үг засах"</string>
     <string name="user_dict_settings_all_languages">"Бүх хэлэнд"</string>
-    <string name="user_dict_settings_more_languages">"Өөр хэлүүд…"</string>
     <string name="select_input_method">"Оруулах аргыг сонгоно уу"</string>
     <string name="settings_screen_appearance">"Харагдац"</string>
     <string name="undo">"Буцаах"</string>

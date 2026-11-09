@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Paletu emodži zobrazíte stlačením fyzického klávesa Alt."</string>
     <string name="button_default">"Predvolené"</string>
     <string name="setup_welcome_title">"Vitajte v aplikácii %s"</string>
-    <string name="setup_welcome_additional_description">"s funkciou Písanie gestami"</string>
     <string name="setup_start_action">"Začať"</string>
     <string name="setup_steps_title">"Nastavenie aplikácie %s"</string>
     <string name="setup_step1_title">"Povoľte aplikáciu %s"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Blahoželáme, všetko je nastavené!"</string>
     <string name="setup_step3_instruction">"Pomocou aplikácie %s teraz môžete zadávať text vo všetkých obľúbených aplikáciách."</string>
     <string name="setup_finish_action">"Hotovo"</string>
-    <string name="show_setup_wizard_icon">"Zobraziť ikonu aplikácie"</string>
-    <string name="show_setup_wizard_icon_summary">"Zobrazenie ikony aplikácie v spúšťači"</string>
     <string name="dictionary_category_title">"Doplnkové slovníky"</string>
     <string name="dictionary_available">"K dispozícii je slovník"</string>
     <string name="settings">"Nastavenia"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Voliteľná skratka"</string>
     <string name="user_dict_settings_edit_dialog_title">"Upraviť slovo"</string>
     <string name="user_dict_settings_all_languages">"pre všetky jazyky"</string>
-    <string name="user_dict_settings_more_languages">"Ďalšie jazyky…"</string>
     <string name="enable_clipboard_history_summary">Ak vypnuté, klávesa schránky vloží jej obsah ak sa tam nejaký nachádza</string>
     <string name="clipboard_history_retention_time">Doba zachovania histórie</string>
     <string name="settings_category_clipboard_history">História schránky</string>

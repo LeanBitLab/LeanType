@@ -62,7 +62,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Nospiežot taustiņu Alt, tiek parādīta emocijzīmju palete."</string>
     <string name="button_default">"Noklusējums"</string>
     <string name="setup_welcome_title">"Laipni lūdzam pakalpojumā %s,"</string>
-    <string name="setup_welcome_additional_description">"kurā varat izmantot ievadi ar žestiem"</string>
     <string name="setup_start_action">"Sākt darbu"</string>
     <string name="setup_steps_title">"Lietojumprogrammas %s iestatīšana"</string>
     <string name="setup_step1_title">"Lietojumprogrammas %s iespējošana"</string>
@@ -74,8 +73,6 @@
     <string name="setup_step3_title">"Gatavs!"</string>
     <string name="setup_step3_instruction">"Izmantojot lietojumprogrammu %s, varat rakstīt visās iecienītākajās lietotnēs."</string>
     <string name="setup_finish_action">"Pabeigts"</string>
-    <string name="show_setup_wizard_icon">"Rādīt lietotnes ikonu"</string>
-    <string name="show_setup_wizard_icon_summary">"Rādīt palaidēja ekrānā lietojumprogrammas ikonu"</string>
     <string name="dictionary_category_title">"Papildināmas vārdnīcas"</string>
     <string name="dictionary_available">"Vārdnīca ir pieejama"</string>
     <string name="settings">"Iestatījumi"</string>
@@ -87,7 +84,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Izvēles saīsne"</string>
     <string name="user_dict_settings_edit_dialog_title">"Vārda rediģēšana"</string>
     <string name="user_dict_settings_all_languages">"Visās valodās"</string>
-    <string name="user_dict_settings_more_languages">"Citas valodas…"</string>
     <string name="select_input_method">"Ievades metodes izvēle"</string>
     <string name="undo">"Atsaukt"</string>
     <string name="redo">"Atcelt atsaukšanu"</string>

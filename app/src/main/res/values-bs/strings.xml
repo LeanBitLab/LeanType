@@ -64,7 +64,6 @@
     <string name="prefs_enable_emoji_alt_physical_key_summary">"Tipka Alt na fizičkoj tastaturi aktivira paletu za emoji"</string>
     <string name="button_default">"Zadano"</string>
     <string name="setup_welcome_title">"Dobro došli u aplikaciju %s"</string>
-    <string name="setup_welcome_additional_description">"s Pisanjem pokretima"</string>
     <string name="setup_start_action">"Započnite"</string>
     <string name="setup_steps_title">"Postavljanje aplikacije %s"</string>
     <string name="setup_step1_title">"Omogući aplikaciju %s"</string>
@@ -76,8 +75,6 @@
     <string name="setup_step3_title">"Odlično, sve je spremno!"</string>
     <string name="setup_step3_instruction">"Sada možete upisivati u svim omiljenim aplikacijama pomoću aplikacije %s."</string>
     <string name="setup_finish_action">"Završeno"</string>
-    <string name="show_setup_wizard_icon">"Prikaži ikonu aplikacije"</string>
-    <string name="show_setup_wizard_icon_summary">"Prikazivanje ikone aplikacije na pokretaču"</string>
     <string name="dictionary_category_title">"Dodatni rječnici"</string>
     <string name="dictionary_available">"Rječnik je dostupan"</string>
     <string name="settings">"Postavke"</string>
@@ -89,7 +86,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Opcionalna prečica"</string>
     <string name="user_dict_settings_edit_dialog_title">"Uređivanje riječi"</string>
     <string name="user_dict_settings_all_languages">"Za sve jezike"</string>
-    <string name="user_dict_settings_more_languages">"Više jezika…"</string>
     <string name="select_input_method">"Odaberite način unosa"</string>
     <string name="undo">"Vrati"</string>
     <string name="redo">"Ponovo uradi"</string>
