@@ -17,8 +17,8 @@ object BrowserDetector {
         // Standard Browsers
         "com.android.chrome", "org.chromium.chrome", "com.chrome.beta", "com.chrome.dev", "com.chrome.canary",
         "org.mozilla.fennec_fdroid", "org.mozilla.fenix", "org.mozilla.firefox_beta", "org.mozilla.focus",
-        "org.mozilla.klar", "org.mozilla.firefox", "org.ironfoxoss.ironfox", "net.waterfox.android.release",
-        "io.github.forkmaintainers.iceraven", "com.zen.web.tools.browser",
+        "org.mozilla.klar", "org.mozilla.firefox", "org.ironfoxoss.ironfox", "org.ironfoxoss.ironfox.nightly",
+        "net.waterfox.android.release", "io.github.forkmaintainers.iceraven", "com.zen.web.tools.browser",
         "com.brave.browser", "com.vivaldi.browser", "com.kiwibrowser.browser", "com.opera.browser",
         "mark.via.gp", "com.microsoft.emmx", "org.bromite.bromite", "com.duckduckgo.mobile.android",
         "com.sec.android.app.sbrowser", "com.sec.android.app.sbrowser.beta",
@@ -65,8 +65,8 @@ object BrowserDetector {
 
     private val GECKO_BROWSER_PACKAGES = setOf(
         "org.mozilla.fennec_fdroid", "org.mozilla.fenix", "org.mozilla.firefox_beta", "org.mozilla.focus",
-        "org.mozilla.klar", "org.mozilla.firefox", "org.ironfoxoss.ironfox", "net.waterfox.android.release",
-        "io.github.forkmaintainers.iceraven", "com.zen.web.tools.browser",
+        "org.mozilla.klar", "org.mozilla.firefox", "org.ironfoxoss.ironfox", "org.ironfoxoss.ironfox.nightly",
+        "net.waterfox.android.release", "io.github.forkmaintainers.iceraven", "com.zen.web.tools.browser",
         "us.spotco.fennec_dos", "org.torproject.torbrowser", "org.torproject.torbrowser_alpha",
         "org.mozilla.fenix.nightly", "jp.ablaze.floorp", "net.mullvad.mullvadbrowser"
     )
