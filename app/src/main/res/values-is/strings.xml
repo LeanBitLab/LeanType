@@ -107,7 +107,7 @@
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Rúnnað</string>
     <string name="theme_style">Stíll</string>
     <string name="spell_checker_service_name">Stafsetningarleiðrétting LeanType</string>
-    <string name="ime_settings">Stillingar LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="button_backup">Öryggisafrit</string>
     <string name="load_gesture_library_button_load">Hlaða inn orðasafni</string>
     <string name="load_gesture_library_button_delete">Eyða orðasafni</string>

@@ -98,7 +98,7 @@
     <string name="label_wait_key">"انتظار"</string>
 
     <string name="spell_checker_service_name">LeanType اسپیل چیکر</string>
-    <string name="ime_settings">LeanType ترتیبات</string>
+    <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">LeanType اسپیل چیکر کی ترتیبات</string>
     <string name="vibrate_in_dnd_mode">پریشان نہ کریں موڈ میں وائبریٹ کریں</string>
     <string name="suggest_emojis">ایموجیز تجویز کریں</string>

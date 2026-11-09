@@ -97,7 +97,7 @@
     <string name="number_row">Sifferrad</string>
     <string name="number_row_summary">Visa alltid sifferraden</string>
     <string name="show_emoji_key">Emoji-tangent</string>
-    <string name="ime_settings">LeanType-inställningar</string>
+    <string name="ime_settings">LeanType</string>
     <string name="show_hints_summary">Visa tips för långtryckning</string>
     <string name="settings_category_additional_keys">Ytterligare tangenter</string>
     <string name="settings_category_clipboard_history">Urklippshistorik</string>

@@ -8,7 +8,7 @@
     <!-- Name of Android spell checker service. The app name should not be translated. -->
     <string name="spell_checker_service_name">LeanType Spell Checker</string>
     <!-- Title for IME settings screen. The app name should not be translated. -->
-    <string name="ime_settings">LeanType Settings</string>
+    <string name="ime_settings">LeanType</string>
     <!-- Title for the spell checking service settings screen. The app name should not be translated. -->
     <string name="android_spell_checker_settings">LeanType Spell Checker Settings</string>
     <!-- Option to provide vibrate/haptic feedback on keypress -->

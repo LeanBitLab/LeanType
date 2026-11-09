@@ -101,7 +101,7 @@
     <string name="settings_category_correction">Correcciones</string>
     <string name="settings_category_experimental">Experimental</string>
     <string name="settings_category_input">Entrada</string>
-    <string name="ime_settings">Ajustes de LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_suggestions">Sugerencias</string>
     <string name="settings_category_miscellaneous">Otros</string>
     <string name="number_row">Fila de números</string>

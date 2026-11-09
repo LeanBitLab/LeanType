@@ -96,7 +96,7 @@
     <string name="show_emoji_key">Emoji klávesa</string>
     <string name="incognito">Vynútiť režim inkognito</string>
     <string name="settings_category_input">Vstup</string>
-    <string name="ime_settings">LeanType Nastavenia</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">Dodatočné klávesy</string>
     <string name="settings_category_correction">Korekcie</string>
     <string name="settings_category_suggestions">Návrhy</string>

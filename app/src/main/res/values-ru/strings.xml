@@ -115,7 +115,7 @@
     <string name="spell_checker_service_name">Проверка орфографии LeanType</string>
     <string name="android_spell_checker_settings">Настройки проверки орфографии LeanType</string>
     <string name="abbreviation_unit_minutes">%s мин.</string>
-    <string name="ime_settings">Настройки LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_no_limit">Без ограничений</string>
     <string name="clipboard_history_retention_time">Время хранения журнала буфера обмена</string>
     <string name="subtype_akkhor_bn_BD">%s (Акхор)</string>

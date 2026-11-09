@@ -113,7 +113,7 @@
     <string name="key_borders">Bordes de teclas</string>
     <string name="day_night_mode_summary">Seguir la configuración del sistema</string>
     <string name="day_night_mode">Modo claro/oscuro automático</string>
-    <string name="ime_settings">Ajustes de LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Entrada</string>
     <string name="settings_category_additional_keys">Teclas adicionales</string>
     <string name="settings_category_correction">Correcciones</string>

@@ -98,7 +98,7 @@
     <string name="prefs_force_incognito_mode_summary">Desactiva l\'aprenentatge de paraules noves</string>
     <string name="number_row">Fila de nombres</string>
     <string name="number_row_summary">Mostra sempre la fila de nombres</string>
-    <string name="ime_settings">Configuració de l\'LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Entrada</string>
     <string name="settings_category_miscellaneous">Miscel·lània</string>
     <string name="key_borders">Vores del teclat</string>

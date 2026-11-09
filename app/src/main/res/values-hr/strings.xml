@@ -95,7 +95,7 @@
     <string name="show_emoji_key">Tipka za emojije</string>
     <string name="abbreviation_unit_minutes">%s min</string>
     <string name="settings_no_limit">Bez ograničenja</string>
-    <string name="ime_settings">LeanType postavke</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Unos</string>
     <string name="settings_category_additional_keys">Dodatne tipke</string>
     <string name="enable_clipboard_history">Omogući povijest međuspremnika</string>

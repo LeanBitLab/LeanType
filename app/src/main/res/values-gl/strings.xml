@@ -248,7 +248,7 @@
     <string name="user_dict_word_already_present">Esta palabra xa está presente no dicionario %s da usuaria. Por favor escribe outra.</string>
     <string name="theme_name_black" tools:keep="@string/theme_name_black">Negro</string>
     <string name="theme_name_indigo" tools:keep="@string/theme_name_indigo">Índigo</string>
-    <string name="ime_settings">Axustes de LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="localized_number_row_summary">Preferir números traducidos sobre os latinos</string>
     <string name="replace_dictionary_message">Tes certeza de querer substituír o dicionario engadido \"%1$s\"?
 \n

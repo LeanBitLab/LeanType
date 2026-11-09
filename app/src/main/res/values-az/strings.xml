@@ -89,7 +89,7 @@
     <string name="android_spell_checker_settings">LeanType Yazı Yoxlayıcısı Parametrləri</string>
     <string name="select_input_method">"Daxiletmə metodunu seçin"</string>
     <string name="settings_screen_appearance">"Görünüş"</string>
-    <string name="ime_settings">LeanType Tənzimləmələri</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Giriş</string>
     <string name="settings_category_additional_keys">Əlavə Düymələr</string>
     <string name="undo">"Ləğv edin"</string>

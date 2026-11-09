@@ -103,7 +103,7 @@
     <string name="settings_category_experimental">Експериментални</string>
     <string name="settings_category_miscellaneous">Разни</string>
     <string name="spell_checker_service_name">Проверка на правописа</string>
-    <string name="ime_settings">Настройки</string>
+    <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">Настройки за проверка на правописа</string>
     <string name="switch_language">Превключване на езика</string>
     <string name="settings_category_additional_keys">Допълнителни бутони</string>

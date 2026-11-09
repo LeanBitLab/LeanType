@@ -104,7 +104,7 @@
     <string name="spell_checker_service_name">Kiểm tra lỗi chính tả</string>
     <string name="prefs_always_show_suggestions">Luôn hiển thị gợi ý</string>
     <string name="dictionary_link_text">ở đây</string>
-    <string name="ime_settings">Cài đặt</string>
+    <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">Cài đặt trình kiểm tra lỗi chính tả</string>
     <string name="select_word" tools:keep="@string/select_word">Chọn từ</string>
     <string name="one_handed" tools:keep="@string/one_handed">Chế độ một tay</string>

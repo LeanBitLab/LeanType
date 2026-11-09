@@ -227,7 +227,7 @@
     <string name="spell_checker_service_name">LeanType-oikoluku</string>
     <string name="hidden_features_title">Kuvaus piilotetuista ominaisuuksista</string>
     <string name="toolbar_keys">Valitse työkalupalkin näppäimet</string>
-    <string name="ime_settings">LeanType-asetukset</string>
+    <string name="ime_settings">LeanType</string>
     <string name="theme_name_dynamic" tools:keep="@string/theme_name_dynamic">Dynaamiset värit</string>
     <string name="settings_no_limit">Ei rajoitusta</string>
     <string name="pinned_toolbar_keys">Valitse kiinnitetyt työkalupalkin näppäimet</string>

@@ -97,7 +97,7 @@
     <string name="enable_clipboard_history">啟用剪貼板記錄</string>
     <string name="autospace_after_punctuation">在標點符號後自動插入空格</string>
     <string name="autospace_after_punctuation_summary">在輸入字串後自動插入空格</string>
-    <string name="ime_settings">設定</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">輸入</string>
     <string name="settings_category_correction">文字改正</string>
     <string name="select_input_method">"選擇輸入法"</string>

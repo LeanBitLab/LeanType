@@ -780,7 +780,7 @@
         <item>गहरा (128 टोकन)</item>
     </string-array>
     <string name="spell_checker_service_name">लीनटाइप वर्तनी परीक्षक</string>
-    <string name="ime_settings">लीनटाइप सेटिंग्स</string>
+    <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">लीनटाइप वर्तनी परीक्षक सेटिंग्स</string>
     <string name="vibrate_in_dnd_mode">परेशान न करें मोड में कंपन करें</string>
     <string name="suggest_emojis">इमोजी सुझाएं</string>

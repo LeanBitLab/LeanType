@@ -89,7 +89,7 @@
     <string name="select_input_method">"입력 방법 선택"</string>
     <string name="spell_checker_service_name">LeanType 맞춤법 검사기</string>
     <string name="android_spell_checker_settings">LeanType 맞춤법 검사기 설정</string>
-    <string name="ime_settings">LeanType 설정</string>
+    <string name="ime_settings">LeanType</string>
     <string name="prefs_force_incognito_mode_summary">새로운 단어를 배우는 것이 불가능</string>
     <string name="auto_correction_confidence">자동 교정 정확도</string>
     <string name="settings_category_suggestions">추천</string>

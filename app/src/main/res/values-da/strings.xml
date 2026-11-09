@@ -108,7 +108,7 @@
     <string name="autospace_after_punctuation_summary">Indsæt automatisk mellemrum efter skilletegn, når du skriver et nyt ord</string>
     <string name="autospace_after_punctuation">Auto-mellemrum efter skilletegn</string>
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
-    <string name="ime_settings">LeanType-indstillinger</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Input</string>
     <string name="settings_category_additional_keys">Yderligere taster</string>
     <string name="settings_category_miscellaneous">Diverse</string>

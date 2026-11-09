@@ -96,7 +96,7 @@
     <string name="label_search_key">"ရှာဖွေရန်"</string>
     <string name="label_pause_key">"ဆိုင်းငံ့ရန်"</string>
     <string name="label_wait_key">"စောင့်ဆိုင်းရန်"</string>
-    <string name="ime_settings">LeanType ချိန်ညှိခြင်းများ</string>
+    <string name="ime_settings">LeanType</string>
     <string name="spell_checker_service_name">LeanType သတ်ပုံစစ်</string>
     <string name="android_spell_checker_settings">LeanType သတ်ပုံစစ်ကို ချိန်ညှိရန်</string>
     <string name="vibrate_in_dnd_mode">မနှောင့်ယှက်ရစနစ်ဖွင့်ထားချိန်တွင် တုန်ခါပါ</string>

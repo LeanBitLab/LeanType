@@ -114,7 +114,7 @@
     <string name="settings_category_experimental">Opzioni sperimentali</string>
     <string name="settings_category_miscellaneous">Varie</string>
     <string name="settings_category_input">Input</string>
-    <string name="ime_settings">Impostazioni di LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="prefs_force_incognito_mode_summary">Disattiva l\'apprendimento di nuove parole</string>
     <string name="key_borders">Bordi dei tasti</string>
     <string name="day_night_mode">Tema chiaro/scuro automatico</string>

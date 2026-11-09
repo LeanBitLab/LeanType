@@ -109,7 +109,7 @@
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
     <string name="delete_swipe_summary">Bir kerede metnin daha büyük bölümlerini seçmek ve silmek için silme tuşundan hızlıca kaydırın</string>
     <string name="day_night_mode_summary">Görünüm sistem ayarlarını takip edecektir</string>
-    <string name="ime_settings">LeanType ayarları</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Giriş</string>
     <string name="settings_category_additional_keys">Ek tuşlar</string>
     <string name="autospace_after_punctuation">Noktalama işaretlerinden sonra otomatik boşluk</string>

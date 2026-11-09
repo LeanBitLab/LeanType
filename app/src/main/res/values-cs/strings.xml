@@ -110,7 +110,7 @@
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Dlouhý stisk mezerníku zobrazí výzvu změny vstupní metody</string>
     <string name="prefs_keyboard_height_scale">Měřítko výšky klávesnice</string>
     <string name="day_night_mode_summary">Vzhled podle systémového nastavení</string>
-    <string name="ime_settings">Nastavení LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_suggestions">Návrhy</string>
     <string name="show_emoji_key">Klávesa pro emodži</string>
     <string name="enable_clipboard_history_summary">Pokud vypnuto, tlačítko schránky vloží obsah schránky, pokud nějaký existuje</string>

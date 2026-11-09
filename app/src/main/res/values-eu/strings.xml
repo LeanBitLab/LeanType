@@ -109,7 +109,7 @@
     <string name="key_borders">Teklen ertzak</string>
     <string name="day_night_mode">Egun/gau modu automatikoa</string>
     <string name="day_night_mode_summary">Itxurak sistemaren ezarpenei jarraituko die</string>
-    <string name="ime_settings">LeanType ezarpenak</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">Tekla gehigarriak</string>
     <string name="android_spell_checker_settings">LeanType ortografia zuzentzailearen ezarpenak</string>
     <string name="show_emoji_key">Emoji tekla</string>

@@ -93,7 +93,7 @@
     <string name="day_night_mode">Modo diurno/noturno automático</string>
     <string name="day_night_mode_summary">Aparência usa as definições do sistema</string>
     <string name="spell_checker_service_name">Corretor ortográfico LeanType</string>
-    <string name="ime_settings">Definições de LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Introdução</string>
     <string name="settings_category_additional_keys">Teclas adicionais</string>
     <string name="settings_category_correction">Correções</string>

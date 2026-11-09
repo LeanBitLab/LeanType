@@ -109,7 +109,7 @@
     <string name="android_spell_checker_settings">LeanType-ის მართლწერის შემოწმების მორგება</string>
     <string name="show_emoji_key">ემოჯის ღილაკი</string>
     <string name="delete_swipe">ჟესტით წაშლა</string>
-    <string name="ime_settings">LeanType-ის მორგება</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">შეყვანა</string>
     <string name="settings_category_additional_keys">დამატებითი ღილაკები</string>
     <string name="settings_category_suggestions">მინიშნებები</string>

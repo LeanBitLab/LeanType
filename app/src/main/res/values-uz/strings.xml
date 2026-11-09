@@ -114,7 +114,7 @@
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
     <string name="settings_category_input">Kiritish</string>
     <string name="settings_category_additional_keys">Qo\'shimcha kalitlar</string>
-    <string name="ime_settings">LeanType Sozlamalari</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_correction">Tuzatishlar</string>
     <string name="show_hints">Simvollarni ko‘rsatish</string>
     <string name="show_hints_summary">Uzoq bosish ko‘rsatish</string>

@@ -85,7 +85,7 @@
     <string name="user_dict_settings_add_shortcut_hint">"Необов’язковий ярлик"</string>
     <string name="user_dict_settings_edit_dialog_title">Редагувати слово</string>
     <string name="user_dict_settings_all_languages">Для всіх мов</string>
-    <string name="ime_settings">Налаштування LeanType</string>
+    <string name="ime_settings">LeanType</string>
     <string name="day_night_mode_summary">Вигляд наслідує системні налаштування</string>
     <string name="autospace_after_punctuation_summary">Автоматично вставляти пробіл після знаків пунктуації під час введення нового слова</string>
     <string name="theme_style">Стиль теми</string>

@@ -19,7 +19,7 @@
     <string name="layout_symbols" tools:keep="@string/layout_symbols">سمبوللر</string>
     <string name="subtype_emoji">اموجی</string>
     <string name="spell_checker_service_name">‫LeanType‬ یازم دنەتلەییجیسی</string>
-    <string name="ime_settings">‫LeanType‬ عیارلری</string>
+    <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">‫LeanType‬ یازم دنەتلەییجیسی عیارلری</string>
     <string name="settings_screen_gesture">حركتلە یازمە</string>
     <string name="popup_keys_layout" tools:keep="@string/popup_keys_layout">دوزن</string>

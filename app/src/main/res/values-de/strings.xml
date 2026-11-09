@@ -89,7 +89,7 @@
     <string name="settings_category_correction">Korrekturen</string>
     <string name="settings_category_suggestions">Vorschläge</string>
     <string name="android_spell_checker_settings">LeanType-Rechtschreibprüfungs-Einstellungen</string>
-    <string name="ime_settings">LeanType-Einstellungen</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_experimental">Experimentell</string>
     <string name="settings_no_limit">Keine Begrenzung</string>
     <string name="abbreviation_unit_minutes">%s Min.</string>

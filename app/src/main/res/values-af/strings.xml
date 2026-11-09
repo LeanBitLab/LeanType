@@ -112,7 +112,7 @@
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Lang-druk van spasiebalk sal toevoer metode seleksie skerm wys</string>
     <string name="autospace_after_punctuation">Outo-spasie na leestekens</string>
     <string name="autospace_after_punctuation_summary">Plaas \'n spasie na \'n leesteken sodra \'n nuwe woord getik word</string>
-    <string name="ime_settings">LeanType Instellings</string>
+    <string name="ime_settings">LeanType</string>
     <string name="settings_category_input">Invoer</string>
     <string name="settings_category_additional_keys">Bykomende Sleutels</string>
     <string name="settings_category_correction">Regstellings</string>
