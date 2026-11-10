@@ -478,16 +478,19 @@ internal class SuggestionStripLayoutHelper(
         val word = wordView.text
         val tagIndex = wordView.tag as? Int
         val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
-        val thumbSizePx = 18.dpToPx(context.resources)
-        val thumb = if (wordInfo?.mImageUri != null) {
+        val isImage = wordInfo?.mImageUri != null
+        val hasLabel = !word.isNullOrBlank()
+
+        val thumbSizePx = 22.dpToPx(context.resources)
+        val thumb = if (isImage && !hasLabel) {
             helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
         } else null
 
         if (thumb != null) {
-            val padH = 3.dpToPx(context.resources)
+            val padH = ((width - thumbSizePx) / 2).coerceAtLeast(0)
             wordView.setPadding(padH, 0, padH, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
-            wordView.compoundDrawablePadding = 4.dpToPx(context.resources)
+            wordView.compoundDrawablePadding = 0
         } else if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
@@ -497,16 +500,21 @@ internal class SuggestionStripLayoutHelper(
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.compoundDrawablePadding = 0
         }
-        wordView.contentDescription = if (TextUtils.isEmpty(word))
-            context.resources.getString(R.string.spoken_empty_suggestion)
-        else
+        wordView.contentDescription = if (TextUtils.isEmpty(word)) {
+            if (isImage) {
+                wordInfo?.mWord?.ifEmpty { context.resources.getString(R.string.text_expander_image_shortcut_badge) }
+                    ?: context.resources.getString(R.string.text_expander_image_shortcut_badge)
+            } else {
+                context.resources.getString(R.string.spoken_empty_suggestion)
+            }
+        } else {
             word.toString()
-        val textWidth = if (thumb != null) (width - thumbSizePx - 8.dpToPx(context.resources)).coerceAtLeast(10) else width
-        val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
+        }
+        val text = getEllipsizedTextWithSettingScaleX(word, width, wordView.paint)
         val scaleX = wordView.textScaleX
         wordView.text = text
         wordView.textScaleX = scaleX
-        wordView.isEnabled = !TextUtils.isEmpty(word) ||
+        wordView.isEnabled = !TextUtils.isEmpty(word) || thumb != null ||
                 AccessibilityUtils.instance.isTouchExplorationEnabled
         return wordView
     }
