@@ -488,27 +488,22 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     // Prefix & Shortcut Fields
-                    Row(
+                    OutlinedTextField(
+                        value = editingPrefix,
+                        onValueChange = { editingPrefix = it.replace(" ", "") },
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        OutlinedTextField(
-                            value = editingPrefix,
-                            onValueChange = { editingPrefix = it.replace(" ", "") },
-                            modifier = Modifier.weight(0.35f),
-                            singleLine = true,
-                            label = { Text(stringResource(R.string.text_expander_prefix_title)) }
-                        )
-                        OutlinedTextField(
-                            value = editingShortcut,
-                            onValueChange = { editingShortcut = if (editingIsRegex) it else it.replace(" ", "") },
-                            modifier = Modifier
-                                .weight(0.65f)
-                                .focusRequester(focusRequester),
-                            singleLine = true,
-                            label = { Text(if (editingIsRegex) stringResource(R.string.text_expander_regex_pattern_title) else stringResource(R.string.text_expander_shortcut_title)) }
-                        )
-                    }
+                        singleLine = true,
+                        label = { Text(stringResource(R.string.text_expander_prefix_title)) }
+                    )
+                    OutlinedTextField(
+                        value = editingShortcut,
+                        onValueChange = { editingShortcut = if (editingIsRegex) it else it.replace(" ", "") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .focusRequester(focusRequester),
+                        singleLine = true,
+                        label = { Text(if (editingIsRegex) stringResource(R.string.text_expander_regex_pattern_title) else stringResource(R.string.text_expander_shortcut_title)) }
+                    )
 
                     // Regex Toggle
                     Row(
@@ -597,7 +592,8 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                                     modifier = Modifier
                                         .size(56.dp)
                                         .clip(RoundedCornerShape(8.dp))
-                                        .background(MaterialTheme.colorScheme.surfaceContainerHighest),
+                                        .background(MaterialTheme.colorScheme.surfaceContainerHighest)
+                                        .clickable { pickImageLauncher.launch("image/*") },
                                     contentAlignment = Alignment.Center
                                 ) {
                                     if (editingImageBitmap != null) {
@@ -634,31 +630,33 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                                             overflow = TextOverflow.Ellipsis
                                         )
                                     }
-                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        TextButton(
-                                            onClick = { pickImageLauncher.launch("image/*") },
-                                            contentPadding = PaddingValues(0.dp)
-                                        ) {
-                                            Text(
-                                                text = stringResource(R.string.text_expander_change_image),
-                                                style = MaterialTheme.typography.labelMedium
-                                            )
+                                }
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                                ) {
+                                    IconButton(
+                                        onClick = { pickImageLauncher.launch("image/*") }
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_edit),
+                                            contentDescription = stringResource(R.string.text_expander_change_image),
+                                            tint = MaterialTheme.colorScheme.primary
+                                        )
+                                    }
+                                    IconButton(
+                                        onClick = {
+                                            if (editingImageUri != null && editingImageUri != originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }) {
+                                                TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
+                                            }
+                                            editingImageUri = null
                                         }
-                                        TextButton(
-                                            onClick = {
-                                                if (editingImageUri != null && editingImageUri != originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }) {
-                                                    TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
-                                                }
-                                                editingImageUri = null
-                                            },
-                                            contentPadding = PaddingValues(0.dp)
-                                        ) {
-                                            Text(
-                                                text = stringResource(R.string.text_expander_remove_image),
-                                                style = MaterialTheme.typography.labelMedium,
-                                                color = MaterialTheme.colorScheme.error
-                                            )
-                                        }
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_bin),
+                                            contentDescription = stringResource(R.string.text_expander_remove_image),
+                                            tint = MaterialTheme.colorScheme.error.copy(alpha = 0.85f)
+                                        )
                                     }
                                 }
                             }
