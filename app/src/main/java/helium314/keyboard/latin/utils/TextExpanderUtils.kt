@@ -661,7 +661,7 @@ object TextExpanderUtils {
                     if (match != null && match.value.isNotEmpty()) {
                         val isImage = entry.imageUri != null
                         val label = if (isImage) {
-                            if (entry.template.isNotBlank()) formatPreview(entry.template) else ""
+                            if (entry.template.isNotBlank()) formatPreview(entry.template) else item.cleanKey
                         } else {
                             formatPreview(entry.template)
                         }
@@ -686,7 +686,7 @@ object TextExpanderUtils {
                         } else 0
                         val isImage = entry.imageUri != null
                         val label = if (isImage) {
-                            if (entry.template.isNotBlank()) formatPreview(entry.template) else ""
+                            if (entry.template.isNotBlank()) formatPreview(entry.template) else shortcut
                         } else if (shortcut.equals(typedWord, ignoreCase = true)) {
                             formatPreview(entry.template)
                         } else {

@@ -492,36 +492,41 @@ internal class SuggestionStripLayoutHelper(
         val tagIndex = wordView.tag as? Int
         val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
         val isImage = wordInfo?.mImageUri != null
-        val hasLabel = !word.isNullOrBlank()
 
-        val thumbSizePx = 22.dpToPx(context.resources)
-        val thumb = if (isImage && !hasLabel) {
+        val thumbSizePx = 18.dpToPx(context.resources)
+        val thumb = if (isImage) {
             helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
         } else null
 
         var textWidth = width
 
-        if (thumb != null) {
-            val padH = ((width - thumbSizePx) / 2).coerceAtLeast(0)
-            wordView.setPadding(padH, 0, padH, 0)
-            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
-            wordView.compoundDrawablePadding = 0
-            if (positionInStrip < mDefaultWordBackgrounds.size) {
-                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
-            }
-        } else if (isImage && hasLabel) {
-            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
-            wordView.compoundDrawablePadding = 0
-            val padH = 6.dpToPx(context.resources)
-            wordView.setPadding(padH, 0, padH, 0)
+        if (isImage) {
+            val gap = 4.dpToPx(context.resources)
+            val hasText = !word.isNullOrBlank()
+            val rawTextWidth = if (hasText) getTextWidth(word, wordView.paint) else 0f
 
-            // Rounded outline chip for image shortcut label
-            val rawTextWidth = getTextWidth(word, wordView.paint)
-            val minChipW = 36.dpToPx(context.resources)
+            val totalContentW = if (hasText) {
+                thumbSizePx + gap + rawTextWidth.toInt()
+            } else {
+                thumbSizePx
+            }
+
+            val minChipW = if (hasText) 40.dpToPx(context.resources) else (thumbSizePx + 12.dpToPx(context.resources))
             val maxChipW = (width - 4.dpToPx(context.resources)).coerceAtLeast(minChipW)
-            val chipW = (rawTextWidth + 18.dpToPx(context.resources)).toInt().coerceIn(minChipW, maxChipW)
+            val chipW = (totalContentW + 16.dpToPx(context.resources)).coerceIn(minChipW, maxChipW)
+
             val insetH = ((width - chipW) / 2).coerceAtLeast(2.dpToPx(context.resources))
             val insetV = 5.dpToPx(context.resources)
+
+            val padH = if (hasText) {
+                ((width - totalContentW.coerceAtMost(chipW - 8.dpToPx(context.resources))) / 2).coerceAtLeast(4.dpToPx(context.resources))
+            } else {
+                ((width - thumbSizePx) / 2).coerceAtLeast(0)
+            }
+            wordView.setPadding(padH, 0, padH, 0)
+
+            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
+            wordView.compoundDrawablePadding = if (hasText) gap else 0
 
             val cornerRadius = 8.dpToPx(context.resources).toFloat()
             val strokeWidth = (1.5f * context.resources.displayMetrics.density).toInt().coerceAtLeast(1)
@@ -547,7 +552,12 @@ internal class SuggestionStripLayoutHelper(
                 addState(intArrayOf(), normalDrawable)
             }
             wordView.background = InsetDrawable(stateList, insetH, insetV, insetH, insetV)
-            textWidth = (chipW - 8.dpToPx(context.resources)).coerceAtLeast(10)
+
+            textWidth = if (hasText) {
+                (chipW - thumbSizePx - gap - 12.dpToPx(context.resources)).coerceAtLeast(10)
+            } else {
+                10
+            }
         } else if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
