@@ -1796,4 +1796,15 @@
     <string name="text_expander_guide_title">ഓൺലൈൻ ഗൈഡും വാക്യഘടനയും</string>
     <string name="text_expander_guide_summary">ഡൈനാമിക് പ്ലെയ്‌സ്‌ഹോൾഡറുകൾ, റീജക്‌സ് പാറ്റേണുകൾ, മോഡിഫയറുകൾ എന്നിവയ്‌ക്കായുള്ള പൂർണ്ണ ഗൈഡ്</string>
     <string name="text_expander_all_as_text_summary">പ്ലെയിൻ ടെക്സ്റ്റിൽ കുറുക്കുവഴികൾ എഡിറ്റ് ചെയ്യുക, കയറ്റുമതി ചെയ്യുക, ഇറക്കുമതി ചെയ്യുക</string>
+    <string name="text_expander_attach_image">ഫോട്ടോയോ ചിത്രമോ അറ്റാച്ചുചെയ്യുക</string>
+    <string name="text_expander_attach_image_desc">സ്റ്റോറേജിൽ നിന്ന് ഒരു ഫോട്ടോയോ ഡയഗ്രമോ ചിത്രമോ തിരഞ്ഞെടുക്കുക</string>
+    <string name="text_expander_change_image">ഫോട്ടോ മാറ്റുക</string>
+    <string name="text_expander_remove_image">ഫോട്ടോ നീക്കം ചെയ്യുക</string>
+    <string name="text_expander_image_shortcut_badge">ഫോട്ടോ</string>
+    <string name="text_expander_image_optional_label">ഓപ്ഷണൽ അടിക്കുറിപ്പ് അല്ലെങ്കിൽ ലേബൽ</string>
+    <string name="text_expander_delete_confirm_title">കുറുക്കുവഴി ഇല്ലാതാക്കുക</string>
+    <string name="text_expander_delete_confirm_message">\"%s\" ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?</string>
+    <string name="text_expander_create_first_button">കുറുക്കുവഴി സൃഷ്ടിക്കുക</string>
+    <string name="text_expander_file_too_large">തിരഞ്ഞെടുത്ത ചിത്രം പരമാവധി വലുപ്പ പരിധി കവിഞ്ഞു (20 MB)</string>
+    <string name="text_expander_image_attached">ഫോട്ടോ അറ്റാച്ച് ചെയ്തിട്ടുണ്ട്</string>
 </resources>

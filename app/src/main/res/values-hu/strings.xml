@@ -1693,4 +1693,15 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_guide_title">Online útmutató és szintaktikai referencia</string>
     <string name="text_expander_guide_summary">Teljes útmutató dinamikus helyőrzőkhöz, reguláris kifejezési mintákhoz és módosítókhoz</string>
     <string name="text_expander_all_as_text_summary">Billentyűparancsok szerkesztése, exportálása és importálása egyszerű szövegben</string>
+    <string name="text_expander_attach_image">Fénykép vagy kép csatolása</string>
+    <string name="text_expander_attach_image_desc">Válasszon ki egy fényképet, diagramot vagy képet a tárhelyről</string>
+    <string name="text_expander_change_image">Fotó módosítása</string>
+    <string name="text_expander_remove_image">Fotó eltávolítása</string>
+    <string name="text_expander_image_shortcut_badge">Fénykép</string>
+    <string name="text_expander_image_optional_label">Választható felirat vagy címke</string>
+    <string name="text_expander_delete_confirm_title">Parancsikon törlése</string>
+    <string name="text_expander_delete_confirm_message">Biztosan törli a következőt: \"%s\"?</string>
+    <string name="text_expander_create_first_button">Parancsikon létrehozása</string>
+    <string name="text_expander_file_too_large">A kiválasztott kép meghaladja a maximális méretkorlátot (20 MB)</string>
+    <string name="text_expander_image_attached">Fénykép csatolva</string>
 </resources>

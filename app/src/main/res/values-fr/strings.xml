@@ -1751,4 +1751,15 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_guide_title">Guide en ligne et référence de syntaxe</string>
     <string name="text_expander_guide_summary">Guide complet pour les espaces réservés dynamiques, les modèles d\'expressions régulières et les modificateurs</string>
     <string name="text_expander_all_as_text_summary">Modifier, exporter et importer des raccourcis en texte brut</string>
+    <string name="text_expander_attach_image">Joindre une photo ou une image</string>
+    <string name="text_expander_attach_image_desc">Sélectionnez une photo, un diagramme ou une image dans le stockage</string>
+    <string name="text_expander_change_image">Changer de photo</string>
+    <string name="text_expander_remove_image">Supprimer la photo</string>
+    <string name="text_expander_image_shortcut_badge">Photo</string>
+    <string name="text_expander_image_optional_label">Légende ou étiquette facultative</string>
+    <string name="text_expander_delete_confirm_title">Supprimer le raccourci</string>
+    <string name="text_expander_delete_confirm_message">Êtes-vous sûr de vouloir supprimer \"%s\" ?</string>
+    <string name="text_expander_create_first_button">Créer un raccourci</string>
+    <string name="text_expander_file_too_large">L\'image sélectionnée dépasse la taille maximale (20 Mo)</string>
+    <string name="text_expander_image_attached">Photo ci-jointe</string>
 </resources>

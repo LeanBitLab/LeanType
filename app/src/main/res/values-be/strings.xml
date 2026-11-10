@@ -1730,4 +1730,15 @@
     <string name="text_expander_guide_title">Інтэрнэт-даведнік і сінтаксіс</string>
     <string name="text_expander_guide_summary">Поўнае кіраўніцтва для дынамічных запаўняльнікаў, шаблонаў рэгулярных выразаў і мадыфікатараў</string>
     <string name="text_expander_all_as_text_summary">Рэдагаванне, экспарт і імпарт ярлыкоў у выглядзе простага тэксту</string>
+    <string name="text_expander_attach_image">Далучыце фатаграфію або малюнак</string>
+    <string name="text_expander_attach_image_desc">Выберыце фатаграфію, дыяграму або малюнак са сховішча</string>
+    <string name="text_expander_change_image">Змяніць фота</string>
+    <string name="text_expander_remove_image">Выдаліць фота</string>
+    <string name="text_expander_image_shortcut_badge">Фота</string>
+    <string name="text_expander_image_optional_label">Неабавязковы подпіс або этыкетка</string>
+    <string name="text_expander_delete_confirm_title">Выдаліць ярлык</string>
+    <string name="text_expander_delete_confirm_message">Вы ўпэўнены, што хочаце выдаліць \"%s\"?</string>
+    <string name="text_expander_create_first_button">Стварыць ярлык</string>
+    <string name="text_expander_file_too_large">Выбраная выява перавышае максімальны памер (20 МБ)</string>
+    <string name="text_expander_image_attached">Фота прыкладаецца</string>
 </resources>

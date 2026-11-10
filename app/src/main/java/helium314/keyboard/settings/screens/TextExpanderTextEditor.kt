@@ -283,6 +283,10 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Bold
                     )
+                    val imageStyle = SpanStyle(
+                        color = MaterialTheme.colorScheme.tertiary,
+                        fontWeight = FontWeight.Medium
+                    )
                     BasicTextField(
                         value = value,
                         onValueChange = { value = it },
@@ -296,7 +300,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                             lineHeight = 22.sp
                         ),
                         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-                        visualTransformation = remember(headerStyle) { HeaderHighlight(headerStyle) },
+                        visualTransformation = remember(headerStyle, imageStyle) { HeaderHighlight(headerStyle, imageStyle) },
                         onTextLayout = { layout = it }
                     )
                 }
@@ -406,13 +410,17 @@ private fun errorText(error: TextExpanderText.Error): String = when (error.kind)
 }
 
 /** Shows the "=== shortcut ===" lines highlighted, the text itself is unchanged */
-private class HeaderHighlight(private val style: SpanStyle) : VisualTransformation {
+private class HeaderHighlight(private val headerStyle: SpanStyle, private val imageStyle: SpanStyle) : VisualTransformation {
     override fun filter(text: AnnotatedString): TransformedText {
         val styled = buildAnnotatedString {
             append(text)
             TextExpanderText.headers(text.text).forEach { (_, offset) ->
                 val end = text.text.indexOf('\n', offset).let { if (it < 0) text.length else it }
-                addStyle(style, offset, end)
+                addStyle(headerStyle, offset, end)
+            }
+            val imgRegex = Regex("""\[image:\s*.*?\]""")
+            imgRegex.findAll(text.text).forEach { m ->
+                addStyle(imageStyle, m.range.first, m.range.last + 1)
             }
         }
         return TransformedText(styled, OffsetMapping.Identity)

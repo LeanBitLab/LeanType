@@ -1787,4 +1787,15 @@
     <string name="text_expander_guide_title">آن لائن گائیڈ اور نحو کا حوالہ</string>
     <string name="text_expander_guide_summary">ڈائنامک پلیس ہولڈرز، ریجیکس پیٹرنز اور موڈیفائرز کے لیے مکمل گائیڈ</string>
     <string name="text_expander_all_as_text_summary">سادہ متن میں شارٹ کٹس میں ترمیم، برآمد اور درآمد کریں</string>
+    <string name="text_expander_attach_image">تصویر یا تصویر منسلک کریں۔</string>
+    <string name="text_expander_attach_image_desc">سٹوریج سے تصویر، خاکہ یا تصویر منتخب کریں۔</string>
+    <string name="text_expander_change_image">تصویر تبدیل کریں۔</string>
+    <string name="text_expander_remove_image">تصویر ہٹا دیں۔</string>
+    <string name="text_expander_image_shortcut_badge">تصویر</string>
+    <string name="text_expander_image_optional_label">اختیاری کیپشن یا لیبل</string>
+    <string name="text_expander_delete_confirm_title">شارٹ کٹ کو حذف کریں۔</string>
+    <string name="text_expander_delete_confirm_message">کیا آپ واقعی \"%s\" کو حذف کرنا چاہتے ہیں؟</string>
+    <string name="text_expander_create_first_button">شارٹ کٹ بنائیں</string>
+    <string name="text_expander_file_too_large">منتخب کردہ تصویر زیادہ سے زیادہ سائز کی حد سے زیادہ ہے (20 MB)</string>
+    <string name="text_expander_image_attached">تصویر منسلک ہے۔</string>
 </resources>

@@ -1695,4 +1695,15 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_guide_title">Online průvodce a reference syntaxe</string>
     <string name="text_expander_guide_summary">Kompletní průvodce pro dynamické zástupné symboly, vzory regulárních výrazů a modifikátory</string>
     <string name="text_expander_all_as_text_summary">Úprava, export a import zkratek v prostém textu</string>
+    <string name="text_expander_attach_image">Připojte fotografii nebo obrázek</string>
+    <string name="text_expander_attach_image_desc">Vyberte fotografii, diagram nebo obrázek z úložiště</string>
+    <string name="text_expander_change_image">Změnit fotku</string>
+    <string name="text_expander_remove_image">Odebrat fotku</string>
+    <string name="text_expander_image_shortcut_badge">Fotografie</string>
+    <string name="text_expander_image_optional_label">Volitelný titulek nebo štítek</string>
+    <string name="text_expander_delete_confirm_title">Smazat zástupce</string>
+    <string name="text_expander_delete_confirm_message">Opravdu chcete smazat \"%s\"?</string>
+    <string name="text_expander_create_first_button">Vytvořit zástupce</string>
+    <string name="text_expander_file_too_large">Vybraný obrázek překračuje maximální limit velikosti (20 MB)</string>
+    <string name="text_expander_image_attached">Foto přiloženo</string>
 </resources>

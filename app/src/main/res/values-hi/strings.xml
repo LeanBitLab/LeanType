@@ -1722,4 +1722,15 @@
     <string name="text_expander_guide_title">ऑनलाइन गाइड एवं सिंटैक्स संदर्भ</string>
     <string name="text_expander_guide_summary">डायनामिक प्लेसहोल्डर्स, रेगेक्स पैटर्न और संशोधक के लिए संपूर्ण मार्गदर्शिका</string>
     <string name="text_expander_all_as_text_summary">सादे पाठ में शॉर्टकट संपादित, निर्यात और आयात करें</string>
+    <string name="text_expander_attach_image">फोटो या छवि संलग्न करें</string>
+    <string name="text_expander_attach_image_desc">भंडारण से एक फोटो, आरेख या छवि का चयन करें</string>
+    <string name="text_expander_change_image">छवि बदलो</string>
+    <string name="text_expander_remove_image">फ़ोटो हटाएँ</string>
+    <string name="text_expander_image_shortcut_badge">तस्वीर</string>
+    <string name="text_expander_image_optional_label">वैकल्पिक कैप्शन या लेबल</string>
+    <string name="text_expander_delete_confirm_title">शॉर्टकट हटाएँ</string>
+    <string name="text_expander_delete_confirm_message">क्या आप वाकई \"%s\" को हटाना चाहते हैं?</string>
+    <string name="text_expander_create_first_button">शॉर्टकट बनाएं</string>
+    <string name="text_expander_file_too_large">चयनित छवि अधिकतम आकार सीमा (20 एमबी) से अधिक है</string>
+    <string name="text_expander_image_attached">चित्र संलग्न</string>
 </resources>

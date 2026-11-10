@@ -1737,4 +1737,15 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_guide_title">Przewodnik online i informacje o składni</string>
     <string name="text_expander_guide_summary">Kompletny przewodnik po dynamicznych symbolach zastępczych, wzorach wyrażeń regularnych i modyfikatorach</string>
     <string name="text_expander_all_as_text_summary">Edytuj, eksportuj i importuj skróty w postaci zwykłego tekstu</string>
+    <string name="text_expander_attach_image">Załącz zdjęcie lub obraz</string>
+    <string name="text_expander_attach_image_desc">Wybierz zdjęcie, diagram lub obraz z magazynu</string>
+    <string name="text_expander_change_image">Zmień zdjęcie</string>
+    <string name="text_expander_remove_image">Usuń zdjęcie</string>
+    <string name="text_expander_image_shortcut_badge">Zdjęcie</string>
+    <string name="text_expander_image_optional_label">Opcjonalny podpis lub etykieta</string>
+    <string name="text_expander_delete_confirm_title">Usuń skrót</string>
+    <string name="text_expander_delete_confirm_message">Czy na pewno chcesz usunąć „%s”?</string>
+    <string name="text_expander_create_first_button">Utwórz skrót</string>
+    <string name="text_expander_file_too_large">Wybrany obraz przekracza maksymalny rozmiar (20 MB)</string>
+    <string name="text_expander_image_attached">Zdjęcie w załączeniu</string>
 </resources>

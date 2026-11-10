@@ -1730,4 +1730,15 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_guide_title">Veebijuhend ja süntaksiviide</string>
     <string name="text_expander_guide_summary">Täielik juhend dünaamiliste kohahoidjate, regex-mustrite ja modifikaatorite jaoks</string>
     <string name="text_expander_all_as_text_summary">Otseteede muutmine, eksportimine ja importimine lihttekstina</string>
+    <string name="text_expander_attach_image">Lisage foto või pilt</string>
+    <string name="text_expander_attach_image_desc">Valige mälust foto, diagramm või pilt</string>
+    <string name="text_expander_change_image">Muuda fotot</string>
+    <string name="text_expander_remove_image">Eemalda foto</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Valikuline pealkiri või silt</string>
+    <string name="text_expander_delete_confirm_title">Kustuta otsetee</string>
+    <string name="text_expander_delete_confirm_message">Kas olete kindel, et soovite \"%s\" kustutada?</string>
+    <string name="text_expander_create_first_button">Loo otsetee</string>
+    <string name="text_expander_file_too_large">Valitud pilt ületab maksimaalse suuruse (20 MB)</string>
+    <string name="text_expander_image_attached">Foto lisatud</string>
 </resources>

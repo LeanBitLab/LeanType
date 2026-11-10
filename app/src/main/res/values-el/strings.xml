@@ -1796,4 +1796,15 @@
     <string name="text_expander_guide_title">Διαδικτυακός οδηγός και αναφορά σύνταξης</string>
     <string name="text_expander_guide_summary">Πλήρης οδηγός για δυναμικά σύμβολα κράτησης θέσης, regex μοτίβα και τροποποιητές</string>
     <string name="text_expander_all_as_text_summary">Επεξεργασία, εξαγωγή και εισαγωγή συντομεύσεων σε απλό κείμενο</string>
+    <string name="text_expander_attach_image">Επισυνάψτε φωτογραφία ή εικόνα</string>
+    <string name="text_expander_attach_image_desc">Επιλέξτε μια φωτογραφία, ένα διάγραμμα ή μια εικόνα από την αποθήκευση</string>
+    <string name="text_expander_change_image">Αλλαγή φωτογραφίας</string>
+    <string name="text_expander_remove_image">Αφαίρεση φωτογραφίας</string>
+    <string name="text_expander_image_shortcut_badge">Φωτογραφία</string>
+    <string name="text_expander_image_optional_label">Προαιρετική λεζάντα ή ετικέτα</string>
+    <string name="text_expander_delete_confirm_title">Διαγραφή συντόμευσης</string>
+    <string name="text_expander_delete_confirm_message">Είστε βέβαιοι ότι θέλετε να διαγράψετε το \"%s\";</string>
+    <string name="text_expander_create_first_button">Δημιουργία συντόμευσης</string>
+    <string name="text_expander_file_too_large">Η επιλεγμένη εικόνα υπερβαίνει το μέγιστο όριο μεγέθους (20 MB)</string>
+    <string name="text_expander_image_attached">Επισυνάπτεται φωτογραφία</string>
 </resources>

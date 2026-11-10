@@ -1722,4 +1722,15 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_guide_title">Çevrimiçi Kılavuz ve Sözdizimi Referansı</string>
     <string name="text_expander_guide_summary">Dinamik yer tutucular, normal ifade kalıpları ve değiştiriciler için eksiksiz kılavuz</string>
     <string name="text_expander_all_as_text_summary">Kısayolları düz metin olarak düzenleyin, dışa aktarın ve içe aktarın</string>
+    <string name="text_expander_attach_image">Fotoğraf veya resim ekleyin</string>
+    <string name="text_expander_attach_image_desc">Depolama alanından bir fotoğraf, diyagram veya görsel seçin</string>
+    <string name="text_expander_change_image">Fotoğrafı değiştir</string>
+    <string name="text_expander_remove_image">Fotoğrafı kaldır</string>
+    <string name="text_expander_image_shortcut_badge">Fotoğraf</string>
+    <string name="text_expander_image_optional_label">İsteğe bağlı başlık veya etiket</string>
+    <string name="text_expander_delete_confirm_title">Kısayolu sil</string>
+    <string name="text_expander_delete_confirm_message">\"%s\" silmek istediğinizden emin misiniz?</string>
+    <string name="text_expander_create_first_button">Kısayol Oluştur</string>
+    <string name="text_expander_file_too_large">Seçilen resim maksimum boyut sınırını (20 MB) aşıyor</string>
+    <string name="text_expander_image_attached">Fotoğraf ekli</string>
 </resources>

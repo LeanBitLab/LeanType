@@ -1701,4 +1701,15 @@
     <string name="text_expander_guide_title">מדריך מקוון והתייחסות תחביר</string>
     <string name="text_expander_guide_summary">מדריך שלם למצייני מיקום דינמיים, דפוסי ביטויים רגילים ומשתנים</string>
     <string name="text_expander_all_as_text_summary">עריכה, ייצוא וייבוא קיצורי דרך בטקסט רגיל</string>
+    <string name="text_expander_attach_image">צרף תמונה או תמונה</string>
+    <string name="text_expander_attach_image_desc">בחר תמונה, דיאגרמה או תמונה מהאחסון</string>
+    <string name="text_expander_change_image"></string>
+    <string name="text_expander_remove_image">הסר תמונה</string>
+    <string name="text_expander_image_shortcut_badge">תַצלוּם</string>
+    <string name="text_expander_image_optional_label">כיתוב או תווית אופציונליים</string>
+    <string name="text_expander_delete_confirm_title">מחק קיצור דרך</string>
+    <string name="text_expander_delete_confirm_message">האם אתה בטוח שברצונך למחוק את \"%s\"?</string>
+    <string name="text_expander_create_first_button">צור קיצור דרך</string>
+    <string name="text_expander_file_too_large">התמונה שנבחרה חורגת ממגבלת הגודל המקסימלית (20 MB)</string>
+    <string name="text_expander_image_attached">תמונה מצורפת</string>
 </resources>

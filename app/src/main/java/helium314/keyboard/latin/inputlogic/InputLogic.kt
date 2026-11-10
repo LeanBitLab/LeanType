@@ -379,6 +379,12 @@ class InputLogic(
                 if (prefixLength > 0) {
                     mConnection.deleteTextBeforeCursor(prefixLength)
                 }
+                if (!suggestionInfo.mImageUri.isNullOrEmpty()) {
+                    mLatinIME.onImageSelected(suggestionInfo.mImageUri!!)
+                    resetComposingState(true)
+                    inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
+                    return inputTransaction
+                }
                 val expandedText = TextExpanderUtils.expand(suggestionInfo.mWord, mLatinIME)
                 val cursorMovedBack = commitExpandedText(typedWord, expandedText)
                 resetComposingState(true)

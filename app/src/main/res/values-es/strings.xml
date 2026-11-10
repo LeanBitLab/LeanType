@@ -1692,4 +1692,15 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_guide_title">Guía en línea y referencia de sintaxis</string>
     <string name="text_expander_guide_summary">Guía completa para marcadores de posición dinámicos, patrones de expresiones regulares y modificadores</string>
     <string name="text_expander_all_as_text_summary">Editar, exportar e importar atajos en texto sin formato</string>
+    <string name="text_expander_attach_image">Adjuntar foto o imagen</string>
+    <string name="text_expander_attach_image_desc">Seleccione una foto, diagrama o imagen del almacenamiento</string>
+    <string name="text_expander_change_image">Cambiar foto</string>
+    <string name="text_expander_remove_image">Quitar foto</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Título o etiqueta opcional</string>
+    <string name="text_expander_delete_confirm_title">Eliminar acceso directo</string>
+    <string name="text_expander_delete_confirm_message">¿Está seguro de que desea eliminar \"%s\"?</string>
+    <string name="text_expander_create_first_button">Crear acceso directo</string>
+    <string name="text_expander_file_too_large">La imagen seleccionada excede el límite de tamaño máximo (20 MB)</string>
+    <string name="text_expander_image_attached">Foto adjunta</string>
 </resources>

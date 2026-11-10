@@ -1737,4 +1737,15 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_guide_title">Onlinegids en syntaxisreferentie</string>
     <string name="text_expander_guide_summary">Volledige gids voor dynamische tijdelijke aanduidingen, regex-patronen en modifiers</string>
     <string name="text_expander_all_as_text_summary">Snelkoppelingen in platte tekst bewerken, exporteren en importeren</string>
+    <string name="text_expander_attach_image">Foto of afbeelding bijvoegen</string>
+    <string name="text_expander_attach_image_desc">Selecteer een foto, diagram of afbeelding uit de opslag</string>
+    <string name="text_expander_change_image">Foto wijzigen</string>
+    <string name="text_expander_remove_image">Foto verwijderen</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Optioneel bijschrift of label</string>
+    <string name="text_expander_delete_confirm_title">Snelkoppeling verwijderen</string>
+    <string name="text_expander_delete_confirm_message">Weet u zeker dat u \"%s\" wilt verwijderen?</string>
+    <string name="text_expander_create_first_button">Snelkoppeling maken</string>
+    <string name="text_expander_file_too_large">Geselecteerde afbeelding overschrijdt de maximale groottelimiet (20 MB)</string>
+    <string name="text_expander_image_attached">Foto bijgevoegd</string>
 </resources>

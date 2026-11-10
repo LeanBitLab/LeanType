@@ -1753,4 +1753,15 @@
     <string name="text_expander_guide_title">دليل على الانترنت ومرجع بناء الجملة</string>
     <string name="text_expander_guide_summary">الدليل الكامل للعناصر النائبة الديناميكية وأنماط التعبير العادي والمعدلات</string>
     <string name="text_expander_all_as_text_summary">تعديل وتصدير واستيراد الاختصارات بنص عادي</string>
+    <string name="text_expander_attach_image">إرفاق صورة أو صورة</string>
+    <string name="text_expander_attach_image_desc">حدد صورة أو رسمًا تخطيطيًا أو صورة من وحدة التخزين</string>
+    <string name="text_expander_change_image">تغيير الصورة</string>
+    <string name="text_expander_remove_image">إزالة الصورة</string>
+    <string name="text_expander_image_shortcut_badge">صورة</string>
+    <string name="text_expander_image_optional_label">تسمية توضيحية أو تسمية اختيارية</string>
+    <string name="text_expander_delete_confirm_title">حذف الاختصار</string>
+    <string name="text_expander_delete_confirm_message">هل أنت متأكد أنك تريد حذف \"%s\"؟</string>
+    <string name="text_expander_create_first_button">إنشاء اختصار</string>
+    <string name="text_expander_file_too_large">الصورة المحددة تتجاوز الحد الأقصى للحجم (20 ميغابايت)</string>
+    <string name="text_expander_image_attached">الصورة المرفقة</string>
 </resources>

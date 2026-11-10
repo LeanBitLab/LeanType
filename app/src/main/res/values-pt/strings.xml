@@ -1753,4 +1753,15 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_guide_title">Guia on-line e referência de sintaxe</string>
     <string name="text_expander_guide_summary">Guia completo para espaços reservados dinâmicos, padrões regex e modificadores</string>
     <string name="text_expander_all_as_text_summary">Editar, exportar e importar atalhos em texto simples</string>
+    <string name="text_expander_attach_image">Anexe foto ou imagem</string>
+    <string name="text_expander_attach_image_desc">Selecione uma foto, diagrama ou imagem do armazenamento</string>
+    <string name="text_expander_change_image">Alterar foto</string>
+    <string name="text_expander_remove_image">Remover foto</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Legenda ou rótulo opcional</string>
+    <string name="text_expander_delete_confirm_title">Excluir atalho</string>
+    <string name="text_expander_delete_confirm_message">Tem certeza de que deseja excluir \"%s\"?</string>
+    <string name="text_expander_create_first_button">Criar atalho</string>
+    <string name="text_expander_file_too_large">A imagem selecionada excede o limite máximo de tamanho (20 MB)</string>
+    <string name="text_expander_image_attached">Foto anexada</string>
 </resources>

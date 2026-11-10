@@ -4,4 +4,5 @@
     <cache-path name="logs" path="logs/" />
     <cache-path name="updates" path="updates/" />
     <cache-path name="gif_cache" path="gif_cache/" />
+    <files-path name="text_expander_images" path="text_expander_images/" />
 </paths>

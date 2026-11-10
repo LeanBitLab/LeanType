@@ -1730,4 +1730,15 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_guide_title">Ghid online și referință de sintaxă</string>
     <string name="text_expander_guide_summary">Ghid complet pentru substituenți dinamici, modele regex și modificatori</string>
     <string name="text_expander_all_as_text_summary">Editați, exportați și importați comenzi rapide în text simplu</string>
+    <string name="text_expander_attach_image">Atașați o fotografie sau o imagine</string>
+    <string name="text_expander_attach_image_desc">Selectați o fotografie, diagramă sau imagine din stocare</string>
+    <string name="text_expander_change_image">Schimbați fotografia</string>
+    <string name="text_expander_remove_image">Eliminați fotografia</string>
+    <string name="text_expander_image_shortcut_badge">Fotografie</string>
+    <string name="text_expander_image_optional_label">Legendă sau etichetă opțională</string>
+    <string name="text_expander_delete_confirm_title">Ștergeți comanda rapidă</string>
+    <string name="text_expander_delete_confirm_message">Sigur doriți să ștergeți \"%s\"?</string>
+    <string name="text_expander_create_first_button">Creați o comandă rapidă</string>
+    <string name="text_expander_file_too_large">Imaginea selectată depășește limita maximă de dimensiune (20 MB)</string>
+    <string name="text_expander_image_attached">Fotografie atașată</string>
 </resources>

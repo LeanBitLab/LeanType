@@ -75,4 +75,21 @@ class TextExpanderTextTest {
         assertTrue(result.entries.isEmpty())
         assertEquals(3, TextExpanderText.diff(sample, result.entries).removed.size)
     }
+
+    @Test fun `image shortcuts format and parse correctly`() {
+        val imageShortcuts = linkedMapOf(
+            "wm" to ShortcutEntry("Washing machine", "", "/data/user/0/app/files/text_expander_images/img_1.jpg"),
+            "diagram" to ShortcutEntry("", "", "/data/user/0/app/files/text_expander_images/img_2.png")
+        )
+        val formatted = TextExpanderText.format(imageShortcuts)
+        assertTrue(formatted.contains("[image: /data/user/0/app/files/text_expander_images/img_1.jpg]"))
+        assertTrue(formatted.contains("[image: /data/user/0/app/files/text_expander_images/img_2.png]"))
+
+        val parsed = TextExpanderText.parse(formatted, emptyMap())
+        assertEquals(emptyList<TextExpanderText.Error>(), parsed.errors)
+        assertEquals("/data/user/0/app/files/text_expander_images/img_1.jpg", parsed.entries["wm"]?.imageUri)
+        assertEquals("Washing machine", parsed.entries["wm"]?.template)
+        assertEquals("/data/user/0/app/files/text_expander_images/img_2.png", parsed.entries["diagram"]?.imageUri)
+        assertEquals("", parsed.entries["diagram"]?.template)
+    }
 }

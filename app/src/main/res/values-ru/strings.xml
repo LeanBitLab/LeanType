@@ -1755,4 +1755,15 @@
     <string name="text_expander_guide_title">Онлайн-руководство и справочник по синтаксису</string>
     <string name="text_expander_guide_summary">Полное руководство по динамическим заполнителям, шаблонам регулярных выражений и модификаторам</string>
     <string name="text_expander_all_as_text_summary">Редактирование, экспорт и импорт ярлыков в виде обычного текста</string>
+    <string name="text_expander_attach_image">Прикрепите фото или изображение</string>
+    <string name="text_expander_attach_image_desc">Выберите фотографию, схему или изображение из хранилища.</string>
+    <string name="text_expander_change_image">Изменить фотографию</string>
+    <string name="text_expander_remove_image">Удалить фото</string>
+    <string name="text_expander_image_shortcut_badge">Фото</string>
+    <string name="text_expander_image_optional_label">Дополнительная подпись или метка</string>
+    <string name="text_expander_delete_confirm_title">Удалить ярлык</string>
+    <string name="text_expander_delete_confirm_message">Вы уверены, что хотите удалить \"%s\"?</string>
+    <string name="text_expander_create_first_button">Создать ярлык</string>
+    <string name="text_expander_file_too_large">Размер выбранного изображения превышает максимальный размер (20 МБ).</string>
+    <string name="text_expander_image_attached">Фото прилагается</string>
 </resources>

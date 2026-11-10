@@ -178,7 +178,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                     SuggestedWordInfo.NOT_AN_INDEX,
                     SuggestedWordInfo.NOT_A_CONFIDENCE,
                     match.previewLabel,
-                    match.prefixLength
+                    match.prefixLength,
+                    match.imageUri
                 )
                 suggestionsContainer.add(insertPos, expanderSuggestion)
                 insertPos++

@@ -1693,4 +1693,15 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_guide_title">Online vodič i referenca sintakse</string>
     <string name="text_expander_guide_summary">Potpuni vodič za dinamička rezervirana mjesta, uzorke regularnih izraza i modifikatore</string>
     <string name="text_expander_all_as_text_summary">Uređivanje, izvoz i uvoz prečaca u običnom tekstu</string>
+    <string name="text_expander_attach_image">Priložite fotografiju ili sliku</string>
+    <string name="text_expander_attach_image_desc">Odaberite fotografiju, dijagram ili sliku iz pohrane</string>
+    <string name="text_expander_change_image">Promjena fotografije</string>
+    <string name="text_expander_remove_image">Ukloni fotografiju</string>
+    <string name="text_expander_image_shortcut_badge">Fotografija</string>
+    <string name="text_expander_image_optional_label">Dodatni naslov ili oznaka</string>
+    <string name="text_expander_delete_confirm_title">Izbriši prečac</string>
+    <string name="text_expander_delete_confirm_message">Jeste li sigurni da želite izbrisati \"%s\"?</string>
+    <string name="text_expander_create_first_button">Stvori prečac</string>
+    <string name="text_expander_file_too_large">Odabrana slika premašuje maksimalno ograničenje veličine (20 MB)</string>
+    <string name="text_expander_image_attached">Fotografija u prilogu</string>
 </resources>

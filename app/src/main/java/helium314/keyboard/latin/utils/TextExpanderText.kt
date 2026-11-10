@@ -20,6 +20,7 @@ import helium314.keyboard.latin.utils.TextExpanderUtils.ShortcutEntry
 object TextExpanderText {
     private const val REGEX_LABEL = "regex:"
     private val HEADER = Regex("""^===\s*(.*?)\s*===\s*$""")
+    private val IMAGE_LINE = Regex("""^\[image:\s*(.*?)\]$""")
 
     enum class ErrorKind { TEXT_BEFORE_FIRST, EMPTY_SHORTCUT, SPACE_IN_SHORTCUT, EMPTY_TEXT, DUPLICATE, INVALID_REGEX }
 
@@ -38,8 +39,10 @@ object TextExpanderText {
         else key
 
     fun format(shortcuts: Map<String, ShortcutEntry>): String =
-        shortcuts.entries.joinToString("") { (key, entry) -> "=== ${displayName(key)} ===\n${entry.template.trimEnd('\n')}\n\n" }
-            .trimEnd('\n').let { if (it.isEmpty()) it else it + "\n" }
+        shortcuts.entries.joinToString("") { (key, entry) ->
+            val imgLine = if (!entry.imageUri.isNullOrBlank()) "[image: ${entry.imageUri}]\n" else ""
+            "=== ${displayName(key)} ===\n$imgLine${entry.template.trimEnd('\n')}\n\n"
+        }.trimEnd('\n').let { if (it.isEmpty()) it else it + "\n" }
 
     /** Header names with the offset of their line in [text], for jumping to a shortcut */
     fun headers(text: String): List<Pair<String, Int>> {
@@ -61,6 +64,7 @@ object TextExpanderText {
         val errors = ArrayList<Error>()
         var headerLine = 0
         var header: String? = null
+        var parsedImageUri: String? = null
         val body = ArrayList<String>()
 
         fun finishBlock() {
@@ -84,11 +88,12 @@ object TextExpanderText {
                 val leading = name.takeWhile { !it.isLetterOrDigit() }
                 prefix = existing[key]?.prefix ?: if (leading.length < name.length) leading else ""
             }
-            if (template.isEmpty()) { errors.add(Error(headerLine, ErrorKind.EMPTY_TEXT, name)); return }
+            val imageUri = parsedImageUri ?: existing[key]?.imageUri ?: existing[name]?.imageUri
+            if (template.isEmpty() && imageUri.isNullOrBlank()) { errors.add(Error(headerLine, ErrorKind.EMPTY_TEXT, name)); return }
             if (entries.containsKey(key)) { errors.add(Error(headerLine, ErrorKind.DUPLICATE, name)); return }
             val old = existing[key]
-            entries[key] = if (old != null && old.prefix == prefix && old.template.trimEnd('\n') == template) old
-                else ShortcutEntry(template, prefix)
+            entries[key] = if (old != null && old.prefix == prefix && old.template.trimEnd('\n') == template && old.imageUri == imageUri) old
+                else ShortcutEntry(template, prefix, imageUri)
         }
 
         text.replace("\r\n", "\n").split('\n').forEachIndexed { index, line ->
@@ -97,12 +102,18 @@ object TextExpanderText {
                 finishBlock()
                 header = match.groupValues[1]
                 headerLine = index + 1
+                parsedImageUri = null
                 body.clear()
             } else if (header == null) {
                 if (line.isNotBlank() && errors.none { it.kind == ErrorKind.TEXT_BEFORE_FIRST })
                     errors.add(Error(index + 1, ErrorKind.TEXT_BEFORE_FIRST))
             } else {
-                body.add(line)
+                val imgMatch = IMAGE_LINE.matchEntire(line.trim())
+                if (imgMatch != null) {
+                    parsedImageUri = imgMatch.groupValues[1].trim()
+                } else {
+                    body.add(line)
+                }
             }
         }
         finishBlock()

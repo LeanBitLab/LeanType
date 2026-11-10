@@ -129,13 +129,15 @@ object TextExpanderUtils {
 
     data class ShortcutEntry(
         val template: String,
-        val prefix: String = ""
+        val prefix: String = "",
+        val imageUri: String? = null
     )
 
     data class ExpandedResult(
         val expandedText: String,
         val prefixLength: Int,
-        val matchedString: String
+        val matchedString: String,
+        val imageUri: String? = null
     )
 
     private data class CompiledShortcut(
@@ -150,7 +152,8 @@ object TextExpanderUtils {
         val template: String,
         val previewLabel: String,
         val prefixLength: Int,
-        val key: String
+        val key: String,
+        val imageUri: String? = null
     )
 
     fun clearCache() {
@@ -162,6 +165,7 @@ object TextExpanderUtils {
         cachedShortcuts = null
         cachedCompiledList = null
         cachedPrefs = null
+        TextExpanderImageUtils.clearCache()
     }
 
     fun getShortcuts(context: Context): Map<String, ShortcutEntry> {
@@ -185,7 +189,8 @@ object TextExpanderUtils {
                 if (valueObj is JSONObject) {
                     val template = valueObj.optString("template", "")
                     val prefix = valueObj.optString("prefix", "")
-                    map[key] = ShortcutEntry(template, prefix)
+                    val imageUri = valueObj.optString("imageUri", "").takeIf { it.isNotBlank() }
+                    map[key] = ShortcutEntry(template, prefix, imageUri)
                 } else {
                     map[key] = ShortcutEntry(valueObj.toString(), "")
                 }
@@ -218,6 +223,9 @@ object TextExpanderUtils {
                 val obj = JSONObject()
                 obj.put("template", entry.template)
                 obj.put("prefix", entry.prefix)
+                if (!entry.imageUri.isNullOrBlank()) {
+                    obj.put("imageUri", entry.imageUri)
+                }
                 json.put(key, obj)
             }
             val jsonStr = json.toString()
@@ -651,8 +659,8 @@ object TextExpanderUtils {
                 try {
                     val match = regex.findAll(textBeforeCursor).lastOrNull { it.range.last == textBeforeCursor.length - 1 }
                     if (match != null && match.value.isNotEmpty()) {
-                        val preview = formatPreview(entry.template)
-                        matches.add(SuggestionMatch(entry.template, preview, 0, item.cleanKey))
+                        val preview = formatPreview(entry.template, entry.imageUri != null, item.cleanKey)
+                        matches.add(SuggestionMatch(entry.template, preview, 0, item.cleanKey, entry.imageUri))
                     }
                 } catch (_: Exception) {}
             } else {
@@ -671,13 +679,13 @@ object TextExpanderUtils {
                         val prefixLen = if (prefix.isNotEmpty() && textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)) {
                             prefix.length
                         } else 0
-                        val preview = formatPreview(entry.template)
+                        val preview = formatPreview(entry.template, entry.imageUri != null, shortcut)
                         val label = if (shortcut.equals(typedWord, ignoreCase = true)) {
                             preview
                         } else {
                             "$shortcut: $preview"
                         }
-                        matches.add(SuggestionMatch(entry.template, label, prefixLen, shortcut))
+                        matches.add(SuggestionMatch(entry.template, label, prefixLen, shortcut, entry.imageUri))
                     }
                 }
             }
@@ -686,9 +694,12 @@ object TextExpanderUtils {
         return matches.take(3)
     }
 
-    private fun formatPreview(template: String): String {
+    private fun formatPreview(template: String, isImage: Boolean = false, fallbackKey: String = ""): String {
         var preview = template.replace('\n', ' ').replace('\r', ' ').trim()
         preview = preview.replace("%cursor%", "").replace(Regex("""%cursor_\d+?%"""), "")
+        if (preview.isEmpty() && isImage) {
+            preview = fallbackKey.ifEmpty { "Photo" }
+        }
         if (preview.length > 28) {
             preview = preview.take(27) + "…"
         }

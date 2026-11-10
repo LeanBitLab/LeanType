@@ -1781,6 +1781,17 @@ New dictionary:
     <string name="text_expander_save">Save</string>
     <string name="text_expander_add">Add</string>
     <string name="text_expander_delete">Delete</string>
+    <string name="text_expander_attach_image">Attach photo or image</string>
+    <string name="text_expander_attach_image_desc">Select a photo, diagram, or image from storage</string>
+    <string name="text_expander_change_image">Change photo</string>
+    <string name="text_expander_remove_image">Remove photo</string>
+    <string name="text_expander_image_shortcut_badge">Photo</string>
+    <string name="text_expander_image_optional_label">Optional caption or label</string>
+    <string name="text_expander_delete_confirm_title">Delete shortcut</string>
+    <string name="text_expander_delete_confirm_message">Are you sure you want to delete \"%s\"?</string>
+    <string name="text_expander_create_first_button">Create Shortcut</string>
+    <string name="text_expander_file_too_large">Selected image exceeds maximum size limit (20 MB)</string>
+    <string name="text_expander_image_attached">Photo attached</string>
 
     <!-- Custom AI Keys Screen -->
     <string name="custom_ai_keys_what_are_keywords">What are Keywords?</string>

@@ -270,6 +270,7 @@ internal class SuggestionStripLayoutHelper(
             val wordView = mWordViews[positionInStrip]
             wordView.text = null
             wordView.tag = null
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             if (SuggestionStripView.DEBUG_SUGGESTIONS && positionInStrip < mDebugInfoViews.size) {
                 mDebugInfoViews[positionInStrip].text = null
             }
@@ -386,7 +387,7 @@ internal class SuggestionStripLayoutHelper(
             if (wordCountToShow <= 1) {
                 mMoreSuggestionsAvailable = false
                 val availableWidth = (stripWidth - mPadding - mDividerWidth) / 2
-                layoutWord(context, mCenterPositionInStrip, availableWidth)
+                layoutWord(context, mCenterPositionInStrip, availableWidth, suggestedWords)
                 stripView.addView(centerWordView)
                 setLayoutWeight(centerWordView, 1.0f, ViewGroup.LayoutParams.MATCH_PARENT)
                 val divider = mDividerViews[0]
@@ -408,7 +409,7 @@ internal class SuggestionStripLayoutHelper(
                         addDivider(stripView, divider)
                         x += divider.measuredWidth
                     }
-                    val wordView = layoutWord(context, positionInStrip, availableWordWidth)
+                    val wordView = layoutWord(context, positionInStrip, availableWordWidth, suggestedWords)
                     stripView.addView(wordView)
                     setLayoutWeight(wordView, 1.0f, ViewGroup.LayoutParams.MATCH_PARENT)
                     x += wordView.measuredWidth
@@ -436,7 +437,7 @@ internal class SuggestionStripLayoutHelper(
         if (wordCountToShow == 1 || getTextScaleX(centerWordView.text, centerWidth, centerWordView.paint) < MIN_TEXT_XSCALE) {
             val countInStrip = 1
             mMoreSuggestionsAvailable = wordCountToShow > countInStrip
-            layoutWord(context, mCenterPositionInStrip, stripWidth - mPadding)
+            layoutWord(context, mCenterPositionInStrip, stripWidth - mPadding, suggestedWords)
             stripView.addView(centerWordView)
             setLayoutWeight(centerWordView, 1.0f, ViewGroup.LayoutParams.MATCH_PARENT)
             if (SuggestionStripView.DEBUG_SUGGESTIONS) {
@@ -457,7 +458,7 @@ internal class SuggestionStripLayoutHelper(
             }
 
             val width = getSuggestionWidth(positionInStrip, stripWidth)
-            val wordView = layoutWord(context, positionInStrip, width)
+            val wordView = layoutWord(context, positionInStrip, width, suggestedWords)
             stripView.addView(wordView)
             setLayoutWeight(wordView, getSuggestionWeight(positionInStrip), ViewGroup.LayoutParams.MATCH_PARENT)
             x += wordView.measuredWidth
@@ -469,20 +470,28 @@ internal class SuggestionStripLayoutHelper(
         return startIndexOfMoreSuggestions
     }
 
-    private fun layoutWord(context: Context, positionInStrip: Int, width: Int): TextView {
+    private fun layoutWord(context: Context, positionInStrip: Int, width: Int, suggestedWords: SuggestedWords): TextView {
         val wordView = mWordViews[positionInStrip]
         val word = wordView.text
+        val tagIndex = wordView.tag as? Int
+        val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
+        val thumb = if (wordInfo?.mImageUri != null) {
+            helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!)
+        } else null
+
         if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
-            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
-            wordView.compoundDrawablePadding = -mMoreSuggestionsHint.intrinsicHeight
+            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, mMoreSuggestionsHint)
+            wordView.compoundDrawablePadding = if (thumb != null) 6.dpToPx(context.resources) else -mMoreSuggestionsHint.intrinsicHeight
         } else {
-            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
+            wordView.compoundDrawablePadding = if (thumb != null) 6.dpToPx(context.resources) else 0
         }
         wordView.contentDescription = if (TextUtils.isEmpty(word))
             context.resources.getString(R.string.spoken_empty_suggestion)
         else
             word.toString()
-        val text = getEllipsizedTextWithSettingScaleX(word, width, wordView.paint)
+        val textWidth = if (thumb != null) (width - 28.dpToPx(context.resources)).coerceAtLeast(10) else width
+        val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
         val scaleX = wordView.textScaleX
         wordView.text = text
         wordView.textScaleX = scaleX

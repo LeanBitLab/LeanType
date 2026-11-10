@@ -92,6 +92,7 @@ open class SuggestedWords(
         private var mIsEmoji: Boolean? = null
         var mDisplayLabel: String? = null
         var mShortcutPrefixLength: Int = 0
+        var mImageUri: String? = null
 
         constructor(
             word: String,
@@ -122,10 +123,12 @@ open class SuggestedWords(
             indexOfTouchPointOfSecondWord: Int,
             autoCommitFirstWordConfidence: Int,
             displayLabel: String?,
-            shortcutPrefixLength: Int = 0
+            shortcutPrefixLength: Int = 0,
+            imageUri: String? = null
         ) : this(word, prevWordsContext, score, kindAndFlags, sourceDict, indexOfTouchPointOfSecondWord, autoCommitFirstWordConfidence) {
             mDisplayLabel = displayLabel
             mShortcutPrefixLength = shortcutPrefixLength
+            mImageUri = imageUri
         }
 
         constructor(applicationSpecifiedCompletion: CompletionInfo) {

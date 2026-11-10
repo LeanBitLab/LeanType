@@ -1616,23 +1616,39 @@ class LatinIME : InputMethodService(),
         }
         
         try {
-            val mimeType = contentResolver.getType(contentUri) ?: "image/png"
+            val mimeType = contentResolver.getType(contentUri)
+                ?: helium314.keyboard.latin.utils.TextExpanderImageUtils.getMimeType(imageUri)
             val inputContentInfoCompat = InputContentInfoCompat(
                 contentUri,
-                android.content.ClipDescription("Clipboard Image", arrayOf(mimeType)),
+                android.content.ClipDescription("Image", arrayOf(mimeType)),
                 null
             )
             val ic = currentInputConnection ?: return
             var flags = 0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 flags = InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
+            } else {
+                runCatching {
+                    grantUriPermission(editorInfo.packageName, contentUri, android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
             }
             val inserted = try {
                 InputConnectionCompat.commitContent(ic, editorInfo, inputContentInfoCompat, flags, null)
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to commit content", e); false
             }
-            if (!inserted) Toast.makeText(this, R.string.image_pasting_not_supported, Toast.LENGTH_SHORT).show()
+            if (!inserted) {
+                Toast.makeText(this, R.string.image_pasting_not_supported, Toast.LENGTH_SHORT).show()
+                val shareIntent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                    type = mimeType
+                    putExtra(android.content.Intent.EXTRA_STREAM, contentUri)
+                    addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                val chooser = android.content.Intent.createChooser(shareIntent, null).apply {
+                    addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                runCatching { startActivity(chooser) }
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to paste image", e)
         }

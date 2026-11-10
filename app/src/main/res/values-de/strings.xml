@@ -1745,4 +1745,15 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_guide_summary">Vollständiger Leitfaden für dynamische Platzhalter, Regex-Muster und Modifikatoren</string>
     <string name="text_expander_all_as_text_summary">Kürzel im Nur-Text-Format bearbeiten, exportieren und importieren</string>
     <string name="text_expander_shortcuts_count">%dVerknüpfungen</string>
+    <string name="text_expander_attach_image">Hängen Sie ein Foto oder Bild an</string>
+    <string name="text_expander_attach_image_desc">Wählen Sie ein Foto, Diagramm oder Bild aus dem Speicher aus</string>
+    <string name="text_expander_change_image">Foto ändern</string>
+    <string name="text_expander_remove_image">Foto entfernen</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Optionale Beschriftung oder Beschriftung</string>
+    <string name="text_expander_delete_confirm_title">Verknüpfung löschen</string>
+    <string name="text_expander_delete_confirm_message">Sind Sie sicher, dass Sie „%s“ löschen möchten?</string>
+    <string name="text_expander_create_first_button">Verknüpfung erstellen</string>
+    <string name="text_expander_file_too_large">Das ausgewählte Bild überschreitet die maximale Größenbeschränkung (20 MB).</string>
+    <string name="text_expander_image_attached">Foto beigefügt</string>
 </resources>

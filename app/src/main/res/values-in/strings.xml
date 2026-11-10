@@ -1693,4 +1693,15 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_guide_title">Panduan Online &amp; Referensi Sintaks</string>
     <string name="text_expander_guide_summary">Panduan lengkap untuk placeholder dinamis, pola regex, dan pengubah</string>
     <string name="text_expander_all_as_text_summary">Edit, ekspor, dan impor pintasan dalam teks biasa</string>
+    <string name="text_expander_attach_image">Lampirkan foto atau gambar</string>
+    <string name="text_expander_attach_image_desc">Pilih foto, diagram, atau gambar dari penyimpanan</string>
+    <string name="text_expander_change_image">Ganti foto</string>
+    <string name="text_expander_remove_image">Hapus foto</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Keterangan atau label opsional</string>
+    <string name="text_expander_delete_confirm_title">Hapus pintasan</string>
+    <string name="text_expander_delete_confirm_message">Apakah Anda yakin ingin menghapus \"%s\"?</string>
+    <string name="text_expander_create_first_button">Buat Pintasan</string>
+    <string name="text_expander_file_too_large">Gambar yang dipilih melebihi batas ukuran maksimum (20 MB)</string>
+    <string name="text_expander_image_attached">Foto terlampir</string>
 </resources>

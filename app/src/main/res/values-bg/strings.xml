@@ -1730,4 +1730,15 @@
     <string name="text_expander_guide_title">Онлайн ръководство и справочник по синтаксис</string>
     <string name="text_expander_guide_summary">Пълно ръководство за динамични заместители, модели на регулярни изрази и модификатори</string>
     <string name="text_expander_all_as_text_summary">Редактиране, експортиране и импортиране на преки пътища в обикновен текст</string>
+    <string name="text_expander_attach_image">Прикачете снимка или изображение</string>
+    <string name="text_expander_attach_image_desc">Изберете снимка, диаграма или изображение от хранилището</string>
+    <string name="text_expander_change_image">Смяна на снимка</string>
+    <string name="text_expander_remove_image">Премахване на снимка</string>
+    <string name="text_expander_image_shortcut_badge">снимка</string>
+    <string name="text_expander_image_optional_label">Надпис или етикет по избор</string>
+    <string name="text_expander_delete_confirm_title">Изтриване на пряк път</string>
+    <string name="text_expander_delete_confirm_message">Сигурни ли сте, че искате да изтриете \"%s\"?</string>
+    <string name="text_expander_create_first_button">Създаване на пряк път</string>
+    <string name="text_expander_file_too_large">Избраното изображение надвишава ограничението за максимален размер (20 MB)</string>
+    <string name="text_expander_image_attached">Приложена снимка</string>
 </resources>

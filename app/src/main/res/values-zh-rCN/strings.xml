@@ -1696,4 +1696,15 @@
     <string name="text_expander_guide_title">在线指南和语法参考</string>
     <string name="text_expander_guide_summary">动态占位符、正则表达式模式和修饰符的完整指南</string>
     <string name="text_expander_all_as_text_summary">以纯文本形式编辑、导出和导入快捷方式</string>
+    <string name="text_expander_attach_image">附上照片或图像</string>
+    <string name="text_expander_attach_image_desc">从存储中选择照片、图表或图像</string>
+    <string name="text_expander_change_image">更改照片</string>
+    <string name="text_expander_remove_image">删除照片</string>
+    <string name="text_expander_image_shortcut_badge">照片</string>
+    <string name="text_expander_image_optional_label">可选标题或标签</string>
+    <string name="text_expander_delete_confirm_title">删除快捷方式</string>
+    <string name="text_expander_delete_confirm_message">您确定要删除\"%s\"吗？</string>
+    <string name="text_expander_create_first_button">创建快捷方式</string>
+    <string name="text_expander_file_too_large">所选图像超出最大大小限制 (20 MB)</string>
+    <string name="text_expander_image_attached">附照片</string>
 </resources>

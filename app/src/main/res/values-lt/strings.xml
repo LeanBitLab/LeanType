@@ -1731,4 +1731,15 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_guide_title">Internetinis vadovas ir sintaksės nuoroda</string>
     <string name="text_expander_guide_summary">Išsamus dinaminių rezervuotųjų ženklų, reguliariųjų reiškinių šablonų ir modifikatorių vadovas</string>
     <string name="text_expander_all_as_text_summary">Redaguoti, eksportuoti ir importuoti sparčiuosius klavišus paprastuoju tekstu</string>
+    <string name="text_expander_attach_image">Pridėkite nuotrauką ar paveikslėlį</string>
+    <string name="text_expander_attach_image_desc">Pasirinkite nuotrauką, diagramą arba vaizdą iš saugyklos</string>
+    <string name="text_expander_change_image">Keisti nuotrauką</string>
+    <string name="text_expander_remove_image">Pašalinti nuotrauką</string>
+    <string name="text_expander_image_shortcut_badge">Nuotrauka</string>
+    <string name="text_expander_image_optional_label">Neprivaloma antraštė arba etiketė</string>
+    <string name="text_expander_delete_confirm_title">Ištrinti nuorodą</string>
+    <string name="text_expander_delete_confirm_message">Ar tikrai norite ištrinti \"%s\"?</string>
+    <string name="text_expander_create_first_button">Sukurti nuorodą</string>
+    <string name="text_expander_file_too_large">Pasirinktas vaizdas viršija didžiausio dydžio limitą (20 MB)</string>
+    <string name="text_expander_image_attached">Pridedama nuotrauka</string>
 </resources>

@@ -1762,4 +1762,15 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_guide_title">Guida in linea e riferimento alla sintassi</string>
     <string name="text_expander_guide_summary">Guida completa per segnaposto dinamici, modelli regex e modificatori</string>
     <string name="text_expander_all_as_text_summary">Modifica, esporta e importa scorciatoie in testo semplice</string>
+    <string name="text_expander_attach_image">Allega foto o immagine</string>
+    <string name="text_expander_attach_image_desc">Seleziona una foto, un diagramma o un\'immagine dalla memoria</string>
+    <string name="text_expander_change_image">Cambia foto</string>
+    <string name="text_expander_remove_image">Rimuovi foto</string>
+    <string name="text_expander_image_shortcut_badge">Foto</string>
+    <string name="text_expander_image_optional_label">Didascalia o etichetta facoltativa</string>
+    <string name="text_expander_delete_confirm_title">Elimina scorciatoia</string>
+    <string name="text_expander_delete_confirm_message">Vuoi eliminare \"%s\"?</string>
+    <string name="text_expander_create_first_button">Crea collegamento</string>
+    <string name="text_expander_file_too_large">L\'immagine selezionata supera il limite di dimensione massima (20 MB)</string>
+    <string name="text_expander_image_attached">Foto allegata</string>
 </resources>
