@@ -111,7 +111,9 @@ object TextExpanderImageUtils {
             val managedDir = getImagesDir(context)
             if (file.parentFile?.canonicalPath == managedDir.canonicalPath) {
                 file.delete()
-                thumbnailCache.remove(imagePath)
+                thumbnailCache.snapshot().keys.filter { it.startsWith(imagePath) }.forEach {
+                    thumbnailCache.remove(it)
+                }
             }
         } catch (_: Exception) {}
     }
