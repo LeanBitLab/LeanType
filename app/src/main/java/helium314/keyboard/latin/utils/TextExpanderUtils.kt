@@ -213,6 +213,18 @@ object TextExpanderUtils {
         cachedRawJson = jsonStr
         cachedShortcuts = map
         cachedCompiledList = compiled
+        if (map.any { !it.value.imageUri.isNullOrBlank() }) {
+            ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
+                val thumbW = 40.dpToPx(context.resources)
+                val thumbH = 26.dpToPx(context.resources)
+                for (entry in map.values) {
+                    val uri = entry.imageUri
+                    if (!uri.isNullOrBlank()) {
+                        TextExpanderImageUtils.getThumbnailDrawable(context, uri, thumbW, thumbH)
+                    }
+                }
+            }
+        }
         return map
     }
 

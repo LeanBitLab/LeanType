@@ -28,6 +28,7 @@ object TextExpanderImageUtils {
     private const val CACHE_SIZE = 40
 
     private val thumbnailCache = LruCache<String, Drawable>(CACHE_SIZE)
+    private val bitmapCache = LruCache<String, Bitmap>(CACHE_SIZE)
 
     fun getImagesDir(context: Context): File {
         return File(context.filesDir, "text_expander_images").apply {
@@ -114,6 +115,9 @@ object TextExpanderImageUtils {
                 thumbnailCache.snapshot().keys.filter { it.startsWith(imagePath) }.forEach {
                     thumbnailCache.remove(it)
                 }
+                bitmapCache.snapshot().keys.filter { it.startsWith(imagePath) }.forEach {
+                    bitmapCache.remove(it)
+                }
             }
         } catch (_: Exception) {}
     }
@@ -122,7 +126,9 @@ object TextExpanderImageUtils {
      * Loads a memory-efficient downsampled thumbnail Bitmap.
      */
     fun loadThumbnailBitmap(context: Context, pathOrUri: String, maxDimPx: Int): Bitmap? {
-        return try {
+        val cacheKey = "${pathOrUri}_$maxDimPx"
+        bitmapCache.get(cacheKey)?.let { return it }
+        val bitmap = try {
             val file = if (pathOrUri.startsWith("content://")) null else File(pathOrUri)
             val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
 
@@ -159,6 +165,10 @@ object TextExpanderImageUtils {
         } catch (_: Exception) {
             null
         }
+        if (bitmap != null) {
+            bitmapCache.put(cacheKey, bitmap)
+        }
+        return bitmap
     }
 
     /**
@@ -260,5 +270,6 @@ object TextExpanderImageUtils {
 
     fun clearCache() {
         thumbnailCache.evictAll()
+        bitmapCache.evictAll()
     }
 }
