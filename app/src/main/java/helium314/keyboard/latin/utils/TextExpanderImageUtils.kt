@@ -7,11 +7,17 @@ package helium314.keyboard.latin.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.BitmapShader
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
+import android.graphics.Shader
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.LruCache
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import helium314.keyboard.latin.R
 import java.io.File
 import java.io.FileOutputStream
@@ -155,16 +161,59 @@ object TextExpanderImageUtils {
 
     /**
      * Gets a cached rounded thumbnail Drawable for display in the suggestion strip or settings.
+     * Accurately center-crops to square, scales to exact pixel dimensions, and applies smooth rounded corners.
      */
     fun getThumbnailDrawable(context: Context, pathOrUri: String, sizePx: Int = 22.dpToPx(context.resources)): Drawable? {
         val cacheKey = "${pathOrUri}_$sizePx"
         thumbnailCache.get(cacheKey)?.let { return it }
 
-        val targetDecodeDim = sizePx * 2
-        val bitmap = loadThumbnailBitmap(context, pathOrUri, targetDecodeDim)
-        if (bitmap != null) {
-            val drawable = RoundedBitmapDrawableFactory.create(context.resources, bitmap).apply {
-                cornerRadius = 4.dpToPx(context.resources).toFloat()
+        val targetDecodeDim = sizePx * 4
+        val rawBitmap = loadThumbnailBitmap(context, pathOrUri, targetDecodeDim)
+        if (rawBitmap != null) {
+            val srcW = rawBitmap.width
+            val srcH = rawBitmap.height
+            val minEdge = minOf(srcW, srcH)
+            val xOffset = (srcW - minEdge) / 2
+            val yOffset = (srcH - minEdge) / 2
+            val squareBitmap = if (srcW == minEdge && srcH == minEdge) {
+                rawBitmap
+            } else {
+                val sq = Bitmap.createBitmap(rawBitmap, xOffset, yOffset, minEdge, minEdge)
+                if (rawBitmap != sq) rawBitmap.recycle()
+                sq
+            }
+            val scaledBitmap = if (squareBitmap.width == sizePx && squareBitmap.height == sizePx) {
+                squareBitmap
+            } else {
+                val sc = Bitmap.createScaledBitmap(squareBitmap, sizePx, sizePx, true)
+                if (squareBitmap != sc) squareBitmap.recycle()
+                sc
+            }
+
+            val output = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(output)
+            val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
+            val rect = RectF(0f, 0f, sizePx.toFloat(), sizePx.toFloat())
+            val cornerRadius = 6.dpToPx(context.resources).toFloat()
+
+            val shader = BitmapShader(scaledBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+            paint.shader = shader
+            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
+
+            val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                style = Paint.Style.STROKE
+                strokeWidth = 1.dpToPx(context.resources).toFloat().coerceAtLeast(1f)
+                color = Color.argb(45, 128, 128, 128)
+            }
+            val inset = borderPaint.strokeWidth / 2f
+            val borderRect = RectF(inset, inset, sizePx.toFloat() - inset, sizePx.toFloat() - inset)
+            canvas.drawRoundRect(borderRect, cornerRadius, cornerRadius, borderPaint)
+
+            if (scaledBitmap != output) {
+                scaledBitmap.recycle()
+            }
+
+            val drawable = BitmapDrawable(context.resources, output).apply {
                 setBounds(0, 0, sizePx, sizePx)
             }
             thumbnailCache.put(cacheKey, drawable)

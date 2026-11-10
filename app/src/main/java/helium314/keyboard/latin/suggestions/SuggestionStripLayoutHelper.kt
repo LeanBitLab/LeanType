@@ -475,8 +475,9 @@ internal class SuggestionStripLayoutHelper(
         val word = wordView.text
         val tagIndex = wordView.tag as? Int
         val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
+        val thumbSizePx = 22.dpToPx(context.resources)
         val thumb = if (wordInfo?.mImageUri != null) {
-            helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!)
+            helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
         } else null
 
         if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
@@ -490,7 +491,7 @@ internal class SuggestionStripLayoutHelper(
             context.resources.getString(R.string.spoken_empty_suggestion)
         else
             word.toString()
-        val textWidth = if (thumb != null) (width - 28.dpToPx(context.resources)).coerceAtLeast(10) else width
+        val textWidth = if (thumb != null) (width - thumbSizePx - 8.dpToPx(context.resources)).coerceAtLeast(10) else width
         val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
         val scaleX = wordView.textScaleX
         wordView.text = text
