@@ -492,41 +492,40 @@ internal class SuggestionStripLayoutHelper(
         val tagIndex = wordView.tag as? Int
         val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
         val isImage = wordInfo?.mImageUri != null
+        val hasLabel = !word.isNullOrBlank()
 
-        val thumbSizePx = 18.dpToPx(context.resources)
-        val thumb = if (isImage) {
-            helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
-        } else null
-
-        var textWidth = width
-
-        if (isImage) {
-            val gap = 4.dpToPx(context.resources)
-            val hasText = !word.isNullOrBlank()
-            val rawTextWidth = if (hasText) getTextWidth(word, wordView.paint) else 0f
-
-            val totalContentW = if (hasText) {
-                thumbSizePx + gap + rawTextWidth.toInt()
-            } else {
-                thumbSizePx
+        if (isImage && !hasLabel) {
+            val thumbH = 28.dpToPx(context.resources)
+            val maxThumbW = (width - 8.dpToPx(context.resources)).coerceAtLeast(thumbH)
+            val thumbW = 42.dpToPx(context.resources).coerceIn(thumbH, maxThumbW)
+            val thumb = helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(
+                context, wordInfo.mImageUri!!, thumbW, thumbH
+            )
+            val padH = ((width - thumbW) / 2).coerceAtLeast(0)
+            wordView.setPadding(padH, 0, padH, 0)
+            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
+            wordView.compoundDrawablePadding = 0
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
             }
-
-            val minChipW = if (hasText) 40.dpToPx(context.resources) else (thumbSizePx + 12.dpToPx(context.resources))
-            val maxChipW = (width - 4.dpToPx(context.resources)).coerceAtLeast(minChipW)
-            val chipW = (totalContentW + 16.dpToPx(context.resources)).coerceIn(minChipW, maxChipW)
-
-            val insetH = ((width - chipW) / 2).coerceAtLeast(2.dpToPx(context.resources))
-            val insetV = 5.dpToPx(context.resources)
-
-            val padH = if (hasText) {
-                ((width - totalContentW.coerceAtMost(chipW - 8.dpToPx(context.resources))) / 2).coerceAtLeast(4.dpToPx(context.resources))
-            } else {
-                ((width - thumbSizePx) / 2).coerceAtLeast(0)
+            wordView.contentDescription = wordInfo.mWord.ifEmpty {
+                context.resources.getString(R.string.text_expander_image_shortcut_badge)
             }
+            wordView.text = ""
+            wordView.isEnabled = thumb != null || AccessibilityUtils.instance.isTouchExplorationEnabled
+            return wordView
+        } else if (isImage && hasLabel) {
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+            wordView.compoundDrawablePadding = 0
+            val padH = 6.dpToPx(context.resources)
             wordView.setPadding(padH, 0, padH, 0)
 
-            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
-            wordView.compoundDrawablePadding = if (hasText) gap else 0
+            val rawTextWidth = getTextWidth(word, wordView.paint)
+            val minChipW = 36.dpToPx(context.resources)
+            val maxChipW = (width - 4.dpToPx(context.resources)).coerceAtLeast(minChipW)
+            val chipW = (rawTextWidth + 18.dpToPx(context.resources)).toInt().coerceIn(minChipW, maxChipW)
+            val insetH = ((width - chipW) / 2).coerceAtLeast(2.dpToPx(context.resources))
+            val insetV = 5.dpToPx(context.resources)
 
             val cornerRadius = 8.dpToPx(context.resources).toFloat()
             val strokeWidth = (1.5f * context.resources.displayMetrics.density).toInt().coerceAtLeast(1)
@@ -553,11 +552,14 @@ internal class SuggestionStripLayoutHelper(
             }
             wordView.background = InsetDrawable(stateList, insetH, insetV, insetH, insetV)
 
-            textWidth = if (hasText) {
-                (chipW - thumbSizePx - gap - 12.dpToPx(context.resources)).coerceAtLeast(10)
-            } else {
-                10
-            }
+            val textWidth = (chipW - 8.dpToPx(context.resources)).coerceAtLeast(10)
+            val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
+            val scaleX = wordView.textScaleX
+            wordView.text = text
+            wordView.textScaleX = scaleX
+            wordView.contentDescription = word.toString()
+            wordView.isEnabled = true
+            return wordView
         } else if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
@@ -573,21 +575,15 @@ internal class SuggestionStripLayoutHelper(
                 wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
             }
         }
-        wordView.contentDescription = if (TextUtils.isEmpty(word)) {
-            if (isImage) {
-                wordInfo?.mWord?.ifEmpty { context.resources.getString(R.string.text_expander_image_shortcut_badge) }
-                    ?: context.resources.getString(R.string.text_expander_image_shortcut_badge)
-            } else {
-                context.resources.getString(R.string.spoken_empty_suggestion)
-            }
-        } else {
+        wordView.contentDescription = if (TextUtils.isEmpty(word))
+            context.resources.getString(R.string.spoken_empty_suggestion)
+        else
             word.toString()
-        }
-        val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
+        val text = getEllipsizedTextWithSettingScaleX(word, width, wordView.paint)
         val scaleX = wordView.textScaleX
         wordView.text = text
         wordView.textScaleX = scaleX
-        wordView.isEnabled = !TextUtils.isEmpty(word) || thumb != null ||
+        wordView.isEnabled = !TextUtils.isEmpty(word) ||
                 AccessibilityUtils.instance.isTouchExplorationEnabled
         return wordView
     }

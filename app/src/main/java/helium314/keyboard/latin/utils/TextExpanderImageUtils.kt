@@ -163,38 +163,48 @@ object TextExpanderImageUtils {
      * Gets a cached rounded thumbnail Drawable for display in the suggestion strip or settings.
      * Accurately center-crops to square, scales to exact pixel dimensions, and applies smooth rounded corners.
      */
-    fun getThumbnailDrawable(context: Context, pathOrUri: String, sizePx: Int = 18.dpToPx(context.resources)): Drawable? {
-        val cacheKey = "${pathOrUri}_$sizePx"
+    fun getThumbnailDrawable(
+        context: Context,
+        pathOrUri: String,
+        widthPx: Int = 42.dpToPx(context.resources),
+        heightPx: Int = 28.dpToPx(context.resources)
+    ): Drawable? {
+        val cacheKey = "${pathOrUri}_${widthPx}x${heightPx}"
         thumbnailCache.get(cacheKey)?.let { return it }
 
-        val targetDecodeDim = sizePx * 4
+        val targetDecodeDim = maxOf(widthPx, heightPx) * 2
         val rawBitmap = loadThumbnailBitmap(context, pathOrUri, targetDecodeDim)
         if (rawBitmap != null) {
             val srcW = rawBitmap.width
             val srcH = rawBitmap.height
-            val minEdge = minOf(srcW, srcH)
-            val xOffset = (srcW - minEdge) / 2
-            val yOffset = (srcH - minEdge) / 2
-            val squareBitmap = if (srcW == minEdge && srcH == minEdge) {
+            val targetRatio = widthPx.toFloat() / heightPx.toFloat()
+            val srcRatio = srcW.toFloat() / srcH.toFloat()
+
+            val cropW = if (srcRatio > targetRatio) (srcH * targetRatio).toInt().coerceAtMost(srcW) else srcW
+            val cropH = if (srcRatio > targetRatio) srcH else (srcW / targetRatio).toInt().coerceAtMost(srcH)
+            val xOffset = ((srcW - cropW) / 2).coerceAtLeast(0)
+            val yOffset = ((srcH - cropH) / 2).coerceAtLeast(0)
+
+            val croppedBitmap = if (cropW == srcW && cropH == srcH) {
                 rawBitmap
             } else {
-                val sq = Bitmap.createBitmap(rawBitmap, xOffset, yOffset, minEdge, minEdge)
+                val sq = Bitmap.createBitmap(rawBitmap, xOffset, yOffset, cropW, cropH)
                 if (rawBitmap != sq) rawBitmap.recycle()
                 sq
             }
-            val scaledBitmap = if (squareBitmap.width == sizePx && squareBitmap.height == sizePx) {
-                squareBitmap
+            val scaledBitmap = if (croppedBitmap.width == widthPx && croppedBitmap.height == heightPx) {
+                croppedBitmap
             } else {
-                val sc = Bitmap.createScaledBitmap(squareBitmap, sizePx, sizePx, true)
-                if (squareBitmap != sc) squareBitmap.recycle()
+                val sc = Bitmap.createScaledBitmap(croppedBitmap, widthPx, heightPx, true)
+                if (croppedBitmap != sc) croppedBitmap.recycle()
                 sc
             }
 
-            val output = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888)
+            val output = Bitmap.createBitmap(widthPx, heightPx, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(output)
             val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
-            val rect = RectF(0f, 0f, sizePx.toFloat(), sizePx.toFloat())
-            val cornerRadius = 5.dpToPx(context.resources).toFloat()
+            val rect = RectF(0f, 0f, widthPx.toFloat(), heightPx.toFloat())
+            val cornerRadius = 6.dpToPx(context.resources).toFloat()
 
             val shader = BitmapShader(scaledBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
             paint.shader = shader
@@ -206,7 +216,7 @@ object TextExpanderImageUtils {
                 color = Color.argb(45, 128, 128, 128)
             }
             val inset = borderPaint.strokeWidth / 2f
-            val borderRect = RectF(inset, inset, sizePx.toFloat() - inset, sizePx.toFloat() - inset)
+            val borderRect = RectF(inset, inset, widthPx.toFloat() - inset, heightPx.toFloat() - inset)
             canvas.drawRoundRect(borderRect, cornerRadius, cornerRadius, borderPaint)
 
             if (scaledBitmap != output) {
@@ -214,14 +224,14 @@ object TextExpanderImageUtils {
             }
 
             val drawable = BitmapDrawable(context.resources, output).apply {
-                setBounds(0, 0, sizePx, sizePx)
+                setBounds(0, 0, widthPx, heightPx)
             }
             thumbnailCache.put(cacheKey, drawable)
             return drawable
         }
 
         val fallback = ContextCompat.getDrawable(context, R.drawable.ic_image)?.mutate()?.apply {
-            setBounds(0, 0, sizePx, sizePx)
+            setBounds(0, 0, widthPx, heightPx)
         }
         if (fallback != null) {
             thumbnailCache.put(cacheKey, fallback)

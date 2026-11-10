@@ -44,10 +44,10 @@ class TextExpanderTabTest {
         val imageWithLabelFullMatches = TextExpanderUtils.getMatchingSuggestions("cat", "cat", context)
         assertEquals("Cute Kitty", imageWithLabelFullMatches.first().previewLabel)
 
-        // Image shortcut without label: shows the shortcut trigger alongside thumbnail in the chip
+        // Image shortcut without label: previewLabel is empty "" (renders only the image thumbnail)
         val imageWithoutLabelPrefixMatches = TextExpanderUtils.getMatchingSuggestions("d", "d", context)
-        assertEquals("dog", imageWithoutLabelPrefixMatches.first().previewLabel)
+        assertEquals("", imageWithoutLabelPrefixMatches.first().previewLabel)
         val imageWithoutLabelFullMatches = TextExpanderUtils.getMatchingSuggestions("dog", "dog", context)
-        assertEquals("dog", imageWithoutLabelFullMatches.first().previewLabel)
+        assertEquals("", imageWithoutLabelFullMatches.first().previewLabel)
     }
 }
