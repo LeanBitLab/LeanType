@@ -1712,4 +1712,5 @@
     <string name="add_language_summary">管理和启用输入语言</string>
     <string name="auto_correct_indicator_underline_title">自动更正指示器下划线</string>
     <string name="auto_correct_indicator_underline_summary">在键入时自动更正的单词下显示下划线</string>
+    <string name="after_keyboard_reopen">重新打开键盘</string>
 </resources>

@@ -1778,4 +1778,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="add_language_summary">Gestisci e abilita le lingue di digitazione</string>
     <string name="auto_correct_indicator_underline_title">Sottolineatura dell\'indicatore di correzione automatica</string>
     <string name="auto_correct_indicator_underline_summary">Mostra una sottolineatura sotto le parole che verranno corrette automaticamente durante la digitazione</string>
+    <string name="after_keyboard_reopen">Riapertura della tastiera</string>
 </resources>

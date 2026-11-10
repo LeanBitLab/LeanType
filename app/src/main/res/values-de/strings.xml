@@ -1761,4 +1761,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="add_language_summary">Eingabesprachen verwalten und aktivieren</string>
     <string name="auto_correct_indicator_underline_title">Autokorrektur-Anzeige unterstrichen</string>
     <string name="auto_correct_indicator_underline_summary">Unterstreichen Sie Wörter, die während der Eingabe automatisch korrigiert werden</string>
+    <string name="after_keyboard_reopen">Erneutes Öffnen der Tastatur</string>
 </resources>

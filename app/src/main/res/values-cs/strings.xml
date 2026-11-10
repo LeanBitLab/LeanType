@@ -1711,4 +1711,5 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="add_language_summary">Spravujte a povolte jazyky psaní</string>
     <string name="auto_correct_indicator_underline_title">Podtržení indikátoru automatické opravy</string>
     <string name="auto_correct_indicator_underline_summary">Zobrazit podtržení pod slovy, která budou při psaní automaticky opravena</string>
+    <string name="after_keyboard_reopen">Opětovné otevření klávesnice</string>
 </resources>

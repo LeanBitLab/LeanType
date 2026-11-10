@@ -1746,4 +1746,5 @@
     <string name="add_language_summary">Управлявайте и активирайте езиците за писане</string>
     <string name="auto_correct_indicator_underline_title">Подчертан индикатор за автоматична корекция</string>
     <string name="auto_correct_indicator_underline_summary">Показване на подчертаване под думи, които ще бъдат автоматично коригирани, докато пишете</string>
+    <string name="after_keyboard_reopen">Повторно отваряне на клавиатурата</string>
 </resources>

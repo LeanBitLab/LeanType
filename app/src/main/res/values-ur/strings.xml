@@ -1803,4 +1803,5 @@
     <string name="add_language_summary">ٹائپنگ زبانوں کا نظم کریں اور ان کو فعال کریں۔</string>
     <string name="auto_correct_indicator_underline_title">خودکار درست اشارے کو انڈر لائن کریں۔</string>
     <string name="auto_correct_indicator_underline_summary">الفاظ کے نیچے ایک انڈر لائن دکھائیں جو ٹائپ کرتے وقت خود بخود درست ہو جائیں گے۔</string>
+    <string name="after_keyboard_reopen">کی بورڈ کو دوبارہ کھولنا</string>
 </resources>

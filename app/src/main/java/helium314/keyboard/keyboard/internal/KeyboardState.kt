@@ -100,7 +100,12 @@ class KeyboardState(private val switchActions: SwitchActions) {
         }
     }
 
-    fun onLoadKeyboard(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?, onHandedModeEnabled: Boolean) {
+    fun onLoadKeyboard(
+        autoCapsFlags: Int,
+        recapitalizeMode: RecapitalizeMode?,
+        onHandedModeEnabled: Boolean,
+        abcOnReopen: Boolean = false
+    ) {
         if (DEBUG_EVENT) {
             Log.d(TAG, "onLoadKeyboard: " + stateToString(autoCapsFlags, recapitalizeMode))
         }
@@ -110,15 +115,27 @@ class KeyboardState(private val switchActions: SwitchActions) {
         prevSymbolsKeyboardWasShifted = false
         shiftKeyState.onRelease()
         symbolKeyState.onRelease()
-        if (savedKeyboardState.isValid) {
+        if (savedKeyboardState.isValid && !abcOnReopen) {
             onRestoreKeyboardState(autoCapsFlags, recapitalizeMode)
             savedKeyboardState.isValid = false
         } else {
             // Reset keyboard to alphabet mode.
+            savedKeyboardState.isValid = false
             lastCustomIndex = 0
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode)
         }
         switchActions.setOneHandedModeEnabled(onHandedModeEnabled)
+    }
+
+    fun clearSavedKeyboardState() {
+        savedKeyboardState.isValid = false
+        lastCustomIndex = 0
+    }
+
+    fun resetToAlphabet(autoCapsFlags: Int = 0, recapitalizeMode: RecapitalizeMode? = null) {
+        savedKeyboardState.isValid = false
+        lastCustomIndex = 0
+        setAlphabetKeyboard(autoCapsFlags, recapitalizeMode)
     }
 
     fun onSaveKeyboardState() {

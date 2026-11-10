@@ -180,16 +180,16 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             .build()
         val state = mState ?: return
         try {
-            state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
+            state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled, settingsValues.mAbcOnReopen)
         } catch (e: KeyboardLayoutSetException) {
             Log.e(TAG, "loading keyboard failed: " + e.mKeyboardId, e.cause)
             try {
                 val defaults = SubtypeUtilsAdditional.createDefaultSubtype(richImm.currentSubtypeLocale)
                 mKeyboardLayoutSet = builder.setKeyboardGeometry(keyboardWidth, keyboardHeight)
-                    .setSubtype(RichInputMethodSubtype.get(defaults))
-                    .setKeyboardOptions(settingsValues)
-                    .build()
-                state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled)
+                .setSubtype(RichInputMethodSubtype.get(defaults))
+                .setKeyboardOptions(settingsValues)
+                .build()
+                state.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState, oneHandedModeEnabled, settingsValues.mAbcOnReopen)
                 showToast("error loading the keyboard, falling back to defaults", false)
             } catch (e2: KeyboardLayoutSetException) {
                 Log.e(TAG, "even fallback to defaults failed: " + e2.mKeyboardId, e2.cause)
@@ -198,7 +198,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     }
 
     fun saveKeyboardState() {
-        if (keyboard != null || isShowingEmojiPalettes || isShowingClipboardHistory) {
+        if (!Settings.getValues().mAbcOnReopen && (keyboard != null || isShowingEmojiPalettes || isShowingClipboardHistory)) {
             mState?.onSaveKeyboardState()
         }
     }
@@ -211,6 +211,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mKeyboardView?.onHideWindow()
         if (isOcrShowing) {
             hideOcrPanels()
+        }
+        if (Settings.getValues().mAbcOnReopen) {
+            resetToMainKeyboard()
         }
     }
 
@@ -281,6 +284,29 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     // A secondary view may have been shown directly, without changing the keyboard state.
     fun returnToAlphabetKeyboard() {
         mState?.setAlphabetKeyboard(0, null)
+    }
+
+    fun resetToMainKeyboard() {
+        KeyboardActionListenerImpl.sPersistentSelectionModeActive = false
+        KeyboardActionListenerImpl.sPersistentTextEditModeActive = false
+        PointerTracker.sPersistentTouchpadModeActive = false
+        if (PointerTracker.isTouchpadModeActive()) {
+            PointerTracker.setTouchpadModeActive(false)
+        }
+        mTouchpadView?.visibility = View.GONE
+        hideGifPicker()
+        if (isOcrShowing) {
+            hideOcrPanels()
+        }
+        if (isHandwritingShowing) {
+            mHandwritingView?.stopHandwriting()
+            mHandwritingView?.visibility = View.GONE
+        }
+        mClipboardHistoryView?.stopClipboardHistory(force = true)
+        mEmojiPalettesView?.stopEmojiPalettes()
+        mState?.resetToAlphabet()
+        setAlphabetKeyboard()
+        mSuggestionStripView?.updateSplitToolbarState()
     }
 
     fun onPressKey(code: Int, isSinglePointer: Boolean, currentAutoCapsState: Int, currentRecapitalizeState: RecapitalizeMode?) {
@@ -1118,9 +1144,15 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
     }
 
     fun reloadMainKeyboard() {
-        val wasEmoji = isShowingEmojiPalettes
-        val wasClipboard = isShowingClipboardHistory
-        val wasTextEdit = keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT || KeyboardActionListenerImpl.sPersistentTextEditModeActive
+        val abcOnReopen = Settings.getValues().mAbcOnReopen
+        val wasEmoji = !abcOnReopen && isShowingEmojiPalettes
+        val wasClipboard = !abcOnReopen && isShowingClipboardHistory
+        val wasTextEdit = !abcOnReopen && (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT || KeyboardActionListenerImpl.sPersistentTextEditModeActive)
+        if (abcOnReopen) {
+            KeyboardActionListenerImpl.sPersistentSelectionModeActive = false
+            KeyboardActionListenerImpl.sPersistentTextEditModeActive = false
+            PointerTracker.sPersistentTouchpadModeActive = false
+        }
         val latinIme = mLatinIME
         if (latinIme != null) {
             loadKeyboard(

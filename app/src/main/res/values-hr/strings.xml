@@ -1709,4 +1709,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="add_language_summary">Upravljajte i omogućite jezike za tipkanje</string>
     <string name="auto_correct_indicator_underline_title">Indikator automatskog ispravljanja podvučen</string>
     <string name="auto_correct_indicator_underline_summary">Pokaži podcrtano ispod riječi koje će se automatski ispravljati tijekom tipkanja</string>
+    <string name="after_keyboard_reopen">Ponovno otvaranje tipkovnice</string>
 </resources>

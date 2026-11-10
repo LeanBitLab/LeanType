@@ -1812,4 +1812,5 @@
     <string name="add_language_summary">ഭാഷകൾ ടൈപ്പുചെയ്യുന്നത് നിയന്ത്രിക്കുകയും പ്രവർത്തനക്ഷമമാക്കുകയും ചെയ്യുക</string>
     <string name="auto_correct_indicator_underline_title">സ്വയമേവ ശരിയായ സൂചകം അടിവരയിടുക</string>
     <string name="auto_correct_indicator_underline_summary">ടൈപ്പ് ചെയ്യുമ്പോൾ സ്വയമേവ തിരുത്തപ്പെടുന്ന വാക്കുകൾക്ക് താഴെയുള്ള അടിവര കാണിക്കുക</string>
+    <string name="after_keyboard_reopen">കീബോർഡ് വീണ്ടും തുറക്കുന്നു</string>
 </resources>

@@ -568,6 +568,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_ABC_AFTER_CLIP = "abc_after_clip"
         const val PREF_ABC_AFTER_SYMBOL_SPACE = "abc_after_symbol_space"
         const val PREF_ABC_AFTER_NUMPAD_SPACE = "abc_after_numpad_space"
+        const val PREF_ABC_ON_REOPEN = "abc_on_reopen"
         const val PREF_REMOVE_REDUNDANT_POPUPS = "remove_redundant_popups"
         const val PREF_SPACE_BAR_TEXT = "space_bar_text"
         const val PREF_TIMESTAMP_FORMAT = "timestamp_format"

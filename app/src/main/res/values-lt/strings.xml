@@ -1747,4 +1747,5 @@ Ar norite atnaujinti?</string>
     <string name="add_language_summary">Tvarkykite ir įgalinkite spausdinimo kalbas</string>
     <string name="auto_correct_indicator_underline_title">Automatinio taisymo indikatorius pabrauktas</string>
     <string name="auto_correct_indicator_underline_summary">Rodyti pabraukimą po žodžiais, kurie bus automatiškai pataisyti įvedant</string>
+    <string name="after_keyboard_reopen">Klaviatūros atidarymas iš naujo</string>
 </resources>

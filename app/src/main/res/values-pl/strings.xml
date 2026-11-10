@@ -1753,4 +1753,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="add_language_summary">Zarządzaj i włączaj języki pisania</string>
     <string name="auto_correct_indicator_underline_title">Podkreślenie wskaźnika automatycznej korekty</string>
     <string name="auto_correct_indicator_underline_summary">Pokaż podkreślenie pod słowami, które zostaną automatycznie poprawione podczas pisania</string>
+    <string name="after_keyboard_reopen">Ponowne otwarcie klawiatury</string>
 </resources>

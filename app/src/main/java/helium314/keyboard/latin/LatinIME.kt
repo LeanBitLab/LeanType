@@ -912,7 +912,12 @@ class LatinIME : InputMethodService(),
             if (needToCallLoadKeyboardLater) switcher.saveKeyboardState()
         } else if (restarting) {
             switcher.clearTransientShiftState()
-            if (!switcher.isSecondaryViewShowing) {
+            if (currentSettingsValues.mAbcOnReopen) {
+                switcher.resetToMainKeyboard()
+                val capsFlags = if (isNullOrInvalidCursor) Constants.TextUtils.CAP_MODE_OFF else currentAutoCapsState
+                switcher.resetKeyboardStateToAlphabet(capsFlags, currentRecapitalizeState)
+                switcher.requestUpdatingShiftState(capsFlags, currentRecapitalizeState)
+            } else if (!switcher.isSecondaryViewShowing) {
                 if (isNullOrInvalidCursor) {
                     switcher.resetKeyboardStateToAlphabet(Constants.TextUtils.CAP_MODE_OFF, currentRecapitalizeState)
                     switcher.requestUpdatingShiftState(Constants.TextUtils.CAP_MODE_OFF, currentRecapitalizeState)
@@ -1043,6 +1048,9 @@ class LatinIME : InputMethodService(),
             }
         }
         keyboardSwitcher.mainKeyboardView?.closing()
+        if (settings.current.mAbcOnReopen) {
+            keyboardSwitcher.resetToMainKeyboard()
+        }
         clearNavigationBarColor()
         originalNavBarSaved = false
     }
@@ -1073,6 +1081,9 @@ class LatinIME : InputMethodService(),
         cjkCandidateStripView?.visibility = View.GONE
         suggestionStripView?.visibility = View.VISIBLE
         CjkInputManager.getInstance(this).onFinishInputView(finishingInput, currentInputConnection)
+        if (settings.current.mAbcOnReopen) {
+            keyboardSwitcher.resetToMainKeyboard()
+        }
         cleanupInternalStateForFinishInput()
     }
 

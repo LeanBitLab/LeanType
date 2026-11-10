@@ -1118,6 +1118,8 @@ language, hence "No language". -->
     <string name="after_symbol_and_space">Pressing enter or space after other keys in symbols view</string>
     <!-- Switch to main keyboard after entering something in numpad layout and then pressing space or enter -->
     <string name="after_numpad_and_space">Pressing enter or space after other keys in numpad</string>
+    <!-- Switch to main keyboard after closing or reopening keyboard -->
+    <string name="after_keyboard_reopen">Reopening the keyboard</string>
     <!-- Message for selecting day or night background image -->
     <string name="day_or_night_image">Set image for day or night mode?</string>
     <!-- Button for selecting day -->

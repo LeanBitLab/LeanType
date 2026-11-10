@@ -187,6 +187,7 @@ open class SettingsValues(
     val mAlphaAfterClipHistoryEntry: Boolean
     val mAlphaAfterSymbolAndSpace: Boolean
     val mAlphaAfterNumpadAndSpace: Boolean
+    val mAbcOnReopen: Boolean
     val mRemoveRedundantPopups: Boolean
     val mSpaceBarText: String
     val mFontSizeMultiplier: Float
@@ -512,6 +513,7 @@ open class SettingsValues(
         mAlphaAfterClipHistoryEntry = prefs.getBoolean(Settings.PREF_ABC_AFTER_CLIP, Defaults.PREF_ABC_AFTER_CLIP)
         mAlphaAfterSymbolAndSpace = prefs.getBoolean(Settings.PREF_ABC_AFTER_SYMBOL_SPACE, Defaults.PREF_ABC_AFTER_SYMBOL_SPACE)
         mAlphaAfterNumpadAndSpace = prefs.getBoolean(Settings.PREF_ABC_AFTER_NUMPAD_SPACE, Defaults.PREF_ABC_AFTER_NUMPAD_SPACE)
+        mAbcOnReopen = prefs.getBoolean(Settings.PREF_ABC_ON_REOPEN, Defaults.PREF_ABC_ON_REOPEN)
         mRemoveRedundantPopups = prefs.getBoolean(Settings.PREF_REMOVE_REDUNDANT_POPUPS, Defaults.PREF_REMOVE_REDUNDANT_POPUPS)
         mSpaceBarText = prefs.getString(Settings.PREF_SPACE_BAR_TEXT, Defaults.PREF_SPACE_BAR_TEXT) ?: Defaults.PREF_SPACE_BAR_TEXT
         mFontSizeMultiplier = prefs.getFloat(Settings.PREF_FONT_SCALE, Defaults.PREF_FONT_SCALE)
@@ -611,6 +613,7 @@ Current settings :
    mKeypressSoundVolume = $mKeypressSoundVolume
    mAutoCorrectEnabled = $mAutoCorrectEnabled
    mAutoCorrectIndicatorUnderline = $mAutoCorrectIndicatorUnderline
+   mAbcOnReopen = $mAbcOnReopen
    mAutoCorrectionThreshold = $mAutoCorrectionThreshold
    mAutoCorrectionEnabledPerUserSettings = $mAutoCorrectionEnabledPerUserSettings
    mSuggestionsEnabledPerUserSettings = $mSuggestionsEnabledPerUserSettings

@@ -1709,4 +1709,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="add_language_summary">A gépelési nyelvek kezelése és engedélyezése</string>
     <string name="auto_correct_indicator_underline_title">Automatikus javításjelző aláhúzás</string>
     <string name="auto_correct_indicator_underline_summary">Mutasson aláhúzást a szavak alatt, amelyek gépelés közben automatikusan javításra kerülnek</string>
+    <string name="after_keyboard_reopen">A billentyűzet újranyitása</string>
 </resources>

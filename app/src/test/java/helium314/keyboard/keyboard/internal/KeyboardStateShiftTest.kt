@@ -15,6 +15,7 @@ class KeyboardStateShiftTest {
     private var displayedAlphabetShifted = false
     private var setAlphabetKeyboardCallCount = 0
     private var setAlphabetAutomaticShiftedKeyboardCallCount = 0
+    private var setSymbolsKeyboardCallCount = 0
 
     private val switchActions = object : KeyboardState.SwitchActions {
         override fun setAlphabetKeyboard() {
@@ -38,7 +39,9 @@ class KeyboardStateShiftTest {
         override fun setClipboardKeyboard() {}
         override fun setNumpadKeyboard() {}
         override fun toggleNumpad(withSliding: Boolean, autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?, forceReturnToAlpha: Boolean) {}
-        override fun setSymbolsKeyboard() {}
+        override fun setSymbolsKeyboard() {
+            setSymbolsKeyboardCallCount++
+        }
         override fun setSymbolsShiftedKeyboard() {}
         override fun setCustomKeyboard(customIndex: Int) {}
         override fun requestUpdatingShiftState(autoCapsFlags: Int, recapitalizeMode: RecapitalizeMode?) {
@@ -189,5 +192,45 @@ class KeyboardStateShiftTest {
         keyboardState.onUpdateShiftState(Constants.TextUtils.CAP_MODE_OFF, null)
         assertFalse("Visual layout must switch to unshifted", displayedAlphabetShifted)
         assertFalse("KeyboardState must be unshifted", keyboardState.isAlphabetShifted)
+    }
+
+    @Test
+    fun testAbcOnReopenResetsToAlphabet() {
+        // Switch to symbols
+        keyboardState.onPressKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        keyboardState.onReleaseKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        val initialSymbolsCalls = setSymbolsKeyboardCallCount
+        assertTrue("Symbols keyboard should have been set", initialSymbolsCalls > 0)
+
+        // Save keyboard state
+        keyboardState.onSaveKeyboardState()
+
+        // When abcOnReopen is false, symbols keyboard state is restored
+        keyboardState.onLoadKeyboard(Constants.TextUtils.CAP_MODE_OFF, null, false, abcOnReopen = false)
+        assertTrue("Symbols keyboard should be restored when abcOnReopen is false", setSymbolsKeyboardCallCount > initialSymbolsCalls)
+
+        // Save symbols keyboard state again
+        keyboardState.onPressKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        keyboardState.onReleaseKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        keyboardState.onSaveKeyboardState()
+
+        // When abcOnReopen is true, state is reset to alphabet
+        val initialAlphabetCalls = setAlphabetKeyboardCallCount
+        val symbolsCallsBeforeAbcOnReopen = setSymbolsKeyboardCallCount
+        keyboardState.onLoadKeyboard(Constants.TextUtils.CAP_MODE_OFF, null, false, abcOnReopen = true)
+        assertTrue("Alphabet keyboard must be loaded when abcOnReopen is true", setAlphabetKeyboardCallCount > initialAlphabetCalls)
+        org.junit.Assert.assertEquals("Symbols keyboard must not be called when abcOnReopen is true", symbolsCallsBeforeAbcOnReopen, setSymbolsKeyboardCallCount)
+    }
+
+    @Test
+    fun testResetToAlphabetDirectCall() {
+        // Switch to symbols
+        keyboardState.onPressKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        keyboardState.onReleaseKey(KeyCode.SYMBOL, false, Constants.TextUtils.CAP_MODE_OFF, null)
+        keyboardState.onSaveKeyboardState()
+
+        val initialAlphabetCalls = setAlphabetKeyboardCallCount
+        keyboardState.resetToAlphabet()
+        assertTrue("Alphabet keyboard must be set by resetToAlphabet", setAlphabetKeyboardCallCount > initialAlphabetCalls)
     }
 }
