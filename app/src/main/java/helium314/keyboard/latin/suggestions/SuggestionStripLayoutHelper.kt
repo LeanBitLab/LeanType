@@ -18,7 +18,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
+import android.os.Build
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
@@ -33,6 +35,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.keyboard.KeyboardSwitcher
@@ -495,64 +498,57 @@ internal class SuggestionStripLayoutHelper(
         val hasLabel = !word.isNullOrBlank()
 
         if (isImage && !hasLabel) {
-            val thumbH = 28.dpToPx(context.resources)
-            val maxThumbW = (width - 8.dpToPx(context.resources)).coerceAtLeast(thumbH)
-            val thumbW = 42.dpToPx(context.resources).coerceIn(thumbH, maxThumbW)
+            val thumbH = 26.dpToPx(context.resources)
+            val thumbW = 40.dpToPx(context.resources)
             val thumb = helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(
                 context, wordInfo.mImageUri!!, thumbW, thumbH
             )
-            val padH = ((width - thumbW) / 2).coerceAtLeast(0)
-            wordView.setPadding(padH, 0, padH, 0)
-            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
+            wordView.setPadding(0, 0, 0, 0)
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.compoundDrawablePadding = 0
-            if (positionInStrip < mDefaultWordBackgrounds.size) {
-                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            wordView.text = ""
+
+            val colors = Settings.getValues().mColors
+            val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
+            if (chipBg != null) {
+                colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
             }
+
+            if (thumb != null && chipBg != null) {
+                val layerDrawable = LayerDrawable(arrayOf(chipBg, thumb)).apply {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        setLayerGravity(1, Gravity.CENTER)
+                        setLayerSize(1, thumbW, thumbH)
+                    } else {
+                        val padH = ((width - thumbW) / 2).coerceAtLeast(0)
+                        val padV = 5.dpToPx(context.resources)
+                        setLayerInset(1, padH, padV, padH, padV)
+                    }
+                }
+                wordView.background = layerDrawable
+            } else if (thumb != null) {
+                wordView.background = thumb
+            }
+
             wordView.contentDescription = wordInfo.mWord.ifEmpty {
                 context.resources.getString(R.string.text_expander_image_shortcut_badge)
             }
-            wordView.text = ""
             wordView.isEnabled = thumb != null || AccessibilityUtils.instance.isTouchExplorationEnabled
             return wordView
         } else if (isImage && hasLabel) {
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.compoundDrawablePadding = 0
-            val padH = 6.dpToPx(context.resources)
+            val padH = 10.dpToPx(context.resources)
             wordView.setPadding(padH, 0, padH, 0)
 
-            val rawTextWidth = getTextWidth(word, wordView.paint)
-            val minChipW = 36.dpToPx(context.resources)
-            val maxChipW = (width - 4.dpToPx(context.resources)).coerceAtLeast(minChipW)
-            val chipW = (rawTextWidth + 18.dpToPx(context.resources)).toInt().coerceIn(minChipW, maxChipW)
-            val insetH = ((width - chipW) / 2).coerceAtLeast(2.dpToPx(context.resources))
-            val insetV = 5.dpToPx(context.resources)
-
-            val cornerRadius = 8.dpToPx(context.resources).toFloat()
-            val strokeWidth = (1.5f * context.resources.displayMetrics.density).toInt().coerceAtLeast(1)
-            val strokeColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 160)
-            val fillColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 16)
-            val pressedColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 220)
-            val pressedFillColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 55)
-
-            val normalDrawable = GradientDrawable().apply {
-                shape = GradientDrawable.RECTANGLE
-                this.cornerRadius = cornerRadius
-                setStroke(strokeWidth, strokeColor)
-                setColor(fillColor)
+            val colors = Settings.getValues().mColors
+            val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
+            if (chipBg != null) {
+                colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
             }
-            val pressedDrawable = GradientDrawable().apply {
-                shape = GradientDrawable.RECTANGLE
-                this.cornerRadius = cornerRadius
-                setStroke(strokeWidth, pressedColor)
-                setColor(pressedFillColor)
-            }
-            val stateList = StateListDrawable().apply {
-                addState(intArrayOf(android.R.attr.state_pressed), pressedDrawable)
-                addState(intArrayOf(), normalDrawable)
-            }
-            wordView.background = InsetDrawable(stateList, insetH, insetV, insetH, insetV)
+            wordView.background = chipBg
 
-            val textWidth = (chipW - 8.dpToPx(context.resources)).coerceAtLeast(10)
+            val textWidth = (width - 16.dpToPx(context.resources)).coerceAtLeast(10)
             val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
             val scaleX = wordView.textScaleX
             wordView.text = text

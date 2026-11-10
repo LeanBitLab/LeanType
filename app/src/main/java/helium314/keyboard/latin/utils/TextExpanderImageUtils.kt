@@ -204,7 +204,7 @@ object TextExpanderImageUtils {
             val canvas = Canvas(output)
             val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
             val rect = RectF(0f, 0f, widthPx.toFloat(), heightPx.toFloat())
-            val cornerRadius = 6.dpToPx(context.resources).toFloat()
+            val cornerRadius = 8.dpToPx(context.resources).toFloat()
 
             val shader = BitmapShader(scaledBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
             paint.shader = shader
