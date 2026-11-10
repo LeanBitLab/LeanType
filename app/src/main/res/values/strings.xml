@@ -192,6 +192,8 @@
     <string name="physical_keyboard_layout_system_default">System default</string>
     <!-- Option to undo auto correction with backspace -->
     <string name="backspace_reverts_autocorrect">Backspace reverts autocorrect</string>
+    <string name="auto_correct_indicator_underline_title">Auto-correct indicator underline</string>
+    <string name="auto_correct_indicator_underline_summary">Show an underline under words that will be auto-corrected while typing</string>
     <!-- Option to delete whole words when holding the delete key -->
     <string name="backspace_repeat_deletes_words">Holding delete removes whole words</string>
     <!-- Description for "backspace_repeat_deletes_words" option -->

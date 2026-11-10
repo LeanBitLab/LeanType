@@ -1709,4 +1709,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="active_keyboards_title">Aktivní klávesnice</string>
     <string name="add_language_title">Přidat jazyk</string>
     <string name="add_language_summary">Spravujte a povolte jazyky psaní</string>
+    <string name="auto_correct_indicator_underline_title">Podtržení indikátoru automatické opravy</string>
+    <string name="auto_correct_indicator_underline_summary">Zobrazit podtržení pod slovy, která budou při psaní automaticky opravena</string>
 </resources>

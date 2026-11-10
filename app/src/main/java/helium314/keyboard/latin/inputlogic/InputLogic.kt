@@ -612,8 +612,10 @@ class InputLogic(
 
         if (mIsAutoCorrectionIndicatorOn != newAutoCorrectionIndicator && mWordComposer.isComposingWord()) {
             mIsAutoCorrectionIndicatorOn = newAutoCorrectionIndicator
-            val textWithUnderline = getTextWithUnderline(mWordComposer.getTypedWord())
-            setComposingTextInternal(textWithUnderline, 1)
+            if (Settings.getValues().mAutoCorrectIndicatorUnderline) {
+                val textWithUnderline = getTextWithUnderline(mWordComposer.getTypedWord())
+                setComposingTextInternal(textWithUnderline, 1)
+            }
         }
     }
 
@@ -2673,7 +2675,7 @@ class InputLogic(
     }
 
     private fun getTextWithUnderline(text: String): CharSequence {
-        return if (mIsAutoCorrectionIndicatorOn) {
+        return if (mIsAutoCorrectionIndicatorOn && Settings.getValues().mAutoCorrectIndicatorUnderline) {
             getTextWithAutoCorrectionIndicatorUnderline(
                 mLatinIME, text, getDictionaryFacilitatorLocale()
             )

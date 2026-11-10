@@ -1715,4 +1715,6 @@
     <string name="active_keyboards_title">מקלדות פעילות</string>
     <string name="add_language_title">הוסף שפה</string>
     <string name="add_language_summary">נהל ואפשר שפות הקלדה</string>
+    <string name="auto_correct_indicator_underline_title">קו תחתון של מחוון תיקון אוטומטי</string>
+    <string name="auto_correct_indicator_underline_summary">הצג קו תחתון מתחת למילים שיתוקנו אוטומטית בזמן ההקלדה</string>
 </resources>

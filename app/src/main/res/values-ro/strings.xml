@@ -1744,4 +1744,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="active_keyboards_title">Tastaturi active</string>
     <string name="add_language_title">Adăugați limba</string>
     <string name="add_language_summary">Gestionați și activați limbile de tastare</string>
+    <string name="auto_correct_indicator_underline_title">Sublinierea indicatorului de corectare automată</string>
+    <string name="auto_correct_indicator_underline_summary">Afișați o subliniere sub cuvintele care vor fi corectate automat în timpul tastării</string>
 </resources>

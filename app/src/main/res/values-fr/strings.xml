@@ -1765,4 +1765,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="active_keyboards_title">Claviers actifs</string>
     <string name="add_language_title">Ajouter une langue</string>
     <string name="add_language_summary">Gérer et activer les langues de saisie</string>
+    <string name="auto_correct_indicator_underline_title">Indicateur de correction automatique souligné</string>
+    <string name="auto_correct_indicator_underline_summary">Afficher un soulignement sous les mots qui seront automatiquement corrigés lors de la saisie</string>
 </resources>

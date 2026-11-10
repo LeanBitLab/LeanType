@@ -1709,4 +1709,6 @@
     <string name="active_keyboards_title">Активні клавіатури</string>
     <string name="add_language_title">Додайте мову</string>
     <string name="add_language_summary">Керуйте мовами введення та вмикайте їх</string>
+    <string name="auto_correct_indicator_underline_title">Підкреслення індикатора автовиправлення</string>
+    <string name="auto_correct_indicator_underline_summary">Показувати підкреслення під словами, які будуть автоматично виправлені під час введення</string>
 </resources>

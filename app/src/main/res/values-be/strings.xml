@@ -1744,4 +1744,6 @@
     <string name="active_keyboards_title">Актыўныя клавіятуры</string>
     <string name="add_language_title">Дадаць мову</string>
     <string name="add_language_summary">Кіраванне мовамі ўводу і ўключэнне іх</string>
+    <string name="auto_correct_indicator_underline_title">Падкрэсліванне індыкатара аўтавыпраўлення</string>
+    <string name="auto_correct_indicator_underline_summary">Паказваць падкрэсліванне пад словамі, якія будуць аўтаматычна выпраўляцца падчас уводу</string>
 </resources>

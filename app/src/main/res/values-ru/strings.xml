@@ -1769,4 +1769,6 @@
     <string name="active_keyboards_title">Активные клавиатуры</string>
     <string name="add_language_title">Добавить язык</string>
     <string name="add_language_summary">Управление и включение языков ввода</string>
+    <string name="auto_correct_indicator_underline_title">Индикатор автокоррекции, подчеркивание</string>
+    <string name="auto_correct_indicator_underline_summary">Показывать подчеркивание под словами, которые будут автоматически исправлены при вводе</string>
 </resources>

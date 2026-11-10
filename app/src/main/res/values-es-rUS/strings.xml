@@ -1776,4 +1776,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="active_keyboards_title">Teclados activos</string>
     <string name="add_language_title">Agregar idioma</string>
     <string name="add_language_summary">Administrar y habilitar idiomas de escritura</string>
+    <string name="auto_correct_indicator_underline_title">Subrayado del indicador de autocorrección</string>
+    <string name="auto_correct_indicator_underline_summary">Mostrar un subrayado debajo de las palabras que se corregirán automáticamente al escribir</string>
 </resources>

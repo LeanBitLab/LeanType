@@ -1744,4 +1744,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="active_keyboards_title">Aktiivsed klaviatuurid</string>
     <string name="add_language_title">Lisa keel</string>
     <string name="add_language_summary">Hallake ja lubage tippimiskeeli</string>
+    <string name="auto_correct_indicator_underline_title">Automaatselt korrigeeriv indikaator allajoonitud</string>
+    <string name="auto_correct_indicator_underline_summary">Kirjutamise ajal automaatselt parandatavate sõnade all kuvatakse allajoon</string>
 </resources>

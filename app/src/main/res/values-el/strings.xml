@@ -1810,4 +1810,6 @@
     <string name="active_keyboards_title">Ενεργά πληκτρολόγια</string>
     <string name="add_language_title">Προσθήκη γλώσσας</string>
     <string name="add_language_summary">Διαχειριστείτε και ενεργοποιήστε τις γλώσσες πληκτρολόγησης</string>
+    <string name="auto_correct_indicator_underline_title">Υπογράμμιση ένδειξης αυτόματης διόρθωσης</string>
+    <string name="auto_correct_indicator_underline_summary">Δείξτε μια υπογράμμιση κάτω από λέξεις που θα διορθωθούν αυτόματα κατά την πληκτρολόγηση</string>
 </resources>

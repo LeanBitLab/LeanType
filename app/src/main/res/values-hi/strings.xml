@@ -1736,4 +1736,6 @@
     <string name="active_keyboards_title">सक्रिय कीबोर्ड</string>
     <string name="add_language_title">भाषा जोड़ें</string>
     <string name="add_language_summary">टाइपिंग भाषाएँ प्रबंधित और सक्षम करें</string>
+    <string name="auto_correct_indicator_underline_title">स्वतः-सही सूचक रेखांकन</string>
+    <string name="auto_correct_indicator_underline_summary">शब्दों के नीचे एक अंडरलाइन दिखाएं जो टाइप करते समय स्वतः सही हो जाएगी</string>
 </resources>

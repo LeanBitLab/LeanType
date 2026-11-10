@@ -1801,4 +1801,6 @@
     <string name="active_keyboards_title">ایکٹو کی بورڈز</string>
     <string name="add_language_title">زبان شامل کریں۔</string>
     <string name="add_language_summary">ٹائپنگ زبانوں کا نظم کریں اور ان کو فعال کریں۔</string>
+    <string name="auto_correct_indicator_underline_title">خودکار درست اشارے کو انڈر لائن کریں۔</string>
+    <string name="auto_correct_indicator_underline_summary">الفاظ کے نیچے ایک انڈر لائن دکھائیں جو ٹائپ کرتے وقت خود بخود درست ہو جائیں گے۔</string>
 </resources>

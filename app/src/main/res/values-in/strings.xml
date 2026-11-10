@@ -1707,4 +1707,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="active_keyboards_title">Keyboard Aktif</string>
     <string name="add_language_title">Tambahkan bahasa</string>
     <string name="add_language_summary">Kelola dan aktifkan bahasa pengetikan</string>
+    <string name="auto_correct_indicator_underline_title">Garis bawah indikator koreksi otomatis</string>
+    <string name="auto_correct_indicator_underline_summary">Tampilkan garis bawah di bawah kata-kata yang akan dikoreksi otomatis saat mengetik</string>
 </resources>
