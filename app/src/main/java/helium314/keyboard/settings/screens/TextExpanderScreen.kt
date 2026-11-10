@@ -430,7 +430,12 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         }
 
         ThreeButtonAlertDialog(
-            onDismissRequest = { showAddDialog = false },
+            onDismissRequest = {
+                if (editingImageUri != null && editingImageUri != originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }) {
+                    TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
+                }
+                showAddDialog = false
+            },
             onConfirmed = {
                 val updated = shortcutsMap.toMutableMap()
                 if (isEditMode) {
@@ -462,6 +467,9 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     val removed = originalShortcutToEdit?.let { updated.remove(it) }
                     if (removed?.imageUri != null) {
                         TextExpanderImageUtils.deleteImageIfManaged(context, removed.imageUri)
+                    }
+                    if (editingImageUri != null && editingImageUri != removed?.imageUri) {
+                        TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
                     }
                     shortcutsMap = updated
                     TextExpanderUtils.saveShortcuts(context, updated)

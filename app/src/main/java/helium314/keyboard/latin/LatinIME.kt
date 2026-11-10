@@ -281,6 +281,7 @@ class LatinIME : InputMethodService(),
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
             TranslationModelImporter.migrateLegacyModels(this)
             helium314.keyboard.latin.handwriting.HandwritingModelImporter.migrateLegacyModels(this)
+            helium314.keyboard.latin.utils.TextExpanderImageUtils.cleanUpOrphanedImages(this)
         }
     }
 
@@ -2147,6 +2148,7 @@ class LatinIME : InputMethodService(),
             if (!isInputViewShown) {
                 OfflineAiLoader.onTrimMemory()
                 CustomSoundManager.getInstance(this).onTrimMemory()
+                helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
             }
         } else if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
             KeyboardLayoutSet.onSystemLocaleChanged()
@@ -2156,6 +2158,7 @@ class LatinIME : InputMethodService(),
             if (!isInputViewShown) {
                 OfflineAiLoader.onTrimMemory()
                 CustomSoundManager.getInstance(this).onTrimMemory()
+                helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
             }
         }
     }

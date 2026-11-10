@@ -123,10 +123,33 @@ object TextExpanderImageUtils {
     }
 
     /**
+     * Cleans up unreferenced image files inside text_expander_images folder.
+     */
+    fun cleanUpOrphanedImages(context: Context) {
+        try {
+            val dir = getImagesDir(context)
+            if (!dir.exists()) return
+            val shortcuts = TextExpanderUtils.getShortcuts(context)
+            val validPaths = shortcuts.values.mapNotNull { it.imageUri }.toSet()
+            dir.listFiles()?.forEach { file ->
+                if (!validPaths.contains(file.absolutePath)) {
+                    file.delete()
+                    thumbnailCache.snapshot().keys.filter { it.startsWith(file.absolutePath) }.forEach {
+                        thumbnailCache.remove(it)
+                    }
+                    bitmapCache.snapshot().keys.filter { it.startsWith(file.absolutePath) }.forEach {
+                        bitmapCache.remove(it)
+                    }
+                }
+            }
+        } catch (_: Exception) {}
+    }
+
+    /**
      * Loads a memory-efficient downsampled thumbnail Bitmap.
      */
-    fun loadThumbnailBitmap(context: Context, pathOrUri: String, maxDimPx: Int): Bitmap? {
-        val cacheKey = "${pathOrUri}_$maxDimPx"
+    fun loadThumbnailBitmap(context: Context, pathOrUri: String, reqWidth: Int, reqHeight: Int = reqWidth): Bitmap? {
+        val cacheKey = "${pathOrUri}_${reqWidth}x${reqHeight}"
         bitmapCache.get(cacheKey)?.let { return it }
         val bitmap = try {
             val file = if (pathOrUri.startsWith("content://")) null else File(pathOrUri)
@@ -145,13 +168,14 @@ object TextExpanderImageUtils {
             if (srcW <= 0 || srcH <= 0) return null
 
             var sampleSize = 1
-            while (srcW / (sampleSize * 2) >= maxDimPx && srcH / (sampleSize * 2) >= maxDimPx) {
+            while (srcW / (sampleSize * 2) >= reqWidth && srcH / (sampleSize * 2) >= reqHeight) {
                 sampleSize *= 2
             }
 
+            val isJpeg = options.outMimeType == "image/jpeg"
             val decodeOptions = BitmapFactory.Options().apply {
                 inSampleSize = sampleSize
-                inPreferredConfig = Bitmap.Config.RGB_565
+                inPreferredConfig = if (isJpeg) Bitmap.Config.RGB_565 else Bitmap.Config.ARGB_8888
             }
 
             if (file != null && file.exists()) {
@@ -178,14 +202,15 @@ object TextExpanderImageUtils {
     fun getThumbnailDrawable(
         context: Context,
         pathOrUri: String,
-        widthPx: Int = 42.dpToPx(context.resources),
-        heightPx: Int = 28.dpToPx(context.resources)
+        widthPx: Int = 40.dpToPx(context.resources),
+        heightPx: Int = 26.dpToPx(context.resources)
     ): Drawable? {
         val cacheKey = "${pathOrUri}_${widthPx}x${heightPx}"
         thumbnailCache.get(cacheKey)?.let { return it }
 
-        val targetDecodeDim = maxOf(widthPx, heightPx) * 2
-        val rawBitmap = loadThumbnailBitmap(context, pathOrUri, targetDecodeDim)
+        val targetDecodeW = widthPx * 2
+        val targetDecodeH = heightPx * 2
+        val rawBitmap = loadThumbnailBitmap(context, pathOrUri, targetDecodeW, targetDecodeH)
         if (rawBitmap != null) {
             val srcW = rawBitmap.width
             val srcH = rawBitmap.height
