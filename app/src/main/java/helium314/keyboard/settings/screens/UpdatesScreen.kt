@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text fields",
+    "• Text Expander Image Shortcuts: Added photo attachment support with live thumbnail suggestion chips (#784)",
+    "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names",
+    "• Reopen on Main Keyboard: Added option to always reopen the keyboard on the primary alphabet view",
+    "• Auto-Correct Underline Toggle: Added settings switch to show or hide the auto-correction underline indicator",
+    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text inputs",
     "• Text Expander Suggestions: Added suggestion strip chips and suggestion-only mode (#774)",
     "• Text Expander Bulk Editor: Added full-screen editor with syntax checks and import/export",
     "• Clipboard Live Character Counter: Added live character count to clip editor (#678)",
     "• Lock-Screen Security Hardening: Guarded sensitive keys and broadcasts while device is locked",
-    "• Localized Number Row Popups: Allowed reordering and toggling localized numbers (#721)",
-    "• Skip Setup Wizard: Allowed browsing settings with an interactive setup banner (#768)",
-    "• Restart Keyboard Action: Added process reload option in About settings",
-    "• Unicode Font Styles: Added 26+ typographic font styles with live typing strip",
-    "• Unicode Symbol Palette: Added topic-categorized symbols and scrollable emoji bar (#776)"
+    "• Unicode Font Styles: Added 26+ typographic font styles with live typing strip"
 )
 
 @Composable

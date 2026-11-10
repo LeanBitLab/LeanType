@@ -1,10 +1,10 @@
+- Added image and photo shortcut support to Text Expander with live thumbnail chips (#784).
+- Elevated active keyboards and primary layout names on Language settings screen.
+- Added option to always reopen the keyboard on the primary alphabet view.
+- Added toggle for auto-correct indicator underline in Text Correction settings.
 - Enabled auto-correction for standard single-line text fields.
 - Added Text Expander suggestions and suggestion-only mode (#774).
 - Added Text Expander full-screen Bulk Editor with syntax checks and import/export.
 - Added live character counter and enhanced clip editor in clipboard (#678).
 - Guarded sensitive keys, clipboard, and automation intents against lock-screen access.
-- Added reordering and toggling for localized numbers in number row popups (#721).
-- Allowed skipping setup wizard to explore settings before enabling (#768).
-- Added restart keyboard process option in About screen.
 - Added Unicode Font Style engine with 26+ typographic styles and live typing strip.
-- Added topic-categorized Unicode symbol palette and horizontally scrollable emoji bar (#776).
