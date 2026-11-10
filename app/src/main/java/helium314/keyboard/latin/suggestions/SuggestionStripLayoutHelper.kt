@@ -16,6 +16,9 @@ import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.StateListDrawable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
@@ -30,6 +33,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.ColorUtils
 import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.PunctuationSuggestions
@@ -79,6 +83,7 @@ internal class SuggestionStripLayoutHelper(
     private var mCenterTypedWord = false
     private val mMoreSuggestionsHint: Drawable
     private val mDefaultHorizontalPadding: Int
+    private val mDefaultWordBackgrounds: List<Drawable?>
 
     private val mSuggestionStripOptions: Int
 
@@ -86,6 +91,7 @@ internal class SuggestionStripLayoutHelper(
         val wordView = wordViews[0]
         val dividerView = dividerViews[0]
         mDefaultHorizontalPadding = wordView.paddingLeft
+        mDefaultWordBackgrounds = wordViews.map { it.background?.constantState?.newDrawable() ?: it.background }
         mPadding = wordView.compoundPaddingLeft + wordView.compoundPaddingRight
         dividerView.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         mDividerWidth = dividerView.measuredWidth
@@ -274,6 +280,9 @@ internal class SuggestionStripLayoutHelper(
             wordView.tag = null
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            }
             if (SuggestionStripView.DEBUG_SUGGESTIONS && positionInStrip < mDebugInfoViews.size) {
                 mDebugInfoViews[positionInStrip].text = null
             }
@@ -330,6 +339,10 @@ internal class SuggestionStripLayoutHelper(
             wordView.contentDescription = punctuation
             wordView.textScaleX = 1.0f
             wordView.setCompoundDrawables(null, null, null, null)
+            wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            }
             wordView.setTextColor(mColorAutoCorrect)
             stripView.addView(wordView)
             setLayoutWeight(wordView, 1.0f, mSuggestionsStripHeight)
@@ -486,19 +499,69 @@ internal class SuggestionStripLayoutHelper(
             helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
         } else null
 
+        var textWidth = width
+
         if (thumb != null) {
             val padH = ((width - thumbSizePx) / 2).coerceAtLeast(0)
             wordView.setPadding(padH, 0, padH, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
             wordView.compoundDrawablePadding = 0
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            }
+        } else if (isImage && hasLabel) {
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+            wordView.compoundDrawablePadding = 0
+            val padH = 6.dpToPx(context.resources)
+            wordView.setPadding(padH, 0, padH, 0)
+
+            // Rounded outline chip for image shortcut label
+            val rawTextWidth = getTextWidth(word, wordView.paint)
+            val minChipW = 36.dpToPx(context.resources)
+            val maxChipW = (width - 4.dpToPx(context.resources)).coerceAtLeast(minChipW)
+            val chipW = (rawTextWidth + 18.dpToPx(context.resources)).toInt().coerceIn(minChipW, maxChipW)
+            val insetH = ((width - chipW) / 2).coerceAtLeast(2.dpToPx(context.resources))
+            val insetV = 5.dpToPx(context.resources)
+
+            val cornerRadius = 8.dpToPx(context.resources).toFloat()
+            val strokeWidth = (1.5f * context.resources.displayMetrics.density).toInt().coerceAtLeast(1)
+            val strokeColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 160)
+            val fillColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 16)
+            val pressedColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 220)
+            val pressedFillColor = ColorUtils.setAlphaComponent(wordView.currentTextColor, 55)
+
+            val normalDrawable = GradientDrawable().apply {
+                shape = GradientDrawable.RECTANGLE
+                this.cornerRadius = cornerRadius
+                setStroke(strokeWidth, strokeColor)
+                setColor(fillColor)
+            }
+            val pressedDrawable = GradientDrawable().apply {
+                shape = GradientDrawable.RECTANGLE
+                this.cornerRadius = cornerRadius
+                setStroke(strokeWidth, pressedColor)
+                setColor(pressedFillColor)
+            }
+            val stateList = StateListDrawable().apply {
+                addState(intArrayOf(android.R.attr.state_pressed), pressedDrawable)
+                addState(intArrayOf(), normalDrawable)
+            }
+            wordView.background = InsetDrawable(stateList, insetH, insetV, insetH, insetV)
+            textWidth = (chipW - 8.dpToPx(context.resources)).coerceAtLeast(10)
         } else if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
             wordView.compoundDrawablePadding = -mMoreSuggestionsHint.intrinsicHeight
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            }
         } else {
             wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.compoundDrawablePadding = 0
+            if (positionInStrip < mDefaultWordBackgrounds.size) {
+                wordView.background = mDefaultWordBackgrounds[positionInStrip]?.constantState?.newDrawable() ?: mDefaultWordBackgrounds[positionInStrip]
+            }
         }
         wordView.contentDescription = if (TextUtils.isEmpty(word)) {
             if (isImage) {
@@ -510,7 +573,7 @@ internal class SuggestionStripLayoutHelper(
         } else {
             word.toString()
         }
-        val text = getEllipsizedTextWithSettingScaleX(word, width, wordView.paint)
+        val text = getEllipsizedTextWithSettingScaleX(word, textWidth, wordView.paint)
         val scaleX = wordView.textScaleX
         wordView.text = text
         wordView.textScaleX = scaleX
