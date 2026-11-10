@@ -1741,4 +1741,7 @@
     <string name="text_expander_create_first_button">Създаване на пряк път</string>
     <string name="text_expander_file_too_large">Избраното изображение надвишава ограничението за максимален размер (20 MB)</string>
     <string name="text_expander_image_attached">Приложена снимка</string>
+    <string name="active_keyboards_title">Активни клавиатури</string>
+    <string name="add_language_title">Добавете език</string>
+    <string name="add_language_summary">Управлявайте и активирайте езиците за писане</string>
 </resources>

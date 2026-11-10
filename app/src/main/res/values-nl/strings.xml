@@ -1748,4 +1748,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_create_first_button">Snelkoppeling maken</string>
     <string name="text_expander_file_too_large">Geselecteerde afbeelding overschrijdt de maximale groottelimiet (20 MB)</string>
     <string name="text_expander_image_attached">Foto bijgevoegd</string>
+    <string name="active_keyboards_title">Actieve toetsenborden</string>
+    <string name="add_language_title">Taal toevoegen</string>
+    <string name="add_language_summary">Typetalen beheren en inschakelen</string>
 </resources>

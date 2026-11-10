@@ -55,9 +55,11 @@ import androidx.compose.material3.CardDefaults
 import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.preferences.Preference
+import helium314.keyboard.settings.preferences.PreferenceCategory
 import helium314.keyboard.settings.previewDark
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.LocaleUtils
+import helium314.keyboard.latin.utils.mainLayoutNameOrQwerty
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.preferences.ListPreference
 import java.util.Locale
@@ -66,9 +68,10 @@ import java.util.Locale
 fun LanguageScreen(
     onClickBack: () -> Unit,
 ) {
-    val enabledSubtypesDescription = remember {
+    val ctx = LocalContext.current
+    val prefChanged = (ctx.getActivity() as? SettingsActivity)?.prefChanged?.collectAsState()
+    val enabledSubtypes = remember(prefChanged?.value) {
         SubtypeSettings.getEnabledSubtypes()
-            .joinToString(", ") { it.displayName() }
     }
 
     SearchSettingsScreen(
@@ -81,38 +84,74 @@ fun LanguageScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(vertical = 8.dp)
         ) {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainer
-                    )
-                ) {
-                    Column {
+            // Card 1: Active Keyboards
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                )
+            ) {
+                Column {
+                    PreferenceCategory(stringResource(R.string.active_keyboards_title))
+                    for (subtype in enabledSubtypes) {
+                        val layoutName = subtype.mainLayoutNameOrQwerty()
+                        val layoutDisplayName = SubtypeLocaleUtils.getLayoutDisplayNameInSystemLocale(layoutName, subtype.locale())
+                        val secondaryLocales = if (SubtypeSettings.isAdditionalSubtype(subtype)) {
+                            subtype.getExtraValueOf(ExtraValue.SECONDARY_LOCALES)?.split(Separators.KV)
+                                ?.joinToString(", ") { it.constructLocale().localizedDisplayName(ctx.resources) }
+                        } else null
+                        val layoutDesc = stringResource(R.string.keyboard_layout_set) + ": " + layoutDisplayName +
+                            (secondaryLocales?.let { " • $it" } ?: "")
+
                         Preference(
-                            name = stringResource(R.string.languages_title),
-                            description = enabledSubtypesDescription,
-                            onClick = { SettingsDestination.navigateTo(SettingsDestination.LanguagesList) },
-                            icon = R.drawable.ic_settings_languages
+                            name = subtype.locale().localizedDisplayName(ctx.resources),
+                            description = layoutDesc,
+                            icon = R.drawable.ic_ime_switcher,
+                            onClick = {
+                                SettingsDestination.navigateTo(SettingsDestination.Subtype + subtype.toSettingsSubtype().toPref())
+                            }
                         ) { NextScreenIcon() }
-                        Preference(
-                            name = stringResource(R.string.settings_screen_secondary_layouts),
-                            onClick = { SettingsDestination.navigateTo(SettingsDestination.Layouts) },
-                            icon = R.drawable.ic_ime_switcher
-                        ) { NextScreenIcon() }
-                        Preference(
-                            name = stringResource(R.string.dictionary_settings_category),
-                            description = stringResource(R.string.dictionaries_screen_summary),
-                            onClick = { SettingsDestination.navigateTo(SettingsDestination.Dictionaries) },
-                            icon = R.drawable.ic_dictionary
-                        ) { NextScreenIcon() }
-                        SettingsActivity.settingsContainer[Settings.PREF_APP_LANGUAGE]?.Preference()
                     }
+
+                    Preference(
+                        name = stringResource(R.string.add_language_title),
+                        description = stringResource(R.string.add_language_summary),
+                        icon = R.drawable.ic_plus,
+                        onClick = { SettingsDestination.navigateTo(SettingsDestination.LanguagesList) }
+                    ) { NextScreenIcon() }
+                }
+            }
+
+            // Card 2: Configuration
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                )
+            ) {
+                Column {
+                    PreferenceCategory(stringResource(R.string.settings_category_configuration))
+                    Preference(
+                        name = stringResource(R.string.settings_screen_secondary_layouts),
+                        onClick = { SettingsDestination.navigateTo(SettingsDestination.Layouts) },
+                        icon = R.drawable.ic_ime_switcher
+                    ) { NextScreenIcon() }
+                    Preference(
+                        name = stringResource(R.string.dictionary_settings_category),
+                        description = stringResource(R.string.dictionaries_screen_summary),
+                        onClick = { SettingsDestination.navigateTo(SettingsDestination.Dictionaries) },
+                        icon = R.drawable.ic_dictionary
+                    ) { NextScreenIcon() }
+                    SettingsActivity.settingsContainer[Settings.PREF_APP_LANGUAGE]?.Preference()
                 }
             }
         }
     }
+}
 
 fun createLanguageSettings(context: Context) = listOf(
     Setting(context, Settings.PREF_APP_LANGUAGE, R.string.app_language_title, R.string.app_language_summary) {
@@ -171,9 +210,15 @@ private fun SubtypeRow(subtype: InputMethodSubtype, isEnabled: Boolean) {
         Column(modifier = Modifier.weight(1f)) {
             Text(subtype.displayName(), style = MaterialTheme.typography.bodyLarge)
             val description = if (SubtypeSettings.isAdditionalSubtype(subtype)) {
+                val layoutName = subtype.mainLayoutNameOrQwerty()
+                val layoutDisplayName = SubtypeLocaleUtils.getLayoutDisplayNameInSystemLocale(layoutName, subtype.locale())
                 val secondaryLocales = subtype.getExtraValueOf(ExtraValue.SECONDARY_LOCALES)?.split(Separators.KV)
                     ?.joinToString(", ") { it.constructLocale().localizedDisplayName(ctx.resources) }
-                stringResource(R.string.custom_subtype) + (secondaryLocales?.let { "\n$it" } ?: "")
+                stringResource(R.string.keyboard_layout_set) + ": " + layoutDisplayName + (secondaryLocales?.let { " • $it" } ?: "")
+            } else if (isEnabled) {
+                val layoutName = subtype.mainLayoutNameOrQwerty()
+                val layoutDisplayName = SubtypeLocaleUtils.getLayoutDisplayNameInSystemLocale(layoutName, subtype.locale())
+                stringResource(R.string.keyboard_layout_set) + ": " + layoutDisplayName
             } else null
             if (description != null)
                 Text(

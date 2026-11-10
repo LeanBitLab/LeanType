@@ -1762,4 +1762,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_create_first_button">Créer un raccourci</string>
     <string name="text_expander_file_too_large">L\'image sélectionnée dépasse la taille maximale (20 Mo)</string>
     <string name="text_expander_image_attached">Photo ci-jointe</string>
+    <string name="active_keyboards_title">Claviers actifs</string>
+    <string name="add_language_title">Ajouter une langue</string>
+    <string name="add_language_summary">Gérer et activer les langues de saisie</string>
 </resources>

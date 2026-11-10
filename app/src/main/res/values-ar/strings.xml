@@ -1764,4 +1764,7 @@
     <string name="text_expander_create_first_button">إنشاء اختصار</string>
     <string name="text_expander_file_too_large">الصورة المحددة تتجاوز الحد الأقصى للحجم (20 ميغابايت)</string>
     <string name="text_expander_image_attached">الصورة المرفقة</string>
+    <string name="active_keyboards_title">لوحات المفاتيح النشطة</string>
+    <string name="add_language_title">أضف لغة</string>
+    <string name="add_language_summary">إدارة وتمكين لغات الكتابة</string>
 </resources>

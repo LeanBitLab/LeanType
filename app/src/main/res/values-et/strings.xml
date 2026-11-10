@@ -1741,4 +1741,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_create_first_button">Loo otsetee</string>
     <string name="text_expander_file_too_large">Valitud pilt ületab maksimaalse suuruse (20 MB)</string>
     <string name="text_expander_image_attached">Foto lisatud</string>
+    <string name="active_keyboards_title">Aktiivsed klaviatuurid</string>
+    <string name="add_language_title">Lisa keel</string>
+    <string name="add_language_summary">Hallake ja lubage tippimiskeeli</string>
 </resources>

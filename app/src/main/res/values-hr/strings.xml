@@ -1704,4 +1704,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_create_first_button">Stvori prečac</string>
     <string name="text_expander_file_too_large">Odabrana slika premašuje maksimalno ograničenje veličine (20 MB)</string>
     <string name="text_expander_image_attached">Fotografija u prilogu</string>
+    <string name="active_keyboards_title">Aktivne tipkovnice</string>
+    <string name="add_language_title">Dodajte jezik</string>
+    <string name="add_language_summary">Upravljajte i omogućite jezike za tipkanje</string>
 </resources>

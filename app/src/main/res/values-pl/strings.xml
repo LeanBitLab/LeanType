@@ -1748,4 +1748,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_create_first_button">Utwórz skrót</string>
     <string name="text_expander_file_too_large">Wybrany obraz przekracza maksymalny rozmiar (20 MB)</string>
     <string name="text_expander_image_attached">Zdjęcie w załączeniu</string>
+    <string name="active_keyboards_title">Aktywne klawiatury</string>
+    <string name="add_language_title">Dodaj język</string>
+    <string name="add_language_summary">Zarządzaj i włączaj języki pisania</string>
 </resources>

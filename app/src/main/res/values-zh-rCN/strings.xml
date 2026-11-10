@@ -1707,4 +1707,7 @@
     <string name="text_expander_create_first_button">创建快捷方式</string>
     <string name="text_expander_file_too_large">所选图像超出最大大小限制 (20 MB)</string>
     <string name="text_expander_image_attached">附照片</string>
+    <string name="active_keyboards_title">有源键盘</string>
+    <string name="add_language_title">添加语言</string>
+    <string name="add_language_summary">管理和启用输入语言</string>
 </resources>

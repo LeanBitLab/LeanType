@@ -1706,4 +1706,7 @@
     <string name="text_expander_create_first_button">Створити ярлик</string>
     <string name="text_expander_file_too_large">Вибране зображення перевищує максимальний розмір (20 МБ)</string>
     <string name="text_expander_image_attached">Фото додається</string>
+    <string name="active_keyboards_title">Активні клавіатури</string>
+    <string name="add_language_title">Додайте мову</string>
+    <string name="add_language_summary">Керуйте мовами введення та вмикайте їх</string>
 </resources>

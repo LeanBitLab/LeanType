@@ -1712,4 +1712,7 @@
     <string name="text_expander_create_first_button">צור קיצור דרך</string>
     <string name="text_expander_file_too_large">התמונה שנבחרה חורגת ממגבלת הגודל המקסימלית (20 MB)</string>
     <string name="text_expander_image_attached">תמונה מצורפת</string>
+    <string name="active_keyboards_title">מקלדות פעילות</string>
+    <string name="add_language_title">הוסף שפה</string>
+    <string name="add_language_summary">נהל ואפשר שפות הקלדה</string>
 </resources>

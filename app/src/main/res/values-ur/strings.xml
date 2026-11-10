@@ -1798,4 +1798,7 @@
     <string name="text_expander_create_first_button">شارٹ کٹ بنائیں</string>
     <string name="text_expander_file_too_large">منتخب کردہ تصویر زیادہ سے زیادہ سائز کی حد سے زیادہ ہے (20 MB)</string>
     <string name="text_expander_image_attached">تصویر منسلک ہے۔</string>
+    <string name="active_keyboards_title">ایکٹو کی بورڈز</string>
+    <string name="add_language_title">زبان شامل کریں۔</string>
+    <string name="add_language_summary">ٹائپنگ زبانوں کا نظم کریں اور ان کو فعال کریں۔</string>
 </resources>

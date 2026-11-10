@@ -1733,4 +1733,7 @@
     <string name="text_expander_create_first_button">शॉर्टकट बनाएं</string>
     <string name="text_expander_file_too_large">चयनित छवि अधिकतम आकार सीमा (20 एमबी) से अधिक है</string>
     <string name="text_expander_image_attached">चित्र संलग्न</string>
+    <string name="active_keyboards_title">सक्रिय कीबोर्ड</string>
+    <string name="add_language_title">भाषा जोड़ें</string>
+    <string name="add_language_summary">टाइपिंग भाषाएँ प्रबंधित और सक्षम करें</string>
 </resources>

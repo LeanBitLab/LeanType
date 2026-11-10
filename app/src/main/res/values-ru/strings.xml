@@ -1766,4 +1766,7 @@
     <string name="text_expander_create_first_button">Создать ярлык</string>
     <string name="text_expander_file_too_large">Размер выбранного изображения превышает максимальный размер (20 МБ).</string>
     <string name="text_expander_image_attached">Фото прилагается</string>
+    <string name="active_keyboards_title">Активные клавиатуры</string>
+    <string name="add_language_title">Добавить язык</string>
+    <string name="add_language_summary">Управление и включение языков ввода</string>
 </resources>

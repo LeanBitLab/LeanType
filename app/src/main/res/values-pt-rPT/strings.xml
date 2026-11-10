@@ -1703,4 +1703,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_create_first_button">Criar atalho</string>
     <string name="text_expander_file_too_large">A imagem selecionada excede o limite máximo de tamanho (20 MB)</string>
     <string name="text_expander_image_attached">Foto anexada</string>
+    <string name="active_keyboards_title">Teclados ativos</string>
+    <string name="add_language_title">Adicionar idioma</string>
+    <string name="add_language_summary">Gerenciar e ativar idiomas de digitação</string>
 </resources>

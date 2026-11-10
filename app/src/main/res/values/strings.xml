@@ -548,6 +548,9 @@
     <!-- Title for input language & layout selection screen -->
     <string name="language_and_layouts_title">Languages &amp; Layouts</string>
     <string name="languages_title">Languages</string>
+    <string name="active_keyboards_title">Active Keyboards</string>
+    <string name="add_language_title">Add language</string>
+    <string name="add_language_summary">Manage and enable typing languages</string>
     <!-- Title of the setting to enable number row -->
     <string name="number_row">Number row</string>
     <!-- Description of the settings to enable number row -->

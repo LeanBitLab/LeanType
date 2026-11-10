@@ -1741,4 +1741,7 @@
     <string name="text_expander_create_first_button">Стварыць ярлык</string>
     <string name="text_expander_file_too_large">Выбраная выява перавышае максімальны памер (20 МБ)</string>
     <string name="text_expander_image_attached">Фота прыкладаецца</string>
+    <string name="active_keyboards_title">Актыўныя клавіятуры</string>
+    <string name="add_language_title">Дадаць мову</string>
+    <string name="add_language_summary">Кіраванне мовамі ўводу і ўключэнне іх</string>
 </resources>

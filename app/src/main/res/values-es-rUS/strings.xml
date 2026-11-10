@@ -1773,4 +1773,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_create_first_button">Crear acceso directo</string>
     <string name="text_expander_file_too_large">La imagen seleccionada excede el límite de tamaño máximo (20 MB)</string>
     <string name="text_expander_image_attached">Foto adjunta</string>
+    <string name="active_keyboards_title">Teclados activos</string>
+    <string name="add_language_title">Agregar idioma</string>
+    <string name="add_language_summary">Administrar y habilitar idiomas de escritura</string>
 </resources>

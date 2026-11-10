@@ -1756,4 +1756,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_create_first_button">Verknüpfung erstellen</string>
     <string name="text_expander_file_too_large">Das ausgewählte Bild überschreitet die maximale Größenbeschränkung (20 MB).</string>
     <string name="text_expander_image_attached">Foto beigefügt</string>
+    <string name="active_keyboards_title">Aktive Tastaturen</string>
+    <string name="add_language_title">Sprache hinzufügen</string>
+    <string name="add_language_summary">Eingabesprachen verwalten und aktivieren</string>
 </resources>

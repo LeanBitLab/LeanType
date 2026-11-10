@@ -1742,4 +1742,7 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_create_first_button">Sukurti nuorodą</string>
     <string name="text_expander_file_too_large">Pasirinktas vaizdas viršija didžiausio dydžio limitą (20 MB)</string>
     <string name="text_expander_image_attached">Pridedama nuotrauka</string>
+    <string name="active_keyboards_title">Aktyvios klaviatūros</string>
+    <string name="add_language_title">Pridėti kalbą</string>
+    <string name="add_language_summary">Tvarkykite ir įgalinkite spausdinimo kalbas</string>
 </resources>

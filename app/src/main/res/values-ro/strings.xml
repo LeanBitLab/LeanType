@@ -1741,4 +1741,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_create_first_button">Creați o comandă rapidă</string>
     <string name="text_expander_file_too_large">Imaginea selectată depășește limita maximă de dimensiune (20 MB)</string>
     <string name="text_expander_image_attached">Fotografie atașată</string>
+    <string name="active_keyboards_title">Tastaturi active</string>
+    <string name="add_language_title">Adăugați limba</string>
+    <string name="add_language_summary">Gestionați și activați limbile de tastare</string>
 </resources>

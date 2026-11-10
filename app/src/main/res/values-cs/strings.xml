@@ -1706,4 +1706,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_create_first_button">Vytvořit zástupce</string>
     <string name="text_expander_file_too_large">Vybraný obrázek překračuje maximální limit velikosti (20 MB)</string>
     <string name="text_expander_image_attached">Foto přiloženo</string>
+    <string name="active_keyboards_title">Aktivní klávesnice</string>
+    <string name="add_language_title">Přidat jazyk</string>
+    <string name="add_language_summary">Spravujte a povolte jazyky psaní</string>
 </resources>

@@ -1807,4 +1807,7 @@
     <string name="text_expander_create_first_button">കുറുക്കുവഴി സൃഷ്ടിക്കുക</string>
     <string name="text_expander_file_too_large">തിരഞ്ഞെടുത്ത ചിത്രം പരമാവധി വലുപ്പ പരിധി കവിഞ്ഞു (20 MB)</string>
     <string name="text_expander_image_attached">ഫോട്ടോ അറ്റാച്ച് ചെയ്തിട്ടുണ്ട്</string>
+    <string name="active_keyboards_title">സജീവ കീബോർഡുകൾ</string>
+    <string name="add_language_title">ഭാഷ ചേർക്കുക</string>
+    <string name="add_language_summary">ഭാഷകൾ ടൈപ്പുചെയ്യുന്നത് നിയന്ത്രിക്കുകയും പ്രവർത്തനക്ഷമമാക്കുകയും ചെയ്യുക</string>
 </resources>

@@ -1704,4 +1704,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_create_first_button">Parancsikon létrehozása</string>
     <string name="text_expander_file_too_large">A kiválasztott kép meghaladja a maximális méretkorlátot (20 MB)</string>
     <string name="text_expander_image_attached">Fénykép csatolva</string>
+    <string name="active_keyboards_title">Aktív billentyűzetek</string>
+    <string name="add_language_title">Nyelv hozzáadása</string>
+    <string name="add_language_summary">A gépelési nyelvek kezelése és engedélyezése</string>
 </resources>

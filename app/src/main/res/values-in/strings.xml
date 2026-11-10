@@ -1704,4 +1704,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_create_first_button">Buat Pintasan</string>
     <string name="text_expander_file_too_large">Gambar yang dipilih melebihi batas ukuran maksimum (20 MB)</string>
     <string name="text_expander_image_attached">Foto terlampir</string>
+    <string name="active_keyboards_title">Keyboard Aktif</string>
+    <string name="add_language_title">Tambahkan bahasa</string>
+    <string name="add_language_summary">Kelola dan aktifkan bahasa pengetikan</string>
 </resources>

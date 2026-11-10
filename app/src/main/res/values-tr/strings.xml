@@ -1733,4 +1733,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_create_first_button">Kısayol Oluştur</string>
     <string name="text_expander_file_too_large">Seçilen resim maksimum boyut sınırını (20 MB) aşıyor</string>
     <string name="text_expander_image_attached">Fotoğraf ekli</string>
+    <string name="active_keyboards_title">Aktif Klavyeler</string>
+    <string name="add_language_title">Dil ekle</string>
+    <string name="add_language_summary">Yazma dillerini yönetin ve etkinleştirin</string>
 </resources>

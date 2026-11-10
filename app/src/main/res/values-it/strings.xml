@@ -1773,4 +1773,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_create_first_button">Crea collegamento</string>
     <string name="text_expander_file_too_large">L\'immagine selezionata supera il limite di dimensione massima (20 MB)</string>
     <string name="text_expander_image_attached">Foto allegata</string>
+    <string name="active_keyboards_title">Tastiere attive</string>
+    <string name="add_language_title">Aggiungi lingua</string>
+    <string name="add_language_summary">Gestisci e abilita le lingue di digitazione</string>
 </resources>

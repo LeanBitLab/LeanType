@@ -1807,4 +1807,7 @@
     <string name="text_expander_create_first_button">Δημιουργία συντόμευσης</string>
     <string name="text_expander_file_too_large">Η επιλεγμένη εικόνα υπερβαίνει το μέγιστο όριο μεγέθους (20 MB)</string>
     <string name="text_expander_image_attached">Επισυνάπτεται φωτογραφία</string>
+    <string name="active_keyboards_title">Ενεργά πληκτρολόγια</string>
+    <string name="add_language_title">Προσθήκη γλώσσας</string>
+    <string name="add_language_summary">Διαχειριστείτε και ενεργοποιήστε τις γλώσσες πληκτρολόγησης</string>
 </resources>
