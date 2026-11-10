@@ -78,12 +78,14 @@ internal class SuggestionStripLayoutHelper(
     // see Settings.PREF_CENTER_TYPED_WORD
     private var mCenterTypedWord = false
     private val mMoreSuggestionsHint: Drawable
+    private val mDefaultHorizontalPadding: Int
 
     private val mSuggestionStripOptions: Int
 
     init {
         val wordView = wordViews[0]
         val dividerView = dividerViews[0]
+        mDefaultHorizontalPadding = wordView.paddingLeft
         mPadding = wordView.compoundPaddingLeft + wordView.compoundPaddingRight
         dividerView.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         mDividerWidth = dividerView.measuredWidth
@@ -271,6 +273,7 @@ internal class SuggestionStripLayoutHelper(
             wordView.text = null
             wordView.tag = null
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+            wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
             if (SuggestionStripView.DEBUG_SUGGESTIONS && positionInStrip < mDebugInfoViews.size) {
                 mDebugInfoViews[positionInStrip].text = null
             }
@@ -475,17 +478,24 @@ internal class SuggestionStripLayoutHelper(
         val word = wordView.text
         val tagIndex = wordView.tag as? Int
         val wordInfo = if (tagIndex != null && tagIndex < suggestedWords.size()) suggestedWords.getInfo(tagIndex) else null
-        val thumbSizePx = 22.dpToPx(context.resources)
+        val thumbSizePx = 18.dpToPx(context.resources)
         val thumb = if (wordInfo?.mImageUri != null) {
             helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(context, wordInfo.mImageUri!!, thumbSizePx)
         } else null
 
-        if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
-            wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, mMoreSuggestionsHint)
-            wordView.compoundDrawablePadding = if (thumb != null) 6.dpToPx(context.resources) else -mMoreSuggestionsHint.intrinsicHeight
-        } else {
+        if (thumb != null) {
+            val padH = 3.dpToPx(context.resources)
+            wordView.setPadding(padH, 0, padH, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(thumb, null, null, null)
-            wordView.compoundDrawablePadding = if (thumb != null) 6.dpToPx(context.resources) else 0
+            wordView.compoundDrawablePadding = 4.dpToPx(context.resources)
+        } else if (positionInStrip == mCenterPositionInStrip && mMoreSuggestionsAvailable) {
+            wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, mMoreSuggestionsHint)
+            wordView.compoundDrawablePadding = -mMoreSuggestionsHint.intrinsicHeight
+        } else {
+            wordView.setPadding(mDefaultHorizontalPadding, 0, mDefaultHorizontalPadding, 0)
+            wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+            wordView.compoundDrawablePadding = 0
         }
         wordView.contentDescription = if (TextUtils.isEmpty(word))
             context.resources.getString(R.string.spoken_empty_suggestion)

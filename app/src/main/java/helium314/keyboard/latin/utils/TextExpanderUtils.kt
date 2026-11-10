@@ -659,8 +659,13 @@ object TextExpanderUtils {
                 try {
                     val match = regex.findAll(textBeforeCursor).lastOrNull { it.range.last == textBeforeCursor.length - 1 }
                     if (match != null && match.value.isNotEmpty()) {
-                        val preview = formatPreview(entry.template, entry.imageUri != null, item.cleanKey)
-                        matches.add(SuggestionMatch(entry.template, preview, 0, item.cleanKey, entry.imageUri))
+                        val isImage = entry.imageUri != null
+                        val label = if (isImage) {
+                            if (entry.template.isNotBlank()) formatPreview(entry.template) else item.cleanKey
+                        } else {
+                            formatPreview(entry.template)
+                        }
+                        matches.add(SuggestionMatch(entry.template, label, 0, item.cleanKey, entry.imageUri))
                     }
                 } catch (_: Exception) {}
             } else {
@@ -679,11 +684,13 @@ object TextExpanderUtils {
                         val prefixLen = if (prefix.isNotEmpty() && textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)) {
                             prefix.length
                         } else 0
-                        val preview = formatPreview(entry.template, entry.imageUri != null, shortcut)
-                        val label = if (shortcut.equals(typedWord, ignoreCase = true)) {
-                            preview
+                        val isImage = entry.imageUri != null
+                        val label = if (isImage) {
+                            if (entry.template.isNotBlank()) formatPreview(entry.template) else shortcut
+                        } else if (shortcut.equals(typedWord, ignoreCase = true)) {
+                            formatPreview(entry.template)
                         } else {
-                            "$shortcut: $preview"
+                            "$shortcut: ${formatPreview(entry.template)}"
                         }
                         matches.add(SuggestionMatch(entry.template, label, prefixLen, shortcut, entry.imageUri))
                     }
@@ -694,12 +701,9 @@ object TextExpanderUtils {
         return matches.take(3)
     }
 
-    private fun formatPreview(template: String, isImage: Boolean = false, fallbackKey: String = ""): String {
+    private fun formatPreview(template: String): String {
         var preview = template.replace('\n', ' ').replace('\r', ' ').trim()
         preview = preview.replace("%cursor%", "").replace(Regex("""%cursor_\d+?%"""), "")
-        if (preview.isEmpty() && isImage) {
-            preview = fallbackKey.ifEmpty { "Photo" }
-        }
         if (preview.length > 28) {
             preview = preview.take(27) + "…"
         }

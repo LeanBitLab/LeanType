@@ -163,7 +163,7 @@ object TextExpanderImageUtils {
      * Gets a cached rounded thumbnail Drawable for display in the suggestion strip or settings.
      * Accurately center-crops to square, scales to exact pixel dimensions, and applies smooth rounded corners.
      */
-    fun getThumbnailDrawable(context: Context, pathOrUri: String, sizePx: Int = 22.dpToPx(context.resources)): Drawable? {
+    fun getThumbnailDrawable(context: Context, pathOrUri: String, sizePx: Int = 18.dpToPx(context.resources)): Drawable? {
         val cacheKey = "${pathOrUri}_$sizePx"
         thumbnailCache.get(cacheKey)?.let { return it }
 
@@ -194,7 +194,7 @@ object TextExpanderImageUtils {
             val canvas = Canvas(output)
             val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
             val rect = RectF(0f, 0f, sizePx.toFloat(), sizePx.toFloat())
-            val cornerRadius = 6.dpToPx(context.resources).toFloat()
+            val cornerRadius = 5.dpToPx(context.resources).toFloat()
 
             val shader = BitmapShader(scaledBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
             paint.shader = shader
