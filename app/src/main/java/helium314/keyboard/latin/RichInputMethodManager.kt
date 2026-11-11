@@ -388,9 +388,10 @@ class RichInputMethodManager private constructor() {
         if (isInitializedInternal) {
             return
         }
-        imm = ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        context = ctx
-        inputMethodInfoCache = InputMethodInfoCache(ctx, imm, ctx.packageName)
+        val appContext = ctx.applicationContext ?: ctx
+        imm = appContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        context = appContext
+        inputMethodInfoCache = InputMethodInfoCache(appContext, imm, appContext.packageName)
 
         // Initialize the current input method subtype and the shortcut IME.
         refreshSubtypeCaches()

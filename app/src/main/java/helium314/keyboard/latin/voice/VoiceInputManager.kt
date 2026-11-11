@@ -30,6 +30,7 @@ import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
@@ -122,7 +123,7 @@ class VoiceInputManager(
     private var isCurrentSessionOnline = false
     private val onlineAudioBuffer = ByteArrayOutputStream()
     private var onlineTranscriptionJob: Job? = null
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private var listener: VoiceInputListener? = null
 

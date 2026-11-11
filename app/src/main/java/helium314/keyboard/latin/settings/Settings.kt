@@ -62,8 +62,9 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     private val mSettingsValuesLock = ReentrantLock()
 
     private fun onCreate(context: Context) {
-        mContext = context
-        val prefs = context.prefs()
+        val appContext = context.applicationContext ?: context
+        mContext = appContext
+        val prefs = appContext.prefs()
         mPrefs = prefs
     }
 
@@ -105,13 +106,14 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     }
 
     fun loadSettings(context: Context, locale: Locale?, inputAttributes: InputAttributes, currentKeyboardScript: String) {
+        val appContext = context.applicationContext ?: context
         mSettingsValuesLock.lock()
-        mContext = context
+        mContext = appContext
         try {
-            val prefs = mPrefs ?: context.prefs().also { mPrefs = it }
+            val prefs = mPrefs ?: appContext.prefs().also { mPrefs = it }
             Log.i(TAG, "loadSettings")
             val actualLocale = locale ?: context.resources.configuration.locale()
-            mSettingsValues = runInLocale(context, actualLocale) { ctx ->
+            mSettingsValues = runInLocale(appContext, actualLocale) { ctx ->
                 SettingsValues(ctx, prefs, ctx.resources, inputAttributes, currentKeyboardScript)
             }
         } finally {

@@ -17,13 +17,14 @@ import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.random.Random
 
 class CustomSoundManager private constructor(private val appContext: Context) {
-    private val scope = CoroutineScope(Dispatchers.IO)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var soundPool: SoundPool? = null
     private var activePackId: String = SoundPackUrls.SYSTEM_DEFAULT_ID
