@@ -1699,4 +1699,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="after_keyboard_reopen">Membuka kembali keyboard</string>
     <string name="text_expander_image_missing">File gambar tidak ditemukan. Edit pintasan untuk memasangkannya kembali.</string>
     <string name="text_expander_image_missing_short">Gambar hilang - ketuk untuk memasang kembali</string>
+    <string name="text_expander_image_load_failed">Tidak dapat memuat atau memproses gambar yang dipilih</string>
+    <string name="text_expander_image_processing">Mempersiapkan gambar…</string>
 </resources>

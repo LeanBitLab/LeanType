@@ -1699,4 +1699,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="after_keyboard_reopen">Ponovno otvaranje tipkovnice</string>
     <string name="text_expander_image_missing">Slikovna datoteka nije pronađena. Uredite prečac da biste ga ponovno priložili.</string>
     <string name="text_expander_image_missing_short">Nedostaje slika - dodirnite za ponovno pričvršćivanje</string>
+    <string name="text_expander_image_load_failed">Nije moguće učitati ili obraditi odabranu sliku</string>
+    <string name="text_expander_image_processing">Priprema slike…</string>
 </resources>

@@ -1735,4 +1735,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="auto_correct_indicator_underline_summary">Kirjutamise ajal automaatselt parandatavate sõnade all kuvatakse allajoon</string>
     <string name="after_keyboard_reopen">Klaviatuuri uuesti avamine</string>
     <string name="text_expander_image_missing">Pildifaili ei leitud. Muutke otsetee selle uuesti kinnitamiseks.</string>
+    <string name="text_expander_image_load_failed">Valitud pilti ei saanud laadida ega töödelda</string>
+    <string name="text_expander_image_processing">Pildi ettevalmistamine…</string>
+    <string name="text_expander_image_missing_short">Pilt puudub – puudutage uuesti kinnitamiseks</string>
 </resources>

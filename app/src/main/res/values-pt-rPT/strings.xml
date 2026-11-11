@@ -1698,4 +1698,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="after_keyboard_reopen">Reabrindo o teclado</string>
     <string name="text_expander_image_missing">Arquivo de imagem não encontrado. Edite o atalho para reanexá-lo.</string>
     <string name="text_expander_image_missing_short">Imagem ausente – toque para reanexar</string>
+    <string name="text_expander_image_load_failed">Não foi possível carregar ou processar a imagem selecionada</string>
+    <string name="text_expander_image_processing">Preparando imagem…</string>
 </resources>

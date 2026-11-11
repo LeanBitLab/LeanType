@@ -1751,4 +1751,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="after_keyboard_reopen">Erneutes Öffnen der Tastatur</string>
     <string name="text_expander_image_missing">Bilddatei nicht gefunden. Bearbeiten Sie die Verknüpfung, um sie erneut anzuhängen.</string>
     <string name="text_expander_image_missing_short">Bild fehlt. Zum erneuten Anhängen tippen</string>
+    <string name="text_expander_image_load_failed">Das ausgewählte Bild konnte nicht geladen oder verarbeitet werden</string>
+    <string name="text_expander_image_processing">Bild wird vorbereitet…</string>
 </resources>

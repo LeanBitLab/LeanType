@@ -76,7 +76,6 @@ import helium314.keyboard.settings.BackButton
 import kotlinx.coroutines.launch
 
 /** previous state of the text expander data, kept when saving in the text editor, for restoring it */
-private const val PREF_DATA_PREVIOUS = "pref_text_expander_data_previous"
 private const val MAX_FILE_SIZE = 2 * 1024 * 1024
 
 /**
@@ -96,7 +95,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     var value by remember { mutableStateOf(TextFieldValue(original)) }
     var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
     var changedSomething by remember { mutableStateOf(false) }
-    var hasPrevious by remember { mutableStateOf(prefs.contains(PREF_DATA_PREVIOUS)) }
+    var hasPrevious by remember { mutableStateOf(prefs.contains(TextExpanderUtils.PREF_DATA_PREVIOUS)) }
 
     var errors by remember { mutableStateOf<List<TextExpanderText.Error>?>(null) }
     var pending by remember { mutableStateOf<Pair<TextExpanderText.Result, TextExpanderText.Diff>?>(null) }
@@ -109,7 +108,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
         current = TextExpanderUtils.getShortcuts(context)
         original = TextExpanderText.format(current)
         value = TextFieldValue(original)
-        hasPrevious = prefs.contains(PREF_DATA_PREVIOUS)
+        hasPrevious = prefs.contains(TextExpanderUtils.PREF_DATA_PREVIOUS)
     }
 
     val saveFile = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
@@ -332,7 +331,9 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
             onDismissRequest = { pending = null },
             confirmButton = {
                 Button(onClick = {
-                    prefs.edit { putString(PREF_DATA_PREVIOUS, prefs.getString(TextExpanderUtils.PREF_DATA, null) ?: "{}") }
+                    prefs.edit(commit = true) {
+                        putString(TextExpanderUtils.PREF_DATA_PREVIOUS, prefs.getString(TextExpanderUtils.PREF_DATA, null) ?: "{}")
+                    }
                     TextExpanderUtils.saveShortcuts(context, result.entries)
                     changedSomething = true
                     pending = null
@@ -366,8 +367,12 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
             confirmButton = {
                 Button(onClick = {
                     val now = prefs.getString(TextExpanderUtils.PREF_DATA, null) ?: "{}"
-                    val previous = prefs.getString(PREF_DATA_PREVIOUS, null) ?: "{}"
-                    prefs.edit { putString(TextExpanderUtils.PREF_DATA, previous); putString(PREF_DATA_PREVIOUS, now) }
+                    val previous = prefs.getString(TextExpanderUtils.PREF_DATA_PREVIOUS, null) ?: "{}"
+                    prefs.edit(commit = true) {
+                        putString(TextExpanderUtils.PREF_DATA, previous)
+                        putString(TextExpanderUtils.PREF_DATA_PREVIOUS, now)
+                    }
+                    TextExpanderUtils.clearCache()
                     changedSomething = true
                     askRestore = false
                     reload()

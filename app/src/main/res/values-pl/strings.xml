@@ -1743,4 +1743,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="after_keyboard_reopen">Ponowne otwarcie klawiatury</string>
     <string name="text_expander_image_missing">Nie znaleziono pliku obrazu. Edytuj skrót, aby go ponownie dołączyć.</string>
     <string name="text_expander_image_missing_short">Brak obrazu  -  kliknij, aby ponownie go dołączyć</string>
+    <string name="text_expander_image_load_failed">Nie można załadować lub przetworzyć wybranego obrazu</string>
+    <string name="text_expander_image_processing">Przygotowuję obraz…</string>
 </resources>

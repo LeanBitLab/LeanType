@@ -1768,4 +1768,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="after_keyboard_reopen">Reabrir el teclado</string>
     <string name="text_expander_image_missing">Archivo de imagen no encontrado. Edite el acceso directo para volver a adjuntarlo.</string>
     <string name="text_expander_image_missing_short">Falta la imagen: toca para volver a adjuntarla</string>
+    <string name="text_expander_image_load_failed">No se pudo cargar ni procesar la imagen seleccionada</string>
+    <string name="text_expander_image_processing">Preparando imagen…</string>
 </resources>

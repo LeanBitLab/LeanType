@@ -1736,4 +1736,6 @@
     <string name="after_keyboard_reopen">Паўторнае адкрыццё клавіятуры</string>
     <string name="text_expander_image_missing">Файл выявы не знойдзены. Адрэдагуйце ярлык, каб зноў далучыць яго.</string>
     <string name="text_expander_image_missing_short">Відарыс адсутнічае - націсніце, каб далучыць яго паўторна</string>
+    <string name="text_expander_image_load_failed">Не ўдалося загрузіць або апрацаваць выбраную выяву</string>
+    <string name="text_expander_image_processing">Падрыхтоўка выявы…</string>
 </resources>

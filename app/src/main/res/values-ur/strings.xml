@@ -1793,4 +1793,6 @@
     <string name="after_keyboard_reopen">کی بورڈ کو دوبارہ کھولنا</string>
     <string name="text_expander_image_missing">تصویری فائل نہیں ملی۔ اسے دوبارہ منسلک کرنے کے لیے شارٹ کٹ میں ترمیم کریں۔</string>
     <string name="text_expander_image_missing_short">تصویر غائب ہے - دوبارہ منسلک کرنے کے لیے تھپتھپائیں۔</string>
+    <string name="text_expander_image_load_failed">منتخب کردہ تصویر کو لوڈ یا پروسیس نہیں کیا جا سکا</string>
+    <string name="text_expander_image_processing">تصویر تیار ہو رہی ہے…</string>
 </resources>

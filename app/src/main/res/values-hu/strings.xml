@@ -1699,4 +1699,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="after_keyboard_reopen">A billentyűzet újranyitása</string>
     <string name="text_expander_image_missing">A képfájl nem található. Szerkessze a parancsikont az újbóli csatoláshoz.</string>
     <string name="text_expander_image_missing_short">Hiányzik a kép – koppintson az újbóli csatoláshoz</string>
+    <string name="text_expander_image_load_failed">Nem sikerült betölteni vagy feldolgozni a kiválasztott képet</string>
+    <string name="text_expander_image_processing">Kép előkészítése…</string>
 </resources>

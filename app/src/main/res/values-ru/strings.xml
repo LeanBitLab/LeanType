@@ -1761,4 +1761,6 @@
     <string name="after_keyboard_reopen">Повторное открытие клавиатуры</string>
     <string name="text_expander_image_missing">Файл изображения не найден. Отредактируйте ярлык, чтобы повторно прикрепить его.</string>
     <string name="text_expander_image_missing_short">Изображение отсутствует. Нажмите, чтобы прикрепить его повторно.</string>
+    <string name="text_expander_image_load_failed">Не удалось загрузить или обработать выбранное изображение.</string>
+    <string name="text_expander_image_processing">Подготовка изображения…</string>
 </resources>

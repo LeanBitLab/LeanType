@@ -213,14 +213,16 @@ private fun backupLauncher(
             }
         }
         val protectedFilesDir = DeviceProtectedUtils.getFilesDir(ctx)
-        val protectedFilesPath = protectedFilesDir.path + File.separator
         val protectedFiles = mutableListOf<File>()
-        protectedFilesDir.walk().forEach { file ->
-            val path = file.path.replace(protectedFilesPath, "")
-            if (file.isFile && backupFilePatterns.any { path.matches(it) }) {
-                val cat = getCategoryForFilePath(path)
-                if (cat == null || selectedCategories.contains(cat)) {
-                    protectedFiles.add(file)
+        if (protectedFilesDir.canonicalPath != filesDir.canonicalPath) {
+            val protectedFilesPath = protectedFilesDir.path + File.separator
+            protectedFilesDir.walk().forEach { file ->
+                val path = file.path.replace(protectedFilesPath, "")
+                if (file.isFile && backupFilePatterns.any { path.matches(it) }) {
+                    val cat = getCategoryForFilePath(path)
+                    if (cat == null || selectedCategories.contains(cat)) {
+                        protectedFiles.add(file)
+                    }
                 }
             }
         }

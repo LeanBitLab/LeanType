@@ -1802,4 +1802,6 @@
     <string name="after_keyboard_reopen">Ανοίγοντας ξανά το πληκτρολόγιο</string>
     <string name="text_expander_image_missing">Το αρχείο εικόνας δεν βρέθηκε. Επεξεργαστείτε τη συντόμευση για να την επανασυνδέσετε.</string>
     <string name="text_expander_image_missing_short">Λείπει εικόνα - πατήστε για επανασύνδεση</string>
+    <string name="text_expander_image_load_failed">Δεν ήταν δυνατή η φόρτωση ή η επεξεργασία της επιλεγμένης εικόνας</string>
+    <string name="text_expander_image_processing">Προετοιμασία εικόνας…</string>
 </resources>

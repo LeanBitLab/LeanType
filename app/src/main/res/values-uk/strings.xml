@@ -1701,4 +1701,6 @@
     <string name="after_keyboard_reopen">Повторне відкриття клавіатури</string>
     <string name="text_expander_image_missing">Файл зображення не знайдено. Відредагуйте ярлик, щоб повторно приєднати його.</string>
     <string name="text_expander_image_missing_short">Зображення відсутнє – торкніться, щоб повторно приєднати</string>
+    <string name="text_expander_image_load_failed">Не вдалося завантажити або обробити вибране зображення</string>
+    <string name="text_expander_image_processing">Підготовка зображення…</string>
 </resources>

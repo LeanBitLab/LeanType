@@ -1702,4 +1702,6 @@
     <string name="after_keyboard_reopen">重新打开键盘</string>
     <string name="text_expander_image_missing">未找到图像文件。编辑快捷方式以重新附加它。</string>
     <string name="text_expander_image_missing_short">图片丢失 - 点击重新连接</string>
+    <string name="text_expander_image_load_failed">无法加载或处理所选图像</string>
+    <string name="text_expander_image_processing">正在准备图像...</string>
 </resources>

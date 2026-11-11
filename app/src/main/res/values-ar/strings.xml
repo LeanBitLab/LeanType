@@ -1759,4 +1759,6 @@
     <string name="after_keyboard_reopen">إعادة فتح لوحة المفاتيح</string>
     <string name="text_expander_image_missing">لم يتم العثور على ملف الصورة. قم بتحرير الاختصار لإعادة إرفاقه.</string>
     <string name="text_expander_image_missing_short">الصورة مفقودة - انقر لإعادة إرفاقها</string>
+    <string name="text_expander_image_load_failed">تعذر تحميل الصورة المحددة أو معالجتها</string>
+    <string name="text_expander_image_processing">جارٍ تحضير الصورة…</string>
 </resources>

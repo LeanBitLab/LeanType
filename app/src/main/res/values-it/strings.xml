@@ -1768,4 +1768,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="after_keyboard_reopen">Riapertura della tastiera</string>
     <string name="text_expander_image_missing">File immagine non trovato. Modifica il collegamento per ricollegarlo.</string>
     <string name="text_expander_image_missing_short">Immagine mancante: tocca per ricollegarla</string>
+    <string name="text_expander_image_load_failed">Impossibile caricare o elaborare l\'immagine selezionata</string>
+    <string name="text_expander_image_processing">Preparazione dell\'immagine...</string>
 </resources>

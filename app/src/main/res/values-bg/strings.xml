@@ -1736,4 +1736,6 @@
     <string name="after_keyboard_reopen">Повторно отваряне на клавиатурата</string>
     <string name="text_expander_image_missing">Файлът с изображение не е намерен. Редактирайте прекия път, за да го прикачите отново.</string>
     <string name="text_expander_image_missing_short">Липсва изображение - докоснете, за да прикачите отново</string>
+    <string name="text_expander_image_load_failed">Неуспешно зареждане или обработка на избраното изображение</string>
+    <string name="text_expander_image_processing">Изображението се подготвя…</string>
 </resources>

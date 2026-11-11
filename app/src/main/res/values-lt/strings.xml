@@ -1737,4 +1737,6 @@ Ar norite atnaujinti?</string>
     <string name="after_keyboard_reopen">Klaviatūros atidarymas iš naujo</string>
     <string name="text_expander_image_missing">Vaizdo failas nerastas. Redaguokite spartųjį klavišą, kad jį vėl pridėtumėte.</string>
     <string name="text_expander_image_missing_short">Trūksta vaizdo – palieskite, kad pridėtumėte iš naujo</string>
+    <string name="text_expander_image_load_failed">Nepavyko įkelti arba apdoroti pasirinkto vaizdo</string>
+    <string name="text_expander_image_processing">Ruošiamas vaizdas…</string>
 </resources>

@@ -1757,4 +1757,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="after_keyboard_reopen">Réouverture du clavier</string>
     <string name="text_expander_image_missing">Fichier image introuvable. Modifiez le raccourci pour le rattacher.</string>
     <string name="text_expander_image_missing_short">Image manquante – appuyez pour la rattacher</string>
+    <string name="text_expander_image_load_failed">Impossible de charger ou de traiter l\'image sélectionnée</string>
+    <string name="text_expander_image_processing">Préparation de l\'image…</string>
 </resources>

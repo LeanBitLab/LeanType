@@ -1728,4 +1728,6 @@
     <string name="after_keyboard_reopen">कीबोर्ड पुनः खोलना</string>
     <string name="text_expander_image_missing">छवि फ़ाइल नहीं मिली. इसे पुनः जोड़ने के लिए शॉर्टकट संपादित करें।</string>
     <string name="text_expander_image_missing_short">छवि गायब है - पुनः जोड़ने के लिए टैप करें</string>
+    <string name="text_expander_image_load_failed">चयनित छवि को लोड या संसाधित नहीं किया जा सका</string>
+    <string name="text_expander_image_processing">छवि तैयार की जा रही है...</string>
 </resources>

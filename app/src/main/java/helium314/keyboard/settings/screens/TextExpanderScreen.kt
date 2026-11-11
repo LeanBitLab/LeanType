@@ -37,6 +37,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -50,7 +51,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -109,14 +115,16 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         mutableStateOf(TextExpanderUtils.getShortcuts(context))
     }
 
-    var showAddDialog by remember { mutableStateOf(false) }
-    var editingPrefix by remember { mutableStateOf("") }
-    var editingShortcut by remember { mutableStateOf("") }
-    var editingTemplate by remember { mutableStateOf(TextFieldValue("")) }
-    var editingImageUri by remember { mutableStateOf<String?>(null) }
-    var originalShortcutToEdit by remember { mutableStateOf<String?>(null) }
-    var editingIsRegex by remember { mutableStateOf(false) }
-    var showTextEditor by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    var showAddDialog by rememberSaveable { mutableStateOf(false) }
+    var editingPrefix by rememberSaveable { mutableStateOf("") }
+    var editingShortcut by rememberSaveable { mutableStateOf("") }
+    var editingTemplate by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue("")) }
+    var editingImageUri by rememberSaveable { mutableStateOf<String?>(null) }
+    var originalShortcutToEdit by rememberSaveable { mutableStateOf<String?>(null) }
+    var editingIsRegex by rememberSaveable { mutableStateOf(false) }
+    var showTextEditor by rememberSaveable { mutableStateOf(false) }
+    var isProcessingImage by remember { mutableStateOf(false) }
     var shortcutToDelete by remember { mutableStateOf<Pair<String, TextExpanderUtils.ShortcutEntry>?>(null) }
 
     val openGuide = {
@@ -127,16 +135,28 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
 
     val pickImageLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
-            val savedPath = TextExpanderImageUtils.saveImageToStorage(context, uri)
-            if (savedPath != null) {
-                val previousImageUri = editingImageUri
-                val savedOriginalImageUri = originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }
-                if (previousImageUri != null && previousImageUri != savedOriginalImageUri && previousImageUri != savedPath) {
-                    TextExpanderImageUtils.deleteImageIfManaged(context, previousImageUri)
+            isProcessingImage = true
+            val previousImageUri = editingImageUri
+            val savedOriginalImageUri = originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }
+            coroutineScope.launch {
+                val result = withContext(Dispatchers.IO) {
+                    TextExpanderImageUtils.saveImageWithResult(context, uri)
                 }
-                editingImageUri = savedPath
-            } else {
-                Toast.makeText(context, R.string.text_expander_file_too_large, Toast.LENGTH_SHORT).show()
+                isProcessingImage = false
+                when (result) {
+                    is TextExpanderImageUtils.SaveImageResult.Success -> {
+                        if (previousImageUri != null && previousImageUri != savedOriginalImageUri && previousImageUri != result.reference) {
+                            TextExpanderImageUtils.deleteImageIfUnreferenced(context, previousImageUri, shortcutsMap)
+                        }
+                        editingImageUri = result.reference
+                    }
+                    TextExpanderImageUtils.SaveImageResult.TooLarge -> {
+                        Toast.makeText(context, R.string.text_expander_file_too_large, Toast.LENGTH_SHORT).show()
+                    }
+                    TextExpanderImageUtils.SaveImageResult.InvalidOrUnreadable -> {
+                        Toast.makeText(context, R.string.text_expander_image_load_failed, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }
@@ -400,11 +420,11 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     onClick = {
                         val updated = shortcutsMap.toMutableMap()
                         updated.remove(shortcutKey)
-                        if (entry.imageUri != null) {
-                            TextExpanderImageUtils.deleteImageIfManaged(context, entry.imageUri)
-                        }
                         shortcutsMap = updated
                         TextExpanderUtils.saveShortcuts(context, updated)
+                        if (entry.imageUri != null) {
+                            TextExpanderImageUtils.deleteImageIfUnreferenced(context, entry.imageUri, updated)
+                        }
                         shortcutToDelete = null
                     }
                 ) {
@@ -443,18 +463,13 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         ThreeButtonAlertDialog(
             onDismissRequest = {
                 if (editingImageUri != null && editingImageUri != originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }) {
-                    TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
+                    TextExpanderImageUtils.deleteImageIfUnreferenced(context, editingImageUri, shortcutsMap)
                 }
                 showAddDialog = false
             },
             onConfirmed = {
                 val updated = shortcutsMap.toMutableMap()
-                if (isEditMode) {
-                    val oldEntry = originalShortcutToEdit?.let { updated.remove(it) }
-                    if (oldEntry?.imageUri != null && oldEntry.imageUri != editingImageUri) {
-                        TextExpanderImageUtils.deleteImageIfManaged(context, oldEntry.imageUri)
-                    }
-                }
+                val oldEntry = if (isEditMode) originalShortcutToEdit?.let { updated.remove(it) } else null
                 val key = if (editingIsRegex) {
                     TextExpanderUtils.REGEX_PREFIX + editingPrefix.trim() + editingShortcut.trim()
                 } else {
@@ -463,9 +478,13 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                 updated[key] = TextExpanderUtils.ShortcutEntry(editingTemplate.text, editingPrefix.trim(), editingImageUri)
                 shortcutsMap = updated
                 TextExpanderUtils.saveShortcuts(context, updated)
+                if (oldEntry?.imageUri != null && oldEntry.imageUri != editingImageUri) {
+                    TextExpanderImageUtils.deleteImageIfUnreferenced(context, oldEntry.imageUri, updated)
+                }
                 showAddDialog = false
             },
             checkOk = {
+                !isProcessingImage &&
                 editingShortcut.trim().isNotEmpty() &&
                 (editingTemplate.text.isNotEmpty() || !editingImageUri.isNullOrBlank()) &&
                 isRegexValid
@@ -476,14 +495,14 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                 if (isEditMode) {
                     val updated = shortcutsMap.toMutableMap()
                     val removed = originalShortcutToEdit?.let { updated.remove(it) }
-                    if (removed?.imageUri != null) {
-                        TextExpanderImageUtils.deleteImageIfManaged(context, removed.imageUri)
-                    }
-                    if (editingImageUri != null && editingImageUri != removed?.imageUri) {
-                        TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
-                    }
                     shortcutsMap = updated
                     TextExpanderUtils.saveShortcuts(context, updated)
+                    if (removed?.imageUri != null) {
+                        TextExpanderImageUtils.deleteImageIfUnreferenced(context, removed.imageUri, updated)
+                    }
+                    if (editingImageUri != null && editingImageUri != removed?.imageUri) {
+                        TextExpanderImageUtils.deleteImageIfUnreferenced(context, editingImageUri, updated)
+                    }
                 }
                 showAddDialog = false
             },
@@ -554,7 +573,31 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
                         )
                     ) {
-                        if (!isImageAttached) {
+                        if (isProcessingImage) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(14.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier.size(40.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    CircularProgressIndicator(
+                                        modifier = Modifier.size(22.dp),
+                                        strokeWidth = 2.dp
+                                    )
+                                }
+                                Text(
+                                    text = stringResource(R.string.text_expander_image_processing),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Medium,
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                            }
+                        } else if (!isImageAttached) {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -658,7 +701,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                                     IconButton(
                                         onClick = {
                                             if (editingImageUri != null && editingImageUri != originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }) {
-                                                TextExpanderImageUtils.deleteImageIfManaged(context, editingImageUri)
+                                                TextExpanderImageUtils.deleteImageIfUnreferenced(context, editingImageUri, shortcutsMap)
                                             }
                                             editingImageUri = null
                                         }

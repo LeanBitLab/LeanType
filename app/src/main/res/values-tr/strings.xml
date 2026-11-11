@@ -1728,4 +1728,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="after_keyboard_reopen">Klavyeyi yeniden açma</string>
     <string name="text_expander_image_missing">Resim dosyası bulunamadı. Yeniden eklemek için kısayolu düzenleyin.</string>
     <string name="text_expander_image_missing_short">Resim eksik - yeniden eklemek için dokunun</string>
+    <string name="text_expander_image_load_failed">Seçilen resim yüklenemedi veya işlenemedi</string>
+    <string name="text_expander_image_processing">Resim hazırlanıyor…</string>
 </resources>

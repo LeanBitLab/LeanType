@@ -1701,4 +1701,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="after_keyboard_reopen">Opětovné otevření klávesnice</string>
     <string name="text_expander_image_missing">Soubor obrázku nebyl nalezen. Upravte zkratku a znovu ji připojte.</string>
     <string name="text_expander_image_missing_short">Obrázek chybí – klepnutím jej znovu připojte</string>
+    <string name="text_expander_image_load_failed">Nelze načíst nebo zpracovat vybraný obrázek</string>
+    <string name="text_expander_image_processing">Příprava obrázku…</string>
 </resources>

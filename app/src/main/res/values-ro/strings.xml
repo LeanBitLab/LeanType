@@ -1736,4 +1736,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="after_keyboard_reopen">Redeschiderea tastaturii</string>
     <string name="text_expander_image_missing">Fișierul imagine nu a fost găsit. Editați comanda rapidă pentru a o atașa din nou.</string>
     <string name="text_expander_image_missing_short">Imaginea lipsește - atingeți pentru a atașa din nou</string>
+    <string name="text_expander_image_load_failed">Nu s-a putut încărca sau procesa imaginea selectată</string>
+    <string name="text_expander_image_processing">Se pregătește imaginea...</string>
 </resources>
