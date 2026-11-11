@@ -597,7 +597,14 @@ open class KeyboardView @JvmOverloads constructor(
                 val hintDigitWidth = TypefaceUtils.getReferenceDigitWidth(paint)
                 val hintLabelWidth = TypefaceUtils.getStringWidth(hintLabel, paint)
                 hintBaseline = -paint.ascent()
-                hintX = if (isFunctionalKeyAndRoundedStyle) keyWidth - hintBaseline else keyWidth - mKeyHintLetterPadding - max(hintDigitWidth, hintLabelWidth) / 2.0f
+                val isPeriodKey = key.code == Constants.CODE_PERIOD || key.label == "."
+                hintX = if (isPeriodKey) {
+                    centerX
+                } else if (isFunctionalKeyAndRoundedStyle) {
+                    keyWidth - hintBaseline
+                } else {
+                    keyWidth - mKeyHintLetterPadding - max(hintDigitWidth, hintLabelWidth) / 2.0f
+                }
                 paint.textAlign = Paint.Align.CENTER
             }
             val adjustmentY = if (isFunctionalKeyAndRoundedStyle) hintBaseline * 0.5f else params.mHintLabelVerticalAdjustment * labelCharHeight

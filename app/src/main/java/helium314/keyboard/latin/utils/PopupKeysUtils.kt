@@ -75,7 +75,8 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
 }
 
 fun getHintLabel(popupSet: PopupSet<*>?, params: KeyboardParams, label: String): String? {
-    if ((label == "." || label == KeyLabel.PERIOD || label == params.mLocaleKeyboardInfos.labelPeriod)
+    if (params.mId.isAlphabetKeyboard
+        && (label == "." || label == KeyLabel.PERIOD || label == params.mLocaleKeyboardInfos.labelPeriod)
         && params.mLocaleKeyboardInfos.labelPeriodHint != null
     ) {
         return params.mLocaleKeyboardInfos.labelPeriodHint

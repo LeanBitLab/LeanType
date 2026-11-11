@@ -776,6 +776,16 @@ f""", // no newline at the end
         val periodKeyUrl = kbUrl.sortedKeys.first { it.label == "." || it.code == Constants.CODE_PERIOD }
         assertEquals(null, periodKeyUrl.hintLabel)
 
+        // Symbols layout should not have a hint
+        val (kbSymbols, _) = buildKeyboard(editorInfo, subtype, KeyboardId.ELEMENT_SYMBOLS)
+        val periodKeySymbols = kbSymbols.sortedKeys.firstOrNull { it.label == "." || it.code == Constants.CODE_PERIOD }
+        assertEquals(null, periodKeySymbols?.hintLabel)
+
+        // Numpad layout should not have a hint
+        val (kbNumpad, _) = buildKeyboard(editorInfo, subtype, KeyboardId.ELEMENT_NUMPAD)
+        val periodKeyNumpad = kbNumpad.sortedKeys.firstOrNull { it.label == "." || it.code == Constants.CODE_PERIOD }
+        assertEquals(null, periodKeyNumpad?.hintLabel)
+
         // English layout period key should not have a hint
         val subtypeEn = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "qwerty", true)
         val (kbEn, _) = buildKeyboard(editorInfo, subtypeEn, KeyboardId.ELEMENT_ALPHABET)
