@@ -5,7 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.IntOffset
@@ -40,12 +40,8 @@ import helium314.keyboard.settings.screens.SuggestionsScreen
 import helium314.keyboard.settings.screens.TextCorrectionScreen
 import helium314.keyboard.settings.screens.ToolbarScreen
 import helium314.keyboard.settings.screens.UpdatesScreen
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
 fun SettingsNavHost(
@@ -54,7 +50,12 @@ fun SettingsNavHost(
 ) {
     val navController = rememberNavController()
     val dir = if (LocalLayoutDirection.current == LayoutDirection.Ltr) 1 else -1
-    val target = SettingsDestination.navTarget.collectAsState()
+
+    LaunchedEffect(navController) {
+        SettingsDestination.navEvents.collect { route ->
+            navController.navigate(route)
+        }
+    }
 
     // duration does not change when system setting changes, but that's rare enough to not care
     val duration = (250 * getTransitionAnimationScale(LocalContext.current)).toInt()
@@ -222,8 +223,6 @@ fun SettingsNavHost(
             helium314.keyboard.settings.screens.CjkSettingsScreen(onClickBack = ::goBack)
         }
     }
-    if (target.value != SettingsDestination.Settings/* && target.value != navController.currentBackStackEntry?.destination?.route*/)
-        navController.navigate(route = target.value)
 }
 
 object SettingsDestination {
@@ -263,19 +262,11 @@ object SettingsDestination {
     const val AppQuirks = "app_quirks"
     const val Gif = "gif"
     const val Cjk = "cjk"
-    val navTarget = MutableStateFlow(Settings)
 
-    // Use SupervisorJob so a cancellation in one navigation hop
-    // doesn't tear down the rest of the settings UI. Dispatchers.Default
-    // is fine here because we're only updating a MutableStateFlow.
-    private val navScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+    private val navChannel = Channel<String>(Channel.BUFFERED)
+    val navEvents = navChannel.receiveAsFlow()
+
     fun navigateTo(target: String) {
-        if (navTarget.value == target) {
-            // triggers recompose twice, but that's ok as it's a rare event
-            navTarget.value = Settings
-            navScope.launch { delay(10); navTarget.value = target }
-        } else
-            navTarget.value = target
-        navScope.launch { delay(50); navTarget.value = Settings }
+        navChannel.trySend(target)
     }
 }
