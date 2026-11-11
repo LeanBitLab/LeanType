@@ -2211,7 +2211,7 @@ class LatinIME : InputMethodService(),
         }
     }
 
-    private fun trimPluginMemory() {
+    private fun trimPluginMemory(forceUnbindVoice: Boolean) {
         OfflineAiLoader.onTrimMemory()
         CustomSoundManager.getInstance(this).onTrimMemory()
         helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
@@ -2221,7 +2221,11 @@ class LatinIME : InputMethodService(),
         helium314.keyboard.latin.translation.TranslationLoader.unloadPlugin()
         helium314.keyboard.latin.gif.GifImageLoader.clearMemory()
         voiceInputManager?.cancelVoice()
-        voicePluginManager?.unbind()
+        if (forceUnbindVoice) {
+            voicePluginManager?.unbind()
+        } else {
+            releaseVoicePluginOnIdle(preserveExistingSchedule = true)
+        }
     }
 
     @SuppressLint("SwitchIntDef")
@@ -2233,7 +2237,7 @@ class LatinIME : InputMethodService(),
                 deallocateMemory()
             }
             if (!isInputViewShown) {
-                trimPluginMemory()
+                trimPluginMemory(forceUnbindVoice = level != ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN)
             }
         } else if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
             KeyboardLayoutSet.onSystemLocaleChanged()
@@ -2241,7 +2245,7 @@ class LatinIME : InputMethodService(),
                 keyboardSwitcher.trimMemory()
             }
             if (!isInputViewShown) {
-                trimPluginMemory()
+                trimPluginMemory(forceUnbindVoice = true)
             }
         }
     }

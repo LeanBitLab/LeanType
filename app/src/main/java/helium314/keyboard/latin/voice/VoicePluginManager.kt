@@ -26,8 +26,11 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
         fun onPluginDisconnected()
     }
 
+    @Volatile
     private var engine: IVoiceEngine? = null
+    @Volatile
     private var isBound = false
+    @Volatile
     private var isConnecting = false
     private var deathRecipientRegistered = false
     private var connectionListener: PluginConnectionListener? = null
@@ -38,9 +41,9 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             Log.i(TAG, "VoiceEngineService connected: $name")
+            engine = IVoiceEngine.Stub.asInterface(service)
             isConnecting = false
             isBound = true
-            engine = IVoiceEngine.Stub.asInterface(service)
             try {
                 service?.linkToDeath(this@VoicePluginManager, 0)
                 deathRecipientRegistered = true
@@ -166,6 +169,15 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     private var lastLoggedModelState: Pair<String, Int?>? = null
 
     private fun handleDisconnection() {
+        if (android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) {
+            val staleBinder = engine?.asBinder() ?: return
+            mainHandler.post {
+                if (engine?.asBinder() === staleBinder) {
+                    handleDisconnection()
+                }
+            }
+            return
+        }
         cancelScheduledUnbind()
         engine = null
         isBound = false
