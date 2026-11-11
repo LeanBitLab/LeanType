@@ -1268,14 +1268,22 @@ class InputLogic(
                         if (mJustRevertedExpandedShortcut != null && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)) {
                             // Skip re-expanding
                         } else {
-                            if (result.prefixLength > 0) {
+                            if (result.imageUri != null) {
                                 mConnection.commitText("", 1)
-                                mConnection.deleteTextBeforeCursor(result.prefixLength)
-                            }
-                            val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
-                            resetComposingState(true)
-                            if (cursorMovedBack) {
-                                mSpaceState = SpaceState.NONE
+                                if (result.prefixLength > 0) {
+                                    mConnection.deleteTextBeforeCursor(result.prefixLength)
+                                }
+                                dispatchExpandedImage(result.imageUri)
+                            } else {
+                                if (result.prefixLength > 0) {
+                                    mConnection.commitText("", 1)
+                                    mConnection.deleteTextBeforeCursor(result.prefixLength)
+                                }
+                                val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
+                                resetComposingState(true)
+                                if (cursorMovedBack) {
+                                    mSpaceState = SpaceState.NONE
+                                }
                             }
                             didExpand = true
                         }
@@ -1318,9 +1326,13 @@ class InputLogic(
                             // Skip re-expanding
                         } else {
                             mConnection.deleteTextBeforeCursor(result.matchedString.length)
-                            val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
-                            if (cursorMovedBack) {
-                                mSpaceState = SpaceState.NONE
+                            if (result.imageUri != null) {
+                                dispatchExpandedImage(result.imageUri)
+                            } else {
+                                val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
+                                if (cursorMovedBack) {
+                                    mSpaceState = SpaceState.NONE
+                                }
                             }
                         }
                     }
@@ -1445,6 +1457,11 @@ class InputLogic(
                         || !result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)
                     ) {
                         mConnection.deleteTextBeforeCursor(result.matchedString.length)
+                        if (result.imageUri != null) {
+                            dispatchExpandedImage(result.imageUri)
+                            inputTransaction.setRequiresUpdateSuggestions()
+                            return
+                        }
                         val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
                         if (cursorMovedBack) {
                             mSpaceState = SpaceState.NONE
@@ -1774,7 +1791,7 @@ class InputLogic(
                     val textBefore = mConnection.getTextBeforeCursor(50, 0)
                     if (textBefore != null) {
                         val result = TextExpanderUtils.getExpandedWordForTyped(typedWord, textBefore.toString(), mLatinIME)
-                        if (result != null) {
+                        if (result != null && result.imageUri == null) {
                             if (mJustRevertedExpandedShortcut == null || !result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)) {
                                 if (result.prefixLength > 0) {
                                     mConnection.commitText("", 1)
@@ -2849,7 +2866,7 @@ class InputLogic(
                 val textStr = textBefore.toString()
                 val plainWord = UnicodeStyleEngine.toPlainText(chosenWord)
                 val result = TextExpanderUtils.getExpandedWordForTyped(plainWord, textStr, mLatinIME)
-                if (result != null) {
+                if (result != null && (result.imageUri == null || separatorString.isNotEmpty())) {
                     if (mJustRevertedExpandedShortcut != null
                         && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)
                     ) {
@@ -2857,6 +2874,10 @@ class InputLogic(
                     } else {
                         mConnection.commitText(getTextWithSuggestionSpan(mLatinIME, chosenWord, mSuggestedWords, getDictionaryFacilitatorLocale()), 1)
                         mConnection.deleteTextBeforeCursor(result.prefixLength + chosenWord.length)
+                        if (result.imageUri != null) {
+                            dispatchExpandedImage(result.imageUri)
+                            return true
+                        }
                         val cursorMovedBack = commitExpandedText(result.matchedString, result.expandedText)
                         resetComposingState(true)
                         if (cursorMovedBack) {
@@ -3326,6 +3347,12 @@ class InputLogic(
             Log.d(TAG, "tryJumpToNextPlaceholder: no placeholder found")
         }
         return false
+    }
+
+    private fun dispatchExpandedImage(imageUri: String) {
+        mLatinIME.onImageSelected(imageUri)
+        resetComposingState(true)
+        mSpaceState = SpaceState.NONE
     }
 
     private fun commitExpandedText(shortcut: String, expanded: String): Boolean {

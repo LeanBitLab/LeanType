@@ -597,7 +597,7 @@ object TextExpanderUtils {
                         try {
                             val replaced = regex.replace(fullText, entry.template)
                             val prefixLength = if (fullText.length > word.length) fullText.length - word.length else prefix.length
-                            return ExpandedResult(expand(replaced, context), prefixLength, fullText)
+                            return ExpandedResult(expand(replaced, context), prefixLength, fullText, entry.imageUri?.takeIf { it.isNotBlank() })
                         } catch (e: java.lang.Exception) {
                             // ignore
                         }
@@ -612,7 +612,7 @@ object TextExpanderUtils {
                             matchedString.length - word.length
                         } else 0
                         val effectivePrefixLength = maxOf(prefix.length, extraPrefix)
-                        return ExpandedResult(expand(replaced, context), effectivePrefixLength, matchedString)
+                        return ExpandedResult(expand(replaced, context), effectivePrefixLength, matchedString, entry.imageUri?.takeIf { it.isNotBlank() })
                     }
                 } catch (e: java.lang.Exception) {
                     // ignore
@@ -635,7 +635,7 @@ object TextExpanderUtils {
                     } else {
                         prefix.length
                     }
-                    return ExpandedResult(expand(entry.template, context), effectivePrefixLength, expectedSuffix)
+                    return ExpandedResult(expand(entry.template, context), effectivePrefixLength, expectedSuffix, entry.imageUri?.takeIf { it.isNotBlank() })
                 }
             }
         }

@@ -2,6 +2,7 @@
 package helium314.keyboard.latin.utils
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -49,5 +50,31 @@ class TextExpanderTabTest {
         assertEquals("", imageWithoutLabelPrefixMatches.first().previewLabel)
         val imageWithoutLabelFullMatches = TextExpanderUtils.getMatchingSuggestions("dog", "dog", context)
         assertEquals("", imageWithoutLabelFullMatches.first().previewLabel)
+    }
+
+    @Test
+    fun testGetExpandedWordForTypedPropagatesImageUri() {
+        val context = RuntimeEnvironment.getApplication()
+        val prefs = context.prefs()
+        prefs.edit()
+            .putBoolean(TextExpanderUtils.PREF_ENABLED, true)
+            .putBoolean(TextExpanderUtils.PREF_SUGGESTIONS_ONLY, false)
+            .commit()
+
+        val logoPath = "/data/user/0/app/files/text_expander_images/img_logo.png"
+        val regexPath = "/data/user/0/app/files/text_expander_images/img_regex.jpg"
+        val shortcuts = mapOf(
+            "logo" to TextExpanderUtils.ShortcutEntry(template = "Company Logo", prefix = "", imageUri = logoPath),
+            TextExpanderUtils.REGEX_PREFIX + "!pic" to TextExpanderUtils.ShortcutEntry(template = "", prefix = "", imageUri = regexPath)
+        )
+        TextExpanderUtils.saveShortcuts(context, shortcuts)
+
+        val directResult = TextExpanderUtils.getExpandedWordForTyped("logo", "logo", context)
+        assertNotNull(directResult)
+        assertEquals(logoPath, directResult!!.imageUri)
+
+        val regexResult = TextExpanderUtils.getExpandedWordForTyped(null, "!pic", context)
+        assertNotNull(regexResult)
+        assertEquals(regexPath, regexResult!!.imageUri)
     }
 }
