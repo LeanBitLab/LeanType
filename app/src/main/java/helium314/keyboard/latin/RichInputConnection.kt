@@ -83,18 +83,22 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     private var mLastLargeCommitTime = -LARGE_COMMIT_GUARD_DURATION_MS
     @Volatile private var mIsActive = false
 
+    private fun refreshInputConnection(): InputConnection? {
+        return try {
+            mParent.currentInputConnection
+        } catch (e: Exception) {
+            // Some host apps violate the InputConnection contract and throw
+            // RuntimeExceptions from their EditorInfo/InputConnection implementation.
+            // Never let that crash the long-running IME process.
+            Log.w(TAG, "currentInputConnection threw in host app", e)
+            null
+        }
+    }
+
     fun isConnected(): Boolean {
         if (!mIsActive) return false
         if (mIC == null) {
-            mIC = try {
-                mParent.currentInputConnection
-            } catch (e: Exception) {
-                // Some host apps violate the InputConnection contract and throw
-                // RuntimeExceptions from their EditorInfo/InputConnection implementation.
-                // Never let that crash the long-running IME process.
-                Log.w(TAG, "currentInputConnection threw while connecting", e)
-                null
-            }
+            mIC = refreshInputConnection()
         }
         return mIC != null
     }
@@ -113,7 +117,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mNestLevel = 0
         mIsActive = true
         mPendingInFlightDeletions = 0
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
     }
 
     fun onFinishInput() {
@@ -143,7 +147,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         r.token = 1
         r.flags = 0
 
-        val et: ExtractedText? = mIC?.getExtractedText(r, 0)
+        val et: ExtractedText? = try {
+            mIC?.getExtractedText(r, 0)
+        } catch (e: Exception) {
+            null
+        }
         val beforeCursor = getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0)
         val internal = StringBuilder(mCommittedTextBeforeComposingText).append(mComposingText)
 
@@ -174,7 +182,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
     fun beginBatchEdit() {
         if (++mNestLevel == 1) {
-            mIC = mParent.currentInputConnection
+            mIC = refreshInputConnection()
             if (isConnected()) {
                 try {
                     mIC?.beginBatchEdit()
@@ -256,7 +264,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         shouldFinishComposition: Boolean
     ): Boolean {
         if (isConnected() && shouldFinishComposition) {
-            mIC?.finishComposingText()
+            try {
+                mIC?.finishComposingText()
+            } catch (e: Exception) {
+                Log.w(TAG, "finishComposingText threw in host app", e)
+            }
         }
 
         mComposingText.setLength(0)
@@ -292,7 +304,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     private fun reloadTextCache(): Boolean {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return false
@@ -323,7 +335,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     private fun reloadCursorPosition() {
         if (!isConnected()) return
 
-        val et = mIC?.getExtractedText(ExtractedTextRequest(), 0) ?: return
+        val et = try {
+            mIC?.getExtractedText(ExtractedTextRequest(), 0)
+        } catch (e: Exception) {
+            Log.w(TAG, "getExtractedText threw in host app", e)
+            null
+        } ?: return
 
         if (et.selectionStart >= 0 && et.selectionEnd >= 0) {
             mExpectedSelStart = et.selectionStart + et.startOffset
@@ -349,7 +366,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mComposingText.setLength(0)
 
         if (isConnected()) {
-            mIC?.finishComposingText()
+            try {
+                mIC?.finishComposingText()
+            } catch (e: Exception) {
+                Log.w(TAG, "finishComposingText threw in host app", e)
+            }
         }
     }
 
@@ -406,37 +427,41 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         if (isConnected()) {
-            val isDirectCommit = AppQuirksManager.isDirectCommitApp(mParent.currentInputEditorInfo?.packageName)
-            if (isDirectCommit || text.length > Constants.EDITOR_CONTENTS_CACHE_SIZE || text !is Spanned) {
-                mIC?.commitText(text.toString(), newCursorPosition)
-            } else {
-                mTempObjectForCommitText.clear()
-                mTempObjectForCommitText.append(text)
+            try {
+                val isDirectCommit = AppQuirksManager.isDirectCommitApp(mParent.currentInputEditorInfo?.packageName)
+                if (isDirectCommit || text.length > Constants.EDITOR_CONTENTS_CACHE_SIZE || text !is Spanned) {
+                    mIC?.commitText(text.toString(), newCursorPosition)
+                } else {
+                    mTempObjectForCommitText.clear()
+                    mTempObjectForCommitText.append(text)
 
-                val spans: Array<CharacterStyle> = mTempObjectForCommitText.getSpans(
-                    0,
-                    text.length,
-                    CharacterStyle::class.java
-                )
+                    val spans: Array<CharacterStyle> = mTempObjectForCommitText.getSpans(
+                        0,
+                        text.length,
+                        CharacterStyle::class.java
+                    )
 
-                for (span in spans) {
-                    val spanStart = mTempObjectForCommitText.getSpanStart(span)
-                    val spanEnd = mTempObjectForCommitText.getSpanEnd(span)
-                    val spanFlags = mTempObjectForCommitText.getSpanFlags(span)
+                    for (span in spans) {
+                        val spanStart = mTempObjectForCommitText.getSpanStart(span)
+                        val spanEnd = mTempObjectForCommitText.getSpanEnd(span)
+                        val spanFlags = mTempObjectForCommitText.getSpanFlags(span)
 
-                    if (0 < spanEnd && spanEnd < mTempObjectForCommitText.length) {
-                        val spanEndChar = mTempObjectForCommitText[spanEnd - 1]
-                        val nextChar = mTempObjectForCommitText[spanEnd]
+                        if (0 < spanEnd && spanEnd < mTempObjectForCommitText.length) {
+                            val spanEndChar = mTempObjectForCommitText[spanEnd - 1]
+                            val nextChar = mTempObjectForCommitText[spanEnd]
 
-                        if (UnicodeSurrogate.isLowSurrogate(spanEndChar) &&
-                            UnicodeSurrogate.isHighSurrogate(nextChar)
-                        ) {
-                            mTempObjectForCommitText.setSpan(span, spanStart, spanEnd + 1, spanFlags)
+                            if (UnicodeSurrogate.isLowSurrogate(spanEndChar) &&
+                                UnicodeSurrogate.isHighSurrogate(nextChar)
+                            ) {
+                                mTempObjectForCommitText.setSpan(span, spanStart, spanEnd + 1, spanFlags)
+                            }
                         }
                     }
-                }
 
-                mIC?.commitText(mTempObjectForCommitText, newCursorPosition)
+                    mIC?.commitText(mTempObjectForCommitText, newCursorPosition)
+                }
+            } catch (e: Exception) {
+                Log.w(TAG, "commitText threw in host app", e)
             }
             if (InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)) {
                 // Invalidate local committed text cache in web editors to prevent stale reads and insertion loops
@@ -450,8 +475,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
         beginBatchEdit()
         try {
-            mIC?.performContextMenuAction(android.R.id.selectAll)
-            mIC?.commitText(newText, 1)
+            try {
+                mIC?.performContextMenuAction(android.R.id.selectAll)
+                mIC?.commitText(newText, 1)
+            } catch (e: Exception) {
+                Log.w(TAG, "replaceEntireText threw in host app", e)
+            }
 
             mCommittedTextBeforeComposingText.setLength(0)
             mComposingText.setLength(0)
@@ -474,7 +503,14 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun getSelectedText(flags: Int): CharSequence? {
-        return if (isConnected()) mIC?.getSelectedText(flags) else null
+        return if (isConnected()) {
+            try {
+                mIC?.getSelectedText(flags)
+            } catch (e: Exception) {
+                Log.w(TAG, "getSelectedText threw in host app", e)
+                null
+            }
+        } else null
     }
 
     fun canDeleteCharacters(): Boolean = mExpectedSelStart > 0
@@ -491,7 +527,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         spacingAndPunctuations: SpacingAndPunctuations,
         hasSpaceBefore: Boolean
     ): Int {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF
@@ -627,12 +663,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         n: Int,
         flags: Int
     ): CharSequence? {
-        mIC = try {
-            mParent.currentInputConnection
-        } catch (e: Exception) {
-            Log.w(TAG, "currentInputConnection threw before getTextBeforeCursor", e)
-            null
-        }
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return null
@@ -764,12 +795,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         n: Int,
         flags: Int
     ): CharSequence? {
-        mIC = try {
-            mParent.currentInputConnection
-        } catch (e: Exception) {
-            Log.w(TAG, "currentInputConnection threw before getTextAfterCursor", e)
-            null
-        }
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return null
@@ -832,7 +858,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         if (isConnected()) {
-            mIC?.deleteSurroundingText(beforeLength, 0)
+            try {
+                mIC?.deleteSurroundingText(beforeLength, 0)
+            } catch (e: Exception) {
+                Log.w(TAG, "deleteSurroundingText threw in host app", e)
+            }
         }
 
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
@@ -884,12 +914,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun performEditorAction(actionId: Int) {
-        mIC = try {
-            mParent.currentInputConnection
-        } catch (e: Exception) {
-            Log.w(TAG, "currentInputConnection threw in performEditorAction", e)
-            null
-        }
+        mIC = refreshInputConnection()
         val ic = mIC ?: return
 
         if (mComposingText.isNotEmpty()) {
@@ -972,7 +997,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         if (isConnected()) {
-            mIC?.sendKeyEvent(keyEvent)
+            try {
+                mIC?.sendKeyEvent(keyEvent)
+            } catch (e: Exception) {
+                Log.w(TAG, "sendKeyEvent threw in host app", e)
+            }
         }
     }
 
@@ -1017,7 +1046,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         )
 
         return if (isConnected()) {
-            mIC?.setComposingRegion(adjustedStart, end) ?: false
+            try {
+                mIC?.setComposingRegion(adjustedStart, end) ?: false
+            } catch (e: Exception) {
+                Log.w(TAG, "setComposingRegion threw in host app", e)
+                false
+            }
         } else {
             false
         }
@@ -1063,7 +1097,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             if (DebugFlags.DEBUG_ENABLED) {
                 Log.d(TAG, "setting composing text of length ${text.length}")
             }
-            mIC?.setComposingText(text, newCursorPosition)
+            try {
+                mIC?.setComposingText(text, newCursorPosition)
+            } catch (e: Exception) {
+                Log.w(TAG, "setComposingText threw in host app", e)
+                return false
+            }
         }
 
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
@@ -1092,7 +1131,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         }
 
         if (isConnected()) {
-            val isIcValid = mIC?.setSelection(start, end) ?: false
+            val isIcValid = try {
+                mIC?.setSelection(start, end) ?: false
+            } catch (e: Exception) {
+                Log.w(TAG, "setSelection threw in host app", e)
+                false
+            }
             if (!isIcValid) {
                 return false
             }
@@ -1102,10 +1146,15 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun performContextMenuAction(actionId: Int): Boolean {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         return if (isConnected()) {
-            mIC?.performContextMenuAction(actionId) ?: false
+            try {
+                mIC?.performContextMenuAction(actionId) ?: false
+            } catch (e: Exception) {
+                Log.w(TAG, "performContextMenuAction threw in host app", e)
+                false
+            }
         } else {
             false
         }
@@ -1114,30 +1163,38 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     fun selectAll() {
         if (!isConnected()) return
 
-        if (mExpectedSelStart != mExpectedSelEnd &&
-            mExpectedSelStart == 0 &&
-            !hasTextAfterCursor()
-        ) {
-            mIC?.setSelection(mExpectedSelEnd, mExpectedSelEnd)
-        } else {
-            mIC?.performContextMenuAction(android.R.id.selectAll)
+        try {
+            if (mExpectedSelStart != mExpectedSelEnd &&
+                mExpectedSelStart == 0 &&
+                !hasTextAfterCursor()
+            ) {
+                mIC?.setSelection(mExpectedSelEnd, mExpectedSelEnd)
+            } else {
+                mIC?.performContextMenuAction(android.R.id.selectAll)
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "selectAll threw in host app", e)
         }
     }
 
     fun selectWord(spacingAndPunctuations: SpacingAndPunctuations, script: String) {
         if (!isConnected()) return
 
-        if (mExpectedSelStart != mExpectedSelEnd) {
-            mIC?.setSelection(mExpectedSelEnd, mExpectedSelEnd)
-            return
+        try {
+            if (mExpectedSelStart != mExpectedSelEnd) {
+                mIC?.setSelection(mExpectedSelEnd, mExpectedSelEnd)
+                return
+            }
+
+            val range = getWordRangeAtCursor(spacingAndPunctuations, script) ?: return
+
+            mIC?.setSelection(
+                mExpectedSelStart - range.getNumberOfCharsInWordBeforeCursor(),
+                mExpectedSelStart + range.getNumberOfCharsInWordAfterCursor()
+            )
+        } catch (e: Exception) {
+            Log.w(TAG, "selectWord threw in host app", e)
         }
-
-        val range = getWordRangeAtCursor(spacingAndPunctuations, script) ?: return
-
-        mIC?.setSelection(
-            mExpectedSelStart - range.getNumberOfCharsInWordBeforeCursor(),
-            mExpectedSelStart + range.getNumberOfCharsInWordAfterCursor()
-        )
     }
 
     fun copyText(getSelection: Boolean) {
@@ -1158,7 +1215,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             etr.flags = InputConnection.GET_TEXT_WITH_STYLES
             etr.hintMaxChars = Int.MAX_VALUE
 
-            val et = mIC?.getExtractedText(etr, 0) ?: return
+            val et = try {
+                mIC?.getExtractedText(etr, 0)
+            } catch (e: Exception) {
+                Log.w(TAG, "getExtractedText threw in host app", e)
+                null
+            } ?: return
             text = et.text
         }
 
@@ -1178,7 +1240,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
 
         if (isConnected()) {
-            mIC?.commitCorrection(correctionInfo)
+            try {
+                mIC?.commitCorrection(correctionInfo)
+            } catch (e: Exception) {
+                Log.w(TAG, "commitCorrection threw in host app", e)
+            }
         }
 
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
@@ -1206,7 +1272,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mComposingText.setLength(0)
 
         if (isConnected()) {
-            mIC?.commitCompletion(completionInfo)
+            try {
+                mIC?.commitCompletion(completionInfo)
+            } catch (e: Exception) {
+                Log.w(TAG, "commitCompletion threw in host app", e)
+            }
         }
 
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug()
@@ -1216,7 +1286,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         spacingAndPunctuations: SpacingAndPunctuations,
         n: Int
     ): NgramContext {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return NgramContext.EMPTY_PREV_WORDS_INFO
@@ -1254,7 +1324,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         spacingAndPunctuations: SpacingAndPunctuations,
         script: String
     ): TextRange? {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return null
@@ -1515,10 +1585,17 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun tryFixIncorrectCursorPosition() {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         val textBeforeCursor = getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0)
-        val selectedText = if (isConnected()) mIC?.getSelectedText(0) else null
+        val selectedText = if (isConnected()) {
+            try {
+                mIC?.getSelectedText(0)
+            } catch (e: Exception) {
+                Log.w(TAG, "getSelectedText threw in host app", e)
+                null
+            }
+        } else null
 
         if (textBeforeCursor == null ||
             (!TextUtils.isEmpty(selectedText) && mExpectedSelEnd == mExpectedSelStart)
@@ -1545,13 +1622,18 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     override fun performPrivateCommand(action: String?, data: Bundle?): Boolean {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return false
         }
 
-        return mIC?.performPrivateCommand(action, data) ?: false
+        return try {
+            mIC?.performPrivateCommand(action, data) ?: false
+        } catch (e: Exception) {
+            Log.w(TAG, "performPrivateCommand threw in host app", e)
+            false
+        }
     }
 
     val expectedSelectionStart: Int
@@ -1591,7 +1673,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     }
 
     fun requestCursorUpdates(enableMonitor: Boolean, requestImmediateCallback: Boolean): Boolean {
-        mIC = mParent.currentInputConnection
+        mIC = refreshInputConnection()
 
         if (!isConnected()) {
             return false
@@ -1601,7 +1683,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             (if (enableMonitor) InputConnection.CURSOR_UPDATE_MONITOR else 0) or
                     (if (requestImmediateCallback) InputConnection.CURSOR_UPDATE_IMMEDIATE else 0)
 
-        return mIC?.requestCursorUpdates(cursorUpdateMode) ?: false
+        return try {
+            mIC?.requestCursorUpdates(cursorUpdateMode) ?: false
+        } catch (e: Exception) {
+            Log.w(TAG, "requestCursorUpdates threw in host app", e)
+            false
+        }
     }
 
     companion object {
