@@ -128,6 +128,7 @@ class VoiceInputManager(
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private var listener: VoiceInputListener? = null
+    var onOfflineSessionIdle: (() -> Unit)? = null
 
     fun setListener(listener: VoiceInputListener?) {
         this.listener = listener
@@ -164,7 +165,7 @@ class VoiceInputManager(
 
         if (state != VoiceState.IDLE && state != VoiceState.ERROR) {
             Log.w(TAG, "Resetting previous state $state for new voice session")
-            cancelVoice()
+            cancelVoice(notifyIdle = false)
         }
 
         if (!canStartVoice()) {
@@ -197,6 +198,7 @@ class VoiceInputManager(
             return
         }
 
+        pluginManager.cancelScheduledUnbind()
         val isConnected = pluginManager.isPluginConnected()
         Log.i(TAG, "startVoice: isConnected=$isConnected")
 
@@ -350,6 +352,7 @@ class VoiceInputManager(
                             Log.i(TAG, "Final session commit complete, transitioning to IDLE")
                             cleanupSession()
                             updateState(VoiceState.IDLE)
+                            onOfflineSessionIdle?.invoke()
                         } else {
                             Log.i(TAG, "Segment refined & committed. Continuing continuous recording.")
                         }
@@ -365,6 +368,7 @@ class VoiceInputManager(
                         notifyError(message ?: "Voice error ($code)")
                         cleanupSession()
                         updateState(VoiceState.ERROR)
+                        onOfflineSessionIdle?.invoke()
                     }
                 }
             }
@@ -377,6 +381,7 @@ class VoiceInputManager(
                         if (state != VoiceState.ERROR) {
                             updateState(VoiceState.IDLE)
                         }
+                        onOfflineSessionIdle?.invoke()
                     }
                 }
             }
@@ -390,6 +395,7 @@ class VoiceInputManager(
                 pluginManager.cancelSession()
                 cleanupSession()
                 updateState(VoiceState.ERROR)
+                onOfflineSessionIdle?.invoke()
             }
         }
         handshakeTimeoutRunnable?.let {
@@ -642,6 +648,7 @@ class VoiceInputManager(
                 notifyError("Voice plugin connection timed out")
                 cleanupSession()
                 updateState(VoiceState.ERROR)
+                onOfflineSessionIdle?.invoke()
             }
         }
         connectingTimeoutRunnable = runnable
@@ -661,8 +668,12 @@ class VoiceInputManager(
             if (state == VoiceState.PROCESSING_FINAL) {
                 Log.w(TAG, "Voice processing timed out (15s)")
                 notifyError("Voice processing timed out")
+                val wasOffline = !isCurrentSessionOnline
                 cleanupSession()
                 updateState(VoiceState.ERROR)
+                if (wasOffline) {
+                    onOfflineSessionIdle?.invoke()
+                }
             }
         }
         processingTimeoutRunnable = runnable
@@ -815,13 +826,18 @@ class VoiceInputManager(
         transcribeOnlineWav(cached.wavBytes, cached.languageTag, retryCount = 0)
     }
 
-    fun cancelVoice() {
+    @JvmOverloads
+    fun cancelVoice(notifyIdle: Boolean = true) {
         Log.i(TAG, "cancelVoice() called, state=$state, isOnline=$isCurrentSessionOnline")
         if (state != VoiceState.IDLE || isRecording.get() || audioThread != null || audioRecord != null) {
+            val wasOffline = !isCurrentSessionOnline
             cleanupSession()
             pluginManager.cancelSession()
             clearComposingText()
             updateState(VoiceState.IDLE)
+            if (notifyIdle && wasOffline) {
+                onOfflineSessionIdle?.invoke()
+            }
         }
     }
 

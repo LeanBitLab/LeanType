@@ -75,11 +75,17 @@ class VoiceVisualizerView @JvmOverloads constructor(
         invalidate()
     }
 
+    private fun stopAnimation() {
+        animator?.cancel()
+        animator = null
+        smoothedLevel = 0f
+    }
+
     private fun updateAnimation() {
         animator?.cancel()
         animator = null
 
-        if (mode == Mode.IDLE || !isAttachedToWindow || visibility != VISIBLE) {
+        if (mode == Mode.IDLE || !isAttachedToWindow || visibility != VISIBLE || windowVisibility != VISIBLE) {
             smoothedLevel = 0f
             return
         }
@@ -122,9 +128,7 @@ class VoiceVisualizerView @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        animator?.cancel()
-        animator = null
-        smoothedLevel = 0f
+        stopAnimation()
     }
 
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
@@ -132,9 +136,16 @@ class VoiceVisualizerView @JvmOverloads constructor(
         if (visibility == VISIBLE) {
             updateAnimation()
         } else {
-            animator?.cancel()
-            animator = null
-            smoothedLevel = 0f
+            stopAnimation()
+        }
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility == VISIBLE) {
+            updateAnimation()
+        } else {
+            stopAnimation()
         }
     }
 

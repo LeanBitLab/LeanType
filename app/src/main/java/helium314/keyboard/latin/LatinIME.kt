@@ -235,7 +235,9 @@ class LatinIME : InputMethodService(),
         floatingKeyboardManager = FloatingKeyboardManager(this, this)
         val vpm = VoicePluginManager(this)
         voicePluginManager = vpm
-        voiceInputManager = VoiceInputManager(this, vpm)
+        voiceInputManager = VoiceInputManager(this, vpm).apply {
+            onOfflineSessionIdle = { releaseVoicePluginOnIdle(preserveExistingSchedule = false) }
+        }
         
         setTheme(R.style.platformInputMethodTheme)
         super.onCreate()
@@ -806,14 +808,7 @@ class LatinIME : InputMethodService(),
         super.onStartInputView(editorInfo, restarting)
         refreshDeviceLocked(this)
         ProofreadHelper.preloadModel(this)
-        
-        val vpm = voicePluginManager
-        if (vpm != null && !vpm.isPluginConnected() &&
-            DeviceProtectedUtils.getSharedPreferences(this).getBoolean(VoiceConstants.PREF_VOICE_OFFLINE_ENABLED, false)
-        ) {
-            vpm.bindIfNeeded()
-        }
-        
+
         clipboardHistoryManager.onStartInputView()
         AudioAndHapticFeedbackManager.getInstance().onStartInputView()
         CjkInputManager.getInstance(this).onStartInputView(editorInfo, restarting)
@@ -1054,7 +1049,7 @@ class LatinIME : InputMethodService(),
         }
         voiceInputManager?.cancelVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
-        voicePluginManager?.unbind()
+        releaseVoicePluginOnIdle(preserveExistingSchedule = true)
         keyboardSwitcher.hideGifPicker()
         keyboardSwitcher.hideOcrPanels()
         clipboardHistoryManager.onWindowHidden()
@@ -1094,7 +1089,7 @@ class LatinIME : InputMethodService(),
         ProofreadHelper.cancelCurrentJob()
         voiceInputManager?.cancelVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
-        voicePluginManager?.unbind()
+        releaseVoicePluginOnIdle(preserveExistingSchedule = true)
         otpSuggestionManager.stop()
         clipboardHistoryManager.onFinishInputView()
         AudioAndHapticFeedbackManager.getInstance().onFinishInputView()
@@ -1112,6 +1107,22 @@ class LatinIME : InputMethodService(),
         handler.cancelUpdateSuggestionStrip()
         inputLogic.finishInput()
         keyboardActionListener.resetMetaState()
+    }
+
+    private fun releaseVoicePluginOnIdle(preserveExistingSchedule: Boolean) {
+        val vpm = voicePluginManager ?: return
+        if (richImm.currentVoiceProvider != VoiceConstants.VOICE_PROVIDER_OFFLINE) {
+            vpm.unbind()
+            return
+        }
+        val keepLoadedSec = prefs()
+            .getString(VoiceConstants.PREF_VOICE_WHISPER_KEEP_LOADED_SECONDS, "300")
+            ?.toLongOrNull() ?: 300L
+        val delayMs = if (keepLoadedSec < 0L) -1L else keepLoadedSec * 1000L
+        vpm.unbindAfterDelay(delayMs, preserveExistingSchedule = preserveExistingSchedule) {
+            val state = voiceInputManager?.getState()
+            state == null || state == VoiceInputManager.VoiceState.IDLE || state == VoiceInputManager.VoiceState.ERROR
+        }
     }
 
     protected fun deallocateMemory() {

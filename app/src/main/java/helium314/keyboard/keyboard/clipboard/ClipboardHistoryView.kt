@@ -269,10 +269,44 @@ class ClipboardHistoryView @JvmOverloads constructor(
         }
     }
 
+    private var pendingCursorListener: Pair<TextView, View.OnLayoutChangeListener>? = null
+
+    private fun clearPendingCursorVisibility() {
+        pendingCursorListener?.let { (tv, listener) ->
+            tv.removeOnLayoutChangeListener(listener)
+        }
+        pendingCursorListener = null
+    }
+
     private fun ensureCursorVisible(textView: TextView, cursorPos: Int) {
+        clearPendingCursorVisibility()
         val layout = textView.layout
         if (layout == null) {
-            textView.post { ensureCursorVisible(textView, cursorPos) }
+            if (!textView.isAttachedToWindow || !textView.isShown || textView.windowVisibility != VISIBLE) return
+            val listener = object : View.OnLayoutChangeListener {
+                override fun onLayoutChange(
+                    v: View,
+                    left: Int,
+                    top: Int,
+                    right: Int,
+                    bottom: Int,
+                    oldLeft: Int,
+                    oldTop: Int,
+                    oldRight: Int,
+                    oldBottom: Int
+                ) {
+                    textView.removeOnLayoutChangeListener(this)
+                    if (pendingCursorListener?.second === this) {
+                        pendingCursorListener = null
+                    }
+                    if (!textView.isAttachedToWindow || !textView.isShown || textView.windowVisibility != VISIBLE) return
+                    if (textView.layout != null) {
+                        ensureCursorVisible(textView, cursorPos)
+                    }
+                }
+            }
+            pendingCursorListener = textView to listener
+            textView.addOnLayoutChangeListener(listener)
             return
         }
         val safePos = cursorPos.coerceIn(0, layout.text.length)
@@ -428,7 +462,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     private var isCursorBlinkVisible = true
     private val cursorBlinkRunnable = object : Runnable {
         override fun run() {
-            if (!inEditMode && !inSearchMode) return
+            if ((!inEditMode && !inSearchMode) || !isAttachedToWindow || windowVisibility != VISIBLE || !isShown) return
             isCursorBlinkVisible = !isCursorBlinkVisible
             if (inEditMode && this@ClipboardHistoryView::editTextView.isInitialized) {
                 editTextView.showInlineCursor = isCursorBlinkVisible
@@ -1887,12 +1921,20 @@ class ClipboardHistoryView @JvmOverloads constructor(
         PointerTracker.setClipboardInlineInputActive(false)
     }
 
+    private fun stopActiveCursorAndOverlayOnHide() {
+        removeCallbacks(cursorBlinkRunnable)
+        clearPendingCursorVisibility()
+        dismissActionPill()
+        PointerTracker.setClipboardInlineInputActive(false)
+    }
+
     override fun onDetachedFromWindow() {
         if (inEditMode) {
             stopEditMode(save = false)
         } else if (inSearchMode) {
             stopSearchMode()
         }
+        clearPendingCursorVisibility()
         dismissActionPill()
         PointerTracker.setClipboardInlineInputActive(false)
         super.onDetachedFromWindow()
@@ -1901,11 +1943,18 @@ class ClipboardHistoryView @JvmOverloads constructor(
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
         if (!isShown) {
-            removeCallbacks(cursorBlinkRunnable)
-            dismissActionPill()
-            PointerTracker.setClipboardInlineInputActive(false)
+            stopActiveCursorAndOverlayOnHide()
         } else {
             updateClipboardGestureSuppression()
+        }
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility != VISIBLE) {
+            stopActiveCursorAndOverlayOnHide()
+        } else if ((inEditMode || inSearchMode) && isShown && isAttachedToWindow) {
+            resetCursorBlink()
         }
     }
 }

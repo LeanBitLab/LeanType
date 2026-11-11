@@ -200,6 +200,13 @@ class OcrCameraView @JvmOverloads constructor(
         flashBtn?.setImageResource(R.drawable.ic_flash_off)
     }
 
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility != VISIBLE) {
+            showLoading(false)
+        }
+    }
+
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         stopCamera()
@@ -244,6 +251,7 @@ class OcrCameraView @JvmOverloads constructor(
     private fun showLoading(show: Boolean) {
         if (show) {
             if (isLoadingAnimationActive) return
+            if (!isAttachedToWindow || visibility != VISIBLE || windowVisibility != VISIBLE) return
             isLoadingAnimationActive = true
             shutterBtn?.isEnabled = false
 

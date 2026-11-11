@@ -251,6 +251,24 @@ class GifPickerView @JvmOverloads constructor(
         adapter.submit(emptyList())
     }
 
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+        if (!isShown) {
+            removeCallbacks(cursorBlinkRunnable)
+        } else if (opened && isAttachedToWindow && windowVisibility == View.VISIBLE) {
+            resetCursorBlink()
+        }
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility != View.VISIBLE) {
+            removeCallbacks(cursorBlinkRunnable)
+        } else if (opened && isAttachedToWindow && isShown) {
+            resetCursorBlink()
+        }
+    }
+
     override fun onDetachedFromWindow() {
         removeCallbacks(cursorBlinkRunnable)
         close()
@@ -345,7 +363,7 @@ class GifPickerView @JvmOverloads constructor(
     private var isCursorVisible = true
     private val cursorBlinkRunnable = object : Runnable {
         override fun run() {
-            if (!opened || !isAttachedToWindow) return
+            if (!opened || !isAttachedToWindow || !isShown || windowVisibility != View.VISIBLE) return
             isCursorVisible = !isCursorVisible
             cursorIndicator.visibility = if (isCursorVisible) View.VISIBLE else View.INVISIBLE
             postDelayed(this, 500)
@@ -356,7 +374,7 @@ class GifPickerView @JvmOverloads constructor(
         isCursorVisible = true
         cursorIndicator.visibility = View.VISIBLE
         removeCallbacks(cursorBlinkRunnable)
-        if (opened && isAttachedToWindow) {
+        if (opened && isAttachedToWindow && isShown && windowVisibility == View.VISIBLE) {
             postDelayed(cursorBlinkRunnable, 500)
         }
     }

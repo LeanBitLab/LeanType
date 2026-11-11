@@ -33,6 +33,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     private var connectionListener: PluginConnectionListener? = null
 
     private val mainHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var pendingUnbindRunnable: Runnable? = null
 
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -72,7 +73,52 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
 
     fun isPluginConnected(): Boolean = engine != null && isBound
 
+    fun hasScheduledUnbind(): Boolean = pendingUnbindRunnable != null
+
+    /** Cancels any pending deferred unbind of the voice plugin service. */
+    fun cancelScheduledUnbind() {
+        pendingUnbindRunnable?.let {
+            mainHandler.removeCallbacks(it)
+            pendingUnbindRunnable = null
+        }
+    }
+
+    /**
+     * Unbinds immediately when [delayMs] == 0, schedules an idle unbind when [delayMs] > 0,
+     * or keeps the service bound when [delayMs] < 0 ("Always keep in memory").
+     */
+    fun unbindAfterDelay(delayMs: Long, preserveExistingSchedule: Boolean = false, canUnbind: () -> Boolean = { true }) {
+        if (!isBound && !isConnecting) {
+            cancelScheduledUnbind()
+            return
+        }
+        if (delayMs < 0L) {
+            cancelScheduledUnbind()
+            return
+        }
+        if (delayMs == 0L) {
+            cancelScheduledUnbind()
+            if (canUnbind()) {
+                unbind()
+            }
+            return
+        }
+        if (preserveExistingSchedule && pendingUnbindRunnable != null) {
+            return
+        }
+        cancelScheduledUnbind()
+        val runnable = Runnable {
+            pendingUnbindRunnable = null
+            if (canUnbind()) {
+                unbind()
+            }
+        }
+        pendingUnbindRunnable = runnable
+        mainHandler.postDelayed(runnable, delayMs)
+    }
+
     fun bindIfNeeded(): Boolean {
+        cancelScheduledUnbind()
         if (isPluginConnected()) return true
         if (isConnecting) return false
 
@@ -96,6 +142,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     }
 
     fun unbind() {
+        cancelScheduledUnbind()
         if (isBound || isConnecting) {
             try {
                 if (deathRecipientRegistered) {
@@ -119,6 +166,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     private var lastLoggedModelState: Pair<String, Int?>? = null
 
     private fun handleDisconnection() {
+        cancelScheduledUnbind()
         engine = null
         isBound = false
         isConnecting = false
@@ -314,6 +362,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
         audioInput: android.os.ParcelFileDescriptor,
         callback: IVoiceCallback
     ): Boolean {
+        cancelScheduledUnbind()
         return try {
             engine?.startSession(config, audioInput, callback)
             true

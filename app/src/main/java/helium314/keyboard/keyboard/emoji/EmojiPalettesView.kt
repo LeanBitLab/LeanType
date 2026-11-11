@@ -217,7 +217,7 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     private val cursorBlinkRunnable = object : Runnable {
         override fun run() {
-            if (!mInSearchMode) return
+            if (!mInSearchMode || !isAttachedToWindow || visibility != View.VISIBLE || windowVisibility != View.VISIBLE) return
             isCursorBlinkVisible = !isCursorBlinkVisible
             mSearchBar?.showInlineCursor = isCursorBlinkVisible
             postDelayed(this, 500)
@@ -228,7 +228,13 @@ class EmojiPalettesView @JvmOverloads constructor(
         isCursorBlinkVisible = true
         mSearchBar?.showInlineCursor = true
         removeCallbacks(cursorBlinkRunnable)
-        postDelayed(cursorBlinkRunnable, 500)
+        if (mInSearchMode && isAttachedToWindow && visibility == View.VISIBLE && windowVisibility == View.VISIBLE) {
+            postDelayed(cursorBlinkRunnable, 500)
+        }
+    }
+
+    fun stopCursorBlink() {
+        removeCallbacks(cursorBlinkRunnable)
     }
 
     val isInSearchMode: Boolean get() = mInSearchMode
@@ -1080,6 +1086,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         if (mInSearchMode) {
             stopSearchMode(returnToKeyboard = false)
         }
+        clearPendingTabScroll()
 
         getRecentsKeyboard().flushPendingRecentKeys()
 
@@ -1197,18 +1204,59 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
     }
 
-    private fun scrollToTab(tabView: View, smooth: Boolean = true) {
-        val scrollView = mTabStrip?.parent as? HorizontalScrollView ?: return
-        if (scrollView.width <= 0 || tabView.width <= 0) {
-            scrollView.post { scrollToTab(tabView, smooth) }
-            return
+    private var pendingTabScrollListener: View.OnLayoutChangeListener? = null
+
+    private fun clearPendingTabScroll(scrollView: HorizontalScrollView? = mTabStrip?.parent as? HorizontalScrollView) {
+        pendingTabScrollListener?.let { listener ->
+            scrollView?.removeOnLayoutChangeListener(listener)
         }
+        pendingTabScrollListener = null
+    }
+
+    private fun performScrollToTab(scrollView: HorizontalScrollView, tabView: View, smooth: Boolean) {
         val targetX = (tabView.left - (scrollView.width - tabView.width) / 2).coerceAtLeast(0)
         if (smooth) {
             scrollView.smoothScrollTo(targetX, 0)
         } else {
             scrollView.scrollTo(targetX, 0)
         }
+    }
+
+    private fun scrollToTab(tabView: View, smooth: Boolean = true) {
+        val scrollView = mTabStrip?.parent as? HorizontalScrollView ?: return
+        clearPendingTabScroll(scrollView)
+        if (!isAttachedToWindow || !tabView.isAttachedToWindow || tabView.parent !== mTabStrip) return
+        if (scrollView.visibility != View.VISIBLE || tabView.visibility != View.VISIBLE) return
+        if (scrollView.width > 0 && tabView.width > 0) {
+            performScrollToTab(scrollView, tabView, smooth)
+            return
+        }
+        val listener = object : View.OnLayoutChangeListener {
+            override fun onLayoutChange(
+                v: View,
+                left: Int,
+                top: Int,
+                right: Int,
+                bottom: Int,
+                oldLeft: Int,
+                oldTop: Int,
+                oldRight: Int,
+                oldBottom: Int
+            ) {
+                scrollView.removeOnLayoutChangeListener(this)
+                if (pendingTabScrollListener === this) {
+                    pendingTabScrollListener = null
+                }
+                if (!isAttachedToWindow || !tabView.isAttachedToWindow || tabView.parent !== mTabStrip) return
+                if (scrollView.visibility == View.VISIBLE && tabView.visibility == View.VISIBLE &&
+                    scrollView.width > 0 && tabView.width > 0
+                ) {
+                    performScrollToTab(scrollView, tabView, smooth)
+                }
+            }
+        }
+        pendingTabScrollListener = listener
+        scrollView.addOnLayoutChangeListener(listener)
     }
 
     private var mEmoticonGroupStrip: LinearLayout? = null
@@ -1424,16 +1472,31 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     override fun setVisibility(visibility: Int) {
-        if (visibility != View.VISIBLE && mInSearchMode) {
-            stopSearchMode(returnToKeyboard = false)
+        if (visibility != View.VISIBLE) {
+            if (mInSearchMode) {
+                stopSearchMode(returnToKeyboard = false)
+            }
+            clearPendingTabScroll()
         }
         super.setVisibility(visibility)
     }
 
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility != View.VISIBLE) {
+            removeCallbacks(cursorBlinkRunnable)
+            clearPendingTabScroll()
+        } else if (mInSearchMode && this.visibility == View.VISIBLE && isAttachedToWindow) {
+            resetCursorBlink()
+        }
+    }
+
     override fun onDetachedFromWindow() {
+        removeCallbacks(cursorBlinkRunnable)
         if (mInSearchMode) {
             stopSearchMode(returnToKeyboard = false)
         }
+        clearPendingTabScroll()
         super.onDetachedFromWindow()
     }
 

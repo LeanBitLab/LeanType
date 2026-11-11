@@ -608,7 +608,14 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             PREF_EMOJI_RECENT_KEYS,
             PREF_DONT_SHOW_MISSING_DICTIONARY_DIALOG,
             PREF_SELECTED_SUBTYPE,
-            PREF_USER_DICT_SORT_ORDER
+            PREF_USER_DICT_SORT_ORDER,
+            PREF_LAST_SPONSOR_DIALOG_SHOWN,
+            "last_shown_emoticon_group",
+            "last_shown_unicode_symbol_group",
+            "last_dismissed_clipboard_text",
+            "last_dismissed_screenshot_uri",
+            "deleted_screenshot_uris",
+            "settings_open_count"
         )
 
         fun getInstance(): Settings = sInstance

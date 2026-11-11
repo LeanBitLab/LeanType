@@ -208,6 +208,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             PointerTracker.setTouchpadModeActive(false)
             mKeyboardView?.alpha = 1f
         }
+        hideLoadingAnimation()
+        mEmojiPalettesView?.stopCursorBlink()
         mKeyboardView?.onHideWindow()
         if (isOcrShowing) {
             hideOcrPanels()

@@ -664,6 +664,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
      */
     fun showLoadingAnimation() {
         if (isLoadingAnimationActive) return
+        if (!isAttachedToWindow || visibility != View.VISIBLE || windowVisibility != View.VISIBLE) return
         isLoadingAnimationActive = true
         
         // Set loading border on the whole toolbar view
@@ -960,12 +961,21 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                 setToolbarVisibility(isToolbarManuallyOpen, saveState = false)
             } else {
                 suggestionsStrip.visibility = visibility
+                hideLoadingAnimation()
             }
+        }
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility != View.VISIBLE) {
+            hideLoadingAnimation()
         }
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
+        hideLoadingAnimation()
         context.prefs().unregisterOnSharedPreferenceChangeListener(this)
         dismissMoreSuggestionsPanel()
     }
