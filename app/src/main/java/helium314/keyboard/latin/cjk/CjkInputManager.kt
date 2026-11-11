@@ -66,7 +66,11 @@ class CjkInputManager private constructor(private val context: Context) {
         val keysym = KeycodeTranslator.toKeysym(event)
         if (keysym == 0) return false
 
-        val mask = KeycodeTranslator.getModifierMask(event.metaState)
+        var metaState = event.metaState
+        if (event.codePoint in 'A'.code..'Z'.code) {
+            metaState = metaState or android.view.KeyEvent.META_SHIFT_ON
+        }
+        val mask = KeycodeTranslator.getModifierMask(metaState)
         val consumed = engine.processKey(keysym, mask)
         Log.d(TAG, "onEvent: keysym=0x${Integer.toHexString(keysym)}, consumed=$consumed, isComposing=$isComposing")
 

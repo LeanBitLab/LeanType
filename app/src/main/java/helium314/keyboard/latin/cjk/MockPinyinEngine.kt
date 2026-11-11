@@ -91,10 +91,10 @@ class MockPinyinEngine : ICjkEngine {
             }
         }
 
-        // Printable lowercase letter ASCII
+        // Printable ASCII letters (preserving case for uppercase input)
         val ch = keysym.toChar()
-        if (ch in 'a'..'z' || ch in 'A'..'z') {
-            buffer.append(ch.lowercaseChar())
+        if (ch in 'a'..'z' || ch in 'A'..'Z') {
+            buffer.append(ch)
             updateContext()
             return true
         }
@@ -117,7 +117,7 @@ class MockPinyinEngine : ICjkEngine {
 
         val raw = buffer.toString()
         val lookupKey = raw.replace("'", "")
-        val words = dictionary[lookupKey] ?: listOf(raw)
+        val words = dictionary[lookupKey.lowercase()] ?: listOf(raw)
         val candidateItems = words.mapIndexed { idx, word ->
             CjkCandidate(index = idx, text = word)
         }

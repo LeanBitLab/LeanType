@@ -88,6 +88,48 @@ class CjkEngineTest {
     }
 
     @Test
+    fun testMockPinyinEnginePreservesUppercaseLetters() {
+        val engine = MockPinyinEngine()
+        engine.init(androidx.test.core.app.ApplicationProvider.getApplicationContext(), "", "")
+
+        // Type "WiFi" (Shift + W, i, Shift + F, i)
+        assertTrue(engine.processKey('W'.code))
+        assertTrue(engine.processKey('i'.code))
+        assertTrue(engine.processKey('F'.code))
+        assertTrue(engine.processKey('i'.code))
+
+        val ctx = engine.getContext()
+        assertNotNull(ctx)
+        assertEquals("WiFi", ctx?.preedit)
+        assertEquals("WiFi", ctx?.candidates?.firstOrNull()?.text)
+
+        // Enter commits "WiFi"
+        assertTrue(engine.processKey(KeycodeTranslator.XK_RETURN))
+        assertEquals("WiFi", engine.getCommit())
+        assertNull(engine.getContext())
+    }
+
+    @Test
+    fun testMockPinyinEngineShiftCapitalizedPinyin() {
+        val engine = MockPinyinEngine()
+        engine.init(androidx.test.core.app.ApplicationProvider.getApplicationContext(), "", "")
+
+        // Type "Ni" (Shift + N, i)
+        assertTrue(engine.processKey('N'.code))
+        assertTrue(engine.processKey('i'.code))
+
+        val ctx = engine.getContext()
+        assertNotNull(ctx)
+        assertEquals("Ni", ctx?.preedit)
+        // Candidates for "ni" are matched case-insensitively
+        assertTrue(ctx?.candidates?.any { it.text == "你" } == true)
+
+        // Enter commits raw Latin text "Ni"
+        assertTrue(engine.processKey(KeycodeTranslator.XK_RETURN))
+        assertEquals("Ni", engine.getCommit())
+    }
+
+    @Test
     fun testMockPinyinEngineNumberCandidateSelection() {
         val engine = MockPinyinEngine()
         engine.init(androidx.test.core.app.ApplicationProvider.getApplicationContext(), "", "")

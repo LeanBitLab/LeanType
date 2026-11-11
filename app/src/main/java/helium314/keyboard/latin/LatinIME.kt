@@ -1619,6 +1619,10 @@ class LatinIME : InputMethodService(),
         val cjkManager = CjkInputManager.getInstance(this)
         if (cjkManager.onEvent(event, currentInputConnection, richImm.currentSubtype)) {
             keyboardSwitcher.onEvent(event, currentAutoCapsState, currentRecapitalizeState)
+            val keyboard = keyboardSwitcher.keyboard
+            if (event.codePoint >= 32 && keyboard?.mId?.isAlphabetShiftedManually == true && keyboard.mId.mElementId != KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED) {
+                keyboardSwitcher.returnToAlphabetKeyboard()
+            }
             return
         }
         
