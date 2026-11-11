@@ -1052,8 +1052,9 @@ class LatinIME : InputMethodService(),
             }
             optionsDialog = null
         }
-        voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
+        voiceInputManager?.cancelVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
+        voicePluginManager?.unbind()
         keyboardSwitcher.hideGifPicker()
         keyboardSwitcher.hideOcrPanels()
         clipboardHistoryManager.onWindowHidden()
@@ -1091,8 +1092,9 @@ class LatinIME : InputMethodService(),
             keyboardSwitcher.hideOcrPanels()
         }
         ProofreadHelper.cancelCurrentJob()
-        voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
+        voiceInputManager?.cancelVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
+        voicePluginManager?.unbind()
         otpSuggestionManager.stop()
         clipboardHistoryManager.onFinishInputView()
         AudioAndHapticFeedbackManager.getInstance().onFinishInputView()
@@ -2168,6 +2170,8 @@ class LatinIME : InputMethodService(),
         helium314.keyboard.latin.ocr.OcrPluginLoader.release()
         helium314.keyboard.latin.translation.TranslationLoader.unloadPlugin()
         helium314.keyboard.latin.gif.GifImageLoader.clearMemory()
+        voiceInputManager?.cancelVoice()
+        voicePluginManager?.unbind()
     }
 
     @SuppressLint("SwitchIntDef")

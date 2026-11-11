@@ -81,8 +81,9 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
 
         Log.i(TAG, "Binding to voice plugin service: $component")
         isConnecting = true
+        val flags = Context.BIND_AUTO_CREATE or Context.BIND_NOT_FOREGROUND
         val success = try {
-            context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
+            context.bindService(intent, connection, flags)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to bind to voice plugin service", e)
             false
@@ -242,7 +243,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
                 val intent = Intent().apply { this.component = component }
                 val sc = conn
                 val bound = try {
-                    if (sc != null) appContext.bindService(intent, sc, Context.BIND_AUTO_CREATE) else false
+                    if (sc != null) appContext.bindService(intent, sc, Context.BIND_AUTO_CREATE or Context.BIND_NOT_FOREGROUND) else false
                 } catch (e: Exception) {
                     Log.e(TAG, "Failed to bind to voice plugin", e)
                     false

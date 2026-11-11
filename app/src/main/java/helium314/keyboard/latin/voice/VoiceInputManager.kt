@@ -116,7 +116,9 @@ class VoiceInputManager(
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private var lastPartialText: String? = null
+    private var connectingTimeoutRunnable: Runnable? = null
     private var handshakeTimeoutRunnable: Runnable? = null
+    private var processingTimeoutRunnable: Runnable? = null
     private var needsCapitalStart = true
     private var sessionEmittedText = ""
 
@@ -207,8 +209,10 @@ class VoiceInputManager(
 
         if (!isConnected) {
             updateState(VoiceState.CONNECTING_PLUGIN)
+            scheduleConnectingTimeout(sessionId)
             pluginManager.setConnectionListener(object : VoicePluginManager.PluginConnectionListener {
                 override fun onPluginConnected(info: com.leanbitlab.leantype.voice.VoiceEngineInfo?) {
+                    cancelConnectingTimeout()
                     mainHandler.post {
                         if (activeSessionId == sessionId && state == VoiceState.CONNECTING_PLUGIN) {
                             initiateSessionHandshake(sessionId)
@@ -217,6 +221,7 @@ class VoiceInputManager(
                 }
 
                 override fun onPluginDisconnected() {
+                    cancelConnectingTimeout()
                     mainHandler.post {
                         if (activeSessionId == sessionId) {
                             notifyError("Plugin disconnected unexpectedly")
@@ -229,6 +234,7 @@ class VoiceInputManager(
 
             val bound = pluginManager.bindIfNeeded()
             if (!bound) {
+                cancelConnectingTimeout()
                 notifyError("Failed to bind to voice plugin")
                 updateState(VoiceState.ERROR)
                 return
@@ -628,6 +634,48 @@ class VoiceInputManager(
         return true
     }
 
+    private fun scheduleConnectingTimeout(sessionId: String) {
+        cancelConnectingTimeout()
+        val runnable = Runnable {
+            if (activeSessionId == sessionId && state == VoiceState.CONNECTING_PLUGIN) {
+                Log.w(TAG, "Voice plugin connection timed out (8s)")
+                notifyError("Voice plugin connection timed out")
+                cleanupSession()
+                updateState(VoiceState.ERROR)
+            }
+        }
+        connectingTimeoutRunnable = runnable
+        mainHandler.postDelayed(runnable, HANDSHAKE_TIMEOUT_MS)
+    }
+
+    private fun cancelConnectingTimeout() {
+        connectingTimeoutRunnable?.let {
+            mainHandler.removeCallbacks(it)
+            connectingTimeoutRunnable = null
+        }
+    }
+
+    private fun scheduleProcessingTimeout() {
+        cancelProcessingTimeout()
+        val runnable = Runnable {
+            if (state == VoiceState.PROCESSING_FINAL) {
+                Log.w(TAG, "Voice processing timed out (15s)")
+                notifyError("Voice processing timed out")
+                cleanupSession()
+                updateState(VoiceState.ERROR)
+            }
+        }
+        processingTimeoutRunnable = runnable
+        mainHandler.postDelayed(runnable, PROCESSING_TIMEOUT_MS)
+    }
+
+    private fun cancelProcessingTimeout() {
+        processingTimeoutRunnable?.let {
+            mainHandler.removeCallbacks(it)
+            processingTimeoutRunnable = null
+        }
+    }
+
     private fun cancelHandshakeTimeout() {
         handshakeTimeoutRunnable?.let {
             mainHandler.removeCallbacks(it)
@@ -639,6 +687,7 @@ class VoiceInputManager(
         Log.i(TAG, "stopVoice() called, state=$state, isOnline=$isCurrentSessionOnline")
         if (state == VoiceState.RECORDING || state == VoiceState.STARTING_SESSION || state == VoiceState.CONNECTING_PLUGIN) {
             updateState(VoiceState.PROCESSING_FINAL)
+            scheduleProcessingTimeout()
             stopAudioLoop()
             if (isCurrentSessionOnline) {
                 processOnlineTranscription()
@@ -761,13 +810,14 @@ class VoiceInputManager(
         }
         Log.i(TAG, "Retrying last failed online voice audio")
         updateState(VoiceState.PROCESSING_FINAL)
+        scheduleProcessingTimeout()
         activeSessionId = UUID.randomUUID().toString()
         transcribeOnlineWav(cached.wavBytes, cached.languageTag, retryCount = 0)
     }
 
     fun cancelVoice() {
         Log.i(TAG, "cancelVoice() called, state=$state, isOnline=$isCurrentSessionOnline")
-        if (state != VoiceState.IDLE) {
+        if (state != VoiceState.IDLE || isRecording.get() || audioThread != null || audioRecord != null) {
             cleanupSession()
             pluginManager.cancelSession()
             clearComposingText()
@@ -961,13 +1011,16 @@ class VoiceInputManager(
     }
 
     private fun cleanupSession() {
+        cancelConnectingTimeout()
+        cancelHandshakeTimeout()
+        cancelProcessingTimeout()
         onlineTranscriptionJob?.cancel()
         onlineTranscriptionJob = null
         synchronized(onlineAudioBuffer) {
             onlineAudioBuffer.reset()
         }
         isCurrentSessionOnline = false
-        cancelHandshakeTimeout()
+        pluginManager.setConnectionListener(null)
         stopAudioLoop()
         closeQuietly(audioPipeReadSide)
         audioPipeReadSide = null
@@ -1011,6 +1064,7 @@ class VoiceInputManager(
         private const val FRAME_SIZE_SHORTS = SAMPLE_RATE * FRAME_SIZE_MS / 1000 // 480 shorts
         private const val FRAME_SIZE_BYTES = FRAME_SIZE_SHORTS * 2 // 960 bytes
         private const val HANDSHAKE_TIMEOUT_MS = 8000L
+        private const val PROCESSING_TIMEOUT_MS = 15000L
 
         fun isBlockedEditor(info: EditorInfo?): Boolean {
             if (info == null) return false

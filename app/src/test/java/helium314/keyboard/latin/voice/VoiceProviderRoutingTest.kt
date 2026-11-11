@@ -155,4 +155,15 @@ class VoiceProviderRoutingTest {
             .commit()
         assertEquals(VoiceConstants.VOICE_PROVIDER_OFFLINE, richImm.currentVoiceProvider)
     }
+
+    @Test
+    fun testVoiceInputManager_statesAndEnumValues() {
+        assertEquals(6, VoiceInputManager.VoiceState.values().size)
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.IDLE))
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.CONNECTING_PLUGIN))
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.STARTING_SESSION))
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.RECORDING))
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.PROCESSING_FINAL))
+        assertTrue(VoiceInputManager.VoiceState.values().contains(VoiceInputManager.VoiceState.ERROR))
+    }
 }
