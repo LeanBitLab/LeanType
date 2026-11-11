@@ -10,7 +10,10 @@ import helium314.keyboard.latin.utils.DeviceProtectedUtils
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.protectedPrefs
 import helium314.keyboard.settings.preferences.BackupCategory
+import helium314.keyboard.settings.preferences.backupFilePatterns
+import helium314.keyboard.settings.preferences.getCategoryForFilePath
 import helium314.keyboard.settings.preferences.restoreMainPreferences
+import java.io.File
 import kotlinx.serialization.json.Json
 import org.junit.Before
 import org.junit.Test
@@ -145,6 +148,16 @@ class BackupPreferencesTest {
         restoreMainPreferences(context, data, lines(emptyMap()), allCategories)
         assertEquals(mapOf("enabled" to true, "count" to 2, "time" to 3L, "scale" to 0.5f,
             "text" to "line\n\"quote\"", "set" to setOf("one", "two")), prefs.all)
+    }
+
+    @Test
+    fun textExpanderImagesUseDictionariesCategoryAndMatchBackupPattern() {
+        val samplePath = "text_expander_images${File.separator}img_1700000000_abcd1234.png"
+        val tempPath = "text_expander_images${File.separator}pending_1234.tmp"
+
+        assertEquals(BackupCategory.DICTIONARIES, getCategoryForFilePath("text_expander_images/img_1700000000_abcd1234.png"))
+        assertTrue(backupFilePatterns.any { it.matches(samplePath) })
+        assertFalse(backupFilePatterns.any { it.matches(tempPath) })
     }
 
     private fun lines(strings: Map<String, String>) = listOf("string settings", Json.encodeToString(strings))

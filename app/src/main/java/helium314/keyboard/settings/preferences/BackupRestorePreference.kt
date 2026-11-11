@@ -323,6 +323,9 @@ private fun restoreLauncher(
                             File(filesDir, "dicts").deleteRecursively()
                             File(filesDir, "blacklists").deleteRecursively()
                             File(deviceProtectedFilesDir, "blacklists").deleteRecursively()
+                            File(filesDir, "text_expander_images").deleteRecursively()
+                            File(deviceProtectedFilesDir, "text_expander_images").deleteRecursively()
+                            helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
                         }
                         if (selectedCategories.contains(BackupCategory.TYPING_HISTORY)) {
                             filesDir.listFiles()?.forEach {
@@ -560,6 +563,7 @@ private const val FLOATING_KEYBOARD_PREFS_FILE_NAME = "floating_keyboard_prefere
 private const val API_KEYS_FILE_NAME = "api_keys.json"
 
 private val blacklistsRegex = "blacklists${File.separator}.*\\.txt".toRegex()
+private val textExpanderImagesRegex = "text_expander_images${File.separator}img_.*".toRegex()
 private val layoutsRegex = "layouts${File.separator}.*${LayoutUtilsCustom.CUSTOM_LAYOUT_PREFIX}+\\..{0,4}".toRegex()
 private val dictsRegex = "dicts${File.separator}.*${File.separator}.*\\.dict".toRegex()
 private val historyDictRegex = "UserHistoryDictionary.*${File.separator}UserHistoryDictionary.*\\.(body|header)".toRegex()
@@ -567,8 +571,9 @@ private val bgImgRegex = "custom_background_image.*".toRegex()
 private val fontRegex = "custom_font".toRegex()
 private val emojiFontRegex = "custom_emoji_font".toRegex()
 
-private val backupFilePatterns by lazy { listOf(
+internal val backupFilePatterns by lazy { listOf(
     blacklistsRegex,
+    textExpanderImagesRegex,
     layoutsRegex, // can't expect a period at the end, as this would break restoring older backups
     dictsRegex,
     historyDictRegex,
@@ -628,7 +633,7 @@ private fun getCategoryForPrefKey(key: String): BackupCategory {
     return BackupCategory.GENERAL_SETTINGS
 }
 
-private fun getCategoryForFilePath(path: String): BackupCategory? {
+internal fun getCategoryForFilePath(path: String): BackupCategory? {
     if (path.startsWith("layouts${File.separator}") || path.contains("layouts/")) {
         return BackupCategory.LAYOUTS
     }
@@ -637,6 +642,7 @@ private fun getCategoryForFilePath(path: String): BackupCategory? {
     }
     if (path.startsWith("dicts${File.separator}") || path.startsWith("dicts/")
         || path.startsWith("blacklists${File.separator}") || path.startsWith("blacklists/")
+        || path.startsWith("text_expander_images${File.separator}") || path.startsWith("text_expander_images/")
     ) {
         return BackupCategory.DICTIONARIES
     }
