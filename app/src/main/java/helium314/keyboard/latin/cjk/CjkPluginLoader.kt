@@ -387,6 +387,16 @@ object CjkPluginLoader {
         }
     }
 
+    fun release() {
+        try {
+            activeEngine?.cleanup()
+        } catch (e: Throwable) {
+            Log.w(TAG, "Failed to clean up active CJK engine", e)
+        } finally {
+            activeEngine = null
+        }
+    }
+
     class PluginClassLoader(
         dexPath: String,
         optimizedDirectory: String?,

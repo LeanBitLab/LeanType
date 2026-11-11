@@ -25,6 +25,10 @@ object HandwritingLoader {
         displayNameCache = null
     }
 
+    fun release() {
+        resetRecognizer()
+    }
+
     fun getHandwritingLanguagePref(context: Context): String {
         return context.prefs().getString(PREF_HANDWRITING_LANGUAGE, LANG_FOLLOW_KEYBOARD) ?: LANG_FOLLOW_KEYBOARD
     }

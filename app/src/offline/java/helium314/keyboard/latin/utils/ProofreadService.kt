@@ -402,13 +402,18 @@ class ProofreadService(private val context: Context) {
             }
             
             // Use provider to generate completion
-            val output = provider.generate(fullPrompt, mapOf(
-                "temperature" to temp.toDouble(),
-                "top_p" to topP.toDouble(),
-                "top_k" to topK,
-                "min_p" to minP.toDouble(),
-                "max_tokens" to effectiveMaxTokens
-            ))
+            OfflineAiLoader.isBusy = true
+            val output = try {
+                provider.generate(fullPrompt, mapOf(
+                    "temperature" to temp.toDouble(),
+                    "top_p" to topP.toDouble(),
+                    "top_k" to topK,
+                    "min_p" to minP.toDouble(),
+                    "max_tokens" to effectiveMaxTokens
+                ))
+            } finally {
+                OfflineAiLoader.isBusy = false
+            }
 
             // Schedule unload after work is done
             ModelHolder.scheduleUnload(context)

@@ -64,7 +64,11 @@ object FastBlurEngine {
             if (current != source) current.recycle()
             current = next
         }
-        return Bitmap.createScaledBitmap(current, targetW, targetH, true)
+        val finalBitmap = Bitmap.createScaledBitmap(current, targetW, targetH, true)
+        if (current != source && current != finalBitmap) {
+            current.recycle()
+        }
+        return finalBitmap
     }
 
     private fun slidingBoxBlur(source: Bitmap, radius: Int): Bitmap {

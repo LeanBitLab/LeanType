@@ -24,7 +24,15 @@ import helium314.keyboard.latin.ClipboardHistoryManager
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.utils.BitmapUtils
 import helium314.keyboard.latin.utils.isDarkColor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 sealed class ClipboardDisplayItem {
     data class Header(val count: Int, val isFolded: Boolean) : ClipboardDisplayItem()
@@ -56,6 +64,20 @@ class ClipboardAdapter(
 
     var onSelectionChangedListener: ((selectedCount: Int, totalCount: Int) -> Unit)? = null
     var onClipLongClickListener: ((ClipboardHistoryEntry, View) -> Boolean)? = null
+
+    private var adapterScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        if (!adapterScope.isActive) {
+            adapterScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+        }
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        adapterScope.cancel()
+    }
 
     val isFiltering: Boolean
         get() = filteredList != null
@@ -359,8 +381,18 @@ class ClipboardAdapter(
                 imageContainer.visibility = View.VISIBLE
                 val file = java.io.File(historyEntry.imageUri)
                 if (file.exists()) {
-                    imageView.setImageURI(android.net.Uri.fromFile(file))
                     imageNameView.text = file.name
+                    val tag = file.absolutePath
+                    imageView.tag = tag
+                    imageView.setImageDrawable(null)
+                    adapterScope.launch {
+                        val bitmap = withContext(Dispatchers.IO) {
+                            BitmapUtils.decodeSampledBitmap(file, maxDim = 256)
+                        }
+                        if (imageView.tag == tag) {
+                            imageView.setImageBitmap(bitmap)
+                        }
+                    }
                 }
             } else {
                 contentView.visibility = View.VISIBLE

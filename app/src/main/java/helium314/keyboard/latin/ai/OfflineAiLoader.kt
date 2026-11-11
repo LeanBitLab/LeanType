@@ -287,7 +287,14 @@ object OfflineAiLoader {
         }
     }
 
+    @Volatile
+    var isBusy: Boolean = false
+
     fun onTrimMemory() {
+        if (isBusy) {
+            Log.i(TAG, "Skipping memory trim: offline AI is currently busy")
+            return
+        }
         try {
             if (activeProvider?.isModelLoaded() == true) {
                 Log.i(TAG, "Trimming memory: unloading idle offline AI model")

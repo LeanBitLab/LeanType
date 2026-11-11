@@ -16,6 +16,7 @@ import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -41,6 +42,39 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
     private var previewSoundPool: SoundPool? = null
     private val previewCache = ConcurrentHashMap<String, Int>()
+    private var loadJob: Job? = null
+
+    private data class AudioPrefs(
+        val volDelete: Float,
+        val volSpace: Float,
+        val volEnter: Float,
+        val volModifiers: Float,
+        val playOverBluetooth: Boolean,
+        val dynamicVelocity: Boolean,
+        val stereoPan: Boolean,
+        val basePitch: Float,
+        val randomPitch: Boolean
+    )
+
+    @Volatile
+    private var cachedAudioPrefs: AudioPrefs? = null
+
+    private fun refreshAudioPrefs(): AudioPrefs {
+        val prefs = appContext.prefs()
+        val snap = AudioPrefs(
+            volDelete = prefs.getFloat(Settings.PREF_SOUND_VOL_DELETE, Defaults.PREF_SOUND_VOL_DELETE),
+            volSpace = prefs.getFloat(Settings.PREF_SOUND_VOL_SPACE, Defaults.PREF_SOUND_VOL_SPACE),
+            volEnter = prefs.getFloat(Settings.PREF_SOUND_VOL_ENTER, Defaults.PREF_SOUND_VOL_ENTER),
+            volModifiers = prefs.getFloat(Settings.PREF_SOUND_VOL_MODIFIERS, Defaults.PREF_SOUND_VOL_MODIFIERS),
+            playOverBluetooth = prefs.getBoolean(Settings.PREF_SOUND_PLAY_OVER_BLUETOOTH, Defaults.PREF_SOUND_PLAY_OVER_BLUETOOTH),
+            dynamicVelocity = prefs.getBoolean(Settings.PREF_SOUND_DYNAMIC_VELOCITY, Defaults.PREF_SOUND_DYNAMIC_VELOCITY),
+            stereoPan = prefs.getBoolean(Settings.PREF_SOUND_STEREO_PAN, Defaults.PREF_SOUND_STEREO_PAN),
+            basePitch = prefs.getFloat(Settings.PREF_SOUND_PITCH_SCALE, Defaults.PREF_SOUND_PITCH_SCALE).coerceIn(0.5f, 2.0f),
+            randomPitch = prefs.getBoolean(Settings.PREF_SOUND_RANDOM_PITCH, Defaults.PREF_SOUND_RANDOM_PITCH)
+        )
+        cachedAudioPrefs = snap
+        return snap
+    }
 
     private var isInputViewActive: Boolean = false
     private var lastBtCheckTime: Long = 0L
@@ -139,6 +173,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
     fun onStartInputView() {
         isInputViewActive = true
         lastBtCheckTime = 0L
+        refreshAudioPrefs()
         if (activePackId != SoundPackUrls.SYSTEM_DEFAULT_ID && (soundPool == null || loadedEvents.isEmpty() || activePackId != lastLoadedPackId)) {
             loadActivePack()
             lastLoadedPackId = activePackId
@@ -175,6 +210,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         cycleIndexes.clear()
         lastPlayedTime.clear()
 
+        loadJob?.cancel()
         if (activePackId == SoundPackUrls.SYSTEM_DEFAULT_ID) {
             release()
             return
@@ -182,7 +218,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
         val pool = ensureSoundPool()
 
-        scope.launch {
+        loadJob = scope.launch {
             val manifest = SoundPackImporter.getManifest(appContext, activePackId)
             val packDir = SoundPackImporter.getPackDir(appContext, activePackId)
 
@@ -249,30 +285,30 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
         lastPlayedTime["playback"] = now
 
-        val prefs = appContext.prefs()
+        val audioPrefs = cachedAudioPrefs ?: refreshAudioPrefs()
 
         val eventName: String
         val keyVolMultiplier: Float
         when (code) {
             KeyCode.DELETE, KeyCode.DELETE_WORD, KeyCode.FORWARD_DELETE, KeyCode.FORWARD_DELETE_WORD -> {
                 eventName = "keypress.delete"
-                keyVolMultiplier = prefs.getFloat(Settings.PREF_SOUND_VOL_DELETE, Defaults.PREF_SOUND_VOL_DELETE)
+                keyVolMultiplier = audioPrefs.volDelete
             }
             Constants.CODE_SPACE -> {
                 eventName = "keypress.space"
-                keyVolMultiplier = prefs.getFloat(Settings.PREF_SOUND_VOL_SPACE, Defaults.PREF_SOUND_VOL_SPACE)
+                keyVolMultiplier = audioPrefs.volSpace
             }
             Constants.CODE_ENTER -> {
                 eventName = "keypress.return"
-                keyVolMultiplier = prefs.getFloat(Settings.PREF_SOUND_VOL_ENTER, Defaults.PREF_SOUND_VOL_ENTER)
+                keyVolMultiplier = audioPrefs.volEnter
             }
             KeyCode.SHIFT, KeyCode.CAPS_LOCK -> {
                 eventName = "keypress.shift"
-                keyVolMultiplier = prefs.getFloat(Settings.PREF_SOUND_VOL_MODIFIERS, Defaults.PREF_SOUND_VOL_MODIFIERS)
+                keyVolMultiplier = audioPrefs.volModifiers
             }
             KeyCode.SYMBOL, KeyCode.SYMBOL_ALPHA -> {
                 eventName = "keypress.symbol"
-                keyVolMultiplier = prefs.getFloat(Settings.PREF_SOUND_VOL_MODIFIERS, Defaults.PREF_SOUND_VOL_MODIFIERS)
+                keyVolMultiplier = audioPrefs.volModifiers
             }
             else -> {
                 eventName = "keypress.default"
@@ -285,8 +321,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
 
         // Silence keyboard audio feedback over Bluetooth and earphones when disabled to avoid interrupting media playback.
-        val playOverBluetooth = prefs.getBoolean(Settings.PREF_SOUND_PLAY_OVER_BLUETOOTH, Defaults.PREF_SOUND_PLAY_OVER_BLUETOOTH)
-        if (!playOverBluetooth && isBluetoothAudioConnected()) {
+        if (!audioPrefs.playOverBluetooth && isBluetoothAudioConnected()) {
             return true
         }
 
@@ -322,8 +357,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
 
         // Dynamic typing velocity: subtle volume boost on typing bursts (<140ms between strokes)
-        val dynamicVelocityEnabled = prefs.getBoolean(Settings.PREF_SOUND_DYNAMIC_VELOCITY, Defaults.PREF_SOUND_DYNAMIC_VELOCITY)
-        val velocityFactor = if (dynamicVelocityEnabled && delta < 140L) {
+        val velocityFactor = if (audioPrefs.dynamicVelocity && delta < 140L) {
             1.0f + ((140L - delta).toFloat() / 140f) * 0.18f
         } else {
             1.0f
@@ -337,8 +371,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
 
         // Spatial stereo panning based on keyboard X ratio
-        val stereoPanEnabled = prefs.getBoolean(Settings.PREF_SOUND_STEREO_PAN, Defaults.PREF_SOUND_STEREO_PAN)
-        val (leftVol, rightVol) = if (stereoPanEnabled) {
+        val (leftVol, rightVol) = if (audioPrefs.stereoPan) {
             val pan = ((keyXRatio.coerceIn(0f, 1f) - 0.5f) * 2f) // -1.0 (left) to +1.0 (right)
             val leftScale = (1.0f - pan.coerceAtLeast(0f) * 0.35f).coerceIn(0.1f, 1.0f)
             val rightScale = (1.0f + pan.coerceAtMost(0f) * 0.35f).coerceIn(0.1f, 1.0f)
@@ -348,13 +381,11 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
 
         // Base pitch shift + random micro-pitch jitter
-        val basePitch = prefs.getFloat(Settings.PREF_SOUND_PITCH_SCALE, Defaults.PREF_SOUND_PITCH_SCALE).coerceIn(0.5f, 2.0f)
-        val randomPitchEnabled = prefs.getBoolean(Settings.PREF_SOUND_RANDOM_PITCH, Defaults.PREF_SOUND_RANDOM_PITCH)
-        val finalRate = if (randomPitchEnabled) {
+        val finalRate = if (audioPrefs.randomPitch) {
             val jitter = (random.nextFloat() - 0.5f) * 0.08f // ±4% jitter
-            (basePitch + jitter).coerceIn(0.5f, 2.0f)
+            (audioPrefs.basePitch + jitter).coerceIn(0.5f, 2.0f)
         } else {
-            basePitch
+            audioPrefs.basePitch
         }
 
         try {
@@ -393,6 +424,13 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
             if (fileToPlay != null && fileToPlay.exists()) {
                 val path = fileToPlay.absolutePath
+                if (previewCache.size >= 16 && !previewCache.containsKey(path)) {
+                    val oldestKey = previewCache.keys().nextElement()
+                    val evictedId = previewCache.remove(oldestKey)
+                    if (evictedId != null && evictedId != 0) {
+                        try { pPool.unload(evictedId) } catch (_: Throwable) {}
+                    }
+                }
                 val sampleId = previewCache.getOrPut(path) {
                     loadFileSample(pPool, fileToPlay)
                 }
@@ -407,6 +445,8 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
     @Synchronized
     fun release() {
+        loadJob?.cancel()
+        loadJob = null
         soundPool?.release()
         soundPool = null
         loadedEvents.clear()
