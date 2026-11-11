@@ -41,6 +41,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -48,6 +49,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import com.leanbitlab.leantype.voice.ModelImportRequest
 import com.leanbitlab.leantype.voice.ModelState
 import com.leanbitlab.leantype.voice.VoiceConstants
@@ -184,45 +189,73 @@ fun VoiceSettingsScreen(
         }
     }
 
-    DisposableEffect(context) {
+    val currentUpdatePluginStatus by rememberUpdatedState(updatePluginStatus)
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    DisposableEffect(lifecycleOwner, pluginManager) {
         pluginManager.setConnectionListener(object : VoicePluginManager.PluginConnectionListener {
             override fun onPluginConnected(info: VoiceEngineInfo?) {
                 isPluginConnected = true
                 isInitialConnectionPending = false
                 engineInfo = info
-                updatePluginStatus()
+                currentUpdatePluginStatus()
             }
 
             override fun onPluginDisconnected() {
                 isPluginConnected = false
                 isInitialConnectionPending = false
                 engineInfo = null
-                whisperState = null
+                whisperState = if (installedWhisperPref != null) {
+                    ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null)
+                } else null
             }
         })
-        val bound = pluginManager.bindIfNeeded()
-        if (!bound) {
-            isInitialConnectionPending = false
-            updatePluginStatus()
+
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> {
+                    isInitialConnectionPending = !pluginManager.isPluginConnected() && pluginManager.isPluginInstalled()
+                    val bound = pluginManager.bindIfNeeded()
+                    if (!bound || pluginManager.isPluginConnected()) {
+                        isInitialConnectionPending = false
+                        currentUpdatePluginStatus()
+                    }
+                }
+                Lifecycle.Event.ON_STOP -> {
+                    pluginManager.unbind()
+                    isInitialConnectionPending = false
+                    isPluginConnected = false
+                    engineInfo = null
+                    whisperState = if (installedWhisperPref != null) {
+                        ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null)
+                    } else null
+                }
+                else -> {}
+            }
         }
+        lifecycleOwner.lifecycle.addObserver(observer)
 
         onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            pluginManager.setConnectionListener(null)
             pluginManager.unbind()
         }
     }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(isInitialConnectionPending) {
         if (isInitialConnectionPending) {
             kotlinx.coroutines.delay(1200)
             isInitialConnectionPending = false
         }
     }
 
-    LaunchedEffect(Unit) {
-        while (isActive) {
-            updatePluginStatus()
-            val delayMs = if (whisperState?.state == ModelState.STATE_READY) 5000L else 1500L
-            kotlinx.coroutines.delay(delayMs)
+    LaunchedEffect(lifecycleOwner, pluginManager) {
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            while (isActive) {
+                currentUpdatePluginStatus()
+                val delayMs = if (whisperState?.state == ModelState.STATE_READY) 5000L else 1500L
+                kotlinx.coroutines.delay(delayMs)
+            }
         }
     }
 
