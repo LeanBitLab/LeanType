@@ -20,6 +20,7 @@ punctuation !fixedOrder!8 ٔ◌|ٔ ّ◌|ّ ٍ◌|ٍ ً◌|ً ْ◌|ْ ٌ◌|ٌ 
 alphabet: أ‌ب‌ج
 symbol: ٣٢١؟
 comma: ،
+period_hint: ◌ً
 question: ؟
 
 [number_row]

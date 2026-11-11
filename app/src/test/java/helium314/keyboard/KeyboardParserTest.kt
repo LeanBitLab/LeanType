@@ -745,6 +745,8 @@ f""", // no newline at the end
         val layoutParams = KeyboardLayoutSet.Params()
         val editorInfoField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mEditorInfo").apply { isAccessible = true }
         editorInfoField.set(layoutParams, editorInfo)
+        val modeField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mMode").apply { isAccessible = true }
+        modeField.setInt(layoutParams, KeyboardLayoutSet.Builder.getKeyboardMode(editorInfo))
         val subtypeField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mSubtype").apply { isAccessible = true }
         subtypeField.set(layoutParams, RichInputMethodSubtype.get(subtype))
         val widthField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mKeyboardWidth").apply { isAccessible = true }
@@ -759,6 +761,26 @@ f""", // no newline at the end
         builder.load(id)
         @Suppress("UNCHECKED_CAST")
         return builder.build() to keysInRowsField.get(builder) as ArrayList<ArrayList<KeyParams>>
+    }
+
+    @Test fun `arabic layout period key has diacritics hint only in text mode`() {
+        val editorInfo = EditorInfo()
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale("ar"), "arabic", true)
+        val (kb, _) = buildKeyboard(editorInfo, subtype, KeyboardId.ELEMENT_ALPHABET)
+        val periodKey = kb.sortedKeys.first { it.label == "." || it.code == Constants.CODE_PERIOD }
+        assertEquals("◌ً", periodKey.hintLabel)
+
+        // URL mode should not have a hint
+        val editorInfoUrl = EditorInfo().apply { inputType = EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_URI }
+        val (kbUrl, _) = buildKeyboard(editorInfoUrl, subtype, KeyboardId.ELEMENT_ALPHABET)
+        val periodKeyUrl = kbUrl.sortedKeys.first { it.label == "." || it.code == Constants.CODE_PERIOD }
+        assertEquals(null, periodKeyUrl.hintLabel)
+
+        // English layout period key should not have a hint
+        val subtypeEn = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "qwerty", true)
+        val (kbEn, _) = buildKeyboard(editorInfo, subtypeEn, KeyboardId.ELEMENT_ALPHABET)
+        val periodKeyEn = kbEn.sortedKeys.first { it.label == "." || it.code == Constants.CODE_PERIOD }
+        assertEquals(null, periodKeyEn.hintLabel)
     }
 }
 

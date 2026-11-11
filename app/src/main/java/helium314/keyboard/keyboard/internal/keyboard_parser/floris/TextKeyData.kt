@@ -440,8 +440,7 @@ sealed interface KeyData : AbstractKeyData {
             KeyLabel.PERIOD -> (Key.LABEL_FLAGS_HAS_POPUP_HINT and
                     if (params.mId.isAlphabetKeyboard) params.mLocaleKeyboardInfos.labelFlags else 0) or
                     Key.LABEL_FLAGS_PRESERVE_CASE or
-                    // in functional_keys.json the label flag is already defined, let's not override it in case it's removed by the user
-                    if (!params.mId.isAlphaOrSymbolKeyboard && shouldShowTldPopups(params)) Key.LABEL_FLAGS_DISABLE_HINT_LABEL else 0
+                    if (params.mId.mMode in setOf(KeyboardId.MODE_URL, KeyboardId.MODE_EMAIL) || shouldShowTldPopups(params)) Key.LABEL_FLAGS_DISABLE_HINT_LABEL else 0
             KeyLabel.ACTION -> {
                 Key.LABEL_FLAGS_PRESERVE_CASE or Key.LABEL_FLAGS_AUTO_X_SCALE or Key.LABEL_FLAGS_FOLLOW_KEY_LABEL_RATIO or
                         Key.LABEL_FLAGS_HAS_POPUP_HINT or KeyboardTheme.getThemeActionAndEmojiKeyLabelFlags(params.mThemeId)

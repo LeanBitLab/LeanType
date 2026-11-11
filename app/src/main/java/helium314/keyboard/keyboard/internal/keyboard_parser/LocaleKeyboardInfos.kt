@@ -29,6 +29,8 @@ class LocaleKeyboardInfos(dataStream: InputStream?, locale: Locale) {
         private set
     var labelPeriod = "."
         private set
+    var labelPeriodHint: String? = null
+        private set
     private var labelQuestion = "?"
     val currencyKey = getCurrencyKey(locale)
     var localizedNumberKeys: List<String>? = null
@@ -154,6 +156,7 @@ class LocaleKeyboardInfos(dataStream: InputStream?, locale: Locale) {
             "shift_symbol_tablet" -> labelShiftSymbolTablet = split.last() // never used, but could be...
             "comma" -> labelComma = split.last()
             "period" -> labelPeriod = split.last()
+            "period_hint" -> labelPeriodHint = split.last()
             "question" -> labelQuestion = split.last()
         }
     }

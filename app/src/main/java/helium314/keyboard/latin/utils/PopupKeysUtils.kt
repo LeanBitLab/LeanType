@@ -4,6 +4,7 @@ package helium314.keyboard.latin.utils
 import helium314.keyboard.keyboard.Key
 import helium314.keyboard.keyboard.internal.KeySpecParser
 import helium314.keyboard.keyboard.internal.KeyboardParams
+import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyLabel
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyLabel.rtlLabel
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.PopupSet
 import helium314.keyboard.latin.common.Constants.Separators
@@ -74,6 +75,11 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
 }
 
 fun getHintLabel(popupSet: PopupSet<*>?, params: KeyboardParams, label: String): String? {
+    if ((label == "." || label == KeyLabel.PERIOD || label == params.mLocaleKeyboardInfos.labelPeriod)
+        && params.mLocaleKeyboardInfos.labelPeriodHint != null
+    ) {
+        return params.mLocaleKeyboardInfos.labelPeriodHint
+    }
     var hintLabel: String? = null
     val sources = if (params.isHexagonal) {
         listOf(POPUP_KEYS_LAYOUT) + (params.mPopupKeyLabelSources - POPUP_KEYS_LAYOUT)
