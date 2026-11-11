@@ -7,6 +7,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import java.io.File
+import java.io.FileOutputStream
+import android.graphics.Bitmap
 
 @RunWith(RobolectricTestRunner::class)
 class TextExpanderTabTest {
@@ -76,5 +79,23 @@ class TextExpanderTabTest {
         val regexResult = TextExpanderUtils.getExpandedWordForTyped(null, "!pic", context)
         assertNotNull(regexResult)
         assertEquals(regexPath, regexResult!!.imageUri)
+    }
+
+    @Test
+    fun testClearCachePreservesImageThumbnailCache() {
+        val context = RuntimeEnvironment.getApplication()
+        val managedDir = TextExpanderImageUtils.getImagesDir(context)
+        val imageFile = File(managedDir, "img_preserve_thumb.png")
+        val bmp = Bitmap.createBitmap(40, 40, Bitmap.Config.ARGB_8888)
+        FileOutputStream(imageFile).use { bmp.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        bmp.recycle()
+
+        val initialDrawable = TextExpanderImageUtils.getThumbnailDrawable(context, imageFile.name, 40, 26)
+        assertNotNull(initialDrawable)
+
+        TextExpanderUtils.clearCache()
+
+        val cachedAfterClear = TextExpanderImageUtils.getCachedThumbnailDrawable(context, imageFile.name, 40, 26)
+        assertNotNull(cachedAfterClear)
     }
 }

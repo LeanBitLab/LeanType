@@ -22,6 +22,7 @@ object TextExpanderUtils {
     const val PREF_SUGGESTIONS = "pref_text_expander_suggestions"
     const val PREF_SUGGESTIONS_ONLY = "pref_text_expander_suggestions_only"
     const val PREF_DATA = "pref_text_expander_data"
+    const val PREF_DATA_PREVIOUS = "pref_text_expander_data_previous"
     const val REGEX_PREFIX = "__regex__:"
 
     // Pre-compiled regexes for performance
@@ -157,28 +158,19 @@ object TextExpanderUtils {
     )
 
     fun clearCache() {
-        cachedEnabled = null
-        cachedImmediateEnabled = null
-        cachedSuggestionsEnabled = null
-        cachedSuggestionsOnly = null
-        cachedRawJson = null
-        cachedShortcuts = null
-        cachedCompiledList = null
-        cachedPrefs = null
-        TextExpanderImageUtils.clearCache()
+        synchronized(this) {
+            cachedEnabled = null
+            cachedImmediateEnabled = null
+            cachedSuggestionsEnabled = null
+            cachedSuggestionsOnly = null
+            cachedRawJson = null
+            cachedShortcuts = null
+            cachedCompiledList = null
+            cachedPrefs = null
+        }
     }
 
-    fun getShortcuts(context: Context): Map<String, ShortcutEntry> {
-        val prefs = context.prefs()
-        ensureListener(prefs)
-        val currentShortcuts = cachedShortcuts
-        if (currentShortcuts != null) {
-            return currentShortcuts
-        }
-        val jsonStr = prefs.getString(PREF_DATA, "{}") ?: "{}"
-        if (cachedRawJson != null && cachedRawJson == jsonStr && cachedShortcuts != null) {
-            return cachedShortcuts!!
-        }
+    internal fun parseShortcutsJson(jsonStr: String): MutableMap<String, ShortcutEntry> {
         val map = mutableMapOf<String, ShortcutEntry>()
         try {
             val json = JSONObject(jsonStr)
@@ -195,37 +187,53 @@ object TextExpanderUtils {
                     map[key] = ShortcutEntry(valueObj.toString(), "")
                 }
             }
-        } catch (e: java.lang.Exception) {
+        } catch (_: java.lang.Exception) {
             // fallback
         }
-        val compiled = map.map { (key, entry) ->
-            val isRegex = key.startsWith(REGEX_PREFIX)
-            val cleanKey = if (isRegex) key.substring(REGEX_PREFIX.length) else key
-            val regex = if (isRegex) {
-                try {
-                    Regex(cleanKey, RegexOption.IGNORE_CASE)
-                } catch (e: Exception) {
-                    null
-                }
-            } else null
-            CompiledShortcut(key, cleanKey, isRegex, regex, entry)
+        return map
+    }
+
+    private fun getSnapshotLocked(context: Context): Pair<Map<String, ShortcutEntry>, List<CompiledShortcut>> {
+        val prefs = context.prefs()
+        ensureListener(prefs)
+        cachedShortcuts?.let { shortcuts ->
+            cachedCompiledList?.let { compiled -> return shortcuts to compiled }
         }
-        cachedRawJson = jsonStr
-        cachedShortcuts = map
-        cachedCompiledList = compiled
-        if (map.any { !it.value.imageUri.isNullOrBlank() }) {
-            ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
-                val thumbW = 40.dpToPx(context.resources)
-                val thumbH = 26.dpToPx(context.resources)
-                for (entry in map.values) {
-                    val uri = entry.imageUri
-                    if (!uri.isNullOrBlank()) {
-                        TextExpanderImageUtils.getThumbnailDrawable(context, uri, thumbW, thumbH)
+        synchronized(this) {
+            cachedShortcuts?.let { shortcuts ->
+                cachedCompiledList?.let { compiled -> return shortcuts to compiled }
+            }
+            val jsonStr = prefs.getString(PREF_DATA, "{}") ?: "{}"
+            val map = parseShortcutsJson(jsonStr)
+            val compiled = map.map { (key, entry) ->
+                val isRegex = key.startsWith(REGEX_PREFIX)
+                val cleanKey = if (isRegex) key.substring(REGEX_PREFIX.length) else key
+                val regex = if (isRegex) {
+                    try {
+                        Regex(cleanKey, RegexOption.IGNORE_CASE)
+                    } catch (_: Exception) {
+                        null
                     }
+                } else null
+                CompiledShortcut(key, cleanKey, isRegex, regex, entry)
+            }
+            cachedRawJson = jsonStr
+            cachedShortcuts = map
+            cachedCompiledList = compiled
+            val thumbW = 40.dpToPx(context.resources)
+            val thumbH = 26.dpToPx(context.resources)
+            for (entry in map.values) {
+                val uri = entry.imageUri
+                if (!uri.isNullOrBlank() && TextExpanderImageUtils.getCachedThumbnailDrawable(context, uri, thumbW, thumbH) == null) {
+                    TextExpanderImageUtils.preloadThumbnailAsync(context, uri, thumbW, thumbH)
                 }
             }
+            return map to compiled
         }
-        return map
+    }
+
+    fun getShortcuts(context: Context): Map<String, ShortcutEntry> {
+        return getSnapshotLocked(context).first
     }
 
     fun saveShortcuts(context: Context, map: Map<String, ShortcutEntry>) {
@@ -579,8 +587,7 @@ object TextExpanderUtils {
 
     fun getExpandedWordForTyped(word: String?, textBeforeCursor: String?, context: Context): ExpandedResult? {
         if (textBeforeCursor == null || !isEnabled(context)) return null
-        getShortcuts(context)
-        val compiledList = cachedCompiledList ?: return null
+        val compiledList = getSnapshotLocked(context).second
         val fullText = if (word != null && !textBeforeCursor.endsWith(word, ignoreCase = true)) {
             textBeforeCursor + word
         } else {
@@ -660,8 +667,7 @@ object TextExpanderUtils {
         if (!isEnabled(context) || !isSuggestionsEnabled(context) || typedWord.isEmpty()) {
             return emptyList()
         }
-        getShortcuts(context)
-        val compiledList = cachedCompiledList ?: return emptyList()
+        val compiledList = getSnapshotLocked(context).second
         val matches = mutableListOf<SuggestionMatch>()
 
         for (item in compiledList) {
