@@ -1699,4 +1699,6 @@
     <string name="auto_correct_indicator_underline_title">Підкреслення індикатора автовиправлення</string>
     <string name="auto_correct_indicator_underline_summary">Показувати підкреслення під словами, які будуть автоматично виправлені під час введення</string>
     <string name="after_keyboard_reopen">Повторне відкриття клавіатури</string>
+    <string name="text_expander_image_missing">Файл зображення не знайдено. Відредагуйте ярлик, щоб повторно приєднати його.</string>
+    <string name="text_expander_image_missing_short">Зображення відсутнє – торкніться, щоб повторно приєднати</string>
 </resources>

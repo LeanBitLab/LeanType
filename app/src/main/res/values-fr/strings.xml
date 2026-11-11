@@ -1755,4 +1755,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="auto_correct_indicator_underline_title">Indicateur de correction automatique souligné</string>
     <string name="auto_correct_indicator_underline_summary">Afficher un soulignement sous les mots qui seront automatiquement corrigés lors de la saisie</string>
     <string name="after_keyboard_reopen">Réouverture du clavier</string>
+    <string name="text_expander_image_missing">Fichier image introuvable. Modifiez le raccourci pour le rattacher.</string>
+    <string name="text_expander_image_missing_short">Image manquante – appuyez pour la rattacher</string>
 </resources>

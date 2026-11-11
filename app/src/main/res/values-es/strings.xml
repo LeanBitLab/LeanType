@@ -1696,4 +1696,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="auto_correct_indicator_underline_title">Subrayado del indicador de autocorrección</string>
     <string name="auto_correct_indicator_underline_summary">Mostrar un subrayado debajo de las palabras que se corregirán automáticamente al escribir</string>
     <string name="after_keyboard_reopen">Reabrir el teclado</string>
+    <string name="text_expander_image_missing">Archivo de imagen no encontrado. Edite el acceso directo para volver a adjuntarlo.</string>
+    <string name="text_expander_image_missing_short">Falta la imagen: toca para volver a adjuntarla</string>
 </resources>

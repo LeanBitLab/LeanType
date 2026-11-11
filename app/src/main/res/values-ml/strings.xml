@@ -1800,4 +1800,6 @@
     <string name="auto_correct_indicator_underline_title">സ്വയമേവ ശരിയായ സൂചകം അടിവരയിടുക</string>
     <string name="auto_correct_indicator_underline_summary">ടൈപ്പ് ചെയ്യുമ്പോൾ സ്വയമേവ തിരുത്തപ്പെടുന്ന വാക്കുകൾക്ക് താഴെയുള്ള അടിവര കാണിക്കുക</string>
     <string name="after_keyboard_reopen">കീബോർഡ് വീണ്ടും തുറക്കുന്നു</string>
+    <string name="text_expander_image_missing">ഇമേജ് ഫയൽ കണ്ടെത്തിയില്ല. കുറുക്കുവഴി വീണ്ടും അറ്റാച്ചുചെയ്യാൻ എഡിറ്റ് ചെയ്യുക.</string>
+    <string name="text_expander_image_missing_short">ചിത്രം കാണുന്നില്ല - വീണ്ടും അറ്റാച്ചുചെയ്യാൻ ടാപ്പ് ചെയ്യുക</string>
 </resources>

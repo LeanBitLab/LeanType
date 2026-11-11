@@ -129,6 +129,11 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         if (uri != null) {
             val savedPath = TextExpanderImageUtils.saveImageToStorage(context, uri)
             if (savedPath != null) {
+                val previousImageUri = editingImageUri
+                val savedOriginalImageUri = originalShortcutToEdit?.let { shortcutsMap[it]?.imageUri }
+                if (previousImageUri != null && previousImageUri != savedOriginalImageUri && previousImageUri != savedPath) {
+                    TextExpanderImageUtils.deleteImageIfManaged(context, previousImageUri)
+                }
                 editingImageUri = savedPath
             } else {
                 Toast.makeText(context, R.string.text_expander_file_too_large, Toast.LENGTH_SHORT).show()
@@ -428,8 +433,11 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
             !editingIsRegex || runCatching { Regex(editingShortcut.trim()) }.isSuccess
         }
         val isImageAttached = !editingImageUri.isNullOrBlank()
-        val editingImageBitmap = remember(editingImageUri) {
-            if (isImageAttached) TextExpanderImageUtils.loadThumbnailBitmap(context, editingImageUri!!, 120) else null
+        val isEditingImageMissing = remember(editingImageUri) {
+            isImageAttached && !TextExpanderImageUtils.imageExists(context, editingImageUri)
+        }
+        val editingImageBitmap = remember(editingImageUri, isEditingImageMissing) {
+            if (isImageAttached && !isEditingImageMissing) TextExpanderImageUtils.loadThumbnailBitmap(context, editingImageUri!!, 120) else null
         }
 
         ThreeButtonAlertDialog(
@@ -610,16 +618,16 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                                         Icon(
                                             painter = painterResource(R.drawable.ic_image),
                                             contentDescription = null,
-                                            tint = MaterialTheme.colorScheme.primary
+                                            tint = if (isEditingImageMissing) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
                                         )
                                     }
                                 }
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(
-                                        text = stringResource(R.string.text_expander_image_attached),
+                                        text = stringResource(if (isEditingImageMissing) R.string.text_expander_image_missing else R.string.text_expander_image_attached),
                                         style = MaterialTheme.typography.bodyMedium,
                                         fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onSurface
+                                        color = if (isEditingImageMissing) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
                                     )
                                     val fileName = remember(editingImageUri) {
                                         editingImageUri?.let { File(it).name } ?: ""
@@ -758,8 +766,11 @@ private fun ShortcutItem(
     val rawShortcut = cleanKey.substring(entry.prefix.length)
     val displayShortcut = entry.prefix + rawShortcut
 
-    val thumbnailBitmap = remember(entry.imageUri) {
-        if (isImage) TextExpanderImageUtils.loadThumbnailBitmap(context, entry.imageUri!!, 96) else null
+    val isImageMissing = remember(entry.imageUri) {
+        isImage && !TextExpanderImageUtils.imageExists(context, entry.imageUri)
+    }
+    val thumbnailBitmap = remember(entry.imageUri, isImageMissing) {
+        if (isImage && !isImageMissing) TextExpanderImageUtils.loadThumbnailBitmap(context, entry.imageUri!!, 96) else null
     }
 
     Card(
@@ -803,7 +814,7 @@ private fun ShortcutItem(
                             Icon(
                                 painter = painterResource(R.drawable.ic_image),
                                 contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
+                                tint = if (isImageMissing) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(24.dp)
                             )
                         }
@@ -872,7 +883,9 @@ private fun ShortcutItem(
                         }
                     }
                     Spacer(modifier = Modifier.height(6.dp))
-                    val displayText = if (entry.template.isNotBlank()) {
+                    val displayText = if (isImageMissing) {
+                        stringResource(R.string.text_expander_image_missing_short)
+                    } else if (entry.template.isNotBlank()) {
                         entry.template
                     } else if (isImage) {
                         stringResource(R.string.text_expander_image_attached)
@@ -881,7 +894,7 @@ private fun ShortcutItem(
                         Text(
                             text = displayText,
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = if (isImageMissing) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
                             maxLines = 2,
                             overflow = TextOverflow.Ellipsis,
                             fontFamily = if (displayText.contains("%") || displayText.contains("\t")) FontFamily.Monospace else null

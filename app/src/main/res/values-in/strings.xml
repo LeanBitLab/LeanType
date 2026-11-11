@@ -1697,4 +1697,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="auto_correct_indicator_underline_title">Garis bawah indikator koreksi otomatis</string>
     <string name="auto_correct_indicator_underline_summary">Tampilkan garis bawah di bawah kata-kata yang akan dikoreksi otomatis saat mengetik</string>
     <string name="after_keyboard_reopen">Membuka kembali keyboard</string>
+    <string name="text_expander_image_missing">File gambar tidak ditemukan. Edit pintasan untuk memasangkannya kembali.</string>
+    <string name="text_expander_image_missing_short">Gambar hilang - ketuk untuk memasang kembali</string>
 </resources>

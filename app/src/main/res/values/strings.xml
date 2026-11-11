@@ -1790,6 +1790,8 @@ New dictionary:
     <string name="text_expander_create_first_button">Create Shortcut</string>
     <string name="text_expander_file_too_large">Selected image exceeds maximum size limit (20 MB)</string>
     <string name="text_expander_image_attached">Photo attached</string>
+    <string name="text_expander_image_missing">Image file not found. Edit the shortcut to reattach it.</string>
+    <string name="text_expander_image_missing_short">Image missing - tap to reattach</string>
 
     <!-- Custom AI Keys Screen -->
     <string name="custom_ai_keys_what_are_keywords">What are Keywords?</string>

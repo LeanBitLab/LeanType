@@ -1705,4 +1705,6 @@
     <string name="auto_correct_indicator_underline_title">קו תחתון של מחוון תיקון אוטומטי</string>
     <string name="auto_correct_indicator_underline_summary">הצג קו תחתון מתחת למילים שיתוקנו אוטומטית בזמן ההקלדה</string>
     <string name="after_keyboard_reopen">פותחים מחדש את המקלדת</string>
+    <string name="text_expander_image_missing">קובץ התמונה לא נמצא. ערוך את קיצור הדרך כדי לצרף אותו מחדש.</string>
+    <string name="text_expander_image_missing_short">תמונה חסרה - הקש כדי לצרף מחדש</string>
 </resources>

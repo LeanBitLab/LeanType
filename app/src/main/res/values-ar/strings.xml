@@ -1757,4 +1757,6 @@
     <string name="auto_correct_indicator_underline_title">تسطير مؤشر التصحيح التلقائي</string>
     <string name="auto_correct_indicator_underline_summary">إظهار تسطير أسفل الكلمات التي سيتم تصحيحها تلقائيًا أثناء الكتابة</string>
     <string name="after_keyboard_reopen">إعادة فتح لوحة المفاتيح</string>
+    <string name="text_expander_image_missing">لم يتم العثور على ملف الصورة. قم بتحرير الاختصار لإعادة إرفاقه.</string>
+    <string name="text_expander_image_missing_short">الصورة مفقودة - انقر لإعادة إرفاقها</string>
 </resources>

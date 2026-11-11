@@ -1647,23 +1647,33 @@ class LatinIME : InputMethodService(),
 
     fun onImageSelected(imageUri: String) {
         val editorInfo = currentInputEditorInfo ?: return
-        val contentUri = if (imageUri.startsWith("content://")) {
-            android.net.Uri.parse(imageUri)
-        } else {
-            val file = java.io.File(imageUri)
-            if (!file.exists()) return
-            androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", file)
-        }
-        
+        val ic = currentInputConnection ?: return
         try {
-            val mimeType = contentResolver.getType(contentUri)
-                ?: helium314.keyboard.latin.utils.TextExpanderImageUtils.getMimeType(imageUri)
+            val isContentUri = imageUri.startsWith("content://")
+            val resolvedFile = if (isContentUri) {
+                null
+            } else {
+                helium314.keyboard.latin.utils.TextExpanderImageUtils.resolveImageFile(this, imageUri)
+            }
+            if (!isContentUri && resolvedFile == null) {
+                Log.w(TAG, "Text expander image missing: $imageUri")
+                Toast.makeText(this, R.string.text_expander_image_missing, Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            val contentUri = if (isContentUri) {
+                android.net.Uri.parse(imageUri)
+            } else {
+                androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", resolvedFile!!)
+            }
+
+            val mimeType = contentResolver.getType(contentUri)?.takeIf { it.startsWith("image/") }
+                ?: helium314.keyboard.latin.utils.TextExpanderImageUtils.getMimeType(resolvedFile?.name ?: imageUri)
             val inputContentInfoCompat = InputContentInfoCompat(
                 contentUri,
                 android.content.ClipDescription("Image", arrayOf(mimeType)),
                 null
             )
-            val ic = currentInputConnection ?: return
             var flags = 0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 flags = InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
@@ -1691,6 +1701,7 @@ class LatinIME : InputMethodService(),
             }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to paste image", e)
+            Toast.makeText(this, R.string.text_expander_image_missing, Toast.LENGTH_SHORT).show()
         }
     }
 

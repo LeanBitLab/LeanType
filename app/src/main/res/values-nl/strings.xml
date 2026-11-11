@@ -1741,4 +1741,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="auto_correct_indicator_underline_title">Autocorrectie-indicator onderstreept</string>
     <string name="auto_correct_indicator_underline_summary">Toon een onderstreping onder woorden die tijdens het typen automatisch worden gecorrigeerd</string>
     <string name="after_keyboard_reopen">Het toetsenbord opnieuw openen</string>
+    <string name="text_expander_image_missing">Afbeeldingsbestand niet gevonden. Bewerk de snelkoppeling om deze opnieuw te koppelen.</string>
+    <string name="text_expander_image_missing_short">Afbeelding ontbreekt - tik om opnieuw bij te voegen</string>
 </resources>

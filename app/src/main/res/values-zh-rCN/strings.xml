@@ -1700,4 +1700,6 @@
     <string name="auto_correct_indicator_underline_title">自动更正指示器下划线</string>
     <string name="auto_correct_indicator_underline_summary">在键入时自动更正的单词下显示下划线</string>
     <string name="after_keyboard_reopen">重新打开键盘</string>
+    <string name="text_expander_image_missing">未找到图像文件。编辑快捷方式以重新附加它。</string>
+    <string name="text_expander_image_missing_short">图片丢失 - 点击重新连接</string>
 </resources>

@@ -1735,4 +1735,6 @@ Ar norite atnaujinti?</string>
     <string name="auto_correct_indicator_underline_title">Automatinio taisymo indikatorius pabrauktas</string>
     <string name="auto_correct_indicator_underline_summary">Rodyti pabraukimą po žodžiais, kurie bus automatiškai pataisyti įvedant</string>
     <string name="after_keyboard_reopen">Klaviatūros atidarymas iš naujo</string>
+    <string name="text_expander_image_missing">Vaizdo failas nerastas. Redaguokite spartųjį klavišą, kad jį vėl pridėtumėte.</string>
+    <string name="text_expander_image_missing_short">Trūksta vaizdo – palieskite, kad pridėtumėte iš naujo</string>
 </resources>

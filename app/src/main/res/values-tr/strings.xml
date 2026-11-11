@@ -1726,4 +1726,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="auto_correct_indicator_underline_title">Otomatik düzeltme göstergesinin altı çizili</string>
     <string name="auto_correct_indicator_underline_summary">Yazarken otomatik olarak düzeltilecek kelimelerin altında alt çizgi göster</string>
     <string name="after_keyboard_reopen">Klavyeyi yeniden açma</string>
+    <string name="text_expander_image_missing">Resim dosyası bulunamadı. Yeniden eklemek için kısayolu düzenleyin.</string>
+    <string name="text_expander_image_missing_short">Resim eksik - yeniden eklemek için dokunun</string>
 </resources>

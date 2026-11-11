@@ -1726,4 +1726,6 @@
     <string name="auto_correct_indicator_underline_title">स्वतः-सही सूचक रेखांकन</string>
     <string name="auto_correct_indicator_underline_summary">शब्दों के नीचे एक अंडरलाइन दिखाएं जो टाइप करते समय स्वतः सही हो जाएगी</string>
     <string name="after_keyboard_reopen">कीबोर्ड पुनः खोलना</string>
+    <string name="text_expander_image_missing">छवि फ़ाइल नहीं मिली. इसे पुनः जोड़ने के लिए शॉर्टकट संपादित करें।</string>
+    <string name="text_expander_image_missing_short">छवि गायब है - पुनः जोड़ने के लिए टैप करें</string>
 </resources>
