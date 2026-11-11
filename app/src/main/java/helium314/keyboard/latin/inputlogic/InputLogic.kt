@@ -371,6 +371,27 @@ class InputLogic(
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
                 val typedWord = mWordComposer.getTypedWord()
                 val prefixLength = suggestionInfo.mShortcutPrefixLength
+                if (!suggestionInfo.mImageUri.isNullOrEmpty()) {
+                    val imageUri = suggestionInfo.mImageUri!!
+                    if (!helium314.keyboard.latin.utils.TextExpanderImageUtils.imageExists(mLatinIME, imageUri)) {
+                        mLatinIME.onImageSelected(imageUri)
+                        resetComposingState(true)
+                        inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
+                        return inputTransaction
+                    }
+                    if (mWordComposer.isComposingWord()) {
+                        mConnection.commitText("", 1)
+                    } else {
+                        mConnection.deleteTextBeforeCursor(typedWord.length)
+                    }
+                    if (prefixLength > 0) {
+                        mConnection.deleteTextBeforeCursor(prefixLength)
+                    }
+                    mLatinIME.onImageSelected(imageUri)
+                    resetComposingState(true)
+                    inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
+                    return inputTransaction
+                }
                 if (mWordComposer.isComposingWord()) {
                     mConnection.commitText("", 1)
                 } else {
@@ -378,12 +399,6 @@ class InputLogic(
                 }
                 if (prefixLength > 0) {
                     mConnection.deleteTextBeforeCursor(prefixLength)
-                }
-                if (!suggestionInfo.mImageUri.isNullOrEmpty()) {
-                    mLatinIME.onImageSelected(suggestionInfo.mImageUri!!)
-                    resetComposingState(true)
-                    inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW)
-                    return inputTransaction
                 }
                 val expandedText = TextExpanderUtils.expand(suggestionInfo.mWord, mLatinIME)
                 val cursorMovedBack = commitExpandedText(typedWord, expandedText)
@@ -1264,7 +1279,7 @@ class InputLogic(
                 if (textBefore != null) {
                     val textStr = textBefore.toString()
                     val result = TextExpanderUtils.getExpandedWordForTyped(typedWord, textStr, mLatinIME)
-                    if (result != null) {
+                    if (result != null && (result.imageUri == null || mLatinIME.acceptsAnyImage())) {
                         if (mJustRevertedExpandedShortcut != null && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)) {
                             // Skip re-expanding
                         } else {
@@ -1321,7 +1336,7 @@ class InputLogic(
                 val textBefore = mConnection.getTextBeforeCursor(50, 0)
                 if (textBefore != null) {
                     val result = TextExpanderUtils.getExpandedWordForTyped(null, textBefore.toString(), mLatinIME)
-                    if (result != null) {
+                    if (result != null && (result.imageUri == null || mLatinIME.acceptsAnyImage())) {
                         if (mJustRevertedExpandedShortcut != null && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)) {
                             // Skip re-expanding
                         } else {
@@ -1452,7 +1467,7 @@ class InputLogic(
             val textBefore = mConnection.getTextBeforeCursor(50, 0)
             if (textBefore != null) {
                 val result = TextExpanderUtils.getExpandedWordForTyped(null, textBefore.toString(), mLatinIME)
-                if (result != null) {
+                if (result != null && (result.imageUri == null || mLatinIME.acceptsAnyImage())) {
                     if (mJustRevertedExpandedShortcut == null
                         || !result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)
                     ) {
@@ -2866,7 +2881,7 @@ class InputLogic(
                 val textStr = textBefore.toString()
                 val plainWord = UnicodeStyleEngine.toPlainText(chosenWord)
                 val result = TextExpanderUtils.getExpandedWordForTyped(plainWord, textStr, mLatinIME)
-                if (result != null && (result.imageUri == null || separatorString.isNotEmpty())) {
+                if (result != null && (result.imageUri == null || (separatorString.isNotEmpty() && mLatinIME.acceptsAnyImage()))) {
                     if (mJustRevertedExpandedShortcut != null
                         && result.matchedString.equals(mJustRevertedExpandedShortcut, ignoreCase = true)
                     ) {

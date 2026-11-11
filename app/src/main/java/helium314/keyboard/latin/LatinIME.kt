@@ -1645,6 +1645,14 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.onEvent(event, currentAutoCapsState, currentRecapitalizeState)
     }
 
+    fun acceptsAnyImage(): Boolean {
+        val editorInfo = currentInputEditorInfo ?: return false
+        val acceptedMimes = androidx.core.view.inputmethod.EditorInfoCompat.getContentMimeTypes(editorInfo)
+        return acceptedMimes.any { mime ->
+            mime == "*/*" || mime.startsWith("image/", ignoreCase = true)
+        }
+    }
+
     fun onImageSelected(imageUri: String) {
         val editorInfo = currentInputEditorInfo ?: return
         val ic = currentInputConnection ?: return
@@ -1661,14 +1669,30 @@ class LatinIME : InputMethodService(),
                 return
             }
 
-            val contentUri = if (isContentUri) {
+            var targetFile = resolvedFile
+            var contentUri = if (isContentUri) {
                 android.net.Uri.parse(imageUri)
             } else {
                 androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", resolvedFile!!)
             }
 
-            val mimeType = contentResolver.getType(contentUri)?.takeIf { it.startsWith("image/") }
+            var mimeType = contentResolver.getType(contentUri)?.takeIf { it.startsWith("image/") }
                 ?: helium314.keyboard.latin.utils.TextExpanderImageUtils.getMimeType(resolvedFile?.name ?: imageUri)
+
+            val acceptedMimes = androidx.core.view.inputmethod.EditorInfoCompat.getContentMimeTypes(editorInfo)
+            if (targetFile != null && acceptedMimes.isNotEmpty()
+                && acceptedMimes.none { android.content.ClipDescription.compareMimeTypes(mimeType, it) }
+            ) {
+                val compat = helium314.keyboard.latin.utils.TextExpanderImageUtils.transcodeForEditorCompat(
+                    this, targetFile, mimeType, acceptedMimes
+                )
+                if (compat != null) {
+                    targetFile = compat.first
+                    mimeType = compat.second
+                    contentUri = androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", targetFile)
+                }
+            }
+
             val inputContentInfoCompat = InputContentInfoCompat(
                 contentUri,
                 android.content.ClipDescription("Image", arrayOf(mimeType)),

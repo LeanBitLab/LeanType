@@ -47,8 +47,10 @@ import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ResourceUtils
+import helium314.keyboard.latin.utils.TextExpanderImageUtils
 import helium314.keyboard.latin.utils.ViewLayoutUtils
 import helium314.keyboard.latin.utils.dpToPx
+import java.util.WeakHashMap
 
 internal class SuggestionStripLayoutHelper(
     context: Context,
@@ -71,6 +73,7 @@ internal class SuggestionStripLayoutHelper(
     private val mWordViews: ArrayList<TextView> = wordViews
     private val mDividerViews: ArrayList<View> = dividerViews
     private val mDebugInfoViews: ArrayList<TextView> = debugInfoViews
+    private val mPendingImageKeys = WeakHashMap<TextView, String>()
 
     private val mColorValidTypedWord: Int
     private val mColorTypedWord: Int
@@ -279,6 +282,7 @@ internal class SuggestionStripLayoutHelper(
     ): Int {
         for (positionInStrip in mWordViews.indices) {
             val wordView = mWordViews[positionInStrip]
+            mPendingImageKeys.remove(wordView)
             wordView.text = null
             wordView.tag = null
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
@@ -489,6 +493,36 @@ internal class SuggestionStripLayoutHelper(
         return startIndexOfMoreSuggestions
     }
 
+    private fun applyImageChipBackground(
+        context: Context,
+        wordView: TextView,
+        width: Int,
+        thumb: Drawable?,
+        thumbW: Int,
+        thumbH: Int
+    ) {
+        val colors = Settings.getValues().mColors
+        val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
+        if (chipBg != null) {
+            colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
+        }
+        if (thumb != null && chipBg != null) {
+            val layerDrawable = LayerDrawable(arrayOf(chipBg, thumb)).apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    setLayerGravity(1, Gravity.CENTER)
+                    setLayerSize(1, thumbW, thumbH)
+                } else {
+                    val padH = ((width - thumbW) / 2).coerceAtLeast(0)
+                    val padV = 5.dpToPx(context.resources)
+                    setLayerInset(1, padH, padV, padH, padV)
+                }
+            }
+            wordView.background = layerDrawable
+        } else if (thumb != null) {
+            wordView.background = thumb
+        }
+    }
+
     private fun layoutWord(context: Context, positionInStrip: Int, width: Int, suggestedWords: SuggestedWords): TextView {
         val wordView = mWordViews[positionInStrip]
         val word = wordView.text
@@ -498,42 +532,34 @@ internal class SuggestionStripLayoutHelper(
         val hasLabel = !word.isNullOrBlank()
 
         if (isImage && !hasLabel) {
+            val imageRef = wordInfo.mImageUri!!
             val thumbH = 26.dpToPx(context.resources)
             val thumbW = 40.dpToPx(context.resources)
-            val thumb = helium314.keyboard.latin.utils.TextExpanderImageUtils.getThumbnailDrawable(
-                context, wordInfo.mImageUri!!, thumbW, thumbH
-            )
             wordView.setPadding(0, 0, 0, 0)
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
             wordView.compoundDrawablePadding = 0
             wordView.text = ""
 
-            val colors = Settings.getValues().mColors
-            val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
-            if (chipBg != null) {
-                colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
-            }
-
-            if (thumb != null && chipBg != null) {
-                val layerDrawable = LayerDrawable(arrayOf(chipBg, thumb)).apply {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        setLayerGravity(1, Gravity.CENTER)
-                        setLayerSize(1, thumbW, thumbH)
-                    } else {
-                        val padH = ((width - thumbW) / 2).coerceAtLeast(0)
-                        val padV = 5.dpToPx(context.resources)
-                        setLayerInset(1, padH, padV, padH, padV)
+            val cachedThumb = TextExpanderImageUtils.getCachedThumbnailDrawable(context, imageRef, thumbW, thumbH)
+            if (cachedThumb != null) {
+                mPendingImageKeys.remove(wordView)
+                applyImageChipBackground(context, wordView, width, cachedThumb, thumbW, thumbH)
+            } else {
+                val requestKey = "${imageRef}_${thumbW}x${thumbH}"
+                mPendingImageKeys[wordView] = requestKey
+                val placeholder = TextExpanderImageUtils.getPlaceholderDrawable(context, thumbW, thumbH)
+                applyImageChipBackground(context, wordView, width, placeholder, thumbW, thumbH)
+                TextExpanderImageUtils.preloadThumbnailAsync(context, imageRef, thumbW, thumbH) { loaded ->
+                    if (loaded != null && mPendingImageKeys[wordView] == requestKey) {
+                        applyImageChipBackground(context, wordView, width, loaded, thumbW, thumbH)
                     }
                 }
-                wordView.background = layerDrawable
-            } else if (thumb != null) {
-                wordView.background = thumb
             }
 
             wordView.contentDescription = wordInfo.mWord.ifEmpty {
                 context.resources.getString(R.string.text_expander_image_shortcut_badge)
             }
-            wordView.isEnabled = thumb != null || AccessibilityUtils.instance.isTouchExplorationEnabled
+            wordView.isEnabled = true
             return wordView
         } else if (isImage && hasLabel) {
             wordView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
