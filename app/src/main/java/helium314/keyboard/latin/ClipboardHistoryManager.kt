@@ -336,8 +336,15 @@ class ClipboardHistoryManager(
 
     fun onDestroy() {
         unregisterScreenshotObserver()
-        clipboardManager.removePrimaryClipChangedListener(this)
+        if (::clipboardManager.isInitialized) {
+            try {
+                clipboardManager.removePrimaryClipChangedListener(this)
+            } catch (e: Exception) {
+                // Ignore if already unregistered or manager unavailable
+            }
+        }
         mainHandler.removeCallbacksAndMessages(null)
+        ClipboardDao.closeInstance()
     }
 
     override fun onPrimaryClipChanged() {

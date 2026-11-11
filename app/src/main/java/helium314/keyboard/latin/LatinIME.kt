@@ -411,7 +411,11 @@ class LatinIME : InputMethodService(),
         if (sInstance === this) sInstance = null
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
         if (isShowingOptionDialog()) {
-            optionsDialog?.dismiss()
+            try {
+                optionsDialog?.dismiss()
+            } catch (e: Exception) {
+                Log.w(TAG, "optionsDialog dismiss threw onDestroy", e)
+            }
             optionsDialog = null
         }
         voiceInputManager?.release(); voiceInputManager = null
@@ -827,12 +831,15 @@ class LatinIME : InputMethodService(),
         val mainKeyboardView = switcher.mainKeyboardView
         
         var currentSettingsValues = settings.current
-        if (DebugFlags.DEBUG_ENABLED && editorInfo == null) {
-            throw NullPointerException("Null EditorInfo in onStartInputView()")
+        if (editorInfo == null) {
+            if (DebugFlags.DEBUG_ENABLED) {
+                Log.w(TAG, "Null EditorInfo in onStartInputViewInternal()")
+            }
+            return
         }
         if (mainKeyboardView == null) return
         if (!isExplicitShowRequested && isTransientFocusTypeNull(editorInfo)) {
-            Log.d(TAG, "onStartInputViewInternal: suppressing implicit transient TYPE_NULL input view for ${editorInfo.packageName}")
+            Log.d(TAG, "onStartInputViewInternal: suppressing implicit transient TYPE_NULL input view for ${editorInfo.packageName ?: "unknown"}")
             return
         }
         
@@ -847,8 +854,9 @@ class LatinIME : InputMethodService(),
         }
         
         val inputTypeChanged = !currentSettingsValues.isSameInputType(editorInfo)
-        val packageChanged = editorInfo.packageName != lastInputPackageName
-        lastInputPackageName = editorInfo.packageName
+        val inputPackage = editorInfo.packageName ?: ""
+        val packageChanged = inputPackage != lastInputPackageName
+        lastInputPackageName = inputPackage
         if (packageChanged && UnicodeStyleEngine.isLiveStyleActive()) {
             UnicodeStyleEngine.clearActiveLiveStyle()
             switcher.suggestionStripView?.updateToolbarButtonsActivatedState()
@@ -1035,6 +1043,15 @@ class LatinIME : InputMethodService(),
     override fun onWindowHidden() {
         super.onWindowHidden()
         Log.i(TAG, "onWindowHidden")
+        keyboardSwitcher.onHideWindow()
+        if (isShowingOptionDialog()) {
+            try {
+                optionsDialog?.dismiss()
+            } catch (e: Exception) {
+                Log.w(TAG, "optionsDialog dismiss threw onWindowHidden", e)
+            }
+            optionsDialog = null
+        }
         voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
         keyboardSwitcher.hideGifPicker()
@@ -1159,7 +1176,11 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.onHideWindow()
         if (TRACE) Debug.stopMethodTracing()
         if (isShowingOptionDialog()) {
-            optionsDialog?.dismiss()
+            try {
+                optionsDialog?.dismiss()
+            } catch (e: Exception) {
+                Log.w(TAG, "optionsDialog dismiss threw hideWindow", e)
+            }
             optionsDialog = null
         }
         super.hideWindow()
