@@ -532,7 +532,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
             it.visibility = View.GONE
         }
         mOcrCameraView?.let {
-            if (it.isShown) it.stopCamera()
+            it.stopCamera()
             it.visibility = View.GONE
         }
         mOcrResultView?.visibility = View.GONE
@@ -813,7 +813,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mSuggestionStripView?.visibility = View.VISIBLE
         mStripContainer?.visibility = View.VISIBLE
         mOcrCameraView?.let {
-            if (it.isShown) it.stopCamera()
+            it.stopCamera()
             it.visibility = View.GONE
             val lp = it.layoutParams
             if (lp != null) {

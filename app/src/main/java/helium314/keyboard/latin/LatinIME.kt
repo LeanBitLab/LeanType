@@ -1033,11 +1033,10 @@ class LatinIME : InputMethodService(),
     override fun onWindowHidden() {
         super.onWindowHidden()
         Log.i(TAG, "onWindowHidden")
+        voiceInputManager?.takeIf { it.isRecording() }?.stopVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
         keyboardSwitcher.hideGifPicker()
-        if (keyboardSwitcher.isOcrShowing) {
-            keyboardSwitcher.hideOcrPanels()
-        }
+        keyboardSwitcher.hideOcrPanels()
         clipboardHistoryManager.onWindowHidden()
         ProofreadHelper.cancelCurrentJob()
         val fkm = floatingKeyboardManager

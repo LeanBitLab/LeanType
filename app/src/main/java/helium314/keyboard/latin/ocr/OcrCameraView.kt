@@ -200,6 +200,11 @@ class OcrCameraView @JvmOverloads constructor(
         flashBtn?.setImageResource(R.drawable.ic_flash_off)
     }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        stopCamera()
+    }
+
     fun release() {
         stopCamera()
         cameraManager?.release()

@@ -597,6 +597,13 @@ class VoiceInputManager(
                     } else if (read < 0) {
                         Log.e(TAG, "AudioRecord read error: $read")
                         break
+                    } else {
+                        // Prevent 100% CPU busy-spin when AudioRecord.read returns 0
+                        try {
+                            Thread.sleep(10)
+                        } catch (_: InterruptedException) {
+                            break
+                        }
                     }
                 }
             } catch (e: Exception) {
