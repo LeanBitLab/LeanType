@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import java.util.concurrent.ConcurrentHashMap
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -330,6 +331,7 @@ fun downloadDictionary(
                     }
                     if (tempFile.renameTo(targetFile)) {
                         success = true
+                        invalidateMissingDictCache()
                     } else {
                         Log.e("DictionaryUtils", "Failed to atomically rename temp dictionary to ${targetFile.name}")
                         tempFile.delete()
@@ -506,6 +508,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                     onClick = {
                         file?.delete()
                         ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
+                        invalidateMissingDictCache()
                         ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                         onRefresh()
                     },
@@ -515,7 +518,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                     ),
                     modifier = Modifier.height(32.dp)
                 ) {
-                    Text(stringResource(R.string.button_delete), style = MaterialTheme.typography.labelMedium)
+                    Text(stringResource(R.string.delete), style = MaterialTheme.typography.labelMedium)
                 }
             }
         } else if (isInstalled) {
@@ -523,6 +526,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                 onClick = {
                     file?.delete()
                     ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
+                    invalidateMissingDictCache()
                     ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
                     onRefresh()
                 },
@@ -532,7 +536,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                 ),
                 modifier = Modifier.height(32.dp)
             ) {
-                Text(stringResource(R.string.button_delete), style = MaterialTheme.typography.labelMedium)
+                Text(stringResource(R.string.delete), style = MaterialTheme.typography.labelMedium)
             }
         } else {
             OutlinedButton(
@@ -566,8 +570,21 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
     }
 }
 
+private val missingDictCache = ConcurrentHashMap<String, Boolean>()
+
+fun invalidateMissingDictCache() {
+    missingDictCache.clear()
+}
+
 // ponytail: check if the main dictionary is missing/not loaded for a given locale
 fun isMainDictionaryMissing(context: Context, locale: Locale): Boolean {
+    val tag = locale.toLanguageTag()
+    return missingDictCache.getOrPut(tag) {
+        isMainDictionaryMissingInternal(context, locale)
+    }
+}
+
+private fun isMainDictionaryMissingInternal(context: Context, locale: Locale): Boolean {
     // 1. check if there's any dictionary in assets matching the locale
     val assetsList = DictionaryInfoUtils.getAssetsDictionaryList(context)
     if (assetsList != null) {

@@ -42,6 +42,7 @@ import helium314.keyboard.latin.utils.getSecondaryLocales
 import helium314.keyboard.latin.utils.locale
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.DeviceProtectedUtils
+import helium314.keyboard.latin.utils.invalidateMissingDictCache
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -186,6 +187,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         dictNamePrefix: String,
         listener: DictionaryInitializationListener?
     ) {
+        invalidateMissingDictCache()
         Log.i(TAG, "resetDictionaries, force reloading main dictionary: $forceReloadMainDictionary")
         mContext = context.applicationContext
         val prefs = context.prefs()

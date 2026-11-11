@@ -16,9 +16,10 @@ open class HexKeyDetector(
 
         val touchX = getTouchX(x)
         val touchY = getTouchY(y)
+        val nearestKeys = keyboard.getNearestKeys(touchX, touchY)
 
         // 1. Direct hit-test for non-hex keys (e.g. wide rectangular spacebar if any)
-        for (key in keyboard.getNearestKeys(touchX, touchY)) {
+        for (key in nearestKeys) {
             if (isNonHexKey(key)) {
                 if (key.isOnKey(touchX, touchY)) {
                     return key
@@ -30,7 +31,7 @@ open class HexKeyDetector(
         var bestHexKey: Key? = null
         var minDistance = Int.MAX_VALUE
 
-        for (key in keyboard.getNearestKeys(touchX, touchY)) {
+        for (key in nearestKeys) {
             if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2
@@ -49,7 +50,7 @@ open class HexKeyDetector(
         if (bestHexKey != null) return bestHexKey
 
         // 3. Fallback: find nearest hex key by center distance among candidate keys
-        for (key in keyboard.getNearestKeys(touchX, touchY)) {
+        for (key in nearestKeys) {
             if (key.isSpacer || isNonHexKey(key)) continue
             val cx = key.x + key.width / 2
             val cy = key.y + key.height / 2

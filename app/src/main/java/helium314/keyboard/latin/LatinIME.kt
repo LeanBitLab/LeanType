@@ -49,6 +49,7 @@ import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.compat.BrowserDetector
 import helium314.keyboard.compat.EditorInfoCompatUtils
 import helium314.keyboard.compat.isDeviceLocked
+import helium314.keyboard.compat.refreshDeviceLocked
 import helium314.keyboard.latin.style.UnicodeStyleEngine
 import helium314.keyboard.compat.ImeCompat.shouldSwitchToOtherInputMethods
 import helium314.keyboard.compat.ImeCompat.switchInputMethod
@@ -799,6 +800,7 @@ class LatinIME : InputMethodService(),
 
     fun onStartInputViewInternal(editorInfo: EditorInfo, restarting: Boolean) {
         super.onStartInputView(editorInfo, restarting)
+        refreshDeviceLocked(this)
         ProofreadHelper.preloadModel(this)
         
         val vpm = voicePluginManager
