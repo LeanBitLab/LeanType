@@ -12,11 +12,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.ui.Alignment
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -168,91 +166,94 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
                         }
                     else {
                         val startScreen = intent?.getStringExtra("screen")
-                        androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
-                            SettingsNavHost(onClickBack = { this@SettingsActivity.finish() }, startDestination = startScreen)
-                            if (showWelcomeWizard) {
-                                WelcomeWizard(
-                                    close = {
-                                        prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
-                                        showWelcomeWizard = false
-                                    },
-                                    finish = {
-                                        prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
-                                        this@SettingsActivity.finish()
-                                    }
-                                )
-                            } else if (crashReports.isNotEmpty()) {
-                                PreferenceDialog(
-                                    onDismissRequest = { crashReportFiles.value = emptyList() },
-                                    title = stringResource(R.string.crash_reports_dialog_title),
-                                    showCloseButton = true,
-                                    buttons = {
-                                        Column(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(top = 16.dp),
-                                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                                        ) {
-                                            Row(
-                                                modifier = Modifier.fillMaxWidth(),
-                                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        Scaffold(
+                            contentWindowInsets = WindowInsets.safeDrawing,
+                            snackbarHost = { androidx.compose.material3.SnackbarHost(snackbarHostState) }
+                        ) { scaffoldPadding ->
+                            androidx.compose.foundation.layout.Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(scaffoldPadding)
+                            ) {
+                                SettingsNavHost(onClickBack = { this@SettingsActivity.finish() }, startDestination = startScreen)
+                                if (showWelcomeWizard) {
+                                    WelcomeWizard(
+                                        close = {
+                                            prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
+                                            showWelcomeWizard = false
+                                        },
+                                        finish = {
+                                            prefs.edit().putBoolean(Settings.PREF_SETUP_WIZARD_DISMISSED, true).apply()
+                                            this@SettingsActivity.finish()
+                                        }
+                                    )
+                                } else if (crashReports.isNotEmpty()) {
+                                    PreferenceDialog(
+                                        onDismissRequest = { crashReportFiles.value = emptyList() },
+                                        title = stringResource(R.string.crash_reports_dialog_title),
+                                        showCloseButton = true,
+                                        buttons = {
+                                            Column(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(top = 16.dp),
+                                                verticalArrangement = Arrangement.spacedBy(8.dp)
                                             ) {
-                                                Button(
-                                                    onClick = {
-                                                        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                                                            addCategory(Intent.CATEGORY_OPENABLE)
-                                                            putExtra(Intent.EXTRA_TITLE, "crash_reports.zip")
-                                                            type = "application/zip"
-                                                        }
-                                                        crashFilePicker.launch(intent)
-                                                    },
-                                                    modifier = Modifier.weight(1f)
+                                                Row(
+                                                    modifier = Modifier.fillMaxWidth(),
+                                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                                                 ) {
-                                                    Text(stringResource(R.string.crash_report_save))
+                                                    Button(
+                                                        onClick = {
+                                                            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                                                                addCategory(Intent.CATEGORY_OPENABLE)
+                                                                putExtra(Intent.EXTRA_TITLE, "crash_reports.zip")
+                                                                type = "application/zip"
+                                                            }
+                                                            crashFilePicker.launch(intent)
+                                                        },
+                                                        modifier = Modifier.weight(1f)
+                                                    ) {
+                                                        Text(stringResource(R.string.crash_report_save))
+                                                    }
+                                                    Button(
+                                                        onClick = { shareCrashReports() },
+                                                        modifier = Modifier.weight(1f)
+                                                    ) {
+                                                        Text(stringResource(R.string.crash_report_share))
+                                                    }
                                                 }
-                                                Button(
-                                                    onClick = { shareCrashReports() },
-                                                    modifier = Modifier.weight(1f)
+                                                Row(
+                                                    modifier = Modifier.fillMaxWidth(),
+                                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                                                 ) {
-                                                    Text(stringResource(R.string.crash_report_share))
-                                                }
-                                            }
-                                            Row(
-                                                modifier = Modifier.fillMaxWidth(),
-                                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                            ) {
-                                                Button(
-                                                    onClick = {
-                                                        crashReports.forEach { it.delete() }
-                                                        crashReportFiles.value = emptyList()
-                                                    },
-                                                    colors = ButtonDefaults.buttonColors(
-                                                        containerColor = MaterialTheme.colorScheme.error,
-                                                        contentColor = MaterialTheme.colorScheme.onError
-                                                    ),
-                                                    modifier = Modifier.weight(1f)
-                                                ) {
-                                                    Text(stringResource(R.string.delete))
-                                                }
-                                                OutlinedButton(
-                                                    onClick = { crashReportFiles.value = emptyList() },
-                                                    modifier = Modifier.weight(1f)
-                                                ) {
-                                                    Text(stringResource(R.string.button_ignore))
+                                                    Button(
+                                                        onClick = {
+                                                            crashReports.forEach { it.delete() }
+                                                            crashReportFiles.value = emptyList()
+                                                        },
+                                                        colors = ButtonDefaults.buttonColors(
+                                                            containerColor = MaterialTheme.colorScheme.error,
+                                                            contentColor = MaterialTheme.colorScheme.onError
+                                                        ),
+                                                        modifier = Modifier.weight(1f)
+                                                    ) {
+                                                        Text(stringResource(R.string.delete))
+                                                    }
+                                                    OutlinedButton(
+                                                        onClick = { crashReportFiles.value = emptyList() },
+                                                        modifier = Modifier.weight(1f)
+                                                    ) {
+                                                        Text(stringResource(R.string.button_ignore))
+                                                    }
                                                 }
                                             }
                                         }
+                                    ) {
+                                        Text(stringResource(R.string.crash_reports_dialog_message))
                                     }
-                                ) {
-                                    Text(stringResource(R.string.crash_reports_dialog_message))
                                 }
                             }
-                            androidx.compose.material3.SnackbarHost(
-                                hostState = snackbarHostState,
-                                modifier = Modifier
-                                    .align(Alignment.BottomCenter)
-                                    .padding(WindowInsets.safeDrawing.asPaddingValues())
-                            )
                         }
                     }
                     if (dictUri != null) {
