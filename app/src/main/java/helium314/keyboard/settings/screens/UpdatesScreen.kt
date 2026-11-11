@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• Voice Leak & Battery Hardening: Prevented background audio drain with watchdog timeouts and unbind on hide",
+    "• Input IPC Resilience: Defensively hardened RichInputConnection against remote app exceptions",
+    "• Arabic Tashkeel Hint: Added diacritics hint to the Arabic period key for quick marks access (#786)",
+    "• Typing Hot-Path Optimization: Cached lock status and missing dictionaries to eliminate typing latency",
+    "• Memory Trimming: Reclaimed native plugin heap on low memory and optimized image downsampling",
     "• Text Expander Image Shortcuts: Added photo attachment support with live thumbnail suggestion chips (#784)",
     "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names",
     "• Reopen on Main Keyboard: Added option to always reopen the keyboard on the primary alphabet view",
-    "• Auto-Correct Underline Toggle: Added settings switch to show or hide the auto-correction underline indicator",
     "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text inputs",
-    "• Text Expander Suggestions: Added suggestion strip chips and suggestion-only mode (#774)",
-    "• Text Expander Bulk Editor: Added full-screen editor with syntax checks and import/export",
-    "• Clipboard Live Character Counter: Added live character count to clip editor (#678)",
-    "• Lock-Screen Security Hardening: Guarded sensitive keys and broadcasts while device is locked",
-    "• Unicode Font Styles: Added 26+ typographic font styles with live typing strip"
+    "• Text Expander Bulk Editor: Added full-screen editor with syntax checks and import/export"
 )
 
 @Composable
