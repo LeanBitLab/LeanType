@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"மொழியில்லை"</string>
     <string name="subtype_emoji">"எமோஜி"</string>
     <string name="add">"சேர்"</string>
-    <string name="remove">"அகற்று"</string>
     <string name="save">"சேமி"</string>
     <string name="subtype_locale">"மொழி"</string>
     <string name="keyboard_layout_set">"தளவமைப்பு"</string>
@@ -330,7 +329,6 @@
     <string name="dictionary_load_error">அகராதி கோப்பை ஏற்றுவதில் பிழை</string>
     <string name="user_dict_settings_add_weight_value">எடை:</string>
     <string name="user_dict_word_already_present">இந்த சொல் ஏற்கனவே %s பயனர் அகராதியில் உள்ளது. தயவுசெய்து இன்னொன்றைத் தட்டச்சு செய்யவும்.</string>
-    <string name="user_dict_add_word_button">ஒரு வார்த்தையைச் சேர்க்கவும்</string>
     <string name="theme_style">சூல் தண்டு</string>
     <string name="icon_style">படவுரு பாணி</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">வட்டமானது</string>

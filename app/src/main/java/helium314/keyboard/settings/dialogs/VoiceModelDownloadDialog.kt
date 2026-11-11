@@ -154,7 +154,7 @@ fun VoiceModelDownloadDialog(
                             ),
                             modifier = Modifier.height(36.dp)
                         ) {
-                            Text(stringResource(R.string.button_delete))
+                            Text(stringResource(R.string.delete))
                         }
                     } else {
                         OutlinedButton(
@@ -236,7 +236,7 @@ private fun ModelDownloadRow(
                     ),
                     modifier = Modifier.height(36.dp)
                 ) {
-                    Text(stringResource(R.string.button_delete))
+                    Text(stringResource(R.string.delete))
                 }
             } else {
                 OutlinedButton(
@@ -244,7 +244,7 @@ private fun ModelDownloadRow(
                     enabled = !isAnyModelDownloading,
                     modifier = Modifier.height(36.dp)
                 ) {
-                    Text(if (isAnyModelInstalledForEngine) stringResource(R.string.voice_model_replace) else stringResource(R.string.button_download))
+                    Text(if (isAnyModelInstalledForEngine) stringResource(R.string.voice_model_replace) else stringResource(R.string.download))
                 }
             }
         }

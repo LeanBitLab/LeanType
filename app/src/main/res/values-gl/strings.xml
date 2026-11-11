@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Ningún idioma"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Engadir"</string>
-    <string name="remove">"Eliminar"</string>
     <string name="save">"Gardar"</string>
     <string name="subtype_locale">"Idioma"</string>
     <string name="keyboard_layout_set">"Deseño"</string>
@@ -101,7 +100,6 @@
     <string name="subtype_generic_sebeolsik_390">%s (Sebeolsik 390)</string>
     <string name="available_dictionary_experimental">%s (experimental)</string>
     <string name="user_dict_settings_add_weight_value">Tamaño:</string>
-    <string name="user_dict_add_word_button">Engadir unha palabra</string>
     <string name="theme_style">Estilo</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Redondeado</string>
     <string name="theme_colors">Cores</string>

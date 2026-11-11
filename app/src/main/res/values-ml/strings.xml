@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"ഭാഷയില്ല"</string>
     <string name="subtype_emoji">"ഇമോജി"</string>
     <string name="add">"ചേര്‍ക്കുക"</string>
-    <string name="remove">"നീക്കംചെയ്യുക"</string>
     <string name="save">"സംരക്ഷിക്കുക"</string>
     <string name="subtype_locale">"ഭാഷ"</string>
     <string name="keyboard_layout_set">"ലേ‌ഔട്ട്"</string>
@@ -552,7 +551,6 @@
     <string name="dictionary_load_error">നിഘണ്ടു ഫയൽ ലോഡുചെയ്യുന്നതിൽ പിശക്</string>
     <string name="user_dict_settings_add_weight_value">വെയിറ്റ്:</string>
     <string name="user_dict_word_already_present">ഈ വാക്ക് ഇതിനകം %s ഉപയോക്തൃ നിഘണ്ടുവിൽ ഉണ്ട്. ദയവായി മറ്റൊന്ന് ടൈപ്പ് ചെയ്യുക.</string>
-    <string name="user_dict_add_word_button">ഒരു വാക്ക് ചേർക്കുക</string>
     <string name="user_dict_clear_all_confirmation">ഈ നിഘണ്ടുവിൽ നിന്ന് എല്ലാ വാക്കുകളും മായ്ക്കണമെന്ന് ഉറപ്പാണോ?</string>
     <string name="theme_style">ശൈലി</string>
     <string name="icon_style">ഐക്കൺ ശൈലി</string>
@@ -782,9 +780,6 @@
     <string name="text_expander_template_title">ടെംപ്ലേറ്റ് വികാസം</string>
     <string name="text_expander_template_hint" formatted="false">Be right back! അല്ലെങ്കിൽ My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">ദ്രുത പ്ലെയ്സ്ഹോൾഡറുകൾ (കഴ്സറിൽ ചേർക്കാൻ ടാപ്പുചെയ്യുക):</string>
-    <string name="text_expander_save">സംരക്ഷിക്കുക</string>
-    <string name="text_expander_add">ചേർക്കുക</string>
-    <string name="text_expander_delete">ഇല്ലാതാക്കുക</string>
     <string name="custom_ai_keys_what_are_keywords">കീവേഡുകൾ എന്താണ്?</string>
     <string name="custom_ai_keys_keywords_description">കീവേഡുകൾ (#proofread അല്ലെങ്കിൽ #summarize പോലുള്ളവ) AI-യ്ക്കുള്ള ദ്രുത നിർദ്ദേശങ്ങളായി പ്രവർത്തിക്കുന്നു. ഒരു കീ കോൺഫിഗർ ചെയ്യുമ്പോൾ അതിന്റെ സ്വഭാവം നിർവചിക്കാൻ അവ തിരഞ്ഞെടുക്കുക. കീ സൃഷ്ടിക്കാൻ നിങ്ങളുടെ സ്വന്തം ഇഷ്ടാനുസൃത പ്രോംപ്റ്റും നിങ്ങൾ ചേർക്കണം.</string>
     <string name="custom_ai_keys_show_tags_title">കീബോർഡിൽ ടാഗുകൾ കാണിക്കുക</string>
@@ -895,7 +890,6 @@
     <string name="voice_status_listening">കേൾക്കുന്നു… സംസാരിക്കൂ</string>
     <string name="voice_status_processing">പ്രോസസ്സ് ചെയ്യുന്നു…</string>
     <string name="voice_action_done">പൂർത്തിയായി</string>
-    <string name="voice_action_cancel">റദ്ദാക്കുക</string>
     <string name="voice_provider_title">വോയ്സ് ഇൻപുട്ട് ദാതാവ്</string>
     <string name="voice_provider_summary">വോയ്സ് ഡിക്റ്റേഷൻ എങ്ങനെ പ്രോസസ്സ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക</string>
     <string name="voice_provider_offline">ഓഫ്‌ലൈൻ വോയ്സ് ഇൻപുട്ട് (പ്ലഗിൻ)</string>
@@ -1326,9 +1320,7 @@
     <string name="label_all">എല്ലാം</string>
     <string name="label_word">വാക്ക്</string>
     <string name="next_step">അടുത്തത്</string>
-    <string name="button_download">ഡൗൺലോഡ്</string>
     <string name="button_load_from_file">ഫയലിൽ നിന്ന് ലോഡ് ചെയ്യുക</string>
-    <string name="button_delete">ഇല്ലാതാക്കുക</string>
 <string name="handwriting_plugin_update_available_dialog">കയ്യക്ഷര പ്ലഗിന് അപ്‌ഡേറ്റ് ലഭ്യമാണ്!
 പ്രാദേശിക പതിപ്പ്: %1$s
 ഏറ്റവും പുതിയ പതിപ്പ്: %2$s
@@ -1477,14 +1469,11 @@
     <string name="clipboard_action_deselect_all">എല്ലാം തിരഞ്ഞെടുത്തത് മാറ്റുക</string>
     <string name="clipboard_action_pin">പിൻ</string>
     <string name="clipboard_action_unpin">അൺപിൻ ചെയ്യുക</string>
-    <string name="clipboard_action_edit">എഡിറ്റ് ചെയ്യുക</string>
-    <string name="clipboard_action_delete">ഇല്ലാതാക്കുക</string>
     <string name="clipboard_action_select">തിരഞ്ഞെടുക്കുക</string>
     <string name="clipboard_items_deleted">%1$d ഇനങ്ങൾ ഇല്ലാതാക്കി</string>
     <string name="shift_recapitalizes_word">ഷിഫ്റ്റ് ടൈപ്പ് ചെയ്‌ത പദത്തിൻ്റെ വലിയക്ഷരം മാറ്റുന്നു</string>
     <string name="shift_recapitalizes_word_summary">ചെറിയക്ഷരം, വലിയക്ഷരം, അപ്പർകേസ് (ക്യാപ്സ് ലോക്ക് ഉള്ളത്) എന്നിവയിലൂടെ ഒരു പദചക്രത്തിൻ്റെ അവസാനം ഷിഫ്റ്റ് അമർത്തുക</string>
     <string name="action_back">തിരികെ</string>
-    <string name="action_clear_search">തിരയൽ മായ്‌ക്കുക</string>
     <string name="touchpad_close">ടച്ച്പാഡ് മോഡ് അടയ്ക്കുക</string>
     <string name="text_expander_greeting_morning">സുപ്രഭാതം</string>
     <string name="text_expander_greeting_afternoon">ഗുഡ് ആഫ്റ്റർനൂൺ</string>
@@ -1598,8 +1587,6 @@
     <string name="gif_provider_configured">ക്രമീകരിച്ചു</string>
     <string name="gif_provider_not_configured">API കീ ആവശ്യമാണ്</string>
     <string name="gif_enter_api_key">API കീ നൽകുക</string>
-    <string name="gif_clear_key">ക്ലിയർ</string>
-    <string name="gif_save">സംരക്ഷിക്കുക</string>
     <string name="gif_connecting">ബന്ധിപ്പിക്കുന്നു...</string>
     <string name="gif_api_key_saved">API കീ സംരക്ഷിച്ചു</string>
     <string name="gif_api_key_cleared">API കീ മായ്ച്ചു</string>

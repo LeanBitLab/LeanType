@@ -308,7 +308,7 @@ fun SoundPackDownloadDialog(
                                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
                                                 modifier = Modifier.height(28.dp)
                                             ) {
-                                                Text(stringResource(R.string.button_delete), style = MaterialTheme.typography.labelSmall)
+                                                Text(stringResource(R.string.delete), style = MaterialTheme.typography.labelSmall)
                                             }
                                         }
                                     }
@@ -421,7 +421,7 @@ fun SoundPackDownloadDialog(
                                                     contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp),
                                                     modifier = Modifier.height(28.dp)
                                                 ) {
-                                                    Text(stringResource(R.string.button_download), style = MaterialTheme.typography.labelSmall)
+                                                    Text(stringResource(R.string.download), style = MaterialTheme.typography.labelSmall)
                                                 }
                                             }
                                         }

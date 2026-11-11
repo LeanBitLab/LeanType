@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Inget språk"</string>
     <string name="subtype_emoji">Emoji</string>
     <string name="add">"Lägg till"</string>
-    <string name="remove">"Ta bort"</string>
     <string name="save">"Spara"</string>
     <string name="subtype_locale">"Språk"</string>
     <string name="keyboard_layout_set">"Layout"</string>
@@ -158,7 +157,6 @@
     <string name="hidden_features_title">Beskrivning av dolda funktioner</string>
     <string name="backup_restore_title">Säkerhetskopiering och återställning</string>
     <string name="dialog_close">Stäng</string>
-    <string name="user_dict_add_word_button">Lägg till ett ord</string>
     <string name="language_switch_key_switch_both">Byt båda</string>
     <string name="add_to_personal_dictionary">Lägg till ord i personlig ordbok</string>
     <string name="add_to_personal_dictionary_summary">Använd enhetens personliga ordbok för lagring av inlärda ord</string>

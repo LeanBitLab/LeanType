@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"بدون لغة"</string>
     <string name="subtype_emoji">"الرموز التعبيرية"</string>
     <string name="add">أضف</string>
-    <string name="remove">أزِل</string>
     <string name="save">"حفظ"</string>
     <string name="subtype_locale">"اللغة"</string>
     <string name="keyboard_layout_set">"التخطيط"</string>
@@ -138,7 +137,6 @@
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">دائري</string>
     <string name="localized_number_row">صف الأرقام باللغة المحلية</string>
     <string name="all_colors">أظهِر كافة الألوان</string>
-    <string name="user_dict_add_word_button">أضف كلمة</string>
     <string name="theme_name_brown" tools:keep="@string/theme_name_brown">بنّي</string>
     <string name="theme_name_cloudy" tools:keep="@string/theme_name_cloudy">سحابي</string>
     <string name="theme_name_forest" tools:keep="@string/theme_name_forest">غابة</string>
@@ -749,9 +747,6 @@
     <string name="text_expander_template_title">توسيع القالب</string>
     <string name="text_expander_template_hint" formatted="false">سأعود حالاً! أو بريدي الإلكتروني هو %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">العناصر النائبة السريعة (اضغط للإدراج عند المؤشر):</string>
-    <string name="text_expander_save">حفظ</string>
-    <string name="text_expander_add">إضافة</string>
-    <string name="text_expander_delete">حذف</string>
     <string name="custom_ai_keys_what_are_keywords">ما هي الكلمات المفتاحية؟</string>
     <string name="custom_ai_keys_keywords_description">تعمل الكلمات المفتاحية (مثل #proofread أو #summarize) كتعليمات سريعة للـ AI. حددها عند تكوين مفتاح لتعريف سلوكه. يجب أيضًا إضافة مطالبتك المخصصة لإنشاء المفتاح.</string>
     <string name="custom_ai_keys_show_tags_title">إظهار العلامات على لوحة المفاتيح</string>
@@ -862,7 +857,6 @@
     <string name="voice_status_listening">جار الاستماع… تحدث الآن</string>
     <string name="voice_status_processing">جار المعالجة…</string>
     <string name="voice_action_done">تم</string>
-    <string name="voice_action_cancel">إلغاء</string>
     <string name="voice_provider_title">مزود الإدخال الصوتي</string>
     <string name="voice_provider_summary">حدد كيفية معالجة الإملاء الصوتي</string>
     <string name="voice_provider_offline">إدخال صوتي بلا إنترنت (إضافة)</string>
@@ -1283,9 +1277,7 @@
     <string name="label_all">الكل</string>
     <string name="label_word">كلمة</string>
     <string name="next_step">التالي</string>
-    <string name="button_download">تنزيل</string>
     <string name="button_load_from_file">تحميل من ملف</string>
-    <string name="button_delete">حذف</string>
 <string name="handwriting_plugin_update_available_dialog">يتوفر تحديث لملحق الكتابة اليدوية!
 الإصدار المحلي: %1$s
 أحدث إصدار: %2$s
@@ -1434,14 +1426,11 @@
     <string name="clipboard_action_deselect_all">قم بإلغاء تحديد الكل</string>
     <string name="clipboard_action_pin">دبوس</string>
     <string name="clipboard_action_unpin">إزالة التثبيت</string>
-    <string name="clipboard_action_edit">يحرر</string>
-    <string name="clipboard_action_delete">يمسح</string>
     <string name="clipboard_action_select">يختار</string>
     <string name="clipboard_items_deleted">%1$d العناصر المحذوفة</string>
     <string name="shift_recapitalizes_word">يغير Shift الكتابة بالأحرف الكبيرة للكلمة المكتوبة</string>
     <string name="shift_recapitalizes_word_summary">يؤدي الضغط على مفتاح Shift في نهاية الكلمة إلى الانتقال من الأحرف الصغيرة والأحرف الكبيرة والأحرف الكبيرة (مع قفل الأحرف الكبيرة)</string>
     <string name="action_back">خلف</string>
-    <string name="action_clear_search">مسح البحث</string>
     <string name="touchpad_close">أغلق وضع لوحة اللمس</string>
     <string name="text_expander_greeting_morning">صباح الخير</string>
     <string name="text_expander_greeting_afternoon">مساء الخير</string>
@@ -1555,8 +1544,6 @@
     <string name="gif_provider_configured">تم تكوينه</string>
     <string name="gif_provider_not_configured">مفتاح API مطلوب</string>
     <string name="gif_enter_api_key">أدخل مفتاح API</string>
-    <string name="gif_clear_key">واضح</string>
-    <string name="gif_save">يحفظ</string>
     <string name="gif_connecting">جارٍ الاتصال…</string>
     <string name="gif_api_key_saved">تم حفظ مفتاح API</string>
     <string name="gif_api_key_cleared">تم مسح مفتاح API</string>

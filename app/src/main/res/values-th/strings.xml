@@ -52,7 +52,6 @@
     <string name="subtype_no_language">"ไม่มีภาษา"</string>
     <string name="subtype_emoji">"อีโมจิ"</string>
     <string name="add">"เพิ่ม"</string>
-    <string name="remove">"ลบ"</string>
     <string name="save">"บันทึก"</string>
     <string name="subtype_locale">"ภาษา"</string>
     <string name="keyboard_layout_set">"การจัดวาง"</string>

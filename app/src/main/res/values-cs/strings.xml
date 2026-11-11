@@ -52,7 +52,6 @@
     <string name="subtype_no_language">standardní</string>
     <string name="subtype_emoji">"Emodži"</string>
     <string name="add">"Přidat"</string>
-    <string name="remove">"Odebrat"</string>
     <string name="save">"Uložit"</string>
     <string name="subtype_locale">"Jazyk"</string>
     <string name="keyboard_layout_set">Rozložení</string>
@@ -248,7 +247,6 @@
     <string name="subtype_generic_sebeolsik_390">%s (Sebeolsik 390)</string>
     <string name="subtype_generic_sebeolsik_final">%s (Sebeolsik Final)</string>
     <string name="button_load_custom">Načíst soubor</string>
-    <string name="user_dict_add_word_button">Přidat slovo</string>
     <string name="theme_name_light" tools:keep="@string/theme_name_light">Světlý</string>
     <string name="theme_name_holo_white" tools:keep="@string/theme_name_holo_white">Holo bílá</string>
     <string name="theme_name_dark" tools:keep="@string/theme_name_dark">Tmavý</string>
@@ -615,7 +613,6 @@
     <string name="voice_status_listening">Poslouchám… mluvte nyní</string>
     <string name="voice_status_processing">Zpracovávání…</string>
     <string name="voice_action_done">Hotovo</string>
-    <string name="voice_action_cancel">Zrušit</string>
     <string name="voice_provider_title">Poskytovatel hlasového vstupu</string>
     <string name="voice_provider_summary">Vybrat, jak je zpracováván hlasový přepis</string>
     <string name="voice_provider_offline">Offline hlasový vstup (Plugin)</string>
@@ -881,9 +878,6 @@
     <string name="text_expander_template_title">Rozbalení šablony</string>
     <string name="text_expander_template_hint" formatted="false">Hned jsem zpět! nebo Můj e-mail je %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Rychlé zástupné symboly (klepnutím vložíte na pozici kurzoru):</string>
-    <string name="text_expander_save">Uložit</string>
-    <string name="text_expander_add">Přidat</string>
-    <string name="text_expander_delete">Smazat</string>
     <string name="custom_ai_keys_what_are_keywords">Co jsou klíčová slova?</string>
     <string name="custom_ai_keys_keywords_description">Klíčová slova (jako #proofread nebo #summarize) fungují jako rychlé pokyny pro AI. Vyberte je při konfiguraci klávesy pro definování jejího chování. Musíte také přidat vlastní prompt pro vytvoření klávesy.</string>
     <string name="custom_ai_keys_show_tags_title">Zobrazit štítky na klávesnici</string>
@@ -1218,9 +1212,7 @@ Varování: načítání externího kódu může představovat bezpečnostní ri
     <string name="label_all">Vše</string>
     <string name="label_word">Slovo</string>
     <string name="next_step">Další</string>
-    <string name="button_download">Stáhnout</string>
     <string name="button_load_from_file">Načíst ze souboru</string>
-    <string name="button_delete">Smazat</string>
 <string name="handwriting_plugin_update_available_dialog">Je k dispozici aktualizace pluginu pro psaní rukou!
 Místní verze: %1$s
 Nejnovější verze: %2$s
@@ -1376,14 +1368,11 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="clipboard_action_deselect_all">Zrušte výběr všech</string>
     <string name="clipboard_action_pin">Kolík</string>
     <string name="clipboard_action_unpin">Odepnout</string>
-    <string name="clipboard_action_edit">Upravit</string>
-    <string name="clipboard_action_delete">Vymazat</string>
     <string name="clipboard_action_select">Vybrat</string>
     <string name="clipboard_items_deleted">Počet smazaných položek: %1$d</string>
     <string name="shift_recapitalizes_word">Shift změní velká písmena napsaného slova</string>
     <string name="shift_recapitalizes_word_summary">Stisknutím Shift na konci slova se střídají malá písmena, velká a VELKÁ PÍSMENA (s caps lock)</string>
     <string name="action_back">Zadní</string>
-    <string name="action_clear_search">Vymazat vyhledávání</string>
     <string name="touchpad_close">Zavřete režim touchpadu</string>
     <string name="text_expander_greeting_morning">Dobré ráno</string>
     <string name="text_expander_greeting_afternoon">Dobré odpoledne</string>
@@ -1497,8 +1486,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="gif_provider_configured">Nakonfigurováno</string>
     <string name="gif_provider_not_configured">Je vyžadován klíč API</string>
     <string name="gif_enter_api_key">Zadejte klíč API</string>
-    <string name="gif_clear_key">Jasný</string>
-    <string name="gif_save">Uložit</string>
     <string name="gif_connecting">Spojovací…</string>
     <string name="gif_api_key_saved">Klíč API byl uložen</string>
     <string name="gif_api_key_cleared">Klíč API vymazán</string>

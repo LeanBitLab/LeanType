@@ -358,8 +358,6 @@
     <string name="clipboard_action_deselect_all">Deselect all</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Unpin</string>
-    <string name="clipboard_action_edit">Edit</string>
-    <string name="clipboard_action_delete">Delete</string>
     <string name="clipboard_action_select">Select</string>
     <string name="clipboard_items_deleted">%1$d items deleted</string>
     <!-- Preferences item for enabling swipe deletion -->
@@ -635,7 +633,6 @@
     <string name="voice_status_listening">Listening… speak now</string>
     <string name="voice_status_processing">Processing…</string>
     <string name="voice_action_done">Done</string>
-    <string name="voice_action_cancel">Cancel</string>
     <string name="pref_voice_auto_retry_title">Auto-retry failed voice typing</string>
     <string name="pref_voice_auto_retry_summary">Automatically retry transcription when a temporary network dropout occurs</string>
     <string name="voice_no_internet_warning">No internet connection</string>
@@ -1004,7 +1001,6 @@ language, hence "No language". -->
     <!-- Title of the button to add custom style entry in the settings dialog. Preferably 10 characters or less. -->
     <string name="add">Add</string>
     <!-- Title of the button to remove a custom style entry in the settings dialog. Preferably 10 characters or less. -->
-    <string name="remove">Remove</string>
     <!-- Title of the button to save a custom style entry in the settings dialog. Preferably 10 characters or less. -->
     <string name="save">Save</string>
     <string name="edit">Edit</string>
@@ -1268,7 +1264,6 @@ New dictionary:
     <!-- Message in user dictionary dialog -->
     <string name="user_dict_word_already_present">This word is already present in the %s user dictionary. Please type another one.</string>
     <!-- User dictionary settings. Text button to add a word -->
-    <string name="user_dict_add_word_button">Add a word</string>
     <string name="user_dict_clear_all_confirmation">Are you sure you want to clear all words from this dictionary?</string>
     <!-- User dictionary sort options -->
     <string name="user_dict_sort_title">Sort by</string>
@@ -1629,7 +1624,6 @@ New dictionary:
     <!-- Title of the setting to swipe down on toolbar to dismiss keyboard -->
     <string name="toolbar_swipe_down_dismiss">Swipe down to close</string>
     <string name="action_back" tools:ignore="MissingTranslation">Back</string>
-    <string name="action_clear_search" tools:ignore="MissingTranslation">Clear search</string>
     <string name="touchpad_close" tools:ignore="MissingTranslation">Close touchpad mode</string>
     <!-- Description of the setting for swiping down on toolbar to dismiss keyboard -->
     <string name="toolbar_swipe_up_gesture">Toolbar swipe up gesture</string>
@@ -1785,9 +1779,6 @@ New dictionary:
     <string name="text_expander_template_title">Template Expansion</string>
     <string name="text_expander_template_hint" formatted="false">Be right back! or My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Quick Placeholders (tap to insert at cursor):</string>
-    <string name="text_expander_save">Save</string>
-    <string name="text_expander_add">Add</string>
-    <string name="text_expander_delete">Delete</string>
     <string name="text_expander_attach_image">Attach photo or image</string>
     <string name="text_expander_attach_image_desc">Select a photo, diagram, or image from storage</string>
     <string name="text_expander_change_image">Change photo</string>
@@ -2168,9 +2159,7 @@ New dictionary:
     <string name="label_all">All</string>
     <string name="label_word">Word</string>
     <string name="next_step">Next</string>
-    <string name="button_download">Download</string>
     <string name="button_load_from_file">Load from file</string>
-    <string name="button_delete">Delete</string>
 
     <!-- Plugins Dialogs and Actions -->
     <string name="handwriting_plugin_update_available_dialog">An update is available for the handwriting plugin!\nLocal version: %1$s\nLatest version: %2$s\n\nDo you want to download and update?</string>
@@ -2423,8 +2412,6 @@ New dictionary:
     <string name="gif_provider_configured">Configured</string>
     <string name="gif_provider_not_configured">API key required</string>
     <string name="gif_enter_api_key">Enter API key</string>
-    <string name="gif_clear_key">Clear</string>
-    <string name="gif_save">Save</string>
     <string name="gif_connecting">Connecting…</string>
     <string name="gif_api_key_saved">API key saved</string>
     <string name="gif_api_key_cleared">API key cleared</string>

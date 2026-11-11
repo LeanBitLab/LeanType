@@ -51,7 +51,6 @@
     <string name="subtype_no_language">言語なし（アルファベット）</string>
     <string name="subtype_emoji">"絵文字"</string>
     <string name="add">"追加"</string>
-    <string name="remove">"削除"</string>
     <string name="save">"保存"</string>
     <string name="subtype_locale">"言語"</string>
     <string name="keyboard_layout_set">"レイアウト"</string>

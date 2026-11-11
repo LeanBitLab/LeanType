@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Aucune langue"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Ajouter"</string>
-    <string name="remove">"Supprimer"</string>
     <string name="save">"Enregistrer"</string>
     <string name="subtype_locale">"Langue"</string>
     <string name="keyboard_layout_set">"Disposition"</string>

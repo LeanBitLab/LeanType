@@ -61,7 +61,6 @@
     <string name="subtype_no_language">"Aucune langue"</string>
     <string name="subtype_emoji">Émoji</string>
     <string name="add">"Ajouter"</string>
-    <string name="remove">"Supprimer"</string>
     <string name="save">"Enregistrer"</string>
     <string name="subtype_locale">"Langue"</string>
     <string name="keyboard_layout_set">"Disposition"</string>
@@ -123,7 +122,6 @@ Nouveau dictionnaire:
     <string name="user_dict_settings_edit_dialog_title">"Modifier le mot"</string>
     <string name="user_dict_settings_all_languages">"Pour toutes les langues"</string>
     <string name="user_dict_word_already_present">Ce mot est déjà présent dans le dictionnaire utilisateur %s. Veuillez en saisir un autre.</string>
-    <string name="user_dict_add_word_button">Ajouter un mot</string>
     <string name="spell_checker_service_name">Correcteur orthographique LeanType</string>
     <string name="android_spell_checker_settings">Paramètres du correcteur orthographique LeanType</string>
     <string name="number_row">Ligne de chiffres</string>
@@ -748,9 +746,6 @@ Nouveau dictionnaire:
     <string name="text_expander_template_title">Expansion du modèle</string>
     <string name="text_expander_template_hint" formatted="false">Je reviens tout de suite ! ou Mon email est %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Espaces réservés rapides (appuyez pour insérer au curseur) :</string>
-    <string name="text_expander_save">Enregistrer</string>
-    <string name="text_expander_add">Ajouter</string>
-    <string name="text_expander_delete">Supprimer</string>
     <string name="custom_ai_keys_what_are_keywords">Que sont les mots-clés ?</string>
     <string name="custom_ai_keys_keywords_description">Les mots-clés (comme #proofread ou #summarize) agissent comme des instructions rapides pour l\'AI. Sélectionnez-les lors de la configuration d\'une touche pour définir son comportement. Vous devez également ajouter votre propre invite personnalisée pour créer la touche.</string>
     <string name="custom_ai_keys_show_tags_title">Afficher les étiquettes sur le clavier</string>
@@ -861,7 +856,6 @@ Nouveau dictionnaire:
     <string name="voice_status_listening">Écoute en cours… parlez maintenant</string>
     <string name="voice_status_processing">Traitement en cours…</string>
     <string name="voice_action_done">Terminé</string>
-    <string name="voice_action_cancel">Annuler</string>
     <string name="voice_provider_title">Fournisseur de saisie vocale</string>
     <string name="voice_provider_summary">Sélectionner le mode de traitement de la dictée vocale</string>
     <string name="voice_provider_offline">Saisie vocale hors ligne (Plugin)</string>
@@ -1282,9 +1276,7 @@ Nouveau dictionnaire:
     <string name="label_all">Tout</string>
     <string name="label_word">Mot</string>
     <string name="next_step">Suivant</string>
-    <string name="button_download">Télécharger</string>
     <string name="button_load_from_file">Charger depuis un fichier</string>
-    <string name="button_delete">Supprimer</string>
 <string name="handwriting_plugin_update_available_dialog">Une mise à jour est disponible pour le plugin d\'écriture manuscrite !
 Version locale : %1$s
 Dernière version : %2$s
@@ -1433,14 +1425,11 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="clipboard_action_deselect_all">Tout désélectionner</string>
     <string name="clipboard_action_pin">Épingler</string>
     <string name="clipboard_action_unpin">Désépingler</string>
-    <string name="clipboard_action_edit">Modifier</string>
-    <string name="clipboard_action_delete">Supprimer</string>
     <string name="clipboard_action_select">Sélectionner</string>
     <string name="clipboard_items_deleted">%1$d éléments supprimés</string>
     <string name="shift_recapitalizes_word">Shift modifie la majuscule du mot tapé</string>
     <string name="shift_recapitalizes_word_summary">Appuyer sur Maj à la fin d\'un mot fait défiler les minuscules, les majuscules et les majuscules (avec verrouillage des majuscules)</string>
     <string name="action_back">Dos</string>
-    <string name="action_clear_search">Effacer la recherche</string>
     <string name="touchpad_close">Fermer le mode pavé tactile</string>
     <string name="text_expander_greeting_morning">Bonjour</string>
     <string name="text_expander_greeting_afternoon">Bon après-midi</string>
@@ -1554,8 +1543,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="gif_provider_configured">Configuré</string>
     <string name="gif_provider_not_configured">Clé API requise</string>
     <string name="gif_enter_api_key">Saisissez la clé API</string>
-    <string name="gif_clear_key">Clair</string>
-    <string name="gif_save">Sauvegarder</string>
     <string name="gif_connecting">De liaison…</string>
     <string name="gif_api_key_saved">Clé API enregistrée</string>
     <string name="gif_api_key_cleared">Clé API effacée</string>

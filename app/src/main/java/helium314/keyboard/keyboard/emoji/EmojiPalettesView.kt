@@ -527,7 +527,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             updateSplitToolbarEmojiSuggestions()
         } else if (sDictionaryFacilitator == null) {
             val downloadBtn = Button(ctx)
-            downloadBtn.text = ctx.getString(R.string.button_download)
+            downloadBtn.text = ctx.getString(R.string.download)
             downloadBtn.textSize = 12f
             downloadBtn.isAllCaps = false
             downloadBtn.setOnClickListener {
@@ -1402,7 +1402,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
         mDownloadBtn?.let { btn ->
             if (!mIsDownloadingEmojiDict) {
-                btn.text = context.getString(R.string.button_download)
+                btn.text = context.getString(R.string.download)
             }
         }
         if (Settings.getValues().mSplitToolbar) {

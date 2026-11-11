@@ -53,7 +53,6 @@
     <string name="subtype_no_language">"No language"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Add"</string>
-    <string name="remove">"Remove"</string>
     <string name="save">"Save"</string>
     <string name="subtype_locale">"Language"</string>
     <string name="keyboard_layout_set">"Layout"</string>

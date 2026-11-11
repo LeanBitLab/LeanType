@@ -359,7 +359,7 @@ fun GifSettingsScreen(
                                 contentColor = MaterialTheme.colorScheme.error
                             )
                         ) {
-                            Text(stringResource(R.string.gif_clear_key))
+                            Text(stringResource(R.string.storage_button_clear))
                         }
                     }
                     if (provider.configured) {
@@ -411,7 +411,7 @@ fun GifSettingsScreen(
                             },
                             enabled = credentialInput.isNotBlank()
                         ) {
-                            Text(stringResource(R.string.gif_save))
+                            Text(stringResource(R.string.save))
                         }
                     }
                 }

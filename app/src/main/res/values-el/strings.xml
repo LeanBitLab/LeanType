@@ -52,7 +52,6 @@
     <string name="subtype_no_language">"Καμία γλώσσα"</string>
     <string name="subtype_emoji">"Emoticon"</string>
     <string name="add">"Προσθήκη"</string>
-    <string name="remove">"Κατάργηση"</string>
     <string name="save">"Αποθήκευση"</string>
     <string name="subtype_locale">"Γλώσσα"</string>
     <string name="keyboard_layout_set">"Διάταξη"</string>
@@ -553,7 +552,6 @@
     <string name="dictionary_load_error">"Σφάλμα φόρτωσης αρχείου λεξικού"</string>
     <string name="user_dict_settings_add_weight_value">Βάρος:</string>
     <string name="user_dict_word_already_present">Αυτή η λέξη υπάρχει ήδη στο λεξικό χρήστη %s. Πληκτρολογήστε μια άλλη.</string>
-    <string name="user_dict_add_word_button">Προσθήκη λέξης</string>
     <string name="user_dict_clear_all_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις λέξεις από αυτό το λεξικό;</string>
     <string name="theme_style">Στυλ</string>
     <string name="icon_style">Στυλ εικονιδίου</string>
@@ -783,9 +781,6 @@
     <string name="text_expander_template_title">Επέκταση Προτύπου</string>
     <string name="text_expander_template_hint" formatted="false">Be right back! ή My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Γρήγορα Σύμβολα Κράτησης Θέσης (πατήστε για εισαγωγή στον δρομέα):</string>
-    <string name="text_expander_save">Αποθήκευση</string>
-    <string name="text_expander_add">Προσθήκη</string>
-    <string name="text_expander_delete">Διαγραφή</string>
     <string name="custom_ai_keys_what_are_keywords">Τι είναι οι Λέξεις-Κλειδιά;</string>
     <string name="custom_ai_keys_keywords_description">Οι λέξεις-κλειδιά (όπως #proofread ή #summarize) λειτουργούν ως γρήγορες οδηγίες για το AI. Επιλέξτε τις κατά τη διαμόρφωση ενός πλήκτρου για να καθορίσετε τη συμπεριφορά του. Πρέπει επίσης να προσθέσετε τη δική σας προσαρμοσμένη προτροπή για να δημιουργήσετε το πλήκτρο.</string>
     <string name="custom_ai_keys_show_tags_title">Εμφάνιση ετικετών στο πληκτρολόγιο</string>
@@ -896,7 +891,6 @@
     <string name="voice_status_listening">Ακρόαση… μιλήστε τώρα</string>
     <string name="voice_status_processing">Επεξεργασία…</string>
     <string name="voice_action_done">Τέλος</string>
-    <string name="voice_action_cancel">Ακύρωση</string>
     <string name="voice_provider_title">Πάροχος φωνητικής εισαγωγής</string>
     <string name="voice_provider_summary">Επιλέξτε τον τρόπο επεξεργασίας της φωνητικής υπαγόρευσης</string>
     <string name="voice_provider_offline">Φωνητική εισαγωγή εκτός σύνδεσης (Πρόσθετο)</string>
@@ -1326,9 +1320,7 @@
     <string name="label_all">Όλα</string>
     <string name="label_word">Λέξη</string>
     <string name="next_step">Επόμενο</string>
-    <string name="button_download">Λήψη</string>
     <string name="button_load_from_file">Φόρτωση από αρχείο</string>
-    <string name="button_delete">Διαγραφή</string>
 <string name="handwriting_plugin_update_available_dialog">Υπάρχει διαθέσιμη ενημέρωση για το πρόσθετο χειρόγραφης γραφής!
 Τοπική έκδοση: %1$s
 Τελευταία έκδοση: %2$s
@@ -1477,14 +1469,11 @@
     <string name="clipboard_action_deselect_all">Αποεπιλογή όλων</string>
     <string name="clipboard_action_pin">Καρφίτσα</string>
     <string name="clipboard_action_unpin">Ξεκαρφιτσώνω</string>
-    <string name="clipboard_action_edit">Εκδίδω</string>
-    <string name="clipboard_action_delete">Διαγράφω</string>
     <string name="clipboard_action_select">Επιλέγω</string>
     <string name="clipboard_items_deleted">%1$d στοιχεία διαγράφηκαν</string>
     <string name="shift_recapitalizes_word">Το Shift αλλάζει την κεφαλαιοποίηση της πληκτρολογημένης λέξης</string>
     <string name="shift_recapitalizes_word_summary">Πατώντας το shift στο τέλος μιας λέξης γίνεται κύκλος μεταξύ πεζών, κεφαλαίων και κεφαλαίων (με κλείδωμα κεφαλαίων)</string>
     <string name="action_back">Πίσω</string>
-    <string name="action_clear_search">Εκκαθάριση αναζήτησης</string>
     <string name="touchpad_close">Κλείστε τη λειτουργία επιφάνειας αφής</string>
     <string name="text_expander_greeting_morning">Καλημέρα</string>
     <string name="text_expander_greeting_afternoon">Καλημέρα</string>
@@ -1598,8 +1587,6 @@
     <string name="gif_provider_configured">Διαμόρφωση</string>
     <string name="gif_provider_not_configured">Απαιτείται κλειδί API</string>
     <string name="gif_enter_api_key">Εισαγάγετε το κλειδί API</string>
-    <string name="gif_clear_key">Σαφής</string>
-    <string name="gif_save">Εκτός</string>
     <string name="gif_connecting">Συνδετικός…</string>
     <string name="gif_api_key_saved">Το κλειδί API αποθηκεύτηκε</string>
     <string name="gif_api_key_cleared">Το κλειδί API διαγράφηκε</string>

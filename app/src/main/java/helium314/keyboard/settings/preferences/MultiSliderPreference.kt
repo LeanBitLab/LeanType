@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.settings.createPrefKeyForBooleanSettings
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.DefaultButton
 import helium314.keyboard.settings.Theme
 import helium314.keyboard.settings.WithSmallTitle
 import helium314.keyboard.settings.dialogs.ThreeButtonAlertDialog
@@ -154,7 +155,7 @@ private fun MultiSliderDialog(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(positionString(sliderPosition))
-                                    TextButton({ sliderPosition = defaultValues[i] }) { Text(stringResource(R.string.button_default)) }
+                                    DefaultButton(sliderPosition == defaultValues[i]) { sliderPosition = defaultValues[i] }
                                 }
                                 Spacer(Modifier.height(6.dp))
                             }

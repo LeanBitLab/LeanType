@@ -52,7 +52,6 @@
     <string name="subtype_no_language">Стандартна</string>
     <string name="subtype_emoji">Емоджі</string>
     <string name="add">Додати</string>
-    <string name="remove">Видалити</string>
     <string name="save">Зберегти</string>
     <string name="subtype_locale">Мова</string>
     <string name="keyboard_layout_set">Розкладка</string>
@@ -271,7 +270,6 @@
     <string name="dictionary_load_error">Помилка завантаження файлу словника</string>
     <string name="user_dict_settings_add_weight_value">Вага:</string>
     <string name="user_dict_word_already_present">Це слово вже є у словнику користувача %s. Будь ласка, введіть інше.</string>
-    <string name="user_dict_add_word_button">Додати слово</string>
     <string name="select_color_gesture">Введення жестами</string>
     <string name="save_log">Зберегти журнал</string>
     <string name="show_horizontal_space_swipe">Горизонтальний свайп по пробілу</string>
@@ -609,7 +607,6 @@
     <string name="voice_status_listening">Слухаю… говоріть зараз</string>
     <string name="voice_status_processing">Обробка…</string>
     <string name="voice_action_done">Готово</string>
-    <string name="voice_action_cancel">Скасувати</string>
     <string name="voice_provider_title">Провайдер голосового введення</string>
     <string name="voice_provider_summary">Виберіть, як обробляється голосове диктування</string>
     <string name="voice_provider_offline">Офлайн голосове введення (плагін)</string>
@@ -881,9 +878,6 @@
     <string name="text_expander_template_title">Розгортання шаблону</string>
     <string name="text_expander_template_hint" formatted="false">Зараз повернусь! або Моя електронна пошта %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Швидкі заповнювачі (натисніть, щоб вставити в позицію курсора):</string>
-    <string name="text_expander_save">Зберегти</string>
-    <string name="text_expander_add">Додати</string>
-    <string name="text_expander_delete">Видалити</string>
     <string name="custom_ai_keys_what_are_keywords">Що таке ключові слова?</string>
     <string name="custom_ai_keys_keywords_description">Ключові слова (наприклад, #proofread або #summarize) діють як швидкі інструкції для AI. Виберіть їх під час налаштування клавіші, щоб визначити її поведінку. Ви також повинні додати власний користувацький промпт, щоб створити клавішу.</string>
     <string name="custom_ai_keys_show_tags_title">Показувати теги на клавіатурі</string>
@@ -1218,9 +1212,7 @@
     <string name="label_all">Всі</string>
     <string name="label_word">Слово</string>
     <string name="next_step">Далі</string>
-    <string name="button_download">Завантажити</string>
     <string name="button_load_from_file">Завантажити з файлу</string>
-    <string name="button_delete">Видалити</string>
 <string name="handwriting_plugin_update_available_dialog">Доступне оновлення для плагіна рукописного введення!
 Локальна версія: %1$s
 Остання версія: %2$s
@@ -1376,14 +1368,11 @@
     <string name="clipboard_action_deselect_all">Зняти вибір із усіх</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Відкріпити</string>
-    <string name="clipboard_action_edit">Редагувати</string>
-    <string name="clipboard_action_delete">Видалити</string>
     <string name="clipboard_action_select">Виберіть</string>
     <string name="clipboard_items_deleted">%1$d елементів видалено</string>
     <string name="shift_recapitalizes_word">Shift змінює великі літери у введеному слові</string>
     <string name="shift_recapitalizes_word_summary">Натискання Shift у кінці слова циклічно перемикається між малими, великими та ВЕРХНИМИ літерами (з Caps Lock)</string>
     <string name="action_back">Назад</string>
-    <string name="action_clear_search">Очистити пошук</string>
     <string name="touchpad_close">Закрийте режим сенсорної панелі</string>
     <string name="text_expander_greeting_morning">доброго ранку</string>
     <string name="text_expander_greeting_afternoon">доброго дня</string>
@@ -1497,8 +1486,6 @@
     <string name="gif_provider_configured">Налаштовано</string>
     <string name="gif_provider_not_configured">Потрібен ключ API</string>
     <string name="gif_enter_api_key">Введіть ключ API</string>
-    <string name="gif_clear_key">ясно</string>
-    <string name="gif_save">зберегти</string>
     <string name="gif_connecting">Підключення…</string>
     <string name="gif_api_key_saved">Ключ API збережено</string>
     <string name="gif_api_key_cleared">Ключ API видалено</string>

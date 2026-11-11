@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Nenhum idioma"</string>
     <string name="subtype_emoji">"Emojis"</string>
     <string name="add">"Adicionar"</string>
-    <string name="remove">"Remover"</string>
     <string name="save">"Salvar"</string>
     <string name="subtype_locale">"Idioma"</string>
     <string name="keyboard_layout_set">"Layout"</string>
@@ -333,7 +332,6 @@
     <string name="more_colors">Mostrar mais cores</string>
     <string name="theme_name_light" tools:keep="@string/theme_name_light">Claro</string>
     <string name="main_colors">Mostrar apenas cores principais</string>
-    <string name="user_dict_add_word_button">Adicionar uma palavra</string>
     <string name="theme_style">Estilo</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Arredondado</string>
     <string name="theme_colors">Cores</string>
@@ -742,9 +740,6 @@
     <string name="text_expander_template_title">Expansão de Modelo</string>
     <string name="text_expander_template_hint" formatted="false">Volto já! ou O meu email é %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Espaços Reservados Rápidos (toque para inserir no cursor):</string>
-    <string name="text_expander_save">Guardar</string>
-    <string name="text_expander_add">Adicionar</string>
-    <string name="text_expander_delete">Eliminar</string>
     <string name="custom_ai_keys_what_are_keywords">O que são Palavras-chave?</string>
     <string name="custom_ai_keys_keywords_description">Palavras-chave (como #proofread ou #summarize) atuam como instruções rápidas para a AI. Selecione-as ao configurar uma tecla para definir o seu comportamento. Também deve adicionar o seu próprio prompt personalizado para criar a tecla.</string>
     <string name="custom_ai_keys_show_tags_title">Mostrar etiquetas no teclado</string>
@@ -855,7 +850,6 @@
     <string name="voice_status_listening">Ouvindo… fale agora</string>
     <string name="voice_status_processing">Processando…</string>
     <string name="voice_action_done">Concluído</string>
-    <string name="voice_action_cancel">Cancelar</string>
     <string name="voice_provider_title">Provedor de entrada de voz</string>
     <string name="voice_provider_summary">Selecionar como o ditado de voz é processado</string>
     <string name="voice_provider_offline">Entrada por voz offline (Plugin)</string>
@@ -1284,9 +1278,7 @@ Aviso: carregar código externo pode constituir um risco de segurança. Utilize 
     <string name="label_all">Tudo</string>
     <string name="label_word">Palavra</string>
     <string name="next_step">Seguinte</string>
-    <string name="button_download">Transferir</string>
     <string name="button_load_from_file">Carregar a partir de ficheiro</string>
-    <string name="button_delete">Eliminar</string>
 <string name="handwriting_plugin_update_available_dialog">Há uma atualização disponível para o plug-in de escrita manual!
 Versão local: %1$s
 Última versão: %2$s
@@ -1435,14 +1427,11 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="clipboard_action_deselect_all">Desmarcar tudo</string>
     <string name="clipboard_action_pin">Fixar</string>
     <string name="clipboard_action_unpin">Desafixar</string>
-    <string name="clipboard_action_edit">Editar</string>
-    <string name="clipboard_action_delete">Excluir</string>
     <string name="clipboard_action_select">Selecione</string>
     <string name="clipboard_items_deleted">%1$d itens excluídos</string>
     <string name="shift_recapitalizes_word">Shift altera a capitalização da palavra digitada</string>
     <string name="shift_recapitalizes_word_summary">Pressionar shift no final de uma palavra alterna entre letras minúsculas, maiúsculas e maiúsculas (com caps lock)</string>
     <string name="action_back">Voltar</string>
-    <string name="action_clear_search">Limpar pesquisa</string>
     <string name="touchpad_close">Fechar modo touchpad</string>
     <string name="text_expander_greeting_morning">Bom dia</string>
     <string name="text_expander_greeting_afternoon">Boa tarde</string>
@@ -1556,8 +1545,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="gif_provider_configured">Configurado</string>
     <string name="gif_provider_not_configured">Chave de API necessária</string>
     <string name="gif_enter_api_key">Insira a chave API</string>
-    <string name="gif_clear_key">Claro</string>
-    <string name="gif_save">Salvar</string>
     <string name="gif_connecting">Conectando…</string>
     <string name="gif_api_key_saved">Chave de API salva</string>
     <string name="gif_api_key_cleared">Chave de API apagada</string>

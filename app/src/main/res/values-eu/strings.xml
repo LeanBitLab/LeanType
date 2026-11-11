@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Ez dago hizkuntzarik"</string>
     <string name="subtype_emoji">"Emojiak"</string>
     <string name="add">"Gehitu"</string>
-    <string name="remove">"Kendu"</string>
     <string name="save">"Gorde"</string>
     <string name="subtype_locale">"Hizkuntza"</string>
     <string name="keyboard_layout_set">"Diseinua"</string>
@@ -236,7 +235,6 @@
     <string name="dictionary_file_wrong_script">Errorea: script-a ez da bateragarria teklatu honekin</string>
     <string name="dictionary_load_error">Errore bat gertatu da hiztegi-fitxategia kargatzean</string>
     <string name="user_dict_word_already_present">Hitz hau %s erabiltzailearen hiztegian dago jada. Mesedez, idatzi beste bat.</string>
-    <string name="user_dict_add_word_button">Gehitu hitz bat</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Borobildua</string>
     <string name="theme_colors">Koloreak</string>
     <string name="theme_colors_night">Koloreak (gauekoak)</string>

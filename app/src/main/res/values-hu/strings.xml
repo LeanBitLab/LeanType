@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Nincs nyelv"</string>
     <string name="subtype_emoji">Emodzsi</string>
     <string name="add">"Hozzáadás"</string>
-    <string name="remove">"Eltávolítás"</string>
     <string name="save">"Mentés"</string>
     <string name="subtype_locale">"Nyelv"</string>
     <string name="keyboard_layout_set">"Elrendezés"</string>
@@ -234,7 +233,6 @@
     <string name="dictionary_link_text">itt</string>
     <string name="available_dictionary_experimental">%s (kísérleti)</string>
     <string name="user_dict_settings_add_weight_value">Súly:</string>
-    <string name="user_dict_add_word_button">Szó hozzáadása</string>
     <string name="theme_style">Stílus</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Lekerekített</string>
     <string name="theme_colors_night">Színek (éjszakai)</string>
@@ -613,7 +611,6 @@
     <string name="voice_status_listening">Hallgatás… beszéljen most</string>
     <string name="voice_status_processing">Feldolgozás…</string>
     <string name="voice_action_done">Kész</string>
-    <string name="voice_action_cancel">Mégse</string>
     <string name="voice_provider_title">Hangbeviteli szolgáltató</string>
     <string name="voice_provider_summary">Válassza ki, hogyan dolgozza fel a hangdiktálást</string>
     <string name="voice_provider_offline">Offline hangbevitel (bővítmény)</string>
@@ -879,9 +876,6 @@
     <string name="text_expander_template_title">Sablon kibontása</string>
     <string name="text_expander_template_hint" formatted="false">Mindjárt jövök! vagy Az e-mail címem %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Gyors helyőrzők (koppintson a kurzorhoz való beszúráshoz):</string>
-    <string name="text_expander_save">Mentés</string>
-    <string name="text_expander_add">Hozzáadás</string>
-    <string name="text_expander_delete">Törlés</string>
     <string name="custom_ai_keys_what_are_keywords">Mik azok a kulcsszavak?</string>
     <string name="custom_ai_keys_keywords_description">A kulcsszavak (mint a #proofread vagy a #summarize) gyors utasításokként működnek az AI számára. Válassza ki őket egy billentyű konfigurálásakor a viselkedésének meghatározásához. Saját egyéni promptot is hozzá kell adnia a billentyű létrehozásához.</string>
     <string name="custom_ai_keys_show_tags_title">Címkék megjelenítése a billentyűzeten</string>
@@ -1216,9 +1210,7 @@ Figyelem: külső kód betöltése biztonsági kockázatot jelenthet. Csak megb�
     <string name="label_all">Összes</string>
     <string name="label_word">Szó</string>
     <string name="next_step">Tovább</string>
-    <string name="button_download">Letöltés</string>
     <string name="button_load_from_file">Betöltés fájlból</string>
-    <string name="button_delete">Törlés</string>
 <string name="handwriting_plugin_update_available_dialog">Frissítés érhető el a kézírás-bővítményhez!
 Helyi verzió: %1$s
 Legújabb verzió: %2$s
@@ -1374,14 +1366,11 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="clipboard_action_deselect_all">Törölje az összes kijelölését</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Kibont</string>
-    <string name="clipboard_action_edit">Szerkesztés</string>
-    <string name="clipboard_action_delete">Töröl</string>
     <string name="clipboard_action_select">Válassza ki</string>
     <string name="clipboard_items_deleted">%1$d elem törölve</string>
     <string name="shift_recapitalizes_word">A Shift megváltoztatja a beírt szó nagybetűit</string>
     <string name="shift_recapitalizes_word_summary">A szó végén a Shift megnyomása váltogatja a kisbetűket, a nagybetűket és a NAGYBETŐKET (nagybetűkkel)</string>
     <string name="action_back">Vissza</string>
-    <string name="action_clear_search">Keresés törlése</string>
     <string name="touchpad_close">Az érintőpad mód bezárása</string>
     <string name="text_expander_greeting_morning">Jó reggelt</string>
     <string name="text_expander_greeting_afternoon">Jó napot</string>
@@ -1495,8 +1484,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="gif_provider_configured">Beállítva</string>
     <string name="gif_provider_not_configured">API-kulcs szükséges</string>
     <string name="gif_enter_api_key">Írja be az API kulcsot</string>
-    <string name="gif_clear_key">Világos</string>
-    <string name="gif_save">Megtakarítás</string>
     <string name="gif_connecting">Csatlakozás…</string>
     <string name="gif_api_key_saved">API-kulcs mentve</string>
     <string name="gif_api_key_cleared">API-kulcs törölve</string>

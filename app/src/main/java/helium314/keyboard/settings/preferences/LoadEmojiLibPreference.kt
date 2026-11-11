@@ -217,7 +217,7 @@ fun LoadEmojiLibPreference(
                             onClick = { startDownload() },
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(stringResource(R.string.button_download))
+                            Text(stringResource(R.string.download))
                         }
                         OutlinedButton(
                             onClick = {
@@ -244,7 +244,7 @@ fun LoadEmojiLibPreference(
                                 ),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text(stringResource(R.string.button_delete))
+                                Text(stringResource(R.string.delete))
                             }
                         }
                     }

@@ -231,7 +231,7 @@ fun StorageScreen(
             content = {
                 Text(stringResource(R.string.storage_delete_confirm_message, typeLabel, targetItem.name, StorageManagerHelper.formatBytes(context, targetItem.sizeBytes)))
             },
-            confirmButtonText = stringResource(R.string.button_delete)
+            confirmButtonText = stringResource(R.string.delete)
         )
     }
 

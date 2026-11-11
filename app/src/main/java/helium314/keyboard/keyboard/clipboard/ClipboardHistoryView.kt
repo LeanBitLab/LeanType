@@ -683,7 +683,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
             colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
-            contentDescription = context.getString(R.string.voice_action_cancel)
+            contentDescription = context.getString(android.R.string.cancel)
             setOnClickListener { stopSelectionMode() }
         }
         clipboardStrip.addView(closeButton)
@@ -744,7 +744,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
             colors.setColor(background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
-            contentDescription = context.getString(R.string.clipboard_action_delete)
+            contentDescription = context.getString(R.string.delete)
             setOnClickListener {
                 val selected = clipboardAdapter.getSelectedEntries()
                 if (selected.isNotEmpty()) {

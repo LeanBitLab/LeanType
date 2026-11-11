@@ -51,7 +51,6 @@
     <string name="subtype_no_language">无语言</string>
     <string name="subtype_emoji">"表情符号"</string>
     <string name="add">"添加"</string>
-    <string name="remove">移除</string>
     <string name="save">"保存"</string>
     <string name="subtype_locale">"语言"</string>
     <string name="keyboard_layout_set">"布局"</string>
@@ -288,7 +287,6 @@
     <string name="copy_to_clipboard">复制到剪贴板</string>
     <string name="button_select_language">选择语言</string>
     <string name="no_dictionary_message">"没有字典，您只能得到之前输入的文本的建议。&lt;br&gt;\n        您可以下载字典 %1$s，或检查是否可以直接下载“%2$s”的字典 %3$s。"</string>
-    <string name="user_dict_add_word_button">添加字词</string>
     <string name="remove_redundant_popups_summary">移除基础布局上已存在的弹出键</string>
     <string name="remove_redundant_popups">移除多余弹出</string>
     <string name="subtype_generic_student">%s (Student)</string>
@@ -618,7 +616,6 @@
     <string name="voice_status_listening">正在聆听… 请说话</string>
     <string name="voice_status_processing">正在处理…</string>
     <string name="voice_action_done">完成</string>
-    <string name="voice_action_cancel">取消</string>
     <string name="voice_provider_title">语音输入提供商</string>
     <string name="voice_provider_summary">选择处理语音口述的方式</string>
     <string name="voice_provider_offline">离线语音输入 (插件)</string>
@@ -883,9 +880,6 @@
     <string name="text_expander_template_title">模板展开</string>
     <string name="text_expander_template_hint" formatted="false">马上回来！或我的电子邮件是 %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">快速占位符 (点击以在光标处插入)：</string>
-    <string name="text_expander_save">保存</string>
-    <string name="text_expander_add">添加</string>
-    <string name="text_expander_delete">删除</string>
     <string name="custom_ai_keys_what_are_keywords">什么是关键词？</string>
     <string name="custom_ai_keys_keywords_description">关键词 (如 #proofread 或 #summarize) 充当 AI 的快速指令。在配置按键时选择它们以定义其行为。您还必须添加自己的自定义提示词来创建按键。</string>
     <string name="custom_ai_keys_show_tags_title">在键盘上显示标签</string>
@@ -1221,9 +1215,7 @@
     <string name="label_all">全选</string>
     <string name="label_word">词语</string>
     <string name="next_step">下一步</string>
-    <string name="button_download">下载</string>
     <string name="button_load_from_file">从文件加载</string>
-    <string name="button_delete">删除</string>
 <string name="handwriting_plugin_update_available_dialog">手写插件有可用更新！
 本地版本：%1$s
 最新版本：%2$s
@@ -1379,14 +1371,11 @@
     <string name="clipboard_action_deselect_all">取消全选</string>
     <string name="clipboard_action_pin">固定</string>
     <string name="clipboard_action_unpin">取消固定</string>
-    <string name="clipboard_action_edit">编辑</string>
-    <string name="clipboard_action_delete">删除</string>
     <string name="clipboard_action_select">选择</string>
     <string name="clipboard_items_deleted">%1$d 项已删除</string>
     <string name="shift_recapitalizes_word">Shift 更改键入单词的大小写</string>
     <string name="shift_recapitalizes_word_summary">在单词末尾按 Shift 键可在小写、大写和大写之间循环（带大写锁定）</string>
     <string name="action_back">后退</string>
-    <string name="action_clear_search">清除搜索</string>
     <string name="touchpad_close">关闭触摸板模式</string>
     <string name="text_expander_greeting_morning">早上好</string>
     <string name="text_expander_greeting_afternoon">下午好</string>
@@ -1500,8 +1489,6 @@
     <string name="gif_provider_configured">已配置</string>
     <string name="gif_provider_not_configured">需要 API 密钥</string>
     <string name="gif_enter_api_key">输入 API 密钥</string>
-    <string name="gif_clear_key">清除</string>
-    <string name="gif_save">节省</string>
     <string name="gif_connecting">正在连接…</string>
     <string name="gif_api_key_saved">API 密钥已保存</string>
     <string name="gif_api_key_cleared">API密钥已清除</string>

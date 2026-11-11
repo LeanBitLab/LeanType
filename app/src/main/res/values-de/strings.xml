@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Keine Sprache"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Hinzufügen"</string>
-    <string name="remove">"Entfernen"</string>
     <string name="save">"Speichern"</string>
     <string name="subtype_locale">"Sprache"</string>
     <string name="keyboard_layout_set">"Layout"</string>
@@ -180,7 +179,6 @@
     <string name="theme_name_blue_gray" tools:keep="@string/theme_name_blue_gray">Blau-Grau</string>
     <string name="select_color_spacebar_text">Leertastenbeschriftung</string>
     <string name="theme_name_light" tools:keep="@string/theme_name_light">Hell</string>
-    <string name="user_dict_add_word_button">Wort hinzufügen</string>
     <string name="select_color_suggestion">Textfarbe Wortvorschlag</string>
     <string name="show_popup_keys_normal">In den Tastatursprachen definierte Varianten anzeigen</string>
     <string name="show_popup_keys_more">Gemeinsame Varianten hinzufügen</string>
@@ -771,9 +769,6 @@
     <string name="text_expander_template_title">Vorlagenerweiterung</string>
     <string name="text_expander_template_hint" formatted="false">Be right back! oder Meine E-Mail ist %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Schnelle Platzhalter (zum Einfügen am Cursor tippen):</string>
-    <string name="text_expander_save">Speichern</string>
-    <string name="text_expander_add">Hinzufügen</string>
-    <string name="text_expander_delete">Löschen</string>
     <string name="custom_ai_keys_what_are_keywords">Was sind Schlüsselwörter?</string>
     <string name="custom_ai_keys_keywords_description">Schlüsselwörter (wie #proofread oder #summarize) dienen als schnelle Anweisungen für die AI. Wählen Sie sie beim Konfigurieren einer Taste aus, um deren Verhalten zu definieren. Sie müssen auch Ihren eigenen benutzerdefinierten Prompt hinzufügen, um die Taste zu erstellen.</string>
     <string name="custom_ai_keys_show_tags_title">Tags auf der Tastatur anzeigen</string>
@@ -884,7 +879,6 @@
     <string name="voice_status_listening">Zuhören… jetzt sprechen</string>
     <string name="voice_status_processing">Verarbeitung…</string>
     <string name="voice_action_done">Fertig</string>
-    <string name="voice_action_cancel">Abbrechen</string>
     <string name="voice_provider_title">Spracheingabeanbieter</string>
     <string name="voice_provider_summary">Auswählen, wie das Diktieren verarbeitet wird</string>
     <string name="voice_provider_offline">Offline-Spracheingabe (Plugin)</string>
@@ -1305,9 +1299,7 @@
     <string name="label_all">Alle</string>
     <string name="label_word">Wort</string>
     <string name="next_step">Weiter</string>
-    <string name="button_download">Herunterladen</string>
     <string name="button_load_from_file">Aus Datei laden</string>
-    <string name="button_delete">Löschen</string>
 <string name="handwriting_plugin_update_available_dialog">Ein Update für das Handschrift-Plugin ist verfügbar!
 Lokale Version: %1$s
 Neueste Version: %2$s
@@ -1454,12 +1446,9 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="clipboard_action_deselect_all">Alle abwählen</string>
     <string name="clipboard_action_pin">Anheften</string>
     <string name="clipboard_action_unpin">Lösen</string>
-    <string name="clipboard_action_edit">Bearbeiten</string>
-    <string name="clipboard_action_delete">Löschen</string>
     <string name="clipboard_action_select">Wählen</string>
     <string name="clipboard_items_deleted">%1$d Elemente gelöscht</string>
     <string name="action_back">Zurück</string>
-    <string name="action_clear_search">Suche löschen</string>
     <string name="touchpad_close">Schließen Sie den Touchpad-Modus</string>
     <string name="text_expander_greeting_morning">Guten Morgen</string>
     <string name="text_expander_greeting_afternoon">Guten Tag</string>
@@ -1573,8 +1562,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="gif_provider_configured">Konfiguriert</string>
     <string name="gif_provider_not_configured">API-Schlüssel erforderlich</string>
     <string name="gif_enter_api_key">Geben Sie den API-Schlüssel ein</string>
-    <string name="gif_clear_key">Klar</string>
-    <string name="gif_save">Speichern</string>
     <string name="gif_connecting">Verbinden…</string>
     <string name="gif_api_key_saved">API-Schlüssel gespeichert</string>
     <string name="gif_api_key_cleared">API-Schlüssel gelöscht</string>

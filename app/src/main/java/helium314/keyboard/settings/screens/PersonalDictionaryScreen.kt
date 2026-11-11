@@ -26,7 +26,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -178,13 +178,16 @@ fun PersonalDictionaryScreen(
                 }
             }
         )
-        ExtendedFloatingActionButton(
+        FloatingActionButton(
             onClick = { selectedWord = Word("", null, null) },
-            text = { Text(stringResource(R.string.user_dict_add_word_button)) },
-            icon = { Icon(painter = painterResource(R.drawable.ic_edit), stringResource(R.string.user_dict_add_word_button)) },
-            modifier = Modifier.align(Alignment.BottomEnd).padding(all = 12.dp)
+            modifier = Modifier.align(Alignment.BottomEnd).padding(all = 16.dp)
                 .then(Modifier.safeDrawingPadding())
-        )
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_plus),
+                contentDescription = stringResource(R.string.add)
+            )
+        }
     }
     if (showSortDialog) {
         ListPickerDialog(

@@ -47,7 +47,6 @@
     <string name="subtype_no_language">"Dil yok"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Ekle"</string>
-    <string name="remove">"Kaldır"</string>
     <string name="save">"Kaydet"</string>
     <string name="subtype_locale">"Dil"</string>
     <string name="keyboard_layout_set">"Düzen"</string>
@@ -254,7 +253,6 @@
     <string name="subtype_xdq">Kaitag</string>
     <string name="internal_dictionary_summary">Dahili ana sözlük</string>
     <string name="dictionary_load_error">Sözlük dosyası yüklenirken hata oluştu</string>
-    <string name="user_dict_add_word_button">Bir kelime ekle</string>
     <string name="theme_colors_night">Renkler (gece)</string>
     <string name="theme_name_pink" ns0:keep="@string/theme_name_pink">Pembe</string>
     <string name="theme_name_sand" ns0:keep="@string/theme_name_sand">Kum</string>
@@ -708,9 +706,6 @@
     <string name="text_expander_template_title">Şablon Genişletme</string>
     <string name="text_expander_template_hint" formatted="false">Hemen döneceğim! veya E-postam %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Hızlı Yer Tutucular (imleç konumuna eklemek için dokunun):</string>
-    <string name="text_expander_save">Kaydet</string>
-    <string name="text_expander_add">Ekle</string>
-    <string name="text_expander_delete">Sil</string>
 
     <string name="custom_ai_keys_what_are_keywords">Keywords nedir?</string>
     <string name="custom_ai_keys_keywords_description">Keywords (#proofread veya #summarize gibi), AI için hızlı talimatlar olarak işlev görür. Davranışını tanımlamak için bir tuşu yapılandırırken bunları seçin. Tuşu oluşturmak için ayrıca kendi özel Prompt\'unuzu da eklemelisiniz.</string>
@@ -822,7 +817,6 @@
     <string name="voice_status_listening">Dinleniyor… şimdi konuşun</string>
     <string name="voice_status_processing">İşleniyor…</string>
     <string name="voice_action_done">Bitti</string>
-    <string name="voice_action_cancel">İptal</string>
     <string name="voice_provider_title">Ses girişi sağlayıcısı</string>
     <string name="voice_provider_summary">Ses diktesinin nasıl işleneceğini seçin</string>
     <string name="voice_provider_offline">Çevrimdışı ses girişi (Eklenti)</string>
@@ -1252,9 +1246,7 @@ Uyarı: harici kod yüklemek bir güvenlik riski olabilir. Yalnızca güvendiği
     <string name="label_all">Tümü</string>
     <string name="label_word">Kelime</string>
     <string name="next_step">İleri</string>
-    <string name="button_download">İndir</string>
     <string name="button_load_from_file">Dosyadan yükle</string>
-    <string name="button_delete">Sil</string>
 <string name="handwriting_plugin_update_available_dialog">El yazısı eklentisi için güncelleme mevcut!
 Yerel sürüm: %1$s
 En son sürüm: %2$s
@@ -1403,14 +1395,11 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="clipboard_action_deselect_all">Tümünün seçimini kaldır</string>
     <string name="clipboard_action_pin">Sabitle</string>
     <string name="clipboard_action_unpin">Sabitlemeyi kaldır</string>
-    <string name="clipboard_action_edit">Düzenlemek</string>
-    <string name="clipboard_action_delete">Silmek</string>
     <string name="clipboard_action_select">Seçme</string>
     <string name="clipboard_items_deleted">%1$d öğe silindi</string>
     <string name="shift_recapitalizes_word">Shift, yazılan kelimenin büyük harf kullanımını değiştirir</string>
     <string name="shift_recapitalizes_word_summary">Bir sözcüğün sonunda Shift tuşuna basıldığında küçük harf, Büyük Harf ve BÜYÜK HARF (büyük harf kilitli) arasında geçiş yapılır</string>
     <string name="action_back">Geri</string>
-    <string name="action_clear_search">Aramayı temizle</string>
     <string name="touchpad_close">Dokunmatik yüzey modunu kapat</string>
     <string name="text_expander_greeting_morning">Günaydın</string>
     <string name="text_expander_greeting_afternoon">Tünaydın</string>
@@ -1524,8 +1513,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="gif_provider_configured">Yapılandırılmış</string>
     <string name="gif_provider_not_configured">API anahtarı gerekli</string>
     <string name="gif_enter_api_key">API anahtarını girin</string>
-    <string name="gif_clear_key">Temizlemek</string>
-    <string name="gif_save">Kaydetmek</string>
     <string name="gif_connecting">Bağlanıyor…</string>
     <string name="gif_api_key_saved">API anahtarı kaydedildi</string>
     <string name="gif_api_key_cleared">API anahtarı temizlendi</string>

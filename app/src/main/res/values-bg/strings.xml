@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Без език"</string>
     <string name="subtype_emoji">"Емотикони"</string>
     <string name="add">"Добавяне"</string>
-    <string name="remove">"Премахване"</string>
     <string name="save">"Запазване"</string>
     <string name="subtype_locale">"Език"</string>
     <string name="keyboard_layout_set">"Подредба"</string>
@@ -294,7 +293,6 @@
     <string name="theme_name_dynamic" tools:keep="@string/theme_name_dynamic">Динамични цветове</string>
     <string name="theme_colors">Цветове</string>
     <string name="theme_colors_night">Цветове (нощ)</string>
-    <string name="user_dict_add_word_button">Добавете дума</string>
     <string name="theme_name_light" tools:keep="@string/theme_name_light">Светла</string>
     <string name="theme_name_holo_white" tools:keep="@string/theme_name_holo_white">Холо бяло</string>
     <string name="theme_name_darker" tools:keep="@string/theme_name_darker">По-тъмна</string>
@@ -650,7 +648,6 @@
     <string name="voice_status_listening">Слушам… говорете сега</string>
     <string name="voice_status_processing">Обработка…</string>
     <string name="voice_action_done">Готово</string>
-    <string name="voice_action_cancel">Отказ</string>
     <string name="voice_provider_title">Доставчик на гласово въвеждане</string>
     <string name="voice_provider_summary">Избор на начина на обработка на гласовото диктуване</string>
     <string name="voice_provider_offline">Офлайн гласово въвеждане (Плъгин)</string>
@@ -916,9 +913,6 @@
     <string name="text_expander_template_title">Разгъване на шаблон</string>
     <string name="text_expander_template_hint" formatted="false">Веднага се връщам! или Моят имейл е %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Бързи заместители (докоснете за вмъкване при курсора):</string>
-    <string name="text_expander_save">Запазване</string>
-    <string name="text_expander_add">Добавяне</string>
-    <string name="text_expander_delete">Изтриване</string>
     <string name="custom_ai_keys_what_are_keywords">Какво са ключовите думи?</string>
     <string name="custom_ai_keys_keywords_description">Ключовите думи (като #proofread или #summarize) действат като бързи инструкции за AI. Изберете ги при конфигуриране на клавиш, за да дефинирате поведението му. Също така трябва да добавите собствена персонализирана подкана (prompt), за да създадете клавиша.</string>
     <string name="custom_ai_keys_show_tags_title">Показване на тагове на клавиатурата</string>
@@ -1253,9 +1247,7 @@
     <string name="label_all">Всичко</string>
     <string name="label_word">Дума</string>
     <string name="next_step">Напред</string>
-    <string name="button_download">Изтегляне</string>
     <string name="button_load_from_file">Зареждане от файл</string>
-    <string name="button_delete">Изтриване</string>
 <string name="handwriting_plugin_update_available_dialog">Налична е актуализация за приставката за ръкописен текст!
 Локална версия: %1$s
 Последна версия: %2$s
@@ -1411,14 +1403,11 @@
     <string name="clipboard_action_deselect_all">Демаркирайте всички</string>
     <string name="clipboard_action_pin">ПИН</string>
     <string name="clipboard_action_unpin">Откачване</string>
-    <string name="clipboard_action_edit">Редактиране</string>
-    <string name="clipboard_action_delete">Изтриване</string>
     <string name="clipboard_action_select">Изберете</string>
     <string name="clipboard_items_deleted">%1$d елемента са изтрити</string>
     <string name="shift_recapitalizes_word">Shift променя главните букви на въведената дума</string>
     <string name="shift_recapitalizes_word_summary">Натискането на shift в края на дума преминава през малки букви, главни букви и ГЛАВНИ букви (с Caps Lock)</string>
     <string name="action_back">Назад</string>
-    <string name="action_clear_search">Изчистете търсенето</string>
     <string name="touchpad_close">Затворете режима на тъчпада</string>
     <string name="text_expander_greeting_morning">добро утро</string>
     <string name="text_expander_greeting_afternoon">добър ден</string>
@@ -1532,8 +1521,6 @@
     <string name="gif_provider_configured">Конфигуриран</string>
     <string name="gif_provider_not_configured">Изисква се API ключ</string>
     <string name="gif_enter_api_key">Въведете API ключ</string>
-    <string name="gif_clear_key">ясно</string>
-    <string name="gif_save">Запазване</string>
     <string name="gif_connecting">Свързване...</string>
     <string name="gif_api_key_saved">API ключът е запазен</string>
     <string name="gif_api_key_cleared">API ключът е изчистен</string>

@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Нема језика"</string>
     <string name="subtype_emoji">"Емотикони"</string>
     <string name="add">"Додај"</string>
-    <string name="remove">"Уклони"</string>
     <string name="save">"Сачувај"</string>
     <string name="subtype_locale">"Језик"</string>
     <string name="keyboard_layout_set">"Распоред"</string>

@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Kalbos nėra"</string>
     <string name="subtype_emoji">"Jaustukai"</string>
     <string name="add">"Pridėti"</string>
-    <string name="remove">"Pašalinti"</string>
     <string name="save">"Išsaugoti"</string>
     <string name="subtype_locale">"Kalba"</string>
     <string name="keyboard_layout_set">"Išdėstymas"</string>
@@ -330,7 +329,6 @@
     <string name="dictionary_load_error">Klaida įkeliant žodyno failą</string>
     <string name="user_dict_settings_add_weight_value">Svoris:</string>
     <string name="user_dict_word_already_present">Šis žodis jau yra %s naudotojo žodyne. Įrašykite kitą.</string>
-    <string name="user_dict_add_word_button">Pridėti žodį</string>
     <string name="theme_style">Stilius</string>
     <string name="icon_style">Piktogramų stilius</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Apvalinta</string>
@@ -609,7 +607,6 @@
     <string name="voice_status_listening">Klausoma… kalbėkite dabar</string>
     <string name="voice_status_processing">Apdorojama…</string>
     <string name="voice_action_done">Atlikta</string>
-    <string name="voice_action_cancel">Atšaukti</string>
     <string name="voice_provider_title">Balso įvesties teikėjas</string>
     <string name="voice_provider_summary">Pasirinkti, kaip apdorojama balso dikcija</string>
     <string name="voice_provider_offline">Balso įvestis neprisijungus (Papildinys)</string>
@@ -911,9 +908,6 @@
     <string name="text_expander_template_title">Šablono išplėtimas</string>
     <string name="text_expander_template_hint" formatted="false">Tuoj grįšiu! arba Mano el. paštas yra %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Greiti užpildai (paspauskite, kad įterptumėte žymekliu):</string>
-    <string name="text_expander_save">Išsaugoti</string>
-    <string name="text_expander_add">Pridėti</string>
-    <string name="text_expander_delete">Ištrinti</string>
     <string name="custom_ai_keys_what_are_keywords">Kas yra raktažodžiai?</string>
     <string name="custom_ai_keys_keywords_description">Raktažodžiai (pvz., #proofread arba #summarize) veikia kaip greitos instrukcijos AI. Pasirinkite juos konfigūruodami klavišą, kad apibrėžtumėte jo elgesį. Taip pat turite pridėti savo pasirinktinę užklausą, kad sukurtumėte klavišą.</string>
     <string name="custom_ai_keys_show_tags_title">Rodyti žymas klaviatūroje</string>
@@ -1254,9 +1248,7 @@ Ar norite atsisiųsti ir atnaujinti?</string>
     <string name="label_all">Visi</string>
     <string name="label_word">Žodis</string>
     <string name="next_step">Kitas</string>
-    <string name="button_download">Atsisiųsti</string>
     <string name="button_load_from_file">Įkelti iš failo</string>
-    <string name="button_delete">Ištrinti</string>
 <string name="handwriting_plugin_update_available_dialog">Yra pasiekiamas rankraščio įskiepio atnaujinimas!
 Vietinė versija: %1$s
 Naujausia versija: %2$s
@@ -1412,14 +1404,11 @@ Ar norite atnaujinti?</string>
     <string name="clipboard_action_deselect_all">Panaikinkite visų pasirinkimą</string>
     <string name="clipboard_action_pin">Smeigtukas</string>
     <string name="clipboard_action_unpin">Atsegti</string>
-    <string name="clipboard_action_edit">Redaguoti</string>
-    <string name="clipboard_action_delete">Ištrinti</string>
     <string name="clipboard_action_select">Pasirinkite</string>
     <string name="clipboard_items_deleted">%1$d elementai ištrinti</string>
     <string name="shift_recapitalizes_word">Shift pakeičia įvesto žodžio didžiąsias raides</string>
     <string name="shift_recapitalizes_word_summary">Paspaudus „Shift“ žodžio pabaigoje, rašomos mažosios, didžiosios ir didžiosios raidės (su didžiųjų raidžių užraktu)</string>
     <string name="action_back">Atgal</string>
-    <string name="action_clear_search">Išvalyti paiešką</string>
     <string name="touchpad_close">Uždaryti jutiklinės dalies režimą</string>
     <string name="text_expander_greeting_morning">Labas rytas</string>
     <string name="text_expander_greeting_afternoon">Laba diena</string>
@@ -1533,8 +1522,6 @@ Ar norite atnaujinti?</string>
     <string name="gif_provider_configured">Sukonfigūruota</string>
     <string name="gif_provider_not_configured">Reikalingas API raktas</string>
     <string name="gif_enter_api_key">Įveskite API raktą</string>
-    <string name="gif_clear_key">Aišku</string>
-    <string name="gif_save">Išsaugoti</string>
     <string name="gif_connecting">Jungiamasi…</string>
     <string name="gif_api_key_saved">API raktas išsaugotas</string>
     <string name="gif_api_key_cleared">API raktas išvalytas</string>

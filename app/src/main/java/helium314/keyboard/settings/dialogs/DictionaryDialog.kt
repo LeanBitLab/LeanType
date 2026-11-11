@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -196,22 +194,15 @@ private fun DictionaryDetails(dict: File, onDelete: () -> Unit) {
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(
-                    onClick = {
-                        dict.delete()
-                        dict.parentFile?.name?.constructLocale()?.let { dictLocale ->
-                            ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
-                        }
-                        ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
-                        onDelete()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.errorContainer,
-                        contentColor = MaterialTheme.colorScheme.onErrorContainer
-                    ),
-                    modifier = Modifier.height(32.dp)
+                DeleteButton(
+                    tint = MaterialTheme.colorScheme.error
                 ) {
-                    Text(stringResource(R.string.button_delete), style = MaterialTheme.typography.labelMedium)
+                    dict.delete()
+                    dict.parentFile?.name?.constructLocale()?.let { dictLocale ->
+                        ctx.prefs().edit().remove("pref_dict_download_link_${type}_${dictLocale}").apply()
+                    }
+                    ctx.sendBroadcast(Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION))
+                    onDelete()
                 }
                 ExpandButton { showDetails = !showDetails }
             }

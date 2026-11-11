@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Không ngôn ngữ nào"</string>
     <string name="subtype_emoji">"Biểu tượng cảm xúc"</string>
     <string name="add">"Thêm"</string>
-    <string name="remove">"Xóa"</string>
     <string name="save">"Lưu"</string>
     <string name="subtype_locale">"Ngôn ngữ"</string>
     <string name="keyboard_layout_set">"Bố cục"</string>
@@ -208,7 +207,6 @@
     <string name="layout_number" tools:keep="@string/layout_number">Chữ số</string>
     <string name="dictionary_file_error">Lỗi: File đã chọn không phải là file từ điển</string>
     <string name="user_dict_word_already_present">Từ này đã có ở từ điển người dùng %s. Xin hãy nhập từ khác.</string>
-    <string name="user_dict_add_word_button">Thêm một từ</string>
     <string name="theme_name_black" tools:keep="@string/theme_name_black">Đen</string>
     <string name="theme_name_cloudy" tools:keep="@string/theme_name_cloudy">Mây</string>
     <string name="theme_name_forest" tools:keep="@string/theme_name_forest">Rừng</string>

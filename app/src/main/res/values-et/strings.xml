@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Keel puudub"</string>
     <string name="subtype_emoji">"Emotikon"</string>
     <string name="add">"Lisa"</string>
-    <string name="remove">"Eemalda"</string>
     <string name="save">"Salvesta"</string>
     <string name="subtype_locale">"Keel"</string>
     <string name="keyboard_layout_set">"Paigutus"</string>
@@ -233,7 +232,6 @@
     <string name="button_select_language">Vali keel</string>
     <string name="user_dict_word_already_present">See sõna juba leidub kasutaja loodud sõnastikus „%s“. Palun sisesta uus.</string>
     <string name="theme_style">Stiil</string>
-    <string name="user_dict_add_word_button">Lisa sõna</string>
     <string name="customize_currencies_detail">Lisa põhivaluuta ja kuni kuue lisavaluuta sümbolid, eraldades need tühikuga</string>
     <string name="customize_background_image">Säti taustapilti</string>
     <string name="day_or_night_image">Säti pilt päeva või öörežiimi jaoks?</string>
@@ -650,7 +648,6 @@
     <string name="voice_status_listening">Kuulan… rääkige nüüd</string>
     <string name="voice_status_processing">Töötlen…</string>
     <string name="voice_action_done">Valmis</string>
-    <string name="voice_action_cancel">Tühista</string>
     <string name="voice_provider_title">Häälesisestuse pakkuja</string>
     <string name="voice_provider_summary">Vali, kuidas hääledikteerimist töödeldakse</string>
     <string name="voice_provider_offline">Offlain häälesisestus (plugin)</string>
@@ -916,9 +913,6 @@
     <string name="text_expander_template_title">Malli laiendus</string>
     <string name="text_expander_template_hint" formatted="false">Olen kohe tagasi! või Minu e-post on %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Kiired kohahoidjad (puudutage kursori asukohta sisestamiseks):</string>
-    <string name="text_expander_save">Salvesta</string>
-    <string name="text_expander_add">Lisa</string>
-    <string name="text_expander_delete">Kustuta</string>
     <string name="custom_ai_keys_what_are_keywords">Mis on märksõnad?</string>
     <string name="custom_ai_keys_keywords_description">Märksõnad (nagu #proofread või #summarize) toimivad AI-le kiirete juhistena. Valige need klahvi konfigureerimisel, et määratleda selle käitumine. Klahvi loomiseks peate lisama ka oma kohandatud prompti.</string>
     <string name="custom_ai_keys_show_tags_title">Näita silte klaviatuuril</string>
@@ -1253,9 +1247,7 @@ Hoiatus: välise koodi laadimine võib olla turvarisk. Kasutage ainult usaldusv�
     <string name="label_all">Kõik</string>
     <string name="label_word">Sõna</string>
     <string name="next_step">Edasi</string>
-    <string name="button_download">Laadi alla</string>
     <string name="button_load_from_file">Laadi failist</string>
-    <string name="button_delete">Kustuta</string>
 <string name="handwriting_plugin_update_available_dialog">Käsitsikirja plugina jaoks on saadaval värskendus!
 Kohalik versioon: %1$s
 Uusim versioon: %2$s
@@ -1411,14 +1403,11 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="clipboard_action_deselect_all">Tühista kõik valikud</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Vabastage</string>
-    <string name="clipboard_action_edit">Muuda</string>
-    <string name="clipboard_action_delete">Kustuta</string>
     <string name="clipboard_action_select">Valige</string>
     <string name="clipboard_items_deleted">%1$d üksust kustutatud</string>
     <string name="shift_recapitalizes_word">Shift muudab trükitud sõna suurtähtede kasutamist</string>
     <string name="shift_recapitalizes_word_summary">Tõstuklahvi vajutamine sõna lõpus vahetab väiketähti, suurtähti ja SUURTÄHE (suurtähelukuga)</string>
     <string name="action_back">Tagasi</string>
-    <string name="action_clear_search">Tühjenda otsing</string>
     <string name="touchpad_close">Sulgege puuteplaadi režiim</string>
     <string name="text_expander_greeting_morning">Tere hommikust</string>
     <string name="text_expander_greeting_afternoon">Tere pärastlõunast</string>
@@ -1532,8 +1521,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="gif_provider_configured">Seadistatud</string>
     <string name="gif_provider_not_configured">Vajalik on API võti</string>
     <string name="gif_enter_api_key">Sisestage API võti</string>
-    <string name="gif_clear_key">Selge</string>
-    <string name="gif_save">Salvesta</string>
     <string name="gif_connecting">Ühendamine…</string>
     <string name="gif_api_key_saved">API võti on salvestatud</string>
     <string name="gif_api_key_cleared">API võti on kustutatud</string>

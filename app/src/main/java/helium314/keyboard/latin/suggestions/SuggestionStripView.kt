@@ -798,7 +798,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                 val pad = 9.dpToPx(resources)
                 setPadding(pad, pad, pad, pad)
                 layoutParams = LinearLayout.LayoutParams(40.dpToPx(resources), LayoutParams.MATCH_PARENT)
-                contentDescription = context.getString(R.string.voice_action_cancel)
+                contentDescription = context.getString(android.R.string.cancel)
                 setOnClickListener {
                     AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this@SuggestionStripView, HapticEvent.KEY_PRESS)
                     onCancel.run()
@@ -884,7 +884,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             val pad = 9.dpToPx(resources)
             setPadding(pad, pad, pad, pad)
             layoutParams = LinearLayout.LayoutParams(40.dpToPx(resources), LayoutParams.MATCH_PARENT)
-            contentDescription = context.getString(R.string.voice_action_cancel)
+            contentDescription = context.getString(android.R.string.cancel)
             setOnClickListener {
                 AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this@SuggestionStripView, HapticEvent.KEY_PRESS)
                 onDismiss.run()
@@ -1854,7 +1854,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         suggestionsStrip.removeAllViews()
 
         val btn = android.widget.Button(context)
-        btn.text = if (isDownloading) context.getString(R.string.downloading) else context.getString(R.string.button_download)
+        btn.text = if (isDownloading) context.getString(R.string.downloading) else context.getString(R.string.download)
         btn.textSize = 12f
         btn.isAllCaps = false
         btn.isEnabled = !isDownloading

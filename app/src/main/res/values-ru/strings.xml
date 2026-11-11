@@ -54,7 +54,6 @@
     <string name="subtype_no_language">Стандартная</string>
     <string name="subtype_emoji">Эмодзи</string>
     <string name="add">Добавить</string>
-    <string name="remove">Удалить</string>
     <string name="save">Сохранить</string>
     <string name="subtype_locale">Язык</string>
     <string name="keyboard_layout_set">Раскладка</string>
@@ -201,7 +200,6 @@
     <string name="localized_number_row_summary">Предпочитать локализованные числа вместо латинских</string>
     <string name="checksum_mismatch_message">Неизвестный файл библиотеки. Вы уверены, что получили это из надёжного источника и оно предназначено для \'%s\'?</string>
     <string name="theme_name_blue_gray" tools:keep="@string/theme_name_blue_gray">Серо-голубой</string>
-    <string name="user_dict_add_word_button">Добавить слово</string>
     <string name="select_color_suggestion">Текст в строке подсказок</string>
     <string name="show_popup_keys_normal">Показать варианты, определённые в языках клавиатуры</string>
     <string name="show_popup_keys_more">Добавить распространённые варианты</string>
@@ -742,9 +740,6 @@
     <string name="text_expander_template_title">Шаблон расширения</string>
     <string name="text_expander_template_hint" formatted="false">Скоро буду! или Моя почта: %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Быстрые шаблоны (нажмите для вставки в курсор):</string>
-    <string name="text_expander_save">Сохранить</string>
-    <string name="text_expander_add">Добавить</string>
-    <string name="text_expander_delete">Удалить</string>
 
     <string name="custom_ai_keys_what_are_keywords">Что такое ключевые слова?</string>
     <string name="custom_ai_keys_keywords_description">Ключевые слова (например, #proofread или #summarize) служат быстрыми инструкциями для AI. Выберите их при настройке клавиши, чтобы определить её поведение. Для создания клавиши также необходимо добавить собственный пользовательский промпт.</string>
@@ -856,7 +851,6 @@
     <string name="voice_status_listening">Слушаю… говорите</string>
     <string name="voice_status_processing">Обработка…</string>
     <string name="voice_action_done">Готово</string>
-    <string name="voice_action_cancel">Отмена</string>
     <string name="voice_provider_title">Поставщик голосового ввода</string>
     <string name="voice_provider_summary">Выбор способа обработки голосовой диктовки</string>
     <string name="voice_provider_offline">Офлайн голосовой ввод (Плагин)</string>
@@ -1286,9 +1280,7 @@
     <string name="label_all">Все</string>
     <string name="label_word">Слово</string>
     <string name="next_step">Далее</string>
-    <string name="button_download">Скачать</string>
     <string name="button_load_from_file">Загрузить из файла</string>
-    <string name="button_delete">Удалить</string>
 <string name="handwriting_plugin_update_available_dialog">Доступно обновление для плагина рукописного ввода!
 Локальная версия: %1$s
 Последняя версия: %2$s
@@ -1437,14 +1429,11 @@
     <string name="clipboard_action_deselect_all">Отменить выбор всех</string>
     <string name="clipboard_action_pin">Закрепить</string>
     <string name="clipboard_action_unpin">Открепить</string>
-    <string name="clipboard_action_edit">Редактировать</string>
-    <string name="clipboard_action_delete">Удалить</string>
     <string name="clipboard_action_select">Выбирать</string>
     <string name="clipboard_items_deleted">%1$d элементов удалено</string>
     <string name="shift_recapitalizes_word">Shift меняет заглавную букву набранного слова</string>
     <string name="shift_recapitalizes_word_summary">Нажатие клавиши Shift в конце слова переключает строчные, заглавные и ПРОПИСНЫЕ регистры (с заглавными буквами).</string>
     <string name="action_back">Назад</string>
-    <string name="action_clear_search">Очистить поиск</string>
     <string name="touchpad_close">Закрыть режим сенсорной панели</string>
     <string name="text_expander_greeting_morning">Доброе утро</string>
     <string name="text_expander_greeting_afternoon">Добрый день</string>
@@ -1558,8 +1547,6 @@
     <string name="gif_provider_configured">Настроен</string>
     <string name="gif_provider_not_configured">Требуется ключ API</string>
     <string name="gif_enter_api_key">Введите ключ API</string>
-    <string name="gif_clear_key">Прозрачный</string>
-    <string name="gif_save">Сохранять</string>
     <string name="gif_connecting">Подключение…</string>
     <string name="gif_api_key_saved">Ключ API сохранен.</string>
     <string name="gif_api_key_cleared">Ключ API удален</string>

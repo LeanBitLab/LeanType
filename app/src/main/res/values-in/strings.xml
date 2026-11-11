@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Tidak ada bahasa"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Tambahkan"</string>
-    <string name="remove">"Hapus"</string>
     <string name="save">"Simpan"</string>
     <string name="subtype_locale">"Bahasa"</string>
     <string name="keyboard_layout_set">"Tata Letak"</string>
@@ -219,7 +218,6 @@
     <string name="dictionary_file_error">Kesalahan: File yang dipilih bukan file kamus yang valid</string>
     <string name="dictionary_file_wrong_script">Kesalahan: skrip tidak kompatibel dengan papan ketik ini</string>
     <string name="dictionary_load_error">Gagal memuat file kamus</string>
-    <string name="user_dict_add_word_button">Tambahkan kata</string>
     <string name="theme_style">Gaya</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Bulat</string>
     <string name="theme_colors_night">Warna (mode malam)</string>
@@ -612,7 +610,6 @@
     <string name="voice_status_listening">Mendengarkan… bicaralah sekarang</string>
     <string name="voice_status_processing">Memproses…</string>
     <string name="voice_action_done">Selesai</string>
-    <string name="voice_action_cancel">Batal</string>
     <string name="voice_provider_title">Penyedia Input Suara</string>
     <string name="voice_provider_summary">Pilih bagaimana dikte suara diproses</string>
     <string name="voice_provider_offline">Input Suara Offline (Plugin)</string>
@@ -887,9 +884,6 @@
     <string name="text_expander_template_title">Ekspansi Template</string>
     <string name="text_expander_template_hint" formatted="false">Segera kembali! atau Email saya adalah %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Placeholder Cepat (ketuk untuk menyisipkan di kursor):</string>
-    <string name="text_expander_save">Simpan</string>
-    <string name="text_expander_add">Tambahkan</string>
-    <string name="text_expander_delete">Hapus</string>
     <string name="custom_ai_keys_what_are_keywords">Apa itu Kata Kunci?</string>
     <string name="custom_ai_keys_keywords_description">Kata kunci (seperti #proofread atau #summarize) bertindak sebagai instruksi cepat untuk AI. Pilih saat mengonfigurasi tombol untuk menentukan perilakunya. Anda juga harus menambahkan prompt kustom Anda sendiri untuk membuat tombol.</string>
     <string name="custom_ai_keys_show_tags_title">Tampilkan tag di keyboard</string>
@@ -1216,9 +1210,7 @@
     <string name="label_all">Semua</string>
     <string name="label_word">Kata</string>
     <string name="next_step">Berikutnya</string>
-    <string name="button_download">Unduh</string>
     <string name="button_load_from_file">Muat dari berkas</string>
-    <string name="button_delete">Hapus</string>
 <string name="handwriting_plugin_update_available_dialog">Pembaruan tersedia untuk plugin tulisan tangan!
 Versi lokal: %1$s
 Versi terbaru: %2$s
@@ -1374,14 +1366,11 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="clipboard_action_deselect_all">Batalkan pilihan semua</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Membuka peniti</string>
-    <string name="clipboard_action_edit">Sunting</string>
-    <string name="clipboard_action_delete">Menghapus</string>
     <string name="clipboard_action_select">Memilih</string>
     <string name="clipboard_items_deleted">%1$d item dihapus</string>
     <string name="shift_recapitalizes_word">Shift mengubah kapitalisasi kata yang diketik</string>
     <string name="shift_recapitalizes_word_summary">Menekan shift di akhir kata akan memutar huruf kecil, huruf kapital, dan huruf besar (dengan caps lock)</string>
     <string name="action_back">Kembali</string>
-    <string name="action_clear_search">Hapus pencarian</string>
     <string name="touchpad_close">Tutup mode panel sentuh</string>
     <string name="text_expander_greeting_morning">Selamat pagi</string>
     <string name="text_expander_greeting_afternoon">Selamat siang</string>
@@ -1495,8 +1484,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="gif_provider_configured">Dikonfigurasi</string>
     <string name="gif_provider_not_configured">Kunci API diperlukan</string>
     <string name="gif_enter_api_key">Masukkan kunci API</string>
-    <string name="gif_clear_key">Jernih</string>
-    <string name="gif_save">Menyimpan</string>
     <string name="gif_connecting">Menghubungkan…</string>
     <string name="gif_api_key_saved">Kunci API disimpan</string>
     <string name="gif_api_key_cleared">Kunci API dihapus</string>

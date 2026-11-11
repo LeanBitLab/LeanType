@@ -160,7 +160,7 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_edit"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/clipboard_action_edit" />
+                        android:contentDescription="@string/edit" />
 
                     <ImageButton
                         android:id="@+id/clip_action_delete"
@@ -170,7 +170,7 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_bin_rounded"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/clipboard_action_delete" />
+                        android:contentDescription="@string/delete" />
 
                     <ImageButton
                         android:id="@+id/clip_action_select"

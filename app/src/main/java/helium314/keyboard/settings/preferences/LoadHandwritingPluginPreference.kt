@@ -229,7 +229,7 @@ fun LoadHandwritingPluginPreference(
                                 onClick = { startDownload() },
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text(if (updateAvailable) stringResource(R.string.updates_badge_update) else stringResource(R.string.button_download))
+                                Text(if (updateAvailable) stringResource(R.string.updates_badge_update) else stringResource(R.string.download))
                             }
                         }
                         if (!hasPlugin) {

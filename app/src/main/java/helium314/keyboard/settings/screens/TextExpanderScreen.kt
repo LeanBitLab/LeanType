@@ -37,7 +37,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -353,7 +353,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
 
         // Floating Action Button to Add New Shortcut
         if (isExpanderEnabled && !WindowInsets.isImeVisible) {
-            ExtendedFloatingActionButton(
+            FloatingActionButton(
                 onClick = {
                     editingPrefix = ""
                     editingShortcut = ""
@@ -363,13 +363,16 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     editingIsRegex = false
                     showAddDialog = true
                 },
-                text = { Text(stringResource(R.string.text_expander_add_shortcut)) },
-                icon = { Icon(painter = painterResource(R.drawable.ic_edit), stringResource(R.string.text_expander_add_shortcut)) },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(all = 16.dp)
                     .then(Modifier.safeDrawingPadding())
-            )
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_plus),
+                    contentDescription = stringResource(R.string.add)
+                )
+            }
         }
     }
 
@@ -401,7 +404,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                     }
                 ) {
                     Text(
-                        text = stringResource(R.string.text_expander_delete),
+                        text = stringResource(R.string.delete),
                         color = MaterialTheme.colorScheme.error,
                         fontWeight = FontWeight.Bold
                     )
@@ -459,8 +462,8 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                 (editingTemplate.text.isNotEmpty() || !editingImageUri.isNullOrBlank()) &&
                 isRegexValid
             },
-            confirmButtonText = if (isEditMode) stringResource(R.string.text_expander_save) else stringResource(R.string.text_expander_add),
-            neutralButtonText = if (isEditMode) stringResource(R.string.text_expander_delete) else null,
+            confirmButtonText = if (isEditMode) stringResource(R.string.save) else stringResource(R.string.add),
+            neutralButtonText = if (isEditMode) stringResource(R.string.delete) else null,
             onNeutral = {
                 if (isEditMode) {
                     val updated = shortcutsMap.toMutableMap()
@@ -890,7 +893,7 @@ private fun ShortcutItem(
             IconButton(onClick = onDelete) {
                 Icon(
                     painter = painterResource(R.drawable.ic_bin),
-                    contentDescription = stringResource(R.string.text_expander_delete),
+                    contentDescription = stringResource(R.string.delete),
                     tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
                 )
             }

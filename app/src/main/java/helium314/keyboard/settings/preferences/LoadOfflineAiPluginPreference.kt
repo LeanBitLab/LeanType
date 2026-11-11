@@ -227,7 +227,7 @@ fun LoadOfflineAiPluginPreference(
                                 onClick = { startDownload() },
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text(if (updateAvailable) stringResource(R.string.updates_badge_update) else if (hasInternet) stringResource(R.string.button_download) else stringResource(R.string.button_download_in_browser))
+                                Text(if (updateAvailable) stringResource(R.string.updates_badge_update) else if (hasInternet) stringResource(R.string.download) else stringResource(R.string.button_download_in_browser))
                             }
                         }
                         if (!hasPlugin) {

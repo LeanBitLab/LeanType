@@ -105,7 +105,6 @@
     <string name="subtype_no_language">ভাষাহীন</string>
     <string name="subtype_emoji">ইমোজি</string>
     <string name="add">সংযুক্ত করুন</string>
-    <string name="remove">অপসারণ করুন</string>
     <string name="save">সংরক্ষণ করুন</string>
     <string name="subtype_locale">ভাষা</string>
     <string name="keyboard_layout_set">লেআউট</string>
@@ -240,7 +239,6 @@
     <string name="day_or_night_night">অন্ধকার</string>
     <string name="available_dictionary_experimental">%s (পরীক্ষামূলক)</string>
     <string name="user_dict_settings_add_weight_value">গুরুত্ব:</string>
-    <string name="user_dict_add_word_button">শব্দ সংযুক্তি</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">গোলাকার</string>
     <string name="theme_name_blue_gray" tools:keep="@string/theme_name_blue_gray">ধূসর নীল</string>
     <string name="theme_name_chocolate" tools:keep="@string/theme_name_chocolate">চকলেট</string>

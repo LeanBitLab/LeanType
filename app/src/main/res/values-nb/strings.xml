@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Ingen språk"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Legg til"</string>
-    <string name="remove">"Fjern"</string>
     <string name="save">"Lagre"</string>
     <string name="subtype_locale">"Språk"</string>
     <string name="keyboard_layout_set">"Oppsett"</string>
@@ -234,7 +233,6 @@
     <string name="replace_dictionary">Erstatt ordbok</string>
     <string name="available_dictionary_experimental">%s (eksperimentell)</string>
     <string name="user_dict_settings_add_weight_value">Vekt:</string>
-    <string name="user_dict_add_word_button">Legg til ord</string>
     <string name="theme_style">Stil</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Avrundet</string>
     <string name="theme_colors">Farger</string>

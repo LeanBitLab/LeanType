@@ -51,7 +51,6 @@
     <string name="subtype_no_language">Cap idioma</string>
     <string name="subtype_emoji">Emojis</string>
     <string name="add">"Afegeix"</string>
-    <string name="remove">"Elimina"</string>
     <string name="save">"Desa"</string>
     <string name="subtype_locale">"Idioma"</string>
     <string name="keyboard_layout_set">"Disposició"</string>
@@ -319,7 +318,6 @@
     <string name="dictionary_link_text">aquí</string>
     <string name="available_dictionary_experimental">%s (experimental)</string>
     <string name="user_dict_word_already_present">Aquesta paraula ja està present al diccionari de l\'usuari %s. Escriu-ne una altra.</string>
-    <string name="user_dict_add_word_button">Afegeix una paraula</string>
     <string name="theme_colors">Colors</string>
     <string name="theme_navbar">Barra de navegació en color</string>
     <string name="theme_name_holo_white" tools:keep="@string/theme_name_holo_white">Holo Blanc</string>

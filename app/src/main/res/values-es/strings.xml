@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Ningún idioma"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Añadir"</string>
-    <string name="remove">"Quitar"</string>
     <string name="save">"Guardar"</string>
     <string name="subtype_locale">"Idioma"</string>
     <string name="keyboard_layout_set">"Tipo"</string>
@@ -180,7 +179,6 @@
     <string name="dictionary_load_error">Error al cargar diccionario</string>
     <string name="user_dict_settings_add_weight_value">Ancho:</string>
     <string name="user_dict_word_already_present">Esta palabra ya está presente en el diccionario del usuario %s. Por favor, escriba otra.</string>
-    <string name="user_dict_add_word_button">Añadir una palabra</string>
     <string name="theme_style">Estilo</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Redondeado</string>
     <string name="theme_colors">Colores</string>
@@ -537,7 +535,6 @@
     <string name="voice_status_listening">Escuchando… hable ahora</string>
     <string name="voice_status_processing">Procesando…</string>
     <string name="voice_action_done">Listo</string>
-    <string name="voice_action_cancel">Cancelar</string>
     <string name="voice_provider_title">Proveedor de entrada de voz</string>
     <string name="voice_provider_summary">Seleccionar cómo se procesa el dictado de voz</string>
     <string name="voice_provider_offline">Entrada de voz sin conexión (Plugin)</string>
@@ -927,9 +924,6 @@
     <string name="text_expander_template_title">Expansión de plantilla</string>
     <string name="text_expander_template_hint" formatted="false">¡Vuelvo enseguida! o Mi correo es %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Marcadores rápidos (toca para insertar en el cursor):</string>
-    <string name="text_expander_save">Guardar</string>
-    <string name="text_expander_add">Añadir</string>
-    <string name="text_expander_delete">Eliminar</string>
     <string name="custom_ai_keys_what_are_keywords">¿Qué son las Palabras clave?</string>
     <string name="custom_ai_keys_keywords_description">Las palabras clave (como #proofread o #summarize) actúan como instrucciones rápidas para la AI. Selecciónalas al configurar una tecla para definir su comportamiento. También debes añadir tu propio prompt personalizado para crear la tecla.</string>
     <string name="custom_ai_keys_show_tags_title">Mostrar etiquetas en el teclado</string>
@@ -1216,9 +1210,7 @@ Advertencia: cargar código externo puede suponer un riesgo de seguridad. Utiliz
     <string name="label_all">Todo</string>
     <string name="label_word">Palabra</string>
     <string name="next_step">Siguiente</string>
-    <string name="button_download">Descargar</string>
     <string name="button_load_from_file">Cargar desde archivo</string>
-    <string name="button_delete">Eliminar</string>
 <string name="handwriting_plugin_update_available_dialog">¡Hay una actualización disponible para el complemento de escritura manual!
 Versión local: %1$s
 Última versión: %2$s
@@ -1374,14 +1366,11 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="clipboard_action_deselect_all">Deseleccionar todo</string>
     <string name="clipboard_action_pin">Fijar</string>
     <string name="clipboard_action_unpin">Desfijar</string>
-    <string name="clipboard_action_edit">Editar</string>
-    <string name="clipboard_action_delete">Borrar</string>
     <string name="clipboard_action_select">Seleccionar</string>
     <string name="clipboard_items_deleted">%1$d elementos eliminados</string>
     <string name="shift_recapitalizes_word">Shift cambia el uso de mayúsculas en la palabra escrita</string>
     <string name="shift_recapitalizes_word_summary">Al presionar Mayús al final de una palabra, se alterna entre minúsculas, mayúsculas y MAYÚSCULAS (con bloqueo de mayúsculas)</string>
     <string name="action_back">Atrás</string>
-    <string name="action_clear_search">Borrar búsqueda</string>
     <string name="touchpad_close">Cerrar el modo de panel táctil</string>
     <string name="text_expander_greeting_morning">Buen día</string>
     <string name="text_expander_greeting_afternoon">Buenas tardes</string>
@@ -1495,8 +1484,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="gif_provider_configured">Configurado</string>
     <string name="gif_provider_not_configured">Se requiere clave API</string>
     <string name="gif_enter_api_key">Ingrese la clave API</string>
-    <string name="gif_clear_key">Claro</string>
-    <string name="gif_save">Ahorrar</string>
     <string name="gif_connecting">Conectando…</string>
     <string name="gif_api_key_saved">Clave API guardada</string>
     <string name="gif_api_key_cleared">Clave API borrada</string>

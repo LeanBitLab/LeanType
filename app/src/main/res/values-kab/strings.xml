@@ -11,7 +11,6 @@
     <string name="user_dict_settings_edit_dialog_title">Beddel awal-a</string>
     <string name="save">Sekles</string>
     <string name="add">Rnu</string>
-    <string name="remove">Kkes</string>
     <string name="subtype_locale">Tutlayt</string>
     <string name="keyboard_layout_set">Anasiw</string>
     <string name="setup_start_action">Bdu</string>
@@ -62,7 +61,6 @@
     <string name="day_or_night_day">Ass</string>
     <string name="dictionary_settings_category">Imawalen</string>
     <string name="user_dict_settings_all_languages">I tutlayin akk</string>
-    <string name="user_dict_add_word_button">Rnu awal</string>
     <string name="layout_symbols" tools:keep="@string/layout_symbols">Izamulen</string>
     <string name="file_read_error">Ur yezmir ara ad iɣer afaylu</string>
     <string name="button_save_file">Sekles ɣer ufaylu</string>

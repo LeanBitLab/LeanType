@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Ekkert tungumál"</string>
     <string name="subtype_emoji">Tjáningartákn</string>
     <string name="add">"Bæta við"</string>
-    <string name="remove">"Fjarlægja"</string>
     <string name="save">"Vista"</string>
     <string name="subtype_locale">"Tungumál"</string>
     <string name="keyboard_layout_set">"Skipan"</string>
@@ -100,7 +99,6 @@
     <string name="toast_msg_clipboard_copy">Efni afritað</string>
     <string name="gesture_floating_preview_static">Fljótandi forskoðun</string>
     <string name="more_keys_strip_description">Fleiri lyklar</string>
-    <string name="user_dict_add_word_button">Bæta við orði</string>
     <string name="layout_number" tools:keep="@string/layout_number">Tölur</string>
     <string name="customize_currencies">Sérsníða gjaldmiðla</string>
     <string name="theme_colors">Litir</string>

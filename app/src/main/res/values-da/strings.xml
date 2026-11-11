@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Intet sprog"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Tilføj"</string>
-    <string name="remove">"Fjern"</string>
     <string name="save">"Gem"</string>
     <string name="subtype_locale">"Sprog"</string>
     <string name="keyboard_layout_set">"Layout"</string>
@@ -200,7 +199,6 @@
     <string name="prefs_bottom_padding_scale">Skala for padding i bunden</string>
     <string name="layout_functional_keys_symbols" tools:keep="@string/layout_functional_keys_symbols">Funktionelle taster (symboler)</string>
     <string name="layout_functional_keys_symbols_shifted" tools:keep="@string/layout_functional_keys_symbols_shifted">Funktionelle taster (flere symboler)</string>
-    <string name="user_dict_add_word_button">Tilføj et ord</string>
     <string name="theme_style">Stil</string>
     <string name="theme_colors_night">Farver (nat)</string>
     <string name="layout_error">Layoutfejl: %s</string>

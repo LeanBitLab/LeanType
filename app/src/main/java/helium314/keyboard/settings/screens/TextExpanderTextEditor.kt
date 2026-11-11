@@ -185,8 +185,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             }
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Button(
+                            IconButton(
                                 onClick = {
                                     val result = TextExpanderText.parse(value.text, current)
                                     if (result.errors.isNotEmpty()) errors = result.errors
@@ -195,15 +194,12 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                                         if (diff.isEmpty) { toast(context, R.string.text_expander_no_changes); original = value.text }
                                         else pending = result to diff
                                     }
-                                },
-                                modifier = Modifier.height(36.dp),
-                                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 0.dp),
-                                shape = RoundedCornerShape(10.dp)
+                                }
                             ) {
-                                Text(
-                                    text = stringResource(R.string.text_expander_save),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    fontWeight = FontWeight.Bold
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_setup_check),
+                                    contentDescription = stringResource(R.string.save),
+                                    tint = MaterialTheme.colorScheme.primary
                                 )
                             }
                         }
@@ -342,7 +338,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     pending = null
                     reload()
                     toast(context, R.string.text_expander_saved)
-                }) { Text(stringResource(R.string.text_expander_save)) }
+                }) { Text(stringResource(R.string.save)) }
             },
             dismissButton = { TextButton(onClick = { pending = null }) { Text(stringResource(android.R.string.cancel)) } },
             title = { Text(stringResource(R.string.text_expander_save_question)) },

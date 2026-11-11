@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"Geen taal"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Toevoegen"</string>
-    <string name="remove">"Verwijderen"</string>
     <string name="save">"Opslaan"</string>
     <string name="subtype_locale">"Taal"</string>
     <string name="keyboard_layout_set">"Lay-out"</string>
@@ -197,7 +196,6 @@
     <string name="subtype_generic_extended">%s (Extended)</string>
     <string name="button_select_language">Taal kiezen</string>
     <string name="user_dict_word_already_present">Dit woord is al aanwezig in het gebruikerswoordenboek van %s. Typ er nog een.</string>
-    <string name="user_dict_add_word_button">Woord toevoegen</string>
     <string name="switch_language">Taal wisselen</string>
     <string name="popup_keys_language_priority" tools:keep="@string/popup_keys_language_priority">Taal (prioriteit)</string>
     <string name="popup_keys_layout" tools:keep="@string/popup_keys_layout">Lay-out</string>
@@ -877,9 +875,6 @@
     <string name="text_expander_template_title">Sjabloonuitbreiding</string>
     <string name="text_expander_template_hint" formatted="false">Ben zo terug! of Mijn e-mail is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Snelle placeholders (tik om in te voegen bij cursor):</string>
-    <string name="text_expander_save">Opslaan</string>
-    <string name="text_expander_add">Toevoegen</string>
-    <string name="text_expander_delete">Verwijderen</string>
     <string name="settings_screen_ai_integration">AI-integratie</string>
     <string name="custom_ai_keys_title">Aangepaste AI-toetsen</string>
     <string name="custom_ai_keys_summary">Pas genummerde werkbalktoetsen aan met uw eigen prompts</string>
@@ -966,7 +961,6 @@
     <string name="voice_status_listening">Luisteren… spreek nu</string>
     <string name="voice_status_processing">Verwerken…</string>
     <string name="voice_action_done">Klaar</string>
-    <string name="voice_action_cancel">Annuleren</string>
     <string name="voice_provider_title">Spraakinvoeraanbieder</string>
     <string name="voice_provider_summary">Selecteer hoe spraakdicteren wordt verwerkt</string>
     <string name="voice_provider_offline">Offline Spraakinvoer (Plugin)</string>
@@ -1260,9 +1254,7 @@ Waarschuwing: het laden van externe code kan een beveiligingsrisico vormen. Gebr
     <string name="label_all">Alles</string>
     <string name="label_word">Woord</string>
     <string name="next_step">Volgende</string>
-    <string name="button_download">Downloaden</string>
     <string name="button_load_from_file">Laden uit bestand</string>
-    <string name="button_delete">Verwijderen</string>
 <string name="handwriting_plugin_update_available_dialog">Er is een update beschikbaar voor de handschrift-plug-in!
 Lokale versie: %1$s
 Nieuwste versie: %2$s
@@ -1418,14 +1410,11 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="clipboard_action_deselect_all">Deselecteer alles</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Losmaken</string>
-    <string name="clipboard_action_edit">Bewerking</string>
-    <string name="clipboard_action_delete">Verwijderen</string>
     <string name="clipboard_action_select">Selecteer</string>
     <string name="clipboard_items_deleted">%1$d items verwijderd</string>
     <string name="shift_recapitalizes_word">Shift wijzigt het hoofdlettergebruik van getypte woorden</string>
     <string name="shift_recapitalizes_word_summary">Door aan het einde van een woord op Shift te drukken, bladert u door kleine letters, hoofdletters en HOOFDLETTERS (met caps lock)</string>
     <string name="action_back">Rug</string>
-    <string name="action_clear_search">Duidelijke zoekopdracht</string>
     <string name="touchpad_close">Sluit de touchpad-modus</string>
     <string name="text_expander_greeting_morning">Goedemorgen</string>
     <string name="text_expander_greeting_afternoon">Goedemiddag</string>
@@ -1539,8 +1528,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="gif_provider_configured">Geconfigureerd</string>
     <string name="gif_provider_not_configured">API-sleutel vereist</string>
     <string name="gif_enter_api_key">Voer de API-sleutel in</string>
-    <string name="gif_clear_key">Duidelijk</string>
-    <string name="gif_save">Redden</string>
     <string name="gif_connecting">Verbinden…</string>
     <string name="gif_api_key_saved">API-sleutel opgeslagen</string>
     <string name="gif_api_key_cleared">API-sleutel gewist</string>

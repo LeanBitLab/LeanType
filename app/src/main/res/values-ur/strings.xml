@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"کوئی زبان نہیں"</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"شامل کریں"</string>
-    <string name="remove">"ہٹائیں"</string>
     <string name="save">"محفوظ کریں"</string>
     <string name="subtype_locale">"زبان"</string>
     <string name="keyboard_layout_set">"لے آؤٹ"</string>
@@ -549,7 +548,6 @@
     <string name="dictionary_load_error">"لغت فائل لوڈ کرنے میں خرابی"</string>
     <string name="user_dict_settings_add_weight_value">وزن:</string>
     <string name="user_dict_word_already_present">یہ لفظ پہلے ہی %s صارف لغت میں موجود ہے۔ براہ کرم دوسرا ٹائپ کریں۔</string>
-    <string name="user_dict_add_word_button">ایک لفظ شامل کریں</string>
     <string name="user_dict_clear_all_confirmation">کیا آپ واقعی اس لغت سے تمام الفاظ صاف کرنا چاہتے ہیں؟</string>
     <string name="theme_style">انداز</string>
     <string name="icon_style">آئیکن کا انداز</string>
@@ -782,9 +780,6 @@
     <string name="text_expander_template_title">ٹیمپلیٹ کی توسیع</string>
     <string name="text_expander_template_hint" formatted="false">ابھی واپس آیا! یا میرا ای میل %clipboard% ہے</string>
     <string name="text_expander_quick_placeholders_title">فوری پلیس ہولڈرز (کرسر پر داخل کرنے کے لیے تھپتھپائیں):</string>
-    <string name="text_expander_save">محفوظ کریں</string>
-    <string name="text_expander_add">شامل کریں</string>
-    <string name="text_expander_delete">حذف کریں</string>
     <string name="custom_ai_keys_what_are_keywords">کلیدی الفاظ کیا ہیں؟</string>
     <string name="custom_ai_keys_keywords_description">کلیدی الفاظ (جیسے #proofread یا #summarize) AI کے لیے فوری ہدایات کے طور پر کام کرتے ہیں۔ کسی کلید کو تشکیل دیتے وقت اس کے رویے کی وضاحت کے لیے انہیں منتخب کریں۔ کلید بنانے کے لیے آپ کو اپنا حسب ضرورت پرامپٹ بھی شامل کرنا ہوگا۔</string>
     <string name="custom_ai_keys_show_tags_title">کی بورڈ پر ٹیگز دکھائیں</string>
@@ -895,7 +890,6 @@
     <string name="voice_status_listening">سن رہا ہے… اب بولیں</string>
     <string name="voice_status_processing">پروسیس ہو رہا ہے…</string>
     <string name="voice_action_done">مکمل</string>
-    <string name="voice_action_cancel">منسوخ کریں</string>
     <string name="voice_provider_title">صوتی ان پٹ فراہم کنندہ</string>
     <string name="voice_provider_summary">منتخب کریں کہ وائس ڈکٹیشن پر کیسے کارروائی کی جائے</string>
     <string name="voice_provider_offline">آف لائن صوتی ان پٹ (پلگ ان)</string>
@@ -1317,9 +1311,7 @@
     <string name="label_all">سبھی</string>
     <string name="label_word">لفظ</string>
     <string name="next_step">اگلا</string>
-    <string name="button_download">ڈاؤن لوڈ کریں</string>
     <string name="button_load_from_file">فائل سے لوڈ کریں</string>
-    <string name="button_delete">حذف کریں</string>
 <string name="handwriting_plugin_update_available_dialog">ہینڈ رائٹنگ پلگ اِن کے لیے اپ ڈیٹ دستیاب ہے!
 مقامی ورژن: %1$s
 تازہ ترین ورژن: %2$s
@@ -1468,14 +1460,11 @@
     <string name="clipboard_action_deselect_all">سبھی کو غیر منتخب کریں۔</string>
     <string name="clipboard_action_pin">پن</string>
     <string name="clipboard_action_unpin">پن کھول دیں۔</string>
-    <string name="clipboard_action_edit">ترمیم کریں۔</string>
-    <string name="clipboard_action_delete">حذف کریں۔</string>
     <string name="clipboard_action_select">منتخب کریں۔</string>
     <string name="clipboard_items_deleted">%1$d آئٹمز حذف کر دیے گئے۔</string>
     <string name="shift_recapitalizes_word">شفٹ ٹائپ شدہ لفظ کی کیپیٹلائزیشن کو تبدیل کرتا ہے۔</string>
     <string name="shift_recapitalizes_word_summary">لفظ کے آخر میں شفٹ کو دبانے سے چھوٹے، کیپیٹلائزڈ اور اپر کیس (کیپس لاک کے ساتھ)</string>
     <string name="action_back">پیچھے</string>
-    <string name="action_clear_search">تلاش صاف کریں۔</string>
     <string name="touchpad_close">ٹچ پیڈ موڈ بند کریں۔</string>
     <string name="text_expander_greeting_morning">صبح بخیر</string>
     <string name="text_expander_greeting_afternoon">صبح بخیر</string>
@@ -1589,8 +1578,6 @@
     <string name="gif_provider_configured">تشکیل شدہ</string>
     <string name="gif_provider_not_configured">API کلید درکار ہے۔</string>
     <string name="gif_enter_api_key">API کلید درج کریں۔</string>
-    <string name="gif_clear_key">صاف</string>
-    <string name="gif_save">محفوظ کریں۔</string>
     <string name="gif_connecting">منسلک ہو رہا ہے…</string>
     <string name="gif_api_key_saved">API کلید محفوظ ہو گئی۔</string>
     <string name="gif_api_key_cleared">API کلید صاف ہو گئی۔</string>

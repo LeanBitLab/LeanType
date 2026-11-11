@@ -52,7 +52,6 @@
     <string name="subtype_no_language">стандартная</string>
     <string name="subtype_emoji">"Эмодзі"</string>
     <string name="add">"Дадаць"</string>
-    <string name="remove">"Выдаліць"</string>
     <string name="save">"Захаваць"</string>
     <string name="subtype_locale">"Мова"</string>
     <string name="keyboard_layout_set">"Раскладка"</string>
@@ -251,7 +250,6 @@
     <string name="available_dictionary_experimental">%s (эксперыментальны)</string>
     <string name="dictionary_file_error">Памылка: абраны файл не з\'яўляецца карэктным слоўнікам</string>
     <string name="dictionary_file_wrong_script">Памылка: скрыпт несумяшчальны з гэтай клавіятурай</string>
-    <string name="user_dict_add_word_button">Дадаць слова</string>
     <string name="theme_name_holo_white" tools:keep="@string/theme_name_holo_white">Holo Белая</string>
     <string name="theme_name_dynamic" tools:keep="@string/theme_name_dynamic">Дынамічныя колеры</string>
     <string name="theme_name_blue_gray" tools:keep="@string/theme_name_blue_gray">Шэра-блакітны</string>
@@ -606,7 +604,6 @@
     <string name="voice_status_listening">Слухаю… гаварыце</string>
     <string name="voice_status_processing">Апрацоўка…</string>
     <string name="voice_action_done">Гатова</string>
-    <string name="voice_action_cancel">Скасаваць</string>
     <string name="voice_provider_title">Пастаўшчык галасавога ўводу</string>
     <string name="voice_provider_summary">Выберыце спосаб апрацоўкі галасавой дыктоўкі</string>
     <string name="voice_provider_offline">Аўтаномны галасавы ўвод (Плагін)</string>
@@ -916,9 +913,6 @@
     <string name="text_expander_template_title">Разгортванне шаблона</string>
     <string name="text_expander_template_hint" formatted="false">Хутка вярнуся! або Мой email: %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Хуткія запаўняльнікі (націсніце, каб уставіць у пазіцыю курсора):</string>
-    <string name="text_expander_save">Захаваць</string>
-    <string name="text_expander_add">Дадаць</string>
-    <string name="text_expander_delete">Выдаліць</string>
     <string name="custom_ai_keys_what_are_keywords">Што такое ключавыя словы?</string>
     <string name="custom_ai_keys_keywords_description">Ключавыя словы (напрыклад, #proofread або #summarize) дзейнічаюць як хуткія інструкцыі для AI. Выбірайце іх пры наладцы клавішы, каб вызначыць яе паводзіны. Вы таксама павінны дадаць уласны карыстальніцкі запыт, каб стварыць клавішу.</string>
     <string name="custom_ai_keys_show_tags_title">Паказваць тэгі на клавіятуры</string>
@@ -1253,9 +1247,7 @@
     <string name="label_all">Усё</string>
     <string name="label_word">Слова</string>
     <string name="next_step">Далей</string>
-    <string name="button_download">Спампаваць</string>
     <string name="button_load_from_file">Загрузіць з файла</string>
-    <string name="button_delete">Выдаліць</string>
 <string name="handwriting_plugin_update_available_dialog">Даступна абнаўленне для плагіна рукапіснага ўводу!
 Лакальная версія: %1$s
 Апошняя версія: %2$s
@@ -1411,14 +1403,11 @@
     <string name="clipboard_action_deselect_all">Зняць выбар з усіх</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Адмацаваць</string>
-    <string name="clipboard_action_edit">Рэдагаваць</string>
-    <string name="clipboard_action_delete">Выдаліць</string>
     <string name="clipboard_action_select">Выберыце</string>
     <string name="clipboard_items_deleted">%1$d элементаў выдалена</string>
     <string name="shift_recapitalizes_word">Shift змяняе капіталізацыю набранага слова</string>
     <string name="shift_recapitalizes_word_summary">Націсканне Shift у канцы слова пераключае малыя, вялікія і ВЕЛІКІЯ літары (з Caps Lock)</string>
     <string name="action_back">Назад</string>
-    <string name="action_clear_search">Выразны пошук</string>
     <string name="touchpad_close">Закрыць рэжым сэнсарнай панэлі</string>
     <string name="text_expander_greeting_morning">Добрай раніцы</string>
     <string name="text_expander_greeting_afternoon">Добры дзень</string>
@@ -1532,8 +1521,6 @@
     <string name="gif_provider_configured">Наладжаны</string>
     <string name="gif_provider_not_configured">Патрабуецца ключ API</string>
     <string name="gif_enter_api_key">Увядзіце ключ API</string>
-    <string name="gif_clear_key">Ясна</string>
-    <string name="gif_save">Захаваць</string>
     <string name="gif_connecting">Падключэнне…</string>
     <string name="gif_api_key_saved">Ключ API захаваны</string>
     <string name="gif_api_key_cleared">Ключ API выдалены</string>

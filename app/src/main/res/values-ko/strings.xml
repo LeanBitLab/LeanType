@@ -51,7 +51,6 @@
     <string name="subtype_no_language">"언어 없음"</string>
     <string name="subtype_emoji">"이모티콘"</string>
     <string name="add">"추가"</string>
-    <string name="remove">"삭제"</string>
     <string name="save">"저장"</string>
     <string name="subtype_locale">"언어"</string>
     <string name="keyboard_layout_set">"레이아웃"</string>

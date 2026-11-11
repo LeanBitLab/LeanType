@@ -51,7 +51,6 @@
     <string name="subtype_no_language">Neodređen jezik</string>
     <string name="subtype_emoji">"Emoji"</string>
     <string name="add">"Dodaj"</string>
-    <string name="remove">"Ukloni"</string>
     <string name="save">"Spremi"</string>
     <string name="subtype_locale">"Jezik"</string>
     <string name="keyboard_layout_set">Raspored</string>
@@ -336,7 +335,6 @@
     <string name="dictionary_load_error">Greška kod učitavanja datoteke rječnika</string>
     <string name="user_dict_settings_add_weight_value">Težina:</string>
     <string name="user_dict_word_already_present">Ova riječ već postoji u korisničkom rječniku „%s”. Upišite drugu.</string>
-    <string name="user_dict_add_word_button">Dodaj riječ</string>
     <string name="theme_style">Stil</string>
     <string name="icon_style">Stil ikona</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Okruglo</string>
@@ -613,7 +611,6 @@
     <string name="voice_status_listening">Slušam… govorite sada</string>
     <string name="voice_status_processing">Obrada…</string>
     <string name="voice_action_done">Gotovo</string>
-    <string name="voice_action_cancel">Odustani</string>
     <string name="voice_provider_title">Pružatelj usluga glasovnog unosa</string>
     <string name="voice_provider_summary">Odaberite način obrade glasovne diktature</string>
     <string name="voice_provider_offline">Offline glasovni unos (Dodatak)</string>
@@ -879,9 +876,6 @@
     <string name="text_expander_template_title">Proširenje predloška</string>
     <string name="text_expander_template_hint" formatted="false">Odmah se vraćam! ili Moj e-mail je %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Brze oznake mjesta (dodirnite za unos na kursor):</string>
-    <string name="text_expander_save">Spremi</string>
-    <string name="text_expander_add">Dodaj</string>
-    <string name="text_expander_delete">Izbriši</string>
     <string name="custom_ai_keys_what_are_keywords">Što su ključne riječi?</string>
     <string name="custom_ai_keys_keywords_description">Ključne riječi (poput #proofread ili #summarize) djeluju kao brze upute za AI. Odaberite ih prilikom konfiguriranja tipke kako biste definirali njeno ponašanje. Također morate dodati vlastitu prilagođenu uputu (prompt) za kreiranje tipke.</string>
     <string name="custom_ai_keys_show_tags_title">Prikaži oznake na tipkovnici</string>
@@ -1216,9 +1210,7 @@ Upozorenje: učitavanje vanjskog koda može biti sigurnosni rizik. Koristite sam
     <string name="label_all">Sve</string>
     <string name="label_word">Riječ</string>
     <string name="next_step">Dalje</string>
-    <string name="button_download">Preuzmi</string>
     <string name="button_load_from_file">Učitaj iz datoteke</string>
-    <string name="button_delete">Izbriši</string>
 <string name="handwriting_plugin_update_available_dialog">Dostupno je ažuriranje za dodatak za rukopis!
 Lokalna verzija: %1$s
 Najnovija verzija: %2$s
@@ -1374,14 +1366,11 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="clipboard_action_deselect_all">Poništi odabir svih</string>
     <string name="clipboard_action_pin">Pin</string>
     <string name="clipboard_action_unpin">Otkvači</string>
-    <string name="clipboard_action_edit">Uredi</string>
-    <string name="clipboard_action_delete">Izbrisati</string>
     <string name="clipboard_action_select">Odaberite</string>
     <string name="clipboard_items_deleted">%1$d stavki izbrisano</string>
     <string name="shift_recapitalizes_word">Shift mijenja velika slova u upisanoj riječi</string>
     <string name="shift_recapitalizes_word_summary">Pritiskom na shift na kraju riječi kruži kroz mala slova, velika i velika slova (s caps lock)</string>
     <string name="action_back">Nazad</string>
-    <string name="action_clear_search">Očisti pretragu</string>
     <string name="touchpad_close">Zatvori način dodirne podloge</string>
     <string name="text_expander_greeting_morning">Dobro jutro</string>
     <string name="text_expander_greeting_afternoon">Dobar dan</string>
@@ -1495,8 +1484,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="gif_provider_configured">Konfigurirano</string>
     <string name="gif_provider_not_configured">Potreban je API ključ</string>
     <string name="gif_enter_api_key">Unesite API ključ</string>
-    <string name="gif_clear_key">Jasan</string>
-    <string name="gif_save">Uštedjeti</string>
     <string name="gif_connecting">Povezivanje…</string>
     <string name="gif_api_key_saved">API ključ spremljen</string>
     <string name="gif_api_key_cleared">API ključ obrisan</string>
