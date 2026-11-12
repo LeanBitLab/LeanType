@@ -157,6 +157,13 @@ object TextExpanderUtils {
         val imageUri: String? = null
     )
 
+    private data class RankedSuggestion(
+        val isExact: Boolean,
+        val specificity: Int,
+        val shortcutLength: Int,
+        val match: SuggestionMatch
+    )
+
     fun clearCache() {
         synchronized(this) {
             cachedEnabled = null
@@ -668,7 +675,7 @@ object TextExpanderUtils {
             return emptyList()
         }
         val compiledList = getSnapshotLocked(context).second
-        val matches = mutableListOf<SuggestionMatch>()
+        val matches = mutableListOf<RankedSuggestion>()
 
         for (item in compiledList) {
             val entry = item.entry
@@ -677,46 +684,73 @@ object TextExpanderUtils {
                 try {
                     val match = regex.findAll(textBeforeCursor).lastOrNull { it.range.last == textBeforeCursor.length - 1 }
                     if (match != null && match.value.isNotEmpty()) {
-                        val isImage = entry.imageUri != null
+                        val isImage = !entry.imageUri.isNullOrBlank()
                         val label = if (isImage) {
                             if (entry.template.isNotBlank()) formatPreview(entry.template) else ""
                         } else {
                             formatPreview(entry.template)
                         }
-                        matches.add(SuggestionMatch(entry.template, label, 0, item.cleanKey, entry.imageUri))
+                        matches.add(
+                            RankedSuggestion(
+                                isExact = true,
+                                specificity = match.value.length,
+                                shortcutLength = item.cleanKey.length,
+                                match = SuggestionMatch(entry.template, label, 0, item.cleanKey, entry.imageUri?.takeIf { it.isNotBlank() })
+                            )
+                        )
                     }
                 } catch (_: Exception) {}
             } else {
                 val prefix = entry.prefix
-                val shortcut = item.cleanKey
-                val fullTrigger = prefix + shortcut
-                val matchesPrefix = if (prefix.isNotEmpty()) {
-                    textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)
-                } else {
+                val hasStoredPrefix = prefix.isNotEmpty() && item.cleanKey.startsWith(prefix)
+                val shortcut = if (hasStoredPrefix) item.cleanKey.substring(prefix.length) else item.cleanKey
+                val fullTrigger = if (hasStoredPrefix) item.cleanKey else prefix + item.cleanKey
+                val matchesWithPrefix = prefix.isNotEmpty() &&
+                    typedWord.startsWith(prefix, ignoreCase = true) &&
+                    textBeforeCursor.endsWith(typedWord, ignoreCase = true)
+                val matchesWithoutPrefix = if (prefix.isEmpty()) {
                     true
+                } else {
+                    textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)
                 }
-                if (matchesPrefix) {
-                    val isMatch = (shortcut.length >= typedWord.length && shortcut.startsWith(typedWord, ignoreCase = true)) ||
-                                  (fullTrigger.length >= typedWord.length && fullTrigger.startsWith(typedWord, ignoreCase = true))
+                if (matchesWithPrefix || matchesWithoutPrefix) {
+                    val target = if (matchesWithPrefix) fullTrigger else shortcut
+                    val isImage = !entry.imageUri.isNullOrBlank()
+                    val isExactMatch = target.equals(typedWord, ignoreCase = true)
+                    val isMatch = when {
+                        // Unprefixed and image shortcuts require an exact match so normal words aren't hijacked mid-typing.
+                        isImage || prefix.isEmpty() -> isExactMatch
+                        // Explicitly prefixed text shortcuts (e.g. ";cic") keep prefix autocomplete once typing the trigger.
+                        else -> target.length >= typedWord.length && target.startsWith(typedWord, ignoreCase = true)
+                    }
                     if (isMatch) {
-                        val prefixLen = if (prefix.isNotEmpty() && textBeforeCursor.endsWith(prefix + typedWord, ignoreCase = true)) {
-                            prefix.length
-                        } else 0
-                        val isImage = entry.imageUri != null
+                        val prefixLen = if (!matchesWithPrefix && prefix.isNotEmpty()) prefix.length else 0
                         val label = if (isImage) {
                             if (entry.template.isNotBlank()) formatPreview(entry.template) else ""
-                        } else if (shortcut.equals(typedWord, ignoreCase = true)) {
+                        } else if (isExactMatch) {
                             formatPreview(entry.template)
                         } else {
                             "$shortcut: ${formatPreview(entry.template)}"
                         }
-                        matches.add(SuggestionMatch(entry.template, label, prefixLen, shortcut, entry.imageUri))
+                        matches.add(
+                            RankedSuggestion(
+                                isExact = isExactMatch,
+                                // Prefer prefixed exact matches (e.g. ";addr") over unprefixed ones when the prefix was typed.
+                                specificity = if (isExactMatch) fullTrigger.length else prefix.length,
+                                shortcutLength = shortcut.length,
+                                match = SuggestionMatch(entry.template, label, prefixLen, shortcut, entry.imageUri?.takeIf { it.isNotBlank() })
+                            )
+                        )
                     }
                 }
             }
         }
-        matches.sortByDescending { it.key.equals(typedWord, ignoreCase = true) }
-        return matches.take(3)
+        matches.sortWith(
+            compareByDescending<RankedSuggestion> { it.isExact }
+                .thenByDescending { it.specificity }
+                .thenBy { it.shortcutLength }
+        )
+        return matches.take(3).map { it.match }
     }
 
     private fun formatPreview(template: String): String {

@@ -169,7 +169,14 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         if (ime != null && TextExpanderUtils.isEnabled(ime) && TextExpanderUtils.isSuggestionsEnabled(ime) && typedWordString.isNotEmpty()) {
             val textBefore = ime.inputLogic.connection.getTextBeforeCursor(50, 0)?.toString() ?: ""
             val matches = TextExpanderUtils.getMatchingSuggestions(typedWordString, textBefore, ime)
-            var insertPos = if (suggestionsContainer.isNotEmpty()) 1 else 0
+            // Keep INDEX_OF_AUTO_CORRECTION (index 1) intact when auto-correct is active.
+            var insertPos = if (hasAutoCorrection) {
+                minOf(2, suggestionsContainer.size)
+            } else if (suggestionsContainer.isNotEmpty()) {
+                1
+            } else {
+                0
+            }
             for (match in matches) {
                 val expanderSuggestion = SuggestedWordInfo(
                     match.template,
