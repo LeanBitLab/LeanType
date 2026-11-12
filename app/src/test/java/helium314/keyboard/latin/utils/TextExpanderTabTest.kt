@@ -27,6 +27,7 @@ class TextExpanderTabTest {
         prefs.edit()
             .putBoolean(TextExpanderUtils.PREF_ENABLED, true)
             .putBoolean(TextExpanderUtils.PREF_SUGGESTIONS, true)
+            .putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, false)
             .commit()
 
         val shortcuts = mapOf(
@@ -64,6 +65,27 @@ class TextExpanderTabTest {
         assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("do", "do", context))
         val imageWithoutLabelFullMatches = TextExpanderUtils.getMatchingSuggestions("dog", "dog", context)
         assertEquals("", imageWithoutLabelFullMatches.first().previewLabel)
+
+        // Enabling prefix autocomplete restores 2+ char partial matches for both unprefixed text and image shortcuts
+        prefs.edit().putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, true).commit()
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("a", "a", context))
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("c", "c", context))
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("d", "d", context))
+        assertEquals("addr: 123 Main St", TextExpanderUtils.getMatchingSuggestions("ad", "ad", context).first().previewLabel)
+        assertEquals("Olp: H", TextExpanderUtils.getMatchingSuggestions("Ol", "Ol", context).first().previewLabel)
+        assertEquals("123 Main St", TextExpanderUtils.getMatchingSuggestions("addr", "addr", context).first().previewLabel)
+        assertEquals("H", TextExpanderUtils.getMatchingSuggestions("olp", "olp", context).first().previewLabel)
+        assertEquals("Cute Kitty", TextExpanderUtils.getMatchingSuggestions("ca", "ca", context).first().previewLabel)
+        assertEquals("/path/to/cat.png", TextExpanderUtils.getMatchingSuggestions("ca", "ca", context).first().imageUri)
+        assertEquals("", TextExpanderUtils.getMatchingSuggestions("do", "do", context).first().previewLabel)
+        assertEquals("/path/to/dog.png", TextExpanderUtils.getMatchingSuggestions("do", "do", context).first().imageUri)
+
+        // Turning it back off immediately disables unprefixed partial matching for both text and image shortcuts
+        prefs.edit().putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, false).commit()
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("Ol", "Ol", context))
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("ad", "ad", context))
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("ca", "ca", context))
+        assertEquals(emptyList<TextExpanderUtils.SuggestionMatch>(), TextExpanderUtils.getMatchingSuggestions("do", "do", context))
     }
 
     @Test
@@ -72,6 +94,7 @@ class TextExpanderTabTest {
         context.prefs().edit()
             .putBoolean(TextExpanderUtils.PREF_ENABLED, true)
             .putBoolean(TextExpanderUtils.PREF_SUGGESTIONS, true)
+            .putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, false)
             .commit()
 
         TextExpanderUtils.saveShortcuts(
@@ -119,6 +142,21 @@ class TextExpanderTabTest {
         assertEquals(1, prefixedTextExact.size)
         assertEquals(1, prefixedTextExact.single().prefixLength)
         assertEquals("Hello world", prefixedTextExact.single().previewLabel)
+
+        // Enabling autocomplete enables prefixed image partial matches and 2+ char unprefixed images, without 1-char "y" collision
+        context.prefs().edit().putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, true).commit()
+        val prefixedImagePartial = TextExpanderUtils.getMatchingSuggestions("y", ";y", context)
+        assertEquals(1, prefixedImagePartial.size)
+        assertEquals("/path/to/p_you.png", prefixedImagePartial.single().imageUri)
+        TextExpanderUtils.saveShortcuts(
+            context,
+            mapOf(
+                "y" to TextExpanderUtils.ShortcutEntry(template = "", prefix = "", imageUri = "/path/to/y.png"),
+                "you" to TextExpanderUtils.ShortcutEntry(template = "", prefix = "", imageUri = "/path/to/you.png")
+            )
+        )
+        assertEquals(listOf("y"), TextExpanderUtils.getMatchingSuggestions("y", "y", context).map { it.key })
+        assertEquals(listOf("you"), TextExpanderUtils.getMatchingSuggestions("yo", "yo", context).map { it.key })
     }
 
     @Test

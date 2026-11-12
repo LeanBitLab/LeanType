@@ -1702,4 +1702,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_image_load_failed">Nije moguće učitati ili obraditi odabranu sliku</string>
     <string name="text_expander_image_processing">Priprema slike…</string>
     <string name="voice_max_duration_10m">10 minuta</string>
+    <string name="text_expander_prefix_autocomplete_title">Prečaci za automatsko dovršavanje</string>
+    <string name="text_expander_prefix_autocomplete_summary">Predložite djelomična podudaranja za tekstualne i slikovne prečace bez prefiksa nakon upisivanja 2+ znaka (prefiksni prečaci također se automatski dovršavaju).</string>
 </resources>

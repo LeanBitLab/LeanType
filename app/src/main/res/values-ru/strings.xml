@@ -1764,4 +1764,6 @@
     <string name="text_expander_image_load_failed">Не удалось загрузить или обработать выбранное изображение.</string>
     <string name="text_expander_image_processing">Подготовка изображения…</string>
     <string name="voice_max_duration_10m">10 минут</string>
+    <string name="text_expander_prefix_autocomplete_title">Ярлыки автозаполнения</string>
+    <string name="text_expander_prefix_autocomplete_summary">Предлагать частичные совпадения для текстовых и графических ярлыков без префиксов после ввода более двух символов (ярлыки с префиксами также автозаполняются).</string>
 </resources>

@@ -1731,4 +1731,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_image_load_failed">Seçilen resim yüklenemedi veya işlenemedi</string>
     <string name="text_expander_image_processing">Resim hazırlanıyor…</string>
     <string name="voice_max_duration_10m">10 dakika</string>
+    <string name="text_expander_prefix_autocomplete_title">Otomatik tamamlama kısayolları</string>
+    <string name="text_expander_prefix_autocomplete_summary">2\'den fazla karakter yazdıktan sonra ön ekli metin ve resim kısayolları için kısmi eşleşmeler önerin (ön ekli kısayollar ayrıca otomatik tamamlama).</string>
 </resources>

@@ -1737,6 +1737,8 @@ New dictionary:
     <string name="text_expander_backspace_undo_summary">Revert expanded text back to shortcut on backspace.</string>
     <string name="text_expander_suggestions_title">Show in suggestions</string>
     <string name="text_expander_suggestions_summary">Show expandable text snippets in the suggestion strip while typing.</string>
+    <string name="text_expander_prefix_autocomplete_title">Autocomplete shortcuts</string>
+    <string name="text_expander_prefix_autocomplete_summary">Suggest partial matches for unprefixed text and image shortcuts after typing 2+ characters (prefixed shortcuts also autocomplete).</string>
     <string name="text_expander_suggestions_only_title">Suggestion only (no auto-expand)</string>
     <string name="text_expander_suggestions_only_summary">Expand text only when selected from suggestions, preventing automatic insertion.</string>
     <string name="text_expander_custom_shortcuts_title">Custom Shortcuts</string>

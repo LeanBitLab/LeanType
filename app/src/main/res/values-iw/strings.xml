@@ -1710,4 +1710,6 @@
     <string name="text_expander_image_load_failed">לא ניתן לטעון או לעבד את התמונה שנבחרה</string>
     <string name="text_expander_image_processing">מכין תמונה...</string>
     <string name="voice_max_duration_10m">10 דקות</string>
+    <string name="text_expander_prefix_autocomplete_title">קיצורי השלמה אוטומטית</string>
+    <string name="text_expander_prefix_autocomplete_summary">הצע התאמות חלקיות לקיצורי טקסט ותמונה ללא קידומת לאחר הקלדת 2+ תווים (קיצורי קיצור גם השלמה אוטומטית).</string>
 </resources>

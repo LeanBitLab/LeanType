@@ -1746,4 +1746,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_image_load_failed">Nie można załadować lub przetworzyć wybranego obrazu</string>
     <string name="text_expander_image_processing">Przygotowuję obraz…</string>
     <string name="voice_max_duration_10m">10 minut</string>
+    <string name="text_expander_prefix_autocomplete_title">Autouzupełnianie skrótów</string>
+    <string name="text_expander_prefix_autocomplete_summary">Sugeruj częściowe dopasowania skrótów tekstowych i graficznych bez prefiksu po wpisaniu co najmniej 2 znaków (skróty z prefiksami również są autouzupełniane).</string>
 </resources>

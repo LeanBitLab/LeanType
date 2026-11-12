@@ -1702,4 +1702,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_image_load_failed">Tidak dapat memuat atau memproses gambar yang dipilih</string>
     <string name="text_expander_image_processing">Mempersiapkan gambar…</string>
     <string name="voice_max_duration_10m">10 menit</string>
+    <string name="text_expander_prefix_autocomplete_title">Pintasan pelengkapan otomatis</string>
+    <string name="text_expander_prefix_autocomplete_summary">Menyarankan kecocokan sebagian untuk pintasan teks dan gambar tanpa awalan setelah mengetik 2+ karakter (pintasan yang diawali juga dilengkapi secara otomatis).</string>
 </resources>

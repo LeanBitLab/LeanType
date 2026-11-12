@@ -1702,4 +1702,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_image_load_failed">Nem sikerült betölteni vagy feldolgozni a kiválasztott képet</string>
     <string name="text_expander_image_processing">Kép előkészítése…</string>
     <string name="voice_max_duration_10m">10 perc</string>
+    <string name="text_expander_prefix_autocomplete_title">Automatikus kiegészítés parancsikonok</string>
+    <string name="text_expander_prefix_autocomplete_summary">Javasoljon részleges egyezéseket az előtag nélküli szöveges és képi parancsikonokhoz 2+ karakter beírása után (az előtaggal ellátott billentyűparancsok automatikusan kiegészítenek is).</string>
 </resources>

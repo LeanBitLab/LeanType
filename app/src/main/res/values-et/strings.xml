@@ -1739,4 +1739,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_image_processing">Pildi ettevalmistamine…</string>
     <string name="text_expander_image_missing_short">Pilt puudub – puudutage uuesti kinnitamiseks</string>
     <string name="voice_max_duration_10m">10 minutit</string>
+    <string name="text_expander_prefix_autocomplete_title">Automaatse täitmise otseteed</string>
+    <string name="text_expander_prefix_autocomplete_summary">Pärast 2+ tähemärgi sisestamist soovitage eesliiteta teksti ja pildi otseteede jaoks osalisi vasteid (eesliitega otseteed täidetakse ka automaatselt).</string>
 </resources>

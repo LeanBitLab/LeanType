@@ -1704,4 +1704,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_image_load_failed">Nelze načíst nebo zpracovat vybraný obrázek</string>
     <string name="text_expander_image_processing">Příprava obrázku…</string>
     <string name="voice_max_duration_10m">10 minut</string>
+    <string name="text_expander_prefix_autocomplete_title">Zkratky automatického doplňování</string>
+    <string name="text_expander_prefix_autocomplete_summary">Navrhněte částečné shody pro textové a obrázkové zkratky bez předpony po zadání 2 a více znaků (zkratky s předponou se také automaticky doplňují).</string>
 </resources>

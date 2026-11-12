@@ -1805,4 +1805,6 @@
     <string name="text_expander_image_load_failed">തിരഞ്ഞെടുത്ത ചിത്രം ലോഡ് ചെയ്യാനോ പ്രോസസ്സ് ചെയ്യാനോ കഴിഞ്ഞില്ല</string>
     <string name="text_expander_image_processing">ചിത്രം തയ്യാറാക്കുന്നു...</string>
     <string name="voice_max_duration_10m">10 മിനിറ്റ്</string>
+    <string name="text_expander_prefix_autocomplete_title">കുറുക്കുവഴികൾ സ്വയമേവ പൂർത്തിയാക്കുക</string>
+    <string name="text_expander_prefix_autocomplete_summary">2+ പ്രതീകങ്ങൾ (പ്രിഫിക്‌സ് ചെയ്‌ത കുറുക്കുവഴികളും യാന്ത്രിക പൂർത്തീകരണം) ടൈപ്പ് ചെയ്‌ത ശേഷം പ്രിഫിക്‌സ് ചെയ്യാത്ത ടെക്‌സ്‌റ്റിനും ഇമേജ് കുറുക്കുവഴികൾക്കുമായി ഭാഗിക പൊരുത്തങ്ങൾ നിർദ്ദേശിക്കുക.</string>
 </resources>

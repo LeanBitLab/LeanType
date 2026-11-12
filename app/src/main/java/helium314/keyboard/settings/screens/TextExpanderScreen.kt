@@ -107,6 +107,10 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         mutableStateOf(TextExpanderUtils.isSuggestionsEnabled(context))
     }
 
+    var isPrefixAutocompleteEnabled by remember {
+        mutableStateOf(TextExpanderUtils.isPrefixAutocompleteEnabled(context))
+    }
+
     var isSuggestionsOnly by remember {
         mutableStateOf(TextExpanderUtils.isSuggestionsOnly(context))
     }
@@ -250,6 +254,15 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                         description = stringResource(R.string.text_expander_suggestions_summary),
                         enabled = isExpanderEnabled,
                         onCheckedChange = { isSuggestionsEnabled = it }
+                    )
+
+                    SwitchPreference(
+                        name = stringResource(R.string.text_expander_prefix_autocomplete_title),
+                        key = TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE,
+                        default = false,
+                        description = stringResource(R.string.text_expander_prefix_autocomplete_summary),
+                        enabled = isExpanderEnabled && isSuggestionsEnabled,
+                        onCheckedChange = { isPrefixAutocompleteEnabled = it }
                     )
 
                     SwitchPreference(
@@ -1024,6 +1037,23 @@ fun createTextExpanderSettings(context: Context): List<helium314.keyboard.settin
             onCheckedChange = {
                 isSuggestions = it
                 context.prefs().edit { putBoolean(TextExpanderUtils.PREF_SUGGESTIONS, it) }
+            }
+        )
+    },
+    helium314.keyboard.settings.Setting(
+        key = TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE,
+        title = context.getString(R.string.text_expander_prefix_autocomplete_title),
+        description = context.getString(R.string.text_expander_prefix_autocomplete_summary)
+    ) { setting ->
+        var isPrefixAutocomplete by remember { mutableStateOf(TextExpanderUtils.isPrefixAutocompleteEnabled(context)) }
+        SwitchPreference(
+            name = setting.title,
+            key = setting.key,
+            default = false,
+            description = setting.description,
+            onCheckedChange = {
+                isPrefixAutocomplete = it
+                context.prefs().edit { putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, it) }
             }
         )
     },

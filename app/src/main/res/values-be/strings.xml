@@ -1739,4 +1739,6 @@
     <string name="text_expander_image_load_failed">Не ўдалося загрузіць або апрацаваць выбраную выяву</string>
     <string name="text_expander_image_processing">Падрыхтоўка выявы…</string>
     <string name="voice_max_duration_10m">10 хвілін</string>
+    <string name="text_expander_prefix_autocomplete_title">Ярлыкі аўтазапаўнення</string>
+    <string name="text_expander_prefix_autocomplete_summary">Прапанаваць частковыя супадзенні для ярлыкоў без прэфікса і малюнкаў пасля ўводу 2+ сімвалаў (цэтлікі з прэфіксам таксама аўтазапаўняюцца).</string>
 </resources>

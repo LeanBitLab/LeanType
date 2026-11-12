@@ -1731,4 +1731,6 @@
     <string name="text_expander_image_load_failed">चयनित छवि को लोड या संसाधित नहीं किया जा सका</string>
     <string name="text_expander_image_processing">छवि तैयार की जा रही है...</string>
     <string name="voice_max_duration_10m">10 मिनटों</string>
+    <string name="text_expander_prefix_autocomplete_title"></string>
+    <string name="text_expander_prefix_autocomplete_summary">2+ अक्षर टाइप करने के बाद बिना उपसर्ग वाले टेक्स्ट और छवि शॉर्टकट के लिए आंशिक मिलान का सुझाव दें (उपसर्ग वाले शॉर्टकट भी स्वतः पूर्ण होते हैं)।</string>
 </resources>

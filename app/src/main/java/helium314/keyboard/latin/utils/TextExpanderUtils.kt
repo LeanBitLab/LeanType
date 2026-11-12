@@ -20,6 +20,7 @@ object TextExpanderUtils {
     const val PREF_IMMEDIATE = "pref_text_expander_immediate"
     const val PREF_BACKSPACE_REVERTS = "pref_text_expander_backspace_reverts"
     const val PREF_SUGGESTIONS = "pref_text_expander_suggestions"
+    const val PREF_PREFIX_AUTOCOMPLETE = "pref_text_expander_prefix_autocomplete"
     const val PREF_SUGGESTIONS_ONLY = "pref_text_expander_suggestions_only"
     const val PREF_DATA = "pref_text_expander_data"
     const val PREF_DATA_PREVIOUS = "pref_text_expander_data_previous"
@@ -52,6 +53,7 @@ object TextExpanderUtils {
     @Volatile private var cachedEnabled: Boolean? = null
     @Volatile private var cachedImmediateEnabled: Boolean? = null
     @Volatile private var cachedSuggestionsEnabled: Boolean? = null
+    @Volatile private var cachedPrefixAutocompleteEnabled: Boolean? = null
     @Volatile private var cachedSuggestionsOnly: Boolean? = null
     @Volatile private var cachedRawJson: String? = null
     @Volatile private var cachedShortcuts: Map<String, ShortcutEntry>? = null
@@ -63,6 +65,7 @@ object TextExpanderUtils {
             cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
             cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
             cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+            cachedPrefixAutocompleteEnabled = prefs.getBoolean(PREF_PREFIX_AUTOCOMPLETE, false)
             cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
             cachedRawJson = null
             cachedShortcuts = null
@@ -73,6 +76,7 @@ object TextExpanderUtils {
             PREF_ENABLED -> cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
             PREF_IMMEDIATE -> cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
             PREF_SUGGESTIONS -> cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+            PREF_PREFIX_AUTOCOMPLETE -> cachedPrefixAutocompleteEnabled = prefs.getBoolean(PREF_PREFIX_AUTOCOMPLETE, false)
             PREF_SUGGESTIONS_ONLY -> cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
             PREF_DATA -> {
                 cachedRawJson = null
@@ -91,6 +95,7 @@ object TextExpanderUtils {
                     cachedEnabled = prefs.getBoolean(PREF_ENABLED, false)
                     cachedImmediateEnabled = prefs.getBoolean(PREF_IMMEDIATE, false)
                     cachedSuggestionsEnabled = prefs.getBoolean(PREF_SUGGESTIONS, true)
+                    cachedPrefixAutocompleteEnabled = prefs.getBoolean(PREF_PREFIX_AUTOCOMPLETE, false)
                     cachedSuggestionsOnly = prefs.getBoolean(PREF_SUGGESTIONS_ONLY, false)
                     cachedRawJson = null
                     cachedShortcuts = null
@@ -116,6 +121,12 @@ object TextExpanderUtils {
         val prefs = context.prefs()
         ensureListener(prefs)
         return cachedSuggestionsEnabled ?: prefs.getBoolean(PREF_SUGGESTIONS, true).also { cachedSuggestionsEnabled = it }
+    }
+
+    fun isPrefixAutocompleteEnabled(context: Context): Boolean {
+        val prefs = context.prefs()
+        ensureListener(prefs)
+        return cachedPrefixAutocompleteEnabled ?: prefs.getBoolean(PREF_PREFIX_AUTOCOMPLETE, false).also { cachedPrefixAutocompleteEnabled = it }
     }
 
     fun isSuggestionsOnly(context: Context): Boolean {
@@ -169,6 +180,7 @@ object TextExpanderUtils {
             cachedEnabled = null
             cachedImmediateEnabled = null
             cachedSuggestionsEnabled = null
+            cachedPrefixAutocompleteEnabled = null
             cachedSuggestionsOnly = null
             cachedRawJson = null
             cachedShortcuts = null
@@ -674,6 +686,7 @@ object TextExpanderUtils {
         if (!isEnabled(context) || !isSuggestionsEnabled(context) || typedWord.isEmpty()) {
             return emptyList()
         }
+        val prefixAutocomplete = isPrefixAutocompleteEnabled(context)
         val compiledList = getSnapshotLocked(context).second
         val matches = mutableListOf<RankedSuggestion>()
 
@@ -718,10 +731,13 @@ object TextExpanderUtils {
                     val isImage = !entry.imageUri.isNullOrBlank()
                     val isExactMatch = target.equals(typedWord, ignoreCase = true)
                     val isMatch = when {
-                        // Unprefixed and image shortcuts require an exact match so normal words aren't hijacked mid-typing.
-                        isImage || prefix.isEmpty() -> isExactMatch
-                        // Explicitly prefixed text shortcuts (e.g. ";cic") keep prefix autocomplete once typing the trigger.
-                        else -> target.length >= typedWord.length && target.startsWith(typedWord, ignoreCase = true)
+                        isExactMatch -> true
+                        // Explicitly prefixed text shortcuts always autocomplete; prefixed images autocomplete when enabled.
+                        prefix.isNotEmpty() -> (!isImage || prefixAutocomplete) &&
+                            target.length >= typedWord.length &&
+                            target.startsWith(typedWord, ignoreCase = true)
+                        // Unprefixed text and image shortcuts autocomplete after 2+ chars only when the setting toggle is enabled.
+                        else -> prefixAutocomplete && typedWord.length >= 2 && target.startsWith(typedWord, ignoreCase = true)
                     }
                     if (isMatch) {
                         val prefixLen = if (!matchesWithPrefix && prefix.isNotEmpty()) prefix.length else 0

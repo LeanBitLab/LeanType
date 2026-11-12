@@ -1739,4 +1739,6 @@
     <string name="text_expander_image_load_failed">Неуспешно зареждане или обработка на избраното изображение</string>
     <string name="text_expander_image_processing">Изображението се подготвя…</string>
     <string name="voice_max_duration_10m">10 минути</string>
+    <string name="text_expander_prefix_autocomplete_title">Преки пътища за автоматично довършване</string>
+    <string name="text_expander_prefix_autocomplete_summary">Предложете частични съвпадения за текстови и графични преки пътища без префикс след въвеждане на 2+ знака (префиксните преки пътища също се допълват автоматично).</string>
 </resources>
