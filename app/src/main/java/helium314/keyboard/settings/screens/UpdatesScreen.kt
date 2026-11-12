@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Idle Battery & Voice Hardening: Stopped hidden view loops/animators, made voice binding lifecycle-aware, and auto-released voice keep-screen-on when silent",
+    "• Idle Battery & Voice Hardening: Stopped hidden view loops/animators, made voice binding lifecycle-aware, and auto-released keep-screen-on on silence",
+    "• Extended Voice Duration: Added 10-minute and unlimited voice dictation recording duration options",
+    "• CJK Pinyin Uppercase Fix: Preserved typed uppercase letters and shift state during Pinyin composition (#787)",
+    "• Emoji Search Pinned Header: Pinned inline search bar and enabled independent horizontal result scrolling",
+    "• Text Expander Image Hardening: Hardened image shortcut storage, MIME gating, exact match, and backup restore (#784)",
+    "• Arabic Tashkeel Hint: Centered diacritics hint on the Arabic period key and restricted to alphabet mode (#786)",
     "• Input IPC Resilience: Defensively hardened RichInputConnection against remote app exceptions",
-    "• Arabic Tashkeel Hint: Added diacritics hint to the Arabic period key for quick marks access (#786)",
-    "• Typing Hot-Path Optimization: Cached lock status and missing dictionaries to eliminate typing latency",
-    "• Memory Trimming: Reclaimed native plugin heap on low memory and optimized image downsampling",
-    "• Text Expander Image Shortcuts: Added photo attachment support with live thumbnail suggestion chips (#784)",
     "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names",
     "• Reopen on Main Keyboard: Added option to always reopen the keyboard on the primary alphabet view",
-    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text inputs",
-    "• Text Expander Bulk Editor: Added full-screen editor with syntax checks and import/export"
+    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text inputs"
 )
 
 @Composable
