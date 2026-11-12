@@ -64,6 +64,8 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• Multi-Row Popup Hitbox Fix: Fixed inverted top and bottom edge flags so touch targets do not overlap across rows in multi-row popup panels",
+    "• Text Expander Autocomplete Toggle: Added an optional setting to suggest 2+ char partial matches for unprefixed text/image and prefixed image shortcuts",
     "• Idle Battery & Voice Hardening: Stopped hidden view loops/animators, made voice binding lifecycle-aware, and auto-released keep-screen-on on silence",
     "• Extended Voice Duration: Added 10-minute and unlimited voice dictation recording duration options",
     "• CJK Pinyin Uppercase Fix: Preserved typed uppercase letters and shift state during Pinyin composition (#787)",
@@ -71,9 +73,7 @@ private val currentChangelogItems = listOf(
     "• Text Expander Image Hardening: Hardened image shortcut storage, MIME gating, exact match, and backup restore (#784)",
     "• Arabic Tashkeel Hint: Centered diacritics hint on the Arabic period key and restricted to alphabet mode (#786)",
     "• Input IPC Resilience: Defensively hardened RichInputConnection against remote app exceptions",
-    "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names",
-    "• Reopen on Main Keyboard: Added option to always reopen the keyboard on the primary alphabet view",
-    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text inputs"
+    "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names"
 )
 
 @Composable

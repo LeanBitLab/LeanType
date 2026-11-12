@@ -1,10 +1,10 @@
+- Fixed inverted top/bottom edge hitboxes in multi-row popup key panels.
+- Added Text Expander Autocomplete shortcuts toggle for partial matches on unprefixed and image shortcuts.
 - Stopped hidden main-thread Looper spins, background view animators, and idle voice bindings.
 - Added 10m/unlimited voice duration options and auto-released keep-screen-on on silence.
 - Preserved uppercase characters and shift state in CJK Pinyin composition (#787).
 - Pinned inline emoji search bar and enabled independent horizontal result scrolling.
 - Hardened Text Expander image shortcuts, MIME gating, exact match, and backup restore (#784).
 - Centered Arabic period diacritics hint and restricted display to alphabet mode (#786).
-- Added image and photo shortcut support to Text Expander with live thumbnail chips (#784).
 - Elevated active keyboards and primary layout names on Language settings screen.
 - Added option to always reopen the keyboard on the primary alphabet view.
-- Enabled auto-correction for standard single-line text fields.
