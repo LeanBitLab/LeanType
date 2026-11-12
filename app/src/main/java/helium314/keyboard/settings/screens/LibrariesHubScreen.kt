@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.cjk.CjkPluginLoader
+import helium314.keyboard.latin.common.Links
 import helium314.keyboard.latin.handwriting.HandwritingLoader
 import helium314.keyboard.latin.ocr.OcrPluginLoader
 import helium314.keyboard.latin.settings.Defaults
@@ -294,7 +295,7 @@ fun LibrariesHubScreen(
                         Preference(
                             name = stringResource(R.string.libraries_features_guide_title),
                             description = stringResource(R.string.libraries_features_guide_desc),
-                            onClick = { uriHandler.openUri("https://github.com/LeanBitLab/HeliboardL/blob/main/docs/FEATURES.md") },
+                            onClick = { uriHandler.openUri(Links.FEATURES_URL) },
                             icon = R.drawable.ic_settings_about_wiki
                         ) { NextScreenIcon() }
                     }
