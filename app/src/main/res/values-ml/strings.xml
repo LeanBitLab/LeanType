@@ -1804,4 +1804,5 @@
     <string name="text_expander_image_missing_short">ചിത്രം കാണുന്നില്ല - വീണ്ടും അറ്റാച്ചുചെയ്യാൻ ടാപ്പ് ചെയ്യുക</string>
     <string name="text_expander_image_load_failed">തിരഞ്ഞെടുത്ത ചിത്രം ലോഡ് ചെയ്യാനോ പ്രോസസ്സ് ചെയ്യാനോ കഴിഞ്ഞില്ല</string>
     <string name="text_expander_image_processing">ചിത്രം തയ്യാറാക്കുന്നു...</string>
+    <string name="voice_max_duration_10m">10 മിനിറ്റ്</string>
 </resources>

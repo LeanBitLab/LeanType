@@ -2365,6 +2365,7 @@ New dictionary:
     <string name="voice_max_duration_15s">15 seconds</string>
     <string name="voice_max_duration_30s">30 seconds (Default)</string>
     <string name="voice_max_duration_60s">60 seconds</string>
+    <string name="voice_max_duration_10m">10 minutes</string>
     <string name="voice_max_duration_unlimited">Unlimited</string>
 
     <!-- Performance & Advanced Category -->

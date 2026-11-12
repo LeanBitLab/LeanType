@@ -441,6 +441,7 @@ fun VoiceSettingsScreen(
                     context.getString(R.string.voice_max_duration_15s) to "15",
                     context.getString(R.string.voice_max_duration_30s) to "30",
                     context.getString(R.string.voice_max_duration_60s) to "60",
+                    context.getString(R.string.voice_max_duration_10m) to "600",
                     context.getString(R.string.voice_max_duration_unlimited) to "0"
                 ),
                 default = "30",

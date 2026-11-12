@@ -1738,4 +1738,5 @@
     <string name="text_expander_image_missing_short">Відарыс адсутнічае - націсніце, каб далучыць яго паўторна</string>
     <string name="text_expander_image_load_failed">Не ўдалося загрузіць або апрацаваць выбраную выяву</string>
     <string name="text_expander_image_processing">Падрыхтоўка выявы…</string>
+    <string name="voice_max_duration_10m">10 хвілін</string>
 </resources>

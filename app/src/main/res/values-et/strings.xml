@@ -1738,4 +1738,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_image_load_failed">Valitud pilti ei saanud laadida ega töödelda</string>
     <string name="text_expander_image_processing">Pildi ettevalmistamine…</string>
     <string name="text_expander_image_missing_short">Pilt puudub – puudutage uuesti kinnitamiseks</string>
+    <string name="voice_max_duration_10m">10 minutit</string>
 </resources>

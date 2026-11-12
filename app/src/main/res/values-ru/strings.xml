@@ -1763,4 +1763,5 @@
     <string name="text_expander_image_missing_short">Изображение отсутствует. Нажмите, чтобы прикрепить его повторно.</string>
     <string name="text_expander_image_load_failed">Не удалось загрузить или обработать выбранное изображение.</string>
     <string name="text_expander_image_processing">Подготовка изображения…</string>
+    <string name="voice_max_duration_10m">10 минут</string>
 </resources>

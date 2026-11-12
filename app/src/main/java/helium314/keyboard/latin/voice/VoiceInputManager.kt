@@ -57,6 +57,7 @@ class VoiceInputManager(
     interface VoiceInputListener {
         fun onStateChanged(state: VoiceState)
         fun onError(message: String, canRetry: Boolean = false)
+        fun onScreenKeepAliveChanged(keepAlive: Boolean) {}
     }
 
     data class CachedVoiceAudio(
@@ -70,6 +71,10 @@ class VoiceInputManager(
 
     @Volatile
     var currentAudioLevel: Float = 0f
+        private set
+
+    @Volatile
+    var isKeepScreenOnLeaseActive: Boolean = false
         private set
 
     fun clearFailedAudio() {
@@ -208,6 +213,7 @@ class VoiceInputManager(
         needsCapitalStart = true
         sessionEmittedText = ""
         isCurrentSessionOnline = false
+        isKeepScreenOnLeaseActive = true
 
         if (!isConnected) {
             updateState(VoiceState.CONNECTING_PLUGIN)
@@ -261,6 +267,7 @@ class VoiceInputManager(
         needsCapitalStart = true
         sessionEmittedText = ""
         isCurrentSessionOnline = true
+        isKeepScreenOnLeaseActive = true
         synchronized(onlineAudioBuffer) {
             onlineAudioBuffer.reset()
         }
@@ -525,8 +532,8 @@ class VoiceInputManager(
         val silenceTimeoutMs = if (silenceTimeoutSec > 0) silenceTimeoutSec * 1000L else 0L
         val initialTimeoutMs = if (silenceTimeoutSec > 0) maxOf(silenceTimeoutSec * 2000L, 6000L) else 0L
 
-        val maxDurationSec = ims.prefs().getString(VoiceConstants.PREF_VOICE_MAX_DURATION_SECONDS, "30")?.toIntOrNull() ?: 30
-        val maxDurationMs = if (maxDurationSec > 0) maxDurationSec * 1000L else 0L
+        val maxDurationSec = resolveMaxDurationSec(ims.prefs().getString(VoiceConstants.PREF_VOICE_MAX_DURATION_SECONDS, null))
+        val maxDurationMs = maxDurationSec * 1000L
 
         val sensitivity = ims.prefs().getString(VoiceConstants.PREF_VOICE_MIC_SENSITIVITY, "normal")
         val speechRmsThreshold = when (sensitivity) {
@@ -587,16 +594,26 @@ class VoiceInputManager(
                         }
                         currentAudioLevel = kotlin.math.sqrt(rawNormalized).toFloat()
 
-                        if (silenceTimeoutMs > 0L) {
-                            // Adaptively track noise floor to avoid background noise holding silence timer
-                            val effectiveSpeechThreshold = maxOf(speechRmsThreshold, ambientNoiseRms * 1.75 + 30.0)
-                            if (rms > effectiveSpeechThreshold) {
-                                lastSpeechTime = now
-                                hasSpoken = true
-                            } else {
-                                ambientNoiseRms = 0.95 * ambientNoiseRms + 0.05 * rms
-                            }
+                        // Adaptively track noise floor to avoid background noise holding silence or screen-on leases
+                        val effectiveSpeechThreshold = maxOf(speechRmsThreshold, ambientNoiseRms * 1.75 + 30.0)
+                        if (rms > effectiveSpeechThreshold) {
+                            lastSpeechTime = now
+                            hasSpoken = true
+                        } else {
+                            ambientNoiseRms = 0.95 * ambientNoiseRms + 0.05 * rms
+                        }
 
+                        val keepScreenOnActive = shouldKeepRecordingScreenOn(now - lastSpeechTime)
+                        if (keepScreenOnActive != isKeepScreenOnLeaseActive) {
+                            isKeepScreenOnLeaseActive = keepScreenOnActive
+                            mainHandler.post {
+                                if (state == VoiceState.RECORDING) {
+                                    listener?.onScreenKeepAliveChanged(keepScreenOnActive)
+                                }
+                            }
+                        }
+
+                        if (silenceTimeoutMs > 0L) {
                             if (hasSpoken && (now - lastSpeechTime > silenceTimeoutMs)) {
                                 Log.i(TAG, "Silence timeout (${silenceTimeoutMs}ms) detected after speech. Stopping voice input.")
                                 mainHandler.post { stopVoice() }
@@ -1036,6 +1053,7 @@ class VoiceInputManager(
             onlineAudioBuffer.reset()
         }
         isCurrentSessionOnline = false
+        isKeepScreenOnLeaseActive = false
         pluginManager.setConnectionListener(null)
         stopAudioLoop()
         closeQuietly(audioPipeReadSide)
@@ -1081,6 +1099,36 @@ class VoiceInputManager(
         private const val FRAME_SIZE_BYTES = FRAME_SIZE_SHORTS * 2 // 960 bytes
         private const val HANDSHAKE_TIMEOUT_MS = 8000L
         private const val PROCESSING_TIMEOUT_MS = 15000L
+        private const val DEFAULT_MAX_DURATION_SEC = 30
+        internal const val KEEP_SCREEN_ON_SILENCE_GRACE_MS = 60_000L
+
+        /** Resolves configured recording duration (0 = unlimited when chosen explicitly, < 0 or invalid -> default 30s). */
+        internal fun resolveMaxDurationSec(rawValue: String?): Int {
+            val parsed = rawValue?.toIntOrNull() ?: return DEFAULT_MAX_DURATION_SEC
+            return if (parsed < 0) DEFAULT_MAX_DURATION_SEC else parsed
+        }
+
+        internal fun shouldKeepRecordingScreenOn(elapsedSinceSpeechMs: Long): Boolean {
+            return elapsedSinceSpeechMs < KEEP_SCREEN_ON_SILENCE_GRACE_MS
+        }
+
+        /** Keeps screen awake only while voice UI is visible and active (releasing after 60s of silence while recording). */
+        internal fun shouldKeepScreenOnForVoice(
+            state: VoiceState,
+            prefEnabled: Boolean,
+            isImeWindowVisible: Boolean,
+            isRecordingKeepAliveActive: Boolean
+        ): Boolean {
+            if (!prefEnabled || !isImeWindowVisible) return false
+            return when (state) {
+                VoiceState.CONNECTING_PLUGIN,
+                VoiceState.STARTING_SESSION,
+                VoiceState.PROCESSING_FINAL -> true
+                VoiceState.RECORDING -> isRecordingKeepAliveActive
+                VoiceState.IDLE,
+                VoiceState.ERROR -> false
+            }
+        }
 
         fun isBlockedEditor(info: EditorInfo?): Boolean {
             if (info == null) return false

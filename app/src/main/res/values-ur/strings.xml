@@ -1795,4 +1795,5 @@
     <string name="text_expander_image_missing_short">تصویر غائب ہے - دوبارہ منسلک کرنے کے لیے تھپتھپائیں۔</string>
     <string name="text_expander_image_load_failed">منتخب کردہ تصویر کو لوڈ یا پروسیس نہیں کیا جا سکا</string>
     <string name="text_expander_image_processing">تصویر تیار ہو رہی ہے…</string>
+    <string name="voice_max_duration_10m">10 منٹ</string>
 </resources>

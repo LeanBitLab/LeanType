@@ -1739,4 +1739,5 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_image_missing_short">Trūksta vaizdo – palieskite, kad pridėtumėte iš naujo</string>
     <string name="text_expander_image_load_failed">Nepavyko įkelti arba apdoroti pasirinkto vaizdo</string>
     <string name="text_expander_image_processing">Ruošiamas vaizdas…</string>
+    <string name="voice_max_duration_10m">10 minučių</string>
 </resources>

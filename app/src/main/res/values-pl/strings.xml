@@ -1745,4 +1745,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_image_missing_short">Brak obrazu  -  kliknij, aby ponownie go dołączyć</string>
     <string name="text_expander_image_load_failed">Nie można załadować lub przetworzyć wybranego obrazu</string>
     <string name="text_expander_image_processing">Przygotowuję obraz…</string>
+    <string name="voice_max_duration_10m">10 minut</string>
 </resources>

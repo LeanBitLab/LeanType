@@ -1709,4 +1709,5 @@
     <string name="text_expander_image_missing_short">תמונה חסרה - הקש כדי לצרף מחדש</string>
     <string name="text_expander_image_load_failed">לא ניתן לטעון או לעבד את התמונה שנבחרה</string>
     <string name="text_expander_image_processing">מכין תמונה...</string>
+    <string name="voice_max_duration_10m">10 דקות</string>
 </resources>

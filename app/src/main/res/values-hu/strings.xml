@@ -1701,4 +1701,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_image_missing_short">Hiányzik a kép – koppintson az újbóli csatoláshoz</string>
     <string name="text_expander_image_load_failed">Nem sikerült betölteni vagy feldolgozni a kiválasztott képet</string>
     <string name="text_expander_image_processing">Kép előkészítése…</string>
+    <string name="voice_max_duration_10m">10 perc</string>
 </resources>

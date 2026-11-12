@@ -1761,4 +1761,5 @@
     <string name="text_expander_image_missing_short">الصورة مفقودة - انقر لإعادة إرفاقها</string>
     <string name="text_expander_image_load_failed">تعذر تحميل الصورة المحددة أو معالجتها</string>
     <string name="text_expander_image_processing">جارٍ تحضير الصورة…</string>
+    <string name="voice_max_duration_10m">10 دقائق</string>
 </resources>

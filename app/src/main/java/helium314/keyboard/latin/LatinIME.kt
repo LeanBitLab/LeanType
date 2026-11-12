@@ -205,6 +205,7 @@ class LatinIME : InputMethodService(),
     private var voicePluginManager: VoicePluginManager? = null
     private var voiceInputManager: VoiceInputManager? = null
     private var lastVoiceState = VoiceInputManager.VoiceState.IDLE
+    private var lastVoiceKeepScreenOn: Boolean? = null
     private var lastEditorKey: EditorKey? = null
 
     private var appliedLanguage = ""
@@ -532,6 +533,7 @@ class LatinIME : InputMethodService(),
     override fun setInputView(view: View) {
         super.setInputView(view)
         mInputView = view
+        lastVoiceKeepScreenOn = null
         insetsUpdater = setInsetsOutlineProvider(view)
         updateSoftInputWindowLayoutParameters(inputView)
         
@@ -583,6 +585,9 @@ class LatinIME : InputMethodService(),
         
         voiceInputManager?.setListener(object : VoiceInputManager.VoiceInputListener {
             override fun onStateChanged(state: VoiceInputManager.VoiceState) { onVoiceStateChanged(state) }
+            override fun onScreenKeepAliveChanged(keepAlive: Boolean) {
+                updateVoiceKeepScreenOn(voiceInputManager?.getState() ?: lastVoiceState)
+            }
             override fun onError(message: String, canRetry: Boolean) {
                 suggestionStripView?.showVoiceErrorWithRetry(
                     message = message,
@@ -648,15 +653,15 @@ class LatinIME : InputMethodService(),
     }
 
     private fun updateVoiceKeepScreenOn(state: VoiceInputManager.VoiceState) {
-        val isVoiceActive = state == VoiceInputManager.VoiceState.RECORDING
-            || state == VoiceInputManager.VoiceState.CONNECTING_PLUGIN
-            || state == VoiceInputManager.VoiceState.STARTING_SESSION
-            || state == VoiceInputManager.VoiceState.PROCESSING_FINAL
-
-        val shouldKeepScreenOn = isVoiceActive && prefs().getBoolean(
-            VoiceConstants.PREF_VOICE_KEEP_SCREEN_ON,
-            true
+        val isImeWindowVisible = isInputViewShown || window?.window?.decorView?.windowVisibility == View.VISIBLE
+        val shouldKeepScreenOn = VoiceInputManager.shouldKeepScreenOnForVoice(
+            state = state,
+            prefEnabled = prefs().getBoolean(VoiceConstants.PREF_VOICE_KEEP_SCREEN_ON, true),
+            isImeWindowVisible = isImeWindowVisible,
+            isRecordingKeepAliveActive = voiceInputManager?.isKeepScreenOnLeaseActive != false
         )
+        if (lastVoiceKeepScreenOn == shouldKeepScreenOn) return
+        lastVoiceKeepScreenOn = shouldKeepScreenOn
 
         try {
             val win = window?.window
@@ -668,7 +673,6 @@ class LatinIME : InputMethodService(),
         } catch (e: Exception) {
             Log.w(TAG, "Failed to update keepScreenOn flags on window", e)
         }
-        keyboardSwitcher.mainKeyboardView?.keepScreenOn = shouldKeepScreenOn
         inputView?.keepScreenOn = shouldKeepScreenOn
     }
 
@@ -1033,6 +1037,7 @@ class LatinIME : InputMethodService(),
             setNavigationBarColor()
             workaroundForHuaweiStatusBarIssue()
         }
+        updateVoiceKeepScreenOn(voiceInputManager?.getState() ?: lastVoiceState)
     }
 
     override fun onWindowHidden() {

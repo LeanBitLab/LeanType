@@ -1770,4 +1770,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_image_missing_short">Immagine mancante: tocca per ricollegarla</string>
     <string name="text_expander_image_load_failed">Impossibile caricare o elaborare l\'immagine selezionata</string>
     <string name="text_expander_image_processing">Preparazione dell\'immagine...</string>
+    <string name="voice_max_duration_10m">10 minuti</string>
 </resources>

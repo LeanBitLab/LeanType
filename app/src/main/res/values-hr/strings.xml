@@ -1701,4 +1701,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_image_missing_short">Nedostaje slika - dodirnite za ponovno pričvršćivanje</string>
     <string name="text_expander_image_load_failed">Nije moguće učitati ili obraditi odabranu sliku</string>
     <string name="text_expander_image_processing">Priprema slike…</string>
+    <string name="voice_max_duration_10m">10 minuta</string>
 </resources>

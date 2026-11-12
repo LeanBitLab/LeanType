@@ -1703,4 +1703,5 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_image_missing_short">Obrázek chybí – klepnutím jej znovu připojte</string>
     <string name="text_expander_image_load_failed">Nelze načíst nebo zpracovat vybraný obrázek</string>
     <string name="text_expander_image_processing">Příprava obrázku…</string>
+    <string name="voice_max_duration_10m">10 minut</string>
 </resources>

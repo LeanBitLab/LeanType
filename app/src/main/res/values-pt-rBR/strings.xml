@@ -1708,4 +1708,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_image_missing_short">Imagem ausente – toque para reanexar</string>
     <string name="text_expander_image_load_failed">Não foi possível carregar ou processar a imagem selecionada</string>
     <string name="text_expander_image_processing">Preparando imagem…</string>
+    <string name="voice_max_duration_10m">10 minutos</string>
 </resources>

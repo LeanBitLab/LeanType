@@ -1738,4 +1738,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_image_missing_short">Imaginea lipsește - atingeți pentru a atașa din nou</string>
     <string name="text_expander_image_load_failed">Nu s-a putut încărca sau procesa imaginea selectată</string>
     <string name="text_expander_image_processing">Se pregătește imaginea...</string>
+    <string name="voice_max_duration_10m">10 minute</string>
 </resources>

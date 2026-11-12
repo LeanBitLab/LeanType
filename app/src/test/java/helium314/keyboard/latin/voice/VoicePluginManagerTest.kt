@@ -10,6 +10,7 @@ import android.os.Binder
 import android.os.IBinder
 import android.os.Looper
 import androidx.test.core.app.ApplicationProvider
+import com.leanbitlab.leantype.voice.VoiceEngineInfo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -167,5 +168,99 @@ class VoicePluginManagerTest {
         canUnbind = true
         manager.unbindAfterDelay(0L, canUnbind = { canUnbind })
         assertEquals(1, fakeContext.unbindCalls)
+    }
+
+    @Test
+    fun resolveMaxDurationSec_allowsExplicitUnlimitedAndDefaultsInvalid() {
+        assertEquals(30, VoiceInputManager.resolveMaxDurationSec(null))
+        assertEquals(30, VoiceInputManager.resolveMaxDurationSec("invalid"))
+        assertEquals(30, VoiceInputManager.resolveMaxDurationSec("-5"))
+        assertEquals(15, VoiceInputManager.resolveMaxDurationSec("15"))
+        assertEquals(30, VoiceInputManager.resolveMaxDurationSec("30"))
+        assertEquals(60, VoiceInputManager.resolveMaxDurationSec("60"))
+        assertEquals(600, VoiceInputManager.resolveMaxDurationSec("600"))
+        assertEquals(3600, VoiceInputManager.resolveMaxDurationSec("3600"))
+        assertEquals(0, VoiceInputManager.resolveMaxDurationSec("0"))
+    }
+
+    @Test
+    fun shouldKeepScreenOnForVoice_requiresVisibleWindowAndActiveSpeechLease() {
+        assertFalse(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.RECORDING,
+                prefEnabled = false,
+                isImeWindowVisible = true,
+                isRecordingKeepAliveActive = true
+            )
+        )
+        assertFalse(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.RECORDING,
+                prefEnabled = true,
+                isImeWindowVisible = false,
+                isRecordingKeepAliveActive = true
+            )
+        )
+        assertTrue(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.RECORDING,
+                prefEnabled = true,
+                isImeWindowVisible = true,
+                isRecordingKeepAliveActive = true
+            )
+        )
+        assertFalse(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.RECORDING,
+                prefEnabled = true,
+                isImeWindowVisible = true,
+                isRecordingKeepAliveActive = false
+            )
+        )
+        assertTrue(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.PROCESSING_FINAL,
+                prefEnabled = true,
+                isImeWindowVisible = true,
+                isRecordingKeepAliveActive = false
+            )
+        )
+        assertFalse(
+            VoiceInputManager.shouldKeepScreenOnForVoice(
+                state = VoiceInputManager.VoiceState.IDLE,
+                prefEnabled = true,
+                isImeWindowVisible = true,
+                isRecordingKeepAliveActive = true
+            )
+        )
+        assertTrue(VoiceInputManager.shouldKeepRecordingScreenOn(59_999L))
+        assertFalse(VoiceInputManager.shouldKeepRecordingScreenOn(60_000L))
+    }
+
+    @Test
+    fun binderDied_fromWorkerThreadMarshalsDisconnectToMainLooper() {
+        assertTrue(manager.bindIfNeeded())
+        fakeContext.simulateConnected()
+        shadowOf(Looper.getMainLooper()).idle()
+
+        var disconnectCallbacks = 0
+        var callbackOnMainThread = false
+        manager.setConnectionListener(object : VoicePluginManager.PluginConnectionListener {
+            override fun onPluginConnected(info: VoiceEngineInfo?) {}
+            override fun onPluginDisconnected() {
+                disconnectCallbacks++
+                callbackOnMainThread = Looper.myLooper() == Looper.getMainLooper()
+            }
+        })
+
+        val worker = Thread { manager.binderDied() }
+        worker.start()
+        worker.join()
+
+        assertEquals(0, disconnectCallbacks)
+        shadowOf(Looper.getMainLooper()).idle()
+        assertEquals(1, disconnectCallbacks)
+        assertTrue(callbackOnMainThread)
+        assertFalse(manager.isPluginConnected())
     }
 }

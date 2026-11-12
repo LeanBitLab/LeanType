@@ -64,7 +64,7 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Voice Leak & Battery Hardening: Prevented background audio drain with watchdog timeouts and unbind on hide",
+    "• Idle Battery & Voice Hardening: Stopped hidden view loops/animators, made voice binding lifecycle-aware, and auto-released voice keep-screen-on when silent",
     "• Input IPC Resilience: Defensively hardened RichInputConnection against remote app exceptions",
     "• Arabic Tashkeel Hint: Added diacritics hint to the Arabic period key for quick marks access (#786)",
     "• Typing Hot-Path Optimization: Cached lock status and missing dictionaries to eliminate typing latency",

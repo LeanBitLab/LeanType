@@ -1804,4 +1804,5 @@
     <string name="text_expander_image_missing_short">Λείπει εικόνα - πατήστε για επανασύνδεση</string>
     <string name="text_expander_image_load_failed">Δεν ήταν δυνατή η φόρτωση ή η επεξεργασία της επιλεγμένης εικόνας</string>
     <string name="text_expander_image_processing">Προετοιμασία εικόνας…</string>
+    <string name="voice_max_duration_10m">10 λεπτά</string>
 </resources>

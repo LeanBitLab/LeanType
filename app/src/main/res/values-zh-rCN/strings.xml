@@ -1704,4 +1704,5 @@
     <string name="text_expander_image_missing_short">图片丢失 - 点击重新连接</string>
     <string name="text_expander_image_load_failed">无法加载或处理所选图像</string>
     <string name="text_expander_image_processing">正在准备图像...</string>
+    <string name="voice_max_duration_10m">10分钟</string>
 </resources>
