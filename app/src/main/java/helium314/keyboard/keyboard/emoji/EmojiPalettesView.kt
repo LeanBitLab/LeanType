@@ -214,6 +214,19 @@ class EmojiPalettesView @JvmOverloads constructor(
     private var mIgnoreNextShiftRelease = false
     private var mDeleteSwipeStartSel = -1
     private var mCurrentDeleteSwipeStart = -1
+    private var mSearchStripLayoutListener: Pair<View, View.OnLayoutChangeListener>? = null
+
+    private fun detachSearchStripLayoutListener() {
+        mSearchStripLayoutListener?.let { (view, listener) ->
+            view.removeOnLayoutChangeListener(listener)
+        }
+        mSearchStripLayoutListener = null
+    }
+
+    private fun stripContentWidth(parentView: View?, fallbackContext: Context): Int {
+        val measured = parentView?.let { it.width - it.paddingLeft - it.paddingRight } ?: 0
+        return measured.takeIf { it > 0 } ?: ResourceUtils.getKeyboardWidth(fallbackContext, Settings.getValues())
+    }
 
     private val cursorBlinkRunnable = object : Runnable {
         override fun run() {
@@ -409,7 +422,9 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     private fun setupCategoryTabs() {
+        detachSearchStripLayoutListener()
         val tabStrip = mTabStrip ?: return
+        (tabStrip.parent as? EmojiTabStripScrollView)?.isHorizontalScrollLocked = false
         tabStrip.removeAllViews()
         if (Settings.getValues().mSecondaryStripVisible) {
             addTab(tabStrip, ID_SEARCH_TAB)
@@ -428,17 +443,38 @@ class EmojiPalettesView @JvmOverloads constructor(
         Log.d("EmojiSearch", "startSearchMode() called")
         if (mInSearchMode) return
         mInSearchMode = true
+        detachSearchStripLayoutListener()
 
-        (mTabStrip?.parent as? HorizontalScrollView)?.scrollTo(0, 0)
+        val parentView = mTabStrip?.parent as? View
+        (parentView as? EmojiTabStripScrollView)?.isHorizontalScrollLocked = true
+        (parentView as? HorizontalScrollView)?.scrollTo(0, 0)
         mTabStrip?.removeAllViews()
         val ctx = context
 
-        val containerWidth = (mTabStrip?.parent as? View)?.width?.takeIf { it > 0 }
-            ?: ResourceUtils.getKeyboardWidth(ctx, Settings.getValues())
+        val containerWidth = stripContentWidth(parentView, ctx)
         val stripContainer = LinearLayout(ctx)
         stripContainer.orientation = HORIZONTAL
         stripContainer.layoutParams = LayoutParams(containerWidth, ViewGroup.LayoutParams.MATCH_PARENT)
         mTabStrip?.addView(stripContainer)
+        if (parentView != null) {
+            val layoutListener = View.OnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
+                if (!mInSearchMode) return@OnLayoutChangeListener
+                val updatedWidth = stripContentWidth(v, ctx)
+                val lp = stripContainer.layoutParams
+                if (updatedWidth > 0 && lp != null && lp.width != updatedWidth) {
+                    stripContainer.post {
+                        if (!mInSearchMode || !stripContainer.isAttachedToWindow) return@post
+                        val currentLp = stripContainer.layoutParams
+                        if (currentLp != null && currentLp.width != updatedWidth) {
+                            currentLp.width = updatedWidth
+                            stripContainer.layoutParams = currentLp
+                        }
+                    }
+                }
+            }
+            parentView.addOnLayoutChangeListener(layoutListener)
+            mSearchStripLayoutListener = parentView to layoutListener
+        }
 
         val inputContainer = LinearLayout(ctx)
         inputContainer.orientation = HORIZONTAL
@@ -530,8 +566,10 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         if (Settings.getValues().mSplitToolbar) {
             mSearchAdapter = null
+            mSearchResultsList = null
             updateSplitToolbarEmojiSuggestions()
         } else if (sDictionaryFacilitator == null) {
+            mSearchResultsList = null
             val downloadBtn = Button(ctx)
             downloadBtn.text = ctx.getString(R.string.download)
             downloadBtn.textSize = 12f
@@ -555,12 +593,32 @@ class EmojiPalettesView @JvmOverloads constructor(
             val resultsList = RecyclerView(ctx)
             resultsList.layoutParams = LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 0.6f)
             resultsList.layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false)
+            // Keep parent HorizontalScrollView from intercepting horizontal drags over search results.
+            resultsList.isNestedScrollingEnabled = false
+            resultsList.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
+                override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                    when (e.actionMasked) {
+                        MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE ->
+                            rv.parent?.requestDisallowInterceptTouchEvent(true)
+                        MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL ->
+                            rv.parent?.requestDisallowInterceptTouchEvent(false)
+                    }
+                    return false
+                }
+
+                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+                    if (e.actionMasked == MotionEvent.ACTION_UP || e.actionMasked == MotionEvent.ACTION_CANCEL) {
+                        rv.parent?.requestDisallowInterceptTouchEvent(false)
+                    }
+                }
+            })
 
             mSearchAdapter = EmojiSearchAdapter { emoji ->
                 mKeyboardActionListener.onTextInput(emoji)
                 addRecentKey(emoji)
             }
             resultsList.adapter = mSearchAdapter
+            mSearchResultsList = resultsList
             stripContainer.addView(resultsList)
         }
 
@@ -866,6 +924,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         mSearchBar?.clearFocus()
         mSearchBar?.setText("")
         mSearchBar = null
+        mSearchResultsList = null
         mSearchKeyboardLayoutSet = null
 
         mOriginalActionListener?.let {
@@ -908,6 +967,7 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         Log.d("EmojiSearch", "Found ${results.size} results for: $query")
         mSearchAdapter?.submitList(results)
+        mSearchResultsList?.scrollToPosition(0)
 
         if (Settings.getValues().mSplitToolbar && results.isNotEmpty()) {
             pushEmojisToSuggestionBar(results)

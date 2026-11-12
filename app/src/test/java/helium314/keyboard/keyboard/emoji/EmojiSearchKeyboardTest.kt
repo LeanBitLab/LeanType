@@ -426,6 +426,112 @@ class EmojiSearchKeyboardTest {
         assertEquals("CUSTOM4", stateMode)
     }
 
+    @Test
+    fun searchResultsScrollHorizontallyWhileSearchBarStaysFixed() {
+        val scrollView = wrapTabsInScrollView(android.widget.HorizontalScrollView(activity))
+        val emojis = listOf(
+            "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎",
+            "😍", "😘", "🥰", "😗", "😙", "😚", "🙂", "🤗", "🤩", "🤔", "🤨", "😐"
+        )
+        verifySearchResultsScrollIndependently(scrollView, emojis)
+    }
+
+    @Test
+    @Config(qualifiers = "w411dp-h914dp-420dpi")
+    fun searchResultsScrollAtPhoneDensityAndUnlockOnClose() {
+        val scrollView = wrapTabsInScrollView(EmojiTabStripScrollView(activity))
+        val emojis = listOf("😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎")
+        verifySearchResultsScrollIndependently(scrollView, emojis) {
+            assertTrue(scrollView.isHorizontalScrollLocked)
+        }
+        closeSearch()
+        assertFalse(scrollView.isHorizontalScrollLocked)
+    }
+
+    private fun <T : android.widget.HorizontalScrollView> wrapTabsInScrollView(scrollView: T): T {
+        val originalParent = tabs.parent as ViewGroup
+        val indexInParent = originalParent.indexOfChild(tabs)
+        originalParent.removeView(tabs)
+        scrollView.isFillViewport = true
+        scrollView.layoutParams = LinearLayout.LayoutParams(1080, 120)
+        scrollView.addView(
+            tabs,
+            android.widget.FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
+        originalParent.addView(scrollView, indexInParent)
+        scrollView.measure(
+            View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(120, View.MeasureSpec.EXACTLY)
+        )
+        scrollView.layout(0, 0, 1080, 120)
+        return scrollView
+    }
+
+    private fun verifySearchResultsScrollIndependently(
+        scrollView: android.widget.HorizontalScrollView,
+        emojis: List<String>,
+        onSearchOpened: () -> Unit = {}
+    ) {
+        val dictField = EmojiPalettesView::class.java.getDeclaredField("sDictionaryFacilitator")
+            .apply { isAccessible = true }
+        val prevDict = dictField.get(null)
+        try {
+            event(KeyCode.EMOJI)
+            palettes.setKeyboardActionListener(host)
+            dictField.set(null, Mockito.mock(SingleDictionaryFacilitator::class.java))
+            openSearch()
+            onSearchOpened()
+
+            val adapter = field(palettes, "mSearchAdapter") as EmojiSearchAdapter
+            adapter.submitList(emojis)
+
+            scrollView.measure(
+                View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(120, View.MeasureSpec.EXACTLY)
+            )
+            scrollView.layout(0, 0, 1080, 120)
+
+            val resultsList = descendants(tabs).filterIsInstance<RecyclerView>().single()
+            assertTrue(resultsList.canScrollHorizontally(1), "Expected emojis to overflow results viewport")
+            val lm = resultsList.layoutManager as androidx.recyclerview.widget.LinearLayoutManager
+            val targetPos = (lm.findLastVisibleItemPosition() + 1).coerceAtMost(emojis.lastIndex)
+            assertTrue(
+                resultsList.findViewHolderForAdapterPosition(targetPos) == null,
+                "Expected emoji $targetPos to start offscreen (lastVisible=${lm.findLastVisibleItemPosition()})"
+            )
+
+            val initialSearchLeft = IntArray(2).also { searchBar.getLocationInWindow(it) }[0]
+            val rvRect = android.graphics.Rect(0, 0, resultsList.width, resultsList.height)
+            scrollView.offsetDescendantRectToMyCoords(resultsList, rvRect)
+            val startX = rvRect.left + resultsList.width * 0.7f
+            val centerY = rvRect.exactCenterY()
+            val downTime = android.os.SystemClock.uptimeMillis()
+            scrollView.dispatchTouchEvent(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, startX, centerY, 0))
+            for (step in 1..6) {
+                val x = startX - step * 35f
+                scrollView.dispatchTouchEvent(MotionEvent.obtain(downTime, downTime + step * 16L, MotionEvent.ACTION_MOVE, x, centerY, 0))
+            }
+            scrollView.dispatchTouchEvent(MotionEvent.obtain(downTime, downTime + 120L, MotionEvent.ACTION_UP, startX - 210f, centerY, 0))
+
+            assertEquals(0, scrollView.scrollX)
+            assertEquals(initialSearchLeft, IntArray(2).also { searchBar.getLocationInWindow(it) }[0])
+            assertTrue(
+                resultsList.computeHorizontalScrollOffset() > 0,
+                "Expected RecyclerView search results to scroll horizontally (offset=${resultsList.computeHorizontalScrollOffset()})"
+            )
+
+            val targetHolder = resultsList.findViewHolderForAdapterPosition(targetPos)
+            assertTrue(targetHolder != null, "Expected offscreen emoji $targetPos to become laid out after scrolling")
+            assertTrue(targetHolder!!.itemView.performClick())
+            Mockito.verify(host).onTextInput(emojis[targetPos])
+        } finally {
+            dictField.set(null, prevDict)
+        }
+    }
+
     private fun code(code: Int) = searchListener.onCodeInput(code, 0, 0, false)
 
     private fun openSearch() {

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         style="?attr/suggestionStripViewStyle" />
-    <HorizontalScrollView
+    <helium314.keyboard.keyboard.emoji.EmojiTabStripScrollView
         android:id="@+id/emoji_tab_strip_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/config_suggestions_strip_height"
@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:background="@android:color/transparent" />
-    </HorizontalScrollView>
+    </helium314.keyboard.keyboard.emoji.EmojiTabStripScrollView>
     <HorizontalScrollView
         android:id="@+id/clipboard_strip_scroll_view"
         android:layout_width="match_parent"

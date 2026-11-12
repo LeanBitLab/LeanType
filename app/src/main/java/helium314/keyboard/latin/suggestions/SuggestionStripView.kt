@@ -1807,6 +1807,15 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             LinearLayout.LayoutParams.MATCH_PARENT
         )
         scrollView.isHorizontalScrollBarEnabled = false
+        scrollView.setOnTouchListener { v, event ->
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE ->
+                    v.parent?.requestDisallowInterceptTouchEvent(true)
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL ->
+                    v.parent?.requestDisallowInterceptTouchEvent(false)
+            }
+            false
+        }
 
         val emojiContainer = LinearLayout(context)
         emojiContainer.orientation = LinearLayout.HORIZONTAL
