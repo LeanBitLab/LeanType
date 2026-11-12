@@ -111,4 +111,64 @@ class PopupKeysKeyboardTest {
         assertEquals(5, columnCount)
         assertEquals(4, rowCount)
     }
+
+    @Test fun testMultiRowArabicPopupVerticalHitDetection() {
+        val arabicPunctuationSpecs = listOf(
+            "!fixedOrder!8",
+            "ٔ◌|ٔ", "ّ◌|ّ", "ٍ◌|ٍ", "ً◌|ً", "ْ◌|ْ", "ٌ◌|ٌ", "؟", "!",
+            "ٖ◌|ٖ", "ٰ◌|ٰ", "ٓ◌|ٓ", "ِ◌|ِ", "ُ◌|ُ", "ـــ|ـ", "ٕ◌|ٕ", "َ◌|َ"
+        ).joinToString(",")
+        val keyParams = Key.KeyParams(".", '.'.code, null, arabicPunctuationSpecs, 0, kbdParams)
+        keyParams.mWidth = 0.1f
+        keyParams.mHeight = 100f
+        keyParams.mAbsoluteWidth = 100f
+        keyParams.mAbsoluteHeight = 100f
+        val periodKey = Key(keyParams)
+
+        val keyboard = Keyboard(kbdParams)
+        val popupKeyboard = PopupKeysKeyboard.Builder(latinIME, periodKey, keyboard, Paint()).build()
+
+        val popupKeys = popupKeyboard.sortedKeys.filter { !it.isSpacer }
+        assertEquals(16, popupKeys.size)
+
+        val rowsByY = popupKeys.groupBy { it.y }.toSortedMap()
+        assertEquals(2, rowsByY.size, "Expected 2 rows for 16-key Arabic punctuation popup")
+
+        val topRowKeys = rowsByY.values.first()
+        val bottomRowKeys = rowsByY.values.last()
+        assertEquals(8, topRowKeys.size)
+        assertEquals(8, bottomRowKeys.size)
+
+        // Bottom row keys must not extend hitBox upward into top row, and vice versa
+        for (topKey in topRowKeys) {
+            assertEquals(popupKeyboard.mTopPadding, topKey.hitBox.top)
+            assertTrue(topKey.hitBox.bottom <= bottomRowKeys.first().y)
+        }
+        for (bottomKey in bottomRowKeys) {
+            assertTrue(bottomKey.hitBox.top >= topRowKeys.first().y + topRowKeys.first().height)
+            assertTrue(bottomKey.hitBox.bottom >= popupKeyboard.mOccupiedHeight)
+        }
+
+        val detector = PopupKeysDetector(20f)
+        detector.setKeyboard(popupKeyboard, 0f, 0f)
+        for (key in popupKeys) {
+            val hit = detector.detectHitKey(key.x + key.width / 2, key.y + key.height / 2)
+            assertEquals(key, hit, "Expected hit detection at center of key '${key.label}' at y=${key.y}")
+        }
+        // Sliding slightly above top row or below bottom row should still track the respective row
+        val firstTopKey = topRowKeys.first()
+        val firstBottomKey = bottomRowKeys.first()
+        assertEquals(
+            firstTopKey,
+            detector.detectHitKey(firstTopKey.x + firstTopKey.width / 2, firstTopKey.y - 10)
+        )
+        assertEquals(
+            firstBottomKey,
+            detector.detectHitKey(firstBottomKey.x + firstBottomKey.width / 2, firstBottomKey.y + firstBottomKey.height + 10)
+        )
+        // Crossing the boundary between top row and bottom row must switch cleanly
+        val midX = firstTopKey.x + firstTopKey.width / 2
+        assertEquals(firstTopKey, detector.detectHitKey(midX, firstTopKey.y + firstTopKey.height - 5))
+        assertEquals(firstBottomKey, detector.detectHitKey(midX, firstBottomKey.y + 5))
+    }
 }

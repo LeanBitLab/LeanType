@@ -221,8 +221,8 @@ class PopupKeysKeyboard(params: PopupKeysKeyboardParams) : Keyboard(params) {
         }
 
         fun markAsEdgeKey(key: Key, row: Int) {
-            if (row == 0) key.markAsTopEdge(this)
-            if (isTopRow(row)) key.markAsBottomEdge(this)
+            if (row == 0) key.markAsBottomEdge(this)
+            if (row == mNumRows - 1) key.markAsTopEdge(this)
         }
 
         private fun isTopRow(rowCount: Int): Boolean {
