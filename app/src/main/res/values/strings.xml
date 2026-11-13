@@ -2455,4 +2455,7 @@ New dictionary:
     <string name="style_plain">Normal</string>
     <string name="style_active_indicator">Active style: %s</string>
     <string name="style_active_none">None (Plain text)</string>
+    <string name="voice_transcribe_while_speaking_title">Transcribe while speaking</string>
+    <string name="voice_transcribe_while_speaking_summary">At every pause in speech the part spoken so far is already transcribed. After stopping, only the last part is left: much shorter wait for long dictations.</string>
+    <string name="voice_piecewise_field_changed">Dictation stopped: the text field changed, the rest was not inserted</string>
 </resources>

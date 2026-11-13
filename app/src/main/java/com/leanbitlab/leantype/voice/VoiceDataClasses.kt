@@ -96,6 +96,8 @@ object VoiceConstants {
     const val VOICE_LANG_AUTO = "auto"
     const val PREF_VOICE_CPU_THREADS = "voice_cpu_threads"
     const val PREF_VOICE_CUSTOM_PROMPT = "voice_custom_prompt"
+    /** Transcribe the recording in pieces at speech pauses while still recording */
+    const val PREF_VOICE_TRANSCRIBE_WHILE_SPEAKING = "voice_transcribe_while_speaking"
     const val PREF_VOICE_MIC_SENSITIVITY = "voice_mic_sensitivity"
     const val PREF_VOICE_MAX_DURATION_SECONDS = "voice_max_duration_seconds"
     const val PREF_VOICE_AUTO_RETRY = "pref_voice_auto_retry"
