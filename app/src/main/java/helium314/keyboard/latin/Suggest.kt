@@ -333,7 +333,9 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 val isUserHistory = firstSuggestion.mSourceDict?.mDictType == Dictionary.TYPE_USER_HISTORY
                 val isWhitelist = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_WHITELIST)
                 val isShortcut = firstSuggestion.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && Settings.getValues().mAutoCorrectShortcuts
-                if (!isExactOrCaseMatch && !isUserHistory && !isWhitelist && !isShortcut && expectedContraction == null) {
+                // two neighboring letters typed in the wrong order, like "teh" for "the", are a typo, not an abbreviation
+                val isSwap = ShortWordSwap.isSwapOfNeighbors(consideredWord, firstSuggestion.mWord)
+                if (!isExactOrCaseMatch && !isUserHistory && !isWhitelist && !isShortcut && !isSwap && expectedContraction == null) {
                     return true to false
                 }
             }
