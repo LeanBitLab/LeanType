@@ -23,6 +23,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.getActivity
 import helium314.keyboard.latin.utils.getStringResourceOrName
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.preferences.ExpandablePreference
 import helium314.keyboard.settings.preferences.ListPreference
 import helium314.keyboard.settings.SettingsWithoutKey
@@ -70,10 +71,10 @@ fun AppearanceScreen(
     val splitEnabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE)
         || prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, Defaults.PREF_ENABLE_SPLIT_KEYBOARD)
 
-    val fineTuneThemeExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_THEME, Defaults.PREF_EXPAND_FINE_TUNE_THEME)
-    val fineTuneKeyPreviewsExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS, Defaults.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS)
-    val fineTuneKeyboardLayoutExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT, Defaults.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT)
-    val fineTuneFoldableExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE, Defaults.PREF_EXPAND_FINE_TUNE_FOLDABLE)
+    val fineTuneThemeExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_THEME, Defaults.PREF_EXPAND_FINE_TUNE_THEME)
+    val fineTuneKeyPreviewsExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS, Defaults.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS)
+    val fineTuneKeyboardLayoutExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT, Defaults.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT)
+    val fineTuneFoldableExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE, Defaults.PREF_EXPAND_FINE_TUNE_FOLDABLE)
 
     val items = remember(
         dayNightMode, themeBordersEnabled, popupOnEnabled, showHintsEnabled, narrowGapsEnabled, splitEnabled,

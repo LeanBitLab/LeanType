@@ -2462,4 +2462,6 @@ New dictionary:
     <string name="voice_transcribe_while_speaking_title">Transcribe while speaking</string>
     <string name="voice_transcribe_while_speaking_summary">At every pause in speech the part spoken so far is already transcribed. After stopping, only the last part is left: much shorter wait for long dictations.</string>
     <string name="voice_piecewise_field_changed">Dictation stopped: the text field changed, the rest was not inserted</string>
+    <!-- Long press on a search result in the settings (accessibility action) -->
+    <string name="settings_search_show_in_screen">Show in its screen</string>
 </resources>

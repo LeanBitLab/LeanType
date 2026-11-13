@@ -40,6 +40,7 @@ import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.checkTimestampFormat
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.dialogs.ConfirmationDialog
 import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SettingsContainer
@@ -83,7 +84,7 @@ fun AdvancedSettingsScreen(
     val activity = ctx.getActivity() as? SettingsActivity
     val prefChanged = (activity?.prefChanged ?: MutableStateFlow(0)).collectAsState()
 
-    val fineTuneAdvancedExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_ADVANCED, Defaults.PREF_EXPAND_FINE_TUNE_ADVANCED)
+    val fineTuneAdvancedExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_ADVANCED, Defaults.PREF_EXPAND_FINE_TUNE_ADVANCED)
 
     val items = remember(fineTuneAdvancedExpanded, prefChanged.value) {
         listOfNotNull(

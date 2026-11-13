@@ -5,6 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -65,6 +66,8 @@ fun SettingsNavHost(
         if (!navController.popBackStack()) onClickBack()
     }
 
+    // the search results open the screen of a setting with it, see SettingsJump
+    CompositionLocalProvider(LocalSettingsNavController provides navController) {
     NavHost(
         navController = navController,
         startDestination = startDestination ?: SettingsDestination.Settings,
@@ -222,6 +225,7 @@ fun SettingsNavHost(
         composable(SettingsDestination.Cjk) {
             helium314.keyboard.settings.screens.CjkSettingsScreen(onClickBack = ::goBack)
         }
+    }
     }
 }
 

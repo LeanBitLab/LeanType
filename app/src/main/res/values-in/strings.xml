@@ -1711,4 +1711,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="voice_transcribe_while_speaking_title">Transkripsikan sambil berbicara</string>
     <string name="voice_transcribe_while_speaking_summary">Pada setiap jeda dalam pidato, bagian yang diucapkan sejauh ini telah ditranskrip. Setelah berhenti, hanya bagian terakhir yang tersisa: menunggu lebih singkat untuk dikte yang panjang.</string>
     <string name="voice_piecewise_field_changed">Dikte berhenti: kolom teks berubah, sisanya tidak disisipkan</string>
+    <string name="settings_search_show_in_screen">Tampilkan di layarnya</string>
 </resources>

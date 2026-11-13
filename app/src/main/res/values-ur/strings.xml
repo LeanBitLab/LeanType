@@ -1805,4 +1805,5 @@
     <string name="voice_transcribe_while_speaking_title">بولتے ہوئے نقل کریں۔</string>
     <string name="voice_transcribe_while_speaking_summary">تقریر کے ہر وقفے پر اب تک بولا گیا حصہ پہلے ہی نقل کیا جاتا ہے۔ رکنے کے بعد، صرف آخری حصہ رہ جاتا ہے: طویل ڈکٹیشن کے لیے بہت کم انتظار۔</string>
     <string name="voice_piecewise_field_changed">ڈکٹیشن بند ہو گئی: ٹیکسٹ فیلڈ تبدیل ہو گئی، باقی داخل نہیں کیا گیا۔</string>
+    <string name="settings_search_show_in_screen">اس کی سکرین میں دکھائیں۔</string>
 </resources>

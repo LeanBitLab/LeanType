@@ -1740,4 +1740,5 @@
     <string name="voice_transcribe_while_speaking_title">बोलते समय प्रतिलेखन करें</string>
     <string name="voice_transcribe_while_speaking_summary">भाषण में प्रत्येक विराम पर अब तक बोला गया भाग पहले ही प्रतिलेखित हो चुका होता है। रुकने के बाद, केवल अंतिम भाग ही बचा है: लंबे श्रुतलेखों के लिए बहुत कम प्रतीक्षा।</string>
     <string name="voice_piecewise_field_changed">डिक्टेशन बंद हो गया: टेक्स्ट फ़ील्ड बदल गया, बाकी नहीं डाला गया</string>
+    <string name="settings_search_show_in_screen">इसकी स्क्रीन में दिखाएँ</string>
 </resources>

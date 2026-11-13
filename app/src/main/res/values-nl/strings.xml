@@ -1755,4 +1755,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="voice_transcribe_while_speaking_title">Transcribeer terwijl u spreekt</string>
     <string name="voice_transcribe_while_speaking_summary">Bij elke pauze in de toespraak wordt het tot dan toe gesproken deel al getranscribeerd. Na het stoppen blijft alleen het laatste deel over: veel korter wachten op lange dictaten.</string>
     <string name="voice_piecewise_field_changed">Dicteren gestopt: het tekstveld is gewijzigd, de rest is niet ingevoegd</string>
+    <string name="settings_search_show_in_screen">Toon in het scherm</string>
 </resources>

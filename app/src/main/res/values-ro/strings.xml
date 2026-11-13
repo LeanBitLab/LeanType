@@ -1748,4 +1748,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="voice_transcribe_while_speaking_title">Transcrieți în timp ce vorbiți</string>
     <string name="voice_transcribe_while_speaking_summary">La fiecare pauză în vorbire partea vorbită până acum este deja transcrisă. După oprire, rămâne doar ultima parte: așteptare mult mai scurtă pentru dictate lungi.</string>
     <string name="voice_piecewise_field_changed">Dictarea s-a oprit: câmpul de text s-a schimbat, restul nu a fost introdus</string>
+    <string name="settings_search_show_in_screen">Arată pe ecranul său</string>
 </resources>

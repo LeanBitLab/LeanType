@@ -1773,4 +1773,5 @@
     <string name="voice_transcribe_while_speaking_title">Расшифруйте во время разговора</string>
     <string name="voice_transcribe_while_speaking_summary">В каждой паузе речи уже записывается часть произнесенной речи. После остановки остается только последняя часть: гораздо короче ждать долгих диктовок.</string>
     <string name="voice_piecewise_field_changed">Диктовка остановлена: текстовое поле изменилось, остальное не вставилось</string>
+    <string name="settings_search_show_in_screen">Показать на своем экране</string>
 </resources>

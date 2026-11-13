@@ -18,6 +18,7 @@ import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.getActivity
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.SettingsActivity
@@ -73,8 +74,8 @@ fun GestureTypingScreen(
     val enabledSubtypes = SubtypeSettings.getEnabledSubtypes(true)
     val missingDict = enabledSubtypes.any { isMainDictionaryMissing(ctx, it.locale()) }
 
-    val fineTuneGestureExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_GESTURE, Defaults.PREF_EXPAND_FINE_TUNE_GESTURE)
-    val fineTuneSwipesExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_SWIPES, Defaults.PREF_EXPAND_FINE_TUNE_SWIPES)
+    val fineTuneGestureExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_GESTURE, Defaults.PREF_EXPAND_FINE_TUNE_GESTURE)
+    val fineTuneSwipesExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_SWIPES, Defaults.PREF_EXPAND_FINE_TUNE_SWIPES)
 
     val items = remember(
         hasGestureLib, gestureEnabled, gestureFloatingPreviewEnabled, previewTrailEnabled,

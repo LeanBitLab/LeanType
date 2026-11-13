@@ -1814,4 +1814,5 @@
     <string name="voice_transcribe_while_speaking_title">Μεταγραφή ενώ μιλάτε</string>
     <string name="voice_transcribe_while_speaking_summary">Σε κάθε παύση στην ομιλία το μέρος που ειπώθηκε μέχρι τώρα έχει ήδη μεταγραφεί. Μετά τη διακοπή, απομένει μόνο το τελευταίο μέρος: πολύ μικρότερη αναμονή για μεγάλες υπαγορεύσεις.</string>
     <string name="voice_piecewise_field_changed">Η υπαγόρευση σταμάτησε: το πεδίο κειμένου άλλαξε, το υπόλοιπο δεν εισήχθη</string>
+    <string name="settings_search_show_in_screen">Εμφάνιση στην οθόνη του</string>
 </resources>

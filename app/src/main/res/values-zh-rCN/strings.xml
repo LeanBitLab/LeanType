@@ -1714,4 +1714,5 @@
     <string name="voice_transcribe_while_speaking_title">说话时转录</string>
     <string name="voice_transcribe_while_speaking_summary">每次讲话停顿时，到目前为止所说的部分都已被转录。停止后，只剩下最后一部分：长听写的等待时间要短得多。</string>
     <string name="voice_piecewise_field_changed">听写停止：文本字段发生变化，其余部分未插入</string>
+    <string name="settings_search_show_in_screen">在其屏幕上显示</string>
 </resources>

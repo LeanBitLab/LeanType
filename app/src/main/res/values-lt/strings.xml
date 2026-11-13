@@ -1749,4 +1749,5 @@ Ar norite atnaujinti?</string>
     <string name="voice_transcribe_while_speaking_title">Transkribuokite kalbėdami</string>
     <string name="voice_transcribe_while_speaking_summary">Kiekvienos kalbos pauzės metu iki šiol pasakyta dalis jau yra perrašyta. Sustojus belieka tik paskutinė dalis: daug trumpiau laukti ilgų diktantų.</string>
     <string name="voice_piecewise_field_changed">Diktavimas sustabdytas: pasikeitė teksto laukas, likusi dalis neįterpta</string>
+    <string name="settings_search_show_in_screen">Rodyti jo ekrane</string>
 </resources>

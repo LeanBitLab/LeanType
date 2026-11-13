@@ -1748,4 +1748,5 @@
     <string name="voice_transcribe_while_speaking_title">Транскрибирайте, докато говорите</string>
     <string name="voice_transcribe_while_speaking_summary">При всяка пауза в речта изречената до момента част вече е транскрибирана. След спиране остава само последната част: много по-кратко изчакване за дълги диктовки.</string>
     <string name="voice_piecewise_field_changed">Диктовката е спряна: текстовото поле е променено, останалото не е вмъкнато</string>
+    <string name="settings_search_show_in_screen">Показване на екрана му</string>
 </resources>

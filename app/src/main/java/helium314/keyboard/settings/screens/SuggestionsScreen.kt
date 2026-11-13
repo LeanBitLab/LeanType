@@ -43,6 +43,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ToolbarMode
 import helium314.keyboard.latin.utils.getActivity
 import helium314.keyboard.latin.utils.prefs
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SettingsActivity
@@ -70,7 +71,7 @@ fun SuggestionsScreen(
     val suggestionsVisible = Settings.readToolbarMode(prefs) in setOf(ToolbarMode.SUGGESTION_STRIP, ToolbarMode.EXPANDABLE)
     val suggestionsEnabled = suggestionsVisible && prefs.getBoolean(Settings.PREF_SHOW_SUGGESTIONS, Defaults.PREF_SHOW_SUGGESTIONS)
     val bigramPredictionsEnabled = prefs.getBoolean(Settings.PREF_BIGRAM_PREDICTIONS, Defaults.PREF_BIGRAM_PREDICTIONS)
-    val fineTunePredictionExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_PREDICTION, Defaults.PREF_EXPAND_FINE_TUNE_PREDICTION)
+    val fineTunePredictionExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_PREDICTION, Defaults.PREF_EXPAND_FINE_TUNE_PREDICTION)
 
     val items = remember(suggestionsVisible, suggestionsEnabled, bigramPredictionsEnabled, fineTunePredictionExpanded, prefChanged.value) {
         listOf(
