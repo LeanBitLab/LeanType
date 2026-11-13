@@ -35,6 +35,7 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.POPUP_KEYS_MAIN
 import helium314.keyboard.keyboard.internal.keyboard_parser.POPUP_KEYS_MORE
 import helium314.keyboard.keyboard.internal.keyboard_parser.POPUP_KEYS_NORMAL
 import helium314.keyboard.keyboard.internal.keyboard_parser.morePopupKeysResId
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.Setting
@@ -67,9 +68,9 @@ fun PreferencesScreen(
     val showHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, Defaults.PREF_SHOW_HINTS)
     val clipboardHistoryEnabled = prefs.getBoolean(Settings.PREF_ENABLE_CLIPBOARD_HISTORY, Defaults.PREF_ENABLE_CLIPBOARD_HISTORY)
 
-    val fineTuneHapticsExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_HAPTICS, Defaults.PREF_EXPAND_FINE_TUNE_HAPTICS)
-    val fineTuneAdditionalKeysExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS, Defaults.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS)
-    val fineTuneClipboardExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_CLIPBOARD, Defaults.PREF_EXPAND_FINE_TUNE_CLIPBOARD)
+    val fineTuneHapticsExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_HAPTICS, Defaults.PREF_EXPAND_FINE_TUNE_HAPTICS)
+    val fineTuneAdditionalKeysExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS, Defaults.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS)
+    val fineTuneClipboardExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_CLIPBOARD, Defaults.PREF_EXPAND_FINE_TUNE_CLIPBOARD)
 
     val items = remember(
         hasVibrator, vibrateOn, hasAmplitude, showNumberRow, showNumberRowInSymbols, showHints, clipboardHistoryEnabled,

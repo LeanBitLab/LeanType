@@ -15,6 +15,8 @@ import helium314.keyboard.latin.utils.getActivity
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SettingsActivity
+import helium314.keyboard.settings.jumpOpenedSections
+import helium314.keyboard.settings.jumpState
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
@@ -26,15 +28,19 @@ fun ExpandablePreference(
     val prefs = ctx.prefs()
     val activity = ctx.getActivity() as? SettingsActivity
     val prefChanged = (activity?.prefChanged ?: MutableStateFlow(0)).collectAsState()
-    val expanded = remember(prefChanged.value) {
+    val saved = remember(prefChanged.value) {
         prefs.getBoolean(setting.key, defaultExpanded)
     }
+    // may be open only to show a setting from the search, without changing what is saved
+    val expanded = saved || setting.key in jumpOpenedSections()
+    val jump = jumpState()
     Preference(
         name = setting.title,
         description = setting.description,
         onClick = {
             val newExpanded = !expanded
             prefs.edit { putBoolean(setting.key, newExpanded) }
+            jump.userToggledSection(setting.key)
             activity?.prefChanged()
         }
     ) {

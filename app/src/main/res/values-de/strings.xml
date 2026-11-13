@@ -1756,4 +1756,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="voice_max_duration_10m">10 Minuten</string>
     <string name="text_expander_prefix_autocomplete_title">Verknüpfungen zur automatischen Vervollständigung</string>
     <string name="text_expander_prefix_autocomplete_summary">Schlagen Sie Teilübereinstimmungen für Text- und Bildverknüpfungen ohne Präfix vor, nachdem Sie mehr als zwei Zeichen eingegeben haben (Verknüpfungen mit Präfix werden auch automatisch vervollständigt).</string>
+    <!-- Long press on a search result in the settings (accessibility action) -->
+    <string name="settings_search_show_in_screen">Auf seiner Seite zeigen</string>
 </resources>

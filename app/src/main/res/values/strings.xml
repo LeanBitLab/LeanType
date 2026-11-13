@@ -2455,4 +2455,6 @@ New dictionary:
     <string name="style_plain">Normal</string>
     <string name="style_active_indicator">Active style: %s</string>
     <string name="style_active_none">None (Plain text)</string>
+    <!-- Long press on a search result in the settings (accessibility action) -->
+    <string name="settings_search_show_in_screen">Show in its screen</string>
 </resources>

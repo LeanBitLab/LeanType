@@ -42,6 +42,7 @@ import helium314.keyboard.latin.utils.getStringResourceOrName
 import helium314.keyboard.latin.utils.isCustomAiKeyConfigured
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.upgradeToolbarPrefs
+import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SettingsActivity
@@ -71,7 +72,7 @@ fun ToolbarScreen(
 
     val toolbarMode = Settings.readToolbarMode(prefs)
     val isSplitToolbar = prefs.getBoolean(Settings.PREF_SPLIT_TOOLBAR, Defaults.PREF_SPLIT_TOOLBAR)
-    val fineTuneToolbarExpanded = prefs.getBoolean(Settings.PREF_EXPAND_FINE_TUNE_TOOLBAR, Defaults.PREF_EXPAND_FINE_TUNE_TOOLBAR)
+    val fineTuneToolbarExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_TOOLBAR, Defaults.PREF_EXPAND_FINE_TUNE_TOOLBAR)
 
     val items = remember(toolbarMode, isSplitToolbar, fineTuneToolbarExpanded, prefChanged.value) {
         listOf(

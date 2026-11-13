@@ -54,7 +54,16 @@ import helium314.keyboard.latin.R
 import helium314.keyboard.settings.preferences.PreferenceCategory
 
 import helium314.keyboard.latin.utils.prefs
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
+import helium314.keyboard.settings.preferences.LocalPreferenceLongClick
+import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SearchSettingsScreen(
     onClickBack: () -> Unit,
@@ -104,7 +113,46 @@ fun SearchSettingsScreen(
                         result.filter { it.second.isNotEmpty() }
                     }
 
+                    // jump from a long press in the search results (see SettingsJump): show the setting
+                    // here, opening its fine-tune section if needed, scroll to it and highlight it
+                    val listState = rememberLazyListState()
+                    var highlightKey by remember { mutableStateOf<String?>(null) }
+                    val jumpTarget = jumpTarget()
+                    val jumpOpened = jumpOpenedSections()
+                    val jump = jumpState()
+                    // the setting to scroll to once the list shows it; separate from the jump state, so that
+                    // ending the jump does not cancel the scrolling
+                    var scrollKey by remember { mutableStateOf<String?>(null) }
+                    LaunchedEffect(groups, jumpTarget) {
+                        val target = jumpTarget ?: return@LaunchedEffect
+                        val shown = groups.flatMap { it.second }
+                        val prefs = context.prefs()
+                        when (val step = nextJumpStep(target, settings, shown, jumpOpened) { prefs.getBoolean(it, false) }) {
+                            // the screen shows more settings then, and this runs again
+                            is JumpStep.OpenSections -> jump.setOpenedSections(step.sections)
+                            JumpStep.GiveUp -> { jump.setOpenedSections(emptySet()); jump.done() }
+                            is JumpStep.Show -> {
+                                // closing the other sections changes the list, this runs again after that
+                                if (step.keepOpen != jumpOpened) jump.setOpenedSections(step.keepOpen)
+                                else { scrollKey = target; jump.done() }
+                            }
+                        }
+                    }
+                    LaunchedEffect(scrollKey) {
+                        val target = scrollKey ?: return@LaunchedEffect
+                        val index = groups.indexOfFirst { target in it.second }
+                        if (index >= 0) {
+                            // to the card with the setting, then the setting itself is brought into view (see below)
+                            listState.animateScrollToItem(index + if (headerContent != null) 1 else 0)
+                            highlightKey = target
+                            delay(2500)
+                            highlightKey = null
+                        }
+                        scrollKey = null
+                    }
+
                     LazyColumn(
+                        state = listState,
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize(),
@@ -131,7 +179,17 @@ fun SearchSettingsScreen(
                                     
                                     keys.forEach { key ->
                                         androidx.compose.runtime.key(key) {
-                                            SettingsActivity.settingsContainer[key]?.Preference()
+                                            val highlight by animateColorAsState(
+                                                if (key == highlightKey) MaterialTheme.colorScheme.primaryContainer
+                                                else androidx.compose.ui.graphics.Color.Transparent,
+                                                label = "jump highlight"
+                                            )
+                                            // a setting further down in a large card is not on screen after scrolling to the card
+                                            val bringIntoView = remember { BringIntoViewRequester() }
+                                            LaunchedEffect(highlightKey) { if (key == highlightKey) bringIntoView.bringIntoView() }
+                                            Box(Modifier.bringIntoViewRequester(bringIntoView).background(highlight)) {
+                                                SettingsActivity.settingsContainer[key]?.Preference()
+                                            }
                                         }
                                     }
                                 }
@@ -162,8 +220,23 @@ fun SearchSettingsScreen(
                 }
             } 
         },
-        itemContent = { it.Preference() }
+        // long press on a search result opens the screen where the setting is
+        itemContent = { setting -> SearchResult(setting) }
     )
+}
+
+/** A search result: a long press opens the screen of the setting and shows it there */
+@Composable
+private fun SearchResult(setting: Setting) {
+    val navController = LocalSettingsNavController.current
+    val destination = SettingsActivity.settingsContainer.screenOf(setting.key)
+    if (navController == null || destination == null) {
+        setting.Preference()
+        return
+    }
+    CompositionLocalProvider(LocalPreferenceLongClick provides { jumpToSetting(navController, destination, setting.key) }) {
+        setting.Preference()
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

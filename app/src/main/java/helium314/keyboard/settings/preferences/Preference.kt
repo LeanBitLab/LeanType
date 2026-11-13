@@ -2,7 +2,9 @@
 package helium314.keyboard.settings.preferences
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,9 +24,11 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.background
 import androidx.compose.ui.text.style.Hyphens
@@ -54,6 +58,10 @@ fun PreferenceCategory(
     }
 }
 
+/** A long press action for the [Preference] shown inside, e.g. "show in its screen" for search results */
+val LocalPreferenceLongClick = compositionLocalOf<(() -> Unit)?> { null }
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Preference(
     name: String,
@@ -64,10 +72,19 @@ fun Preference(
     @DrawableRes icon: Int? = null,
     value: @Composable (RowScope.() -> Unit)? = null,
 ) {
+    val onLongClick = LocalPreferenceLongClick.current
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(enabled = enabled) { onClick() }
+            .then(
+                if (onLongClick == null) Modifier.clickable(enabled = enabled) { onClick() }
+                else Modifier.combinedClickable(
+                    enabled = enabled,
+                    onLongClickLabel = stringResource(R.string.settings_search_show_in_screen),
+                    onLongClick = onLongClick,
+                    onClick = onClick,
+                )
+            )
             .heightIn(min = 44.dp)
             .padding(vertical = 10.dp, horizontal = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -105,6 +122,7 @@ fun Preference(
         }
         if (value != null) {
             CompositionLocalProvider(
+                LocalPreferenceLongClick provides null,
                 LocalTextStyle provides LocalTextStyle.current.copy(
                     textAlign = TextAlign.End,
                     hyphens = Hyphens.Auto
