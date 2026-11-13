@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Multi-Row Popup Hitbox Fix: Fixed inverted top and bottom edge flags so touch targets do not overlap across rows in multi-row popup panels",
-    "• Text Expander Autocomplete Toggle: Added an optional setting to suggest 2+ char partial matches for unprefixed text/image and prefixed image shortcuts",
-    "• Idle Battery & Voice Hardening: Stopped hidden view loops/animators, made voice binding lifecycle-aware, and auto-released keep-screen-on on silence",
-    "• Extended Voice Duration: Added 10-minute and unlimited voice dictation recording duration options",
+    "• Unicode Font Styling & Symbol Palette: Added 26+ font styles with live typing and categorized Unicode symbol palette (#776)",
+    "• Text Expander Image Shortcuts: Added photo/image shortcuts with live thumbnails and full-screen bulk editor (#784)",
+    "• Fast Typing Auto-Caps Fix: Resolved auto-caps timing race during rapid typing and multi-touch gestures (#598)",
+    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text fields in messaging and search",
+    "• Idle Battery & Voice Optimization: Eliminated idle Looper spins/animators and added 10m/unlimited dictation",
     "• CJK Pinyin Uppercase Fix: Preserved typed uppercase letters and shift state during Pinyin composition (#787)",
-    "• Emoji Search Pinned Header: Pinned inline search bar and enabled independent horizontal result scrolling",
-    "• Text Expander Image Hardening: Hardened image shortcut storage, MIME gating, exact match, and backup restore (#784)",
-    "• Arabic Tashkeel Hint: Centered diacritics hint on the Arabic period key and restricted to alphabet mode (#786)",
-    "• Input IPC Resilience: Defensively hardened RichInputConnection against remote app exceptions",
-    "• Active Keyboards Elevation: Redesigned language screen to highlight active keyboards and layout names"
+    "• Multi-Row Popup & Foldable Split Fix: Fixed multi-row popup touch hitboxes and foldable split detection (#778)",
+    "• Symbol & Bracket Auto-Pairing: Added automatic closing brackets, quotes, and CJK quotation mark auto-pairing (#754)",
+    "• Arabic Tashkeel Hint: Centered diacritics hint on the Arabic period key for quick tashkeel access (#786)",
+    "• Automation Broadcast Intents: Added external broadcast intent controls for automated keyboard layout switching (#501)"
 )
 
 @Composable
