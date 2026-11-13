@@ -1752,4 +1752,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="voice_futo_models_title">Modele głosowe FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">Dopracowane modele Whisper zoptymalizowane pod kątem mobilnego dyktowania</string>
     <string name="button_browse">Przeglądać</string>
+    <string name="voice_transcribe_while_speaking_title">Transkrypcja podczas mówienia</string>
+    <string name="voice_transcribe_while_speaking_summary">Przy każdej przerwie w mowie część wypowiedziana dotychczas jest już transkrybowana. Po zatrzymaniu pozostaje tylko ostatnia część: znacznie krótsze oczekiwanie na długie dyktanda.</string>
+    <string name="voice_piecewise_field_changed">Dyktowanie zatrzymane: pole tekstowe uległo zmianie, reszta nie została wstawiona</string>
 </resources>

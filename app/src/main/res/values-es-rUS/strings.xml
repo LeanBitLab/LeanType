@@ -1777,4 +1777,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">Modelos Whisper optimizados para dictado móvil</string>
     <string name="button_browse">Navegar</string>
+    <string name="voice_transcribe_while_speaking_title">Transcribe mientras hablas</string>
+    <string name="voice_transcribe_while_speaking_summary">En cada pausa del discurso ya se transcribe la parte hablada hasta el momento. Después de parar, sólo queda la última parte: una espera mucho más corta para dictados largos.</string>
+    <string name="voice_piecewise_field_changed">Dictado detenido: el campo de texto cambió, el resto no fue insertado</string>
 </resources>

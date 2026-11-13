@@ -1760,4 +1760,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="voice_futo_models_title">FUTO-Sprachmodelle (ACFT)</string>
     <string name="voice_futo_models_summary">Fein abgestimmte Whisper-Modelle, optimiert für mobiles Diktieren</string>
     <string name="button_browse">Durchsuchen</string>
+    <string name="voice_transcribe_while_speaking_title">Schon beim Sprechen erkennen</string>
+    <string name="voice_transcribe_while_speaking_summary">Bei jeder Sprechpause wird das bisher Gesagte schon erkannt. Nach dem Stopp bleibt nur das letzte Stück: viel kürzeres Warten bei langen Diktaten.</string>
+    <string name="voice_piecewise_field_changed">Diktat beendet: Das Textfeld hat gewechselt, der Rest wurde nicht eingefügt</string>
 </resources>

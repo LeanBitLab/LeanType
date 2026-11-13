@@ -1710,4 +1710,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="voice_futo_models_title">Hlasové modely FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">Vyladěné modely Whisper optimalizované pro mobilní diktování</string>
     <string name="button_browse">Prohlížet</string>
+    <string name="voice_transcribe_while_speaking_title">Přepisujte při mluvení</string>
+    <string name="voice_transcribe_while_speaking_summary">Při každé pauze v řeči je dosud mluvená část již přepsána. Po zastavení zbývá už jen poslední část: mnohem kratší čekání na dlouhé diktáty.</string>
+    <string name="voice_piecewise_field_changed">Diktování zastaveno: textové pole se změnilo, zbytek nebyl vložen</string>
 </resources>

@@ -1716,4 +1716,7 @@
     <string name="voice_futo_models_title">מודלים קוליים של FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">דגמי Whisper מכוונים עדינים המותאמים להכתבה ניידת</string>
     <string name="button_browse">לְדַפדֵף</string>
+    <string name="voice_transcribe_while_speaking_title">תמלל תוך כדי דיבור</string>
+    <string name="voice_transcribe_while_speaking_summary">בכל הפסקה בדיבור החלק שנאמר עד כה כבר מתומלל. לאחר העצירה נותר רק החלק האחרון: המתנה קצרה בהרבה לתכתיבים ארוכים.</string>
+    <string name="voice_piecewise_field_changed">ההכתבה הופסקה: שדה הטקסט השתנה, השאר לא הוכנס</string>
 </resources>

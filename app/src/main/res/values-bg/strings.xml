@@ -1745,4 +1745,7 @@
     <string name="voice_futo_models_title">FUTO гласови модели (ACFT)</string>
     <string name="voice_futo_models_summary">Фино настроени модели Whisper, оптимизирани за мобилно диктовка</string>
     <string name="button_browse">Прегледайте</string>
+    <string name="voice_transcribe_while_speaking_title">Транскрибирайте, докато говорите</string>
+    <string name="voice_transcribe_while_speaking_summary">При всяка пауза в речта изречената до момента част вече е транскрибирана. След спиране остава само последната част: много по-кратко изчакване за дълги диктовки.</string>
+    <string name="voice_piecewise_field_changed">Диктовката е спряна: текстовото поле е променено, останалото не е вмъкнато</string>
 </resources>

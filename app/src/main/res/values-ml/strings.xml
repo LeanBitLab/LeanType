@@ -1811,4 +1811,7 @@
     <string name="voice_futo_models_title">FUTO വോയ്സ് മോഡലുകൾ (ACFT)</string>
     <string name="voice_futo_models_summary">മൊബൈൽ ഡിക്റ്റേഷനായി ഒപ്റ്റിമൈസ് ചെയ്ത ഫൈൻ-ട്യൂൺ ചെയ്ത വിസ്പർ മോഡലുകൾ</string>
     <string name="button_browse">ബ്രൗസ് ചെയ്യുക</string>
+    <string name="voice_transcribe_while_speaking_title">സംസാരിക്കുമ്പോൾ പകർത്തുക</string>
+    <string name="voice_transcribe_while_speaking_summary">പ്രസംഗത്തിലെ ഓരോ ഇടവേളയിലും ഇതുവരെ സംസാരിച്ച ഭാഗം ഇതിനകം പകർത്തിയെഴുതിയിരിക്കുന്നു. നിർത്തിയ ശേഷം, അവസാന ഭാഗം മാത്രം അവശേഷിക്കുന്നു: ദീർഘമായ നിർദ്ദേശങ്ങൾക്കായി വളരെ ചെറിയ കാത്തിരിപ്പ്.</string>
+    <string name="voice_piecewise_field_changed">ഡിക്റ്റേഷൻ നിർത്തി: ടെക്സ്റ്റ് ഫീൽഡ് മാറി, ബാക്കിയുള്ളത് ചേർത്തില്ല</string>
 </resources>

@@ -1745,4 +1745,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="voice_futo_models_title">FUTO häälemudelid (ACFT)</string>
     <string name="voice_futo_models_summary">Peenhäälestatud Whisperi mudelid, mis on optimeeritud mobiilseks dikteerimiseks</string>
     <string name="button_browse">Sirvige</string>
+    <string name="voice_transcribe_while_speaking_title">Transkribeeri rääkimise ajal</string>
+    <string name="voice_transcribe_while_speaking_summary">Igal kõnepausil on seni räägitud osa juba transkribeeritud. Pärast peatumist on jäänud vaid viimane osa: pikkade dikteerimiste jaoks palju lühem ootamine.</string>
+    <string name="voice_piecewise_field_changed">Dikteerimine peatus: tekstiväli muutus, ülejäänud jäi sisestamata</string>
 </resources>

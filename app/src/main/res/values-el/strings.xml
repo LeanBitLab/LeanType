@@ -1811,4 +1811,7 @@
     <string name="voice_futo_models_title">Μοντέλα φωνής FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">Βελτιστοποιημένα μοντέλα Whisper βελτιστοποιημένα για υπαγόρευση μέσω κινητού</string>
     <string name="button_browse">Ξεφυλλίζω</string>
+    <string name="voice_transcribe_while_speaking_title">Μεταγραφή ενώ μιλάτε</string>
+    <string name="voice_transcribe_while_speaking_summary">Σε κάθε παύση στην ομιλία το μέρος που ειπώθηκε μέχρι τώρα έχει ήδη μεταγραφεί. Μετά τη διακοπή, απομένει μόνο το τελευταίο μέρος: πολύ μικρότερη αναμονή για μεγάλες υπαγορεύσεις.</string>
+    <string name="voice_piecewise_field_changed">Η υπαγόρευση σταμάτησε: το πεδίο κειμένου άλλαξε, το υπόλοιπο δεν εισήχθη</string>
 </resources>

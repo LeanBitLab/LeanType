@@ -1737,4 +1737,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="voice_futo_models_title">FUTO Ses Modelleri (ACFT)</string>
     <string name="voice_futo_models_summary">Mobil dikte için optimize edilmiş ince ayarlı Whisper modelleri</string>
     <string name="button_browse">Göz at</string>
+    <string name="voice_transcribe_while_speaking_title">Konuşurken yazıya dök</string>
+    <string name="voice_transcribe_while_speaking_summary">Konuşmadaki her duraklamada, o ana kadar konuşulan kısım zaten yazıya geçirilir. Durdurduktan sonra geriye yalnızca son kısım kalıyor: uzun dikteler için çok daha kısa bekleme süresi.</string>
+    <string name="voice_piecewise_field_changed">Dikte durduruldu: metin alanı değişti, geri kalanı eklenmedi</string>
 </resources>

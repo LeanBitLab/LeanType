@@ -1715,4 +1715,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
     <string name="voice_futo_models_summary">Modelos Whisper ajustados e otimizados para ditado móvel</string>
     <string name="button_browse">Navegar</string>
+    <string name="voice_transcribe_while_speaking_title">Transcreva enquanto fala</string>
+    <string name="voice_transcribe_while_speaking_summary">A cada pausa na fala a parte falada até então já está transcrita. Depois de parar, resta apenas a última parte: espera muito mais curta por longos ditados.</string>
+    <string name="voice_piecewise_field_changed">O ditado parou: o campo de texto mudou, o restante não foi inserido</string>
 </resources>
