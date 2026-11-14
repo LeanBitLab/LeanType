@@ -570,6 +570,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     private var deleteSwipeExactPending = false
     private var deleteSwipePendingStepsY = 0
     private var deleteSwipeExactRetried = false
+    // lower edge (screen coordinates) of the area asked from requestTextBoundsInfo, see requestExactLines
+    private var exactLinesBottom = 0f
     // geometry the editor reported: vertical steps then keep the horizontal position (column) of the selection start
     private var exactGeometry: VisualLines.LineGeometry? = null
     private var exactDesiredX = Float.NaN
@@ -691,7 +693,17 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
         val generation = deleteSwipeGeneration
         val baseStart = deleteSwipeStartForExactLines()
-        val bounds = RectF(-HUGE_HORIZONTAL, markerTop - EXACT_LINES_LOOKUP * lineHeight, HUGE_HORIZONTAL, markerBottom)
+        // TextView.getTextBoundsInfo throws IllegalArgumentException("the segment range can't be empty") inside the
+        // editor's process (so it can't be caught here and crashes the app) when the asked area includes the
+        // layout's last line while that line is empty, i.e. the text ends with '\n'. Only lines up to the cursor
+        // line are used, so never ask below it. The bottom edge is 1px inside the cursor line, because
+        // markerBottom is often exactly the top of the next line. If the cursor is on that trailing empty line
+        // itself, end the area above it.
+        val onTrailingEmptyLine = connection.getTextAfterCursor(1, 0).isNullOrEmpty()
+            && connection.getTextBeforeCursor(1, 0)?.lastOrNull() == '\n'
+        val bottom = if (onTrailingEmptyLine) markerTop - 1f else markerBottom - 1f
+        exactLinesBottom = bottom
+        val bounds = RectF(-HUGE_HORIZONTAL, markerTop - EXACT_LINES_LOOKUP * lineHeight, HUGE_HORIZONTAL, bottom)
         sendExactLinesRequest(bounds, generation, baseStart, editorPackage)
     }
 
@@ -728,7 +740,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         // the swipe's start, ask once more for the whole text
         if (info != null && !deleteSwipeExactRetried && (info.endIndex < baseStart || info.startIndex > baseStart)) {
             deleteSwipeExactRetried = true
-            val whole = RectF(-HUGE_HORIZONTAL, -HUGE_HORIZONTAL, HUGE_HORIZONTAL, HUGE_HORIZONTAL)
+            // like the first request, never reach below the cursor line (see requestExactLines)
+            val whole = RectF(-HUGE_HORIZONTAL, -HUGE_HORIZONTAL, HUGE_HORIZONTAL, exactLinesBottom)
             if (sendExactLinesRequest(whole, deleteSwipeGeneration, baseStart, editorPackage)) return
         }
         // vertical movement was held back while waiting, so the line index is still 0 and swapping is safe
