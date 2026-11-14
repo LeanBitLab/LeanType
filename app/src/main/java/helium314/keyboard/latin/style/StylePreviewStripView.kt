@@ -76,13 +76,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         val ratio = if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
         val baseDim = (stripHeight * ratio).toInt()
         val keyDimension: Int = if (isFloating) {
-            // Derive from actual keyboard key width, consistent with SuggestionStripView
-            val keyboard = helium314.keyboard.keyboard.KeyboardSwitcher.getInstance().keyboard
-            if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
-                (keyboard.mMostCommonKeyWidth * 0.85f).toInt().coerceAtMost(stripHeight)
-            } else {
-                baseDim
-            }
+            (stripHeight * 0.88f).toInt()
         } else {
             baseDim
         }

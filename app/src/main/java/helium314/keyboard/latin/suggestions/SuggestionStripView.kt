@@ -186,13 +186,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             val baseDim = (stripHeight * ratio).toInt()
             val isFloating = FloatingKeyboardManager.isFloatingMode(context)
             if (isFloating) {
-                // Derive toolbar key size from the actual keyboard key width.
-                // Toolbar keys should be square, sized proportionally to the key width.
-                val keyboard = KeyboardSwitcher.getInstance().keyboard
-                if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
-                    val keyBasedDim = (keyboard.mMostCommonKeyWidth * 0.85f).toInt()
-                    return keyBasedDim.coerceAtMost(stripHeight)
-                }
+                // Toolbar keys should fill the strip height proportionally (matching docked ratio ~88%)
+                return (stripHeight * 0.88f).toInt()
             }
             return baseDim
         }

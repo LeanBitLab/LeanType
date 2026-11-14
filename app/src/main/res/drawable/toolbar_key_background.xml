@@ -6,9 +6,9 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="?android:attr/colorControlHighlight">
     <item>
-        <inset android:inset="4dp">
+        <inset android:inset="3dp">
             <shape android:shape="rectangle">
-                <corners android:radius="8dp" />
+                <corners android:radius="6dp" />
                 <solid android:color="#fff" />
             </shape>
         </inset>
