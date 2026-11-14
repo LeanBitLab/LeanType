@@ -50,6 +50,23 @@ object GifInserter {
 
             val acceptedMimes = EditorInfoCompat.getContentMimeTypes(editorInfo)
             if (acceptedMimes.isEmpty()) {
+                val copyResult = withContext(Dispatchers.IO) {
+                    copyAndValidate(context, pfd, false, false, kind)
+                }
+                if (copyResult != null) {
+                    val (outFile, actualMime) = copyResult
+                    val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", outFile)
+                    runCatching {
+                        context.grantUriPermission(editorInfo.packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    val label = if (actualMime.contains("sticker") || actualMime == "image/webp") "Sticker" else "GIF"
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
+                    clipboard?.setPrimaryClip(android.content.ClipData.newUri(context.contentResolver, label, uri))
+                    withContext(Dispatchers.Main) {
+                        toast(context, "App does not support direct insertion: copied to clipboard")
+                    }
+                    return true
+                }
                 toast(context, "App does not support GIF insertion")
                 return false
             }
@@ -72,12 +89,12 @@ object GifInserter {
 
             return withContext(Dispatchers.Main) {
                 val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", outFile)
+                runCatching {
+                    context.grantUriPermission(editorInfo.packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
                 val flags = if (Build.VERSION.SDK_INT >= 25) {
                     InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
                 } else {
-                    runCatching {
-                        context.grantUriPermission(editorInfo.packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    }
                     0
                 }
                 val label = if (actualMime.contains("sticker") || actualMime == "image/webp") "Sticker" else "GIF"
@@ -87,8 +104,14 @@ object GifInserter {
                 }.getOrDefault(false)
 
                 if (!ok) {
-                    outFile.delete()
-                    toast(context, "App does not support GIF insertion")
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
+                    if (clipboard != null) {
+                        clipboard.setPrimaryClip(android.content.ClipData.newUri(context.contentResolver, label, uri))
+                        toast(context, "App does not support direct insertion: copied to clipboard")
+                    } else {
+                        outFile.delete()
+                        toast(context, "App does not support GIF insertion")
+                    }
                 }
                 ok
             }
