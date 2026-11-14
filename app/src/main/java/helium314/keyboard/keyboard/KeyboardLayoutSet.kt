@@ -77,6 +77,7 @@ class KeyboardLayoutSet internal constructor(
         var mScript: String = ScriptUtils.SCRIPT_LATIN
         var mIsSplitLayoutEnabled: Boolean = false
         var mInternalAction: InternalAction? = null
+        var mContext: Context? = null
     }
 
     fun getKeyboard(baseKeyboardLayoutSetElementId: Int): Keyboard {
@@ -151,6 +152,7 @@ class KeyboardLayoutSet internal constructor(
             mParams.mMode = getKeyboardMode(editorInfo)
             mParams.mEditorInfo = editorInfo
             mParams.mDeviceLocked = isDeviceLocked(context)
+            mParams.mContext = context
         }
 
         fun setKeyboardGeometry(keyboardWidth: Int, keyboardHeight: Int): Builder {

@@ -32,8 +32,27 @@ import kotlinx.serialization.modules.polymorphic
 object LayoutParser {
     private const val TAG = "LayoutParser"
     private val layoutCache = hashMapOf<String, (KeyboardParams) -> MutableList<MutableList<KeyData>>>()
+    private val hexLayoutCache = java.util.concurrent.ConcurrentHashMap<String, Boolean>()
 
-    fun clearCache() = layoutCache.clear()
+    fun clearCache() {
+        layoutCache.clear()
+        hexLayoutCache.clear()
+    }
+
+    fun isHexLayout(layoutName: String, context: Context?): Boolean {
+        if (layoutName.contains("hex", ignoreCase = true)) return true
+        if (context == null) return false
+        val cached = hexLayoutCache[layoutName]
+        if (cached != null) return cached
+        val isHex = try {
+            val content = getLayoutFileContent(LayoutType.MAIN, layoutName.substringBefore("+"), context)
+            content.contains("hexVariant")
+        } catch (_: Exception) {
+            false
+        }
+        hexLayoutCache[layoutName] = isHex
+        return isHex
+    }
 
     fun parseLayout(layoutType: LayoutType, params: KeyboardParams, context: Context): MutableList<MutableList<KeyData>> {
         if (layoutType == LayoutType.FUNCTIONAL && !params.mId.isAlphaOrSymbolKeyboard)

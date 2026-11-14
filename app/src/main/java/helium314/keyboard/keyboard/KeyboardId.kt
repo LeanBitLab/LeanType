@@ -6,13 +6,16 @@
 
 package helium314.keyboard.keyboard
 
+import android.content.Context
 import android.text.InputType
 import android.text.TextUtils
 import android.view.inputmethod.EditorInfo
 import helium314.keyboard.compat.EditorInfoCompatUtils
+import helium314.keyboard.keyboard.internal.keyboard_parser.LayoutParser
 import helium314.keyboard.latin.RichInputMethodSubtype
 import helium314.keyboard.latin.WordComposer
 import helium314.keyboard.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET
+import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.InputTypeUtils
 import java.util.Locale
 import java.util.Objects
@@ -21,6 +24,7 @@ import java.util.Objects
  * Unique identifier for each keyboard type.
  */
 class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
+    val mContext: Context? = params.mContext ?: runCatching { Settings.getCurrentContext() }.getOrNull()
     val mSubtype: RichInputMethodSubtype = params.mSubtype
     val mWidth: Int = params.mKeyboardWidth
     val mHeight: Int = params.mKeyboardHeight
@@ -71,7 +75,10 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
         get() = isAlphabetKeyboard(mElementId)
 
     val isHexagonal: Boolean
-        get() = isAlphabetKeyboard && mSubtype.mainLayoutName.contains("hex", ignoreCase = true)
+        get() = isAlphabetKeyboard && (
+            mSubtype.mainLayoutName.contains("hex", ignoreCase = true)
+                || LayoutParser.isHexLayout(mSubtype.mainLayoutName, mContext)
+        )
 
     fun navigateNext(): Boolean {
         return (mEditorInfo.imeOptions and EditorInfo.IME_FLAG_NAVIGATE_NEXT) != 0 ||
