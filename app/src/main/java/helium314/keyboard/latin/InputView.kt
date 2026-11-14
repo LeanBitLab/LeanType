@@ -46,6 +46,20 @@ class InputView @JvmOverloads constructor(
         return super.dispatchApplyWindowInsets(insets)
     }
 
+    private fun getNavInsets(): Int {
+        if (mNavBarBottomInsets > 0) return mNavBarBottomInsets
+        val insets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            rootWindowInsets?.getInsets(WindowInsets.Type.navigationBars())?.bottom ?: 0
+        } else {
+            @Suppress("DEPRECATION")
+            rootWindowInsets?.systemWindowInsetBottom ?: 0
+        }
+        if (insets > 0) {
+            mNavBarBottomInsets = insets
+        }
+        return mNavBarBottomInsets
+    }
+
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
         val navInsets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             insets.getInsets(WindowInsets.Type.navigationBars()).bottom
@@ -53,15 +67,15 @@ class InputView @JvmOverloads constructor(
             @Suppress("DEPRECATION")
             insets.systemWindowInsetBottom
         }
+        if (navInsets > 0) {
+            mNavBarBottomInsets = navInsets
+        }
         if (isFloatingMode()) {
             resetChildrenFloatingPadding()
             updateBottomPadding()
             return insets
         }
-        if (mNavBarBottomInsets != navInsets) {
-            mNavBarBottomInsets = navInsets
-            updateBottomPadding()
-        }
+        updateBottomPadding()
         return super.onApplyWindowInsets(insets)
     }
 
@@ -95,24 +109,16 @@ class InputView @JvmOverloads constructor(
             }
             return
         }
-        fitsSystemWindows = true
-        findViewById<View>(R.id.main_keyboard_frame)?.fitsSystemWindows = true
-        findViewById<View>(R.id.keyboard_view_wrapper)?.fitsSystemWindows = true
         val viewIds = intArrayOf(
             R.id.keyboard_view,
             R.id.emoji_palettes_view,
             R.id.clipboard_history_view,
             R.id.touchpad_view
         )
-        for (id in viewIds) {
-            findViewById<View>(id)?.let {
-                it.fitsSystemWindows = true
-                it.requestApplyInsets()
-            }
-        }
+        val insets = if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
         val wrapper = findViewById<View>(R.id.keyboard_view_wrapper)
         val showToolbarOnly = wrapper?.visibility != View.VISIBLE
-        val bottomPadding = if (showToolbarOnly) mNavBarBottomInsets else 0
+        val bottomPadding = if (showToolbarOnly) insets else 0
         if (mainKeyboardFrame.paddingBottom != bottomPadding) {
             mainKeyboardFrame.setPadding(
                 mainKeyboardFrame.paddingLeft,
@@ -121,6 +127,16 @@ class InputView @JvmOverloads constructor(
                 bottomPadding
             )
             requestLayout()
+        }
+        val childPadding = if (showToolbarOnly) 0 else insets
+        for (id in viewIds) {
+            findViewById<View>(id)?.let {
+                it.fitsSystemWindows = true
+                if (it.paddingBottom != childPadding) {
+                    it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, childPadding)
+                    it.requestLayout()
+                }
+            }
         }
     }
 

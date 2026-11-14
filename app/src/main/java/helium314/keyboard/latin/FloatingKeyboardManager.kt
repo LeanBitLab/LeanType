@@ -308,6 +308,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
             frame.background = null
             frame.outlineProvider = null
             frame.clipToOutline = false
+            Settings.getValues().mColors.setBackground(frame, ColorType.MAIN_BACKGROUND)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 frame.elevation = 0f
             }
@@ -402,6 +403,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                 frame.background = null
                 frame.outlineProvider = null
                 frame.clipToOutline = false
+                Settings.getValues().mColors.setBackground(frame, ColorType.MAIN_BACKGROUND)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     frame.elevation = 0f
                 }
