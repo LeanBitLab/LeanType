@@ -87,3 +87,16 @@ docs/superpowers/
 
 # Temporary generated files
 docs/releasenote/release_notes_temp.md
+
+# AI / assistant files (Claude Code and others, local only)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.claudeignore
+.mcp.json
+.windsurf*
+.roo*
+.clinerules
+.codex/
+.kiro/
+.github/copilot-instructions.md
