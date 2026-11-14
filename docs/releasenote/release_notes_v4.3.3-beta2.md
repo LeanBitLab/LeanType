@@ -35,7 +35,7 @@ Keep LeanType fast and independent. As a community-funded, open-source project, 
 
 | Flavor | Primary Focus | AI Engine | Plugins Setup | Internet | Release Updater | Size |
 |:---|:---|:---|:---|:---|:---|:---:|
-| **`1-LeanType_4.3.3-standard-debug.apk`** | **Recommended** | Cloud AI | In-app download or File import | Optional (AI/plugins) | ✅ View Release | - |
-| **`2-LeanType_4.3.3-offline-debug.apk`** | **Offline** | Local LLM Plugin (8.0+) | Browser download + File import | 🚫 Zero Internet (No Permission) | ❌ None | - |
+| **`1-LeanType_4.3.3-standard-release.apk`** | **Recommended** | Cloud AI | In-app download or File import | Optional (AI/plugins) | ✅ View Release | - |
+| **`2-LeanType_4.3.3-offline-release.apk`** | **Offline** | Local LLM Plugin (8.0+) | Browser download + File import | 🚫 Zero Internet (No Permission) | ❌ None | - |
 
 > 💡 **Plugin Compatibility**: All flavors support **Offline Voice Dictation** (Android 8.1+), **Offline Translation** (Android 6.0+), **Offline Handwriting Recognition** (Android 6.0+), **Offline OCR Text Extraction** (Android 5.0+), and **Offline AI Proofreading** (Android 8.0+, 64-bit) via modular plugins, and work 100% offline.
