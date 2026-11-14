@@ -656,6 +656,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         deleteSwipeExactRequested = false
         deleteSwipeExactPending = false
         deleteSwipeExactRetried = false
+        exactLinesBottom = 0f
         exactGeometry = null
         exactDesiredX = Float.NaN
         exactHorizontalMoved = false
@@ -688,6 +689,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         anchor.matrix.mapPoints(marker)
         val markerTop = marker[1]
         val markerBottom = marker[3]
+        if (markerTop.isNaN() || markerBottom.isNaN()) return
         val lineHeight = markerBottom - markerTop
         if (lineHeight <= 0f) return
 
