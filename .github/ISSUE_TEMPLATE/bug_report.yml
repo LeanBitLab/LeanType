@@ -14,6 +14,7 @@ body:
         2. **Restart / Clear Cache**: Go to device Settings > Apps > LeanType > Force Stop, and test again.
         3. **Test with default theme**: Custom themes or outdated user styling can cause visual glitches.
         4. **Check permissions**: Features like voice typing require microphone permission; screenshot suggestions require media / storage permissions.
+        5. **Check plugin version**: If the issue is related to an external plugin (e.g. Voice Plugin, OCR, CJK, Handwriting, Offline AI), ensure you are on the latest version of that plugin.
 
   - type: checkboxes
     id: checklist
@@ -27,6 +28,8 @@ body:
           required: true
         - label: I have tried clearing app cache or testing with default settings.
           required: true
+        - label: If the issue is related to an external plugin (e.g. Voice Plugin, OCR, CJK, Handwriting, Offline AI), I have verified that I am using the latest release of that plugin.
+          required: false
 
   - type: textarea
     id: description
@@ -92,6 +95,15 @@ body:
       placeholder: v4.3.2-beta2
     validations:
       required: true
+
+  - type: input
+    id: plugin_version
+    attributes:
+      label: Plugin Version (if applicable)
+      description: If the issue involves an external plugin (e.g. Voice Plugin, OCR, CJK, Handwriting, Offline AI), specify the installed plugin version (e.g. Voice Plugin v1.0.3).
+      placeholder: Voice Plugin v1.0.3
+    validations:
+      required: false
 
   - type: input
     id: device
