@@ -160,6 +160,37 @@ class TextExpanderTabTest {
     }
 
     @Test
+    fun testSymbolPrefixedShortcutsMatchAndExpand() {
+        val context = RuntimeEnvironment.getApplication()
+        context.prefs().edit()
+            .putBoolean(TextExpanderUtils.PREF_ENABLED, true)
+            .putBoolean(TextExpanderUtils.PREF_SUGGESTIONS, true)
+            .putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, false)
+            .commit()
+
+        TextExpanderUtils.saveShortcuts(
+            context,
+            mapOf(
+                "@g" to TextExpanderUtils.ShortcutEntry(template = "@gmail.com", prefix = ""),
+                "#todo" to TextExpanderUtils.ShortcutEntry(template = "Task list:", prefix = "")
+            )
+        )
+
+        // Typing @g in the editor: '@' was committed to textBeforeCursor, 'g' is the composing word
+        val matchesAtG = TextExpanderUtils.getMatchingSuggestions("g", "email @g", context)
+        assertEquals(1, matchesAtG.size)
+        assertEquals("@gmail.com", matchesAtG.single().previewLabel)
+        assertEquals(1, matchesAtG.single().prefixLength) // '@' needs to be deleted before expanding
+
+        // Autocomplete with prefix toggle
+        context.prefs().edit().putBoolean(TextExpanderUtils.PREF_PREFIX_AUTOCOMPLETE, true).commit()
+        val matchesHashPartial = TextExpanderUtils.getMatchingSuggestions("to", "note #to", context)
+        assertEquals(1, matchesHashPartial.size)
+        assertEquals(1, matchesHashPartial.single().prefixLength) // '#' needs to be deleted
+        assertEquals("#todo: Task list:", matchesHashPartial.single().previewLabel)
+    }
+
+    @Test
     fun testGetExpandedWordForTypedPropagatesImageUri() {
         val context = RuntimeEnvironment.getApplication()
         val prefs = context.prefs()

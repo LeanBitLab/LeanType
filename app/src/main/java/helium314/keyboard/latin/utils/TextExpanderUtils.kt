@@ -729,18 +729,42 @@ object TextExpanderUtils {
                 if (matchesWithPrefix || matchesWithoutPrefix) {
                     val target = if (matchesWithPrefix) fullTrigger else shortcut
                     val isImage = !entry.imageUri.isNullOrBlank()
-                    val isExactMatch = target.equals(typedWord, ignoreCase = true)
+
+                    val symbolPrefixLen = if (prefix.isEmpty() && shortcut.length > typedWord.length) {
+                        val nonWordPrefix = shortcut.takeWhile { !Character.isLetterOrDigit(it) }
+                        if (nonWordPrefix.isNotEmpty() &&
+                            textBeforeCursor.endsWith(nonWordPrefix + typedWord, ignoreCase = true) &&
+                            shortcut.startsWith(nonWordPrefix + typedWord, ignoreCase = true)
+                        ) {
+                            nonWordPrefix.length
+                        } else 0
+                    } else 0
+
+                    val isExactMatch = target.equals(typedWord, ignoreCase = true) ||
+                        (prefix.isEmpty() && textBeforeCursor.endsWith(shortcut, ignoreCase = true))
+
                     val isMatch = when {
                         isExactMatch -> true
                         // Explicitly prefixed text shortcuts always autocomplete; prefixed images autocomplete when enabled.
                         prefix.isNotEmpty() -> (!isImage || prefixAutocomplete) &&
                             target.length >= typedWord.length &&
                             target.startsWith(typedWord, ignoreCase = true)
+                        // Symbol-prefixed unprefixed shortcuts (e.g. "@gmail" when typing "@gm")
+                        symbolPrefixLen > 0 -> prefixAutocomplete &&
+                            (typedWord.length + symbolPrefixLen) >= 2 &&
+                            shortcut.length >= (typedWord.length + symbolPrefixLen) &&
+                            shortcut.startsWith(shortcut.take(symbolPrefixLen) + typedWord, ignoreCase = true)
                         // Unprefixed text and image shortcuts autocomplete after 2+ chars only when the setting toggle is enabled.
                         else -> prefixAutocomplete && typedWord.length >= 2 && target.startsWith(typedWord, ignoreCase = true)
                     }
                     if (isMatch) {
-                        val prefixLen = if (!matchesWithPrefix && prefix.isNotEmpty()) prefix.length else 0
+                        val prefixLen = if (!matchesWithPrefix && prefix.isNotEmpty()) {
+                            prefix.length
+                        } else if (symbolPrefixLen > 0) {
+                            symbolPrefixLen
+                        } else {
+                            0
+                        }
                         val label = if (isImage) {
                             if (entry.template.isNotBlank()) formatPreview(entry.template) else ""
                         } else if (isExactMatch) {
