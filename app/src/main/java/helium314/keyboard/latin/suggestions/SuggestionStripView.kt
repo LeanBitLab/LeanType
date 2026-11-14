@@ -180,16 +180,21 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     private val keyDimension: Int
         get() {
             val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
-            val isFloating = FloatingKeyboardManager.isFloatingMode(context)
-            if (isFloating) {
-                val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-                val ratio = if (isLandscape) 0.82f else 0.85f
-                return (stripHeight * ratio).toInt()
-            }
             val defaultEdgeWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
             val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
             val ratio = if (defaultStripHeight > 0) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
-            return (stripHeight * ratio).toInt()
+            val baseDim = (stripHeight * ratio).toInt()
+            val isFloating = FloatingKeyboardManager.isFloatingMode(context)
+            if (isFloating) {
+                // Derive toolbar key size from the actual keyboard key width.
+                // Toolbar keys should be square, sized proportionally to the key width.
+                val keyboard = KeyboardSwitcher.getInstance().keyboard
+                if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
+                    val keyBasedDim = (keyboard.mMostCommonKeyWidth * 0.85f).toInt()
+                    return keyBasedDim.coerceAtMost(stripHeight)
+                }
+            }
+            return baseDim
         }
 
     private val toolbarKeyLayoutParams: LinearLayout.LayoutParams
@@ -1647,13 +1652,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
         if (currentStripWidth <= 0) return baseDim
 
-        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-        // In floating mode, pinned keys + expand key leave ample space for word suggestions
-        val maxFraction = if (isLandscape) 0.50f else 0.55f
-        val maxAvailableWidth = (currentStripWidth * maxFraction).toInt()
+        // Cap toolbar keys so they don't consume more than half the strip width
+        val maxAvailableWidth = (currentStripWidth * 0.50f).toInt()
         val maxSingleKeyWidth = maxAvailableWidth / totalKeys
-        val minAllowedDp = if (isLandscape) 26f else 28f
-        val minAllowedKeyDim = (minAllowedDp * resources.displayMetrics.density).toInt()
+        // Minimum: derive from the keyboard's actual key width (40% of a key)
+        val keyboard = KeyboardSwitcher.getInstance().keyboard
+        val minAllowedKeyDim = if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
+            (keyboard.mMostCommonKeyWidth * 0.40f).toInt()
+        } else {
+            (24 * resources.displayMetrics.density).toInt() // absolute fallback: 24dp
+        }
         return maxSingleKeyWidth.coerceIn(minAllowedKeyDim, baseDim)
     }
 

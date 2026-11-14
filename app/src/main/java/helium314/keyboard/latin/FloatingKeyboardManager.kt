@@ -190,7 +190,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         val defaultWidth = (dm.widthPixels * (if (isLandscape) 0.50f else FLOATING_WIDTH_FRACTION)).toInt()
         val savedWidth = getSavedInt(PREF_WIDTH, isLandscape, -1)
         val floatingWidth = (if (savedWidth != -1) savedWidth else defaultWidth).coerceIn(minWidth, maxWidth)
-        val savedScale = getSavedFloat(PREF_SCALE, isLandscape, 1.0f).coerceIn(0.65f, 1.35f)
+        val savedScale = getSavedFloat(PREF_SCALE, isLandscape, 1.0f).coerceIn(0.5f, 1.8f)
 
         // Set floating state and geometry overrides FIRST before view hierarchy layout passes
         isFloating = true
@@ -575,8 +575,8 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                         val targetHeight = (initialResizeHeight + dy).coerceIn(minHeight, effectiveMaxHeight)
 
                         val heightRatio = targetHeight.toFloat() / initialResizeHeight
-                        val minAllowedScale = 0.65f
-                        val maxAllowedScale = 1.35f
+                        val minAllowedScale = 0.5f
+                        val maxAllowedScale = 1.8f
                         val minAllowedRatio = minAllowedScale / initialResizeScale
                         val maxAllowedRatio = maxAllowedScale / initialResizeScale
                         val clampedRatio = heightRatio.coerceIn(minAllowedRatio, maxAllowedRatio)
@@ -616,7 +616,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
                     val finalWidth = lastTargetWidth
                     val heightRatio = if (initialResizeHeight > 0) lastTargetHeight.toFloat() / initialResizeHeight else 1.0f
-                    val finalScale = (initialResizeScale * heightRatio).coerceIn(0.65f, 1.35f)
+                    val finalScale = (initialResizeScale * heightRatio).coerceIn(0.5f, 1.8f)
 
                     val lp = frame.layoutParams
                     lp.width = finalWidth

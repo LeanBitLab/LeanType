@@ -73,13 +73,19 @@ class StylePreviewStripView @JvmOverloads constructor(
         val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
         val defaultEdgeWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
         val isFloating = FloatingKeyboardManager.isFloatingMode(context)
-        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-        val ratio = if (isFloating) {
-            0.85f
+        val ratio = if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
+        val baseDim = (stripHeight * ratio).toInt()
+        val keyDimension: Int = if (isFloating) {
+            // Derive from actual keyboard key width, consistent with SuggestionStripView
+            val keyboard = helium314.keyboard.keyboard.KeyboardSwitcher.getInstance().keyboard
+            if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
+                (keyboard.mMostCommonKeyWidth * 0.85f).toInt().coerceAtMost(stripHeight)
+            } else {
+                baseDim
+            }
         } else {
-            if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
+            baseDim
         }
-        val keyDimension = (stripHeight * ratio).toInt()
         val density = resources.displayMetrics.density
         val expandPadding = Math.round(keyDimension * 0.15f).coerceIn((3 * density).toInt(), (keyDimension / 4))
 

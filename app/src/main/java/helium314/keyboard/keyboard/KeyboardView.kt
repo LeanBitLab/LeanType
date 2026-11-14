@@ -188,13 +188,14 @@ open class KeyboardView @JvmOverloads constructor(
         mKeyboard = keyboard
         val sv = Settings.getValues()
         mSettingsValues = sv
+        // Compute text scale factor from the keyboard's height scale.
+        // The standard Heliboard formula scales text with the square root of height scale
+        // so text scales comfortably without blowing up or shrinking too fast.
         val floatingScale = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale()
-        val floatingWidth = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardWidth()
-        val defaultWidth = if (floatingWidth > 0) helium314.keyboard.latin.utils.ResourceUtils.getDefaultKeyboardWidth(context) else 0
         val heightScale = sv.mKeyboardHeightScale * (if (floatingScale > 0.0f) floatingScale else 1.0f)
-        val widthScale = if (floatingWidth > 0 && defaultWidth > 0) (floatingWidth.toFloat() / defaultWidth).coerceIn(0.5f, 1.0f) else 1.0f
-        mKeyScaleForText = (sqrt(1f / heightScale.toDouble()) * widthScale).toFloat()
-        val scaledKeyHeight = ((keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap) * mKeyScaleForText).toInt()
+        mKeyScaleForText = sqrt(1f / heightScale.toDouble()).toFloat()
+        val keyH = (keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap).toFloat()
+        val scaledKeyHeight = (keyH * mKeyScaleForText).toInt().coerceAtLeast(1)
         keyDrawParams.updateParams(scaledKeyHeight, mKeyVisualAttributes)
         keyDrawParams.updateParams(scaledKeyHeight, keyboard.mKeyVisualAttributes)
         invalidateAllKeys()
@@ -285,13 +286,13 @@ open class KeyboardView @JvmOverloads constructor(
         mShowsHints = sv.mShowsHints
         val scale = sv.mKeyboardHeightScale
         val floatingScale = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale()
-        val floatingWidth = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardWidth()
         
-        if (floatingScale > 0.0f || floatingWidth > 0) {
-            val defaultWidth = if (floatingWidth > 0) helium314.keyboard.latin.utils.ResourceUtils.getDefaultKeyboardWidth(context) else 0
-            val heightScale = scale * (if (floatingScale > 0.0f) floatingScale else 1.0f)
-            val widthScale = if (floatingWidth > 0 && defaultWidth > 0) (floatingWidth.toFloat() / defaultWidth) else 1.0f
-            val effectiveKeyScale = min(heightScale, widthScale)
+        if (floatingScale > 0.0f) {
+            // Derive icon scale from actual key dimensions instead of comparing widths
+            val keyW = kb.mMostCommonKeyWidth.toFloat()
+            val keyH = (kb.mMostCommonKeyHeight - kb.mVerticalGap).toFloat()
+            val effectiveKeyScale = if (keyH > 0f && keyW > 0f)
+                min(scale * floatingScale, keyW / keyH) else scale * floatingScale
             mIconScaleFactor = max(0.4f, min(effectiveKeyScale, 1.5f))
         } else {
             mIconScaleFactor = if (scale < 0.8f) scale + 0.2f else 1f
@@ -517,7 +518,13 @@ open class KeyboardView @JvmOverloads constructor(
                 mFontSizeMultiplier
             }
             paint.textSize = key.selectTextSize(params) * fontMultiplier
-            val maxLabelWidth = if (mShowsHints && key.hintLabel != null) keyWidth * 0.62f else keyWidth * 0.85f
+            val maxLabelWidth = if (mShowsHints && key.hintLabel != null) {
+                // Centered label right edge must not cross into the top-right hint area.
+                val estimatedHintWidth = TypefaceUtils.getStringWidth(key.hintLabel!!, paint) * sv.mSecondaryFontScale * 0.55f
+                (keyWidth - 2f * (mKeyHintLetterPadding + estimatedHintWidth)).coerceIn(keyWidth * 0.50f, keyWidth * 0.85f)
+            } else {
+                keyWidth * 0.85f
+            }
             val textWidth = TypefaceUtils.getStringWidth(label, paint)
             if (textWidth > maxLabelWidth && textWidth > 0f) {
                 paint.textSize = paint.textSize * (maxLabelWidth / textWidth)
