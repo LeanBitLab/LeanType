@@ -497,12 +497,15 @@ class LatinIME : InputMethodService(),
                 if (!fkm.isFloating) {
                     val autoLandscape = !(settingsValues.mRememberFloatingKeyboard && fkm.wasFloatingLastTime())
                     fkm.show(isAutoLandscape = autoLandscape)
+                } else {
+                    fkm.onOrientationChanged(isLandscape)
                 }
             } else if (fkm.isAutoLandscapeFloating && !isLandscape) {
                 fkm.hide(showDockedKeyboard = true)
+            } else if (fkm.isFloating) {
+                fkm.onOrientationChanged(isLandscape)
             }
             fkm.resetDragAndResizeState()
-            fkm.clampPositionToScreen()
         }
         setNavigationBarColor()
     }
@@ -710,6 +713,9 @@ class LatinIME : InputMethodService(),
             win.attributes = attrs
             decor.visibility = View.VISIBLE
             requestInsetsUpdate()
+            if (FloatingKeyboardManager.isFloatingMode(displayContext ?: this)) {
+                updateNavigationBarFrameVisibility(true)
+            }
         }
     }
 
@@ -725,7 +731,12 @@ class LatinIME : InputMethodService(),
         setNavigationBarColor()
         updateNavigationBarFrameVisibility(false)
         requestInsetsUpdate()
-        forceInsetsRefresh()
+        window?.window?.decorView?.post {
+            if (!FloatingKeyboardManager.isFloatingMode(displayContext ?: this)) {
+                setNavigationBarColor()
+                updateNavigationBarFrameVisibility(false)
+            }
+        }
     }
 
     override fun setCandidatesView(view: View) { /* To ensure that CandidatesView will never be set. */ }
@@ -2169,7 +2180,7 @@ class LatinIME : InputMethodService(),
     @Suppress("DEPRECATION")
     private fun setNavigationBarColor() {
         val window = window?.window ?: return
-        if (!originalNavBarSaved) {
+        if (!originalNavBarSaved && window.navigationBarColor != Color.TRANSPARENT) {
             originalNavBarColor = window.navigationBarColor
             originalNavBarFlags = window.decorView.systemUiVisibility
             originalNavBarSaved = true
@@ -2180,6 +2191,9 @@ class LatinIME : InputMethodService(),
                 window.isNavigationBarContrastEnforced = false
             }
             return
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = true
         }
         val settingsValues = settings.current
         if (!settingsValues.mCustomNavBarColor) {

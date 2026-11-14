@@ -95,6 +95,9 @@ class InputView @JvmOverloads constructor(
             }
             return
         }
+        fitsSystemWindows = true
+        findViewById<View>(R.id.main_keyboard_frame)?.fitsSystemWindows = true
+        findViewById<View>(R.id.keyboard_view_wrapper)?.fitsSystemWindows = true
         val viewIds = intArrayOf(
             R.id.keyboard_view,
             R.id.emoji_palettes_view,
@@ -102,7 +105,10 @@ class InputView @JvmOverloads constructor(
             R.id.touchpad_view
         )
         for (id in viewIds) {
-            findViewById<View>(id)?.fitsSystemWindows = true
+            findViewById<View>(id)?.let {
+                it.fitsSystemWindows = true
+                it.requestApplyInsets()
+            }
         }
         val wrapper = findViewById<View>(R.id.keyboard_view_wrapper)
         val showToolbarOnly = wrapper?.visibility != View.VISIBLE
