@@ -1657,7 +1657,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         } else {
             (24 * resources.displayMetrics.density).toInt() // absolute fallback: 24dp
         }
-        return maxSingleKeyWidth.coerceIn(minAllowedKeyDim, baseDim)
+        val minDim = minOf(minAllowedKeyDim, baseDim)
+        return maxSingleKeyWidth.coerceIn(minDim, baseDim)
     }
 
     private fun rebuildToolbarKeys() {
