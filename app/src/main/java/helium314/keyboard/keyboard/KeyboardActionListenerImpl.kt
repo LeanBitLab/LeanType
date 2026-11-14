@@ -677,10 +677,17 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (editorPackage != null && editorPackage == noTextBoundsPackage) return
         // where the cursor line is, as reported by the editor (needs cursor updates, see InputLogic.startInput)
         val anchor = connection.lastCursorAnchorInfo ?: return
-        val markerTop = anchor.insertionMarkerTop
-        val markerBottom = anchor.insertionMarkerBottom
+        if (anchor.insertionMarkerTop.isNaN() || anchor.insertionMarkerBottom.isNaN()) return
+        // requestTextBoundsInfo takes the area in screen coordinates, while the insertion marker is given in the
+        // editor's own coordinates: map it with the anchor's matrix. Otherwise, for an editor that doesn't start
+        // at the top of the screen (e.g. below a title), the area is too high and the editor only answers for the
+        // first lines.
+        val marker = floatArrayOf(0f, anchor.insertionMarkerTop, 0f, anchor.insertionMarkerBottom)
+        anchor.matrix.mapPoints(marker)
+        val markerTop = marker[1]
+        val markerBottom = marker[3]
         val lineHeight = markerBottom - markerTop
-        if (markerTop.isNaN() || markerBottom.isNaN() || lineHeight <= 0f) return
+        if (lineHeight <= 0f) return
 
         val generation = deleteSwipeGeneration
         val baseStart = deleteSwipeStartForExactLines()
