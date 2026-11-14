@@ -327,6 +327,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
             baseRow.forEachIndexed { j, baseKey ->
                 if (baseKey.code == Constants.CODE_SPACE || baseKey.label == KeyLabel.SPACE || baseKey.label == " ") return@forEachIndexed
                 if (baseKey.label in nonSymbolLabels) return@forEachIndexed
+                if (!baseKey.popup.isEmpty()) return@forEachIndexed
                 val symbols = mutableListOf<String>()
                 val symbolKey = symbolsRow?.getOrNull(j)
                 if (symbolKey != null && symbolKey.code != Constants.CODE_SPACE && symbolKey.label != KeyLabel.SPACE && symbolKey.label != " " && symbolKey.label !in nonSymbolLabels) {
