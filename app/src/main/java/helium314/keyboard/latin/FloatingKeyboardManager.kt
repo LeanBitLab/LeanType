@@ -79,24 +79,12 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
     private fun getSavedInt(base: String, isLandscape: Boolean, fallback: Int): Int {
         val key = getOrientationKey(base, isLandscape)
-        if (prefs.contains(key)) {
-            return prefs.getInt(key, fallback)
-        }
-        if (!isLandscape && prefs.contains(base)) {
-            return prefs.getInt(base, fallback)
-        }
-        return fallback
+        return if (prefs.contains(key)) prefs.getInt(key, fallback) else fallback
     }
 
     private fun getSavedFloat(base: String, isLandscape: Boolean, fallback: Float): Float {
         val key = getOrientationKey(base, isLandscape)
-        if (prefs.contains(key)) {
-            return prefs.getFloat(key, fallback)
-        }
-        if (!isLandscape && prefs.contains(base)) {
-            return prefs.getFloat(base, fallback)
-        }
-        return fallback
+        return if (prefs.contains(key)) prefs.getFloat(key, fallback) else fallback
     }
 
     fun wasFloatingLastTime(): Boolean = prefs.getBoolean(PREF_IS_ACTIVE, false)
@@ -190,7 +178,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         val defaultWidth = (dm.widthPixels * (if (isLandscape) 0.50f else FLOATING_WIDTH_FRACTION)).toInt()
         val savedWidth = getSavedInt(PREF_WIDTH, isLandscape, -1)
         val floatingWidth = (if (savedWidth != -1) savedWidth else defaultWidth).coerceIn(minWidth, maxWidth)
-        val savedScale = getSavedFloat(PREF_SCALE, isLandscape, 1.0f).coerceIn(0.5f, 1.8f)
+        val savedScale = getSavedFloat(PREF_SCALE, isLandscape, 1.0f).coerceIn(0.4f, 2.5f)
 
         // Set floating state and geometry overrides FIRST before view hierarchy layout passes
         isFloating = true
@@ -364,9 +352,8 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         val frame = getKeyboardFrame() ?: return
         if (!isFloating) return
         val dm = (latinIME.displayContext ?: context).resources.displayMetrics
-        val inputView = latinIME.mInputView
-        val availableWidth = inputView?.width?.takeIf { it > 0 } ?: dm.widthPixels
-        val availableHeight = inputView?.height?.takeIf { it > 0 } ?: dm.heightPixels
+        val availableWidth = dm.widthPixels
+        val availableHeight = dm.heightPixels
 
         val maxX = (availableWidth - frame.width).coerceAtLeast(0)
         val maxY = (availableHeight - frame.height).coerceAtLeast(0)
@@ -378,8 +365,6 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         prefs.edit()
             .putInt(getOrientationKey(PREF_X, isLandscape), frame.translationX.toInt())
             .putInt(getOrientationKey(PREF_Y, isLandscape), frame.translationY.toInt())
-            .putInt(PREF_X, frame.translationX.toInt())
-            .putInt(PREF_Y, frame.translationY.toInt())
             .apply()
         latinIME.requestInsetsUpdate()
     }
@@ -526,14 +511,13 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
         resizeBtn.setOnTouchListener { _, event ->
             val frame = getKeyboardFrame() ?: return@setOnTouchListener false
-            val inputView = latinIME.mInputView
-            val screenWidth = inputView?.width?.takeIf { it > 0 } ?: dm.widthPixels
-            val screenHeight = inputView?.height?.takeIf { it > 0 } ?: dm.heightPixels
+            val screenWidth = dm.widthPixels
+            val screenHeight = dm.heightPixels
 
             val isLandscape = isLandscape()
             val minWidth = (screenWidth * (if (isLandscape) 0.25f else 0.40f)).toInt().coerceAtLeast((220 * density).toInt())
             val maxWidth = (screenWidth * 0.95f).toInt()
-            val maxHeight = (screenHeight * 0.75f).toInt()
+            val maxHeight = (screenHeight * 0.85f).toInt()
 
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -575,8 +559,8 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                         val targetHeight = (initialResizeHeight + dy).coerceIn(minHeight, effectiveMaxHeight)
 
                         val heightRatio = targetHeight.toFloat() / initialResizeHeight
-                        val minAllowedScale = 0.5f
-                        val maxAllowedScale = 1.8f
+                        val minAllowedScale = 0.4f
+                        val maxAllowedScale = 2.5f
                         val minAllowedRatio = minAllowedScale / initialResizeScale
                         val maxAllowedRatio = maxAllowedScale / initialResizeScale
                         val clampedRatio = heightRatio.coerceIn(minAllowedRatio, maxAllowedRatio)
@@ -616,7 +600,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
                     val finalWidth = lastTargetWidth
                     val heightRatio = if (initialResizeHeight > 0) lastTargetHeight.toFloat() / initialResizeHeight else 1.0f
-                    val finalScale = (initialResizeScale * heightRatio).coerceIn(0.5f, 1.8f)
+                    val finalScale = (initialResizeScale * heightRatio).coerceIn(0.4f, 2.5f)
 
                     val lp = frame.layoutParams
                     lp.width = finalWidth
@@ -629,10 +613,6 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                         .putInt(getOrientationKey(PREF_Y, isLandscape), frame.translationY.toInt())
                         .putInt(getOrientationKey(PREF_WIDTH, isLandscape), finalWidth)
                         .putFloat(getOrientationKey(PREF_SCALE, isLandscape), finalScale)
-                        .putInt(PREF_X, frame.translationX.toInt())
-                        .putInt(PREF_Y, frame.translationY.toInt())
-                        .putInt(PREF_WIDTH, finalWidth)
-                        .putFloat(PREF_SCALE, finalScale)
                         .apply()
 
                     ResourceUtils.setFloatingKeyboardWidth(finalWidth)
@@ -661,9 +641,8 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         // Drag listener on the entire bottom bar
         bottomBar.setOnTouchListener { _, event ->
             val frame = getKeyboardFrame() ?: return@setOnTouchListener false
-            val inputView = latinIME.mInputView
-            val availableWidth = inputView?.width?.takeIf { it > 0 } ?: dm.widthPixels
-            val availableHeight = inputView?.height?.takeIf { it > 0 } ?: dm.heightPixels
+            val availableWidth = dm.widthPixels
+            val availableHeight = dm.heightPixels
 
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -719,8 +698,6 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                     prefs.edit()
                         .putInt(getOrientationKey(PREF_X, isLandscape), frame.translationX.toInt())
                         .putInt(getOrientationKey(PREF_Y, isLandscape), frame.translationY.toInt())
-                        .putInt(PREF_X, frame.translationX.toInt())
-                        .putInt(PREF_Y, frame.translationY.toInt())
                         .apply()
                     latinIME.requestInsetsUpdate()
                     true
