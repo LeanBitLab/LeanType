@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• GIF & Sticker Clipboard Fallback: Granted explicit read URI permissions and added clipboard fallback on unsupported apps (#794)",
-    "• Screen-Off Voice Unbind: Unbinds voice service and releases screen-on wake lock on screen off to prevent battery drain (#803)",
-    "• Text Expander Symbol Shortcuts: Enabled suggestion matching and expansion for symbol-prefixed shortcuts (#796)",
-    "• Custom Popup Key Priority: Prevented positional symbol fallbacks on keys with explicitly configured custom popups (#801)",
-    "• Hexagonal Layout Auto-Detection: Automatically detects hexagonal custom and modified layouts via layout structure (#795)",
-    "• Unicode Font Styling & Symbol Palette: Added 26+ font styles with live typing and categorized Unicode symbol palette (#776)",
-    "• Text Expander Image Shortcuts: Added photo/image shortcuts with live thumbnails and full-screen bulk editor (#784)",
-    "• Fast Typing Auto-Caps Fix: Resolved auto-caps timing race during rapid typing and multi-touch gestures (#598)",
-    "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text fields in messaging and search",
-    "• Multi-Row Popup & Foldable Split Fix: Fixed multi-row popup touch hitboxes and foldable split detection (#778)"
+    "• Navigation Bar Strip Fix: Painted the keyboard's navigation bar frame and reserved its real height on Android 15+, removing the transparent strip and bottom gap (#811)",
+    "• Floating Keyboard Geometry: Size and position are remembered per orientation, landscape resize bounds are fixed, and strip, keys and font scale with the keyboard",
+    "• Editor Crash Fix: Fixed a crash on trailing empty lines and kept the line above visible when the cursor is on the empty last line",
+    "• Toolbar Stability: Fixed an empty-range sizing crash and restored the toolbar after pasting the clipboard suggestion chip",
+    "• Local Whisper Import Fix: Waits for the voice plugin connection before importing a local model (#807)",
+    "• Whisper Model Matrix: Expanded the voice registry to 6 models (tiny, base, small) with FUTO ACFT models link",
+    "• Voice Input Tuning: Recognition time scales with recording length, full priority while dictating, optional live transcription, 3s silence timeout",
+    "• Swapped-Letter Auto-Correction: Corrects short words with two swapped letters (teh to the, adn to and)",
+    "• Settings Search Long Press: Long press a result to show the setting in its own screen",
+    "• Unfolded Side Padding Scale: New side padding setting for unfolded devices, resolved per screen profile"
 )
 
 @Composable

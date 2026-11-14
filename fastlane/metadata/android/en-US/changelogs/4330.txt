@@ -1,5 +1,8 @@
-- Explicit URI permissions and clipboard fallback for GIFs and stickers (#794).
-- Unbind voice service on screen off to prevent idle battery drain (#803).
-- Added Text Expander suggestion matching for symbol-prefixed shortcuts (#796).
-- Prevented positional symbol fallbacks on keys with custom popup keys (#801).
-- Auto-detect hexagonal custom and modified keyboard layouts (#795).
+- Fixed the navigation bar strip and bottom gap under the keyboard on Android 15+ (#811).
+- Fixed a crash on trailing empty lines and a toolbar sizing crash.
+- Floating keyboard remembers size and position per orientation.
+- Added a 6-model Whisper voice matrix and optional live transcription.
+- Auto-correct swapped letters (teh to the).
+- Long press a settings search result to open its screen.
+- Added unfolded side padding setting.
+- Fixed local Whisper model import (#807).
