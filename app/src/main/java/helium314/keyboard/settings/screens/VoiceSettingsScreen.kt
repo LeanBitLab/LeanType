@@ -122,7 +122,8 @@ fun VoiceSettingsScreen(
     var isPluginInstalled by remember { mutableStateOf(pluginManager.isPluginInstalled()) }
     val pluginVersion = remember(isPluginInstalled) {
         try {
-            context.packageManager.getPackageInfo(VoiceConstants.VOICE_PLUGIN_PACKAGE, 0).versionName
+            val pkg = pluginManager.getPluginPackageName()
+            context.packageManager.getPackageInfo(pkg, 0).versionName
         } catch (_: Exception) {
             null
         }

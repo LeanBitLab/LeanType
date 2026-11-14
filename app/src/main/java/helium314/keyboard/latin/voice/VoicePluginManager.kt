@@ -187,21 +187,34 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
         connectionListener?.onPluginDisconnected()
     }
 
+    fun getPluginPackageName(): String = resolveServiceComponent().packageName
+
     private fun resolveServiceComponent(): ComponentName {
         val useDebugStub = BuildConfig.DEBUG &&
                 context.prefs().getBoolean(VoiceConstants.PREF_USE_DEBUG_VOICE_STUB, false)
 
-        return if (useDebugStub) {
-            ComponentName(
+        if (useDebugStub) {
+            return ComponentName(
                 context.packageName,
                 "helium314.keyboard.latin.voice.DebugVoiceEngineService"
             )
-        } else {
-            ComponentName(
-                "com.leanbitlab.leantype.voice.offline",
+        }
+
+        if (BuildConfig.DEBUG) {
+            val debugComponent = ComponentName(
+                "com.leanbitlab.leantype.voice.offline.debug",
                 "com.leanbitlab.leantype.voice.offline.VoiceEngineService"
             )
+            val debugIntent = Intent().apply { component = debugComponent }
+            if (context.packageManager.queryIntentServices(debugIntent, 0).isNotEmpty()) {
+                return debugComponent
+            }
         }
+
+        return ComponentName(
+            "com.leanbitlab.leantype.voice.offline",
+            "com.leanbitlab.leantype.voice.offline.VoiceEngineService"
+        )
     }
 
     fun getInfo(): VoiceEngineInfo? {
