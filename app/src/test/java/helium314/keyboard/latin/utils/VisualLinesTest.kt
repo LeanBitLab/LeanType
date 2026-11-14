@@ -75,6 +75,20 @@ class VisualLinesTest {
     }
 
     @Test
+    fun `cursor on the empty last line is below the last known line`() {
+        // two lines of 5 chars, each ending with a line feed: the text ends with an empty line without characters
+        val lefts = FloatArray(10) { (it % 5) * 10f }
+        val rights = FloatArray(10) { (it % 5) * 10f + 10f }
+        val lineFeed = BooleanArray(10).also { it[4] = true; it[9] = true }
+        val g = VisualLines.LineGeometry(0, lefts, rights, lineFeed, listOf(0, 5))
+        assertEquals(1, g.lineIndexOf(9))
+        assertEquals(2, g.lineIndexOf(10))
+        assertEquals(10, g.columnOffset(2, 0f))
+        // the line directly above the empty line is not skipped
+        assertEquals(listOf(10, 5, 0), g.boundaries(10, g.xAt(10)))
+    }
+
+    @Test
     fun `x at the end of the text uses the right edge`() {
         val g = geometry3()
         assertEquals(50f, g.xAt(115))

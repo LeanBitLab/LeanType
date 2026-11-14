@@ -51,9 +51,14 @@ object VisualLines {
     ) {
         val end: Int get() = start + lefts.size
 
-        /** Index in [lineStarts] of the line containing [offset], or -1 if it is before the first known line. */
+        /**
+         * Index in [lineStarts] of the line containing [offset], or -1 if it is before the first known line.
+         * If the text ends with a line feed, its last line is empty, so the editor reports no character (and no
+         * line start) for it: [end] right after a line feed is on that line, whose index is `lineStarts.size`.
+         */
         fun lineIndexOf(offset: Int): Int {
             if (lineStarts.isEmpty() || offset < lineStarts[0]) return -1
+            if (offset == end && end > start && lineFeed[end - start - 1]) return lineStarts.size
             var lo = 0
             var hi = lineStarts.size - 1
             while (lo < hi) {
@@ -72,6 +77,7 @@ object VisualLines {
 
         /** Offset on the line with index [line] (in [lineStarts]) whose horizontal position is closest to [x]. */
         fun columnOffset(line: Int, x: Float): Int {
+            if (line >= lineStarts.size) return end // the empty last line, see lineIndexOf
             val lineStart = lineStarts[line]
             val lineEnd = if (line + 1 < lineStarts.size) lineStarts[line + 1] else end
             if (lineEnd <= lineStart) return lineStart
