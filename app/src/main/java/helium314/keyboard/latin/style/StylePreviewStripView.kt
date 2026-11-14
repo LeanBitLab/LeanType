@@ -75,13 +75,13 @@ class StylePreviewStripView @JvmOverloads constructor(
         val isFloating = FloatingKeyboardManager.isFloatingMode(context)
         val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         val ratio = if (isFloating) {
-            if (isLandscape) 0.82f else 0.85f
+            0.85f
         } else {
             if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
         }
         val keyDimension = (stripHeight * ratio).toInt()
         val density = resources.displayMetrics.density
-        val expandPadding = Math.round(keyDimension * 0.16f).coerceIn((2 * density).toInt(), (keyDimension / 4))
+        val expandPadding = Math.round(keyDimension * 0.15f).coerceIn((3 * density).toInt(), (keyDimension / 4))
 
         val lp = closeButton.layoutParams as? LayoutParams ?: LayoutParams(keyDimension, keyDimension)
         lp.width = keyDimension

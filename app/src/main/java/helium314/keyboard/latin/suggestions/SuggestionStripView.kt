@@ -1648,12 +1648,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         if (currentStripWidth <= 0) return baseDim
 
         val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-        // In floating mode, pinned keys + expand key should take at most 42% (landscape) or 48% (portrait)
-        // leaving the majority of the strip for word suggestions.
-        val maxFraction = if (isLandscape) 0.42f else 0.48f
+        // In floating mode, pinned keys + expand key leave ample space for word suggestions
+        val maxFraction = if (isLandscape) 0.50f else 0.55f
         val maxAvailableWidth = (currentStripWidth * maxFraction).toInt()
         val maxSingleKeyWidth = maxAvailableWidth / totalKeys
-        val minAllowedKeyDim = (18 * resources.displayMetrics.density).toInt()
+        val minAllowedDp = if (isLandscape) 26f else 28f
+        val minAllowedKeyDim = (minAllowedDp * resources.displayMetrics.density).toInt()
         return maxSingleKeyWidth.coerceIn(minAllowedKeyDim, baseDim)
     }
 
@@ -1670,7 +1670,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val isPassword = InputTypeUtils.isAnyPasswordInputType(KeyboardSwitcher.getInstance().latinIME?.currentInputEditorInfo?.inputType ?: 0)
         val effectiveDim = getEffectiveKeyDimension()
         val density = resources.displayMetrics.density
-        val keyPadding = Math.round(effectiveDim * 0.16f).coerceIn((2 * density).toInt(), (effectiveDim / 4))
+        val keyPadding = Math.round(effectiveDim * 0.15f).coerceIn((3 * density).toInt(), (effectiveDim / 4))
 
         // Expand key sizing - always square (effectiveDim x effectiveDim)
         toolbarExpandKey.minimumWidth = 0
@@ -1775,7 +1775,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
 
         val density = resources.displayMetrics.density
-        val keyPadding = Math.round(singleKeyWidth * 0.16f).coerceIn((2 * density).toInt(), (singleKeyWidth / 4))
+        val keyPadding = Math.round(singleKeyWidth * 0.15f).coerceIn((3 * density).toInt(), (singleKeyWidth / 4))
 
         for (i in 0 until count) {
             val child = toolbar.getChildAt(i) ?: continue
@@ -1808,7 +1808,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     fun onFloatingKeyboardScaleChanged() {
         val effectiveDim = getEffectiveKeyDimension()
         val density = resources.displayMetrics.density
-        val expandPadding = Math.round(effectiveDim * 0.16f).coerceIn((2 * density).toInt(), (effectiveDim / 4))
+        val expandPadding = Math.round(effectiveDim * 0.15f).coerceIn((3 * density).toInt(), (effectiveDim / 4))
 
         toolbarExpandKey.minimumWidth = 0
         toolbarExpandKey.minimumHeight = 0

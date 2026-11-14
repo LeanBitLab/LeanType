@@ -78,8 +78,8 @@ object ResourceUtils {
         val defaultHeight = res.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
         if (sFloatingKeyboardScaleOverride > 0.0f) {
             val isLandscape = res.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-            val maxAllowedDp = if (isLandscape) 30f else 34f
-            val minAllowedDp = if (isLandscape) 22f else 24f
+            val maxAllowedDp = if (isLandscape) 34f else 40f
+            val minAllowedDp = if (isLandscape) 28f else 34f
             val scaledHeight = (defaultHeight * sFloatingKeyboardScaleOverride).toInt()
             return scaledHeight.coerceIn(
                 (minAllowedDp * res.displayMetrics.density).toInt(),

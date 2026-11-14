@@ -188,7 +188,12 @@ open class KeyboardView @JvmOverloads constructor(
         mKeyboard = keyboard
         val sv = Settings.getValues()
         mSettingsValues = sv
-        mKeyScaleForText = sqrt(1f / sv.mKeyboardHeightScale.toDouble()).toFloat()
+        val floatingScale = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale()
+        val floatingWidth = helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardWidth()
+        val defaultWidth = if (floatingWidth > 0) helium314.keyboard.latin.utils.ResourceUtils.getDefaultKeyboardWidth(context) else 0
+        val heightScale = sv.mKeyboardHeightScale * (if (floatingScale > 0.0f) floatingScale else 1.0f)
+        val widthScale = if (floatingWidth > 0 && defaultWidth > 0) (floatingWidth.toFloat() / defaultWidth).coerceIn(0.5f, 1.0f) else 1.0f
+        mKeyScaleForText = (sqrt(1f / heightScale.toDouble()) * widthScale).toFloat()
         val scaledKeyHeight = ((keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap) * mKeyScaleForText).toInt()
         keyDrawParams.updateParams(scaledKeyHeight, mKeyVisualAttributes)
         keyDrawParams.updateParams(scaledKeyHeight, keyboard.mKeyVisualAttributes)
@@ -512,6 +517,11 @@ open class KeyboardView @JvmOverloads constructor(
                 mFontSizeMultiplier
             }
             paint.textSize = key.selectTextSize(params) * fontMultiplier
+            val maxLabelWidth = if (mShowsHints && key.hintLabel != null) keyWidth * 0.62f else keyWidth * 0.85f
+            val textWidth = TypefaceUtils.getStringWidth(label, paint)
+            if (textWidth > maxLabelWidth && textWidth > 0f) {
+                paint.textSize = paint.textSize * (maxLabelWidth / textWidth)
+            }
             val labelCharHeight = TypefaceUtils.getReferenceCharHeight(paint)
             val labelCharWidth = TypefaceUtils.getReferenceCharWidth(paint)
             labelBaseline = centerY + labelCharHeight / 2.0f
@@ -573,6 +583,11 @@ open class KeyboardView @JvmOverloads constructor(
         if (hintLabel != null && mShowsHints) {
             val sv = mSettingsValues ?: Settings.getValues()
             paint.textSize = key.selectHintTextSize(params) * sv.mSecondaryFontScale
+            val maxHintWidth = keyWidth * 0.45f
+            val hintTextWidth = TypefaceUtils.getStringWidth(hintLabel, paint)
+            if (hintTextWidth > maxHintWidth && hintTextWidth > 0f) {
+                paint.textSize = paint.textSize * (maxHintWidth / hintTextWidth)
+            }
             paint.color = key.selectHintTextColor(params)
             val typeface = if (mEmojiTypeface != null && isEmoji(hintLabel)) mEmojiTypeface else mTypeface
             paint.typeface = typeface ?: Typeface.DEFAULT_BOLD
