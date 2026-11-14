@@ -1284,7 +1284,7 @@ class LatinIME : InputMethodService(),
 
                     if (keyboardSwitcher.isShowingPopupKeysPanel) {
                         addVisibleChildWindowRects(
-                            keyboardSwitcher.mainKeyboardView?.drawingPreviewPlacerView,
+                            keyboardSwitcher.activeMainKeyboardView?.drawingPreviewPlacerView,
                             outInsets.touchableRegion,
                             inputWidth,
                             inputHeight

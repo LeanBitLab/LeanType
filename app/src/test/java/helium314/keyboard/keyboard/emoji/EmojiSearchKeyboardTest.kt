@@ -238,7 +238,8 @@ class EmojiSearchKeyboardTest {
         customCodes.forEach { code(it) }
         assertEquals(KeyboardId.ELEMENT_CUSTOM5, bottom.keyboard!!.mId.mElementId)
         assertEquals("EMOJI", stateMode)
-        Mockito.verifyNoInteractions(host)
+        Mockito.verify(host).onCodeInput(Mockito.eq(KeyCode.LANGUAGE_SWITCH), Mockito.anyInt(), Mockito.anyInt(), Mockito.anyBoolean())
+        Mockito.verifyNoMoreInteractions(host)
         closeSearch()
         assertEquals("CUSTOM5", stateMode)
         assertEquals(original.mId, main.keyboard!!.mId)
@@ -530,6 +531,41 @@ class EmojiSearchKeyboardTest {
         } finally {
             dictField.set(null, prevDict)
         }
+    }
+
+    @Test
+    fun searchModeHandlesSupplementaryCodePoints() {
+        event(KeyCode.EMOJI)
+        palettes.setKeyboardActionListener(host)
+        openSearch()
+        val supplementaryEmoji = 0x1F600 // 😀
+        code(supplementaryEmoji)
+        assertEquals(String(Character.toChars(supplementaryEmoji)), searchBar.text.toString())
+    }
+
+    @Test
+    fun startEmojiPalettesPreservesActiveSearchModeOnSubtypeChange() {
+        event(KeyCode.EMOJI)
+        palettes.setKeyboardActionListener(host)
+        openSearch()
+        code('C'.code)
+        code('A'.code)
+        code('T'.code)
+        assertEquals("CAT", searchBar.text.toString())
+        assertTrue(palettes.isInSearchMode)
+
+        // Trigger subtype reload while in search mode
+        palettes.startEmojiPalettes(null, null, host)
+        assertTrue(palettes.isInSearchMode)
+        assertEquals("CAT", searchBar.text.toString())
+    }
+
+    @Test
+    fun isShowingPopupKeysPanelReflectsBottomRowInSearchMode() {
+        event(KeyCode.EMOJI)
+        palettes.setKeyboardActionListener(host)
+        openSearch()
+        assertFalse(palettes.isShowingPopupKeysPanel())
     }
 
     private fun code(code: Int) = searchListener.onCodeInput(code, 0, 0, false)

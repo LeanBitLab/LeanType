@@ -1147,10 +1147,11 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun reloadMainKeyboard() {
         val abcOnReopen = Settings.getValues().mAbcOnReopen
-        val wasEmoji = !abcOnReopen && isShowingEmojiPalettes
+        val isSearchingEmoji = isShowingEmojiPalettes && mEmojiPalettesView?.isInSearchMode == true
+        val wasEmoji = (!abcOnReopen || isSearchingEmoji) && isShowingEmojiPalettes
         val wasClipboard = !abcOnReopen && isShowingClipboardHistory
         val wasTextEdit = !abcOnReopen && (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT || KeyboardActionListenerImpl.sPersistentTextEditModeActive)
-        if (abcOnReopen) {
+        if (abcOnReopen && !isSearchingEmoji) {
             KeyboardActionListenerImpl.sPersistentSelectionModeActive = false
             KeyboardActionListenerImpl.sPersistentTextEditModeActive = false
             PointerTracker.sPersistentTouchpadModeActive = false
@@ -1256,10 +1257,13 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     val isShowingPopupKeysPanel: Boolean
         get() {
-            if (isShowingEmojiPalettes || isShowingClipboardHistory) {
-                return false
+            if (activeMainKeyboardView?.isShowingPopupKeysPanel() == true) {
+                return true
             }
-            return mKeyboardView?.isShowingPopupKeysPanel() == true
+            if (isShowingEmojiPalettes) {
+                return mEmojiPalettesView?.isShowingPopupKeysPanel() == true
+            }
+            return false
         }
 
     val isShowingStripContainer: Boolean

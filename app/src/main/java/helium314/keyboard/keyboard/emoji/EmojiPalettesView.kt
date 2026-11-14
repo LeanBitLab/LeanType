@@ -252,6 +252,12 @@ class EmojiPalettesView @JvmOverloads constructor(
 
     val isInSearchMode: Boolean get() = mInSearchMode
 
+    fun isShowingPopupKeysPanel(): Boolean {
+        val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
+        if (bottomRow?.isShowingPopupKeysPanel() == true) return true
+        return getCurrentPageKeyboardView()?.isShowingPopupKeysPanel() == true
+    }
+
     fun onSearchTextInput(text: String?) {
         if (!mInSearchMode || text == null) return
         val searchBar = mSearchBar ?: return
@@ -671,7 +677,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                         resetCursorBlink()
                     }
                 } else if (primaryCode > 0) {
-                    content.replace(minSel, maxSel, primaryCode.toChar().toString())
+                    content.replace(minSel, maxSel, StringUtils.newSingleCodePointString(primaryCode))
                     resetCursorBlink()
                     val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard)
                     if (bottomRow.keyboard?.mId?.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED) {
@@ -729,8 +735,9 @@ class EmojiPalettesView @JvmOverloads constructor(
                     if (primaryCode == KeyCode.CLIPBOARD) {
                         mOriginalActionListener?.onCodeInput(primaryCode, x, y, isKeyRepeat)
                     }
-                } else if (primaryCode == KeyCode.LANGUAGE_SWITCH ||
-                    primaryCode == KeyCode.CUSTOM1 || primaryCode == KeyCode.CUSTOM2 ||
+                } else if (primaryCode == KeyCode.LANGUAGE_SWITCH) {
+                    mOriginalActionListener?.onCodeInput(primaryCode, x, y, isKeyRepeat)
+                } else if (primaryCode == KeyCode.CUSTOM1 || primaryCode == KeyCode.CUSTOM2 ||
                     primaryCode == KeyCode.CUSTOM3 || primaryCode == KeyCode.CUSTOM4 ||
                     primaryCode == KeyCode.CUSTOM5
                 ) {
@@ -743,7 +750,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onPressKey(p: Int, r: Int, s: Boolean, h: HapticEvent) {
                 if (p != KeyCode.SYMBOL && p != KeyCode.ALPHA && p != KeyCode.NUMPAD &&
                     p != KeyCode.SYMBOL_ALPHA && p != KeyCode.SHIFT && p != KeyCode.EMOJI &&
-                    p != KeyCode.CLIPBOARD && p != KeyCode.LANGUAGE_SWITCH &&
+                    p != KeyCode.CLIPBOARD &&
                     p != KeyCode.CUSTOM1 && p != KeyCode.CUSTOM2 && p != KeyCode.CUSTOM3 &&
                     p != KeyCode.CUSTOM4 && p != KeyCode.CUSTOM5
                 ) {
@@ -754,7 +761,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun onReleaseKey(p: Int, w: Boolean) {
                 if (p != KeyCode.SYMBOL && p != KeyCode.ALPHA && p != KeyCode.NUMPAD &&
                     p != KeyCode.SYMBOL_ALPHA && p != KeyCode.SHIFT && p != KeyCode.EMOJI &&
-                    p != KeyCode.CLIPBOARD && p != KeyCode.LANGUAGE_SWITCH &&
+                    p != KeyCode.CLIPBOARD &&
                     p != KeyCode.CUSTOM1 && p != KeyCode.CUSTOM2 && p != KeyCode.CUSTOM3 &&
                     p != KeyCode.CUSTOM4 && p != KeyCode.CUSTOM5
                 ) {
@@ -816,7 +823,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             }
 
             override fun onFinishSlidingInput() {}
-            override fun onCustomRequest(r: Int): Boolean = false
+            override fun onCustomRequest(r: Int): Boolean = mOriginalActionListener?.onCustomRequest(r) ?: false
             
             override fun onHorizontalSpaceSwipe(s: Int): Boolean {
                 val searchBar = mSearchBar ?: return false
@@ -878,6 +885,12 @@ class EmojiPalettesView @JvmOverloads constructor(
             override fun resetMetaState() {}
         })
 
+        reloadSearchKeyboardLayout()
+    }
+
+    private fun reloadSearchKeyboardLayout() {
+        val bottomRow = findViewById<MainKeyboardView>(R.id.bottom_row_keyboard) ?: return
+        val ctx = context
         val builder = KeyboardLayoutSet.Builder(ctx, null)
         builder.setSubtype(RichInputMethodManager.getInstance().currentSubtype)
         builder.setKeyboardOptions(Settings.getValues())
@@ -889,8 +902,14 @@ class EmojiPalettesView @JvmOverloads constructor(
         val searchKeyboardLayoutSet = builder.build()
         mSearchKeyboardLayoutSet = searchKeyboardLayoutSet
         mSearchAlphabetKeyboardId = KeyboardSwitcher.getInstance().activeAlphabetKeyboardId
+        val currentElementId = bottomRow.keyboard?.mId?.mElementId ?: mSearchAlphabetKeyboardId
+        val targetId = if (currentElementId == KeyboardId.ELEMENT_SYMBOLS || currentElementId == KeyboardId.ELEMENT_SYMBOLS_SHIFTED) {
+            currentElementId
+        } else {
+            mSearchAlphabetKeyboardId
+        }
         PointerTracker.switchTo(bottomRow)
-        bottomRow.setKeyboard(searchKeyboardLayoutSet.getKeyboard(mSearchAlphabetKeyboardId))
+        bottomRow.setKeyboard(searchKeyboardLayoutSet.getKeyboard(targetId))
         bottomRow.setKeyPreviewPopupEnabled(Settings.getValues().mKeyPreviewPopupOn)
 
         if (isInLayout) {
@@ -979,6 +998,30 @@ class EmojiPalettesView @JvmOverloads constructor(
         editorInfo: EditorInfo?,
         keyboardActionListener: KeyboardActionListener?
     ) {
+        if (mInSearchMode) {
+            mEditorInfo = editorInfo
+            mKeyboardActionListener = keyboardActionListener ?: KeyboardActionListener.EMPTY_LISTENER
+            mOriginalActionListener = mKeyboardActionListener
+            reloadSearchKeyboardLayout()
+            initDictionaryFacilitator()
+            val query = mSearchBar?.text?.toString() ?: ""
+            if (Settings.getValues().mSplitToolbar) {
+                updateSplitToolbarEmojiSuggestions()
+            } else if (sDictionaryFacilitator == null && mDownloadBtn == null) {
+                stopSearchMode(returnToKeyboard = false)
+                startSearchMode()
+                mSearchBar?.setText(query)
+                mSearchBar?.setSelection(query.length)
+            } else if (sDictionaryFacilitator != null && mDownloadBtn != null) {
+                stopSearchMode(returnToKeyboard = false)
+                startSearchMode()
+                mSearchBar?.setText(query)
+                mSearchBar?.setSelection(query.length)
+            } else {
+                performSearch(query)
+            }
+            return
+        }
         stopSearchMode(returnToKeyboard = false)
         mEditorInfo = editorInfo
         mKeyboardActionListener = keyboardActionListener ?: KeyboardActionListener.EMPTY_LISTENER
