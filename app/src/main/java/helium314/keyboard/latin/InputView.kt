@@ -99,6 +99,23 @@ class InputView @JvmOverloads constructor(
         }
     }
 
+    private var observedNavBarFrame: View? = null
+
+    /**
+     * Height of the IME's own navigation bar, which is drawn over the bottom of this view. It can be taller than
+     * the system's navigation bar inset, so reserve its actual height. Updates padding when it gets laid out.
+     */
+    private fun navigationBarFrameHeight(): Int {
+        val frame = LatinIME.getInstance()?.findNavigationBarFrame() ?: return 0
+        if (frame !== observedNavBarFrame) {
+            observedNavBarFrame = frame
+            frame.addOnLayoutChangeListener { _, _, top, _, bottom, _, oldTop, _, oldBottom ->
+                if (bottom - top != oldBottom - oldTop) post { updateBottomPadding() }
+            }
+        }
+        return if (frame.visibility == View.VISIBLE) frame.height else 0
+    }
+
     fun updateBottomPadding() {
         val mainKeyboardFrame = findViewById<View>(R.id.main_keyboard_frame) ?: return
         if (isFloatingMode()) {
@@ -115,7 +132,8 @@ class InputView @JvmOverloads constructor(
             R.id.clipboard_history_view,
             R.id.touchpad_view
         )
-        val insets = if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
+        val insets = navigationBarFrameHeight().takeIf { it > 0 }
+            ?: if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
         val wrapper = findViewById<View>(R.id.keyboard_view_wrapper)
         val showToolbarOnly = wrapper?.visibility != View.VISIBLE
         val bottomPadding = if (showToolbarOnly) insets else 0

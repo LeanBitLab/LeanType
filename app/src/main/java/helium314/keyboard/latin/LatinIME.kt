@@ -699,6 +699,27 @@ class LatinIME : InputMethodService(),
         }
     }
 
+    /**
+     * The IME's own NavigationBarFrame sits below the input view and has no background. With edge-to-edge
+     * enforced, window.navigationBarColor does not reach it, so the app behind shows through unless we paint it.
+     */
+    private fun setNavigationBarFrameBackground(color: Int?) {
+        val frame = findNavigationBarFrame() ?: return
+        if (color == null) frame.background = null else frame.setBackgroundColor(color)
+    }
+
+    fun findNavigationBarFrame(): View? {
+        fun find(group: ViewGroup): View? {
+            for (i in 0 until group.childCount) {
+                val child = group.getChildAt(i)
+                if (child.javaClass.name.contains("NavigationBarFrame")) return child
+                if (child is ViewGroup && child !is InputView) find(child)?.let { return it }
+            }
+            return null
+        }
+        return (window?.window?.decorView as? ViewGroup)?.let { find(it) }
+    }
+
     fun forceInsetsRefresh() {
         val win = window?.window ?: return
         val attrs = win.attributes ?: return
@@ -2197,15 +2218,17 @@ class LatinIME : InputMethodService(),
         }
         val settingsValues = settings.current
         if (!settingsValues.mCustomNavBarColor) {
+            setNavigationBarFrameBackground(null)
             clearNavigationBarColor()
             return
         }
-        
+
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         val color = settingsValues.mColors.get(ColorType.NAVIGATION_BAR)
         window.navigationBarColor = color
-        
+        setNavigationBarFrameBackground(color)
+
         val view = window.decorView
         val controller = WindowCompat.getInsetsController(window, view)
         if (controller != null) {
