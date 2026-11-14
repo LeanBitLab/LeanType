@@ -1749,4 +1749,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_prefix_autocomplete_title">Snelkoppelingen voor automatisch aanvullen</string>
     <string name="text_expander_prefix_autocomplete_summary">Gedeeltelijke overeenkomsten voorstellen voor niet-voorgevoegde tekst- en afbeeldingssnelkoppelingen na het typen van meer dan twee tekens (voorafgezette snelkoppelingen worden ook automatisch aangevuld).</string>
     <string name="unfolded_side_padding_scale">Uitgevouwen zijvulling</string>
+    <string name="voice_futo_models_title">FUTO-stemmodellen (ACFT)</string>
+    <string name="voice_futo_models_summary">Verfijnde Whisper-modellen geoptimaliseerd voor mobiel dicteren</string>
+    <string name="button_browse">Blader</string>
 </resources>

@@ -1742,4 +1742,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_prefix_autocomplete_title">Automaatse täitmise otseteed</string>
     <string name="text_expander_prefix_autocomplete_summary">Pärast 2+ tähemärgi sisestamist soovitage eesliiteta teksti ja pildi otseteede jaoks osalisi vasteid (eesliitega otseteed täidetakse ka automaatselt).</string>
     <string name="unfolded_side_padding_scale">Voldimata küljepolster</string>
+    <string name="voice_futo_models_title">FUTO häälemudelid (ACFT)</string>
+    <string name="voice_futo_models_summary">Peenhäälestatud Whisperi mudelid, mis on optimeeritud mobiilseks dikteerimiseks</string>
+    <string name="button_browse">Sirvige</string>
 </resources>

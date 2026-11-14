@@ -1704,4 +1704,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_prefix_autocomplete_title">Atalhos de preenchimento automático</string>
     <string name="text_expander_prefix_autocomplete_summary">Sugira correspondências parciais para atalhos de texto e imagem sem prefixo após digitar mais de 2 caracteres (os atalhos com prefixo também são preenchidos automaticamente).</string>
     <string name="unfolded_side_padding_scale">Acolchoamento lateral desdobrado</string>
+    <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Modelos Whisper ajustados e otimizados para ditado móvel</string>
+    <string name="button_browse">Navegar</string>
 </resources>

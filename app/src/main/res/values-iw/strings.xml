@@ -1713,4 +1713,7 @@
     <string name="text_expander_prefix_autocomplete_title">קיצורי השלמה אוטומטית</string>
     <string name="text_expander_prefix_autocomplete_summary">הצע התאמות חלקיות לקיצורי טקסט ותמונה ללא קידומת לאחר הקלדת 2+ תווים (קיצורי קיצור גם השלמה אוטומטית).</string>
     <string name="unfolded_side_padding_scale">ריפוד צד פרוש</string>
+    <string name="voice_futo_models_title">מודלים קוליים של FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">דגמי Whisper מכוונים עדינים המותאמים להכתבה ניידת</string>
+    <string name="button_browse">לְדַפדֵף</string>
 </resources>

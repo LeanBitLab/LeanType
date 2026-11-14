@@ -1734,4 +1734,7 @@
     <string name="text_expander_prefix_autocomplete_title"></string>
     <string name="text_expander_prefix_autocomplete_summary">2+ अक्षर टाइप करने के बाद बिना उपसर्ग वाले टेक्स्ट और छवि शॉर्टकट के लिए आंशिक मिलान का सुझाव दें (उपसर्ग वाले शॉर्टकट भी स्वतः पूर्ण होते हैं)।</string>
     <string name="unfolded_side_padding_scale">खुला साइड पैडिंग</string>
+    <string name="voice_futo_models_title">फ़ुटो वॉयस मॉडल (एसीएफटी)</string>
+    <string name="voice_futo_models_summary">मोबाइल डिक्टेशन के लिए अनुकूलित फाइन-ट्यून व्हिस्पर मॉडल</string>
+    <string name="button_browse">ब्राउज़</string>
 </resources>

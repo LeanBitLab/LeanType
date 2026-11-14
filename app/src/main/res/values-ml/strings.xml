@@ -1808,4 +1808,7 @@
     <string name="text_expander_prefix_autocomplete_title">കുറുക്കുവഴികൾ സ്വയമേവ പൂർത്തിയാക്കുക</string>
     <string name="text_expander_prefix_autocomplete_summary">2+ പ്രതീകങ്ങൾ (പ്രിഫിക്‌സ് ചെയ്‌ത കുറുക്കുവഴികളും യാന്ത്രിക പൂർത്തീകരണം) ടൈപ്പ് ചെയ്‌ത ശേഷം പ്രിഫിക്‌സ് ചെയ്യാത്ത ടെക്‌സ്‌റ്റിനും ഇമേജ് കുറുക്കുവഴികൾക്കുമായി ഭാഗിക പൊരുത്തങ്ങൾ നിർദ്ദേശിക്കുക.</string>
     <string name="unfolded_side_padding_scale">മടക്കാത്ത സൈഡ് പാഡിംഗ്</string>
+    <string name="voice_futo_models_title">FUTO വോയ്സ് മോഡലുകൾ (ACFT)</string>
+    <string name="voice_futo_models_summary">മൊബൈൽ ഡിക്റ്റേഷനായി ഒപ്റ്റിമൈസ് ചെയ്ത ഫൈൻ-ട്യൂൺ ചെയ്ത വിസ്പർ മോഡലുകൾ</string>
+    <string name="button_browse">ബ്രൗസ് ചെയ്യുക</string>
 </resources>

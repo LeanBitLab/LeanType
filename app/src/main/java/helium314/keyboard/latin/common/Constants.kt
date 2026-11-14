@@ -29,6 +29,7 @@ object Links {
     // Voice Plugin Links
     const val VOICE_PLUGIN_REPO = "https://github.com/LeanBitLab/LeanType-Voice-Plugin"
     const val VOICE_PLUGIN_RELEASES_API = "https://api.github.com/repos/LeanBitLab/LeanType-Voice-Plugin/releases/latest"
+    const val VOICE_PLUGIN_MODELS_URL = "$VOICE_PLUGIN_REPO/blob/master/docs/MODELS.md"
     // GIF Plugin Links
     const val GIF_PLUGIN_REPO = "https://github.com/LeanBitLab/LeanType-Gif-Plugin"
     const val GIF_PLUGIN_RELEASES_API = "https://api.github.com/repos/LeanBitLab/LeanType-Gif-Plugin/releases/latest"

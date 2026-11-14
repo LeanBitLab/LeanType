@@ -2393,6 +2393,9 @@ New dictionary:
     <string name="voice_whisper_import_dispatched">Whisper model import dispatched</string>
     <string name="voice_model_import_failed_format">Model import failed: %s</string>
     <string name="voice_model_multilingual">Multilingual</string>
+    <string name="voice_futo_models_title">FUTO Voice Models (ACFT)</string>
+    <string name="voice_futo_models_summary">Fine-tuned Whisper models optimized for mobile dictation</string>
+    <string name="button_browse">Browse</string>
 
     <!-- GIF Plugin & Picker -->
     <string name="gif">GIF</string>

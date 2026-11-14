@@ -1707,4 +1707,7 @@
     <string name="text_expander_prefix_autocomplete_title">Комбінації клавіш автозаповнення</string>
     <string name="text_expander_prefix_autocomplete_summary">Пропонуйте часткові збіги для ярликів тексту та зображень без префіксів після введення 2+ символів (комбінації клавіш із префіксом також автозаповнюються).</string>
     <string name="unfolded_side_padding_scale">Розгорнута бічна оббивка</string>
+    <string name="voice_futo_models_title">Голосові моделі FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Тонко налаштовані моделі Whisper, оптимізовані для мобільного диктування</string>
+    <string name="button_browse">переглядати</string>
 </resources>

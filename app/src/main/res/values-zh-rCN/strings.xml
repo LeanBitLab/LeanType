@@ -1708,4 +1708,7 @@
     <string name="text_expander_prefix_autocomplete_title">自动完成快捷方式</string>
     <string name="text_expander_prefix_autocomplete_summary">输入 2 个以上字符后，建议对无前缀文本和图像快捷方式进行部分匹配（带前缀的快捷方式也会自动完成）。</string>
     <string name="unfolded_side_padding_scale">展开侧垫</string>
+    <string name="voice_futo_models_title">FUTO 语音模型 (ACFT)</string>
+    <string name="voice_futo_models_summary">针对移动听写优化的微调 Whisper 模型</string>
+    <string name="button_browse">浏览</string>
 </resources>

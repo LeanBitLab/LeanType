@@ -1808,4 +1808,7 @@
     <string name="text_expander_prefix_autocomplete_title">Συντομεύσεις αυτόματης συμπλήρωσης</string>
     <string name="text_expander_prefix_autocomplete_summary">Προτείνετε μερικές αντιστοιχίσεις για συντομεύσεις κειμένου και εικόνας χωρίς πρόθεμα μετά την πληκτρολόγηση 2+ χαρακτήρων (οι συντομεύσεις με πρόθεμα επίσης συμπληρώνονται αυτόματα).</string>
     <string name="unfolded_side_padding_scale">Ξεδιπλωμένη πλαϊνή επένδυση</string>
+    <string name="voice_futo_models_title">Μοντέλα φωνής FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Βελτιστοποιημένα μοντέλα Whisper βελτιστοποιημένα για υπαγόρευση μέσω κινητού</string>
+    <string name="button_browse">Ξεφυλλίζω</string>
 </resources>

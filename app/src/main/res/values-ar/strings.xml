@@ -1765,4 +1765,7 @@
     <string name="text_expander_prefix_autocomplete_title">اختصارات الإكمال التلقائي</string>
     <string name="text_expander_prefix_autocomplete_summary">اقتراح تطابقات جزئية للنص غير البادئ واختصارات الصور بعد كتابة أكثر من حرفين (الاختصارات البادئة أيضًا تكتمل تلقائيًا).</string>
     <string name="unfolded_side_padding_scale">حشوة جانبية غير مطوية</string>
+    <string name="voice_futo_models_title">نماذج FUTO الصوتية (ACFT)</string>
+    <string name="voice_futo_models_summary">نماذج Whisper المضبوطة بدقة والمُحسّنة للإملاء على الهاتف المحمول</string>
+    <string name="button_browse">تصفح</string>
 </resources>

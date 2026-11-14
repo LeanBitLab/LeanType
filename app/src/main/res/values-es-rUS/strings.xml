@@ -1774,4 +1774,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_prefix_autocomplete_title">Atajos de autocompletar</string>
     <string name="text_expander_prefix_autocomplete_summary">Sugiera coincidencias parciales para texto sin prefijo y accesos directos a imágenes después de escribir más de 2 caracteres (los accesos directos con prefijo también se completan automáticamente).</string>
     <string name="unfolded_side_padding_scale">Acolchado lateral desplegado</string>
+    <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Modelos Whisper optimizados para dictado móvil</string>
+    <string name="button_browse">Navegar</string>
 </resources>

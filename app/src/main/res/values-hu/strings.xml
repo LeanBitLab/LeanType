@@ -1705,4 +1705,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_prefix_autocomplete_title">Automatikus kiegészítés parancsikonok</string>
     <string name="text_expander_prefix_autocomplete_summary">Javasoljon részleges egyezéseket az előtag nélküli szöveges és képi parancsikonokhoz 2+ karakter beírása után (az előtaggal ellátott billentyűparancsok automatikusan kiegészítenek is).</string>
     <string name="unfolded_side_padding_scale">Kibontott oldalpárna</string>
+    <string name="voice_futo_models_title">FUTO hangmodellek (ACFT)</string>
+    <string name="voice_futo_models_summary">Finomhangolt Whisper modellek mobil diktálásra optimalizálva</string>
+    <string name="button_browse">Tallózás</string>
 </resources>

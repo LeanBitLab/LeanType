@@ -1742,4 +1742,7 @@
     <string name="text_expander_prefix_autocomplete_title">Преки пътища за автоматично довършване</string>
     <string name="text_expander_prefix_autocomplete_summary">Предложете частични съвпадения за текстови и графични преки пътища без префикс след въвеждане на 2+ знака (префиксните преки пътища също се допълват автоматично).</string>
     <string name="unfolded_side_padding_scale">Разгъната странична подплата</string>
+    <string name="voice_futo_models_title">FUTO гласови модели (ACFT)</string>
+    <string name="voice_futo_models_summary">Фино настроени модели Whisper, оптимизирани за мобилно диктовка</string>
+    <string name="button_browse">Прегледайте</string>
 </resources>

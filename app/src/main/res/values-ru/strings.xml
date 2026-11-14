@@ -1767,4 +1767,7 @@
     <string name="text_expander_prefix_autocomplete_title">Ярлыки автозаполнения</string>
     <string name="text_expander_prefix_autocomplete_summary">Предлагать частичные совпадения для текстовых и графических ярлыков без префиксов после ввода более двух символов (ярлыки с префиксами также автозаполняются).</string>
     <string name="unfolded_side_padding_scale">Развернутая боковая обивка</string>
+    <string name="voice_futo_models_title">Голосовые модели FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Точные модели Whisper, оптимизированные для мобильной диктовки</string>
+    <string name="button_browse">Просматривать</string>
 </resources>

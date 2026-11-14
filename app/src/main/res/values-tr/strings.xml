@@ -1734,4 +1734,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_prefix_autocomplete_title">Otomatik tamamlama kısayolları</string>
     <string name="text_expander_prefix_autocomplete_summary">2\'den fazla karakter yazdıktan sonra ön ekli metin ve resim kısayolları için kısmi eşleşmeler önerin (ön ekli kısayollar ayrıca otomatik tamamlama).</string>
     <string name="unfolded_side_padding_scale">Katlanmamış yan dolgu</string>
+    <string name="voice_futo_models_title">FUTO Ses Modelleri (ACFT)</string>
+    <string name="voice_futo_models_summary">Mobil dikte için optimize edilmiş ince ayarlı Whisper modelleri</string>
+    <string name="button_browse">Göz at</string>
 </resources>

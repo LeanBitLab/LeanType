@@ -1705,4 +1705,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_prefix_autocomplete_title">Pintasan pelengkapan otomatis</string>
     <string name="text_expander_prefix_autocomplete_summary">Menyarankan kecocokan sebagian untuk pintasan teks dan gambar tanpa awalan setelah mengetik 2+ karakter (pintasan yang diawali juga dilengkapi secara otomatis).</string>
     <string name="unfolded_side_padding_scale">Bantalan samping terbuka</string>
+    <string name="voice_futo_models_title">Model Suara FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Model Whisper yang disempurnakan dan dioptimalkan untuk dikte seluler</string>
+    <string name="button_browse">Jelajahi</string>
 </resources>

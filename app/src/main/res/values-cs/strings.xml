@@ -1707,4 +1707,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_prefix_autocomplete_title">Zkratky automatického doplňování</string>
     <string name="text_expander_prefix_autocomplete_summary">Navrhněte částečné shody pro textové a obrázkové zkratky bez předpony po zadání 2 a více znaků (zkratky s předponou se také automaticky doplňují).</string>
     <string name="unfolded_side_padding_scale">Rozložené boční polstrování</string>
+    <string name="voice_futo_models_title">Hlasové modely FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Vyladěné modely Whisper optimalizované pro mobilní diktování</string>
+    <string name="button_browse">Prohlížet</string>
 </resources>

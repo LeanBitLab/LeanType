@@ -1774,4 +1774,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_prefix_autocomplete_title">Scorciatoie di completamento automatico</string>
     <string name="text_expander_prefix_autocomplete_summary">Suggerisci corrispondenze parziali per scorciatoie di testo e immagini senza prefisso dopo aver digitato più di 2 caratteri (anche le scorciatoie con prefisso vengono completate automaticamente).</string>
     <string name="unfolded_side_padding_scale">Imbottitura laterale spiegata</string>
+    <string name="voice_futo_models_title">Modelli vocali FUTO (ACFT)</string>
+    <string name="voice_futo_models_summary">Modelli Whisper ottimizzati per la dettatura mobile</string>
+    <string name="button_browse">Sfoglia</string>
 </resources>

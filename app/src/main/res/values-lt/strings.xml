@@ -1743,4 +1743,7 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_prefix_autocomplete_title">Automatinio užbaigimo spartieji klavišai</string>
     <string name="text_expander_prefix_autocomplete_summary">Įvedus daugiau nei 2 simbolius, pasiūlykite dalines teksto ir vaizdo nuorodų be priešdėlinių atitikčių (su priešdėliu pažymėti spartieji klavišai taip pat užpildomi automatiškai).</string>
     <string name="unfolded_side_padding_scale">Išskleistas šoninis paminkštinimas</string>
+    <string name="voice_futo_models_title">FUTO balso modeliai (ACFT)</string>
+    <string name="voice_futo_models_summary">Tiksliai sureguliuoti Whisper modeliai, optimizuoti diktavimui mobiliajame telefone</string>
+    <string name="button_browse">Naršyti</string>
 </resources>

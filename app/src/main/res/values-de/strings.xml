@@ -1757,4 +1757,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_prefix_autocomplete_title">Verknüpfungen zur automatischen Vervollständigung</string>
     <string name="text_expander_prefix_autocomplete_summary">Schlagen Sie Teilübereinstimmungen für Text- und Bildverknüpfungen ohne Präfix vor, nachdem Sie mehr als zwei Zeichen eingegeben haben (Verknüpfungen mit Präfix werden auch automatisch vervollständigt).</string>
     <string name="unfolded_side_padding_scale">Aufgeklappte Seitenpolsterung</string>
+    <string name="voice_futo_models_title">FUTO-Sprachmodelle (ACFT)</string>
+    <string name="voice_futo_models_summary">Fein abgestimmte Whisper-Modelle, optimiert für mobiles Diktieren</string>
+    <string name="button_browse">Durchsuchen</string>
 </resources>

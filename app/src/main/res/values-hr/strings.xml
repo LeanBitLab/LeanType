@@ -1705,4 +1705,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_prefix_autocomplete_title">Prečaci za automatsko dovršavanje</string>
     <string name="text_expander_prefix_autocomplete_summary">Predložite djelomična podudaranja za tekstualne i slikovne prečace bez prefiksa nakon upisivanja 2+ znaka (prefiksni prečaci također se automatski dovršavaju).</string>
     <string name="unfolded_side_padding_scale">Otklopljena bočna podstava</string>
+    <string name="voice_futo_models_title">FUTO glasovni modeli (ACFT)</string>
+    <string name="voice_futo_models_summary">Fino podešeni Whisper modeli optimizirani za mobilno diktiranje</string>
+    <string name="button_browse">Pregledaj</string>
 </resources>

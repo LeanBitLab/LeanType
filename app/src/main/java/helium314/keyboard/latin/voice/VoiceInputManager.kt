@@ -464,9 +464,9 @@ class VoiceInputManager(
         val bufferSize = maxOf(minBufSize * 4, FRAME_SIZE_BYTES * 8, 8192)
 
         val sources = intArrayOf(
+            MediaRecorder.AudioSource.VOICE_RECOGNITION,
             MediaRecorder.AudioSource.MIC,
-            MediaRecorder.AudioSource.DEFAULT,
-            MediaRecorder.AudioSource.VOICE_RECOGNITION
+            MediaRecorder.AudioSource.DEFAULT
         )
         var record: AudioRecord? = null
         for (source in sources) {
