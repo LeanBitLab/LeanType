@@ -406,7 +406,7 @@ fun VoiceSettingsScreen(
                     context.getString(R.string.voice_silence_timeout_15s) to "15",
                     context.getString(R.string.voice_silence_timeout_never) to "0"
                 ),
-                default = "5",
+                default = "3",
                 icon = R.drawable.ic_settings_preferences
             )
         }

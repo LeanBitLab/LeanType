@@ -2351,8 +2351,8 @@ New dictionary:
     <string name="voice_keep_screen_on_summary">Prevent screen timeout while voice typing is active</string>
     <string name="voice_silence_timeout_title">Silence Timeout</string>
     <string name="voice_silence_timeout_2s">2 seconds (Fastest)</string>
-    <string name="voice_silence_timeout_3s">3 seconds</string>
-    <string name="voice_silence_timeout_5s">5 seconds (Recommended)</string>
+    <string name="voice_silence_timeout_3s">3 seconds (Recommended)</string>
+    <string name="voice_silence_timeout_5s">5 seconds</string>
     <string name="voice_silence_timeout_7s">7 seconds</string>
     <string name="voice_silence_timeout_10s">10 seconds</string>
     <string name="voice_silence_timeout_15s">15 seconds</string>
