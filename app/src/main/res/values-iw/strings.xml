@@ -1712,4 +1712,5 @@
     <string name="voice_max_duration_10m">10 דקות</string>
     <string name="text_expander_prefix_autocomplete_title">קיצורי השלמה אוטומטית</string>
     <string name="text_expander_prefix_autocomplete_summary">הצע התאמות חלקיות לקיצורי טקסט ותמונה ללא קידומת לאחר הקלדת 2+ תווים (קיצורי קיצור גם השלמה אוטומטית).</string>
+    <string name="unfolded_side_padding_scale">ריפוד צד פרוש</string>
 </resources>

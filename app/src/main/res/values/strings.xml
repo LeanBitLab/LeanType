@@ -225,6 +225,7 @@
     <string name="fine_tune_foldable_summary">Configure keyboard height, split layout, and padding when unfolded</string>
     <string name="unfolded_keyboard_height_scale">Unfolded keyboard height</string>
     <string name="unfolded_bottom_padding_scale">Unfolded bottom padding</string>
+    <string name="unfolded_side_padding_scale">Unfolded side padding</string>
     <string name="unfolded_split_keyboard">Split keyboard when unfolded</string>
     <string name="unfolded_split_spacer_scale">Unfolded split spacer scale</string>
     <string name="fine_tune_haptics_title">Haptics and vibration</string>

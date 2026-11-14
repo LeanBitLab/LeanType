@@ -1762,4 +1762,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="voice_max_duration_10m">10 minutes</string>
     <string name="text_expander_prefix_autocomplete_title">Raccourcis de saisie semi-automatique</string>
     <string name="text_expander_prefix_autocomplete_summary">Suggérez des correspondances partielles pour les raccourcis de texte et d\'image sans préfixe après avoir tapé plus de 2 caractères (les raccourcis avec préfixe sont également à saisie semi-automatique).</string>
+    <string name="unfolded_side_padding_scale">Rembourrage latéral déplié</string>
 </resources>

@@ -1741,4 +1741,5 @@
     <string name="voice_max_duration_10m">10 хвілін</string>
     <string name="text_expander_prefix_autocomplete_title">Ярлыкі аўтазапаўнення</string>
     <string name="text_expander_prefix_autocomplete_summary">Прапанаваць частковыя супадзенні для ярлыкоў без прэфікса і малюнкаў пасля ўводу 2+ сімвалаў (цэтлікі з прэфіксам таксама аўтазапаўняюцца).</string>
+    <string name="unfolded_side_padding_scale">Разгорнутая абіўка збоку</string>
 </resources>

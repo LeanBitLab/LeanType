@@ -175,4 +175,40 @@ class ScreenProfileTest {
         val unfoldedPadding = Settings.readBottomPaddingScale(prefs, landscape = false, profile = ScreenProfile.LARGE)
         assertEquals(0.3f, unfoldedPadding, 0.001f)
     }
+
+    @Test
+    fun testUnfoldedSidePaddingScaleDefaults() {
+        val prefs = context.prefs()
+        prefs.edit().clear().apply()
+
+        val compactUnsplit = Settings.readSidePaddingScale(prefs, landscape = false, split = false, profile = ScreenProfile.COMPACT)
+        assertEquals(0.15f, compactUnsplit, 0.001f)
+
+        val unfoldedUnsplit = Settings.readSidePaddingScale(prefs, landscape = false, split = false, profile = ScreenProfile.LARGE)
+        assertEquals(0.5f, unfoldedUnsplit, 0.001f)
+
+        val unfoldedSplit = Settings.readSidePaddingScale(prefs, landscape = false, split = true, profile = ScreenProfile.LARGE)
+        assertEquals(0.15f, unfoldedSplit, 0.001f)
+    }
+
+    @Test
+    fun testUnfoldedSidePaddingScaleCustomPreferences() {
+        val prefs = context.prefs()
+        prefs.edit().clear().apply()
+
+        // When custom compact key is set and custom unfolded key is set
+        prefs.edit().putFloat("side_padding_scale_false_false", 0.2f).apply()
+        prefs.edit().putFloat("side_padding_scale_large_false_false", 0.6f).apply()
+
+        val compactPadding = Settings.readSidePaddingScale(prefs, landscape = false, split = false, profile = ScreenProfile.COMPACT)
+        assertEquals(0.2f, compactPadding, 0.001f)
+
+        val unfoldedPadding = Settings.readSidePaddingScale(prefs, landscape = false, split = false, profile = ScreenProfile.LARGE)
+        assertEquals(0.6f, unfoldedPadding, 0.001f)
+
+        // When unfolded key is removed, should fall back to compact custom key
+        prefs.edit().remove("side_padding_scale_large_false_false").apply()
+        val fallbackPadding = Settings.readSidePaddingScale(prefs, landscape = false, split = false, profile = ScreenProfile.LARGE)
+        assertEquals(0.2f, fallbackPadding, 0.001f)
+    }
 }

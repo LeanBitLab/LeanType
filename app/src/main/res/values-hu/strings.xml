@@ -1704,4 +1704,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="voice_max_duration_10m">10 perc</string>
     <string name="text_expander_prefix_autocomplete_title">Automatikus kiegészítés parancsikonok</string>
     <string name="text_expander_prefix_autocomplete_summary">Javasoljon részleges egyezéseket az előtag nélküli szöveges és képi parancsikonokhoz 2+ karakter beírása után (az előtaggal ellátott billentyűparancsok automatikusan kiegészítenek is).</string>
+    <string name="unfolded_side_padding_scale">Kibontott oldalpárna</string>
 </resources>

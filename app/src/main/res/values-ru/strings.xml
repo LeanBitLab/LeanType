@@ -1766,4 +1766,5 @@
     <string name="voice_max_duration_10m">10 минут</string>
     <string name="text_expander_prefix_autocomplete_title">Ярлыки автозаполнения</string>
     <string name="text_expander_prefix_autocomplete_summary">Предлагать частичные совпадения для текстовых и графических ярлыков без префиксов после ввода более двух символов (ярлыки с префиксами также автозаполняются).</string>
+    <string name="unfolded_side_padding_scale">Развернутая боковая обивка</string>
 </resources>

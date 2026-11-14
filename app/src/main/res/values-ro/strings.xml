@@ -1741,4 +1741,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="voice_max_duration_10m">10 minute</string>
     <string name="text_expander_prefix_autocomplete_title">Comenzi rapide de completare automată</string>
     <string name="text_expander_prefix_autocomplete_summary">Sugerați potriviri parțiale pentru text fără prefix și comenzi rapide pentru imagini după ce ați tastat peste 2 caractere (comenzile rapide cu prefix, de asemenea, completează automat).</string>
+    <string name="unfolded_side_padding_scale">Captuseala laterala desfasurata</string>
 </resources>

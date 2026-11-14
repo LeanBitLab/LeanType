@@ -1764,4 +1764,5 @@
     <string name="voice_max_duration_10m">10 دقائق</string>
     <string name="text_expander_prefix_autocomplete_title">اختصارات الإكمال التلقائي</string>
     <string name="text_expander_prefix_autocomplete_summary">اقتراح تطابقات جزئية للنص غير البادئ واختصارات الصور بعد كتابة أكثر من حرفين (الاختصارات البادئة أيضًا تكتمل تلقائيًا).</string>
+    <string name="unfolded_side_padding_scale">حشوة جانبية غير مطوية</string>
 </resources>

@@ -409,6 +409,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_BOTTOM_PADDING_SCALE_PREFIX = "bottom_padding_scale"
         const val PREF_UNFOLDED_BOTTOM_PADDING_SCALE_PREFIX = "bottom_padding_scale_large"
         const val PREF_SIDE_PADDING_SCALE_PREFIX = "side_padding_scale"
+        const val PREF_UNFOLDED_SIDE_PADDING_SCALE_PREFIX = "side_padding_scale_large"
         const val PREF_FONT_SCALE = "font_scale"
         const val PREF_SECONDARY_FONT_SCALE = "secondary_font_scale"
         const val PREF_EMOJI_FONT_SCALE = "emoji_font_scale"
@@ -810,10 +811,21 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         }
 
         fun readSidePaddingScale(prefs: SharedPreferences, landscape: Boolean, split: Boolean): Float {
+            return readSidePaddingScale(prefs, landscape, split, helium314.keyboard.latin.utils.ScreenProfile.COMPACT)
+        }
+
+        fun readSidePaddingScale(prefs: SharedPreferences, landscape: Boolean, split: Boolean, profile: helium314.keyboard.latin.utils.ScreenProfile): Float {
             val index = findIndexOfDefaultSetting(landscape, split)
-            val defaults = Defaults.PREF_SIDE_PADDING_SCALE
+            val defaults = if (profile.isLarge()) Defaults.PREF_UNFOLDED_SIDE_PADDING_SCALE else Defaults.PREF_SIDE_PADDING_SCALE
             val defaultValue = defaults[index]
-            return prefs.getFloat(createPrefKeyForBooleanSettings(PREF_SIDE_PADDING_SCALE_PREFIX, index, 2), defaultValue)
+            if (profile.isLarge()) {
+                val largeKey = createPrefKeyForBooleanSettings(PREF_UNFOLDED_SIDE_PADDING_SCALE_PREFIX, index, 2)
+                if (prefs.contains(largeKey)) {
+                    return prefs.getFloat(largeKey, defaultValue)
+                }
+            }
+            val normalKey = createPrefKeyForBooleanSettings(PREF_SIDE_PADDING_SCALE_PREFIX, index, 2)
+            return prefs.getFloat(normalKey, defaultValue)
         }
 
         fun readHeightScale(prefs: SharedPreferences, landscape: Boolean): Float {

@@ -1798,4 +1798,5 @@
     <string name="voice_max_duration_10m">10 منٹ</string>
     <string name="text_expander_prefix_autocomplete_title">خودکار شارٹ کٹس</string>
     <string name="text_expander_prefix_autocomplete_summary">2+ حروف ٹائپ کرنے کے بعد غیر سابقہ ​​متن اور تصویری شارٹ کٹس کے لیے جزوی مماثلتیں تجویز کریں (سابقہ ​​شارٹ کٹس بھی خود بخود مکمل ہوتے ہیں)۔</string>
+    <string name="unfolded_side_padding_scale">کھولی ہوئی سائیڈ پیڈنگ</string>
 </resources>

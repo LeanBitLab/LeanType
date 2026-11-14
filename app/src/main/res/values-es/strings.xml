@@ -1703,4 +1703,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="voice_max_duration_10m">10 minutos</string>
     <string name="text_expander_prefix_autocomplete_title">Atajos de autocompletar</string>
     <string name="text_expander_prefix_autocomplete_summary">Sugiera coincidencias parciales para texto sin prefijo y accesos directos a imágenes después de escribir más de 2 caracteres (los accesos directos con prefijo también se completan automáticamente).</string>
+    <string name="unfolded_side_padding_scale">Acolchado lateral desplegado</string>
 </resources>

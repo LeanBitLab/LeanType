@@ -1741,4 +1741,5 @@
     <string name="voice_max_duration_10m">10 минути</string>
     <string name="text_expander_prefix_autocomplete_title">Преки пътища за автоматично довършване</string>
     <string name="text_expander_prefix_autocomplete_summary">Предложете частични съвпадения за текстови и графични преки пътища без префикс след въвеждане на 2+ знака (префиксните преки пътища също се допълват автоматично).</string>
+    <string name="unfolded_side_padding_scale">Разгъната странична подплата</string>
 </resources>

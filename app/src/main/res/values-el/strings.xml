@@ -1807,4 +1807,5 @@
     <string name="voice_max_duration_10m">10 λεπτά</string>
     <string name="text_expander_prefix_autocomplete_title">Συντομεύσεις αυτόματης συμπλήρωσης</string>
     <string name="text_expander_prefix_autocomplete_summary">Προτείνετε μερικές αντιστοιχίσεις για συντομεύσεις κειμένου και εικόνας χωρίς πρόθεμα μετά την πληκτρολόγηση 2+ χαρακτήρων (οι συντομεύσεις με πρόθεμα επίσης συμπληρώνονται αυτόματα).</string>
+    <string name="unfolded_side_padding_scale">Ξεδιπλωμένη πλαϊνή επένδυση</string>
 </resources>

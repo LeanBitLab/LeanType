@@ -1704,4 +1704,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="voice_max_duration_10m">10 minuta</string>
     <string name="text_expander_prefix_autocomplete_title">Prečaci za automatsko dovršavanje</string>
     <string name="text_expander_prefix_autocomplete_summary">Predložite djelomična podudaranja za tekstualne i slikovne prečace bez prefiksa nakon upisivanja 2+ znaka (prefiksni prečaci također se automatski dovršavaju).</string>
+    <string name="unfolded_side_padding_scale">Otklopljena bočna podstava</string>
 </resources>

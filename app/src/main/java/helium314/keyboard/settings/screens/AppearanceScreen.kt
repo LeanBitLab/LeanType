@@ -135,6 +135,7 @@ fun AppearanceScreen(
             if (fineTuneFoldableExpanded) Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED else null,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX else null,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_BOTTOM_PADDING_SCALE_PREFIX else null,
+            if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_SIDE_PADDING_SCALE_PREFIX else null,
             Settings.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT,
             if (fineTuneKeyboardLayoutExpanded) Settings.PREF_BOTTOM_PADDING_SCALE_PREFIX else null,
             if (fineTuneKeyboardLayoutExpanded) Settings.PREF_SIDE_PADDING_SCALE_PREFIX else null,
@@ -418,6 +419,16 @@ fun createAppearanceSettings(context: Context) = listOf(
             dimensions = listOf(stringResource(R.string.landscape)),
             defaults = Defaults.PREF_UNFOLDED_BOTTOM_PADDING_SCALE,
             range = 0f..5f,
+            description = { "${(100 * it).roundToInt()}%" }
+        ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
+    },
+    Setting(context, Settings.PREF_UNFOLDED_SIDE_PADDING_SCALE_PREFIX, R.string.unfolded_side_padding_scale) { setting ->
+        MultiSliderPreference(
+            name = setting.title,
+            baseKey = setting.key,
+            dimensions = listOf(stringResource(R.string.landscape), stringResource(R.string.split)),
+            defaults = Defaults.PREF_UNFOLDED_SIDE_PADDING_SCALE,
+            range = 0f..3f,
             description = { "${(100 * it).roundToInt()}%" }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },

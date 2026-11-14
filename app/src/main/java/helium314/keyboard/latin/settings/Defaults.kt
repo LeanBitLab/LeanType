@@ -142,6 +142,7 @@ object Defaults {
     val PREF_UNFOLDED_BOTTOM_PADDING_SCALE = arrayOf(0.5f, 0f)
     const val PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED = true
     val PREF_SIDE_PADDING_SCALE = Array(4) { 0.15f }
+    val PREF_UNFOLDED_SIDE_PADDING_SCALE = arrayOf(0.5f, 0.5f, 0.15f, 0.15f)
     const val PREF_FONT_SCALE = 0.85f
     const val PREF_SECONDARY_FONT_SCALE = 1.0f
     const val PREF_CLIPBOARD_FONT_SCALE = 1.0f
