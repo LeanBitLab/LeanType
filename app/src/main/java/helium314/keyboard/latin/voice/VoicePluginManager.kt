@@ -18,6 +18,13 @@ import com.leanbitlab.leantype.voice.VoiceSessionConfig
 import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.prefs
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 
 class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient {
 
@@ -282,103 +289,48 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
     }
 
     fun importModelSafely(request: ModelImportRequest) {
-        try {
-            engine?.importModel(request)
-        } catch (e: DeadObjectException) {
-            Log.e(TAG, "Voice plugin service died in importModel", e)
-            handleDisconnection()
-        } catch (e: RemoteException) {
-            Log.e(TAG, "Failed to import model", e)
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to import model", e)
-        } finally {
-            try {
-                request.file.close()
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to close PFD for model import", e)
+        kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+            bindAndImport(request)
+        }
+    }
+
+    suspend fun getOrAwaitEngine(timeoutMs: Long = 5000L): IVoiceEngine? {
+        if (isPluginConnected()) return engine
+        if (!isPluginInstalled()) return null
+
+        bindIfNeeded()
+        return withTimeoutOrNull(timeoutMs) {
+            while (!isPluginConnected()) {
+                delay(50L)
             }
+            engine
         }
     }
 
     suspend fun bindAndImport(request: ModelImportRequest): Boolean = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-        val appContext = context.applicationContext
-
-        if (isPluginConnected()) {
-            return@withContext try {
-                engine?.importModel(request)
-                true
-            } catch (e: DeadObjectException) {
-                Log.e(TAG, "Voice plugin service died in importModel", e)
-                handleDisconnection()
-                false
-            } catch (e: RemoteException) {
-                Log.e(TAG, "importModel oneway dispatch failed", e)
-                false
-            } catch (e: Exception) {
-                Log.e(TAG, "importModel oneway dispatch failed", e)
-                false
-            } finally {
-                try { request.file.close() } catch (_: Exception) {}
-            }
+        val eng = getOrAwaitEngine()
+        if (eng == null) {
+            Log.e(TAG, "bindAndImport: unable to connect to voice plugin")
+            try { request.file.close() } catch (_: Exception) {}
+            return@withContext false
         }
 
-        var conn: ServiceConnection? = null
-        try {
-            val service = kotlinx.coroutines.suspendCancellableCoroutine<IVoiceEngine?> { cont ->
-                conn = object : ServiceConnection {
-                    override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
-                        if (cont.isActive) {
-                            cont.resume(IVoiceEngine.Stub.asInterface(binder), null)
-                        }
-                    }
-
-                    override fun onServiceDisconnected(name: ComponentName?) {
-                        if (cont.isActive) {
-                            cont.resume(null, null)
-                        }
-                    }
-                }
-
-                val component = resolveServiceComponent()
-                val intent = Intent().apply { this.component = component }
-                val sc = conn
-                val bound = try {
-                    if (sc != null) appContext.bindService(intent, sc, Context.BIND_AUTO_CREATE or Context.BIND_NOT_FOREGROUND) else false
-                } catch (e: Exception) {
-                    Log.e(TAG, "Failed to bind to voice plugin", e)
-                    false
-                }
-
-                if (!bound && cont.isActive) {
-                    cont.resume(null, null)
-                }
-
-                cont.invokeOnCancellation {
-                    try {
-                        conn?.let { appContext.unbindService(it) }
-                    } catch (_: Exception) {}
-                }
-            }
-
-            if (service == null) {
-                Log.e(TAG, "bindAndImport: service binding returned null")
-                return@withContext false
-            }
-
-            // oneway AIDL call returns in microseconds
-            service.importModel(request)
+        return@withContext try {
+            eng.importModel(request)
             Log.i(TAG, "bindAndImport: oneway importModel dispatched successfully")
+            unbindAfterDelay(30000L)
             true
+        } catch (e: DeadObjectException) {
+            Log.e(TAG, "Voice plugin service died in importModel", e)
+            handleDisconnection()
+            false
         } catch (e: RemoteException) {
-            Log.e(TAG, "bindAndImport remote call failed", e)
+            Log.e(TAG, "importModel oneway dispatch failed", e)
             false
         } catch (e: Exception) {
-            Log.e(TAG, "bindAndImport failed", e)
+            Log.e(TAG, "importModel failed", e)
             false
         } finally {
-            conn?.let {
-                try { appContext.unbindService(it) } catch (_: Exception) {}
-            }
             try { request.file.close() } catch (_: Exception) {}
         }
     }

@@ -183,7 +183,7 @@ class LatinIME : InputMethodService(),
 
     private var isExecutingStartShowingInputView = false
     private var isExplicitShowRequested = false
-    private var displayContext: Context? = null
+    internal var displayContext: Context? = null
 
     private val dictionaryPackInstallReceiver: BroadcastReceiver = DictionaryPackInstallBroadcastReceiver(this)
     private val dictionaryDumpBroadcastReceiver: BroadcastReceiver = DictionaryDumpBroadcastReceiver(this)

@@ -129,11 +129,11 @@ fun VoiceSettingsScreen(
         }
     }
     var isInitialConnectionPending by remember { mutableStateOf(!isPluginConnected && isPluginInstalled) }
-    val installedWhisperPref = remember(prefs) { prefs.getString("installed_model_${VoiceConstants.ENGINE_WHISPER}", null) }
+    fun getInstalledWhisperPref(): String? = prefs.getString("installed_model_${VoiceConstants.ENGINE_WHISPER}", null)
     var whisperState by remember {
         mutableStateOf<ModelState?>(
             pluginManager.getModelState(VoiceConstants.ENGINE_WHISPER)
-                ?: if (installedWhisperPref != null) ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null) else null
+                ?: if (getInstalledWhisperPref() != null) ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null) else null
         )
     }
     var showModelDownloadDialog by remember { mutableStateOf(false) }
@@ -184,7 +184,7 @@ fun VoiceSettingsScreen(
         } else if (!isInitialConnectionPending) {
             isPluginConnected = false
             engineInfo = null
-            whisperState = if (installedWhisperPref != null) {
+            whisperState = if (getInstalledWhisperPref() != null) {
                 ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null)
             } else null
         }
@@ -206,7 +206,7 @@ fun VoiceSettingsScreen(
                 isPluginConnected = false
                 isInitialConnectionPending = false
                 engineInfo = null
-                whisperState = if (installedWhisperPref != null) {
+                whisperState = if (getInstalledWhisperPref() != null) {
                     ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null)
                 } else null
             }
@@ -227,7 +227,7 @@ fun VoiceSettingsScreen(
                     isInitialConnectionPending = false
                     isPluginConnected = false
                     engineInfo = null
-                    whisperState = if (installedWhisperPref != null) {
+                    whisperState = if (getInstalledWhisperPref() != null) {
                         ModelState(VoiceConstants.ENGINE_WHISPER, ModelState.STATE_READY, null)
                     } else null
                 }
@@ -273,13 +273,14 @@ fun VoiceSettingsScreen(
                         sizeBytes = size,
                         file = pfd
                     )
-                    if (!pluginManager.isPluginConnected()) {
-                        pluginManager.bindIfNeeded()
-                    }
-                    pluginManager.importModelSafely(request)
+                    val success = pluginManager.bindAndImport(request)
                     withContext(Dispatchers.Main) {
-                        prefs.edit().putString("installed_model_${VoiceConstants.ENGINE_WHISPER}", "custom").apply()
-                        Toast.makeText(context, context.getString(R.string.voice_whisper_import_dispatched), Toast.LENGTH_SHORT).show()
+                        if (success) {
+                            prefs.edit().putString("installed_model_${VoiceConstants.ENGINE_WHISPER}", "custom").apply()
+                            Toast.makeText(context, context.getString(R.string.voice_whisper_import_dispatched), Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, context.getString(R.string.voice_plugin_import_failed), Toast.LENGTH_SHORT).show()
+                        }
                         updatePluginStatus()
                     }
                 }
