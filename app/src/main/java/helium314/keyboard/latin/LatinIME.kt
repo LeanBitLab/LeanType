@@ -255,6 +255,9 @@ class LatinIME : InputMethodService(),
         val filter = IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION)
         ContextCompat.registerReceiver(this, ringerModeChangeReceiver, filter, ContextCompat.RECEIVER_EXPORTED)
 
+        val screenFilter = IntentFilter(Intent.ACTION_SCREEN_OFF)
+        ContextCompat.registerReceiver(this, screenStateReceiver, screenFilter, ContextCompat.RECEIVER_EXPORTED)
+
         val packageFilter = IntentFilter().apply {
             addAction(Intent.ACTION_PACKAGE_ADDED)
             addAction(Intent.ACTION_PACKAGE_REMOVED)
@@ -434,6 +437,7 @@ class LatinIME : InputMethodService(),
         
         settings.onDestroy()
         try { unregisterReceiver(ringerModeChangeReceiver) } catch (e: Exception) {}
+        try { unregisterReceiver(screenStateReceiver) } catch (e: Exception) {}
         try { unregisterReceiver(dictionaryPackInstallReceiver) } catch (e: Exception) {}
         try { unregisterReceiver(dictionaryDumpBroadcastReceiver) } catch (e: Exception) {}
         try { unregisterReceiver(restartAfterDeviceUnlockReceiver) } catch (e: Exception) {}
@@ -2111,6 +2115,16 @@ class LatinIME : InputMethodService(),
                 }
                 Log.i(TAG, "ringer mode changed, zen_mode on: $dnd")
                 AudioAndHapticFeedbackManager.getInstance().onRingerModeChanged(dnd)
+            }
+        }
+    }
+
+    private val screenStateReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (Intent.ACTION_SCREEN_OFF == intent.action) {
+                voiceInputManager?.cancelVoice()
+                updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
+                voicePluginManager?.unbind()
             }
         }
     }
