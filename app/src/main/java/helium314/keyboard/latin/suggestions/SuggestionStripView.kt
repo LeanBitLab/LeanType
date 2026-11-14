@@ -11,6 +11,7 @@ import java.util.Locale
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -46,6 +47,7 @@ import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.keyboard.internal.KeyboardIconsSet
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.AudioAndHapticFeedbackManager
+import helium314.keyboard.latin.FloatingKeyboardManager
 import helium314.keyboard.latin.RichInputMethodManager
 import helium314.keyboard.latin.dictionary.Dictionary
 import helium314.keyboard.latin.R
@@ -178,6 +180,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     private val keyDimension: Int
         get() {
             val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
+            val isFloating = FloatingKeyboardManager.isFloatingMode(context)
+            if (isFloating) {
+                val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+                val ratio = if (isLandscape) 0.82f else 0.85f
+                return (stripHeight * ratio).toInt()
+            }
             val defaultEdgeWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
             val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
             val ratio = if (defaultStripHeight > 0) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
@@ -202,16 +210,17 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // expand key
         // weird way of setting size (default is config_suggestions_strip_edge_key_width)
         // but better not change it or people will complain
-        val toolbarHeight = keyDimension
+        val toolbarHeight = getEffectiveKeyDimension()
         toolbarExpandKey.minimumWidth = 0
         toolbarExpandKey.minimumHeight = 0
-        toolbarExpandKey.layoutParams.height = toolbarHeight
-        toolbarExpandKey.layoutParams.width = toolbarHeight // we want it square
+        val expandLp = toolbarExpandKey.layoutParams ?: LinearLayout.LayoutParams(toolbarHeight, toolbarHeight)
+        expandLp.height = toolbarHeight
+        expandLp.width = toolbarHeight // we want it square
+        (expandLp as? LinearLayout.LayoutParams)?.gravity = Gravity.CENTER_VERTICAL
+        toolbarExpandKey.layoutParams = expandLp
         toolbarExpandKey.setBackgroundResource(R.drawable.toolbar_key_background)
-        val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
-        val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources).toFloat()
-        val effectiveScale = if (defaultStripHeight > 0f) stripHeight / defaultStripHeight else 1.0f
-        val expandPadding = (9 * effectiveScale).toInt().dpToPx(resources).coerceAtLeast(2)
+        val density = resources.displayMetrics.density
+        val expandPadding = Math.round(toolbarHeight * 0.16f).coerceIn((2 * density).toInt(), (toolbarHeight / 4))
         toolbarExpandKey.setPadding(expandPadding, expandPadding, expandPadding, expandPadding)
         colors.setColor(toolbarExpandKey, ColorType.TOOL_BAR_EXPAND_KEY)
         colors.setColor(toolbarExpandKey.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
@@ -495,6 +504,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             toolbarContainer.post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
         } else {
             applyToolbarKeyLayoutParams(toolbarContainer.isVisible)
+            post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
         }
 
         if (saveState && Settings.getValues().mRememberToolbarState) {
@@ -981,8 +991,14 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        if (w != oldw && w > 0) {
-            post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
+        if ((w != oldw || h != oldh) && w > 0) {
+            post {
+                if (FloatingKeyboardManager.isFloatingMode(context)) {
+                    onFloatingKeyboardScaleChanged()
+                } else {
+                    applyToolbarKeyLayoutParams(toolbarContainer.isVisible)
+                }
+            }
         }
     }
 
@@ -1611,6 +1627,36 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         pinnedKeys.forEach { if (it is ImageButton) setToolbarButtonActivatedState(it) }
     }
 
+    private fun getEffectiveKeyDimension(): Int {
+        val baseDim = keyDimension
+        val isFloating = FloatingKeyboardManager.isFloatingMode(context)
+        if (!isFloating) return baseDim
+
+        val pinnedList = getPinnedToolbarKeys(context.prefs())
+        val isPassword = InputTypeUtils.isAnyPasswordInputType(
+            KeyboardSwitcher.getInstance().latinIME?.currentInputEditorInfo?.inputType ?: 0
+        )
+        val pinnedCount = pinnedList.count { it != ToolbarKey.GIF || !isPassword }
+        val totalKeys = pinnedCount + 1 // +1 for expand key
+        if (totalKeys <= 1) return baseDim
+
+        val floatingWidth = ResourceUtils.getFloatingKeyboardWidth()
+        val currentStripWidth = if (floatingWidth > 0) floatingWidth else {
+            (if (width > 0) width else measuredWidth).takeIf { it > 0 }
+                ?: ResourceUtils.getKeyboardWidth(context, Settings.getValues())
+        }
+        if (currentStripWidth <= 0) return baseDim
+
+        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        // In floating mode, pinned keys + expand key should take at most 42% (landscape) or 48% (portrait)
+        // leaving the majority of the strip for word suggestions.
+        val maxFraction = if (isLandscape) 0.42f else 0.48f
+        val maxAvailableWidth = (currentStripWidth * maxFraction).toInt()
+        val maxSingleKeyWidth = maxAvailableWidth / totalKeys
+        val minAllowedKeyDim = (18 * resources.displayMetrics.density).toInt()
+        return maxSingleKeyWidth.coerceIn(minAllowedKeyDim, baseDim)
+    }
+
     private fun rebuildToolbarKeys() {
         KeyboardIconsSet.instance.loadIcons(context)
         toolbar.removeAllViews()
@@ -1620,14 +1666,28 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val pinnedKeysList = getPinnedToolbarKeys(context.prefs())
         val mToolbarMode = Settings.getValues().mToolbarMode
         val isSplitToolbar = Settings.getValues().mSplitToolbar
-        
+
         val isPassword = InputTypeUtils.isAnyPasswordInputType(KeyboardSwitcher.getInstance().latinIME?.currentInputEditorInfo?.inputType ?: 0)
+        val effectiveDim = getEffectiveKeyDimension()
+        val density = resources.displayMetrics.density
+        val keyPadding = Math.round(effectiveDim * 0.16f).coerceIn((2 * density).toInt(), (effectiveDim / 4))
+
+        // Expand key sizing - always square (effectiveDim x effectiveDim)
+        toolbarExpandKey.minimumWidth = 0
+        toolbarExpandKey.minimumHeight = 0
+        val expandLp = toolbarExpandKey.layoutParams ?: LinearLayout.LayoutParams(effectiveDim, effectiveDim)
+        expandLp.width = effectiveDim
+        expandLp.height = effectiveDim
+        (expandLp as? LinearLayout.LayoutParams)?.gravity = Gravity.CENTER_VERTICAL
+        toolbarExpandKey.layoutParams = expandLp
+        toolbarExpandKey.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
+
+        // Ensure pinned keys container is centered vertically
+        (pinnedKeys as? LinearLayout)?.gravity = Gravity.CENTER_VERTICAL
+
         // Toolbar keys setup
         // Always populate toolbar keys if mode allows, visibility handled in updateKeys
         if (mToolbarMode == ToolbarMode.TOOLBAR_KEYS || mToolbarMode == ToolbarMode.EXPANDABLE) {
-            // In split mode or toolbar-keys-only mode, show ALL enabled keys in the toolbar, ignoring pin status
-            // When autoHidePinnedKeys=false: include pinned keys in toolbar too (they show side-by-side)
-            // When autoHidePinnedKeys=true: exclude pinned keys from toolbar (pinnedKeys container handles them)
             val keysToRender = if (isSplitToolbar || mToolbarMode == ToolbarMode.TOOLBAR_KEYS || !Settings.getValues().mAutoHidePinnedKeys) {
                 getEnabledToolbarKeys(context.prefs())
             } else {
@@ -1636,18 +1696,24 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             for (key in keysToRender) {
                 if (key == ToolbarKey.GIF && isPassword) continue
                 val button = createToolbarKey(context, key)
-                button.layoutParams = toolbarKeyLayoutParams
+                button.layoutParams = LinearLayout.LayoutParams(effectiveDim, effectiveDim).apply {
+                    gravity = Gravity.CENTER_VERTICAL
+                }
+                button.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
                 setupKey(button, colors)
                 toolbar.addView(button)
             }
         }
-        
+
         // Only draw pinned keys if not in split mode
         if (!isSplitToolbar && !Settings.getValues().mSuggestionStripHiddenPerUserSettings) {
             for (pinnedKey in pinnedKeysList) {
                 if (pinnedKey == ToolbarKey.GIF && isPassword) continue
                 val button = createToolbarKey(context, pinnedKey)
-                button.layoutParams = toolbarKeyLayoutParams
+                button.layoutParams = LinearLayout.LayoutParams(effectiveDim, effectiveDim).apply {
+                    gravity = Gravity.CENTER_VERTICAL
+                }
+                button.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
                 setupKey(button, colors)
                 pinnedKeys.addView(button)
             }
@@ -1657,13 +1723,14 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             toolbarContainer.post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
         } else {
             applyToolbarKeyLayoutParams(toolbarContainer.isVisible)
+            post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
         }
     }
 
     private fun applyToolbarKeyLayoutParams(isExpanded: Boolean) {
         val count = toolbar.childCount
         if (count == 0) return
-        val singleKeyWidth = keyDimension
+        val singleKeyWidth = getEffectiveKeyDimension()
 
         val visibleCount = (0 until count).count {
             val child = toolbar.getChildAt(it)
@@ -1674,15 +1741,20 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val isSplit = Settings.getValues().mSplitToolbar
         val hasExpandKey = Settings.getValues().mToolbarMode == ToolbarMode.EXPANDABLE && !isSplit
         val expandKeyWidth = if (hasExpandKey) {
-            if (toolbarExpandKey.width > 0) toolbarExpandKey.width else keyDimension
+            if (toolbarExpandKey.width > 0 && toolbarExpandKey.width <= width) toolbarExpandKey.width else singleKeyWidth
         } else 0
 
-        val keyboardWidth = ResourceUtils.getKeyboardWidth(context, Settings.getValues())
+        val floatingWidth = ResourceUtils.getFloatingKeyboardWidth()
+        val keyboardWidth = if (floatingWidth > 0) floatingWidth else ResourceUtils.getKeyboardWidth(context, Settings.getValues())
         val currentStripWidth = (if (width > 0) width else measuredWidth).takeIf { it > 0 } ?: keyboardWidth
         val fallbackAvailableWidth = (currentStripWidth - expandKeyWidth).coerceAtLeast(0)
 
-        val containerWidth = toolbarContainer.width.takeIf { it > 0 }
-            ?: toolbarContainer.measuredWidth.takeIf { it > 0 }
+        val containerWidth = (if (toolbarContainer.width > 0 && toolbarContainer.width <= currentStripWidth) {
+            toolbarContainer.width
+        } else null)
+            ?: (if (toolbarContainer.measuredWidth > 0 && toolbarContainer.measuredWidth <= currentStripWidth) {
+                toolbarContainer.measuredWidth
+            } else null)
             ?: fallbackAvailableWidth
 
         val isAutoSpan = Settings.getValues().mAutoSpanToolbarKeys
@@ -1701,6 +1773,9 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             hsv.overScrollMode = if (useEqualSpacing) View.OVER_SCROLL_NEVER else View.OVER_SCROLL_IF_CONTENT_SCROLLS
             if (useEqualSpacing) hsv.scrollTo(0, 0)
         }
+
+        val density = resources.displayMetrics.density
+        val keyPadding = Math.round(singleKeyWidth * 0.16f).coerceIn((2 * density).toInt(), (singleKeyWidth / 4))
 
         for (i in 0 until count) {
             val child = toolbar.getChildAt(i) ?: continue
@@ -1726,24 +1801,28 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                     gravity = targetGravity
                 }
             }
+            child.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
         }
     }
 
     fun onFloatingKeyboardScaleChanged() {
-        val toolbarHeight = keyDimension
+        val effectiveDim = getEffectiveKeyDimension()
+        val density = resources.displayMetrics.density
+        val expandPadding = Math.round(effectiveDim * 0.16f).coerceIn((2 * density).toInt(), (effectiveDim / 4))
+
         toolbarExpandKey.minimumWidth = 0
         toolbarExpandKey.minimumHeight = 0
-        toolbarExpandKey.layoutParams.height = toolbarHeight
-        toolbarExpandKey.layoutParams.width = toolbarHeight
-        val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
-        val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources).toFloat()
-        val effectiveScale = if (defaultStripHeight > 0f) stripHeight / defaultStripHeight else 1.0f
-        val expandPadding = (9 * effectiveScale).toInt().dpToPx(resources).coerceAtLeast(2)
+        val lp = toolbarExpandKey.layoutParams ?: LinearLayout.LayoutParams(effectiveDim, effectiveDim)
+        lp.height = effectiveDim
+        lp.width = effectiveDim
+        (lp as? LinearLayout.LayoutParams)?.gravity = Gravity.CENTER_VERTICAL
+        toolbarExpandKey.layoutParams = lp
         toolbarExpandKey.setPadding(expandPadding, expandPadding, expandPadding, expandPadding)
 
         rebuildToolbarKeys()
         requestLayout()
         invalidate()
+        post { applyToolbarKeyLayoutParams(toolbarContainer.isVisible) }
     }
 
     fun updateSplitToolbarState() {

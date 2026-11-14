@@ -77,9 +77,13 @@ object ResourceUtils {
     fun getSuggestionsStripHeight(res: Resources): Int {
         val defaultHeight = res.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
         if (sFloatingKeyboardScaleOverride > 0.0f) {
-            return Math.max(
-                (defaultHeight * sFloatingKeyboardScaleOverride).toInt(),
-                (18 * res.displayMetrics.density).toInt()
+            val isLandscape = res.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+            val maxAllowedDp = if (isLandscape) 30f else 34f
+            val minAllowedDp = if (isLandscape) 22f else 24f
+            val scaledHeight = (defaultHeight * sFloatingKeyboardScaleOverride).toInt()
+            return scaledHeight.coerceIn(
+                (minAllowedDp * res.displayMetrics.density).toInt(),
+                (maxAllowedDp * res.displayMetrics.density).toInt()
             )
         }
         return defaultHeight

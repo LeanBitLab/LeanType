@@ -69,7 +69,7 @@ fun createToolbarKey(context: Context, key: ToolbarKey): ImageButton {
     val defaultStripHeight = context.resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
     val stripHeight = ResourceUtils.getSuggestionsStripHeight(context.resources).toFloat()
     val effectiveScale = if (defaultStripHeight > 0f) stripHeight / defaultStripHeight else 1.0f
-    val padding = (9 * effectiveScale).toInt().dpToPx(context.resources).coerceAtLeast(2)
+    val padding = Math.round(6f * effectiveScale).toInt().dpToPx(context.resources).coerceAtLeast(2)
     button.setPadding(padding, padding, padding, padding)
     button.tag = key
     button.contentDescription = key.name.lowercase().getStringResourceOrName("", context)

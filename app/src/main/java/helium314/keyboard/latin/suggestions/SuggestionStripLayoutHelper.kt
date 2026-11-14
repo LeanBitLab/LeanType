@@ -352,7 +352,7 @@ internal class SuggestionStripLayoutHelper(
             }
             wordView.setTextColor(mColorAutoCorrect)
             stripView.addView(wordView)
-            setLayoutWeight(wordView, 1.0f, mSuggestionsStripHeight)
+            setLayoutWeight(wordView, 1.0f, ResourceUtils.getSuggestionsStripHeight(wordView.resources))
         }
         mMoreSuggestionsAvailable = punctuationSuggestions.size() > countInStrip
         return countInStrip

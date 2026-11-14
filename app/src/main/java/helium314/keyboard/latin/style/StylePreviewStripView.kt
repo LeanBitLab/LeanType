@@ -3,6 +3,7 @@ package helium314.keyboard.latin.style
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -23,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.keyboard.internal.KeyboardIconsSet
+import helium314.keyboard.latin.FloatingKeyboardManager
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.Colors
@@ -70,10 +72,16 @@ class StylePreviewStripView @JvmOverloads constructor(
         val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
         val defaultStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height).toFloat()
         val defaultEdgeWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
-        val ratio = if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
+        val isFloating = FloatingKeyboardManager.isFloatingMode(context)
+        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        val ratio = if (isFloating) {
+            if (isLandscape) 0.82f else 0.85f
+        } else {
+            if (defaultStripHeight > 0f) defaultEdgeWidth.toFloat() / defaultStripHeight else 0.9f
+        }
         val keyDimension = (stripHeight * ratio).toInt()
-        val effectiveScale = if (defaultStripHeight > 0f) stripHeight.toFloat() / defaultStripHeight else 1.0f
-        val expandPadding = (9 * effectiveScale).toInt().dpToPx(resources).coerceAtLeast(2)
+        val density = resources.displayMetrics.density
+        val expandPadding = Math.round(keyDimension * 0.16f).coerceIn((2 * density).toInt(), (keyDimension / 4))
 
         val lp = closeButton.layoutParams as? LayoutParams ?: LayoutParams(keyDimension, keyDimension)
         lp.width = keyDimension
