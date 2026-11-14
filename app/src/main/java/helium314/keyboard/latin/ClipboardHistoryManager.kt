@@ -714,7 +714,8 @@ class ClipboardHistoryManager(
             dontShowCurrentSuggestion = true
             latinIME.onTextInput(content.toString())
             AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, it, HapticEvent.KEY_PRESS)
-            binding.root.isGone = true
+            // not only hide the view: this also removes the external suggestion from the strip and brings the toolbar back
+            removeClipboardSuggestion()
         }
         val closeButton = binding.clipboardSuggestionClose
         closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
