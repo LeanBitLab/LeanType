@@ -36,11 +36,12 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
     print(f"=== Verifying LeanType Release Synchronization for v{version} (code {version_code}) ===")
 
     # 1. app/build.gradle.kts
+    clean_version = re.sub(r'[-_]?beta.*$', '', version, flags=re.IGNORECASE)
     gradle_path = os.path.join(project_root, "app", "build.gradle.kts")
     if os.path.exists(gradle_path):
         with open(gradle_path, "r", encoding="utf-8") as f:
             gradle_content = f.read()
-        if f'versionCode = {version_code}' in gradle_content and f'versionName = "{version}"' in gradle_content:
+        if f'versionCode = {version_code}' in gradle_content and (f'versionName = "{version}"' in gradle_content or f'versionName = "{clean_version}"' in gradle_content):
             print("  [OK] app/build.gradle.kts matches version and code")
         else:
             print(f"  [FAIL] app/build.gradle.kts does not match versionCode={version_code} or versionName={version}")

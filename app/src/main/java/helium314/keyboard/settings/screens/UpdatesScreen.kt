@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• GIF & Sticker Clipboard Fallback: Granted explicit read URI permissions and added clipboard fallback on unsupported apps (#794)",
+    "• Screen-Off Voice Unbind: Unbinds voice service and releases screen-on wake lock on screen off to prevent battery drain (#803)",
+    "• Text Expander Symbol Shortcuts: Enabled suggestion matching and expansion for symbol-prefixed shortcuts (#796)",
+    "• Custom Popup Key Priority: Prevented positional symbol fallbacks on keys with explicitly configured custom popups (#801)",
+    "• Hexagonal Layout Auto-Detection: Automatically detects hexagonal custom and modified layouts via layout structure (#795)",
     "• Unicode Font Styling & Symbol Palette: Added 26+ font styles with live typing and categorized Unicode symbol palette (#776)",
     "• Text Expander Image Shortcuts: Added photo/image shortcuts with live thumbnails and full-screen bulk editor (#784)",
     "• Fast Typing Auto-Caps Fix: Resolved auto-caps timing race during rapid typing and multi-touch gestures (#598)",
     "• Single-Line Auto-Correction: Enabled auto-correction for standard single-line text fields in messaging and search",
-    "• Idle Battery & Voice Optimization: Eliminated idle Looper spins/animators and added 10m/unlimited dictation",
-    "• CJK Pinyin Uppercase Fix: Preserved typed uppercase letters and shift state during Pinyin composition (#787)",
-    "• Multi-Row Popup & Foldable Split Fix: Fixed multi-row popup touch hitboxes and foldable split detection (#778)",
-    "• Symbol & Bracket Auto-Pairing: Added automatic closing brackets, quotes, and CJK quotation mark auto-pairing (#754)",
-    "• Arabic Tashkeel Hint: Centered diacritics hint on the Arabic period key for quick tashkeel access (#786)",
-    "• Automation Broadcast Intents: Added external broadcast intent controls for automated keyboard layout switching (#501)"
+    "• Multi-Row Popup & Foldable Split Fix: Fixed multi-row popup touch hitboxes and foldable split detection (#778)"
 )
 
 @Composable

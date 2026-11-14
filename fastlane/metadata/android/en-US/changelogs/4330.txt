@@ -1,0 +1,5 @@
+- Explicit URI permissions and clipboard fallback for GIFs and stickers (#794).
+- Unbind voice service on screen off to prevent idle battery drain (#803).
+- Added Text Expander suggestion matching for symbol-prefixed shortcuts (#796).
+- Prevented positional symbol fallbacks on keys with custom popup keys (#801).
+- Auto-detect hexagonal custom and modified keyboard layouts (#795).
