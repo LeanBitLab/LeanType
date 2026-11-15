@@ -566,7 +566,7 @@ LeanType is published in two purpose-built flavors to balance cloud AI capabilit
 | Flavor | Cloud AI | Offline AI | Voice Input | Handwriting | OCR Extraction | Translation | Update Checker | Internet Permission | Min SDK | Approx Size |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Standard (Recommended)** | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | SDK 23 (6.0+) | **~12.8 MB** |
-| **Offline** | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | SDK 21 (5.0+) | **~12.5 MB** |
+| **Offline** | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | SDK 23 (6.0+) | **~12.5 MB** |
 
 > [!TIP]
 > **Concurrent Installation**: The `offline` (`com.leanbitlab.leantype.offline`) build uses a unique package ID, allowing you to install it alongside `standard` on the same device!

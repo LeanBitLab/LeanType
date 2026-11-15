@@ -65,7 +65,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 | **Plugins & Models Setup** | In-app download or File import | Browser download + File import |
 | **Internet Permission** | 🌐 Optional *(Cloud AI / Updates)* | 🚫 **None** *(OS-level blocked)* |
 | **Package ID** | `com.leanbitlab.leantype` | `com.leanbitlab.leantype.offline` |
-| **Min Android Version** | Android 6.0+ *(SDK 23)* | Android 5.0+ *(SDK 21)* |
+| **Min Android Version** | Android 6.0+ *(SDK 23)* | Android 6.0+ *(SDK 23)* |
 | **Approximate APK Size** | **~12.8 MB** | **~12.5 MB** |
 
 > [!TIP]
