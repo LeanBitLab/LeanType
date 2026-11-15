@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.keyboard.emoji
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -29,6 +30,7 @@ class EmojiTabStripScrollView @JvmOverloads constructor(
         return super.onInterceptTouchEvent(ev)
     }
 
+    @SuppressLint("ClickableViewAccessibility") // only forwards scrolling, not a click target
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         if (isHorizontalScrollLocked) return false
         return super.onTouchEvent(ev)

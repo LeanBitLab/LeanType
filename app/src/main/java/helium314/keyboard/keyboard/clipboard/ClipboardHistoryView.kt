@@ -339,6 +339,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         }
     }
     
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle caret placement, not clicks
     private fun startSearchMode() {
         if (inEditMode) {
             stopEditMode(save = false)
@@ -485,6 +486,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
     val inEditMode: Boolean
         get() = editEntry != null
 
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle caret placement, not clicks
     fun startEditMode(entry: ClipboardHistoryEntry) {
         clipboardRecyclerView.dismissUndoBar()
         dismissConfirmationBar()

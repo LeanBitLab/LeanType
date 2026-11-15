@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.handwriting
 
+import android.annotation.SuppressLint
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -163,6 +164,7 @@ class HandwritingCanvas @JvmOverloads constructor(
         canvas.drawPath(path, strokePaint)
     }
 
+    @SuppressLint("ClickableViewAccessibility") // draws strokes, not a click target
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val x = event.x
         val y = event.y
