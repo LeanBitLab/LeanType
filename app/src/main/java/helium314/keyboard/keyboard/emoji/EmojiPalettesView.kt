@@ -962,7 +962,7 @@ class EmojiPalettesView @JvmOverloads constructor(
     }
 
     private fun performSearch(query: String?) {
-        Log.d("EmojiSearch", "performSearch: $query")
+        Log.d("EmojiSearch", "performSearch: ${query?.length ?: 0} chars")
         val dict = sDictionaryFacilitator
         if (dict == null || query.isNullOrEmpty()) {
             mSearchAdapter?.submitList(Collections.emptyList())
@@ -984,7 +984,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             }
         }
 
-        Log.d("EmojiSearch", "Found ${results.size} results for: $query")
+        Log.d("EmojiSearch", "Found ${results.size} results")
         mSearchAdapter?.submitList(results)
         mSearchResultsList?.scrollToPosition(0)
 

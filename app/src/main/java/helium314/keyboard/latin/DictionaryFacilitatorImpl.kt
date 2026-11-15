@@ -517,9 +517,9 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                     val localeToUse = if (dictionaryGroup.locale.language.isNullOrEmpty()) null else dictionaryGroup.locale
                     UserDictionary.Words.addWord(userDict.mContext, wordToUse, 250, null, localeToUse)
                     userDict.addUnigramEntry(wordToUse, 250, null, 0, false, false, (System.currentTimeMillis() / 1000).toInt())
-                    Log.i(TAG, "Added word '$wordToUse' to personal dictionary for locale $localeToUse (typed $count times, threshold $threshold)")
+                    Log.i(TAG, "Added a word to the personal dictionary for locale $localeToUse (typed $count times, threshold $threshold)")
                 }.onFailure {
-                    Log.w(TAG, "Failed to add word '$wordToUse' to personal dictionary", it)
+                    Log.w(TAG, "Failed to add a word to the personal dictionary", it)
                 }
             }
         }
