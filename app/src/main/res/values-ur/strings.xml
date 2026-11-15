@@ -525,8 +525,6 @@
 نئی لغت:
 %3$s"</string>
     <string name="replace_dictionary">"لغت تبدیل کریں"</string>
-    <string name="no_dictionary_message">"لغت کے بغیر، آپ کو صرف اس متن کے لیے تجاویز ملیں گی جو آپ نے پہلے درج کیا تھا۔<br />
-        آپ لغات %1$s ڈاؤن لوڈ کر سکتے ہیں۔"</string>
     <string name="add_dictionary">"شامل کرنے کے لیے ایک لغت منتخب کریں۔ .dict فارمیٹ میں لغات %s ڈاؤن لوڈ کی جا سکتی ہیں۔"</string>
     <string name="dictionary_link_text">"یہاں"</string>
     <string name="available_dictionary_experimental">"%s (تجرباتی)"</string>

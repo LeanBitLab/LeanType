@@ -528,8 +528,6 @@
 പുതിയ നിഘണ്ടു:
 %3$s</string>
     <string name="replace_dictionary">നിഘണ്ടു മാറ്റിസ്ഥാപിക്കുക</string>
-    <string name="no_dictionary_message">ഒരു നിഘണ്ടു ഇല്ലാതെ, നിങ്ങൾ മുമ്പ് നൽകിയ വാചകത്തിന് മാത്രമേ നിർദ്ദേശങ്ങൾ ലഭിക്കൂ.<br />
-        നിങ്ങൾക്ക് നിഘണ്ടുക്കൾ %1$s ഡൗൺലോഡ് ചെയ്യാം.</string>
     <string name="add_dictionary">ചേർക്കാൻ ഒരു നിഘണ്ടു തിരഞ്ഞെടുക്കുക. .dict ഫോർമാറ്റിലുള്ള നിഘണ്ടുക്കൾ %s ഡൗൺലോഡ് ചെയ്യാം.</string>
     <string name="dictionary_link_text">ഇവിടെ</string>
     <string name="available_dictionary_experimental">%s (പരീക്ഷണാത്മകം)</string>

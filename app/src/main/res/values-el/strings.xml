@@ -529,8 +529,6 @@
 Νέο λεξικό:
 %3$s"</string>
     <string name="replace_dictionary">"Αντικατάσταση λεξικού"</string>
-    <string name="no_dictionary_message">"Χωρίς λεξικό, θα λαμβάνετε προτάσεις μόνο για κείμενο που έχετε εισαγάγει στο παρελθόν.<br />
-        Μπορείτε να κατεβάσετε λεξικά %1$s."</string>
     <string name="add_dictionary">"Επιλέξτε ένα λεξικό για προσθήκη. Λεξικά σε μορφή .dict μπορούν να ληφθούν %s."</string>
     <string name="dictionary_link_text">"εδώ"</string>
     <string name="available_dictionary_experimental">"%s (πειραματικό)"</string>
