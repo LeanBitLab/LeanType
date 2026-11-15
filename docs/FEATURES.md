@@ -221,7 +221,7 @@ The multilingual models support 99 languages. English-only models are a little m
 6. Tap the **Microphone** icon on the toolbar to start voice typing. Tapping it again stops the recording; while the text is being processed, tapping it does not cancel it (use the cancel button on the strip for that).
 
 ### Requirements & Battery
-- The plugin needs Android 5.0 or newer. The 64-bit (`arm64-v8a`) build uses ARMv8.2 dot-product and FP16 instructions for speed, so it needs a CPU from roughly 2018 on (Cortex-A55/A75 class and newer). Older 64-bit CPUs without these instructions cannot run it.
+- The plugin needs Android 5.0 or newer. The 64-bit (`arm64-v8a`) build uses ARMv8.2 dot-product and FP16 instructions for speed, so it needs a CPU from roughly 2018 on (Cortex-A55/A75 class and newer). On older 64-bit CPUs without these instructions the plugin shows a message, and you install `voice_plugin-arm64-v8a-compat.apk` from the plugin releases instead (plugin v1.0.4 or newer); it runs on every ARMv8 CPU, a little slower.
 - LeanType connects to the plugin when you start voice typing or import a model and releases it again when voice typing is idle or the screen turns off, so it does not run in the background.
 
 ---
