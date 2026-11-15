@@ -474,9 +474,6 @@
     <string name="immediate_auto_space_summary">Szóköz azonnali beszúrása javaslat kiválasztásakor, hogy elkerüljük a késést a következő begépelt betűnél</string>
     <string name="suggest_screenshots">Legutóbbi képernyőképek javasolása</string>
     <string name="suggest_screenshots_summary">Nemrég készített képernyőképek megjelenítése javaslatként</string>
-    <string name="auto_read_otp">OTP automatikus olvasása SMS-ből</string>
-    <string name="auto_read_otp_summary">A beérkező SMS kódjának megjelenítése javaslatként, amelyre koppintva beilleszthető</string>
-    <string name="spoken_otp_suggestion">OTP javaslat elvetése</string>
     <string name="compress_screenshots">Képernyőkép-javaslatok tömörítése</string>
     <string name="compress_screenshots_summary">A képernyőkép-javaslatok minőségének és méretének csökkentése a helymegtakarítás érdekében</string>
     <string name="clipboard_fold_pinned">Rögzített elemek alapértelmezett összecsukása</string>

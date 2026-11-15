@@ -288,12 +288,6 @@
     <string name="suggest_screenshots">Suggest recent screenshots</string>
     <!-- Description for the "suggest recent screenshots" option. This makes recent screenshots visible in the suggestion strip view. -->
     <string name="suggest_screenshots_summary">Show recently taken screenshots as a suggestion</string>
-    <!-- Option to enable showing one-time passcodes (OTPs) from incoming SMS as a suggestion. -->
-    <string name="auto_read_otp">Auto-read OTP from SMS</string>
-    <!-- Description for the "auto_read_otp" option. Requires SMS permission; only reads messages that arrive while the keyboard is open. -->
-    <string name="auto_read_otp_summary">Show the code from an incoming SMS as a suggestion you can tap to insert</string>
-    <!-- Spoken description for the button that dismisses the OTP suggestion. -->
-    <string name="spoken_otp_suggestion">Dismiss OTP suggestion</string>
     <!-- Option to compress screenshot images when suggesting them. -->
     <string name="compress_screenshots">Compress screenshot suggestions</string>
     <!-- Description for the "compress screenshots" option. -->

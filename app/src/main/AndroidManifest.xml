@@ -73,18 +73,6 @@ SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
             <meta-data android:name="android.view.im" android:resource="@xml/method_dummy" />
         </service>
 
-        <!-- Disabled: BIND_NOTIFICATION_LISTENER_SERVICE triggers Google Play Protect Enhanced Fraud Protection blocking sideloads -->
-        <!--
-        <service android:name=".OtpNotificationListenerService"
-                 android:label="@string/auto_read_otp"
-                 android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-                 android:exported="true">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
-            </intent-filter>
-        </service>
-        -->
-
         <service android:name=".spellcheck.AndroidSpellCheckerService"
                  android:label="@string/spell_checker_service_name"
                  android:permission="android.permission.BIND_TEXT_SERVICE"

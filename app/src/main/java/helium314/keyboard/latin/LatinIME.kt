@@ -194,7 +194,6 @@ class LatinIME : InputMethodService(),
 
     private var gestureConsumer: GestureConsumer = GestureConsumer.NULL_GESTURE_CONSUMER
     val clipboardHistoryManager = ClipboardHistoryManager(this)
-    private val otpSuggestionManager = OtpSuggestionManager(this)
     private val mathSuggestionManager = MathSuggestionManager(this)
     var floatingKeyboardManager: FloatingKeyboardManager? = null
     private val mTempLocation = IntArray(2)
@@ -429,7 +428,6 @@ class LatinIME : InputMethodService(),
         handler.removeCallbacksAndMessages(null)
         floatingKeyboardManager?.destroy()
         clipboardHistoryManager.onDestroy()
-        otpSuggestionManager.stop()
         
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute {
             dictionaryFacilitator.closeDictionaries()
@@ -986,8 +984,6 @@ class LatinIME : InputMethodService(),
                 strip.setToolbarVisibility(defaultVisible, false)
             }
         }
-        
-        otpSuggestionManager.start()
 
         if (CjkInputManager.getInstance(this).isCjkSubtypeActive(richImm.currentSubtype)) {
             cjkCandidateStripView?.clear()
@@ -1131,7 +1127,6 @@ class LatinIME : InputMethodService(),
         voiceInputManager?.cancelVoice()
         updateVoiceKeepScreenOn(VoiceInputManager.VoiceState.IDLE)
         releaseVoicePluginOnIdle(preserveExistingSchedule = true)
-        otpSuggestionManager.stop()
         clipboardHistoryManager.onFinishInputView()
         AudioAndHapticFeedbackManager.getInstance().onFinishInputView()
         cjkCandidateStripView?.clear()
@@ -1884,16 +1879,6 @@ class LatinIME : InputMethodService(),
         }
     }
 
-    fun tryShowOtpSuggestion(): Boolean {
-        val strip = suggestionStripView ?: return false
-        val otpView = otpSuggestionManager.getOtpSuggestionView(strip)
-        if (otpView != null) {
-            strip.setExternalSuggestionView(otpView, false)
-            return true
-        }
-        return false
-    }
-
     fun tryShowMathSuggestion(): Boolean {
         val strip = suggestionStripView ?: return false
         val mathView = mathSuggestionManager.getMathSuggestionView(strip)
@@ -1915,7 +1900,7 @@ class LatinIME : InputMethodService(),
     }
 
     fun tryShowExternalSuggestion(): Boolean {
-        return tryShowOtpSuggestion() || tryShowMathSuggestion() || tryShowClipboardSuggestion()
+        return tryShowMathSuggestion() || tryShowClipboardSuggestion()
     }
 
     override val isExternalSuggestionVisible: Boolean

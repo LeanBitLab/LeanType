@@ -129,7 +129,6 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 - **🔐 Granular Backup & Encrypted API Key Export**: Export preferences, layouts, custom wordlists, typing history, and text expander shortcuts separately, with optional AES-256 encrypted export for third-party AI and media API keys.
 - **💾 Selective Category Backup & Restore**: Export and restore your data modularly with independent category checkboxes (**Layouts**, **Theme & Custom Backgrounds**, **Dictionaries & Typing History**, **Clipboard History**, and **General Settings**) without all-or-nothing overwrites.
 - **🔎 In-Palette Emoji Search**: Search emojis instantly by name or keyword directly within the emoji palette view, powered by locale-aware emoji dictionaries.
-- **✉️ Privacy-First OTP Auto-Fill**: Notification-based OTP verification code detection without sensitive SMS permissions, with customizable messaging app selection.
 - **📚 Smart Learning & Session Boost**: Adaptive personal dictionary learning threshold (1 to 5 times) and dynamic session word boosting.
 - **🚫 Blacklist & Regex Filtering**: Filter offensive words or unwanted suggestions with custom regex pattern support.
 - **🔄 Google Dictionary Import**: Seamlessly import personal dictionary words exported from Gboard.

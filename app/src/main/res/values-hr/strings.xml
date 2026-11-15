@@ -474,9 +474,6 @@
     <string name="immediate_auto_space_summary">Trenutno potvrdite razmak prilikom odabira prijedloga kako biste spriječili odgodu na sljedećem upisanom slovu</string>
     <string name="suggest_screenshots">Predloži nedavne snimke zaslona</string>
     <string name="suggest_screenshots_summary">Prikažite nedavno napravljene snimke zaslona kao prijedlog</string>
-    <string name="auto_read_otp">Automatsko čitanje OTP-a iz SMS-a</string>
-    <string name="auto_read_otp_summary">Prikažite kod iz dolaznog SMS-a kao prijedlog koji možete dodirnuti za umetanje</string>
-    <string name="spoken_otp_suggestion">Odbaci prijedlog OTP-a</string>
     <string name="compress_screenshots">Komprimiraj prijedloge snimki zaslona</string>
     <string name="compress_screenshots_summary">Smanjite kvalitetu i veličinu prijedloga snimki zaslona kako biste uštedjeli prostor</string>
     <string name="clipboard_fold_pinned">Zadano sklopi prikvačene stavke</string>

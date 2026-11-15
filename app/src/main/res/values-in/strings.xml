@@ -463,9 +463,6 @@
     <string name="suggest_punctuation_summary">Tampilkan tanda baca ketika tidak ada saran lain yang tersedia</string>
     <string name="suggest_screenshots">Sarankan tangkapan layar terbaru</string>
     <string name="suggest_screenshots_summary">Tampilkan tangkapan layar yang baru diambil sebagai saran</string>
-    <string name="auto_read_otp">Baca OTP otomatis dari SMS</string>
-    <string name="auto_read_otp_summary">Tampilkan kode dari SMS masuk sebagai saran yang dapat Anda ketuk untuk disisipkan</string>
-    <string name="spoken_otp_suggestion">Tutup saran OTP</string>
     <string name="compress_screenshots">Kompres saran tangkapan layar</string>
     <string name="compress_screenshots_summary">Kurangi kualitas dan ukuran saran tangkapan layar untuk menghemat ruang</string>
     <string name="clipboard_history_pinned_first">Tampilkan item yang disematkan di atas</string>

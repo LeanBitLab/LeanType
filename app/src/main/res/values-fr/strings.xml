@@ -462,9 +462,6 @@ Nouveau dictionnaire:
     <string name="immediate_auto_space_summary">Insérer un espace instantanément lors de la sélection d\'une suggestion pour éviter un délai sur la prochaine lettre tapée</string>
     <string name="suggest_screenshots">Suggérer des captures d\'écran récentes</string>
     <string name="suggest_screenshots_summary">Afficher les captures d\'écran récentes comme suggestion</string>
-    <string name="auto_read_otp">Lecture automatique des OTP depuis les SMS</string>
-    <string name="auto_read_otp_summary">Afficher le code d\'un SMS entrant comme suggestion que vous pouvez toucher pour insérer</string>
-    <string name="spoken_otp_suggestion">Rejeter la suggestion OTP</string>
     <string name="compress_screenshots">Compresser les suggestions de captures d\'écran</string>
     <string name="compress_screenshots_summary">Réduire la qualité et la taille des suggestions de captures pour économiser de l\'espace</string>
     <string name="clipboard_fold_pinned">Plier les éléments épinglés par défaut</string>

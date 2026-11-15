@@ -511,9 +511,6 @@
     <string name="immediate_auto_space_summary">Незабавно потвърждаване на интервал при избор на предложение, за да се предотврати забавяне при следващата въведена буква</string>
     <string name="suggest_screenshots">Предлагане на скорошни екранни снимки</string>
     <string name="suggest_screenshots_summary">Показване на наскоро направени екранни снимки като предложение</string>
-    <string name="auto_read_otp">Автоматично четене на OTP от SMS</string>
-    <string name="auto_read_otp_summary">Показване на кода от входящ SMS като предложение, което можете да докоснете за вмъкване</string>
-    <string name="spoken_otp_suggestion">Отхвърляне на OTP предложение</string>
     <string name="compress_screenshots">Компресиране на предложенията за екранни снимки</string>
     <string name="compress_screenshots_summary">Намаляване на качеството и размера на предложенията за екранни снимки за спестяване на място</string>
     <string name="clipboard_fold_pinned">Сгъване на фиксираните елементи по подразбиране</string>

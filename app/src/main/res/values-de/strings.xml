@@ -460,9 +460,6 @@
     <string name="immediate_auto_space_summary">Bei Auswahl eines Vorschlags sofort ein Leerzeichen einfügen, um Verzögerung beim nächsten getippten Buchstaben zu vermeiden</string>
     <string name="suggest_screenshots">Aktuelle Screenshots vorschlagen</string>
     <string name="suggest_screenshots_summary">Kürzlich aufgenommene Screenshots als Vorschlag anzeigen</string>
-    <string name="auto_read_otp">OTP automatisch aus SMS lesen</string>
-    <string name="auto_read_otp_summary">Den Code aus einer eingehenden SMS als Vorschlag anzeigen, den Sie zum Einfügen antippen können</string>
-    <string name="spoken_otp_suggestion">OTP-Vorschlag verwerfen</string>
     <string name="compress_screenshots">Screenshot-Vorschläge komprimieren</string>
     <string name="compress_screenshots_summary">Qualität und Größe der Screenshot-Vorschläge reduzieren, um Speicherplatz zu sparen</string>
     <string name="clipboard_fold_pinned">Angeheftete Einträge standardmäßig einklappen</string>

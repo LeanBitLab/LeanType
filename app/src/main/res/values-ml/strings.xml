@@ -190,9 +190,6 @@
     <string name="suggest_clipboard_content_summary">അടുത്തിടെ പകർത്തിയ ക്ലിപ്പ്ബോർഡ് ഉള്ളടക്കം ഒരു നിർദ്ദേശമായി കാണിക്കുക</string>
     <string name="suggest_screenshots">അടുത്തിടെ എടുത്ത സ്ക്രീൻഷോട്ടുകൾ നിർദ്ദേശിക്കുക</string>
     <string name="suggest_screenshots_summary">അടുത്തിടെ എടുത്ത സ്ക്രീൻഷോട്ടുകൾ ഒരു നിർദ്ദേശമായി കാണിക്കുക</string>
-    <string name="auto_read_otp">SMS-ൽ നിന്ന് OTP സ്വയം വായിക്കുക</string>
-    <string name="auto_read_otp_summary">വരുന്ന SMS-ൽ നിന്നുള്ള കോഡ് ടാപ്പുചെയ്ത് ചേർക്കാവുന്ന ഒരു നിർദ്ദേശമായി കാണിക്കുക</string>
-    <string name="spoken_otp_suggestion">OTP നിർദ്ദേശം ഒഴിവാക്കുക</string>
     <string name="compress_screenshots">സ്ക്രീൻഷോട്ട് നിർദ്ദേശങ്ങൾ കംപ്രസ്സ് ചെയ്യുക</string>
     <string name="compress_screenshots_summary">ഇടം ലാഭിക്കാൻ സ്ക്രീൻഷോട്ട് നിർദ്ദേശങ്ങളുടെ ഗുണനിലവാരവും വലുപ്പവും കുറയ്ക്കുക</string>
     <string name="gesture_floating_preview_static">ഫ്ലോട്ടിംഗ് പ്രിവ്യൂ</string>

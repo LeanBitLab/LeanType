@@ -463,9 +463,6 @@
     <string name="immediate_auto_space_summary">Confirmă spațiul instantaneu la alegerea unei sugestii pentru a preveni întârzierea la următoarea literă tastată</string>
     <string name="suggest_screenshots">Sugerează capturi de ecran recente</string>
     <string name="suggest_screenshots_summary">Afișează capturile de ecran făcute recent ca sugestie</string>
-    <string name="auto_read_otp">Citește automat OTP din SMS</string>
-    <string name="auto_read_otp_summary">Afișează codul dintr-un SMS primit ca sugestie pe care o poți atinge pentru a o introduce</string>
-    <string name="spoken_otp_suggestion">Respinge sugestia OTP</string>
     <string name="compress_screenshots">Comprimă sugestiile de capturi de ecran</string>
     <string name="compress_screenshots_summary">Reduc calitatea și dimensiunea sugestiilor de capturi de ecran pentru a economisi spațiu</string>
     <string name="clipboard_history_pinned_first">Afișează elementele fixate în partea de sus</string>

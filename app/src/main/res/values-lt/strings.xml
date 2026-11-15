@@ -469,9 +469,6 @@
     <string name="immediate_auto_space_summary">Iš karto įterpti tarpą pasirinkus pasiūlymą, kad būtų išvengta delsos rašant kitą raidę</string>
     <string name="suggest_screenshots">Siūlyti naujausias ekrano kopijas</string>
     <string name="suggest_screenshots_summary">Rodyti neseniai padarytas ekrano kopijas kaip pasiūlymą</string>
-    <string name="auto_read_otp">Automatiškai nuskaityti OTP iš SMS</string>
-    <string name="auto_read_otp_summary">Rodyti kodą iš gaunamos SMS kaip pasiūlymą, kurį galite paspausti, kad įterptumėte</string>
-    <string name="spoken_otp_suggestion">Atmesti OTP pasiūlymą</string>
     <string name="compress_screenshots">Suspausti ekrano kopijų pasiūlymus</string>
     <string name="compress_screenshots_summary">Sumažinti ekrano kopijų pasiūlymų kokybę ir dydį, kad sutaupytumėte vietos</string>
     <string name="clipboard_fold_pinned">Suskleisti prisegtus elementus pagal numatytuosius nustatymus</string>

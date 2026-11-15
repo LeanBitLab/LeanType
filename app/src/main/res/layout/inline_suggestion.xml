@@ -11,7 +11,7 @@ SPDX-License-Identifier: GPL-3.0-only
     android:layout_height="match_parent"
     tools:ignore="RtlSymmetry">
     <TextView
-        android:id="@+id/otp_suggestion_text"
+        android:id="@+id/inline_suggestion_text"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -25,8 +25,8 @@ SPDX-License-Identifier: GPL-3.0-only
         android:textStyle="bold"
         style="?android:attr/textAppearanceSmall" />
     <ImageView
-        android:id="@+id/otp_suggestion_close"
-        android:contentDescription="@string/spoken_otp_suggestion"
+        android:id="@+id/inline_suggestion_close"
+        android:contentDescription="@string/dialog_close"
         android:src="@drawable/ic_close"
         android:layout_width="44dp"
         android:layout_height="match_parent"
