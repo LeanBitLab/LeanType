@@ -1771,4 +1771,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="custom_text_styles_title">Estilos de texto personalizados</string>
     <string name="custom_text_styles_summary">Um estilo por linha. Formato: Nome: estilo A-Z a-z 0-9 (52 ou 62 caracteres).</string>
     <string name="voice_transcribe_while_speaking_summary">Espera mais curta para ditados longos</string>
+    <string name="backup_category_personal_dictionary">Dicionário Pessoal</string>
+    <string name="backup_category_text_expander">Expansor de texto</string>
 </resources>

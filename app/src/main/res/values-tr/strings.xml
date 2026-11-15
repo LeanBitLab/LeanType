@@ -1740,4 +1740,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="custom_text_styles_title">Özel metin stilleri</string>
     <string name="custom_text_styles_summary">Her satıra bir stil. Biçim: Ad: A-Z a-z 0-9 stilinde (52 veya 62 karakter).</string>
     <string name="voice_transcribe_while_speaking_summary">Uzun dikteler için daha kısa bekleme süresi</string>
+    <string name="backup_category_personal_dictionary">Kişisel Sözlük</string>
+    <string name="backup_category_text_expander">Metin Genişletici</string>
 </resources>

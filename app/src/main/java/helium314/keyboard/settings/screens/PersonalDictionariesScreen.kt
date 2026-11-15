@@ -45,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.utils.Log
+import helium314.keyboard.latin.utils.PersonalDictionaryTransfer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -202,75 +203,8 @@ private suspend fun importGboardDictionary(context: android.content.Context, uri
     return addedCount
 }
 
-private fun parseAndInsert(context: android.content.Context, reader: BufferedReader): Int {
-    val valuesList = mutableListOf<ContentValues>()
-    var line: String?
-    var wordIndex = 0
-    var shortcutIndex = 1
-    var localeIndex = 2
-    while (reader.readLine().also { line = it } != null) {
-        val currentLine = line ?: continue
-        if (currentLine.startsWith("#")) {
-            val formatPrefix = "# Gboard Dictionary format:"
-            if (currentLine.startsWith(formatPrefix)) {
-                val columnsStr = currentLine.substring(formatPrefix.length)
-                val columns = if (columnsStr.contains("\t")) {
-                    columnsStr.split("\t")
-                } else {
-                    columnsStr.split(Regex("\\s+"))
-                }.map { it.trim() }
-                val wIdx = columns.indexOf("word")
-                val sIdx = columns.indexOf("shortcut")
-                val lIdx = columns.indexOf("language_tag").let { if (it == -1) columns.indexOf("locale") else it }
-                if (wIdx != -1) {
-                    wordIndex = wIdx
-                    shortcutIndex = sIdx
-                    localeIndex = lIdx
-                }
-            }
-            continue
-        }
-        val parts = currentLine.split("\t")
-        if (parts.isNotEmpty()) {
-            val word = if (wordIndex in parts.indices) parts[wordIndex] else ""
-            if (word.isNotBlank()) {
-                val shortcut = if (shortcutIndex != -1 && shortcutIndex in parts.indices) parts[shortcutIndex].ifBlank { null } else null
-                val localeStr = if (localeIndex != -1 && localeIndex in parts.indices) parts[localeIndex].ifBlank { null } else null
-                
-                val locale = if (localeStr != null && localeStr != "all") {
-                    try { Locale.forLanguageTag(localeStr) } catch(_: Exception) { null }
-                } else null
-                
-                val values = ContentValues(5).apply {
-                    put(UserDictionary.Words.WORD, word)
-                    put(UserDictionary.Words.FREQUENCY, 250)
-                    put(UserDictionary.Words.LOCALE, locale?.toString())
-                    put(UserDictionary.Words.APP_ID, 0)
-                    put(UserDictionary.Words.SHORTCUT, shortcut)
-                }
-                valuesList.add(values)
-            }
-        }
-    }
-
-    if (valuesList.isEmpty()) return 0
-
-    return try {
-        context.contentResolver.bulkInsert(UserDictionary.Words.CONTENT_URI, valuesList.toTypedArray())
-    } catch (e: Exception) {
-        Log.e("ImportDict", "Bulk insert failed, falling back to one-by-one insert", e)
-        var successCount = 0
-        for (values in valuesList) {
-            try {
-                context.contentResolver.insert(UserDictionary.Words.CONTENT_URI, values)
-                successCount++
-            } catch (ex: Exception) {
-                Log.w("ImportDict", "Failed to add word ${values.getAsString(UserDictionary.Words.WORD)}", ex)
-            }
-        }
-        successCount
-    }
-}
+private fun parseAndInsert(context: android.content.Context, reader: BufferedReader): Int =
+    PersonalDictionaryTransfer.insert(context, PersonalDictionaryTransfer.parse(reader), skipExisting = false)
 
 fun getSortedDictionaryLocales(): TreeSet<Locale> {
     val sortedLocales = sortedSetOf<Locale>(compareBy { it.toLanguageTag().lowercase() })
@@ -293,27 +227,8 @@ fun getSortedDictionaryLocales(): TreeSet<Locale> {
 }
 
 private suspend fun exportAllDictionaries(context: android.content.Context, uri: android.net.Uri): Int = withContext(Dispatchers.IO) {
-    val cursor = context.contentResolver.query(
-        UserDictionary.Words.CONTENT_URI,
-        arrayOf(UserDictionary.Words.WORD, UserDictionary.Words.SHORTCUT, UserDictionary.Words.LOCALE),
-        null, null, UserDictionary.Words.DEFAULT_SORT_ORDER
-    ) ?: return@withContext 0
-    var count = 0
-    context.contentResolver.openOutputStream(uri)?.bufferedWriter()?.use { writer ->
-        writer.write("# Gboard Dictionary format: word\tshortcut\tlocale\n")
-        val wordIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.WORD)
-        val shortcutIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.SHORTCUT)
-        val localeIndex = cursor.getColumnIndexOrThrow(UserDictionary.Words.LOCALE)
-        while (cursor.moveToNext()) {
-            val word = cursor.getString(wordIndex) ?: continue
-            val shortcut = cursor.getString(shortcutIndex).orEmpty()
-            val loc = cursor.getString(localeIndex).orEmpty()
-            writer.write("$word\t$shortcut\t$loc\n")
-            count++
-        }
-    }
-    cursor.close()
-    count
+    val entries = PersonalDictionaryTransfer.readAll(context)
+    context.contentResolver.openOutputStream(uri)?.bufferedWriter()?.use { PersonalDictionaryTransfer.write(entries.asSequence(), it) } ?: 0
 }
 
 @Preview

@@ -715,6 +715,8 @@
     <string name="backup_category_layouts">Layouts</string>
     <string name="backup_category_theme">Theme &amp; Custom Backgrounds</string>
     <string name="backup_category_dictionaries">Dictionaries</string>
+    <string name="backup_category_personal_dictionary">Personal Dictionary</string>
+    <string name="backup_category_text_expander">Text Expander</string>
     <string name="backup_category_typing_history">Typing History</string>
     <string name="backup_category_api_keys">API Keys</string>
     <string name="backup_category_clipboard">Clipboard History</string>

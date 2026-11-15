@@ -1713,4 +1713,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="custom_text_styles_title">Vlastní styly textu</string>
     <string name="custom_text_styles_summary">Jeden styl na řádek. Formát: Název: stylizovaný A-Z a-z 0-9 (52 nebo 62 znaků).</string>
     <string name="voice_transcribe_while_speaking_summary">Kratší čekání na dlouhé diktáty</string>
+    <string name="backup_category_personal_dictionary">Osobní slovník</string>
+    <string name="backup_category_text_expander">Text Expander</string>
 </resources>

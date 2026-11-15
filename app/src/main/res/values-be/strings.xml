@@ -1748,4 +1748,6 @@
     <string name="custom_text_styles_title">Карыстальніцкія стылі тэксту</string>
     <string name="custom_text_styles_summary">Адзін стыль на радок. Фармат: Імя: у стылі A-Z a-z 0-9 (52 або 62 сімвалы).</string>
     <string name="voice_transcribe_while_speaking_summary">Карацей чакаць доўгіх дыктовак</string>
+    <string name="backup_category_personal_dictionary">Асабісты слоўнік</string>
+    <string name="backup_category_text_expander">Расшыральнік тэксту</string>
 </resources>

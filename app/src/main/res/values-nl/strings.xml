@@ -1755,4 +1755,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="custom_text_styles_title">Aangepaste tekststijlen</string>
     <string name="custom_text_styles_summary">Eén stijl per regel. Formaat: Naam: opgemaakt A-Z a-z 0-9 (52 of 62 tekens).</string>
     <string name="voice_transcribe_while_speaking_summary">Kortere wachttijd voor lange dictaten</string>
+    <string name="backup_category_personal_dictionary">Persoonlijk woordenboek</string>
+    <string name="backup_category_text_expander">Tekstuitbreider</string>
 </resources>

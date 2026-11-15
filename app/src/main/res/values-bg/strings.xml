@@ -1748,4 +1748,6 @@
     <string name="custom_text_styles_title">Персонализирани текстови стилове</string>
     <string name="custom_text_styles_summary">Един стил на ред. Формат: Име: стилизирано A-Z a-z 0-9 (52 или 62 знака).</string>
     <string name="voice_transcribe_while_speaking_summary">По-кратко изчакване за дълги диктовки</string>
+    <string name="backup_category_personal_dictionary">Личен речник</string>
+    <string name="backup_category_text_expander">Текстов разширител</string>
 </resources>

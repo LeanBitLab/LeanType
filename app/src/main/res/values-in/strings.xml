@@ -1711,4 +1711,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="custom_text_styles_title">Gaya teks khusus</string>
     <string name="custom_text_styles_summary">Satu gaya per baris. Format: Nama: diberi gaya A-Z a-z 0-9 (52 atau 62 karakter).</string>
     <string name="voice_transcribe_while_speaking_summary">Penantian yang lebih singkat untuk dikte yang panjang</string>
+    <string name="backup_category_personal_dictionary">Kamus Pribadi</string>
+    <string name="backup_category_text_expander">Ekspander Teks</string>
 </resources>

@@ -1748,4 +1748,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="custom_text_styles_title">Kohandatud tekstistiilid</string>
     <string name="custom_text_styles_summary">Üks stiil rea kohta. Vorming: Nimi: stiilis A-Z a-z 0-9 (52 või 62 tähemärki).</string>
     <string name="voice_transcribe_while_speaking_summary">Lühem ootamine pikkade diktaatide jaoks</string>
+    <string name="backup_category_personal_dictionary">Isiklik sõnastik</string>
+    <string name="backup_category_text_expander">Tekstilaiend</string>
 </resources>

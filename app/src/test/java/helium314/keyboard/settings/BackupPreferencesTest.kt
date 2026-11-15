@@ -12,6 +12,7 @@ import helium314.keyboard.latin.utils.protectedPrefs
 import helium314.keyboard.settings.preferences.BackupCategory
 import helium314.keyboard.settings.preferences.backupFilePatterns
 import helium314.keyboard.settings.preferences.getCategoryForFilePath
+import helium314.keyboard.settings.preferences.getCategoryForPrefKey
 import helium314.keyboard.settings.preferences.restoreMainPreferences
 import java.io.File
 import kotlinx.serialization.json.Json
@@ -84,9 +85,24 @@ class BackupPreferencesTest {
         assertTrue(prefs.edit().putString("theme_style", "keep").putString("pref_text_expander_data", "old").commit())
         restoreMainPreferences(context,
             lines(mapOf("pref_text_expander_data" to "{}")), lines(emptyMap()),
-            setOf(BackupCategory.DICTIONARIES))
+            setOf(BackupCategory.TEXT_EXPANDER))
         assertEquals("keep", prefs.getString("theme_style", null))
         assertEquals("{}", prefs.getString(TextExpanderUtils.PREF_DATA, null))
+    }
+
+    @Test
+    fun dictionariesDoNotRestoreTextExpander() {
+        restoreMainPreferences(context, lines(mapOf(TextExpanderUtils.PREF_DATA to "{}")),
+            null, setOf(BackupCategory.DICTIONARIES, BackupCategory.PERSONAL_DICTIONARY))
+        assertFalse(prefs.contains(TextExpanderUtils.PREF_DATA))
+    }
+
+    @Test
+    fun dictionaryFilesAndSettingsStayInDictionaries() {
+        assertEquals(BackupCategory.DICTIONARIES, getCategoryForPrefKey("block_potentially_offensive"))
+        assertEquals(BackupCategory.DICTIONARIES, getCategoryForFilePath("dicts${File.separator}en${File.separator}main_en.dict"))
+        assertEquals(BackupCategory.DICTIONARIES, getCategoryForFilePath("blacklists${File.separator}en.txt"))
+        assertEquals(BackupCategory.TEXT_EXPANDER, getCategoryForPrefKey(TextExpanderUtils.PREF_ENABLED))
     }
 
     @Test
@@ -151,11 +167,11 @@ class BackupPreferencesTest {
     }
 
     @Test
-    fun textExpanderImagesUseDictionariesCategoryAndMatchBackupPattern() {
+    fun textExpanderImagesUseTextExpanderCategoryAndMatchBackupPattern() {
         val samplePath = "text_expander_images${File.separator}img_1700000000_abcd1234.png"
         val tempPath = "text_expander_images${File.separator}pending_1234.tmp"
 
-        assertEquals(BackupCategory.DICTIONARIES, getCategoryForFilePath("text_expander_images/img_1700000000_abcd1234.png"))
+        assertEquals(BackupCategory.TEXT_EXPANDER, getCategoryForFilePath("text_expander_images/img_1700000000_abcd1234.png"))
         assertTrue(backupFilePatterns.any { it.matches(samplePath) })
         assertFalse(backupFilePatterns.any { it.matches(tempPath) })
     }
