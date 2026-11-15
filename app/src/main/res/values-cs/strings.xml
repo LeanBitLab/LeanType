@@ -592,10 +592,6 @@
     <string name="languages_title">Jazyky</string>
     <string name="compact_number_row_in_symbols">Kompaktní číselná řada symbolů</string>
     <string name="compact_number_row_in_symbols_summary">Nahradit první řadu symbolů místo přidání samostatné řady</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Vyhledávání ve schránce</string>
     <string name="download">Stáhnout</string>
     <string name="downloading">Stahování…</string>
@@ -623,8 +619,6 @@
     <string name="voice_open_system_settings_summary">Povolit nebo nakonfigurovat nainstalované aplikace hlasového psaní v nastavení Android</string>
     <string name="voice_app_not_enabled">Aplikace hlasového psaní je nainstalována, ale není povolena. Povolte ji v nastavení Android → Klávesnice na obrazovce.</string>
     <string name="voice_no_app_found">Nebyla nalezena žádná aplikace hlasového psaní. Nainstalujte aplikaci jako FUTO Voice Input nebo povolte Offline hlas v nastavení LeanType.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Plovoucí</string>
     <string name="proofread">Korektura</string>
     <string name="api_error_rate_limit">Dosažen limit požadavků. Počkejte chvíli a zkuste to znovu.</string>
@@ -671,11 +665,6 @@
     <string name="backup_category_clipboard">Historie schránky</string>
     <string name="backup_category_general">Obecná nastavení</string>
     <string name="backup_select_items">Vyberte položky k zahrnutí:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Ponechat model načtený</string>
     <string name="offline_keep_model_loaded_summary">Ponechat offline AI model v paměti, aby se předešlo zpoždění při opětovném načítání (využívá více RAM)</string>
     <string name="translate">Přeložit</string>
@@ -808,7 +797,6 @@
     <string name="settings_screen_ai_integration">Integrace AI</string>
     <string name="custom_ai_keys_title">Vlastní AI klávesy</string>
     <string name="custom_ai_keys_summary">Přizpůsobte číslované klávesy panelu nástrojů pomocí vlastních promptů</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Režim touchpadu</string>
     <string name="touchpad_sensitivity">Citlivost touchpadu</string>
     <string name="force_auto_caps_title">Vynutit automatickou kapitalizaci</string>

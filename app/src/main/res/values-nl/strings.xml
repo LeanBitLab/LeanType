@@ -610,7 +610,6 @@
     <string name="languages_title">Talen</string>
     <string name="compact_number_row_in_symbols">Compacte symbolen cijferregel</string>
     <string name="compact_number_row_in_symbols_summary">Eerste rij symbolen vervangen in plaats van een aparte rij toe te voegen</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
     <string name="paste">Plakken</string>
     <string name="copy">Kopiëren</string>
     <string name="cut">Knippen</string>
@@ -667,11 +666,6 @@
     <string name="backup_category_clipboard">Klembordgeschiedenis</string>
     <string name="backup_category_general">Algemene instellingen</string>
     <string name="backup_select_items">Selecteer items om op te nemen:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Model geladen houden</string>
     <string name="offline_keep_model_loaded_summary">Houd het offline AI-model in het geheugen om vertraging bij het opnieuw laden te voorkomen (gebruikt meer RAM)</string>
     <string name="offline_model_title">Offline model</string>

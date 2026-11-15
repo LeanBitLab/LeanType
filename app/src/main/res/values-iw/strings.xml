@@ -598,10 +598,6 @@
     <string name="languages_title">שפות</string>
     <string name="compact_number_row_in_symbols">שורת מספרים קומפקטית בסמלים</string>
     <string name="compact_number_row_in_symbols_summary">החלף את השורה הראשונה של הסמלים במקום להוסיף שורה נפרדת</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">חיפוש בלוח</string>
     <string name="download">הורד</string>
     <string name="downloading">מוריד…</string>
@@ -629,8 +625,6 @@
     <string name="voice_open_system_settings_summary">אפשר או הגדר אפליקציות הקלדה קולית מותקנות בהגדרות Android</string>
     <string name="voice_app_not_enabled">אפליקציית ההקלדה הקולית מותקנת אך אינה מופעלת. הפעל אותה בהגדרות Android ← מקלדת על המסך.</string>
     <string name="voice_no_app_found">לא נמצאה אפליקציית הקלדה קולית. התקן אפליקציה כמו FUTO Voice Input או אפשר קלט קולי לא מקוון בהגדרות LeanType.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">צף</string>
     <string name="proofread">הגהה</string>
     <string name="api_error_rate_limit">הגעת למגבלת הקצב. אנא המתן רגע ונסה שוב.</string>
@@ -677,11 +671,6 @@
     <string name="backup_category_clipboard">היסטוריית לוח</string>
     <string name="backup_category_general">הגדרות כלליות</string>
     <string name="backup_select_items">בחר פריטים לכלול:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">שמור על המודל טעון</string>
     <string name="offline_keep_model_loaded_summary">שמור את מודל ה-AI הלא מקוון בזיכרון כדי למנוע עיכוב בטעינה מחדש (משתמש ביותר RAM)</string>
     <string name="translate">תרגם</string>
@@ -814,7 +803,6 @@
     <string name="settings_screen_ai_integration">שילוב AI</string>
     <string name="custom_ai_keys_title">מקשי AI מותאמים אישית</string>
     <string name="custom_ai_keys_summary">התאם אישית מקשי סרגל כלים ממוספרים עם ההנחיות שלך</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">מצב משטח מגע</string>
     <string name="touchpad_sensitivity">רגישות משטח מגע</string>
     <string name="force_auto_caps_title">כפה אותיות גדולות אוטומטיות</string>

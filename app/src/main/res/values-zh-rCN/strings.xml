@@ -595,10 +595,6 @@
     <string name="languages_title">语言</string>
     <string name="compact_number_row_in_symbols">紧凑符号数字行</string>
     <string name="compact_number_row_in_symbols_summary">替换第一行符号，而不是添加单独的行</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">剪贴板搜索</string>
     <string name="download">下载</string>
     <string name="downloading">正在下载…</string>
@@ -626,8 +622,6 @@
     <string name="voice_open_system_settings_summary">在 Android 设置中启用或配置已安装的语音输入应用</string>
     <string name="voice_app_not_enabled">语音输入应用已安装但未启用。请在 Android 设置 → 屏幕键盘中启用它。</string>
     <string name="voice_no_app_found">未找到语音输入应用。请安装类似 FUTO Voice Input 的应用，或在 LeanType 设置中启用离线语音。</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">悬浮</string>
     <string name="proofread">校对</string>
     <string name="api_error_rate_limit">已达到速率限制。请稍等片刻再试。</string>
@@ -674,11 +668,6 @@
     <string name="backup_category_clipboard">剪贴板历史</string>
     <string name="backup_category_general">常规设置</string>
     <string name="backup_select_items">选择要包含的项目：</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">保持模型加载状态</string>
     <string name="offline_keep_model_loaded_summary">将离线 AI 模型保留在内存中以避免重新加载延迟 (占用更多 RAM)</string>
     <string name="translate">翻译</string>

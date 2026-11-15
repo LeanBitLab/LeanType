@@ -590,10 +590,6 @@
     <string name="languages_title">Jezici</string>
     <string name="compact_number_row_in_symbols">Kompaktni red s brojevima u simbolima</string>
     <string name="compact_number_row_in_symbols_summary">Zamijenite prvi red simbola umjesto dodavanja zasebnog reda</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Pretraživanje međuspremnika</string>
     <string name="download">Preuzmi</string>
     <string name="downloading">Preuzimanje…</string>
@@ -621,8 +617,6 @@
     <string name="voice_open_system_settings_summary">Omogućite ili konfigurirajte instalirane aplikacije za glasovno tipkanje u Postavkama Androida</string>
     <string name="voice_app_not_enabled">Aplikacija za glasovno tipkanje je instalirana, ali nije omogućena. Omogućite je u Postavkama Androida → Tipkovnica na zaslonu.</string>
     <string name="voice_no_app_found">Nije pronađena aplikacija za glasovno tipkanje. Instalirajte aplikaciju poput FUTO Voice Input ili omogućite Offline glas u postavkama LeanTypea.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Plutajuće</string>
     <string name="proofread">Lektoriranje</string>
     <string name="api_error_rate_limit">Dosegnuto je ograničenje stope. Molimo pričekajte trenutak i pokušajte ponovo.</string>
@@ -669,11 +663,6 @@
     <string name="backup_category_clipboard">Povijest međuspremnika</string>
     <string name="backup_category_general">Opće postavke</string>
     <string name="backup_select_items">Odaberite stavke za uključivanje:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Zadrži model učitanim</string>
     <string name="offline_keep_model_loaded_summary">Zadržite offline AI model u memoriji kako biste izbjegli odgodu ponovnog učitavanja (koristi više RAM-a)</string>
     <string name="translate">Prevedi</string>
@@ -806,7 +795,6 @@
     <string name="settings_screen_ai_integration">AI integracija</string>
     <string name="custom_ai_keys_title">Prilagođene AI tipke</string>
     <string name="custom_ai_keys_summary">Prilagodite numerirane tipke alatne trake vlastitim uputama (promptovima)</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Način dodirne pločice</string>
     <string name="touchpad_sensitivity">Osjetljivost dodirne pločice</string>
     <string name="force_auto_caps_title">Prisili automatsko pisanje velikih slova</string>

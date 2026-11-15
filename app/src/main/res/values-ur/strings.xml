@@ -276,7 +276,6 @@
     <string name="show_tld_popup_keys">TLD پاپ اپ کیز دکھائیں</string>
     <string name="show_tld_popup_keys_summary">URLs اور ای میل پتے ٹائپ کرتے وقت پیریڈ کلید کے پاپ اپ کو ٹاپ لیول ڈومینز سے تبدیل کریں</string>
     <string name="popup_keys_number">نمبر قطار</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
     <string name="popup_keys_language_priority">زبان (ترجیح)</string>
     <string name="popup_keys_layout">لے آؤٹ</string>
     <string name="popup_keys_symbols">علامات</string>
@@ -287,9 +286,6 @@
     <string name="toolbar_mode_hidden">پوشیدہ</string>
     <string name="toolbar_hiding_global">کلپ بورڈ اور ایموجی ٹول بار بھی چھپائیں</string>
     <string name="toolbar_keys">ٹول بار کیز منتخب کریں</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard">کلپ بورڈ</string>
     <string name="clear_clipboard">کلپ بورڈ صاف کریں</string>
     <string name="clipboard_search">کلپ بورڈ تلاش</string>
@@ -298,8 +294,6 @@
     <string name="download_failed">ڈاؤن لوڈ ناکام</string>
     <string name="installed">انسٹال ہو گیا</string>
     <string name="voice">صوتی ان پٹ</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="select_word">لفظ منتخب کریں</string>
     <string name="one_handed">ایک ہاتھ والا موڈ</string>
     <string name="floating">تیرتا</string>
@@ -361,10 +355,6 @@
     <string name="backup_category_clipboard">کلپ بورڈ کی تاریخ</string>
     <string name="backup_category_general">عام ترتیبات</string>
     <string name="backup_select_items">شامل کرنے کے لیے آئٹمز منتخب کریں:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">ماڈل لوڈ رکھیں</string>
     <string name="offline_keep_model_loaded_summary">دوبارہ لوڈ کرنے میں تاخیر سے بچنے کے لیے آف لائن AI ماڈل کو میموری میں رکھیں (زیادہ RAM استعمال کرتا ہے)</string>
     <string name="translate">ترجمہ کریں</string>
@@ -678,7 +668,6 @@
     <string name="label_switch_onehanded_key">ایک ہاتھ والے موڈ کی طرف تبدیل کریں</string>
     <string name="label_shortcut_key_disabled">صوتی ان پٹ غیر فعال ہے</string>
     <string name="label_toolbar_key">ٹول بار دکھائیں / چھپائیں</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="label_zwj_key">زیرو وڈتھ جوائنر</string>
     <string name="label_zwnj_key">زیرو وڈتھ نان جوائنر</string>
     <string name="label_bin">بن</string>
@@ -902,7 +891,6 @@
     <string name="voice_no_app_found">کوئی صوتی ایپ نہیں ملی۔ FUTO Voice Input جیسی ایپ انسٹال کریں یا LeanType کی ترتیبات میں آف لائن آواز کو فعال کریں۔</string>
     <string name="api_error_rate_limit">درخواست کی حد ختم ہو گئی۔ براہ کرم تھوڑی دیر انتظار کریں اور دوبارہ کوشش کریں۔</string>
     <string name="api_error_service_unavailable">سروس عارضی طور پر دستیاب نہیں ہے۔ براہ کرم بعد میں دوبارہ کوشش کریں۔</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">وائس ماڈل</string>
     <string name="voice_model_summary">وائس ٹرانسکرپشن کے لیے AI ماڈل منتخب کریں</string>
     <string name="plugins_title">پلگ انز</string>

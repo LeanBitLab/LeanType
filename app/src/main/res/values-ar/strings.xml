@@ -509,16 +509,11 @@
     <string name="languages_title">اللغات</string>
     <string name="compact_number_row_in_symbols">صف أرقام مضغوط في الرموز</string>
     <string name="compact_number_row_in_symbols_summary">استبدال الصف الأول من الرموز بدلاً من إضافة صف منفصل</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
     <string name="clipboard_search">البحث في الحافظة</string>
     <string name="download">تنزيل</string>
     <string name="downloading">جارٍ التنزيل…</string>
     <string name="download_failed">فشل التنزيل</string>
     <string name="installed">مُثبّت</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">عائم</string>
     <string name="proofread">تدقيق</string>
     <string name="gemini_api_key_title">مفتاح Gemini API</string>
@@ -563,10 +558,6 @@
     <string name="backup_category_clipboard">سجل الحافظة</string>
     <string name="backup_category_general">الإعدادات العامة</string>
     <string name="backup_select_items">حدد العناصر المراد تضمينها:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">إبقاء النموذج محملاً</string>
     <string name="offline_keep_model_loaded_summary">الاحتفاظ بنموذج AI دون اتصال في الذاكرة لتجنب تأخير إعادة التحميل (يستخدم ذاكرة RAM أكبر)</string>
     <string name="translate">ترجمة</string>
@@ -672,7 +663,6 @@
     <string name="settings_screen_ai_integration">تكامل AI</string>
     <string name="custom_ai_keys_title">مفاتيح AI مخصصة</string>
     <string name="custom_ai_keys_summary">تخصيص مفاتيح شريط الأدوات المرقمة بالمطالبات الخاصة بك</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">وضع لوحة اللمس</string>
     <string name="touchpad_sensitivity">حساسية لوحة اللمس</string>
     <string name="force_auto_caps_title">فرض الكتابة التلقائية بالأحرف الكبيرة</string>
@@ -869,7 +859,6 @@
     <string name="voice_no_app_found">لم يتم العثور على أي تطبيق صوتي. قم بتثبيت تطبيق مثل FUTO Voice Input أو فعّل الصوت بلا إنترنت في إعدادات LeanType.</string>
     <string name="api_error_rate_limit">تم تجاوز حد الطلبات. يرجى الانتظار لحظة والمحاولة مرة أخرى.</string>
     <string name="api_error_service_unavailable">الخدمة غير متوفرة مؤقتا. يرجى المحاولة لاحقا.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">نموذج الصوت</string>
     <string name="voice_model_summary">حدد نموذج AI لنسخ الصوت</string>
     <string name="plugins_title">الإضافات</string>

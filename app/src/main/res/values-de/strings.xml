@@ -505,17 +505,11 @@
     <string name="languages_title">Sprachen</string>
     <string name="compact_number_row_in_symbols">Kompakte Zahlenreihe in Symbolen</string>
     <string name="compact_number_row_in_symbols_summary">Ersetzt die erste Symbolreihe, anstatt eine separate Zeile hinzuzufügen</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Zwischenablage durchsuchen</string>
     <string name="download">Herunterladen</string>
     <string name="downloading">Herunterladen…</string>
     <string name="download_failed">Download fehlgeschlagen</string>
     <string name="installed">Installiert</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Schwebend</string>
     <string name="proofread">Korrekturlesen</string>
     <string name="gemini_api_key_title">Gemini API-Schlüssel</string>
@@ -560,10 +554,6 @@
     <string name="backup_category_clipboard">Zwischenablage-Verlauf</string>
     <string name="backup_category_general">Allgemeine Einstellungen</string>
     <string name="backup_select_items">Einzuschließende Elemente auswählen:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">Modell geladen halten</string>
     <string name="offline_keep_model_loaded_summary">Das Offline-AI-Modell im Speicher behalten, um Nachladeverzögerung zu vermeiden (verbraucht mehr RAM)</string>
     <string name="translate">Übersetzen</string>
@@ -669,7 +659,6 @@
     <string name="settings_screen_ai_integration">AI-Integration</string>
     <string name="custom_ai_keys_title">Benutzerdefinierte AI-Tasten</string>
     <string name="custom_ai_keys_summary">Nummerierte Werkzeugleisten-Tasten mit eigenen Prompts anpassen</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Touchpad-Modus</string>
     <string name="touchpad_sensitivity">Touchpad-Empfindlichkeit</string>
     <string name="force_auto_caps_title">Automatische Großschreibung erzwingen</string>
@@ -891,7 +880,6 @@
     <string name="voice_no_app_found">Keine Spracheingabe-App gefunden. Installieren Sie eine App wie FUTO Voice Input oder aktivieren Sie Offline-Sprache in den LeanType-Einstellungen.</string>
     <string name="api_error_rate_limit">Ratenbegrenzung erreicht. Bitte warten Sie einen Moment und versuchen Sie es erneut.</string>
     <string name="api_error_service_unavailable">Dienst vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">Sprachmodell</string>
     <string name="voice_model_summary">AI-Modell für Sprachtranskription auswählen</string>
     <string name="plugins_title">Plugins</string>

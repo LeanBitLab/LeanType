@@ -283,7 +283,6 @@
     <string name="show_tld_popup_keys">TLD പോപ്പപ്പ് കീകൾ കാണിക്കുക</string>
     <string name="show_tld_popup_keys_summary">URL-കളും ഇമെയിൽ വിലാസങ്ങളും ടൈപ്പ് ചെയ്യുമ്പോൾ പീരിയഡ് കീ പോപ്പപ്പുകൾ ടോപ്പ് ലെവൽ ഡൊമെയ്നുകൾ ഉപയോഗിച്ച് മാറ്റിസ്ഥാപിക്കുക</string>
     <string name="popup_keys_number">നമ്പർ വരി</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
     <string name="popup_keys_language_priority">ഭാഷ (മുൻഗണന)</string>
     <string name="popup_keys_layout">ലേഔട്ട്</string>
     <string name="popup_keys_symbols">ചിഹ്നങ്ങൾ</string>
@@ -294,9 +293,6 @@
     <string name="toolbar_mode_hidden">മറഞ്ഞിരിക്കുന്നു</string>
     <string name="toolbar_hiding_global">ക്ലിപ്പ്ബോർഡ്, ഇമോജി ടൂൾബാറുകളും മറയ്ക്കുക</string>
     <string name="toolbar_keys">ടൂൾബാർ കീകൾ തിരഞ്ഞെടുക്കുക</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard">ക്ലിപ്പ്ബോർഡ്</string>
     <string name="clear_clipboard">ക്ലിപ്പ്ബോർഡ് മായ്ക്കുക</string>
     <string name="clipboard_search">ക്ലിപ്പ്ബോർഡ് തിരയൽ</string>
@@ -305,8 +301,6 @@
     <string name="download_failed">ഡൗൺലോഡ് പരാജയപ്പെട്ടു</string>
     <string name="installed">ഇൻസ്റ്റാൾ ചെയ്തു</string>
     <string name="voice">വോയ്സ് ഇൻപുട്ട്</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="select_word">വാക്ക് തിരഞ്ഞെടുക്കുക</string>
     <string name="one_handed">ഒറ്റക്കൈ മോഡ്</string>
     <string name="floating">ഫ്ലോട്ട്</string>
@@ -368,10 +362,6 @@
     <string name="backup_category_clipboard">ക്ലിപ്പ്ബോർഡ് ചരിത്രം</string>
     <string name="backup_category_general">പൊതു ക്രമീകരണങ്ങൾ</string>
     <string name="backup_select_items">ഉൾപ്പെടുത്തേണ്ട ഇനങ്ങൾ തിരഞ്ഞെടുക്കുക:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">മോഡൽ ലോഡുചെയ്ത് സൂക്ഷിക്കുക</string>
     <string name="offline_keep_model_loaded_summary">വീണ്ടും ലോഡുചെയ്യുന്നതിലെ കാലതാമസം ഒഴിവാക്കാൻ ഓഫ്ലൈൻ AI മോഡൽ മെമ്മറിയിൽ സൂക്ഷിക്കുക (കൂടുതൽ RAM ഉപയോഗിക്കുന്നു)</string>
     <string name="translate">വിവർത്തനം ചെയ്യുക</string>
@@ -678,7 +668,6 @@
     <string name="label_switch_onehanded_key">ഒറ്റക്കൈ മോഡ് വശം മാറ്റുക</string>
     <string name="label_shortcut_key_disabled">വോയ്സ് ഇൻപുട്ട് പ്രവർത്തനരഹിതമാക്കി</string>
     <string name="label_toolbar_key">ടൂൾബാർ കാണിക്കുക / മറയ്ക്കുക</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="label_zwj_key">പൂജ്യം-വീതി ജോയിനർ</string>
     <string name="label_zwnj_key">പൂജ്യം-വീതി നോൺ-ജോയിനർ</string>
     <string name="label_bin">ബിൻ</string>
@@ -902,7 +891,6 @@
     <string name="voice_no_app_found">വോയ്സ് ടൈപ്പിംഗ് ആപ്പുകളൊന്നും കണ്ടെത്തിയില്ല. FUTO Voice Input പോലുള്ള ഒരു ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുക അല്ലെങ്കിൽ LeanType ക്രമീകരണങ്ങളിൽ ഓഫ്‌ലൈൻ വോയ്സ് പ്രവർത്തനക്ഷമമാക്കുക.</string>
     <string name="api_error_rate_limit">റേറ്റ് പരിധിയിലെത്തി. ദയവായി അൽപ്പസമയം കാത്തിരുന്ന് വീണ്ടും ശ്രമിക്കുക.</string>
     <string name="api_error_service_unavailable">സേവനം താൽക്കാലികമായി ലഭ്യമല്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">വോയ്സ് മോഡൽ</string>
     <string name="voice_model_summary">വോയ്സ് ട്രാൻസ്ക്രിപ്ഷനായി AI മോഡൽ തിരഞ്ഞെടുക്കുക</string>
     <string name="plugins_title">പ്ലഗിനുകൾ</string>

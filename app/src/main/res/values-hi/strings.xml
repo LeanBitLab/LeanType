@@ -216,7 +216,6 @@
     <string name="voice_no_app_found">कोई वॉइस ऐप नहीं मिला। FUTO Voice Input जैसा ऐप इंस्टॉल करें या LeanType सेटिंग्स में ऑफ़लाइन वॉइस सक्षम करें।</string>
     <string name="api_error_rate_limit">अनुरोध सीमा पार हो गई। कृपया कुछ देर प्रतीक्षा करें और पुनः प्रयास करें।</string>
     <string name="api_error_service_unavailable">सेवा अस्थायी रूप से अनुपलब्ध है। कृपया बाद में पुनः प्रयास करें।</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">वॉइस मॉडल</string>
     <string name="voice_model_summary">वॉइस ट्रांसक्रिप्शन के लिए AI मॉडल चुनें</string>
     <string name="plugins_title">प्लगइन्स</string>
