@@ -717,6 +717,13 @@ object UnicodeStyleEngine {
         }.toList()
     }
 
+    /**
+     * Characters that pasting often adds without being visible: variation selectors (e.g. after circled M, which is
+     * also an emoji) and format characters such as zero-width space, joiner and BOM. They would change the count.
+     */
+    private fun isInvisibleFormatting(cp: Int): Boolean =
+        cp in 0xFE00..0xFE0F || cp in 0xE0100..0xE01EF || Character.getType(cp) == Character.FORMAT.toInt()
+
     private fun parseCustomStyleLine(line: String): Pair<String, IntArray>? {
         // also accept the full-width colon that CJK keyboards type
         val colon = line.indexOfFirst { it == ':' || it == '\uFF1A' }
@@ -729,7 +736,7 @@ object UnicodeStyleEngine {
         var i = 0
         while (i < rest.length) {
             val cp = rest.codePointAt(i)
-            if (!Character.isWhitespace(cp)) cps.add(cp)
+            if (!Character.isWhitespace(cp) && !isInvisibleFormatting(cp)) cps.add(cp)
             i += Character.charCount(cp)
         }
         return if (cps.size == 52 || cps.size == 62) name to cps.toIntArray() else null

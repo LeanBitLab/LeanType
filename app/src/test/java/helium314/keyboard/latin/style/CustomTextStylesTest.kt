@@ -44,6 +44,23 @@ class CustomTextStylesTest {
         assertEquals("ⓐ", UnicodeStyleEngine.transformText("a", "custom_Mine"))
     }
 
+    @Test fun acceptsThePastedExamples() {
+        val paren = (0 until 26).joinToString("") { String(Character.toChars(0x1F110 + it)) } +
+            (0 until 26).joinToString("") { String(Character.toChars(0x249C + it)) }
+        val bubble = fancyUpper + fancyLower + fancyDigits
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText("Paren: $paren\nBubble: $bubble"))
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText("Paren: $paren\r\nBubble: $bubble\r\n"))
+    }
+
+    @Test fun ignoresInvisibleCharactersFromPasting() {
+        // circled M is also an emoji, so apps like to add a variation selector after it
+        val withSelector = fancyUpper.replace("Ⓜ", "Ⓜ\uFE0F") + fancyLower
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText("Mine: $withSelector"))
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText("Mine: \u200B$fancyUpper\u200D$fancyLower\uFEFF"))
+        UnicodeStyleEngine.setCustomStyles("Mine: $withSelector")
+        assertEquals("ⓐⓂ", UnicodeStyleEngine.transformText("aM", "custom_Mine"))
+    }
+
     @Test fun lettersOnlyKeepsDigits() {
         UnicodeStyleEngine.setCustomStyles("Mine: $fancyUpper$fancyLower")
         assertEquals("ⓐ1", UnicodeStyleEngine.transformText("a1", "custom_Mine"))

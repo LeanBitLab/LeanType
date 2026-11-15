@@ -408,10 +408,11 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         } else {
             val mode = Settings.getValues().mToolbarMode
             val isPassword = Settings.getValues().mInputAttributes.mIsPasswordField
-            val suppressToolbarForAutofill = isExternalSuggestionVisible && (isPassword || !isToolbarManuallyOpen)
+            // the voice status must stay visible even when the toolbar was opened manually (typing a recognized piece updates the strip)
+            val suppressToolbarForAutofill = isExternalSuggestionVisible && (isPassword || !isToolbarManuallyOpen || isVoiceActive)
             val forceToolbar = mode == ToolbarMode.TOOLBAR_KEYS && !suppressToolbarForAutofill
             val effectiveToolbarVisible = !suppressToolbarForAutofill && (forceToolbar || toolbarVisible)
-            val showPinned = !locked && !effectiveToolbarVisible && mode != ToolbarMode.SUGGESTION_STRIP
+            val showPinned = !locked && !effectiveToolbarVisible && mode != ToolbarMode.SUGGESTION_STRIP && !isVoiceActive
             val duration = Settings.getAnimationDuration(60)
             val prevToolbarVisible = toolbarContainer.isVisible
             val nextToolbarVisible = !locked && effectiveToolbarVisible
