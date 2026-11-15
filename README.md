@@ -177,8 +177,8 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 ### 2. Voice Input Setup (On-Device Whisper AI)
 1. Download and install the [LeanType Voice Plugin APK](https://github.com/LeanBitLab/LeanType-Voice-Plugin/releases/latest) on your Android device (installed as a background IPC service).
 2. Grant **Microphone permission** to the LeanType Voice Plugin.
-3. In LeanType, open **Settings → Voice typing** (or **Settings → Plugins → Voice**) and tap **Whisper Speech Models**.
-4. Download or import your preferred Whisper model (e.g. *Base* ~74 MB recommended).
+3. In LeanType, open **Settings → Plugins → Voice Input** and tap **Whisper Models**.
+4. Download or import your preferred Whisper model (e.g. *Base* ~57 MB recommended).
 5. Tap the microphone icon on the keyboard toolbar to start speech-to-text!
 
 ### 3. Translation Setup (Offline & Online)

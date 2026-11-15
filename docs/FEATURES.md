@@ -13,7 +13,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | 🧠 **[Custom AI Keys & Keywords](#2-custom-ai-keys--keywords)** | 10 custom toolbar prompt keys, personas, and themed capsules |
 | 🛡️ **[Offline Neural Proofreading (GGUF)](#3-offline-neural-proofreading-gguf)** | 100% on-device private LLM execution via `llama.cpp` |
 | 🌐 **[Dual-Engine In-Keyboard Translation](#4-dual-engine-in-keyboard-translation)** | AI Translation vs Google Translation Plugin with auto-fallback |
-| 🎙️ **[On-Device Whisper Voice Typing](#5-on-device-whisper-voice-typing)** | Fast speech-to-text with quantized multilingual Whisper models |
+| 🎙️ **[On-Device Whisper Voice Typing](#5-on-device-whisper-voice-typing)** | Fast speech-to-text with quantized English and multilingual Whisper models |
 | ✍️ **[Handwriting Input](#6-handwriting-input)** | Draw letters directly on a handwriting canvas (ML Kit) |
 | 🧭 **[Dedicated Text Editing Panel](#7-dedicated-text-editing-panel)** | Gboard-style precision DPAD arrow navigation & selection mode |
 | 📐 **[Smart Auto-Spanning Toolbar](#8-smart-auto-spanning-toolbar)** | Symmetrical dynamic toolbar key expansion across screen widths |
@@ -65,7 +65,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | **Custom AI Keys** | 10 customizable toolbar keys with prompt templates, hashtags (`#editor`, `#proofread`), and tag capsules. | `AI Integration > Custom Keys` |
 | **Offline Proofreading (GGUF)** | Zero-network, on-device neural proofreading powered by embedded `llama.cpp`. | `Advanced > GGUF Model (.gguf)` |
 | **Multi-Mode In-Keyboard Translation** | Translate text on-device (Offline ML Kit), via Translation Plugin, or Cloud/Local AI with auto-fallback. | `Translation > Translation Mode` |
-| **Whisper Voice Typing** | On-device speech-to-text with quantized multilingual Whisper models and audio visualizer. | `Voice typing > Whisper Speech Models` |
+| **Whisper Voice Typing** | On-device speech-to-text with quantized multilingual Whisper models and audio visualizer. | `Plugins > Voice Input > Whisper Models` |
 | **Handwriting Recognition** | Draw characters on a dedicated canvas with in-app model manager (supported across all flavors via plugin). | `Handwriting > Handwriting recognition` |
 | **Offline Camera & Screenshot OCR** | Live in-keyboard camera scanner and screenshot suggestion pill with rich text cleaners (casing, join styles, dehyphenation). | `OCR & Text Extraction` / `Plugins > OCR` |
 | **Inline Math Calculation** | Instant arithmetic calculation suggestions on typing `=` with 1-tap expression replacement. | `Text correction > Inline math calculation` |
@@ -197,23 +197,32 @@ LeanType offers a flexible translation architecture supporting all app flavors:
 
 LeanType integrates high-accuracy, private speech-to-text powered by OpenAI's Whisper architecture via `whisper.cpp` and the [LeanType Voice Plugin](https://github.com/LeanBitLab/LeanType-Voice-Plugin).
 
-### Available Multilingual Whisper Models
-- **Tiny** (`ggml-tiny.bin`): **~39 MB**: Ultra-fast, minimal memory usage, 99+ languages.
-- **Base** (`ggml-base.bin`): **~74 MB**: Best balance of accuracy and speed for daily typing.
-- **Small** (`ggml-small.bin`): **~244 MB**: High accuracy for complex vocabulary and accents.
-- **Custom Model**: Import any standard `.bin` GGML Whisper model from device storage.
+### Available Whisper Models
+The built-in downloads are the official LeanType models (quantized Q5_1, from [leantype-whisper-models](https://github.com/LeanBitLab/leantype-whisper-models)):
+- **Tiny** (English or multilingual): **~31 MB**: Ultra-fast, minimal memory usage.
+- **Base** (English or multilingual): **~57 MB**: Best balance of accuracy and speed for daily typing.
+- **Small** (English or multilingual): **~182 MB**: High accuracy for complex vocabulary and accents.
+- **Custom Model**: Import any standard `.bin` GGML Whisper model from device storage, for example the FUTO ACFT models (see the plugin's [model catalog](https://github.com/LeanBitLab/LeanType-Voice-Plugin/blob/master/docs/MODELS.md)).
+
+The multilingual models support 99 languages. English-only models are a little more accurate for English.
 
 ### Setup Instructions
 1. Download and install the [LeanType Voice Plugin APK](https://github.com/LeanBitLab/LeanType-Voice-Plugin/releases/latest) on your Android device (installed as a background IPC service).
 2. Grant **Microphone permission** to the LeanType Voice Plugin.
-3. In LeanType, open **Settings → Voice typing** (or **Settings → Plugins → Voice**) and tap **Whisper Speech Models**.
-4. Download or import your preferred model (e.g. *Multilingual Base* ~74 MB).
-5. Configure voice options:
-   - **Voice Recognition Language**: Choose **Follow keyboard language (Default)**, **Auto-detect spoken language (`auto`)**, or pick from 99+ specific Whisper languages.
+3. In LeanType, open **Settings → Plugins → Voice Input** and tap **Whisper Models**.
+4. Download a model (**Standard** flavor) or, in the **Offline** flavor, download the `.bin` file in your browser and tap **Import** on **Custom GGML Model**.
+5. Configure voice options in **Settings → Plugins → Voice Input**:
+   - **Voice Recognition Language**: Choose **Follow keyboard language (Default)**, **Auto-detect spoken language (`auto`)**, or pick from the supported Whisper languages.
    - **Audio Visualizer**: Displays a real-time sound waveform directly on the keyboard toolbar.
-   - **Silence Detection**: Configurable auto-stop sensitivity slider.
+   - **Silence Timeout**: How long a pause ends the recording automatically (default 3 seconds).
+   - **Transcribe while speaking** (off by default): Transcribes each part of a long dictation at every pause in speech, so less is left to process when you stop.
+   - **Keep screen on**: Prevents the screen timeout while voice typing is active.
    - **Keep Model in Memory**: Prevents model reload latency during consecutive voice typing sessions.
-6. Tap the **Microphone** icon on the toolbar to start voice typing.
+6. Tap the **Microphone** icon on the toolbar to start voice typing. Tapping it again stops the recording; while the text is being processed, tapping it does not cancel it (use the cancel button on the strip for that).
+
+### Requirements & Battery
+- The plugin needs Android 5.0 or newer. The 64-bit (`arm64-v8a`) build uses ARMv8.2 dot-product and FP16 instructions for speed, so it needs a CPU from roughly 2018 on (Cortex-A55/A75 class and newer). Older 64-bit CPUs without these instructions cannot run it.
+- LeanType connects to the plugin when you start voice typing or import a model and releases it again when voice typing is idle or the screen turns off, so it does not run in the background.
 
 ---
 
