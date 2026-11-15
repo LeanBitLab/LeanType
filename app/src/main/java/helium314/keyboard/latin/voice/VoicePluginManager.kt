@@ -117,10 +117,16 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
             return
         }
         cancelScheduledUnbind()
-        val runnable = Runnable {
-            pendingUnbindRunnable = null
-            if (canUnbind()) {
-                unbind()
+        val runnable = object : Runnable {
+            override fun run() {
+                if (canUnbind()) {
+                    pendingUnbindRunnable = null
+                    unbind()
+                } else {
+                    // busy (e.g. dictating): look again soon, giving up here would leave the plugin bound
+                    // until the next hide or screen off
+                    mainHandler.postDelayed(this, UNBIND_RETRY_DELAY_MS)
+                }
             }
         }
         pendingUnbindRunnable = runnable
@@ -307,18 +313,27 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
         }
     }
 
+    /** The bind state belongs to the main thread, the import runs on IO. */
+    private fun scheduleIdleUnbindAfterImport() {
+        mainHandler.post { unbindAfterDelay(IMPORT_UNBIND_DELAY_MS) }
+    }
+
     suspend fun bindAndImport(request: ModelImportRequest): Boolean = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        // a plugin that was already connected stays under the normal keep-loaded policy
+        val wasConnected = isPluginConnected()
         val eng = getOrAwaitEngine()
         if (eng == null) {
             Log.e(TAG, "bindAndImport: unable to connect to voice plugin")
             try { request.file.close() } catch (_: Exception) {}
+            // the bind may still be in progress, do not leave it open
+            if (!wasConnected) scheduleIdleUnbindAfterImport()
             return@withContext false
         }
 
         return@withContext try {
             eng.importModel(request)
             Log.i(TAG, "bindAndImport: oneway importModel dispatched successfully")
-            unbindAfterDelay(30000L)
+            scheduleIdleUnbindAfterImport()
             true
         } catch (e: DeadObjectException) {
             Log.e(TAG, "Voice plugin service died in importModel", e)
@@ -326,9 +341,11 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
             false
         } catch (e: RemoteException) {
             Log.e(TAG, "importModel oneway dispatch failed", e)
+            if (!wasConnected) scheduleIdleUnbindAfterImport()
             false
         } catch (e: Exception) {
             Log.e(TAG, "importModel failed", e)
+            if (!wasConnected) scheduleIdleUnbindAfterImport()
             false
         } finally {
             try { request.file.close() } catch (_: Exception) {}
@@ -425,5 +442,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
 
     companion object {
         private const val TAG = "VoicePluginManager"
+        private const val IMPORT_UNBIND_DELAY_MS = 30_000L
+        private const val UNBIND_RETRY_DELAY_MS = 15_000L
     }
 }
