@@ -208,6 +208,8 @@ android {
     lint {
         abortOnError = true
         disable += "MissingTranslation"
+        // style-only checks, no effect on behavior
+        disable += listOf("TypographyEllipsis", "TypographyDashes", "UseKtx")
     }
 }
 
