@@ -276,7 +276,6 @@
     <string name="dictionary_file_wrong_script">Error: l\'script no és compatible amb aquest teclat</string>
     <string name="no_dictionary_message">"Sense un diccionari, només rebràs suggeriments per al text que has introduït abans.&lt;br&gt;\n         Podeu baixar els diccionaris %1$s o comprovar si un diccionari per a «%2$s» es pot baixar directament %3$s."</string>
     <string name="user_dict_settings_add_weight_value">Pes:</string>
-    <string name="auto_show_toolbar">Mostra automàtica de la barra d\'eines</string>
     <string name="auto_show_toolbar_summary">Mostra la barra d\'eines si s\'inicia l\'entrada o si selecciona text</string>
     <string name="var_toolbar_direction_summary">Inverteix la direcció quan es selecciona un subtipus de teclat de dreta a esquerra</string>
     <string name="dictionary_load_error">Error en carregar el fitxer del diccionari</string>
@@ -372,7 +371,6 @@
     <string name="settings_screen_secondary_layouts">Disposicions secundàries</string>
     <string name="layout_functional_keys_tablet" tools:keep="@string/layout_functional_keys_tablet">Tecles de funció (pantalla gran)</string>
     <string name="name_invalid">Nom no vàlid</string>
-    <string name="custom_subtype">Subtipus personalitzat</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="layout_in_use">Avís: la disposició s\'està utilitzant actualment</string>
     <string name="locales_with_dict">Idiomes amb diccionaris</string>

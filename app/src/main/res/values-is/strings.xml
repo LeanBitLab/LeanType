@@ -191,7 +191,6 @@
     <string name="delete_swipe">Stroka til að eyða</string>
     <string name="save_log">Vista atvikaskrá</string>
     <string name="prefs_space_bar_text">Sérsniðinn texti á bilslá</string>
-    <string name="auto_show_toolbar">Birta verkfærastiku sjálfvirkt</string>
     <string name="key_borders">Jaðrar lykla</string>
     <string name="abbreviation_unit_minutes">%s mín</string>
     <string name="language_switch_key_behavior">Hegðun lykils til að breyta tungumáli</string>

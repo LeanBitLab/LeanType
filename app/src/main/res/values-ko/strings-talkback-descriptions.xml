@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"비밀번호 키를 음성으로 들으려면 헤드셋을 연결하세요."</string>
-    <string name="spoken_current_text_is">"입력한 텍스트: %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g>을(를) 누르면 <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>을(를) <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>(으)로 수정합니다."</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g>을(를) 누르면 자동 수정됩니다."</string>
     <string name="spoken_empty_suggestion">"추천 항목 없음"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"음성 입력"</string>
     <string name="spoken_description_emoji">"그림 이모티콘"</string>
     <string name="spoken_description_return">"돌아가기"</string>
-    <string name="spoken_description_search">"검색"</string>
     <string name="spoken_description_dot">"글머리 기호"</string>
     <string name="spoken_description_language_switch">"언어 전환"</string>
     <string name="spoken_description_action_next">"다음"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"여행/장소"</string>
     <string name="spoken_description_emoji_category_eight_activity">"활동"</string>
     <string name="spoken_description_emoji_category_emoticons">"이모티콘"</string>
-    <string name="spoken_description_upper_case">"대문자 <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"대문자 아이"</string>
     <string name="spoken_letter_0130">"대문자 아이, 위 닷"</string>
     <string name="spoken_open_popup_keys_keyboard">"대체 문자를 사용할 수 있습니다"</string>

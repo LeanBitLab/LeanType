@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Каб праслухаць паролi, падключыце гарнiтуру."</string>
-    <string name="spoken_current_text_is">"Бягучы тэкст – %s"</string>
     <string name="spoken_auto_correct">"Націснуўшы <xliff:g id="KEY_NAME">%1$s</xliff:g>, вы паправіце <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> на <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"Націснуўшы <xliff:g id="KEY_NAME">%1$s</xliff:g>, вы выканаеце аўтакарэкцыю"</string>
     <string name="spoken_empty_suggestion">"Няма прапаноў"</string>
@@ -26,7 +25,6 @@
     <string name="spoken_description_mic">"Галасавы ўвод"</string>
     <string name="spoken_description_emoji">"Эмодзі"</string>
     <string name="spoken_description_return">"Вярнуцца"</string>
-    <string name="spoken_description_search">"Пошук"</string>
     <string name="spoken_description_dot">"Маркер спіса"</string>
     <string name="spoken_description_language_switch">"Пераключыць мову"</string>
     <string name="spoken_description_action_next">"Далей"</string>

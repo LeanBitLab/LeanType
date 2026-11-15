@@ -413,7 +413,6 @@
     <string name="customize_toolbar_key_code_reset_message">Tikrai pašalinti visus pasirinktinius klavišų kodus?</string>
     <string name="key_code">Klavišų kodai</string>
     <string name="long_press_code">Ilgo paspaudimo kodas</string>
-    <string name="auto_show_toolbar">Automatiškai rodyti įrankių juostą</string>
     <string name="auto_show_toolbar_summary">Rodyti įrankių juostą jei pradedamas rašyti tekstas ar tekstas pasirenkamas</string>
     <string name="auto_hide_toolbar">Automatiškai slėpti įrankių juostą</string>
     <string name="auto_hide_toolbar_summary">Paslėpti įrankių juostą kai atsiranda pasiūlymas</string>
@@ -422,7 +421,6 @@
     <string name="customize_icons_reset_message">Tikrai atstatyti visas pasirinktines piktogramas?</string>
     <string name="delete_confirmation">Tikrai pašalinti %s?</string>
     <string name="name_invalid">Netinkamas vardas</string>
-    <string name="custom_subtype">Pasirinktinis tipas</string>
     <string name="settings_screen_suggestions">Pasiūlymai</string>
     <string name="settings_category_prediction">Prognozavimas ir mokymasis</string>
     <string name="settings_category_smart_suggestions">Išmanūs pasiūlymai ir įrankiai</string>
@@ -462,7 +460,6 @@
     <string name="suggestion_balance_desc_3">Subalansuotas (Numatytasis)\nStandartinis balansas tarp žodyno ir asmeninių rašymo įpročių.</string>
     <string name="suggestion_balance_desc_4">Suasmenintas\nTeikia pirmenybę žodžiams ir frazėms, kuriuos dažnai rašėte.</string>
     <string name="suggestion_balance_desc_5">Labai suasmenintas\nStipriai teikia pirmenybę išmoktai istorijai ir asmeniniams žodžiams, o ne standartiniam žodynui.</string>
-    <string name="next_word_boost_level">Išmoktų žodžių postūmio lygis</string>
     <string name="next_word_strict_ngram">Reikalauti konteksto atitikimo išmoktiems žodžiams</string>
     <string name="next_word_strict_ngram_summary">Siūlyti išmoktus žodžius tik tada, kai atitinka ankstesnio žodžio kontekstas</string>
     <string name="immediate_auto_space">Nedelsiamas automatinis tarpas</string>
@@ -485,7 +482,6 @@
     <string name="clipboard_no_search_results">Rezultatų nerasta</string>
     <string name="clipboard_clear_all_confirmation">Ar tikrai norite išvalyti visą istoriją?</string>
     <string name="clear_all">Išvalyti viską</string>
-    <string name="gesture_method">Gestų rašymo metodas</string>
     <string name="load_gesture_library_button_download">Atsisiųsti biblioteką</string>
     <string name="load_gesture_library_downloading">Atsisiunčiama gestų biblioteka…</string>
     <string name="load_gesture_library_download_success">Atsisiuntimas baigtas! Paleidžiama iš naujo…</string>
@@ -688,7 +684,6 @@
     <string name="toolbar_keys_alignment_left">Kairėje</string>
     <string name="toolbar_keys_alignment_center">Centre</string>
     <string name="toolbar_keys_alignment_right">Dešinėje</string>
-    <string name="clipboard_keys_alignment">Iškarpinės klavišų lygiavimas</string>
     <string name="toolbar_long_press_hint">Rodyti ilgo paspaudimo patarimų tabletes</string>
     <string name="toolbar_long_press_hint_summary">Rodyti tabletes ant įrankių juostos klavišų, kurie turi ilgo paspaudimo veiksmą</string>
     <string name="prefs_popup_keys_vertical_offset">Ilgo paspaudimo iššokančiojo lango pozicija</string>
@@ -838,7 +833,6 @@
     <string name="auto_show_toolbar_select_summary">Rodyti įrankių juostą pasirenkant tekstą</string>
     <string name="auto_show_toolbar_no_suggestions">Automatiškai rodyti įrankių juostą, kai nėra pasiūlymų</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Rodyti įrankių juostą, kai nėra žodžių pasiūlymų</string>
-    <string name="toolbar_swipe_down_dismiss">Braukti žemyn, kad uždarytumėte</string>
     <string name="auto_hide_pinned_keys">Automatiškai slėpti prisegtus klavišus</string>
     <string name="auto_hide_pinned_keys_summary">Slėpti prisegtus klavišus, kai įrankių juosta išskleista</string>
     <string name="remember_toolbar_state">Prisiminti įrankių juostos būseną</string>
@@ -1650,7 +1644,6 @@ Ar norite atnaujinti?</string>
     <string name="auto_pair_symbols_title">Automatinio susiejimo simboliai</string>
     <string name="auto_pair_symbols_summary">Automatiškai įterpkite uždaromuosius skliaustus, kabutes ir pavadinimo ženklus</string>
     <string name="font_style">Šrifto stilius</string>
-    <string name="unicode_panel">Unicode simboliai</string>
     <string name="style_active_indicator">Aktyvus stilius:%s</string>
     <string name="style_active_none">Nėra (paprastas tekstas)</string>
     <string name="style_plain">Normalus</string>
@@ -1729,7 +1722,6 @@ Ar norite atnaujinti?</string>
     <string name="text_expander_prefix_autocomplete_summary">Įvedus daugiau nei 2 simbolius, pasiūlykite dalines teksto ir vaizdo nuorodų be priešdėlinių atitikčių (su priešdėliu pažymėti spartieji klavišai taip pat užpildomi automatiškai).</string>
     <string name="unfolded_side_padding_scale">Išskleistas šoninis paminkštinimas</string>
     <string name="voice_futo_models_title">FUTO balso modeliai (ACFT)</string>
-    <string name="voice_futo_models_summary">Tiksliai sureguliuoti Whisper modeliai, optimizuoti diktavimui mobiliajame telefone</string>
     <string name="button_browse">Naršyti</string>
     <string name="voice_transcribe_while_speaking_title">Transkribuokite kalbėdami</string>
     <string name="voice_piecewise_field_changed">Diktavimas sustabdytas: pasikeitė teksto laukas, likusi dalis neįterpta</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"پاس ورڈ کلیدوں کی آواز اونچی آواز میں سننے کیلئے ایک ہیڈ سیٹ پلگ ان کریں۔"</string>
-    <string name="spoken_current_text_is">"‏موجودہ  متن %s ہے"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> کو ٹھیک کر کے <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> کر دیتی ہے"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> خود کار اصلاح کو انجام دیتی ہے"</string>
     <string name="spoken_empty_suggestion">"کوئی تجویز نہیں"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"صوتی ان پٹ"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"واپس جائیں"</string>
-    <string name="spoken_description_search">"تلاش کریں"</string>
     <string name="spoken_description_dot">"ڈاٹ"</string>
     <string name="spoken_description_language_switch">"زبان سوئچ کریں"</string>
     <string name="spoken_description_action_next">"اگلا"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"سفر اور جگہیں"</string>
     <string name="spoken_description_emoji_category_eight_activity">"سرگرمی"</string>
     <string name="spoken_description_emoji_category_emoticons">"جذباتی اشکال"</string>
-    <string name="spoken_description_upper_case">"بڑی <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"‏بڑی I"</string>
     <string name="spoken_letter_0130">"‏بڑی I، اوپر ڈاٹ"</string>
     <string name="spoken_open_popup_keys_keyboard">"متبادل حروف دستیاب ہیں"</string>

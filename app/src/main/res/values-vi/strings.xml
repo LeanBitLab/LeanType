@@ -151,7 +151,6 @@
     <string name="label_stop_onehanded_mode_key" tools:keep="@string/label_stop_onehanded_mode_key">Tắt chế độ 1 tay</string>
     <string name="label_switch_onehanded_key" tools:keep="@string/label_switch_onehanded_key">Đổi sang chế độ 1 tay</string>
     <string name="label_toolbar_key" tools:keep="@string/label_toolbar_key">Hiển thị / Ẩn thanh công cụ</string>
-    <string name="auto_show_toolbar">Tự động hiển thị thanh công cụ</string>
     <string name="auto_hide_toolbar_summary">Ẩn thanh công cụ khi có gợi ý</string>
     <string name="name_invalid">Tên không hợp lệ</string>
     <string name="prefs_always_show_suggestions_summary">Bỏ qua yêu cầu của các ứng dụng khác để không hiển thị gợi ý (có thể gây hại)</string>

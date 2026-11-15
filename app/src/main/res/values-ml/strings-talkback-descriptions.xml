@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"ഉറക്കെ പറയുന്ന പാസ്‌വേഡ് കീകൾ കേൾക്കുന്നതിന് ഒരു ഹെഡ്‌സെറ്റ് പ്ലഗ്ഗുചെയ്യുക"</string>
-    <string name="spoken_current_text_is">"നിലവിലെ ടെക്സ്റ്റ് ചെയ്യൽ %s ആണ്"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g>, <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> എന്നത് <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> എന്നതായി തിരുത്തുന്നു"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> യാന്ത്രിക-തിരുത്തൽ നിർവഹിക്കുന്നു"</string>
     <string name="spoken_empty_suggestion">"നിർദ്ദേശമൊന്നുമില്ല"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"വോയ്‌സ് ഇൻപുട്ട്"</string>
     <string name="spoken_description_emoji">"ഇമോജി"</string>
     <string name="spoken_description_return">"മടങ്ങുക"</string>
-    <string name="spoken_description_search">"തിരയുക"</string>
     <string name="spoken_description_dot">"ഡോട്ട്"</string>
     <string name="spoken_description_language_switch">"ഭാഷ മാറുക"</string>
     <string name="spoken_description_action_next">"അടുത്തത്"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"യാത്രയും സ്ഥലങ്ങളും"</string>
     <string name="spoken_description_emoji_category_eight_activity">"പ്രവര്‍ത്തനം"</string>
     <string name="spoken_description_emoji_category_emoticons">"ഇമോട്ടിക്കോണുകൾ"</string>
-    <string name="spoken_description_upper_case">"വലിയക്ഷരം <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"വലിയക്ഷരം I"</string>
     <string name="spoken_letter_0130">"വലിയക്ഷരം I, മുകളിൽ ഡോട്ട്"</string>
     <string name="spoken_open_popup_keys_keyboard">"ഇതര പ്രതീകങ്ങൾ ലഭ്യമാണ്"</string>

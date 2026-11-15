@@ -274,10 +274,8 @@
     <string name="space_swipe_move_cursor_entry">Kurzor mozgatása</string>
     <string name="popup_order_and_hint_source">Felugró billentyűk sorrendjének és tippek forrása</string>
     <string name="layout_functional_keys_symbols" tools:keep="@string/layout_functional_keys_symbols">Funkcióbillentyűk (Szimbólumok)</string>
-    <string name="auto_show_toolbar">Eszköztár automatikus megjelenítése</string>
     <string name="landscape">Fekvő</string>
     <string name="prefs_space_bar_text">Egyéni szöveg a szóközbillentyűn</string>
-    <string name="custom_subtype">Egyéni altípus</string>
     <string name="prefs_always_show_suggestions_except_web_text">Ne jelenítsen meg mindig javaslatokat a webes szerkesztőmezőkben</string>
     <string name="emoji" tools:keep="@string/emoji">Emodzsi</string>
     <string name="backspace_reverts_autocorrect">Backspace billentyű visszavonja az automatikus javítást</string>
@@ -467,7 +465,6 @@
     <string name="suggestion_balance_desc_3">Kiegyensúlyozott (alapértelmezett)\nStandard egyensúly a szótári szókincs és a személyes gépelési szokások között.</string>
     <string name="suggestion_balance_desc_4">Személyre szabott\nA gyakran begépelt szavakat és kifejezéseket részesíti előnyben.</string>
     <string name="suggestion_balance_desc_5">Nagyon személyre szabott\nErősen a tanult előzményeket és személyes szavakat részesíti előnyben a standard szókincs helyett.</string>
-    <string name="next_word_boost_level">Tanult szó kiemelési szint</string>
     <string name="next_word_strict_ngram">Kontextus-egyezés megkövetelése tanult szavakhoz</string>
     <string name="next_word_strict_ngram_summary">Csak akkor javasoljon tanult szavakat, ha az előző szó kontextusa egyezik</string>
     <string name="immediate_auto_space">Azonnali automatikus szóköz</string>
@@ -490,7 +487,6 @@
     <string name="clipboard_no_search_results">Nincs találat</string>
     <string name="clipboard_clear_all_confirmation">Biztosan törli az összes előzményt?</string>
     <string name="clear_all">Összes törlése</string>
-    <string name="gesture_method">Gesztusos gépelés módja</string>
     <string name="load_gesture_library_button_download">Könyvtár letöltése</string>
     <string name="load_gesture_library_downloading">Gesztuskönyvtár letöltése…</string>
     <string name="load_gesture_library_download_success">Letöltés kész! Újraindítás…</string>
@@ -698,7 +694,6 @@
     <string name="toolbar_keys_alignment_left">Balra</string>
     <string name="toolbar_keys_alignment_center">Középre</string>
     <string name="toolbar_keys_alignment_right">Jobbra</string>
-    <string name="clipboard_keys_alignment">Vágólap billentyűk igazítása</string>
     <string name="toolbar_long_press_hint">Hosszú nyomásra utaló tippek megjelenítése</string>
     <string name="toolbar_long_press_hint_summary">Címkék megjelenítése azokon az eszköztár billentyűkön, amelyek hosszú nyomási művelettel rendelkeznek</string>
     <string name="prefs_popup_keys_vertical_offset">Hosszú nyomás felugró ablak pozíciója</string>
@@ -806,7 +801,6 @@
     <string name="auto_show_toolbar_select_summary">Az eszköztár megjelenítése szöveg kijelölésekor</string>
     <string name="auto_show_toolbar_no_suggestions">Eszköztár automatikus megjelenítése, ha nincsenek javaslatok</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Az eszköztár megjelenítése, ha nem állnak rendelkezésre szó-javaslatok</string>
-    <string name="toolbar_swipe_down_dismiss">Húzza lefelé a bezáráshoz</string>
     <string name="auto_hide_pinned_keys">Rögzített billentyűk automatikus elrejtése</string>
     <string name="auto_hide_pinned_keys_summary">Rögzített billentyűk elrejtése, amikor az eszköztár ki van bontva</string>
     <string name="remember_toolbar_state">Eszköztár állapotának megjegyzése</string>
@@ -1612,7 +1606,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="auto_pair_symbols_title">Automatikus párosítási szimbólumok</string>
     <string name="auto_pair_symbols_summary">A záró zárójelek, idézőjelek és címjelek automatikus beszúrása</string>
     <string name="font_style">Betűstílus</string>
-    <string name="unicode_panel">Unicode szimbólumok</string>
     <string name="style_active_indicator">Aktív stílus:%s</string>
     <string name="style_active_none">Nincs (egyszerű szöveg)</string>
     <string name="style_plain">Normál</string>
@@ -1691,7 +1684,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="text_expander_prefix_autocomplete_summary">Javasoljon részleges egyezéseket az előtag nélküli szöveges és képi parancsikonokhoz 2+ karakter beírása után (az előtaggal ellátott billentyűparancsok automatikusan kiegészítenek is).</string>
     <string name="unfolded_side_padding_scale">Kibontott oldalpárna</string>
     <string name="voice_futo_models_title">FUTO hangmodellek (ACFT)</string>
-    <string name="voice_futo_models_summary">Finomhangolt Whisper modellek mobil diktálásra optimalizálva</string>
     <string name="button_browse">Tallózás</string>
     <string name="voice_transcribe_while_speaking_title">Átírás beszéd közben</string>
     <string name="voice_piecewise_field_changed">A diktálás leállt: a szövegmező megváltozott, a többi nem került be</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"يمكنك توصيل سماعة رأس لسماع مفاتيح كلمة المرور منطوقة بصوت عالٍ."</string>
-    <string name="spoken_current_text_is">"‏النص الحالي هو %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> لتصحيح <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> إلى <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> لإجراء التصحيح التلقائي"</string>
     <string name="spoken_empty_suggestion">"لا اقتراحات"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"إدخال صوتي"</string>
     <string name="spoken_description_emoji">"رمز تعبيري"</string>
     <string name="spoken_description_return">"رجوع"</string>
-    <string name="spoken_description_search">"بحث"</string>
     <string name="spoken_description_dot">"نقطة"</string>
     <string name="spoken_description_language_switch">"تبديل اللغة"</string>
     <string name="spoken_description_action_next">"التالي"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"سفر وأماكن"</string>
     <string name="spoken_description_emoji_category_eight_activity">"أنشطة"</string>
     <string name="spoken_description_emoji_category_emoticons">"رموز تعبيرية"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> كبير"</string>
     <string name="spoken_letter_0049">"‏I كبير"</string>
     <string name="spoken_letter_0130">"Capital I, dot above"</string>
     <string name="spoken_open_popup_keys_keyboard">"تتوفر الأحرف البديلة"</string>

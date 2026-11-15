@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"पासवर्ड कुञ्जीहरू ठूलो स्वरमा बोलेको आवाज सुन्नका लागि हेडसेट जोड्नुहोस्।"</string>
-    <string name="spoken_current_text_is">"वर्तमान पाठ %s हो"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ले <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> लाई <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> मा सच्याउँछ"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ले स्वतः सच्याउने गर्छ"</string>
     <string name="spoken_empty_suggestion">"कुनै सुझाव छैन"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"आवाज निवेश"</string>
     <string name="spoken_description_emoji">"इमोजी"</string>
     <string name="spoken_description_return">"फर्कनुहोस्"</string>
-    <string name="spoken_description_search">"खोजी गर्नुहोस्"</string>
     <string name="spoken_description_dot">"डट्"</string>
     <string name="spoken_description_language_switch">"भाषा स्विच गर्नुहोस्"</string>
     <string name="spoken_description_action_next">"अर्को"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"यात्रा र स्थानहरू"</string>
     <string name="spoken_description_emoji_category_eight_activity">"गतिविधि"</string>
     <string name="spoken_description_emoji_category_emoticons">"ईमोटिकन्स"</string>
-    <string name="spoken_description_upper_case">"Capital <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Capital I"</string>
     <string name="spoken_letter_0130">"Capital I, dot above"</string>
     <string name="spoken_open_popup_keys_keyboard">"वैकल्पिक वर्णहरू उपलब्ध छन्"</string>

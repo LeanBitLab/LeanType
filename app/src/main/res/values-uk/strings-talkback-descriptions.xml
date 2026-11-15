@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Підключіть гарнітуру, щоб слухати озвучені символи пароля."</string>
-    <string name="spoken_current_text_is">"Поточний текст: %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> виправляє слово \"<xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>\" на \"<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>\""</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> автоматично виправляє"</string>
     <string name="spoken_empty_suggestion">"Немає пропозицій"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Голосовий ввід"</string>
     <string name="spoken_description_emoji">"Cмайли Emoji"</string>
     <string name="spoken_description_return">"Повернутися"</string>
-    <string name="spoken_description_search">"Пошук"</string>
     <string name="spoken_description_dot">"Крапка"</string>
     <string name="spoken_description_language_switch">"Змінити мову"</string>
     <string name="spoken_description_action_next">"Далі"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Подорожі та місця"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Активність"</string>
     <string name="spoken_description_emoji_category_emoticons">"Смайли"</string>
-    <string name="spoken_description_upper_case">"Велика <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Велика I"</string>
     <string name="spoken_letter_0130">"Велика I, крапка вгорі"</string>
     <string name="spoken_open_popup_keys_keyboard">"Доступні альтернативні символи"</string>

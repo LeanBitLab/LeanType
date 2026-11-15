@@ -260,7 +260,6 @@
     <string name="hidden_features_text">seadme turvatud andmekogu</string>
     <string name="layout_functional_keys_symbols" tools:keep="@string/layout_functional_keys_symbols">Funktsiooniklahvid (sümbolid)</string>
     <string name="layout_phone" tools:keep="@string/layout_phone">Telefon</string>
-    <string name="auto_show_toolbar">Näita tööriistariba automaatselt</string>
     <string name="select_color_gesture">Viipežest</string>
     <string name="settings_screen_about">Rakenduse teave</string>
     <string name="version">Versioon</string>
@@ -414,7 +413,6 @@
     <string name="get_layouts_message">Uusi klahvistike paigutusi võid leida ja jagada %s.</string>
     <string name="discussion_section_link">kogukonna vestlustes</string>
     <string name="get_colors_message">Uusi värve võid leida ja jagada %s.</string>
-    <string name="custom_subtype">Sinu loodud alamtüüp</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="show_tld_popup_keys">Näita tippdomeenide hüpikklahve</string>
     <string name="show_tld_popup_keys_summary">Võrgu- ja e-posti aadresside kirjutamisel asenda punktuatsiooni hüpikaknad tipptaseme domeenide omadega</string>
@@ -504,7 +502,6 @@
     <string name="suggestion_balance_desc_3">Tasakaalustatud (vaikimisi)\nStandardne tasakaal sõnastiku sõnavara ja isiklike tippimisharjumuste vahel.</string>
     <string name="suggestion_balance_desc_4">Isikupärastatud\nEelistab sõnu ja fraase, mida olete sageli tippinud.</string>
     <string name="suggestion_balance_desc_5">Tugevalt isikupärastatud\nEelistab tugevalt õpitud ajalugu ja isiklikke sõnu standardsele sõnavarale.</string>
-    <string name="next_word_boost_level">Õpitud sõnade võimenduse tase</string>
     <string name="next_word_strict_ngram">Nõua õpitud sõnadele konteksti vastet</string>
     <string name="next_word_strict_ngram_summary">Soovita õpitud sõnu ainult siis, kui eelneva sõna kontekst kattub</string>
     <string name="immediate_auto_space">Kohene automaatne tühik</string>
@@ -527,7 +524,6 @@
     <string name="clipboard_no_search_results">Tulemusi ei leitud</string>
     <string name="clipboard_clear_all_confirmation">Kas olete kindel, et soovite kogu ajaloo tühjendada?</string>
     <string name="clear_all">Tühjenda kõik</string>
-    <string name="gesture_method">Viipetippimise meetod</string>
     <string name="load_gesture_library_button_download">Laadi teek alla</string>
     <string name="load_gesture_library_downloading">Viipeteegi allalaadimine…</string>
     <string name="load_gesture_library_download_success">Allalaadimine lõpetatud! Taaskäivitamine…</string>
@@ -735,7 +731,6 @@
     <string name="toolbar_keys_alignment_left">Vasakule</string>
     <string name="toolbar_keys_alignment_center">Keskele</string>
     <string name="toolbar_keys_alignment_right">Paremale</string>
-    <string name="clipboard_keys_alignment">Lõikelaua klahvide joondus</string>
     <string name="toolbar_long_press_hint">Näita pika vajutuse vihjemulle</string>
     <string name="toolbar_long_press_hint_summary">Näita mullikesi tööriistariba klahvidel, millel on pika vajutuse toiming</string>
     <string name="prefs_popup_keys_vertical_offset">Pika vajutuse hüpikakna asukoht</string>
@@ -843,7 +838,6 @@
     <string name="auto_show_toolbar_select_summary">Näita tööriistariba teksti valimisel</string>
     <string name="auto_show_toolbar_no_suggestions">Näita tööriistariba automaatselt, kui soovitusi pole</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Näita tööriistariba, kui sõnasoovitusi pole saadaval</string>
-    <string name="toolbar_swipe_down_dismiss">Pühkige sulgemiseks alla</string>
     <string name="auto_hide_pinned_keys">Peida kinnitatud klahvid automaatselt</string>
     <string name="auto_hide_pinned_keys_summary">Peida kinnitatud klahvid, kui tööriistariba on laiendatud</string>
     <string name="remember_toolbar_state">Jäta tööriistariba olek meelde</string>
@@ -1649,7 +1643,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="auto_pair_symbols_title">Automaatse sidumise sümbolid</string>
     <string name="auto_pair_symbols_summary">Sisestage automaatselt sulud, jutumärgid ja pealkirjamärgid</string>
     <string name="font_style">Fondi stiil</string>
-    <string name="unicode_panel">Unicode\'i sümbolid</string>
     <string name="style_active_indicator">Aktiivne stiil:%s</string>
     <string name="style_active_none">Puudub (lihttekst)</string>
     <string name="style_plain">Tavaline</string>
@@ -1728,7 +1721,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="text_expander_prefix_autocomplete_summary">Pärast 2+ tähemärgi sisestamist soovitage eesliiteta teksti ja pildi otseteede jaoks osalisi vasteid (eesliitega otseteed täidetakse ka automaatselt).</string>
     <string name="unfolded_side_padding_scale">Voldimata küljepolster</string>
     <string name="voice_futo_models_title">FUTO häälemudelid (ACFT)</string>
-    <string name="voice_futo_models_summary">Peenhäälestatud Whisperi mudelid, mis on optimeeritud mobiilseks dikteerimiseks</string>
     <string name="button_browse">Sirvige</string>
     <string name="voice_transcribe_while_speaking_title">Transkribeeri rääkimise ajal</string>
     <string name="voice_piecewise_field_changed">Dikteerimine peatus: tekstiväli muutus, ülejäänud jäi sisestamata</string>

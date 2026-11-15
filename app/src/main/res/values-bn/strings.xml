@@ -287,7 +287,6 @@
     <string name="auto_show_toolbar_summary">ইনপুট শুরু হলে বা লেখা সিলেক্ট করা হলে টুলবার প্রদর্শিত হবে</string>
     <string name="auto_hide_toolbar">টুলবার স্বয়ংক্রিয়ভাবে আড়ালকরণ</string>
     <string name="auto_hide_toolbar_summary">পরামর্শ উপলব্ধ হলে টুলবার আড়াল হবে</string>
-    <string name="auto_show_toolbar">টুলবার স্বয়ংক্রিয়ভাবে প্রদর্শন</string>
     <string name="close_history" tools:keep="@string/close_history">ক্লিপবোর্ড ইতিহাস বন্ধকরণ</string>
     <string name="clipboard_toolbar_keys">ক্লিপবোর্ড টুলবার বোতাম নির্বাচন</string>
     <string name="subtype_generic_extended">%s (বর্ধিত)</string>
@@ -379,7 +378,6 @@
     <string name="layout_in_use">সতর্কতা: লেআউট বর্তমানে ব্যবহৃত হচ্ছে</string>
     <string name="get_colors_message">আপনি %s-তে রং সন্ধান ও শেয়ার করতে পারেন।</string>
     <string name="get_layouts_message">আপনি %s-তে লেআউট সন্ধান ও শেয়ার করতে পারেন।</string>
-    <string name="custom_subtype">নিজস্বীকৃত সাবটাইপ</string>
     <string name="show_tld_popup_keys">টিএলডি পপআপ বোতাম প্রদর্শন</string>
     <string name="show_tld_popup_keys_summary">ইউআরএল ও ইমেইল ঠিকানা লেখার জন্য দাঁড়ি বোতাম টপ লেভেল ডোমেইন দ্বারা প্রতিস্থাপন</string>
     <string name="after_numpad_and_space">নম্বর প্যাডে অন্য বোতামের পরে এন্টার বা স্পেস চাপ</string>

@@ -229,7 +229,6 @@
     <string name="settings_screen_appearance">Apariencia</string>
     <string name="action_none">Ninguna</string>
     <string name="toast_msg_clipboard_copy">Contenido copiado</string>
-    <string name="auto_show_toolbar">Mostrar barra de herramientas automaticamente</string>
     <string name="language_switch_key_behavior">Comportamiento de la tecla de cambio de idioma</string>
     <string name="show_popup_keys_normal">Mostrar variantes definidas en los idiomas del teclado</string>
     <string name="toolbar_keys">Seleccionar teclas de la barra de herramientas</string>
@@ -363,7 +362,6 @@
     <string name="prefs_font_scale">Tamaño de la fuente del teclado</string>
     <string name="prefs_emoji_font_scale">Tamaño de fuente de la vista Emoji</string>
     <string name="prefs_side_padding_scale">Escala de relleno lateral</string>
-    <string name="custom_subtype">Subtipo personalizado</string>
     <string name="prefs_always_show_suggestions_except_web_text_summary">Los campos de edición web (presentes sobre todo en los navegadores) suelen causar problemas con la opción de mostrar siempre sugerencias</string>
     <string name="prefs_always_show_suggestions_except_web_text">No mostrar siempre sugerencias en campos de edición web</string>
     <string name="layout_number_row_basic" tools:keep="@string/layout_number_row_basic">Fila de números (básica)</string>
@@ -574,7 +572,6 @@
     <string name="toolbar_keys_alignment_left">Izquierda</string>
     <string name="toolbar_keys_alignment_center">Centro</string>
     <string name="toolbar_keys_alignment_right">Derecha</string>
-    <string name="clipboard_keys_alignment">Alineación de teclas del portapapeles</string>
     <string name="prefs_popup_keys_vertical_offset">Posición emergente al mantener presionado</string>
     <string name="edit">Editar</string>
     <string name="prefs_keypress_sound_style_settings">Estilo de sonido al pulsar tecla</string>
@@ -705,7 +702,6 @@
     <string name="physical_keyboard_shortcut_number">Tecla numérica (1, 2, 3 mientras se compone)</string>
     <string name="prioritize_personal_suggestions">Priorizar palabras personales y aprendidas</string>
     <string name="prioritize_personal_suggestions_summary">Dar mayor prioridad de puntuación al diccionario personal y palabras aprendidas durante la predicción de la siguiente palabra</string>
-    <string name="next_word_boost_level">Nivel de impulso de palabra aprendida</string>
     <string name="next_word_strict_ngram">Requerir coincidencia de contexto para palabras aprendidas</string>
     <string name="next_word_strict_ngram_summary">Sugerir palabras aprendidas solo cuando coincide el contexto de la palabra anterior</string>
     <string name="immediate_auto_space">Autoespacio inmediato</string>
@@ -728,7 +724,6 @@
     <string name="clipboard_no_search_results">No se encontraron resultados</string>
     <string name="clipboard_clear_all_confirmation">¿Estás seguro de que quieres borrar todo el historial?</string>
     <string name="clear_all">Borrar todo</string>
-    <string name="gesture_method">Método de escritura por gestos</string>
     <string name="load_gesture_library_button_download">Descargar biblioteca</string>
     <string name="load_gesture_library_downloading">Descargando biblioteca de gestos…</string>
     <string name="load_gesture_library_download_success">¡Descarga completa! Reiniciando…</string>
@@ -861,7 +856,6 @@
     <string name="auto_show_toolbar_open">Mostrar barra automáticamente al abrir</string>
     <string name="auto_show_toolbar_select">Mostrar barra automáticamente al seleccionar</string>
     <string name="auto_show_toolbar_select_summary">Mostrar la barra de herramientas al seleccionar texto</string>
-    <string name="toolbar_swipe_down_dismiss">Deslizar hacia abajo para cerrar</string>
     <string name="auto_hide_pinned_keys">Ocultar automáticamente teclas fijadas</string>
     <string name="auto_hide_pinned_keys_summary">Ocultar teclas fijadas cuando la barra de herramientas está expandida</string>
     <string name="remember_toolbar_state">Recordar estado de la barra de herramientas</string>
@@ -1612,7 +1606,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="auto_pair_symbols_title">Símbolos de emparejamiento automático</string>
     <string name="auto_pair_symbols_summary">Insertar automáticamente corchetes de cierre, comillas y marcas de título</string>
     <string name="font_style">Estilo de fuente</string>
-    <string name="unicode_panel">Símbolos Unicode</string>
     <string name="style_active_indicator">Estilo activo:%s</string>
     <string name="style_active_none">Ninguno (texto sin formato)</string>
     <string name="style_plain">Normal</string>
@@ -1690,7 +1683,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="text_expander_prefix_autocomplete_summary">Sugiera coincidencias parciales para texto sin prefijo y accesos directos a imágenes después de escribir más de 2 caracteres (los accesos directos con prefijo también se completan automáticamente).</string>
     <string name="unfolded_side_padding_scale">Acolchado lateral desplegado</string>
     <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Modelos Whisper optimizados para dictado móvil</string>
     <string name="button_browse">Navegar</string>
     <string name="voice_transcribe_while_speaking_title">Transcribe mientras hablas</string>
     <string name="voice_piecewise_field_changed">Dictado detenido: el campo de texto cambió, el resto no fue insertado</string>

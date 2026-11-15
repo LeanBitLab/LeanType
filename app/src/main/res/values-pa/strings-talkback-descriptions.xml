@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"ਉੱਚੀ ਬੋਲੀਆਂ ਗਈਆਂ ਪਾਸਵਰਡ ਕੁੰਜੀਆਂ ਸੁਣਨ ਲਈ ਇੱਕ ਹੈਡਸੈੱਟ ਪਲੱਗ-ਇਨ ਕਰੋ।"</string>
-    <string name="spoken_current_text_is">"ਮੌਜੂਦਾ ਟੈਕਸਟ %s ਹੈ"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> ਦਾ <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> ਵਿੱਚ ਸੋਧ ਕਰਦਾ ਹੈ"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ਆਟੋ-ਸੁਧਾਈ ਕਰਦੀ ਹੈ"</string>
     <string name="spoken_empty_suggestion">"ਕੋਈ ਸੁਝਾਅ ਨਹੀਂ"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"ਵੌਇਸ ਇਨਪੁਟ"</string>
     <string name="spoken_description_emoji">"ਇਮੋਜੀ"</string>
     <string name="spoken_description_return">"ਵਾਪਸ ਜਾਓ"</string>
-    <string name="spoken_description_search">"ਖੋਜੋ"</string>
     <string name="spoken_description_dot">"ਬਿੰਦੀ"</string>
     <string name="spoken_description_language_switch">"ਭਾਸ਼ਾ ਸਵਿੱਚ ਕਰੋ"</string>
     <string name="spoken_description_action_next">"ਅੱਗੇ"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"ਯਾਤਰਾ &amp; ਥਾਂਵਾਂ"</string>
     <string name="spoken_description_emoji_category_eight_activity">"ਸਰਗਰਮੀ"</string>
     <string name="spoken_description_emoji_category_emoticons">"ਇਮੋਟੀਕੋਨਸ"</string>
-    <string name="spoken_description_upper_case">"ਕੈਪੀਟਲ <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"ਕੈਪੀਟਲ I"</string>
     <string name="spoken_letter_0130">"ਕੈਪੀਟਲ I, ਉੱਪਰ ਬਿੰਦੀ"</string>
     <string name="spoken_open_popup_keys_keyboard">"ਬਦਲਵੇਂ ਅੱਖਰ ਉਪਲਬਧ ਹਨ"</string>

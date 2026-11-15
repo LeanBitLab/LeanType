@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Pasahitzak idazteko sakatzen dituzun teklak ozen entzuteko, konektatu entzungailuak."</string>
-    <string name="spoken_current_text_is">"Oraingo testua %s da"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> teklak \"<xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>\" hitza \"<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>\" bihurtzen du"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> teklak zuzenketa automatikoa egiten du"</string>
     <string name="spoken_empty_suggestion">"Ez dago iradokizunik"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Ahozko idazketa"</string>
     <string name="spoken_description_emoji">"Emojiak"</string>
     <string name="spoken_description_return">"Itzuli"</string>
-    <string name="spoken_description_search">"Bilatu"</string>
     <string name="spoken_description_dot">"Puntua"</string>
     <string name="spoken_description_language_switch">"Aldatu hizkuntza"</string>
     <string name="spoken_description_action_next">"Hurrengoa"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Bidaiak eta tokiak"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Jarduerak"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emotikonoak 2"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> maiuskula"</string>
     <string name="spoken_letter_0049">"I maiuskula"</string>
     <string name="spoken_letter_0130">"I maiuskula goi-puntuduna"</string>
     <string name="spoken_open_popup_keys_keyboard">"Ordezko karaktereak erabilgarri daude"</string>

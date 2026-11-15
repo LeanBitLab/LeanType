@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Катуу айтылган сырсөз ачкычтарын угуу үчүн гарнитураны туташтырыңыз."</string>
-    <string name="spoken_current_text_is">"Учурдагы текст %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> сөзүн <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> сөзүнө оңдойт"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> авто оңдойт"</string>
     <string name="spoken_empty_suggestion">"Сунуш жок"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Айтып киргизүү"</string>
     <string name="spoken_description_emoji">"Эмодзи"</string>
     <string name="spoken_description_return">"Кайтуу"</string>
-    <string name="spoken_description_search">"Издөө"</string>
     <string name="spoken_description_dot">"Чекит"</string>
     <string name="spoken_description_language_switch">"Тилди которуштуруу"</string>
     <string name="spoken_description_action_next">"Кийинки"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Саякат жана жерлер"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Көнүгүү"</string>
     <string name="spoken_description_emoji_category_emoticons">"Жымыңдар"</string>
-    <string name="spoken_description_upper_case">"Баш тамга <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Баш тамга I"</string>
     <string name="spoken_letter_0130">"Баш тамга I, төбөсүндө чекити бар"</string>
     <string name="spoken_open_popup_keys_keyboard">"Альтернативалуу белгилер бар"</string>

@@ -314,7 +314,6 @@
     <string name="checksum_mismatch_message">未知库文件。您确定是从可信来源获得并且是“%s”的？</string>
     <string name="text_tap_languages">点按语言以打开设置</string>
     <string name="hidden_features_title">隐藏功能的描述</string>
-    <string name="auto_show_toolbar">自动显示工具栏</string>
     <string name="auto_hide_toolbar_summary">建议可用时隐藏工具栏</string>
     <string name="hidden_features_text">设备保护的存储</string>
     <string name="show_horizontal_space_swipe">水平空格键滑动手势</string>
@@ -381,7 +380,6 @@
     <string name="discussion_section_link">讨论部分</string>
     <string name="get_layouts_message">您可以在 %s 中查找和分享布局。</string>
     <string name="get_colors_message">您可以在 %s 中查找和分享颜色。</string>
-    <string name="custom_subtype">自定义子类型</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="show_tld_popup_keys_summary">输入 URL 和电子邮件地址时，用顶级域替换句点键弹出</string>
     <string name="show_tld_popup_keys">显示顶级域弹出键</string>
@@ -472,7 +470,6 @@
     <string name="suggestion_balance_desc_3">平衡 (默认)\n词典词汇与个人输入习惯之间的标准平衡。</string>
     <string name="suggestion_balance_desc_4">个性化\n优先显示您经常输入的词语和短语。</string>
     <string name="suggestion_balance_desc_5">高度个性化\n强烈偏好已学习的历史和个人词汇，而非标准词汇。</string>
-    <string name="next_word_boost_level">已学习词汇提升级别</string>
     <string name="next_word_strict_ngram">要求已学习词汇的上下文匹配</string>
     <string name="next_word_strict_ngram_summary">仅当前一个词的上下文匹配时才建议已学习的词</string>
     <string name="immediate_auto_space">立即自动空格</string>
@@ -495,7 +492,6 @@
     <string name="clipboard_no_search_results">未找到结果</string>
     <string name="clipboard_clear_all_confirmation">确定要清除所有历史记录吗？</string>
     <string name="clear_all">清除全部</string>
-    <string name="gesture_method">手势输入方法</string>
     <string name="load_gesture_library_button_download">下载库</string>
     <string name="load_gesture_library_downloading">正在下载手势库…</string>
     <string name="load_gesture_library_download_success">下载完成！正在重启…</string>
@@ -703,7 +699,6 @@
     <string name="toolbar_keys_alignment_left">左对齐</string>
     <string name="toolbar_keys_alignment_center">居中</string>
     <string name="toolbar_keys_alignment_right">右对齐</string>
-    <string name="clipboard_keys_alignment">剪贴板按键对齐</string>
     <string name="toolbar_long_press_hint">显示长按提示气泡</string>
     <string name="toolbar_long_press_hint_summary">在具有长按操作的工具栏按键上显示提示气泡</string>
     <string name="prefs_popup_keys_vertical_offset">长按弹出位置</string>
@@ -811,7 +806,6 @@
     <string name="auto_show_toolbar_select_summary">选择文本时显示工具栏</string>
     <string name="auto_show_toolbar_no_suggestions">无建议时自动显示工具栏</string>
     <string name="auto_show_toolbar_no_suggestions_summary">当没有词语建议可用时显示工具栏</string>
-    <string name="toolbar_swipe_down_dismiss">向下滑动以关闭</string>
     <string name="auto_hide_pinned_keys">自动隐藏固定按键</string>
     <string name="auto_hide_pinned_keys_summary">展开工具栏时隐藏固定按键</string>
     <string name="remember_toolbar_state">记住工具栏状态</string>
@@ -1617,7 +1611,6 @@
     <string name="auto_pair_symbols_title">自动配对符号</string>
     <string name="auto_pair_symbols_summary">自动插入右括号、引号和标题标记</string>
     <string name="font_style">字体样式</string>
-    <string name="unicode_panel">统一码符号</string>
     <string name="style_active_indicator">活跃风格：%s</string>
     <string name="style_active_none">无（纯文本）</string>
     <string name="style_plain">普通的</string>
@@ -1695,7 +1688,6 @@
     <string name="text_expander_prefix_autocomplete_summary">输入 2 个以上字符后，建议对无前缀文本和图像快捷方式进行部分匹配（带前缀的快捷方式也会自动完成）。</string>
     <string name="unfolded_side_padding_scale">展开侧垫</string>
     <string name="voice_futo_models_title">FUTO 语音模型 (ACFT)</string>
-    <string name="voice_futo_models_summary">针对移动听写优化的微调 Whisper 模型</string>
     <string name="button_browse">浏览</string>
     <string name="voice_transcribe_while_speaking_title">说话时转录</string>
     <string name="voice_piecewise_field_changed">听写停止：文本字段发生变化，其余部分未插入</string>

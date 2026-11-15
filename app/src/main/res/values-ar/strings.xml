@@ -302,7 +302,6 @@
     <string name="pinned_toolbar_keys">حدد مفاتيح شريط الأدوات المثبتة</string>
     <string name="toast_msg_clipboard_copy">نُسخ المحتوى</string>
     <string name="language_switch_key_behavior">سلوك مفتاح تبديل اللغة</string>
-    <string name="auto_show_toolbar">أظهِر شريط الأدوات تلقائيًا</string>
     <string name="auto_show_toolbar_summary">أظهِر شريط الأدوات في حالة بدء الإدخال أو تحديد النص</string>
     <string name="auto_hide_toolbar">أخفِ شريط الأدوات تلقائيًا</string>
     <string name="auto_hide_toolbar_summary">أخفِ شريط الأدوات عندما تصبح الاقتراحات متاحة</string>
@@ -386,7 +385,6 @@
     <string name="locales_with_dict">اللغات مع القواميس</string>
     <string name="get_layouts_message">يمكنك العثور على المخططات ومشاركتها في %s.</string>
     <string name="discussion_section_link">قسم المناقشة</string>
-    <string name="custom_subtype">نوع فرعي مخصّص</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="show_tld_popup_keys">أظهِر مفاتيح TLD المنبثقة</string>
     <string name="show_tld_popup_keys_summary">استبدل مفتاح الفترة المنبثقة مع مجالات المستوى الأعلى عند كتابة عناوين URL وعناوين البريد الإلكتروني</string>
@@ -457,7 +455,6 @@
     <string name="physical_keyboard_shortcut_number">مفتاح الرقم (1، 2، 3 أثناء الكتابة)</string>
     <string name="prioritize_personal_suggestions">إعطاء أولوية للكلمات الشخصية والمتعلّمة</string>
     <string name="prioritize_personal_suggestions_summary">منح أولوية نقاط أعلى للقاموس الشخصي والكلمات المتعلّمة أثناء التنبؤ بالكلمة التالية</string>
-    <string name="next_word_boost_level">مستوى تعزيز الكلمة المتعلّمة</string>
     <string name="next_word_strict_ngram">المطالبة بمطابقة السياق للكلمات المتعلّمة</string>
     <string name="next_word_strict_ngram_summary">اقتراح الكلمات المتعلّمة فقط عندما يتطابق سياق الكلمة السابقة</string>
     <string name="immediate_auto_space">مسافة تلقائية فورية</string>
@@ -480,7 +477,6 @@
     <string name="clipboard_no_search_results">لم يتم العثور على نتائج</string>
     <string name="clipboard_clear_all_confirmation">هل أنت متأكد أنك تريد مسح كل السجل؟</string>
     <string name="clear_all">مسح الكل</string>
-    <string name="gesture_method">طريقة الكتابة بالإيماءات</string>
     <string name="load_gesture_library_button_download">تنزيل المكتبة</string>
     <string name="load_gesture_library_downloading">جارٍ تنزيل مكتبة الإيماءات…</string>
     <string name="load_gesture_library_download_success">اكتمل التنزيل! جارٍ إعادة التشغيل…</string>
@@ -672,7 +668,6 @@
     <string name="auto_show_toolbar_open">إظهار شريط الأدوات تلقائيًا عند الفتح</string>
     <string name="auto_show_toolbar_select">إظهار شريط الأدوات تلقائيًا عند التحديد</string>
     <string name="auto_show_toolbar_select_summary">إظهار شريط الأدوات عند تحديد النص</string>
-    <string name="toolbar_swipe_down_dismiss">اسحب لأسفل للإغلاق</string>
     <string name="auto_hide_pinned_keys">إخفاء تلقائي للمفاتيح المثبتة</string>
     <string name="auto_hide_pinned_keys_summary">إخفاء المفاتيح المثبتة عند توسيع شريط الأدوات</string>
     <string name="remember_toolbar_state">تذكر حالة شريط الأدوات</string>
@@ -883,7 +878,6 @@
     <string name="toolbar_keys_alignment_left">يسار</string>
     <string name="toolbar_keys_alignment_center">وسط</string>
     <string name="toolbar_keys_alignment_right">يمين</string>
-    <string name="clipboard_keys_alignment">محاذاة مفاتيح الحافظة</string>
     <string name="prefs_popup_keys_vertical_offset">موضع النافذة المنبثقة عند الضغط المطول</string>
     <string name="edit">تعديل</string>
     <string name="prefs_keypress_sound_style_settings">نمط صوت ضغط المفتاح</string>
@@ -1673,7 +1667,6 @@
     <string name="auto_pair_symbols_title">رموز الاقتران التلقائي</string>
     <string name="auto_pair_symbols_summary">إدراج أقواس الإغلاق وعلامات الاقتباس وعلامات العنوان تلقائيًا</string>
     <string name="font_style">نمط الخط</string>
-    <string name="unicode_panel">رموز يونيكود</string>
     <string name="style_active_indicator">النمط النشط:%s</string>
     <string name="style_active_none">لا شيء (نص عادي)</string>
     <string name="style_plain">طبيعي</string>
@@ -1752,7 +1745,6 @@
     <string name="text_expander_prefix_autocomplete_summary">اقتراح تطابقات جزئية للنص غير البادئ واختصارات الصور بعد كتابة أكثر من حرفين (الاختصارات البادئة أيضًا تكتمل تلقائيًا).</string>
     <string name="unfolded_side_padding_scale">حشوة جانبية غير مطوية</string>
     <string name="voice_futo_models_title">نماذج FUTO الصوتية (ACFT)</string>
-    <string name="voice_futo_models_summary">نماذج Whisper المضبوطة بدقة والمُحسّنة للإملاء على الهاتف المحمول</string>
     <string name="button_browse">تصفح</string>
     <string name="voice_transcribe_while_speaking_title">نسخ أثناء التحدث</string>
     <string name="voice_piecewise_field_changed">توقف الإملاء: تم تغيير حقل النص، ولم يتم إدراج الباقي</string>

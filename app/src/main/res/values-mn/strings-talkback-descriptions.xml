@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Нууц үгний дуудлагыг сонсох бол чихэвчийг залгана уу."</string>
-    <string name="spoken_current_text_is">"Одоогийн текст %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> нь <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>-г <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> руу залруулна"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> авто-залруулалт хийдэг"</string>
     <string name="spoken_empty_suggestion">"Зөвлөмж байхгүй"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Дуугаар оруулах"</string>
     <string name="spoken_description_emoji">"Эможи"</string>
     <string name="spoken_description_return">"Оруулах"</string>
-    <string name="spoken_description_search">"Хайх"</string>
     <string name="spoken_description_dot">"Цэг"</string>
     <string name="spoken_description_language_switch">"Хэл солих"</string>
     <string name="spoken_description_action_next">"Дараах"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Аялал, Газар нутаг"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Үйл ажиллагаа"</string>
     <string name="spoken_description_emoji_category_emoticons">"Эмотикон"</string>
-    <string name="spoken_description_upper_case">"Том <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Том I"</string>
     <string name="spoken_letter_0130">"Том I, дээрээ цэгтэй"</string>
     <string name="spoken_open_popup_keys_keyboard">"Бусад тэмдэгтүүд ашиглах боломжтой"</string>

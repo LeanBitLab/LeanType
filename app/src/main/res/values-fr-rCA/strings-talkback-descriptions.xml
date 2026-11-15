@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Branchez des écouteurs pour entendre l\'énoncé à haute voix des touches lors de l\'entrée du mot de passe."</string>
-    <string name="spoken_current_text_is">"Le texte actuel est %s"</string>
     <string name="spoken_auto_correct">"La touche <xliff:g id="KEY_NAME">%1$s</xliff:g> permet de remplacer <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> par <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"La touche <xliff:g id="KEY_NAME">%1$s</xliff:g> permet d\'effectuer une correction automatique"</string>
     <string name="spoken_empty_suggestion">"Aucune suggestion"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Entrée vocale"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Retour"</string>
-    <string name="spoken_description_search">"Recherche"</string>
     <string name="spoken_description_dot">"Point"</string>
     <string name="spoken_description_language_switch">"Changer de langue"</string>
     <string name="spoken_description_action_next">"Suivante"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Voyage et lieux"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Activité"</string>
     <string name="spoken_description_emoji_category_emoticons">"Émoticônes"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> majuscule"</string>
     <string name="spoken_letter_0049">"I majuscule"</string>
     <string name="spoken_letter_0130">"I majuscule, point en chef"</string>
     <string name="spoken_open_popup_keys_keyboard">"Des caractères supplémentaires sont proposés"</string>

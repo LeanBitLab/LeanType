@@ -175,7 +175,6 @@
     <string name="auto_show_toolbar_summary">Giriş başlarsa veya metin seçilirse araç çubuğunu göster</string>
     <string name="auto_hide_toolbar">Araç çubuğunu otomatik gizle</string>
     <string name="auto_hide_toolbar_summary">Öneriler mevcut olduğunda araç çubuğunu gizle</string>
-    <string name="auto_show_toolbar">Araç çubuğunu otomatik göster</string>
     <string name="customize_currencies">Para birimlerini özelleştir</string>
     <string name="main_colors">Yalnızca ana renkleri göster</string>
     <string name="all_colors">Tüm renkleri göster</string>
@@ -411,7 +410,6 @@
     <string name="customize_icons">Simgeleri özelleştirin</string>
     <string name="customize_icons_reset_message">Tüm özelleştirilmiş simgeleri gerçekten sıfırlamak mı istiyorsunuz?</string>
     <string name="delete_confirmation">%s\'yi gerçekten silmek istiyor musunuz?</string>
-    <string name="custom_subtype">Özel alt tür</string>
     <string name="enable_split_keyboard_landscape">Bölünmüş klavyeyi etkinleştir (yatay)</string>
     <string name="show_tld_popup_keys">TLD açılır pencere tuşlarını göster</string>
     <string name="subtype_dru">Dargwa (Urakhi)</string>
@@ -446,7 +444,6 @@
     <string name="auto_correction_trigger_punctuation">Yalnızca noktalama</string>
     <string name="prioritize_personal_suggestions">Kişisel ve öğrenilen kelimeleri önceliklendir</string>
     <string name="prioritize_personal_suggestions_summary">Sonraki kelime tahmininde kişisel sözlük ve öğrenilen kelimelere daha yüksek puan önceliği ver</string>
-    <string name="next_word_boost_level">Öğrenilen kelime destek seviyesi</string>
     <string name="next_word_strict_ngram">Öğrenilen kelimeler için bağlam eşleşmesi gerektir</string>
     <string name="next_word_strict_ngram_summary">Öğrenilen kelimeleri yalnızca önceki kelime bağlamı eşleştiğinde öner</string>
     <string name="immediate_auto_space">Anlık otomatik boşluk</string>
@@ -470,7 +467,6 @@
     <string name="clipboard_clear_all_confirmation">Tüm geçmişi temizlemek istediğinizden emin misiniz?</string>
     <string name="clear_all">Tümünü Temizle</string>
     <string name="clipboard_search">Pano araması</string>
-    <string name="gesture_method">Hareketle yazma yöntemi</string>
     <string name="load_gesture_library_button_download">Kütüphaneyi indir</string>
     <string name="load_gesture_library_downloading">Hareket kütüphanesi indiriliyor…</string>
     <string name="load_gesture_library_download_success">İndirme tamamlandı! Yeniden başlatılıyor…</string>
@@ -648,7 +644,6 @@
     <string name="auto_show_toolbar_open">Açıldığında araç çubuğunu otomatik göster</string>
     <string name="auto_show_toolbar_select">Seçildiğinde araç çubuğunu otomatik göster</string>
     <string name="auto_show_toolbar_select_summary">Metin seçildiğinde araç çubuğunu göster</string>
-    <string name="toolbar_swipe_down_dismiss">Kapatmak için aşağı kaydır</string>
     <string name="auto_hide_pinned_keys">Sabitlenmiş tuşları otomatik gizle</string>
     <string name="auto_hide_pinned_keys_summary">Araç çubuğu genişletildiğinde sabitlenmiş tuşları gizle</string>
     <string name="remember_toolbar_state">Araç çubuğu durumunu hatırla</string>
@@ -842,7 +837,6 @@
     <string name="toolbar_keys_alignment_left">Sola yaslı</string>
     <string name="toolbar_keys_alignment_center">Ortalanmış</string>
     <string name="toolbar_keys_alignment_right">Sağa yaslı</string>
-    <string name="clipboard_keys_alignment">Pano tuşları hizalaması</string>
     <string name="prefs_popup_keys_vertical_offset">Basılı tutma açılır pencere konumu</string>
     <string name="edit">Düzenle</string>
     <string name="prefs_keypress_sound_style_settings">Tuş basma ses stili</string>
@@ -1641,7 +1635,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="auto_pair_symbols_title">Otomatik eşleştirme sembolleri</string>
     <string name="auto_pair_symbols_summary">Kapanış parantezlerini, tırnak işaretlerini ve başlık işaretlerini otomatik olarak ekleyin</string>
     <string name="font_style">Yazı Tipi Stili</string>
-    <string name="unicode_panel">Unicode Sembolleri</string>
     <string name="style_active_indicator">Aktif stil:%s</string>
     <string name="style_active_none">Yok (Düz metin)</string>
     <string name="style_plain">Normal</string>
@@ -1720,7 +1713,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="text_expander_prefix_autocomplete_summary">2\'den fazla karakter yazdıktan sonra ön ekli metin ve resim kısayolları için kısmi eşleşmeler önerin (ön ekli kısayollar ayrıca otomatik tamamlama).</string>
     <string name="unfolded_side_padding_scale">Katlanmamış yan dolgu</string>
     <string name="voice_futo_models_title">FUTO Ses Modelleri (ACFT)</string>
-    <string name="voice_futo_models_summary">Mobil dikte için optimize edilmiş ince ayarlı Whisper modelleri</string>
     <string name="button_browse">Göz at</string>
     <string name="voice_transcribe_while_speaking_title">Konuşurken yazıya dök</string>
     <string name="voice_piecewise_field_changed">Dikte durduruldu: metin alanı değişti, geri kalanı eklenmedi</string>

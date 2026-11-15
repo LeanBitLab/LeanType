@@ -350,12 +350,10 @@
     <string name="label_zwnj_key" tools:keep="@string/label_zwnj_key">Nespojovač s nulovou šířkou</string>
     <string name="space_swipe_toggle_numpad_entry">Přepnout numerickou klávesnici</string>
     <string name="customize_toolbar_key_codes">Přizpůsobit kódy kláves v panelu nástrojů</string>
-    <string name="auto_show_toolbar">Automaticky zobrazit panel nástrojů</string>
     <string name="auto_show_toolbar_summary">Zobrazit panel nástrojů, když je spuštěn vstup nebo vybrán text</string>
     <string name="auto_hide_toolbar">Automaticky skrýt panel nástrojů</string>
     <string name="auto_hide_toolbar_summary">Skrýt panel nástrojů, když jsou dostupné návrhy</string>
     <string name="customize_icons">Přizpůsobit ikony</string>
-    <string name="custom_subtype">Vlastní podtyp</string>
     <string name="layout_in_use">Varování: rozložení se aktuálně používá</string>
     <string name="delete_confirmation">Opravdu chcete odstranit %s?</string>
     <string name="custom_font">Nastavit vlastní písmo ze souboru</string>
@@ -469,7 +467,6 @@
     <string name="suggestion_balance_desc_3">Vyvážené (výchozí)\nStandardní rovnováha mezi slovní zásobou slovníku a osobními návyky psaní.</string>
     <string name="suggestion_balance_desc_4">Personalizované\nUpřednostňuje slova a fráze, které často píšete.</string>
     <string name="suggestion_balance_desc_5">Vysoce personalizované\nSilně upřednostňuje naučenou historii a osobní slova před standardní slovní zásobou.</string>
-    <string name="next_word_boost_level">Úroveň posílení naučených slov</string>
     <string name="next_word_strict_ngram">Vyžadovat kontextovou shodu pro naučená slova</string>
     <string name="next_word_strict_ngram_summary">Navrhovat naučená slova pouze tehdy, když kontext předchozího slova odpovídá</string>
     <string name="immediate_auto_space">Okamžitá automatická mezera</string>
@@ -492,7 +489,6 @@
     <string name="clipboard_no_search_results">Nebyly nalezeny žádné výsledky</string>
     <string name="clipboard_clear_all_confirmation">Opravdu chcete vymazat celou historii?</string>
     <string name="clear_all">Vymazat vše</string>
-    <string name="gesture_method">Metoda psaní gesty</string>
     <string name="load_gesture_library_button_download">Stáhnout knihovnu</string>
     <string name="load_gesture_library_downloading">Stahování knihovny gest…</string>
     <string name="load_gesture_library_download_success">Stahování dokončeno! Restartování…</string>
@@ -700,7 +696,6 @@
     <string name="toolbar_keys_alignment_left">Vlevo</string>
     <string name="toolbar_keys_alignment_center">Na střed</string>
     <string name="toolbar_keys_alignment_right">Vpravo</string>
-    <string name="clipboard_keys_alignment">Zarovnání kláves panelu nástrojů</string>
     <string name="toolbar_long_press_hint">Zobrazit nápovědy pro dlouhé stisknutí</string>
     <string name="toolbar_long_press_hint_summary">Zobrazit popisky na klávesách panelu nástrojů, které mají akci dlouhého stisknutí</string>
     <string name="prefs_popup_keys_vertical_offset">Pozice vyskakovacího okna při dlouhém stisknutí</string>
@@ -808,7 +803,6 @@
     <string name="auto_show_toolbar_select_summary">Zobrazit panel nástrojů při výběru textu</string>
     <string name="auto_show_toolbar_no_suggestions">Automaticky zobrazit panel nástrojů, když nejsou žádné návrhy</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Zobrazit panel nástrojů, když nejsou k dispozici žádné návrhy slov</string>
-    <string name="toolbar_swipe_down_dismiss">Přejetím dolů zavřít</string>
     <string name="auto_hide_pinned_keys">Automaticky skrýt připnuté klávesy</string>
     <string name="auto_hide_pinned_keys_summary">Skrýt připnuté klávesy, když je panel nástrojů rozbalen</string>
     <string name="remember_toolbar_state">Zapamatovat stav panelu nástrojů</string>
@@ -1614,7 +1608,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="auto_pair_symbols_title">Symboly automatického párování</string>
     <string name="auto_pair_symbols_summary">Automaticky vkládat uzavírací závorky, uvozovky a značky názvu</string>
     <string name="font_style">Styl písma</string>
-    <string name="unicode_panel">Unicode symboly</string>
     <string name="style_active_indicator">Aktivní styl:%s</string>
     <string name="style_active_none">Žádné (prostý text)</string>
     <string name="style_plain">Normální</string>
@@ -1693,7 +1686,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="text_expander_prefix_autocomplete_summary">Navrhněte částečné shody pro textové a obrázkové zkratky bez předpony po zadání 2 a více znaků (zkratky s předponou se také automaticky doplňují).</string>
     <string name="unfolded_side_padding_scale">Rozložené boční polstrování</string>
     <string name="voice_futo_models_title">Hlasové modely FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Vyladěné modely Whisper optimalizované pro mobilní diktování</string>
     <string name="button_browse">Prohlížet</string>
     <string name="voice_transcribe_while_speaking_title">Přepisujte při mluvení</string>
     <string name="voice_piecewise_field_changed">Diktování zastaveno: textové pole se změnilo, zbytek nebyl vložen</string>

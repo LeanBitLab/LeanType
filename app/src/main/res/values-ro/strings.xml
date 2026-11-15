@@ -280,7 +280,6 @@
     <string name="subtype_generic_student">%s (Student)</string>
     <string name="gesture_fast_typing_cooldown_instant">Începe întotdeauna instantaneu</string>
     <string name="prefs_space_bar_text">Text personalizat pe bara de spațiu</string>
-    <string name="auto_show_toolbar">Afișare automată bară de instrumente</string>
     <string name="customize_currencies">Personalizează monedele</string>
     <string name="customize_currencies_detail">Setează simboluri valutare principale și până la 6 secundare, separate prin spațiu</string>
     <string name="quick_pin_toolbar_keys_summary">Aceasta va dezactiva alte acțiuni de apăsare lungă pentru tastele barei de instrumente care nu sunt fixate</string>
@@ -351,7 +350,6 @@
     <string name="label_shortcut_key_disabled" tools:keep="@string/label_shortcut_key_disabled">Introducere vocală dezactivată</string>
     <string name="label_toolbar_key" tools:keep="@string/label_toolbar_key">Afișează/ascunde bara de instrumente</string>
     <string name="customize_icons_reset_message">Resetezi cu adevărat toate pictogramele personalizate?</string>
-    <string name="custom_subtype">Subtip personalizat</string>
     <string name="name_invalid">Nume greșit</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="locales_with_dict">Limbi cu dicționare</string>
@@ -456,7 +454,6 @@
     <string name="suggestion_balance_desc_3">Echilibrat (Implicit)\nEchilibru standard între vocabularul dicționarului și obiceiurile personale de tastare.</string>
     <string name="suggestion_balance_desc_4">Personalizat\nPrioritizează cuvintele și expresiile pe care le-ai tastat frecvent.</string>
     <string name="suggestion_balance_desc_5">Foarte personalizat\nFavorizează puternic istoricul învățat și cuvintele personale în detrimentul vocabularului standard.</string>
-    <string name="next_word_boost_level">Nivelul de impuls al cuvintelor învățate</string>
     <string name="next_word_strict_ngram">Cere potrivirea contextului pentru cuvintele învățate</string>
     <string name="next_word_strict_ngram_summary">Sugerează cuvinte învățate doar atunci când contextul cuvântului precedent se potrivește</string>
     <string name="immediate_auto_space">Spațiere automată imediată</string>
@@ -480,7 +477,6 @@
     <string name="clipboard_no_search_results">Nu au fost găsite rezultate</string>
     <string name="clipboard_clear_all_confirmation">Ești sigur că vrei să ștergi tot istoricul?</string>
     <string name="clear_all">Șterge tot</string>
-    <string name="gesture_method">Metoda de tastare prin gesturi</string>
     <string name="load_gesture_library_button_download">Descarcă biblioteca</string>
     <string name="load_gesture_library_downloading">Se descarcă biblioteca de gesturi…</string>
     <string name="load_gesture_library_download_success">Descărcare completă! Se repornește…</string>
@@ -690,7 +686,6 @@
     <string name="toolbar_keys_alignment_left">Stânga</string>
     <string name="toolbar_keys_alignment_center">Centru</string>
     <string name="toolbar_keys_alignment_right">Dreapta</string>
-    <string name="clipboard_keys_alignment">Alinierea tastelor barei de instrumente</string>
     <string name="toolbar_long_press_hint">Afișează bule de indiciu la apăsarea lungă</string>
     <string name="toolbar_long_press_hint_summary">Afișează bule pe tastele barei de instrumente care au o acțiune la apăsare lungă</string>
     <string name="prefs_popup_keys_vertical_offset">Poziția ferestrei pop-up la apăsare lungă</string>
@@ -843,7 +838,6 @@
     <string name="auto_show_toolbar_select_summary">Afișează bara de instrumente la selectarea textului</string>
     <string name="auto_show_toolbar_no_suggestions">Afișează automat bara de instrumente când nu există sugestii</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Afișează bara de instrumente când nu sunt disponibile sugestii de cuvinte</string>
-    <string name="toolbar_swipe_down_dismiss">Glisează în jos pentru a închide</string>
     <string name="auto_hide_pinned_keys">Ascunde automat tastele fixate</string>
     <string name="auto_hide_pinned_keys_summary">Ascunde tastele fixate când bara de instrumente este extinsă</string>
     <string name="remember_toolbar_state">Reține starea barei de instrumente</string>
@@ -1649,7 +1643,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="auto_pair_symbols_title">Simboluri de pereche automată</string>
     <string name="auto_pair_symbols_summary">Introduceți automat parantezele de închidere, ghilimele și semnele de titlu</string>
     <string name="font_style">Stilul fontului</string>
-    <string name="unicode_panel">Simboluri Unicode</string>
     <string name="style_active_indicator">Stil activ:%s</string>
     <string name="style_active_none">Niciunul (text simplu)</string>
     <string name="style_plain">Normal</string>
@@ -1728,7 +1721,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="text_expander_prefix_autocomplete_summary">Sugerați potriviri parțiale pentru text fără prefix și comenzi rapide pentru imagini după ce ați tastat peste 2 caractere (comenzile rapide cu prefix, de asemenea, completează automat).</string>
     <string name="unfolded_side_padding_scale">Captuseala laterala desfasurata</string>
     <string name="voice_futo_models_title">Modele de voce FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Modele Whisper reglate fin, optimizate pentru dictarea pe mobil</string>
     <string name="button_browse">Răsfoiește</string>
     <string name="voice_transcribe_while_speaking_title">Transcrieți în timp ce vorbiți</string>
     <string name="voice_piecewise_field_changed">Dictarea s-a oprit: câmpul de text s-a schimbat, restul nu a fost introdus</string>

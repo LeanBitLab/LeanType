@@ -294,7 +294,6 @@
     <string name="layout_number_row" tools:keep="@string/layout_number_row">Baris nomor</string>
     <string name="customize_currencies">Sesuaikan mata uang</string>
     <string name="toast_msg_clipboard_copy">Konten disalin</string>
-    <string name="auto_show_toolbar">Bilah alat pertunjukan otomatis</string>
     <string name="subtype_generic_student">%s (Student)</string>
     <string name="layout_functional_keys_symbols_shifted" tools:keep="@string/layout_functional_keys_symbols_shifted">Tombol fungsi (Lebih banyak simbol)</string>
     <string name="center_suggestion_text_to_enter">Selalu gunakan saran pertengahan</string>
@@ -369,7 +368,6 @@
     <string name="label_switch_onehanded_key" tools:keep="@string/label_switch_onehanded_key">Beralih ke sisi mode satu tangan</string>
     <string name="icon_style">Ikon style</string>
     <string name="label_bin" tools:keep="@string/label_bin">bin</string>
-    <string name="custom_subtype">Subtipe khusus</string>
     <string name="settings_screen_secondary_layouts">Tata letak sekunder</string>
     <string name="discussion_section_link">Bagian Diskusi</string>
     <string name="layout_in_use">PERINGATAN: Tata letak sedang digunakan saat ini</string>
@@ -454,7 +452,6 @@
     <string name="suggestion_balance_desc_3">Seimbang (Default)\nKeseimbangan standar antara kosakata kamus dan kebiasaan mengetik pribadi.</string>
     <string name="suggestion_balance_desc_4">Dipersonalisasi\nMemprioritaskan kata dan frasa yang sering Anda ketik.</string>
     <string name="suggestion_balance_desc_5">Sangat dipersonalisasi\nSangat menyukai riwayat yang dipelajari dan kata pribadi dibandingkan kosakata standar.</string>
-    <string name="next_word_boost_level">Tingkat dorongan kata yang dipelajari</string>
     <string name="next_word_strict_ngram">Memerlukan kecocokan konteks untuk kata yang dipelajari</string>
     <string name="next_word_strict_ngram_summary">Hanya sarankan kata yang dipelajari ketika konteks kata sebelumnya cocok</string>
     <string name="immediate_auto_space">Spasi otomatis langsung</string>
@@ -480,7 +477,6 @@
     <string name="clipboard_no_search_results">Tidak ada hasil yang ditemukan</string>
     <string name="clipboard_clear_all_confirmation">Apakah Anda yakin ingin menghapus semua riwayat?</string>
     <string name="clear_all">Hapus Semua</string>
-    <string name="gesture_method">Metode pengetikan gestur</string>
     <string name="load_gesture_library_button_download">Unduh pustaka</string>
     <string name="load_gesture_library_downloading">Mengunduh pustaka gestur…</string>
     <string name="load_gesture_library_download_success">Unduhan selesai! Memulai ulang…</string>
@@ -697,7 +693,6 @@
     <string name="toolbar_keys_alignment_left">Kiri</string>
     <string name="toolbar_keys_alignment_center">Tengah</string>
     <string name="toolbar_keys_alignment_right">Kanan</string>
-    <string name="clipboard_keys_alignment">Perataan tombol bilah alat</string>
     <string name="toolbar_long_press_hint">Tampilkan pil petunjuk tekan lama</string>
     <string name="toolbar_long_press_hint_summary">Tampilkan pil pada tombol bilah alat yang memiliki tindakan tekan lama</string>
     <string name="prefs_popup_keys_vertical_offset">Posisi popup tekan lama</string>
@@ -813,7 +808,6 @@
     <string name="auto_show_toolbar_select_summary">Tampilkan bilah alat saat memilih teks</string>
     <string name="auto_show_toolbar_no_suggestions">Tampilkan bilah alat otomatis saat tidak ada saran</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Tampilkan bilah alat saat tidak ada saran kata yang tersedia</string>
-    <string name="toolbar_swipe_down_dismiss">Geser ke bawah untuk menutup</string>
     <string name="auto_hide_pinned_keys">Sembunyikan tombol yang disematkan secara otomatis</string>
     <string name="auto_hide_pinned_keys_summary">Sembunyikan tombol yang disematkan saat bilah alat diperluas</string>
     <string name="remember_toolbar_state">Ingat status bilah alat</string>
@@ -1612,7 +1606,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="auto_pair_symbols_title">Simbol pasangan otomatis</string>
     <string name="auto_pair_symbols_summary">Secara otomatis menyisipkan tanda kurung tutup, tanda kutip, dan tanda judul</string>
     <string name="font_style">Gaya Font</string>
-    <string name="unicode_panel">Simbol Unicode</string>
     <string name="style_active_indicator">Gaya aktif:%s</string>
     <string name="style_active_none">Tidak ada (Teks biasa)</string>
     <string name="style_plain">Normal</string>
@@ -1691,7 +1684,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="text_expander_prefix_autocomplete_summary">Menyarankan kecocokan sebagian untuk pintasan teks dan gambar tanpa awalan setelah mengetik 2+ karakter (pintasan yang diawali juga dilengkapi secara otomatis).</string>
     <string name="unfolded_side_padding_scale">Bantalan samping terbuka</string>
     <string name="voice_futo_models_title">Model Suara FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Model Whisper yang disempurnakan dan dioptimalkan untuk dikte seluler</string>
     <string name="button_browse">Jelajahi</string>
     <string name="voice_transcribe_while_speaking_title">Transkripsikan sambil berbicara</string>
     <string name="voice_piecewise_field_changed">Dikte berhenti: kolom teks berubah, sisanya tidak disisipkan</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Priključite slušalke, če želite slišati izgovorjene tipke gesla."</string>
-    <string name="spoken_current_text_is">"Trenutno besedilo je %s"</string>
     <string name="spoken_auto_correct">"Tipka <xliff:g id="KEY_NAME">%1$s</xliff:g> popravi <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> v <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"Tipka <xliff:g id="KEY_NAME">%1$s</xliff:g> izvede samopopravek"</string>
     <string name="spoken_empty_suggestion">"Ni predlogov"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Glasovni vnos"</string>
     <string name="spoken_description_emoji">"Emodžiji"</string>
     <string name="spoken_description_return">"Return"</string>
-    <string name="spoken_description_search">"Iskanje"</string>
     <string name="spoken_description_dot">"Pika"</string>
     <string name="spoken_description_language_switch">"Preklop jezika"</string>
     <string name="spoken_description_action_next">"Naprej"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Potovanje in mesta"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Dejavnost"</string>
     <string name="spoken_description_emoji_category_emoticons">"Čustveni simboli"</string>
-    <string name="spoken_description_upper_case">"Velika črka <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Velika črka I"</string>
     <string name="spoken_letter_0130">"Velika črka I s piko zgoraj"</string>
     <string name="spoken_open_popup_keys_keyboard">"Nadomestni znaki so na voljo"</string>

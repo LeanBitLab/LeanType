@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Fut kufjet për të dëgjuar me zë të lartë tastet e fjalëkalimit"</string>
-    <string name="spoken_current_text_is">"Teksti aktual është %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> korrigjon <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> në <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> kryen auto-korrigjim"</string>
     <string name="spoken_empty_suggestion">"Nuk ka asnjë sugjerim"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Të dhëna zanore"</string>
     <string name="spoken_description_emoji">"\"Emoji\""</string>
     <string name="spoken_description_return">"Kthehu prapa"</string>
-    <string name="spoken_description_search">"Kërko"</string>
     <string name="spoken_description_dot">"Pikë"</string>
     <string name="spoken_description_language_switch">"Ndrysho gjuhën"</string>
     <string name="spoken_description_action_next">"Përpara"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Udhëtime dhe vende"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Aktivitet"</string>
     <string name="spoken_description_emoji_category_emoticons">"Ikonat e emocioneve"</string>
-    <string name="spoken_description_upper_case">"Kapitalja e <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"I e madhe"</string>
     <string name="spoken_letter_0130">"I e madhe me pikë sipër"</string>
     <string name="spoken_open_popup_keys_keyboard">"Karaktere alternative mundësohen gjithashtu"</string>

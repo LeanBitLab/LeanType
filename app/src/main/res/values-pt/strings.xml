@@ -385,7 +385,6 @@
     <string name="space_swipe_toggle_numpad_entry">Ativar numpad</string>
     <string name="space_swipe_hide_keyboard_entry">Esconder teclado</string>
     <string name="var_toolbar_direction">Direção da barra de ferramentas variável</string>
-    <string name="auto_show_toolbar">Mostrar barra de ferramentas automáticamente</string>
     <string name="auto_show_toolbar_summary">Mostrar a barra de ferramentas se a escrita começar ou texto é selecionado</string>
     <string name="gnu_gpl">GNU General Public License v3.0</string>
     <string name="text_tap_languages">Toque o idioma para abrir as definições</string>
@@ -407,7 +406,6 @@
     <string name="long_press_code">Pressionar código</string>
     <string name="toast_msg_clipboard_copy">Conteúdo copiado</string>
     <string name="customize_icons">Personalizar ícones</string>
-    <string name="custom_subtype">Subtipo personalizado</string>
     <string name="label_toolbar_key" tools:keep="@string/label_toolbar_key">Mostrar / esconder barra de ferramentas</string>
     <string name="auto_hide_toolbar_summary">Esconder a barra de ferramentas quando sugestões ficam disponíveis</string>
     <string name="hidden_features_summary">Mostrar funcionalidades que podem passar despercebidas</string>
@@ -449,7 +447,6 @@
     <string name="physical_keyboard_shortcut_number">Tecla numérica (1, 2, 3 ao compor)</string>
     <string name="prioritize_personal_suggestions">Priorizar palavras pessoais e aprendidas</string>
     <string name="prioritize_personal_suggestions_summary">Dar maior prioridade de pontuação ao dicionário pessoal e palavras aprendidas durante a previsão da próxima palavra</string>
-    <string name="next_word_boost_level">Nível de reforço de palavra aprendida</string>
     <string name="next_word_strict_ngram">Exigir correspondência de contexto para palavras aprendidas</string>
     <string name="next_word_strict_ngram_summary">Sugerir palavras aprendidas apenas quando o contexto da palavra anterior corresponder</string>
     <string name="immediate_auto_space">Auto-espaço imediato</string>
@@ -472,7 +469,6 @@
     <string name="clipboard_no_search_results">Nenhum resultado encontrado</string>
     <string name="clipboard_clear_all_confirmation">Tem a certeza de que pretende limpar todo o histórico?</string>
     <string name="clear_all">Limpar tudo</string>
-    <string name="gesture_method">Método de digitação por gestos</string>
     <string name="load_gesture_library_button_download">Transferir biblioteca</string>
     <string name="load_gesture_library_downloading">A transferir biblioteca de gestos…</string>
     <string name="load_gesture_library_download_success">Transferência concluída! A reiniciar…</string>
@@ -664,7 +660,6 @@
     <string name="auto_show_toolbar_open">Mostrar barra de ferramentas automaticamente ao abrir</string>
     <string name="auto_show_toolbar_select">Mostrar barra de ferramentas automaticamente ao selecionar</string>
     <string name="auto_show_toolbar_select_summary">Mostrar a barra de ferramentas ao selecionar texto</string>
-    <string name="toolbar_swipe_down_dismiss">Deslizar para baixo para fechar</string>
     <string name="auto_hide_pinned_keys">Ocultar automaticamente teclas fixadas</string>
     <string name="auto_hide_pinned_keys_summary">Ocultar teclas fixadas quando a barra de ferramentas está expandida</string>
     <string name="remember_toolbar_state">Lembrar estado da barra de ferramentas</string>
@@ -875,7 +870,6 @@
     <string name="toolbar_keys_alignment_left">Esquerda</string>
     <string name="toolbar_keys_alignment_center">Centro</string>
     <string name="toolbar_keys_alignment_right">Direita</string>
-    <string name="clipboard_keys_alignment">Alinhamento das teclas da área de transferência</string>
     <string name="prefs_popup_keys_vertical_offset">Posição do pop-up ao manter pressionado</string>
     <string name="edit">Editar</string>
     <string name="prefs_keypress_sound_style_settings">Estilo de som ao pressionar teclas</string>
@@ -1673,7 +1667,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="auto_pair_symbols_title">Símbolos de emparelhamento automático</string>
     <string name="auto_pair_symbols_summary">Inserir colchetes, aspas e marcas de título automaticamente</string>
     <string name="font_style">Estilo da fonte</string>
-    <string name="unicode_panel">Símbolos Unicode</string>
     <string name="style_active_indicator">Estilo ativo:%s</string>
     <string name="style_active_none">Nenhum (texto simples)</string>
     <string name="style_plain">Normal</string>
@@ -1751,7 +1744,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="text_expander_prefix_autocomplete_summary">Sugira correspondências parciais para atalhos de texto e imagem sem prefixo após digitar mais de 2 caracteres (os atalhos com prefixo também são preenchidos automaticamente).</string>
     <string name="unfolded_side_padding_scale">Acolchoamento lateral desdobrado</string>
     <string name="voice_futo_models_title">Modelos de voz FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Modelos Whisper ajustados e otimizados para ditado móvel</string>
     <string name="button_browse">Navegar</string>
     <string name="voice_transcribe_while_speaking_title">Transcreva enquanto fala</string>
     <string name="voice_piecewise_field_changed">O ditado parou: o campo de texto mudou, o restante não foi inserido</string>

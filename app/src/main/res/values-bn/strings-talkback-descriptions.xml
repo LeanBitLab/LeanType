@@ -6,7 +6,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"সশব্দে উচ্চারিত পাসওয়ার্ডের কীগুলি শোনার জন্য একটি হেডসেট সংযুক্ত করুন।"</string>
-    <string name="spoken_current_text_is">"বর্তমান পাঠ্য %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> কী <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> কে <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> এ সংশোধন করছে"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> স্বত:সংশোধন করে"</string>
     <string name="spoken_empty_suggestion">"কোনো প্রস্তাবনা নেই"</string>
@@ -26,7 +25,6 @@
     <string name="spoken_description_mic">"ভয়েস ইনপুট"</string>
     <string name="spoken_description_emoji">"ইমোজি"</string>
     <string name="spoken_description_return">"রিটার্ন"</string>
-    <string name="spoken_description_search">"সার্চ"</string>
     <string name="spoken_description_dot">"ডট"</string>
     <string name="spoken_description_language_switch">"ভাষা পরিবর্তন করুন"</string>
     <string name="spoken_description_action_next">"পরবর্তী"</string>
@@ -59,7 +57,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"ভ্রমণ ও স্থান</string>
     <string name="spoken_description_emoji_category_eight_activity">"অ্যাক্টিভিটি"</string>
     <string name="spoken_description_emoji_category_emoticons">"ইমোটিকন</string>
-    <string name="spoken_description_upper_case">"বড় হাতের <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"বড় হাতের I"</string>
     <string name="spoken_letter_0130">"বড় হাতের I, উপরে বিন্দু"</string>
     <string name="spoken_open_popup_keys_keyboard">"বিকল্প অক্ষরগুলি উপলব্ধ রয়েছে"</string>

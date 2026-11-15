@@ -287,7 +287,6 @@
     <string name="pinned_toolbar_keys">Angeheftete Tasten der Symbolleiste auswählen</string>
     <string name="quick_pin_toolbar_keys_summary">Dadurch werden andere Langdruck-Aktionen für Tasten der Symbolleiste, die nicht angeheftet sind, deaktiviert</string>
     <string name="toast_msg_clipboard_copy">Inhalt kopiert</string>
-    <string name="auto_show_toolbar">Symbolleiste automatisch anzeigen</string>
     <string name="auto_show_toolbar_summary">Symbolleiste anzeigen, wenn die Eingabe beginnt oder Text ausgewählt ist</string>
     <string name="auto_hide_toolbar">Symbolleiste automatisch ausblenden</string>
     <string name="auto_hide_toolbar_summary">Ausblenden der Symbolleiste, wenn Vorschläge verfügbar sind</string>
@@ -379,7 +378,6 @@
     <string name="discussion_section_link">Diskussionsbereich</string>
     <string name="delete_confirmation">%s wirklich löschen?</string>
     <string name="name_invalid">Ungültiger Name</string>
-    <string name="custom_subtype">Benutzerdefinierter Subtyp</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baisakhi)</string>
     <string name="show_tld_popup_keys">Zeige TLD-Popup-Tasten</string>
     <string name="show_tld_popup_keys_summary">Ersetze Punkt-Tastenpopups mit Top-Level-Domains wenn URLs und Mailadressen eingegeben werden</string>
@@ -453,7 +451,6 @@
     <string name="physical_keyboard_shortcut_number">Zahlentaste (1, 2, 3 beim Verfassen)</string>
     <string name="prioritize_personal_suggestions">Persönliche und gelernte Wörter priorisieren</string>
     <string name="prioritize_personal_suggestions_summary">Bei der Vorhersage des nächsten Wortes dem persönlichen Wörterbuch und gelernten Wörtern eine höhere Punktzahlpriorität geben</string>
-    <string name="next_word_boost_level">Steigerungsstufe für gelernte Wörter</string>
     <string name="next_word_strict_ngram">Kontextübereinstimmung für gelernte Wörter erforderlich</string>
     <string name="next_word_strict_ngram_summary">Nur gelernte Wörter vorschlagen, wenn der vorhergehende Wortkontext übereinstimmt</string>
     <string name="immediate_auto_space">Sofortiges automatisches Leerzeichen</string>
@@ -476,7 +473,6 @@
     <string name="clipboard_no_search_results">Keine Ergebnisse gefunden</string>
     <string name="clipboard_clear_all_confirmation">Möchten Sie wirklich den gesamten Verlauf löschen?</string>
     <string name="clear_all">Alle löschen</string>
-    <string name="gesture_method">Methode für Gesteneingabe</string>
     <string name="load_gesture_library_button_download">Bibliothek herunterladen</string>
     <string name="load_gesture_library_downloading">Gesture-Bibliothek wird heruntergeladen…</string>
     <string name="load_gesture_library_download_success">Download abgeschlossen! Neustart…</string>
@@ -670,7 +666,6 @@
     <string name="auto_show_toolbar_open">Werkzeugleiste beim Öffnen automatisch anzeigen</string>
     <string name="auto_show_toolbar_select">Werkzeugleiste bei Auswahl automatisch anzeigen</string>
     <string name="auto_show_toolbar_select_summary">Die Werkzeugleiste beim Auswählen von Text anzeigen</string>
-    <string name="toolbar_swipe_down_dismiss">Zum Schließen nach unten wischen</string>
     <string name="auto_hide_pinned_keys">Angeheftete Tasten automatisch ausblenden</string>
     <string name="auto_hide_pinned_keys_summary">Angeheftete Tasten ausblenden, wenn die Werkzeugleiste erweitert ist</string>
     <string name="remember_toolbar_state">Werkzeugleisten-Zustand merken</string>
@@ -904,7 +899,6 @@
     <string name="toolbar_keys_alignment_left">Links</string>
     <string name="toolbar_keys_alignment_center">Zentriert</string>
     <string name="toolbar_keys_alignment_right">Rechts</string>
-    <string name="clipboard_keys_alignment">Ausrichtung der Symbolleistentasten</string>
     <string name="prefs_popup_keys_vertical_offset">Vertikale Popup-Position bei langem Druck</string>
     <string name="edit">Bearbeiten</string>
     <string name="prefs_keypress_sound_style_settings">Tastendruck-Klangstil</string>
@@ -1688,7 +1682,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="auto_pair_symbols_title">Symbole automatisch koppeln</string>
     <string name="auto_pair_symbols_summary">Fügen Sie schließende Klammern, Anführungszeichen und Titelzeichen automatisch ein</string>
     <string name="font_style">Schriftstil</string>
-    <string name="unicode_panel">Unicode-Symbole</string>
     <string name="style_active_indicator">Aktiver Stil:%s</string>
     <string name="style_active_none">Keine (Klartext)</string>
     <string name="style_plain">Normal</string>
@@ -1743,7 +1736,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="text_expander_prefix_autocomplete_summary">Schlagen Sie Teilübereinstimmungen für Text- und Bildverknüpfungen ohne Präfix vor, nachdem Sie mehr als zwei Zeichen eingegeben haben (Verknüpfungen mit Präfix werden auch automatisch vervollständigt).</string>
     <string name="unfolded_side_padding_scale">Aufgeklappte Seitenpolsterung</string>
     <string name="voice_futo_models_title">FUTO-Sprachmodelle (ACFT)</string>
-    <string name="voice_futo_models_summary">Fein abgestimmte Whisper-Modelle, optimiert für mobiles Diktieren</string>
     <string name="button_browse">Durchsuchen</string>
     <string name="voice_transcribe_while_speaking_title">Schon beim Sprechen erkennen</string>
     <string name="voice_piecewise_field_changed">Diktat beendet: Das Textfeld hat gewechselt, der Rest wurde nicht eingefügt</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Anslut hörlurar om du vill att lösenordet ska läsas upp."</string>
-    <string name="spoken_current_text_is">"Nuvarande text är %s"</string>
     <string name="spoken_auto_correct">"Om du trycker på <xliff:g id="KEY_NAME">%1$s</xliff:g> rättas <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> till <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"Om du trycker på <xliff:g id="KEY_NAME">%1$s</xliff:g> utförs autokorrigering"</string>
     <string name="spoken_empty_suggestion">"Inga förslag"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Röstindata"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Retur"</string>
-    <string name="spoken_description_search">"Sökning"</string>
     <string name="spoken_description_dot">"Punkt"</string>
     <string name="spoken_description_language_switch">"Byt språk"</string>
     <string name="spoken_description_action_next">"Nästa"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Resor och platser"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Aktivitet"</string>
     <string name="spoken_description_emoji_category_emoticons">"Uttryckssymboler"</string>
-    <string name="spoken_description_upper_case">"Versalt <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Versalt I"</string>
     <string name="spoken_letter_0130">"Versalt I, punkt ovanför"</string>
     <string name="spoken_open_popup_keys_keyboard">"Alternativa tecken är tillgängliga"</string>

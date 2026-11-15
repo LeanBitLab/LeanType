@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"బిగ్గరగా చదివి వినిపించే పాస్‌వర్డ్ కీలను వినడానికి హెడ్‌సెట్‌ను ప్లగిన్ చేయండి."</string>
-    <string name="spoken_current_text_is">"ప్రస్తుత వచనం %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>ని <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>గా సరి చేస్తుంది"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> స్వీయ-సవరణను అమలు చేస్తుంది"</string>
     <string name="spoken_empty_suggestion">"సూచన లేదు"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"వాయిస్ ఇన్‌పుట్"</string>
     <string name="spoken_description_emoji">"ఎమోజి"</string>
     <string name="spoken_description_return">"తిరిగి వెళ్లు"</string>
-    <string name="spoken_description_search">"వెతుకు"</string>
     <string name="spoken_description_dot">"చుక్క"</string>
     <string name="spoken_description_language_switch">"భాషను మార్చండి"</string>
     <string name="spoken_description_action_next">"తర్వాత"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"ప్రయాణం &amp; స్థలాలు"</string>
     <string name="spoken_description_emoji_category_eight_activity">"కార్యకలాపం"</string>
     <string name="spoken_description_emoji_category_emoticons">"ఎమోటికాన్‌లు"</string>
-    <string name="spoken_description_upper_case">"క్యాపిటల్ <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"క్యాపిటల్ I"</string>
     <string name="spoken_letter_0130">"క్యాపిటల్ I, ఎగువన చుక్క"</string>
     <string name="spoken_open_popup_keys_keyboard">"ప్రత్యామ్నాయ అక్షరాలు అందుబాటులో ఉన్నాయి"</string>

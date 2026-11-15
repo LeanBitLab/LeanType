@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Дауыстап айтылған құпия сөз пернелерін есту үшін гарнитураны қосыңыз."</string>
-    <string name="spoken_current_text_is">"Ағымдағы мәтін – %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> дегенді <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> деп түзетеді"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> автоматты түрде түзетуді орындайды"</string>
     <string name="spoken_empty_suggestion">"Ұсыныс жоқ"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Дауыспен енгізу"</string>
     <string name="spoken_description_emoji">"Эмодзи"</string>
     <string name="spoken_description_return">"Қайтару"</string>
-    <string name="spoken_description_search">"Іздеу"</string>
     <string name="spoken_description_dot">"Нүкте"</string>
     <string name="spoken_description_language_switch">"Тілді ауыстыру"</string>
     <string name="spoken_description_action_next">"Келесі"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Саяхат және орындар"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Әрекет"</string>
     <string name="spoken_description_emoji_category_emoticons">"Эмотикондар"</string>
-    <string name="spoken_description_upper_case">"Бас <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Бас I"</string>
     <string name="spoken_letter_0130">"Үстінде нүктесі бар бас I"</string>
     <string name="spoken_open_popup_keys_keyboard">"Баламалы таңбалар қол жетімді"</string>

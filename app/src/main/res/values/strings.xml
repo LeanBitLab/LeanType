@@ -266,8 +266,6 @@
     <string name="suggestion_balance_desc_3">Balanced (Default)\nStandard balance between dictionary vocabulary and personal typing habits.</string>
     <string name="suggestion_balance_desc_4">Personalized\nPrioritizes words and phrases you have frequently typed.</string>
     <string name="suggestion_balance_desc_5">Highly personalized\nStrongly favors learned history and personal words over standard vocabulary.</string>
-    <!-- Legacy option kept for translation compatibility -->
-    <string name="next_word_boost_level">Learned word boost level</string>
     <!-- Option to require strict preceding context for learned word suggestions. -->
     <string name="next_word_strict_ngram">Require context match for learned words</string>
     <!-- Description for strict ngram option. -->
@@ -390,8 +388,6 @@
     <!-- Description for "load_gesture_library" option -->
     <string name="load_gesture_library_summary">Provide a native library to enable gesture typing</string>
 
-    <!-- ponytail: gesture engine/method selection preferences -->
-    <string name="gesture_method">Gesture typing method</string>
     <!-- Message in load gesture library dialog -->
     <string name="load_gesture_library_message">You will need the library for \'%s\'. Incompatible libraries may crash when using gesture typing.
         \n\nWarning: loading external code can be a security risk. Only use a library from a source you trust.</string>
@@ -879,7 +875,6 @@
     <string name="toolbar_keys_alignment_left">Left</string>
     <string name="toolbar_keys_alignment_center">Center</string>
     <string name="toolbar_keys_alignment_right">Right</string>
-    <string name="clipboard_keys_alignment">Toolbar keys alignment</string>
     <!-- Title of the setting to set pinned toolbar keys -->
     <string name="pinned_toolbar_keys">Select pinned toolbar keys</string>
     <!-- Title of the setting to quick-pin toolbar keys -->
@@ -1605,8 +1600,6 @@ New dictionary:
     <string name="key_code">Key code</string>
     <!-- Text for showing / setting long press code -->
     <string name="long_press_code">Long press code</string>
-    <!-- Title of the setting to auto show toolbar -->
-    <string name="auto_show_toolbar">Auto show toolbar</string>
     <string name="auto_show_toolbar_open">Auto show toolbar on open</string>
     <string name="auto_show_toolbar_select">Auto show toolbar on select</string>
     <!-- Description of the auto_show_toolbar setting -->
@@ -1620,8 +1613,6 @@ New dictionary:
     <string name="auto_show_toolbar_no_suggestions">Auto show toolbar when no suggestions</string>
     <!-- Description of the setting for showing the toolbar when there are no suggestions -->
     <string name="auto_show_toolbar_no_suggestions_summary">Show the toolbar when no word suggestions are available</string>
-    <!-- Title of the setting to swipe down on toolbar to dismiss keyboard -->
-    <string name="toolbar_swipe_down_dismiss">Swipe down to close</string>
     <string name="action_back" tools:ignore="MissingTranslation">Back</string>
     <string name="touchpad_close" tools:ignore="MissingTranslation">Close touchpad mode</string>
     <!-- Description of the setting for swiping down on toolbar to dismiss keyboard -->
@@ -1650,8 +1641,6 @@ New dictionary:
     <string name="delete_confirmation">Really delete %s?</string>
     <!-- Message when chosen name is invalid (empty or already taken) -->
     <string name="name_invalid">Invalid name</string>
-    <!-- Description indicating a subtype in Locales & Layouts has customizations -->
-    <string name="custom_subtype">Custom subtype</string>
     <!-- Name for landscape orientation, used in various settings -->
     <string name="landscape">Landscape</string>
     <!-- Name for portrait orientation, used in various settings -->
@@ -2392,7 +2381,6 @@ New dictionary:
     <string name="voice_model_import_failed_format">Model import failed: %s</string>
     <string name="voice_model_multilingual">Multilingual</string>
     <string name="voice_futo_models_title">FUTO Voice Models (ACFT)</string>
-    <string name="voice_futo_models_summary">Fine-tuned Whisper models optimized for mobile dictation</string>
     <string name="button_browse">Browse</string>
 
     <!-- GIF Plugin & Picker -->
@@ -2453,7 +2441,6 @@ New dictionary:
 
     <!-- Typography & Font Styles -->
     <string name="font_style">Font Style</string>
-    <string name="unicode_panel">Unicode Symbols</string>
     <string name="style_plain">Normal</string>
     <string name="style_active_indicator">Active style: %s</string>
     <string name="style_active_none">None (Plain text)</string>

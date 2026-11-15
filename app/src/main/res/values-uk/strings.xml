@@ -282,7 +282,6 @@
     <string name="pinned_toolbar_keys">Вибрати закріплені клавіші панелі інструментів</string>
     <string name="gesture_fast_typing_cooldown">Час відновлення швидкого друку</string>
     <string name="gesture_fast_typing_cooldown_instant">Завжди починати негайно</string>
-    <string name="auto_show_toolbar">Показувати панель інструментів автоматично</string>
     <string name="auto_show_toolbar_summary">Показувати панель інструментів під час введення або вибору тексту</string>
     <string name="auto_hide_toolbar">Приховувати панель інструментів автоматично</string>
     <string name="auto_hide_toolbar_summary">Приховувати панель інструментів з появою пропозицій</string>
@@ -417,7 +416,6 @@
     <string name="space_swipe_hide_keyboard_entry">Приховати клавіатуру</string>
     <string name="delete_confirmation">Ви насправді хочете видалити %s ?</string>
     <string name="name_invalid">Недійсне ім\'я</string>
-    <string name="custom_subtype">Власний макет</string>
     <string name="landscape">Горизонтальна</string>
     <string name="clipboard_history_pinned_first">Показувати прикріплені об\'єкти вгорі</string>
     <string name="inline_emoji_search">Вбудований пошук емодзі</string>
@@ -462,7 +460,6 @@
     <string name="suggestion_balance_desc_3">Збалансований (за замовчуванням)\nСтандартний баланс між словниковим запасом і звичками набору тексту.</string>
     <string name="suggestion_balance_desc_4">Персоналізований\nНадає пріоритет словам і фразам, які ви часто вводили.</string>
     <string name="suggestion_balance_desc_5">Високо персоналізований\nСильно надає перевагу вивченій історії та особистим словам перед стандартним словниковим запасом.</string>
-    <string name="next_word_boost_level">Рівень підвищення вивчених слів</string>
     <string name="next_word_strict_ngram">Вимагати збіг контексту для вивчених слів</string>
     <string name="next_word_strict_ngram_summary">Пропонувати вивчені слова лише тоді, коли збігається контекст попереднього слова</string>
     <string name="immediate_auto_space">Миттєвий автоматичний пробіл</string>
@@ -485,7 +482,6 @@
     <string name="clipboard_no_search_results">Результатів не знайдено</string>
     <string name="clipboard_clear_all_confirmation">Ви впевнені, що хочете очистити всю історію?</string>
     <string name="clear_all">Очистити все</string>
-    <string name="gesture_method">Метод введення жестами</string>
     <string name="load_gesture_library_button_download">Завантажити бібліотеку</string>
     <string name="load_gesture_library_downloading">Завантаження бібліотеки жестів…</string>
     <string name="load_gesture_library_download_success">Завантаження завершено! Перезапуск…</string>
@@ -695,7 +691,6 @@
     <string name="toolbar_keys_alignment_left">Ліворуч</string>
     <string name="toolbar_keys_alignment_center">По центру</string>
     <string name="toolbar_keys_alignment_right">Праворуч</string>
-    <string name="clipboard_keys_alignment">Вирівнювання клавіш панелі інструментів</string>
     <string name="toolbar_long_press_hint">Показувати підказки для довгого натискання</string>
     <string name="toolbar_long_press_hint_summary">Показувати мітки на клавішах панелі інструментів, які мають дію при довгому натисканні</string>
     <string name="prefs_popup_keys_vertical_offset">Позиція спливаючого вікна при довгому натисканні</string>
@@ -809,7 +804,6 @@
     <string name="auto_show_toolbar_select_summary">Показувати панель інструментів під час виділення тексту</string>
     <string name="auto_show_toolbar_no_suggestions">Автоматично показувати панель інструментів, коли немає пропозицій</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Показувати панель інструментів, коли немає доступних пропозицій слів</string>
-    <string name="toolbar_swipe_down_dismiss">Проведіть вниз, щоб закрити</string>
     <string name="auto_hide_pinned_keys">Автоматично приховувати закріплені клавіші</string>
     <string name="auto_hide_pinned_keys_summary">Приховувати закріплені клавіші, коли панель інструментів розгорнута</string>
     <string name="remember_toolbar_state">Запам\'ятовувати стан панелі інструментів</string>
@@ -1615,7 +1609,6 @@
     <string name="auto_pair_symbols_title">Автоматичне парування символів</string>
     <string name="auto_pair_symbols_summary">Автоматично вставляйте закриваючі дужки, лапки та знаки заголовка</string>
     <string name="font_style">Стиль шрифту</string>
-    <string name="unicode_panel">Символи Unicode</string>
     <string name="style_active_indicator">Активний стиль:%s</string>
     <string name="style_active_none">Немає (звичайний текст)</string>
     <string name="style_plain">нормальний</string>
@@ -1694,7 +1687,6 @@
     <string name="text_expander_prefix_autocomplete_summary">Пропонуйте часткові збіги для ярликів тексту та зображень без префіксів після введення 2+ символів (комбінації клавіш із префіксом також автозаповнюються).</string>
     <string name="unfolded_side_padding_scale">Розгорнута бічна оббивка</string>
     <string name="voice_futo_models_title">Голосові моделі FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Тонко налаштовані моделі Whisper, оптимізовані для мобільного диктування</string>
     <string name="button_browse">переглядати</string>
     <string name="voice_transcribe_while_speaking_title">Транскрибуйте під час мовлення</string>
     <string name="voice_piecewise_field_changed">Диктування зупинено: текстове поле змінено, решту не вставлено</string>

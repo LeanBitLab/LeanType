@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"ສຽບ​ສາຍຫູຟັງ ເພື່ອ​ຟັງສຽງ​ລະຫັດຜ່ານ​ທີ່ຈະຖືກ​ເວົ້າອອກມາ."</string>
-    <string name="spoken_current_text_is">"ຂໍ້ຄວາມ​ປັດຈຸບັນ​ແມ່ນ %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ແກ້​ໄຂ​ <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> ເປັນ <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ດຳ​ເນີນ​ການ​ແກ້​ໄຂ​ອັດ​ຕະ​ໂນ​ມັດ"</string>
     <string name="spoken_empty_suggestion">"ບໍ່​ມີ​ຄຳ​ແນະ​ນຳ"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"ການປ້ອນ​ຂໍ້ມູນ​ດ້ວຍສຽງ"</string>
     <string name="spoken_description_emoji">"ອີໂມຈິ"</string>
     <string name="spoken_description_return">"ກັບຄືນ"</string>
-    <string name="spoken_description_search">"ຊອກຫາ"</string>
     <string name="spoken_description_dot">"ຈ້ຳ"</string>
     <string name="spoken_description_language_switch">"ສະລັບ​ພາສາ"</string>
     <string name="spoken_description_action_next">"ຕໍ່ໄປ"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"ການ​ເດີນ​ທາງ ແລະ ສະ​ຖານ​ທີ່"</string>
     <string name="spoken_description_emoji_category_eight_activity">"ກິດຈະກໍາ"</string>
     <string name="spoken_description_emoji_category_emoticons">"​ອີ​ໂມ​ຕິ​ຄອນ"</string>
-    <string name="spoken_description_upper_case">"ໂຕ​ພິມ​ໃຫຍ່ <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"ໂຕ​ພິມ​ໃຫຍ່ I"</string>
     <string name="spoken_letter_0130">"​ໂຕພິມ​ໃຫຍ່ I ມີ​ຈ້ຳ​ເມັດ​ຢູ່​ເທິງ"</string>
     <string name="spoken_open_popup_keys_keyboard">"​ມີ​ໂຕ​ອັກ​ສອນ​ສຳ​ຮອງ​ໃຫ້​ເລືອກ"</string>
