@@ -112,7 +112,11 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
             badge_content = f.read()
         clean_version = re.sub(r'[-_]?beta.*$', '', version, flags=re.IGNORECASE)
         expected_badge_text = f"v{clean_version}"
-        if expected_badge_text in badge_content:
+        if "beta" in version.lower():
+            # the badge shows the latest stable release (set by update-badges.yml), the beta version
+            # is shown on the Get Pre-release button instead
+            print("  [OK] docs/badges/download.svg follows the latest stable release (not checked for betas)")
+        elif expected_badge_text in badge_content:
             print(f"  [OK] docs/badges/download.svg matches {expected_badge_text}")
         else:
             print(f"  [FAIL] docs/badges/download.svg does not contain '{expected_badge_text}'")

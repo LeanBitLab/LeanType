@@ -158,7 +158,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
     </td>
     <td align="center" valign="middle">
       <a href="https://github.com/LeanBitLab/LeanType/releases">
-        <img alt="Get Pre-release" src="docs/images/get-pre-release.svg" height="55">
+        <img alt="Get Pre-release" src="docs/badges/get-pre-release.svg" height="55">
       </a>
     </td>
   </tr>
