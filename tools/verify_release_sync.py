@@ -51,7 +51,6 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
         all_passed = False
 
     # 2. docs/releasenote/release_notes_v<version>.md
-    is_beta = "beta" in version.lower()
     rn_path = os.path.join(project_root, "docs", "releasenote", f"release_notes_v{version}.md")
     if os.path.exists(rn_path):
         with open(rn_path, "r", encoding="utf-8") as f:
@@ -66,7 +65,8 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
             print("  [WARN] Release notes may not contain the standard improved Support Our Work section")
 
         # Check flavor table APK naming
-        expected_flavor = "-debug.apk" if is_beta else "-release.apk"
+        # CI builds release APKs for both beta and stable tags
+        expected_flavor = "-release.apk"
         if expected_flavor in rn_content:
             print(f"  [OK] Release notes flavor table uses expected '{expected_flavor}' filenames")
         else:
