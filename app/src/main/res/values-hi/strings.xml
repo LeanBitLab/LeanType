@@ -1740,4 +1740,6 @@
     <string name="custom_text_styles_title">कस्टम पाठ शैलियाँ</string>
     <string name="custom_text_styles_summary">प्रति पंक्ति एक शैली. प्रारूप: नाम: शैली A-Z a-z 0-9 (52 या 62 अक्षर)।</string>
     <string name="voice_transcribe_while_speaking_summary">लंबे श्रुतलेखों के लिए कम प्रतीक्षा</string>
+    <string name="backup_category_personal_dictionary">व्यक्तिगत शब्दकोश</string>
+    <string name="backup_category_text_expander">पाठ विस्तारक</string>
 </resources>

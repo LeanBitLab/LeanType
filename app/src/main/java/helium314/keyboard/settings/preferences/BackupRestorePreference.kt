@@ -45,6 +45,7 @@ import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ProofreadService
 import helium314.keyboard.latin.utils.SubtypeSettings
 import helium314.keyboard.latin.utils.getActivity
+import helium314.keyboard.latin.utils.PersonalDictionaryTransfer
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.protectedPrefs
 import helium314.keyboard.settings.Setting
@@ -76,6 +77,8 @@ fun BackupRestorePreference(setting: Setting) {
                 BackupCategory.LAYOUTS,
                 BackupCategory.THEME_APPEARANCE,
                 BackupCategory.DICTIONARIES,
+                BackupCategory.PERSONAL_DICTIONARY,
+                BackupCategory.TEXT_EXPANDER,
                 BackupCategory.TYPING_HISTORY,
                 BackupCategory.CLIPBOARD,
                 BackupCategory.GENERAL_SETTINGS
@@ -99,6 +102,8 @@ fun BackupRestorePreference(setting: Setting) {
                         BackupCategory.LAYOUTS to R.string.backup_category_layouts,
                         BackupCategory.THEME_APPEARANCE to R.string.backup_category_theme,
                         BackupCategory.DICTIONARIES to R.string.backup_category_dictionaries,
+                        BackupCategory.PERSONAL_DICTIONARY to R.string.backup_category_personal_dictionary,
+                        BackupCategory.TEXT_EXPANDER to R.string.backup_category_text_expander,
                         BackupCategory.TYPING_HISTORY to R.string.backup_category_typing_history,
                         BackupCategory.CLIPBOARD to R.string.backup_category_clipboard,
                         BackupCategory.API_KEYS to R.string.backup_category_api_keys,
@@ -254,6 +259,17 @@ private fun backupLauncher(
                             }
                         }
                     }
+                    if (selectedCategories.contains(BackupCategory.PERSONAL_DICTIONARY)) {
+                        // the personal dictionary is in the system user dictionary, not in the files of the app
+                        val words = PersonalDictionaryTransfer.readAll(ctx)
+                        if (words.isNotEmpty()) {
+                            zipStream.putNextEntry(ZipEntry(PersonalDictionaryTransfer.BACKUP_ENTRY_NAME))
+                            val writer = zipStream.writer(Charsets.UTF_8) // not closed, this would close the zip
+                            PersonalDictionaryTransfer.write(words.asSequence(), writer)
+                            writer.flush()
+                            zipStream.closeEntry()
+                        }
+                    }
                     if (selectedCategories.contains(BackupCategory.API_KEYS)) {
                         val secureSettings = ProofreadService(ctx).getSecureSettings()
                         if (secureSettings.isNotEmpty()) {
@@ -325,6 +341,8 @@ private fun restoreLauncher(
                             File(filesDir, "dicts").deleteRecursively()
                             File(filesDir, "blacklists").deleteRecursively()
                             File(deviceProtectedFilesDir, "blacklists").deleteRecursively()
+                        }
+                        if (selectedCategories.contains(BackupCategory.TEXT_EXPANDER)) {
                             File(filesDir, "text_expander_images").deleteRecursively()
                             File(deviceProtectedFilesDir, "text_expander_images").deleteRecursively()
                             helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
@@ -381,6 +399,12 @@ private fun restoreLauncher(
                                     val apiKeyLines = String(zip.readBytes()).split("\n")
                                     val restoredMap = readJsonLinesToMap(apiKeyLines)
                                     ProofreadService(ctx).restoreSecureSettings(restoredMap)
+                                }
+                            } else if (entry.name == PersonalDictionaryTransfer.BACKUP_ENTRY_NAME) {
+                                if (selectedCategories.contains(BackupCategory.PERSONAL_DICTIONARY)) {
+                                    // adds the words that are not in the user dictionary yet, existing words are kept
+                                    val words = PersonalDictionaryTransfer.parse(zip.reader(Charsets.UTF_8).buffered())
+                                    PersonalDictionaryTransfer.insert(ctx, words, skipExisting = true)
                                 }
                             } else if (entry.name == PREFS_FILE_NAME) {
                                 preferenceLines = String(zip.readBytes()).split("\n")
@@ -588,13 +612,15 @@ enum class BackupCategory {
     LAYOUTS,
     THEME_APPEARANCE,
     DICTIONARIES,
+    PERSONAL_DICTIONARY,
+    TEXT_EXPANDER,
     TYPING_HISTORY,
     CLIPBOARD,
     API_KEYS,
     GENERAL_SETTINGS
 }
 
-private fun getCategoryForPrefKey(key: String): BackupCategory {
+internal fun getCategoryForPrefKey(key: String): BackupCategory {
     if (key.startsWith("layout_")) return BackupCategory.LAYOUTS
     
     val themeKeys = setOf(
@@ -623,7 +649,8 @@ private fun getCategoryForPrefKey(key: String): BackupCategory {
         "add_to_personal_dictionary", "add_to_personal_dict_threshold",
         "auto_correct_aggressiveness"
     )
-    if (dictKeys.contains(key) || key.startsWith("pref_text_expander_")) return BackupCategory.DICTIONARIES
+    if (key.startsWith("pref_text_expander_")) return BackupCategory.TEXT_EXPANDER
+    if (dictKeys.contains(key)) return BackupCategory.DICTIONARIES
     
     val clipboardKeys = setOf(
         "enable_clipboard_history", "suggest_screenshots", "compress_screenshots",
@@ -644,9 +671,11 @@ internal fun getCategoryForFilePath(path: String): BackupCategory? {
     }
     if (path.startsWith("dicts${File.separator}") || path.startsWith("dicts/")
         || path.startsWith("blacklists${File.separator}") || path.startsWith("blacklists/")
-        || path.startsWith("text_expander_images${File.separator}") || path.startsWith("text_expander_images/")
     ) {
         return BackupCategory.DICTIONARIES
+    }
+    if (path.startsWith("text_expander_images${File.separator}") || path.startsWith("text_expander_images/")) {
+        return BackupCategory.TEXT_EXPANDER
     }
     if (path.startsWith("UserHistoryDictionary")) {
         return BackupCategory.TYPING_HISTORY

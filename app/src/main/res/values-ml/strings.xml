@@ -1814,4 +1814,6 @@
     <string name="custom_text_styles_title">ഇഷ്ടാനുസൃത ടെക്സ്റ്റ് ശൈലികൾ</string>
     <string name="custom_text_styles_summary">ഓരോ വരിയിലും ഒരു ശൈലി. ഫോർമാറ്റ്: പേര്: ശൈലിയിലുള്ള A-Z a-z 0-9 (52 അല്ലെങ്കിൽ 62 പ്രതീകങ്ങൾ).</string>
     <string name="voice_transcribe_while_speaking_summary">ദൈർഘ്യമേറിയ നിർദ്ദേശങ്ങൾക്കായി ഹ്രസ്വ കാത്തിരിപ്പ്</string>
+    <string name="backup_category_personal_dictionary">വ്യക്തിഗത നിഘണ്ടു</string>
+    <string name="backup_category_text_expander">ടെക്സ്റ്റ് എക്സ്പാൻഡർ</string>
 </resources>

@@ -1052,9 +1052,10 @@ Safeguard your personalized keyboard configuration, custom layouts, and linguist
 - **Modular Data Selection**: Choose exactly which components to include in your backup archive:
   - Keyboard Settings & Custom Preferences.
   - Custom Keyboard Layouts (`.json` and `.txt` files).
-  - Custom Dictionaries & Wordlists (user-added words).
-  - Learned Typing Prediction History & Frequency Tables.
-  - Quick Text Expander Shortcuts & Dynamic Templates.
+  - **Dictionaries**: imported dictionary files and blocked words.
+  - **Personal Dictionary**: the words you added yourself or that were added automatically (stored in Android's user dictionary). On restore, words that are already on the device are kept and only the missing ones are added.
+  - **Text Expander**: shortcuts, templates and attached images.
+  - Learned Typing Prediction History & Frequency Tables (**Typing History**).
 - **Password-Protected Encrypted API Keys**:
   - Securely export third-party cloud AI and media API keys (Gemini, Groq, OpenAI, GIPHY, KLIPY) using robust AES-256 encryption.
   - Backups can be safely shared across devices or saved to cloud storage without risking credential leakage. Decryption occurs only when the correct user password is provided during restoration.

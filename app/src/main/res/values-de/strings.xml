@@ -1764,4 +1764,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="custom_text_styles_title">Benutzerdefinierte Textstile</string>
     <string name="custom_text_styles_summary">Ein Stil pro Zeile. Format: Name: Stil A-Z a-z 0-9 (52 oder 62 Zeichen).</string>
     <string name="voice_transcribe_while_speaking_summary">Kürzere Wartezeiten bei langen Diktaten</string>
+    <string name="backup_category_personal_dictionary">Persönliches Wörterbuch</string>
+    <string name="backup_category_text_expander">Textexpander</string>
 </resources>

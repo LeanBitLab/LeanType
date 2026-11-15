@@ -1805,4 +1805,6 @@
     <string name="custom_text_styles_title">حسب ضرورت ٹیکسٹ اسٹائل</string>
     <string name="custom_text_styles_summary">فی لائن ایک انداز۔ فارمیٹ: نام: اسٹائل شدہ A-Z a-z 0-9 (52 یا 62 حروف)۔</string>
     <string name="voice_transcribe_while_speaking_summary">طویل ڈکٹیشن کے لیے مختصر انتظار</string>
+    <string name="backup_category_personal_dictionary">ذاتی لغت</string>
+    <string name="backup_category_text_expander">ٹیکسٹ ایکسپینڈر</string>
 </resources>
