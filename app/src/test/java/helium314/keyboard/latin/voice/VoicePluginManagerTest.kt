@@ -108,6 +108,41 @@ class VoicePluginManagerTest {
     }
 
     @Test
+    fun unbindAfterDelay_retriesWhileBusyInsteadOfGivingUp() {
+        assertTrue(manager.bindIfNeeded())
+        fakeContext.simulateConnected()
+        var busy = true
+
+        manager.unbindAfterDelay(60_000L) { !busy }
+        shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(61))
+        // busy when it fired: still bound, and still scheduled to look again
+        assertEquals(0, fakeContext.unbindCalls)
+        assertTrue(manager.hasScheduledUnbind())
+
+        shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(60))
+        assertEquals(0, fakeContext.unbindCalls)
+
+        busy = false
+        shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(16))
+        assertEquals(1, fakeContext.unbindCalls)
+        assertFalse(manager.isPluginConnected())
+        assertFalse(manager.hasScheduledUnbind())
+    }
+
+    @Test
+    fun unbindAfterDelay_retryStopsWhenCancelled() {
+        assertTrue(manager.bindIfNeeded())
+        fakeContext.simulateConnected()
+
+        manager.unbindAfterDelay(60_000L) { false }
+        shadowOf(Looper.getMainLooper()).idleFor(Duration.ofSeconds(61))
+        manager.cancelScheduledUnbind()
+        assertFalse(manager.hasScheduledUnbind())
+        shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMinutes(5))
+        assertEquals(0, fakeContext.unbindCalls)
+    }
+
+    @Test
     fun bindIfNeeded_cancelsPendingUnbind() {
         assertTrue(manager.bindIfNeeded())
         fakeContext.simulateConnected()
