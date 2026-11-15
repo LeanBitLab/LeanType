@@ -284,7 +284,6 @@
     <string name="show_tld_popup_keys">Εμφάνιση αναδυόμενων πλήκτρων TLD</string>
     <string name="show_tld_popup_keys_summary">Αντικατάσταση αναδυόμενων πλήκτρων τελείας με τομείς ανωτάτου επιπέδου κατά την πληκτρολόγηση URLs και διευθύνσεων email</string>
     <string name="popup_keys_number">Σειρά αριθμών</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
     <string name="popup_keys_language_priority">Γλώσσα (προτεραιότητα)</string>
     <string name="popup_keys_layout">Διάταξη</string>
     <string name="popup_keys_symbols">Σύμβολα</string>
@@ -295,9 +294,6 @@
     <string name="toolbar_mode_hidden">Κρυφό</string>
     <string name="toolbar_hiding_global">Απόκρυψη και των γραμμών εργαλείων προχείρου και emoji</string>
     <string name="toolbar_keys">Επιλογή πλήκτρων γραμμής εργαλείων</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard">Πρόχειρο</string>
     <string name="clear_clipboard">Εκκαθάριση προχείρου</string>
     <string name="clipboard_search">Αναζήτηση προχείρου</string>
@@ -306,8 +302,6 @@
     <string name="download_failed">Η λήψη απέτυχε</string>
     <string name="installed">Εγκατεστημένο</string>
     <string name="voice">Φωνητική εισαγωγή</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="select_word">Επιλογή λέξης</string>
     <string name="one_handed">Λειτουργία με το ένα χέρι</string>
     <string name="floating">Αιώρηση</string>
@@ -369,10 +363,6 @@
     <string name="backup_category_clipboard">Ιστορικό προχείρου</string>
     <string name="backup_category_general">Γενικές ρυθμίσεις</string>
     <string name="backup_select_items">Επιλέξτε στοιχεία προς συμπερίληψη:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">Διατήρηση φορτωμένου μοντέλου</string>
     <string name="offline_keep_model_loaded_summary">Διατήρηση του μοντέλου AI εκτός σύνδεσης στη μνήμη για αποφυγή καθυστέρησης επαναφόρτωσης (χρησιμοποιεί περισσότερη RAM)</string>
     <string name="translate">Μετάφραση</string>
@@ -539,8 +529,6 @@
 Νέο λεξικό:
 %3$s"</string>
     <string name="replace_dictionary">"Αντικατάσταση λεξικού"</string>
-    <string name="no_dictionary_message">"Χωρίς λεξικό, θα λαμβάνετε προτάσεις μόνο για κείμενο που έχετε εισαγάγει στο παρελθόν.<br />
-        Μπορείτε να κατεβάσετε λεξικά %1$s."</string>
     <string name="add_dictionary">"Επιλέξτε ένα λεξικό για προσθήκη. Λεξικά σε μορφή .dict μπορούν να ληφθούν %s."</string>
     <string name="dictionary_link_text">"εδώ"</string>
     <string name="available_dictionary_experimental">"%s (πειραματικό)"</string>
@@ -679,7 +667,6 @@
     <string name="label_switch_onehanded_key">Αλλαγή πλευράς λειτουργίας με το ένα χέρι</string>
     <string name="label_shortcut_key_disabled">Η φωνητική εισαγωγή είναι απενεργοποιημένη</string>
     <string name="label_toolbar_key">Εμφάνιση / απόκρυψη γραμμής εργαλείων</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="label_zwj_key">Ενωτικό μηδενικού πλάτους</string>
     <string name="label_zwnj_key">Μη ενωτικό μηδενικού πλάτους</string>
     <string name="label_bin">Κάδος</string>
@@ -903,7 +890,6 @@
     <string name="voice_no_app_found">Δεν βρέθηκε εφαρμογή φωνής. Εγκαταστήστε μια εφαρμογή όπως το FUTO Voice Input ή ενεργοποιήστε τη Φωνή εκτός σύνδεσης στις ρυθμίσεις του LeanType.</string>
     <string name="api_error_rate_limit">Υπέρβαση ορίου αιτημάτων. Περιμένετε λίγο και δοκιμάστε ξανά.</string>
     <string name="api_error_service_unavailable">Η υπηρεσία δεν είναι διαθέσιμη προσωρινά. Δοκιμάστε ξανά αργότερα.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">Φωνητικό μοντέλο</string>
     <string name="voice_model_summary">Επιλέξτε το μοντέλο AI για φωνητική μεταγραφή</string>
     <string name="plugins_title">Πρόσθετα</string>

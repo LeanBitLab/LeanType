@@ -627,10 +627,6 @@
     <string name="languages_title">Keeled</string>
     <string name="compact_number_row_in_symbols">Kompaktne sümbolite numbririda</string>
     <string name="compact_number_row_in_symbols_summary">Asenda sümbolite esimene rida eraldi rea lisamise asemel</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Lõikelaua otsing</string>
     <string name="download">Laadi alla</string>
     <string name="downloading">Allalaadimine…</string>
@@ -658,8 +654,6 @@
     <string name="voice_open_system_settings_summary">Luba või seadista installitud hääletippimise rakendusi Androidi seadetes</string>
     <string name="voice_app_not_enabled">Hääletippimise rakendus on installitud, kuid pole lubatud. Luba see Androidi seadetes → Ekraaniklaviatuur.</string>
     <string name="voice_no_app_found">Hääletippimise rakendust ei leitud. Installige rakendus nagu FUTO Voice Input või lubage LeanType seadetes offlain hääl.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Hõljuv</string>
     <string name="proofread">Korrektuur</string>
     <string name="api_error_rate_limit">Päringute limiit on täis. Palun oodake hetk ja proovige uuesti.</string>
@@ -706,11 +700,6 @@
     <string name="backup_category_clipboard">Lõikelaua ajalugu</string>
     <string name="backup_category_general">Üldised seaded</string>
     <string name="backup_select_items">Valige elemendid, mida kaasata:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Hoia mudel laetuna</string>
     <string name="offline_keep_model_loaded_summary">Hoia offlain AI mudel mälus, et vältida uuesti laadimise viivitust (kasutab rohkem RAM-i)</string>
     <string name="translate">Tõlgi</string>
@@ -843,7 +832,6 @@
     <string name="settings_screen_ai_integration">AI integratsioon</string>
     <string name="custom_ai_keys_title">Kohandatud AI klahvid</string>
     <string name="custom_ai_keys_summary">Kohanda nummerdatud tööriistariba klahve omaenda promptidega</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Puuteplaadi režiim</string>
     <string name="touchpad_sensitivity">Puuteplaadi tundlikkus</string>
     <string name="force_auto_caps_title">Sunni automaatne suurtähtede kasutamine</string>

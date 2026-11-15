@@ -461,23 +461,17 @@
     <string name="popup_order_and_hint_source">Orden de teclas emergentes y fuente de sugerencias</string>
     <string name="show_tld_popup_keys">Mostrar teclas emergentes TLD</string>
     <string name="show_tld_popup_keys_summary">Reemplazar las teclas emergentes del punto con dominios de nivel superior al escribir URLs y direcciones de correo electrónico</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
     <string name="toolbar_mode">Modo de barra de herramientas</string>
     <string name="toolbar_mode_expandable">Teclas y sugerencias de la barra</string>
     <string name="toolbar_mode_toolbar_keys">Solo teclas de la barra</string>
     <string name="toolbar_mode_suggestion_strip">Solo sugerencias</string>
     <string name="toolbar_mode_hidden">Oculto</string>
     <string name="toolbar_hiding_global">Ocultar también barras de portapapeles y emojis</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Búsqueda en portapapeles</string>
     <string name="download">Descargar</string>
     <string name="downloading">Descargando…</string>
     <string name="download_failed">Descarga fallida</string>
     <string name="installed">Instalado</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Flotante</string>
     <string name="split">Teclado dividido</string>
     <string name="proofread">Revisar</string>
@@ -523,10 +517,6 @@
     <string name="backup_category_clipboard">Historial del portapapeles</string>
     <string name="backup_category_general">Ajustes generales</string>
     <string name="backup_select_items">Selecciona elementos a incluir:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">Mantener modelo cargado</string>
     <string name="offline_keep_model_loaded_summary">Mantener el modelo AI offline en memoria para evitar retrasos de recarga (usa más RAM)</string>
     <string name="translate">Traducir</string>
@@ -662,7 +652,6 @@
     <string name="settings_screen_ai_integration">Integración de AI</string>
     <string name="custom_ai_keys_title">Teclas AI personalizadas</string>
     <string name="custom_ai_keys_summary">Personaliza las teclas numeradas de la barra de herramientas con tus propios prompts</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="label_zwj_key">Conector de ancho cero</string>
     <string name="label_zwnj_key">No conector de ancho cero</string>
     <string name="label_bin">Papelera</string>
@@ -870,7 +859,6 @@
     <string name="voice_no_app_found">No se encontró app de dictado. Instale una como FUTO Voice Input o habilite Voz sin conexión en los ajustes de LeanType.</string>
     <string name="api_error_rate_limit">Límite de velocidad alcanzado. Espere un momento e inténtelo de nuevo.</string>
     <string name="api_error_service_unavailable">Servicio temporalmente no disponible. Inténtelo más tarde.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">Modelo de voz</string>
     <string name="voice_model_summary">Seleccionar el modelo de AI para transcripción de voz</string>
     <string name="plugins_title">Plugins</string>

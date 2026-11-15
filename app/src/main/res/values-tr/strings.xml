@@ -510,16 +510,10 @@
     <string name="layout_emoji_bottom_row_with_action">Eylem tuşlu emoji alt satırı</string>
     <string name="layout_clip_bottom_row_with_action">Eylem tuşlu pano alt satırı</string>
     <string name="subtype_khipro_bn">%s (Khipro)</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="download">İndir</string>
     <string name="downloading">İndiriliyor…</string>
     <string name="download_failed">İndirme başarısız</string>
     <string name="installed">Yüklendi</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Yüzen</string>
     <string name="proofread">Yazım denetimi</string>
     <string name="gemini_api_key_title">Gemini API Anahtarı</string>
@@ -564,10 +558,6 @@
     <string name="backup_category_clipboard">Pano Geçmişi</string>
     <string name="backup_category_general">Genel Ayarlar</string>
     <string name="backup_select_items">Dahil edilecek öğeleri seçin:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
     <string name="offline_keep_model_loaded_title">Modeli yüklü tut</string>
     <string name="offline_keep_model_loaded_summary">Yeniden yükleme gecikmesini önlemek için çevrimdışı AI modelini bellekte tut (daha fazla RAM kullanır)</string>
     <string name="offline_model_title">Çevrimdışı Model</string>
@@ -648,7 +638,6 @@
     <string name="settings_screen_ai_integration">AI Entegrasyonu</string>
     <string name="custom_ai_keys_title">Özel AI Tuşları</string>
     <string name="custom_ai_keys_summary">Numaralandırılmış araç çubuğu tuşlarını kendi istemlerinizle özelleştirin</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="label_zwnj_key">Sıfır genişlikli birleştirmeyen</string>
     <string name="space_swipe_touchpad_mode_entry">Dokunmatik yüzey modu</string>
     <string name="touchpad_sensitivity">Dokunmatik yüzey hassasiyeti</string>
@@ -829,7 +818,6 @@
     <string name="voice_no_app_found">Ses uygulaması bulunamadı. FUTO Voice Input gibi bir uygulama yükleyin veya LeanType ayarlarından Çevrimdışı Sesi etkinleştirin.</string>
     <string name="api_error_rate_limit">İstek sınırı aşıldı. Lütfen biraz bekleyip tekrar deneyin.</string>
     <string name="api_error_service_unavailable">Servis geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="voice_model_title">Ses modeli</string>
     <string name="voice_model_summary">Ses transkripsiyonu için kullanılacak AI modelini seçin</string>
     <string name="plugins_title">Eklentiler</string>

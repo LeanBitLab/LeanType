@@ -590,10 +590,6 @@
     <string name="languages_title">Nyelvek</string>
     <string name="compact_number_row_in_symbols">Kompakt szimbólum szám sor</string>
     <string name="compact_number_row_in_symbols_summary">Az első szimbólumsor cseréje külön sor hozzáadása helyett</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Keresés a vágólapon</string>
     <string name="download">Letöltés</string>
     <string name="downloading">Letöltés…</string>
@@ -621,8 +617,6 @@
     <string name="voice_open_system_settings_summary">Telepített hanggépelési alkalmazások engedélyezése vagy konfigurálása az Android beállításaiban</string>
     <string name="voice_app_not_enabled">A hanggépelési alkalmazás telepítve van, de nincs engedélyezve. Engedélyezze az Android beállításokban → Képernyő-billentyűzet.</string>
     <string name="voice_no_app_found">Nem található hanggépelési alkalmazás. Telepítsen egy alkalmazást, mint a FUTO Voice Input, vagy engedélyezze az Offline hangot a LeanType beállításaiban.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Lebegő</string>
     <string name="proofread">Lektorálás</string>
     <string name="api_error_rate_limit">Elérte a kérések korlátját. Kérjük, várjon egy pillanatot, és próbálja újra.</string>
@@ -669,11 +663,6 @@
     <string name="backup_category_clipboard">Vágólap előzmények</string>
     <string name="backup_category_general">Általános beállítások</string>
     <string name="backup_select_items">Válassza ki a belefoglalni kívánt elemeket:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Modell betöltve tartása</string>
     <string name="offline_keep_model_loaded_summary">Az offline AI modell memóriában tartása az újratöltési késleltetés elkerülése érdekében (több RAM-ot használ)</string>
     <string name="translate">Fordítás</string>
@@ -806,7 +795,6 @@
     <string name="settings_screen_ai_integration">AI integráció</string>
     <string name="custom_ai_keys_title">Egyéni AI billentyűk</string>
     <string name="custom_ai_keys_summary">Számozott eszköztár billentyűk testreszabása saját promptokkal</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Touchpad mód</string>
     <string name="touchpad_sensitivity">Touchpad érzékenysége</string>
     <string name="force_auto_caps_title">Automatikus nagybetűsítés kényszerítése</string>

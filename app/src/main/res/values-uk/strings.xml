@@ -587,9 +587,6 @@
     <string name="compact_number_row_in_symbols">Компактний ряд цифр у символах</string>
     <string name="compact_number_row_in_symbols_summary">Замінити перший ряд символів замість додавання окремого ряду</string>
     <string name="save_subtype_per_app">Запам\'ятовувати мову для кожного додатка</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
     <string name="clipboard_search">Пошук у буфері обміну</string>
     <string name="download">Завантажити</string>
     <string name="downloading">Завантаження…</string>
@@ -617,8 +614,6 @@
     <string name="voice_open_system_settings_summary">Увімкніть або налаштуйте встановлені програми для голосового введення в Налаштуваннях Android</string>
     <string name="voice_app_not_enabled">Програму для голосового введення встановлено, але не ввімкнено. Увімкніть її в Налаштуваннях Android → Екранна клавіатура.</string>
     <string name="voice_no_app_found">Програми для голосового введення не знайдено. Встановіть програму, таку як FUTO Voice Input, або увімкніть Офлайн голосове введення в Налаштуваннях LeanType.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Плавати</string>
     <string name="proofread">Вичитати</string>
     <string name="api_error_rate_limit">Досягнуто ліміт запитів. Зачекайте хвилину та спробуйте ще раз.</string>
@@ -665,11 +660,6 @@
     <string name="backup_category_clipboard">Історія буфера обміну</string>
     <string name="backup_category_general">Загальні налаштування</string>
     <string name="backup_select_items">Виберіть елементи для включення:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Тримати модель завантаженою</string>
     <string name="offline_keep_model_loaded_summary">Тримати офлайн AI модель у пам\'яті, щоб уникнути затримки перезавантаження (використовує більше RAM)</string>
     <string name="translate">Перекласти</string>
@@ -808,7 +798,6 @@
     <string name="settings_screen_ai_integration">Інтеграція AI</string>
     <string name="custom_ai_keys_title">Користувацькі клавіші AI</string>
     <string name="custom_ai_keys_summary">Налаштуйте пронумеровані клавіші панелі інструментів за допомогою власних промптів</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Режим сенсорної панелі</string>
     <string name="touchpad_sensitivity">Чутливість сенсорної панелі</string>
     <string name="force_auto_caps_title">Примусова автоматична капіталізація</string>

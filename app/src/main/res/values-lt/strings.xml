@@ -586,10 +586,6 @@
     <string name="number_row_in_symbols">Rodyti skaičių eilutę simbolių rodinyje</string>
     <string name="compact_number_row_in_symbols">Kompaktiška simbolių skaičių eilutė</string>
     <string name="compact_number_row_in_symbols_summary">Pakeisti pirmąją simbolių eilutę, užuot pridėjus atskirą eilutę</string>
-    <string name="popup_keys_language">@string/subtype_locale</string>
-    <string name="paste">@android:string/paste</string>
-    <string name="copy">@android:string/copy</string>
-    <string name="cut">@android:string/cut</string>
     <string name="clipboard_search">Iškarpinės paieška</string>
     <string name="download">Atsisiųsti</string>
     <string name="downloading">Atsisiunčiama…</string>
@@ -617,8 +613,6 @@
     <string name="voice_open_system_settings_summary">Įjungti arba konfigūruoti įdiegtas balso rašymo programėles „Android“ nustatymuose</string>
     <string name="voice_app_not_enabled">Balso rašymo programėlė įdiegta, bet neįjungta. Įjunkite ją „Android“ nustatymuose → Ekraninė klaviatūra.</string>
     <string name="voice_no_app_found">Balso rašymo programėlė nerasta. Įdiekite tokią programėlę kaip FUTO Voice Input arba įjunkite balso įvestį neprisijungus LeanType nustatymuose.</string>
-    <string name="numpad">@string/layout_numpad</string>
-    <string name="select_all">@android:string/selectAll</string>
     <string name="floating">Plaukiojanti</string>
     <string name="proofread">Korektūra</string>
     <string name="api_error_rate_limit">Pasiektas užklausų limitas. Palaukite šiek tiek ir bandykite dar kartą.</string>
@@ -659,11 +653,6 @@
     <string name="backup_category_clipboard">Iškarpinės istorija</string>
     <string name="backup_category_general">Bendrieji nustatymai</string>
     <string name="backup_select_items">Pasirinkite elementus, kuriuos norite įtraukti:</string>
-    <string name="config_gemini_models_endpoint">https://generativelanguage.googleapis.com/v1beta/models?key=%1$s</string>
-    <string name="config_groq_models_endpoint">https://api.groq.com/openai/v1/models</string>
-    <string name="config_default_hf_endpoint">https://api.openai.com/v1/chat/completions</string>
-    <string name="config_groq_chat_endpoint">https://api.groq.com/openai/v1/chat/completions</string>
-    <string name="config_groq_audio_transcriptions_endpoint">https://api.groq.com/openai/v1/audio/transcriptions</string>
     <string name="offline_keep_model_loaded_title">Išlaikyti modelį įkeltą</string>
     <string name="offline_keep_model_loaded_summary">Išlaikyti AI modelį neprisijungus atmintyje, kad būtų išvengta delsos įkeliant iš naujo (naudoja daugiau RAM)</string>
     <string name="translate">Versti</string>
@@ -838,7 +827,6 @@
  \n► Programėlės strigties atveju, atidarius nustatymus, būsite paklausti, ar norite gauti strigčių žurnalus. &lt;br&gt; &lt;br&gt;
  \n► Naudojant daugiakalbį rašymą, tarpo klavišas rodys pasitikėjimo vertę, naudojamą šiuo metu naudojamos kalbos nustatymui. &lt;br&gt; &lt;br&gt;
  \n► Pasiūlymai turės mažus skaičius viršuje, rodančius vidinį balą ir šaltinio žodyną (galima išjungti).</string>
-    <string name="label_language_switch_key">@string/show_language_switch_key</string>
     <string name="space_swipe_touchpad_mode_entry">Jutiklinio kilimėlio režimas</string>
     <string name="touchpad_sensitivity">Jutiklinio kilimėlio jautrumas</string>
     <string name="force_auto_caps_title">Priverstinis automatinis didžiųjų raidžių rašymas</string>
