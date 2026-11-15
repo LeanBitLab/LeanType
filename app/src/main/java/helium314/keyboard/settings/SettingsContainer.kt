@@ -39,7 +39,7 @@ class SettingsContainer(context: Context) {
 
     /** settings screen (destination) that shows a setting, for jumping there from the search */
     private val screens: Map<String, String> = HashMap<String, String>().apply {
-        settingsWithScreens.forEach { (setting, destination) -> if (destination != null) putIfAbsent(setting.key, destination) }
+        settingsWithScreens.forEach { (setting, destination) -> if (destination != null && !containsKey(setting.key)) put(setting.key, destination) }
     }
 
     operator fun get(key: Any): Setting? = map[key]

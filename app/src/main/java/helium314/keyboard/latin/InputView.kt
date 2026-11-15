@@ -50,9 +50,11 @@ class InputView @JvmOverloads constructor(
         if (mNavBarBottomInsets > 0) return mNavBarBottomInsets
         val insets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             rootWindowInsets?.getInsets(WindowInsets.Type.navigationBars())?.bottom ?: 0
-        } else {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             @Suppress("DEPRECATION")
             rootWindowInsets?.systemWindowInsetBottom ?: 0
+        } else {
+            0 // View.getRootWindowInsets needs API 23, the insets come from onApplyWindowInsets
         }
         if (insets > 0) {
             mNavBarBottomInsets = insets
