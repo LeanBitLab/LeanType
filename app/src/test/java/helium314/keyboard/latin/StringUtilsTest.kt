@@ -133,6 +133,15 @@ class StringUtilsTest {
         assertEquals("\uD83D\uDD75\uD83C\uDFFC", getFullEmojiAtEnd("🕵🏼"))
     }
 
+    @Test fun emojiAtEndIsNotWholeTextForSymbolRuns() {
+        // everything before the cursor "might be emoji", but these are letters and symbols: delete only the last one
+        assertEquals("ⓩ", getFullEmojiAtEnd("ⒶⒷⒸⓩ"))
+        assertEquals("ⓩ", getFullEmojiAtEnd("name: ⒶⒷⒸⓩ"))
+        assertEquals("\uD83C\uDD29", getFullEmojiAtEnd("\uD83C\uDD10\uD83C\uDD11\uD83C\uDD29")) // parenthesized capital letters
+        assertEquals("→", getFullEmojiAtEnd("→→→"))
+        assertEquals("∑", getFullEmojiAtEnd("∑∑∑"))
+    }
+
     @Test fun isEmojiDetectsAllAvailableEmojis() {
         val ctx = ApplicationProvider.getApplicationContext<App>()
         val allEmojis = ctx.assets.list("emoji")!!.flatMap {

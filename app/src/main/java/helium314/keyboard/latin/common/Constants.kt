@@ -20,6 +20,7 @@ object Links {
     const val FEATURES_URL = "$GITHUB/blob/main/docs/FEATURES.md"
     const val KEYCODES_URL = "$FEATURES_URL#30-comprehensive-keycodes--actions-reference"
     const val TEXT_EXPANDER_GUIDE_URL = "$FEATURES_URL#12-versatile-text-expander--modifiers"
+    const val CUSTOM_TEXT_STYLES_GUIDE_URL = "$FEATURES_URL#46-custom-text-styles"
     // Original HeliBoard wiki and community links
     const val ORIGINAL_GITHUB = "https://github.com/Helium314/HeliBoard"
     const val LAYOUT_WIKI_URL = "$ORIGINAL_GITHUB/wiki/2.-Layouts"

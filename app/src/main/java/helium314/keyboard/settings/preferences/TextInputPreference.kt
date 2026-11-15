@@ -23,6 +23,8 @@ fun TextInputPreference(
     checkTextValid: (String) -> Boolean = { true },
     singleLine: Boolean = true,
     showValue: Boolean = true,
+    neutralButtonText: String? = null,
+    onNeutral: () -> Unit = { },
     onConfirmed: (String) -> Unit = { }
 ) {
     var showDialog by rememberSaveable { mutableStateOf(false) }
@@ -44,7 +46,9 @@ fun TextInputPreference(
             initialText = prefs.getString(setting.key, default) ?: "",
             title = { Text(setting.title) },
             checkTextValid = checkTextValid,
-            singleLine = singleLine
+            singleLine = singleLine,
+            neutralButtonText = neutralButtonText,
+            onNeutral = onNeutral
         )
     }
 }

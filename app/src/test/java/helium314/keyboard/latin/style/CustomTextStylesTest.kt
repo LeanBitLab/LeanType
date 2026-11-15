@@ -61,6 +61,17 @@ class CustomTextStylesTest {
         assertEquals("ⓐⓂ", UnicodeStyleEngine.transformText("aM", "custom_Mine"))
     }
 
+    @Test fun aBareAlphabetGetsAGeneratedName() {
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText(fancyUpper + fancyLower + fancyDigits))
+        UnicodeStyleEngine.setCustomStyles("$fancyUpper$fancyLower$fancyDigits\nMine: $fancyUpper$fancyLower")
+        assertNotNull(UnicodeStyleEngine.getStyle("custom_Custom 1"))
+        assertNotNull(UnicodeStyleEngine.getStyle("custom_Mine"))
+        assertEquals("ⓐ", UnicodeStyleEngine.transformText("a", "custom_Custom 1"))
+        // a wrong length is still rejected, with or without a name
+        assertFalse(UnicodeStyleEngine.isValidCustomStylesText(fancyUpper))
+        assertFalse(UnicodeStyleEngine.isValidCustomStylesText("Short: $fancyUpper"))
+    }
+
     @Test fun lettersOnlyKeepsDigits() {
         UnicodeStyleEngine.setCustomStyles("Mine: $fancyUpper$fancyLower")
         assertEquals("ⓐ1", UnicodeStyleEngine.transformText("a1", "custom_Mine"))

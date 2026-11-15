@@ -19,7 +19,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.ui.platform.LocalContext
+import helium314.keyboard.latin.common.Links
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
@@ -179,10 +182,17 @@ fun createToolbarSettings(context: Context): List<Setting> {
             ReorderSwitchPreference(it, Defaults.PREF_CLIPBOARD_TOOLBAR_KEYS, filter)
         },
         Setting(context, Settings.PREF_CUSTOM_TEXT_STYLES, R.string.custom_text_styles_title, R.string.custom_text_styles_summary) { setting ->
+            val ctx = LocalContext.current
             TextInputPreference(
                 setting, Defaults.PREF_CUSTOM_TEXT_STYLES,
                 checkTextValid = { it.isBlank() || UnicodeStyleEngine.isValidCustomStylesText(it) },
-                singleLine = false, showValue = false
+                singleLine = false, showValue = false,
+                neutralButtonText = stringResource(R.string.libraries_features_guide_title),
+                onNeutral = {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Links.CUSTOM_TEXT_STYLES_GUIDE_URL))
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    runCatching { ctx.startActivity(intent) }
+                }
             )
         },
         Setting(context, Settings.PREF_TOOLBAR_KEYS_ALIGNMENT, R.string.toolbar_keys_alignment, R.string.toolbar_keys_alignment_summary) { setting ->
