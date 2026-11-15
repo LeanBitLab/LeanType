@@ -20,8 +20,6 @@
 
 [Screenshots](#-screenshots) • [Download APKs](#-download) • [Flavor Comparison](#-flavor-comparison) • [Features](#-features) • [Full Feature Guide](docs/FEATURES.md) • [Setup Guide](#-setup-guide) • [Ecosystem](#-ecosystem--plugins) • [Other Projects](https://github.com/LeanBitLab#-android-projects)
 
-> 📖 **New here? Read the [Full Feature Guide (FEATURES.md)](docs/FEATURES.md)** for detailed documentation of every setting, AI prompt, keycode and action.
-
 </div>
 
 ---
