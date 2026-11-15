@@ -1652,7 +1652,11 @@ class LatinIME : InputMethodService(),
                 VoiceConstants.VOICE_PROVIDER_OFFLINE, VoiceConstants.VOICE_PROVIDER_ONLINE -> {
                     if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                         voiceInputManager?.let { vim ->
-                            if (vim.isRecording()) vim.stopVoice() else vim.startVoice()
+                            when (VoiceInputManager.voiceKeyActionFor(vim.getState(), vim.isRecording())) {
+                                VoiceInputManager.Companion.VoiceKeyAction.STOP -> vim.stopVoice()
+                                VoiceInputManager.Companion.VoiceKeyAction.START -> vim.startVoice()
+                                VoiceInputManager.Companion.VoiceKeyAction.IGNORE -> Unit
+                            }
                         }
                     } else {
                         Toast.makeText(this, "Microphone permission required for voice input. Enable in Settings -> Voice Input", Toast.LENGTH_LONG).show()

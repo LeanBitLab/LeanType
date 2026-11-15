@@ -570,6 +570,8 @@ class VoiceInputManager(
             val piece = if (piecewise) ByteArrayOutputStream() else null
             var pieceHasSpeech = false
             var pieceLastSpeech = 0L
+            var pieceSpeechMs = 0
+            var pieceLastSpeechEnd = 0 // bytes of the piece up to the end of the last speech frame
 
             try {
                 if (!isOnline && writePfd != null) {
@@ -631,16 +633,20 @@ class VoiceInputManager(
                             if (isSpeech) {
                                 pieceHasSpeech = true
                                 pieceLastSpeech = now
+                                pieceSpeechMs += read / BYTES_PER_MS
+                                pieceLastSpeechEnd = piece.size()
                             }
                             val pieceMs = piece.size() / BYTES_PER_MS
                             val atPause = pieceHasSpeech && now - pieceLastSpeech >= PIECE_PAUSE_MS
                             // a piece needs some seconds of speech: Whisper invents text for very short ones
                             if ((atPause && pieceMs >= PIECE_MIN_MS) || pieceMs >= PIECE_MAX_MS) {
-                                val bytes = piece.toByteArray()
+                                val bytes = trimTrailingSilence(piece.toByteArray(), pieceLastSpeechEnd)
                                 piece.reset()
-                                val hadSpeech = pieceHasSpeech
+                                val enoughSpeech = pieceSpeechMs >= PIECE_MIN_SPEECH_MS
                                 pieceHasSpeech = false
-                                if (hadSpeech) mainHandler.post { onPieceRecorded(bytes, generation) }
+                                pieceSpeechMs = 0
+                                pieceLastSpeechEnd = 0
+                                if (enoughSpeech) mainHandler.post { onPieceRecorded(bytes, generation) }
                             }
                         }
 
@@ -684,7 +690,8 @@ class VoiceInputManager(
             } finally {
                 currentAudioLevel = 0f
                 if (piece != null) {
-                    val rest = if (pieceHasSpeech) piece.toByteArray() else null
+                    // without the trailing silence and without a few noisy frames: Whisper invents text for both
+                    val rest = if (pieceSpeechMs >= PIECE_MIN_SPEECH_MS) trimTrailingSilence(piece.toByteArray(), pieceLastSpeechEnd) else null
                     mainHandler.post { onPiecewiseRecordingEnded(rest, generation) }
                 }
                 try { outputStream?.close() } catch (_: Exception) {}
@@ -1368,6 +1375,31 @@ class VoiceInputManager(
         /** Whisper works on 30 s windows, cut before even without a pause */
         private const val PIECE_MAX_MS = 25000
         private const val PIECE_CONTEXT_CHARS = 200
+        /** a piece with less speech than this is noise, not worth transcribing */
+        private const val PIECE_MIN_SPEECH_MS = 300
+        /** audio kept after the last speech of a piece */
+        private const val PIECE_TRAIL_PAD_MS = 500
+        /** never trim a piece below this, Whisper does better with a little context */
+        private const val PIECE_MIN_KEEP_MS = 1000
+
+        /** Cuts the silence after the last speech off a piece, [lastSpeechEnd] is a byte offset into [audio]. */
+        internal fun trimTrailingSilence(audio: ByteArray, lastSpeechEnd: Int): ByteArray {
+            val keep = (lastSpeechEnd + PIECE_TRAIL_PAD_MS * BYTES_PER_MS).coerceAtLeast(PIECE_MIN_KEEP_MS * BYTES_PER_MS)
+            val aligned = keep and 1.inv() // 16 bit samples
+            return if (aligned >= audio.size) audio else audio.copyOf(aligned)
+        }
+
+        enum class VoiceKeyAction { START, STOP, IGNORE }
+
+        /**
+         * What a press of the voice key does. While the final text is being recognized it does nothing: starting
+         * a new session would cancel this one and drop that text (the cancel button on the strip does it on purpose).
+         */
+        internal fun voiceKeyActionFor(state: VoiceState, isRecording: Boolean): VoiceKeyAction = when {
+            isRecording -> VoiceKeyAction.STOP
+            state == VoiceState.PROCESSING_FINAL -> VoiceKeyAction.IGNORE
+            else -> VoiceKeyAction.START
+        }
 
         fun isBlockedEditor(info: EditorInfo?): Boolean {
             if (info == null) return false
