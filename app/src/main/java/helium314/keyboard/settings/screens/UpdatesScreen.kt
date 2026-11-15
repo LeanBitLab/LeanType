@@ -64,13 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Navigation Bar Gap Fix: The keyboard reserves only the part of the navigation bar it really overlaps, fixing a too large gap below the keys on devices such as the Samsung Note 10 (Android 12)",
-    "• Settings Search: Expandable section headers are no longer listed in the results",
-    "• Search Jump Highlight: The highlighted setting after a long press stays readable in light and dark themes",
-    "• Faster Settings Screens: Large screens compose their settings as you scroll, so they open with a shorter stall",
-    "• Log Privacy: Typed words (personal dictionary, emoji search) are no longer written to the in-app log",
-    "• Cleanup: The disabled OTP auto-fill code and its strings are removed",
-    "• Release Badges: The download badge follows the stable release and the pre-release button shows the current beta"
+    "• Custom Text Styles: Add your own Unicode font styles from Toolbar > Custom text styles, with live typing and undo in the Font Style strip",
+    "• Personal Dictionary in Backups: The backup now includes your personal dictionary, with separate options for Dictionaries, Personal Dictionary and Text Expander",
+    "• Space Below the Keyboard: The navigation bar area is handled correctly on Android 15+ and on devices that reported it twice, such as the Samsung Note 10",
+    "• Offline Flavor Requires Android 6.0+: The offline flavor minimum is raised from Android 5.0 to Android 6.0, the same as standard",
+    "• Voice Dictation: Fixes for the strip, the voice key, stray words, battery use and local model import, plus faster input and optional live transcription",
+    "• Letter and Backspace Fixes: Wide letters such as w and m are no longer smaller, and one backspace no longer deletes a whole run of symbols",
+    "• Faster Settings: Large screens compose their settings as you scroll, and search results no longer list section headers",
+    "• Floating Keyboard and Toolbar: Per-orientation size and position, scaled strip and keys, and several toolbar crash and sizing fixes",
+    "• Text Expander and Layouts: Shortcuts with symbols or numbers work, custom popup keys keep their symbols, and hexagonal layouts are detected",
+    "• GIF, Editor and Swipe Fixes: Safer sticker insertion, no crash on trailing empty lines, and no stale swipe markers"
 )
 
 @Composable

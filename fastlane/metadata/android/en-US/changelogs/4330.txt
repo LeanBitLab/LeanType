@@ -1,6 +1,7 @@
-- Fixed too large gap below the keys on Samsung Note 10 / Android 12 (needs testing).
-- Settings search no longer lists expandable section headers.
-- Readable highlight after long press on a search result.
-- Large settings screens open faster.
-- Typed words no longer written to the in-app log.
-- Removed the disabled OTP auto-fill code.
+- Custom Unicode text styles from Toolbar settings.
+- Backup includes the personal dictionary, with separate options for text expander.
+- Fixed too large gap below the keys on some devices.
+- Fixed w and m drawn smaller, one backspace deleting symbol text.
+- Voice: battery, key and dictation fixes, faster input.
+- Faster settings, search long press.
+- Offline flavor now needs Android 6.0+.
