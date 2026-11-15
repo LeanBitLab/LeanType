@@ -112,6 +112,9 @@ fun SearchSettingsScreen(
                         }
                         result.filter { it.second.isNotEmpty() }
                     }
+                    // one lazy row per setting (a whole card as one item composed every setting of the screen at once,
+                    // which is what made opening a large screen slow); the rows of a group are drawn as one card
+                    val rows = remember(groups) { settingRows(groups) }
 
                     // jump from a long press in the search results (see SettingsJump): show the setting
                     // here, opening its fine-tune section if needed, scroll to it and highlight it
@@ -140,9 +143,8 @@ fun SearchSettingsScreen(
                     }
                     LaunchedEffect(scrollKey) {
                         val target = scrollKey ?: return@LaunchedEffect
-                        val index = groups.indexOfFirst { target in it.second }
+                        val index = rows.indexOfFirst { it.key == target }
                         if (index >= 0) {
-                            // to the card with the setting, then the setting itself is brought into view (see below)
                             listState.animateScrollToItem(index + if (headerContent != null) 1 else 0)
                             highlightKey = target
                             delay(2500)
@@ -163,35 +165,33 @@ fun SearchSettingsScreen(
                                 headerContent()
                             }
                         }
-                        items(groups, key = { (titleRes, keys) -> "${titleRes}_${keys.hashCode()}" }) { (titleRes, keys) ->
-                            androidx.compose.material3.Card(
-                                modifier = Modifier
+                        items(rows, key = { it.id }) { row ->
+                            val shape = androidx.compose.foundation.shape.RoundedCornerShape(
+                                topStart = if (row.first) 12.dp else 0.dp, topEnd = if (row.first) 12.dp else 0.dp,
+                                bottomStart = if (row.last) 12.dp else 0.dp, bottomEnd = if (row.last) 12.dp else 0.dp
+                            )
+                            Box(
+                                Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                                colors = androidx.compose.material3.CardDefaults.cardColors(
-                                    containerColor = MaterialTheme.colorScheme.surfaceContainer
-                                 )
+                                    .padding(start = 16.dp, end = 16.dp, top = if (row.first) 8.dp else 0.dp, bottom = if (row.last) 8.dp else 0.dp)
+                                    .clip(shape)
+                                    .background(MaterialTheme.colorScheme.surfaceContainer)
                             ) {
-                                Column {
-                                    if (titleRes != null) {
-                                        PreferenceCategory(stringResource(titleRes))
-                                    }
-                                    
-                                    keys.forEach { key ->
-                                        androidx.compose.runtime.key(key) {
-                                            val highlight by animateColorAsState(
-                                                // a tint, not a solid color: the texts keep their contrast in light and dark themes
-                                                if (key == highlightKey) MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)
-                                                else androidx.compose.ui.graphics.Color.Transparent,
-                                                label = "jump highlight"
-                                            )
-                                            // a setting further down in a large card is not on screen after scrolling to the card
-                                            val bringIntoView = remember { BringIntoViewRequester() }
-                                            LaunchedEffect(highlightKey) { if (key == highlightKey) bringIntoView.bringIntoView() }
-                                            Box(Modifier.bringIntoViewRequester(bringIntoView).background(highlight)) {
-                                                SettingsActivity.settingsContainer[key]?.Preference()
-                                            }
-                                        }
+                                if (row.key == null) {
+                                    PreferenceCategory(stringResource(row.titleRes!!))
+                                } else {
+                                    val key = row.key
+                                    val highlight by animateColorAsState(
+                                        // a tint, not a solid color: the texts keep their contrast in light and dark themes
+                                        if (key == highlightKey) MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)
+                                        else androidx.compose.ui.graphics.Color.Transparent,
+                                        label = "jump highlight"
+                                    )
+                                    // a setting further down in a large card is not on screen after scrolling to it
+                                    val bringIntoView = remember { BringIntoViewRequester() }
+                                    LaunchedEffect(highlightKey) { if (key == highlightKey) bringIntoView.bringIntoView() }
+                                    Box(Modifier.bringIntoViewRequester(bringIntoView).background(highlight)) {
+                                        SettingsActivity.settingsContainer[key]?.Preference()
                                     }
                                 }
                             }
@@ -226,6 +226,19 @@ fun SearchSettingsScreen(
         // long press on a search result opens the screen where the setting is
         itemContent = { setting -> SearchResult(setting) }
     )
+}
+
+/** A row of a settings screen: the title of a category ([key] is null) or a setting; first and last row of a card */
+private data class SettingRow(val id: String, val titleRes: Int?, val key: String?, val first: Boolean = false, val last: Boolean = false)
+
+private fun settingRows(groups: List<Pair<Int?, List<String>>>): List<SettingRow> = buildList {
+    groups.forEachIndexed { index, (titleRes, keys) ->
+        val group = buildList {
+            if (titleRes != null) add(SettingRow("title_${index}_$titleRes", titleRes, null))
+            keys.forEach { add(SettingRow("${index}_$it", null, it)) }
+        }
+        group.forEachIndexed { i, row -> add(row.copy(first = i == 0, last = i == group.lastIndex)) }
+    }
 }
 
 /** A search result: a long press opens the screen of the setting and shows it there */
