@@ -1772,4 +1772,6 @@
     <string name="voice_transcribe_while_speaking_summary">في كل توقف في الكلام، يتم بالفعل نسخ الجزء الذي تم التحدث به حتى الآن. بعد التوقف، بقي الجزء الأخير فقط: انتظار الإملاءات الطويلة أقصر بكثير.</string>
     <string name="voice_piecewise_field_changed">توقف الإملاء: تم تغيير حقل النص، ولم يتم إدراج الباقي</string>
     <string name="settings_search_show_in_screen">تظهر في شاشته</string>
+    <string name="custom_text_styles_title">أنماط النص المخصصة</string>
+    <string name="custom_text_styles_summary">نمط واحد في كل سطر كاسم: متبوعًا بالنمط A-Z، وa-z واختياريًا 0-9 (52 أو 62 حرفًا). تظهر الأنماط المضافة في شريط الأنماط.</string>
 </resources>

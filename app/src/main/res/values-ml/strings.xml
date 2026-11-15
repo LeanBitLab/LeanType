@@ -1815,4 +1815,6 @@
     <string name="voice_transcribe_while_speaking_summary">പ്രസംഗത്തിലെ ഓരോ ഇടവേളയിലും ഇതുവരെ സംസാരിച്ച ഭാഗം ഇതിനകം പകർത്തിയെഴുതിയിരിക്കുന്നു. നിർത്തിയ ശേഷം, അവസാന ഭാഗം മാത്രം അവശേഷിക്കുന്നു: ദീർഘമായ നിർദ്ദേശങ്ങൾക്കായി വളരെ ചെറിയ കാത്തിരിപ്പ്.</string>
     <string name="voice_piecewise_field_changed">ഡിക്റ്റേഷൻ നിർത്തി: ടെക്സ്റ്റ് ഫീൽഡ് മാറി, ബാക്കിയുള്ളത് ചേർത്തില്ല</string>
     <string name="settings_search_show_in_screen">അതിൻ്റെ സ്ക്രീനിൽ കാണിക്കുക</string>
+    <string name="custom_text_styles_title">ഇഷ്ടാനുസൃത ടെക്സ്റ്റ് ശൈലികൾ</string>
+    <string name="custom_text_styles_summary">പേര് എന്ന നിലയിൽ ഒരു വരിയിൽ ഒരു ശൈലി: തുടർന്ന് ശൈലിയിലുള്ള A-Z, a-z കൂടാതെ ഓപ്ഷണലായി 0-9 (52 അല്ലെങ്കിൽ 62 പ്രതീകങ്ങൾ) സ്റ്റൈൽ സ്ട്രിപ്പിൽ ചേർത്ത ശൈലികൾ ദൃശ്യമാകുന്നു.</string>
 </resources>

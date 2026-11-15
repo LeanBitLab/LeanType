@@ -1774,4 +1774,6 @@
     <string name="voice_transcribe_while_speaking_summary">В каждой паузе речи уже записывается часть произнесенной речи. После остановки остается только последняя часть: гораздо короче ждать долгих диктовок.</string>
     <string name="voice_piecewise_field_changed">Диктовка остановлена: текстовое поле изменилось, остальное не вставилось</string>
     <string name="settings_search_show_in_screen">Показать на своем экране</string>
+    <string name="custom_text_styles_title">Пользовательские стили текста</string>
+    <string name="custom_text_styles_summary">Один стиль в строке имени: за ним следуют стили A–Z, a–z и, возможно, 0–9 (52 или 62 символа). Добавленные стили отображаются на панели стилей.</string>
 </resources>

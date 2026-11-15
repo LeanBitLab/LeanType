@@ -12,9 +12,20 @@ import helium314.keyboard.latin.utils.InputTypeUtils
  */
 object UnicodeStyleEngine {
 
-    val STYLES: List<StyleDefinition> by lazy { initializeStyles() }
-    private val STYLES_BY_ID: Map<String, StyleDefinition> by lazy { STYLES.associateBy { it.id } }
-    private val REVERSE_MAP: Map<Int, Int> by lazy { initializeReverseMap() }
+    /** Built-in styles plus user-defined ones, with lookups derived from them. Replaced as a whole, never mutated. */
+    private class StyleSet(val styles: List<StyleDefinition>) {
+        val byId: Map<String, StyleDefinition> = styles.associateBy { it.id }
+        val reverse: Map<Int, Int> = buildReverseMap(styles)
+    }
+
+    private val builtinStyles: List<StyleDefinition> by lazy { initializeStyles() }
+    @Volatile private var styleSet: StyleSet? = null
+    private var customStylesRaw = ""
+
+    private fun currentSet(): StyleSet =
+        styleSet ?: synchronized(this) { styleSet ?: StyleSet(builtinStyles + parseCustomStyles(customStylesRaw)).also { styleSet = it } }
+
+    val STYLES: List<StyleDefinition> get() = currentSet().styles
 
     var activeLiveStyleId: String? = null
 
@@ -49,12 +60,12 @@ object UnicodeStyleEngine {
      * Checks whether a codepoint is a styled Unicode character or combining mark.
      */
     fun isStyledCharacter(codePoint: Int): Boolean {
-        return REVERSE_MAP.containsKey(codePoint) || isCombiningMark(codePoint)
+        return currentSet().reverse.containsKey(codePoint) || isCombiningMark(codePoint)
     }
 
-    fun getStyle(styleId: String): StyleDefinition? = STYLES_BY_ID[styleId]
+    fun getStyle(styleId: String): StyleDefinition? = currentSet().byId[styleId]
 
-    fun getAllStyles(): List<StyleDefinition> = STYLES
+    fun getAllStyles(): List<StyleDefinition> = currentSet().styles
 
     /**
      * Transforms an entire text string to the target style safely.
@@ -101,6 +112,7 @@ object UnicodeStyleEngine {
      * Strips styling and combining marks, reverting styled Unicode back to plain text.
      */
     fun toPlainText(styledText: String): String {
+        val reverse = currentSet().reverse
         val sb = StringBuilder(styledText.length)
         var i = 0
         val len = styledText.length
@@ -110,7 +122,7 @@ object UnicodeStyleEngine {
                 i += Character.charCount(cp)
                 continue
             }
-            val plain = REVERSE_MAP[cp] ?: cp
+            val plain = reverse[cp] ?: cp
             sb.appendCodePoint(plain)
             i += Character.charCount(cp)
         }
@@ -656,7 +668,65 @@ object UnicodeStyleEngine {
         )
     }
 
-    private fun initializeReverseMap(): Map<Int, Int> {
+    /**
+     * Replaces the user-defined styles. Called whenever settings are (re)loaded, so it must be cheap
+     * when nothing changed. See [parseCustomStyles] for the accepted format.
+     */
+    fun setCustomStyles(raw: String) {
+        synchronized(this) {
+            if (raw == customStylesRaw && styleSet != null) return
+            customStylesRaw = raw
+            styleSet = null
+        }
+    }
+
+    /** True if [raw] is empty or every non-blank line is a valid style definition with a unique name. */
+    fun isValidCustomStylesText(raw: String): Boolean {
+        val names = HashSet<String>()
+        return raw.lineSequence().filter { it.isNotBlank() }.all { line ->
+            val parsed = parseCustomStyleLine(line)
+            parsed != null && names.add(parsed.first)
+        }
+    }
+
+    /**
+     * Each line is `Name: <letters>`, where the letters (whitespace ignored) are the styled A-Z, then a-z,
+     * optionally followed by 0-9, i.e. 52 or 62 characters. Invalid or duplicate lines are skipped.
+     */
+    private fun parseCustomStyles(raw: String): List<StyleDefinition> {
+        val seen = HashSet<String>()
+        return raw.lineSequence().filter { it.isNotBlank() }.mapNotNull { line ->
+            val (name, cps) = parseCustomStyleLine(line) ?: return@mapNotNull null
+            if (!seen.add(name)) return@mapNotNull null
+            val sample = StringBuilder()
+            for (c in "Abc") sample.appendCodePoint(cps[if (c.isUpperCase()) c - 'A' else 26 + (c - 'a')])
+            StyleDefinition(
+                id = "custom_$name",
+                name = name,
+                category = StyleCategory.DECORATIVE,
+                samplePreview = sample.toString(),
+                mapCodePoint = { cp ->
+                    when (cp) {
+                        in 'A'.code..'Z'.code -> cps[cp - 'A'.code]
+                        in 'a'.code..'z'.code -> cps[26 + cp - 'a'.code]
+                        in '0'.code..'9'.code -> if (cps.size == 62) cps[52 + cp - '0'.code] else cp
+                        else -> cp
+                    }
+                }
+            )
+        }.toList()
+    }
+
+    private fun parseCustomStyleLine(line: String): Pair<String, IntArray>? {
+        val colon = line.indexOf(':')
+        if (colon < 0) return null
+        val name = line.substring(0, colon).trim()
+        if (name.isEmpty()) return null
+        val cps = line.substring(colon + 1).codePoints().filter { !Character.isWhitespace(it) }.toArray()
+        return if (cps.size == 52 || cps.size == 62) name to cps else null
+    }
+
+    private fun buildReverseMap(styles: List<StyleDefinition>): Map<Int, Int> {
         val reverse = HashMap<Int, Int>(2048)
         val testChars = StringBuilder()
         for (c in 'a'..'z') testChars.append(c)
@@ -664,7 +734,7 @@ object UnicodeStyleEngine {
         for (c in '0'..'9') testChars.append(c)
         testChars.append("+-=() .,?!'\"<>_")
 
-        for (style in STYLES) {
+        for (style in styles) {
             if (style.combiningMark != 0) continue
             var i = 0
             val len = testChars.length
