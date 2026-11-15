@@ -518,16 +518,22 @@ open class KeyboardView @JvmOverloads constructor(
                 mFontSizeMultiplier
             }
             paint.textSize = key.selectTextSize(params) * fontMultiplier
-            val maxLabelWidth = if (mShowsHints && key.hintLabel != null) {
-                // Centered label right edge must not cross into the top-right hint area.
-                val estimatedHintWidth = TypefaceUtils.getStringWidth(key.hintLabel!!, paint) * sv.mSecondaryFontScale * 0.55f
-                (keyWidth - 2f * (mKeyHintLetterPadding + estimatedHintWidth)).coerceIn(keyWidth * 0.50f, keyWidth * 0.85f)
-            } else {
-                keyWidth * 0.85f
-            }
-            val textWidth = TypefaceUtils.getStringWidth(label, paint)
-            if (textWidth > maxLabelWidth && textWidth > 0f) {
-                paint.textSize = paint.textSize * (maxLabelWidth / textWidth)
+            // Floating keyboard only (narrow keys), and only for multi-character labels such as "123".
+            // Single-character labels must keep the uniform font size: fitting them per key would make
+            // wide glyphs (w, m, ш, щ) smaller than the other letters in the same row.
+            if (helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale() > 0.0f
+                && label.codePointCount(0, label.length) > 1) {
+                val maxLabelWidth = if (mShowsHints && key.hintLabel != null) {
+                    // Centered label right edge must not cross into the top-right hint area.
+                    val estimatedHintWidth = TypefaceUtils.getStringWidth(key.hintLabel!!, paint) * sv.mSecondaryFontScale * 0.55f
+                    (keyWidth - 2f * (mKeyHintLetterPadding + estimatedHintWidth)).coerceIn(keyWidth * 0.50f, keyWidth * 0.85f)
+                } else {
+                    keyWidth * 0.85f
+                }
+                val textWidth = TypefaceUtils.getStringWidth(label, paint)
+                if (textWidth > maxLabelWidth && textWidth > 0f) {
+                    paint.textSize = paint.textSize * (maxLabelWidth / textWidth)
+                }
             }
             val labelCharHeight = TypefaceUtils.getReferenceCharHeight(paint)
             val labelCharWidth = TypefaceUtils.getReferenceCharWidth(paint)
@@ -590,10 +596,13 @@ open class KeyboardView @JvmOverloads constructor(
         if (hintLabel != null && mShowsHints) {
             val sv = mSettingsValues ?: Settings.getValues()
             paint.textSize = key.selectHintTextSize(params) * sv.mSecondaryFontScale
-            val maxHintWidth = keyWidth * 0.45f
-            val hintTextWidth = TypefaceUtils.getStringWidth(hintLabel, paint)
-            if (hintTextWidth > maxHintWidth && hintTextWidth > 0f) {
-                paint.textSize = paint.textSize * (maxHintWidth / hintTextWidth)
+            if (helium314.keyboard.latin.utils.ResourceUtils.getFloatingKeyboardScale() > 0.0f
+                && hintLabel.codePointCount(0, hintLabel.length) > 1) {
+                val maxHintWidth = keyWidth * 0.45f
+                val hintTextWidth = TypefaceUtils.getStringWidth(hintLabel, paint)
+                if (hintTextWidth > maxHintWidth && hintTextWidth > 0f) {
+                    paint.textSize = paint.textSize * (maxHintWidth / hintTextWidth)
+                }
             }
             paint.color = key.selectHintTextColor(params)
             val typeface = if (mEmojiTypeface != null && isEmoji(hintLabel)) mEmojiTypeface else mTypeface
