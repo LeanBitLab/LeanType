@@ -6,6 +6,7 @@
 
 package helium314.keyboard.accessibility
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.media.AudioDeviceInfo.*
 import android.media.AudioManager
@@ -34,7 +35,8 @@ class AccessibilityUtils private constructor() {
     private var mTypedWord: String? = null
 
     private fun initInternal(context: Context) {
-        mContext = context
+        // the instance is static, do not keep the service alive
+        mContext = context.applicationContext
         mAccessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
         mAudioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
     }
@@ -73,16 +75,11 @@ class AccessibilityUtils private constructor() {
             if (speakPassword) return false
         }
         // Always speak if the user is listening through headphones.
-        val listeningThroughHeadphones = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            @Suppress("deprecation") // no replacement available
-            mAudioManager.isWiredHeadsetOn || mAudioManager.isBluetoothA2dpOn
-        } else {
-            // try the same as the deprecated thing above, for what we can assume to be headphones
-            mAudioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).any {
-                when (it.type) {
-                    TYPE_WIRED_HEADSET, TYPE_WIRED_HEADPHONES, TYPE_BLUETOOTH_SCO, TYPE_BLUETOOTH_A2DP, TYPE_USB_HEADSET, TYPE_HEARING_AID, TYPE_BLE_HEADSET -> true
-                    else -> false
-                }
+        // what we can assume to be headphones
+        val listeningThroughHeadphones = mAudioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).any {
+            when (it.type) {
+                TYPE_WIRED_HEADSET, TYPE_WIRED_HEADPHONES, TYPE_BLUETOOTH_SCO, TYPE_BLUETOOTH_A2DP, TYPE_USB_HEADSET, TYPE_HEARING_AID, TYPE_BLE_HEADSET -> true
+                else -> false
             }
         }
         return if (listeningThroughHeadphones) {
@@ -196,6 +193,7 @@ class AccessibilityUtils private constructor() {
         private val TAG = AccessibilityUtils::class.java.simpleName
         private val CLASS = AccessibilityUtils::class.java.name
         private val PACKAGE = AccessibilityUtils::class.java.getPackage()?.name ?: "helium314.keyboard.accessibility"
+        @SuppressLint("StaticFieldLeak") // holds the application context
         val instance = AccessibilityUtils()
         /*
          * Setting this constant to {@code false} will disable all keyboard

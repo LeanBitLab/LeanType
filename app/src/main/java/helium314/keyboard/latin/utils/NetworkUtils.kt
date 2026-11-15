@@ -4,7 +4,6 @@ package helium314.keyboard.latin.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import java.net.NetworkInterface
 
 object NetworkUtils {
@@ -14,21 +13,14 @@ object NetworkUtils {
         try {
             val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
             if (cm != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    val network = cm.activeNetwork
-                    if (network != null) {
-                        val capabilities = cm.getNetworkCapabilities(network)
-                        if (capabilities != null) {
-                            return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                        }
+                val network = cm.activeNetwork
+                if (network != null) {
+                    val capabilities = cm.getNetworkCapabilities(network)
+                    if (capabilities != null) {
+                        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
                     }
-                    return false
-                } else {
-                    @Suppress("DEPRECATION")
-                    val networkInfo = cm.activeNetworkInfo
-                    @Suppress("DEPRECATION")
-                    return networkInfo != null && networkInfo.isConnected
                 }
+                return false
             }
         } catch (e: Throwable) {
             Log.w(TAG, "ConnectivityManager check failed", e)

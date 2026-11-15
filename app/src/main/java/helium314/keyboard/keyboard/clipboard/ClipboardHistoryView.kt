@@ -263,10 +263,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
         textView.overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
         textView.isFocusable = false
         textView.isFocusableInTouchMode = false
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            textView.breakStrategy = android.text.Layout.BREAK_STRATEGY_SIMPLE
-            textView.hyphenationFrequency = android.text.Layout.HYPHENATION_FREQUENCY_NONE
-        }
+        textView.breakStrategy = android.text.Layout.BREAK_STRATEGY_SIMPLE
+        textView.hyphenationFrequency = android.text.Layout.HYPHENATION_FREQUENCY_NONE
     }
 
     private var pendingCursorListener: Pair<TextView, View.OnLayoutChangeListener>? = null

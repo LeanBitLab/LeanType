@@ -8,7 +8,6 @@ package helium314.keyboard.latin.permissions
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import androidx.core.content.ContextCompat
 
 /**
@@ -19,10 +18,6 @@ object PermissionsUtil {
      * Queries if al the permissions are granted for the given permission strings.
      */
     fun checkAllPermissionsGranted(context: Context?, vararg permissions: String): Boolean {
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            // For all pre-M devices, we should have all the permissions granted on install.
-            return true
-        }
         if (context == null) return false
 
         for (permission in permissions) {

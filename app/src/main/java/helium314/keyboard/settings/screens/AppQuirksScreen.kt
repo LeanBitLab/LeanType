@@ -4,7 +4,6 @@ package helium314.keyboard.settings.screens
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.view.inputmethod.EditorInfo
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -91,11 +90,7 @@ fun AppQuirksScreen(
             val intent = Intent(Intent.ACTION_MAIN).apply {
                 addCategory(Intent.CATEGORY_LAUNCHER)
             }
-            val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                PackageManager.MATCH_ALL
-            } else {
-                0
-            }
+            val flags = PackageManager.MATCH_ALL
             val resolveInfos = pm.queryIntentActivities(intent, flags)
             val appList = mutableListOf<AppEntry>()
             val visited = mutableSetOf<String>()

@@ -18,10 +18,8 @@ fun refreshDeviceLocked(context: Context): Boolean {
     val keyguardManager = context.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
     val locked = if (keyguardManager == null) {
         false
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-        keyguardManager.isDeviceLocked
     } else {
-        keyguardManager.isKeyguardLocked
+        keyguardManager.isDeviceLocked
     }
     cachedDeviceLocked = locked
     lastLockCheckTime = SystemClock.elapsedRealtime()

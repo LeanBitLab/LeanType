@@ -73,6 +73,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import java.util.Locale
 
 
 @Composable
@@ -1095,7 +1096,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                 key = Settings.PREF_OFFLINE_TEMP,
                 default = Defaults.PREF_OFFLINE_TEMP,
                 range = 0.0f..2.0f,
-                description = { String.format("%.2f", it) }
+                description = { String.format(Locale.getDefault(), "%.2f", it) }
             )
 
             // Top-P
@@ -1104,7 +1105,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                 key = Settings.PREF_OFFLINE_TOP_P,
                 default = Defaults.PREF_OFFLINE_TOP_P,
                 range = 0.0f..1.0f,
-                description = { String.format("%.2f", it) }
+                description = { String.format(Locale.getDefault(), "%.2f", it) }
             )
 
             // Top-K
@@ -1122,7 +1123,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
                 key = Settings.PREF_OFFLINE_MIN_P,
                 default = Defaults.PREF_OFFLINE_MIN_P,
                 range = 0.0f..1.0f,
-                description = { String.format("%.2f", it) }
+                description = { String.format(Locale.getDefault(), "%.2f", it) }
             )
 
             // Show Thinking

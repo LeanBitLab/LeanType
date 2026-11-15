@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import helium314.keyboard.latin.utils.Log
 import java.util.Collections
 
@@ -44,11 +43,7 @@ object BrowserDetector {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://example.com")).apply {
                     addCategory(Intent.CATEGORY_BROWSABLE)
                 }
-                val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    PackageManager.MATCH_ALL
-                } else {
-                    0
-                }
+                val flags = PackageManager.MATCH_ALL
                 val resolveInfos = appContext.packageManager.queryIntentActivities(intent, flags)
                 for (info in resolveInfos) {
                     val pkg = info.activityInfo?.packageName

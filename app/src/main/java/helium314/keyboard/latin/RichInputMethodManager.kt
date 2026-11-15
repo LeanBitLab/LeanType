@@ -5,6 +5,7 @@
  */
 package helium314.keyboard.latin
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
@@ -401,6 +402,7 @@ class RichInputMethodManager private constructor() {
         private val TAG = RichInputMethodManager::class.java.simpleName
         private const val DEBUG = false
 
+        @SuppressLint("StaticFieldLeak") // holds the application context
         private val instance = RichInputMethodManager()
 
         fun getInstance(): RichInputMethodManager {

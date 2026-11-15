@@ -6,6 +6,7 @@
 
 package helium314.keyboard.latin
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.media.AudioManager
 import android.os.Build
@@ -335,6 +336,7 @@ class AudioAndHapticFeedbackManager private constructor() {
 
     companion object {
         private const val MIN_GESTURE_HAPTIC_INTERVAL_MS = 40L
+        @SuppressLint("StaticFieldLeak") // holds the application context
         private val sInstance = AudioAndHapticFeedbackManager()
 
         fun getInstance(): AudioAndHapticFeedbackManager = sInstance
