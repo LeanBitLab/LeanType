@@ -1746,9 +1746,9 @@
     <string name="voice_futo_models_summary">Дакладна наладжаныя мадэлі Whisper, аптымізаваныя для мабільнай дыктоўкі</string>
     <string name="button_browse">Праглядзіце</string>
     <string name="voice_transcribe_while_speaking_title">Расшыфроўка падчас размовы</string>
-    <string name="voice_transcribe_while_speaking_summary">Пры кожнай паўзе ў маўленні прамоўленая частка ўжо транскрыбуецца. Пасля прыпынку застаецца толькі апошняя частка: доўгія дыктоўкі чакаюць значна карацей.</string>
     <string name="voice_piecewise_field_changed">Дыктоўка спынена: тэкставае поле змянілася, астатняе не ўстаўлена</string>
     <string name="settings_search_show_in_screen">Паказаць на сваім экране</string>
     <string name="custom_text_styles_title">Карыстальніцкія стылі тэксту</string>
     <string name="custom_text_styles_summary">Адзін стыль на радок. Фармат: Імя: у стылі A-Z a-z 0-9 (52 або 62 сімвалы).</string>
+    <string name="voice_transcribe_while_speaking_summary">Карацей чакаць доўгіх дыктовак</string>
 </resources>

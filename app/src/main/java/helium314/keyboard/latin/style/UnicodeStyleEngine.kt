@@ -683,20 +683,20 @@ object UnicodeStyleEngine {
     /** True if [raw] is empty or every non-blank line is a valid style definition with a unique name. */
     fun isValidCustomStylesText(raw: String): Boolean {
         val names = HashSet<String>()
-        return raw.lineSequence().filter { it.isNotBlank() }.all { line ->
-            val parsed = parseCustomStyleLine(line)
+        return raw.lineSequence().filter { it.isNotBlank() }.withIndex().all { (index, line) ->
+            val parsed = parseCustomStyleLine(line, index)
             parsed != null && names.add(parsed.first)
         }
     }
 
     /**
-     * Each line is `Name: <letters>` (the colon may be full-width), where the letters (whitespace ignored) are the styled A-Z, then a-z,
+     * Each line is `Name: <letters>` (the colon may be full-width, the name may be left out), where the letters (whitespace ignored) are the styled A-Z, then a-z,
      * optionally followed by 0-9, i.e. 52 or 62 characters. Invalid or duplicate lines are skipped.
      */
     private fun parseCustomStyles(raw: String): List<StyleDefinition> {
         val seen = HashSet<String>()
-        return raw.lineSequence().filter { it.isNotBlank() }.mapNotNull { line ->
-            val (name, cps) = parseCustomStyleLine(line) ?: return@mapNotNull null
+        return raw.lineSequence().filter { it.isNotBlank() }.withIndex().mapNotNull { (index, line) ->
+            val (name, cps) = parseCustomStyleLine(line, index) ?: return@mapNotNull null
             if (!seen.add(name)) return@mapNotNull null
             val sample = StringBuilder()
             for (c in "Abc") sample.appendCodePoint(cps[if (c.isUpperCase()) c - 'A' else 26 + (c - 'a')])
@@ -717,19 +717,27 @@ object UnicodeStyleEngine {
         }.toList()
     }
 
-    private fun parseCustomStyleLine(line: String): Pair<String, IntArray>? {
+    /**
+     * Characters that pasting often adds without being visible: variation selectors (e.g. after circled M, which is
+     * also an emoji) and format characters such as zero-width space, joiner and BOM. They would change the count.
+     */
+    private fun isInvisibleFormatting(cp: Int): Boolean =
+        cp in 0xFE00..0xFE0F || cp in 0xE0100..0xE01EF || Character.getType(cp) == Character.FORMAT.toInt()
+
+    /** [index] is the position among the non-blank lines, used to name a line that is only an alphabet. */
+    private fun parseCustomStyleLine(line: String, index: Int): Pair<String, IntArray>? {
         // also accept the full-width colon that CJK keyboards type
         val colon = line.indexOfFirst { it == ':' || it == '\uFF1A' }
-        if (colon < 0) return null
-        val name = line.substring(0, colon).trim()
+        // a bare pasted alphabet without "Name:" still works and gets a generated name
+        val name = if (colon < 0) "Custom ${index + 1}" else line.substring(0, colon).trim()
         if (name.isEmpty()) return null
         // plain loop: String.codePoints() and IntStream need API 24, the app supports API 21/23
-        val rest = line.substring(colon + 1)
+        val rest = if (colon < 0) line else line.substring(colon + 1)
         val cps = ArrayList<Int>(62)
         var i = 0
         while (i < rest.length) {
             val cp = rest.codePointAt(i)
-            if (!Character.isWhitespace(cp)) cps.add(cp)
+            if (!Character.isWhitespace(cp) && !isInvisibleFormatting(cp)) cps.add(cp)
             i += Character.charCount(cp)
         }
         return if (cps.size == 52 || cps.size == 62) name to cps.toIntArray() else null

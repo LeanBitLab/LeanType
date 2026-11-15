@@ -112,7 +112,22 @@ fun getFullEmojiAtEnd(text: CharSequence): String {
     }
     val result = s.substring(offset)
     if (isEmoji(result)) return result
-    return if (offset == 0) result else s.substring(s.length - Character.charCount(lastCodepoint))
+    // Reaching the start of the text only means that everything before the cursor consists of codepoints that
+    // might be emoji. That is also true for circled letters, arrows or math symbols, and deleting all of those
+    // at once is wrong, so keep the whole text only if it has emoji sequence parts.
+    return if (offset == 0 && hasEmojiSequenceParts(result)) result else s.substring(s.length - Character.charCount(lastCodepoint))
+}
+
+/** Whether [s] contains something that joins or modifies emoji: ZWJ, variation selector, keycap, skin tone, flag letter, tag. */
+private fun hasEmojiSequenceParts(s: String): Boolean {
+    var i = 0
+    while (i < s.length) {
+        val cp = s.codePointAt(i)
+        if (cp == 0x200D || cp == 0xFE0F || cp == 0xFE0E || cp == 0x20E3
+            || cp in 0x1F3FB..0x1F3FF || cp in 0x1F1E6..0x1F1FF || cp in 0xE0020..0xE007F) return true
+        i += Character.charCount(cp)
+    }
+    return false
 }
 
 /**

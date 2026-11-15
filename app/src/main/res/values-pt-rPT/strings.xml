@@ -1708,9 +1708,9 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="voice_futo_models_summary">Modelos Whisper ajustados e otimizados para ditado móvel</string>
     <string name="button_browse">Navegar</string>
     <string name="voice_transcribe_while_speaking_title">Transcreva enquanto fala</string>
-    <string name="voice_transcribe_while_speaking_summary">A cada pausa na fala a parte falada até então já está transcrita. Depois de parar, resta apenas a última parte: espera muito mais curta por longos ditados.</string>
     <string name="voice_piecewise_field_changed">O ditado parou: o campo de texto mudou, o restante não foi inserido</string>
     <string name="settings_search_show_in_screen">Mostrar em sua tela</string>
     <string name="custom_text_styles_title">Estilos de texto personalizados</string>
     <string name="custom_text_styles_summary">Um estilo por linha. Formato: Nome: estilo A-Z a-z 0-9 (52 ou 62 caracteres).</string>
+    <string name="voice_transcribe_while_speaking_summary">Espera mais curta para ditados longos</string>
 </resources>

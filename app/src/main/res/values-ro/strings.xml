@@ -1746,9 +1746,9 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="voice_futo_models_summary">Modele Whisper reglate fin, optimizate pentru dictarea pe mobil</string>
     <string name="button_browse">Răsfoiește</string>
     <string name="voice_transcribe_while_speaking_title">Transcrieți în timp ce vorbiți</string>
-    <string name="voice_transcribe_while_speaking_summary">La fiecare pauză în vorbire partea vorbită până acum este deja transcrisă. După oprire, rămâne doar ultima parte: așteptare mult mai scurtă pentru dictate lungi.</string>
     <string name="voice_piecewise_field_changed">Dictarea s-a oprit: câmpul de text s-a schimbat, restul nu a fost introdus</string>
     <string name="settings_search_show_in_screen">Arată pe ecranul său</string>
     <string name="custom_text_styles_title">Stiluri de text personalizate</string>
     <string name="custom_text_styles_summary">Un stil pe linie. Format: Nume: stil A-Z a-z 0-9 (52 sau 62 de caractere).</string>
+    <string name="voice_transcribe_while_speaking_summary">Așteptați mai scurt pentru dictate lungi</string>
 </resources>

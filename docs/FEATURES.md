@@ -1149,7 +1149,7 @@ The **Font Style** toolbar key converts text to decorative Unicode fonts (bold, 
 
 ### Adding a Custom Style
 1. Open `Toolbar > Custom text styles`.
-2. Write one style per line as `Name:` followed by the styled alphabet:
+2. Write one style per line as `Name:` followed by the styled alphabet (the **Features Guide** button in the dialog opens this section):
 
 ```
 Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ⓪①②③④⑤⑥⑦⑧⑨
@@ -1160,7 +1160,7 @@ Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍ
 ### Format Rules
 - The characters after `Name:` must be the styled **A-Z**, then **a-z**, and optionally **0-9**, in that order. That is exactly **52** characters (letters only) or **62** characters (letters and digits).
 - Spaces and line breaks between the characters are ignored, so you can paste an alphabet exactly as a text generator website produces it.
-- Each name must be unique. The name is everything before the first `:` (a full-width `：` is accepted too).
+- Each name must be unique. The name is everything before the first `:` (a full-width `：` is accepted too). A line that is only the alphabet, with no `Name:`, is accepted and named `Custom 1`, `Custom 2` and so on by its line position.
 - **OK** stays disabled while any line is invalid. An empty field removes all custom styles.
 - Letters or digits outside the mapping (spaces, punctuation, and digits in a 52-character style) are left unchanged.
 - Fonts that use characters outside the Basic Multilingual Plane (such as the Mathematical Alphanumeric block) work too.
