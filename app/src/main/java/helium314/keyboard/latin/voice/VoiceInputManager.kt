@@ -538,6 +538,7 @@ class VoiceInputManager(
         isRecording.set(true)
         val isOnline = isCurrentSessionOnline
         val piecewise = piecewiseActive
+        val generation = piecewiseGeneration
         val writePfd = if (!isOnline && !piecewise) {
             audioPipeWriteSide ?: return false
         } else null
@@ -639,7 +640,7 @@ class VoiceInputManager(
                                 piece.reset()
                                 val hadSpeech = pieceHasSpeech
                                 pieceHasSpeech = false
-                                if (hadSpeech) mainHandler.post { onPieceRecorded(bytes) }
+                                if (hadSpeech) mainHandler.post { onPieceRecorded(bytes, generation) }
                             }
                         }
 
@@ -684,7 +685,7 @@ class VoiceInputManager(
                 currentAudioLevel = 0f
                 if (piece != null) {
                     val rest = if (pieceHasSpeech) piece.toByteArray() else null
-                    mainHandler.post { onPiecewiseRecordingEnded(rest) }
+                    mainHandler.post { onPiecewiseRecordingEnded(rest, generation) }
                 }
                 try { outputStream?.close() } catch (_: Exception) {}
                 Log.i(TAG, "Audio loop ended. Total wrote: $totalBytesWritten bytes")
@@ -955,6 +956,12 @@ class VoiceInputManager(
     // recording goes on, one piece at a time. After stopping, only the last piece is left to transcribe.
 
     private var piecewiseActive = false
+    /**
+     * Counts piecewise sessions: the audio thread tags what it posts with the value it started with, so a late
+     * post from a finished session cannot touch a newer one.
+     */
+    private var piecewiseGeneration = 0
+    private var pieceTimeoutRunnable: Runnable? = null
     private val pendingPieces = java.util.ArrayDeque<ByteArray>()
     /** id of the plugin session transcribing a piece, null if none */
     private var pieceInFlight: String? = null
@@ -968,6 +975,7 @@ class VoiceInputManager(
     private fun editorKey(info: EditorInfo?): String? = info?.let { "${it.packageName}|${it.fieldId}|${it.inputType}" }
 
     private fun startPiecewiseRecording() {
+        piecewiseGeneration++
         piecewiseActive = true
         piecewiseEditor = editorKey(ims.currentInputEditorInfo)
         pendingPieces.clear()
@@ -984,14 +992,14 @@ class VoiceInputManager(
         }
     }
 
-    private fun onPieceRecorded(bytes: ByteArray) {
-        if (!piecewiseActive) return
+    private fun onPieceRecorded(bytes: ByteArray, generation: Int) {
+        if (!piecewiseActive || generation != piecewiseGeneration) return
         pendingPieces.addLast(bytes)
         transcribeNextPiece()
     }
 
-    private fun onPiecewiseRecordingEnded(rest: ByteArray?) {
-        if (!piecewiseActive) return
+    private fun onPiecewiseRecordingEnded(rest: ByteArray?, generation: Int) {
+        if (!piecewiseActive || generation != piecewiseGeneration) return
         if (rest != null) pendingPieces.addLast(rest)
         piecewiseRecordingEnded = true
         transcribeNextPiece()
@@ -1010,6 +1018,7 @@ class VoiceInputManager(
         }
         val pieceId = UUID.randomUUID().toString()
         pieceInFlight = pieceId
+        schedulePieceTimeout(pieceId, processingTimeoutFor((bytes.size / BYTES_PER_MS).toLong()))
         val context = piecewiseContext.takeLast(PIECE_CONTEXT_CHARS).trim()
         val prompt = listOfNotNull(userVoicePrompt(), context.takeIf { it.isNotEmpty() }).joinToString(" ").ifBlank { null }
         val pipe = try {
@@ -1053,6 +1062,7 @@ class VoiceInputManager(
                 // the next piece only after the plugin is done, a new session would cancel this one
                 mainHandler.post {
                     if (pieceInFlight != pieceId) return@post
+                    cancelPieceTimeout()
                     pieceInFlight = null
                     transcribeNextPiece()
                 }
@@ -1079,6 +1089,26 @@ class VoiceInputManager(
                 closeQuietly(pipe[1])
             }
         }, "VoicePieceWriter").apply { isDaemon = true; start() }
+    }
+
+    /** A plugin that never ends a piece's session would otherwise block all later pieces. */
+    private fun schedulePieceTimeout(pieceId: String, timeoutMs: Long) {
+        cancelPieceTimeout()
+        val runnable = Runnable {
+            if (pieceInFlight == pieceId) {
+                Log.w(TAG, "Recognition of a piece timed out (${timeoutMs / 1000}s)")
+                failPiecewise("Voice processing timed out")
+            }
+        }
+        pieceTimeoutRunnable = runnable
+        mainHandler.postDelayed(runnable, timeoutMs)
+    }
+
+    private fun cancelPieceTimeout() {
+        pieceTimeoutRunnable?.let {
+            mainHandler.removeCallbacks(it)
+            pieceTimeoutRunnable = null
+        }
     }
 
     private fun failPiecewise(message: String) {
@@ -1233,6 +1263,8 @@ class VoiceInputManager(
         cancelConnectingTimeout()
         cancelHandshakeTimeout()
         cancelProcessingTimeout()
+        cancelPieceTimeout()
+        piecewiseGeneration++
         piecewiseActive = false
         pendingPieces.clear()
         pieceInFlight = null
