@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId = "com.leanbitlab.leantype"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
         // ponytail: release version 4.3.3
         versionCode = 4330
@@ -45,7 +45,7 @@ android {
         create("offline") {
             dimension = "privacy"
             applicationIdSuffix = ".offline"
-            minSdk = 21
+            minSdk = 23
         }
     }
 
