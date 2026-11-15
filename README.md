@@ -18,7 +18,9 @@
 **A private, smart, and deeply customizable open-source Android keyboard.**  
 *Forked from [HeliBoard](https://github.com/Helium314/HeliBoard) / OpenBoard / AOSP LatinIME.*
 
-[Screenshots](#-screenshots) • [Download APKs](#-download) • [Flavor Comparison](#-flavor-comparison) • [Features](#-features) • [Setup Guide](#-setup-guide) • [Ecosystem](#-ecosystem--plugins) • [Other Projects](https://github.com/LeanBitLab#-android-projects)
+[Screenshots](#-screenshots) • [Download APKs](#-download) • [Flavor Comparison](#-flavor-comparison) • [Features](#-features) • [Full Feature Guide](docs/FEATURES.md) • [Setup Guide](#-setup-guide) • [Ecosystem](#-ecosystem--plugins) • [Other Projects](https://github.com/LeanBitLab#-android-projects)
+
+> 📖 **New here? Read the [Full Feature Guide (FEATURES.md)](docs/FEATURES.md)** for detailed documentation of every setting, AI prompt, keycode and action.
 
 </div>
 
@@ -165,7 +167,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 
 ---
 
-## 🛠️ Setup Guide
+## 🛠 Setup Guide
 
 ### 1. Cloud & Self-Hosted AI Setup (Gemini / Groq / OpenAI / Ollama)
 1. **Cloud API**: Obtain an API key from [Google AI Studio](https://aistudio.google.com/apikey) or [Groq Console](https://console.groq.com/keys).
