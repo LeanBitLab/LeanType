@@ -270,19 +270,21 @@ fun downloadDictionary(
     val tempFile = File(cacheDir, "${type}.dict.download")
     CoroutineScope(Dispatchers.IO + kotlinx.coroutines.SupervisorJob()).launch {
         var success = false
+        var openConn: java.net.HttpURLConnection? = null
         try {
             if (tempFile.exists()) {
                 tempFile.delete()
             }
             var url = java.net.URL(linkUrl)
             var connection = url.openConnection() as java.net.HttpURLConnection
-            connection.setRequestProperty("User-Agent", "HeliboardL/3.8.9 (Android)")
+            connection.setRequestProperty("User-Agent", Links.USER_AGENT)
             connection.connectTimeout = 15000
             connection.readTimeout = 15000
             connection.instanceFollowRedirects = true
             
-            var status = connection.responseCode
             var conn = connection
+            openConn = conn
+            var status = conn.responseCode
             var redirectCount = 0
             while ((status == java.net.HttpURLConnection.HTTP_MOVED_TEMP || 
                     status == java.net.HttpURLConnection.HTTP_MOVED_PERM || 
@@ -291,7 +293,8 @@ fun downloadDictionary(
                 conn.disconnect()
                 val nextUrl = java.net.URL(newUrl)
                 conn = nextUrl.openConnection() as java.net.HttpURLConnection
-                conn.setRequestProperty("User-Agent", "HeliboardL/3.8.9 (Android)")
+                openConn = conn
+                conn.setRequestProperty("User-Agent", Links.USER_AGENT)
                 conn.connectTimeout = 15000
                 conn.readTimeout = 15000
                 conn.instanceFollowRedirects = true
@@ -326,9 +329,7 @@ fun downloadDictionary(
                     if (lastModified > 0L) {
                         tempFile.setLastModified(lastModified)
                     }
-                    if (targetFile.exists()) {
-                        targetFile.delete()
-                    }
+                    // rename replaces an existing target, so a failed rename keeps the old dictionary
                     if (tempFile.renameTo(targetFile)) {
                         success = true
                         invalidateMissingDictCache()
@@ -340,12 +341,13 @@ fun downloadDictionary(
             } else {
                 Log.e("DictionaryUtils", "HTTP error downloading dictionary: $status")
             }
-            conn.disconnect()
         } catch (e: Exception) {
             Log.e("DictionaryUtils", "Failed to download dictionary", e)
             if (tempFile.exists()) {
                 tempFile.delete()
             }
+        } finally {
+            openConn?.disconnect()
         }
         withContext(Dispatchers.Main) {
             onComplete(success)
@@ -379,7 +381,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                     val url = java.net.URL(link)
                     val connection = url.openConnection() as java.net.HttpURLConnection
                     connection.requestMethod = "HEAD"
-                    connection.setRequestProperty("User-Agent", "HeliboardL/3.8.9 (Android)")
+                    connection.setRequestProperty("User-Agent", Links.USER_AGENT)
                     connection.connectTimeout = 5000
                     connection.readTimeout = 5000
                     connection.instanceFollowRedirects = true
@@ -394,7 +396,7 @@ fun DownloadableDictionaryRow(locale: Locale, desc: String, link: String, refres
                         val nextUrl = java.net.URL(newUrl)
                         conn = nextUrl.openConnection() as java.net.HttpURLConnection
                         conn.requestMethod = "HEAD"
-                        conn.setRequestProperty("User-Agent", "HeliboardL/3.8.9 (Android)")
+                        conn.setRequestProperty("User-Agent", Links.USER_AGENT)
                         conn.connectTimeout = 5000
                         conn.readTimeout = 5000
                         conn.instanceFollowRedirects = true
