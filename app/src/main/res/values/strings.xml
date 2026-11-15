@@ -385,6 +385,8 @@
     <string name="backup_restored">Backup restored</string>
     <!-- Preferences item for format for timestamp keycode -->
     <string name="timestamp_format_title">Format for timestamp key</string>
+    <string name="custom_text_styles_title">Custom text styles</string>
+    <string name="custom_text_styles_summary">One style per line. Format: Name: styled A-Z a-z 0-9 (52 or 62 characters).</string>
     <!-- Preferences item for choosing secondary language -->
     <string name="secondary_locale">Multilingual typing</string>
     <!-- Clarification which locales are available for multilingual typing -->

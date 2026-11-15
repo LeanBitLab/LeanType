@@ -34,6 +34,8 @@ import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
+import helium314.keyboard.latin.style.UnicodeStyleEngine
+import helium314.keyboard.settings.preferences.TextInputPreference
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.ToolbarMode
 import helium314.keyboard.latin.utils.dpToPx
@@ -82,6 +84,7 @@ fun ToolbarScreen(
             Settings.PREF_TOOLBAR_KEYS,
             Settings.PREF_PINNED_TOOLBAR_KEYS,
             Settings.PREF_CLIPBOARD_TOOLBAR_KEYS,
+            Settings.PREF_CUSTOM_TEXT_STYLES,
             if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull")
                 Settings.PREF_SHOW_DOWNLOAD_BUTTON_IN_TOOLBAR else null,
             Settings.PREF_EXPAND_FINE_TUNE_TOOLBAR,
@@ -174,6 +177,13 @@ fun createToolbarSettings(context: Context): List<Setting> {
         },
         Setting(context, Settings.PREF_CLIPBOARD_TOOLBAR_KEYS, R.string.clipboard_toolbar_keys) {
             ReorderSwitchPreference(it, Defaults.PREF_CLIPBOARD_TOOLBAR_KEYS, filter)
+        },
+        Setting(context, Settings.PREF_CUSTOM_TEXT_STYLES, R.string.custom_text_styles_title, R.string.custom_text_styles_summary) { setting ->
+            TextInputPreference(
+                setting, Defaults.PREF_CUSTOM_TEXT_STYLES,
+                checkTextValid = { it.isBlank() || UnicodeStyleEngine.isValidCustomStylesText(it) },
+                singleLine = false, showValue = false
+            )
         },
         Setting(context, Settings.PREF_TOOLBAR_KEYS_ALIGNMENT, R.string.toolbar_keys_alignment, R.string.toolbar_keys_alignment_summary) { setting ->
             val items = listOf(

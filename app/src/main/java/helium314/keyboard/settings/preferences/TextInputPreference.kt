@@ -21,6 +21,8 @@ fun TextInputPreference(
     default: String,
     @DrawableRes icon: Int = 0,
     checkTextValid: (String) -> Boolean = { true },
+    singleLine: Boolean = true,
+    showValue: Boolean = true,
     onConfirmed: (String) -> Unit = { }
 ) {
     var showDialog by rememberSaveable { mutableStateOf(false) }
@@ -29,7 +31,7 @@ fun TextInputPreference(
         name = setting.title,
         icon = icon.takeIf { it != 0 },
         onClick = { showDialog = true },
-        description = prefs.getString(setting.key, default)?.takeIf { it.isNotEmpty() }
+        description = if (showValue) prefs.getString(setting.key, default)?.takeIf { it.isNotEmpty() } else null
     )
     if (showDialog) {
         TextInputDialog(
@@ -41,7 +43,8 @@ fun TextInputPreference(
             },
             initialText = prefs.getString(setting.key, default) ?: "",
             title = { Text(setting.title) },
-            checkTextValid = checkTextValid
+            checkTextValid = checkTextValid,
+            singleLine = singleLine
         )
     }
 }

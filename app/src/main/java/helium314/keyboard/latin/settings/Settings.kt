@@ -112,6 +112,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         try {
             val prefs = mPrefs ?: appContext.prefs().also { mPrefs = it }
             Log.i(TAG, "loadSettings")
+            helium314.keyboard.latin.style.UnicodeStyleEngine.setCustomStyles(prefs.getString(PREF_CUSTOM_TEXT_STYLES, Defaults.PREF_CUSTOM_TEXT_STYLES) ?: "")
             val actualLocale = locale ?: context.resources.configuration.locale()
             mSettingsValues = runInLocale(appContext, actualLocale) { ctx ->
                 SettingsValues(ctx, prefs, ctx.resources, inputAttributes, currentKeyboardScript)
@@ -575,6 +576,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_REMOVE_REDUNDANT_POPUPS = "remove_redundant_popups"
         const val PREF_SPACE_BAR_TEXT = "space_bar_text"
         const val PREF_TIMESTAMP_FORMAT = "timestamp_format"
+        const val PREF_CUSTOM_TEXT_STYLES = "custom_text_styles"
         const val PREF_TOOLBAR_MODE = "toolbar_mode"
         const val PREF_TOOLBAR_HIDING_GLOBAL = "toolbar_hiding_global"
         const val PREF_SPLIT_TOOLBAR = "split_toolbar"

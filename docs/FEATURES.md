@@ -54,6 +54,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | 🈲 **[Chinese Punctuation & CJK Symbols](#43-chinese-punctuation--cjk-symbols)** | Full-width punctuation, dedicated CJK symbols, and preedit sync |
 | 🚫 **[Blocked Words Standalone Import & Export](#44-blocked-words-standalone-import--export)** | Standalone word list import/export with duplicate filtering |
 | 🇮🇳 **[Tamil V4 Layout Option](#45-tamil-v4-layout-option)** | Modern Tamil V4 layout option dynamically available across Tamil locales |
+| 🔤 **[Custom Text Styles](#46-custom-text-styles)** | Add your own Unicode font styles to the Font Style strip by pasting a styled alphabet |
 
 ---
 
@@ -105,6 +106,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | **Chinese Punctuation & Symbols** | Full-width punctuation marks, dedicated CJK symbols, and live preedit sync. | CJK layouts / `Plugins > CJK Settings` |
 | **Blocked Words Import & Export** | Standalone word list import and export with duplicate filtering. | `Text correction > Blocked words blacklist` |
 | **Tamil V4 Layout** | Selectable Tamil V4 layout dynamically available across Tamil locales. | `Languages > Tamil > Layouts` |
+| **Custom Text Styles** | Define your own Unicode font styles (one line each) and use them from the Font Style strip with live typing and undo. | `Toolbar > Custom text styles` |
 
 ---
 
@@ -1139,6 +1141,32 @@ LeanType includes the standardized modern Tamil V4 layout:
 - Selectable as an additional keyboard layout option across Tamil locales (India, Sri Lanka, Singapore, Malaysia).
 - Dynamically available in subtype settings without cluttering system input methods.
 
+---
 
+## 46. Custom Text Styles
 
+The **Font Style** toolbar key converts text to decorative Unicode fonts (bold, script, circled, small caps and more). Besides the built-in styles, you can add your own.
 
+### Adding a Custom Style
+1. Open `Toolbar > Custom text styles`.
+2. Write one style per line as `Name:` followed by the styled alphabet:
+
+```
+Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ⓪①②③④⑤⑥⑦⑧⑨
+```
+
+3. Tap **OK**. The new style appears in the Font Style strip next to the built-in ones, shown in its own font.
+
+### Format Rules
+- The characters after `Name:` must be the styled **A-Z**, then **a-z**, and optionally **0-9**, in that order. That is exactly **52** characters (letters only) or **62** characters (letters and digits).
+- Spaces and line breaks between the characters are ignored, so you can paste an alphabet exactly as a text generator website produces it.
+- Each name must be unique. The name is everything before the first `:` (a full-width `：` is accepted too).
+- **OK** stays disabled while any line is invalid. An empty field removes all custom styles.
+- Letters or digits outside the mapping (spaces, punctuation, and digits in a 52-character style) are left unchanged.
+- Fonts that use characters outside the Basic Multilingual Plane (such as the Mathematical Alphanumeric block) work too.
+
+### Using and Undoing
+- Custom styles behave like built-in ones: apply a style to selected text or the current word, or turn on live typing.
+- Styled text can be converted back to plain text, including text styled with a custom font.
+- Live styling is never applied in password, email, URL, or non-text fields.
+- The styled characters are plain Unicode text, so they display correctly only where the receiving app has a font that includes them.
