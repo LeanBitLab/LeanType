@@ -59,6 +59,7 @@ import helium314.keyboard.latin.utils.prefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Locale
 
 @Composable
 fun SoundPackDownloadDialog(
@@ -362,7 +363,7 @@ fun SoundPackDownloadDialog(
                                                     append("v${rPack.versionName} • ")
                                                     if (rPack.sizeBytes > 0) {
                                                         val kb = rPack.sizeBytes / 1024
-                                                        if (kb >= 1024) append(String.format("%.1f MB", kb / 1024f))
+                                                        if (kb >= 1024) append(String.format(Locale.getDefault(), "%.1f MB", kb / 1024f))
                                                         else append("$kb KB")
                                                     }
                                                 }
