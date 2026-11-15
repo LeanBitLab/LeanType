@@ -34,6 +34,8 @@ class InputView @JvmOverloads constructor(
     private var mMoreSuggestionsViewCanceler: MoreSuggestionsViewCanceler? = null
     private var mActiveForwarder: MotionEventForwarder<*, *>? = null
     private var mNavBarBottomInsets = 0
+    /** the bottom padding for the navigation bar that was applied last, see [navBarOverlap] */
+    private var mAppliedNavPadding = -1
 
     private fun isFloatingMode(): Boolean = FloatingKeyboardManager.isFloatingMode(context)
 
@@ -78,7 +80,31 @@ class InputView @JvmOverloads constructor(
             return insets
         }
         updateBottomPadding()
-        return super.onApplyWindowInsets(insets)
+        return withBottomInset(super.onApplyWindowInsets(insets), mAppliedNavPadding)
+    }
+
+    /**
+     * The children fit the system windows, so they pad themselves with the bottom inset they get. Some devices
+     * (e.g. Samsung on Android 12) report the navigation bar inset although the window already leaves room for it,
+     * which doubled the space below the keys. Give them what the keyboard really overlaps instead.
+     */
+    private fun withBottomInset(insets: WindowInsets, bottom: Int): WindowInsets {
+        @Suppress("DEPRECATION")
+        return if (bottom < 0 || insets.systemWindowInsetBottom == bottom) insets
+        else insets.replaceSystemWindowInsets(insets.systemWindowInsetLeft, insets.systemWindowInsetTop, insets.systemWindowInsetRight, bottom)
+    }
+
+    /** The navigation bar inset as reported, or the height of the IME's own navigation bar if that is taller */
+    private fun reportedNavInset(): Int =
+        navigationBarFrameHeight().takeIf { it > 0 } ?: if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
+
+    /** Bottom padding needed for the navigation bar; known only once this view is laid out, until then the reported inset is used */
+    private fun navPadding(): Int {
+        val reported = reportedNavInset()
+        if (reported <= 0 || !isLaidOut || height == 0 || rootView.height == 0) return reported
+        val location = IntArray(2)
+        getLocationInWindow(location)
+        return navBarOverlap(reported, location[1] + height, rootView.height)
     }
 
     fun resetChildrenFloatingPadding() {
@@ -134,8 +160,8 @@ class InputView @JvmOverloads constructor(
             R.id.clipboard_history_view,
             R.id.touchpad_view
         )
-        val insets = navigationBarFrameHeight().takeIf { it > 0 }
-            ?: if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
+        val insets = navPadding()
+        mAppliedNavPadding = insets
         val wrapper = findViewById<View>(R.id.keyboard_view_wrapper)
         val showToolbarOnly = wrapper?.visibility != View.VISIBLE
         val bottomPadding = if (showToolbarOnly) insets else 0
@@ -173,6 +199,13 @@ class InputView @JvmOverloads constructor(
             Settings.getValues().mColors.setBackground(frame, ColorType.MAIN_BACKGROUND)
         }
         updateBottomPadding()
+        // where this view ends in the window is known after layout: correct the padding if it is not what is needed
+        addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            if (!isFloatingMode() && mAppliedNavPadding != navPadding()) post {
+                updateBottomPadding()
+                requestApplyInsets()
+            }
+        }
         // Work around inset application being unreliable
         post { requestApplyInsets() }
     }
@@ -348,3 +381,11 @@ class InputView @JvmOverloads constructor(
         }
     }
 }
+
+/**
+ * The part of the navigation bar (the bottom [reportedInset] pixels of a window that is [windowHeight] high) that a
+ * view ending at [viewBottom] (in window coordinates) lies under. When the window already leaves room for the
+ * navigation bar, the view ends above it and nothing has to be reserved, whatever the reported inset is.
+ */
+internal fun navBarOverlap(reportedInset: Int, viewBottom: Int, windowHeight: Int): Int =
+    (viewBottom - (windowHeight - reportedInset)).coerceIn(0, maxOf(reportedInset, 0))
