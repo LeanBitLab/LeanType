@@ -1,8 +1,7 @@
-- Fixed the navigation bar strip and bottom gap under the keyboard on Android 15+ (#811).
-- Fixed a crash on trailing empty lines and a toolbar sizing crash.
-- Floating keyboard remembers size and position per orientation.
-- Added a 6-model Whisper voice matrix and optional live transcription.
-- Auto-correct swapped letters (teh to the).
-- Long press a settings search result to open its screen.
-- Added unfolded side padding setting.
-- Fixed local Whisper model import (#807).
+- Custom text styles: add your own Unicode fonts in Toolbar settings.
+- Offline flavor now needs Android 6.0+.
+- Fixed w and m letters drawn smaller than other letters.
+- Fixed one backspace deleting all text before symbol runs.
+- Voice: strip stays visible from the open toolbar, voice key ignored while processing, no stray trailing words.
+- Voice plugin no longer stays bound after a failed import.
+- Fixed crashes on Android 6 from newer APIs.

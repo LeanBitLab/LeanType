@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Navigation Bar Strip Fix: Painted the keyboard's navigation bar frame and reserved its real height on Android 15+, removing the transparent strip and bottom gap (#811)",
-    "• Floating Keyboard Geometry: Size and position are remembered per orientation, landscape resize bounds are fixed, and strip, keys and font scale with the keyboard",
-    "• Editor Crash Fix: Fixed a crash on trailing empty lines and kept the line above visible when the cursor is on the empty last line",
-    "• Toolbar Stability: Fixed an empty-range sizing crash and restored the toolbar after pasting the clipboard suggestion chip",
-    "• Local Whisper Import Fix: Waits for the voice plugin connection before importing a local model (#807)",
-    "• Whisper Model Matrix: Expanded the voice registry to 6 models (tiny, base, small) with FUTO ACFT models link",
-    "• Voice Input Tuning: Recognition time scales with recording length, full priority while dictating, optional live transcription, 3s silence timeout",
-    "• Swapped-Letter Auto-Correction: Corrects short words with two swapped letters (teh to the, adn to and)",
-    "• Settings Search Long Press: Long press a result to show the setting in its own screen",
-    "• Unfolded Side Padding Scale: New side padding setting for unfolded devices, resolved per screen profile"
+    "• Custom Text Styles: Add your own Unicode font styles from Toolbar > Custom text styles, with live typing and undo in the Font Style strip",
+    "• Offline Flavor Requires Android 6.0+: The offline flavor minimum is raised from Android 5.0 to Android 6.0, the same as standard",
+    "• Letter Size Fix: Wide letters such as w and m (and ш, щ) are no longer drawn smaller than the other letters",
+    "• Backspace Fix: One backspace no longer deletes all text before the cursor when it is a run of circled letters, arrows or symbols",
+    "• Voice Strip Fix: The voice animation stays visible when voice input is started from the expanded toolbar",
+    "• Voice Key While Processing: Tapping the voice key during processing no longer cancels the pending text",
+    "• Stray Dictation Words: Live transcription trims trailing silence and ignores noise-only pieces, so no extra words are added",
+    "• Live Transcription Stability: Late callbacks cannot affect a new dictation and a hung piece now times out",
+    "• Voice Plugin Binding: The plugin is no longer left bound after a failed model import",
+    "• Android 6 Compatibility: Replaced API 23 and 24 calls that could crash older devices"
 )
 
 @Composable
