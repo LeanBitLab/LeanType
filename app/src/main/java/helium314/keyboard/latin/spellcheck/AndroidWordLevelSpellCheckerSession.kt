@@ -66,19 +66,17 @@ abstract class AndroidWordLevelSpellCheckerSession(
     }
 
     override fun getLocale(): String? {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            val imm = mService.applicationContext.getSystemService(InputMethodManager::class.java)
-            if (imm != null) {
-                val currentInputMethodSubtype = imm.currentInputMethodSubtype
-                if (currentInputMethodSubtype != null) {
-                    val localeString = currentInputMethodSubtype.locale
-                    if (!localeString.isNullOrEmpty()) {
-                        return localeString
-                    }
-                    if ("dummy" == currentInputMethodSubtype.extraValue) {
-                        val prefs = mService.prefs()
-                        return SubtypeSettings.getSelectedSubtype(prefs).locale
-                    }
+        val imm = mService.applicationContext.getSystemService(InputMethodManager::class.java)
+        if (imm != null) {
+            val currentInputMethodSubtype = imm.currentInputMethodSubtype
+            if (currentInputMethodSubtype != null) {
+                val localeString = currentInputMethodSubtype.locale
+                if (!localeString.isNullOrEmpty()) {
+                    return localeString
+                }
+                if ("dummy" == currentInputMethodSubtype.extraValue) {
+                    val prefs = mService.prefs()
+                    return SubtypeSettings.getSelectedSubtype(prefs).locale
                 }
             }
         }

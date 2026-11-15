@@ -484,29 +484,19 @@ class VoiceInputManager(
         var record: AudioRecord? = null
         for (source in sources) {
             try {
-                val candidate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    val audioFormat = AudioFormat.Builder()
-                        .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-                        .setSampleRate(SAMPLE_RATE)
-                        .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
-                        .build()
-                    val builder = AudioRecord.Builder()
-                        .setAudioSource(source)
-                        .setAudioFormat(audioFormat)
-                        .setBufferSizeInBytes(bufferSize)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        builder.setContext(ims)
-                    }
-                    builder.build()
-                } else {
-                    AudioRecord(
-                        source,
-                        SAMPLE_RATE,
-                        AudioFormat.CHANNEL_IN_MONO,
-                        AudioFormat.ENCODING_PCM_16BIT,
-                        bufferSize
-                    )
+                val audioFormat = AudioFormat.Builder()
+                    .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                    .setSampleRate(SAMPLE_RATE)
+                    .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
+                    .build()
+                val builder = AudioRecord.Builder()
+                    .setAudioSource(source)
+                    .setAudioFormat(audioFormat)
+                    .setBufferSizeInBytes(bufferSize)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    builder.setContext(ims)
                 }
+                val candidate = builder.build()
                 if (candidate.state == AudioRecord.STATE_INITIALIZED) {
                     Log.i(TAG, "AudioRecord initialized successfully with source: $source")
                     record = candidate

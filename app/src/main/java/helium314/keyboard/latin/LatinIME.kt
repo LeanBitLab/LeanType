@@ -1276,7 +1276,7 @@ class LatinIME : InputMethodService(),
                     mTempLocation[1] + child.height
                 )
                 if (windowWidth > 0 && windowHeight > 0) {
-                    mTempRect.intersect(0, 0, windowWidth, windowHeight)
+                    if (!mTempRect.intersect(0, 0, windowWidth, windowHeight)) mTempRect.setEmpty()
                 }
                 if (!mTempRect.isEmpty) {
                     outRegion.op(mTempRect, Region.Op.UNION)

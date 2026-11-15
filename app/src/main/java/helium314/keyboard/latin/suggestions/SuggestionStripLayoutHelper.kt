@@ -508,14 +508,8 @@ internal class SuggestionStripLayoutHelper(
         }
         if (thumb != null && chipBg != null) {
             val layerDrawable = LayerDrawable(arrayOf(chipBg, thumb)).apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    setLayerGravity(1, Gravity.CENTER)
-                    setLayerSize(1, thumbW, thumbH)
-                } else {
-                    val padH = ((width - thumbW) / 2).coerceAtLeast(0)
-                    val padV = 5.dpToPx(context.resources)
-                    setLayerInset(1, padH, padV, padH, padV)
-                }
+                setLayerGravity(1, Gravity.CENTER)
+                setLayerSize(1, thumbW, thumbH)
             }
             wordView.background = layerDrawable
         } else if (thumb != null) {

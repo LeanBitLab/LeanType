@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.calculator
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
@@ -102,6 +103,7 @@ class CalculatorHistoryManager private constructor(private val context: Context)
         private const val PREF_CALCULATOR_HISTORY = "pref_calculator_history_json"
         private const val MAX_HISTORY_ITEMS = 30
 
+        @SuppressLint("StaticFieldLeak") // holds the application context
         @Volatile
         private var instance: CalculatorHistoryManager? = null
 

@@ -162,7 +162,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         frame.getLocationInWindow(tempLocation)
         outRect.set(tempLocation[0], tempLocation[1], tempLocation[0] + frame.width, tempLocation[1] + frame.height)
         if (windowWidth > 0 && windowHeight > 0) {
-            outRect.intersect(0, 0, windowWidth, windowHeight)
+            if (!outRect.intersect(0, 0, windowWidth, windowHeight)) outRect.setEmpty()
         }
         return !outRect.isEmpty
     }
@@ -246,9 +246,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         frame.background = bgDrawable
         frame.clipToOutline = true
         frame.outlineProvider = ViewOutlineProvider.BACKGROUND
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            frame.elevation = 8f * density
-        }
+        frame.elevation = 8f * density
 
         KeyboardSwitcher.getInstance().reloadKeyboard()
 
@@ -309,9 +307,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
             frame.outlineProvider = null
             frame.clipToOutline = false
             Settings.getValues().mColors.setBackground(frame, ColorType.MAIN_BACKGROUND)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                frame.elevation = 0f
-            }
+            frame.elevation = 0f
             (latinIME.mInputView as? InputView)?.updateBottomPadding()
             latinIME.mInputView?.post { latinIME.mInputView?.requestApplyInsets() }
         }
@@ -404,9 +400,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
                 frame.outlineProvider = null
                 frame.clipToOutline = false
                 Settings.getValues().mColors.setBackground(frame, ColorType.MAIN_BACKGROUND)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    frame.elevation = 0f
-                }
+                frame.elevation = 0f
             }
             ResourceUtils.setFloatingKeyboardWidth(0)
             ResourceUtils.setFloatingKeyboardScale(0.0f)

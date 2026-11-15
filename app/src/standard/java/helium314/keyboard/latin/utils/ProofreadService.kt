@@ -6,7 +6,6 @@ package helium314.keyboard.latin.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -45,25 +44,20 @@ class ProofreadService(private val context: Context) {
     }
 
     private val securePrefs: SharedPreferences by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            try {
-                val masterKey = MasterKey.Builder(context)
-                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-                    .build()
-                EncryptedSharedPreferences.create(
-                    context,
-                    PREFS_NAME,
-                    masterKey,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-                )
-            } catch (e: Exception) {
-                // Fallback to regular prefs if encryption fails
-                Log.w("ProofreadService", "Failed to create encrypted prefs, using regular prefs", e)
-                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            }
-        } else {
-            // API 21-22 doesn't support EncryptedSharedPreferences
+        try {
+            val masterKey = MasterKey.Builder(context)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+            EncryptedSharedPreferences.create(
+                context,
+                PREFS_NAME,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+        } catch (e: Exception) {
+            // Fallback to regular prefs if encryption fails
+            Log.w("ProofreadService", "Failed to create encrypted prefs, using regular prefs", e)
             context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         }
     }

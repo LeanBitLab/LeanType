@@ -23,7 +23,6 @@ object SupportedEmojis {
     }
 
     private fun determineMaxSdk(context: Context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
         if (context.prefs().contains(Settings.PREF_EMOJI_MAX_SDK)) return
         val paint = Paint()
         (Settings.getInstance().customEmojiTypeface ?: Settings.getInstance().customTypeface)

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.cjk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
@@ -190,6 +191,7 @@ class CjkInputManager private constructor(private val context: Context) {
     companion object {
         private const val TAG = "CjkInputManager"
 
+        @SuppressLint("StaticFieldLeak") // holds the application context
         @Volatile
         private var instance: CjkInputManager? = null
 
