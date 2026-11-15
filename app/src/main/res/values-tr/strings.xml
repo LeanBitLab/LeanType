@@ -1742,5 +1742,5 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="voice_piecewise_field_changed">Dikte durduruldu: metin alanı değişti, geri kalanı eklenmedi</string>
     <string name="settings_search_show_in_screen">Ekranında göster</string>
     <string name="custom_text_styles_title">Özel metin stilleri</string>
-    <string name="custom_text_styles_summary">Ad olarak her satıra bir stil: ardından A-Z, a-z stili ve isteğe bağlı olarak 0-9 (52 veya 62 karakter) gelir. Eklenen stiller stil şeridinde görünür.</string>
+    <string name="custom_text_styles_summary">Her satıra bir stil. Biçim: Ad: A-Z a-z 0-9 stilinde (52 veya 62 karakter).</string>
 </resources>

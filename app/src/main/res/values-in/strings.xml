@@ -1713,5 +1713,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="voice_piecewise_field_changed">Dikte berhenti: kolom teks berubah, sisanya tidak disisipkan</string>
     <string name="settings_search_show_in_screen">Tampilkan di layarnya</string>
     <string name="custom_text_styles_title">Gaya teks khusus</string>
-    <string name="custom_text_styles_summary">Satu gaya per baris sebagai Nama: diikuti dengan gaya A-Z, a-z, dan opsional 0-9 (52 atau 62 karakter). Gaya yang ditambahkan muncul di strip gaya.</string>
+    <string name="custom_text_styles_summary">Satu gaya per baris. Format: Nama: diberi gaya A-Z a-z 0-9 (52 atau 62 karakter).</string>
 </resources>

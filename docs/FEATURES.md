@@ -1160,7 +1160,7 @@ Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍ
 ### Format Rules
 - The characters after `Name:` must be the styled **A-Z**, then **a-z**, and optionally **0-9**, in that order. That is exactly **52** characters (letters only) or **62** characters (letters and digits).
 - Spaces and line breaks between the characters are ignored, so you can paste an alphabet exactly as a text generator website produces it.
-- Each name must be unique. The name is everything before the first `:`.
+- Each name must be unique. The name is everything before the first `:` (a full-width `：` is accepted too).
 - **OK** stays disabled while any line is invalid. An empty field removes all custom styles.
 - Letters or digits outside the mapping (spaces, punctuation, and digits in a 52-character style) are left unchanged.
 - Fonts that use characters outside the Basic Multilingual Plane (such as the Mathematical Alphanumeric block) work too.

@@ -1715,5 +1715,5 @@
     <string name="voice_piecewise_field_changed">Диктування зупинено: текстове поле змінено, решту не вставлено</string>
     <string name="settings_search_show_in_screen">Показати на екрані</string>
     <string name="custom_text_styles_title">Власні стилі тексту</string>
-    <string name="custom_text_styles_summary">Один стиль на рядок як ім’я: за ним йдуть стилізовані A-Z, a-z і, за бажанням, 0-9 (52 або 62 символи). Додані стилі відображаються на панелі стилів.</string>
+    <string name="custom_text_styles_summary">Один стиль на рядок. Формат: ім’я: стилі A-Z a-z 0-9 (52 або 62 символи).</string>
 </resources>

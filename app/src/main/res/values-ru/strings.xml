@@ -1775,5 +1775,5 @@
     <string name="voice_piecewise_field_changed">Диктовка остановлена: текстовое поле изменилось, остальное не вставилось</string>
     <string name="settings_search_show_in_screen">Показать на своем экране</string>
     <string name="custom_text_styles_title">Пользовательские стили текста</string>
-    <string name="custom_text_styles_summary">Один стиль в строке имени: за ним следуют стили A–Z, a–z и, возможно, 0–9 (52 или 62 символа). Добавленные стили отображаются на панели стилей.</string>
+    <string name="custom_text_styles_summary">Один стиль в строке. Формат: Имя: в стиле A–Z a–z 0–9 (52 или 62 символа).</string>
 </resources>

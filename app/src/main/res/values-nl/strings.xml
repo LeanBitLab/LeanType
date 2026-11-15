@@ -1757,5 +1757,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="voice_piecewise_field_changed">Dicteren gestopt: het tekstveld is gewijzigd, de rest is niet ingevoegd</string>
     <string name="settings_search_show_in_screen">Toon in het scherm</string>
     <string name="custom_text_styles_title">Aangepaste tekststijlen</string>
-    <string name="custom_text_styles_summary">Eén stijl per regel als Naam: gevolgd door de gestileerde A-Z, a-z en optioneel 0-9 (52 of 62 tekens). Toegevoegde stijlen verschijnen in de stijlstrook.</string>
+    <string name="custom_text_styles_summary">Eén stijl per regel. Formaat: Naam: opgemaakt A-Z a-z 0-9 (52 of 62 tekens).</string>
 </resources>

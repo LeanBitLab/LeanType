@@ -1766,5 +1766,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <!-- Long press on a search result in the settings (accessibility action) -->
     <string name="settings_search_show_in_screen">Auf seiner Seite zeigen</string>
     <string name="custom_text_styles_title">Benutzerdefinierte Textstile</string>
-    <string name="custom_text_styles_summary">Ein Stil pro Zeile als Name: gefolgt vom Stil A-Z, a-z und optional 0-9 (52 oder 62 Zeichen). Hinzugefügte Stile werden im Stilstreifen angezeigt.</string>
+    <string name="custom_text_styles_summary">Ein Stil pro Zeile. Format: Name: Stil A-Z a-z 0-9 (52 oder 62 Zeichen).</string>
 </resources>

@@ -690,7 +690,7 @@ object UnicodeStyleEngine {
     }
 
     /**
-     * Each line is `Name: <letters>`, where the letters (whitespace ignored) are the styled A-Z, then a-z,
+     * Each line is `Name: <letters>` (the colon may be full-width), where the letters (whitespace ignored) are the styled A-Z, then a-z,
      * optionally followed by 0-9, i.e. 52 or 62 characters. Invalid or duplicate lines are skipped.
      */
     private fun parseCustomStyles(raw: String): List<StyleDefinition> {
@@ -718,7 +718,8 @@ object UnicodeStyleEngine {
     }
 
     private fun parseCustomStyleLine(line: String): Pair<String, IntArray>? {
-        val colon = line.indexOf(':')
+        // also accept the full-width colon that CJK keyboards type
+        val colon = line.indexOfFirst { it == ':' || it == '\uFF1A' }
         if (colon < 0) return null
         val name = line.substring(0, colon).trim()
         if (name.isEmpty()) return null

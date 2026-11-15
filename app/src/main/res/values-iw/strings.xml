@@ -1721,5 +1721,5 @@
     <string name="voice_piecewise_field_changed">ההכתבה הופסקה: שדה הטקסט השתנה, השאר לא הוכנס</string>
     <string name="settings_search_show_in_screen">הצג במסך שלו</string>
     <string name="custom_text_styles_title">סגנונות טקסט מותאמים אישית</string>
-    <string name="custom_text_styles_summary">סגנון אחד לכל שורה בשם שם: ואחריו האותיות A-Z, a-z ובאופן אופציונלי 0-9 (52 או 62 תווים). סגנונות שנוספו מופיעים ברצועת הסגנונות.</string>
+    <string name="custom_text_styles_summary">סגנון אחד בכל שורה. פורמט: שם: בסגנון A-Z a-z 0-9 (52 או 62 תווים).</string>
 </resources>

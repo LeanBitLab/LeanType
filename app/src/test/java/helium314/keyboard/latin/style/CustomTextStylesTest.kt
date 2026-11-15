@@ -38,6 +38,12 @@ class CustomTextStylesTest {
         assertTrue(UnicodeStyleEngine.isStyledCharacter('Ⓗ'.code))
     }
 
+    @Test fun acceptsFullWidthColon() {
+        assertTrue(UnicodeStyleEngine.isValidCustomStylesText("Mine\uFF1A $fancyUpper$fancyLower"))
+        UnicodeStyleEngine.setCustomStyles("Mine\uFF1A$fancyUpper$fancyLower")
+        assertEquals("ⓐ", UnicodeStyleEngine.transformText("a", "custom_Mine"))
+    }
+
     @Test fun lettersOnlyKeepsDigits() {
         UnicodeStyleEngine.setCustomStyles("Mine: $fancyUpper$fancyLower")
         assertEquals("ⓐ1", UnicodeStyleEngine.transformText("a1", "custom_Mine"))

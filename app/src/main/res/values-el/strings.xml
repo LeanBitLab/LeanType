@@ -1816,5 +1816,5 @@
     <string name="voice_piecewise_field_changed">Η υπαγόρευση σταμάτησε: το πεδίο κειμένου άλλαξε, το υπόλοιπο δεν εισήχθη</string>
     <string name="settings_search_show_in_screen">Εμφάνιση στην οθόνη του</string>
     <string name="custom_text_styles_title">Προσαρμοσμένα στυλ κειμένου</string>
-    <string name="custom_text_styles_summary">Ένα στυλ ανά γραμμή ως Όνομα: ακολουθούμενο από το στυλ A-Z, a-z και προαιρετικά 0-9 (52 ή 62 χαρακτήρες). Τα προστιθέμενα στυλ εμφανίζονται στη λωρίδα στυλ.</string>
+    <string name="custom_text_styles_summary">Ένα στυλ ανά γραμμή. Μορφή: Όνομα: στυλ A-Z a-z 0-9 (52 ή 62 χαρακτήρες).</string>
 </resources>

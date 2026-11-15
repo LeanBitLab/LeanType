@@ -1751,5 +1751,5 @@ Ar norite atnaujinti?</string>
     <string name="voice_piecewise_field_changed">Diktavimas sustabdytas: pasikeitė teksto laukas, likusi dalis neįterpta</string>
     <string name="settings_search_show_in_screen">Rodyti jo ekrane</string>
     <string name="custom_text_styles_title">Pasirinktiniai teksto stiliai</string>
-    <string name="custom_text_styles_summary">Vienas stilius eilutėje kaip pavadinimas: po jo rašomi stiliai A–Z, a–z ir pasirinktinai 0–9 (52 arba 62 simboliai). Pridėti stiliai rodomi stiliaus juostoje.</string>
+    <string name="custom_text_styles_summary">Vienas stilius eilutėje. Formatas: pavadinimas: stilius A-Z a-z 0-9 (52 arba 62 simboliai).</string>
 </resources>

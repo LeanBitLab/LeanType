@@ -1713,5 +1713,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="voice_piecewise_field_changed">Diktiranje zaustavljeno: tekstualno polje je promijenjeno, ostatak nije umetnut</string>
     <string name="settings_search_show_in_screen">Prikaži na njegovom ekranu</string>
     <string name="custom_text_styles_title">Prilagođeni stilovi teksta</string>
-    <string name="custom_text_styles_summary">Jedan stil po retku kao ime: nakon čega slijede stilizirani A-Z, a-z i po izboru 0-9 (52 ili 62 znaka). Dodani stilovi pojavljuju se na traci stilova.</string>
+    <string name="custom_text_styles_summary">Jedan stil po retku. Format: Ime: stilizirano A-Z a-z 0-9 (52 ili 62 znaka).</string>
 </resources>

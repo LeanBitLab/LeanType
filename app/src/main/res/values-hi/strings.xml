@@ -1742,5 +1742,5 @@
     <string name="voice_piecewise_field_changed">डिक्टेशन बंद हो गया: टेक्स्ट फ़ील्ड बदल गया, बाकी नहीं डाला गया</string>
     <string name="settings_search_show_in_screen">इसकी स्क्रीन में दिखाएँ</string>
     <string name="custom_text_styles_title">कस्टम पाठ शैलियाँ</string>
-    <string name="custom_text_styles_summary">नाम के रूप में प्रति पंक्ति एक शैली: उसके बाद शैली A-Z, a-z और वैकल्पिक रूप से 0-9 (52 या 62 अक्षर)। जोड़ी गई शैलियाँ स्टाइल स्ट्रिप में दिखाई देती हैं।</string>
+    <string name="custom_text_styles_summary">प्रति पंक्ति एक शैली. प्रारूप: नाम: शैली A-Z a-z 0-9 (52 या 62 अक्षर)।</string>
 </resources>

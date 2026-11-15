@@ -1750,5 +1750,5 @@
     <string name="voice_piecewise_field_changed">Диктовката е спряна: текстовото поле е променено, останалото не е вмъкнато</string>
     <string name="settings_search_show_in_screen">Показване на екрана му</string>
     <string name="custom_text_styles_title">Персонализирани текстови стилове</string>
-    <string name="custom_text_styles_summary">Един стил на ред като име: последвано от стилизираните A-Z, a-z и по избор 0-9 (52 или 62 знака). Добавените стилове се показват в лентата със стилове.</string>
+    <string name="custom_text_styles_summary">Един стил на ред. Формат: Име: стилизирано A-Z a-z 0-9 (52 или 62 знака).</string>
 </resources>

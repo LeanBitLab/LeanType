@@ -1782,5 +1782,5 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="voice_piecewise_field_changed">Dettatura interrotta: il campo testo è cambiato, il resto non è stato inserito</string>
     <string name="settings_search_show_in_screen">Mostra sul suo schermo</string>
     <string name="custom_text_styles_title">Stili di testo personalizzati</string>
-    <string name="custom_text_styles_summary">Uno stile per riga come Nome: seguito da A-Z, a-z e facoltativamente da 0-9 (52 o 62 caratteri). Gli stili aggiunti vengono visualizzati nella striscia di stile.</string>
+    <string name="custom_text_styles_summary">Uno stile per riga. Formato: Nome: in stile A-Z a-z 0-9 (52 o 62 caratteri).</string>
 </resources>

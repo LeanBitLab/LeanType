@@ -1771,5 +1771,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="voice_piecewise_field_changed">Dictée arrêtée : le champ de texte a changé, le reste n\'a pas été inséré</string>
     <string name="settings_search_show_in_screen">Afficher sur son écran</string>
     <string name="custom_text_styles_title">Styles de texte personnalisés</string>
-    <string name="custom_text_styles_summary">Un style par ligne comme Nom : suivi du style A-Z, a-z et éventuellement 0-9 (52 ou 62 caractères). Les styles ajoutés apparaissent dans la bande de style.</string>
+    <string name="custom_text_styles_summary">Un style par ligne. Format : Nom : stylisé A-Z a-z 0-9 (52 ou 62 caractères).</string>
 </resources>

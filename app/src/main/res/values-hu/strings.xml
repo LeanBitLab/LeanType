@@ -1713,5 +1713,5 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="voice_piecewise_field_changed">A diktálás leállt: a szövegmező megváltozott, a többi nem került be</string>
     <string name="settings_search_show_in_screen">Megjelenítés a képernyőjén</string>
     <string name="custom_text_styles_title">Egyedi szövegstílusok</string>
-    <string name="custom_text_styles_summary">Soronként egy stílus névként: ezt követi az A-Z, a-z és opcionálisan 0-9 (52 vagy 62 karakter) stílus. A hozzáadott stílusok megjelennek a stílussávban.</string>
+    <string name="custom_text_styles_summary">Soronként egy stílus. Formátum: Név: A-Z a-z 0-9 stílusban (52 vagy 62 karakter).</string>
 </resources>

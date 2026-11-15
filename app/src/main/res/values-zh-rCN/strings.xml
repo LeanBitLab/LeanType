@@ -1716,5 +1716,5 @@
     <string name="voice_piecewise_field_changed">听写停止：文本字段发生变化，其余部分未插入</string>
     <string name="settings_search_show_in_screen">在其屏幕上显示</string>
     <string name="custom_text_styles_title">自定义文本样式</string>
-    <string name="custom_text_styles_summary">每行一种样式作为名称：后跟样式化的 A-Z、a-z 以及可选的 0-9（52 或 62 个字符）。添加的样式出现在样式条中。</string>
+    <string name="custom_text_styles_summary">每行一种样式。格式：名称：样式为 A-Z a-z 0-9（52 或 62 个字符）。</string>
 </resources>

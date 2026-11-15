@@ -1750,5 +1750,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="voice_piecewise_field_changed">Dictarea s-a oprit: câmpul de text s-a schimbat, restul nu a fost introdus</string>
     <string name="settings_search_show_in_screen">Arată pe ecranul său</string>
     <string name="custom_text_styles_title">Stiluri de text personalizate</string>
-    <string name="custom_text_styles_summary">Un stil pe linie ca Nume: urmat de stilul A-Z, a-z și opțional 0-9 (52 sau 62 de caractere). Stilurile adăugate apar în banda de stil.</string>
+    <string name="custom_text_styles_summary">Un stil pe linie. Format: Nume: stil A-Z a-z 0-9 (52 sau 62 de caractere).</string>
 </resources>

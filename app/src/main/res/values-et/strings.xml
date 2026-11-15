@@ -1750,5 +1750,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="voice_piecewise_field_changed">Dikteerimine peatus: tekstiväli muutus, ülejäänud jäi sisestamata</string>
     <string name="settings_search_show_in_screen">Kuva selle ekraanil</string>
     <string name="custom_text_styles_title">Kohandatud tekstistiilid</string>
-    <string name="custom_text_styles_summary">Üks stiil rea kohta kui nimi: millele järgneb stiilid A–Z, a–z ja valikuliselt 0–9 (52 või 62 tähemärki). Lisatud stiilid kuvatakse stiiliribal.</string>
+    <string name="custom_text_styles_summary">Üks stiil rea kohta. Vorming: Nimi: stiilis A-Z a-z 0-9 (52 või 62 tähemärki).</string>
 </resources>
