@@ -180,7 +180,6 @@
     <string name="center_suggestion_text_to_enter_summary">Με το πάτημα του διαστήματος ή σημείων στίξης, θα εισαχθεί η μεσαία πρόταση</string>
     <string name="prioritize_personal_suggestions">Προτεραιότητα σε προσωπικές και μαθημένες λέξεις</string>
     <string name="prioritize_personal_suggestions_summary">Δώστε υψηλότερη προτεραιότητα βαθμολογίας στο προσωπικό λεξικό και τις μαθημένες λέξεις κατά την πρόβλεψη επόμενης λέξης</string>
-    <string name="next_word_boost_level">Επίπεδο ενίσχυσης μαθημένης λέξης</string>
     <string name="next_word_strict_ngram">Απαίτηση αντιστοίχισης περιβάλλοντος για μαθημένες λέξεις</string>
     <string name="next_word_strict_ngram_summary">Πρόταση μαθημένων λέξεων μόνο όταν το προηγούμενο λεκτικό περιβάλλον ταιριάζει</string>
     <string name="immediate_auto_space">Άμεσο αυτόματο διάστημα</string>
@@ -226,7 +225,6 @@
     <string name="locales_with_dict">Γλώσσες με λεξικά</string>
     <string name="load_gesture_library">Φόρτωση βιβλιοθήκης πληκτρολόγησης με χειρονομίες</string>
     <string name="load_gesture_library_summary">Παρέχετε μια εγγενή βιβλιοθήκη για ενεργοποίηση της πληκτρολόγησης με χειρονομίες</string>
-    <string name="gesture_method">Μέθοδος πληκτρολόγησης με χειρονομίες</string>
     <string name="load_gesture_library_message">Θα χρειαστείτε τη βιβλιοθήκη για \'%s\'. Μη συμβατές βιβλιοθήκες μπορεί να προκαλέσουν κατάρρευση κατά την πληκτρολόγηση με χειρονομίες.
         \n\nΠροειδοποίηση: η φόρτωση εξωτερικού κώδικα μπορεί να αποτελέσει κίνδυνο ασφαλείας. Χρησιμοποιήστε μόνο μια βιβλιοθήκη από πηγή που εμπιστεύεστε.</string>
     <string name="checksum_mismatch_message">Άγνωστο αρχείο βιβλιοθήκης. Είστε βέβαιοι ότι το πήρατε από αξιόπιστη πηγή και ότι είναι για \'%s\';</string>
@@ -689,14 +687,12 @@
     <string name="customize_toolbar_key_code_reset_message">Πραγματικά εκκαθάριση όλων των προσαρμοσμένων κωδικών πλήκτρων;</string>
     <string name="key_code">Κωδικός πλήκτρου</string>
     <string name="long_press_code">Κωδικός παρατεταμένου πατήματος</string>
-    <string name="auto_show_toolbar">Αυτόματη εμφάνιση γραμμής εργαλείων</string>
     <string name="auto_show_toolbar_open">Αυτόματη εμφάνιση γραμμής εργαλείων κατά το άνοιγμα</string>
     <string name="auto_show_toolbar_select">Αυτόματη εμφάνιση γραμμής εργαλείων κατά την επιλογή</string>
     <string name="auto_show_toolbar_summary">Εμφάνιση της γραμμής εργαλείων όταν ανοίγει το πληκτρολόγιο</string>
     <string name="auto_show_toolbar_select_summary">Εμφάνιση της γραμμής εργαλείων κατά την επιλογή κειμένου</string>
     <string name="auto_hide_toolbar">Αυτόματη απόκρυψη γραμμής εργαλείων</string>
     <string name="auto_hide_toolbar_summary">Απόκρυψη της γραμμής εργαλείων όταν γίνονται διαθέσιμες προτάσεις</string>
-    <string name="toolbar_swipe_down_dismiss">Σάρωση προς τα κάτω για κλείσιμο</string>
     <string name="auto_hide_pinned_keys">Αυτόματη απόκρυψη καρφιτσωμένων πλήκτρων</string>
     <string name="auto_hide_pinned_keys_summary">Απόκρυψη καρφιτσωμένων πλήκτρων όταν η γραμμή εργαλείων είναι αναπτυγμένη</string>
     <string name="remember_toolbar_state">Απομνημόνευση κατάστασης γραμμής εργαλείων</string>
@@ -707,7 +703,6 @@
     <string name="customize_icons_reset_message">Πραγματικά επαναφορά όλων των προσαρμοσμένων εικονιδίων;</string>
     <string name="delete_confirmation">Πραγματικά διαγραφή %s;</string>
     <string name="name_invalid">Μη έγκυρο όνομα</string>
-    <string name="custom_subtype">Προσαρμοσμένος υποτύπος</string>
     <string name="landscape">Οριζόντιος προσανατολισμός</string>
     <string name="offline_model_title">Μοντέλο εκτός σύνδεσης</string>
     <string name="offline_model_summary">Διαχείριση τοπικού LLM</string>
@@ -914,7 +909,6 @@
     <string name="toolbar_keys_alignment_left">Αριστερά</string>
     <string name="toolbar_keys_alignment_center">Κέντρο</string>
     <string name="toolbar_keys_alignment_right">Δεξιά</string>
-    <string name="clipboard_keys_alignment">Στοίχιση πλήκτρων προχείρου</string>
     <string name="prefs_popup_keys_vertical_offset">Θέση αναδυόμενου παραθύρου με παρατεταμένο πάτημα</string>
     <string name="edit">Επεξεργασία</string>
     <string name="prefs_keypress_sound_style_settings">Στιλ ήχου πατήματος πλήκτρου</string>
@@ -1713,7 +1707,6 @@
     <string name="auto_pair_symbols_title">Αυτόματη σύζευξη συμβόλων</string>
     <string name="auto_pair_symbols_summary">Εισαγάγετε αυτόματα αγκύλες, εισαγωγικά και σημάδια τίτλου</string>
     <string name="font_style">Στυλ γραμματοσειράς</string>
-    <string name="unicode_panel">Σύμβολα Unicode</string>
     <string name="style_active_indicator">Ενεργό στυλ:%s</string>
     <string name="style_active_none">Κανένα (Απλό κείμενο)</string>
     <string name="style_plain">Κανονικός</string>
@@ -1792,7 +1785,6 @@
     <string name="text_expander_prefix_autocomplete_summary">Προτείνετε μερικές αντιστοιχίσεις για συντομεύσεις κειμένου και εικόνας χωρίς πρόθεμα μετά την πληκτρολόγηση 2+ χαρακτήρων (οι συντομεύσεις με πρόθεμα επίσης συμπληρώνονται αυτόματα).</string>
     <string name="unfolded_side_padding_scale">Ξεδιπλωμένη πλαϊνή επένδυση</string>
     <string name="voice_futo_models_title">Μοντέλα φωνής FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Βελτιστοποιημένα μοντέλα Whisper βελτιστοποιημένα για υπαγόρευση μέσω κινητού</string>
     <string name="button_browse">Ξεφυλλίζω</string>
     <string name="voice_transcribe_while_speaking_title">Μεταγραφή ενώ μιλάτε</string>
     <string name="voice_piecewise_field_changed">Η υπαγόρευση σταμάτησε: το πεδίο κειμένου άλλαξε, το υπόλοιπο δεν εισήχθη</string>
@@ -1802,4 +1794,6 @@
     <string name="voice_transcribe_while_speaking_summary">Συντομότερη αναμονή για μεγάλες υπαγορεύσεις</string>
     <string name="backup_category_personal_dictionary">Προσωπικό Λεξικό</string>
     <string name="backup_category_text_expander">Επέκταση κειμένου</string>
+    <string name="no_dictionary_message">\"Χωρίς λεξικό, θα λαμβάνετε μόνο προτάσεις για κείμενο που καταχωρίσατε πριν.&lt;br&gt;
+        Μπορείτε να κάνετε λήψη λεξικών%1$sή να ελέγξετε εάν ένα λεξικό για το \"%2$s\" μπορεί να ληφθεί απευθείας%3$s.\"</string>
 </resources>

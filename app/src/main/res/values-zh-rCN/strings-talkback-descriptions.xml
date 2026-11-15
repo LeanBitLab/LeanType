@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"插入耳机可听到输入密码时的按键提示音。"</string>
-    <string name="spoken_current_text_is">"当前文字为%s"</string>
     <string name="spoken_auto_correct">"按<xliff:g id="KEY_NAME">%1$s</xliff:g>键可将<xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>更正为<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"按<xliff:g id="KEY_NAME">%1$s</xliff:g>键可进行自动更正"</string>
     <string name="spoken_empty_suggestion">"没有任何建议"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"语音输入"</string>
     <string name="spoken_description_emoji">"表情符号"</string>
     <string name="spoken_description_return">"回车"</string>
-    <string name="spoken_description_search">"搜索"</string>
     <string name="spoken_description_dot">"点"</string>
     <string name="spoken_description_language_switch">"切换语言"</string>
     <string name="spoken_description_action_next">"下一个"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"旅行与地点"</string>
     <string name="spoken_description_emoji_category_eight_activity">"活动"</string>
     <string name="spoken_description_emoji_category_emoticons">"表情图标"</string>
-    <string name="spoken_description_upper_case">"拉丁文大写字母<xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"拉丁文大写字母I"</string>
     <string name="spoken_letter_0130">"带上点的拉丁文大写字母I"</string>
     <string name="spoken_open_popup_keys_keyboard">"有可用的替代字符"</string>

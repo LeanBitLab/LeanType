@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Pasang headset untuk mendengar tombol sandi yang diucapkan dengan lantang."</string>
-    <string name="spoken_current_text_is">"Teks saat ini adalah %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> mengoreksi <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> menjadi <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> melakukan koreksi otomatis"</string>
     <string name="spoken_empty_suggestion">"Tidak ada saran"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Masukan suara"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Kembali"</string>
-    <string name="spoken_description_search">"Telusuri"</string>
     <string name="spoken_description_dot">"Titik"</string>
     <string name="spoken_description_language_switch">"Beralih bahasa"</string>
     <string name="spoken_description_action_next">"Berikutnya"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Wisata &amp; Tempat"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Aktivitas"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emotikon"</string>
-    <string name="spoken_description_upper_case">"Huruf kapital <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Huruf kapital I"</string>
     <string name="spoken_letter_0130">"Huruf kapital I dengan aksen titik di bagian atas"</string>
     <string name="spoken_open_popup_keys_keyboard">"Karakter alternatif tersedia"</string>

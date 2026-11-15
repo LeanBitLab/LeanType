@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Pievienojiet austiņas, lai dzirdētu paroles rakstzīmes."</string>
-    <string name="spoken_current_text_is">"Pašreizējais teksts ir %s"</string>
     <string name="spoken_auto_correct">"Nospiežot taustiņu <xliff:g id="KEY_NAME">%1$s</xliff:g>, “<xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>” tiek labots uz “<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>”."</string>
     <string name="spoken_auto_correct_obscured">"Taustiņam <xliff:g id="KEY_NAME">%1$s</xliff:g> ir automātiskas labošanas funkcija."</string>
     <string name="spoken_empty_suggestion">"Nav ieteikuma"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Balss ievade"</string>
     <string name="spoken_description_emoji">"Emocijzīmes"</string>
     <string name="spoken_description_return">"Ievadīšanas taustiņš"</string>
-    <string name="spoken_description_search">"Meklēšanas taustiņš"</string>
     <string name="spoken_description_dot">"Punkta aizzīme"</string>
     <string name="spoken_description_language_switch">"Valodas mainīšana"</string>
     <string name="spoken_description_action_next">"Tālāk"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Ceļošana un vietas"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Darbības"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emocijzīmes"</string>
-    <string name="spoken_description_upper_case">"Lielais burts “<xliff:g id="LOWER_LETTER">%s</xliff:g>”"</string>
     <string name="spoken_letter_0049">"Lielais burts “I”"</string>
     <string name="spoken_letter_0130">"Lielais burts “I” ar punktu virs tā"</string>
     <string name="spoken_open_popup_keys_keyboard">"Ir pieejamas alternatīvas rakstzīmes."</string>

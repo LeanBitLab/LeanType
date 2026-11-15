@@ -289,7 +289,6 @@
     <string name="auto_show_toolbar_summary">Паказваць панэль інструментаў пры ўводзе ці пры выбары тэксту</string>
     <string name="auto_hide_toolbar">Хаваць панэль інструментаў аўтаматычна</string>
     <string name="toast_msg_clipboard_copy">Кантэнт скапіяваны</string>
-    <string name="auto_show_toolbar">Паказваць панэль інструментаў аўтаматычна</string>
     <string name="center_suggestion_text_to_enter_summary">Пры націску кропкі або пунктуацыі будзе выкарыстана сярэдняя прапанова</string>
     <string name="quick_pin_toolbar_keys_summary">Гэта адключыць астатнія функцыі клавіш панэлі інструментаў пры працяглым націску</string>
     <string name="close_history" tools:keep="@string/close_history">Закрыць буфер абмену</string>
@@ -335,7 +334,6 @@
     <string name="prefs_side_padding_scale">Маштаб бакавога водступу</string>
     <string name="number_row_hints">Паказваць падказкі ў шэрагу з лічбамі</string>
     <string name="locales_with_dict">Мовы са слоўнікамі</string>
-    <string name="custom_subtype">Карыстацкі падтып</string>
     <string name="layout_emoji_bottom_row" tools:keep="@string/layout_emoji_bottom_row">Радок эмодзі ўнізе</string>
     <string name="layout_clip_bottom_row" tools:keep="@string/layout_clip_bottom_row">Радок буфера абмену ўнізе</string>
     <string name="layout_in_use">Папярэджанне: раскладка ў дадзены момант выкарыстоўваецца</string>
@@ -448,7 +446,6 @@
     <string name="suggestion_balance_desc_3">Збалансавана (Па змаўчанні)\nСтандартны баланс паміж слоўнікавым запасам і асабістымі звычкамі набору тэксту.</string>
     <string name="suggestion_balance_desc_4">Персаналізавана\nАддае перавагу словам і фразам, якія вы часта набіралі.</string>
     <string name="suggestion_balance_desc_5">Высокая персаналізацыя\nМоцна аддае перавагу вывучанай гісторыі і асабістым словам перад стандартным слоўнікавым запасам.</string>
-    <string name="next_word_boost_level">Узровень узмацнення вывучаных слоў</string>
     <string name="next_word_strict_ngram">Патрабаваць супадзенне кантэксту для вывучаных слоў</string>
     <string name="next_word_strict_ngram_summary">Прапаноўваць вывучаныя словы толькі тады, калі кантэкст папярэдняга слова супадае</string>
     <string name="immediate_auto_space">Неадкладны аўтапрабел</string>
@@ -474,7 +471,6 @@
     <string name="clipboard_no_search_results">Нічога не знойдзена</string>
     <string name="clipboard_clear_all_confirmation">Вы ўпэўнены, што хочаце ачысціць усю гісторыю?</string>
     <string name="clear_all">Ачысціць усё</string>
-    <string name="gesture_method">Метад уводу жэстамі</string>
     <string name="load_gesture_library_button_download">Спампаваць бібліятэку</string>
     <string name="load_gesture_library_downloading">Спампоўка бібліятэкі жэстаў…</string>
     <string name="load_gesture_library_download_success">Спампоўка завершана! Перазапуск…</string>
@@ -691,7 +687,6 @@
     <string name="toolbar_keys_alignment_left">Злева</string>
     <string name="toolbar_keys_alignment_center">Па цэнтры</string>
     <string name="toolbar_keys_alignment_right">Справа</string>
-    <string name="clipboard_keys_alignment">Выраўноўванне клавіш буфера абмену</string>
     <string name="toolbar_long_press_hint">Паказваць падказкі пры доўгім націску</string>
     <string name="toolbar_long_press_hint_summary">Паказваць індыкатары на клавішах панэлі інструментаў, якія маюць дзеянне пры доўгім націску</string>
     <string name="prefs_popup_keys_vertical_offset">Пазіцыя ўсплывальнага акна пры доўгім націску</string>
@@ -842,7 +837,6 @@
     <string name="auto_show_toolbar_select_summary">Паказваць панэль інструментаў пры вылучэнні тэксту</string>
     <string name="auto_show_toolbar_no_suggestions">Аўтаматычна паказваць панэль інструментаў, калі няма прапаноў</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Паказваць панэль інструментаў, калі няма даступных прапаноў слоў</string>
-    <string name="toolbar_swipe_down_dismiss">Правядзіце ўніз, каб закрыць</string>
     <string name="auto_hide_pinned_keys">Аўтаматычна хаваць замацаваныя клавішы</string>
     <string name="auto_hide_pinned_keys_summary">Хаваць замацаваныя клавішы, калі панэль інструментаў разгорнута</string>
     <string name="remember_toolbar_state">Запамінаць стан панэлі інструментаў</string>
@@ -1649,7 +1643,6 @@
     <string name="auto_pair_symbols_title">Сімвалы аўтаматычнай пары</string>
     <string name="auto_pair_symbols_summary">Аўтаматычна ўстаўляць закрывальныя дужкі, двукоссі і знакі загалоўка</string>
     <string name="font_style">Стыль шрыфта</string>
-    <string name="unicode_panel">Сімвалы Unicode</string>
     <string name="style_active_indicator">Актыўны стыль:%s</string>
     <string name="style_active_none">Няма (звычайны тэкст)</string>
     <string name="style_plain">Нармальны</string>
@@ -1728,7 +1721,6 @@
     <string name="text_expander_prefix_autocomplete_summary">Прапанаваць частковыя супадзенні для ярлыкоў без прэфікса і малюнкаў пасля ўводу 2+ сімвалаў (цэтлікі з прэфіксам таксама аўтазапаўняюцца).</string>
     <string name="unfolded_side_padding_scale">Разгорнутая абіўка збоку</string>
     <string name="voice_futo_models_title">Галасавыя мадэлі FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Дакладна наладжаныя мадэлі Whisper, аптымізаваныя для мабільнай дыктоўкі</string>
     <string name="button_browse">Праглядзіце</string>
     <string name="voice_transcribe_while_speaking_title">Расшыфроўка падчас размовы</string>
     <string name="voice_piecewise_field_changed">Дыктоўка спынена: тэкставае поле змянілася, астатняе не ўстаўлена</string>

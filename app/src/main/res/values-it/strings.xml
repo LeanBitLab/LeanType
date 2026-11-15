@@ -291,7 +291,6 @@
     <string name="auto_show_toolbar_summary">La barra degli strumenti appare all\'inizio della digitazione o quando si seleziona un testo</string>
     <string name="auto_hide_toolbar">Nascondi automaticamente la barra degli strumenti</string>
     <string name="auto_hide_toolbar_summary">Nasconde la barra degli strumenti quando è possibile mostrare le parole suggerite</string>
-    <string name="auto_show_toolbar">Mostra automaticamente la barra degli strumenti</string>
     <string name="quick_pin_toolbar_keys_summary">Le azioni alternative su pressione lunga saranno disponibili solo sui tasti già fissati</string>
     <string name="subtype_generic_extended">%s (Estesa)</string>
     <string name="layout_functional_keys_symbols" tools:keep="@string/layout_functional_keys_symbols">Tasti funzione (Simboli)</string>
@@ -380,7 +379,6 @@
     <string name="auto_correct_shortcuts">Scorciatoie correzione</string>
     <string name="name_invalid">Nome non valido</string>
     <string name="prefs_language_swipe_distance">Soglia di scorrimento orizzontale</string>
-    <string name="custom_subtype">Sotto-tipo personalizzato</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="layout_in_use">Attenzione: il layout è in uso</string>
     <string name="locales_with_dict">Lingue con dizionari</string>
@@ -457,7 +455,6 @@
     <string name="physical_keyboard_shortcut_number">Tasto numerico (1, 2, 3 durante la composizione)</string>
     <string name="prioritize_personal_suggestions">Dai priorità alle parole personali e apprese</string>
     <string name="prioritize_personal_suggestions_summary">Assegna una priorità di punteggio maggiore al dizionario personale e alle parole apprese durante la predizione della parola successiva</string>
-    <string name="next_word_boost_level">Livello di potenziamento parole apprese</string>
     <string name="next_word_strict_ngram">Richiedi corrispondenza di contesto per le parole apprese</string>
     <string name="next_word_strict_ngram_summary">Suggerisci le parole apprese solo quando il contesto della parola precedente corrisponde</string>
     <string name="immediate_auto_space">Spazio automatico immediato</string>
@@ -480,7 +477,6 @@
     <string name="clipboard_no_search_results">Nessun risultato trovato</string>
     <string name="clipboard_clear_all_confirmation">Sei sicuro di voler cancellare tutta la cronologia?</string>
     <string name="clear_all">Cancella tutto</string>
-    <string name="gesture_method">Metodo di digitazione gestuale</string>
     <string name="load_gesture_library_button_download">Scarica libreria</string>
     <string name="load_gesture_library_downloading">Download libreria gestuale in corso…</string>
     <string name="load_gesture_library_download_success">Download completato! Riavvio…</string>
@@ -672,7 +668,6 @@
     <string name="auto_show_toolbar_open">Mostra automaticamente la barra all\'apertura</string>
     <string name="auto_show_toolbar_select">Mostra automaticamente la barra alla selezione</string>
     <string name="auto_show_toolbar_select_summary">Mostra la barra degli strumenti quando si seleziona il testo</string>
-    <string name="toolbar_swipe_down_dismiss">Scorri verso il basso per chiudere</string>
     <string name="auto_hide_pinned_keys">Nascondi automaticamente i tasti fissati</string>
     <string name="auto_hide_pinned_keys_summary">Nascondi i tasti fissati quando la barra degli strumenti è espansa</string>
     <string name="remember_toolbar_state">Ricorda stato barra strumenti</string>
@@ -883,7 +878,6 @@
     <string name="toolbar_keys_alignment_left">Sinistra</string>
     <string name="toolbar_keys_alignment_center">Centro</string>
     <string name="toolbar_keys_alignment_right">Destra</string>
-    <string name="clipboard_keys_alignment">Allineamento tasti appunti</string>
     <string name="prefs_popup_keys_vertical_offset">Posizione popup pressione prolungata</string>
     <string name="edit">Modifica</string>
     <string name="prefs_keypress_sound_style_settings">Stile suono pressione tasti</string>
@@ -1682,7 +1676,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="auto_pair_symbols_title">Simboli di accoppiamento automatico</string>
     <string name="auto_pair_symbols_summary">Inserisci automaticamente parentesi di chiusura, virgolette e titoli</string>
     <string name="font_style">Stile carattere</string>
-    <string name="unicode_panel">Simboli Unicode</string>
     <string name="style_active_indicator">Stile attivo:%s</string>
     <string name="style_active_none">Nessuno (testo normale)</string>
     <string name="style_plain">Normale</string>
@@ -1760,7 +1753,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="text_expander_prefix_autocomplete_summary">Suggerisci corrispondenze parziali per scorciatoie di testo e immagini senza prefisso dopo aver digitato più di 2 caratteri (anche le scorciatoie con prefisso vengono completate automaticamente).</string>
     <string name="unfolded_side_padding_scale">Imbottitura laterale spiegata</string>
     <string name="voice_futo_models_title">Modelli vocali FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Modelli Whisper ottimizzati per la dettatura mobile</string>
     <string name="button_browse">Sfoglia</string>
     <string name="voice_transcribe_while_speaking_title">Trascrivi mentre parli</string>
     <string name="voice_piecewise_field_changed">Dettatura interrotta: il campo testo è cambiato, il resto non è stato inserito</string>

@@ -302,7 +302,6 @@ Nouveau dictionnaire:
     <string name="auto_hide_toolbar">Masquer automatiquement la barre d\'outils</string>
     <string name="auto_hide_toolbar_summary">La barre d\'outils est masquée lorsque les suggestions sont disponibles</string>
     <string name="auto_show_toolbar_summary">La barre d\'outils s\'affiche si la saisie débute ou si le texte est sélectionné</string>
-    <string name="auto_show_toolbar">Afficher automatiquement la barre d\'outils</string>
     <string name="language_switch_key_behavior">Comportement de la touche de changement de langue</string>
     <string name="emoji" tools:keep="@string/emoji">Emoji</string>
     <string name="gesture_fast_typing_cooldown">Temps de réponse de la saisie rapide</string>
@@ -376,7 +375,6 @@ Nouveau dictionnaire:
     <string name="split" tools:keep="@string/split">Clavier divisé</string>
     <string name="delete_confirmation">Voulez-vous vraiment supprimer %s ?</string>
     <string name="name_invalid">Nom invalide</string>
-    <string name="custom_subtype">Sous-type personnalisé</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="settings_screen_secondary_layouts">Dispositions secondaires</string>
     <string name="layout_functional_keys_tablet" tools:keep="@string/layout_functional_keys_tablet">Touches fonctionnelles (grand écran)</string>
@@ -455,7 +453,6 @@ Nouveau dictionnaire:
     <string name="physical_keyboard_shortcut_number">Touche numérique (1, 2, 3 pendant la composition)</string>
     <string name="prioritize_personal_suggestions">Prioriser les mots personnels et appris</string>
     <string name="prioritize_personal_suggestions_summary">Donner une priorité de score plus élevée au dictionnaire personnel et aux mots appris lors de la prédiction du mot suivant</string>
-    <string name="next_word_boost_level">Niveau de boost des mots appris</string>
     <string name="next_word_strict_ngram">Exiger la correspondance de contexte pour les mots appris</string>
     <string name="next_word_strict_ngram_summary">Ne suggérer les mots appris que lorsque le contexte du mot précédent correspond</string>
     <string name="immediate_auto_space">Espace automatique immédiat</string>
@@ -478,7 +475,6 @@ Nouveau dictionnaire:
     <string name="clipboard_no_search_results">Aucun résultat trouvé</string>
     <string name="clipboard_clear_all_confirmation">Êtes-vous sûr de vouloir effacer tout l\'historique ?</string>
     <string name="clear_all">Tout effacer</string>
-    <string name="gesture_method">Méthode de saisie gestuelle</string>
     <string name="load_gesture_library_button_download">Télécharger la bibliothèque</string>
     <string name="load_gesture_library_downloading">Téléchargement de la bibliothèque gestuelle…</string>
     <string name="load_gesture_library_download_success">Téléchargement terminé ! Redémarrage…</string>
@@ -670,7 +666,6 @@ Nouveau dictionnaire:
     <string name="auto_show_toolbar_open">Afficher automatiquement la barre d\'outils à l\'ouverture</string>
     <string name="auto_show_toolbar_select">Afficher automatiquement la barre d\'outils lors de la sélection</string>
     <string name="auto_show_toolbar_select_summary">Afficher la barre d\'outils lors de la sélection de texte</string>
-    <string name="toolbar_swipe_down_dismiss">Balayer vers le bas pour fermer</string>
     <string name="auto_hide_pinned_keys">Masquer automatiquement les touches épinglées</string>
     <string name="auto_hide_pinned_keys_summary">Masquer les touches épinglées lorsque la barre d\'outils est développée</string>
     <string name="remember_toolbar_state">Mémoriser l\'état de la barre d\'outils</string>
@@ -881,7 +876,6 @@ Nouveau dictionnaire:
     <string name="toolbar_keys_alignment_left">Gauche</string>
     <string name="toolbar_keys_alignment_center">Centré</string>
     <string name="toolbar_keys_alignment_right">Droite</string>
-    <string name="clipboard_keys_alignment">Alignement des touches du presse-papiers</string>
     <string name="prefs_popup_keys_vertical_offset">Position verticale du pop-up d\'appui long</string>
     <string name="edit">Modifier</string>
     <string name="prefs_keypress_sound_style_settings">Style sonore des touches</string>
@@ -1671,7 +1665,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="auto_pair_symbols_title">Symboles de couplage automatique</string>
     <string name="auto_pair_symbols_summary">Insérer automatiquement des crochets fermants, des guillemets et des marques de titre</string>
     <string name="font_style">Style de police</string>
-    <string name="unicode_panel">Symboles Unicode</string>
     <string name="style_active_indicator">Style actif :%s</string>
     <string name="style_active_none">Aucun (texte brut)</string>
     <string name="style_plain">Normale</string>
@@ -1749,7 +1742,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="text_expander_prefix_autocomplete_summary">Suggérez des correspondances partielles pour les raccourcis de texte et d\'image sans préfixe après avoir tapé plus de 2 caractères (les raccourcis avec préfixe sont également à saisie semi-automatique).</string>
     <string name="unfolded_side_padding_scale">Rembourrage latéral déplié</string>
     <string name="voice_futo_models_title">Modèles vocaux FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Modèles Whisper affinés et optimisés pour la dictée mobile</string>
     <string name="button_browse">Parcourir</string>
     <string name="voice_transcribe_while_speaking_title">Transcrire en parlant</string>
     <string name="voice_piecewise_field_changed">Dictée arrêtée : le champ de texte a changé, le reste n\'a pas été inséré</string>

@@ -338,7 +338,6 @@
     <string name="settings_screen_toolbar">Werkbalk</string>
     <string name="toast_msg_clipboard_copy">Inhoud gekopieerd</string>
     <string name="auto_hide_toolbar">Werkbalk automatisch verbergen</string>
-    <string name="auto_show_toolbar">Werkbalk automatisch weergeven</string>
     <string name="auto_hide_toolbar_summary">Verberg de werkbalk wanneer er suggesties beschikbaar komen</string>
     <string name="auto_show_toolbar_summary">Toon de werkbalk bij invoer of selectie van tekst</string>
     <string name="language_switch_key_behavior">Gedrag van taalkeuzetoets</string>
@@ -419,7 +418,6 @@
     <string name="locales_with_dict">Talen met woordenboeken</string>
     <string name="layout_in_use">Waarschuwing: lay-out is momenteel in gebruik</string>
     <string name="get_colors_message">Je kunt kleuren zoeken en delen in de %s.</string>
-    <string name="custom_subtype">Aangepast subtype</string>
     <string name="get_layouts_message">Je kunt lay-outs zoeken en delen in de %s.</string>
     <string name="discussion_section_link">discussiesectie</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
@@ -489,7 +487,6 @@
     <string name="suggestion_balance_desc_3">Uitgewogen (Standaard)\nStandaard balans tussen woordenboekwoordenschat en persoonlijke typgewoonten.</string>
     <string name="suggestion_balance_desc_4">Gepersonaliseerd\nGeeft prioriteit aan woorden en zinnen die u vaak heeft getypt.</string>
     <string name="suggestion_balance_desc_5">Sterk gepersonaliseerd\nGeeft sterk de voorkeur aan geleerde geschiedenis en persoonlijke woorden boven standaard woordenschat.</string>
-    <string name="next_word_boost_level">Boostniveau voor geleerde woorden</string>
     <string name="next_word_strict_ngram">Contextovereenkomst vereisen voor geleerde woorden</string>
     <string name="next_word_strict_ngram_summary">Stel alleen geleerde woorden voor als de context van het voorgaande woord overeenkomt</string>
     <string name="immediate_auto_space">Directe automatische spatie</string>
@@ -512,7 +509,6 @@
     <string name="clipboard_no_search_results">Geen resultaten gevonden</string>
     <string name="clipboard_clear_all_confirmation">Weet u zeker dat u de hele geschiedenis wilt wissen?</string>
     <string name="clear_all">Alles wissen</string>
-    <string name="gesture_method">Methode voor typen met gebaren</string>
     <string name="load_gesture_library_button_download">Bibliotheek downloaden</string>
     <string name="load_gesture_library_downloading">Bibliotheek voor gebaren downloaden…</string>
     <string name="load_gesture_library_download_success">Download voltooid! Opnieuw starten…</string>
@@ -712,7 +708,6 @@
     <string name="toolbar_keys_alignment_left">Links</string>
     <string name="toolbar_keys_alignment_center">Gecentreerd</string>
     <string name="toolbar_keys_alignment_right">Rechts</string>
-    <string name="clipboard_keys_alignment">Uitlijning van klembordtoetsen</string>
     <string name="prefs_popup_keys_vertical_offset">Verticale pop-up positie bij lang indrukken</string>
     <string name="edit">Bewerken</string>
     <string name="auto_hide_pinned_keys">Vastgezette toetsen automatisch verbergen</string>
@@ -720,7 +715,6 @@
     <string name="remember_toolbar_state">Werkbalkstatus onthouden</string>
     <string name="remember_toolbar_state_summary">Houd de werkbalk uitgevouwen of samengevouwen tussen sessies en tijdens het typen</string>
     <string name="close_translate_language_selector">Taalkiezer sluiten</string>
-    <string name="toolbar_swipe_down_dismiss">Omlaag vegen om te sluiten</string>
     <string name="auto_show_toolbar_open">Werkbalk automatisch tonen bij openen</string>
     <string name="auto_show_toolbar_select">Werkbalk automatisch tonen bij selecteren</string>
     <string name="auto_show_toolbar_select_summary">Toon de werkbalk bij het selecteren van tekst</string>
@@ -1662,7 +1656,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="auto_pair_symbols_title">Symbolen voor automatisch koppelen</string>
     <string name="auto_pair_symbols_summary">Voeg automatisch sluithaakjes, aanhalingstekens en titelmarkeringen in</string>
     <string name="font_style">Lettertypestijl</string>
-    <string name="unicode_panel">Unicode-symbolen</string>
     <string name="style_active_indicator">Actieve stijl:%s</string>
     <string name="style_active_none">Geen (platte tekst)</string>
     <string name="style_plain">Normaal</string>
@@ -1741,7 +1734,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="text_expander_prefix_autocomplete_summary">Gedeeltelijke overeenkomsten voorstellen voor niet-voorgevoegde tekst- en afbeeldingssnelkoppelingen na het typen van meer dan twee tekens (voorafgezette snelkoppelingen worden ook automatisch aangevuld).</string>
     <string name="unfolded_side_padding_scale">Uitgevouwen zijvulling</string>
     <string name="voice_futo_models_title">FUTO-stemmodellen (ACFT)</string>
-    <string name="voice_futo_models_summary">Verfijnde Whisper-modellen geoptimaliseerd voor mobiel dicteren</string>
     <string name="button_browse">Blader</string>
     <string name="voice_transcribe_while_speaking_title">Transcribeer terwijl u spreekt</string>
     <string name="voice_piecewise_field_changed">Dicteren gestopt: het tekstveld is gewijzigd, de rest is niet ingevoegd</string>

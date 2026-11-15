@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"შეაერთეთ ყურსასმენი, რათა მოისმინოთ აკრეფილი პაროლის კლავიშების სახელები."</string>
-    <string name="spoken_current_text_is">"მიმდინარე ტექსტი არის %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> შეასწორებს <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>-ს <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>-ად"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ასრულებს ავტოკორექციას"</string>
     <string name="spoken_empty_suggestion">"შემოთავაზება არ არის"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"ხმოვანი შეყვანა"</string>
     <string name="spoken_description_emoji">"სიცილაკები"</string>
     <string name="spoken_description_return">"დაბრუნება"</string>
-    <string name="spoken_description_search">"ძიება"</string>
     <string name="spoken_description_dot">"წერტილი"</string>
     <string name="spoken_description_language_switch">"ენის გადართვა"</string>
     <string name="spoken_description_action_next">"შემდ."</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"მოგზაურობა და ადგილები"</string>
     <string name="spoken_description_emoji_category_eight_activity">"აქტივობა"</string>
     <string name="spoken_description_emoji_category_emoticons">"სიცილაკები"</string>
-    <string name="spoken_description_upper_case">"დიდი <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"დიდი I"</string>
     <string name="spoken_letter_0130">"Capital I, dot above"</string>
     <string name="spoken_open_popup_keys_keyboard">"ალტერნატიული სიმბოლოები ხელმისაწვდომია"</string>

@@ -340,7 +340,6 @@
     <string name="auto_hide_toolbar_summary">Ukryj pasek narzędzi, jeśli są dostępne sugestie</string>
     <string name="auto_show_toolbar_summary">Pokaż pasek narzędzi, jeśli rozpocznie się wprowadzanie lub tekst zostanie zaznaczony</string>
     <string name="auto_hide_toolbar">Automatyczne ukrywanie paska narzędzi</string>
-    <string name="auto_show_toolbar">Automatyczne wyświetlanie paska narzędzi</string>
     <string name="language_switch_key_behavior">Zachowanie klawisza zmiany języka</string>
     <string name="emoji" tools:keep="@string/emoji">Emotikony</string>
     <string name="customize_currencies_detail">Ustaw główny i do 6 drugorzędnych symboli waluty, oddzielonych spacją</string>
@@ -421,7 +420,6 @@
     <string name="get_colors_message">Motywy możesz znaleźć i udostępnić w %s.</string>
     <string name="get_layouts_message">Układy możesz znaleźć i udostępnić w %s.</string>
     <string name="discussion_section_link">sekcji dyskusji</string>
-    <string name="custom_subtype">Własny układ</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
     <string name="show_tld_popup_keys">Pokaż wyskakujące okienka TLD</string>
     <string name="show_tld_popup_keys_summary">Zastąp wyskakujące okienka klawisza kropki domenami najwyższego poziomu podczas wpisywania adresów URL i adresów e-mail</string>
@@ -511,7 +509,6 @@
     <string name="suggestion_balance_desc_3">Zrównoważony (domyślny)\nStandardowa równowaga między słownictwem słownikowym a nawykami pisania.</string>
     <string name="suggestion_balance_desc_4">Spersonalizowany\nPriorytetyzuje słowa i frazy, które często wpisujesz.</string>
     <string name="suggestion_balance_desc_5">Silnie spersonalizowany\nZdecydowanie faworyzuje nauczona historię i osobiste słowa ponad standardowe słownictwo.</string>
-    <string name="next_word_boost_level">Poziom wzmocnienia nauczonych słów</string>
     <string name="next_word_strict_ngram">Wymagaj dopasowania kontekstu dla nauczonych słów</string>
     <string name="next_word_strict_ngram_summary">Sugeruj nauczone słowa tylko wtedy, gdy pasuje kontekst poprzedniego słowa</string>
     <string name="immediate_auto_space">Natychmiastowa automatyczna spacja</string>
@@ -534,7 +531,6 @@
     <string name="clipboard_no_search_results">Nie znaleziono wyników</string>
     <string name="clipboard_clear_all_confirmation">Czy na pewno chcesz wyczyścić całą historię?</string>
     <string name="clear_all">Wyczyść wszystko</string>
-    <string name="gesture_method">Metoda pisania gestami</string>
     <string name="load_gesture_library_button_download">Pobierz bibliotekę</string>
     <string name="load_gesture_library_downloading">Pobieranie biblioteki gestów…</string>
     <string name="load_gesture_library_download_success">Pobieranie zakończone! Ponowne uruchamianie…</string>
@@ -841,7 +837,6 @@
     <string name="auto_show_toolbar_select_summary">Pokazuj pasek narzędzi podczas zaznaczania tekstu</string>
     <string name="auto_show_toolbar_no_suggestions">Automatycznie pokazuj pasek narzędzi przy braku sugestii</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Pokazuj pasek narzędzi, gdy brak dostępnych sugestii słów</string>
-    <string name="toolbar_swipe_down_dismiss">Przesuń w dół, aby zamknąć</string>
     <string name="auto_hide_pinned_keys">Automatycznie ukrywaj przypięte klawisze</string>
     <string name="auto_hide_pinned_keys_summary">Ukryj przypięte klawisze, gdy pasek narzędzi jest rozwinięty</string>
     <string name="remember_toolbar_state">Zapamiętuj stan paska narzędzi</string>
@@ -958,7 +953,6 @@
     <string name="toolbar_keys_alignment_left">Do lewej</string>
     <string name="toolbar_keys_alignment_center">Wyśrodkowane</string>
     <string name="toolbar_keys_alignment_right">Do prawej</string>
-    <string name="clipboard_keys_alignment">Wyrównanie klawiszy paska narzędzi</string>
     <string name="toolbar_long_press_hint">Pokazuj etykiety długiego naciśnięcia</string>
     <string name="toolbar_long_press_hint_summary">Pokazuj etykiety na klawiszach paska narzędzi, które mają akcję długiego naciśnięcia</string>
     <string name="prefs_popup_keys_vertical_offset">Pionowa pozycja wyskakującego okienka przy długim naciśnięciu</string>
@@ -1659,7 +1653,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="auto_pair_symbols_title">Symbole automatycznego parowania</string>
     <string name="auto_pair_symbols_summary">Automatycznie wstawiaj nawiasy zamykające, cudzysłowy i znaczniki tytułu</string>
     <string name="font_style">Styl czcionki</string>
-    <string name="unicode_panel">Symbole Unicode</string>
     <string name="style_active_indicator">Aktywny styl:%s</string>
     <string name="style_active_none">Brak (zwykły tekst)</string>
     <string name="style_plain">Normalna</string>
@@ -1738,7 +1731,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="text_expander_prefix_autocomplete_summary">Sugeruj częściowe dopasowania skrótów tekstowych i graficznych bez prefiksu po wpisaniu co najmniej 2 znaków (skróty z prefiksami również są autouzupełniane).</string>
     <string name="unfolded_side_padding_scale">Rozłożona wyściółka boczna</string>
     <string name="voice_futo_models_title">Modele głosowe FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Dopracowane modele Whisper zoptymalizowane pod kątem mobilnego dyktowania</string>
     <string name="button_browse">Przeglądać</string>
     <string name="voice_transcribe_while_speaking_title">Transkrypcja podczas mówienia</string>
     <string name="voice_piecewise_field_changed">Dyktowanie zatrzymane: pole tekstowe uległo zmianie, reszta nie została wstawiona</string>

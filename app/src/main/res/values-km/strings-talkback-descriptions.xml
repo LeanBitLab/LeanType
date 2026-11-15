@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"ដោត​កាស ដើម្បី​ស្ដាប់​ពាក្យ​សម្ងាត់​ដែល​និយាយ​​ឮ​ៗ។"</string>
-    <string name="spoken_current_text_is">"អត្ថបទ​បច្ចុប្បន្ន​គឺ %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> កែ <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> ទៅ​ជា <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> អនុវត្ត​ការ​កែ​ស្វ័យ​ប្រវត្តិ"</string>
     <string name="spoken_empty_suggestion">"គ្មានការផ្តល់យោបល់ទេ"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"ការ​បញ្ចូល​សំឡេង"</string>
     <string name="spoken_description_emoji">"សញ្ញា​អារម្មណ៍"</string>
     <string name="spoken_description_return">"Return"</string>
-    <string name="spoken_description_search">"ស្វែងរក"</string>
     <string name="spoken_description_dot">"ចំណុច"</string>
     <string name="spoken_description_language_switch">"ប្ដូរ​​ភាសា"</string>
     <string name="spoken_description_action_next">"បន្ទាប់"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"ការធ្វើដំណើរ និងទីកន្លែង"</string>
     <string name="spoken_description_emoji_category_eight_activity">"សកម្មភាព"</string>
     <string name="spoken_description_emoji_category_emoticons">"សញ្ញា​អារម្មណ៍"</string>
-    <string name="spoken_description_upper_case">"អក្សរ​ធំ <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"I ធំ"</string>
     <string name="spoken_letter_0130">"I ធំមានចំណុចពីលើ"</string>
     <string name="spoken_open_popup_keys_keyboard">"តួអក្សរ​ជំនួស​អាច​ប្រើ​បាន"</string>

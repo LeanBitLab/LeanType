@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Uključite slušalice da biste čuli naglas izgovorene tastere za lozinku."</string>
-    <string name="spoken_current_text_is">"Trenutni tekst je %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ispravlja <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> u <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> obavlja automatsko ispravljanje"</string>
     <string name="spoken_empty_suggestion">"Nema predloga"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Glasovni unos"</string>
     <string name="spoken_description_emoji">"Emodži"</string>
     <string name="spoken_description_return">"Return"</string>
-    <string name="spoken_description_search">"Pretraži"</string>
     <string name="spoken_description_dot">"Tačka"</string>
     <string name="spoken_description_language_switch">"Prebaci jezik"</string>
     <string name="spoken_description_action_next">"Prethodno"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Putovanja i mesta"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Aktivnosti"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emotikoni"</string>
-    <string name="spoken_description_upper_case">"Veliko <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Veliko I"</string>
     <string name="spoken_letter_0130">"Veliko I sa tačkom iznad"</string>
     <string name="spoken_open_popup_keys_keyboard">"Dostupni su alternativni znaci"</string>

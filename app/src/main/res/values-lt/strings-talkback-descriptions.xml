@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Prijunkite ausines, kad išgirstumėte sakomus slaptažodžio klavišus."</string>
-    <string name="spoken_current_text_is">"Dabartinis tekstas yra %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> pataiso <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> į <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> atlieka automatinį taisymą"</string>
     <string name="spoken_empty_suggestion">"Nėra pasiūlymų"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Balso įvestis"</string>
     <string name="spoken_description_emoji">"Jaustukai"</string>
     <string name="spoken_description_return">"Grįžti"</string>
-    <string name="spoken_description_search">"Paieška"</string>
     <string name="spoken_description_dot">"Taškas"</string>
     <string name="spoken_description_language_switch">"Keisti kalbą"</string>
     <string name="spoken_description_action_next">"Kitas"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Kelionės ir vietos"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Veikla"</string>
     <string name="spoken_description_emoji_category_emoticons">"Jaustukai"</string>
-    <string name="spoken_description_upper_case">"Didžioji <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Didžioji I"</string>
     <string name="spoken_letter_0130">"Didžioji I su tašku viršuje"</string>
     <string name="spoken_open_popup_keys_keyboard">"Alternatyvūs ženklai pasiekiami"</string>

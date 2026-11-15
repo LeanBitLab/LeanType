@@ -261,7 +261,6 @@
     <string name="icon_style">Ikonstil</string>
     <string name="toast_msg_clipboard_copy">Indhold kopieret</string>
     <string name="theme_name_user" tools:keep="@string/theme_name_user">Brugerdefineret</string>
-    <string name="auto_show_toolbar">Auto-vis værktøjslinje</string>
     <string name="dialog_close">Luk</string>
     <string name="settings_screen_appearance">Udseende</string>
     <string name="select_color_key">Tastetekst</string>

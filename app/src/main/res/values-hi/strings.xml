@@ -240,7 +240,6 @@
     <string name="toolbar_keys_alignment_left">बायां</string>
     <string name="toolbar_keys_alignment_center">केंद्र</string>
     <string name="toolbar_keys_alignment_right">दायां</string>
-    <string name="clipboard_keys_alignment">क्लिपबोर्ड कुंजियों का संरेखण</string>
     <string name="prefs_popup_keys_vertical_offset">दबाए रखने पर पॉपअप स्थिति</string>
     <string name="edit">संपादित करें</string>
     <string name="prefs_keypress_sound_style_settings">कुंजी दबाने की ध्वनि शैली</string>
@@ -836,7 +835,6 @@
     <string name="center_suggestion_text_to_enter_summary">स्पेस या विराम चिह्न दबाने पर बीच का सुझाव दर्ज हो जाएगा</string>
     <string name="prioritize_personal_suggestions">व्यक्तिगत और सीखे हुए शब्दों को प्राथमिकता दें</string>
     <string name="prioritize_personal_suggestions_summary">अगले शब्द की भविष्यवाणी के दौरान व्यक्तिगत शब्दकोश और सीखे गए शब्दों को उच्च अंक प्राथमिकता दें</string>
-    <string name="next_word_boost_level">शब्द बूस्ट स्तर सीखा</string>
     <string name="next_word_strict_ngram">सीखे गए शब्दों के लिए संदर्भ मिलान की आवश्यकता है</string>
     <string name="next_word_strict_ngram_summary">केवल तभी सीखे हुए शब्दों का सुझाव दें जब पूर्ववर्ती शब्द संदर्भ मेल खाता हो</string>
     <string name="immediate_auto_space">तत्काल ऑटो-स्पेस</string>
@@ -887,7 +885,6 @@
     <string name="locales_with_dict">शब्दकोशों वाली भाषाएँ</string>
     <string name="load_gesture_library">जेस्चर टाइपिंग लाइब्रेरी लोड करें</string>
     <string name="load_gesture_library_summary">जेस्चर टाइपिंग सक्षम करने के लिए एक मूल लाइब्रेरी प्रदान करें</string>
-    <string name="gesture_method">जेस्चर टाइपिंग विधि</string>
     <string name="load_gesture_library_message">आपको \'%s\' के लिए लाइब्रेरी की आवश्यकता होगी। जेस्चर टाइपिंग का उपयोग करते समय असंगत लाइब्रेरीज़ क्रैश हो सकती हैं।
         \n\nचेतावनी: बाहरी कोड लोड करना सुरक्षा जोखिम हो सकता है। केवल उसी स्रोत की लाइब्रेरी का उपयोग करें जिस पर आपको भरोसा हो।</string>
     <string name="checksum_mismatch_message">अज्ञात लाइब्रेरी फ़ाइल. क्या आप निश्चित हैं कि आपको यह किसी विश्वसनीय स्रोत से मिला है और यह \'%s\' के लिए है?</string>
@@ -1311,14 +1308,12 @@
     <string name="customize_toolbar_key_code_reset_message">वास्तव में सभी अनुकूलित कुंजी कोड साफ़ करें?</string>
     <string name="key_code">कुंजी कोड</string>
     <string name="long_press_code">कोड को देर तक दबाएँ</string>
-    <string name="auto_show_toolbar">ऑटो शो टूलबार</string>
     <string name="auto_show_toolbar_open">ऑटो शो टूलबार खुले में</string>
     <string name="auto_show_toolbar_select">चयन पर ऑटो शो टूलबार</string>
     <string name="auto_show_toolbar_summary">कीबोर्ड खुलने पर टूलबार दिखाएँ</string>
     <string name="auto_show_toolbar_select_summary">टेक्स्ट का चयन करते समय टूलबार दिखाएं</string>
     <string name="auto_hide_toolbar">टूलबार स्वतः छिपाएं</string>
     <string name="auto_hide_toolbar_summary">सुझाव उपलब्ध होने पर टूलबार छिपाएँ</string>
-    <string name="toolbar_swipe_down_dismiss">बंद करने के लिए नीचे स्वाइप करें</string>
     <string name="auto_hide_pinned_keys">पिन की गई कुंजियाँ स्वतः छिपाएँ</string>
     <string name="auto_hide_pinned_keys_summary">टूलबार विस्तारित होने पर पिन की गई कुंजियाँ छिपाएँ</string>
     <string name="remember_toolbar_state">टूलबार स्थिति याद रखें</string>
@@ -1329,7 +1324,6 @@
     <string name="customize_icons_reset_message">क्या वास्तव में सभी अनुकूलित आइकन रीसेट हो गए हैं?</string>
     <string name="delete_confirmation">वास्तव में%sहटाएं?</string>
     <string name="name_invalid">अमान्य नाम</string>
-    <string name="custom_subtype">कस्टम उपप्रकार</string>
     <string name="landscape">परिदृश्य</string>
     <string name="offline_model_title">ऑफ़लाइन मॉडल</string>
     <string name="offline_model_summary">स्थानीय एलएलएम का प्रबंधन करें</string>
@@ -1652,7 +1646,6 @@
     <string name="auto_pair_symbols_title">प्रतीकों को स्वत: युग्मित करें</string>
     <string name="auto_pair_symbols_summary">स्वचालित रूप से समापन कोष्ठक, उद्धरण और शीर्षक चिह्न डालें</string>
     <string name="font_style">लिपि शैली</string>
-    <string name="unicode_panel">यूनिकोड प्रतीक</string>
     <string name="style_active_indicator">सक्रिय शैली:%s</string>
     <string name="style_active_none">कोई नहीं (सादा पाठ)</string>
     <string name="style_plain">सामान्य</string>
@@ -1731,7 +1724,6 @@
     <string name="text_expander_prefix_autocomplete_summary">2+ अक्षर टाइप करने के बाद बिना उपसर्ग वाले टेक्स्ट और छवि शॉर्टकट के लिए आंशिक मिलान का सुझाव दें (उपसर्ग वाले शॉर्टकट भी स्वतः पूर्ण होते हैं)।</string>
     <string name="unfolded_side_padding_scale">खुला साइड पैडिंग</string>
     <string name="voice_futo_models_title">फ़ुटो वॉयस मॉडल (एसीएफटी)</string>
-    <string name="voice_futo_models_summary">मोबाइल डिक्टेशन के लिए अनुकूलित फाइन-ट्यून व्हिस्पर मॉडल</string>
     <string name="button_browse">ब्राउज़</string>
     <string name="voice_transcribe_while_speaking_title">बोलते समय प्रतिलेखन करें</string>
     <string name="voice_piecewise_field_changed">डिक्टेशन बंद हो गया: टेक्स्ट फ़ील्ड बदल गया, बाकी नहीं डाला गया</string>

@@ -285,7 +285,6 @@
     <string name="quick_pin_toolbar_keys_summary">При этом отключатся остальные функции долгого нажатия для незакреплённых кнопок панели</string>
     <string name="quick_pin_toolbar_keys">Закреплять клавиши панели инструментов при долгом нажатии</string>
     <string name="toast_msg_clipboard_copy">Контент скопирован</string>
-    <string name="auto_show_toolbar">Показывать панель инструментов автоматически</string>
     <string name="auto_hide_toolbar">Скрывать панель инструментов автоматически</string>
     <string name="center_suggestion_text_to_enter">Всегда использовать среднюю подсказку</string>
     <string name="center_suggestion_text_to_enter_summary">При нажатии пробела или знака препинания будет вставлена средняя подсказка</string>
@@ -368,7 +367,6 @@
     <string name="prefs_language_swipe_distance">Порог горизонтального свайпа</string>
     <string name="enable_split_keyboard_landscape">Включить разделение клавиатуры (альбомный режим)</string>
     <string name="split" tools:keep="@string/split">Разделение клавиатуры</string>
-    <string name="custom_subtype">Пользовательский подтип</string>
     <string name="subtype_baishakhi_bn_IN">%s (Байсахи)</string>
     <string name="layout_in_use">Предупреждение: раскладка в данный момент используется</string>
     <string name="delete_confirmation">Вы действительно хотите удалить %s?</string>
@@ -547,7 +545,6 @@
     <string name="physical_keyboard_shortcut_number">Цифровая клавиша (1, 2, 3 при наборе)</string>
     <string name="prioritize_personal_suggestions">Приоритет личных и выученных слов</string>
     <string name="prioritize_personal_suggestions_summary">Отдавать более высокий приоритет личному словарю и выученным словам при предсказании следующего слова</string>
-    <string name="next_word_boost_level">Уровень усиления выученных слов</string>
     <string name="next_word_strict_ngram">Требовать совпадение контекста для выученных слов</string>
     <string name="next_word_strict_ngram_summary">Предлагать выученные слова только тогда, когда контекст предыдущего слова совпадает</string>
     <string name="immediate_auto_space">Мгновенный автопробел</string>
@@ -563,7 +560,6 @@
     <string name="clipboard_pinned">Закреплено</string>
     <string name="clipboard_search_hint">Поиск в буфере...</string>
     <string name="clipboard_no_search_results">Ничего не найдено</string>
-    <string name="gesture_method">Метод ввода жестами</string>
     <string name="load_gesture_library_download_failed">Ошибка загрузки: %s</string>
     <string name="load_handwriting_plugin">Загрузить плагин рукописного ввода</string>
     <string name="load_handwriting_plugin_button_delete">Удалить плагин</string>
@@ -670,7 +666,6 @@
     <string name="app_language_system">Системный по умолчанию</string>
     <string name="toolbar_only_with_hw_keyboard">Показывать только панель с физической клавиатурой</string>
     <string name="toolbar_only_with_hw_keyboard_summary">Вам все равно нужно включить показ виртуальной клавиатуры в настройках системы</string>
-    <string name="toolbar_swipe_down_dismiss">Свайп вниз для закрытия</string>
     <string name="close_translate_language_selector">Закрыть выбор языка</string>
     <string name="offline_model_title">Офлайн-модель</string>
     <string name="offline_model_summary">Управление локальной LLM</string>
@@ -876,7 +871,6 @@
     <string name="toolbar_keys_alignment_left">Слева</string>
     <string name="toolbar_keys_alignment_center">По центру</string>
     <string name="toolbar_keys_alignment_right">Справа</string>
-    <string name="clipboard_keys_alignment">Выравнивание клавиш буфера обмена</string>
     <string name="prefs_popup_keys_vertical_offset">Позиция всплывающего окна при долгом нажатии</string>
     <string name="edit">Изменить</string>
     <string name="prefs_keypress_sound_style_settings">Стиль звука нажатия клавиш</string>
@@ -1675,7 +1669,6 @@
     <string name="auto_pair_symbols_title">Символы автоматического сопряжения</string>
     <string name="auto_pair_symbols_summary">Автоматически вставлять закрывающие скобки, кавычки и знаки заголовков.</string>
     <string name="font_style">Стиль шрифта</string>
-    <string name="unicode_panel">Символы Юникода</string>
     <string name="style_active_indicator">Активный стиль:%s</string>
     <string name="style_active_none">Нет (обычный текст)</string>
     <string name="style_plain">Нормальный</string>
@@ -1753,7 +1746,6 @@
     <string name="text_expander_prefix_autocomplete_summary">Предлагать частичные совпадения для текстовых и графических ярлыков без префиксов после ввода более двух символов (ярлыки с префиксами также автозаполняются).</string>
     <string name="unfolded_side_padding_scale">Развернутая боковая обивка</string>
     <string name="voice_futo_models_title">Голосовые модели FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">Точные модели Whisper, оптимизированные для мобильной диктовки</string>
     <string name="button_browse">Просматривать</string>
     <string name="voice_transcribe_while_speaking_title">Расшифруйте во время разговора</string>
     <string name="voice_piecewise_field_changed">Диктовка остановлена: текстовое поле изменилось, остальное не вставилось</string>

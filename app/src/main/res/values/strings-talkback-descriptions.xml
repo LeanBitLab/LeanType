@@ -8,8 +8,6 @@
     <!-- Spoken description to let the user know that when typing in a password, they can plug in a headset in to hear spoken descriptions of the keys they type. [CHAR LIMIT=NONE] -->
     <string name="spoken_use_headphones">Plug in a headset to hear password keys spoken aloud.</string>
 
-    <!-- Spoken description for the currently entered text -->
-    <string name="spoken_current_text_is">Current text is "%s"</string>
     <!-- Spoken description when there is no text entered -->
 
     <!-- Spoken description to let the user know what auto-correction will be performed when a key is pressed. An auto-correction replaces a single word with one or more words. -->
@@ -54,8 +52,6 @@
     <string name="spoken_description_emoji">Emoji</string>
     <!-- Spoken description for the "Return" keyboard key. -->
     <string name="spoken_description_return">Return</string>
-    <!-- Spoken description for the "Search" keyboard key. -->
-    <string name="spoken_description_search">Search</string>
     <!-- Spoken description for the "U+2022" (BULLET) keyboard key. -->
     <string name="spoken_description_dot">Dot</string>
     <!-- Spoken description for the "Switch language" keyboard key. -->
@@ -128,8 +124,6 @@
     <!-- Description of the emoji category icon of Unicode symbols. -->
     <string name="spoken_description_emoji_category_unicode">Unicode symbols</string>
 
-    <!-- Description of an upper case letter of LOWER_LETTER. -->
-    <string name="spoken_description_upper_case">Capital <xliff:g id="LOWER_LETTER" example="A, E, ligature">%s</xliff:g></string>
     <!-- Spoken description for Unicode code point U+0049: "I" LATIN CAPITAL LETTER I
          Note that depending on locale, the lower-case of this letter is U+0069 or U+0131. -->
     <string name="spoken_letter_0049">Capital I</string>

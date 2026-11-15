@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"パスワードのキーが音声出力されるのでヘッドセットを接続してください。"</string>
-    <string name="spoken_current_text_is">"現在のテキスト: %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g>は<xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>を<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>に修正します"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g>で自動修正が実行されます"</string>
     <string name="spoken_empty_suggestion">"候補はありません"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"音声入力"</string>
     <string name="spoken_description_emoji">"絵文字"</string>
     <string name="spoken_description_return">"Enter"</string>
-    <string name="spoken_description_search">"検索"</string>
     <string name="spoken_description_dot">"ドット"</string>
     <string name="spoken_description_language_switch">"言語を切り替え"</string>
     <string name="spoken_description_action_next">"次へ"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"旅行、場所"</string>
     <string name="spoken_description_emoji_category_eight_activity">"アクティビティ"</string>
     <string name="spoken_description_emoji_category_emoticons">"絵文字"</string>
-    <string name="spoken_description_upper_case">"大文字<xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"大文字I"</string>
     <string name="spoken_letter_0130">"大文字I、上点"</string>
     <string name="spoken_open_popup_keys_keyboard">"代替文字が利用可能です"</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Συνδέστε ένα σετ ακουστικών για να ακούσετε τα πλήκτρα του κωδικού πρόσβασης να εκφωνούνται δυνατά."</string>
-    <string name="spoken_current_text_is">"Το τρέχον κείμενο είναι %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> διορθώνει το <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> σε <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> εκτελεί αυτόματη διόρθωση"</string>
     <string name="spoken_empty_suggestion">"Καμία πρόταση"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Φωνητική είσοδος"</string>
     <string name="spoken_description_emoji">"Emoticon"</string>
     <string name="spoken_description_return">"Επιστροφή"</string>
-    <string name="spoken_description_search">"Αναζήτηση"</string>
     <string name="spoken_description_dot">"Κουκκίδα"</string>
     <string name="spoken_description_language_switch">"Εναλλαγή γλώσσας"</string>
     <string name="spoken_description_action_next">"Επόμενο"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Ταξίδια και μέρη"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Δραστηριότητα"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emoticon"</string>
-    <string name="spoken_description_upper_case">"Κεφαλαίο <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Κεφαλαίο I"</string>
     <string name="spoken_letter_0130">"Κεφαλαίο I, κουκκίδα από πάνω"</string>
     <string name="spoken_open_popup_keys_keyboard">"Διατίθενται εναλλακτικοί χαρακτήρες"</string>

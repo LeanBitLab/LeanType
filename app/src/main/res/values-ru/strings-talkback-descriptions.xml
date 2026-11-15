@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Подключите гарнитуру, чтобы услышать пароль."</string>
-    <string name="spoken_current_text_is">"Введенный текст: %s."</string>
     <string name="spoken_auto_correct">"При нажатии клавиши <xliff:g id="KEY_NAME">%1$s</xliff:g> слово <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> будет исправлено на <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>."</string>
     <string name="spoken_auto_correct_obscured">"Клавиша <xliff:g id="KEY_NAME">%1$s</xliff:g> выполняет автоисправление."</string>
     <string name="spoken_empty_suggestion">"Подсказки не найдены"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Голосовой ввод."</string>
     <string name="spoken_description_emoji">"Смайлики."</string>
     <string name="spoken_description_return">"Ввод."</string>
-    <string name="spoken_description_search">"Поиск."</string>
     <string name="spoken_description_dot">"Маркер списка."</string>
     <string name="spoken_description_language_switch">"Сменить язык."</string>
     <string name="spoken_description_action_next">"Далее."</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Путешествия и достопримечательности."</string>
     <string name="spoken_description_emoji_category_eight_activity">"Действия."</string>
     <string name="spoken_description_emoji_category_emoticons">"Смайлики."</string>
-    <string name="spoken_description_upper_case">"Заглавная <xliff:g id="LOWER_LETTER">%s</xliff:g>."</string>
     <string name="spoken_letter_0049">"Заглавная латинская I."</string>
     <string name="spoken_letter_0130">"Заглавная латинская I с точкой сверху."</string>
     <string name="spoken_open_popup_keys_keyboard">"Доступны дополнительные символы."</string>

@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Ligar auscultadores com microfone integrado para ouvir as teclas da palavra-passe."</string>
-    <string name="spoken_current_text_is">"O texto atual é %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> corrige <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> para <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> executa a correção automática"</string>
     <string name="spoken_empty_suggestion">"Nenhuma sugestão"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Entrada de voz"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Voltar"</string>
-    <string name="spoken_description_search">"Pesquisar"</string>
     <string name="spoken_description_dot">"Ponto"</string>
     <string name="spoken_description_language_switch">"Mudar de idioma"</string>
     <string name="spoken_description_action_next">"Seguinte"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Viagens e locais"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Atividade"</string>
     <string name="spoken_description_emoji_category_emoticons">"Ícones expressivos"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> maiúsculo"</string>
     <string name="spoken_letter_0049">"I maiúsculo"</string>
     <string name="spoken_letter_0130">"I maiúsculo, ponto sobreposto"</string>
     <string name="spoken_open_popup_keys_keyboard">"Os carateres alternativos estão disponíveis"</string>

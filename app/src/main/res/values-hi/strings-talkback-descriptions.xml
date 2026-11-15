@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"पासवर्ड कुंजियों को सुनने के लिए, हेडसेट प्‍लग-इन करें."</string>
-    <string name="spoken_current_text_is">"वर्तमान लेख %s है"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> को सुधार कर <xliff:g id="CORRECTED_WORD">%3$s</xliff:g> करता है"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g>अपने-आपसुधार करता है"</string>
     <string name="spoken_empty_suggestion">"कोई सुझाव नहीं"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"बोलकर फ़ोन को निर्देश"</string>
     <string name="spoken_description_emoji">"ईमोजी"</string>
     <string name="spoken_description_return">"रिटर्न"</string>
-    <string name="spoken_description_search">"सर्च करें"</string>
     <string name="spoken_description_dot">"डॉट"</string>
     <string name="spoken_description_language_switch">"भाषा स्विच करें"</string>
     <string name="spoken_description_action_next">"आगे बढ़ें"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"यात्रा और जगह"</string>
     <string name="spoken_description_emoji_category_eight_activity">"गतिविधि"</string>
     <string name="spoken_description_emoji_category_emoticons">"इमोटिकॉन्स"</string>
-    <string name="spoken_description_upper_case">"बड़ा <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"बड़ा आई"</string>
     <string name="spoken_letter_0130">"बड़ा आई, बिंदु ऊपर"</string>
     <string name="spoken_open_popup_keys_keyboard">"वैकल्पिक वर्ण उपलब्ध हैं"</string>

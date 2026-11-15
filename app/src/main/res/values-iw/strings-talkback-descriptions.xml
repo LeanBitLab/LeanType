@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"חבר אוזניות כדי לשמוע הקראה של מפתחות סיסמה."</string>
-    <string name="spoken_current_text_is">"‏הטקסט הנוכחי הוא %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> מתקן את <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> ל-<xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> מבצע תיקון אוטומטי"</string>
     <string name="spoken_empty_suggestion">"אין הצעה"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"קלט הקול"</string>
     <string name="spoken_description_emoji">"אמוג\'י"</string>
     <string name="spoken_description_return">"Enter"</string>
-    <string name="spoken_description_search">"חיפוש"</string>
     <string name="spoken_description_dot">"נקודה"</string>
     <string name="spoken_description_language_switch">"החלף שפה"</string>
     <string name="spoken_description_action_next">"הבא"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"נסיעות ומקומות"</string>
     <string name="spoken_description_emoji_category_eight_activity">"פעילות"</string>
     <string name="spoken_description_emoji_category_emoticons">"רגשונים"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> גדולה"</string>
     <string name="spoken_letter_0049">"‏I גדולה"</string>
     <string name="spoken_letter_0130">"‏I גדולה, נקודה מעל"</string>
     <string name="spoken_open_popup_keys_keyboard">"תווים חלופיים זמינים"</string>

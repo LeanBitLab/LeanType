@@ -302,7 +302,6 @@
     <string name="quick_pin_toolbar_keys_summary">Esto desactivará outras accións de pulsación longa para teclas da barra que non están fixadas</string>
     <string name="settings_screen_toolbar">Barra de ferramentas</string>
     <string name="toast_msg_clipboard_copy">Copiouse o contido</string>
-    <string name="auto_show_toolbar">Mostrar ferramentas automáticamente</string>
     <string name="auto_show_toolbar_summary">Mostra a barra de ferramentas ao comezar a escribir ou seleccionar texto</string>
     <string name="auto_hide_toolbar">Agochar ferramentas</string>
     <string name="auto_hide_toolbar_summary">Agocha a barra de ferramentas ao estar dispoñibles as suxestións</string>
@@ -382,7 +381,6 @@
     <string name="discussion_section_link">zona de conversa</string>
     <string name="get_layouts_message">Podes atopar e compartir disposicións na %s.</string>
     <string name="subtype_baishakhi_bn_IN">%s (Baishakhi)</string>
-    <string name="custom_subtype">Subtipo personalizado</string>
     <string name="prefs_always_show_suggestions_except_web_text">Non mostrar sempre suxestións para os campos texto nas webs</string>
     <string name="prefs_always_show_suggestions_except_web_text_summary">Os campos de texto nas webs (principalmente no navegador) son causa frecuente de problemas coas suxestións automáticas</string>
     <string name="layout_number_row_basic" tools:keep="@string/layout_number_row_basic">Fila de números (básica)</string>

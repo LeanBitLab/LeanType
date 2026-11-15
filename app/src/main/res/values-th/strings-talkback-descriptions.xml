@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"เสียบชุดหูฟังเพื่อฟังเสียงเมื่อพิมพ์รหัสผ่าน"</string>
-    <string name="spoken_current_text_is">"ข้อความปัจจุบันคือ %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> แก้ไข <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> เป็น <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ทำการแก้ไขอัตโนมัติ"</string>
     <string name="spoken_empty_suggestion">"ไม่มีคำแนะนำ"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"การป้อนข้อมูลด้วยเสียง"</string>
     <string name="spoken_description_emoji">"อีโมจิ"</string>
     <string name="spoken_description_return">"ส่งคืน"</string>
-    <string name="spoken_description_search">"ค้นหา"</string>
     <string name="spoken_description_dot">"จุด"</string>
     <string name="spoken_description_language_switch">"เปลี่ยนภาษา"</string>
     <string name="spoken_description_action_next">"ถัดไป"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"การเดินทางและสถานที่"</string>
     <string name="spoken_description_emoji_category_eight_activity">"กิจกรรม"</string>
     <string name="spoken_description_emoji_category_emoticons">"ไอคอนสื่ออารมณ์"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> ตัวใหญ่"</string>
     <string name="spoken_letter_0049">"I ตัวใหญ่"</string>
     <string name="spoken_letter_0130">"I ตัวใหญ่เติมจุดด้านบน"</string>
     <string name="spoken_open_popup_keys_keyboard">"อักขระทางเลือกพร้อมใช้งาน"</string>

@@ -120,7 +120,6 @@
     <string name="clipboard_history_retention_time">Historian säilytysaika</string>
     <string name="url_detection_title">URL-osoitteen havaitseminen</string>
     <string name="internal_dictionary_summary">Sisäinen pääsanakirja</string>
-    <string name="auto_show_toolbar">Näytä työkalupalkki automaattisesti</string>
     <string name="customize_currencies">Mukauta valuuttoja</string>
     <string name="dictionary_settings_category">Sanakirjat</string>
     <string name="button_select_language">Valitse kieli</string>

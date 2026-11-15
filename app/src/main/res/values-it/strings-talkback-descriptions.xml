@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Collega gli auricolari per ascoltare la pronuncia dei tasti premuti per la password."</string>
-    <string name="spoken_current_text_is">"Il testo attuale è %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> corregge <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> con <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> esegue la correzione automatica"</string>
     <string name="spoken_empty_suggestion">"Nessun suggerimento"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Input vocale"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Invio"</string>
-    <string name="spoken_description_search">"Cerca"</string>
     <string name="spoken_description_dot">"Pallino"</string>
     <string name="spoken_description_language_switch">"Cambia lingua"</string>
     <string name="spoken_description_action_next">"Successivo"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Viaggi e luoghi"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Attività"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emoticon"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> maiuscola"</string>
     <string name="spoken_letter_0049">"I maiuscola"</string>
     <string name="spoken_letter_0130">"I maiuscola, punto sovrascritto"</string>
     <string name="spoken_open_popup_keys_keyboard">"Sono disponibili caratteri alternativi"</string>

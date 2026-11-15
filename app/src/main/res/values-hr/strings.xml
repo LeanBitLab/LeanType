@@ -405,7 +405,6 @@
     <string name="space_swipe_hide_keyboard_entry">Sakrij tipkovnicu</string>
     <string name="var_toolbar_direction">Promjenjivi smjer alatne trake</string>
     <string name="var_toolbar_direction_summary">Mijenja smjer kada je odabran raspored tipkovnice za jezike koji se piše s desna na lijevo</string>
-    <string name="auto_show_toolbar">Automatski prikaz alatne trake</string>
     <string name="auto_show_toolbar_summary">Prikazuje alatnu traku, ako započne unos ili je označen tekst</string>
     <string name="auto_hide_toolbar">Automatsko sakrivanje alatne trake</string>
     <string name="auto_hide_toolbar_summary">Sakriva alatnu traku kada prijedlozi postanu dostupni</string>
@@ -414,7 +413,6 @@
     <string name="customize_icons_reset_message">Zaista ponovno postaviti sve prilagođene ikone?</string>
     <string name="delete_confirmation">Zaista izbrisati „%s”?</string>
     <string name="name_invalid">Nevažeći naziv</string>
-    <string name="custom_subtype">Prilagođeni podraspored</string>
     <string name="landscape">Horizontalno</string>
     <string name="label_zwj_key" tools:keep="@string/label_zwj_key">Spojnica nulte širine</string>
     <string name="label_zwnj_key" tools:keep="@string/label_zwnj_key">Ne-spojnica nulte širine</string>
@@ -467,7 +465,6 @@
     <string name="suggestion_balance_desc_3">Uravnoteženo (Zadano)\nStandardna ravnoteža između vokabulara rječnika i osobnih navika tipkanja.</string>
     <string name="suggestion_balance_desc_4">Personalizirano\nDaje prednost riječima i frazama koje ste često tipkali.</string>
     <string name="suggestion_balance_desc_5">Visoko personalizirano\nSnažno favorizira naučenu povijest i osobne riječi u odnosu na standardni vokabular.</string>
-    <string name="next_word_boost_level">Razina pojačanja naučenih riječi</string>
     <string name="next_word_strict_ngram">Zahtijevaj podudaranje konteksta za naučene riječi</string>
     <string name="next_word_strict_ngram_summary">Predlažite naučene riječi samo kada se kontekst prethodne riječi podudara</string>
     <string name="immediate_auto_space">Trenutni automatski razmak</string>
@@ -490,7 +487,6 @@
     <string name="clipboard_no_search_results">Nema pronađenih rezultata</string>
     <string name="clipboard_clear_all_confirmation">Jeste li sigurni da želite očistiti svu povijest?</string>
     <string name="clear_all">Očisti sve</string>
-    <string name="gesture_method">Metoda tipkanja gestama</string>
     <string name="load_gesture_library_button_download">Preuzmi knjižnicu</string>
     <string name="load_gesture_library_downloading">Preuzimanje knjižnice gesti…</string>
     <string name="load_gesture_library_download_success">Preuzimanje dovršeno! Ponovno pokretanje…</string>
@@ -698,7 +694,6 @@
     <string name="toolbar_keys_alignment_left">Lijevo</string>
     <string name="toolbar_keys_alignment_center">Sredina</string>
     <string name="toolbar_keys_alignment_right">Desno</string>
-    <string name="clipboard_keys_alignment">Poravnanje tipki međuspremnika</string>
     <string name="toolbar_long_press_hint">Prikaži savjete za dugi pritisak</string>
     <string name="toolbar_long_press_hint_summary">Prikažite savjete na tipkama alatne trake koje imaju radnju dugog pritiska</string>
     <string name="prefs_popup_keys_vertical_offset">Pozicija skočnog prozora pri dugom pritisku</string>
@@ -806,7 +801,6 @@
     <string name="auto_show_toolbar_select_summary">Prikažite alatnu traku prilikom odabira teksta</string>
     <string name="auto_show_toolbar_no_suggestions">Automatski prikaži alatnu traku kada nema prijedloga</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Prikažite alatnu traku kada prijedlozi riječi nisu dostupni</string>
-    <string name="toolbar_swipe_down_dismiss">Povucite prema dolje za zatvaranje</string>
     <string name="auto_hide_pinned_keys">Automatski sakrij prikvačene tipke</string>
     <string name="auto_hide_pinned_keys_summary">Sakrijte prikvačene tipke kada je alatna traka proširena</string>
     <string name="remember_toolbar_state">Zapamti stanje alatne trake</string>
@@ -1612,7 +1606,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="auto_pair_symbols_title">Simboli za automatsko uparivanje</string>
     <string name="auto_pair_symbols_summary">Automatski umetnite zagrade, navodnike i oznake naslova</string>
     <string name="font_style">Stil fonta</string>
-    <string name="unicode_panel">Unicode simboli</string>
     <string name="style_active_indicator">Aktivni stil:%s</string>
     <string name="style_active_none">Ništa (običan tekst)</string>
     <string name="style_plain">Normalan</string>
@@ -1691,7 +1684,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="text_expander_prefix_autocomplete_summary">Predložite djelomična podudaranja za tekstualne i slikovne prečace bez prefiksa nakon upisivanja 2+ znaka (prefiksni prečaci također se automatski dovršavaju).</string>
     <string name="unfolded_side_padding_scale">Otklopljena bočna podstava</string>
     <string name="voice_futo_models_title">FUTO glasovni modeli (ACFT)</string>
-    <string name="voice_futo_models_summary">Fino podešeni Whisper modeli optimizirani za mobilno diktiranje</string>
     <string name="button_browse">Pregledaj</string>
     <string name="voice_transcribe_while_speaking_title">Transkribirajte dok govorite</string>
     <string name="voice_piecewise_field_changed">Diktiranje zaustavljeno: tekstualno polje je promijenjeno, ostatak nije umetnut</string>

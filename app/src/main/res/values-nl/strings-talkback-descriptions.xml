@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Sluit een headset aan om wachtwoordtoetsen hardop te laten voorlezen."</string>
-    <string name="spoken_current_text_is">"Huidige tekst is %s"</string>
     <string name="spoken_auto_correct">"Met <xliff:g id="KEY_NAME">%1$s</xliff:g> wordt <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> gecorrigeerd naar <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"Met <xliff:g id="KEY_NAME">%1$s</xliff:g> voer je automatische correctie uit"</string>
     <string name="spoken_empty_suggestion">"Geen suggestie"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Spraakinvoer"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Return"</string>
-    <string name="spoken_description_search">"Zoeken"</string>
     <string name="spoken_description_dot">"Punt"</string>
     <string name="spoken_description_language_switch">"Taal wijzigen"</string>
     <string name="spoken_description_action_next">"Volgende"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Reizen en plaatsen"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Activiteit"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emoticons"</string>
-    <string name="spoken_description_upper_case">"Hoofdletter <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Hoofdletter I"</string>
     <string name="spoken_letter_0130">"Hoofdletter I, punt erboven"</string>
     <string name="spoken_open_popup_keys_keyboard">"Alternatieve tekens zijn beschikbaar"</string>

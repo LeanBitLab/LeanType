@@ -179,7 +179,6 @@
     <string name="center_suggestion_text_to_enter_summary">സ്പേസ് അല്ലെങ്കിൽ ചിഹ്നനം അമർത്തുമ്പോൾ, മധ്യ നിർദ്ദേശം നൽകപ്പെടും</string>
     <string name="prioritize_personal_suggestions">വ്യക്തിപരവും പഠിച്ചതുമായ വാക്കുകൾക്ക് മുൻഗണന നൽകുക</string>
     <string name="prioritize_personal_suggestions_summary">അടുത്ത-പദ പ്രവചന സമയത്ത് സ്വകാര്യ നിഘണ്ടുവിനും പഠിച്ച വാക്കുകൾക്കും ഉയർന്ന സ്കോർ മുൻഗണന നൽകുക</string>
-    <string name="next_word_boost_level">പഠിച്ച വാക്കിന്റെ ബൂസ്റ്റ് ലെവൽ</string>
     <string name="next_word_strict_ngram">പഠിച്ച വാക്കുകൾക്ക് സന്ദർഭ പൊരുത്തം ആവശ്യമാണ്</string>
     <string name="next_word_strict_ngram_summary">മുമ്പത്തെ വാക്ക് സന്ദർഭം പൊരുത്തപ്പെടുമ്പോൾ മാത്രം പഠിച്ച വാക്കുകൾ നിർദ്ദേശിക്കുക</string>
     <string name="immediate_auto_space">ഉടനടി ഓട്ടോ-സ്പേസ്</string>
@@ -225,7 +224,6 @@
     <string name="locales_with_dict">നിഘണ്ടുക്കളുള്ള ഭാഷകൾ</string>
     <string name="load_gesture_library">ജെസ്റ്റർ ടൈപ്പിംഗ് ലൈബ്രറി ലോഡ് ചെയ്യുക</string>
     <string name="load_gesture_library_summary">ജെസ്റ്റർ ടൈപ്പിംഗ് പ്രവർത്തനക്ഷമമാക്കാൻ ഒരു നേറ്റീവ് ലൈബ്രറി നൽകുക</string>
-    <string name="gesture_method">ജെസ്റ്റർ ടൈപ്പിംഗ് രീതി</string>
     <string name="load_gesture_library_message">നിങ്ങൾക്ക് \'%s\'-നുള്ള ലൈബ്രറി ആവശ്യമുണ്ട്. പൊരുത്തമില്ലാത്ത ലൈബ്രറികൾ ജെസ്റ്റർ ടൈപ്പിംഗ് ഉപയോഗിക്കുമ്പോൾ ക്രാഷ് ആയേക്കാം.
         \n\nമുന്നറിയിപ്പ്: ബാഹ്യ കോഡ് ലോഡുചെയ്യുന്നത് ഒരു സുരക്ഷാ അപകടമാകാം. നിങ്ങൾ വിശ്വസിക്കുന്ന ഒരു ഉറവിടത്തിൽ നിന്നുള്ള ലൈബ്രറി മാത്രം ഉപയോഗിക്കുക.</string>
     <string name="checksum_mismatch_message">അജ്ഞാത ലൈബ്രറി ഫയൽ. ഇത് വിശ്വസനീയമായ ഉറവിടത്തിൽ നിന്നാണെന്നും \'%s\'-നുള്ളതാണെന്നും ഉറപ്പാണോ?</string>
@@ -688,14 +686,12 @@
     <string name="customize_toolbar_key_code_reset_message">എല്ലാ ഇഷ്ടാനുസൃത കീ കോഡുകളും ശരിക്കും മായ്ക്കണോ?</string>
     <string name="key_code">കീ കോഡ്</string>
     <string name="long_press_code">ദീർഘമർത്തൽ കോഡ്</string>
-    <string name="auto_show_toolbar">ടൂൾബാർ സ്വയം കാണിക്കുക</string>
     <string name="auto_show_toolbar_open">തുറക്കുമ്പോൾ ടൂൾബാർ സ്വയം കാണിക്കുക</string>
     <string name="auto_show_toolbar_select">തിരഞ്ഞെടുക്കുമ്പോൾ ടൂൾബാർ സ്വയം കാണിക്കുക</string>
     <string name="auto_show_toolbar_summary">കീബോർഡ് തുറക്കുമ്പോൾ ടൂൾബാർ കാണിക്കുക</string>
     <string name="auto_show_toolbar_select_summary">ടെക്സ്റ്റ് തിരഞ്ഞെടുക്കുമ്പോൾ ടൂൾബാർ കാണിക്കുക</string>
     <string name="auto_hide_toolbar">ടൂൾബാർ സ്വയം മറയ്ക്കുക</string>
     <string name="auto_hide_toolbar_summary">നിർദ്ദേശങ്ങൾ ലഭ്യമാകുമ്പോൾ ടൂൾബാർ മറയ്ക്കുക</string>
-    <string name="toolbar_swipe_down_dismiss">അടയ്ക്കാൻ താഴേക്ക് സ്വൈപ്പ് ചെയ്യുക</string>
     <string name="auto_hide_pinned_keys">പിൻ ചെയ്ത കീകൾ സ്വയം മറയ്ക്കുക</string>
     <string name="auto_hide_pinned_keys_summary">ടൂൾബാർ വികസിപ്പിക്കുമ്പോൾ പിൻ ചെയ്ത കീകൾ മറയ്ക്കുക</string>
     <string name="remember_toolbar_state">ടൂൾബാർ അവസ്ഥ ഓർമ്മിക്കുക</string>
@@ -706,7 +702,6 @@
     <string name="customize_icons_reset_message">എല്ലാ ഇഷ്ടാനുസൃത ഐക്കണുകളും ശരിക്കും പുനഃസജ്ജമാക്കണോ?</string>
     <string name="delete_confirmation">%s ശരിക്കും ഇല്ലാതാക്കണോ?</string>
     <string name="name_invalid">അസാധുവായ പേര്</string>
-    <string name="custom_subtype">ഇഷ്ടാനുസൃത ഉപവിഭാഗം</string>
     <string name="landscape">ലാൻഡ്സ്കേപ്പ്</string>
     <string name="offline_model_title">ഓഫ്ലൈൻ മോഡൽ</string>
     <string name="offline_model_summary">പ്രാദേശിക LLM നിയന്ത്രിക്കുക</string>
@@ -913,7 +908,6 @@
     <string name="toolbar_keys_alignment_left">ഇടത്</string>
     <string name="toolbar_keys_alignment_center">മധ്യഭാഗം</string>
     <string name="toolbar_keys_alignment_right">വലത്</string>
-    <string name="clipboard_keys_alignment">ക്ലിപ്പ്ബോർഡ് കീകൾ ക്രമീകരിക്കൽ</string>
     <string name="prefs_popup_keys_vertical_offset">ലോംഗ് പ്രസ്സ് പോപ്പ്അപ്പ് സ്ഥാനം</string>
     <string name="edit">എഡിറ്റ് ചെയ്യുക</string>
     <string name="prefs_keypress_sound_style_settings">കീ അമർത്തുമ്പോഴുള്ള ശബ്ദ ശൈലി</string>
@@ -1713,7 +1707,6 @@
     <string name="auto_pair_symbols_title">സ്വയമേവ ജോടി ചിഹ്നങ്ങൾ</string>
     <string name="auto_pair_symbols_summary">ക്ലോസിംഗ് ബ്രാക്കറ്റുകൾ, ഉദ്ധരണികൾ, ടൈറ്റിൽ മാർക്കുകൾ എന്നിവ സ്വയമേവ ചേർക്കുക</string>
     <string name="font_style">ഫോണ്ട് ശൈലി</string>
-    <string name="unicode_panel">യൂണികോഡ് ചിഹ്നങ്ങൾ</string>
     <string name="style_active_indicator">സജീവ ശൈലി:%s</string>
     <string name="style_active_none">ഒന്നുമില്ല (പ്ലെയിൻ ടെക്സ്റ്റ്)</string>
     <string name="style_plain">സാധാരണ</string>
@@ -1792,7 +1785,6 @@
     <string name="text_expander_prefix_autocomplete_summary">2+ പ്രതീകങ്ങൾ (പ്രിഫിക്‌സ് ചെയ്‌ത കുറുക്കുവഴികളും യാന്ത്രിക പൂർത്തീകരണം) ടൈപ്പ് ചെയ്‌ത ശേഷം പ്രിഫിക്‌സ് ചെയ്യാത്ത ടെക്‌സ്‌റ്റിനും ഇമേജ് കുറുക്കുവഴികൾക്കുമായി ഭാഗിക പൊരുത്തങ്ങൾ നിർദ്ദേശിക്കുക.</string>
     <string name="unfolded_side_padding_scale">മടക്കാത്ത സൈഡ് പാഡിംഗ്</string>
     <string name="voice_futo_models_title">FUTO വോയ്സ് മോഡലുകൾ (ACFT)</string>
-    <string name="voice_futo_models_summary">മൊബൈൽ ഡിക്റ്റേഷനായി ഒപ്റ്റിമൈസ് ചെയ്ത ഫൈൻ-ട്യൂൺ ചെയ്ത വിസ്പർ മോഡലുകൾ</string>
     <string name="button_browse">ബ്രൗസ് ചെയ്യുക</string>
     <string name="voice_transcribe_while_speaking_title">സംസാരിക്കുമ്പോൾ പകർത്തുക</string>
     <string name="voice_piecewise_field_changed">ഡിക്റ്റേഷൻ നിർത്തി: ടെക്സ്റ്റ് ഫീൽഡ് മാറി, ബാക്കിയുള്ളത് ചേർത്തില്ല</string>
@@ -1802,4 +1794,6 @@
     <string name="voice_transcribe_while_speaking_summary">ദൈർഘ്യമേറിയ നിർദ്ദേശങ്ങൾക്കായി ഹ്രസ്വ കാത്തിരിപ്പ്</string>
     <string name="backup_category_personal_dictionary">വ്യക്തിഗത നിഘണ്ടു</string>
     <string name="backup_category_text_expander">ടെക്സ്റ്റ് എക്സ്പാൻഡർ</string>
+    <string name="no_dictionary_message">\"നിഘണ്ടുവില്ലാതെ, നിങ്ങൾ മുമ്പ് നൽകിയ വാചകത്തിനുള്ള നിർദ്ദേശങ്ങൾ മാത്രമേ നിങ്ങൾക്ക് ലഭിക്കൂ.&lt;br&gt;
+        നിങ്ങൾക്ക് നിഘണ്ടുക്കൾ%1$sഡൗൺലോഡ് ചെയ്യാം, അല്ലെങ്കിൽ \"%2$s\" എന്നതിനായുള്ള ഒരു നിഘണ്ടു നേരിട്ട്%3$sഡൗൺലോഡ് ചെയ്യാനാകുമോ എന്ന് പരിശോധിക്കുക .\"</string>
 </resources>

@@ -414,7 +414,6 @@
     <string name="customize_toolbar_key_code_reset_message">அனைத்து தனிப்பயனாக்கப்பட்ட முக்கிய குறியீடுகளையும் அழிக்கவா?</string>
     <string name="key_code">முக்கிய குறியீடு</string>
     <string name="long_press_code">குறியீட்டை நீண்ட நேரம் அழுத்தவும்</string>
-    <string name="auto_show_toolbar">ஆட்டோ சோ கருவிப்பட்டி</string>
     <string name="auto_show_toolbar_summary">உள்ளீடு தொடங்கினால் அல்லது உரை தேர்ந்தெடுக்கப்பட்டால் கருவிப்பட்டியைக் காட்டு</string>
     <string name="auto_hide_toolbar">தானாக மறை கருவிப்பட்டி</string>
     <string name="auto_hide_toolbar_summary">பரிந்துரைகள் கிடைக்கும்போது கருவிப்பட்டியை மறைக்கவும்</string>
@@ -423,7 +422,6 @@
     <string name="customize_icons_reset_message">அனைத்து தனிப்பயனாக்கப்பட்ட ஐகான்களையும் உண்மையில் மீட்டமைக்கவா?</string>
     <string name="delete_confirmation">உண்மையில் %s ஐ நீக்கவா?</string>
     <string name="name_invalid">தவறான பெயர்</string>
-    <string name="custom_subtype">தனிப்பயன் துணை வகை</string>
     <string name="landscape">நிலப்பரப்பு</string>
     <string name="number_row_in_symbols">சின்னங்கள் பார்வையில் எண் வரிசையைக் காட்டு</string>
     <string name="custom_emoji_font">கோப்பிலிருந்து தனிப்பயன் சின்னம் எழுத்துருவை அமை</string>

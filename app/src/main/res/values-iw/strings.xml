@@ -143,7 +143,6 @@
     <string name="theme_name_black" tools:keep="@string/theme_name_black">שחור</string>
     <string name="action_none">ללא</string>
     <string name="var_toolbar_direction">כיוון משתנה של סרגל הכלים</string>
-    <string name="auto_show_toolbar">הצגה אוטומטית של סרגל הכלים</string>
     <string name="auto_show_toolbar_summary">הצגת סרגל הכלים אם מתחיל קלט או נבחר מלל</string>
     <string name="auto_hide_toolbar">הסתרה אוטומטית של סרגל הכלים</string>
     <string name="customize_currencies_detail">הגדרת סימן מטבע ראשי ועד 6 סימני מטבע משניים, מופרדים ברווח</string>
@@ -376,7 +375,6 @@
     <string name="enable_split_keyboard_landscape">הפעלת אפשרות מקלדת מפוצלת (במצב אופקי)</string>
     <string name="split" tools:keep="@string/split">מקלדת מפוצלת</string>
     <string name="name_invalid">השם אינו תקף</string>
-    <string name="custom_subtype">תת-סוג מותאם</string>
     <string name="subtype_baishakhi_bn_IN">%s (באישאקי)</string>
     <string name="layout_in_use">התרעה: הפריסה בשימוש כעת</string>
     <string name="layout_functional_keys_tablet" tools:keep="@string/layout_functional_keys_tablet">מקשים פונקציונליים (מסך גדול)</string>
@@ -475,7 +473,6 @@
     <string name="suggestion_balance_desc_3">מאוזן (ברירת מחדל)\nאיזון סטנדרטי בין אוצר מילים במילון להרגלי הקלדה אישיים.</string>
     <string name="suggestion_balance_desc_4">מותאם אישית\nמתעדף מילים וביטויים שהקלדת לעתים קרובות.</string>
     <string name="suggestion_balance_desc_5">מותאם אישית מאוד\nמעדיף בחוזקה היסטוריה נלמדת ומילים אישיות על פני אוצר מילים סטנדרטי.</string>
-    <string name="next_word_boost_level">רמת דחיפה למילים נלמדות</string>
     <string name="next_word_strict_ngram">דרוש התאמת הקשר עבור מילים נלמדות</string>
     <string name="next_word_strict_ngram_summary">הצע רק מילים נלמדות כאשר הקשר המילה הקודמת תואם</string>
     <string name="immediate_auto_space">רווח אוטומטי מיידי</string>
@@ -498,7 +495,6 @@
     <string name="clipboard_no_search_results">לא נמצאו תוצאות</string>
     <string name="clipboard_clear_all_confirmation">האם אתה בטוח שברצונך לנקות את כל ההיסטוריה?</string>
     <string name="clear_all">נקה הכל</string>
-    <string name="gesture_method">שיטת הקלדה במחוות</string>
     <string name="load_gesture_library_button_download">הורד ספרייה</string>
     <string name="load_gesture_library_downloading">מוריד ספריית מחוות…</string>
     <string name="load_gesture_library_download_success">ההורדה הושלמה! מפעיל מחדש…</string>
@@ -706,7 +702,6 @@
     <string name="toolbar_keys_alignment_left">שמאל</string>
     <string name="toolbar_keys_alignment_center">מרכז</string>
     <string name="toolbar_keys_alignment_right">ימין</string>
-    <string name="clipboard_keys_alignment">יישור מקשי לוח</string>
     <string name="toolbar_long_press_hint">הצג בלוני רמז ללחיצה ארוכה</string>
     <string name="toolbar_long_press_hint_summary">הצג בלונים על מקשי סרגל הכלים שיש להם פעולת לחיצה ארוכה</string>
     <string name="prefs_popup_keys_vertical_offset">מיקום חלון קופץ בלחיצה ארוכה</string>
@@ -814,7 +809,6 @@
     <string name="auto_show_toolbar_select_summary">הצג את סרגל הכלים בעת בחירת טקסט</string>
     <string name="auto_show_toolbar_no_suggestions">הצג אוטומטית סרגל כלים כשאין הצעות</string>
     <string name="auto_show_toolbar_no_suggestions_summary">הצג את סרגל הכלים כאשר אין הצעות מילים זמינות</string>
-    <string name="toolbar_swipe_down_dismiss">החלק למטה לסגירה</string>
     <string name="auto_hide_pinned_keys">הסתר אוטומטית מקשים מוצמדים</string>
     <string name="auto_hide_pinned_keys_summary">הסתר מקשים מוצמדים כאשר סרגל הכלים מורחב</string>
     <string name="remember_toolbar_state">זכור מצב סרגל כלים</string>
@@ -1620,7 +1614,6 @@
     <string name="auto_pair_symbols_title">התאמה אוטומטית של סמלים</string>
     <string name="auto_pair_symbols_summary">הוסף אוטומטית סוגריים סוגרים, מרכאות וסימני כותרת</string>
     <string name="font_style">סגנון גופן</string>
-    <string name="unicode_panel">סמלי יוניקוד</string>
     <string name="style_active_indicator">סגנון פעיל:%s</string>
     <string name="style_active_none">אין (טקסט רגיל)</string>
     <string name="style_plain">נוֹרמָלִי</string>
@@ -1699,7 +1692,6 @@
     <string name="text_expander_prefix_autocomplete_summary">הצע התאמות חלקיות לקיצורי טקסט ותמונה ללא קידומת לאחר הקלדת 2+ תווים (קיצורי קיצור גם השלמה אוטומטית).</string>
     <string name="unfolded_side_padding_scale">ריפוד צד פרוש</string>
     <string name="voice_futo_models_title">מודלים קוליים של FUTO (ACFT)</string>
-    <string name="voice_futo_models_summary">דגמי Whisper מכוונים עדינים המותאמים להכתבה ניידת</string>
     <string name="button_browse">לְדַפדֵף</string>
     <string name="voice_transcribe_while_speaking_title">תמלל תוך כדי דיבור</string>
     <string name="voice_piecewise_field_changed">ההכתבה הופסקה: שדה הטקסט השתנה, השאר לא הוכנס</string>

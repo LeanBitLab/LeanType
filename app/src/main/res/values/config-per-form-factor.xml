@@ -12,5 +12,4 @@
     <!-- Showing popup keys keyboard, just above the touched point if true, aligned to the key if
          false -->
     <bool name="config_show_popup_keys_keyboard_at_touched_point">false</bool>
-    <bool name="config_default_key_preview_popup">true</bool>
 </resources>

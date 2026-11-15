@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Միացրեք ականջակալը՝ բարձրաձայն արտասանվող գաղտնաբառը լսելու համար:"</string>
-    <string name="spoken_current_text_is">"Տվյալ տեքստը %s է"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g>-ը շտկում է <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g>-ը՝ դարձնելով <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> ստեղնը ինքնաշտկում է կատարում"</string>
     <string name="spoken_empty_suggestion">"Առաջարկներ չկան"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Ձայնային մուտքագրում"</string>
     <string name="spoken_description_emoji">"Զմայլիկներ"</string>
     <string name="spoken_description_return">"Վերադառնալ"</string>
-    <string name="spoken_description_search">"Որոնել"</string>
     <string name="spoken_description_dot">"Կետ"</string>
     <string name="spoken_description_language_switch">"Փոխել լեզուն"</string>
     <string name="spoken_description_action_next">"Հաջորդը"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Ճամփորդություն և տեսարժան վայրեր"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Գործունեություն"</string>
     <string name="spoken_description_emoji_category_emoticons">"Զմայլիկներ"</string>
-    <string name="spoken_description_upper_case">"Մեծատառ <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Մեծատառ I"</string>
     <string name="spoken_letter_0130">"Մեծատառ I, վերևում կետիկ"</string>
     <string name="spoken_open_popup_keys_keyboard">"Լրացուցիչ տառանշաններով ստեղնաշարը հասանելի է"</string>

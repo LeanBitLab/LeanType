@@ -158,7 +158,6 @@
     <string name="center_suggestion_text_to_enter_summary">اسپیس یا اوقاف دبانے پر درمیانی تجویز داخل ہو جائے گی</string>
     <string name="prioritize_personal_suggestions">ذاتی اور سیکھے ہوئے الفاظ کو ترجیح دیں</string>
     <string name="prioritize_personal_suggestions_summary">اگلے لفظ کی پیش گوئی کے دوران ذاتی لغت اور سیکھے ہوئے الفاظ کو زیادہ اسکور ترجیح دیں</string>
-    <string name="next_word_boost_level">سیکھے ہوئے لفظ کی بوسٹ لیول</string>
     <string name="next_word_strict_ngram">سیکھے ہوئے الفاظ کے لیے سیاق و سباق کی مماثلت ضروری ہے</string>
     <string name="next_word_strict_ngram_summary">صرف اس وقت سیکھے ہوئے الفاظ تجویز کریں جب پچھلے لفظ کا سیاق و سباق مماثل ہو</string>
     <string name="immediate_auto_space">فوری خودکار اسپیس</string>
@@ -209,7 +208,6 @@
     <string name="locales_with_dict">لغات والی زبانیں</string>
     <string name="load_gesture_library">اشارہ ٹائپنگ لائبریری لوڈ کریں</string>
     <string name="load_gesture_library_summary">اشارہ ٹائپنگ کو فعال کرنے کے لیے ایک مقامی لائبریری فراہم کریں</string>
-    <string name="gesture_method">اشارہ ٹائپنگ کا طریقہ</string>
     <string name="load_gesture_library_message">آپ کو \'%s\' کے لیے لائبریری درکار ہوگی۔ غیر مطابقت پذیر لائبریریاں اشارہ ٹائپنگ کے دوران کریش کر سکتی ہیں۔
         \n\nانتباہ: بیرونی کوڈ لوڈ کرنا ایک حفاظتی خطرہ ہو سکتا ہے۔ صرف کسی معتبر ذریعہ سے لائبریری استعمال کریں۔</string>
     <string name="checksum_mismatch_message">نامعلوم لائبریری فائل۔ کیا آپ کو یقین ہے کہ یہ کسی معتبر ذریعہ سے ہے اور \'%s\' کے لیے ہے؟</string>
@@ -688,14 +686,12 @@
     <string name="customize_toolbar_key_code_reset_message">واقعی تمام حسب ضرورت کی کوڈز صاف کرنا ہے؟</string>
     <string name="key_code">کلید کا کوڈ</string>
     <string name="long_press_code">دیر تک دبانے کا کوڈ</string>
-    <string name="auto_show_toolbar">خودکار طور پر ٹول بار دکھائیں</string>
     <string name="auto_show_toolbar_open">کھلنے پر خودکار ٹول بار دکھائیں</string>
     <string name="auto_show_toolbar_select">منتخب کرنے پر خودکار ٹول بار دکھائیں</string>
     <string name="auto_show_toolbar_summary">کی بورڈ کھلنے پر ٹول بار دکھائیں</string>
     <string name="auto_show_toolbar_select_summary">متن منتخب کرتے وقت ٹول بار دکھائیں</string>
     <string name="auto_hide_toolbar">خودکار طور پر ٹول بار چھپائیں</string>
     <string name="auto_hide_toolbar_summary">جب تجاویز دستیاب ہو جائیں تو ٹول بار چھپائیں</string>
-    <string name="toolbar_swipe_down_dismiss">بند کرنے کے لیے نیچے سوائپ کریں</string>
     <string name="auto_hide_pinned_keys">پن کی گئی کیز خودکار چھپائیں</string>
     <string name="auto_hide_pinned_keys_summary">جب ٹول بار پھیلا ہوا ہو تو پن کی گئی کیز چھپائیں</string>
     <string name="remember_toolbar_state">ٹول بار کی حالت یاد رکھیں</string>
@@ -706,7 +702,6 @@
     <string name="customize_icons_reset_message">واقعی تمام حسب ضرورت آئیکنز کو دوبارہ ترتیب دینا ہے؟</string>
     <string name="delete_confirmation">واقعی %s حذف کرنا ہے؟</string>
     <string name="name_invalid">غلط نام</string>
-    <string name="custom_subtype">حسب ضرورت ذیلی قسم</string>
     <string name="landscape">لینڈ اسکیپ</string>
     <string name="offline_model_title">آف لائن ماڈل</string>
     <string name="offline_model_summary">مقامی LLM کا نظم کریں</string>
@@ -913,7 +908,6 @@
     <string name="toolbar_keys_alignment_left">بائیں</string>
     <string name="toolbar_keys_alignment_center">درمیان</string>
     <string name="toolbar_keys_alignment_right">دائیں</string>
-    <string name="clipboard_keys_alignment">کلپ بورڈ کیز کی ترتیب</string>
     <string name="prefs_popup_keys_vertical_offset">دبا کر رکھنے پر پاپ اپ کی پوزیشن</string>
     <string name="edit">ترمیم کریں</string>
     <string name="prefs_keypress_sound_style_settings">کی دبانے کی آواز کا انداز</string>
@@ -1704,7 +1698,6 @@
     <string name="auto_pair_symbols_title">خودکار جوڑی علامتیں</string>
     <string name="auto_pair_symbols_summary">خودکار طور پر اختتامی بریکٹ، اقتباسات اور عنوان کے نشانات داخل کریں۔</string>
     <string name="font_style">فونٹ اسٹائل</string>
-    <string name="unicode_panel">یونیکوڈ سمبلز</string>
     <string name="style_active_indicator">فعال انداز:%s</string>
     <string name="style_active_none">کوئی نہیں (سادہ متن)</string>
     <string name="style_plain">نارمل</string>
@@ -1783,7 +1776,6 @@
     <string name="text_expander_prefix_autocomplete_summary">2+ حروف ٹائپ کرنے کے بعد غیر سابقہ ​​متن اور تصویری شارٹ کٹس کے لیے جزوی مماثلتیں تجویز کریں (سابقہ ​​شارٹ کٹس بھی خود بخود مکمل ہوتے ہیں)۔</string>
     <string name="unfolded_side_padding_scale">کھولی ہوئی سائیڈ پیڈنگ</string>
     <string name="voice_futo_models_title">FUTO وائس ماڈلز (ACFT)</string>
-    <string name="voice_futo_models_summary">موبائل ڈکٹیشن کے لیے موزوں وِسپر ماڈلز</string>
     <string name="button_browse">براؤز کریں۔</string>
     <string name="voice_transcribe_while_speaking_title">بولتے ہوئے نقل کریں۔</string>
     <string name="voice_piecewise_field_changed">ڈکٹیشن بند ہو گئی: ٹیکسٹ فیلڈ تبدیل ہو گئی، باقی داخل نہیں کیا گیا۔</string>
@@ -1793,4 +1785,6 @@
     <string name="voice_transcribe_while_speaking_summary">طویل ڈکٹیشن کے لیے مختصر انتظار</string>
     <string name="backup_category_personal_dictionary">ذاتی لغت</string>
     <string name="backup_category_text_expander">ٹیکسٹ ایکسپینڈر</string>
+    <string name="no_dictionary_message">\"کسی لغت کے بغیر، آپ کو صرف اس متن کے لیے تجاویز ملیں گی جو آپ نے پہلے درج کی ہیں۔&lt;br&gt;
+        آپ لغات ڈاؤن لوڈ کر سکتے ہیں%1$s، یا چیک کر سکتے ہیں کہ آیا \"%2$s\" کی لغت براہ راست ڈاؤن لوڈ کی جا سکتی ہے%3$s۔</string>
 </resources>

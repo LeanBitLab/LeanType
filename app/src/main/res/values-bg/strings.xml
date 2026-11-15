@@ -275,7 +275,6 @@
     <string name="var_toolbar_direction">Променлива посока на лентата с инструменти</string>
     <string name="auto_show_toolbar_summary">Показване на лентата с инструменти, ако започне въвеждане или е избран текст</string>
     <string name="var_toolbar_direction_summary">Обратна посока, когато е избран подтип клавиатура отдясно наляво</string>
-    <string name="auto_show_toolbar">Автоматично показване на лентата с инструменти</string>
     <string name="dictionary_load_error">Грешка при зареждането на речниковия файл</string>
     <string name="theme_name_blue_gray" tools:keep="@string/theme_name_blue_gray">Синьо сиво</string>
     <string name="theme_name_brown" tools:keep="@string/theme_name_brown">Кафяво</string>
@@ -414,7 +413,6 @@
     <string name="get_layouts_message">Можете да намерите и споделите оформления в %s.</string>
     <string name="discussion_section_link">раздел за обсъждане</string>
     <string name="get_colors_message">Можете да намирате и споделяте цветове в %s.</string>
-    <string name="custom_subtype">Персонализиран подтип</string>
     <string name="subtype_baishakhi_bn_IN">%s (Байсахи)</string>
     <string name="show_tld_popup_keys">Показване на TLD изскачащи клавиши</string>
     <string name="show_tld_popup_keys_summary">Заместване на изскачащите прозорци с клавиши за период с домейни от първо ниво при въвеждане на URL и имейл адреси</string>
@@ -504,7 +502,6 @@
     <string name="suggestion_balance_desc_3">Балансирано (по подразбиране)\nСтандартен баланс между речниковия запас и личните навици на писане.</string>
     <string name="suggestion_balance_desc_4">Персонализирано\nПриоритизира думи и фрази, които въвеждате често.</string>
     <string name="suggestion_balance_desc_5">Силно персонализирано\nСилно фаворизира научената история и личните думи пред стандартния речников запас.</string>
-    <string name="next_word_boost_level">Ниво на усилване на научените думи</string>
     <string name="next_word_strict_ngram">Изискване на контекстно съвпадение за научени думи</string>
     <string name="next_word_strict_ngram_summary">Предлагане на научени думи само когато контекстът на предходната дума съвпада</string>
     <string name="immediate_auto_space">Незабавен автоматичен интервал</string>
@@ -527,7 +524,6 @@
     <string name="clipboard_no_search_results">Няма намерени резултати</string>
     <string name="clipboard_clear_all_confirmation">Сигурни ли сте, че искате да изчистите цялата история?</string>
     <string name="clear_all">Изчистване на всичко</string>
-    <string name="gesture_method">Метод на писане с жестове</string>
     <string name="load_gesture_library_button_download">Изтегляне на библиотека</string>
     <string name="load_gesture_library_downloading">Изтегляне на библиотеката за жестове…</string>
     <string name="load_gesture_library_download_success">Изтеглянето завърши! Рестартиране…</string>
@@ -735,7 +731,6 @@
     <string name="toolbar_keys_alignment_left">Ляво</string>
     <string name="toolbar_keys_alignment_center">Център</string>
     <string name="toolbar_keys_alignment_right">Дясно</string>
-    <string name="clipboard_keys_alignment">Подравняване на клавишите на лентата с инструменти</string>
     <string name="toolbar_long_press_hint">Показване на подсказки при дълго натискане</string>
     <string name="toolbar_long_press_hint_summary">Показване на подсказки върху клавишите на лентата с инструменти, които имат действие при дълго натискане</string>
     <string name="prefs_popup_keys_vertical_offset">Позиция на изскачащия прозорец при дълго натискане</string>
@@ -843,7 +838,6 @@
     <string name="auto_show_toolbar_select_summary">Показване на лентата с инструменти при избор на текст</string>
     <string name="auto_show_toolbar_no_suggestions">Автоматично показване на лентата с инструменти, когато няма предложения</string>
     <string name="auto_show_toolbar_no_suggestions_summary">Показване на лентата с инструменти, когато няма налични предложения за думи</string>
-    <string name="toolbar_swipe_down_dismiss">Плъзнете надолу за затваряне</string>
     <string name="auto_hide_pinned_keys">Автоматично скриване на фиксираните клавиши</string>
     <string name="auto_hide_pinned_keys_summary">Скриване на фиксираните клавиши, когато лентата с инструменти е разгъната</string>
     <string name="remember_toolbar_state">Запомняне на състоянието на лентата с инструменти</string>
@@ -1649,7 +1643,6 @@
     <string name="auto_pair_symbols_title">Автоматично сдвояване на символи</string>
     <string name="auto_pair_symbols_summary">Автоматично вмъкване на затварящи скоби, кавички и знаци за заглавие</string>
     <string name="font_style">Стил на шрифта</string>
-    <string name="unicode_panel">Unicode символи</string>
     <string name="style_active_indicator">Активен стил:%s</string>
     <string name="style_active_none">Няма (обикновен текст)</string>
     <string name="style_plain">нормално</string>
@@ -1728,7 +1721,6 @@
     <string name="text_expander_prefix_autocomplete_summary">Предложете частични съвпадения за текстови и графични преки пътища без префикс след въвеждане на 2+ знака (префиксните преки пътища също се допълват автоматично).</string>
     <string name="unfolded_side_padding_scale">Разгъната странична подплата</string>
     <string name="voice_futo_models_title">FUTO гласови модели (ACFT)</string>
-    <string name="voice_futo_models_summary">Фино настроени модели Whisper, оптимизирани за мобилно диктовка</string>
     <string name="button_browse">Прегледайте</string>
     <string name="voice_transcribe_while_speaking_title">Транскрибирайте, докато говорите</string>
     <string name="voice_piecewise_field_changed">Диктовката е спряна: текстовото поле е променено, останалото не е вмъкнато</string>

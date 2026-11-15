@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Conectați un set căști-microfon pentru a auzi tastele apăsate când introduceți parola."</string>
-    <string name="spoken_current_text_is">"Textul curent este %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> corectează <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> cu <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> efectuează corectare automată"</string>
     <string name="spoken_empty_suggestion">"Nicio sugestie"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Intrare vocală"</string>
     <string name="spoken_description_emoji">"Emoticonuri"</string>
     <string name="spoken_description_return">"Return"</string>
-    <string name="spoken_description_search">"Căutați"</string>
     <string name="spoken_description_dot">"Bulină"</string>
     <string name="spoken_description_language_switch">"Schimbați limba"</string>
     <string name="spoken_description_action_next">"Înai."</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Călătorii și locații"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Activitate"</string>
     <string name="spoken_description_emoji_category_emoticons">"Emoticonuri"</string>
-    <string name="spoken_description_upper_case">"<xliff:g id="LOWER_LETTER">%s</xliff:g> mare"</string>
     <string name="spoken_letter_0049">"I mare"</string>
     <string name="spoken_letter_0130">"I mare, punct deasupra"</string>
     <string name="spoken_open_popup_keys_keyboard">"Sunt disponibile caractere alternative"</string>

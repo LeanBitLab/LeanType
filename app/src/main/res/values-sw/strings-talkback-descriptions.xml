@@ -5,7 +5,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="spoken_use_headphones">"Chomeka kifaa cha sauti ili usikie vitufe vya nenosiri vikitamkwa kwa sauti."</string>
-    <string name="spoken_current_text_is">"Maandishi ya sasa ni %s"</string>
     <string name="spoken_auto_correct">"<xliff:g id="KEY_NAME">%1$s</xliff:g> hurekebisha <xliff:g id="ORIGINAL_WORD">%2$s</xliff:g> kuwa <xliff:g id="CORRECTED_WORD">%3$s</xliff:g>"</string>
     <string name="spoken_auto_correct_obscured">"<xliff:g id="KEY_NAME">%1$s</xliff:g> hufanya marekebisho otomatiki"</string>
     <string name="spoken_empty_suggestion">"Hakuna pendekezo"</string>
@@ -25,7 +24,6 @@
     <string name="spoken_description_mic">"Kuweka data kwa kutamka"</string>
     <string name="spoken_description_emoji">"Emoji"</string>
     <string name="spoken_description_return">"Rudi"</string>
-    <string name="spoken_description_search">"Utafutaji"</string>
     <string name="spoken_description_dot">"Nukta"</string>
     <string name="spoken_description_language_switch">"Badilisha lugha"</string>
     <string name="spoken_description_action_next">"Linalofuata"</string>
@@ -58,7 +56,6 @@
     <string name="spoken_description_emoji_category_eight_travel_places">"Usafiri na Maeneo"</string>
     <string name="spoken_description_emoji_category_eight_activity">"Shughuli"</string>
     <string name="spoken_description_emoji_category_emoticons">"Vikaragosi"</string>
-    <string name="spoken_description_upper_case">"Herufi kubwa <xliff:g id="LOWER_LETTER">%s</xliff:g>"</string>
     <string name="spoken_letter_0049">"Herufi I kubwa"</string>
     <string name="spoken_letter_0130">"Herufi I kubwa, alama ya kitone inayowekwa sehemu ya juu ya herufi katika alfabeti za Kilatini na Kivietnamu"</string>
     <string name="spoken_open_popup_keys_keyboard">"Herufi mbadala zinapatikana"</string>
