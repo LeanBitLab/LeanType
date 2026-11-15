@@ -159,6 +159,7 @@ class TouchpadView @JvmOverloads constructor(
         return false // Let children handle their own touches
     }
 
+    @SuppressLint("ClickableViewAccessibility") // consumes touches so they do not reach views behind
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         // Consume any touch not handled by children
         return true

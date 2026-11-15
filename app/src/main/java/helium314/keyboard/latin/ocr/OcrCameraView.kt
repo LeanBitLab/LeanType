@@ -76,6 +76,7 @@ class OcrCameraView @JvmOverloads constructor(
         return true
     }
 
+    @SuppressLint("ClickableViewAccessibility") // tap to focus, already calls performClick
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.actionMasked == MotionEvent.ACTION_UP) {
             performClick()

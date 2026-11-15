@@ -1604,6 +1604,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         return promptView
     }
 
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle key repeat and scroll locking, not clicks
     private fun setupKey(view: ImageButton, colors: Colors) {
         val tag = view.tag
         if (tag is ToolbarKey && isRepeatableToolbarKey(tag)) {
@@ -1874,6 +1875,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
      * @param emojis List of emoji strings to display
      * @param onEmojiClick Callback when an emoji is tapped
      */
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle key repeat and scroll locking, not clicks
     fun setEmojiSuggestions(emojis: List<String>, onEmojiClick: (String) -> Unit) {
         if (isVoiceActive) return
         if (!Settings.getValues().mSplitToolbar) return

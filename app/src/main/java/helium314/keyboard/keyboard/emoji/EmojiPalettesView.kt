@@ -7,6 +7,7 @@
 
 package helium314.keyboard.keyboard.emoji
 
+import android.annotation.SuppressLint
 import kotlin.math.abs
 import kotlin.math.max
 import android.app.AlertDialog
@@ -445,6 +446,7 @@ class EmojiPalettesView @JvmOverloads constructor(
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle caret placement and scroll locking, not clicks
     private fun startSearchMode() {
         Log.d("EmojiSearch", "startSearchMode() called")
         if (mInSearchMode) return
@@ -1369,6 +1371,7 @@ class EmojiPalettesView @JvmOverloads constructor(
      * The strip lives in the category page layout and is hidden for every other category
      * (pages are reused, so this also has to reset it). Without groups in EMOTICONS.txt nothing is shown.
      */
+    @SuppressLint("ClickableViewAccessibility") // touch listeners handle caret placement and scroll locking, not clicks
     private fun setupEmoticonGroups(page: View, recyclerView: RecyclerView, categoryId: Int) {
         val scroll = page.findViewById<HorizontalScrollView>(R.id.emoticon_group_scroll) ?: return
         val strip = page.findViewById<LinearLayout>(R.id.emoticon_group_strip) ?: return
