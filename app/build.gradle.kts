@@ -210,6 +210,8 @@ android {
         disable += "MissingTranslation"
         // style-only checks, no effect on behavior
         disable += listOf("TypographyEllipsis", "TypographyDashes", "UseKtx")
+        // the translation tooling only handles <string>, and plurals would need per-locale quantity forms
+        disable += "PluralsCandidate"
     }
 }
 
