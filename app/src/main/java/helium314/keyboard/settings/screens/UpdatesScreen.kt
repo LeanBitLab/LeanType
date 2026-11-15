@@ -64,16 +64,13 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Custom Text Styles: Add your own Unicode font styles from Toolbar > Custom text styles, with live typing and undo in the Font Style strip",
-    "• Offline Flavor Requires Android 6.0+: The offline flavor minimum is raised from Android 5.0 to Android 6.0, the same as standard",
-    "• Letter Size Fix: Wide letters such as w and m (and ш, щ) are no longer drawn smaller than the other letters",
-    "• Backspace Fix: One backspace no longer deletes all text before the cursor when it is a run of circled letters, arrows or symbols",
-    "• Voice Strip Fix: The voice animation stays visible when voice input is started from the expanded toolbar",
-    "• Voice Key While Processing: Tapping the voice key during processing no longer cancels the pending text",
-    "• Stray Dictation Words: Live transcription trims trailing silence and ignores noise-only pieces, so no extra words are added",
-    "• Live Transcription Stability: Late callbacks cannot affect a new dictation and a hung piece now times out",
-    "• Voice Plugin Binding: The plugin is no longer left bound after a failed model import",
-    "• Android 6 Compatibility: Replaced API 23 and 24 calls that could crash older devices"
+    "• Navigation Bar Gap Fix: The keyboard reserves only the part of the navigation bar it really overlaps, fixing a too large gap below the keys on devices such as the Samsung Note 10 (Android 12)",
+    "• Settings Search: Expandable section headers are no longer listed in the results",
+    "• Search Jump Highlight: The highlighted setting after a long press stays readable in light and dark themes",
+    "• Faster Settings Screens: Large screens compose their settings as you scroll, so they open with a shorter stall",
+    "• Log Privacy: Typed words (personal dictionary, emoji search) are no longer written to the in-app log",
+    "• Cleanup: The disabled OTP auto-fill code and its strings are removed",
+    "• Release Badges: The download badge follows the stable release and the pre-release button shows the current beta"
 )
 
 @Composable

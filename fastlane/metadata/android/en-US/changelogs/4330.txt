@@ -1,7 +1,6 @@
-- Custom text styles: add your own Unicode fonts in Toolbar settings.
-- Offline flavor now needs Android 6.0+.
-- Fixed w and m letters drawn smaller than other letters.
-- Fixed one backspace deleting all text before symbol runs.
-- Voice: strip stays visible from the open toolbar, voice key ignored while processing, no stray trailing words.
-- Voice plugin no longer stays bound after a failed import.
-- Fixed crashes on Android 6 from newer APIs.
+- Fixed too large gap below the keys on Samsung Note 10 / Android 12 (needs testing).
+- Settings search no longer lists expandable section headers.
+- Readable highlight after long press on a search result.
+- Large settings screens open faster.
+- Typed words no longer written to the in-app log.
+- Removed the disabled OTP auto-fill code.
