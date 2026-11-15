@@ -723,8 +723,16 @@ object UnicodeStyleEngine {
         if (colon < 0) return null
         val name = line.substring(0, colon).trim()
         if (name.isEmpty()) return null
-        val cps = line.substring(colon + 1).codePoints().filter { !Character.isWhitespace(it) }.toArray()
-        return if (cps.size == 52 || cps.size == 62) name to cps else null
+        // plain loop: String.codePoints() and IntStream need API 24, the app supports API 21/23
+        val rest = line.substring(colon + 1)
+        val cps = ArrayList<Int>(62)
+        var i = 0
+        while (i < rest.length) {
+            val cp = rest.codePointAt(i)
+            if (!Character.isWhitespace(cp)) cps.add(cp)
+            i += Character.charCount(cp)
+        }
+        return if (cps.size == 52 || cps.size == 62) name to cps.toIntArray() else null
     }
 
     private fun buildReverseMap(styles: List<StyleDefinition>): Map<Int, Int> {
