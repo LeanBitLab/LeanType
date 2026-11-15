@@ -479,9 +479,6 @@
     <string name="immediate_auto_space_summary">选择建议时立即提交空格，以防止输入下一个字母时出现延迟</string>
     <string name="suggest_screenshots">建议最近的截图</string>
     <string name="suggest_screenshots_summary">将最近截取的屏幕截图显示为建议</string>
-    <string name="auto_read_otp">自动读取短信中的 OTP</string>
-    <string name="auto_read_otp_summary">将传入短信中的验证码显示为建议，点击即可插入</string>
-    <string name="spoken_otp_suggestion">关闭 OTP 建议</string>
     <string name="compress_screenshots">压缩截图建议</string>
     <string name="compress_screenshots_summary">降低截图建议的质量和大小以节省空间</string>
     <string name="clipboard_fold_pinned">默认折叠固定项目</string>

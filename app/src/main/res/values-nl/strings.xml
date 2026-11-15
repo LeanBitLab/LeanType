@@ -496,9 +496,6 @@
     <string name="immediate_auto_space_summary">Spatie direct invoegen bij het kiezen van een suggestie om vertraging bij de volgende getypte letter te voorkomen</string>
     <string name="suggest_screenshots">Recente screenshots voorstellen</string>
     <string name="suggest_screenshots_summary">Recent gemaakte screenshots tonen als suggestie</string>
-    <string name="auto_read_otp">OTP automatisch lezen uit sms</string>
-    <string name="auto_read_otp_summary">Toon de code van een inkomende sms als een suggestie die u kunt aantikken om in te voegen</string>
-    <string name="spoken_otp_suggestion">OTP-suggestie negeren</string>
     <string name="compress_screenshots">Screenshot-suggesties comprimeren</string>
     <string name="compress_screenshots_summary">Verminder kwaliteit en grootte van screenshot-suggesties om ruimte te besparen</string>
     <string name="clipboard_fold_pinned">Vastgezette items standaard samenvouwen</string>

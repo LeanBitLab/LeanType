@@ -56,7 +56,6 @@ object Defaults {
 
     const val PREF_ENABLE_SPELL_CHECKER_SERVICE = true
     const val PREF_ENABLE_CLIPBOARD_LISTENER = true
-    const val PREF_ENABLE_SMS_OTP_RECEIVER = false
     const val PREF_ENABLE_APP_SYNC_LISTENER = false
 
 
@@ -175,7 +174,6 @@ object Defaults {
     const val PREF_SUGGESTIONS_COUNT_IN_STRIP = 3
     const val PREF_SUGGEST_SCREENSHOTS = false
     const val PREF_COMPRESS_SCREENSHOTS = true
-    const val PREF_AUTO_READ_OTP = false
     const val PREF_INLINE_MATH_CALCULATION = true
     const val PREF_GESTURE_INPUT = true
     // ponytail: gesture method default value

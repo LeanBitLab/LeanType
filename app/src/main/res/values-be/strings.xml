@@ -457,9 +457,6 @@
     <string name="suggest_punctuation_summary">Паказваць знакі пунктуацыі, калі іншых прапаноў няма</string>
     <string name="suggest_screenshots">Прапаноўваць нядаўнія здымкі экрана</string>
     <string name="suggest_screenshots_summary">Паказваць нядаўна зробленыя здымкі экрана ў якасці прапановы</string>
-    <string name="auto_read_otp">Аўтаматычнае чытанне OTP з SMS</string>
-    <string name="auto_read_otp_summary">Паказваць код з уваходнага SMS у якасці прапановы, якую можна націснуць для ўстаўкі</string>
-    <string name="spoken_otp_suggestion">Адхіліць прапанову OTP</string>
     <string name="compress_screenshots">Сціскаць прапановы здымкаў экрана</string>
     <string name="compress_screenshots_summary">Зніжаць якасць і памер прапаноў здымкаў экрана для эканоміі месца</string>
     <string name="clipboard_history_pinned_first">Паказваць замацаваныя элементы зверху</string>

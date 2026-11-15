@@ -464,9 +464,6 @@
     <string name="immediate_auto_space_summary">إدراج مسافة فورًا عند اختيار اقتراح لمنع التأخير في كتابة الحرف التالي</string>
     <string name="suggest_screenshots">اقتراح لقطات الشاشة الحديثة</string>
     <string name="suggest_screenshots_summary">عرض لقطات الشاشة التي تم التقاطها مؤخرًا كاقتراح</string>
-    <string name="auto_read_otp">قراءة OTP تلقائيًا من الرسائل القصيرة</string>
-    <string name="auto_read_otp_summary">عرض الرمز من رسالة نصية واردة كاقتراح يمكنك النقر عليه لإدراجه</string>
-    <string name="spoken_otp_suggestion">تجاهل اقتراح OTP</string>
     <string name="compress_screenshots">ضغط اقتراحات لقطات الشاشة</string>
     <string name="compress_screenshots_summary">تقليل جودة وحجم اقتراحات لقطات الشاشة لتوفير المساحة</string>
     <string name="clipboard_fold_pinned">طي العناصر المثبتة افتراضيًا</string>

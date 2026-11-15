@@ -160,7 +160,6 @@ open class SettingsValues(
     val mUseAppsDictionary: Boolean
     val mEnableSpellCheckerService: Boolean
     val mEnableClipboardListener: Boolean
-    val mEnableSmsOtpReceiver: Boolean
     val mEnableAppSyncListener: Boolean
     val mCustomNavBarColor: Boolean
     val mKeyboardHeightScale: Float
@@ -236,7 +235,6 @@ open class SettingsValues(
     private val mOverrideShowingSuggestions: Boolean
     val mSuggestClipboardContent: Boolean
     val mSuggestScreenshots: Boolean
-    val mAutoReadOtp: Boolean
     val mInlineMathCalculation: Boolean
     val mCompressScreenshots: Boolean
     val mSettingsValuesForSuggestion: SettingsValuesForSuggestion
@@ -338,7 +336,6 @@ open class SettingsValues(
         mUsePersonalizedDicts = prefs.getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, Defaults.PREF_KEY_USE_PERSONALIZED_DICTS)
         mEnableSpellCheckerService = prefs.getBoolean(Settings.PREF_ENABLE_SPELL_CHECKER_SERVICE, Defaults.PREF_ENABLE_SPELL_CHECKER_SERVICE)
         mEnableClipboardListener = prefs.getBoolean(Settings.PREF_ENABLE_CLIPBOARD_LISTENER, Defaults.PREF_ENABLE_CLIPBOARD_LISTENER)
-        mEnableSmsOtpReceiver = prefs.getBoolean(Settings.PREF_ENABLE_SMS_OTP_RECEIVER, Defaults.PREF_ENABLE_SMS_OTP_RECEIVER)
         mEnableAppSyncListener = prefs.getBoolean(Settings.PREF_ENABLE_APP_SYNC_LISTENER, Defaults.PREF_ENABLE_APP_SYNC_LISTENER)
         mUseDoubleSpacePeriod = prefs.getBoolean(Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD, Defaults.PREF_KEY_USE_DOUBLE_SPACE_PERIOD) && mInputAttributes.mIsGeneralTextInput
         mBlockPotentiallyOffensive = prefs.getBoolean(Settings.PREF_BLOCK_POTENTIALLY_OFFENSIVE, Defaults.PREF_BLOCK_POTENTIALLY_OFFENSIVE)
@@ -382,7 +379,6 @@ open class SettingsValues(
         mSuggestPunctuation = prefs.getBoolean(Settings.PREF_SUGGEST_PUNCTUATION, Defaults.PREF_SUGGEST_PUNCTUATION)
         mSuggestClipboardContent = prefs.getBoolean(Settings.PREF_SUGGEST_CLIPBOARD_CONTENT, Defaults.PREF_SUGGEST_CLIPBOARD_CONTENT)
         mSuggestScreenshots = prefs.getBoolean(Settings.PREF_SUGGEST_SCREENSHOTS, Defaults.PREF_SUGGEST_SCREENSHOTS)
-        mAutoReadOtp = prefs.getBoolean(Settings.PREF_AUTO_READ_OTP, Defaults.PREF_AUTO_READ_OTP)
         mInlineMathCalculation = prefs.getBoolean(Settings.PREF_INLINE_MATH_CALCULATION, Defaults.PREF_INLINE_MATH_CALCULATION)
         mCompressScreenshots = prefs.getBoolean(Settings.PREF_COMPRESS_SCREENSHOTS, Defaults.PREF_COMPRESS_SCREENSHOTS)
         mDoubleSpacePeriodTimeout = 1100L

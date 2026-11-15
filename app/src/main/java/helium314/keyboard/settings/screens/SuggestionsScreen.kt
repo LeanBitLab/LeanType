@@ -23,15 +23,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.edit
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import helium314.keyboard.dictionarypack.DictionaryPackConstants
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.R
@@ -105,7 +101,6 @@ fun SuggestionsScreen(
             Settings.PREF_SUGGEST_SCREENSHOTS,
             if (prefs.getBoolean(Settings.PREF_SUGGEST_SCREENSHOTS, Defaults.PREF_SUGGEST_SCREENSHOTS))
                 Settings.PREF_COMPRESS_SCREENSHOTS else null,
-            // Settings.PREF_AUTO_READ_OTP,
             Settings.PREF_INLINE_MATH_CALCULATION,
             Settings.PREF_USE_APPS,
         )
@@ -290,68 +285,6 @@ fun createSuggestionsSettings(context: Context) = listOf(
     ) {
         SwitchPreference(it, Defaults.PREF_COMPRESS_SCREENSHOTS)
     },
-    /*
-    Setting(context, Settings.PREF_AUTO_READ_OTP,
-        R.string.auto_read_otp, R.string.auto_read_otp_summary
-    ) { setting ->
-        val activity = LocalContext.current.getActivity() as? SettingsActivity ?: return@Setting
-        var granted by remember { mutableStateOf(PermissionsUtil.isNotificationListenerEnabled(activity)) }
-        var pendingOtpEnable by rememberSaveable { mutableStateOf(false) }
-
-        val lifecycleOwner = LocalLifecycleOwner.current
-        DisposableEffect(lifecycleOwner) {
-            val observer = LifecycleEventObserver { _, event ->
-                if (event == Lifecycle.Event.ON_RESUME) {
-                    val currentGranted = PermissionsUtil.isNotificationListenerEnabled(activity)
-                    granted = currentGranted
-                    if (pendingOtpEnable && currentGranted) {
-                        activity.prefs().edit { putBoolean(Settings.PREF_AUTO_READ_OTP, true) }
-                        PermissionsUtil.updateNotificationListenerComponent(activity, true)
-                        pendingOtpEnable = false
-                    } else if (!currentGranted && activity.prefs().getBoolean(Settings.PREF_AUTO_READ_OTP, false)) {
-                        activity.prefs().edit { putBoolean(Settings.PREF_AUTO_READ_OTP, false) }
-                        PermissionsUtil.updateNotificationListenerComponent(activity, false)
-                    }
-                    activity.prefChanged()
-                }
-            }
-            lifecycleOwner.lifecycle.addObserver(observer)
-            onDispose {
-                lifecycleOwner.lifecycle.removeObserver(observer)
-            }
-        }
-
-        val description = if (!granted && activity.prefs().getBoolean(Settings.PREF_AUTO_READ_OTP, false)) {
-            "${setting.description}\n\n⚠ Notification access required. Tap to grant permission."
-        } else {
-            setting.description
-        }
-
-        SwitchPreference(
-            name = setting.title,
-            key = setting.key,
-            default = Defaults.PREF_AUTO_READ_OTP,
-            description = description,
-            allowCheckedChange = { enable ->
-                if (enable) {
-                    PermissionsUtil.updateNotificationListenerComponent(activity, true)
-                    if (!PermissionsUtil.isNotificationListenerEnabled(activity)) {
-                        pendingOtpEnable = true
-                        PermissionsUtil.openNotificationListenerSettings(activity)
-                        false
-                    } else true
-                } else {
-                    PermissionsUtil.updateNotificationListenerComponent(activity, false)
-                    true
-                }
-            },
-            onCheckedChange = {
-                PermissionsUtil.updateNotificationListenerComponent(activity, it)
-                activity.prefChanged()
-            }
-        )
-    },
-    */
     Setting(context, Settings.PREF_INLINE_MATH_CALCULATION,
         R.string.pref_inline_calculator_suggestions, R.string.pref_inline_calculator_suggestions_summary
     ) {

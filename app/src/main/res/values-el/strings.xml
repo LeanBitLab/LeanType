@@ -191,9 +191,6 @@
     <string name="suggest_clipboard_content_summary">Εμφάνιση πρόσφατα αντιγραμμένου περιεχομένου προχείρου ως πρόταση</string>
     <string name="suggest_screenshots">Πρόταση πρόσφατων στιγμιότυπων οθόνης</string>
     <string name="suggest_screenshots_summary">Εμφάνιση πρόσφατα ληφθέντων στιγμιότυπων οθόνης ως πρόταση</string>
-    <string name="auto_read_otp">Αυτόματη ανάγνωση OTP από SMS</string>
-    <string name="auto_read_otp_summary">Εμφάνιση του κωδικού από εισερχόμενο SMS ως πρόταση που μπορείτε να πατήσετε για εισαγωγή</string>
-    <string name="spoken_otp_suggestion">Απόρριψη πρότασης OTP</string>
     <string name="compress_screenshots">Συμπίεση προτάσεων στιγμιότυπων</string>
     <string name="compress_screenshots_summary">Μείωση ποιότητας και μεγέθους προτάσεων στιγμιότυπων για εξοικονόμηση χώρου</string>
     <string name="gesture_floating_preview_static">Αιωρούμενη προεπισκόπηση</string>

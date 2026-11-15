@@ -387,7 +387,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
 
         const val PREF_ENABLE_SPELL_CHECKER_SERVICE = "enable_spell_checker_service"
         const val PREF_ENABLE_CLIPBOARD_LISTENER = "enable_clipboard_listener"
-        const val PREF_ENABLE_SMS_OTP_RECEIVER = "enable_sms_otp_receiver"
         const val PREF_ENABLE_APP_SYNC_LISTENER = "enable_app_sync_listener"
         const val PREF_GIF_PROVIDER = "pref_gif_provider"
         const val PREF_GIF_PROVIDER_ENABLED_PREFIX = "pref_gif_provider_enabled_"
@@ -534,7 +533,6 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_ENABLE_CLIPBOARD_HISTORY = "enable_clipboard_history"
         const val PREF_SUGGEST_SCREENSHOTS = "suggest_screenshots"
         const val PREF_COMPRESS_SCREENSHOTS = "compress_screenshots"
-        const val PREF_AUTO_READ_OTP = "auto_read_otp"
         const val PREF_INLINE_MATH_CALCULATION = "pref_inline_calculator_suggestions"
         const val PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "clipboard_history_retention_time"
         const val PREF_CLIPBOARD_HISTORY_PINNED_FIRST = "clipboard_history_pinned_first"

@@ -469,9 +469,6 @@
     <string name="immediate_auto_space_summary">Миттєво вставляти пробіл під час вибору пропозиції, щоб запобігти затримці при введенні наступної літери</string>
     <string name="suggest_screenshots">Пропонувати недавні скріншоти</string>
     <string name="suggest_screenshots_summary">Показувати нещодавно зроблені скріншоти як пропозицію</string>
-    <string name="auto_read_otp">Автоматичне читання OTP з SMS</string>
-    <string name="auto_read_otp_summary">Показувати код із вхідного SMS як пропозицію, яку можна натиснути для вставки</string>
-    <string name="spoken_otp_suggestion">Відхилити пропозицію OTP</string>
     <string name="compress_screenshots">Стискати пропозиції скріншотів</string>
     <string name="compress_screenshots_summary">Зменшити якість і розмір пропозицій скріншотів для економії місця</string>
     <string name="clipboard_fold_pinned">Згортати закріплені елементи за замовчуванням</string>

@@ -10,13 +10,13 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.calculator.CalculatorHistoryManager
 import helium314.keyboard.latin.calculator.MathEvaluator
 import helium314.keyboard.latin.common.ColorType
-import helium314.keyboard.latin.databinding.OtpSuggestionBinding
+import helium314.keyboard.latin.databinding.InlineSuggestionBinding
 import helium314.keyboard.latin.utils.ToolbarKey
 
 class MathSuggestionManager(private val latinIME: LatinIME) {
 
     private var mathSuggestionView: View? = null
-    private var cachedBinding: OtpSuggestionBinding? = null
+    private var cachedBinding: InlineSuggestionBinding? = null
     private var lastDismissedExpression: String? = null
     private val historyManager by lazy { CalculatorHistoryManager.getInstance(latinIME) }
 
@@ -35,10 +35,10 @@ class MathSuggestionManager(private val latinIME: LatinIME) {
         val binding = cachedBinding?.also { b ->
             (b.root.parent as? ViewGroup)?.removeView(b.root)
             b.root.isGone = false
-        } ?: OtpSuggestionBinding.inflate(LayoutInflater.from(latinIME), parent, false).also {
+        } ?: InlineSuggestionBinding.inflate(LayoutInflater.from(latinIME), parent, false).also {
             cachedBinding = it
         }
-        val textView = binding.otpSuggestionText
+        val textView = binding.inlineSuggestionText
         latinIME.mSettings.getCustomTypeface()?.let { textView.typeface = it }
         
         textView.text = match.resultFormatted
@@ -57,7 +57,7 @@ class MathSuggestionManager(private val latinIME: LatinIME) {
             lastDismissedExpression = match.expression
         }
 
-        val closeButton = binding.otpSuggestionClose
+        val closeButton = binding.inlineSuggestionClose
         closeButton.setImageDrawable(latinIME.mKeyboardSwitcher.keyboard?.mIconsSet?.getIconDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase()))
         closeButton.setOnClickListener {
             AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, it, HapticEvent.KEY_PRESS)

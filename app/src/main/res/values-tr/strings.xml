@@ -453,9 +453,6 @@
     <string name="immediate_auto_space_summary">Bir sonraki harf yazıldığında gecikmeyi önlemek için bir öneri seçildiğinde boşluğu anında ekle</string>
     <string name="suggest_screenshots">Son ekran görüntülerini öner</string>
     <string name="suggest_screenshots_summary">Yakın zamanda çekilen ekran görüntülerini öneri olarak göster</string>
-    <string name="auto_read_otp">SMS\'ten OTP\'yi otomatik oku</string>
-    <string name="auto_read_otp_summary">Gelen SMS\'teki kodu, eklemek için dokunabileceğin bir öneri olarak göster</string>
-    <string name="spoken_otp_suggestion">OTP önerisini kapat</string>
     <string name="compress_screenshots">Ekran görüntüsü önerilerini sıkıştır</string>
     <string name="compress_screenshots_summary">Yerden tasarruf etmek için ekran görüntüsü önerilerinin kalitesini ve boyutunu düşür</string>
     <string name="clipboard_fold_pinned">Sabitlenmiş öğeleri varsayılan olarak daralt</string>

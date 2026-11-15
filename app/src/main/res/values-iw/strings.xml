@@ -482,9 +482,6 @@
     <string name="immediate_auto_space_summary">בצע רווח באופן מיידי בעת בחירת הצעה כדי למנוע עיכוב באות הבאה שמוקלדת</string>
     <string name="suggest_screenshots">הצע צילומי מסך אחרונים</string>
     <string name="suggest_screenshots_summary">הצג צילומי מסך שצולמו לאחרונה כהצעה</string>
-    <string name="auto_read_otp">קרא OTP אוטומטית מ-SMS</string>
-    <string name="auto_read_otp_summary">הצג את הקוד מ-SMS נכנס כהצעה שתוכל להקיש עליה כדי להוסיף</string>
-    <string name="spoken_otp_suggestion">דחה הצעת OTP</string>
     <string name="compress_screenshots">דחוס הצעות צילום מסך</string>
     <string name="compress_screenshots_summary">הפחת את האיכות והגודל של הצעות צילום מסך כדי לחסוך מקום</string>
     <string name="clipboard_fold_pinned">קפל פריטים מוצמדים כברירת מחדל</string>

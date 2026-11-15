@@ -464,9 +464,6 @@
     <string name="immediate_auto_space_summary">Inserisci subito uno spazio quando scegli un suggerimento per evitare ritardi nella prossima lettera digitata</string>
     <string name="suggest_screenshots">Suggerisci screenshot recenti</string>
     <string name="suggest_screenshots_summary">Mostra gli screenshot scattati di recente come suggerimento</string>
-    <string name="auto_read_otp">Leggi automaticamente OTP da SMS</string>
-    <string name="auto_read_otp_summary">Mostra il codice da un SMS in arrivo come suggerimento che puoi toccare per inserire</string>
-    <string name="spoken_otp_suggestion">Ignora suggerimento OTP</string>
     <string name="compress_screenshots">Comprimi suggerimenti screenshot</string>
     <string name="compress_screenshots_summary">Riduci qualità e dimensioni dei suggerimenti screenshot per risparmiare spazio</string>
     <string name="clipboard_fold_pinned">Riduci gli elementi fissati per impostazione predefinita</string>

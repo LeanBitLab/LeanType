@@ -848,9 +848,6 @@
     <string name="suggest_clipboard_content_summary">हाल ही में कॉपी की गई क्लिपबोर्ड सामग्री को सुझाव के रूप में दिखाएं</string>
     <string name="suggest_screenshots">हाल के स्क्रीनशॉट सुझाएं</string>
     <string name="suggest_screenshots_summary">सुझाव के रूप में हाल ही में लिए गए स्क्रीनशॉट दिखाएं</string>
-    <string name="auto_read_otp">एसएमएस से ऑटो-रीड ओटीपी</string>
-    <string name="auto_read_otp_summary">आने वाले एसएमएस से कोड को एक सुझाव के रूप में दिखाएं जिसे आप सम्मिलित करने के लिए टैप कर सकते हैं</string>
-    <string name="spoken_otp_suggestion">ओटीपी सुझाव खारिज करें</string>
     <string name="compress_screenshots">स्क्रीनशॉट सुझावों को संपीड़ित करें</string>
     <string name="compress_screenshots_summary">स्थान बचाने के लिए स्क्रीनशॉट सुझावों की गुणवत्ता और आकार कम करें</string>
     <string name="gesture_floating_preview_static">फ़्लोटिंग पूर्वावलोकन</string>

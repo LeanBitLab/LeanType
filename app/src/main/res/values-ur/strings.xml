@@ -169,9 +169,6 @@
     <string name="suggest_clipboard_content_summary">حال ہی میں کاپی کردہ کلپ بورڈ مواد کو بطور تجویز دکھائیں</string>
     <string name="suggest_screenshots">حالیہ اسکرین شاٹس تجویز کریں</string>
     <string name="suggest_screenshots_summary">حال ہی میں لیے گئے اسکرین شاٹس کو بطور تجویز دکھائیں</string>
-    <string name="auto_read_otp">SMS سے OTP خودکار پڑھیں</string>
-    <string name="auto_read_otp_summary">آنے والی SMS سے کوڈ کو بطور تجویز دکھائیں جسے تھپتھپا کر داخل کیا جا سکتا ہے</string>
-    <string name="spoken_otp_suggestion">OTP تجویز مسترد کریں</string>
     <string name="compress_screenshots">اسکرین شاٹ تجاویز کو کمپریس کریں</string>
     <string name="compress_screenshots_summary">جگہ بچانے کے لیے اسکرین شاٹ تجاویز کے معیار اور سائز کو کم کریں</string>
     <string name="gesture_floating_preview_static">تیرتا پیش منظر</string>

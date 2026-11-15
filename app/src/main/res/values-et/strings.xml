@@ -511,9 +511,6 @@
     <string name="immediate_auto_space_summary">Kinnita tühik kohe soovituse valimisel, et vältida viivitust järgmise tippitava tähe juures</string>
     <string name="suggest_screenshots">Soovita hiljutisi ekraanipilte</string>
     <string name="suggest_screenshots_summary">Näita hiljuti tehtud ekraanipilte soovitusena</string>
-    <string name="auto_read_otp">Loe SMS-ist OTP automaatselt</string>
-    <string name="auto_read_otp_summary">Näita sissetuleva SMS-i koodi soovitusena, mida saate puudutades sisestada</string>
-    <string name="spoken_otp_suggestion">Lükka OTP soovitus tagasi</string>
     <string name="compress_screenshots">Tihenda ekraanipiltide soovitusi</string>
     <string name="compress_screenshots_summary">Vähenda ekraanipiltide soovituste kvaliteeti ja suurust ruumi säästmiseks</string>
     <string name="clipboard_fold_pinned">Voldi kinnitatud üksused vaikimisi kokku</string>

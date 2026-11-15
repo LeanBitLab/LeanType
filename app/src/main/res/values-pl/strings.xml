@@ -518,9 +518,6 @@
     <string name="immediate_auto_space_summary">Wstawiaj spację natychmiast po wybraniu sugestii, aby zapobiec opóźnieniu przy następnej literze</string>
     <string name="suggest_screenshots">Sugeruj ostatnie zrzuty ekranu</string>
     <string name="suggest_screenshots_summary">Pokazuj ostatnio zrobione zrzuty ekranu jako sugestię</string>
-    <string name="auto_read_otp">Automatyczne odczytywanie OTP z SMS</string>
-    <string name="auto_read_otp_summary">Pokazuj kod z przychodzącego SMS-a jako sugestię do wstawienia</string>
-    <string name="spoken_otp_suggestion">Odrzuć sugestię OTP</string>
     <string name="compress_screenshots">Kompresuj sugestie zrzutów ekranu</string>
     <string name="compress_screenshots_summary">Zmniejsz jakość i rozmiar sugestii zrzutów ekranu, aby zaoszczędzić miejsce</string>
     <string name="clipboard_fold_pinned">Domyślnie zwijaj przypięte elementy</string>

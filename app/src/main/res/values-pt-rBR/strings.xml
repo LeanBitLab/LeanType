@@ -722,9 +722,6 @@
     <string name="immediate_auto_space_summary">Inserir espaço instantaneamente ao escolher uma sugestão para evitar atraso na próxima letra digitada</string>
     <string name="suggest_screenshots">Sugerir capturas de ecrã recentes</string>
     <string name="suggest_screenshots_summary">Mostrar capturas de ecrã tiradas recentemente como sugestão</string>
-    <string name="auto_read_otp">Ler OTP automaticamente de SMS</string>
-    <string name="auto_read_otp_summary">Mostrar o código de uma SMS recebida como sugestão que pode tocar para inserir</string>
-    <string name="spoken_otp_suggestion">Dispensar sugestão de OTP</string>
     <string name="compress_screenshots">Comprimir sugestões de captura de ecrã</string>
     <string name="compress_screenshots_summary">Reduzir a qualidade e o tamanho das sugestões de captura de ecrã para poupar espaço</string>
     <string name="clipboard_fold_pinned">Dobrar itens fixados por defeito</string>

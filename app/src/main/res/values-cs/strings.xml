@@ -476,9 +476,6 @@
     <string name="immediate_auto_space_summary">Při výběru návrhu okamžitě vložit mezeru, aby se předešlo zpoždění při dalším psaném písmenu</string>
     <string name="suggest_screenshots">Navrhovat nedávné snímky obrazovky</string>
     <string name="suggest_screenshots_summary">Zobrazit nedávno pořízené snímky obrazovky jako návrh</string>
-    <string name="auto_read_otp">Automaticky číst OTP z SMS</string>
-    <string name="auto_read_otp_summary">Zobrazit kód z příchozí SMS jako návrh, který můžete klepnutím vložit</string>
-    <string name="spoken_otp_suggestion">Zavřít návrh OTP</string>
     <string name="compress_screenshots">Komprimovat návrhy snímků obrazovky</string>
     <string name="compress_screenshots_summary">Snížit kvalitu a velikost návrhů snímků obrazovky pro úsporu místa</string>
     <string name="clipboard_fold_pinned">Ve výchozím nastavení sbalit připnuté položky</string>
