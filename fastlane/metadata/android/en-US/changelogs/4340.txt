@@ -1,0 +1,6 @@
+- App hosts (Groq, Gemini, OpenAI, Hugging Face, GitHub, Codeberg) now use HTTPS with system certificates only; custom AI endpoints unchanged.
+- Dictionary downloads no longer leak connections and keep the old dictionary if installing fails.
+- Floating keyboard ignores views outside the window.
+- Accessibility no longer keeps the keyboard service alive.
+- Bluetooth audio check only on Android 13+.
+- Lint warnings cut from 1252 to 170, unused resources removed.
