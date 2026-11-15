@@ -1614,7 +1614,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             try {
                 val url = URL(urlStr)
                 val conn = url.openConnection() as HttpURLConnection
-                conn.setRequestProperty("User-Agent", "HeliboardL/3.8.9 (Android)")
+                conn.setRequestProperty("User-Agent", Links.USER_AGENT)
                 conn.connectTimeout = 15000
                 conn.readTimeout = 15000
                 conn.instanceFollowRedirects = true
