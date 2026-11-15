@@ -180,7 +180,8 @@ fun SearchSettingsScreen(
                                     keys.forEach { key ->
                                         androidx.compose.runtime.key(key) {
                                             val highlight by animateColorAsState(
-                                                if (key == highlightKey) MaterialTheme.colorScheme.primaryContainer
+                                                // a tint, not a solid color: the texts keep their contrast in light and dark themes
+                                                if (key == highlightKey) MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)
                                                 else androidx.compose.ui.graphics.Color.Transparent,
                                                 label = "jump highlight"
                                             )
@@ -207,6 +208,8 @@ fun SearchSettingsScreen(
                     if (index > customCount) return@filter false
                 }
                 if (key == "add_custom_layout") return@filter false
+                // fine-tune section headers do nothing in the results (the settings inside are listed themselves)
+                if (key.startsWith(FINE_TUNE_SECTION_PREFIX)) return@filter false
                 when (helium314.keyboard.latin.BuildConfig.FLAVOR) {
                     "offline" -> {
                         val isOldAndroid = android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O
