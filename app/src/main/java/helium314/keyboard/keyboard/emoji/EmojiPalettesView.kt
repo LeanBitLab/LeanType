@@ -1398,21 +1398,22 @@ class EmojiPalettesView @JvmOverloads constructor(
         scroll.visibility = View.VISIBLE
         mColors.setBackground(scroll, ColorType.STRIP_BACKGROUND)
 
-        // Disallow ViewPager2 horizontal intercept when touching or scrolling sub-categories
-        scroll.setOnTouchListener { v, event ->
-            when (event.actionMasked) {
-                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
-                    v.parent?.requestDisallowInterceptTouchEvent(true)
-                }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    v.parent?.requestDisallowInterceptTouchEvent(false)
-                }
+        // Disallow ViewPager2 horizontal intercept when touching or scrolling sub-categories.
+        // Also needed on the chips: a touch that starts on a chip is consumed by it and never reaches the scroll view's own listener on DOWN.
+        // Always go through the scroll view's parent: disallowing from a chip's own parent would also stop the scroll view
+        // from intercepting, so the strip could not be scrolled by dragging on a chip.
+        // Never clear the flag here: when the scroll view takes over a drag that started on a chip, the chip gets ACTION_CANCEL,
+        // and clearing then lets the pager intercept the rest of the drag. The framework resets the flag on every new touch.
+        val blockPagerSwipe = View.OnTouchListener { _, event ->
+            if (event.actionMasked == MotionEvent.ACTION_DOWN || event.actionMasked == MotionEvent.ACTION_MOVE) {
+                scroll.parent?.requestDisallowInterceptTouchEvent(true)
             }
             false
         }
+        scroll.setOnTouchListener(blockPagerSwipe)
 
         val chipHeight = (30 * density).toInt()
-        val marginH = (4 * density).toInt()
+        val marginH = 0 // chips sit flush, so a swipe never starts in a dead gap
         val padH = (15 * density).toInt()
         val currentGroup = if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
             mEmojiCategory.getCurrentUnicodeSymbolGroup()
@@ -1431,6 +1432,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                     gravity = android.view.Gravity.CENTER
                     includeFontPadding = false
                     setPadding(padH, 0, padH, 0)
+                    setOnTouchListener(blockPagerSwipe)
                     setOnClickListener { v ->
                         if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
                             mEmojiCategory.setCurrentUnicodeSymbolGroup(index)
@@ -1457,6 +1459,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 (strip.getChildAt(index) as? TextView)?.apply {
                     text = EmojiCategory.getEmoticonGroupDisplayName(context, group.name)
                     setPadding(padH, 0, padH, 0)
+                    setOnTouchListener(blockPagerSwipe)
                     setOnClickListener { v ->
                         if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
                             mEmojiCategory.setCurrentUnicodeSymbolGroup(index)

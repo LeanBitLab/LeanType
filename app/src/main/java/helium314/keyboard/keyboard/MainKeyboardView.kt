@@ -198,6 +198,10 @@ class MainKeyboardView @JvmOverloads constructor(
         PointerTracker.setKeyDetector(mKeyDetector)
         mPopupKeysKeyboardCache.clear()
         mSpaceKey = keyboard.getKey(Constants.CODE_SPACE)
+        // clipboard and emoji bottom rows are not set up by KeyboardSwitcher (which calls startDisplayLanguageOnSpacebar for the main view)
+        mLanguageOnSpacebarFormatType = if (mLanguageOnSpacebarFadeoutAnimator == null) LanguageOnSpacebarUtils.FORMAT_TYPE_NONE
+            else LanguageOnSpacebarUtils.getLanguageOnSpacebarFormatType(keyboard.mId.mSubtype)
+        if (mLanguageOnSpacebarFadeoutAnimator?.isStarted != true) mLanguageOnSpacebarAnimAlpha = mLanguageOnSpacebarFinalAlpha
         mLanguageOnSpacebarTextSize = (keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap) * mLanguageOnSpacebarTextRatio
         val sv = Settings.getValues()
         val isAlpha = keyboard.mId.isAlphabetKeyboard
@@ -450,9 +454,12 @@ class MainKeyboardView @JvmOverloads constructor(
         if (key.altCodeWhileTyping() && key.isEnabled) params.mAnimAlpha = Constants.Color.ALPHA_OPAQUE
         super.onDrawKeyTopVisuals(key, canvas, paint, params)
         if (key.code == Constants.CODE_SPACE) {
-            val isIncognito = (mSettingsValues ?: Settings.getValues()).mIncognitoModeEnabled
-            if (isIncognito && mIncognitoIcon != null) drawIncognitoOnSpacebar(key, canvas)
-            if (mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) drawLanguageOnSpacebar(key, canvas, paint)
+            val isIncognito = (mSettingsValues ?: Settings.getValues()).mIncognitoModeEnabled && mIncognitoIcon != null
+            val showLanguage = mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE
+            // with language text the incognito icon is placed next to it, so the text gets less room
+            val iconReserve = if (isIncognito && showLanguage) incognitoIconSize(key) + incognitoIconGap(key) else 0
+            val textWidth = if (showLanguage) drawLanguageOnSpacebar(key, canvas, paint, iconReserve) else 0f
+            if (isIncognito) drawIncognitoOnSpacebar(key, canvas, textWidth, iconReserve)
             if (key.isLongPressEnabled && mHasMultipleEnabledIMEsOrSubtypes) drawKeyPopupHint(key, canvas, paint, params)
         } else if (key.code == KeyCode.LANGUAGE_SWITCH) {
             drawKeyPopupHint(key, canvas, paint, params)
@@ -511,9 +518,10 @@ class MainKeyboardView @JvmOverloads constructor(
         return newLocales
     }
 
-    private fun drawLanguageOnSpacebar(key: Key, canvas: Canvas, paint: Paint) {
-        val kb = keyboard ?: return
-        val width = key.width; val height = key.height
+    /** Draws the language (or custom) text, leaving [iconReserve] px for the incognito icon. Returns the drawn text width, 0 if nothing was drawn. */
+    private fun drawLanguageOnSpacebar(key: Key, canvas: Canvas, paint: Paint, iconReserve: Int): Float {
+        val kb = keyboard ?: return 0f
+        val width = key.width - iconReserve; val height = key.height
         paint.textAlign = Paint.Align.CENTER
         paint.typeface = mTypeface ?: Typeface.DEFAULT
         paint.textSize = mLanguageOnSpacebarTextSize
@@ -530,21 +538,36 @@ class MainKeyboardView @JvmOverloads constructor(
             val textWidth = TypefaceUtils.getStringWidth(spaceText, paint)
             paint.textScaleX = (width - mLanguageOnSpacebarHorizontalMargin * 2) / textWidth
         }
-        canvas.drawText(spaceText, width / 2f, baseline - descent, paint)
+        val drawnWidth = if (spaceText.isEmpty()) 0f else TypefaceUtils.getStringWidth(spaceText, paint)
+        canvas.drawText(spaceText, (key.width + iconReserve) / 2f, baseline - descent, paint)
         paint.clearShadowLayer()
         paint.textScaleX = 1.0f
+        return drawnWidth
     }
 
-    private fun drawIncognitoOnSpacebar(key: Key, canvas: Canvas) {
+    private fun incognitoIconSize(key: Key) = (key.height * 0.65f).toInt()
+    private fun incognitoIconGap(key: Key) = (incognitoIconSize(key) * 0.25f).toInt()
+
+    private fun drawIncognitoOnSpacebar(key: Key, canvas: Canvas, textWidth: Float, iconReserve: Int) {
         val width = key.width; val height = key.height
-        val iconSize = (height * 0.8f).toInt()
-        val iconY = (height - iconSize) / 2
-        var iconX = (width - iconSize) / 2
-        if (mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) iconX = width - iconSize - (width * 0.05f).toInt()
-        mIncognitoIcon?.alpha = 38
-        mIncognitoIcon?.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
-        mIncognitoIcon?.draw(canvas)
-        mIncognitoIcon?.alpha = 255
+        val icon = mIncognitoIcon ?: return
+        if (textWidth > 0f) {
+            // icon right before the language text, the pair is centered on the key
+            val iconSize = incognitoIconSize(key)
+            val iconX = ((width - textWidth - iconReserve) / 2f).toInt()
+            val iconY = (height - iconSize) / 2
+            icon.alpha = 255
+            icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
+        } else {
+            // no language text: centered indicator, drawn as strong as the language text would be (the color already carries its alpha)
+            val iconSize = incognitoIconSize(key)
+            val iconX = (width - iconSize) / 2
+            val iconY = (height - iconSize) / 2
+            icon.alpha = 255
+            icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
+        }
+        icon.draw(canvas)
+        icon.alpha = 255
     }
 
     override fun deallocateMemory() { super.deallocateMemory(); dismissAllKeyPreviews(); mDrawingPreviewPlacerView.deallocateMemory() }
