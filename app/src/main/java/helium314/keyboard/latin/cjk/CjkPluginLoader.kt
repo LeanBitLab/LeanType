@@ -153,7 +153,10 @@ object CjkPluginLoader {
         val internalApk = File(context.filesDir, PLUGIN_FILENAME)
         val apkModified = if (internalApk.exists()) internalApk.lastModified() else 0L
         val cached = activeEngine
-        if (cached != null && cached.isAvailable() && (!internalApk.exists() || apkModified == lastApkModified)) {
+        // An accepted engine stays usable until it is released or the plugin changes. isAvailable() only answers for
+        // the language CjkInputManager set last, so checking it here would reload a Japanese-only engine on every key
+        // while a Chinese layout is active.
+        if (cached != null && (!internalApk.exists() || apkModified == lastApkModified)) {
             return cached
         }
         if (cached != null && internalApk.exists() && apkModified != lastApkModified) {
@@ -166,7 +169,7 @@ object CjkPluginLoader {
         if (internalApk.exists() && internalApk.length() > 0L) {
             Log.i(TAG, "Attempting to load CJK engine from internal storage: ${internalApk.absolutePath}")
             val engine = loadEngineInternal(context, internalApk)
-            if (engine != null && engine.isAvailable()) {
+            if (engine != null && isUsable(engine)) {
                 activeEngine = engine
                 lastApkModified = apkModified
                 return engine
@@ -187,6 +190,14 @@ object CjkPluginLoader {
 
         return null
     }
+
+    /**
+     * Whether a freshly loaded engine supports Chinese or Japanese. A new engine starts in Chinese, so checking only
+     * [ICjkEngine.isAvailable] rejected an engine whose Pinyin library failed although Japanese works. Leaving it set to
+     * Japanese is fine: CjkInputManager sets the subtype's language on the first key for every new engine instance.
+     */
+    private fun isUsable(engine: ICjkEngine): Boolean =
+        engine.isAvailable() || (engine.setLocale("ja") && engine.isAvailable())
 
     private fun loadEngineInternal(context: Context, apkFile: File): ICjkEngine? {
         return try {
@@ -313,7 +324,7 @@ object CjkPluginLoader {
             activeEngine = null
 
             val engine = loadEngineInternal(context, targetFile)
-            val success = engine != null && engine.isAvailable()
+            val success = engine != null && isUsable(engine)
             if (success) {
                 activeEngine = engine
                 context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, true).apply()
@@ -347,7 +358,7 @@ object CjkPluginLoader {
             activeEngine = null
 
             val engine = loadEngineInternal(context, targetFile)
-            val success = engine != null && engine.isAvailable()
+            val success = engine != null && isUsable(engine)
             if (success) {
                 activeEngine = engine
                 context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, true).apply()
