@@ -198,6 +198,10 @@ class MainKeyboardView @JvmOverloads constructor(
         PointerTracker.setKeyDetector(mKeyDetector)
         mPopupKeysKeyboardCache.clear()
         mSpaceKey = keyboard.getKey(Constants.CODE_SPACE)
+        // clipboard and emoji bottom rows are not set up by KeyboardSwitcher (which calls startDisplayLanguageOnSpacebar for the main view)
+        mLanguageOnSpacebarFormatType = if (mLanguageOnSpacebarFadeoutAnimator == null) LanguageOnSpacebarUtils.FORMAT_TYPE_NONE
+            else LanguageOnSpacebarUtils.getLanguageOnSpacebarFormatType(keyboard.mId.mSubtype)
+        if (mLanguageOnSpacebarFadeoutAnimator?.isStarted != true) mLanguageOnSpacebarAnimAlpha = mLanguageOnSpacebarFinalAlpha
         mLanguageOnSpacebarTextSize = (keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap) * mLanguageOnSpacebarTextRatio
         val sv = Settings.getValues()
         val isAlpha = keyboard.mId.isAlphabetKeyboard
