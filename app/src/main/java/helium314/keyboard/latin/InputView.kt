@@ -10,16 +10,19 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.os.Build
 import android.view.WindowInsets
+import android.view.WindowManager
 import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.keyboard.MainKeyboardView
 import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.suggestions.SuggestionStripView
+import helium314.keyboard.latin.utils.Log
 import kotlin.math.min
 
 class InputView @JvmOverloads constructor(
@@ -96,13 +99,39 @@ class InputView @JvmOverloads constructor(
     private fun reportedNavInset(): Int =
         navigationBarFrameHeight().takeIf { it > 0 } ?: if (mNavBarBottomInsets > 0) mNavBarBottomInsets else getNavInsets()
 
-    /** Bottom padding needed for the navigation bar; known only once this view is laid out, until then the reported inset is used */
+    /** what [navPadding] was computed from, for the log when the padding changes */
+    private var mLastNavMeasure = ""
+
+    /**
+     * Bottom padding needed for the navigation bar; known only once this view is laid out, until then the reported
+     * inset is used. Measured on the screen, not in the window: a window that itself ends above the navigation bar
+     * (seen on Samsung with Android 12) has this view end at its bottom, which in window coordinates looks like the
+     * view is under the navigation bar.
+     */
     private fun navPadding(): Int {
         val reported = reportedNavInset()
-        if (reported <= 0 || !isLaidOut || height == 0 || rootView.height == 0) return reported
+        val screenHeight = screenHeight()
+        if (reported <= 0 || !isLaidOut || height == 0 || screenHeight == 0) {
+            mLastNavMeasure = "reported=$reported laidOut=$isLaidOut height=$height screen=$screenHeight"
+            return reported
+        }
         val location = IntArray(2)
-        getLocationInWindow(location)
-        return navBarOverlap(reported, location[1] + height, rootView.height)
+        getLocationOnScreen(location)
+        val viewBottom = location[1] + height
+        mLastNavMeasure = "reported=$reported viewBottom=$viewBottom screen=$screenHeight"
+        return navBarOverlap(reported, viewBottom, screenHeight)
+    }
+
+    private fun screenHeight(): Int {
+        val windowManager = context.getSystemService(WindowManager::class.java) ?: return 0
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            windowManager.maximumWindowMetrics.bounds.height()
+        } else {
+            val metrics = DisplayMetrics()
+            @Suppress("DEPRECATION")
+            windowManager.defaultDisplay.getRealMetrics(metrics)
+            metrics.heightPixels
+        }
     }
 
     fun resetChildrenFloatingPadding() {
@@ -159,6 +188,10 @@ class InputView @JvmOverloads constructor(
             R.id.touchpad_view
         )
         val insets = navPadding()
+        if (insets != mAppliedNavPadding) {
+            // kept in exported logs, so reports of wrong space below the keys come with the numbers
+            Log.i(TAG, "navigation bar padding $mAppliedNavPadding -> $insets ($mLastNavMeasure)")
+        }
         mAppliedNavPadding = insets
         val wrapper = findViewById<View>(R.id.keyboard_view_wrapper)
         val showToolbarOnly = wrapper?.visibility != View.VISIBLE
@@ -206,6 +239,18 @@ class InputView @JvmOverloads constructor(
         }
         // Work around inset application being unreliable
         post { requestApplyInsets() }
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        // A settings change (font, toolbar mode, theme) replaces this view and re-shows the window at once, so the
+        // first padding can be computed while the window is still settling. Check it again once the window is shown.
+        if (visibility == View.VISIBLE && !isFloatingMode()) post {
+            if (mAppliedNavPadding != navPadding()) {
+                updateBottomPadding()
+                requestApplyInsets()
+            }
+        }
     }
 
     override fun onDetachedFromWindow() {
@@ -380,10 +425,12 @@ class InputView @JvmOverloads constructor(
     }
 }
 
+private const val TAG = "InputView"
+
 /**
- * The part of the navigation bar (the bottom [reportedInset] pixels of a window that is [windowHeight] high) that a
- * view ending at [viewBottom] (in window coordinates) lies under. When the window already leaves room for the
+ * The part of the navigation bar (the bottom [reportedInset] pixels of a screen that is [screenHeight] high) that a
+ * view ending at [viewBottom] (in screen coordinates) lies under. When the window already leaves room for the
  * navigation bar, the view ends above it and nothing has to be reserved, whatever the reported inset is.
  */
-internal fun navBarOverlap(reportedInset: Int, viewBottom: Int, windowHeight: Int): Int =
-    (viewBottom - (windowHeight - reportedInset)).coerceIn(0, maxOf(reportedInset, 0))
+internal fun navBarOverlap(reportedInset: Int, viewBottom: Int, screenHeight: Int): Int =
+    (viewBottom - (screenHeight - reportedInset)).coerceIn(0, maxOf(reportedInset, 0))
