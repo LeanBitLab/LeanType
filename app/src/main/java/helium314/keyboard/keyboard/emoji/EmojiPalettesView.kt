@@ -1398,8 +1398,9 @@ class EmojiPalettesView @JvmOverloads constructor(
         scroll.visibility = View.VISIBLE
         mColors.setBackground(scroll, ColorType.STRIP_BACKGROUND)
 
-        // Disallow ViewPager2 horizontal intercept when touching or scrolling sub-categories
-        scroll.setOnTouchListener { v, event ->
+        // Disallow ViewPager2 horizontal intercept when touching or scrolling sub-categories.
+        // Also needed on the chips: a touch that starts on a chip is consumed by it and never reaches the scroll view's own listener on DOWN.
+        val blockPagerSwipe = View.OnTouchListener { v, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                     v.parent?.requestDisallowInterceptTouchEvent(true)
@@ -1410,6 +1411,7 @@ class EmojiPalettesView @JvmOverloads constructor(
             }
             false
         }
+        scroll.setOnTouchListener(blockPagerSwipe)
 
         val chipHeight = (30 * density).toInt()
         val marginH = (4 * density).toInt()
@@ -1431,6 +1433,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                     gravity = android.view.Gravity.CENTER
                     includeFontPadding = false
                     setPadding(padH, 0, padH, 0)
+                    setOnTouchListener(blockPagerSwipe)
                     setOnClickListener { v ->
                         if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
                             mEmojiCategory.setCurrentUnicodeSymbolGroup(index)
@@ -1457,6 +1460,7 @@ class EmojiPalettesView @JvmOverloads constructor(
                 (strip.getChildAt(index) as? TextView)?.apply {
                     text = EmojiCategory.getEmoticonGroupDisplayName(context, group.name)
                     setPadding(padH, 0, padH, 0)
+                    setOnTouchListener(blockPagerSwipe)
                     setOnClickListener { v ->
                         if (categoryId == EmojiCategory.ID_UNICODE_SYMBOLS) {
                             mEmojiCategory.setCurrentUnicodeSymbolGroup(index)
