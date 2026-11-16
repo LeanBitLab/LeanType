@@ -112,15 +112,18 @@ class InputView @JvmOverloads constructor(
         val reported = reportedNavInset()
         val screenHeight = screenHeight()
         if (reported <= 0 || !isLaidOut || height == 0 || screenHeight == 0) {
-            mLastNavMeasure = "reported=$reported laidOut=$isLaidOut height=$height screen=$screenHeight"
+            mLastNavMeasure = "reported=$reported ${insetSources()} laidOut=$isLaidOut height=$height screen=$screenHeight"
             return reported
         }
         val location = IntArray(2)
         getLocationOnScreen(location)
         val viewBottom = location[1] + height
-        mLastNavMeasure = "reported=$reported viewBottom=$viewBottom screen=$screenHeight"
+        mLastNavMeasure = "reported=$reported ${insetSources()} viewBottom=$viewBottom screen=$screenHeight"
         return navBarOverlap(reported, viewBottom, screenHeight)
     }
+
+    /** where [reportedNavInset] can come from: the IME's own navigation bar frame (Android 13+) or the system inset */
+    private fun insetSources() = "(imeNavFrame=${navigationBarFrameHeight()} systemInset=$mNavBarBottomInsets sdk=${Build.VERSION.SDK_INT})"
 
     private fun screenHeight(): Int {
         val windowManager = context.getSystemService(WindowManager::class.java) ?: return 0
