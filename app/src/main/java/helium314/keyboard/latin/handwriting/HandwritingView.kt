@@ -359,11 +359,19 @@ class HandwritingView @JvmOverloads constructor(
         }
     }
 
+    private fun exitToAlphabet() {
+        val switcher = KeyboardSwitcher.getInstance()
+        switcher.setAlphabetKeyboard()
+        // Shift updates are skipped while handwriting is showing, so apply the current auto-caps state now
+        val latinIME = switcher.latinIME ?: return
+        switcher.requestUpdatingShiftState(latinIME.currentAutoCapsState, latinIME.currentRecapitalizeState)
+    }
+
     // Intercept KeyboardActionListener events for the bottom row
     override fun onCodeInput(primaryCode: Int, x: Int, y: Int, isKeyRepeat: Boolean) {
         if (primaryCode == KeyCode.ALPHA) {
             // Close handwriting mode
-            KeyboardSwitcher.getInstance().setAlphabetKeyboard()
+            exitToAlphabet()
             return
         }
         if (primaryCode == KeyCode.CLEAR_HANDWRITING) {
@@ -399,7 +407,7 @@ class HandwritingView @JvmOverloads constructor(
     override fun onLongPressKey(primaryCode: Int) {
         if (primaryCode == KeyCode.CLEAR_HANDWRITING) {
             PointerTracker.cancelAllPointerTrackers()
-            KeyboardSwitcher.getInstance().setAlphabetKeyboard()
+            exitToAlphabet()
             return
         }
         keyboardActionListener?.onLongPressKey(primaryCode)

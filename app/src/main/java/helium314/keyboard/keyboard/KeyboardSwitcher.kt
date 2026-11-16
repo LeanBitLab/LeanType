@@ -991,6 +991,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         if (DEBUG_ACTION) {
             Log.d(TAG, "requestUpdatingShiftState: autoCapsFlags=" + CapsModeUtils.flagsToString(autoCapsFlags) + " recapitalizeMode=" + recapitalizeMode)
         }
+        // A shift change reloads the alphabet keyboard, which hides the handwriting panel (e.g. auto-caps
+        // turning off after the first handwritten word). The state is re-synced when handwriting is left.
+        if (isHandwritingShowing) return
         mState?.onUpdateShiftState(autoCapsFlags, recapitalizeMode)
     }
 
