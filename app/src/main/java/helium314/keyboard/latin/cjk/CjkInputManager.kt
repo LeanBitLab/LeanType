@@ -23,6 +23,8 @@ class CjkInputManager private constructor(private val context: Context) {
 
     private var uiListener: CjkUiListener? = null
     private var activeLocale: String? = null
+    // Engine instance that activeLocale was applied to; a reloaded engine starts from its default locale
+    private var localeEngine: ICjkEngine? = null
     var isComposing: Boolean = false
         internal set
 
@@ -59,9 +61,10 @@ class CjkInputManager private constructor(private val context: Context) {
         }
 
         val lang = subtype?.locale?.language?.lowercase() ?: "zh"
-        if (activeLocale != lang) {
+        if (activeLocale != lang || localeEngine !== engine) {
             engine.setLocale(lang)
             activeLocale = lang
+            localeEngine = engine
         }
 
         val keysym = KeycodeTranslator.toKeysym(event)
@@ -186,6 +189,8 @@ class CjkInputManager private constructor(private val context: Context) {
         }
         uiListener?.onSetCandidateStripVisibility(false)
         CjkPluginLoader.getEngine(context)?.destroySession()
+        // destroySession may reset the engine to its default locale (zh), so force setLocale on the next key
+        activeLocale = null
     }
 
     companion object {
