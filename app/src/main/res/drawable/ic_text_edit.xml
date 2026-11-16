@@ -10,13 +10,13 @@
     <!-- I-beam text cursor -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M9,4h6v2h-2v12h2v2H9v-2h2V6H9V4z" />
+        android:pathData="M9.5,4h5v1.5h-1.75v13h1.75v1.5h-5v-1.5h1.75v-13H9.5V4z" />
     <!-- Left arrow -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M7,12l3.5,-3.5v7z" />
+        android:pathData="M2.5,12L7,8v8z" />
     <!-- Right arrow -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M17,12l-3.5,-3.5v7z" />
+        android:pathData="M21.5,12L17,8v8z" />
 </vector>
