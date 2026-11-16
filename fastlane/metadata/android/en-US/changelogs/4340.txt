@@ -1,6 +1,7 @@
-- App hosts (Groq, Gemini, OpenAI, Hugging Face, GitHub, Codeberg) now use HTTPS with system certificates only; custom AI endpoints unchanged.
-- Dictionary downloads no longer leak connections and keep the old dictionary if installing fails.
-- Floating keyboard ignores views outside the window.
-- Accessibility no longer keeps the keyboard service alive.
-- Bluetooth audio check only on Android 13+.
-- Lint warnings cut from 1252 to 170, unused resources removed.
+- Japanese input no longer falls back to Chinese after switching apps.
+- Swiping emoticon sub-categories no longer switches the emoji category.
+- Custom space bar text now shows on clipboard and emoji pages.
+- Clearer incognito indicator on the space bar, redrawn text edit icon.
+- App hosts use HTTPS with system certificates only; custom AI endpoints unchanged.
+- Dictionary downloads no longer leak connections.
+- Lint warnings cut from 1252 to 170.
