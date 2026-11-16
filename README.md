@@ -9,7 +9,7 @@
 <div align="center">
 
 [![Latest Release](https://img.shields.io/github/v/release/LeanBitLab/LeanType?style=flat-square&color=4f46e5&label=Release)](https://github.com/LeanBitLab/LeanType/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/LeanBitLab/LeanType/total?style=flat-square&color=059669&label=Downloads)](https://github.com/LeanBitLab/LeanType/releases)
+[![Downloads](docs/badges/downloads.svg)](https://github.com/LeanBitLab/LeanType/releases)
 [![Stars](https://img.shields.io/github/stars/LeanBitLab/LeanType?style=flat-square&color=dc2626&label=Stars)](https://github.com/LeanBitLab/LeanType/stargazers)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
 [![Sponsor](https://img.shields.io/badge/Sponsor-LeanBitLab-db2777?style=flat-square&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/LeanBitLab)
