@@ -20,6 +20,11 @@ object HandwritingLoader {
 
     private var activeRecognizer: HandwritingRecognizer? = null
 
+    // A native library can only be loaded by one ClassLoader. The loader must outlive the recognizer
+    // (release() drops it on every keyboard close), otherwise a re-open fails with UnsatisfiedLinkError.
+    private var cachedClassLoader: ClassLoader? = null
+    private var cachedApkModified: Long = 0L
+
     fun resetRecognizer() {
         activeRecognizer = null
         displayNameCache = null
@@ -232,6 +237,25 @@ object HandwritingLoader {
         return targetDir
     }
 
+    private fun getOrCreateClassLoader(context: Context, apkFile: File): ClassLoader {
+        val apkModified = apkFile.lastModified()
+        cachedClassLoader?.let { if (cachedApkModified == apkModified) return it }
+        val nativeLibDir = getNativeLibDir(context, apkFile)
+        extractNativeLibs(apkFile, nativeLibDir)
+        val nativeLoaderDex = getNativeLoaderDex(context)
+        val dexPaths = "${apkFile.absolutePath}${File.pathSeparator}${nativeLoaderDex.absolutePath}"
+        val classLoader = PluginClassLoader(
+            dexPaths,
+            context.codeCacheDir.absolutePath,
+            nativeLibDir.absolutePath,
+            context.classLoader
+        )
+        loadNativeLibrariesInPlugin(classLoader, File(nativeLibDir, "libdigitalink.so"))
+        cachedClassLoader = classLoader
+        cachedApkModified = apkModified
+        return classLoader
+    }
+
     fun getRecognizer(context: Context): HandwritingRecognizer? {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return null
         if (activeRecognizer != null) return activeRecognizer
@@ -252,18 +276,7 @@ object HandwritingLoader {
 
         try {
             ensureWorkManagerInitialized(context)
-            val nativeLibDir = getNativeLibDir(context, apkFile)
-            extractNativeLibs(apkFile, nativeLibDir)
-            val libFile = File(nativeLibDir, "libdigitalink.so")
-            val nativeLoaderDex = getNativeLoaderDex(context)
-            val dexPaths = "${apkFile.absolutePath}${File.pathSeparator}${nativeLoaderDex.absolutePath}"
-            val classLoader = PluginClassLoader(
-                dexPaths,
-                context.codeCacheDir.absolutePath,
-                nativeLibDir.absolutePath,
-                context.classLoader
-            )
-            loadNativeLibrariesInPlugin(classLoader, libFile)
+            val classLoader = getOrCreateClassLoader(context, apkFile)
             val clazz = classLoader.loadClass(PLUGIN_CLASS_NAME)
             val recognizer = clazz.getDeclaredConstructor().newInstance() as HandwritingRecognizer
             val pluginContext = PluginContext(context.applicationContext, apkFile.absolutePath)
@@ -363,18 +376,7 @@ object HandwritingLoader {
 
             // Verify the plugin loads successfully
             ensureWorkManagerInitialized(context)
-            val nativeLibDir = getNativeLibDir(context, apkFile)
-            extractNativeLibs(apkFile, nativeLibDir)
-            val libFile = File(nativeLibDir, "libdigitalink.so")
-            val nativeLoaderDex = getNativeLoaderDex(context)
-            val dexPaths = "${apkFile.absolutePath}${File.pathSeparator}${nativeLoaderDex.absolutePath}"
-            val classLoader = PluginClassLoader(
-                dexPaths,
-                context.codeCacheDir.absolutePath,
-                nativeLibDir.absolutePath,
-                context.classLoader
-            )
-            loadNativeLibrariesInPlugin(classLoader, libFile)
+            val classLoader = getOrCreateClassLoader(context, apkFile)
             val clazz = classLoader.loadClass(PLUGIN_CLASS_NAME)
             val recognizer = clazz.getDeclaredConstructor().newInstance() as HandwritingRecognizer
             val pluginContext = PluginContext(context.applicationContext, apkFile.absolutePath)
@@ -402,6 +404,7 @@ object HandwritingLoader {
             } catch (_: Exception) {}
             context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, false).apply()
             activeRecognizer = null
+            cachedClassLoader = null
         }
         return false
     }
@@ -433,6 +436,7 @@ object HandwritingLoader {
         } catch (_: Exception) {}
         context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, false).apply()
         activeRecognizer = null
+        cachedClassLoader = null
     }
 
     private class PluginContext(base: Context, private val apkPath: String) : android.content.ContextWrapper(base), androidx.work.Configuration.Provider {
