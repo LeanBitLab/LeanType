@@ -64,12 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Handwriting: Keeps working after the keyboard is closed and reopened, no forced restart needed",
-    "• Handwriting Panel: No longer switches back to the keyboard after the first word",
-    "• Handwriting Model: No false \"Tap to download model\" prompt right after the keyboard starts",
-    "• Chinese and Japanese: Input keeps working after switching apps, and Japanese works even if Pinyin cannot load",
+    "• Handwriting: Keeps working after the keyboard is closed and reopened, and stays open after the first word",
+    "• Japanese Input: No longer falls back to Chinese after switching apps",
+    "• Split Keyboard: Phones with a small display size setting no longer get a split keyboard by default",
     "• Space Below Keys: Fixed extra space on some devices after changing the font or toolbar mode",
-    "• Exported Log: Records the navigation bar values behind the space below the keys"
+    "• Update Indicator: The update dot clears after a plugin update and shows for plugins installed later",
+    "• Clipboard Menu: The pin, edit, delete and select icons are visible on mid-tone themes",
+    "• Emoji: Sub-category chips scroll without switching the category",
+    "• Space Bar: Custom text and language name also show on the emoji and clipboard pages",
+    "• Incognito: Clearer, larger indicator on the space bar",
+    "• Network: The app's own hosts now accept only HTTPS with system certificates"
 )
 
 @Composable

@@ -1,6 +1,6 @@
-- Handwriting keeps working after the keyboard is closed and reopened.
-- The handwriting panel no longer switches back to the keyboard after the first word.
-- No false "Tap to download model" prompt when the handwriting model is installed.
-- Chinese and Japanese input keep working after switching apps.
+- Handwriting keeps working after reopening the keyboard and stays open after the first word.
+- Japanese input no longer falls back to Chinese after switching apps.
+- Phones with a small display size no longer get a split keyboard.
 - Fixed extra space below the keys on some devices after a font or toolbar change.
-- Exported log records the navigation bar values behind the space below the keys.
+- Update dot clears after a plugin update; clipboard menu icons visible on mid-tone themes.
+- Emoji sub-category swipe and space bar text on emoji pages fixed.
