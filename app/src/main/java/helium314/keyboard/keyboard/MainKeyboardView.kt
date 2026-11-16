@@ -457,7 +457,7 @@ class MainKeyboardView @JvmOverloads constructor(
             val isIncognito = (mSettingsValues ?: Settings.getValues()).mIncognitoModeEnabled && mIncognitoIcon != null
             val showLanguage = mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE
             // with language text the incognito icon is placed next to it, so the text gets less room
-            val iconReserve = if (isIncognito && showLanguage) incognitoIconSizeBesideText() + incognitoIconGap() else 0
+            val iconReserve = if (isIncognito && showLanguage) incognitoIconSize(key) + incognitoIconGap(key) else 0
             val textWidth = if (showLanguage) drawLanguageOnSpacebar(key, canvas, paint, iconReserve) else 0f
             if (isIncognito) drawIncognitoOnSpacebar(key, canvas, textWidth, iconReserve)
             if (key.isLongPressEnabled && mHasMultipleEnabledIMEsOrSubtypes) drawKeyPopupHint(key, canvas, paint, params)
@@ -545,25 +545,25 @@ class MainKeyboardView @JvmOverloads constructor(
         return drawnWidth
     }
 
-    private fun incognitoIconSizeBesideText() = (mLanguageOnSpacebarTextSize * 1.2f).toInt()
-    private fun incognitoIconGap() = (incognitoIconSizeBesideText() * 0.3f).toInt()
+    private fun incognitoIconSize(key: Key) = (key.height * 0.65f).toInt()
+    private fun incognitoIconGap(key: Key) = (incognitoIconSize(key) * 0.25f).toInt()
 
     private fun drawIncognitoOnSpacebar(key: Key, canvas: Canvas, textWidth: Float, iconReserve: Int) {
         val width = key.width; val height = key.height
         val icon = mIncognitoIcon ?: return
         if (textWidth > 0f) {
-            // small icon right before the language text, the pair is centered on the key
-            val iconSize = iconReserve - incognitoIconGap()
+            // icon right before the language text, the pair is centered on the key
+            val iconSize = incognitoIconSize(key)
             val iconX = ((width - textWidth - iconReserve) / 2f).toInt()
             val iconY = (height - iconSize) / 2
-            icon.alpha = 110
+            icon.alpha = 255
             icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
         } else {
-            // no language text: faint centered watermark
-            val iconSize = (height * 0.8f).toInt()
+            // no language text: centered indicator, drawn as strong as the language text would be (the color already carries its alpha)
+            val iconSize = incognitoIconSize(key)
             val iconX = (width - iconSize) / 2
             val iconY = (height - iconSize) / 2
-            icon.alpha = 38
+            icon.alpha = 255
             icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
         }
         icon.draw(canvas)
