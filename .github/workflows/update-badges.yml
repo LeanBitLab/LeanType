@@ -83,16 +83,21 @@ jobs:
 
           # Downloads count badge, in the flat-square style and green of the other README badges. Generated here
           # because shields.io only sums the newest 100 releases, so its total dropped with every new release.
-          # Widths follow shields: about 7px per digit or letter at Verdana 11px, 4px for a comma, 10px padding.
+          # Widths follow shields: about 7px per digit or letter at Verdana 11px, 4px for a dot, 10px padding.
+          # Rounded like shields (1.5k, 116k, 1.2M).
+          DOWNLOADS_SHORT=$(awk -v n="$DOWNLOADS" 'BEGIN {
+            if (n >= 1000000) { v = n / 1000000; printf (v < 10 ? "%.1fM" : "%.0fM"), v }
+            else if (n >= 1000) { v = n / 1000; printf (v < 10 ? "%.1fk" : "%.0fk"), v }
+            else printf "%d", n }' | sed 's/\.0\([kM]\)/\1/')
           LABEL_W=71
-          VALUE_W=$(( $(printf '%s' "$DOWNLOADS_FMT" | tr -d ',' | wc -c) * 7 + $(printf '%s' "$DOWNLOADS_FMT" | tr -cd ',' | wc -c) * 4 + 10 ))
+          VALUE_W=$(( $(printf '%s' "$DOWNLOADS_SHORT" | tr -d '.' | wc -c) * 7 + $(printf '%s' "$DOWNLOADS_SHORT" | tr -cd '.' | wc -c) * 4 + 10 ))
           TOTAL_W=$(( LABEL_W + VALUE_W ))
           LABEL_X=$(( LABEL_W * 10 / 2 ))
           VALUE_X=$(( (LABEL_W * 2 + VALUE_W) * 10 / 2 ))
           LABEL_TL=$(( (LABEL_W - 10) * 10 ))
           VALUE_TL=$(( (VALUE_W - 10) * 10 ))
           cat > docs/badges/downloads.svg << EOF
-          <svg xmlns="http://www.w3.org/2000/svg" width="${TOTAL_W}" height="20" role="img" aria-label="Downloads: ${DOWNLOADS_FMT}"><title>Downloads: ${DOWNLOADS_FMT}</title><g shape-rendering="crispEdges"><rect width="${LABEL_W}" height="20" fill="#555"/><rect x="${LABEL_W}" width="${VALUE_W}" height="20" fill="#059669"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text transform="scale(.1)" x="${LABEL_X}" y="140" textLength="${LABEL_TL}">Downloads</text><text transform="scale(.1)" x="${VALUE_X}" y="140" textLength="${VALUE_TL}">${DOWNLOADS_FMT}</text></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="${TOTAL_W}" height="20" role="img" aria-label="Downloads: ${DOWNLOADS_SHORT}"><title>Downloads: ${DOWNLOADS_SHORT}</title><g shape-rendering="crispEdges"><rect width="${LABEL_W}" height="20" fill="#555"/><rect x="${LABEL_W}" width="${VALUE_W}" height="20" fill="#059669"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text transform="scale(.1)" x="${LABEL_X}" y="140" textLength="${LABEL_TL}">Downloads</text><text transform="scale(.1)" x="${VALUE_X}" y="140" textLength="${VALUE_TL}">${DOWNLOADS_SHORT}</text></g></svg>
           EOF
 
           # Stars badge
