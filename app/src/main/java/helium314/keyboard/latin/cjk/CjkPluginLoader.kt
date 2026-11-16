@@ -27,6 +27,11 @@ object CjkPluginLoader {
     private var activeEngine: ICjkEngine? = null
     private var lastApkModified: Long = 0L
 
+    // A native library (jni_pinyin) can only be loaded by one ClassLoader. The loader must outlive the engine
+    // (release() drops it on every keyboard close), otherwise Pinyin stays unavailable after a re-open.
+    private var cachedClassLoader: ClassLoader? = null
+    private var cachedLoaderApkModified: Long = 0L
+
     fun getTargetAbi(): String {
         for (abi in Build.SUPPORTED_ABIS) {
             when (abi) {
@@ -191,12 +196,17 @@ object CjkPluginLoader {
 
             extractPluginAssetsAndLibs(apkFile, nativeLibDir, sharedDir)
 
-            val classLoader = PluginClassLoader(
-                apkFile.absolutePath,
-                context.codeCacheDir.absolutePath,
-                nativeLibDir.absolutePath,
-                context.classLoader
-            )
+            val apkModified = apkFile.lastModified()
+            val classLoader = cachedClassLoader?.takeIf { cachedLoaderApkModified == apkModified }
+                ?: PluginClassLoader(
+                    apkFile.absolutePath,
+                    context.codeCacheDir.absolutePath,
+                    nativeLibDir.absolutePath,
+                    context.classLoader
+                ).also {
+                    cachedClassLoader = it
+                    cachedLoaderApkModified = apkModified
+                }
 
             val clazz = classLoader.loadClass(PLUGIN_CLASS_NAME)
             val engine = clazz.getDeclaredConstructor().newInstance() as ICjkEngine
@@ -372,6 +382,7 @@ object CjkPluginLoader {
         try {
             activeEngine?.cleanup()
             activeEngine = null
+            cachedClassLoader = null
             val apkFile = File(context.filesDir, PLUGIN_FILENAME)
             if (apkFile.exists()) apkFile.delete()
             val nativeLibBase = File(context.filesDir, "plugin_libs")
