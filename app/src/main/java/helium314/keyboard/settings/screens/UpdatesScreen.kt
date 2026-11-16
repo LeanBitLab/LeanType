@@ -64,16 +64,12 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Custom Text Styles: Add your own Unicode font styles from Toolbar > Custom text styles, with live typing and undo in the Font Style strip",
-    "• Personal Dictionary in Backups: The backup now includes your personal dictionary, with separate options for Dictionaries, Personal Dictionary and Text Expander",
-    "• Space Below the Keyboard: The navigation bar area is handled correctly on Android 15+ and on devices that reported it twice, such as the Samsung Note 10",
-    "• Offline Flavor Requires Android 6.0+: The offline flavor minimum is raised from Android 5.0 to Android 6.0, the same as standard",
-    "• Voice Dictation: Fixes for the strip, the voice key, stray words, battery use and local model import, plus faster input and optional live transcription",
-    "• Letter and Backspace Fixes: Wide letters such as w and m are no longer smaller, and one backspace no longer deletes a whole run of symbols",
-    "• Faster Settings: Large screens compose their settings as you scroll, and search results no longer list section headers",
-    "• Floating Keyboard and Toolbar: Per-orientation size and position, scaled strip and keys, and several toolbar crash and sizing fixes",
-    "• Text Expander and Layouts: Shortcuts with symbols or numbers work, custom popup keys keep their symbols, and hexagonal layouts are detected",
-    "• GIF, Editor and Swipe Fixes: Safer sticker insertion, no crash on trailing empty lines, and no stale swipe markers"
+    "• Network Hardening: The app's own hosts (Groq, Gemini, OpenAI, Hugging Face, GitHub, Codeberg) now accept only HTTPS with system certificates, custom AI endpoints are unchanged",
+    "• Dictionary Downloads: A failed download no longer leaks the connection and the existing dictionary is kept if installing the new one fails",
+    "• Floating Keyboard: A view completely outside the window is no longer counted as part of the touchable area",
+    "• Accessibility Leak: The accessibility helper no longer keeps the keyboard service alive after it was stopped",
+    "• Bluetooth Audio: BLE broadcast devices are only checked on Android 13+, where that device type exists",
+    "• Lint Cleanup: Warnings dropped from 1252 to 170, unused strings, drawables and duplicate translations were removed"
 )
 
 @Composable
