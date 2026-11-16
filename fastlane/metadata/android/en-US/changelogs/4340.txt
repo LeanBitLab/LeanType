@@ -1,4 +1,6 @@
-- Phones with a small display size no longer get a split keyboard by default.
-- The update dot clears after a plugin update and shows for plugins installed later.
-- Clipboard long-press menu icons are visible on mid-tone themes.
-- Exported log now includes device model and screen size.
+- Handwriting keeps working after the keyboard is closed and reopened.
+- The handwriting panel no longer switches back to the keyboard after the first word.
+- No false "Tap to download model" prompt when the handwriting model is installed.
+- Chinese and Japanese input keep working after switching apps.
+- Fixed extra space below the keys on some devices after a font or toolbar change.
+- Exported log records the navigation bar values behind the space below the keys.
