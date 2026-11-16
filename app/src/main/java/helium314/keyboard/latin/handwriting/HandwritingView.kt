@@ -175,7 +175,10 @@ class HandwritingView @JvmOverloads constructor(
         if (recognizer != null) {
             recognizer.setLanguage(language)
             recognitionExecutor.execute {
-                val isReady = recognizer.isLanguageReady(language)
+                // The plugin reports false when ML Kit's model manager times out during cold-start init,
+                // so retry before claiming the model is missing
+                val isReady = HandwritingModelImporter.hasModelDirectly(context, language) ||
+                    (1..LANGUAGE_READY_ATTEMPTS).any { recognizer.isLanguageReady(language) }
                 mainHandler.post {
                     if (!isReady) {
                         toolbar?.visibility = View.VISIBLE
@@ -479,5 +482,10 @@ class HandwritingView @JvmOverloads constructor(
                 }
             }
         }
+    }
+
+    companion object {
+        // Each check waits about 1s inside the plugin; ML Kit's model manager can take a few seconds on cold start
+        private const val LANGUAGE_READY_ATTEMPTS = 3
     }
 }
