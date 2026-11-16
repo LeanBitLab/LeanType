@@ -64,16 +64,10 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Japanese Input: With the CJK plugin, Japanese no longer falls back to Chinese Pinyin after switching apps",
-    "• Emoji Sub-Categories: Swiping the Emoticons and Unicode chips no longer switches the whole emoji category",
-    "• Space Bar Text: The custom space bar text and language name now also show on the clipboard and emoji pages",
-    "• Incognito Indicator: The space bar icon is larger and sits next to the language name instead of overlapping it",
-    "• Text Edit Icon: The text edit toolbar key icon was redrawn with larger arrows and a clear gap",
-    "• Network Hardening: The app's own hosts (Groq, Gemini, OpenAI, Hugging Face, GitHub, Codeberg) now accept only HTTPS with system certificates, custom AI endpoints are unchanged",
-    "• Dictionary Downloads: A failed download no longer leaks the connection and the existing dictionary is kept if installing the new one fails",
-    "• Floating Keyboard: A view completely outside the window is no longer counted as part of the touchable area",
-    "• Accessibility Leak: The accessibility helper no longer keeps the keyboard service alive after it was stopped",
-    "• Lint Cleanup: Warnings dropped from 1252 to 170, unused strings, drawables and duplicate translations were removed"
+    "• Split Keyboard: Phones with a small display size setting no longer get a split keyboard by default",
+    "• Update Indicator: The update dot clears after a plugin update and also shows for plugins installed after the last check",
+    "• Clipboard Menu: The pin, edit, delete and select icons are visible again on mid-tone themes with light icons",
+    "• Exported Log: The startup lines now include the device model, screen size and density"
 )
 
 @Composable

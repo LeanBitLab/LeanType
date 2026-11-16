@@ -1,7 +1,4 @@
-- Japanese input no longer falls back to Chinese after switching apps.
-- Swiping emoticon sub-categories no longer switches the emoji category.
-- Custom space bar text now shows on clipboard and emoji pages.
-- Clearer incognito indicator on the space bar, redrawn text edit icon.
-- App hosts use HTTPS with system certificates only; custom AI endpoints unchanged.
-- Dictionary downloads no longer leak connections.
-- Lint warnings cut from 1252 to 170.
+- Phones with a small display size no longer get a split keyboard by default.
+- The update dot clears after a plugin update and shows for plugins installed later.
+- Clipboard long-press menu icons are visible on mid-tone themes.
+- Exported log now includes device model and screen size.
