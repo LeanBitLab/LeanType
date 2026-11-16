@@ -926,7 +926,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
         val mainBg = colors.get(ColorType.MAIN_BACKGROUND)
         val isDark = isDarkColor(mainBg) || isDarkColor(cardBg)
 
-        val pillFillColor = if (isDark) {
+        // isDarkColor is only true for near-black colors, so a mid-tone theme with light icons must not get a white pill
+        val iconsAreLight = ColorUtils.calculateLuminance(colors.get(ColorType.KEY_ICON)) > 0.5
+        val pillFillColor = if (isDark || iconsAreLight) {
             colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
         } else {
             Color.WHITE
