@@ -48,9 +48,7 @@ object AppUpdatesManager {
     const val PREF_AUTO_CHECK = "pref_auto_check_updates"
     const val PREF_FREQUENCY = "pref_auto_check_updates_frequency"
     const val PREF_LAST_CHECK = "pref_last_update_check_time"
-    const val PREF_APP_UPDATE_AVAILABLE = "pref_app_update_available"
     const val PREF_APP_LATEST_TAG = "pref_app_latest_tag"
-    const val PREF_PLUGIN_UPDATE_PREFIX = "pref_plugin_update_"
     const val PREF_PLUGIN_LATEST_PREFIX = "pref_plugin_latest_"
 
     private val _updateState = MutableStateFlow(0)
@@ -152,15 +150,14 @@ object AppUpdatesManager {
 
     fun hasAppUpdate(context: Context): Boolean {
         if (BuildConfig.FLAVOR != "standard") return false
-        return context.prefs().getBoolean(PREF_APP_UPDATE_AVAILABLE, false)
+        // derived from the cached latest tag, so it stays correct after an update without a new check
+        val latest = getAppLatestVersion(context) ?: return false
+        return isNewerVersion(BuildConfig.VERSION_NAME, latest)
     }
 
     fun hasAnyPluginUpdate(context: Context): Boolean {
         if (BuildConfig.FLAVOR != "standard") return false
-        val prefs = context.prefs()
-        return PLUGINS.any { plugin ->
-            prefs.getBoolean("$PREF_PLUGIN_UPDATE_PREFIX${plugin.id}", false)
-        }
+        return PLUGINS.any { isPluginUpdateAvailable(context, it.id) }
     }
 
     fun hasAnyUpdate(context: Context): Boolean {
@@ -170,7 +167,10 @@ object AppUpdatesManager {
 
     fun isPluginUpdateAvailable(context: Context, pluginId: String): Boolean {
         if (BuildConfig.FLAVOR != "standard") return false
-        return context.prefs().getBoolean("$PREF_PLUGIN_UPDATE_PREFIX$pluginId", false)
+        val plugin = PLUGINS.find { it.id == pluginId } ?: return false
+        val installed = plugin.getInstalledVersion(context) ?: return false
+        val latest = getPluginLatestVersion(context, pluginId) ?: return false
+        return isNewerVersion(installed, latest)
     }
 
     fun getPluginLatestVersion(context: Context, pluginId: String): String? {
@@ -222,49 +222,25 @@ object AppUpdatesManager {
                 fetchLatestTag(Links.GITHUB_RELEASES_API)
             }
 
-            val installedPlugins = PLUGINS.mapNotNull { plugin ->
-                val installedVer = plugin.getInstalledVersion(context)
-                if (installedVer != null) plugin to installedVer else null
-            }
-
-            val pluginUpdatesDeferred = installedPlugins.map { (plugin, installedVer) ->
-                async {
-                    val latestTag = fetchLatestTag(plugin.repoReleasesApi)
-                    val isAvail = if (latestTag != null) {
-                        isNewerVersion(installedVer, latestTag)
-                    } else false
-                    PluginUpdateStatus(
-                        plugin = plugin,
-                        installedVersion = installedVer,
-                        latestVersion = latestTag,
-                        isUpdateAvailable = isAvail
-                    )
-                }
-            }
+            // fetch the latest tag of every plugin, not only installed ones, so a plugin installed later
+            // shows its update state without waiting for the next check
+            val latestTagsDeferred = PLUGINS.map { plugin -> plugin to async { fetchLatestTag(plugin.repoReleasesApi) } }
 
             val appRemoteTag = appUpdateDeferred.await()
-            val isAppUpdateAvailable = if (appRemoteTag != null) {
-                isNewerVersion(BuildConfig.VERSION_NAME, appRemoteTag)
-            } else false
-
-            val pluginStatuses = pluginUpdatesDeferred.awaitAll()
+            val latestTags = latestTagsDeferred.map { (plugin, tag) -> plugin to tag.await() }
 
             context.prefs().edit {
                 putLong(PREF_LAST_CHECK, System.currentTimeMillis())
-                putBoolean(PREF_APP_UPDATE_AVAILABLE, isAppUpdateAvailable)
                 if (appRemoteTag != null) {
                     putString(PREF_APP_LATEST_TAG, appRemoteTag)
                 }
-                for (status in pluginStatuses) {
-                    putBoolean("$PREF_PLUGIN_UPDATE_PREFIX${status.plugin.id}", status.isUpdateAvailable)
-                    if (status.latestVersion != null) {
-                        putString("$PREF_PLUGIN_LATEST_PREFIX${status.plugin.id}", status.latestVersion)
-                    }
+                for ((plugin, tag) in latestTags) {
+                    if (tag != null) putString("$PREF_PLUGIN_LATEST_PREFIX${plugin.id}", tag)
                 }
             }
 
             _updateState.value++
-            Pair(isAppUpdateAvailable, pluginStatuses)
+            Pair(hasAppUpdate(context), getInstalledPluginStatuses(context))
         }
     }
 
@@ -272,8 +248,8 @@ object AppUpdatesManager {
         val prefs = context.prefs()
         return PLUGINS.mapNotNull { plugin ->
             val installedVer = plugin.getInstalledVersion(context) ?: return@mapNotNull null
-            val isAvail = prefs.getBoolean("$PREF_PLUGIN_UPDATE_PREFIX${plugin.id}", false)
             val latestVer = prefs.getString("$PREF_PLUGIN_LATEST_PREFIX${plugin.id}", null)
+            val isAvail = latestVer != null && isNewerVersion(installedVer, latestVer)
             PluginUpdateStatus(
                 plugin = plugin,
                 installedVersion = installedVer,
