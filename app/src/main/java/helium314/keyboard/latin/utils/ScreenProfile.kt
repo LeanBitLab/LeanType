@@ -58,7 +58,11 @@ object ScreenProfileProvider {
         val availableHeightDp = if (config.screenHeightDp > 0) config.screenHeightDp else if (density > 0f) (heightPx / density).roundToInt() else 0
 
         val isFoldable = isFoldableDevice(context)
-        val isBothDimensionsLarge = (availableWidthDp >= 500 && availableHeightDp >= 500)
+        // Unfolded foldables are nearly square (e.g. 588x706dp), but a phone with a small display size setting can also
+        // be 500dp or more in both dimensions. Phones are tall and narrow, so they must not get the relaxed 500dp limit.
+        val isNearlySquare = maxOf(availableWidthDp, availableHeightDp) * 10 <= minOf(availableWidthDp, availableHeightDp) * 16
+        val isBothDimensionsLarge = (availableWidthDp >= 600 && availableHeightDp >= 600)
+            || (isNearlySquare && availableWidthDp >= 500 && availableHeightDp >= 500)
             || (isFoldable && availableWidthDp >= 500 && availableHeightDp >= 450)
         val isSmallestWidthLarge = config.smallestScreenWidthDp >= 600
 
