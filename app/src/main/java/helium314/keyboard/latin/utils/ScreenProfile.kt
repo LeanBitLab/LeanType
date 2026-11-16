@@ -3,7 +3,6 @@ package helium314.keyboard.latin.utils
 
 import android.content.Context
 import android.content.res.Configuration
-import android.util.Log
 import androidx.annotation.VisibleForTesting
 import kotlin.math.roundToInt
 

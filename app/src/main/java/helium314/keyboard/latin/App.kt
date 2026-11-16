@@ -57,6 +57,11 @@ class App : Application(), Configuration.Provider {
                 packageInfo.versionCode
             }) on Android ${android.os.Build.VERSION.RELEASE} (SDK ${android.os.Build.VERSION.SDK_INT})"
         )
+        val config = resources.configuration
+        Log.i(
+            "startup", "Device ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}, screen ${config.screenWidthDp}x${config.screenHeightDp}dp " +
+                "(smallest ${config.smallestScreenWidthDp}dp, density ${resources.displayMetrics.densityDpi}dpi)"
+        )
     }
 
     companion object {
