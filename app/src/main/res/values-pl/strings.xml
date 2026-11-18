@@ -1740,4 +1740,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="voice_transcribe_while_speaking_summary">Krótsze oczekiwanie na długie dyktanda</string>
     <string name="backup_category_personal_dictionary">Słownik osobisty</string>
     <string name="backup_category_text_expander">Ekspander tekstu</string>
+    <string name="gif_pack_close">Zamknij paczkę</string>
 </resources>

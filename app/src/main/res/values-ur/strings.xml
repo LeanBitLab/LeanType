@@ -1787,4 +1787,5 @@
     <string name="backup_category_text_expander">ٹیکسٹ ایکسپینڈر</string>
     <string name="no_dictionary_message">\"کسی لغت کے بغیر، آپ کو صرف اس متن کے لیے تجاویز ملیں گی جو آپ نے پہلے درج کی ہیں۔&lt;br&gt;
         آپ لغات ڈاؤن لوڈ کر سکتے ہیں%1$s، یا چیک کر سکتے ہیں کہ آیا \"%2$s\" کی لغت براہ راست ڈاؤن لوڈ کی جا سکتی ہے%3$s۔</string>
+    <string name="gif_pack_close">بند پیک</string>
 </resources>

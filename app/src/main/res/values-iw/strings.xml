@@ -1701,4 +1701,5 @@
     <string name="voice_transcribe_while_speaking_summary">המתנה קצרה יותר לתכתיבים ארוכים</string>
     <string name="backup_category_personal_dictionary">מילון אישי</string>
     <string name="backup_category_text_expander">מרחיב טקסט</string>
+    <string name="gif_pack_close">סגור חבילה</string>
 </resources>

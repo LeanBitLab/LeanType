@@ -1730,4 +1730,5 @@
     <string name="voice_transcribe_while_speaking_summary">По-кратко изчакване за дълги диктовки</string>
     <string name="backup_category_personal_dictionary">Личен речник</string>
     <string name="backup_category_text_expander">Текстов разширител</string>
+    <string name="gif_pack_close">Затвори пакета</string>
 </resources>

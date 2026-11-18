@@ -1731,4 +1731,5 @@ Ar norite atnaujinti?</string>
     <string name="voice_transcribe_while_speaking_summary">Trumpesnis laukimas ilgiems diktantams</string>
     <string name="backup_category_personal_dictionary">Asmeninis žodynas</string>
     <string name="backup_category_text_expander">Teksto plėtiklis</string>
+    <string name="gif_pack_close">Uždaryti paketą</string>
 </resources>

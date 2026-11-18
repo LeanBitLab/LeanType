@@ -1762,4 +1762,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="voice_transcribe_while_speaking_summary">Espera más corta para dictados largos</string>
     <string name="backup_category_personal_dictionary">Diccionario personal</string>
     <string name="backup_category_text_expander">Expansor de texto</string>
+    <string name="gif_pack_close">Cerrar paquete</string>
 </resources>

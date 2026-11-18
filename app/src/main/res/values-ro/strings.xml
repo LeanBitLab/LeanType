@@ -1730,4 +1730,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="voice_transcribe_while_speaking_summary">Așteptați mai scurt pentru dictate lungi</string>
     <string name="backup_category_personal_dictionary">Dicţionar personal</string>
     <string name="backup_category_text_expander">Text Expander</string>
+    <string name="gif_pack_close">Închide pachetul</string>
 </resources>

@@ -34,6 +34,23 @@
         android:paddingVertical="1dp"
         android:visibility="gone" />
 
+    <!-- name and item count of a pack tile -->
+    <TextView
+        android:id="@+id/packLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#99000000"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="2dp"
+        android:gravity="center"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:visibility="gone" />
+
     <FrameLayout
         android:id="@+id/insertOverlay"
         android:layout_width="match_parent"

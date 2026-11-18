@@ -172,6 +172,24 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <!-- replaces the kind tabs while a pack is open, tapping it closes the pack -->
+    <TextView
+        android:id="@+id/packHeader"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginBottom="2dp"
+        android:paddingHorizontal="12dp"
+        android:gravity="center_vertical"
+        android:drawableEnd="@drawable/ic_close_rounded"
+        android:drawablePadding="6dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/gif_pack_close"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/gif_thumb_height"
