@@ -43,6 +43,7 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
 import helium314.keyboard.latin.common.Constants
+import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.dpToPx
 import helium314.keyboard.latin.utils.prefs
@@ -195,6 +196,8 @@ class GifPickerView @JvmOverloads constructor(
     fun open() {
         if (opened) return
         opened = true
+        adapter.autoplay = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P &&
+            context.prefs().getBoolean(Settings.PREF_GIF_AUTOPLAY, Defaults.PREF_GIF_AUTOPLAY)
         loadSeq++
         query.clear()
         cursorPos = 0
@@ -1171,6 +1174,8 @@ class GifPickerView @JvmOverloads constructor(
         private var insertingId: String? = null
         private var liveItemId: String? = null
         private var liveJob: Job? = null
+        /** Play every attached (visible) tile instead of the long-pressed one; set on open, Android 9+ only. */
+        var autoplay = false
 
         @SuppressLint("NotifyDataSetChanged")
         fun submit(new: List<GifItem>) {
@@ -1204,6 +1209,49 @@ class GifPickerView @JvmOverloads constructor(
             val liveBadge: TextView = itemView.findViewById(R.id.liveBadge)
             val packLabel: TextView = itemView.findViewById(R.id.packLabel)
             val insertOverlay: View = itemView.findViewById(R.id.insertOverlay)
+            var autoplayUri: Uri? = null
+            var autoplayJob: Job? = null
+        }
+
+        override fun onViewAttachedToWindow(holder: VH) {
+            super.onViewAttachedToWindow(holder)
+            startAutoplay(holder)
+        }
+
+        override fun onViewDetachedFromWindow(holder: VH) {
+            super.onViewDetachedFromWindow(holder)
+            stopAutoplay(holder)
+        }
+
+        /** Decodes the tile downsampled to its height and plays it; only attached tiles run, so off-screen ones cost no CPU. */
+        private fun startAutoplay(holder: VH) {
+            if (!autoplay || Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return
+            val uri = holder.autoplayUri ?: return
+            (holder.imageView.drawable as? AnimatedImageDrawable)?.let { it.start(); return }
+            holder.autoplayJob?.cancel()
+            val h = context.resources.getDimensionPixelSize(R.dimen.gif_thumb_height)
+            holder.autoplayJob = scope.launch {
+                val drawable = withContext(Dispatchers.IO) {
+                    try {
+                        ImageDecoder.decodeDrawable(ImageDecoder.createSource(context.contentResolver, uri)) { decoder, info, _ ->
+                            if (info.size.height > h) decoder.setTargetSize(info.size.width * h / info.size.height, h)
+                        }
+                    } catch (_: Exception) {
+                        null
+                    }
+                }
+                if (drawable !is AnimatedImageDrawable || holder.autoplayUri != uri || !holder.itemView.isAttachedToWindow) return@launch
+                holder.imageView.dispose()
+                holder.imageView.setImageDrawable(drawable)
+                drawable.repeatCount = AnimatedImageDrawable.REPEAT_INFINITE
+                drawable.start()
+            }
+        }
+
+        private fun stopAutoplay(holder: VH) {
+            holder.autoplayJob?.cancel()
+            holder.autoplayJob = null
+            stopAnimation(holder.imageView)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -1213,7 +1261,8 @@ class GifPickerView @JvmOverloads constructor(
 
         override fun onViewRecycled(holder: VH) {
             super.onViewRecycled(holder)
-            stopAnimation(holder.imageView)
+            holder.autoplayUri = null
+            stopAutoplay(holder)
             holder.imageView.dispose()
             holder.imageView.setImageDrawable(null)
         }
@@ -1251,7 +1300,9 @@ class GifPickerView @JvmOverloads constructor(
                 holder.packLabel.visibility = View.GONE
             }
 
-            val isLive = item.id == liveItemId
+            stopAutoplay(holder)
+            holder.autoplayUri = if (autoplay && !item.isPack) uri else null
+            val isLive = !autoplay && item.id == liveItemId
             holder.liveBadge.visibility = if (isLive) View.VISIBLE else View.GONE
 
             if (isLive && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -1265,12 +1316,13 @@ class GifPickerView @JvmOverloads constructor(
                     placeholder(R.drawable.ic_gif_placeholder)
                     precision(Precision.INEXACT)
                 }
+                if (holder.itemView.isAttachedToWindow) startAutoplay(holder)
             }
 
             holder.itemView.setOnClickListener { onClick(item) }
             holder.itemView.setOnLongClickListener {
-                // a pack tile only opens, its cover is not previewed live
-                if (item.isPack) return@setOnLongClickListener false
+                // a pack tile only opens, its cover is not previewed live; with autoplay every tile already plays
+                if (item.isPack || autoplay) return@setOnLongClickListener false
                 it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 val oldLiveId = liveItemId
                 liveItemId = if (liveItemId == item.id) null else item.id
