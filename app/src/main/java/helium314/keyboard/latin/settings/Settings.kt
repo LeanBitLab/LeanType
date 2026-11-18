@@ -390,6 +390,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_ENABLE_APP_SYNC_LISTENER = "enable_app_sync_listener"
         const val PREF_GIF_PROVIDER = "pref_gif_provider"
         const val PREF_GIF_PROVIDER_ENABLED_PREFIX = "pref_gif_provider_enabled_"
+        const val PREF_GIF_AUTOPLAY = "pref_gif_autoplay"
 
         fun isGifProviderEnabled(prefs: SharedPreferences, providerId: String): Boolean {
             return prefs.getBoolean("${PREF_GIF_PROVIDER_ENABLED_PREFIX}$providerId", true)

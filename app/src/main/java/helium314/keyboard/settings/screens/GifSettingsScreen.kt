@@ -4,6 +4,7 @@ package helium314.keyboard.settings.screens
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
@@ -45,10 +46,12 @@ import com.leanbitlab.leantype.gif.ProviderInfo
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.Links
 import helium314.keyboard.latin.gif.GifPluginManager
+import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.SearchSettingsScreen
+import helium314.keyboard.settings.preferences.SwitchPreference
 import helium314.keyboard.settings.dialogs.PreferenceDialog
 import helium314.keyboard.settings.preferences.Preference
 import helium314.keyboard.settings.preferences.PreferenceCategory
@@ -217,6 +220,13 @@ fun GifSettingsScreen(
                         description = gifPluginSummary,
                         icon = R.drawable.ic_gif,
                         onClick = { showGifPluginDialog = true }
+                    )
+                    // plays visible GIFs without holding them; needs AnimatedImageDrawable (Android 9+)
+                    SwitchPreference(
+                        name = stringResource(R.string.sound_pack_preview),
+                        key = Settings.PREF_GIF_AUTOPLAY,
+                        default = Defaults.PREF_GIF_AUTOPLAY,
+                        enabled = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
                     )
                 }
             }
