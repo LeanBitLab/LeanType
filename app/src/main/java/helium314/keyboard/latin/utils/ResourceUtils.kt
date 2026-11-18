@@ -77,19 +77,11 @@ object ResourceUtils {
     fun getSuggestionsStripHeight(res: Resources): Int {
         val defaultHeight = res.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
         if (sFloatingKeyboardScaleOverride > 0.0f) {
-            // Derive strip height from the actual keyboard key row height rather than
-            // arbitrary dp bounds, using the configured ratio of strip to key row.
-            val defaultKbHeight = getDefaultKeyboardHeight(res, false)
-            val defaultRowHeight = defaultKbHeight / helium314.keyboard.keyboard.internal.KeyboardParams.DEFAULT_KEYBOARD_ROWS
-            val defaultRatio = if (defaultRowHeight > 0f) defaultHeight.toFloat() / defaultRowHeight else 0.78f
-            val keyboard = helium314.keyboard.keyboard.KeyboardSwitcher.getInstance().keyboard
-            if (keyboard != null && keyboard.mMostCommonKeyHeight > 0) {
-                return (keyboard.mMostCommonKeyHeight * defaultRatio).toInt()
-                    .coerceAtLeast((24 * res.displayMetrics.density).toInt()) // absolute floor: 24dp
-            }
-            // Fallback: scale the default height directly
+            // Scale the docked strip height with the floating keyboard. Not derived from the key height: layouts with
+            // more rows (number row, PC layouts) have shorter keys, which made the strip and toolbar keys too small.
+            // Capped at the docked height: toolbar icons don't grow, so a taller strip only adds empty space.
             val scaledHeight = (defaultHeight * sFloatingKeyboardScaleOverride).toInt()
-            return scaledHeight.coerceAtLeast((24 * res.displayMetrics.density).toInt())
+            return scaledHeight.coerceIn((24 * res.displayMetrics.density).toInt(), defaultHeight)
         }
         return defaultHeight
     }
