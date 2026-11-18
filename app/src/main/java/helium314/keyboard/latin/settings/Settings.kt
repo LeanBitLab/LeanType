@@ -709,6 +709,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                 "toggle_numpad" -> KeyboardActionListener.SWIPE_TOGGLE_NUMPAD
                 "hide_keyboard" -> KeyboardActionListener.SWIPE_HIDE_KEYBOARD
                 "delete_word" -> KeyboardActionListener.SWIPE_DELETE_WORD
+                "delete_space" -> KeyboardActionListener.SWIPE_DELETE_SPACE
                 else -> KeyboardActionListener.SWIPE_NO_ACTION
             }
         }

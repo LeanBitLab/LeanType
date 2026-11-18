@@ -544,6 +544,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 false
             }
         }
+        KeyboardActionListener.SWIPE_DELETE_SPACE -> {
+            val code = if (steps < 0) KeyCode.DELETE else Constants.CODE_SPACE
+            audioAndHapticFeedbackManager.performHapticAndAudioFeedback(
+                code, keyboardSwitcher.mainKeyboardView, HapticEvent.KEY_PRESS
+            )
+            onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+            true
+        }
         else -> false
     }
 
