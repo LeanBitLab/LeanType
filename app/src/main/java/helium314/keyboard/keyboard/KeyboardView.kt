@@ -560,6 +560,19 @@ open class KeyboardView @JvmOverloads constructor(
                 }
             }
 
+            // Emoji glyphs are taller than the reference char and fitting above is by width only, so a glyph could
+            // reach into the next row and get cut when that row's keys are redrawn. Fit and center by real bounds.
+            if (isEmojiKey && this is EmojiPageKeyboardView && !isEmoticonInEmojiKeyboard) {
+                val bounds = android.graphics.Rect()
+                paint.getTextBounds(label, 0, label.length, bounds)
+                val maxHeight = keyHeight * 0.9f
+                if (bounds.height() > maxHeight) {
+                    paint.textSize = paint.textSize * (maxHeight / bounds.height())
+                    paint.getTextBounds(label, 0, label.length, bounds)
+                }
+                if (bounds.height() > 0) labelBaseline = centerY - bounds.exactCenterY()
+            }
+
             if (key.isEnabled) {
                 val isTextEditMode = KeyboardActionListenerImpl.sPersistentTextEditModeActive || (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT)
                 val customBgColor = mKeyCustomBgColors[key]
