@@ -10,6 +10,7 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.never
+import org.mockito.Mockito.`when`
 import java.util.Locale
 
 class DictionaryGroupTest {
@@ -112,5 +113,29 @@ class DictionaryGroupTest {
         assertTrue(isBlacklistedMethod.invoke(instance, "badword") as Boolean)
         assertTrue(isBlacklistedMethod.invoke(instance, "superbad") as Boolean)
         assertFalse(isBlacklistedMethod.invoke(instance, "goodword") as Boolean)
+    }
+
+    @Test
+    fun testRemoveWord_DoesNotBlacklistCapitalizedMainDictWord() {
+        val dictGroupClass = Class.forName("helium314.keyboard.latin.DictionaryGroup")
+        val constructor = dictGroupClass.declaredConstructors.first { it.parameterCount == 4 }
+        constructor.isAccessible = true
+
+        // The main dictionary only has the capitalized form, like "I'm" in English.
+        val mockMainDict = mock(Dictionary::class.java)
+        `when`(mockMainDict.isValidWord("I'm")).thenReturn(true)
+        val instance = constructor.newInstance(Locale.ENGLISH, mockMainDict, emptyMap<String, ExpandableBinaryDictionary>(), null)
+        val isMainDictWordMethod = dictGroupClass.getDeclaredMethod("isMainDictWord", String::class.java)
+        val removeWordMethod = dictGroupClass.getDeclaredMethod("removeWord", String::class.java, Boolean::class.javaPrimitiveType)
+        val isBlacklistedMethod = dictGroupClass.getDeclaredMethod("isBlacklisted", String::class.java)
+        listOf(isMainDictWordMethod, removeWordMethod, isBlacklistedMethod).forEach { it.isAccessible = true }
+
+        for (word in listOf("I'm", "i'm", "I,m")) {
+            removeWordMethod.invoke(instance, word, isMainDictWordMethod.invoke(instance, word) as Boolean)
+        }
+
+        assertFalse(isBlacklistedMethod.invoke(instance, "I'm") as Boolean)
+        assertFalse(isBlacklistedMethod.invoke(instance, "i'm") as Boolean)
+        assertTrue(isBlacklistedMethod.invoke(instance, "I,m") as Boolean)
     }
 }
