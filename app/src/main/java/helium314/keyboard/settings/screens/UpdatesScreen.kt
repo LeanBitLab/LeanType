@@ -64,16 +64,13 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Handwriting: Keeps working after the keyboard is closed and reopened, and stays open after the first word",
-    "• Japanese Input: No longer falls back to Chinese after switching apps",
-    "• Split Keyboard: Phones with a small display size setting no longer get a split keyboard by default",
-    "• Space Below Keys: Fixed extra space on some devices after changing the font or toolbar mode",
-    "• Update Indicator: The update dot clears after a plugin update and shows for plugins installed later",
-    "• Clipboard Menu: The pin, edit, delete and select icons are visible on mid-tone themes",
-    "• Emoji: Sub-category chips scroll without switching the category",
-    "• Space Bar: Custom text and language name also show on the emoji and clipboard pages",
-    "• Incognito: Clearer, larger indicator on the space bar",
-    "• Network: The app's own hosts now accept only HTTPS with system certificates"
+    "• Japanese Input: The CJK plugin no longer falls back to Chinese after switching apps on a physical keyboard",
+    "• Floating Keyboard: Toolbar keys are no longer tiny with extra rows or in landscape",
+    "• One-Handed Mode: Keeps its side while typing and the side switch arrow no longer disappears",
+    "• One-Handed Controls: Stay above the navigation bar and come back after touchpad mode",
+    "• One-Handed Resizing: Smooth live preview while dragging the resize button",
+    "• One-Handed Look: The keyboard slides when switching sides, controls styled like toolbar keys",
+    "• Emoji: Tall emojis are no longer clipped by the row above"
 )
 
 @Composable

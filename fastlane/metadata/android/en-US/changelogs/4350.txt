@@ -1,0 +1,5 @@
+- Japanese input with the CJK plugin no longer falls back to Chinese after switching apps on a physical keyboard.
+- Floating keyboard toolbar keys are no longer tiny with extra rows or in landscape.
+- One-handed mode keeps its side and its controls stay above the navigation bar.
+- Smoother one-handed resizing with a live preview, and a slide when switching sides.
+- Tall emojis are no longer clipped.
