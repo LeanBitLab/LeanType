@@ -20,7 +20,7 @@ import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.ResourceUtils
 import helium314.keyboard.latin.utils.prefs
-import kotlin.math.abs
+import kotlin.math.roundToInt
 
 class KeyboardWrapperView @JvmOverloads constructor(
         context: Context,
@@ -40,6 +40,55 @@ class KeyboardWrapperView @JvmOverloads constructor(
             updateViewsVisibility()
             if (isInLayout) post { requestLayout() } else requestLayout()
         }
+
+    /** Hides the one-handed controls while another view (touchpad) covers the keyboard, without leaving the mode. */
+    var oneHandedControlsHidden = false
+        set(hidden) {
+            if (field == hidden) return
+            field = hidden
+            updateViewsVisibility()
+        }
+
+    // Resize drag: rebuilding the keyboard takes ~100 ms, so the drag only previews the new width by scaling the
+    // keyboard view, and the keyboard is rebuilt once when the finger is lifted.
+    private var resizeStartX = 0f
+    private var resizeStartScale = 0f
+    private var resizePendingScale = 0f
+    private var resizePreviewView: View? = null
+
+    // Side switch: keyboard position before the switch, to slide it to the new side on the next layout
+    private var slideFromLeft: Int? = null
+
+    private fun oneHandedWidthFraction(extraScale: Float): Float {
+        val baseScale = resources.getFraction(R.fraction.config_one_handed_mode_width, 1, 1)
+        return 1f - (1f - baseScale) * extraScale
+    }
+
+    private fun previewResize(scale: Float) {
+        val view = resizePreviewView ?: return
+        val scaleX = oneHandedWidthFraction(scale) / oneHandedWidthFraction(resizeStartScale)
+        val isLeftGravity = oneHandedGravity == Gravity.LEFT
+        view.pivotX = if (isLeftGravity) 0f else view.width.toFloat()
+        view.scaleX = scaleX
+        // the buttons stay centered in the space beside the keyboard
+        val shift = (scaleX - 1f) * view.width / 2f
+        val buttonShift = if (isLeftGravity) shift else -shift
+        stopOneHandedModeBtn.translationX = buttonShift
+        switchOneHandedModeBtn.translationX = buttonShift
+        resizeOneHandedModeBtn.translationX = buttonShift
+    }
+
+    private fun endResize(apply: Boolean) {
+        resizePreviewView?.scaleX = 1f
+        resizePreviewView = null
+        stopOneHandedModeBtn.translationX = 0f
+        switchOneHandedModeBtn.translationX = 0f
+        resizeOneHandedModeBtn.translationX = 0f
+        if (!apply || resizePendingScale == resizeStartScale || !oneHandedModeEnabled) return
+        // the pref listener reloads settings synchronously, so the rebuilt keyboard uses the new scale
+        Settings.getInstance().writeOneHandedModeScale(resizePendingScale)
+        KeyboardSwitcher.getInstance().setOneHandedModeEnabled(true, true)
+    }
 
     var oneHandedGravity = Gravity.NO_GRAVITY
         set(value) {
@@ -67,53 +116,52 @@ class KeyboardWrapperView @JvmOverloads constructor(
         stopOneHandedModeBtn.setOnClickListener(this)
         switchOneHandedModeBtn.setOnClickListener(this)
 
-        var x = 0f
         resizeOneHandedModeBtn.setOnTouchListener { _, motionEvent ->
-            when (motionEvent.action) {
-                MotionEvent.ACTION_DOWN -> x = motionEvent.rawX
-                MotionEvent.ACTION_MOVE -> {
-                    // performance is not great because settings are reloaded and keyboard is redrawn
-                    // on every move, but it's good enough
-                    val sign = -switchOneHandedModeBtn.scaleX
-                    // factor 2 to make it more sensitive (maybe could be tuned a little)
-                    val changePercent = 2 * sign * (x - motionEvent.rawX) / context.resources.displayMetrics.density
-                    if (abs(changePercent) < 1) return@setOnTouchListener true
-                    x = motionEvent.rawX
+            when (motionEvent.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    resizeStartX = motionEvent.rawX
                     val landscape = Settings.getValues().mDisplayOrientation == Configuration.ORIENTATION_LANDSCAPE
                     val split = Settings.getValues().mIsSplitKeyboardEnabled
-                    val oldScale = Settings.readOneHandedModeScale(context.prefs(), landscape, split)
-                    val newScale = (oldScale + changePercent / 100f).coerceAtMost(2.5f).coerceAtLeast(0.5f)
-                    if (newScale == oldScale) return@setOnTouchListener true
-                    Settings.getInstance().writeOneHandedModeScale(newScale)
-                    // Force reload settings synchronously to ensure the new scale is used immediately
-                    val settings = Settings.getInstance()
-                    val values = Settings.getValues()
-                    settings.loadSettings(context, values.mLocale, values.mInputAttributes, values.mCurrentKeyboardScript)
-                    KeyboardSwitcher.getInstance().setOneHandedModeEnabled(true, true)
+                    resizeStartScale = Settings.readOneHandedModeScale(context.prefs(), landscape, split)
+                    resizePendingScale = resizeStartScale
+                    resizePreviewView = KeyboardSwitcher.getInstance().visibleKeyboardView
                 }
-                else -> x = 0f
+                MotionEvent.ACTION_MOVE -> {
+                    val sign = -switchOneHandedModeBtn.scaleX
+                    // factor 2 to make it more sensitive (maybe could be tuned a little)
+                    val changePercent = 2 * sign * (resizeStartX - motionEvent.rawX) / context.resources.displayMetrics.density
+                    val newScale = ((resizeStartScale * 100f + changePercent).roundToInt() / 100f).coerceIn(0.5f, 2.5f)
+                    if (newScale != resizePendingScale) {
+                        resizePendingScale = newScale
+                        previewResize(newScale)
+                    }
+                }
+                MotionEvent.ACTION_UP -> endResize(true)
+                MotionEvent.ACTION_CANCEL -> endResize(false)
             }
             true
         }
 
         val colors = Settings.getValues().mColors
-        colors.setColor(stopOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
-        colors.setColor(switchOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
-        colors.setColor(resizeOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
-        colors.setBackground(stopOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
-        colors.setBackground(switchOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
-        colors.setBackground(resizeOneHandedModeBtn, ColorType.ONE_HANDED_MODE_BUTTON)
+        // styled like the toolbar keys (rounded key background, toolbar icon color)
+        for (button in listOf(stopOneHandedModeBtn, switchOneHandedModeBtn, resizeOneHandedModeBtn)) {
+            button.setBackgroundResource(R.drawable.toolbar_key_background)
+            colors.setColor(button.background, ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND)
+            colors.setColor(button, ColorType.TOOL_BAR_KEY)
+        }
     }
 
     @SuppressLint("RtlHardcoded")
     fun switchOneHandedModeSide() {
+        slideFromLeft = KeyboardSwitcher.getInstance().visibleKeyboardView?.left
         oneHandedGravity = if (oneHandedGravity == Gravity.LEFT) Gravity.RIGHT else Gravity.LEFT
     }
 
     private fun updateViewsVisibility() {
-        stopOneHandedModeBtn.visibility = if (oneHandedModeEnabled) VISIBLE else GONE
-        switchOneHandedModeBtn.visibility = if (oneHandedModeEnabled) VISIBLE else GONE
-        resizeOneHandedModeBtn.visibility = if (oneHandedModeEnabled) VISIBLE else GONE
+        val visibility = if (oneHandedModeEnabled && !oneHandedControlsHidden) VISIBLE else GONE
+        stopOneHandedModeBtn.visibility = visibility
+        switchOneHandedModeBtn.visibility = visibility
+        resizeOneHandedModeBtn.visibility = visibility
     }
 
     @SuppressLint("RtlHardcoded")
@@ -210,19 +258,30 @@ class KeyboardWrapperView @JvmOverloads constructor(
                 keyboardLeft + keyboardView.measuredWidth,
                 keyboardView.measuredHeight
         )
+        slideFromLeft?.let { fromLeft ->
+            slideFromLeft = null
+            val duration = Settings.getAnimationDuration(200)
+            if (duration > 0L && fromLeft != keyboardLeft) {
+                keyboardView.translationX = (fromLeft - keyboardLeft).toFloat()
+                keyboardView.animate().translationX(0f).setDuration(duration)
+                    .setInterpolator(android.view.animation.DecelerateInterpolator()).start()
+            }
+        }
 
         val scale = Settings.getValues().mKeyboardHeightScale
         // scale one-handed mode button height if keyboard height scale is < 80%
         val heightScale = if (scale < 0.8f) scale + 0.2f else 1f
         val buttonsLeft = if (isLeftGravity) keyboardView.measuredWidth else 0
-        val buttonXLeft = buttonsLeft + (spareWidth - stopOneHandedModeBtn.measuredWidth) / 2
-        val buttonXRight = buttonsLeft + (spareWidth + stopOneHandedModeBtn.measuredWidth) / 2
-        val buttonHeight = (heightScale * stopOneHandedModeBtn.measuredHeight).toInt()
+        // square buttons like the toolbar keys, smaller if the space beside the keyboard is narrow
+        val buttonSize = (heightScale * 40 * resources.displayMetrics.density).toInt().coerceAtMost(spareWidth)
+        val buttonXLeft = buttonsLeft + (spareWidth - buttonSize) / 2
         fun View.setLayout(yPosition: Int) {
-            layout(buttonXLeft, yPosition - buttonHeight / 2, buttonXRight, yPosition + buttonHeight / 2)
+            layout(buttonXLeft, yPosition - buttonSize / 2, buttonXLeft + buttonSize, yPosition + buttonSize / 2)
         }
-        stopOneHandedModeBtn.setLayout((keyboardView.measuredHeight * 0.2f).toInt())
-        switchOneHandedModeBtn.setLayout((keyboardView.measuredHeight * 0.5f).toInt())
-        resizeOneHandedModeBtn.setLayout((keyboardView.measuredHeight * 0.8f).toInt())
+        // Bottom padding holds the navigation bar inset, keep the buttons above it
+        val contentHeight = keyboardView.measuredHeight - keyboardView.paddingBottom
+        stopOneHandedModeBtn.setLayout((contentHeight * 0.2f).toInt())
+        switchOneHandedModeBtn.setLayout((contentHeight * 0.5f).toInt())
+        resizeOneHandedModeBtn.setLayout((contentHeight * 0.8f).toInt())
     }
 }
