@@ -59,7 +59,9 @@ object KeyboardBottomRowGeometry {
         val bottomRowAreaHeight = totalHeight - bottomRowY
 
         val mainKb = KeyboardSwitcher.getInstance().keyboard
-        if (mainKb != null && mainKb.mOccupiedHeight == totalHeight && (mainKb.mId.isAlphabetKeyboard || mainKb.mId.isAlphaOrSymbolKeyboard)) {
+        // hex layouts have their space keys in a middle row, so the space key does not mark the bottom row
+        if (mainKb != null && mainKb.mOccupiedHeight == totalHeight && !mainKb.isHexagonal
+                && (mainKb.mId.isAlphabetKeyboard || mainKb.mId.isAlphaOrSymbolKeyboard)) {
             val spaceKey = mainKb.sortedKeys.firstOrNull { it.code == Constants.CODE_SPACE }
             if (spaceKey != null) {
                 return Dimensions(
