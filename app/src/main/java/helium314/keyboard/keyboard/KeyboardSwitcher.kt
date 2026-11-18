@@ -556,6 +556,8 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         } else {
             mTouchpadView?.visibility = View.GONE
         }
+        // Any return to the main keyboard ends the touchpad, so bring back the one-handed controls it hid
+        mKeyboardViewWrapper?.oneHandedControlsHidden = PointerTracker.sPersistentTouchpadModeActive && visibility == View.VISIBLE
     }
 
     override fun setEmojiKeyboard() {
@@ -1013,8 +1015,14 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
 
     fun setOneHandedModeEnabled(enabled: Boolean, force: Boolean) {
         val wrapper = mKeyboardViewWrapper ?: return
-        if (!force && wrapper.oneHandedModeEnabled == enabled) return
         val settings = Settings.getInstance()
+        if (!force && wrapper.oneHandedModeEnabled == enabled) {
+            // The side is stored per orientation and split state, so keep it in sync on every keyboard load,
+            // otherwise the wrapper keeps a stale side and the switch button flips from the wrong one.
+            val gravity = settings.current.mOneHandedModeGravity
+            if (enabled && wrapper.oneHandedGravity != gravity) wrapper.oneHandedGravity = gravity
+            return
+        }
         wrapper.oneHandedModeEnabled = enabled
         wrapper.oneHandedGravity = settings.current.mOneHandedModeGravity
         settings.writeOneHandedModeEnabled(enabled)
@@ -1043,11 +1051,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         kbView.visibility = View.INVISIBLE
         mEmojiPalettesView?.visibility = View.GONE
         mClipboardHistoryView?.visibility = View.GONE
-        mKeyboardViewWrapper?.let { wrapper ->
-            wrapper.findViewById<View>(R.id.btn_stop_one_handed_mode)?.visibility = View.GONE
-            wrapper.findViewById<View>(R.id.btn_switch_one_handed_mode)?.visibility = View.GONE
-            wrapper.findViewById<View>(R.id.btn_resize_one_handed_mode)?.visibility = View.GONE
-        }
+        mKeyboardViewWrapper?.oneHandedControlsHidden = true
         if (Settings.getValues().mTouchpadFullscreen) {
             mStripContainer?.visibility = View.GONE
             requestInputViewLayoutAndInsets()
@@ -1107,11 +1111,7 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         mSuggestionStripView?.updateSplitToolbarState()
         requestInputViewLayoutAndInsets()
         mKeyboardViewWrapper?.let { wrapper ->
-            if (wrapper.oneHandedModeEnabled) {
-                wrapper.findViewById<View>(R.id.btn_stop_one_handed_mode)?.visibility = View.VISIBLE
-                wrapper.findViewById<View>(R.id.btn_switch_one_handed_mode)?.visibility = View.VISIBLE
-                wrapper.findViewById<View>(R.id.btn_resize_one_handed_mode)?.visibility = View.VISIBLE
-            }
+            wrapper.oneHandedControlsHidden = false
             wrapper.requestLayout()
         }
     }
