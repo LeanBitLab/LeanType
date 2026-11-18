@@ -29,8 +29,9 @@ object CjkPluginLoader {
 
     // A native library (jni_pinyin) can only be loaded by one ClassLoader. The loader must outlive the engine
     // (release() drops it on every keyboard close), otherwise Pinyin stays unavailable after a re-open.
+    // Keyed by the native lib directory: the conflict is per .so path, and a new plugin APK gets a new directory.
     private var cachedClassLoader: ClassLoader? = null
-    private var cachedLoaderApkModified: Long = 0L
+    private var cachedLoaderLibDir: String? = null
 
     fun getTargetAbi(): String {
         for (abi in Build.SUPPORTED_ABIS) {
@@ -149,6 +150,7 @@ object CjkPluginLoader {
         context.prefs().edit().putBoolean(PREF_ENABLE_MOCK, enabled).apply()
     }
 
+    @Synchronized
     fun getEngine(context: Context): ICjkEngine? {
         val internalApk = File(context.filesDir, PLUGIN_FILENAME)
         val apkModified = if (internalApk.exists()) internalApk.lastModified() else 0L
@@ -207,8 +209,8 @@ object CjkPluginLoader {
 
             extractPluginAssetsAndLibs(apkFile, nativeLibDir, sharedDir)
 
-            val apkModified = apkFile.lastModified()
-            val classLoader = cachedClassLoader?.takeIf { cachedLoaderApkModified == apkModified }
+            val libDirPath = nativeLibDir.absolutePath
+            val classLoader = cachedClassLoader?.takeIf { cachedLoaderLibDir == libDirPath }
                 ?: PluginClassLoader(
                     apkFile.absolutePath,
                     context.codeCacheDir.absolutePath,
@@ -216,7 +218,7 @@ object CjkPluginLoader {
                     context.classLoader
                 ).also {
                     cachedClassLoader = it
-                    cachedLoaderApkModified = apkModified
+                    cachedLoaderLibDir = libDirPath
                 }
 
             val clazz = classLoader.loadClass(PLUGIN_CLASS_NAME)
@@ -304,6 +306,7 @@ object CjkPluginLoader {
 
     fun importPlugin(context: Context, sourceUri: Uri): Boolean = loadPluginFromUri(context, sourceUri)
 
+    @Synchronized
     fun loadPluginFromUri(context: Context, sourceUri: Uri): Boolean {
         return try {
             try {
@@ -327,6 +330,7 @@ object CjkPluginLoader {
             val success = engine != null && isUsable(engine)
             if (success) {
                 activeEngine = engine
+                lastApkModified = targetFile.lastModified()
                 context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, true).apply()
                 Log.i(TAG, "CJK plugin imported and verified successfully")
             } else {
@@ -341,6 +345,7 @@ object CjkPluginLoader {
         }
     }
 
+    @Synchronized
     fun importPluginFromTempFile(context: Context, tempFile: File): Boolean {
         return try {
             try {
@@ -361,6 +366,7 @@ object CjkPluginLoader {
             val success = engine != null && isUsable(engine)
             if (success) {
                 activeEngine = engine
+                lastApkModified = targetFile.lastModified()
                 context.prefs().edit().putBoolean(PREF_HAS_PLUGIN, true).apply()
                 Log.i(TAG, "CJK plugin imported from temp file and verified successfully")
             } else {
@@ -389,11 +395,13 @@ object CjkPluginLoader {
         }
     }
 
+    @Synchronized
     fun removePlugin(context: Context) {
         try {
             activeEngine?.cleanup()
             activeEngine = null
             cachedClassLoader = null
+            cachedLoaderLibDir = null
             val apkFile = File(context.filesDir, PLUGIN_FILENAME)
             if (apkFile.exists()) apkFile.delete()
             val nativeLibBase = File(context.filesDir, "plugin_libs")
@@ -409,6 +417,7 @@ object CjkPluginLoader {
         }
     }
 
+    @Synchronized
     fun release() {
         try {
             activeEngine?.cleanup()

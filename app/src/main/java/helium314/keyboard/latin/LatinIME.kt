@@ -2261,7 +2261,10 @@ class LatinIME : InputMethodService(),
         CustomSoundManager.getInstance(this).onTrimMemory()
         helium314.keyboard.latin.utils.TextExpanderImageUtils.clearCache()
         helium314.keyboard.latin.handwriting.HandwritingLoader.release()
-        helium314.keyboard.latin.cjk.CjkPluginLoader.release()
+        // UI_HIDDEN comes on every app switch: re-initializing the CJK engine there reloads its dictionaries and
+        // dropped Japanese state, so only release it on real memory pressure. With a physical keyboard the input
+        // view can be hidden while the user is typing, so also keep it while an input session is active.
+        if (forceUnbindVoice && !currentInputStarted) helium314.keyboard.latin.cjk.CjkPluginLoader.release()
         helium314.keyboard.latin.ocr.OcrPluginLoader.release()
         helium314.keyboard.latin.translation.TranslationLoader.unloadPlugin()
         helium314.keyboard.latin.gif.GifImageLoader.clearMemory()
