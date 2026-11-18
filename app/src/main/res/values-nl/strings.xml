@@ -1743,4 +1743,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="voice_transcribe_while_speaking_summary">Kortere wachttijd voor lange dictaten</string>
     <string name="backup_category_personal_dictionary">Persoonlijk woordenboek</string>
     <string name="backup_category_text_expander">Tekstuitbreider</string>
+    <string name="gif_pack_close">Pakket sluiten</string>
 </resources>

@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.util.AttributeSet
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -26,6 +27,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import helium314.keyboard.latin.common.loopOverCodePoints
@@ -64,6 +66,7 @@ class GifPickerView @JvmOverloads constructor(
     private var activeProviderId: String = ""
     private var activeProviderName: String = ""
     private var activeProviderKinds: Int = Contract.KINDS_GIF
+    private var activeProviderCaps: Int = 0
     private var selectedKind: Int = Contract.KIND_GIF
     private var cachedProviders: List<ProviderInfo> = emptyList()
     private var queryJob: Job? = null
@@ -77,6 +80,18 @@ class GifPickerView @JvmOverloads constructor(
     private var isPaging = false
     private var hasMore = true
 
+    // pack shown in the grid, null on the kind's top level where pack tiles come first
+    private var openPack: GifItem? = null
+    // getPack id the current list pages through, null when it comes from trending or search
+    private var listPackId: String? = null
+    // top level list kept while a pack is open, so going back restores it without reloading
+    private var browseState: BrowseState? = null
+
+    private class BrowseState(
+        val items: List<GifItem>, val nextPos: String?, val hasMore: Boolean,
+        val listPackId: String?, val firstVisible: Int, val firstOffset: Int
+    )
+
     private lateinit var searchContainer: LinearLayout
     private lateinit var searchIcon: ImageView
     private lateinit var searchText: TextView
@@ -85,12 +100,14 @@ class GifPickerView @JvmOverloads constructor(
     private lateinit var clearQueryButton: ImageButton
     private lateinit var closeButton: ImageButton
     private lateinit var categoryTabsScroll: HorizontalScrollView
+    private lateinit var packHeader: TextView
     private lateinit var tabRecent: TextView
     private lateinit var tabGifs: TextView
     private lateinit var tabStickers: TextView
     private lateinit var tabMemes: TextView
     private lateinit var tabEmojis: TextView
     private lateinit var recycler: RecyclerView
+    private lateinit var layoutManager: LinearLayoutManager
     private lateinit var progress: ProgressBar
     private lateinit var statusContainer: LinearLayout
     private lateinit var statusText: TextView
@@ -114,6 +131,8 @@ class GifPickerView @JvmOverloads constructor(
         clearQueryButton = findViewById(R.id.clearQueryButton)
         closeButton = findViewById(R.id.closeButton)
         categoryTabsScroll = findViewById(R.id.categoryTabsScroll)
+        packHeader = findViewById(R.id.packHeader)
+        packHeader.setOnClickListener { closePack() }
         tabRecent = findViewById(R.id.tabRecent)
         tabGifs = findViewById(R.id.tabGifs)
         tabStickers = findViewById(R.id.tabStickers)
@@ -132,6 +151,7 @@ class GifPickerView @JvmOverloads constructor(
         tabEmojis.setOnClickListener { selectKind(Contract.KIND_ANIMATED_EMOJI) }
 
         val lm = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        layoutManager = lm
         recycler.layoutManager = lm
         recycler.setHasFixedSize(true)
         recycler.adapter = adapter
@@ -182,6 +202,7 @@ class GifPickerView @JvmOverloads constructor(
         isPaging = false
         hasMore = true
         selectedKind = Contract.KIND_GIF
+        resetPack()
         renderQuery()
         statusContainer.visibility = View.GONE
         providerBadge.visibility = View.GONE
@@ -242,6 +263,7 @@ class GifPickerView @JvmOverloads constructor(
         activeProviderId = ""
         activeProviderName = ""
         providerBadge.visibility = View.GONE
+        resetPack()
         loadSeq++
         queryJob?.cancel()
         pagingJob?.cancel()
@@ -474,6 +496,7 @@ class GifPickerView @JvmOverloads constructor(
     private fun selectKind(kind: Int) {
         if (selectedKind == kind) return
         selectedKind = kind
+        resetPack()
         updateCategoryTabsUI()
         updateSearchHint()
         reload(debounce = false)
@@ -562,6 +585,7 @@ class GifPickerView @JvmOverloads constructor(
             activeProviderId = "disabled"
             activeProviderName = ""
             activeProviderKinds = 0
+            activeProviderCaps = 0
             post {
                 providerBadge.visibility = View.GONE
                 updateCategoryTabsVisibility()
@@ -578,6 +602,7 @@ class GifPickerView @JvmOverloads constructor(
             activeProviderId = "disabled"
             activeProviderName = ""
             activeProviderKinds = 0
+            activeProviderCaps = 0
             post {
                 providerBadge.visibility = View.GONE
                 updateCategoryTabsVisibility()
@@ -596,6 +621,7 @@ class GifPickerView @JvmOverloads constructor(
         activeProviderId = id
         activeProviderName = name
         activeProviderKinds = if (kinds != 0) kinds else Contract.KINDS_GIF
+        activeProviderCaps = chosen.capabilities
         post {
             updateCategoryTabsVisibility()
             updateSearchHint()
@@ -622,6 +648,7 @@ class GifPickerView @JvmOverloads constructor(
                 activeProviderId = "disabled"
                 activeProviderName = ""
                 activeProviderKinds = 0
+                activeProviderCaps = 0
                 providerBadge.visibility = View.GONE
                 updateCategoryTabsVisibility()
                 updateSearchHint()
@@ -644,6 +671,8 @@ class GifPickerView @JvmOverloads constructor(
             activeProviderName = nextProvider.displayName
             val kinds = nextProvider.kinds
             activeProviderKinds = if (kinds != 0) kinds else Contract.KINDS_GIF
+            activeProviderCaps = nextProvider.capabilities
+            resetPack()
             prefs.edit().putString(Settings.PREF_GIF_PROVIDER, nextProvider.id).apply()
 
             providerBadge.text = activeProviderName.uppercase()
@@ -684,6 +713,8 @@ class GifPickerView @JvmOverloads constructor(
         providerBadge.setTextColor(colors.get(ColorType.KEY_TEXT))
         statusText.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
         statusAction.setTextColor(colors.get(ColorType.KEY_TEXT))
+        packHeader.setTextColor(colors.get(ColorType.KEY_TEXT))
+        TextViewCompat.setCompoundDrawableTintList(packHeader, ColorStateList.valueOf(iconColor))
 
         updateCategoryTabsUI()
     }
@@ -695,6 +726,9 @@ class GifPickerView @JvmOverloads constructor(
         isPaging = false
         nextPos = null
         hasMore = true
+        listPackId = null
+        // searching covers the whole kind, so it leaves an open pack
+        if (openPack != null && query.isNotBlank()) resetPack()
         if (activeProviderId == "disabled") {
             showStatus(context.getString(R.string.gif_disabled_message), context.getString(R.string.gif_open_settings)) {
                 openGifSettings()
@@ -733,10 +767,26 @@ class GifPickerView @JvmOverloads constructor(
             if (debounce) delay(300)
             if (!isActive || seq != loadSeq) return@launch
             val q = query.toString().trim()
-            runRequest(isPage = false, seq = seq) { engine, id, cb ->
+            val pack = openPack
+            var packTiles = emptyList<GifItem>()
+            if (pack != null) {
+                listPackId = pack.id
+            } else if (q.isEmpty() && (activeProviderCaps and Contract.CAP_PACKS) != 0) {
+                // pack tiles first, then the items without a pack. If the packs can't be listed, show everything flat.
+                val tiles = fetchPackTiles()
+                if (!isActive || seq != loadSeq) return@launch
+                if (tiles != null) {
+                    packTiles = tiles
+                    listPackId = "$selectedKind:"
+                }
+            }
+            val packId = listPackId
+            runRequest(isPage = false, seq = seq, prefix = packTiles) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 val isV2 = manager.contractVersion >= 2
-                if (q.isEmpty()) {
+                if (packId != null) {
+                    engine.getPack(id, provider, packId, "", PAGE_SIZE, cb)
+                } else if (q.isEmpty()) {
                     if (isV2) {
                         engine.trendingKind(id, provider, selectedKind, "", PAGE_SIZE, cb)
                     } else {
@@ -764,10 +814,13 @@ class GifPickerView @JvmOverloads constructor(
         pagingJob?.cancel()
         pagingJob = scope.launch {
             val q = query.toString().trim()
+            val packId = listPackId
             runRequest(isPage = true, seq = seq) { engine, id, cb ->
                 val provider = if (activeProviderId.isNotEmpty()) activeProviderId else resolveProvider(engine)
                 val isV2 = manager.contractVersion >= 2
-                if (q.isEmpty()) {
+                if (packId != null) {
+                    engine.getPack(id, provider, packId, pos, PAGE_SIZE, cb)
+                } else if (q.isEmpty()) {
                     if (isV2) {
                         engine.trendingKind(id, provider, selectedKind, pos, PAGE_SIZE, cb)
                     } else {
@@ -787,6 +840,7 @@ class GifPickerView @JvmOverloads constructor(
     private suspend fun runRequest(
         isPage: Boolean,
         seq: Int,
+        prefix: List<GifItem> = emptyList(),
         call: (IGifEngine, Int, IGifCallback) -> Unit
     ) {
         if (!isPage) {
@@ -852,9 +906,10 @@ class GifPickerView @JvmOverloads constructor(
             return
         }
 
-        val (itemsResult, returnedPos) = response
+        val (pageItems, returnedPos) = response
         nextPos = returnedPos
-        hasMore = !returnedPos.isNullOrEmpty() && itemsResult.isNotEmpty()
+        hasMore = !returnedPos.isNullOrEmpty() && pageItems.isNotEmpty()
+        val itemsResult = if (prefix.isEmpty()) pageItems else prefix + pageItems
 
         if (!isPage) {
             progress.visibility = View.GONE
@@ -950,7 +1005,96 @@ class GifPickerView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Pack tiles of the selected kind, null when the plugin could not list them. The caller then shows the items flat
+     * instead of only the ones without a pack.
+     */
+    private suspend fun fetchPackTiles(): List<GifItem>? {
+        val id = manager.nextRequestId()
+        val deferred = CompletableDeferred<List<GifItem>>()
+        val cb = object : IGifCallback.Stub() {
+            override fun onItems(requestId: Int, items: MutableList<GifItem>, nextPos: String?) {
+                if (requestId == id) deferred.complete(items)
+            }
+            override fun onFetched(requestId: Int, pfd: ParcelFileDescriptor?, mimeType: String?, width: Int, height: Int) {
+                runCatching { pfd?.close() }
+            }
+            override fun onError(requestId: Int, code: Int, message: String?) {
+                if (requestId == id) deferred.completeExceptionally(PluginException(code, message ?: ""))
+            }
+        }
+        if (manager.call { it.listPacks(id, activeProviderId, "", PAGE_SIZE, cb) }.isFailure) return null
+        val tiles = try {
+            withTimeout(5_000) { deferred.await() }
+        } catch (e: TimeoutCancellationException) {
+            runCatching { manager.call { it.cancel(id) } }
+            Log.w(TAG, "listing packs timed out, showing items flat")
+            return null
+        } catch (e: CancellationException) {
+            runCatching { manager.call { it.cancel(id) } }
+            throw e
+        } catch (e: Exception) {
+            Log.w(TAG, "listing packs failed, showing items flat", e)
+            return null
+        }
+        return tiles.filter { it.isPack && it.kind == selectedKind }
+    }
+
+    private fun openPackTile(tile: GifItem) {
+        val first = layoutManager.findFirstVisibleItemPosition()
+        browseState = BrowseState(
+            adapter.currentItems(), nextPos, hasMore, listPackId,
+            first.coerceAtLeast(0), layoutManager.findViewByPosition(first)?.left ?: 0
+        )
+        openPack = tile
+        updatePackHeader()
+        reload(debounce = false)
+    }
+
+    private fun closePack() {
+        val state = browseState
+        resetPack()
+        if (state == null) {
+            reload(debounce = false)
+            return
+        }
+        loadSeq++
+        queryJob?.cancel()
+        pagingJob?.cancel()
+        cancelCurrent()
+        isPaging = false
+        progress.visibility = View.GONE
+        statusContainer.visibility = View.GONE
+        nextPos = state.nextPos
+        hasMore = state.hasMore
+        listPackId = state.listPackId
+        adapter.submit(state.items)
+        layoutManager.scrollToPositionWithOffset(state.firstVisible, state.firstOffset)
+    }
+
+    private fun resetPack() {
+        openPack = null
+        browseState = null
+        updatePackHeader()
+    }
+
+    private fun updatePackHeader() {
+        val pack = openPack
+        if (pack == null) {
+            packHeader.visibility = View.GONE
+            categoryTabsScroll.visibility = View.VISIBLE
+        } else {
+            packHeader.text = context.getString(R.string.gif_pack_label, pack.attribution.orEmpty(), pack.extra.orEmpty())
+            categoryTabsScroll.visibility = View.GONE
+            packHeader.visibility = View.VISIBLE
+        }
+    }
+
     private fun onGifClicked(item: GifItem) {
+        if (item.isPack) {
+            openPackTile(item)
+            return
+        }
         if (!isInserting.compareAndSet(false, true)) return
         val (ic, ei) = targetProvider?.invoke() ?: run {
             isInserting.set(false)
@@ -1036,6 +1180,8 @@ class GifPickerView @JvmOverloads constructor(
             notifyDataSetChanged()
         }
 
+        fun currentItems(): List<GifItem> = items
+
         fun append(newItems: List<GifItem>) {
             if (newItems.isEmpty()) return
             val start = items.size
@@ -1056,6 +1202,7 @@ class GifPickerView @JvmOverloads constructor(
         class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val imageView: ImageView = itemView.findViewById(R.id.gifThumbImage)
             val liveBadge: TextView = itemView.findViewById(R.id.liveBadge)
+            val packLabel: TextView = itemView.findViewById(R.id.packLabel)
             val insertOverlay: View = itemView.findViewById(R.id.insertOverlay)
         }
 
@@ -1097,6 +1244,13 @@ class GifPickerView @JvmOverloads constructor(
             lp.width = computedWidth.coerceIn((h * 0.5f).toInt(), (h * 2.0f).toInt())
             holder.itemView.layoutParams = lp
 
+            if (item.isPack) {
+                holder.packLabel.text = context.getString(R.string.gif_pack_label, item.attribution.orEmpty(), item.extra.orEmpty())
+                holder.packLabel.visibility = View.VISIBLE
+            } else {
+                holder.packLabel.visibility = View.GONE
+            }
+
             val isLive = item.id == liveItemId
             holder.liveBadge.visibility = if (isLive) View.VISIBLE else View.GONE
 
@@ -1115,6 +1269,8 @@ class GifPickerView @JvmOverloads constructor(
 
             holder.itemView.setOnClickListener { onClick(item) }
             holder.itemView.setOnLongClickListener {
+                // a pack tile only opens, its cover is not previewed live
+                if (item.isPack) return@setOnLongClickListener false
                 it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 val oldLiveId = liveItemId
                 liveItemId = if (liveItemId == item.id) null else item.id
@@ -1155,6 +1311,7 @@ class GifPickerView @JvmOverloads constructor(
     }
 
     companion object {
+        private const val TAG = "GifPickerView"
         private const val KIND_RECENT = -1
         private const val PAGE_SIZE = 24
         private const val MAX_QUERY_CODE_POINTS = 80

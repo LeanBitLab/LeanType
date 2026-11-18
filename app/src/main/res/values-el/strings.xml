@@ -1796,4 +1796,5 @@
     <string name="backup_category_text_expander">Επέκταση κειμένου</string>
     <string name="no_dictionary_message">\"Χωρίς λεξικό, θα λαμβάνετε μόνο προτάσεις για κείμενο που καταχωρίσατε πριν.&lt;br&gt;
         Μπορείτε να κάνετε λήψη λεξικών%1$sή να ελέγξετε εάν ένα λεξικό για το \"%2$s\" μπορεί να ληφθεί απευθείας%3$s.\"</string>
+    <string name="gif_pack_close">Κλείσιμο πακέτου</string>
 </resources>

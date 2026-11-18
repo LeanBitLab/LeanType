@@ -14,6 +14,10 @@ object Contract {
 
     const val CAP_SEARCH = 1
     const val CAP_TRENDING = 2
+    /**
+     * listPacks returns pack tiles (isPack, attribution = name, extra = item count) whose id opens them with getPack.
+     * getPack("<kind>:") lists the items of that kind that are in no pack.
+     */
     const val CAP_PACKS = 4
 
     const val ERR_BAD_REQUEST = 1

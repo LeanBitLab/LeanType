@@ -2420,6 +2420,8 @@ New dictionary:
     <string name="gif_category_stickers">Stickers</string>
     <string name="gif_category_memes">Memes</string>
     <string name="gif_category_emojis">Emojis</string>
+    <string name="gif_pack_close">Close pack</string>
+    <string name="gif_pack_label" translatable="false">%1$s (%2$s)</string>
     <string name="gif_enable">Enable</string>
     <string name="gif_disable">Disable</string>
     <string name="gif_switched_to">Switched to %s</string>

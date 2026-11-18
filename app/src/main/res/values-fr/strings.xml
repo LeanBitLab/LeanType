@@ -1751,4 +1751,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="voice_transcribe_while_speaking_summary">Attente plus courte pour les longues dictées</string>
     <string name="backup_category_personal_dictionary">Dictionnaire personnel</string>
     <string name="backup_category_text_expander">Extenseur de texte</string>
+    <string name="gif_pack_close">Fermer le paquet</string>
 </resources>

@@ -1746,4 +1746,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="voice_transcribe_while_speaking_summary">Kürzere Wartezeiten bei langen Diktaten</string>
     <string name="backup_category_personal_dictionary">Persönliches Wörterbuch</string>
     <string name="backup_category_text_expander">Textexpander</string>
+    <string name="gif_pack_close">Paket schließen</string>
 </resources>

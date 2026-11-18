@@ -1697,4 +1697,5 @@
     <string name="voice_transcribe_while_speaking_summary">缩短长时间听写的等待时间</string>
     <string name="backup_category_personal_dictionary">个人词典</string>
     <string name="backup_category_text_expander">文本扩展器</string>
+    <string name="gif_pack_close">关闭表情包</string>
 </resources>
