@@ -35,4 +35,7 @@ interface Combiner {
      * Reset the state of this combiner, for example when the cursor was moved.
      */
     fun reset()
+
+    /** Called when input starts in a new field, to clear state that outlives [reset]. */
+    fun onStartInput() {}
 }
