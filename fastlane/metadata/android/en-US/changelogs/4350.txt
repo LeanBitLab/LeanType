@@ -1,5 +1,5 @@
-- Japanese input with the CJK plugin no longer falls back to Chinese after switching apps on a physical keyboard.
-- Floating keyboard toolbar keys are no longer tiny with extra rows or in landscape.
-- One-handed mode keeps its side and its controls stay above the navigation bar.
-- Smoother one-handed resizing with a live preview, and a slide when switching sides.
-- Tall emojis are no longer clipped.
+- New swipe action: swipe left anywhere on the keyboard to delete a character, swipe right to insert a space.
+- Khipro Blinder mode: backslash types plain Latin until ';', and ';;' types a literal ';' (long-press ';' for backslash).
+- GIF plugin packs show as tiles that open in the picker, and closing a pack restores your place.
+- Hex layouts keep the clipboard and emoji bottom row at the bottom.
+- Hex functional key icons stay readable on their fill with any theme.

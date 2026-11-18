@@ -64,13 +64,11 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Japanese Input: The CJK plugin no longer falls back to Chinese after switching apps on a physical keyboard",
-    "• Floating Keyboard: Toolbar keys are no longer tiny with extra rows or in landscape",
-    "• One-Handed Mode: Keeps its side while typing and the side switch arrow no longer disappears",
-    "• One-Handed Controls: Stay above the navigation bar and come back after touchpad mode",
-    "• One-Handed Resizing: Smooth live preview while dragging the resize button",
-    "• One-Handed Look: The keyboard slides when switching sides, controls styled like toolbar keys",
-    "• Emoji: Tall emojis are no longer clipped by the row above"
+    "• Keyboard Swipe: New action to delete with a swipe left and insert a space with a swipe right",
+    "• Khipro: Blinder mode, backslash types plain Latin until ';' (long-press ';' for backslash)",
+    "• Hex Layouts: The clipboard and emoji bottom row stays at the bottom",
+    "• Hex Layouts: Functional key icons stay readable on their fill",
+    "• GIF Packs: Local packs show as tiles that open in the picker"
 )
 
 @Composable
