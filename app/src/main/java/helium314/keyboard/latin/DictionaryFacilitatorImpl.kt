@@ -987,8 +987,11 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
 
     override fun removeWord(word: String) {
         sessionWordBoost?.removeWord(word)
+        // Decide once for all groups: blacklist matching ignores case and checks every group,
+        // so a word of one language must not get blacklisted through another language's group.
+        val isMainDictWord = dictionaryGroups.any { it.isMainDictWord(word) }
         for (dictionaryGroup in dictionaryGroups) {
-            dictionaryGroup.removeWord(word)
+            dictionaryGroup.removeWord(word, isMainDictWord)
         }
     }
 
@@ -1163,11 +1166,20 @@ private class DictionaryGroup(
     // concurrent blacklist operations could then run without mutual exclusion.
     private val blacklistLock = Any()
 
-    /** Removes a word from all dictionaries in this group. If the word is in a read-only dictionary, it is blacklisted. */
-    fun removeWord(word: String) {
+    /**
+     * Whether any case variant of [word] is in the main dictionary. Blacklist matching ignores case,
+     * so "i'm" must count as a main dictionary word when the dictionary only has "I'm".
+     */
+    fun isMainDictWord(word: String): Boolean {
+        val mainDict = getDict(Dictionary.TYPE_MAIN) ?: return false
         val lowercase = word.lowercase(locale)
-        val mainDict = getDict(Dictionary.TYPE_MAIN)
-        val isLowercaseInMainDict = mainDict?.isValidWord(lowercase) == true
+        return setOf(word, lowercase, StringUtils.capitalizeFirstCodePoint(lowercase, locale), word.uppercase(locale))
+            .any { mainDict.isValidWord(it) }
+    }
+
+    /** Removes a word from all dictionaries in this group. Unless [isMainDictWord], it is also blacklisted. */
+    fun removeWord(word: String, isMainDictWord: Boolean = isMainDictWord(word)) {
+        val lowercase = word.lowercase(locale)
 
         // Remove from user history
         getSubDict(Dictionary.TYPE_USER_HISTORY)?.removeUnigramEntryDynamically(word)
@@ -1202,7 +1214,7 @@ private class DictionaryGroup(
 
         // Only add to blacklist if the word is NOT a standard valid word in the main system dictionary.
         // Never blacklist core dictionary words (e.g. "in", "is", "me", "ok") when deleting suggestions.
-        if (!isLowercaseInMainDict) {
+        if (!isMainDictWord) {
             addToBlacklist(lowercase)
         } else {
             // If it's a main dict word, un-blacklist it in case it was previously mistakenly blacklisted
