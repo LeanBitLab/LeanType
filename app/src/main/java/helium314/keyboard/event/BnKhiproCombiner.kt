@@ -21,6 +21,11 @@ class BnKhiproCombiner : Combiner {
 
     private val composingText = StringBuilder()
 
+    // Blinder mode (Khipro spec): after '\' Latin passes through untransliterated until ';'.
+    // '?' is not a trigger here, since it ends Bengali questions. ';;' types a literal ';'.
+    private var blinder = false
+    private var blinderExitPending = false
+
     enum class State {
         INIT,
         SHOR_STATE,
@@ -181,6 +186,27 @@ class BnKhiproCombiner : Combiner {
 
         if (event.keyCode == KeyCode.SHIFT) return event
 
+        if (blinder) {
+            if (blinderExitPending) {
+                blinderExitPending = false
+                if (codePoint == ';'.code) return event
+                blinder = false
+            } else if (codePoint == ';'.code) {
+                blinderExitPending = true
+                return Event.createConsumedEvent(event)
+            } else {
+                return event
+            }
+        }
+
+        if (codePoint == '\\'.code) { // the trigger itself is not typed, as in the spec
+            blinder = true
+            if (composingText.isEmpty()) return Event.createConsumedEvent(event)
+            val text = combiningStateFeedback
+            reset()
+            return createEventChainFromSequence(text, Event.createConsumedEvent(event))
+        }
+
         if (isValidCodePoint && Character.isWhitespace(codePoint)) {
             return commitAndReset(event)
         } else if (event.isFunctionalKeyEvent) {
@@ -204,6 +230,15 @@ class BnKhiproCombiner : Combiner {
 
     override fun reset() {
         composingText.setLength(0)
+        if (blinderExitPending) {
+            blinder = false
+            blinderExitPending = false
+        }
+    }
+
+    override fun onStartInput() {
+        blinder = false
+        blinderExitPending = false
     }
 
     private fun commitAndReset(event: Event): Event {

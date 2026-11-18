@@ -89,6 +89,7 @@ class WordComposer {
             )
             mCombiningSpec = nonNullCombiningSpec
         }
+        mCombinerChain.onStartInput()
     }
 
     /**

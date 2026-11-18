@@ -53,6 +53,12 @@ class CombinerChain(initialText: String, combiningSpec: String) {
         }
     }
 
+    fun onStartInput() {
+        for (c in mCombiners) {
+            c.onStartInput()
+        }
+    }
+
     private fun updateStateFeedback() {
         mStateFeedback.clear()
         for (i in mCombiners.indices.reversed()) {
