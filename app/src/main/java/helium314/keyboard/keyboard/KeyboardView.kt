@@ -357,7 +357,7 @@ open class KeyboardView @JvmOverloads constructor(
 
             val isActionKey = key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER
             val isSpaceKey = key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR
-            val isFunctional = key.hasFunctionalBackground() || key.isShift() || key.isModifier() || key.code == KeyCode.DELETE || key.code == KeyCode.SYMBOL_ALPHA
+            val isFunctional = isHexFunctionalKey(key)
 
             val baseBg = mColors.get(ColorType.KEY_BACKGROUND)
 
@@ -592,7 +592,9 @@ open class KeyboardView @JvmOverloads constructor(
                         paint.color = mColors.get(ColorType.POPUP_KEY_TEXT)
                     }
                 } else {
-                    paint.color = key.selectTextColor(params)
+                    val textColor = key.selectTextColor(params)
+                    val hexBg = getHexFunctionalBgColor(key)
+                    paint.color = if (hexBg != null && hasLowContrast(textColor, hexBg)) getContrastingColor(hexBg) else textColor
                 }
                 if (mKeyTextShadowRadius > 0.0f) paint.setShadowLayer(mKeyTextShadowRadius, 0.0f, 0.0f, params.mTextShadowColor) else paint.clearShadowLayer()
             } else {
@@ -730,6 +732,24 @@ open class KeyboardView @JvmOverloads constructor(
 
     open fun deallocateMemory() { freeOffscreenBuffer() }
 
+    private fun isHexFunctionalKey(key: Key) =
+        key.hasFunctionalBackground() || key.isShift() || key.isModifier() || key.code == KeyCode.DELETE || key.code == KeyCode.SYMBOL_ALPHA
+
+    /** Fill color of a functional hex key, which hex draws even when the theme has no key borders. */
+    private fun getHexFunctionalBgColor(key: Key): Int? {
+        if (keyboard?.isHexagonal != true || this is PopupKeysKeyboardView) return null
+        if (key.hasActionKeyBackground() || key.code == Constants.CODE_ENTER) return null
+        if (key.code == Constants.CODE_SPACE || key.backgroundType == Key.BACKGROUND_TYPE_SPACEBAR) return null
+        if (!isHexFunctionalKey(key)) return null
+        return if (key.isPressed) mColors.getPressedColor(ColorType.FUNCTIONAL_KEY_BACKGROUND)
+            else mColors.get(ColorType.FUNCTIONAL_KEY_BACKGROUND)
+    }
+
+    private fun hasLowContrast(fgColor: Int, bgColor: Int): Boolean {
+        val compositeBg = getCompositeColor(bgColor, mColors.get(ColorType.MAIN_BACKGROUND))
+        return ColorUtils.calculateContrast(getCompositeColor(fgColor, compositeBg), compositeBg) < 4.5
+    }
+
     private fun getContrastingColor(bgColor: Int): Int {
         val baseBg = mColors.get(ColorType.MAIN_BACKGROUND)
         val compositeBg = getCompositeColor(bgColor, baseBg)
@@ -756,11 +776,15 @@ open class KeyboardView @JvmOverloads constructor(
     private fun setKeyIconColor(key: Key, icon: Drawable, keyboard: Keyboard?) {
         val isTextEditMode = KeyboardActionListenerImpl.sPersistentTextEditModeActive || (keyboard?.mId?.mElementId == KeyboardId.ELEMENT_TEXT_EDIT)
         val customBgColor = mKeyCustomBgColors[key]
+        val hexBg = getHexFunctionalBgColor(key)
         if (customBgColor != null && isTextEditMode) {
             DrawableCompat.setTintList(icon, null)
             icon.setColorFilter(getContrastingColor(customBgColor), PorterDuff.Mode.SRC_IN)
         } else if (key.hasActionKeyBackground() || (keyboard?.isHexagonal == true && key.code == Constants.CODE_ENTER)) {
             mColors.setColor(icon, ColorType.ACTION_KEY_ICON)
+        } else if (hexBg != null && hasLowContrast(mColors.get(ColorType.KEY_ICON), hexBg)) {
+            DrawableCompat.setTintList(icon, null)
+            icon.setColorFilter(getContrastingColor(hexBg), PorterDuff.Mode.SRC_IN)
         } else if (key.isShift() && keyboard != null) {
             if (keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED)
                 mColors.setColor(icon, ColorType.SHIFT_KEY_ICON)
