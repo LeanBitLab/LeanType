@@ -1208,6 +1208,7 @@ class GifPickerView @JvmOverloads constructor(
             val imageView: ImageView = itemView.findViewById(R.id.gifThumbImage)
             val liveBadge: TextView = itemView.findViewById(R.id.liveBadge)
             val packLabel: TextView = itemView.findViewById(R.id.packLabel)
+            val packCount: TextView = itemView.findViewById(R.id.packCount)
             val insertOverlay: View = itemView.findViewById(R.id.insertOverlay)
             var autoplayUri: Uri? = null
             var autoplayJob: Job? = null
@@ -1290,14 +1291,18 @@ class GifPickerView @JvmOverloads constructor(
             val h = context.resources.getDimensionPixelSize(R.dimen.gif_thumb_height)
             lp.height = h
             val computedWidth = (h * item.width.toFloat() / item.height.coerceAtLeast(1)).toInt()
-            lp.width = computedWidth.coerceIn((h * 0.5f).toInt(), (h * 2.0f).toInt())
+            // pack tiles are square, so a narrow cover image doesn't squeeze the pack name
+            lp.width = if (item.isPack) h else computedWidth.coerceIn((h * 0.5f).toInt(), (h * 2.0f).toInt())
             holder.itemView.layoutParams = lp
 
             if (item.isPack) {
-                holder.packLabel.text = context.getString(R.string.gif_pack_label, item.attribution.orEmpty(), item.extra.orEmpty())
+                holder.packLabel.text = item.attribution.orEmpty()
                 holder.packLabel.visibility = View.VISIBLE
+                holder.packCount.text = item.extra.orEmpty()
+                holder.packCount.visibility = if (item.extra.isNullOrEmpty()) View.GONE else View.VISIBLE
             } else {
                 holder.packLabel.visibility = View.GONE
+                holder.packCount.visibility = View.GONE
             }
 
             stopAutoplay(holder)
