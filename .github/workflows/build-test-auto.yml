@@ -37,13 +37,20 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # Each flavor compiles the main sources again, so build the offline flavor only when its sources change
+      # Each flavor compiles the main sources again, so build only the flavors the PR touches:
+      # offline sources -> offline, anything else (main, standard) -> standard. Manual runs build both.
       - name: Build with Gradle
         run: |
-          TASKS="compileStandardRunTestsKotlin"
-          if [ "${{ github.event_name }}" != "pull_request" ] || git diff --name-only HEAD^1 HEAD | grep -q '^app/src/offline/'; then
-            TASKS="$TASKS compileOfflineRunTestsKotlin"
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            TASKS="compileStandardRunTestsKotlin compileOfflineRunTestsKotlin"
+          else
+            CHANGED=$(git diff --name-only HEAD^1 HEAD | grep '^app/src/' || true)
+            TASKS=""
+            if echo "$CHANGED" | grep -qv '^app/src/offline/'; then TASKS="compileStandardRunTestsKotlin"; fi
+            if echo "$CHANGED" | grep -q '^app/src/offline/'; then TASKS="$TASKS compileOfflineRunTestsKotlin"; fi
+            [ -n "$TASKS" ] || TASKS="compileStandardRunTestsKotlin"
           fi
+          echo "Building: $TASKS"
           ./gradlew $TASKS
 
       - name: Archive reports for failed job
