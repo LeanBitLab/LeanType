@@ -11,6 +11,8 @@ on:
   pull_request:
     paths:
       - 'app/src/main/java**'
+      - 'app/src/standard/**'
+      - 'app/src/offline/**'
   workflow_dispatch:
 
 jobs:
@@ -33,7 +35,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew compileOfflineRunTestsKotlin
+        run: ./gradlew compileOfflineRunTestsKotlin compileStandardRunTestsKotlin
 
       - name: Archive reports for failed job
         uses: actions/upload-artifact@v4
