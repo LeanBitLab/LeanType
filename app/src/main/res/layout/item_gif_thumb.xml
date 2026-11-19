@@ -34,21 +34,40 @@
         android:paddingVertical="1dp"
         android:visibility="gone" />
 
-    <!-- name and item count of a pack tile -->
+    <!-- name of a pack tile -->
     <TextView
         android:id="@+id/packLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#99000000"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="2dp"
+        android:background="@drawable/bg_gif_pack_label_scrim"
+        android:paddingHorizontal="6dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="4dp"
         android:gravity="center"
         android:maxLines="2"
         android:ellipsize="end"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
+        android:shadowColor="#99000000"
+        android:shadowRadius="2"
+        android:visibility="gone" />
+
+    <!-- item count of a pack tile -->
+    <TextView
+        android:id="@+id/packCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_gif_search_box"
+        android:backgroundTint="#88000000"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="1dp"
         android:visibility="gone" />
 
     <FrameLayout
