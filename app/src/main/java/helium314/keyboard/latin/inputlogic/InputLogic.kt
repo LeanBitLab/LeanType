@@ -1683,11 +1683,7 @@ class InputLogic(
             }
             mWordComposer.reset()
             mConnection.finishComposingText()
-            mConnection.commitText("", 1)
             resetComposingState(true)
-            mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
-            mLatinIME.feedbackForDeletedWord()
-            return
         }
 
         val textBefore = mConnection.getTextBeforeCursor(BACKSPACE_WORD_LOOKBACK, 0)?.toString()
