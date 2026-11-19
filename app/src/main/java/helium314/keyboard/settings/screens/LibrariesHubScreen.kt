@@ -198,7 +198,10 @@ fun LibrariesHubScreen(
                         val gifManager = remember { helium314.keyboard.latin.gif.GifPluginManager.get(context) }
                         val gifState = gifManager.state.collectAsState()
                         val gifSummary = when (gifState.value) {
-                            helium314.keyboard.latin.gif.GifPluginManager.State.CONNECTED -> stringResource(R.string.libraries_status_active)
+                            // unbound while unused, so disconnected / connecting is the normal idle state of a trusted plugin
+                            helium314.keyboard.latin.gif.GifPluginManager.State.CONNECTED,
+                            helium314.keyboard.latin.gif.GifPluginManager.State.CONNECTING,
+                            helium314.keyboard.latin.gif.GifPluginManager.State.DISCONNECTED -> stringResource(R.string.libraries_status_active)
                             helium314.keyboard.latin.gif.GifPluginManager.State.UNTRUSTED_PLUGIN -> stringResource(R.string.gif_error_untrusted)
                             helium314.keyboard.latin.gif.GifPluginManager.State.NOT_INSTALLED -> stringResource(R.string.libraries_status_not_installed)
                             else -> stringResource(R.string.installed)

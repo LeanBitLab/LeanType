@@ -79,6 +79,10 @@ fun GifSettingsScreen(
     }
 
     val connectionState by manager.state.collectAsState()
+    // The plugin is unbound while no client uses it, so opening this screen reconnects: show a trusted installed
+    // plugin as active meanwhile instead of flashing Disconnected / Connecting (same as the plugins hub)
+    val statusState = if (connectionState == GifPluginManager.State.DISCONNECTED || connectionState == GifPluginManager.State.CONNECTING)
+        GifPluginManager.State.CONNECTED else connectionState
 
     var providers by remember { mutableStateOf<List<ProviderInfo>>(manager.cachedProviders) }
     var isLoadingProviders by remember { mutableStateOf(false) }
@@ -169,15 +173,15 @@ fun GifSettingsScreen(
                 }
             }
         ) {
-            val message = when (connectionState) {
+            val message = when (statusState) {
                 GifPluginManager.State.NOT_INSTALLED -> stringResource(R.string.gif_plugin_not_installed_desc)
                 GifPluginManager.State.UNTRUSTED_PLUGIN -> stringResource(R.string.gif_plugin_untrusted_desc)
                 GifPluginManager.State.CONNECTED -> stringResource(R.string.libraries_status_active)
-                GifPluginManager.State.CONNECTING -> stringResource(R.string.gif_connecting)
+                GifPluginManager.State.CONNECTING, GifPluginManager.State.DISCONNECTED -> stringResource(R.string.gif_connecting)
                 GifPluginManager.State.UNAVAILABLE -> stringResource(R.string.gif_plugin_unavailable_desc)
                 GifPluginManager.State.PLUGIN_TOO_OLD -> stringResource(R.string.gif_error_plugin_too_old)
                 GifPluginManager.State.HOST_TOO_OLD -> stringResource(R.string.gif_error_host_too_old)
-                else -> connectionState.name
+                else -> statusState.name
             }
             Text(message)
         }
@@ -204,15 +208,15 @@ fun GifSettingsScreen(
                 Column {
                     PreferenceCategory(stringResource(R.string.gif_plugin_status_title))
 
-                    val gifPluginSummary = when (connectionState) {
+                    val gifPluginSummary = when (statusState) {
                         GifPluginManager.State.CONNECTED -> stringResource(R.string.libraries_status_active)
-                        GifPluginManager.State.CONNECTING -> stringResource(R.string.gif_connecting)
+                        GifPluginManager.State.CONNECTING, GifPluginManager.State.DISCONNECTED -> stringResource(R.string.gif_connecting)
                         GifPluginManager.State.NOT_INSTALLED -> stringResource(R.string.libraries_status_not_installed)
                         GifPluginManager.State.UNTRUSTED_PLUGIN -> stringResource(R.string.gif_error_untrusted)
                         GifPluginManager.State.PLUGIN_TOO_OLD -> stringResource(R.string.gif_error_plugin_too_old)
                         GifPluginManager.State.HOST_TOO_OLD -> stringResource(R.string.gif_error_host_too_old)
                         GifPluginManager.State.UNAVAILABLE -> stringResource(R.string.gif_error_unavailable)
-                        else -> connectionState.name
+                        else -> statusState.name
                     }
 
                     Preference(
