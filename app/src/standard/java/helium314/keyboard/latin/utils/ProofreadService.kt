@@ -43,24 +43,9 @@ class ProofreadService(private val context: Context) {
         GEMINI, GROQ, OPENAI
     }
 
-    private val securePrefs: SharedPreferences by lazy {
-        try {
-            val masterKey = MasterKey.Builder(context)
-                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-                .build()
-            EncryptedSharedPreferences.create(
-                context,
-                PREFS_NAME,
-                masterKey,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )
-        } catch (e: Exception) {
-            // Fallback to regular prefs if encryption fails
-            Log.w("ProofreadService", "Failed to create encrypted prefs, using regular prefs", e)
-            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        }
-    }
+    // Creating EncryptedSharedPreferences is slow (Keystore + keyset decryption) and settings screens create
+    // many ProofreadService instances, so the encrypted prefs are created once per process and shared
+    private val securePrefs: SharedPreferences by lazy { getSecurePrefs(context) }
 
     fun getPrefs(): SharedPreferences = context.prefs()
 
@@ -1057,6 +1042,33 @@ class ProofreadService(private val context: Context) {
     class TranslateException(message: String) : Exception(message)
 
     companion object {
+        @Volatile
+        private var sharedSecurePrefs: SharedPreferences? = null
+
+        private fun getSecurePrefs(context: Context): SharedPreferences {
+            sharedSecurePrefs?.let { return it }
+            synchronized(this) {
+                sharedSecurePrefs?.let { return it }
+                return try {
+                    val appContext = context.applicationContext
+                    val masterKey = MasterKey.Builder(appContext)
+                        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                        .build()
+                    EncryptedSharedPreferences.create(
+                        appContext,
+                        PREFS_NAME,
+                        masterKey,
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    ).also { sharedSecurePrefs = it }
+                } catch (e: Exception) {
+                    // Fallback to regular prefs if encryption fails (not cached, so the next instance retries)
+                    Log.w("ProofreadService", "Failed to create encrypted prefs, using regular prefs", e)
+                    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                }
+            }
+        }
+
         private const val PREFS_NAME = "gemini_prefs"
         private const val KEY_API_KEY = "gemini_api_key"
         private const val KEY_MODEL_NAME = "gemini_model_name"
