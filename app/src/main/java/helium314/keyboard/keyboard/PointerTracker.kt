@@ -974,7 +974,10 @@ class PointerTracker private constructor(
                     return
                 }
 
-                val minDistance = max(swipeStartThreshold, sv.mLanguageSwipeDistance * sPointerStep)
+                // Delete / Space is a quick repeated flick: half the configured distance
+                val distance = sv.mLanguageSwipeDistance * sPointerStep
+                val minDistance = max(swipeStartThreshold,
+                    if (action == KeyboardActionListener.SWIPE_DELETE_SPACE) distance / 2 else distance)
                 if (absDx >= minDistance) {
                     mInHorizontalSwipe = true
                     val steps = if (dX > 0) 1 else -1
