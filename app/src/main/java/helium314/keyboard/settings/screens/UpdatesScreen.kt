@@ -64,9 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
+    "• Japanese: No more fallback to Chinese after app switches on physical keyboards",
     "• Suggestions: Removing a suggestion no longer blocks dictionary words like \"I'm\"",
+    "• Swipe: New Delete/Space full keyboard swipe action",
+    "• Khipro: Blinder mode, backslash types plain Latin until ;",
+    "• GIF Packs: Local packs show as tiles with name and count",
     "• GIF Preview: New switch to play visible GIFs without holding them (Android 9+)",
-    "• GIF Plugin 1.0.7: Rename packs and change their order"
+    "• GIF Plugin 1.0.8: Accented pack names, pack icon menu to rename, reorder or delete",
+    "• One-Handed: Stable side and controls, smoother resizing",
+    "• Floating: Toolbar no longer shrinks with more key rows",
+    "• Hex: Bottom row and functional key icons fixed"
 )
 
 @Composable

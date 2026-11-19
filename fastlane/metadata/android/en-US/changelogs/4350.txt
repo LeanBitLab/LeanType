@@ -1,3 +1,7 @@
-- Removing a suggestion no longer blocks dictionary words such as "I'm", so "im" autocorrects again.
-- New GIF Preview switch plays the visible GIFs without a long-press (Android 9+), only on-screen tiles animate.
-- GIF plugin 1.0.7: rename packs and change their order with a long-press, the keyboard uses the same order.
+- Japanese on physical keyboards no longer falls back to Chinese (#842).
+- Removing a suggestion no longer blocks dictionary words like "I'm".
+- New swipe action: swipe left on the keyboard to delete, right for space.
+- Khipro Blinder mode: backslash types plain Latin until ";".
+- GIF packs show as tiles, with optional animated previews (Android 9+).
+- Fixes for one-handed mode, the floating toolbar, hex layouts and clipped emojis.
+- AI Integration settings open faster.
