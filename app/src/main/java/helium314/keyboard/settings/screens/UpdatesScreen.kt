@@ -64,11 +64,9 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Keyboard Swipe: New action to delete with a swipe left and insert a space with a swipe right",
-    "• Khipro: Blinder mode, backslash types plain Latin until ';' (long-press ';' for backslash)",
-    "• Hex Layouts: The clipboard and emoji bottom row stays at the bottom",
-    "• Hex Layouts: Functional key icons stay readable on their fill",
-    "• GIF Packs: Local packs show as tiles that open in the picker"
+    "• Suggestions: Removing a suggestion no longer blocks dictionary words like \"I'm\"",
+    "• GIF Preview: New switch to play visible GIFs without holding them (Android 9+)",
+    "• GIF Plugin 1.0.7: Rename packs and change their order"
 )
 
 @Composable

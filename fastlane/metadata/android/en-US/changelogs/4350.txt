@@ -1,5 +1,3 @@
-- New swipe action: swipe left anywhere on the keyboard to delete a character, swipe right to insert a space.
-- Khipro Blinder mode: backslash types plain Latin until ';', and ';;' types a literal ';' (long-press ';' for backslash).
-- GIF plugin packs show as tiles that open in the picker, and closing a pack restores your place.
-- Hex layouts keep the clipboard and emoji bottom row at the bottom.
-- Hex functional key icons stay readable on their fill with any theme.
+- Removing a suggestion no longer blocks dictionary words such as "I'm", so "im" autocorrects again.
+- New GIF Preview switch plays the visible GIFs without a long-press (Android 9+), only on-screen tiles animate.
+- GIF plugin 1.0.7: rename packs and change their order with a long-press, the keyboard uses the same order.
