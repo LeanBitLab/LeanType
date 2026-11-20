@@ -1,0 +1,3 @@
+- Browsers (Brave, Chrome): a one-letter word followed by space is no longer doubled ("a" became "aa") (#880).
+- Physical keyboard on tablets with a taskbar: the toolbar no longer sits under the keyboard's back button and handle (#880).
+- Split keyboard: landscape now uses the maximum split distance by default, leaving more room in the middle. The slider still adjusts it.
