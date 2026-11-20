@@ -134,7 +134,7 @@ object Defaults {
     const val PREF_PERSIST_TEXT_EDIT_MODE = false
     // ponytail: default value to disable multi-word suggestions is false
     const val PREF_DISABLE_MULTI_WORD_SUGGESTIONS = false
-    val PREF_SPLIT_SPACER_SCALE = Array(2) { DEFAULT_SIZE_SCALE }
+    val PREF_SPLIT_SPACER_SCALE = arrayOf(DEFAULT_SIZE_SCALE, 2f)
     val PREF_KEYBOARD_HEIGHT_SCALE = arrayOf(0.77f, 0.45f)
     val PREF_UNFOLDED_KEYBOARD_HEIGHT_SCALE = arrayOf(0.65f, 0.40f)
     val PREF_BOTTOM_PADDING_SCALE = arrayOf(1.05f, 0f)
