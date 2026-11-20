@@ -389,6 +389,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
 
         mPendingInFlightDeletions = 0
 
+        // Chromium turns a one-character commitText into a synthetic key press that is inserted
+        // next to an active composition instead of replacing it ("a" + space -> "aa ").
+        val replaceWebComposition = mComposingText.isNotEmpty() && !hasSelection()
+                && Character.codePointCount(text, 0, text.length) == 1
+                && InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)
+
         if (hasSelection()) {
             val selStart = minOf(mExpectedSelStart, mExpectedSelEnd)
             val selEnd = maxOf(mExpectedSelStart, mExpectedSelEnd)
@@ -429,7 +435,10 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         if (isConnected()) {
             try {
                 val isDirectCommit = AppQuirksManager.isDirectCommitApp(mParent.currentInputEditorInfo?.packageName)
-                if (isDirectCommit || text.length > Constants.EDITOR_CONTENTS_CACHE_SIZE || text !is Spanned) {
+                if (replaceWebComposition) {
+                    mIC?.setComposingText(text, newCursorPosition)
+                    mIC?.finishComposingText()
+                } else if (isDirectCommit || text.length > Constants.EDITOR_CONTENTS_CACHE_SIZE || text !is Spanned) {
                     mIC?.commitText(text.toString(), newCursorPosition)
                 } else {
                     mTempObjectForCommitText.clear()
