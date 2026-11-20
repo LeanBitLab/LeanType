@@ -119,6 +119,14 @@ class InputView @JvmOverloads constructor(
         getLocationOnScreen(location)
         val viewBottom = location[1] + height
         mLastNavMeasure = "reported=$reported ${insetSources()} viewBottom=$viewBottom screen=$screenHeight"
+        // The IME's own navigation bar is drawn inside this window, which may end above the screen bottom
+        // (OnePlus tablets with a taskbar), so measure the overlap against where the bar actually is.
+        val frame = observedNavBarFrame
+        if (frame != null && frame.visibility == View.VISIBLE && frame.isLaidOut && frame.height == reported) {
+            frame.getLocationOnScreen(location)
+            mLastNavMeasure += " navFrameTop=${location[1]}"
+            return (viewBottom - location[1]).coerceIn(0, reported)
+        }
         return navBarOverlap(reported, viewBottom, screenHeight)
     }
 
