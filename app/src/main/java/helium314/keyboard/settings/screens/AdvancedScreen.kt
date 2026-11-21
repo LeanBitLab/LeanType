@@ -120,6 +120,10 @@ fun AdvancedSettingsScreen(
 }
 
 @SuppressLint("ApplySharedPref")
+/** Keeps the saved model in a fetched model list, so the setting still shows it if the provider no longer lists it */
+private fun withSavedModel(items: List<Pair<String, String>>, savedModel: String) =
+    if (savedModel.isBlank() || items.any { it.second == savedModel }) items else items + (savedModel to savedModel)
+
 fun createAdvancedSettings(context: Context) = listOfNotNull(
     Setting(context, Settings.PREF_ALWAYS_INCOGNITO_MODE,
         R.string.incognito, R.string.prefs_force_incognito_mode_summary)
@@ -293,7 +297,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GEMINI)
-            items = models.map { it to it }
+            items = withSavedModel(models.map { it to it }, selectedModel)
         }
 
         ListPreference(
@@ -421,7 +425,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GROQ)
-            items = models.map { it to it }
+            items = withSavedModel(models.map { it to it }, selectedModel)
         }
         
         ListPreference(
@@ -864,7 +868,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GEMINI)
-            items = listOf(ctx.getString(R.string.default_proofreading) to "") + models.map { it to it }
+            items = withSavedModel(listOf(ctx.getString(R.string.default_proofreading) to "") + models.map { it to it }, selectedModel)
         }
 
         ListPreference(
@@ -885,7 +889,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GROQ)
-            items = listOf(ctx.getString(R.string.default_proofreading) to "") + models.map { it to it }
+            items = withSavedModel(listOf(ctx.getString(R.string.default_proofreading) to "") + models.map { it to it }, selectedModel)
         }
         
         ListPreference(
@@ -921,13 +925,13 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
     Setting(context, SettingsWithoutKey.VOICE_GEMINI_MODEL, R.string.voice_model_title, R.string.voice_model_summary) { setting ->
         val ctx = LocalContext.current
         val service = remember { helium314.keyboard.latin.utils.ProofreadService(ctx) }
-        val defaultGeminiLabel = remember(ctx) { "${ctx.getString(R.string.button_default)} (gemini-2.0-flash)" }
-        var items by remember { mutableStateOf(listOf(defaultGeminiLabel to "") + listOf("gemini-2.0-flash", "gemini-2.5-flash", "gemini-flash-latest", "gemini-1.5-flash").map { it to it }) }
+        val defaultGeminiLabel = remember(ctx) { "${ctx.getString(R.string.button_default)} (${helium314.keyboard.latin.utils.ProofreadService.DEFAULT_VOICE_GEMINI_MODEL})" }
+        var items by remember { mutableStateOf(listOf(defaultGeminiLabel to "") + listOf("gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest").map { it to it }) }
         var selectedModel by remember { mutableStateOf(service.getVoiceGeminiModel()) }
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableVoiceModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GEMINI)
-            items = listOf(defaultGeminiLabel to "") + models.map { it to it }
+            items = withSavedModel(listOf(defaultGeminiLabel to "") + models.map { it to it }, selectedModel)
         }
 
         ListPreference(
@@ -949,7 +953,7 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
 
         LaunchedEffect(Unit) {
             val models = service.fetchAvailableVoiceModels(helium314.keyboard.latin.utils.ProofreadService.AIProvider.GROQ)
-            items = listOf(defaultGroqVoiceLabel to "") + models.map { it to it }
+            items = withSavedModel(listOf(defaultGroqVoiceLabel to "") + models.map { it to it }, selectedModel)
         }
 
         ListPreference(
