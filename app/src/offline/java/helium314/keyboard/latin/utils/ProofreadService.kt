@@ -368,7 +368,16 @@ class ProofreadService(private val context: Context) {
             
             // Build the prompt
             val systemPrompt = overridePrompt ?: getSystemPrompt().ifBlank { Defaults.PREF_OFFLINE_SYSTEM_PROMPT }
-            val fullPrompt = if (systemPrompt.contains("{text}")) {
+            val chatFormat = chatFormat(modelPath)
+            val fullPrompt = if (chatFormat != null) {
+                // Chat models get the instruction as system message and the text as user message,
+                // the few-shot examples below would end up in their answer
+                val noThinking = !showThinkingVal
+                if (systemPrompt.contains("{text}")) chatFormat.build(null, systemPrompt.replace("{text}", text), noThinking)
+                // no text, e.g. a custom key that only uses the clipboard: the prompt is the request
+                else if (text.isBlank()) chatFormat.build(null, systemPrompt.trim(), noThinking)
+                else chatFormat.build(systemPrompt.trim(), text, noThinking)
+            } else if (systemPrompt.contains("{text}")) {
                 systemPrompt.replace("{text}", text)
             } else if (overridePrompt != null) {
                 // Translation or specific override
@@ -441,7 +450,8 @@ class ProofreadService(private val context: Context) {
                 cleanProofreadOutput(text, cleanedOutput)
             }
 
-            Log.i(TAG, "inference via plugin: input='$text' generated='$output' final='$finalOutput'")
+            // only the lengths: the texts are private, and the system log can be read by other tools
+            Log.i(TAG, "inference via plugin: input ${text.length} chars, generated ${output.length} chars, result ${finalOutput.length} chars, chat format ${chatFormat ?: "none"}")
             if (finalOutput.isNotBlank()) {
                 Result.success(finalOutput)
             } else {
@@ -454,6 +464,38 @@ class ProofreadService(private val context: Context) {
             Result.failure(ProofreadException(e.message ?: "Unknown error"))
         }
     }
+
+    /**
+     * Chat models expect their chat format. Without it they answer badly, take the few-shot examples
+     * as part of the text, and thinking models (Qwen3) first "think" and use up the available tokens.
+     * Detected by the model file name; other models get the plain prompt as before.
+     */
+    internal enum class ChatFormat {
+        /** ChatML; an empty think block switches thinking off */
+        QWEN,
+        /** Liquid LFM2: ChatML, the begin token is added by llama.cpp */
+        LFM2;
+
+        fun build(system: String?, user: String, noThinking: Boolean = true): String = buildString {
+            if (!system.isNullOrBlank()) append("<|im_start|>system\n$system<|im_end|>\n")
+            append("<|im_start|>user\n$user<|im_end|>\n<|im_start|>assistant\n")
+            if (this@ChatFormat == QWEN && noThinking) append("<think>\n\n</think>\n\n")
+        }
+
+        companion object {
+            fun forModel(name: String): ChatFormat? {
+                val lower = name.lowercase()
+                return when {
+                    lower.contains("qwen") -> QWEN
+                    lower.contains("lfm") -> LFM2
+                    else -> null
+                }
+            }
+        }
+    }
+
+    private fun chatFormat(modelPath: String): ChatFormat? =
+        ChatFormat.forModel(modelPath + " " + runCatching { getModelName() }.getOrDefault(""))
 
     private fun stripThinkingTags(text: String): String {
         return text
