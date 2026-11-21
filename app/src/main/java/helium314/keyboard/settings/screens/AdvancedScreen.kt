@@ -28,17 +28,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import helium314.keyboard.keyboard.KeyboardActionListener
-import helium314.keyboard.keyboard.KeyboardLayoutSet
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.keyboard.emoji.SupportedEmojis
 import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.R
-import helium314.keyboard.latin.common.splitOnWhitespace
 import helium314.keyboard.latin.settings.DebugSettings
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
-import helium314.keyboard.latin.utils.checkTimestampFormat
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.fineTuneExpanded
 import helium314.keyboard.settings.dialogs.ConfirmationDialog
@@ -60,7 +56,6 @@ import helium314.keyboard.settings.Theme
 import helium314.keyboard.settings.preferences.BackupRestorePreference
 import helium314.keyboard.settings.preferences.ExpandablePreference
 import helium314.keyboard.settings.preferences.LoadGestureLibPreference
-import helium314.keyboard.settings.preferences.TextInputPreference
 import helium314.keyboard.settings.previewDark
 import androidx.core.content.edit
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -92,6 +87,7 @@ fun AdvancedSettingsScreen(
             // Primary
             Settings.PREF_ALWAYS_INCOGNITO_MODE,
             Settings.PREF_DISABLE_NETWORK,
+            SettingsWithoutKey.APP_QUIRKS,
             SettingsWithoutKey.BACKGROUND_SERVICES,
             SettingsWithoutKey.BACKUP_RESTORE,
             if (BuildConfig.DEBUG || prefs.getBoolean(DebugSettings.PREF_SHOW_DEBUG_SETTINGS, Defaults.PREF_SHOW_DEBUG_SETTINGS))
@@ -99,14 +95,9 @@ fun AdvancedSettingsScreen(
             Settings.PREF_EXPAND_FINE_TUNE_ADVANCED,
 
             // Fine-tune physical keyboards & experimental
-            if (fineTuneAdvancedExpanded && (Settings.readHorizontalSpaceSwipe(prefs) == KeyboardActionListener.SWIPE_SWITCH_LANGUAGE
-                || Settings.readFullKeyboardSwipe(prefs) != KeyboardActionListener.SWIPE_NO_ACTION))
-                Settings.PREF_LANGUAGE_SWIPE_DISTANCE else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS else null,
-            if (fineTuneAdvancedExpanded) Settings.PREF_CUSTOM_CURRENCY_KEY else null,
-            if (fineTuneAdvancedExpanded) Settings.PREF_TIMESTAMP_FORMAT else null,
             if (fineTuneAdvancedExpanded) R.string.settings_category_experimental else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_EMOJI_MAX_SDK else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_URL_DETECTION else null,
@@ -119,25 +110,42 @@ fun AdvancedSettingsScreen(
     )
 }
 
-@SuppressLint("ApplySharedPref")
+// Settings defined below but shown on other screens: each list is registered with the screen
+// that shows it, so a long press in the search opens that screen and not the advanced one.
+private val translationSettingKeys = setOf(
+    SettingsWithoutKey.TRANSLATION_ENGINE,
+    SettingsWithoutKey.TRANSLATION_SOURCE_LANGUAGE,
+    SettingsWithoutKey.GEMINI_TARGET_LANGUAGE,
+)
+private val aiIntegrationSettingKeys = setOf(
+    SettingsWithoutKey.GEMINI_API_KEY, SettingsWithoutKey.GEMINI_MODEL, SettingsWithoutKey.AI_PROVIDER,
+    SettingsWithoutKey.GROQ_TOKEN, SettingsWithoutKey.GROQ_MODEL,
+    SettingsWithoutKey.HUGGINGFACE_TOKEN, SettingsWithoutKey.HUGGINGFACE_MODEL, SettingsWithoutKey.HUGGINGFACE_ENDPOINT,
+    SettingsWithoutKey.OPENAI_USE_MAX_COMPLETION_TOKENS, SettingsWithoutKey.OPENAI_OMIT_TEMPERATURE,
+    SettingsWithoutKey.AI_ALLOW_INSECURE_CONNECTIONS, SettingsWithoutKey.CLOUD_AI_MAX_TOKENS,
+    SettingsWithoutKey.TRANSLATE_GEMINI_MODEL, SettingsWithoutKey.TRANSLATE_GROQ_MODEL, SettingsWithoutKey.TRANSLATE_HUGGINGFACE_MODEL,
+    SettingsWithoutKey.VOICE_GEMINI_MODEL, SettingsWithoutKey.VOICE_GROQ_MODEL, SettingsWithoutKey.VOICE_HUGGINGFACE_MODEL,
+    SettingsWithoutKey.CUSTOM_AI_KEYS, SettingsWithoutKey.LOAD_OFFLINE_AI_PLUGIN,
+    SettingsWithoutKey.OFFLINE_KEEP_MODEL_LOADED, SettingsWithoutKey.OFFLINE_MODEL_PATH,
+)
+
+fun createAdvancedScreenSettings(context: Context) =
+    createAdvancedSettings(context).filter { it.key !in aiIntegrationSettingKeys && it.key !in translationSettingKeys }
+
+fun createAIIntegrationSettings(context: Context) = createAdvancedSettings(context).filter { it.key in aiIntegrationSettingKeys }
+
+fun createTranslationSettings(context: Context) = createAdvancedSettings(context).filter { it.key in translationSettingKeys }
+
 /** Keeps the saved model in a fetched model list, so the setting still shows it if the provider no longer lists it */
 private fun withSavedModel(items: List<Pair<String, String>>, savedModel: String) =
     if (savedModel.isBlank() || items.any { it.second == savedModel }) items else items + (savedModel to savedModel)
 
-fun createAdvancedSettings(context: Context) = listOfNotNull(
+@SuppressLint("ApplySharedPref")
+private fun createAdvancedSettings(context: Context) = listOfNotNull(
     Setting(context, Settings.PREF_ALWAYS_INCOGNITO_MODE,
         R.string.incognito, R.string.prefs_force_incognito_mode_summary)
     {
         SwitchPreference(it, Defaults.PREF_ALWAYS_INCOGNITO_MODE) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
-    },
-    Setting(context, Settings.PREF_LANGUAGE_SWIPE_DISTANCE, R.string.prefs_language_swipe_distance) { setting ->
-        SliderPreference(
-            name = setting.title,
-            key = setting.key,
-            default = Defaults.PREF_LANGUAGE_SWIPE_DISTANCE,
-            range = 2f..18f,
-            description = { it.toString() }
-        )
     },
     Setting(context, Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT, R.string.prefs_physical_keyboard_layout,
         R.string.prefs_physical_keyboard_layout_summary) { setting ->
@@ -171,28 +179,15 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
         )
         ListPreference(setting, items, Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS)
     },
-    Setting(context, Settings.PREF_CUSTOM_CURRENCY_KEY, R.string.customize_currencies) { setting ->
-        var showDialog by rememberSaveable { mutableStateOf(false) }
-        Preference(
-            name = setting.title,
-            onClick = { showDialog = true }
-        )
-        if (showDialog) {
-            val prefs = LocalContext.current.prefs()
-            TextInputDialog(
-                onDismissRequest = { showDialog = false },
-                textInputLabel = { Text(stringResource(R.string.customize_currencies_detail)) },
-                initialText = prefs.getString(setting.key, Defaults.PREF_CUSTOM_CURRENCY_KEY) ?: Defaults.PREF_CUSTOM_CURRENCY_KEY,
-                onConfirmed = { prefs.edit { putString(setting.key, it) }; KeyboardLayoutSet.onSystemLocaleChanged() },
-                title = { Text(stringResource(R.string.customize_currencies)) },
-                neutralButtonText = if (prefs.contains(setting.key)) stringResource(R.string.button_default) else null,
-                onNeutral = { prefs.edit { remove(setting.key)}; KeyboardLayoutSet.onSystemLocaleChanged() },
-                checkTextValid = { text -> text.splitOnWhitespace().none { it.length > 8 } }
-            )
-        }
-    },
     Setting(context, SettingsWithoutKey.BACKUP_RESTORE, R.string.backup_restore_title) {
         BackupRestorePreference(it)
+    },
+    Setting(context, SettingsWithoutKey.APP_QUIRKS, R.string.app_quirks_title) {
+        Preference(
+            name = it.title,
+            description = stringResource(R.string.app_quirks_summary),
+            onClick = { SettingsDestination.navigateTo(SettingsDestination.AppQuirks) }
+        ) { NextScreenIcon() }
     },
     Setting(context, SettingsWithoutKey.BACKGROUND_SERVICES, R.string.background_services_title) {
         Preference(
@@ -200,9 +195,6 @@ fun createAdvancedSettings(context: Context) = listOfNotNull(
             description = stringResource(R.string.background_services_summary),
             onClick = { SettingsDestination.navigateTo(SettingsDestination.BackgroundServices) }
         ) { NextScreenIcon() }
-    },
-    Setting(context, Settings.PREF_TIMESTAMP_FORMAT, R.string.timestamp_format_title) { setting ->
-        TextInputPreference(setting, Defaults.PREF_TIMESTAMP_FORMAT) { checkTimestampFormat(it) }
     },
     Setting(context, SettingsWithoutKey.DEBUG_SETTINGS, R.string.debug_settings_title) {
         Preference(

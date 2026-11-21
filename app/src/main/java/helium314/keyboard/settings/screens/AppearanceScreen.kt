@@ -105,32 +105,13 @@ fun AppearanceScreen(
             if (fineTuneThemeExpanded) Settings.PREF_CUSTOM_ICON_NAMES else null,
             if (fineTuneThemeExpanded) Settings.PREF_CLEAR_CLIPBOARD_ICON else null,
 
-            // Key appearance
-            R.string.settings_category_key_appearance,
-            Settings.PREF_SHOW_HINTS,
-            Settings.PREF_POPUP_KEYS_ORDER,
-            Settings.PREF_POPUP_ON,
-            Settings.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS,
-            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
-                Settings.PREF_KEY_PREVIEW_WIDTH_SCALE else null,
-            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
-                Settings.PREF_KEY_PREVIEW_HEIGHT_SCALE else null,
-            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
-                Settings.PREF_KEY_PREVIEW_RADIUS else null,
-            if (fineTuneKeyPreviewsExpanded) Settings.PREF_POPUP_KEYS_VERTICAL_OFFSET_PERCENT else null,
-            if (fineTuneKeyPreviewsExpanded) Settings.PREF_ANIMATION_SPEED_SCALE else null,
-            if (fineTuneKeyPreviewsExpanded && showHintsEnabled)
-                Settings.PREF_POPUP_KEYS_LABELS_ORDER else null,
-            if (fineTuneKeyPreviewsExpanded) Settings.PREF_SHOW_POPUP_HINTS else null,
-            if (fineTuneKeyPreviewsExpanded) Settings.PREF_SHOW_TLD_POPUP_KEYS else null,
-
             // Keyboard sizing, layout & fonts
             R.string.settings_category_miscellaneous,
             Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX,
+            Settings.PREF_ENABLE_SPLIT_KEYBOARD,
             SettingsWithoutKey.CUSTOM_FONT,
             SettingsWithoutKey.CUSTOM_EMOJI_FONT,
             Settings.PREF_SPACE_BAR_TEXT,
-            Settings.PREF_ENABLE_SPLIT_KEYBOARD,
             Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_KEYBOARD_HEIGHT_SCALE_PREFIX else null,
             if (fineTuneFoldableExpanded) Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED else null,
@@ -153,6 +134,25 @@ fun AppearanceScreen(
             if (fineTuneKeyboardLayoutExpanded) Settings.PREF_SHOW_EMOJI_DESCRIPTIONS else null,
             if (fineTuneKeyboardLayoutExpanded && prefs.getFloat(Settings.PREF_EMOJI_FONT_SCALE, Defaults.PREF_EMOJI_FONT_SCALE) != 1f)
                 Settings.PREF_EMOJI_KEY_FIT else null,
+
+            // Key appearance
+            R.string.settings_category_key_appearance,
+            Settings.PREF_SHOW_HINTS,
+            Settings.PREF_POPUP_KEYS_ORDER,
+            Settings.PREF_POPUP_ON,
+            Settings.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS,
+            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
+                Settings.PREF_KEY_PREVIEW_WIDTH_SCALE else null,
+            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
+                Settings.PREF_KEY_PREVIEW_HEIGHT_SCALE else null,
+            if (fineTuneKeyPreviewsExpanded && popupOnEnabled)
+                Settings.PREF_KEY_PREVIEW_RADIUS else null,
+            if (fineTuneKeyPreviewsExpanded) Settings.PREF_POPUP_KEYS_VERTICAL_OFFSET_PERCENT else null,
+            if (fineTuneKeyPreviewsExpanded) Settings.PREF_ANIMATION_SPEED_SCALE else null,
+            if (fineTuneKeyPreviewsExpanded && showHintsEnabled)
+                Settings.PREF_POPUP_KEYS_LABELS_ORDER else null,
+            if (fineTuneKeyPreviewsExpanded) Settings.PREF_SHOW_POPUP_HINTS else null,
+            if (fineTuneKeyPreviewsExpanded) Settings.PREF_SHOW_TLD_POPUP_KEYS else null,
         )
     }
     SearchSettingsScreen(
