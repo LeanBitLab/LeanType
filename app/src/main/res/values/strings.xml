@@ -2121,6 +2121,7 @@ New dictionary:
     <string name="translation_unchanged">Translation unchanged or identical to source text.</string>
     <string name="error_getting_suggestions">Error getting suggestions</string>
     <string name="ai_error_format">AI Error: %s</string>
+    <string name="ai_result_to_clipboard">The text field changed meanwhile, the AI result is in the clipboard</string>
     <string name="suggestion_word_removed">\"%1$s\" removed</string>
     <string name="key_set">Key set</string>
     <string name="key_not_set">Not set</string>
