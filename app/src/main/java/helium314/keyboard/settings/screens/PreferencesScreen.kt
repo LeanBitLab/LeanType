@@ -47,6 +47,13 @@ import helium314.keyboard.settings.preferences.ListPreference
 import helium314.keyboard.settings.preferences.Preference
 import helium314.keyboard.settings.preferences.SliderPreference
 import helium314.keyboard.settings.preferences.SwitchPreference
+import androidx.compose.material3.Text
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.core.content.edit
+import helium314.keyboard.latin.common.splitOnWhitespace
+import helium314.keyboard.latin.utils.checkTimestampFormat
+import helium314.keyboard.settings.dialogs.TextInputDialog
+import helium314.keyboard.settings.preferences.TextInputPreference
 import helium314.keyboard.settings.previewDark
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.math.roundToInt
@@ -111,6 +118,8 @@ fun PreferencesScreen(
             if (fineTuneAdditionalKeysExpanded) Settings.PREF_DIRECT_IME_SWITCH_TARGET else null,
             if (fineTuneAdditionalKeysExpanded) Settings.PREF_REMOVE_REDUNDANT_POPUPS else null,
             if (fineTuneAdditionalKeysExpanded) Settings.PREF_MORE_POPUP_KEYS else null,
+            if (fineTuneAdditionalKeysExpanded) Settings.PREF_CUSTOM_CURRENCY_KEY else null,
+            if (fineTuneAdditionalKeysExpanded) Settings.PREF_TIMESTAMP_FORMAT else null,
 
             // Window modes
             R.string.settings_category_window_modes,
@@ -140,6 +149,29 @@ fun PreferencesScreen(
 }
 
 fun createPreferencesSettings(context: Context) = listOf(
+    Setting(context, Settings.PREF_CUSTOM_CURRENCY_KEY, R.string.customize_currencies) { setting ->
+        var showDialog by rememberSaveable { mutableStateOf(false) }
+        Preference(
+            name = setting.title,
+            onClick = { showDialog = true }
+        )
+        if (showDialog) {
+            val prefs = LocalContext.current.prefs()
+            TextInputDialog(
+                onDismissRequest = { showDialog = false },
+                textInputLabel = { Text(stringResource(R.string.customize_currencies_detail)) },
+                initialText = prefs.getString(setting.key, Defaults.PREF_CUSTOM_CURRENCY_KEY) ?: Defaults.PREF_CUSTOM_CURRENCY_KEY,
+                onConfirmed = { prefs.edit { putString(setting.key, it) }; KeyboardLayoutSet.onSystemLocaleChanged() },
+                title = { Text(stringResource(R.string.customize_currencies)) },
+                neutralButtonText = if (prefs.contains(setting.key)) stringResource(R.string.button_default) else null,
+                onNeutral = { prefs.edit { remove(setting.key)}; KeyboardLayoutSet.onSystemLocaleChanged() },
+                checkTextValid = { text -> text.splitOnWhitespace().none { it.length > 8 } }
+            )
+        }
+    },
+    Setting(context, Settings.PREF_TIMESTAMP_FORMAT, R.string.timestamp_format_title) { setting ->
+        TextInputPreference(setting, Defaults.PREF_TIMESTAMP_FORMAT) { checkTimestampFormat(it) }
+    },
     Setting(context, Settings.PREF_KEY_LONGPRESS_TIMEOUT, R.string.prefs_key_longpress_timeout_settings) { setting ->
         SliderPreference(
             name = setting.title,

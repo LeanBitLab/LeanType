@@ -62,6 +62,7 @@ import helium314.keyboard.latin.utils.LocaleUtils
 import helium314.keyboard.latin.utils.mainLayoutNameOrQwerty
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.preferences.ListPreference
+import helium314.keyboard.settings.preferences.SwitchPreference
 import java.util.Locale
 
 @Composable
@@ -77,7 +78,7 @@ fun LanguageScreen(
     SearchSettingsScreen(
         onClickBack = onClickBack,
         title = stringResource(R.string.language_and_layouts_title),
-        settings = listOf(Settings.PREF_APP_LANGUAGE)
+        settings = listOf(Settings.PREF_SAVE_SUBTYPE_PER_APP, Settings.PREF_APP_LANGUAGE)
     ) {
         Column(
             Modifier
@@ -146,6 +147,7 @@ fun LanguageScreen(
                         onClick = { SettingsDestination.navigateTo(SettingsDestination.Dictionaries) },
                         icon = R.drawable.ic_dictionary
                     ) { NextScreenIcon() }
+                    SettingsActivity.settingsContainer[Settings.PREF_SAVE_SUBTYPE_PER_APP]?.Preference()
                     SettingsActivity.settingsContainer[Settings.PREF_APP_LANGUAGE]?.Preference()
                 }
             }
@@ -154,6 +156,9 @@ fun LanguageScreen(
 }
 
 fun createLanguageSettings(context: Context) = listOf(
+    Setting(context, Settings.PREF_SAVE_SUBTYPE_PER_APP, R.string.save_subtype_per_app) {
+        SwitchPreference(it, Defaults.PREF_SAVE_SUBTYPE_PER_APP, icon = R.drawable.ic_ime_switcher)
+    },
     Setting(context, Settings.PREF_APP_LANGUAGE, R.string.app_language_title, R.string.app_language_summary) {
         ListPreference(
             it,
