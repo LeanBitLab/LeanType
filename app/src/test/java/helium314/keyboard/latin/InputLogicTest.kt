@@ -1687,6 +1687,30 @@ class InputLogicTest {
         assertEquals("ein", text) // with word deletion, "eins" would be gone completely
     }
 
+    @Test fun `delete word swipe deletes the composing word`() {
+        reset()
+        setText("hello ")
+        chainInput("there")
+        assertEquals("there", composingText)
+        inputLogic.deleteWordBeforeCursor()
+        handleMessages()
+        checkConnectionConsistency()
+        assertEquals("hello ", text)
+        assertEquals("", composingText)
+    }
+
+    @Test fun `delete word swipe inside a composing word deletes up to the cursor`() {
+        reset()
+        setText("hello there")
+        setCursorPosition(8) // after h in there
+        assertEquals("there", composingText)
+        inputLogic.deleteWordBeforeCursor()
+        handleMessages()
+        checkConnectionConsistency()
+        assertEquals("hello ere", text)
+        assertEquals(6, cursor)
+    }
+
     @Test fun timestamp() {
         reset()
         chainInput("hello")
