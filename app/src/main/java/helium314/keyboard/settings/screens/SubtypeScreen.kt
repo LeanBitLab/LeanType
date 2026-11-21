@@ -342,7 +342,7 @@ fun SubtypeScreen(
                             }
                             WithSmallTitle(stringResource(type.displayNameId)) {
                                 val explicitLayout = currentSubtype.layoutName(type)
-                                val isArabicSymbols = type == LayoutType.SYMBOLS && (ScriptUtils.isScriptRtl(currentSubtype.locale.script()) || explicitLayout == "symbols_arabic")
+                                val isArabicSymbols = type == LayoutType.SYMBOLS && (currentSubtype.locale.script() == ScriptUtils.SCRIPT_ARABIC || explicitLayout == "symbols_arabic")
                                 val isCjkSymbols = type == LayoutType.SYMBOLS && (currentSubtype.locale.language == "zh" || explicitLayout == "symbols_cjk")
                                 val defaultLayout = if (isArabicSymbols) {
                                     prefs.getString(Settings.PREF_LAYOUT_PREFIX + "SYMBOLS_ARABIC", "symbols_arabic") ?: "symbols_arabic"
