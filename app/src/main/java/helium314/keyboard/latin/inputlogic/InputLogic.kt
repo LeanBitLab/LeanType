@@ -158,6 +158,9 @@ class InputLogic(
         mInputLogicHandler.reset()
         mConnection.requestCursorUpdates(true, true)
         setInlineEmojiSearchAction(false)
+        // an AI result that arrived while the keyboard was hidden, once the field is ready again
+        if (mPendingAIResult != null)
+            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({ insertPendingAIResult() }, 300)
     }
 
     fun onSubtypeChanged(combiningSpec: String?, settingsValues: SettingsValues) {
@@ -3267,13 +3270,18 @@ class InputLogic(
         val targetEditorInfo = getCurrentInputEditorInfo()
         val targetPackage = targetEditorInfo?.packageName
         val targetFieldId = targetEditorInfo?.fieldId
+        val targetField = currentAiTarget()
 
         ProofreadHelper.customAsync(
             mLatinIME,
             textToProcess, prompt, hasSelection, showThinking,
             onSuccess = { resultText ->
+                val result = PendingAIResult(resultText, targetPackage, targetFieldId, hasSelection, shouldAppend,
+                    SystemClock.uptimeMillis(), targetField)
                 if (!mLatinIME.isInputViewShown || !mConnection.isConnected()) {
-                    Log.w(TAG, "Input view hidden or disconnected during custom AI operation, ignoring result")
+                    // some editors hide the keyboard meanwhile (e.g. when the cursor is moved): insert when it is back in this field
+                    Log.i(TAG, "Input view hidden during custom AI operation, keeping the result")
+                    mPendingAIResult = result
                     return@customAsync
                 }
                 val currentEditor = getCurrentInputEditorInfo()
@@ -3281,20 +3289,105 @@ class InputLogic(
                     Log.w(TAG, "Target editor changed during custom AI operation, ignoring result")
                     return@customAsync
                 }
-                if (shouldAppend) {
-                    val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
-                    mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
-                } else if (!hasSelection) {
-                    mConnection.replaceEntireText(resultText)
-                } else {
-                    mLatinIME.onTextInput(resultText)
+                if (!targetField.isCurrent()) {
+                    keepAIResultInClipboard(resultText)
+                    return@customAsync
                 }
+                insertAIResult(result)
             },
             onError = { errorMessage ->
                 Log.e(TAG, "Custom AI Error: $errorMessage")
                 KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_error_format, errorMessage), true)
             }
         )
+    }
+
+    /** Result of a custom AI key, kept while the keyboard is hidden */
+    private class PendingAIResult(
+        val text: String, val packageName: String?, val fieldId: Int?,
+        val hasSelection: Boolean, val shouldAppend: Boolean, val time: Long, val target: AiTarget
+    )
+    private var mPendingAIResult: PendingAIResult? = null
+
+    /**
+     * The field an AI request was started in, to insert the result only there. Many apps use the same
+     * field id for all their text fields (e.g. every chat), so the text and type of the field are compared
+     * too: if they changed, the result is put into the clipboard instead. See [AiFieldCheck].
+     */
+    private inner class AiTarget(private val fingerprint: AiFieldCheck.Fingerprint) {
+        fun isCurrent(): Boolean {
+            val now = aiFieldSnapshot() ?: return false
+            return fingerprint.matches(now)
+        }
+    }
+
+    private fun currentAiTarget(): AiTarget =
+        AiTarget(AiFieldCheck.fingerprint(aiFieldSnapshot() ?: AiFieldCheck.Snapshot(null, 0, true, "", null)))
+
+    private fun aiFieldSnapshot(): AiFieldCheck.Snapshot? {
+        val editor = getCurrentInputEditorInfo() ?: return null
+        return AiFieldCheck.Snapshot(editor.packageName, editor.inputType,
+            InputTypeUtils.isPasswordInputType(editor.inputType), currentFieldText(), extractedFieldText())
+    }
+
+    /** The whole text as the app gives it for extraction, null if it does not */
+    private fun extractedFieldText(): String? = try {
+        val request = android.view.inputmethod.ExtractedTextRequest().apply { hintMaxChars = AI_FIELD_TEXT_CHARS * 2 }
+        mLatinIME.currentInputConnection?.getExtractedText(request, 0)?.text?.toString()
+    } catch (e: Exception) {
+        null
+    }
+
+    /** The whole text of the field, also a selected part */
+    private fun currentFieldText(): String {
+        val before = mConnection.getTextBeforeCursor(AI_FIELD_TEXT_CHARS, 0)?.toString() ?: ""
+        val selected = mConnection.getSelectedText(0)?.toString() ?: ""
+        val after = mConnection.getTextAfterCursor(AI_FIELD_TEXT_CHARS, 0)?.toString() ?: ""
+        return before + selected + after
+    }
+
+    /** An AI result for a field that changed meanwhile: not lost, but not inserted at the wrong place */
+    private fun keepAIResultInClipboard(text: String) {
+        if (text.isBlank()) return
+        Log.w(TAG, "field changed during the AI request, result copied to the clipboard")
+        val clipboard = mLatinIME.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager ?: return
+        clipboard.setPrimaryClip(android.content.ClipData.newPlainText("AI", text))
+        KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_result_to_clipboard), false)
+    }
+
+    private fun insertAIResult(result: PendingAIResult) {
+        if (result.shouldAppend) {
+            if (!result.hasSelection) {
+                // the cursor may have moved meanwhile, e.g. when the keyboard was hidden and the field tapped again
+                val after = mConnection.getTextAfterCursor(AI_FIELD_TEXT_CHARS, 0)?.length ?: 0
+                if (after > 0 && mConnection.expectedSelectionEnd >= 0) {
+                    val end = mConnection.expectedSelectionEnd + after
+                    mConnection.setSelection(end, end)
+                }
+            }
+            val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
+            mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + result.text.trim())
+        } else if (!result.hasSelection) {
+            mConnection.replaceEntireText(result.text)
+        } else {
+            mLatinIME.onTextInput(result.text)
+        }
+    }
+
+    /** Inserts a result that arrived while the keyboard was hidden, if the keyboard is back in the same field soon */
+    private fun insertPendingAIResult() {
+        val pending = mPendingAIResult ?: return
+        mPendingAIResult = null
+        if (SystemClock.uptimeMillis() - pending.time > PENDING_AI_RESULT_MS) return
+        if (!mLatinIME.isInputViewShown || !mConnection.isConnected()) return
+        val editor = getCurrentInputEditorInfo()
+        // a replaced selection is gone, there is nothing left to replace safely
+        if (editor?.packageName != pending.packageName || editor?.fieldId != pending.fieldId
+            || (pending.hasSelection && !pending.shouldAppend) || !pending.target.isCurrent()) {
+            keepAIResultInClipboard(pending.text)
+            return
+        }
+        insertAIResult(pending)
     }
 
     private fun tryJumpToNextPlaceholder(): Boolean {
@@ -3440,6 +3533,10 @@ class InputLogic(
         }
         private const val BACKSPACE_WORD_LOOKBACK = 200
         private val THAI_LOCALE = Locale.forLanguageTag("th")
+        /** how long a result waits for the keyboard to come back into its field */
+        private const val PENDING_AI_RESULT_MS = 2 * 60 * 1000L
+        /** text read around the cursor to recognize the field of an AI request */
+        private const val AI_FIELD_TEXT_CHARS = 60000
         private val THAI_WORD_BREAK_ITERATOR = object : ThreadLocal<BreakIterator>() {
             override fun initialValue(): BreakIterator = BreakIterator.getWordInstance(THAI_LOCALE)
         }

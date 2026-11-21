@@ -85,6 +85,13 @@ class ProofreadService(private val context: Context) {
             isModelAvailable = true
         }
 
+        /**
+         * One generation at a time. A cancelled request (e.g. the keyboard was closed) keeps running in
+         * the plugin until it is done, and a new one would fail with "Context is busy" and give no
+         * output. It waits here instead. A plain lock, as it is held by the thread blocked in the plugin.
+         */
+        val generateLock = Any()
+
         suspend fun loadModel(
             context: Context,
             modelPath: String
@@ -404,13 +411,15 @@ class ProofreadService(private val context: Context) {
             // Use provider to generate completion
             OfflineAiLoader.isBusy = true
             val output = try {
-                provider.generate(fullPrompt, mapOf(
-                    "temperature" to temp.toDouble(),
-                    "top_p" to topP.toDouble(),
-                    "top_k" to topK,
-                    "min_p" to minP.toDouble(),
-                    "max_tokens" to effectiveMaxTokens
-                ))
+                synchronized(ModelHolder.generateLock) {
+                    provider.generate(fullPrompt, mapOf(
+                        "temperature" to temp.toDouble(),
+                        "top_p" to topP.toDouble(),
+                        "top_k" to topK,
+                        "min_p" to minP.toDouble(),
+                        "max_tokens" to effectiveMaxTokens
+                    ))
+                }
             } finally {
                 OfflineAiLoader.isBusy = false
             }
