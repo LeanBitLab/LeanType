@@ -176,6 +176,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         setColor(Color.TRANSPARENT)
     }
     private var isLoadingAnimationActive = false
+    /** toolbar keys showing an X while the AI works, with their own icon */
+    private val loadingKeyIcons = mutableListOf<Pair<ImageButton, Drawable?>>()
 
     private val keyDimension: Int
         get() {
@@ -681,15 +683,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Set loading border on the whole toolbar view
         this.foreground = loadingBorderDrawable
 
-        // Change proofread key icon to cancel/close icon
-        val closeIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase(java.util.Locale.US), context)
-        if (closeIcon != null) {
-            val proofreadKey = toolbar.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-                ?: pinnedKeys.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-            proofreadKey?.setImageDrawable(closeIcon)
-            if (proofreadKey != null) {
-                Settings.getValues().mColors.setColor(proofreadKey, ColorType.TOOL_BAR_KEY)
-            }
+        // the key that started the request shows an X: tapping it again cancels
+        val activeKey = nextLoadingKey ?: ToolbarKey.PROOFREAD
+        nextLoadingKey = null
+        for (container in listOf(toolbar, pinnedKeys)) {
+            val button = container.findViewWithTag<ImageButton>(activeKey) ?: continue
+            val closeIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase(java.util.Locale.US), context)
+                ?: continue
+            loadingKeyIcons.add(button to button.drawable)
+            button.setImageDrawable(closeIcon)
+            Settings.getValues().mColors.setColor(button, ColorType.TOOL_BAR_KEY)
         }
         
         // Get accent color from theme (GESTURE_TRAIL is the accent color)
@@ -721,16 +724,12 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         loadingBorderDrawable.setStroke(4, Color.TRANSPARENT)
         this.foreground = null
 
-        // Restore proofread key icon
-        val proofreadIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.PROOFREAD.name.lowercase(java.util.Locale.US), context)
-        if (proofreadIcon != null) {
-            val proofreadKey = toolbar.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-                ?: pinnedKeys.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-            proofreadKey?.setImageDrawable(proofreadIcon)
-            if (proofreadKey != null) {
-                Settings.getValues().mColors.setColor(proofreadKey, ColorType.TOOL_BAR_KEY)
-            }
+        // restore the icons of the keys that showed an X
+        loadingKeyIcons.forEach { (button, icon) ->
+            button.setImageDrawable(icon)
+            Settings.getValues().mColors.setColor(button, ColorType.TOOL_BAR_KEY)
         }
+        loadingKeyIcons.clear()
     }
 
     private var isVoiceActive = false
@@ -2017,3 +2016,6 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         private val TAG = SuggestionStripView::class.java.simpleName
     }
 }
+
+/** The toolbar key that starts the next AI request, it shows an X while the request runs (default: proofread) */
+var nextLoadingKey: ToolbarKey? = null
