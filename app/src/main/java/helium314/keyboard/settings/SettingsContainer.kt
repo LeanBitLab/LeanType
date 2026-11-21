@@ -10,7 +10,9 @@ import helium314.keyboard.latin.utils.JniUtils
 import helium314.keyboard.latin.R
 import helium314.keyboard.settings.preferences.Preference
 import helium314.keyboard.settings.screens.createAboutSettings
-import helium314.keyboard.settings.screens.createAdvancedSettings
+import helium314.keyboard.settings.screens.createAIIntegrationSettings
+import helium314.keyboard.settings.screens.createAdvancedScreenSettings
+import helium314.keyboard.settings.screens.createTranslationSettings
 import helium314.keyboard.settings.screens.createAppearanceSettings
 import helium314.keyboard.settings.screens.createBackgroundServicesSettings
 import helium314.keyboard.settings.screens.createCorrectionSettings
@@ -19,7 +21,6 @@ import helium314.keyboard.settings.screens.createGestureTypingSettings
 import helium314.keyboard.settings.screens.createLanguageSettings
 import helium314.keyboard.settings.screens.createLayoutSettings
 import helium314.keyboard.settings.screens.createOcrSettings
-import helium314.keyboard.settings.screens.createLibrariesSettings
 import helium314.keyboard.settings.screens.createPreferencesSettings
 import helium314.keyboard.settings.screens.createSoundSettings
 import helium314.keyboard.settings.screens.createTextExpanderSettings
@@ -143,19 +144,19 @@ private val modules = listOf(
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_GESTURES, SettingsDestination.GestureTyping, R.string.settings_screen_gesture, iconRes = R.drawable.ic_settings_gesture, provider = ::createGestureTypingSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_TEXT_CORRECTION, SettingsDestination.TextCorrection, R.string.settings_screen_correction, iconRes = R.drawable.ic_settings_correction, provider = ::createCorrectionSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_SUGGESTIONS, SettingsDestination.Suggestions, R.string.settings_screen_suggestions, iconRes = R.drawable.ic_settings_suggestions, provider = ::createSuggestionsSettings),
-    SettingsModule(SettingsWithoutKey.SCREEN_NAV_AI_INTEGRATION, SettingsDestination.AIIntegration, R.string.settings_screen_ai_integration, iconRes = R.drawable.ic_proofread),
+    SettingsModule(SettingsWithoutKey.SCREEN_NAV_AI_INTEGRATION, SettingsDestination.AIIntegration, R.string.settings_screen_ai_integration, iconRes = R.drawable.ic_proofread, provider = ::createAIIntegrationSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_TEXT_EXPANDER, SettingsDestination.TextExpander, titleString = "Text Expander", iconRes = R.drawable.ic_edit, provider = ::createTextExpanderSettings),
-    SettingsModule(SettingsWithoutKey.SCREEN_NAV_ADVANCED, SettingsDestination.Advanced, R.string.settings_screen_advanced, iconRes = R.drawable.ic_settings_advanced, provider = ::createAdvancedSettings),
+    SettingsModule(SettingsWithoutKey.SCREEN_NAV_ADVANCED, SettingsDestination.Advanced, R.string.settings_screen_advanced, iconRes = R.drawable.ic_settings_advanced, provider = ::createAdvancedScreenSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_ABOUT, SettingsDestination.About, R.string.settings_screen_about, iconRes = R.drawable.ic_settings_about, provider = ::createAboutSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_OCR, SettingsDestination.OCR, R.string.ocr_settings_title, iconRes = R.drawable.ic_ocr, provider = ::createOcrSettings),
-    SettingsModule(SettingsWithoutKey.SCREEN_NAV_LIBRARIES, SettingsDestination.Libraries, R.string.libraries_hub_title, iconRes = R.drawable.ic_emoji_objects, provider = ::createLibrariesSettings),
+    SettingsModule(SettingsWithoutKey.SCREEN_NAV_LIBRARIES, SettingsDestination.Libraries, R.string.libraries_hub_title, iconRes = R.drawable.ic_emoji_objects),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_BACKGROUND_SERVICES, SettingsDestination.BackgroundServices, titleString = "Background Services", provider = ::createBackgroundServicesSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_DICTIONARIES, SettingsDestination.Dictionaries, R.string.dictionary_settings_category, iconRes = R.drawable.ic_dictionary),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_PERSONAL_DICTIONARIES, SettingsDestination.PersonalDictionaries, R.string.edit_personal_dictionary, iconRes = R.drawable.ic_dictionary),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_BLOCKED_WORDS, SettingsDestination.BlockedWords, R.string.edit_blocked_words, iconRes = R.drawable.ic_bin),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_SOUND, SettingsDestination.Sound, R.string.sound_packs_title, iconRes = R.drawable.ic_play_arrow, provider = ::createSoundSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_VOICE, SettingsDestination.OfflineVoice, R.string.voice_input_title, iconRes = R.drawable.sym_keyboard_voice_holo, provider = ::createVoiceSettings),
-    SettingsModule(SettingsWithoutKey.SCREEN_NAV_TRANSLATION, SettingsDestination.Translation, R.string.translation_settings_title, iconRes = R.drawable.ic_translate),
+    SettingsModule(SettingsWithoutKey.SCREEN_NAV_TRANSLATION, SettingsDestination.Translation, R.string.translation_settings_title, iconRes = R.drawable.ic_translate, provider = ::createTranslationSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_HANDWRITING, SettingsDestination.Handwriting, R.string.libraries_hub_handwriting_title, iconRes = R.drawable.ic_edit),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_CJK, SettingsDestination.Cjk, R.string.cjk_settings_title, iconRes = R.drawable.ic_settings_languages),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_UPDATES, SettingsDestination.Updates, R.string.settings_screen_updates, iconRes = R.drawable.ic_settings_updates)
