@@ -1,3 +1,4 @@
-- Browsers (Brave, Chrome): a one-letter word followed by space is no longer doubled ("a" became "aa") (#880).
-- Physical keyboard on tablets with a taskbar: the toolbar no longer sits under the keyboard's back button and handle (#880).
-- Split keyboard: landscape now uses the maximum split distance by default, leaving more room in the middle. The slider still adjusts it.
+- PC QWERTY: caps lock now only capitalizes letters; the number row and punctuation keys stay unshifted, like a physical keyboard (#883).
+- Hebrew: the symbols page uses the normal layout again, so ? no longer types the Arabic question mark (#882).
+- Delete word swipe: one swipe now deletes the word you are still typing instead of only finishing it (#878).
+- Arabic, Farsi, Urdu and Kurdish keep their Arabic symbols layout, unchanged by the Hebrew fix.

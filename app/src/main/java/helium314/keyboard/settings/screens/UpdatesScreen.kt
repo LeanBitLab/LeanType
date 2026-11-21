@@ -64,9 +64,9 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 private val currentChangelogItems = listOf(
-    "• Browsers: One-letter words are no longer doubled when pressing space",
-    "• Physical Keyboard: Toolbar no longer hidden under the taskbar buttons on tablets",
-    "• Split: Landscape uses the maximum split distance by default"
+    "• PC QWERTY: Caps lock no longer shifts the number row and punctuation",
+    "• Hebrew: Symbols page uses the normal layout again instead of Arabic symbols",
+    "• Delete Word Swipe: One swipe deletes the word you are still typing"
 )
 
 @Composable
