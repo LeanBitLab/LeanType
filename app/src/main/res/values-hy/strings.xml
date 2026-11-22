@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Ձայնը սեղմման ժամանակ"</string>
     <string name="popup_on_keypress">"Ելնող պատուհան՝ ստեղնի հպման դեպքում"</string>
     <string name="settings_screen_preferences">"Նախընտրանքներ"</string>
-    <string name="settings_screen_gesture">"Ժեստերով մուտքագրում"</string>
     <string name="settings_screen_correction">"Տեքստի ուղղում"</string>
     <string name="settings_screen_advanced">"Հավելյալ"</string>
     <string name="settings_screen_theme">"Թեմա"</string>

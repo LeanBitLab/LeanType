@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Klavišo paspaudimo garsas"</string>
     <string name="popup_on_keypress">"Iššoka paspaudus klavišą"</string>
     <string name="settings_screen_preferences">"Nuostatos"</string>
-    <string name="settings_screen_gesture">"Įvestis gestais"</string>
     <string name="settings_screen_correction">"Teksto taisymas"</string>
     <string name="settings_screen_advanced">"Išplėstiniai"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -107,14 +106,12 @@
     <string name="inline_emoji_search_summary">Siūlyti jaustuką tik tada kai žodis prasideda kabliataškiu</string>
     <string name="emoji_dictionary_required">Šiai galimybei reikia jaustukų žodyno. Žodyną .dict formate galite parsisiųsti iš %s.</string>
     <string name="show_emoji_descriptions">Ilgai paspaudus rodyti jaustuko aprašymą</string>
-    <string name="settings_category_input">Įvestis</string>
     <string name="settings_category_additional_keys">Papildomi klavišai</string>
     <string name="settings_category_clipboard_history">Iškarpinės istorija</string>
     <string name="settings_category_correction">Pataisymai</string>
     <string name="settings_category_space">Tarpas</string>
     <string name="settings_category_suggestions">Pasiūlymai</string>
     <string name="settings_category_experimental">Eksperimentinis</string>
-    <string name="settings_category_miscellaneous">Kita</string>
     <string name="enable_split_keyboard_landscape">Įgalinti perskirtą klaviatūrą (horizontaliai)</string>
     <string name="split_spacer_scale">Perskyrimo atstumas</string>
     <string name="switch_language">Perjungti kalbą</string>
@@ -897,7 +894,6 @@
     <string name="custom_ai_keys_prompt_label">Pasirinktinė užklausa klavišui %1$d</string>
     <string name="custom_ai_keys_tag_label">Žyma / Etiketė (pvz., \'Prancūzų\', \'Gramatika\', \'Perrašyti\')</string>
     <string name="custom_ai_keys_selected_functions">Pasirinktos raktažodžių funkcijos:</string>
-    <string name="settings_category_app_profiles">Programėlių profiliai</string>
     <string name="settings_category_window_modes">Langų ir plaukiojantys režimai</string>
     <string name="settings_category_key_appearance">Klavišų išvaizda ir patarimai</string>
     <string name="app_quirks_title">Programėlių profiliai</string>

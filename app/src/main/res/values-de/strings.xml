@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Ton bei Tastendruck"</string>
     <string name="popup_on_keypress">Popup bei Tastendruck</string>
     <string name="settings_screen_preferences">Optionen</string>
-    <string name="settings_screen_gesture">Gesten-Tippen</string>
     <string name="settings_screen_correction">"Textkorrektur"</string>
     <string name="settings_screen_advanced">"Erweitert"</string>
     <string name="settings_screen_theme">"Design"</string>
@@ -94,9 +93,7 @@
     <string name="abbreviation_unit_minutes">%s Min.</string>
     <string name="spell_checker_service_name">LeanType-Rechtschreibprüfung</string>
     <string name="show_emoji_key">Emoji-Taste</string>
-    <string name="settings_category_input">Eingabe</string>
     <string name="settings_category_additional_keys">Zusätzliche Tasten</string>
-    <string name="settings_category_miscellaneous">Sonstiges</string>
     <string name="enable_clipboard_history">Zwischenablage-Verlauf aktivieren</string>
     <string name="delete_swipe_summary">Wische über die Löschen-Taste, um mehr Text auf einmal auszuwählen und zu löschen</string>
     <string name="clipboard_history_retention_time">Speicherdauer des Zwischenablage-Verlaufs</string>
@@ -963,7 +960,6 @@
     <string name="floating_keyboard_dock_handle">Tastatur andocken</string>
     <string name="remember_floating_keyboard_title">Schwebenden Modus merken</string>
     <string name="remember_floating_keyboard_summary">Tastatur wieder im schwebenden Modus öffnen, wenn sie beim letzten Mal schwebend war</string>
-    <string name="settings_category_app_profiles">App-Profile</string>
     <string name="settings_category_window_modes">Fenster- &amp; Schwebemodi</string>
     <string name="settings_category_key_appearance">Tasten-Erscheinungsbild &amp; Hinweise</string>
     <string name="app_quirks_title">App-Profile</string>

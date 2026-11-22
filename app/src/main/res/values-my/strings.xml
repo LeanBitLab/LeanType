@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">ခလုတ်နှိပ်လျှင် အသံမြည်ပါ</string>
     <string name="popup_on_keypress">"ခလုတ်နှိပ်လိုက်သည်နှင့် ပေါ်လာရန်"</string>
     <string name="settings_screen_preferences">"ရွေးချယ်စရာများ"</string>
-    <string name="settings_screen_gesture">ပွတ်ဆွဲ၍စာရိုက်ခြင်း</string>
     <string name="settings_screen_correction">သတ်ပုံပြင်ဆင်ချက်</string>
     <string name="settings_screen_advanced">"အဆင့်မြင့်"</string>
     <string name="settings_screen_theme">အခင်းအကျင်း</string>
@@ -102,14 +101,12 @@
     <string name="suggest_emojis">အီမိုဂျီအကြံပေး</string>
     <string name="suggest_emojis_summary">အီမိုဂျီအဘိဓာန်ကို သာမန်အကြံပေးစနစ်တွင် အသုံးပြုပါ</string>
     <string name="show_emoji_descriptions">ကြာကြာဖိပါက အီမိုဂျီအဓိပ္ပာယ်ကို ဖော်ပြပါ</string>
-    <string name="settings_category_input">အချက်အလက်ဖြည့်သွင်းခြင်းစနစ်</string>
     <string name="settings_category_additional_keys">အပိုခလုပ်များ</string>
     <string name="settings_category_clipboard_history">ယာယီစာထိန်းစနစ်</string>
     <string name="settings_category_correction">သတ်ပုံပြင်ဆင်ချက်များ</string>
     <string name="settings_category_space">စာလုံးခြား</string>
     <string name="settings_category_suggestions">အကြုံပြုချက်များ</string>
     <string name="settings_category_experimental">စမ်းသပ်ဆဲစနစ်များ</string>
-    <string name="settings_category_miscellaneous">အခြားထွေထွေချိန်ညှိချက်များ</string>
     <string name="enable_split_keyboard_landscape">အလျားလိုက် လက်ကွက်ကို နှစ်ခြမ်းခွဲပါ</string>
     <string name="split_spacer_scale">ကီးဘုတ်နှစ်ခြမ်းကြား အကွာအ‌‌‌ဝေး</string>
     <string name="switch_language">ဘာသာစကားပြောင်းလဲရန်</string>

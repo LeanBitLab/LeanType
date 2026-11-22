@@ -5,16 +5,13 @@
     <string name="sound_on_keypress">Tunog sa keypress</string>
     <string name="popup_on_keypress">Mag-popup sa keypress</string>
     <string name="settings_screen_preferences">Mga Kagustuhan</string>
-    <string name="settings_screen_gesture">Gesture na Pagta-type</string>
     <string name="settings_screen_correction">Pagwawasto ng text</string>
     <string name="settings_screen_advanced">Advanced</string>
     <string name="settings_screen_theme">Tema</string>
-    <string name="settings_category_input">Input</string>
     <string name="settings_category_additional_keys">Mga karagdagang key</string>
     <string name="settings_category_clipboard_history">History ng clipboard</string>
     <string name="settings_category_correction">Pagwawasto</string>
     <string name="settings_category_experimental">Pang-eksperimento</string>
-    <string name="settings_category_miscellaneous">Miscellaneous</string>
     <string name="enable_split_keyboard">Paganahin ang split keyboard</string>
     <string name="split_spacer_scale">Distansya ng split</string>
     <string name="language_switch_key_switch_input_method">Lumipat sa iba pang mga input method</string>

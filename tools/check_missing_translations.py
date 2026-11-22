@@ -141,7 +141,6 @@ RECENT_MASS_TRANSLATED = [
     "values-ru",
     "values-hi",
     "values-tr",
-    "values-ml",
     "values-de",
     "values-fr",
     "values-it",

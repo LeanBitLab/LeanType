@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"कुञ्जी थिच्दा आवाज"</string>
     <string name="popup_on_keypress">"कुञ्जी दबाउँदा पपअप"</string>
     <string name="settings_screen_preferences">"प्राथमिकताहरू"</string>
-    <string name="settings_screen_gesture">"इशारा टाइपिङ"</string>
     <string name="settings_screen_correction">"पाठ सुधार"</string>
     <string name="settings_screen_advanced">"उन्नत"</string>
     <string name="settings_screen_theme">"विषयवस्तु"</string>

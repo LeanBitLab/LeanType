@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Phát âm thanh khi nhấn phím"</string>
     <string name="popup_on_keypress">"Phông chữ lớn hơn bật lên khi nhấn phím"</string>
     <string name="settings_screen_preferences">"Tùy chọn"</string>
-    <string name="settings_screen_gesture">"Nhập bằng cử chỉ"</string>
     <string name="settings_screen_correction">"Sửa văn bản"</string>
     <string name="settings_screen_advanced">"Nâng cao"</string>
     <string name="settings_screen_theme">"Chủ đề"</string>

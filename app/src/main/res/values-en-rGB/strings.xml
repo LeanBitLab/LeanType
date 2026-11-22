@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Sound on keypress"</string>
     <string name="popup_on_keypress">"Pop-up on key press"</string>
     <string name="settings_screen_preferences">"Preferences"</string>
-    <string name="settings_screen_gesture">"Gesture Typing"</string>
     <string name="settings_screen_correction">"Text correction"</string>
     <string name="settings_screen_advanced">"Advanced"</string>
     <string name="settings_screen_theme">"Theme"</string>
@@ -95,8 +94,6 @@
     <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
     <string name="settings_category_correction">Corrections</string>
     <string name="settings_category_experimental">Experimental</string>
-    <string name="settings_category_input">Input</string>
-    <string name="settings_category_miscellaneous">Miscellaneous</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_suggestions">Suggestions</string>
     <string name="number_row">Number row</string>

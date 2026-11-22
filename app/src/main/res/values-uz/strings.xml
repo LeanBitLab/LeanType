@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Tugmalar tovushi"</string>
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
     <string name="settings_screen_preferences">"Sozlamalar"</string>
-    <string name="settings_screen_gesture">"Qo‘l uzmasdan yozish"</string>
     <string name="settings_screen_correction">"Matnni tuzatish"</string>
     <string name="settings_screen_advanced">"Kengaytirilgan sozlamalar"</string>
     <string name="settings_screen_theme">"Mavzu"</string>
@@ -104,14 +103,12 @@
     <string name="prefs_long_press_keyboard_to_change_lang">Bo\'sh joy tugmasi bilan kiritish usulini o\'zgartirish</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Bo\'sh joy tugmachasini uzoq bosib turish, kiritish usulini tanlash menyusini taklif qiladi</string>
     <string name="prefs_keyboard_height_scale">Klaviatura balandligi o\'lchovi</string>
-    <string name="settings_category_miscellaneous">Turli xil</string>
     <string name="settings_category_suggestions">Takliflar</string>
     <string name="settings_category_experimental">Eksperimental</string>
     <string name="autospace_after_punctuation_summary">Yangi so\'zni kiritishda tinish belgilaridan keyin avtomatik ravishda bo\'sh joy qo\'yish</string>
     <string name="incognito">Majburiy inkognito rejimi</string>
     <string name="autospace_after_punctuation">Tinish belgilaridan keyin avtomatik bo\'shliq qo‘yish</string>
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
-    <string name="settings_category_input">Kiritish</string>
     <string name="settings_category_additional_keys">Qo\'shimcha kalitlar</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_correction">Tuzatishlar</string>

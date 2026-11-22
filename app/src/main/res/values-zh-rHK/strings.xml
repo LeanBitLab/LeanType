@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"按鍵時播放音效"</string>
     <string name="popup_on_keypress">"按鍵時顯示彈出式視窗"</string>
     <string name="settings_screen_preferences">"偏好設定"</string>
-    <string name="settings_screen_gesture">"手勢輸入"</string>
     <string name="settings_screen_correction">"文字更正"</string>
     <string name="settings_screen_advanced">"進階"</string>
     <string name="settings_screen_theme">"主題背景"</string>
@@ -97,7 +96,6 @@
     <string name="autospace_after_punctuation">在標點符號後自動插入空格</string>
     <string name="autospace_after_punctuation_summary">在輸入字串後自動插入空格</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">輸入</string>
     <string name="settings_category_correction">文字改正</string>
     <string name="select_input_method">"選擇輸入法"</string>
     <string name="undo">"復原"</string>

@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Звук при натиск. на клавиш"</string>
     <string name="popup_on_keypress">"Изск. прозорец при натискане на клавиш"</string>
     <string name="settings_screen_preferences">"Предпочитания"</string>
-    <string name="settings_screen_gesture">"Въвеждане чрез жест"</string>
     <string name="settings_screen_correction">"Коригиране на текст"</string>
     <string name="settings_screen_advanced">"Разширени"</string>
     <string name="settings_screen_theme">"Тема"</string>
@@ -83,7 +82,6 @@
     <string name="user_dict_settings_add_shortcut_hint">"Незадължителен пряк път"</string>
     <string name="user_dict_settings_edit_dialog_title">"Редактиране на дума"</string>
     <string name="user_dict_settings_all_languages">"За всички езици"</string>
-    <string name="settings_category_input">въвеждане</string>
     <string name="select_input_method">"Избор на метод на въвеждане"</string>
     <string name="undo">"Отмяна"</string>
     <string name="redo">Повтори</string>
@@ -100,7 +98,6 @@
     <string name="settings_category_correction">Корекции</string>
     <string name="settings_category_suggestions">Предложения</string>
     <string name="settings_category_experimental">Експериментални</string>
-    <string name="settings_category_miscellaneous">Разни</string>
     <string name="spell_checker_service_name">Проверка на правописа</string>
     <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">Настройки за проверка на правописа</string>
@@ -902,7 +899,6 @@
     <string name="custom_ai_keys_prompt_label">Персонализирана подкана за клавиш %1$d</string>
     <string name="custom_ai_keys_tag_label">Таг / Етикет (напр. \'Френски\', \'Граматика\', \'Пренаписване\')</string>
     <string name="custom_ai_keys_selected_functions">Избрани функции за ключови думи:</string>
-    <string name="settings_category_app_profiles">Профили на приложения</string>
     <string name="settings_category_window_modes">Режими на прозорец &amp; плаващ</string>
     <string name="settings_category_key_appearance">Външен вид на клавишите &amp; подсказки</string>
     <string name="app_quirks_title">Профили на приложения</string>

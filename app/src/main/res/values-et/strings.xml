@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Heli klahvivajutusel"</string>
     <string name="popup_on_keypress">"Klahvivajutusel kuva hüpik"</string>
     <string name="settings_screen_preferences">"Eelistused"</string>
-    <string name="settings_screen_gesture">"Joonistusega sisestamine"</string>
     <string name="settings_screen_correction">"Teksti korrigeerimine"</string>
     <string name="settings_screen_advanced">Täiendavad seadistused</string>
     <string name="settings_screen_theme">Kujundus</string>
@@ -97,7 +96,6 @@
     <string name="label_wait_key">"Oota"</string>
     <string name="show_popup_keys_normal">Näita vaid antud keelele vajalikke klahve</string>
     <string name="settings_category_clipboard_history">Lõikelaua ajalugu</string>
-    <string name="settings_category_input">Sisend</string>
     <string name="settings_category_additional_keys">Lisaklahvid</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Vaheta sisestusmeetodit tühikuklahviga</string>
     <string name="spell_checker_service_name">LeanTypei õigekirjakontroll</string>
@@ -138,7 +136,6 @@
     <string name="settings_category_correction">Parandused</string>
     <string name="settings_category_suggestions">Soovitused</string>
     <string name="settings_category_experimental">Katseline</string>
-    <string name="settings_category_miscellaneous">Muud eelistused</string>
     <string name="split_spacer_scale">Kaheks jaotatud klahvistiku eri poolte vahemaa</string>
     <string name="language_switch_key_switch_both">Vaheta mõlemad</string>
     <string name="center_suggestion_text_to_enter">Alati kasuta keskmist soovitust</string>
@@ -902,7 +899,6 @@
     <string name="custom_ai_keys_prompt_label">Kohandatud prompt klahvi %1$d jaoks</string>
     <string name="custom_ai_keys_tag_label">Silt / Märgis (nt \'Prantsuse\', \'Grammatika\', \'Ümberkirjutus\')</string>
     <string name="custom_ai_keys_selected_functions">Valitud märksõnade funktsioonid:</string>
-    <string name="settings_category_app_profiles">Rakenduste profiilid</string>
     <string name="settings_category_window_modes">Akna &amp; hõljuvad režiimid</string>
     <string name="settings_category_key_appearance">Klahvide välimus &amp; vihjed</string>
     <string name="app_quirks_title">Rakenduste profiilid</string>

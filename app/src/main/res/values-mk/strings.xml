@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Звук на притискање копче"</string>
     <string name="popup_on_keypress">"Појавен прозорец на притискање копче"</string>
     <string name="settings_screen_preferences">"Претпочитани поставки"</string>
-    <string name="settings_screen_gesture">"Пишување со движење"</string>
     <string name="settings_screen_correction">"Корекција на текст"</string>
     <string name="settings_screen_advanced">"Напредни"</string>
     <string name="settings_screen_theme">"Тема"</string>

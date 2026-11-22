@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Soinua teklak sakatzean"</string>
     <string name="popup_on_keypress">Handitu tekla sakatzean</string>
     <string name="settings_screen_preferences">"Hobespenak"</string>
-    <string name="settings_screen_gesture">Keinu-idazketa</string>
     <string name="settings_screen_correction">"Testu-zuzenketa"</string>
     <string name="settings_screen_advanced">"Aurreratuak"</string>
     <string name="settings_screen_theme">"Gaia"</string>
@@ -87,7 +86,6 @@
     <string name="settings_category_correction">Zuzenketak</string>
     <string name="settings_category_suggestions">Iradokizunak</string>
     <string name="settings_category_experimental">Esperimentala</string>
-    <string name="settings_category_miscellaneous">Denetarikoa</string>
     <string name="settings_no_limit">Mugarik ez</string>
     <string name="abbreviation_unit_minutes">%sminutu</string>
     <string name="number_row_summary">Erakutsi beti zenbakien errenkada</string>
@@ -104,7 +102,6 @@
     <string name="autospace_after_punctuation">Zuriunea puntuazioen ondoren</string>
     <string name="incognito">Behartu ezkutuko modua</string>
     <string name="subtype_akkhor_bn_BD">%s (Akkhor hizkuntza)</string>
-    <string name="settings_category_input">Sarrera</string>
     <string name="key_borders">Teklen ertzak</string>
     <string name="day_night_mode">Egun/gau modu automatikoa</string>
     <string name="day_night_mode_summary">Itxurak sistemaren ezarpenei jarraituko die</string>

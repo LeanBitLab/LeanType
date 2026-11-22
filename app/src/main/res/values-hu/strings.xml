@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">Hangjelzés billentyűleütésre</string>
     <string name="popup_on_keypress">Felugró ablak billentyűleütésre</string>
     <string name="settings_screen_preferences">Beállítások</string>
-    <string name="settings_screen_gesture">Kézmozdulat-gépelés</string>
     <string name="settings_screen_correction">"Szövegjavítás"</string>
     <string name="settings_screen_advanced">"Speciális"</string>
     <string name="settings_screen_theme">"Téma"</string>
@@ -87,7 +86,6 @@
     <string name="settings_category_correction">Javítások</string>
     <string name="settings_category_suggestions">Javaslatok</string>
     <string name="settings_category_experimental">Kísérleti</string>
-    <string name="settings_category_miscellaneous">Egyéb</string>
     <string name="settings_no_limit">Korlátlan</string>
     <string name="enable_clipboard_history">Vágólap előzményeinek engedélyezése</string>
     <string name="key_borders">Betűhatárok</string>
@@ -114,7 +112,6 @@
     <string name="autospace_after_punctuation_summary">Szóköz automatikus beszúrása az írásjelek után új szó beírásakor</string>
     <string name="number_row">Számsor</string>
     <string name="day_night_mode_summary">A megjelenés követi a rendszerbeállításokat</string>
-    <string name="settings_category_input">Bemenet</string>
     <string name="use_personalized_dicts_summary">"Javaslatok javítása a kommunikáció és begépelt adatok alapján"</string>
     <string name="label_go_key">Ugrás</string>
     <string name="label_next_key">Következő</string>
@@ -865,7 +862,6 @@
     <string name="custom_ai_keys_prompt_label">Egyéni prompt a(z) %1$d billentyűhöz</string>
     <string name="custom_ai_keys_tag_label">Címke / Megnevezés (pl. \'Francia\', \'Nyelvtan\', \'Átírás\')</string>
     <string name="custom_ai_keys_selected_functions">Kiválasztott kulcsszó funkciók:</string>
-    <string name="settings_category_app_profiles">Alkalmazásprofilok</string>
     <string name="settings_category_window_modes">Ablak &amp; lebegő módok</string>
     <string name="settings_category_key_appearance">Billentyűk megjelenése &amp; tippek</string>
     <string name="app_quirks_title">Alkalmazásprofilok</string>

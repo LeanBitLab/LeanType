@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>
     <string name="popup_on_keypress">"விழை அழுத்தத்தின்போது பாப்அப் செய்"</string>
     <string name="settings_screen_preferences">"விருப்பங்கள்"</string>
-    <string name="settings_screen_gesture">"ஸ்வைப் தட்டச்சு"</string>
     <string name="settings_screen_correction">"உரை திருத்தம்"</string>
     <string name="settings_screen_advanced">"மேம்பட்டவை"</string>
     <string name="settings_screen_theme">"தீம்"</string>
@@ -105,14 +104,12 @@
     <string name="inline_emoji_search_summary">ஒரு வார்த்தைக்கு முன் பெருங்குடல் இருக்கும் போது ஈமோசிகளை மட்டும் பரிந்துரைக்கவும்</string>
     <string name="emoji_dictionary_required">இந்த நற்பொருத்தம் செயல்பட ஈமோசி அகராதி தேவை. .dict வடிவத்தில் உள்ள அகராதிகளை %s பதிவிறக்கம் செய்யலாம்.</string>
     <string name="show_emoji_descriptions">நீண்ட நேரம் அழுத்தும்போது ஈமோசி விளக்கத்தைக் காட்டு</string>
-    <string name="settings_category_input">உள்ளீடு</string>
     <string name="settings_category_additional_keys">கூடுதல் விசைகள்</string>
     <string name="settings_category_clipboard_history">இடைநிலைப்பலகை வரலாறு</string>
     <string name="settings_category_correction">திருத்தங்கள்</string>
     <string name="settings_category_space">இடைவெளி</string>
     <string name="settings_category_suggestions">பரிந்துரைகள்</string>
     <string name="settings_category_experimental">ஆய்வு</string>
-    <string name="settings_category_miscellaneous">மற்றவை</string>
     <string name="enable_split_keyboard_landscape">பிளவு விசைப்பலகையை இயக்கு (இயற்கை)</string>
     <string name="split_spacer_scale">பிளவு தூரம்</string>
     <string name="switch_language">மொழியை மாற்றவும்</string>

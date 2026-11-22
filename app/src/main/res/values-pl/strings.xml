@@ -9,7 +9,6 @@
     <string name="popup_on_keypress">"Powiększ po naciśnięciu"</string>
     <string name="settings_screen_preferences">"Ustawienia"</string>
     <string name="settings_screen_appearance">"Wygląd"</string>
-    <string name="settings_screen_gesture">"Pisanie gestami"</string>
     <string name="settings_screen_correction">"Korekta tekstu"</string>
     <string name="settings_screen_advanced">"Zaawansowane"</string>
     <string name="settings_screen_theme">"Motyw"</string>
@@ -85,7 +84,6 @@
     <string name="user_dict_settings_edit_dialog_title">"Edytuj słowo"</string>
     <string name="user_dict_settings_all_languages">"Dla wszystkich języków"</string>
     <string name="settings_category_correction">Korekty</string>
-    <string name="settings_category_miscellaneous">Różne</string>
     <string name="abbreviation_unit_minutes">%s min.</string>
     <string name="settings_no_limit">Bez limitu</string>
     <string name="prefs_force_incognito_mode_summary">Wyłącz naukę nowych słów</string>
@@ -110,7 +108,6 @@
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">Dodatkowe klawisze</string>
-    <string name="settings_category_input">Wprowadzanie</string>
     <string name="settings_category_suggestions">Sugestie</string>
     <string name="settings_category_experimental">Eksperymentalne</string>
     <string name="key_borders">Obramowanie klawiszy</string>
@@ -901,7 +898,6 @@
     <string name="custom_ai_keys_prompt_label">Niestandardowy prompt dla klawisza %1$d</string>
     <string name="custom_ai_keys_tag_label">Tag / Etykieta (np. \'Francuski\', \'Gramatyka\', \'Przepisz\')</string>
     <string name="custom_ai_keys_selected_functions">Wybrane funkcje słów kluczowych:</string>
-    <string name="settings_category_app_profiles">Profile aplikacji</string>
     <string name="settings_category_window_modes">Tryby okna i pływające</string>
     <string name="settings_category_key_appearance">Wygląd klawiszy i podpowiedzi</string>
     <string name="app_quirks_title">Profile aplikacji</string>

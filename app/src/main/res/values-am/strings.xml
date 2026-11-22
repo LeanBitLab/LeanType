@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"በቁልፍ መጫን ላይ የሚወጣ ድምፅ"</string>
     <string name="popup_on_keypress">"ቁልፍ ጫን ላይ ብቅ ባይ"</string>
     <string name="settings_screen_preferences">"ምርጫዎች"</string>
-    <string name="settings_screen_gesture">"በጣት ምልክት መተየብ"</string>
     <string name="settings_screen_correction">"ፅሁፍ ማስተካከያ"</string>
     <string name="settings_screen_advanced">"የላቀ"</string>
     <string name="settings_screen_theme">"ገፅታ"</string>

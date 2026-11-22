@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Klank met sleuteldruk"</string>
     <string name="popup_on_keypress">"Opspring met sleuteldruk"</string>
     <string name="settings_screen_preferences">"Voorkeure"</string>
-    <string name="settings_screen_gesture">"Gebaarinvoer"</string>
     <string name="settings_screen_correction">"Tekskorrigering"</string>
     <string name="settings_screen_advanced">"Gevorderd"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -86,7 +85,6 @@
     <string name="settings_category_clipboard_history">Knipbord geskiedenis</string>
     <string name="settings_category_suggestions">Voorstelle</string>
     <string name="settings_category_experimental">Eksperimenteel</string>
-    <string name="settings_category_miscellaneous">Allerlei</string>
     <string name="abbreviation_unit_minutes">%smin.</string>
     <string name="settings_no_limit">Geen beperking</string>
     <string name="enable_clipboard_history">Aktiveer knipbord geskiedenis</string>
@@ -112,7 +110,6 @@
     <string name="autospace_after_punctuation">Outo-spasie na leestekens</string>
     <string name="autospace_after_punctuation_summary">Plaas \'n spasie na \'n leesteken sodra \'n nuwe woord getik word</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Invoer</string>
     <string name="settings_category_additional_keys">Bykomende Sleutels</string>
     <string name="settings_category_correction">Regstellings</string>
     <string name="day_night_mode">Outo dag/nag modus</string>

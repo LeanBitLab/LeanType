@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Lyd ved tastetrykk"</string>
     <string name="popup_on_keypress">"Forgrunnsvindu ved tastetrykk"</string>
     <string name="settings_screen_preferences">"Innstillinger"</string>
-    <string name="settings_screen_gesture">"Ordføring"</string>
     <string name="settings_screen_correction">"Tekstkorrigering"</string>
     <string name="settings_screen_advanced">"Avansert"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -96,8 +95,6 @@
     <string name="settings_category_additional_keys">Ytterligere taster</string>
     <string name="settings_category_correction">Korrigeringer</string>
     <string name="settings_category_experimental">Eksperimentelt</string>
-    <string name="settings_category_input">Inndata</string>
-    <string name="settings_category_miscellaneous">Ymse</string>
     <string name="settings_category_suggestions">Forslag</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Endre inndatametode med mellomromstast</string>
     <string name="prefs_force_incognito_mode_summary">Skru av innlæring av nye ord</string>

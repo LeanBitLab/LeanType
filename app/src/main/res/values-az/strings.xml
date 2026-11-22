@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Klikləmə səsi"</string>
     <string name="popup_on_keypress">"Klikləmədə popup"</string>
     <string name="settings_screen_preferences">"Seçimlər"</string>
-    <string name="settings_screen_gesture">"Jest ilə yazma"</string>
     <string name="settings_screen_correction">"Mətn korreksiyası"</string>
     <string name="settings_screen_advanced">"Qabaqcıl"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -89,7 +88,6 @@
     <string name="select_input_method">"Daxiletmə metodunu seçin"</string>
     <string name="settings_screen_appearance">"Görünüş"</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Giriş</string>
     <string name="settings_category_additional_keys">Əlavə Düymələr</string>
     <string name="undo">"Ləğv edin"</string>
     <string name="redo">"Yenidən edin"</string>

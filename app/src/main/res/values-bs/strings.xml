@@ -10,7 +10,6 @@
     <string name="sound_on_keypress">"Zvuk pri pritisku tipke"</string>
     <string name="popup_on_keypress">"Iskačuči prozor pri pritisku na tipku"</string>
     <string name="settings_screen_preferences">"Postavke"</string>
-    <string name="settings_screen_gesture">"Pisanje pokretima"</string>
     <string name="settings_screen_correction">"Ispravka teksta"</string>
     <string name="settings_screen_advanced">"Napredno"</string>
     <string name="settings_screen_theme">"Tema"</string>

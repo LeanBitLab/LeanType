@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"صوت عند الضغط على مفتاح"</string>
     <string name="popup_on_keypress">"انبثاق عند ضغط مفتاح"</string>
     <string name="settings_screen_preferences">التفضيلات</string>
-    <string name="settings_screen_gesture">الكتابة بالإيماءة</string>
     <string name="settings_screen_correction">"تصحيح النص"</string>
     <string name="settings_screen_advanced">المتقدّم</string>
     <string name="settings_screen_theme">السمة</string>
@@ -86,7 +85,6 @@
     <string name="show_emoji_key">مفتاح الرموز التعبيرية</string>
     <string name="settings_no_limit">بلا حدود</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">الإدخال</string>
     <string name="prefs_force_incognito_mode_summary">تعطيل تعلم الكلمات الجديدة</string>
     <string name="more_keys_strip_description">المزيد من المفاتيح</string>
     <string name="prefs_keyboard_height_scale">مقياس ارتفاع لوحة المفاتيح</string>
@@ -94,7 +92,6 @@
     <string name="settings_category_correction">التصحيحات</string>
     <string name="settings_category_suggestions">الاقتراحات</string>
     <string name="settings_category_experimental">تجريبي</string>
-    <string name="settings_category_miscellaneous">متنوعة</string>
     <string name="spell_checker_service_name">المدقق الإملائي لـ LeanType</string>
     <string name="android_spell_checker_settings">إعدادات المدقق الإملائي لـ LeanType</string>
     <string name="number_row">صف الأرقام</string>
@@ -942,7 +939,6 @@
     <string name="floating_keyboard_dock_handle">تثبيت لوحة المفاتيح</string>
     <string name="remember_floating_keyboard_title">تذكر الوضع العائم</string>
     <string name="remember_floating_keyboard_summary">إعادة فتح لوحة المفاتيح في الوضع العائم إذا كانت عائمة آخر مرة</string>
-    <string name="settings_category_app_profiles">ملفات تعريف التطبيقات</string>
     <string name="settings_category_window_modes">أوضاع النوافذ &amp; الوضع العائم</string>
     <string name="settings_category_key_appearance">مظهر المفاتيح &amp; التلميحات</string>
     <string name="app_quirks_title">ملفات تعريف التطبيقات</string>

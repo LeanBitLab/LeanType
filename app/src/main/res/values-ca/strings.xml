@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"So en prémer tecles"</string>
     <string name="popup_on_keypress">"Amplia en prémer tecles"</string>
     <string name="settings_screen_preferences">"Preferències"</string>
-    <string name="settings_screen_gesture">"Escriptura gestual"</string>
     <string name="settings_screen_correction">"Correcció de textos"</string>
     <string name="settings_screen_advanced">"Configuració avançada"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -98,8 +97,6 @@
     <string name="number_row">Fila de nombres</string>
     <string name="number_row_summary">Mostra sempre la fila de nombres</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Entrada</string>
-    <string name="settings_category_miscellaneous">Miscel·lània</string>
     <string name="key_borders">Vores del teclat</string>
     <string name="day_night_mode">Mode dia/nit automàtic</string>
     <string name="settings_category_additional_keys">Tecles addicionals</string>

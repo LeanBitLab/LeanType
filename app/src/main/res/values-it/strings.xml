@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Suono tasti"</string>
     <string name="popup_on_keypress">"Popup tasti"</string>
     <string name="settings_screen_preferences">"Preferenze"</string>
-    <string name="settings_screen_gesture">"Digitazione gestuale"</string>
     <string name="settings_screen_correction">"Correzione testo"</string>
     <string name="settings_screen_advanced">"Avanzate"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -111,8 +110,6 @@
     <string name="settings_category_correction">Correzioni</string>
     <string name="settings_category_suggestions">Suggerimenti</string>
     <string name="settings_category_experimental">Opzioni sperimentali</string>
-    <string name="settings_category_miscellaneous">Varie</string>
-    <string name="settings_category_input">Input</string>
     <string name="ime_settings">LeanType</string>
     <string name="prefs_force_incognito_mode_summary">Disattiva l\'apprendimento di nuove parole</string>
     <string name="key_borders">Bordi dei tasti</string>
@@ -942,7 +939,6 @@
     <string name="floating_keyboard_dock_handle">Aggancia tastiera</string>
     <string name="remember_floating_keyboard_title">Ricorda modalità mobile</string>
     <string name="remember_floating_keyboard_summary">Riapri la tastiera in modalità mobile se era mobile l\'ultima volta</string>
-    <string name="settings_category_app_profiles">Profili applicazione</string>
     <string name="settings_category_window_modes">Modalità finestra &amp; mobile</string>
     <string name="settings_category_key_appearance">Aspetto tasti &amp; indizi</string>
     <string name="app_quirks_title">Profili applicazione</string>

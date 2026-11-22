@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"按键音效"</string>
     <string name="popup_on_keypress">按键弹出字符</string>
     <string name="settings_screen_preferences">首选项</string>
-    <string name="settings_screen_gesture">"滑行输入"</string>
     <string name="settings_screen_correction">文本更正</string>
     <string name="settings_screen_advanced">"高级"</string>
     <string name="settings_screen_theme">主题</string>
@@ -84,7 +83,6 @@
     <string name="user_dict_settings_edit_dialog_title">修改字词</string>
     <string name="user_dict_settings_all_languages">对于所有语言</string>
     <string name="settings_category_suggestions">建议</string>
-    <string name="settings_category_miscellaneous">杂项</string>
     <string name="settings_category_clipboard_history">剪贴板历史</string>
     <string name="settings_category_correction">更正</string>
     <string name="settings_category_experimental">实验性</string>
@@ -111,7 +109,6 @@
     <string name="key_borders">按键边框</string>
     <string name="day_night_mode">自动日间/夜间模式</string>
     <string name="day_night_mode_summary">外观将遵循系统设置</string>
-    <string name="settings_category_input">输入</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">额外键</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">长按空格键将提示输入法选择菜单</string>
@@ -870,7 +867,6 @@
     <string name="custom_ai_keys_prompt_label">按键 %1$d 的自定义提示词</string>
     <string name="custom_ai_keys_tag_label">标签 / 标记 (例如 \'French\'、\'Grammar\'、\'Rewrite\')</string>
     <string name="custom_ai_keys_selected_functions">已选择的关键词功能：</string>
-    <string name="settings_category_app_profiles">应用配置文件</string>
     <string name="settings_category_window_modes">窗口与悬浮模式</string>
     <string name="settings_category_key_appearance">按键外观与提示</string>
     <string name="app_quirks_title">应用配置文件</string>

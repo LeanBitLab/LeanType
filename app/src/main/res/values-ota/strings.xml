@@ -2,10 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="settings_screen_advanced">گلیشمیش</string>
     <string name="settings_screen_theme">تەما</string>
-    <string name="settings_category_input">گیریش</string>
     <string name="settings_category_suggestions">اونریلر</string>
     <string name="settings_category_experimental">دڭیسل</string>
-    <string name="settings_category_miscellaneous">چشیتلی</string>
     <string name="auto_cap">اوتوماتیك بویوك حرف یاپ</string>
     <string name="autocorrect">اوتوماتیك دوزەلت</string>
     <string name="auto_correction_threshold_mode_modest">اولچولو</string>
@@ -21,7 +19,6 @@
     <string name="spell_checker_service_name">‫LeanType‬ یازم دنەتلەییجیسی</string>
     <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">‫LeanType‬ یازم دنەتلەییجیسی عیارلری</string>
-    <string name="settings_screen_gesture">حركتلە یازمە</string>
     <string name="popup_keys_layout" tools:keep="@string/popup_keys_layout">دوزن</string>
     <string name="popup_keys_symbols" tools:keep="@string/popup_keys_symbols">سمبوللر</string>
     <string name="clipboard" tools:keep="@string/clipboard">پانو</string>

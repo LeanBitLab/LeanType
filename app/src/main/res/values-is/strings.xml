@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Hljóð þegar ýtt er á lykil"</string>
     <string name="popup_on_keypress">Stafagluggi við innslátt</string>
     <string name="settings_screen_preferences">"Kjörstillingar"</string>
-    <string name="settings_screen_gesture">"Bendingainnsláttur"</string>
     <string name="settings_screen_correction">"Textaleiðrétting"</string>
     <string name="settings_screen_advanced">"Ítarlegt"</string>
     <string name="settings_screen_theme">"Þema"</string>
@@ -116,13 +115,11 @@
     <string name="replace_dictionary">Skipta út orðasafni</string>
     <string name="select_word" tools:keep="@string/select_word">Veldu orð</string>
     <string name="android_spell_checker_settings">Stillingar stafsetningarleiðréttingar LeanType</string>
-    <string name="settings_category_input">Innsláttur</string>
     <string name="settings_category_additional_keys">Viðbótarlyklar</string>
     <string name="settings_category_clipboard_history">Ferilskrá klippispjalds</string>
     <string name="settings_category_correction">Leiðréttingar</string>
     <string name="settings_category_suggestions">Tillögur</string>
     <string name="settings_category_experimental">Á tilraunastigi</string>
-    <string name="settings_category_miscellaneous">Ýmislegt</string>
     <string name="switch_language">Skipta um tungumál</string>
     <string name="language_switch_key_switch_both">Skipta um bæði</string>
     <string name="show_emoji_key">Tjáningartáknalykill</string>

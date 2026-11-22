@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"ສຽງໃນການກົດປຸ່ມ"</string>
     <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
     <string name="settings_screen_preferences">"​​ການ​ຕັ້ງ​ຄ່າ"</string>
-    <string name="settings_screen_gesture">"​ກາ​ນ​ພິມ​ແບບ​ລາກ​ນິ້ວ"</string>
     <string name="settings_screen_correction">"​ການ​ແປງ​ຄຳ​ໃຫ້​ຖືກ​ຕ້ອງ"</string>
     <string name="settings_screen_advanced">"​ຂັ້ນ​ສູງ"</string>
     <string name="settings_screen_theme">"ຮູບແບບສີສັນ"</string>

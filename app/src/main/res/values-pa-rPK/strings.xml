@@ -5,13 +5,11 @@
     SPDX-License-Identifier: Apache-2.0 AND GPL-3.0-only
 --><resources xmlns:tools="http://schemas.android.com/tools">
     <string name="settings_screen_theme">تھیم</string>
-    <string name="settings_category_input">اینپُٹ</string>
     <string name="settings_category_correction">درستی</string>
     <string name="settings_category_suggestions">سُجھے</string>
     <string name="settings_category_experimental">آزمائش</string>
     <string name="settings_screen_preferences">ترجیحاں</string>
     <string name="settings_screen_advanced">اضافی</string>
-    <string name="settings_category_miscellaneous">ہور چوݨاں</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_screen_correction">لکھت نوں ٹھیک کرن</string>
     <string name="settings_category_additional_keys">ہور کنجیاں</string>
@@ -39,7 +37,6 @@
     <string name="settings">سیٹنگاں</string>
     <string name="user_dict_settings_add_shortcut_option_name">شورٹکٹ:</string>
     <string name="use_double_space_period">دو خالی تھاں ڈنڈی</string>
-    <string name="settings_screen_gesture">سنکیت نال اینپُٹ کرن</string>
     <string name="edit_personal_dictionary">نجی لغت</string>
     <string name="layout_number" tools:keep="@string/layout_number">نمبر</string>
     <string name="theme_name_light" tools:keep="@string/theme_name_light">ہلکا</string>

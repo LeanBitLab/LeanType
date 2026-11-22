@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Пернені басу кезіндегі дыбыс"</string>
     <string name="popup_on_keypress">"Басылған пернені үлкейтіп көрсету"</string>
     <string name="settings_screen_preferences">"Қалауларыңыз"</string>
-    <string name="settings_screen_gesture">"Қимыл арқылы теру"</string>
     <string name="settings_screen_correction">"Мәтінді түзету"</string>
     <string name="settings_screen_advanced">"Қосымша"</string>
     <string name="settings_screen_theme">"Тақырып"</string>

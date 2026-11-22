@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Zvuk pri pritisku tipke"</string>
     <string name="popup_on_keypress">Skočni prozorčić pri pritisku tipke</string>
     <string name="settings_screen_preferences">"Postavke"</string>
-    <string name="settings_screen_gesture">"Pisanje kretnjama"</string>
     <string name="settings_screen_correction">"Ispravljanje teksta"</string>
     <string name="settings_screen_advanced">Napredno</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -88,14 +87,12 @@
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
     <string name="settings_category_suggestions">Prijedlozi</string>
     <string name="settings_category_clipboard_history">Povijest međuspremnika</string>
-    <string name="settings_category_miscellaneous">Razno</string>
     <string name="settings_category_correction">Ispravci</string>
     <string name="settings_category_experimental">Eksperimentalno</string>
     <string name="show_emoji_key">Tipka za emojije</string>
     <string name="abbreviation_unit_minutes">%s min</string>
     <string name="settings_no_limit">Bez ograničenja</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Unos</string>
     <string name="settings_category_additional_keys">Dodatne tipke</string>
     <string name="enable_clipboard_history">Omogući povijest međuspremnika</string>
     <string name="enable_clipboard_history_summary">Ako je onemogućeno, tipka međuspremnika će umetnuti sadržaj međuspremnika, ako ga ima</string>
@@ -865,7 +862,6 @@
     <string name="custom_ai_keys_prompt_label">Prilagođena uputa za tipku %1$d</string>
     <string name="custom_ai_keys_tag_label">Oznaka / Natpis (npr. \'Francuski\', \'Gramatika\', \'Prepiši\')</string>
     <string name="custom_ai_keys_selected_functions">Odabrane funkcije ključnih riječi:</string>
-    <string name="settings_category_app_profiles">Profili aplikacija</string>
     <string name="settings_category_window_modes">Načini prozora &amp; plutajući načini</string>
     <string name="settings_category_key_appearance">Izgled tipki &amp; savjeti</string>
     <string name="app_quirks_title">Profili aplikacija</string>

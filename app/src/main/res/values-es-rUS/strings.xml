@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Sonido al presionar teclas"</string>
     <string name="popup_on_keypress">"Ampliar al presionar teclas"</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
-    <string name="settings_screen_gesture">"Escritura gestual"</string>
     <string name="settings_screen_correction">"Corrección ortográfica"</string>
     <string name="settings_screen_advanced">"Avanzada"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -113,7 +112,6 @@
     <string name="day_night_mode_summary">Seguir la configuración del sistema</string>
     <string name="day_night_mode">Modo claro/oscuro automático</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Entrada</string>
     <string name="settings_category_additional_keys">Teclas adicionales</string>
     <string name="settings_category_correction">Correcciones</string>
     <string name="select_input_method">"Selecciona el método de entrada"</string>
@@ -128,7 +126,6 @@
     <string name="label_search_key">"Buscar"</string>
     <string name="label_pause_key">"Pausa"</string>
     <string name="label_wait_key">"Esp."</string>
-    <string name="settings_category_miscellaneous">Otros</string>
     <string name="split_spacer_scale">Distancia de dividido</string>
     <string name="language_switch_key_switch_both">Intercambiar ambos</string>
     <string name="disable_personalized_dicts_message">Advertencia: Desactivar esta opción eliminará la información aprendida</string>
@@ -942,7 +939,6 @@
     <string name="floating_keyboard_dock_handle">Acoplar teclado</string>
     <string name="remember_floating_keyboard_title">Recordar modo flotante</string>
     <string name="remember_floating_keyboard_summary">Reabrir el teclado en modo flotante si estaba flotando la última vez</string>
-    <string name="settings_category_app_profiles">Perfiles de aplicaciones</string>
     <string name="settings_category_window_modes">Modos de ventana y flotante</string>
     <string name="settings_category_key_appearance">Aspecto de teclas y pistas</string>
     <string name="app_quirks_title">Perfiles de aplicaciones</string>

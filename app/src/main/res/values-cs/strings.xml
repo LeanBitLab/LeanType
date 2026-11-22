@@ -9,7 +9,6 @@
     <string name="popup_on_keypress">"Detail znaku při stisku klávesy"</string>
     <string name="settings_screen_preferences">"Předvolby"</string>
     <string name="settings_screen_appearance">"Vzhled"</string>
-    <string name="settings_screen_gesture">"Psaní gesty"</string>
     <string name="settings_screen_correction">"Oprava textu"</string>
     <string name="settings_screen_advanced">"Rozšířená nastavení"</string>
     <string name="settings_screen_theme">"Motiv"</string>
@@ -88,7 +87,6 @@
     <string name="settings_category_correction">Opravy</string>
     <string name="select_input_method">"Vybrat metodu zadávání"</string>
     <string name="settings_category_experimental">Experimentální</string>
-    <string name="settings_category_miscellaneous">Různé</string>
     <string name="abbreviation_unit_minutes">%s min.</string>
     <string name="settings_no_limit">Bez limitu</string>
     <string name="enable_clipboard_history">Povolit historii schránky</string>
@@ -99,7 +97,6 @@
     <string name="incognito">Vynutit režim inkognito</string>
     <string name="prefs_force_incognito_mode_summary">Vypnout učení nových slov</string>
     <string name="number_row">Číselný řádek</string>
-    <string name="settings_category_input">Vstup</string>
     <string name="settings_category_additional_keys">Dodatečné klávesy</string>
     <string name="delete_swipe">Mazat posunutím</string>
     <string name="number_row_summary">Vždy aktivní číselný řádek</string>
@@ -867,7 +864,6 @@
     <string name="custom_ai_keys_prompt_label">Vlastní prompt pro klávesu %1$d</string>
     <string name="custom_ai_keys_tag_label">Štítek / Popisek (např. \'Francouzština\', \'Gramatika\', \'Přepsat\')</string>
     <string name="custom_ai_keys_selected_functions">Vybrané funkce klíčových slov:</string>
-    <string name="settings_category_app_profiles">Profily aplikací</string>
     <string name="settings_category_window_modes">Režimy okna &amp; plovoucí</string>
     <string name="settings_category_key_appearance">Vzhled kláves &amp; nápovědy</string>
     <string name="app_quirks_title">Profily aplikací</string>

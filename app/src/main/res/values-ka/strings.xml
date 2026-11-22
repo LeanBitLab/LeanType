@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"ხმა კლავიშზე დაჭერისას"</string>
     <string name="popup_on_keypress">"გადიდება ღილაკზე დაჭერისას"</string>
     <string name="settings_screen_preferences">"პარამეტრები"</string>
-    <string name="settings_screen_gesture">"ჟესტებით წერა"</string>
     <string name="settings_screen_correction">"ტექსტის კორექცია"</string>
     <string name="settings_screen_advanced">"გაფართოებული"</string>
     <string name="settings_screen_theme">"თემა"</string>
@@ -95,7 +94,6 @@
     <string name="day_night_mode_summary">გარეგნობა სისტემურ პარამეტრებს დაეყრდნობა</string>
     <string name="settings_category_clipboard_history">ბუფერის ისტორია</string>
     <string name="settings_category_correction">შესწორებები</string>
-    <string name="settings_category_miscellaneous">სხვადასხვა</string>
     <string name="settings_no_limit">უსაზღვრო</string>
     <string name="incognito">ნაძალადევი ინკოგნიტოს რეჟიმი</string>
     <string name="prefs_force_incognito_mode_summary">ახალი სიტყვების სწავლის გამორთვა</string>
@@ -109,7 +107,6 @@
     <string name="show_emoji_key">ემოჯის ღილაკი</string>
     <string name="delete_swipe">ჟესტით წაშლა</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">შეყვანა</string>
     <string name="settings_category_additional_keys">დამატებითი ღილაკები</string>
     <string name="settings_category_suggestions">მინიშნებები</string>
     <string name="settings_category_experimental">ექსპერიმენტალური</string>
