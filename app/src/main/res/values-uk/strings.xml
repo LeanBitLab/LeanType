@@ -1610,7 +1610,7 @@
     <string name="style_plain">нормальний</string>
     <string name="setup_skip_action">Перейти до налаштувань</string>
     <string name="setup_wizard_title">Майстер налаштування</string>
-    <string name="setup_not_active_title">Увімкнути%s</string>
+    <string name="setup_not_active_title">Увімкнути %s</string>
     <string name="setup_not_active_summary">Торкніться, щоб завершити налаштування клавіатури</string>
     <string name="setup_welcome_summary">Запустіть майстер початкового налаштування та налаштування</string>
     <string name="localized_numbers_in_popups"></string>

@@ -1644,7 +1644,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Treci la setări</string>
     <string name="setup_wizard_title">Expert de configurare</string>
-    <string name="setup_not_active_title">Activați%s</string>
+    <string name="setup_not_active_title">Activați %s</string>
     <string name="setup_not_active_summary">Atingeți pentru a finaliza configurarea tastaturii</string>
     <string name="setup_welcome_summary">Rulați vrăjitorul de configurare și configurare inițială</string>
     <string name="localized_numbers_in_popups"></string>

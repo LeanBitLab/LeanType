@@ -1615,7 +1615,7 @@
     <string name="style_plain">נוֹרמָלִי</string>
     <string name="setup_skip_action">דלג להגדרות</string>
     <string name="setup_wizard_title">אשף ההגדרה</string>
-    <string name="setup_not_active_title">אפשר%s</string>
+    <string name="setup_not_active_title">אפשר %s</string>
     <string name="setup_not_active_summary">הקש כדי להשלים את הגדרת המקלדת</string>
     <string name="setup_welcome_summary">הפעל את אשף ההגדרה והתצורה הראשוניים</string>
     <string name="localized_numbers_in_popups">מספרים מקומיים בחלונות קופצים</string>

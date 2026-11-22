@@ -1607,7 +1607,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="style_plain">Normál</string>
     <string name="setup_skip_action">Ugrás a beállításokhoz</string>
     <string name="setup_wizard_title">Telepítő varázsló</string>
-    <string name="setup_not_active_title">%sengedélyezése</string>
+    <string name="setup_not_active_title">%s engedélyezése</string>
     <string name="setup_not_active_summary">Érintse meg a billentyűzet beállításának befejezéséhez</string>
     <string name="setup_welcome_summary">Futtassa a kezdeti beállítási és konfigurációs varázslót</string>
     <string name="localized_numbers_in_popups">Lokalizált számok a felugró ablakokban</string>

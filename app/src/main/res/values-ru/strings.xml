@@ -1670,7 +1670,7 @@
     <string name="style_plain">Нормальный</string>
     <string name="setup_skip_action">Перейти к настройкам</string>
     <string name="setup_wizard_title">Мастер настройки</string>
-    <string name="setup_not_active_title"></string>
+    <string name="setup_not_active_title">Включить %s</string>
     <string name="setup_not_active_summary">Нажмите, чтобы завершить настройку клавиатуры</string>
     <string name="setup_welcome_summary">Запустите мастер первоначальной установки и настройки.</string>
     <string name="localized_numbers_in_popups">Локализованные номера во всплывающих окнах</string>
