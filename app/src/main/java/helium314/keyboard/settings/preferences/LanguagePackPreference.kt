@@ -38,7 +38,7 @@ import kotlinx.coroutines.withContext
 @Composable
 fun LanguagePackPreference() {
     val ctx = LocalContext.current
-    if (!LanguagePacks.isSupported || LanguagePacks.wantedLocales(ctx).isEmpty()) return
+    if (!remember { LanguagePacks.isNeeded(ctx) }) return
     val scope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
     var progress by remember { mutableStateOf<Float?>(null) } // null: not downloading

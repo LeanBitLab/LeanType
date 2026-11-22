@@ -4,6 +4,7 @@ package helium314.keyboard.latin.utils
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.content.res.loader.ResourcesLoader
 import android.content.res.loader.ResourcesProvider
@@ -12,6 +13,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.ParcelFileDescriptor
 import androidx.annotation.RequiresApi
+import helium314.keyboard.latin.R
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import java.io.File
@@ -88,6 +90,22 @@ object LanguagePacks {
             else LocaleUtils.parseLocale(tag)
         if (locale.language == "en") return emptyList()
         return listOfNotNull(locale.country.takeIf { it.isNotEmpty() }?.let { "${locale.language}-r$it" }, locale.language)
+    }
+
+    /** Whether a pack is of use: one is installed, or this build has no translation for the app language. */
+    fun isNeeded(context: Context): Boolean {
+        if (!isSupported) return false
+        val wanted = wantedLocales(context)
+        if (wanted.isEmpty()) return false
+        return installedPack(context) != null || wanted.none { hasBuiltInTranslation(context, it) }
+    }
+
+    /** Builds with all translations return a translated string here, English-only builds fall back to English. */
+    private fun hasBuiltInTranslation(context: Context, locale: String): Boolean {
+        fun title(tag: String) = context.createConfigurationContext(
+            Configuration(context.resources.configuration).apply { setLocale(Locale.forLanguageTag(tag)) }
+        ).getString(R.string.language_pack_title)
+        return title(locale.replace("-r", "-")) != title("en")
     }
 
     fun displayName(context: Context): String {
