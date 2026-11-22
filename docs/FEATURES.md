@@ -51,9 +51,12 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | 📱 **[Foldable & Large Display Ergonomics](#41-foldable--large-display-ergonomics)** | Auto screen profile detection, scale factor, side padding, and split gap |
 | ⚙️ **[Settings Progressive Disclosure](#42-settings-progressive-disclosure)** | Expandable fine-tuning sections across settings categories |
 | 🈲 **[Chinese Punctuation & CJK Symbols](#43-chinese-punctuation--cjk-symbols)** | Full-width punctuation, dedicated CJK symbols, and preedit sync |
-| 🚫 **[Blocked Words Standalone Import & Export](#44-blocked-words-standalone-import--export)** | Standalone word list import/export with duplicate filtering |
+| 🚫 **[Blocked Words Standalone Import & Export](#44-standalone-blocked-words-import--export)** | Standalone word list import/export with duplicate filtering |
 | 🇮🇳 **[Tamil V4 Layout Option](#45-tamil-v4-layout-option)** | Modern Tamil V4 layout option dynamically available across Tamil locales |
 | 🔤 **[Custom Text Styles](#46-custom-text-styles)** | Add your own Unicode font styles to the Font Style strip by pasting a styled alphabet |
+| 🌍 **[Lite Builds & UI Language Packs](#47-lite-builds--ui-language-packs)** | English-only Android 11+ APKs about 4 MB smaller, with app translations as downloadable packs |
+| 🗺️ **[Settings Map](#48-settings-map)** | Every settings screen and the settings on it, generated from the code |
+| ✨ **[More Recent Additions](#49-more-recent-additions)** | Khipro Blinder mode, switch back to the main keyboard on reopen, What's New dialog |
 
 ---
 
@@ -61,48 +64,48 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 
 | Feature | Description | Settings Location |
 | :--- | :--- | :--- |
-| **Multi-Provider Cloud AI** | Proofread, rewrite, and fix grammar via Gemini, Groq, or OpenAI-compatible custom endpoints. | `AI Integration > Set AI Provider` |
-| **Custom AI Keys** | 10 customizable toolbar keys with prompt templates, hashtags (`#editor`, `#proofread`), and tag capsules. | `AI Integration > Custom Keys` |
-| **Offline Proofreading (GGUF)** | Zero-network, on-device neural proofreading powered by embedded `llama.cpp`. | `Advanced > GGUF Model (.gguf)` |
+| **Multi-Provider Cloud AI** | Proofread, rewrite, and fix grammar via Gemini, Groq, or OpenAI-compatible custom endpoints. | `AI Integration > AI Provider` |
+| **Custom AI Keys** | 10 customizable toolbar keys with prompt templates, hashtags (`#editor`, `#proofread`), and tag capsules. | `AI Integration > Custom AI Keys` |
+| **Offline Proofreading (GGUF)** | Zero-network, on-device neural proofreading powered by embedded `llama.cpp`. | `AI Integration > Offline Model` *(offline flavor)* |
 | **Multi-Mode In-Keyboard Translation** | Translate text on-device (Offline ML Kit), via Translation Plugin, or Cloud/Local AI with auto-fallback. | `Translation > Translation Mode` |
-| **Whisper Voice Typing** | On-device speech-to-text with quantized multilingual Whisper models and audio visualizer. | `Plugins > Voice Input > Whisper Models` |
+| **Whisper Voice Typing** | On-device speech-to-text with quantized multilingual Whisper models and audio visualizer. | `Plugins > Voice Input > Manage & Download Models` |
 | **Handwriting Recognition** | Draw characters on a dedicated canvas with in-app model manager (supported across all flavors via plugin). | `Handwriting > Handwriting recognition` |
-| **Offline Camera & Screenshot OCR** | Live in-keyboard camera scanner and screenshot suggestion pill with rich text cleaners (casing, join styles, dehyphenation). | `OCR & Text Extraction` / `Plugins > OCR` |
-| **Inline Math Calculation** | Instant arithmetic calculation suggestions on typing `=` with 1-tap expression replacement. | `Text correction > Inline math calculation` |
-| **Custom Sound Packs** | Zero-latency key audio engine with 12+ built-in presets, remote catalog downloads, and `.zip` import. | `Plugins > Sound` / `Preferences > Sound on keypress` |
-| **GIF Search & Media Picker** | Search GIFs and stickers via GIPHY/KLIPY with live preview and WhatsApp sticker insertion. | `Plugins > GIF Settings` / `Toolbar > GIF Key` |
-| **CJK Plugin Engine** | Chinese Pinyin, Japanese Romaji/Kana, and Korean Hangul with dedicated candidate strip UI. | `Plugins > CJK Settings` |
+| **Offline Camera & Screenshot OCR** | Live in-keyboard camera scanner and screenshot suggestion pill with rich text cleaners (casing, join styles, dehyphenation). | `OCR & Text Extraction` / `Plugins > Text Recognition (OCR)` |
+| **Inline Math Calculation** | Instant arithmetic calculation suggestions on typing `=` with 1-tap expression replacement. | `Suggestions > Inline math calculation` |
+| **Custom Sound Packs** | Zero-latency key audio engine with 12+ built-in presets, remote catalog downloads, and `.zip` import. | `Preferences > Keypress Audio` |
+| **GIF Search & Media Picker** | Search GIFs and stickers via GIPHY/KLIPY with live preview and WhatsApp sticker insertion. | `Plugins > GIF Search` / `Toolbar > Select toolbar keys` |
+| **CJK Plugin Engine** | Chinese Pinyin, Japanese Romaji/Kana, and Korean Hangul with dedicated candidate strip UI. | `Plugins > CJK Input` |
 | **Hexagonal Honeycomb Layouts** | Typewise and hexagonal QWERTY layouts with axial hit testing and landscape ergonomic thumb split. | `Languages > Layouts (hex_typewise, hex_qwerty)` |
-| **Full Keyboard Swipe Gestures** | Horizontal swipe across entire keyboard to switch languages, move cursor, or toggle numpad. | `Gesture typing > Full keyboard horizontal swipe` |
-| **2D Backspace Swipe Gesture** | Diagonal and vertical line/word selection adjustments from the Backspace key. | `Gesture typing > Delete key swipe gesture` |
-| **Auto Floating in Landscape** | Automatically switch to floating keyboard when rotated to landscape orientation. | `Preferences > Floating keyboard auto in landscape` |
+| **Full Keyboard Swipe Gestures** | Horizontal swipe across entire keyboard to switch languages, move cursor, or toggle numpad. | `Gestures & swipes > Full keyboard swipe gesture` |
+| **2D Backspace Swipe Gesture** | Diagonal and vertical line/word selection adjustments from the Backspace key. | `Gestures & swipes > Delete swipe` |
+| **Auto Floating in Landscape** | Automatically switch to floating keyboard when rotated to landscape orientation. | `Preferences > Floating mode in landscape` |
 | **Storage & Cache Management** | Categorized storage breakdowns (models, dicts, sound, cache) with 1-tap purging. | `Plugins > Storage & Cache` |
-| **System Wallpaper Background** | Live or static device wallpaper background with FastBlurEngine blur slider. | `Appearance > Theme > Background > System Wallpaper` |
+| **System Wallpaper Background** | Live or static device wallpaper background with FastBlurEngine blur slider. | `Appearance > Use system wallpaper` |
 | **Clipboard Action Pill & Multi-Select** | Gboard-style compact floating action pill on long press and multi-item batch deletion/pinning. | `Clipboard Toolbar > Long-press clip` |
 | **Granular Backup & API Key Export** | Selectable custom wordlists vs typing history with password-protected encrypted API keys export. | `Backup & restore > Backup` |
 | **Text Editing Panel** | Precision DPAD arrow navigation, Shift selection mode, and clipboard shortcuts. | Toolbar > Text Editing Icon |
-| **Auto-Spanning Toolbar** | Dynamically expands and balances toolbar keys symmetrically across device widths. | `Appearance > Toolbar auto-spacing` |
-| **Touchpad Mode** | Swipe up on Spacebar to activate full cursor control and laptop-style touchpad gestures. | `Gesture typing > Vertical spacebar swipe` |
+| **Auto-Spanning Toolbar** | Dynamically expands and balances toolbar keys symmetrically across device widths. | `Toolbar > Auto-span toolbar keys` |
+| **Touchpad Mode** | Swipe up on Spacebar to activate full cursor control and laptop-style touchpad gestures. | `Gestures & swipes > Vertical up spacebar swipe gesture` |
 | **Native IME Floating Window** | Moveable floating keyboard window with touch-passthrough, bottom dock bar, resize handle, zero dead space, and persistent memory. | Toolbar > Floating Keyboard / `Preferences > Remember floating mode` |
-| **Per-App Profiles & Quirks** | Fine-tune composing behavior per app (Tasker symbol composing, web editor compatibility, auto-incognito, and Enter action overrides). | `Plugins > App Profiles` |
+| **Per-App Profiles & Quirks** | Fine-tune composing behavior per app (Tasker symbol composing, web editor compatibility, auto-incognito, and Enter action overrides). | `Advanced > App Profiles` |
 | **Hardware Keyboard Support** | Full predictive suggestions, auto-correction, candidate shortcuts (`1`, `2`, `3`), and D-PAD emoji navigation for external keyboards. | `Languages > Physical keyboard` / Auto-detected |
 | **Appearance & Key Ergonomics** | Independent key corner radius sliders, adjustable key gaps, customizable padding scales, and distinct Shift/Caps visual indicators. | `Appearance > Key borders` / `Theme` |
-| **Split Toolbar & Suggestions** | Separates suggestions from the toolbar into a dual-row view. | `Appearance > Split toolbar & suggestions` |
-| **Versatile Text Expander** | Expand shortcuts with dynamic variables, citation stripper (`%clipboard:clean%`), bulk plain-text editor, and modifiers. | `Text correction > Text Expander` |
+| **Split Toolbar & Suggestions** | Separates suggestions from the toolbar into a dual-row view. | `Toolbar > Split toolbar` |
+| **Versatile Text Expander** | Expand shortcuts with dynamic variables, citation stripper (`%clipboard:clean%`), bulk plain-text editor, and modifiers. | `Text Expander` |
 | **Clipboard History & Inline Edit** | Search history, swipe-right to edit inline, swipe-left to delete with undo, fold pinned clips, and slide-select. | Clipboard Toolbar > Search / Swipe items |
-| **Screenshot Suggestions** | Instant 1-tap sharing of recently taken screenshots via the suggestion strip. | `Text correction > Suggest recent screenshots` |
+| **Screenshot Suggestions** | Instant 1-tap sharing of recently taken screenshots via the suggestion strip. | `Suggestions > Suggest recent screenshots` |
 | **Emoji Search** | Search emojis by name/keyword directly from the emoji palette. | `Emoji Key > Search Icon` |
-| **Blocked Words Blacklist** | Prevent unwanted words from being suggested with regex pattern matching. | `Text correction > Blocked words blacklist` |
-| **Smart Learning & Boost** | Adjustable personal dictionary learning threshold (1-5 times) and temporary session word boost. | `Text correction > Dictionary learning threshold` |
-| **Gesture Typing** | Swipe typing powered by native C++ spatial scoring engine. | `Gesture typing > Enable gesture typing` |
+| **Blocked Words Blacklist** | Prevent unwanted words from being suggested with regex pattern matching. | `Languages & Layouts > Dictionaries > Blocked words` |
+| **Smart Learning & Boost** | Adjustable personal dictionary learning threshold (1-5 times) and temporary session word boost. | `Languages & Layouts > Dictionaries > Learning threshold` |
+| **Gesture Typing** | Swipe typing powered by native C++ spatial scoring engine. | `Gestures & swipes > Enable gesture typing` |
 | **Direct Switch Target IME** | Fast 1-tap switching to another configured IME using custom keycode `-10076`. | `Preferences > Direct Switch Target IME` |
 | **Custom Layout Profiles** | Store up to 5 custom keyboard layouts with persistent slot tracking. | `Languages > Custom layouts` |
 | **In-App Update Checker** | Checks GitHub releases with changelogs and 1-tap release viewing (`standard` flavor). | `Settings > Updates` |
-| **Exact Visual Line Delete Swipe** | Uses platform-native `requestTextBoundsInfo` (API 34+) to detect visual line wrap boundaries. | `Gesture typing > Delete key swipe gesture` |
+| **Exact Visual Line Delete Swipe** | Uses platform-native `requestTextBoundsInfo` (API 34+) to detect visual line wrap boundaries. | `Gestures & swipes > Delete swipe` |
 | **Foldable & Tablet Controls** | Fine-tune scale factor, side padding, and split gap with automatic screen profile detection. | `Appearance > Foldable & Large Display` |
 | **Settings Progressive Disclosure** | Expandable fine-tune sections keep primary views minimal and intuitive. | Settings screens |
-| **Chinese Punctuation & Symbols** | Full-width punctuation marks, dedicated CJK symbols, and live preedit sync. | CJK layouts / `Plugins > CJK Settings` |
-| **Blocked Words Import & Export** | Standalone word list import and export with duplicate filtering. | `Text correction > Blocked words blacklist` |
+| **Chinese Punctuation & Symbols** | Full-width punctuation marks, dedicated CJK symbols, and live preedit sync. | CJK layouts / `Plugins > CJK Input` |
+| **Blocked Words Import & Export** | Standalone word list import and export with duplicate filtering. | `Languages & Layouts > Dictionaries > Blocked words` |
 | **Tamil V4 Layout** | Selectable Tamil V4 layout dynamically available across Tamil locales. | `Languages > Tamil > Layouts` |
 | **Custom Text Styles** | Define your own Unicode font styles (one line each) and use them from the Font Style strip with live typing and undo. | `Toolbar > Custom text styles` |
 
@@ -125,7 +128,7 @@ LeanType connects directly with top AI providers for ultra-fast proofreading, gr
    - **Google Gemini**: [Google AI Studio](https://aistudio.google.com/apikey) (key starts with `AIzaSy...`).
    - **Groq**: [Groq Console](https://console.groq.com/keys) (key starts with `gsk_...`).
    - **OpenAI-compatible**: [OpenRouter](https://openrouter.ai/keys), [DeepSeek Platform](https://platform.deepseek.com), or your local LLM server.
-2. In LeanType, open **Settings → AI Integration → Set AI Provider**.
+2. In LeanType, open **Settings → AI Integration → AI Provider**.
 3. Select your provider, paste your API token, and pick your preferred model and target language.
 
 ---
@@ -135,7 +138,7 @@ LeanType connects directly with top AI providers for ultra-fast proofreading, gr
 You can assign custom prompts, personas, and custom label tags to **10 dedicated toolbar keys**.
 
 ### Custom Text Capsules
-- Assign custom labels (e.g. `French`, `Rephrase`, `Reply`) in **Settings → AI Integration → Custom Keys**.
+- Assign custom labels (e.g. `French`, `Rephrase`, `Reply`) in **Settings → AI Integration → Custom AI Keys**.
 - Enable **Show tags on keyboard** to render them as themed pill capsules directly on the keyboard toolbar.
 
 ### AI Persona Keywords (Hashtags)
@@ -162,12 +165,12 @@ Include these hashtags in your custom prompts to enforce strict system roles:
 
 ### Setup Instructions
 1. Download `ai_plugin-arm64-v8a.apk` (or `ai_plugin-x86_64.apk`) from the [LeanType Offline AI Plugin Releases](https://github.com/LeanBitLab/LeanType-Offline-AI-Plugin/releases/latest).
-2. In LeanType, open **Settings → Plugins → Offline AI** and tap **Load Offline AI plugin** to load the `.apk`.
+2. In LeanType, open **Settings → AI Integration → Offline AI Plugin** to load the `.apk`.
 3. Download a compact GGUF model:
    - **Qwen 2.5 0.5B Instruct (Q4_K_M)**: Extremely lightweight & fast (~350 MB).
    - **Llama 3.2 1B Instruct (Q4_K_M)**: High-quality compact reasoning (~900 MB).
    - **Qwen 2.5 1.5B Instruct (Q4_K_M)**: High intelligence for modern devices (~1.1 GB).
-4. Open **Settings → Advanced → GGUF Model (.gguf)** and select the `.gguf` file from your storage.
+4. Open **Settings → AI Integration → Offline Model** and select the `.gguf` file from your storage.
 5. Configure sampling temperature, Top-K, Top-P, and custom system instructions.
 
 ---
@@ -186,7 +189,7 @@ LeanType offers a flexible translation architecture supporting all app flavors:
    - Uses your configured **AI Provider** (Google Gemini, Groq, OpenAI, Ollama, or local GGUF models) with customizable translation prompts.
 
 ### How to Setup
-1. **Online Flavor (`Standard`)**: Open **Settings → Translation** and tap **Download Plugin** to install the [LeanType Translation Plugin](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) automatically.
+1. **Online Flavor (`Standard`)**: Open **Settings → Plugins → Translation** and tap **Download Plugin** to install the [LeanType Translation Plugin](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) automatically.
 2. **Offline Flavor (`Offline`)**: Download `translation_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) and load it in **Settings → Plugins → Translation**.
 3. Download or import your required source and target language pairs.
 4. Tap the **Translate** icon on the keyboard toolbar to instantly translate selected text or entire input fields.
@@ -231,8 +234,8 @@ The multilingual models support 99 languages. English-only models are a little m
 Draw letters, words, or symbols directly on a handwriting recognition canvas using your finger or stylus via the companion [LeanType Handwriting Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin) (supported across all flavors).
 
 ### Setup Instructions
-1. **Online Flavors**: Open **Settings → Handwriting** and tap **Download Plugin** to install the [LeanType Handwriting Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest).
-2. **Offline Flavors**: Download `handwriting_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest) and load it in **Settings → Plugins → Handwriting**.
+1. **Online Flavors**: Open **Settings → Plugins → Handwriting Input Plugin** and tap **Download Plugin** to install the [LeanType Handwriting Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest).
+2. **Offline Flavors**: Download `handwriting_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest) and load it in **Settings → Plugins → Handwriting Input Plugin**.
 3. Use the **Offline Handwriting Models** dialog to download recognition packs directly (or import downloaded `.zip` model packs on offline builds).
 4. Customize stroke width, stroke fade timeout, and recognition sensitivity.
 5. Tap the **Handwriting (Pencil)** icon on the keyboard toolbar to open the drawing canvas and write naturally.
@@ -250,7 +253,7 @@ A precision editing panel designed for frictionless text manipulation and direct
 - **Navigation Shortcuts**: Jump directly to start or end of document (`code: -25` / `-26`) or line (`code: -27` / `-28`).
 
 ### Prebuilt Layout Variants
-LeanType includes 3 prebuilt text editing layouts (switchable in **Settings -> Languages -> Secondary layouts -> Text editing layout**):
+LeanType includes 3 prebuilt text editing layouts (switchable in **Settings → Languages & Layouts → Secondary layouts → Text editing**):
 1. **Gboard (Default)** (`editing_gboard`): Modern D-Pad cluster with centered `Select` toggle, `✕` (Close / exit), `Cut`, `Copy`, `Paste`, `Undo`, `Redo`, `Select all`, Jump to Start (`|<`), Jump to End (`>|`), and Backspace.
 2. **Standard** (`editing`): Full grid with Undo/Redo, Word/All selection, Cut/Copy/Paste, DPAD arrows, and line jumps.
 3. **Classic** (`editing_classic`): Vintage layout with extended navigation keys and symbol shortcuts.
@@ -259,7 +262,7 @@ LeanType includes 3 prebuilt text editing layouts (switchable in **Settings -> L
 
 ### Custom Editing Layout Scripting Guide
 
-You can create and import your own text editing layout JSON files in **Settings -> Languages -> Secondary layouts -> Text editing layout -> Load from file** (or paste directly in the layout editor).
+You can create and import your own text editing layout JSON files in **Settings → Languages & Layouts → Secondary layouts → Text editing**, then **Load from file** (or paste directly in the layout editor).
 
 #### JSON Structure
 An editing layout is defined as a 2D JSON array representing rows of keys:
@@ -345,7 +348,7 @@ An editing layout is defined as a 2D JSON array representing rows of keys:
 The **Auto-Spanning Toolbar** dynamically measures available screen width and proportionately balances toolbar keys symmetrically.
 - Eliminates awkward blank space on large screens, tablets, and landscape orientation.
 - Unifies alignment between standard toolbar keys and clipboard action rows.
-- Configure via **Settings → Appearance → Toolbar auto-spacing**.
+- Configure via **Settings → Toolbar → Auto-span toolbar keys**.
 
 ---
 
@@ -386,7 +389,7 @@ LeanType features an advanced **Native IME Floating Window** architecture that r
 ## 11. Dual Toolbar & Split Suggestions
 
 Split your toolbar and suggestion strip into two independent rows for fast, unhindered access to both word predictions and quick actions.
-- Configure via **Settings → Appearance → Split toolbar & suggestions**.
+- Configure via **Settings → Toolbar → Split toolbar**.
 
 ---
 
@@ -461,7 +464,7 @@ Manage your entire shortcut collection simultaneously as plain text:
 - **Custom Prefixes**: Add custom characters (e.g. `;`, `//`, `.` or blank) to prevent accidental expansions during everyday typing.
 
 ### Setup Instructions
-1. Open **Settings -> Text correction -> Text Expander**.
+1. Open **Settings → Text Expander**.
 2. Tap **+ (Add)** to add a shortcut dialog, or tap **Edit all as text** to manage shortcuts in bulk.
 
 ---
@@ -486,14 +489,14 @@ LeanType features a comprehensive, privacy-first clipboard manager with rich ges
 
 - **Instant Suggestion**: Automatically detects newly captured screenshots (within 4 minutes) and presents a thumbnail preview in the suggestion strip for 1-tap insertion.
 - **Clipboard Sync**: Automatically saves captured screenshots into your clipboard image history.
-- Enable via **Settings → Text correction → Suggest recent screenshots**.
+- Enable via **Settings → Suggestions → Suggest recent screenshots**.
 
 ---
 
 ## 15. Emoji Search
 
 - Search through thousands of emojis by keyword or name directly inside the emoji palette.
-- **Setup**: Ensure an **Emoji Dictionary** (e.g. *Emoji English*) is enabled under **Settings → Text correction → Dictionary**.
+- **Setup**: Ensure an **Emoji Dictionary** (e.g. *Emoji English*) is enabled under **Settings → Languages & Layouts → Dictionaries**.
 
 ---
 
@@ -501,7 +504,7 @@ LeanType features a comprehensive, privacy-first clipboard manager with rich ges
 
 Prevent offensive, sensitive, or unwanted words from ever appearing in the suggestion strip:
 - Supports literal words and custom **regular expression (regex)** patterns.
-- Manage rules via **Settings → Text correction → Blocked words blacklist**.
+- Manage rules via **Settings → Languages & Layouts → Dictionaries → Blocked words**.
 
 ---
 
@@ -513,7 +516,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 - **Suggestion Balance Master Sliders**: Fine-tune the exact scoring weights between unigram frequency, bigram/ngram context, and dictionary matches (**Settings → Suggestions → Suggestion Balance**).
 - **SuggestTrace & ScoreAudit Telemetry**: Built-in developer/power-user instrumentation to audit why specific words are being predicted or auto-corrected, backed by early beam pruning (`BEAM_DELTA = 60`) for optimal typing latency.
 - **Google Dictionary Import**: Import existing user dictionaries exported from Gboard.
-- Configure via **Settings → Suggestions** and **Settings → Text correction → Dictionary learning threshold**.
+- Configure via **Settings → Suggestions** and **Settings → Languages & Layouts → Dictionaries → Learning threshold**.
 
 ---
 
@@ -521,7 +524,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 
 - Smooth swipe typing powered by native C++ spatial scoring (`libjni_latinime.so`).
 - Supports floating preview text, customizable trail colors, and space-aware gesture input.
-- In `standard` builds, the gesture library is downloaded automatically via **Settings → Gesture typing**.
+- In `standard` builds, the gesture library is downloaded automatically via **Settings → Gestures & swipes**.
 
 ---
 
@@ -537,14 +540,14 @@ Map the custom keycode `-10076` (`SWITCH_TO_USER_IME`) to any toolbar key:
 
 - Create and save up to **5 persistent custom layout profiles**.
 - Switch between layout profiles seamlessly while preserving active slot indices across orientation and symbol states.
-- Manage via **Settings → Languages → Custom layouts**.
+- Manage via **Settings → Languages & Layouts**.
 
 ---
 
 ## 22. In-App Update Checker & Release Viewer
 
 > [!NOTE]
-> Available in the **Standard** (`-standard-release.apk`) build flavor.
+> Available in the **Standard** build flavor (`-standard-release.apk` and `-standard-lite-release.apk`).
 
 - Automatically checks GitHub releases for updates in the background.
 - Eliminates sensitive package installation permissions (`REQUEST_INSTALL_PACKAGES`) by redirecting to official GitHub Releases for safe and verified APK updates.
@@ -565,6 +568,11 @@ LeanType is published in two purpose-built flavors to balance cloud AI capabilit
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Standard (Recommended)** | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | SDK 23 (6.0+) | **~12.8 MB** |
 | **Offline** | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | SDK 23 (6.0+) | **~12.5 MB** |
+| **Standard Lite** *(`-standard-lite-release.apk`)* | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | **Android 11+** | **~9 MB** |
+| **Offline Lite** *(`-offline-lite-release.apk`)* | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | **Android 11+** | **~9 MB** |
+
+> [!NOTE]
+> **Lite builds** are the same app with English as the only built-in UI language. Other app languages come as language packs (see [Lite Builds & UI Language Packs](#47-lite-builds--ui-language-packs)). They install over the regular build of the same flavor. The F-Droid build is the regular, all-languages Standard build.
 
 > [!TIP]
 > **Concurrent Installation**: The `offline` (`com.leanbitlab.leantype.offline`) build uses a unique package ID, allowing you to install it alongside `standard` on the same device!
@@ -618,7 +626,7 @@ Perform calculations instantly while typing in any app without switching to an e
 - **High Precision**: Built with a pure Kotlin `BigDecimal` parsing engine with robust scientific formatting and division-by-zero protection.
 
 ### ⚙️ Settings
-- Enable or disable via **Settings → Text correction → Inline math calculation**.
+- Enable or disable via **Settings → Suggestions → Inline math calculation**.
 
 ---
 
@@ -645,7 +653,7 @@ LeanType includes a zero-latency native keypress audio feedback engine that deli
 - **Unbundled Light Footprint**: Sound packs are unbundled from the core APK to keep the core keyboard download footprint compact.
 - **Custom `.zip` Pack Import**: Import custom sound packs packaged as a `.zip` containing a `soundpack.json` manifest and keypress audio files (`.wav` or `.ogg`).
 - **Live Audition & Volume**: Audition sounds with live sample playback (▶️) and fine-tune keypress audio volume independently from system media volume.
-- **Dedicated Settings Screen**: Access via **Settings → Plugins → Keypress Audio / Sound** or **Settings → Preferences → Sound on keypress**.
+- **Dedicated Settings Screen**: Access via **Settings → Preferences → Keypress Audio**.
 
 ---
 
@@ -653,7 +661,7 @@ LeanType includes a zero-latency native keypress audio feedback engine that deli
 
 Certain Android apps, terminal emulators, code editors, automation tools, and web-based input fields handle text entry in non-standard ways. LeanType features a dedicated **Per-App Profiles & Compatibility Engine** that lets you customize composing, auto-correction, and key behaviors on a granular per-application basis.
 
-Access via **Settings → Plugins & Capabilities → App Profiles**.
+Access via **Settings → Advanced → App Profiles**.
 
 ### ⚙️ Available Per-App Quirks & Overrides
 
@@ -704,7 +712,7 @@ Go beyond simple color themes with granular, user-level control over the keyboar
   - **Outline Arrow**: Inactive / lowercase.
   - **Filled Arrow**: Single Shift active.
   - **Underlined Arrow**: Caps Lock locked.
-- **Auto-Spanning Key Balance**: Proportionately expands toolbar keys symmetrically across wider displays and landscape orientations (**Settings → Appearance → Toolbar auto-spacing**).
+- **Auto-Spanning Key Balance**: Proportionately expands toolbar keys symmetrically across wider displays and landscape orientations (**Settings → Toolbar → Auto-span toolbar keys**).
 
 ---
 
@@ -713,7 +721,7 @@ Go beyond simple color themes with granular, user-level control over the keyboar
 LeanType provides an extensible keycode architecture that allows customizing keys in:
 - **Custom JSON Layouts**: Map keys via `"code": <value>` (e.g. `{"code": -9, "label": "Del"}`).
 - **Simple Text Layouts**: Defined directly in custom layout `.txt` files.
-- **Toolbar Customization**: Custom primary and long-press codes via **Settings → Preferences → Customize toolbar key codes**.
+- **Toolbar Customization**: Custom primary and long-press codes via **Settings → Toolbar → Customize toolbar key codes**.
 - **Popup Keys**: Extended keys revealed on long-pressing any primary keyboard key.
 
 > [!TIP]
@@ -932,12 +940,14 @@ and correction rules are unchanged.
 LeanType introduces rich media integration with a dedicated, high-performance in-keyboard GIF and sticker media picker view. Access it via the toolbar media icon, custom layout keycode `-10086`, or from the emoji view media tabs.
 
 ### 🎬 Key Capabilities
-- **Dual Content Providers**: Integrated support for both **GIPHY** and **KLIPY** search backends. Choose your preferred service or configure custom API keys under **Settings → Plugins → GIF Settings**.
+- **Dual Content Providers**: Integrated support for both **GIPHY** and **KLIPY** search backends. Choose your preferred service or configure custom API keys under **Settings → Plugins → GIF Search**.
 - **Trending & Instant Search**: Browse real-time trending animations or enter keywords into the inline search bar with debounced, instantaneous query resolution.
 - **Stickers Support**: Switch seamlessly between animated GIF clips and transparent sticker graphics.
 - **Recent Media History**: Quick-access recent tray caches your favorite and recently shared media for 1-tap re-insertion without re-querying the network.
 - **Direct Content Insertion**: Dispatches media directly using Android's native `InputConnection.commitContent()` API with MIME type negotiation (`image/gif`, `image/webp`, `image/png`).
 - **WhatsApp Sticker Normalization**: Transparent stickers sent to WhatsApp and compatible messaging clients are automatically normalized and resized to the official WhatsApp sticker specification (512x512 WebP format), preventing awkward black backgrounds or attachment fallbacks.
+- **Animated Preview**: Turn on **Preview** under **Settings → Plugins → GIF Search** to play the visible tiles without a long-press. Only tiles on screen animate, so scrolling costs no extra CPU (Android 9+).
+- **Sticker Packs**: Packs show as square tiles with their name and item count; tap one to browse it and **Close pack** to go back.
 - **Offline & Low-Bandwidth Friendly**: Aggressive thumbnail caching minimizes network overhead. Cached media can be purged at any time via the Storage & Cache management screen.
 
 ---
@@ -982,7 +992,7 @@ For users seeking ergonomic thumb typing efficiency on mobile devices, LeanType 
 LeanType enhances gesture controls with full-surface keyboard swiping and multi-dimensional backspace selection.
 
 ### 👆 Full Keyboard Horizontal Swiping
-Configure full-keyboard horizontal edge-to-edge swipes under **Settings → Gesture typing → Full keyboard horizontal swipe**:
+Configure full-keyboard horizontal edge-to-edge swipes under **Settings → Gestures & swipes → Full keyboard swipe gesture**:
 - **Switch Subtype / Language**: Quickly swipe across the keyboard to toggle between active languages and input scripts.
 - **Cursor Navigation**: Slide horizontally across keys to glide the cursor through text lines with high precision.
 - **Toggle Views**: Rapidly jump between Alphabet, Numeric Numpad, and Symbol keyboards.
@@ -1001,7 +1011,7 @@ Take complete control over text deletion with multidirectional backspace gesture
 Using a full-width virtual keyboard in landscape orientation on modern wide smartphones often obscures up to 75% of the screen. LeanType solves this with intelligent **Auto Floating in Landscape**.
 
 ### 🪟 Key Features
-- **Automatic Orientation Adaptation**: Enable **Settings → Preferences → Floating keyboard auto in landscape**. LeanType automatically detaches into a compact floating window when your device rotates to landscape mode, and docks back to full-width when returning to portrait.
+- **Automatic Orientation Adaptation**: Enable **Settings → Preferences → Floating mode in landscape**. LeanType automatically detaches into a compact floating window when your device rotates to landscape mode, and docks back to full-width when returning to portrait.
 - **Persistent Geometry Memory**: Position, dimension, and transparency preferences for the floating window are remembered independently for landscape mode.
 - **Zero Dead Space & Touch Passthrough**: Move the floating window anywhere on screen with the drag handle. Unused screen areas remain fully interactive and touch-transparent.
 
@@ -1030,7 +1040,7 @@ Keep your keyboard installation clean and inspect on-device storage consumption 
 Create a keyboard theme that seamlessly blends with your Android desktop aesthetic using dynamic live system wallpaper backgrounds.
 
 ### 🖼️ Visual Personalization
-- **Dynamic Wallpaper Integration**: Enable via **Settings → Appearance → Theme → Background → System Wallpaper**. The keyboard renders a blurred representation of your current home or lock screen wallpaper beneath the keys.
+- **Dynamic Wallpaper Integration**: Enable via **Settings → Appearance → Use system wallpaper**. The keyboard renders a blurred representation of your current home or lock screen wallpaper beneath the keys.
 - **FastBlurEngine**: Powered by an optimized multi-threaded native stack blur engine that renders smoothly at 60/120 FPS without lag, dropped frames, or perceptible battery consumption.
 - **Adjustable Blur Intensity**: Fine-tune background diffusion using the blur radius slider, ranging from subtle frosted glass effects to deep, opaque tinting.
 - **Adaptive Key Contrast**: Key labels, borders, and functional glyphs automatically adapt their contrast and luminosity to ensure effortless legibility across light, dark, and vibrant wallpapers.
@@ -1055,7 +1065,7 @@ LeanType's clipboard manager receives major productivity upgrades with floating 
 
 ## 39. Granular Backup & Encrypted API Key Export
 
-Safeguard your personalized keyboard configuration, custom layouts, and linguistic data with granular backup options and encrypted credential export (**Settings → Backup & restore**).
+Safeguard your personalized keyboard configuration, custom layouts, and linguistic data with granular backup options and encrypted credential export (**Settings → Advanced → Backup and restore**).
 
 ### 🔐 Backup Flexibility & Security
 - **Modular Data Selection**: Choose exactly which components to include in your backup archive:
@@ -1126,7 +1136,7 @@ Typing in East Asian languages receives streamlined punctuation handling via dee
 Manage and share your blocked words blacklist modularly without affecting other dictionary or layout data:
 
 ### 🚫 Blacklist Management
-- **Dedicated Import & Export**: Import and export your blocked words list directly under **Settings → Text correction → Blocked words blacklist**.
+- **Dedicated Import & Export**: Import and export your blocked words list directly under **Settings → Languages & Layouts → Dictionaries → Blocked words**.
 - **Format Flexibility**: Supports plain word lists, language tags, and comment lines.
 - **Automatic Deduplication**: Duplicate entries and conflicting entries are automatically filtered upon import.
 
@@ -1169,3 +1179,225 @@ Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍ
 - Styled text can be converted back to plain text, including text styled with a custom font.
 - Live styling is never applied in password, email, URL, or non-text fields.
 - The styled characters are plain Unicode text, so they display correctly only where the receiving app has a font that includes them.
+
+---
+
+## 47. Lite Builds & UI Language Packs
+
+Every release also ships English-only **Lite** APKs (`1-LeanType_<version>-standard-lite-release.apk`, `2-LeanType_<version>-offline-lite-release.apk`) for **Android 11 and newer**. They leave out the built-in UI translations, which makes them about 4 MB smaller. Typing languages, layouts and dictionaries are not affected: only the app's own text (settings, menus, keyboard panels) is.
+
+### Getting Your Language
+- Open **Settings → Languages & Layouts → App translation**. The row appears when the app language has no built-in translation.
+- **Standard Lite**: tap the row, then **Download translation** to fetch the pack for your language and build from [LeanType-Language-Packs](https://github.com/LeanBitLab/LeanType-Language-Packs/releases).
+- **Offline Lite**: download the matching pack APK from that repository in a browser, then tap the row, **Import from file**, and pick the file.
+- A pack is never installed as an app. LeanType loads it from its own storage and checks that it holds only translations.
+
+### After Updates
+- Each pack is built for one exact app build. After an app update, the old pack no longer fits and is removed: download or import the pack for the new version.
+- The regular APKs and the F-Droid build keep all languages built in and never need a pack.
+
+---
+
+## 49. More Recent Additions
+
+- **Khipro Blinder mode (Bengali)**: In the Khipro layout, type `\` to pass Latin text through untransliterated until the next `;`. Type `;;` for a literal `;`. `?` does not start Blinder mode, since it ends Bengali questions.
+- **Back to the main keyboard on reopen**: **Settings → Text correction → Switch to main keyboard after…** now has a **Reopening the keyboard** option, so the keyboard always opens on the letters layout instead of the symbols or numpad layout you left it on.
+- **What's New dialog**: After an update, LeanType shows what changed in the new version once. The same list is in **Settings → Updates**.
+- **Restart keyboard**: **Settings → About → Restart keyboard** restarts the keyboard process and reloads all models, plugins and background services.
+
+---
+
+## 48. Settings Map
+
+Every settings screen and the settings on it, generated from the settings code. Run `python3 tools/generate_settings_map.py` after changing settings; `--check` fails when this map or a `Settings → ...` path in the docs is out of date.
+
+<!-- SETTINGS_MAP:START (generated by tools/generate_settings_map.py, do not edit by hand) -->
+
+```mermaid
+graph LR
+  S(["Settings"])
+  S --> g0{{"Keyboard"}}
+  g0 --> n_Languages["Languages & Layouts"]
+  n_Languages --> n_Layouts["Secondary layouts"]
+  n_Languages --> n_Dictionaries["Dictionaries"]
+  n_Dictionaries --> n_PersonalDictionaries["Personal dictionary"]
+  n_Dictionaries --> n_BlockedWords["Blocked words"]
+  g0 --> n_Appearance["Appearance"]
+  g0 --> n_Preferences["Preferences"]
+  n_Preferences --> n_Sound["Keypress Audio"]
+  g0 --> n_Toolbar["Toolbar"]
+  S --> g1{{"Typing"}}
+  g1 --> n_GestureTyping["Gestures & swipes"]
+  g1 --> n_TextCorrection["Text correction"]
+  g1 --> n_Suggestions["Suggestions"]
+  g1 --> n_TextExpander["Text Expander"]
+  S --> g2{{"Extras"}}
+  g2 --> n_AIIntegration["AI Integration"]
+  g2 --> n_Libraries["Plugins"]
+  n_Libraries --> n_OfflineVoice["Voice Input"]
+  n_Libraries --> n_Translation["Translation"]
+  n_Libraries --> n_Handwriting["Handwriting Input Plugin"]
+  n_Libraries --> n_OCR["Text Recognition (OCR)"]
+  n_Libraries --> n_Cjk["CJK Input"]
+  n_Libraries --> n_Gif["GIF Search"]
+  n_Libraries --> n_Storage["Storage & Cache"]
+  S --> g3{{"System"}}
+  g3 --> n_Advanced["Advanced"]
+  n_Advanced --> n_AppQuirks["App Profiles"]
+  n_Advanced --> n_BackgroundServices["Background Services"]
+  n_Advanced --> n_Debug["Debug settings"]
+  n_Advanced --> n_CustomAIKeys["Custom AI Keys"]
+  g3 --> n_Updates["Updates"]
+  g3 --> n_About["About"]
+```
+
+<details><summary><b>Settings → Languages & Layouts</b> (8)</summary>
+
+- Remember language per app, App Language
+- App translation, Active Keyboards, Add language, Configuration, Secondary layouts, Dictionaries
+
+</details>
+<details><summary><b>Settings → Languages & Layouts → Secondary layouts</b> (17)</summary>
+
+- Symbols, More symbols, Functional keys, Numbers, Number row, Numpad, Numpad (landscape), Phone, Phone symbols, Emoji bottom row, Clipboard bottom row, Text editing, Custom layout 1, Custom layout 2, Custom layout 3, Custom layout 4, Custom layout 5
+
+</details>
+<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (10)</summary>
+
+- "here", "Add dictionary from file", Personal dictionary, Blocked words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
+
+</details>
+- **Settings → Languages & Layouts → Dictionaries → Personal dictionary**
+- **Settings → Languages & Layouts → Dictionaries → Blocked words**
+<details><summary><b>Settings → Appearance</b> (53)</summary>
+
+- Style, Colors, Key borders, Auto day/night mode, Colors (night), Set background image, Use system wallpaper, Theme and borders, Key corner radius, Functional key corner radius, Action key corner radius, Color navigation bar, Set background image (landscape), Background blur, Icon style, Customize icons, Clear clipboard icon
+- **Size, layout & fonts**: Keyboard height scale, Enable split keyboard, Set custom font from file, Set custom emoji font from file, Custom text on space bar, Foldable & large display, Unfolded keyboard height, Split keyboard when unfolded, Unfolded split spacer scale, Unfolded bottom padding, Unfolded side padding, Keyboard sizing and fonts, Bottom padding scale, Side padding scale, Narrow key gaps, Narrowness level, Enable split keyboard (landscape), Split distance, Keyboard font scale, Secondary character font scale, Emoji view font scale, Use system emoji font, Show emoji description on long press, Scale emoji key size with font size
+- **Key appearance & hints**: Show key hints, Select popup key order, Popup on keypress, Key popups and previews, Key popup width, Key popup height, Key popup corner radius, Long-press popup position, Animation scale, Select hint source, Show functional hints, Show TLD popup keys
+
+</details>
+<details><summary><b>Settings → Preferences</b> (36)</summary>
+
+- **Input, sound & vibration**: Key long press delay, Default emoji skin tone, Emoji key, Keypress Audio, Vibrate on keypress, Keypress vibration duration, Haptics and vibration, Haptic feedback engine, Keypress vibration strength, Vibrate in do not disturb mode
+- **Additional keys**: Number row, Language switch key, Change input method with space key, Secondary and layout keys, Localize number row, Localized numbers in popups, Show hints on number row, Show number row in symbols view, Compact symbols number row, Long press symbols key for numpad, Language switch key behavior, Direct Switch Target IME, Remove redundant popups, Show more letters with diacritics in popup, Customize currencies, Format for timestamp key
+- **Window & floating modes**: Remember floating mode, Floating mode in landscape, Persist text editing mode
+- **Clipboard history**: Enable clipboard history, History retention time, Don't keep passwords and codes, Clipboard behavior, Show pinned items on top, Fold pinned items by default, Clipboard history font scale
+
+</details>
+<details><summary><b>Settings → Preferences → Keypress Audio</b> (20)</summary>
+
+- "here", Sound on keypress, Keypress sound volume, Sound Pack, Keypress sound style, Active Pack Info, Acoustics & Playback, Pitch Shift, Random pitch variation, Spatial stereo panning, Dynamic typing velocity, Key Sound Balance, Spacebar volume, Backspace volume, Enter key volume, Modifiers volume (Shift & Symbols), System & Profiles, Mute in silent/vibrate mode, Mute in Do Not Disturb, Play custom sounds over Bluetooth
+
+</details>
+<details><summary><b>Settings → Toolbar</b> (22)</summary>
+
+- Toolbar mode, Split toolbar, Select toolbar keys, Select pinned toolbar keys, Select clipboard toolbar keys, Custom text styles, Show download button in toolbar, Toolbar behavior, Auto-span toolbar keys, Toolbar keys alignment, Pin toolbar key on long press, Auto show toolbar on open, Auto show toolbar on select, Auto hide toolbar, Auto show toolbar when no suggestions, Auto hide pinned keys, Remember toolbar state, Show long-press hint pills, Customize toolbar key codes, Show only toolbar with physical keyboard, Variable toolbar direction, Hide clipboard and emoji toolbars too
+
+</details>
+<details><summary><b>Settings → Gestures & swipes</b> (24)</summary>
+
+- **Configuration**: Enable gesture typing, Load gesture typing library
+- **Visuals & Preview**: Show gesture trail, Floating preview, Gesture typing, Dynamic floating preview, Gesture trail lifespan, Phrase gesture, Rapid typing cooldown, Autospace before gesture typing a word, Autospace after gesture typing a word
+- **Advanced Gestures**: Horizontal spacebar swipe gesture, Delete swipe, Delete word by word, Full keyboard swipe gesture, Full-screen touchpad, Swipe gestures and touchpad, Horizontal swipe threshold, Vertical swipe threshold, Vertical up spacebar swipe gesture, Vertical down spacebar swipe gesture, Toolbar swipe up gesture, Toolbar swipe down gesture, Touchpad sensitivity
+
+</details>
+<details><summary><b>Settings → Text correction</b> (22)</summary>
+
+- **Corrections**: Block offensive words, Auto-correction, Auto-correction aggressiveness, Auto-correct on, Backspace reverts autocorrect, Auto-correct indicator underline, Holding delete removes whole words, Auto-correction confidence, More auto-correction, Auto-correct shortcuts, Auto-capitalization, Force auto-capitalization, Shift changes capitalization of typed word
+- **Space**: Double-space period, Auto-pair symbols, Autospace after punctuation, Autospace after emoji, Autospace after picking a suggestion, Immediate auto-space, No autospace when pressing shift, Preserve space before punctuation, Switch to main keyboard after…
+
+</details>
+<details><summary><b>Settings → Suggestions</b> (22)</summary>
+
+- **Suggestions strip**: Show correction suggestions, Always show suggestions, Don’t always show suggestions for web edit fields, Number of suggestions, Always use middle suggestion, Always show typed word in the middle, Punctuation suggestions
+- **Prediction & learning**: Next-word suggestions, Suggestion balance, Personalized suggestions, Clear learned words, Prediction details, Prioritize personal & learned words, Require context match for learned words, Disable multi-word suggestions
+- **Smart suggestions & tools**: Suggest emojis, Inline emoji search, Suggest clipboard content, Suggest recent screenshots, Compress screenshot suggestions, Inline math calculation, Look up app names
+
+</details>
+<details><summary><b>Settings → Text Expander</b> (11)</summary>
+
+- "here", Configuration, Enable Text Expander, Expand immediately, Backspace undoes expansion, Show in suggestions, Autocomplete shortcuts, Suggestion only (no auto-expand), Management & Tools, Bulk editor, Online Guide & Syntax Reference
+
+</details>
+<details><summary><b>Settings → AI Integration</b> (16)</summary>
+
+- AI Provider, Custom AI Keys, API Token, Model, Translation Model, Voice Model, Cloud AI Max Tokens, Gemini API Key, Gemini Model, API Endpoint, Use max_completion_tokens, Omit temperature, Allow insecure connections
+- Offline AI Plugin, Offline Model, Keep model loaded
+
+</details>
+<details><summary><b>Settings → Plugins</b> (13)</summary>
+
+- Active Engines & Capabilities, Offline AI Plugin, Handwriting Input Plugin, Text Recognition (OCR), Voice Input, Translation, CJK Input, GIF Search, Keypress Audio, Storage & Maintenance, Storage & Cache, Documentation, Features Guide
+
+</details>
+<details><summary><b>Settings → Plugins → Voice Input</b> (11)</summary>
+
+- "here", Voice Plugin, Voice Input Provider, AI Provider & Voice Model, Manage On-Screen Keyboards, Disabled, Permissions, Microphone Permission, Manage & Download Models, Dictation & Behavior, Performance & Advanced
+
+</details>
+<details><summary><b>Settings → Plugins → Translation</b> (7)</summary>
+
+- Downloading…, Translation target language, Translation source language, Plugin Management, Load translation plugin, Offline Models, Offline Translation Models
+
+</details>
+<details><summary><b>Settings → Plugins → Handwriting Input Plugin</b> (6)</summary>
+
+- Load handwriting plugin, Plugin Management, Handwriting Plugin, Configuration, Offline Models, Handwriting Models
+
+</details>
+<details><summary><b>Settings → Plugins → Text Recognition (OCR)</b> (20)</summary>
+
+- Downloading plugin..., "here", Text Recognition Settings, Plugin management, OCR Plugin APK, Permissions, Camera permission, Text extraction & formatting, Preserve line breaks, Trim extra whitespace, De-hyphenate broken words, Normalize punctuation & quotes, Strip list bullets & markers, Filter stray noise characters, Workflow & automation, Auto-copy to clipboard, Auto-insert into input field, Suggest text extraction from screenshots, Camera & viewfinder, Remember flash state
+
+</details>
+<details><summary><b>Settings → Plugins → CJK Input</b> (11)</summary>
+
+- Downloading CJK plugin…, "here", Plugin Management, Load CJK companion plugin, Supported Languages, Chinese (Pinyin), Japanese (Romaji to Kana/Kanji), Korean (Hangul), Engine Utilities, Enable Mock Engine (Debug), Clear CJK User History
+
+</details>
+<details><summary><b>Settings → Plugins → GIF Search</b> (4)</summary>
+
+- "here", Plugin Status, Preview, Available Providers
+
+</details>
+- **Settings → Plugins → Storage & Cache**
+<details><summary><b>Settings → Advanced</b> (23)</summary>
+
+- Force incognito mode, App Profiles, Background Services, Backup and restore, Enable debug settings, Debug settings, Physical keyboards and experimental, Physical keyboard layout, Emoji for physical keyboard, Physical keyboard suggestion shortcuts
+- **Experimental**: Override Emoji version, URL detection
+- "here", Downloading…, Translation source language, Translation target language, Offline AI Plugin, System Instruction, Translate System Instruction, Temperature, Top-P (Nucleus Sampling), Top-K, Min-P
+
+</details>
+<details><summary><b>Settings → Advanced → App Profiles</b> (12)</summary>
+
+- Always show suggestions, Hide suggestion strip, Hide toolbar, Selection-based word replacement, Web Editor Compatibility, Automatic Incognito, Force Non-Incognito, Strip No-Enter Flag, Force Direct Text Commit, Allow Symbol Composing, Disable Auto-Spacing, Allow on Non-Editable Fields
+
+</details>
+<details><summary><b>Settings → Advanced → Background Services</b> (3)</summary>
+
+- Spell Checker Service, Clipboard Listener, App Launcher Sync
+
+</details>
+<details><summary><b>Settings → Advanced → Debug settings</b> (6)</summary>
+
+- Enable debug settings, Debug Mode, Show suggestion infos, Force non-distinct multitouch, Show slide indicator
+- "here"
+
+</details>
+<details><summary><b>Settings → Advanced → Custom AI Keys</b> (2)</summary>
+
+- "here", Show tags on keyboard
+
+</details>
+<details><summary><b>Settings → Updates</b> (5)</summary>
+
+- "here", GitHub Sponsors, Donate on Open Collective, Check for updates, Companion plugins
+
+</details>
+<details><summary><b>Settings → About</b> (8)</summary>
+
+- Setup wizard, Version, Restart keyboard, Open-source license, Description of hidden features, Go to FEATURES.md, View on GitHub, Save log
+
+</details>
+
+<!-- SETTINGS_MAP:END -->

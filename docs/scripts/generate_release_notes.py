@@ -6,17 +6,19 @@ import sys
 def extract_flavor(text):
     """Extracts the specific flavor name from an APK filename or markdown row."""
     lower = text.lower()
-    if 'offlinelite' in lower:
-        return 'offlinelite'
+    # English-only lite builds (*-lite-release.apk, rows mentioning "lite") get their own sizes
+    lite = 'lite' if 'lite' in lower else ''
     if 'standard' in lower:
-        return 'standard'
+        return 'standard' + lite
     if 'offline' in lower:
-        return 'offline'
+        return 'offline' + lite
     return None
 
 def get_apk_sizes(project_root):
-    """Scans app/build/outputs/apk for built APK files and returns a map of filename -> formatted size."""
-    apk_dir = os.path.join(project_root, 'app', 'build', 'outputs', 'apk')
+    """Scans dist (release workflow) or app/build/outputs/apk for APK files and returns a map of filename -> formatted size."""
+    apk_dir = os.path.join(project_root, 'dist')
+    if not os.path.isdir(apk_dir):
+        apk_dir = os.path.join(project_root, 'app', 'build', 'outputs', 'apk')
     apk_sizes = {}
     if not os.path.exists(apk_dir):
         return apk_sizes

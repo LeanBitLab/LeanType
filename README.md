@@ -67,6 +67,10 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 | **Package ID** | `com.leanbitlab.leantype` | `com.leanbitlab.leantype.offline` |
 | **Min Android Version** | Android 6.0+ *(SDK 23)* | Android 6.0+ *(SDK 23)* |
 | **Approximate APK Size** | **~12.8 MB** | **~12.5 MB** |
+| **Lite APK** *(English-only, Android 11+)* | `-standard-lite-release.apk` (~9 MB) | `-offline-lite-release.apk` (~9 MB) |
+
+> [!TIP]
+> **Lite builds (Android 11+):** every release also has English-only `-lite-release.apk` APKs, about 4 MB smaller. Other app languages come as [language packs](https://github.com/LeanBitLab/LeanType-Language-Packs): **Settings → Languages & Layouts → App translation** downloads one (Standard) or imports a pack file (Offline). The regular APKs and the F-Droid build keep all languages built in.
 
 > [!TIP]
 > **APK Installation Notice**: Google Play Protect or your browser may block direct APK installations downloaded from web browsers. If you experience installation issues, install via [Obtainium](https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/LeanBitLab/LeanType) or a package manager like [App Manager](https://github.com/MuntashirAkon/AppManager).
@@ -111,11 +115,12 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 - **🪟 Native IME Floating Window**: Seamless native IME window architecture with zero sensitive permissions (no `SYSTEM_ALERT_WINDOW`), pass-through background touches, bottom control bar (close, center-drag pill, resize drag handle), multi-touch tracking, zero dead space, and persistent mode memory.
 - **🪟 Auto Floating Keyboard in Landscape**: Automatically switches to a compact moveable floating window when entering landscape orientation and restores full docked width in portrait.
 - **🖼️ Live System Wallpaper & FastBlurEngine**: Dynamic blurred home/lock screen wallpaper background beneath keys with adjustable blur intensity slider and adaptive contrast.
-- **⚙️ Per-App Profiles & Compatibility Engine**: Tailor keyboard behavior per application (**Settings → Plugins & Capabilities → App Profiles**): enable web editor compatibility, automatic incognito, force non-incognito, direct commit mode, symbol composing (preserving underscores `_` in Tasker variables), dialer search field compatibility (`TYPE_NULL`), and custom Enter action overrides.
+- **⚙️ Per-App Profiles & Compatibility Engine**: Tailor keyboard behavior per application (**Settings → Advanced → App Profiles**): enable web editor compatibility, automatic incognito, force non-incognito, direct commit mode, symbol composing (preserving underscores `_` in Tasker variables), dialer search field compatibility (`TYPE_NULL`), and custom Enter action overrides.
 - **⌨️ First-Class Hardware Keyboard Support**: Full predictive text, auto-correction, candidate selection shortcuts (`1`, `2`, `3`), and D-PAD navigation in emoji palettes for external Bluetooth/USB keyboards, with smart toolbar elevation above the navigation bar.
 - **🎨 Advanced Appearance & Key Ergonomics**: Independent corner radius sliders for Normal Keys, Functional Keys (Shift/Backspace), and Action Keys (Enter/Space), adjustable key gaps, customizable padding scales, and distinct Shift/Caps visual state indicators (outline, filled, underlined).
 - **⌨️ Dual Toolbar / Split Suggestions**: Option to split suggestions from the quick-action toolbar.
 - **🎨 Custom Layout Profiles**: Save up to 5 custom layout profiles with persistent slot index tracking.
+- **🔤 Font Styles & Unicode Symbols**: A Font Style toolbar key opens a strip of Unicode text styles with live preview while typing, and a Unicode symbol panel sorted by topic (keycodes `FONT_STYLE`, `UNICODE_PANEL`).
 - **⌨️ Direct Switch Target IME & Custom Keycodes**: Bind keycode `-10076` to any toolbar key to switch directly to a specific target keyboard (e.g. Japanese, Korean, or Chinese IME). See the [Comprehensive Keycodes & Actions Reference](docs/FEATURES.md#30-comprehensive-keycodes--actions-reference) for the full keycodes catalog.
 
 ### 📋 Clipboard & Productivity
@@ -124,7 +129,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 - **🔢 Real-Time Inline Math Calculations**: Automatically evaluates mathematical expressions upon typing `=` (e.g. `25*4=`, `500-15%=`, `(12+8)/4=`) and shows the answer directly in the suggestion strip for 1-tap replacement.
 - **🔍 Smart Clipboard History & Inline Editing**: Search clips in real-time, swipe right to edit text directly in the toolbar with full gesture cursor/deletion, swipe left to delete with 5s undo, and fold pinned items.
 - **📸 Screenshot Suggestions**: Detects recently taken screenshots and offers instant 1-tap sharing via the suggestion strip or clipboard history.
-- **📝 Versatile Text Expander**: Built-in shortcut expansion with dynamic variables (`%date%`, `%time%`, `%clipboard%`, `%cursor%`), composable modifier filters (`%clipboard:clean%`, `:singleline`, `:title`, `:slug`, `:upper`, `:replace`), and automatic Wikipedia / research paper citation cleaner.
+- **📝 Versatile Text Expander**: Built-in shortcut expansion with dynamic variables (`%date%`, `%time%`, `%clipboard%`, `%cursor%`), composable modifier filters (`%clipboard:clean%`, `:singleline`, `:title`, `:slug`, `:upper`, `:replace`), `%tab%`, image shortcuts, a Bulk editor for all shortcuts as plain text, and a suggestion-only mode, and automatic Wikipedia / research paper citation cleaner.
 - **💾 Storage & Cache Management**: Visual disk space auditing across AI models, dictionaries, sound packs, and media cache, with 1-tap cache purging and history reset (**Settings → Plugins → Storage & Cache**).
 - **🔐 Granular Backup & Encrypted API Key Export**: Export preferences, layouts, custom wordlists, typing history, and text expander shortcuts separately, with optional AES-256 encrypted export for third-party AI and media API keys.
 - **💾 Selective Category Backup & Restore**: Export and restore your data modularly with independent category checkboxes (**Layouts**, **Theme & Custom Backgrounds**, **Dictionaries & Typing History**, **Clipboard History**, and **General Settings**) without all-or-nothing overwrites.
@@ -132,7 +137,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 - **📚 Smart Learning & Session Boost**: Adaptive personal dictionary learning threshold (1 to 5 times) and dynamic session word boosting.
 - **🚫 Blacklist & Regex Filtering**: Filter offensive words or unwanted suggestions with custom regex pattern support.
 - **🔄 Google Dictionary Import**: Seamlessly import personal dictionary words exported from Gboard.
-- **🔄 In-App Update Checker**: Direct GitHub release checks with single-version changelogs and 1-tap "View Release" redirection (`standard` flavor).
+- **🔄 In-App Update Checker**: Direct GitHub release checks for the app and companion plugins, a What's New dialog after each update, and 1-tap "View Release" redirection (`standard` flavor).
 
 ---
 
@@ -170,7 +175,7 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 ### 1. Cloud & Self-Hosted AI Setup (Gemini / Groq / OpenAI / Ollama)
 1. **Cloud API**: Obtain an API key from [Google AI Studio](https://aistudio.google.com/apikey) or [Groq Console](https://console.groq.com/keys).
 2. **Self-Hosted AI**: Run [Ollama](https://ollama.com/), [LM Studio](https://lmstudio.ai/), or [LocalAI](https://localai.io/) on your local network (e.g. `http://192.168.1.100:11434/v1`).
-3. Open **Settings → AI Integration → Set AI Provider**.
+3. Open **Settings → AI Integration → AI Provider**.
 4. Select your provider (or choose **Custom (OpenAI-compatible)** for self-hosted instances), enter your endpoint URL/token, and choose your preferred model and target language.
 5. 👉 **[Read the Full AI & Prompts Guide](docs/FEATURES.md)**
 
@@ -182,40 +187,40 @@ LeanType is available in two purpose-built flavors designed to match your exact 
 5. Tap the microphone icon on the keyboard toolbar to start speech-to-text!
 
 ### 3. Translation Setup (Offline & Online)
-1. **Online Flavor (`Standard`)**: Open **Settings → Translation** and tap **Download Plugin** to install the [LeanType Translation Plugin](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) automatically.
+1. **Online Flavor (`Standard`)**: Open **Settings → Plugins → Translation** and tap **Download Plugin** to install the [LeanType Translation Plugin](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) automatically.
 2. **Offline Flavor (`Offline`)**: Download `translation_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/LeanType-Translation-Plugin/releases/latest) and load it in **Settings → Plugins → Translation**.
 3. Download or import your required language translation models (~30 MB per language).
 4. Tap the **Translate** icon on the keyboard toolbar to translate selected text or input fields instantly.
 
 ### 4. Handwriting Recognition Setup
-1. **Online Flavor (`Standard`)**: Open **Settings → Handwriting** and tap **Download Plugin** to fetch the [LeanType Handwriting Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest).
-2. **Offline Flavor (`Offline`)**: Download `handwriting_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest) and load it in **Settings → Plugins → Handwriting**.
+1. **Online Flavor (`Standard`)**: Open **Settings → Plugins → Handwriting Input Plugin** and tap **Download Plugin** to fetch the [LeanType Handwriting Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest).
+2. **Offline Flavor (`Offline`)**: Download `handwriting_plugin-arm64-v8a.apk` from [GitHub Releases](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin/releases/latest) and load it in **Settings → Plugins → Handwriting Input Plugin**.
 3. Download or import handwriting recognition models for your languages.
 4. Tap the **Handwriting key** on the toolbar or long-press spacebar to draw characters on the writing canvas.
 
 ### 5. Offline AI Setup (Local GGUF Models)
 1. Download `ai_plugin-arm64-v8a.apk` (or `ai_plugin-x86_64.apk`) from the [LeanType Offline AI Plugin Releases](https://github.com/LeanBitLab/LeanType-Offline-AI-Plugin/releases/latest).
-2. In LeanType (`offline` build), navigate to **Settings → Plugins → Offline AI** and tap **Load Offline AI plugin** to load the `.apk`.
+2. In LeanType (`offline` build), navigate to **Settings → Plugins → Offline AI Plugin** and tap **Load Offline AI plugin** to load the `.apk`.
 3. Download a compatible GGUF model (e.g. `Qwen2.5-0.5B-Instruct-Q4_K_M.gguf` or `Llama-3.2-1B-Instruct-Q4_K_M.gguf`).
-4. In LeanType, navigate to **Settings → Advanced → GGUF Model (.gguf)** and select the model file from storage.
+4. In LeanType, navigate to **Settings → AI Integration → Offline Model** and select the model file from storage.
 
 ### 6. Dictionaries & Gesture Typing Setup
-1. **Dictionaries**: With unbundled dictionaries in v4.1.6, open **Settings → Dictionaries** (or tap the dictionary icon on the toolbar when missing) to download or import your language dictionary (`.dict`).
-2. **Gesture Typing**: In online builds, open **Settings → Gesture typing** to download the gesture library automatically. In offline builds, [download the library](https://github.com/erkserkserks/openboard/tree/46fdf2b550035ca69299ce312fa158e7ade36967/app/src/main/jniLibs) and load via *Settings → Gesture typing → Load gesture library*.
+1. **Dictionaries**: With unbundled dictionaries in v4.1.6, open **Settings → Languages & Layouts → Dictionaries** (or tap the dictionary icon on the toolbar when missing) to download or import your language dictionary (`.dict`).
+2. **Gesture Typing**: In online builds, open **Settings → Gestures & swipes** to download the gesture library automatically. In offline builds, [download the library](https://github.com/erkserkserks/openboard/tree/46fdf2b550035ca69299ce312fa158e7ade36967/app/src/main/jniLibs) and load via *Settings → Gesture typing → Load gesture library*.
 
 ### 7. Offline Camera & Screenshot OCR Setup
-1. **Online Flavors**: Open **Settings → OCR & Text Extraction** (or **Settings → Plugins → OCR**) and tap **Download Plugin** to install the [LeanType OCR Plugin](https://github.com/LeanBitLab/LeanType-Ocr-Plugin/releases/latest).
-2. **Offline Flavors**: Download `ocr_plugin.apk` from [GitHub Releases](https://github.com/LeanBitLab/LeanType-Ocr-Plugin/releases/latest) and load it in **Settings → Plugins → OCR**.
+1. **Online Flavors**: Open **Settings → Plugins → Text Recognition (OCR)** and tap **Download Plugin** to install the [LeanType OCR Plugin](https://github.com/LeanBitLab/LeanType-Ocr-Plugin/releases/latest).
+2. **Offline Flavors**: Download `ocr_plugin.apk` from [GitHub Releases](https://github.com/LeanBitLab/LeanType-Ocr-Plugin/releases/latest) and load it in **Settings → Plugins → Text Recognition (OCR)**.
 3. Tap the **Camera / OCR** icon on the toolbar to open the in-keyboard scanner or take a screenshot to see the instant suggestion pill.
 
 ### 8. GIF Search & Media Picker Setup
-1. Open **Settings → Plugins → GIF Settings** (or tap the GIF key on the toolbar).
+1. Open **Settings → Plugins → GIF Search** (or tap the GIF key on the toolbar).
 2. Select your preferred provider (**GIPHY** or **KLIPY**). Optionally configure custom API keys.
 3. Search trending GIFs, browse stickers, or insert media directly into compatible messaging apps.
 
 ### 9. CJK (Chinese, Japanese & Korean) Setup
-1. Open **Settings → Languages → Add language** and select Chinese, Japanese, or Korean.
-2. In **Settings → Plugins → CJK Settings**, enable the CJK Engine (or install the companion plugin if prompted).
+1. Open **Settings → Languages & Layouts → Add language** and select Chinese, Japanese, or Korean.
+2. In **Settings → Plugins → CJK Input**, enable the CJK Engine (or install the companion plugin if prompted).
 3. Select your input style (e.g. Pinyin for Chinese, Flick/Romaji for Japanese, 2-Set Hangul for Korean) and type with the live candidate strip.
 
 ---
@@ -234,6 +239,7 @@ Expand LeanType with official companion plugins:
 | ✍️ **Handwriting Plugin** | [LeanBitLab/Leantype-Handwriting-Plugin](https://github.com/LeanBitLab/Leantype-Handwriting-Plugin) | ML Kit Digital Ink canvas recognition engine |
 | 🎬 **GIF Plugin** | [LeanBitLab/LeanType-Gif-Plugin](https://github.com/LeanBitLab/LeanType-Gif-Plugin) | In-keyboard GIF & sticker search engine (GIPHY & KLIPY) with WhatsApp normalization |
 | 🈲 **CJK Plugin** | [LeanBitLab/LeanType-CJK-Plugin](https://github.com/LeanBitLab/LeanType-CJK-Plugin) | Pinyin Chinese, Japanese Romaji/Kana & Korean Hangul input engine |
+| 🌍 **Language Packs** | [LeanBitLab/LeanType-Language-Packs](https://github.com/LeanBitLab/LeanType-Language-Packs) | UI translations for the English-only Lite builds (Android 11+) |
 | 🎵 **Sound Packs** | [LeanBitLab/LeanType-SoundPacks](https://github.com/LeanBitLab/LeanType-SoundPacks) | Synthesized and physical modeling keypress sound packs |
 | 🎨 **Community Themes** | [GitHub: `leantype-theme`](https://github.com/topics/leantype-theme) | Browse and share custom color themes |
 

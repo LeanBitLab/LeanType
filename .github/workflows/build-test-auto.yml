@@ -26,6 +26,11 @@ jobs:
           # PR merge commit plus its parents, to list the files the PR changes
           fetch-depth: 2
 
+      # docs/FEATURES.md holds a settings map generated from the settings code; fail fast when a
+      # settings change leaves it (or a "Settings → ..." path in the docs) out of date
+      - name: Check settings map in docs
+        run: python3 tools/generate_settings_map.py --check
+
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
