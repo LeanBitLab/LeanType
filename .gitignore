@@ -100,3 +100,7 @@ CLAUDE.local.md
 .codex/
 .kiro/
 .github/copilot-instructions.md
+
+# Python caches
+__pycache__/
+*.pyc
