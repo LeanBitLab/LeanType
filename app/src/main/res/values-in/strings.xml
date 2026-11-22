@@ -1697,4 +1697,57 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="settings_group_typing">Mengetik</string>
     <string name="settings_group_extras">Ekstra</string>
     <string name="settings_group_system">Sistem</string>
+    <string-array name="translate_language_names">
+        <item>Inggris</item>
+        <item>Spanyol</item>
+        <item>Prancis</item>
+        <item>Jerman</item>
+        <item>Italia</item>
+        <item>Portugis</item>
+        <item>Tionghoa (Sederhana)</item>
+        <item>Tionghoa (Tradisional)</item>
+        <item>Jepang</item>
+        <item>Korea</item>
+        <item>Arab</item>
+        <item>Rusia</item>
+        <item>Hindi</item>
+        <item>Bengali</item>
+        <item>Indonesia</item>
+        <item>Belanda</item>
+        <item>Turki</item>
+        <item>Polandia</item>
+        <item>Ukraina</item>
+        <item>Swedia</item>
+        <item>Denmark</item>
+        <item>Norwegia</item>
+        <item>Finlandia</item>
+        <item>Yunani</item>
+        <item>Ibrani</item>
+        <item>Thai</item>
+        <item>Vietnam</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Marathi</item>
+        <item>Gujarat</item>
+        <item>Kannada</item>
+        <item>Malayalam</item>
+        <item>Urdu</item>
+        <item>Persia</item>
+        <item>Swahili</item>
+        <item>Rumania</item>
+        <item>Cheska</item>
+        <item>Hungaria</item>
+        <item>Filipino (Tagalog)</item>
+        <item>Melayu</item>
+        <item>Serbia</item>
+        <item>Kroasia</item>
+        <item>Bulgaria</item>
+        <item>Slovak</item>
+        <item>Sloven</item>
+        <item>Lituavi</item>
+        <item>Latvi</item>
+        <item>Esti</item>
+        <item>Katalan</item>
+        <item>Basque</item>
+    </string-array>
 </resources>

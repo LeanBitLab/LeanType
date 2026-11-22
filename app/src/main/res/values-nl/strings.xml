@@ -1747,4 +1747,57 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="settings_group_typing">Typen</string>
     <string name="settings_group_extras">Extra\'s</string>
     <string name="settings_group_system">Systeem</string>
+    <string-array name="translate_language_names">
+        <item>Engels</item>
+        <item>Spaans</item>
+        <item>Frans</item>
+        <item>Duits</item>
+        <item>Italiaans</item>
+        <item>Portugees</item>
+        <item>Chinees (vereenvoudigd)</item>
+        <item>Chinees (traditioneel)</item>
+        <item>Japans</item>
+        <item>Koreaans</item>
+        <item>Arabisch</item>
+        <item>Russisch</item>
+        <item>Hindi</item>
+        <item>Bengaals</item>
+        <item>Indonesisch</item>
+        <item>Nederlands</item>
+        <item>Turks</item>
+        <item>Pools</item>
+        <item>Oekraïens</item>
+        <item>Zweeds</item>
+        <item>Deens</item>
+        <item>Noors</item>
+        <item>Fins</item>
+        <item>Grieks</item>
+        <item>Hebreeuws</item>
+        <item>Thai</item>
+        <item>Vietnamees</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Marathi</item>
+        <item>Gujarati</item>
+        <item>Kannada</item>
+        <item>Malayalam</item>
+        <item>Urdu</item>
+        <item>Perzisch</item>
+        <item>Swahili</item>
+        <item>Roemeens</item>
+        <item>Tsjechisch</item>
+        <item>Hongaars</item>
+        <item>Filipijns (Tagalog)</item>
+        <item>Maleis</item>
+        <item>Servisch</item>
+        <item>Kroatisch</item>
+        <item>Bulgaars</item>
+        <item>Slowaaks</item>
+        <item>Sloveens</item>
+        <item>Litouws</item>
+        <item>Lets</item>
+        <item>Estisch</item>
+        <item>Catalaans</item>
+        <item>Baskisch</item>
+    </string-array>
 </resources>

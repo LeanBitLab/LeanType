@@ -1696,4 +1696,57 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="settings_group_typing">Escritura</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">Sistema</string>
+    <string-array name="translate_language_names">
+        <item>Inglés</item>
+        <item>Español</item>
+        <item>Francés</item>
+        <item>Alemán</item>
+        <item>Italiano</item>
+        <item>Portugués</item>
+        <item>Chino (simplificado)</item>
+        <item>Chino (tradicional)</item>
+        <item>Japonés</item>
+        <item>Coreano</item>
+        <item>Árabe</item>
+        <item>Ruso</item>
+        <item>Hindi</item>
+        <item>Bengalí</item>
+        <item>Indonesio</item>
+        <item>Neerlandés</item>
+        <item>Turco</item>
+        <item>Polaco</item>
+        <item>Ucraniano</item>
+        <item>Sueco</item>
+        <item>Danés</item>
+        <item>Noruego</item>
+        <item>Finés</item>
+        <item>Griego</item>
+        <item>Hebreo</item>
+        <item>Tailandés</item>
+        <item>Vietnamita</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Maratí</item>
+        <item>Guyaratí</item>
+        <item>Canarés</item>
+        <item>Malayálam</item>
+        <item>Urdu</item>
+        <item>Persa</item>
+        <item>Suajili</item>
+        <item>Rumano</item>
+        <item>Checo</item>
+        <item>Húngaro</item>
+        <item>Filipino (tagalo)</item>
+        <item>Malayo</item>
+        <item>Serbio</item>
+        <item>Croata</item>
+        <item>Búlgaro</item>
+        <item>Eslovaco</item>
+        <item>Esloveno</item>
+        <item>Lituano</item>
+        <item>Letón</item>
+        <item>Estonio</item>
+        <item>Catalán</item>
+        <item>Euskera</item>
+    </string-array>
 </resources>

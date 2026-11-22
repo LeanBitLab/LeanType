@@ -1699,4 +1699,57 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="settings_group_typing">Psaní</string>
     <string name="settings_group_extras">Extra</string>
     <string name="settings_group_system">Systém</string>
+    <string-array name="translate_language_names">
+        <item>Angličtina</item>
+        <item>Španělština</item>
+        <item>Francouzština</item>
+        <item>Němčina</item>
+        <item>Italština</item>
+        <item>Portugalština</item>
+        <item>Čínština (zjednodušené)</item>
+        <item>Čínština (tradiční)</item>
+        <item>Japonština</item>
+        <item>Korejština</item>
+        <item>Arabština</item>
+        <item>Ruština</item>
+        <item>Hindština</item>
+        <item>Bengálština</item>
+        <item>Indonéština</item>
+        <item>Nizozemština</item>
+        <item>Turečtina</item>
+        <item>Polština</item>
+        <item>Ukrajinština</item>
+        <item>Švédština</item>
+        <item>Dánština</item>
+        <item>Norština</item>
+        <item>Finština</item>
+        <item>Řečtina</item>
+        <item>Hebrejština</item>
+        <item>Thajština</item>
+        <item>Vietnamština</item>
+        <item>Tamilština</item>
+        <item>Telugština</item>
+        <item>Maráthština</item>
+        <item>Gudžarátština</item>
+        <item>Kannadština</item>
+        <item>Malajálamština</item>
+        <item>Urdština</item>
+        <item>Perština</item>
+        <item>Svahilština</item>
+        <item>Rumunština</item>
+        <item>Čeština</item>
+        <item>Maďarština</item>
+        <item>Filipínština (tagalog)</item>
+        <item>Malajština</item>
+        <item>Srbština</item>
+        <item>Chorvatština</item>
+        <item>Bulharština</item>
+        <item>Slovenština</item>
+        <item>Slovinština</item>
+        <item>Litevština</item>
+        <item>Lotyština</item>
+        <item>Estonština</item>
+        <item>Katalánština</item>
+        <item>Baskičtina</item>
+    </string-array>
 </resources>

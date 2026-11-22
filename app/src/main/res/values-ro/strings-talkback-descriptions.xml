@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"S-au închis caracterele alternative"</string>
     <string name="spoken_open_more_suggestions">"Sunt disponibile sugestii alternative"</string>
     <string name="spoken_close_more_suggestions">"S-au închis sugestiile alternative"</string>
+    <string name="spoken_clipboard_suggestion">"Sugestie din clipboard"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Emoticoane"</string>
+    <string name="spoken_description_emoji_category_unicode">"Simboluri Unicode"</string>
 </resources>

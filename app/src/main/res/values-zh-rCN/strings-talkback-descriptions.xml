@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"已关闭替代字符"</string>
     <string name="spoken_open_more_suggestions">"有可用的其他建议字词"</string>
     <string name="spoken_close_more_suggestions">"已关闭其他建议字词"</string>
+    <string name="spoken_clipboard_suggestion">"剪贴板建议"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"表情"</string>
+    <string name="spoken_description_emoji_category_unicode">"Unicode 符号"</string>
 </resources>

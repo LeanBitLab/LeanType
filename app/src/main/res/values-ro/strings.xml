@@ -1734,4 +1734,57 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="settings_group_typing">Tastarea</string>
     <string name="settings_group_extras">Extra</string>
     <string name="settings_group_system">Sistem</string>
+    <string-array name="translate_language_names">
+        <item>Engleză</item>
+        <item>Spaniolă</item>
+        <item>Franceză</item>
+        <item>Germană</item>
+        <item>Italiană</item>
+        <item>Portugheză</item>
+        <item>Chineză (simplificată)</item>
+        <item>Chineză (tradițională)</item>
+        <item>Japoneză</item>
+        <item>Coreeană</item>
+        <item>Arabă</item>
+        <item>Rusă</item>
+        <item>Hindi</item>
+        <item>Bengaleză</item>
+        <item>Indoneziană</item>
+        <item>Neerlandeză</item>
+        <item>Turcă</item>
+        <item>Poloneză</item>
+        <item>Ucraineană</item>
+        <item>Suedeză</item>
+        <item>Daneză</item>
+        <item>Norvegiană</item>
+        <item>Finlandeză</item>
+        <item>Greacă</item>
+        <item>Ebraică</item>
+        <item>Thailandeză</item>
+        <item>Vietnameză</item>
+        <item>Tamilă</item>
+        <item>Telugu</item>
+        <item>Marathi</item>
+        <item>Gujarati</item>
+        <item>Kannada</item>
+        <item>Malayalam</item>
+        <item>Urdu</item>
+        <item>Persană</item>
+        <item>Swahili</item>
+        <item>Română</item>
+        <item>Cehă</item>
+        <item>Maghiară</item>
+        <item>Filipineză (tagalog)</item>
+        <item>Malaeză</item>
+        <item>Sârbă</item>
+        <item>Croată</item>
+        <item>Bulgară</item>
+        <item>Slovacă</item>
+        <item>Slovenă</item>
+        <item>Lituaniană</item>
+        <item>Letonă</item>
+        <item>Estonă</item>
+        <item>Catalană</item>
+        <item>Bască</item>
+    </string-array>
 </resources>

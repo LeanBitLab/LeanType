@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"Caracteres alternativos foram descartados"</string>
     <string name="spoken_open_more_suggestions">"Sugestões alternativas estão disponíveis"</string>
     <string name="spoken_close_more_suggestions">"Sugestões alternativas foram descartadas"</string>
+    <string name="spoken_clipboard_suggestion">"Sugestão da área de transferência"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Smileys"</string>
+    <string name="spoken_description_emoji_category_unicode">"Símbolos Unicode"</string>
 </resources>

@@ -1734,4 +1734,57 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="settings_group_typing">Tippimine</string>
     <string name="settings_group_extras">Lisad</string>
     <string name="settings_group_system">Süsteem</string>
+    <string-array name="translate_language_names">
+        <item>Inglise</item>
+        <item>Hispaania</item>
+        <item>Prantsuse</item>
+        <item>Saksa</item>
+        <item>Itaalia</item>
+        <item>Portugali</item>
+        <item>Hiina (lihtsustatud)</item>
+        <item>Hiina (traditsiooniline)</item>
+        <item>Jaapani</item>
+        <item>Korea</item>
+        <item>Araabia</item>
+        <item>Vene</item>
+        <item>Hindi</item>
+        <item>Bengali</item>
+        <item>Indoneesia</item>
+        <item>Hollandi</item>
+        <item>Türgi</item>
+        <item>Poola</item>
+        <item>Ukraina</item>
+        <item>Rootsi</item>
+        <item>Taani</item>
+        <item>Norra</item>
+        <item>Soome</item>
+        <item>Kreeka</item>
+        <item>Heebrea</item>
+        <item>Tai</item>
+        <item>Vietnami</item>
+        <item>Tamili</item>
+        <item>Telugu</item>
+        <item>Marathi</item>
+        <item>Gudžarati</item>
+        <item>Kannada</item>
+        <item>Malajalami</item>
+        <item>Urdu</item>
+        <item>Pärsia</item>
+        <item>Suahiili</item>
+        <item>Rumeenia</item>
+        <item>Tšehhi</item>
+        <item>Ungari</item>
+        <item>Filipiini (tagalogi)</item>
+        <item>Malai</item>
+        <item>Serbia</item>
+        <item>Horvaadi</item>
+        <item>Bulgaaria</item>
+        <item>Slovaki</item>
+        <item>Sloveeni</item>
+        <item>Leedu</item>
+        <item>Läti</item>
+        <item>Eesti</item>
+        <item>Katalaani</item>
+        <item>Baski</item>
+    </string-array>
 </resources>

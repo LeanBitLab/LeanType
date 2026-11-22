@@ -1744,4 +1744,57 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="settings_group_typing">Pisanie</string>
     <string name="settings_group_extras">Dodatki</string>
     <string name="settings_group_system">System</string>
+    <string-array name="translate_language_names">
+        <item>Angielski</item>
+        <item>Hiszpański</item>
+        <item>Francuski</item>
+        <item>Niemiecki</item>
+        <item>Włoski</item>
+        <item>Portugalski</item>
+        <item>Chiński (uproszczone)</item>
+        <item>Chiński (tradycyjne)</item>
+        <item>Japoński</item>
+        <item>Koreański</item>
+        <item>Arabski</item>
+        <item>Rosyjski</item>
+        <item>Hindi</item>
+        <item>Bengalski</item>
+        <item>Indonezyjski</item>
+        <item>Niderlandzki</item>
+        <item>Turecki</item>
+        <item>Polski</item>
+        <item>Ukraiński</item>
+        <item>Szwedzki</item>
+        <item>Duński</item>
+        <item>Norweski</item>
+        <item>Fiński</item>
+        <item>Grecki</item>
+        <item>Hebrajski</item>
+        <item>Tajski</item>
+        <item>Wietnamski</item>
+        <item>Tamilski</item>
+        <item>Telugu</item>
+        <item>Marathi</item>
+        <item>Gudżarati</item>
+        <item>Kannada</item>
+        <item>Malajalam</item>
+        <item>Urdu</item>
+        <item>Perski</item>
+        <item>Suahili</item>
+        <item>Rumuński</item>
+        <item>Czeski</item>
+        <item>Węgierski</item>
+        <item>Filipiński (tagalski)</item>
+        <item>Malajski</item>
+        <item>Serbski</item>
+        <item>Chorwacki</item>
+        <item>Bułgarski</item>
+        <item>Słowacki</item>
+        <item>Słoweński</item>
+        <item>Litewski</item>
+        <item>Łotewski</item>
+        <item>Estoński</item>
+        <item>Kataloński</item>
+        <item>Baskijski</item>
+    </string-array>
 </resources>
