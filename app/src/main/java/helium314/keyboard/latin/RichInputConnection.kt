@@ -529,6 +529,17 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         return !TextUtils.isEmpty(after)
     }
 
+    /** Text before the cursor asked from the editor, not from the cache: arrow key events don't update the cache */
+    fun getTextBeforeCursorFromEditor(n: Int): CharSequence? {
+        if (n <= 0 || !isConnected()) return null
+        return try {
+            mIC?.getTextBeforeCursor(n, 0)
+        } catch (e: Exception) {
+            Log.w(TAG, "getTextBeforeCursor threw in host app", e)
+            null
+        }
+    }
+
     fun hasComposingText(): Boolean = mComposingText.isNotEmpty()
 
     fun getCursorCapsMode(

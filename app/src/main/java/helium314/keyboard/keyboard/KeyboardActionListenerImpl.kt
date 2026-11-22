@@ -1031,6 +1031,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             KeyCode.ARROW_DOWN
         }
         repeat(abs(steps)) {
+            // up at the start or down at the end of the text moves the focus to another field (#891)
+            val next = if (steps < 0) connection.getTextBeforeCursorFromEditor(1) else connection.getTextAfterCursor(1, 0)
+            if (next != null && next.isEmpty()) return true
             onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
         }
         return true
@@ -1058,6 +1061,14 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             inputLogic.finishInput()
         }
 
+        // An arrow key at the edge of the text moves the focus to another field (#891), so stop at the edge.
+        // Steps < 0 move back in the text (also for RTL). Without an answer from the editor, move as before.
+        val available = if (steps < 0) connection.getTextBeforeCursorFromEditor(abs(steps))
+            else connection.getTextAfterCursor(abs(steps), 0)
+        val moveCount = if (available == null) abs(steps)
+            else minOf(abs(steps), Character.codePointCount(available, 0, available.length))
+        if (moveCount == 0) return true
+
         cursorMoveStepCount++
         val shouldHaptic = cursorMoveStepCount % 2 != 0
         val code = if (steps < 0) {
@@ -1067,7 +1078,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
             if (shouldHaptic) gestureMoveForwardHaptics(true)
             if (rtl) KeyCode.ARROW_LEFT else KeyCode.ARROW_RIGHT
         }
-        repeat(abs(steps)) {
+        repeat(moveCount) {
             onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
         }
         return true
