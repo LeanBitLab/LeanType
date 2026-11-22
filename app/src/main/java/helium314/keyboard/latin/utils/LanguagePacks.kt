@@ -17,6 +17,8 @@ import helium314.keyboard.latin.settings.Settings
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 import java.util.Locale
 import java.util.zip.ZipFile
 
@@ -28,11 +30,14 @@ import java.util.zip.ZipFile
  * A pack reuses the resource IDs of exactly one build (tools/build_language_pack.py), so its
  * versionName carries that build's resource table checksum and its locale:
  * `<versionName>;res=<crc32 of resources.arsc, hex>;locale=<values folder suffix>`.
- * Packs whose package name or checksum differ from the running app are never loaded.
+ * Packs whose package name or checksum differ from the running app are never loaded, and are deleted
+ * once the app was updated. A pack may only hold strings: nothing but a manifest and a resource
+ * table with string, plurals and array resources, so it cannot replace layouts, drawables or values.
  */
 object LanguagePacks {
     private const val TAG = "LanguagePacks"
     private const val DIR = "language_packs"
+    private val ALLOWED_TYPES = setOf("string", "plurals", "array")
     const val RELEASES_URL = "https://github.com/LeanBitLab/LeanType-Language-Packs/releases"
 
     enum class Result { OK, INVALID, WRONG_BUILD, DOWNLOAD_FAILED }
@@ -168,7 +173,75 @@ object LanguagePacks {
             Log.w(TAG, "${pack.name} is for ${info.packageName} ${info.versionName}, app is ${context.packageName} ${appChecksum(context)}")
             return Result.WRONG_BUILD to null
         }
+        if (!holdsOnlyStrings(pack)) {
+            Log.w(TAG, "${pack.name} holds more than strings")
+            return Result.INVALID to null
+        }
         return Result.OK to locale
+    }
+
+    private fun holdsOnlyStrings(pack: File): Boolean = try {
+        ZipFile(pack).use { zip ->
+            val names = zip.entries().asSequence().map { it.name }.toSet()
+            if (names != setOf("AndroidManifest.xml", "resources.arsc")) return false
+            val types = resourceTypes(zip.getInputStream(zip.getEntry("resources.arsc")).use { it.readBytes() })
+            types != null && ALLOWED_TYPES.containsAll(types)
+        }
+    } catch (e: Exception) {
+        Log.w(TAG, "can't read ${pack.name}", e)
+        false
+    }
+
+    /** Names of the resource types that have entries in a resources.arsc, or null if it is malformed. */
+    private fun resourceTypes(arsc: ByteArray): Set<String>? {
+        val buf = ByteBuffer.wrap(arsc).order(ByteOrder.LITTLE_ENDIAN)
+        fun u16(at: Int) = buf.getShort(at).toInt() and 0xffff
+        if (arsc.size < 12 || u16(0) != 0x0002) return null // RES_TABLE_TYPE
+        val types = mutableSetOf<String>()
+        var pos = u16(2)
+        while (pos + 8 <= arsc.size) {
+            val size = buf.getInt(pos + 4)
+            if (size < 8 || size > arsc.size - pos) return null
+            if (u16(pos) == 0x0200) { // RES_TABLE_PACKAGE_TYPE: id, name[128], then typeStrings offset
+                val typeNames = stringPool(buf, pos + buf.getInt(pos + 268)) ?: return null
+                val end = pos + size
+                var chunk = pos + u16(pos + 2)
+                while (chunk + 8 <= end) {
+                    val chunkSize = buf.getInt(chunk + 4)
+                    if (chunkSize < 8 || chunkSize > end - chunk) return null
+                    if (u16(chunk) == 0x0201 || u16(chunk) == 0x0202) // type, type spec: id is 1-based
+                        types += typeNames.getOrNull((buf.get(chunk + 8).toInt() and 0xff) - 1) ?: return null
+                    chunk += chunkSize
+                }
+            }
+            pos += size
+        }
+        return types
+    }
+
+    private fun stringPool(buf: ByteBuffer, at: Int): List<String>? {
+        if (at < 0 || at + 28 > buf.limit() || buf.getShort(at).toInt() != 0x0001) return null
+        val count = buf.getInt(at + 8)
+        val utf8 = buf.getInt(at + 16) and 0x100 != 0
+        val strings = at + buf.getInt(at + 20)
+        val offsets = at + (buf.getShort(at + 2).toInt() and 0xffff)
+        if (count < 0 || offsets + 4L * count > buf.limit()) return null
+        return (0 until count).map { i ->
+            var p = strings + buf.getInt(offsets + 4 * i)
+            if (utf8) {
+                // char count, then byte count: each 1 byte, or 2 if the high bit is set
+                p += if (buf.get(p).toInt() and 0x80 != 0) 2 else 1
+                var len = buf.get(p).toInt() and 0xff
+                if (len and 0x80 != 0) { len = (len and 0x7f shl 8) or (buf.get(p + 1).toInt() and 0xff); p++ }
+                p++
+                String(ByteArray(len) { buf.get(p + it) }, Charsets.UTF_8)
+            } else {
+                var len = buf.getShort(p).toInt() and 0xffff
+                if (len and 0x8000 != 0) { len = (len and 0x7fff shl 16) or (buf.getShort(p + 2).toInt() and 0xffff); p += 2 }
+                p += 2
+                String(CharArray(len) { buf.getChar(p + 2 * it) })
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -178,7 +251,9 @@ object LanguagePacks {
             .sortedBy { it.name }
             .mapNotNull { pack ->
                 if (check(context, pack).first != Result.OK) {
-                    Log.w(TAG, "skipping ${pack.name}")
+                    // packs are installed only after a check, so this one is from an older app build
+                    Log.i(TAG, "deleting ${pack.name}, it does not fit this build")
+                    pack.delete()
                     return@mapNotNull null
                 }
                 Log.i(TAG, "loading ${pack.name}")
