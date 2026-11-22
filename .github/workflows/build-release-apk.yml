@@ -39,7 +39,22 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release APKs
-        run: ./gradlew assembleStandardRelease assembleOfflineRelease
+        run: |
+          ./gradlew assembleStandardRelease assembleOfflineRelease
+          mkdir dist
+          mv app/build/outputs/apk/*/release/*.apk dist/
+
+      # English-only APKs for Android 11+: the UI translations come as language packs
+      # (LeanType-Language-Packs builds them from these APKs). The all-languages APKs above
+      # stay the main download, and the standard one is what F-Droid compares its build with.
+      - name: Build English-only APKs
+        run: |
+          ./gradlew assembleStandardRelease assembleOfflineRelease -PenglishOnly
+          for apk in app/build/outputs/apk/*/release/*.apk; do
+            name=$(basename "$apk")
+            mv "$apk" "dist/${name%-release.apk}-lite-release.apk"
+          done
+          ls -l dist
 
       - name: Generate Release Notes
         # ponytail: generate release notes from changelog during build
@@ -50,7 +65,7 @@ jobs:
         with:
           name: LeanType-Release-APKs
           path: |
-            app/build/outputs/apk/**/*.apk
+            dist/*.apk
             docs/releasenote/release_notes_v*.md
 
       - name: Create GitHub Release
@@ -60,4 +75,4 @@ jobs:
           prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') || contains(github.ref_name, 'rc') }}
           body_path: docs/releasenote/release_notes_temp.md
           files: |
-            app/build/outputs/apk/**/release/*.apk
+            dist/*.apk
