@@ -53,10 +53,11 @@ class SettingsContainer(context: Context) {
     //  show as disabled (i.e. no interaction possible) -> users confused
     //  show, but change will not do anything because another setting needs to be enabled first -> probably best
     fun filter(searchTerm: String): List<Setting> {
-        val term = searchTerm.lowercase()
+        val term = searchTerm.lowercase().trim()
         val titleMatch = mutableListOf<Setting>()
         val titleWordMatch = mutableListOf<Setting>()
         val descriptionMatch = mutableListOf<Setting>()
+        val partialMatch = mutableListOf<Setting>()
 
         list.forEach { setting ->
             val titleLower = setting.titleLower
@@ -66,10 +67,13 @@ class SettingsContainer(context: Context) {
                 titleWordMatch.add(setting)
             } else if (setting.descriptionWords?.any { it.startsWith(term) } == true) {
                 descriptionMatch.add(setting)
+            } else if (term.length >= 3 && (titleLower.contains(term) || setting.descriptionLower?.contains(term) == true)) {
+                // parts of compound words, e.g. "taste" in the German "Löschtaste", or "correct" in "Autocorrect"
+                partialMatch.add(setting)
             }
         }
 
-        return titleMatch + titleWordMatch + descriptionMatch
+        return titleMatch + titleWordMatch + descriptionMatch + partialMatch
     }
 }
 
@@ -95,7 +99,8 @@ class Setting(
 
     val titleLower = title.lowercase()
     val titleWords = titleLower.split(' ')
-    val descriptionWords = description?.lowercase()?.split(' ')
+    val descriptionLower = description?.lowercase()
+    val descriptionWords = descriptionLower?.split(' ')
 
     @Composable
     fun Preference() {
