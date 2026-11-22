@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.core.content.edit
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.NavBackStackEntry
@@ -55,6 +56,13 @@ fun jumpOpenedSections(): Set<String> {
 @Composable
 fun fineTuneExpanded(prefs: SharedPreferences, key: String, default: Boolean): Boolean =
     prefs.getBoolean(key, default) || key in jumpOpenedSections()
+
+/** Closes all fine-tune sections, so the next opened settings page starts with them closed */
+fun collapseFineTuneSections(prefs: SharedPreferences) {
+    val open = prefs.all.keys.filter { it.startsWith(FINE_TUNE_SECTION_PREFIX) }
+    if (open.isEmpty()) return
+    prefs.edit { open.forEach { remove(it) } }
+}
 
 /** Changes of this screen's jump state, for use outside of composition */
 class JumpState internal constructor(private val state: SavedStateHandle?) {
