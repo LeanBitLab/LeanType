@@ -76,3 +76,18 @@ jobs:
           body_path: docs/releasenote/release_notes_temp.md
           files: |
             dist/*.apk
+
+      # Start the language pack build for this release (packs must be cut from these exact
+      # lite APKs). Needs PACKS_DISPATCH_TOKEN: a fine-grained token for
+      # LeanBitLab/LeanType-Language-Packs with Actions read/write. The pack repo also checks
+      # for new releases every 6 hours, so a missing token only delays the packs.
+      - name: Start language pack build
+        if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/beta-')
+        env:
+          GH_TOKEN: ${{ secrets.PACKS_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "PACKS_DISPATCH_TOKEN not set, the pack repo picks this release up on its next scheduled run"
+            exit 0
+          fi
+          gh workflow run build-packs.yml -R LeanBitLab/LeanType-Language-Packs -f app_tag="${{ github.ref_name }}"
