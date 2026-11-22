@@ -1734,4 +1734,57 @@
     <string name="settings_group_typing">Въвеждане</string>
     <string name="settings_group_extras">Екстри</string>
     <string name="settings_group_system">Система</string>
+    <string-array name="translate_language_names">
+        <item>Английски</item>
+        <item>Испански</item>
+        <item>Френски</item>
+        <item>Немски</item>
+        <item>Италиански</item>
+        <item>Португалски</item>
+        <item>Китайски (опростена)</item>
+        <item>Китайски (традиционна)</item>
+        <item>Японски</item>
+        <item>Корейски</item>
+        <item>Арабски</item>
+        <item>Руски</item>
+        <item>Хинди</item>
+        <item>Бенгалски</item>
+        <item>Индонезийски</item>
+        <item>Нидерландски</item>
+        <item>Турски</item>
+        <item>Полски</item>
+        <item>Украински</item>
+        <item>Шведски</item>
+        <item>Датски</item>
+        <item>Норвежки</item>
+        <item>Фински</item>
+        <item>Гръцки</item>
+        <item>Иврит</item>
+        <item>Тайски</item>
+        <item>Виетнамски</item>
+        <item>Тамилски</item>
+        <item>Телугу</item>
+        <item>Марати</item>
+        <item>Гуджарати</item>
+        <item>Каннада</item>
+        <item>Малаялам</item>
+        <item>Урду</item>
+        <item>Персийски</item>
+        <item>Суахили</item>
+        <item>Румънски</item>
+        <item>Чешки</item>
+        <item>Унгарски</item>
+        <item>Филипински (тагалог)</item>
+        <item>Малайски</item>
+        <item>Сръбски</item>
+        <item>Хърватски</item>
+        <item>Български</item>
+        <item>Словашки</item>
+        <item>Словенски</item>
+        <item>Литовски</item>
+        <item>Латвийски</item>
+        <item>Естонски</item>
+        <item>Каталонски</item>
+        <item>Баски</item>
+    </string-array>
 </resources>

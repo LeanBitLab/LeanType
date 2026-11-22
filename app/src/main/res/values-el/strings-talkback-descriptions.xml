@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"Παράβλεψη εναλλακτικών χαρακτήρων"</string>
     <string name="spoken_open_more_suggestions">"Διατίθενται εναλλακτικές προτάσεις"</string>
     <string name="spoken_close_more_suggestions">"Παράβλεψη εναλλακτικών προτάσεων"</string>
+    <string name="spoken_clipboard_suggestion">"Πρόταση προχείρου"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Φατσούλες"</string>
+    <string name="spoken_description_emoji_category_unicode">"Σύμβολα Unicode"</string>
 </resources>

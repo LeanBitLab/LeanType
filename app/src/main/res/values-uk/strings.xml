@@ -1700,4 +1700,57 @@
     <string name="settings_group_typing">Набір тексту</string>
     <string name="settings_group_extras">Додатково</string>
     <string name="settings_group_system">Система</string>
+    <string-array name="translate_language_names">
+        <item>Англійська</item>
+        <item>Іспанська</item>
+        <item>Французька</item>
+        <item>Німецька</item>
+        <item>Італійська</item>
+        <item>Португальська</item>
+        <item>Китайська (спрощена)</item>
+        <item>Китайська (традиційна)</item>
+        <item>Японська</item>
+        <item>Корейська</item>
+        <item>Арабська</item>
+        <item>Російська</item>
+        <item>Гінді</item>
+        <item>Бенгальська</item>
+        <item>Індонезійська</item>
+        <item>Нідерландська</item>
+        <item>Турецька</item>
+        <item>Польська</item>
+        <item>Українська</item>
+        <item>Шведська</item>
+        <item>Данська</item>
+        <item>Норвезька</item>
+        <item>Фінська</item>
+        <item>Грецька</item>
+        <item>Іврит</item>
+        <item>Тайська</item>
+        <item>Вʼєтнамська</item>
+        <item>Тамільська</item>
+        <item>Телугу</item>
+        <item>Маратхі</item>
+        <item>Гуджараті</item>
+        <item>Каннада</item>
+        <item>Малаялам</item>
+        <item>Урду</item>
+        <item>Перська</item>
+        <item>Суахілі</item>
+        <item>Румунська</item>
+        <item>Чеська</item>
+        <item>Угорська</item>
+        <item>Філіппінська (тагальська)</item>
+        <item>Малайська</item>
+        <item>Сербська</item>
+        <item>Хорватська</item>
+        <item>Болгарська</item>
+        <item>Словацька</item>
+        <item>Словенська</item>
+        <item>Литовська</item>
+        <item>Латиська</item>
+        <item>Естонська</item>
+        <item>Каталонська</item>
+        <item>Баскська</item>
+    </string-array>
 </resources>

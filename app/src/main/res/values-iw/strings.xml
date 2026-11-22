@@ -1705,4 +1705,57 @@
     <string name="settings_group_typing">הקלדה</string>
     <string name="settings_group_extras">תוספות</string>
     <string name="settings_group_system">מערכת</string>
+    <string-array name="translate_language_names">
+        <item>אנגלית</item>
+        <item>ספרדית</item>
+        <item>צרפתית</item>
+        <item>גרמנית</item>
+        <item>איטלקית</item>
+        <item>פורטוגזית</item>
+        <item>סינית (פשוט)</item>
+        <item>סינית (מסורתי)</item>
+        <item>יפנית</item>
+        <item>קוריאנית</item>
+        <item>ערבית</item>
+        <item>רוסית</item>
+        <item>הינדי</item>
+        <item>בנגלית</item>
+        <item>אינדונזית</item>
+        <item>הולנדית</item>
+        <item>טורקית</item>
+        <item>פולנית</item>
+        <item>אוקראינית</item>
+        <item>שוודית</item>
+        <item>דנית</item>
+        <item>נורווגית</item>
+        <item>פינית</item>
+        <item>יוונית</item>
+        <item>עברית</item>
+        <item>תאית</item>
+        <item>וייטנאמית</item>
+        <item>טמילית</item>
+        <item>טלוגו</item>
+        <item>מראטהית</item>
+        <item>גוג׳ארטי</item>
+        <item>קנאדה</item>
+        <item>מליאלאם</item>
+        <item>אורדו</item>
+        <item>פרסית</item>
+        <item>סווהילי</item>
+        <item>רומנית</item>
+        <item>צ׳כית</item>
+        <item>הונגרית</item>
+        <item>פיליפינית (טאגאלוג)</item>
+        <item>מלאית</item>
+        <item>סרבית</item>
+        <item>קרואטית</item>
+        <item>בולגרית</item>
+        <item>סלובקית</item>
+        <item>סלובנית</item>
+        <item>ליטאית</item>
+        <item>לטבית</item>
+        <item>אסטונית</item>
+        <item>קטלאנית</item>
+        <item>בסקית</item>
+    </string-array>
 </resources>

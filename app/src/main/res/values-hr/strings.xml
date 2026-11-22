@@ -1697,4 +1697,57 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="settings_group_typing">Tipkanje</string>
     <string name="settings_group_extras">Dodaci</string>
     <string name="settings_group_system">Sustav</string>
+    <string-array name="translate_language_names">
+        <item>Engleski</item>
+        <item>Španjolski</item>
+        <item>Francuski</item>
+        <item>Njemački</item>
+        <item>Talijanski</item>
+        <item>Portugalski</item>
+        <item>Kineski (pojednostavljeno pismo)</item>
+        <item>Kineski (tradicionalno pismo)</item>
+        <item>Japanski</item>
+        <item>Korejski</item>
+        <item>Arapski</item>
+        <item>Ruski</item>
+        <item>Hindski</item>
+        <item>Bangla</item>
+        <item>Indonezijski</item>
+        <item>Nizozemski</item>
+        <item>Turski</item>
+        <item>Poljski</item>
+        <item>Ukrajinski</item>
+        <item>Švedski</item>
+        <item>Danski</item>
+        <item>Norveški</item>
+        <item>Finski</item>
+        <item>Grčki</item>
+        <item>Hebrejski</item>
+        <item>Tajlandski</item>
+        <item>Vijetnamski</item>
+        <item>Tamilski</item>
+        <item>Teluški</item>
+        <item>Marathski</item>
+        <item>Gudžaratski</item>
+        <item>Karnatački</item>
+        <item>Malajalamski</item>
+        <item>Urdski</item>
+        <item>Perzijski</item>
+        <item>Svahili</item>
+        <item>Rumunjski</item>
+        <item>Češki</item>
+        <item>Mađarski</item>
+        <item>Filipinski (tagalog)</item>
+        <item>Malajski</item>
+        <item>Srpski</item>
+        <item>Hrvatski</item>
+        <item>Bugarski</item>
+        <item>Slovački</item>
+        <item>Slovenski</item>
+        <item>Litavski</item>
+        <item>Latvijski</item>
+        <item>Estonski</item>
+        <item>Katalonski</item>
+        <item>Baskijski</item>
+    </string-array>
 </resources>

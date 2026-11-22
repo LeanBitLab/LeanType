@@ -1735,4 +1735,57 @@ Ar norite atnaujinti?</string>
     <string name="settings_group_typing">Rašymas</string>
     <string name="settings_group_extras">Priedai</string>
     <string name="settings_group_system">Sistema</string>
+    <string-array name="translate_language_names">
+        <item>Anglų</item>
+        <item>Ispanų</item>
+        <item>Prancūzų</item>
+        <item>Vokiečių</item>
+        <item>Italų</item>
+        <item>Portugalų</item>
+        <item>Kinų (supaprastinti)</item>
+        <item>Kinų (tradiciniai)</item>
+        <item>Japonų</item>
+        <item>Korėjiečių</item>
+        <item>Arabų</item>
+        <item>Rusų</item>
+        <item>Hindi</item>
+        <item>Bengalų</item>
+        <item>Indoneziečių</item>
+        <item>Olandų</item>
+        <item>Turkų</item>
+        <item>Lenkų</item>
+        <item>Ukrainiečių</item>
+        <item>Švedų</item>
+        <item>Danų</item>
+        <item>Norvegų</item>
+        <item>Suomių</item>
+        <item>Graikų</item>
+        <item>Hebrajų</item>
+        <item>Tajų</item>
+        <item>Vietnamiečių</item>
+        <item>Tamilų</item>
+        <item>Telugų</item>
+        <item>Maratų</item>
+        <item>Gudžaratų</item>
+        <item>Kanadų</item>
+        <item>Malajalių</item>
+        <item>Urdų</item>
+        <item>Persų</item>
+        <item>Suahilių</item>
+        <item>Rumunų</item>
+        <item>Čekų</item>
+        <item>Vengrų</item>
+        <item>Filipiniečių (tagalogų)</item>
+        <item>Malajiečių</item>
+        <item>Serbų</item>
+        <item>Kroatų</item>
+        <item>Bulgarų</item>
+        <item>Slovakų</item>
+        <item>Slovėnų</item>
+        <item>Lietuvių</item>
+        <item>Latvių</item>
+        <item>Estų</item>
+        <item>Katalonų</item>
+        <item>Baskų</item>
+    </string-array>
 </resources>

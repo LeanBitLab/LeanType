@@ -1734,4 +1734,57 @@
     <string name="settings_group_typing">Набор тэксту</string>
     <string name="settings_group_extras">Дадаткова</string>
     <string name="settings_group_system">Сістэма</string>
+    <string-array name="translate_language_names">
+        <item>Англійская</item>
+        <item>Іспанская</item>
+        <item>Французская</item>
+        <item>Нямецкая</item>
+        <item>Італьянская</item>
+        <item>Партугальская</item>
+        <item>Кітайская (спрошчаная)</item>
+        <item>Кітайская (традыцыйная)</item>
+        <item>Японская</item>
+        <item>Карэйская</item>
+        <item>Арабская</item>
+        <item>Руская</item>
+        <item>Хіндзі</item>
+        <item>Бенгальская</item>
+        <item>Інданезійская</item>
+        <item>Нідэрландская</item>
+        <item>Турэцкая</item>
+        <item>Польская</item>
+        <item>Украінская</item>
+        <item>Шведская</item>
+        <item>Дацкая</item>
+        <item>Нарвежская</item>
+        <item>Фінская</item>
+        <item>Грэчаская</item>
+        <item>Іўрыт</item>
+        <item>Тайская</item>
+        <item>В’етнамская</item>
+        <item>Тамільская</item>
+        <item>Тэлугу</item>
+        <item>Маратхі</item>
+        <item>Гуджараці</item>
+        <item>Канада</item>
+        <item>Малаялам</item>
+        <item>Урду</item>
+        <item>Фарсі</item>
+        <item>Суахілі</item>
+        <item>Румынская</item>
+        <item>Чэшская</item>
+        <item>Венгерская</item>
+        <item>Філіпінская (Tagalog)</item>
+        <item>Малайская</item>
+        <item>Сербская</item>
+        <item>Харвацкая</item>
+        <item>Балгарская</item>
+        <item>Славацкая</item>
+        <item>Славенская</item>
+        <item>Літоўская</item>
+        <item>Латышская</item>
+        <item>Эстонская</item>
+        <item>Каталанская</item>
+        <item>Баскская</item>
+    </string-array>
 </resources>

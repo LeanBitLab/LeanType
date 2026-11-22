@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"Alternatif karakterler yoksayılır"</string>
     <string name="spoken_open_more_suggestions">"Alternatif öneriler kullanılabilir"</string>
     <string name="spoken_close_more_suggestions">"Alternatif öneriler yoksayılır"</string>
+    <string name="spoken_clipboard_suggestion">"Pano önerisi"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Gülen yüzler"</string>
+    <string name="spoken_description_emoji_category_unicode">"Unicode simgeleri"</string>
 </resources>

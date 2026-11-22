@@ -73,7 +73,7 @@ object LocaleUtils {
     }
 
     val localeCodes = listOf(
-        "en", "af", "am", "ar", "as", "ast", "az", "be", "bg", "bn", "bs", "ca", "cs", "cy", "da", "de", "dv", "el", "es", "es-US", "et", "eu", "fa", "fi", "fil", "fr", "gd", "gl", "gu", "hi", "hr", "hu", "hy", "in", "is", "it", "iw", "ja", "ka", "kab", "kk", "km", "kn", "ko", "kw", "ky", "lb", "lo", "lt", "lv", "mk", "ml", "mn", "mr", "ms", "my", "nb", "ne", "nl", "or", "pa", "pl", "pt", "pt-BR", "pt-PT", "ro", "ru", "si", "sk", "sl", "sq", "sr", "sv", "sw", "ta", "te", "tg", "th", "tl", "tr", "uk", "ur", "uz", "vi", "zh-CN", "zh-HK", "zh-TW", "zu"
+        "en", "af", "ar", "be", "bg", "bn", "ca", "cs", "da", "de", "dv", "el", "es", "es-US", "et", "eu", "fa", "fi", "fr", "gl", "hi", "hr", "hu", "in", "is", "it", "iw", "ja", "ka", "ko", "lt", "ms", "my", "nb", "nl", "pl", "pt", "pt-BR", "pt-PT", "ro", "ru", "sl", "sr", "sv", "ta", "tr", "uk", "ur", "uz", "vi", "zh-CN", "zh-TW"
     )
 
     fun getAppLanguageItems(context: Context): List<Pair<String, String>> {

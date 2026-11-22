@@ -1737,4 +1737,57 @@
     <string name="settings_group_typing">टाइपिंग</string>
     <string name="settings_group_extras">अतिरिक्त</string>
     <string name="settings_group_system">प्रणाली</string>
+    <string-array name="translate_language_names">
+        <item>अंग्रेज़ी</item>
+        <item>स्पेनिश</item>
+        <item>फ़्रेंच</item>
+        <item>जर्मन</item>
+        <item>इतालवी</item>
+        <item>पुर्तगाली</item>
+        <item>चीनी (सरलीकृत)</item>
+        <item>चीनी (पारंपरिक)</item>
+        <item>जापानी</item>
+        <item>कोरियाई</item>
+        <item>अरबी</item>
+        <item>रूसी</item>
+        <item>हिन्दी</item>
+        <item>बंगाली</item>
+        <item>इंडोनेशियाई</item>
+        <item>डच</item>
+        <item>तुर्की</item>
+        <item>पोलिश</item>
+        <item>यूक्रेनियाई</item>
+        <item>स्वीडिश</item>
+        <item>डेनिश</item>
+        <item>नॉर्वेजियाई</item>
+        <item>फ़िनिश</item>
+        <item>यूनानी</item>
+        <item>हिब्रू</item>
+        <item>थाई</item>
+        <item>वियतनामी</item>
+        <item>तमिल</item>
+        <item>तेलुगू</item>
+        <item>मराठी</item>
+        <item>गुजराती</item>
+        <item>कन्नड़</item>
+        <item>मलयालम</item>
+        <item>उर्दू</item>
+        <item>फ़ारसी</item>
+        <item>स्वाहिली</item>
+        <item>रोमानियाई</item>
+        <item>चेक</item>
+        <item>हंगेरियाई</item>
+        <item>फ़िलिपीनो (टैगलॉग)</item>
+        <item>मलय</item>
+        <item>सर्बियाई</item>
+        <item>क्रोएशियाई</item>
+        <item>बुल्गारियाई</item>
+        <item>स्लोवाक</item>
+        <item>स्लोवेनियाई</item>
+        <item>लिथुआनियाई</item>
+        <item>लातवियाई</item>
+        <item>एस्टोनियाई</item>
+        <item>कातालान</item>
+        <item>बास्क</item>
+    </string-array>
 </resources>

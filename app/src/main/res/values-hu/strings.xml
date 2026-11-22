@@ -1697,4 +1697,57 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="settings_group_typing">Gépelés</string>
     <string name="settings_group_extras">Extrák</string>
     <string name="settings_group_system">Rendszer</string>
+    <string-array name="translate_language_names">
+        <item>Angol</item>
+        <item>Spanyol</item>
+        <item>Francia</item>
+        <item>Német</item>
+        <item>Olasz</item>
+        <item>Portugál</item>
+        <item>Kínai (Egyszerűsített)</item>
+        <item>Kínai (Hagyományos)</item>
+        <item>Japán</item>
+        <item>Koreai</item>
+        <item>Arab</item>
+        <item>Orosz</item>
+        <item>Hindi</item>
+        <item>Bangla</item>
+        <item>Indonéz</item>
+        <item>Holland</item>
+        <item>Török</item>
+        <item>Lengyel</item>
+        <item>Ukrán</item>
+        <item>Svéd</item>
+        <item>Dán</item>
+        <item>Norvég</item>
+        <item>Finn</item>
+        <item>Görög</item>
+        <item>Héber</item>
+        <item>Thai</item>
+        <item>Vietnámi</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Maráthi</item>
+        <item>Gudzsaráti</item>
+        <item>Kannada</item>
+        <item>Malajálam</item>
+        <item>Urdu</item>
+        <item>Perzsa</item>
+        <item>Szuahéli</item>
+        <item>Román</item>
+        <item>Cseh</item>
+        <item>Magyar</item>
+        <item>Filippínó (tagalog)</item>
+        <item>Maláj</item>
+        <item>Szerb</item>
+        <item>Horvát</item>
+        <item>Bolgár</item>
+        <item>Szlovák</item>
+        <item>Szlovén</item>
+        <item>Litván</item>
+        <item>Lett</item>
+        <item>Észt</item>
+        <item>Katalán</item>
+        <item>Baszk</item>
+    </string-array>
 </resources>

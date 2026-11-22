@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"Les caractères supplémentaires sont ignorés."</string>
     <string name="spoken_open_more_suggestions">"Des suggestions supplémentaires sont disponibles."</string>
     <string name="spoken_close_more_suggestions">"Les suggestions supplémentaires sont ignorées."</string>
+    <string name="spoken_clipboard_suggestion">"Suggestion du presse-papiers"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Émoticônes"</string>
+    <string name="spoken_description_emoji_category_unicode">"Symboles Unicode"</string>
 </resources>

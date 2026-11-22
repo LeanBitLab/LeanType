@@ -1701,4 +1701,57 @@
     <string name="settings_group_typing">打字</string>
     <string name="settings_group_extras">附加功能</string>
     <string name="settings_group_system">系统</string>
+    <string-array name="translate_language_names">
+        <item>英语</item>
+        <item>西班牙语</item>
+        <item>法语</item>
+        <item>德语</item>
+        <item>意大利语</item>
+        <item>葡萄牙语</item>
+        <item>中文 (简体)</item>
+        <item>中文 (繁体)</item>
+        <item>日语</item>
+        <item>韩语</item>
+        <item>阿拉伯语</item>
+        <item>俄语</item>
+        <item>印地语</item>
+        <item>孟加拉语</item>
+        <item>印度尼西亚语</item>
+        <item>荷兰语</item>
+        <item>土耳其语</item>
+        <item>波兰语</item>
+        <item>乌克兰语</item>
+        <item>瑞典语</item>
+        <item>丹麦语</item>
+        <item>挪威语</item>
+        <item>芬兰语</item>
+        <item>希腊语</item>
+        <item>希伯来语</item>
+        <item>泰语</item>
+        <item>越南语</item>
+        <item>泰米尔语</item>
+        <item>泰卢固语</item>
+        <item>马拉地语</item>
+        <item>古吉拉特语</item>
+        <item>卡纳达语</item>
+        <item>马拉雅拉姆语</item>
+        <item>乌尔都语</item>
+        <item>波斯语</item>
+        <item>斯瓦希里语</item>
+        <item>罗马尼亚语</item>
+        <item>捷克语</item>
+        <item>匈牙利语</item>
+        <item>菲律宾语 (他加禄语)</item>
+        <item>马来语</item>
+        <item>塞尔维亚语</item>
+        <item>克罗地亚语</item>
+        <item>保加利亚语</item>
+        <item>斯洛伐克语</item>
+        <item>斯洛文尼亚语</item>
+        <item>立陶宛语</item>
+        <item>拉脱维亚语</item>
+        <item>爱沙尼亚语</item>
+        <item>加泰罗尼亚语</item>
+        <item>巴斯克语</item>
+    </string-array>
 </resources>

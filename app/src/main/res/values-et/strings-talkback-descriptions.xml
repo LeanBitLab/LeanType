@@ -62,4 +62,7 @@
     <string name="spoken_close_popup_keys_keyboard">"Alternatiivsed tähemärgid eemaldatakse"</string>
     <string name="spoken_open_more_suggestions">"Alternatiivsed soovitused on saadaval"</string>
     <string name="spoken_close_more_suggestions">"Alternatiivsed soovitused eemaldatakse"</string>
+    <string name="spoken_clipboard_suggestion">"Lõikelaua soovitus"</string>
+    <string name="spoken_description_emoji_category_eight_smiley">"Emotikonid"</string>
+    <string name="spoken_description_emoji_category_unicode">"Unicode'i sümbolid"</string>
 </resources>
