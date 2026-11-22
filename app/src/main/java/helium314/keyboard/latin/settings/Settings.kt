@@ -595,6 +595,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_SAVED_APP_SUBTYPE_PREFIX = "saved_app_subtype_"
         const val PREF_DONT_SHOW_SPONSOR_DIALOG = "dont_show_sponsor_dialog"
         const val PREF_LAST_SPONSOR_DIALOG_SHOWN = "last_sponsor_dialog_shown"
+        const val PREF_LAST_WHATS_NEW_VERSION = "last_whats_new_version"
 
         private val sInstance = Settings()
 
@@ -612,6 +613,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             PREF_SELECTED_SUBTYPE,
             PREF_USER_DICT_SORT_ORDER,
             PREF_LAST_SPONSOR_DIALOG_SHOWN,
+            PREF_LAST_WHATS_NEW_VERSION,
             "last_shown_emoticon_group",
             "last_shown_unicode_symbol_group",
             "last_dismissed_clipboard_text",
