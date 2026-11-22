@@ -1697,4 +1697,11 @@
     <string name="backup_category_personal_dictionary">Особистий словник</string>
     <string name="backup_category_text_expander">Розширювач тексту</string>
     <string name="gif_pack_close">Закрити пакет</string>
+    <string name="settings_screen_gestures_swipes">Жести та проведення</string>
+    <string name="settings_category_input_sound_vibration">Введення, звук і вібрація</string>
+    <string name="settings_category_size_layout_fonts">Розмір, компонування та шрифти</string>
+    <string name="settings_group_keyboard">Клавіатура</string>
+    <string name="settings_group_typing">Набір тексту</string>
+    <string name="settings_group_extras">Додатково</string>
+    <string name="settings_group_system">Система</string>
 </resources>

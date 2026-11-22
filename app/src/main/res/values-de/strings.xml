@@ -1747,4 +1747,11 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="backup_category_personal_dictionary">Persönliches Wörterbuch</string>
     <string name="backup_category_text_expander">Textexpander</string>
     <string name="gif_pack_close">Paket schließen</string>
+    <string name="settings_screen_gestures_swipes">Gesten und Wischen</string>
+    <string name="settings_category_input_sound_vibration">Eingabe, Ton und Vibration</string>
+    <string name="settings_category_size_layout_fonts">Größe, Layout und Schriftarten</string>
+    <string name="settings_group_keyboard">Tastatur</string>
+    <string name="settings_group_typing">Tippen</string>
+    <string name="settings_group_extras">Extras</string>
+    <string name="settings_group_system">System</string>
 </resources>

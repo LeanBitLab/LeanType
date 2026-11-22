@@ -1741,4 +1741,11 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="backup_category_personal_dictionary">Słownik osobisty</string>
     <string name="backup_category_text_expander">Ekspander tekstu</string>
     <string name="gif_pack_close">Zamknij paczkę</string>
+    <string name="settings_screen_gestures_swipes">Gesty i przeciągnięcia</string>
+    <string name="settings_category_input_sound_vibration">Wprowadzanie, dźwięk i wibracje</string>
+    <string name="settings_category_size_layout_fonts">Rozmiar, układ i czcionki</string>
+    <string name="settings_group_keyboard">Klawiatura</string>
+    <string name="settings_group_typing">Pisanie</string>
+    <string name="settings_group_extras">Dodatki</string>
+    <string name="settings_group_system">System</string>
 </resources>

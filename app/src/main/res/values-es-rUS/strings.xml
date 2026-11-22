@@ -1763,4 +1763,11 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="backup_category_personal_dictionary">Diccionario personal</string>
     <string name="backup_category_text_expander">Expansor de texto</string>
     <string name="gif_pack_close">Cerrar paquete</string>
+    <string name="settings_screen_gestures_swipes">Gestos y deslizamientos</string>
+    <string name="settings_category_input_sound_vibration">Entrada, sonido y vibración</string>
+    <string name="settings_category_size_layout_fonts">Tamaño, diseño y fuentes</string>
+    <string name="settings_group_keyboard">Teclado</string>
+    <string name="settings_group_typing">Escritura</string>
+    <string name="settings_group_extras">Extras</string>
+    <string name="settings_group_system">Sistema</string>
 </resources>

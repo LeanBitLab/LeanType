@@ -1763,4 +1763,11 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="backup_category_personal_dictionary">Dizionario personale</string>
     <string name="backup_category_text_expander">Espansore di testo</string>
     <string name="gif_pack_close">Chiudi il pacchetto</string>
+    <string name="settings_screen_gestures_swipes">Gesti e scorrimenti</string>
+    <string name="settings_category_input_sound_vibration">Input, suono e vibrazione</string>
+    <string name="settings_category_size_layout_fonts">Dimensioni, layout e caratteri</string>
+    <string name="settings_group_keyboard">Tastiera</string>
+    <string name="settings_group_typing">Digitazione</string>
+    <string name="settings_group_extras">Extra</string>
+    <string name="settings_group_system">Sistema</string>
 </resources>

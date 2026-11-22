@@ -1694,4 +1694,11 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="backup_category_personal_dictionary">Személyes szótár</string>
     <string name="backup_category_text_expander">Szövegbővítő</string>
     <string name="gif_pack_close"></string>
+    <string name="settings_screen_gestures_swipes">Gesztusok és csúsztatások</string>
+    <string name="settings_category_input_sound_vibration">Bemenet, hang és rezgés</string>
+    <string name="settings_category_size_layout_fonts">Méret, elrendezés és betűtípusok</string>
+    <string name="settings_group_keyboard">Billentyűzet</string>
+    <string name="settings_group_typing">Gépelés</string>
+    <string name="settings_group_extras">Extrák</string>
+    <string name="settings_group_system">Rendszer</string>
 </resources>

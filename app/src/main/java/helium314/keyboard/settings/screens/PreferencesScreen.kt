@@ -40,6 +40,8 @@ import helium314.keyboard.settings.NextScreenIcon
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SettingsActivity
+import helium314.keyboard.settings.SettingsDestination
+import helium314.keyboard.settings.SettingsWithoutKey
 import helium314.keyboard.settings.Theme
 import helium314.keyboard.settings.initPreview
 import helium314.keyboard.settings.preferences.ExpandablePreference
@@ -85,10 +87,11 @@ fun PreferencesScreen(
     ) {
         listOf(
             // Input & Haptics
-            R.string.settings_category_input,
+            R.string.settings_category_input_sound_vibration,
             Settings.PREF_KEY_LONGPRESS_TIMEOUT,
             Settings.PREF_EMOJI_SKIN_TONE,
             Settings.PREF_SHOW_EMOJI_KEY,
+            SettingsWithoutKey.KEYPRESS_AUDIO,
             if (hasVibrator) Settings.PREF_VIBRATE_ON else null,
             if (vibrateOn) Settings.PREF_VIBRATION_DURATION_SETTINGS else null,
             if (vibrateOn) Settings.PREF_EXPAND_FINE_TUNE_HAPTICS else null,
@@ -197,6 +200,13 @@ fun createPreferencesSettings(context: Context) = listOf(
             "\uD83C\uDFFF" to "\uD83C\uDFFF"
         )
         ListPreference(setting, items, Defaults.PREF_EMOJI_SKIN_TONE) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
+    },
+    Setting(context, SettingsWithoutKey.KEYPRESS_AUDIO, R.string.sound_packs_title, R.string.sound_on_keypress) {
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = { SettingsDestination.navigateTo(SettingsDestination.Sound) }
+        ) { NextScreenIcon() }
     },
     Setting(context, Settings.PREF_VIBRATE_ON, R.string.vibrate_on_keypress) {
         SwitchPreference(it, Defaults.PREF_VIBRATE_ON)

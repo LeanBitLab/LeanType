@@ -35,6 +35,8 @@
     <string name="settings_screen_preferences">Preferences</string>
     <!-- Settings screen title for gesture typing preferences -->
     <string name="settings_screen_gesture">Gesture Typing</string>
+    <!-- Title of the settings screen for gesture typing, swipe gestures (space bar, delete key, toolbar) and the touchpad -->
+    <string name="settings_screen_gestures_swipes">Gestures &amp; swipes</string>
     <!-- Settings screen title for text correction options -->
     <string name="settings_screen_correction">Text correction</string>
     <!-- Settings screen title for suggestions options -->
@@ -45,6 +47,8 @@
     <string name="settings_screen_theme">Theme</string>
     <!-- Settings category title for Preference/Input settings -->
     <string name="settings_category_input">Input</string>
+    <!-- Settings category for key press behaviour, keypress sound and vibration -->
+    <string name="settings_category_input_sound_vibration">Input, sound &amp; vibration</string>
     <!-- Settings category title for Preference/Additional keys settings -->
     <string name="settings_category_additional_keys">Additional keys</string>
     <!-- Settings category title for Preference/Additional keys settings -->
@@ -61,6 +65,16 @@
     <string name="settings_category_experimental">Experimental</string>
     <!-- Settings category title for Appearance & Layout/Misc -->
     <string name="settings_category_miscellaneous">Miscellaneous</string>
+    <!-- Appearance settings category for keyboard height, split keyboard, layout and fonts -->
+    <string name="settings_category_size_layout_fonts">Size, layout &amp; fonts</string>
+    <!-- Headers of the groups on the main settings screen. Keyboard: languages, appearance, preferences, toolbar -->
+    <string name="settings_group_keyboard">Keyboard</string>
+    <!-- Main settings group header: gestures, text correction, suggestions, text expander -->
+    <string name="settings_group_typing">Typing</string>
+    <!-- Main settings group header for optional features: AI integration and plugins (meaning "additional features") -->
+    <string name="settings_group_extras">Extras</string>
+    <!-- Main settings group header: advanced settings, app updates, about the app -->
+    <string name="settings_group_system">System</string>
     <!-- Settings category title for Gesture Typing/Configuration -->
     <string name="settings_category_configuration">Configuration</string>
     <!-- Settings category title for Gesture Typing/Visuals -->

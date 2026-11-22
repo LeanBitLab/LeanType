@@ -130,7 +130,7 @@ fun GestureTypingScreen(
     }
     SearchSettingsScreen(
         onClickBack = onClickBack,
-        title = stringResource(R.string.settings_screen_gesture),
+        title = stringResource(R.string.settings_screen_gestures_swipes),
         settings = items,
         headerContent = if (hasGestureLib && gestureEnabled && missingDict) {
             {

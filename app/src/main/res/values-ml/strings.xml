@@ -1797,4 +1797,11 @@
     <string name="no_dictionary_message">\"നിഘണ്ടുവില്ലാതെ, നിങ്ങൾ മുമ്പ് നൽകിയ വാചകത്തിനുള്ള നിർദ്ദേശങ്ങൾ മാത്രമേ നിങ്ങൾക്ക് ലഭിക്കൂ.&lt;br&gt;
         നിങ്ങൾക്ക് നിഘണ്ടുക്കൾ%1$sഡൗൺലോഡ് ചെയ്യാം, അല്ലെങ്കിൽ \"%2$s\" എന്നതിനായുള്ള ഒരു നിഘണ്ടു നേരിട്ട്%3$sഡൗൺലോഡ് ചെയ്യാനാകുമോ എന്ന് പരിശോധിക്കുക .\"</string>
     <string name="gif_pack_close">പായ്ക്ക് അടയ്ക്കുക</string>
+    <string name="settings_screen_gestures_swipes">ആംഗ്യങ്ങളും സ്വൈപ്പുകളും</string>
+    <string name="settings_category_input_sound_vibration">ഇൻപുട്ട്, ശബ്ദം, വൈബ്രേഷൻ</string>
+    <string name="settings_category_size_layout_fonts">വലിപ്പം, ലേഔട്ട് &amp; ഫോണ്ടുകൾ</string>
+    <string name="settings_group_keyboard">കീബോർഡ്</string>
+    <string name="settings_group_typing">ടൈപ്പിംഗ്</string>
+    <string name="settings_group_extras">എക്സ്ട്രാകൾ</string>
+    <string name="settings_group_system">സിസ്റ്റം</string>
 </resources>

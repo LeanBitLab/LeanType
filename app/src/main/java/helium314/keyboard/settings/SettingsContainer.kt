@@ -141,7 +141,7 @@ private val modules = listOf(
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_PREFERENCES, SettingsDestination.Preferences, R.string.settings_screen_preferences, iconRes = R.drawable.ic_settings_preferences, provider = ::createPreferencesSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_APPEARANCE, SettingsDestination.Appearance, R.string.settings_screen_appearance, iconRes = R.drawable.ic_settings_appearance, provider = ::createAppearanceSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_TOOLBAR, SettingsDestination.Toolbar, R.string.settings_screen_toolbar, iconRes = R.drawable.ic_settings_toolbar, provider = ::createToolbarSettings),
-    SettingsModule(SettingsWithoutKey.SCREEN_NAV_GESTURES, SettingsDestination.GestureTyping, R.string.settings_screen_gesture, iconRes = R.drawable.ic_settings_gesture, provider = ::createGestureTypingSettings),
+    SettingsModule(SettingsWithoutKey.SCREEN_NAV_GESTURES, SettingsDestination.GestureTyping, R.string.settings_screen_gestures_swipes, iconRes = R.drawable.ic_settings_gesture, provider = ::createGestureTypingSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_TEXT_CORRECTION, SettingsDestination.TextCorrection, R.string.settings_screen_correction, iconRes = R.drawable.ic_settings_correction, provider = ::createCorrectionSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_SUGGESTIONS, SettingsDestination.Suggestions, R.string.settings_screen_suggestions, iconRes = R.drawable.ic_settings_suggestions, provider = ::createSuggestionsSettings),
     SettingsModule(SettingsWithoutKey.SCREEN_NAV_AI_INTEGRATION, SettingsDestination.AIIntegration, R.string.settings_screen_ai_integration, iconRes = R.drawable.ic_proofread, provider = ::createAIIntegrationSettings),
@@ -219,6 +219,7 @@ object SettingsWithoutKey {
     const val BACKGROUND_SERVICES = "background_services"
     const val CLOUD_AI_MAX_TOKENS = "cloud_ai_max_tokens"
     const val APP_QUIRKS = "app_quirks"
+    const val KEYPRESS_AUDIO = "keypress_audio"
 
     // Screen Navigation Keys for Settings Search:
     const val SCREEN_NAV_SECONDARY_LAYOUTS = "screen_nav_secondary_layouts"

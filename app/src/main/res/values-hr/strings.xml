@@ -1694,4 +1694,11 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="backup_category_personal_dictionary">Osobni rječnik</string>
     <string name="backup_category_text_expander">Text Expander</string>
     <string name="gif_pack_close">Zatvori paket</string>
+    <string name="settings_screen_gestures_swipes">Pokreti i prelasci</string>
+    <string name="settings_category_input_sound_vibration">Ulaz, zvuk i vibracija</string>
+    <string name="settings_category_size_layout_fonts">Veličina, raspored i fontovi</string>
+    <string name="settings_group_keyboard">Tipkovnica</string>
+    <string name="settings_group_typing">Tipkanje</string>
+    <string name="settings_group_extras">Dodaci</string>
+    <string name="settings_group_system">Sustav</string>
 </resources>

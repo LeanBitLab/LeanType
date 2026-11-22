@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.settings
 
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
@@ -52,9 +55,14 @@ fun SettingsNavHost(
     val navController = rememberNavController()
     val dir = if (LocalLayoutDirection.current == LayoutDirection.Ltr) 1 else -1
 
-    LaunchedEffect(navController) {
-        SettingsDestination.navEvents.collect { route ->
-            navController.navigate(route)
+    // only the visible settings activity takes navigation events: with several instances open (e.g. settings opened
+    // again from the keyboard), a hidden one would otherwise receive the event and nothing happens on screen
+    val lifecycleOwner = LocalLifecycleOwner.current
+    LaunchedEffect(navController, lifecycleOwner) {
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            SettingsDestination.navEvents.collect { route ->
+                navController.navigate(route)
+            }
         }
     }
 

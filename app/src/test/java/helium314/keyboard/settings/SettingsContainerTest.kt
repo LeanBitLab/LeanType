@@ -37,6 +37,7 @@ class SettingsContainerTest {
             SettingsWithoutKey.AI_PROVIDER to SettingsDestination.AIIntegration,
             SettingsWithoutKey.TRANSLATION_ENGINE to SettingsDestination.Translation,
             SettingsWithoutKey.APP_QUIRKS to SettingsDestination.Advanced,
+            SettingsWithoutKey.KEYPRESS_AUDIO to SettingsDestination.Preferences,
             SettingsWithoutKey.BACKUP_RESTORE to SettingsDestination.Advanced,
             helium314.keyboard.latin.settings.Settings.PREF_SAVE_SUBTYPE_PER_APP to SettingsDestination.Languages,
             helium314.keyboard.latin.settings.Settings.PREF_LANGUAGE_SWIPE_DISTANCE to SettingsDestination.GestureTyping,

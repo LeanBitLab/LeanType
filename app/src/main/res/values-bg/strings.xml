@@ -1731,4 +1731,11 @@
     <string name="backup_category_personal_dictionary">Личен речник</string>
     <string name="backup_category_text_expander">Текстов разширител</string>
     <string name="gif_pack_close">Затвори пакета</string>
+    <string name="settings_screen_gestures_swipes">Жестове и плъзгания</string>
+    <string name="settings_category_input_sound_vibration">Вход, звук и вибрация</string>
+    <string name="settings_category_size_layout_fonts">Размер, оформление и шрифтове</string>
+    <string name="settings_group_keyboard">Клавиатура</string>
+    <string name="settings_group_typing">Въвеждане</string>
+    <string name="settings_group_extras">Екстри</string>
+    <string name="settings_group_system">Система</string>
 </resources>

@@ -1744,4 +1744,11 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="backup_category_personal_dictionary">Persoonlijk woordenboek</string>
     <string name="backup_category_text_expander">Tekstuitbreider</string>
     <string name="gif_pack_close">Pakket sluiten</string>
+    <string name="settings_screen_gestures_swipes">Gebaren en veegbewegingen</string>
+    <string name="settings_category_input_sound_vibration">Invoer, geluid en trillingen</string>
+    <string name="settings_category_size_layout_fonts">Grootte, lay-out en lettertypen</string>
+    <string name="settings_group_keyboard">Toetsenbord</string>
+    <string name="settings_group_typing">Typen</string>
+    <string name="settings_group_extras">Extra\'s</string>
+    <string name="settings_group_system">Systeem</string>
 </resources>
