@@ -1787,4 +1787,15 @@
         <item>Каталанская</item>
         <item>Баскская</item>
     </string-array>
+    <string name="language_pack_title">Пераклад праграмы</string>
+    <string name="language_pack_installed">%s: усталявана</string>
+    <string name="language_pack_missing">%s: не ўсталявана, праграма паказвае англійскую мову</string>
+    <string name="language_pack_dialog_title">Пераклад для %s</string>
+    <string name="language_pack_dialog_message">Каб праграма займала менш месца, яе пераклады спампоўваюцца асобна. Спампуйце пераклад для %s або імпартуйце яго з файла.</string>
+    <string name="language_pack_download">Спампаваць пераклад</string>
+    <string name="language_pack_import">Імпартаваць з файла</string>
+    <string name="language_pack_remove">Выдаліць пераклад</string>
+    <string name="language_pack_download_failed">Спампаванне не атрымалася. Для гэтай версіі праграмы пераклад пакуль недаступны.</string>
+    <string name="language_pack_wrong_build">Гэты файл перакладу створаны для іншай версіі праграмы.</string>
+    <string name="language_pack_invalid">Гэта не файл перакладу.</string>
 </resources>

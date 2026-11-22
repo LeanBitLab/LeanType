@@ -1758,4 +1758,15 @@
         <item>קטלאנית</item>
         <item>בסקית</item>
     </string-array>
+    <string name="language_pack_title">תרגום היישום</string>
+    <string name="language_pack_installed">%s: מותקן</string>
+    <string name="language_pack_missing">%s: לא מותקן, היישום מוצג באנגלית</string>
+    <string name="language_pack_dialog_title">תרגום עבור %s</string>
+    <string name="language_pack_dialog_message">כדי לשמור על גודל היישום קטן, התרגומים שלו מורדים בנפרד. הורד את התרגום עבור %s או ייבא אותו מקובץ.</string>
+    <string name="language_pack_download">הורדת תרגום</string>
+    <string name="language_pack_import">ייבוא מקובץ</string>
+    <string name="language_pack_remove">הסרת תרגום</string>
+    <string name="language_pack_download_failed">ההורדה נכשלה. אין עדיין תרגום זמין לגרסת יישום זו.</string>
+    <string name="language_pack_wrong_build">קובץ תרגום זה נוצר עבור גרסת יישום אחרת.</string>
+    <string name="language_pack_invalid">קובץ זה אינו קובץ תרגום.</string>
 </resources>

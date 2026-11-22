@@ -1759,4 +1759,15 @@
     <string name="settings_group_typing">Ввод текста</string>
     <string name="settings_group_extras">Дополнительно</string>
     <string name="settings_group_system">Система</string>
+    <string name="language_pack_title">Перевод приложения</string>
+    <string name="language_pack_installed">%s: установлен</string>
+    <string name="language_pack_missing">%s: не установлен, приложение показывает английский</string>
+    <string name="language_pack_dialog_title">Перевод для %s</string>
+    <string name="language_pack_dialog_message">Чтобы приложение оставалось компактным, его переводы загружаются отдельно. Скачайте перевод для %s или импортируйте его из файла.</string>
+    <string name="language_pack_download">Скачать перевод</string>
+    <string name="language_pack_import">Импортировать из файла</string>
+    <string name="language_pack_remove">Удалить перевод</string>
+    <string name="language_pack_download_failed">Не удалось скачать. Перевод для этой версии приложения пока недоступен.</string>
+    <string name="language_pack_wrong_build">Этот файл перевода создан для другой версии приложения.</string>
+    <string name="language_pack_invalid">Это не файл перевода.</string>
 </resources>

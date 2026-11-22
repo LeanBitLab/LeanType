@@ -1454,6 +1454,19 @@ New dictionary:
     <string name="app_language_title">App Language</string>
     <string name="app_language_summary">Change the language of the settings screen and keyboard interface</string>
     <string name="app_language_system">System default</string>
+    <!-- Row below App Language: the app's translations are downloaded separately -->
+    <string name="language_pack_title">App translation</string>
+    <!-- %s is the language name, e.g. Deutsch -->
+    <string name="language_pack_installed">%s: installed</string>
+    <string name="language_pack_missing">%s: not installed, the app shows English</string>
+    <string name="language_pack_dialog_title">Translation for %s</string>
+    <string name="language_pack_dialog_message">To keep the app small, its translations are downloaded separately. Download the translation for %s or import it from a file.</string>
+    <string name="language_pack_download">Download translation</string>
+    <string name="language_pack_import">Import from file</string>
+    <string name="language_pack_remove">Remove translation</string>
+    <string name="language_pack_download_failed">Download failed. No translation is available for this app version yet.</string>
+    <string name="language_pack_wrong_build">This translation file was made for a different app version.</string>
+    <string name="language_pack_invalid">This file is not a translation file.</string>
     <!-- Settings screen title for appearance preferences -->
     <string name="settings_screen_appearance">Appearance</string>
     <!-- Settings screen title for toolbar preferences -->

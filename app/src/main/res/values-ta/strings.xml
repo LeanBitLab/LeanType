@@ -1647,4 +1647,15 @@
     <string name="voice_transcribe_while_speaking_summary">நீண்ட உரையாடல்களுக்குக் குறைந்த காத்திருப்பு நேரம்</string>
     <string name="voice_piecewise_field_changed">உரையாடல் நிறுத்தப்பட்டது: உரைப்புலம் மாற்றப்பட்டது, மீதமுள்ளவை செருகப்படவில்லை</string>
     <string name="settings_search_show_in_screen">அதன் திரையில் காட்டு</string>
+    <string name="language_pack_title">ஆப் மொழிபெயர்ப்பு</string>
+    <string name="language_pack_installed">%s: நிறுவப்பட்டது</string>
+    <string name="language_pack_missing">%s: நிறுவப்படவில்லை, ஆப் ஆங்கிலத்தில் காட்டப்படும்</string>
+    <string name="language_pack_dialog_title">%s க்கான மொழிபெயர்ப்பு</string>
+    <string name="language_pack_dialog_message">ஆப்பின் அளவைச் சிறியதாக வைத்திருக்க, அதன் மொழிபெயர்ப்புகள் தனியாகப் பதிவிறக்கப்படுகின்றன. %s க்கான மொழிபெயர்ப்பைப் பதிவிறக்கவும் அல்லது கோப்பிலிருந்து இறக்குமதி செய்யவும்.</string>
+    <string name="language_pack_download">மொழிபெயர்ப்பைப் பதிவிறக்கவும்</string>
+    <string name="language_pack_import">கோப்பிலிருந்து இறக்குமதி செய்</string>
+    <string name="language_pack_remove">மொழிபெயர்ப்பை அகற்று</string>
+    <string name="language_pack_download_failed">பதிவிறக்கம் தோல்வியடைந்தது. இந்த ஆப் பதிப்பிற்கு மொழிபெயர்ப்பு இன்னும் கிடைக்கவில்லை.</string>
+    <string name="language_pack_wrong_build">இந்த மொழிபெயர்ப்பு கோப்பு வேறு ஆப் பதிப்பிற்காக உருவாக்கப்பட்டது.</string>
+    <string name="language_pack_invalid">இது மொழிபெயர்ப்பு கோப்பு அல்ல.</string>
 </resources>

@@ -1696,4 +1696,15 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="settings_group_typing">Escrita</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">Sistema</string>
+    <string name="language_pack_title">Tradução da aplicação</string>
+    <string name="language_pack_installed">%s: instalada</string>
+    <string name="language_pack_missing">%s: não instalada, a aplicação mostra inglês</string>
+    <string name="language_pack_dialog_title">Tradução para %s</string>
+    <string name="language_pack_dialog_message">Para manter a aplicação pequena, as traduções são transferidas separadamente. Transfira a tradução para %s ou importe-a a partir de um ficheiro.</string>
+    <string name="language_pack_download">Transferir tradução</string>
+    <string name="language_pack_import">Importar de ficheiro</string>
+    <string name="language_pack_remove">Remover tradução</string>
+    <string name="language_pack_download_failed">Falha na transferência. Ainda não existe tradução disponível para esta versão da aplicação.</string>
+    <string name="language_pack_wrong_build">Este ficheiro de tradução foi criado para outra versão da aplicação.</string>
+    <string name="language_pack_invalid">Este ficheiro não é um ficheiro de tradução.</string>
 </resources>

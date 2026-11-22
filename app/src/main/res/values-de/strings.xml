@@ -1750,4 +1750,15 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="settings_group_typing">Tippen</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">System</string>
+    <string name="language_pack_title">App-Übersetzung</string>
+    <string name="language_pack_installed">%s: installiert</string>
+    <string name="language_pack_missing">%s: nicht installiert, die App zeigt Englisch an</string>
+    <string name="language_pack_dialog_title">Übersetzung für %s</string>
+    <string name="language_pack_dialog_message">Damit die App klein bleibt, werden ihre Übersetzungen separat heruntergeladen. Lade die Übersetzung für %s herunter oder importiere sie aus einer Datei.</string>
+    <string name="language_pack_download">Übersetzung herunterladen</string>
+    <string name="language_pack_import">Aus Datei importieren</string>
+    <string name="language_pack_remove">Übersetzung entfernen</string>
+    <string name="language_pack_download_failed">Download fehlgeschlagen. Für diese App-Version ist noch keine Übersetzung verfügbar.</string>
+    <string name="language_pack_wrong_build">Diese Übersetzungsdatei wurde für eine andere App-Version erstellt.</string>
+    <string name="language_pack_invalid">Dies ist keine Übersetzungsdatei.</string>
 </resources>

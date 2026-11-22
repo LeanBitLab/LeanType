@@ -1648,4 +1648,15 @@
     <string name="offline_min_p_title">Min-P</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
+    <string name="language_pack_title">অ্যাপের অনুবাদ</string>
+    <string name="language_pack_installed">%s: ইনস্টল করা আছে</string>
+    <string name="language_pack_missing">%s: ইনস্টল করা নেই, অ্যাপ ইংরেজি দেখাবে</string>
+    <string name="language_pack_dialog_title">%s-এর অনুবাদ</string>
+    <string name="language_pack_dialog_message">অ্যাপের আকার ছোট রাখতে এর অনুবাদ আলাদাভাবে ডাউনলোড করা হয়। %s-এর অনুবাদ ডাউনলোড করুন অথবা একটি ফাইল থেকে ইম্পোর্ট করুন।</string>
+    <string name="language_pack_download">অনুবাদ ডাউনলোড করুন</string>
+    <string name="language_pack_import">ফাইল থেকে ইম্পোর্ট করুন</string>
+    <string name="language_pack_remove">অনুবাদ সরিয়ে ফেলুন</string>
+    <string name="language_pack_download_failed">ডাউনলোড ব্যর্থ হয়েছে। এই অ্যাপ সংস্করণের জন্য এখনো কোনো অনুবাদ পাওয়া যায়নি।</string>
+    <string name="language_pack_wrong_build">এই অনুবাদ ফাইলটি অন্য অ্যাপ সংস্করণের জন্য তৈরি করা হয়েছে।</string>
+    <string name="language_pack_invalid">এটি একটি অনুবাদ ফাইল নয়।</string>
 </resources>

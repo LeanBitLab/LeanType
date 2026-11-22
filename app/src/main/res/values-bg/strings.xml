@@ -1787,4 +1787,15 @@
         <item>Каталонски</item>
         <item>Баски</item>
     </string-array>
+    <string name="language_pack_title">Превод на приложението</string>
+    <string name="language_pack_installed">%s: инсталиран</string>
+    <string name="language_pack_missing">%s: не е инсталиран, приложението показва английски</string>
+    <string name="language_pack_dialog_title">Превод за %s</string>
+    <string name="language_pack_dialog_message">За да е малко приложението, преводите му се изтеглят отделно. Изтеглете превода за %s или го импортирайте от файл.</string>
+    <string name="language_pack_download">Изтегляне на превод</string>
+    <string name="language_pack_import">Импортиране от файл</string>
+    <string name="language_pack_remove">Премахване на превода</string>
+    <string name="language_pack_download_failed">Изтеглянето е неуспешно. Все още няма превод за тази версия на приложението.</string>
+    <string name="language_pack_wrong_build">Този файл с превод е създаден за друга версия на приложението.</string>
+    <string name="language_pack_invalid">Този файл не е файл с превод.</string>
 </resources>

@@ -1688,4 +1688,15 @@
     <string name="voice_transcribe_while_speaking_summary">긴 받아쓰기의 대기 시간 단축</string>
     <string name="voice_piecewise_field_changed">받아쓰기 중단됨: 텍스트 필드가 변경되어 나머지는 입력되지 않았습니다</string>
     <string name="settings_search_show_in_screen">해당 화면에서 보기</string>
+    <string name="language_pack_title">앱 번역</string>
+    <string name="language_pack_installed">%s: 설치됨</string>
+    <string name="language_pack_missing">%s: 설치되지 않음, 앱은 영어로 표시됩니다</string>
+    <string name="language_pack_dialog_title">%s 번역</string>
+    <string name="language_pack_dialog_message">앱을 작게 유지하기 위해 번역 파일은 별도로 다운로드됩니다. %s 번역을 다운로드하거나 파일에서 가져오세요.</string>
+    <string name="language_pack_download">번역 다운로드</string>
+    <string name="language_pack_import">파일에서 가져오기</string>
+    <string name="language_pack_remove">번역 삭제</string>
+    <string name="language_pack_download_failed">다운로드에 실패했습니다. 이 앱 버전에 대한 번역이 아직 없습니다.</string>
+    <string name="language_pack_wrong_build">이 번역 파일은 다른 앱 버전용으로 만들어졌습니다.</string>
+    <string name="language_pack_invalid">이 파일은 번역 파일이 아닙니다.</string>
 </resources>

@@ -204,6 +204,19 @@ android {
         includeInBundle = false
     }
 
+    // -PenglishOnly: leave the translated UI strings out of the APK, they ship as language packs
+    // (tools/build_language_pack.py). Locale folders keep their typing config (bools.xml etc.).
+    if (providers.gradleProperty("englishOnly").isPresent) {
+        val englishOnlyRes = layout.buildDirectory.dir("generated/englishOnlyRes")
+        val syncEnglishOnlyRes = tasks.register<Sync>("syncEnglishOnlyRes") {
+            from("src/main/res")
+            into(englishOnlyRes)
+            exclude("values-*/strings*.xml")
+        }
+        sourceSets["main"].res.setSrcDirs(listOf(englishOnlyRes))
+        tasks.matching { it.name == "preBuild" }.configureEach { dependsOn(syncEnglishOnlyRes) }
+    }
+
     namespace = "helium314.keyboard.latin"
     lint {
         abortOnError = true

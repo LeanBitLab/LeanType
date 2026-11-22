@@ -1758,4 +1758,15 @@
     <string name="settings_group_typing">الكتابة</string>
     <string name="settings_group_extras">إضافات</string>
     <string name="settings_group_system">نظام</string>
+    <string name="language_pack_title">ترجمة التطبيق</string>
+    <string name="language_pack_installed">%s: مثبّتة</string>
+    <string name="language_pack_missing">%s: غير مثبّتة، يعرض التطبيق الإنجليزية</string>
+    <string name="language_pack_dialog_title">ترجمة %s</string>
+    <string name="language_pack_dialog_message">للحفاظ على صغر حجم التطبيق، تُنزَّل ترجماته بشكل منفصل. نزّل ترجمة %s أو استوردها من ملف.</string>
+    <string name="language_pack_download">تنزيل الترجمة</string>
+    <string name="language_pack_import">استيراد من ملف</string>
+    <string name="language_pack_remove">إزالة الترجمة</string>
+    <string name="language_pack_download_failed">فشل التنزيل. لا تتوفر ترجمة لهذا الإصدار من التطبيق بعد.</string>
+    <string name="language_pack_wrong_build">ملف الترجمة هذا مُعدّ لإصدار مختلف من التطبيق.</string>
+    <string name="language_pack_invalid">هذا الملف ليس ملف ترجمة.</string>
 </resources>

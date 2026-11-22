@@ -1689,4 +1689,15 @@ Kamus baharu:
     <string name="voice_transcribe_while_speaking_summary">Masa menunggu lebih pendek untuk imlak panjang</string>
     <string name="voice_piecewise_field_changed">Imlak dihentikan: medan teks berubah, selebihnya tidak dimasukkan</string>
     <string name="settings_search_show_in_screen">Tunjukkan pada skrinnya</string>
+    <string name="language_pack_title">Terjemahan aplikasi</string>
+    <string name="language_pack_installed">%s: dipasang</string>
+    <string name="language_pack_missing">%s: tidak dipasang, aplikasi memaparkan Bahasa Inggeris</string>
+    <string name="language_pack_dialog_title">Terjemahan untuk %s</string>
+    <string name="language_pack_dialog_message">Untuk memastikan aplikasi kecil, terjemahannya dimuat turun secara berasingan. Muat turun terjemahan untuk %s atau import daripada fail.</string>
+    <string name="language_pack_download">Muat turun terjemahan</string>
+    <string name="language_pack_import">Import daripada fail</string>
+    <string name="language_pack_remove">Alih keluar terjemahan</string>
+    <string name="language_pack_download_failed">Muat turun gagal. Tiada terjemahan tersedia untuk versi aplikasi ini lagi.</string>
+    <string name="language_pack_wrong_build">Fail terjemahan ini dibuat untuk versi aplikasi yang berbeza.</string>
+    <string name="language_pack_invalid">Fail ini bukan fail terjemahan.</string>
 </resources>

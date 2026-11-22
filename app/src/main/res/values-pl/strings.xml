@@ -1797,4 +1797,15 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
         <item>Kataloński</item>
         <item>Baskijski</item>
     </string-array>
+    <string name="language_pack_title">Tłumaczenie aplikacji</string>
+    <string name="language_pack_installed">%s: zainstalowane</string>
+    <string name="language_pack_missing">%s: niezainstalowane, aplikacja wyświetla angielski</string>
+    <string name="language_pack_dialog_title">Tłumaczenie dla: %s</string>
+    <string name="language_pack_dialog_message">Aby zachować mały rozmiar aplikacji, jej tłumaczenia są pobierane osobno. Pobierz tłumaczenie dla języka %s lub zaimportuj je z pliku.</string>
+    <string name="language_pack_download">Pobierz tłumaczenie</string>
+    <string name="language_pack_import">Importuj z pliku</string>
+    <string name="language_pack_remove">Usuń tłumaczenie</string>
+    <string name="language_pack_download_failed">Pobieranie nie powiodło się. Tłumaczenie dla tej wersji aplikacji jeszcze nie jest dostępne.</string>
+    <string name="language_pack_wrong_build">Ten plik tłumaczenia został przygotowany dla innej wersji aplikacji.</string>
+    <string name="language_pack_invalid">To nie jest plik tłumaczenia.</string>
 </resources>

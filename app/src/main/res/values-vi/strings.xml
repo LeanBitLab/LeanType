@@ -1687,4 +1687,15 @@ Từ điển mới:
     <string name="voice_transcribe_while_speaking_summary">Giảm thời gian chờ cho các đoạn đọc chính tả dài</string>
     <string name="voice_piecewise_field_changed">Đã dừng nhập giọng nói: trường văn bản đã thay đổi, phần còn lại chưa được chèn</string>
     <string name="settings_search_show_in_screen">Hiển thị trong màn hình tương ứng</string>
+    <string name="language_pack_title">Bản dịch ứng dụng</string>
+    <string name="language_pack_installed">%s: đã cài đặt</string>
+    <string name="language_pack_missing">%s: chưa cài đặt, ứng dụng hiển thị tiếng Anh</string>
+    <string name="language_pack_dialog_title">Bản dịch cho %s</string>
+    <string name="language_pack_dialog_message">Để giữ ứng dụng nhỏ gọn, bản dịch được tải xuống riêng. Tải bản dịch cho %s hoặc nhập từ tệp.</string>
+    <string name="language_pack_download">Tải bản dịch</string>
+    <string name="language_pack_import">Nhập từ tệp</string>
+    <string name="language_pack_remove">Xóa bản dịch</string>
+    <string name="language_pack_download_failed">Tải xuống thất bại. Chưa có bản dịch cho phiên bản ứng dụng này.</string>
+    <string name="language_pack_wrong_build">Tệp bản dịch này được tạo cho phiên bản ứng dụng khác.</string>
+    <string name="language_pack_invalid">Đây không phải là tệp bản dịch.</string>
 </resources>

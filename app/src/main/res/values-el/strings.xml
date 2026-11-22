@@ -1800,4 +1800,15 @@
     <string name="settings_group_typing">Δακτυλογραφία</string>
     <string name="settings_group_extras">Έξτρα</string>
     <string name="settings_group_system">Σύστημα</string>
+    <string name="language_pack_title">Μετάφραση εφαρμογής</string>
+    <string name="language_pack_installed">%s: εγκαταστάθηκε</string>
+    <string name="language_pack_missing">%s: δεν έχει εγκατασταθεί, η εφαρμογή εμφανίζει τα αγγλικά</string>
+    <string name="language_pack_dialog_title">Μετάφραση για %s</string>
+    <string name="language_pack_dialog_message">Για να διατηρείται το μέγεθος της εφαρμογής μικρό, οι μεταφράσεις της κατεβάζονται χωριστά. Κατεβάστε τη μετάφραση για %s ή εισαγάγετέ την από αρχείο.</string>
+    <string name="language_pack_download">Λήψη μετάφρασης</string>
+    <string name="language_pack_import">Εισαγωγή από αρχείο</string>
+    <string name="language_pack_remove">Κατάργηση μετάφρασης</string>
+    <string name="language_pack_download_failed">Η λήψη απέτυχε. Δεν υπάρχει ακόμη μετάφραση για αυτήν την έκδοση της εφαρμογής.</string>
+    <string name="language_pack_wrong_build">Αυτό το αρχείο μετάφρασης δημιουργήθηκε για διαφορετική έκδοση της εφαρμογής.</string>
+    <string name="language_pack_invalid">Αυτό το αρχείο δεν είναι αρχείο μετάφρασης.</string>
 </resources>

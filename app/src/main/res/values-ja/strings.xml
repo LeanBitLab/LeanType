@@ -1690,4 +1690,15 @@
     <string name="voice_transcribe_while_speaking_summary">長い音声入力の待ち時間を短縮します</string>
     <string name="voice_piecewise_field_changed">音声入力を停止しました: テキストフィールドが変更されたため、残りは挿入されませんでした</string>
     <string name="settings_search_show_in_screen">該当の画面で表示</string>
+    <string name="language_pack_title">アプリの翻訳</string>
+    <string name="language_pack_installed">%s: インストール済み</string>
+    <string name="language_pack_missing">%s: 未インストール（アプリは英語で表示されます）</string>
+    <string name="language_pack_dialog_title">%s の翻訳</string>
+    <string name="language_pack_dialog_message">アプリの容量を抑えるため、翻訳は別途ダウンロードされます。%s の翻訳をダウンロードするか、ファイルからインポートしてください。</string>
+    <string name="language_pack_download">翻訳をダウンロード</string>
+    <string name="language_pack_import">ファイルからインポート</string>
+    <string name="language_pack_remove">翻訳を削除</string>
+    <string name="language_pack_download_failed">ダウンロードに失敗しました。このアプリバージョンの翻訳はまだ利用できません。</string>
+    <string name="language_pack_wrong_build">この翻訳ファイルは別のアプリバージョン用に作成されています。</string>
+    <string name="language_pack_invalid">このファイルは翻訳ファイルではありません。</string>
 </resources>

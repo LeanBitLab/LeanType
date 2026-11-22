@@ -1752,4 +1752,15 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
         <item>Katalánština</item>
         <item>Baskičtina</item>
     </string-array>
+    <string name="language_pack_title">Překlad aplikace</string>
+    <string name="language_pack_installed">%s: nainstalováno</string>
+    <string name="language_pack_missing">%s: není nainstalováno, aplikace zobrazuje angličtinu</string>
+    <string name="language_pack_dialog_title">Překlad pro %s</string>
+    <string name="language_pack_dialog_message">Aby aplikace zůstala malá, jsou její překlady stahovány samostatně. Stáhněte překlad pro %s nebo jej importujte ze souboru.</string>
+    <string name="language_pack_download">Stáhnout překlad</string>
+    <string name="language_pack_import">Importovat ze souboru</string>
+    <string name="language_pack_remove">Odebrat překlad</string>
+    <string name="language_pack_download_failed">Stahování selhalo. Pro tuto verzi aplikace zatím není k dispozici žádný překlad.</string>
+    <string name="language_pack_wrong_build">Tento soubor s překladem byl vytvořen pro jinou verzi aplikace.</string>
+    <string name="language_pack_invalid">Tento soubor není souborem s překladem.</string>
 </resources>

@@ -1790,4 +1790,15 @@
         <item>कातालान</item>
         <item>बास्क</item>
     </string-array>
+    <string name="language_pack_title">ऐप अनुवाद</string>
+    <string name="language_pack_installed">%s: इंस्टॉल किया गया</string>
+    <string name="language_pack_missing">%s: इंस्टॉल नहीं है, ऐप अंग्रेज़ी दिखाता है</string>
+    <string name="language_pack_dialog_title">%s के लिए अनुवाद</string>
+    <string name="language_pack_dialog_message">ऐप को छोटा रखने के लिए, इसके अनुवाद अलग से डाउनलोड किए जाते हैं। %s का अनुवाद डाउनलोड करें या इसे फ़ाइल से आयात करें।</string>
+    <string name="language_pack_download">अनुवाद डाउनलोड करें</string>
+    <string name="language_pack_import">फ़ाइल से आयात करें</string>
+    <string name="language_pack_remove">अनुवाद हटाएँ</string>
+    <string name="language_pack_download_failed">डाउनलोड विफल। इस ऐप संस्करण के लिए अभी कोई अनुवाद उपलब्ध नहीं है।</string>
+    <string name="language_pack_wrong_build">यह अनुवाद फ़ाइल किसी अलग ऐप संस्करण के लिए बनाई गई थी।</string>
+    <string name="language_pack_invalid">यह फ़ाइल अनुवाद फ़ाइल नहीं है।</string>
 </resources>

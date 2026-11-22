@@ -1800,4 +1800,15 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
         <item>Catalaans</item>
         <item>Baskisch</item>
     </string-array>
+    <string name="language_pack_title">App-vertaling</string>
+    <string name="language_pack_installed">%s: geïnstalleerd</string>
+    <string name="language_pack_missing">%s: niet geïnstalleerd, de app toont Engels</string>
+    <string name="language_pack_dialog_title">Vertaling voor %s</string>
+    <string name="language_pack_dialog_message">Om de app klein te houden, worden de vertalingen apart gedownload. Download de vertaling voor %s of importeer deze uit een bestand.</string>
+    <string name="language_pack_download">Vertaling downloaden</string>
+    <string name="language_pack_import">Importeren uit bestand</string>
+    <string name="language_pack_remove">Vertaling verwijderen</string>
+    <string name="language_pack_download_failed">Downloaden mislukt. Er is nog geen vertaling beschikbaar voor deze appversie.</string>
+    <string name="language_pack_wrong_build">Dit vertalingsbestand is gemaakt voor een andere appversie.</string>
+    <string name="language_pack_invalid">Dit bestand is geen vertalingsbestand.</string>
 </resources>

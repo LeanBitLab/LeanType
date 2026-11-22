@@ -1787,4 +1787,15 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
         <item>Katalaani</item>
         <item>Baski</item>
     </string-array>
+    <string name="language_pack_title">Rakenduse tõlge</string>
+    <string name="language_pack_installed">%s: paigaldatud</string>
+    <string name="language_pack_missing">%s: pole paigaldatud, rakendus kuvab inglise keeles</string>
+    <string name="language_pack_dialog_title">Tõlge keelele %s</string>
+    <string name="language_pack_dialog_message">Rakenduse väiksena hoidmiseks laaditakse tõlked eraldi alla. Laadige alla keele %s tõlge või importige see failist.</string>
+    <string name="language_pack_download">Laadi tõlge alla</string>
+    <string name="language_pack_import">Impordi failist</string>
+    <string name="language_pack_remove">Eemalda tõlge</string>
+    <string name="language_pack_download_failed">Allalaadimine ebaõnnestus. Sellele rakenduse versioonile pole veel tõlget saadaval.</string>
+    <string name="language_pack_wrong_build">See tõlkefail on loodud teise rakenduse versiooni jaoks.</string>
+    <string name="language_pack_invalid">See fail ei ole tõlkefail.</string>
 </resources>

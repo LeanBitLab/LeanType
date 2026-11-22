@@ -1788,4 +1788,15 @@ Ar norite atnaujinti?</string>
         <item>Katalonų</item>
         <item>Baskų</item>
     </string-array>
+    <string name="language_pack_title">Programos vertimas</string>
+    <string name="language_pack_installed">%s: įdiegta</string>
+    <string name="language_pack_missing">%s: neįdiegta, programa rodoma anglų kalba</string>
+    <string name="language_pack_dialog_title">%s vertimas</string>
+    <string name="language_pack_dialog_message">Kad programa būtų mažesnė, jos vertimai atsisiunčiami atskirai. Atsisiųskite %s vertimą arba importuokite jį iš failo.</string>
+    <string name="language_pack_download">Atsisiųsti vertimą</string>
+    <string name="language_pack_import">Importuoti iš failo</string>
+    <string name="language_pack_remove">Pašalinti vertimą</string>
+    <string name="language_pack_download_failed">Atsisiuntimas nepavyko. Šiai programos versijai vertimo dar nėra.</string>
+    <string name="language_pack_wrong_build">Šis vertimo failas skirtas kitai programos versijai.</string>
+    <string name="language_pack_invalid">Šis failas nėra vertimo failas.</string>
 </resources>

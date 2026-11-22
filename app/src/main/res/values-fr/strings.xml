@@ -1755,4 +1755,15 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="settings_group_typing">Saisie</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">Système</string>
+    <string name="language_pack_title">Traduction de l\'application</string>
+    <string name="language_pack_installed">%s : installée</string>
+    <string name="language_pack_missing">%s : non installée, l\'application affiche l\'anglais</string>
+    <string name="language_pack_dialog_title">Traduction pour %s</string>
+    <string name="language_pack_dialog_message">Pour garder l\'application légère, ses traductions sont téléchargées séparément. Téléchargez la traduction pour %s ou importez-la depuis un fichier.</string>
+    <string name="language_pack_download">Télécharger la traduction</string>
+    <string name="language_pack_import">Importer depuis un fichier</string>
+    <string name="language_pack_remove">Supprimer la traduction</string>
+    <string name="language_pack_download_failed">Échec du téléchargement. Aucune traduction n\'est encore disponible pour cette version de l\'application.</string>
+    <string name="language_pack_wrong_build">Ce fichier de traduction a été créé pour une autre version de l\'application.</string>
+    <string name="language_pack_invalid">Ce fichier n\'est pas un fichier de traduction.</string>
 </resources>

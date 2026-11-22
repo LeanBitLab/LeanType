@@ -1714,4 +1714,15 @@
     <string name="offline_min_p_title">Min-P</string>
     <string name="text_expander_file_name">text_shortcuts.txt</string>
     <string name="app_quirks_badge_allow_type_null">TYPE_NULL</string>
+    <string name="language_pack_title">應用程式翻譯</string>
+    <string name="language_pack_installed">%s：已安裝</string>
+    <string name="language_pack_missing">%s：未安裝，應用程式將顯示英文</string>
+    <string name="language_pack_dialog_title">%s 的翻譯</string>
+    <string name="language_pack_dialog_message">為了讓應用程式保持精簡，翻譯檔案將另外下載。請下載 %s 的翻譯，或從檔案匯入。</string>
+    <string name="language_pack_download">下載翻譯</string>
+    <string name="language_pack_import">從檔案匯入</string>
+    <string name="language_pack_remove">移除翻譯</string>
+    <string name="language_pack_download_failed">下載失敗。此應用程式版本目前尚無可用的翻譯。</string>
+    <string name="language_pack_wrong_build">此翻譯檔案是為其他應用程式版本製作的。</string>
+    <string name="language_pack_invalid">此檔案不是翻譯檔案。</string>
 </resources>

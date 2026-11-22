@@ -1750,4 +1750,15 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
         <item>Katalán</item>
         <item>Baszk</item>
     </string-array>
+    <string name="language_pack_title">Alkalmazás fordítása</string>
+    <string name="language_pack_installed">%s: telepítve</string>
+    <string name="language_pack_missing">%s: nincs telepítve, az alkalmazás angolul jeleníti meg</string>
+    <string name="language_pack_dialog_title">%s fordítása</string>
+    <string name="language_pack_dialog_message">Az alkalmazás kis méretének megőrzése érdekében a fordítások külön töltődnek le. Töltse le a(z) %s fordítását, vagy importálja fájlból.</string>
+    <string name="language_pack_download">Fordítás letöltése</string>
+    <string name="language_pack_import">Importálás fájlból</string>
+    <string name="language_pack_remove">Fordítás eltávolítása</string>
+    <string name="language_pack_download_failed">A letöltés sikertelen. Ehhez az alkalmazásverzióhoz még nincs elérhető fordítás.</string>
+    <string name="language_pack_wrong_build">Ez a fordítási fájl egy másik alkalmazásverzióhoz készült.</string>
+    <string name="language_pack_invalid">Ez a fájl nem fordítási fájl.</string>
 </resources>
