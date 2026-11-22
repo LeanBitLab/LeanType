@@ -828,7 +828,7 @@
     <string name="updates_auto_check_summary">ব্যাকগ্রাউন্ডে নির্দিষ্ট সময় পরপর নতুন রিলিজ পরীক্ষা করুন</string>
     <string name="updates_frequency_title">পরীক্ষার পৌনঃপুনিকতা</string>
     <string name="updates_support_title">উন্নয়নে সহায়তা করুন</string>
-    <string name="updates_support_summary">LeanType ১০০% বিনামূল্যে, ওপেন সোর্স ও স্বাধীন। আপনার সমর্থন সরাসরি আমাদের সক্রিয় উন্নয়ন চালিয়ে যেতে সাহায্য করে!</string>
+    <string name="updates_support_summary" formatted="false">LeanType ১০০% বিনামূল্যে, ওপেন সোর্স ও স্বাধীন। আপনার সমর্থন সরাসরি আমাদের সক্রিয় উন্নয়ন চালিয়ে যেতে সাহায্য করে!</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors-এর মাধ্যমে মাসিক বা এককালীন স্পনসর করুন</string>
     <string name="updates_opencollective_title">Open Collective-এ অনুদান দিন</string>
     <string name="updates_opencollective_desc">Open Collective-এর মাধ্যমে আমাদের ওপেন সোর্স উন্নয়নে সহায়তা করুন</string>
@@ -979,7 +979,7 @@
     <string name="text_expander_discard_title">আপনার পরিবর্তন বাতিল করবেন?</string>
     <string name="text_expander_discard">বাতিল</string>
     <string name="text_expander_template_title">টেমপ্লেট এক্সপ্যানশন</string>
-    <string name="text_expander_template_hint">Be right back! অথবা My email is %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Be right back! অথবা My email is %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">কুইক প্লেসহোল্ডার (কার্সারে যোগ করতে ট্যাপ করুন):</string>
     <string name="text_expander_attach_image">ছবি বা ইমেজ সংযুক্ত করুন</string>
     <string name="text_expander_attach_image_desc">স্টোরেজ থেকে ছবি, ডায়াগ্রাম বা ইমেজ নির্বাচন করুন</string>
@@ -1105,10 +1105,10 @@
     <string name="setup_step6_title_screenshots">স্ক্রিনশটের পরামর্শ</string>
     <string name="setup_step6_instruction_screenshots">পরামর্শ স্ট্রিপে সাম্প্রতিক স্ক্রিনশটের পরামর্শ দিন। দ্রষ্টব্য: এই অনুমতি ক্লিপবোর্ডে স্ক্রিনশট সংরক্ষণের সুবিধাও দেয়।</string>
     <string name="setup_step7_title_height">কিবোর্ডের উচ্চতা</string>
-    <string name="setup_step7_instruction_height">কিবোর্ডের উচ্চতা সামঞ্জস্য করুন। প্রস্তাবিত: বর্গাকার কি-এর জন্য ৭৭%, লম্বা কি-এর জন্য ১০০%।</string>
+    <string name="setup_step7_instruction_height" formatted="false">কিবোর্ডের উচ্চতা সামঞ্জস্য করুন। প্রস্তাবিত: বর্গাকার কি-এর জন্য ৭৭%, লম্বা কি-এর জন্য ১০০%।</string>
     <string name="setup_step0_headline">টাইপিংয়ের এক দুর্দান্ত অভিজ্ঞতায় স্বাগতম</string>
     <string name="setup_step0_subtitle">গোপনীয়তা, গতি এবং গভীর কাস্টমাইজেশনের কথা ভেবেই প্রথম থেকে LeanType ডিজাইন করা হয়েছে।</string>
-    <string name="setup_step0_feature1_title">১০০% ব্যক্তিগত ও নিরাপদ</string>
+    <string name="setup_step0_feature1_title" formatted="false">১০০% ব্যক্তিগত ও নিরাপদ</string>
     <string name="setup_step0_feature1_desc">জিরো টেলিমেট্রি, নেটওয়ার্ক ট্র্যাকিং বা ক্লাউড লগিং। আপনার টাইপিং থাকবে শুধুই আপনার ডিভাইসে।</string>
     <string name="setup_step0_feature2_title">গভীরভাবে নিজস্বকরণযোগ্য</string>
     <string name="setup_step0_feature2_desc">লেআউট, কিবোর্ড থিম, আকার, জেসচার এবং বহুভাষিক টাইপিং নিজের পছন্দমতো সাজিয়ে নিন।</string>

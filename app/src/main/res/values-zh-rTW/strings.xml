@@ -815,7 +815,7 @@
     <string name="updates_auto_check_summary">定期在背景檢查是否有新版本</string>
     <string name="updates_frequency_title">檢查頻率</string>
     <string name="updates_support_title">支持開發</string>
-    <string name="updates_support_summary">LeanType 100% 免費、開源且獨立運作。你的支持能直接幫助我們持續開發！</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% 免費、開源且獨立運作。你的支持能直接幫助我們持續開發！</string>
     <string name="updates_github_sponsor_desc">透過 GitHub Sponsors 進行每月或單次贊助</string>
     <string name="updates_opencollective_title">在 Open Collective 上贊助</string>
     <string name="updates_opencollective_desc">透過 Open Collective 支持我們的開源開發</string>
@@ -1040,7 +1040,7 @@
     <string name="text_expander_discard_title">要捨棄變更嗎？</string>
     <string name="text_expander_discard">捨棄</string>
     <string name="text_expander_template_title">範本展開</string>
-    <string name="text_expander_template_hint">馬上回來！或 我的電子郵件是 %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">馬上回來！或 我的電子郵件是 %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">快速預置預留位置（輕觸以在游標處插入）：</string>
     <string name="text_expander_attach_image">附加相片或圖片</string>
     <string name="text_expander_attach_image_desc">從儲存空間選取相片、圖表或圖片</string>
@@ -1166,10 +1166,10 @@
     <string name="setup_step6_title_screenshots">螢幕截圖建議</string>
     <string name="setup_step6_instruction_screenshots">在建議列中建議最近擷取的螢幕截圖。注意：此權限亦允許將螢幕截圖儲存至剪貼簿。</string>
     <string name="setup_step7_title_height">鍵盤高度</string>
-    <string name="setup_step7_instruction_height">調整鍵盤高度。建議設定：77% 呈現較方正的按鍵，100% 呈現較高的按鍵。</string>
+    <string name="setup_step7_instruction_height" formatted="false">調整鍵盤高度。建議設定：77% 呈現較方正的按鍵，100% 呈現較高的按鍵。</string>
     <string name="setup_step0_headline">歡迎體驗更優質的輸入方式</string>
     <string name="setup_step0_subtitle">LeanType 從頭專為隱私、速度與深度自訂而設計。</string>
-    <string name="setup_step0_feature1_title">100% 私密與安全</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% 私密與安全</string>
     <string name="setup_step0_feature1_desc">無遙測數據、無網路追蹤、無雲端記錄。您的輸入內容一律保留在裝置上。</string>
     <string name="setup_step0_feature2_title">深度自訂</string>
     <string name="setup_step0_feature2_desc">依您的喜好量身打造配置、鍵盤主題、尺寸、手勢以及多語言輸入。</string>

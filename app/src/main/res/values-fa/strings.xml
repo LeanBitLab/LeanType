@@ -1095,7 +1095,7 @@
     <string name="text_expander_discard_title">تغییرات لغو شود؟</string>
     <string name="text_expander_discard">لغو تغییرات</string>
     <string name="text_expander_template_title">بسط الگویی</string>
-    <string name="text_expander_template_hint">الان برمی‌گردم! یا ایمیل من: %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">الان برمی‌گردم! یا ایمیل من: %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">جای‌نماهای سریع (برای درج در محل نشانگر ضربه بزنید):</string>
     <string name="text_expander_attach_image">پیوست عکس یا تصویر</string>
     <string name="text_expander_attach_image_desc">انتخاب یک عکس، نمودار یا تصویر از حافظه</string>
