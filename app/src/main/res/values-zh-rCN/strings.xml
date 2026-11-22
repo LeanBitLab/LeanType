@@ -1698,4 +1698,11 @@
     <string name="backup_category_personal_dictionary">个人词典</string>
     <string name="backup_category_text_expander">文本扩展器</string>
     <string name="gif_pack_close">关闭表情包</string>
+    <string name="settings_screen_gestures_swipes">手势和滑动</string>
+    <string name="settings_category_input_sound_vibration">输入、声音和振动</string>
+    <string name="settings_category_size_layout_fonts">大小、布局和字体</string>
+    <string name="settings_group_keyboard">键盘</string>
+    <string name="settings_group_typing">打字</string>
+    <string name="settings_group_extras">附加功能</string>
+    <string name="settings_group_system">系统</string>
 </resources>

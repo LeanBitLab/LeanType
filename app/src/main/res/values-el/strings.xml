@@ -1797,4 +1797,11 @@
     <string name="no_dictionary_message">\"Χωρίς λεξικό, θα λαμβάνετε μόνο προτάσεις για κείμενο που καταχωρίσατε πριν.&lt;br&gt;
         Μπορείτε να κάνετε λήψη λεξικών%1$sή να ελέγξετε εάν ένα λεξικό για το \"%2$s\" μπορεί να ληφθεί απευθείας%3$s.\"</string>
     <string name="gif_pack_close">Κλείσιμο πακέτου</string>
+    <string name="settings_screen_gestures_swipes">Χειρονομίες και ολισθήσεις</string>
+    <string name="settings_category_input_sound_vibration">Είσοδος, ήχος &amp; δόνηση</string>
+    <string name="settings_category_size_layout_fonts">Μέγεθος, διάταξη &amp; γραμματοσειρές</string>
+    <string name="settings_group_keyboard">Πληκτρολόγιο</string>
+    <string name="settings_group_typing">Δακτυλογραφία</string>
+    <string name="settings_group_extras">Έξτρα</string>
+    <string name="settings_group_system">Σύστημα</string>
 </resources>

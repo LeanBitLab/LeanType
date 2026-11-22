@@ -106,7 +106,7 @@ fun AppearanceScreen(
             if (fineTuneThemeExpanded) Settings.PREF_CLEAR_CLIPBOARD_ICON else null,
 
             // Keyboard sizing, layout & fonts
-            R.string.settings_category_miscellaneous,
+            R.string.settings_category_size_layout_fonts,
             Settings.PREF_KEYBOARD_HEIGHT_SCALE_PREFIX,
             Settings.PREF_ENABLE_SPLIT_KEYBOARD,
             SettingsWithoutKey.CUSTOM_FONT,

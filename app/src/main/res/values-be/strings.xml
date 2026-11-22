@@ -1731,4 +1731,11 @@
     <string name="backup_category_personal_dictionary">Асабісты слоўнік</string>
     <string name="backup_category_text_expander">Расшыральнік тэксту</string>
     <string name="gif_pack_close">Зачыніць пакет</string>
+    <string name="settings_screen_gestures_swipes">Жэсты і правядзенне</string>
+    <string name="settings_category_input_sound_vibration">Увод, гук і вібрацыя</string>
+    <string name="settings_category_size_layout_fonts">Памер, макет і шрыфты</string>
+    <string name="settings_group_keyboard">Клавіятура</string>
+    <string name="settings_group_typing">Набор тэксту</string>
+    <string name="settings_group_extras">Дадаткова</string>
+    <string name="settings_group_system">Сістэма</string>
 </resources>

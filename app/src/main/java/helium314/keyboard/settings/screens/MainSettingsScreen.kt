@@ -48,6 +48,7 @@ import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.settings.NextScreenIcon
+import helium314.keyboard.settings.preferences.PreferenceCategory
 import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.SettingsActivity
 import helium314.keyboard.settings.updates.AppUpdatesManager
@@ -200,6 +201,7 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
+                        PreferenceCategory(stringResource(R.string.settings_group_keyboard))
                         Preference(
                             name = stringResource(R.string.language_and_layouts_title),
                             description = enabledSubtypesDescription,
@@ -234,8 +236,9 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
+                        PreferenceCategory(stringResource(R.string.settings_group_typing))
                         Preference(
-                            name = stringResource(R.string.settings_screen_gesture),
+                            name = stringResource(R.string.settings_screen_gestures_swipes),
                             onClick = onClickGestureTyping,
                             icon = R.drawable.ic_settings_gesture
                         ) { NextScreenIcon() }
@@ -267,6 +270,7 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
+                        PreferenceCategory(stringResource(R.string.settings_group_extras))
                         if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull") {
                             Preference(
                                 name = stringResource(R.string.settings_screen_ai_integration),
@@ -292,6 +296,7 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
+                        PreferenceCategory(stringResource(R.string.settings_group_system))
                         Preference(
                             name = stringResource(R.string.settings_screen_advanced),
                             onClick = onClickAdvanced,

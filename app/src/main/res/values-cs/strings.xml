@@ -1696,4 +1696,11 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="backup_category_personal_dictionary">Osobní slovník</string>
     <string name="backup_category_text_expander">Text Expander</string>
     <string name="gif_pack_close">Zavřít balíček</string>
+    <string name="settings_screen_gestures_swipes">Gesta a přejetí</string>
+    <string name="settings_category_input_sound_vibration">Vstup, zvuk a vibrace</string>
+    <string name="settings_category_size_layout_fonts">Velikost, rozvržení a písma</string>
+    <string name="settings_group_keyboard">Klávesnice</string>
+    <string name="settings_group_typing">Psaní</string>
+    <string name="settings_group_extras">Extra</string>
+    <string name="settings_group_system">Systém</string>
 </resources>

@@ -1756,4 +1756,11 @@
     <string name="backup_category_personal_dictionary">Личный словарь</string>
     <string name="backup_category_text_expander">Расширитель текста</string>
     <string name="gif_pack_close">Закрыть пакет</string>
+    <string name="settings_screen_gestures_swipes">Жесты и смахивания</string>
+    <string name="settings_category_input_sound_vibration">Ввод, звук и вибрация</string>
+    <string name="settings_category_size_layout_fonts">Размер, макет и шрифты</string>
+    <string name="settings_group_keyboard">Клавиатура</string>
+    <string name="settings_group_typing">Ввод текста</string>
+    <string name="settings_group_extras">Дополнительно</string>
+    <string name="settings_group_system">Система</string>
 </resources>

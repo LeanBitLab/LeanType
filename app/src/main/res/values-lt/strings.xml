@@ -1732,4 +1732,11 @@ Ar norite atnaujinti?</string>
     <string name="backup_category_personal_dictionary">Asmeninis žodynas</string>
     <string name="backup_category_text_expander">Teksto plėtiklis</string>
     <string name="gif_pack_close">Uždaryti paketą</string>
+    <string name="settings_screen_gestures_swipes">Gestai ir perbraukimai</string>
+    <string name="settings_category_input_sound_vibration">Įvestis, garsas ir vibracija</string>
+    <string name="settings_category_size_layout_fonts">Dydis, išdėstymas ir šriftai</string>
+    <string name="settings_group_keyboard">Klaviatūra</string>
+    <string name="settings_group_typing">Rašymas</string>
+    <string name="settings_group_extras">Priedai</string>
+    <string name="settings_group_system">Sistema</string>
 </resources>

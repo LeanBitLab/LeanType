@@ -1752,4 +1752,11 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="backup_category_personal_dictionary">Dictionnaire personnel</string>
     <string name="backup_category_text_expander">Extenseur de texte</string>
     <string name="gif_pack_close">Fermer le paquet</string>
+    <string name="settings_screen_gestures_swipes">Gestes et balayages</string>
+    <string name="settings_category_input_sound_vibration">Entrée, son et vibration</string>
+    <string name="settings_category_size_layout_fonts">Taille, mise en page et polices</string>
+    <string name="settings_group_keyboard">Clavier</string>
+    <string name="settings_group_typing">Saisie</string>
+    <string name="settings_group_extras">Extras</string>
+    <string name="settings_group_system">Système</string>
 </resources>

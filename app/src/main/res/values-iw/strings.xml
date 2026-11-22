@@ -1702,4 +1702,11 @@
     <string name="backup_category_personal_dictionary">מילון אישי</string>
     <string name="backup_category_text_expander">מרחיב טקסט</string>
     <string name="gif_pack_close">סגור חבילה</string>
+    <string name="settings_screen_gestures_swipes">מחוות והחלקות</string>
+    <string name="settings_category_input_sound_vibration">קלט, צליל ורטט</string>
+    <string name="settings_category_size_layout_fonts">גודל, פריסה וגופנים</string>
+    <string name="settings_group_keyboard">מקלדת</string>
+    <string name="settings_group_typing">הקלדה</string>
+    <string name="settings_group_extras">תוספות</string>
+    <string name="settings_group_system">מערכת</string>
 </resources>

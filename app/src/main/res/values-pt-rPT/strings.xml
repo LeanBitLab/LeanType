@@ -1693,4 +1693,11 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="backup_category_personal_dictionary">Dicionário Pessoal</string>
     <string name="backup_category_text_expander">Expansor de texto</string>
     <string name="gif_pack_close">Fechar pacote</string>
+    <string name="settings_screen_gestures_swipes">Gestos e deslizar</string>
+    <string name="settings_category_input_sound_vibration">Entrada, som e vibração</string>
+    <string name="settings_category_size_layout_fonts">Tamanho, layout e fontes</string>
+    <string name="settings_group_keyboard">Teclado</string>
+    <string name="settings_group_typing">Escrita</string>
+    <string name="settings_group_extras">Extras</string>
+    <string name="settings_group_system">Sistema</string>
 </resources>

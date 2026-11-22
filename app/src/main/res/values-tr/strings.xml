@@ -1723,4 +1723,11 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="backup_category_personal_dictionary">Kişisel Sözlük</string>
     <string name="backup_category_text_expander">Metin Genişletici</string>
     <string name="gif_pack_close">Paketi kapat</string>
+    <string name="settings_screen_gestures_swipes">Hareketler ve kaydırmalar</string>
+    <string name="settings_category_input_sound_vibration">Giriş, ses ve titreşim</string>
+    <string name="settings_category_size_layout_fonts">Boyut, düzen ve yazı tipleri</string>
+    <string name="settings_group_keyboard">Klavye</string>
+    <string name="settings_group_typing">Yazma</string>
+    <string name="settings_group_extras">Ekstralar</string>
+    <string name="settings_group_system">Sistem</string>
 </resources>

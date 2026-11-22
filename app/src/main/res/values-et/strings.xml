@@ -1731,4 +1731,11 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="backup_category_personal_dictionary">Isiklik sõnastik</string>
     <string name="backup_category_text_expander">Tekstilaiend</string>
     <string name="gif_pack_close">Sulge pakk</string>
+    <string name="settings_screen_gestures_swipes">Žestid ja pühkimised</string>
+    <string name="settings_category_input_sound_vibration">Sisend, heli ja vibratsioon</string>
+    <string name="settings_category_size_layout_fonts">Suurus, paigutus ja fondid</string>
+    <string name="settings_group_keyboard">Klaviatuur</string>
+    <string name="settings_group_typing">Tippimine</string>
+    <string name="settings_group_extras">Lisad</string>
+    <string name="settings_group_system">Süsteem</string>
 </resources>

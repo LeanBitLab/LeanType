@@ -1734,4 +1734,11 @@
     <string name="backup_category_personal_dictionary">व्यक्तिगत शब्दकोश</string>
     <string name="backup_category_text_expander">पाठ विस्तारक</string>
     <string name="gif_pack_close">पैक बंद करें</string>
+    <string name="settings_screen_gestures_swipes">इशारे और स्वाइप</string>
+    <string name="settings_category_input_sound_vibration">इनपुट, ध्वनि और कंपन</string>
+    <string name="settings_category_size_layout_fonts">आकार, लेआउट और फ़ॉन्ट</string>
+    <string name="settings_group_keyboard">कीबोर्ड</string>
+    <string name="settings_group_typing">टाइपिंग</string>
+    <string name="settings_group_extras">अतिरिक्त</string>
+    <string name="settings_group_system">प्रणाली</string>
 </resources>
