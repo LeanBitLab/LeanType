@@ -120,7 +120,7 @@ class ProofreadService(private val context: Context) {
                     it.contains("gemini-2", ignoreCase = true) ||
                     it.contains("gemini-1.5", ignoreCase = true)
                 }
-                voice.ifEmpty { listOf(DEFAULT_VOICE_GEMINI_MODEL, "gemini-2.5-flash", "gemini-flash-latest", "gemini-1.5-flash") }
+                voice.ifEmpty { listOf(DEFAULT_VOICE_GEMINI_MODEL, "gemini-2.5-flash", "gemini-flash-lite-latest") }
             }
             AIProvider.GROQ -> {
                 val all = fetchGroqModels()
@@ -1089,7 +1089,7 @@ class ProofreadService(private val context: Context) {
         private const val DEFAULT_TARGET_LANGUAGE = "keyboard"
         private const val DEFAULT_SOURCE_LANGUAGE = "auto"
         private const val DEFAULT_HF_MODEL = "gpt-4o-mini"
-        const val DEFAULT_VOICE_GEMINI_MODEL = "gemini-2.0-flash"
+        const val DEFAULT_VOICE_GEMINI_MODEL = "gemini-flash-latest"
         const val DEFAULT_VOICE_HF_MODEL = "whisper-1"
         
         val AVAILABLE_MODELS = listOf(

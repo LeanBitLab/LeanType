@@ -685,7 +685,7 @@ class ProofreadService(private val context: Context) {
         private const val KEY_DECODER_PATH = "offline_decoder_path"
         private const val KEY_TOKENIZER_PATH = "offline_tokenizer_path"
         val AVAILABLE_MODELS = listOf("GGUF Model (Local)")
-        const val DEFAULT_VOICE_GEMINI_MODEL = "gemini-2.0-flash"
+        const val DEFAULT_VOICE_GEMINI_MODEL = "gemini-flash-latest"
         const val DEFAULT_VOICE_HF_MODEL = "whisper-1"
     }
 }
