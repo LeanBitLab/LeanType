@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
     <string name="settings_screen_preferences">"환경설정"</string>
-    <string name="settings_screen_gesture">"제스처 타이핑"</string>
     <string name="settings_screen_correction">"텍스트 수정"</string>
     <string name="settings_screen_advanced">"고급"</string>
     <string name="settings_screen_theme">"테마"</string>
@@ -97,12 +96,10 @@
     <string name="enable_clipboard_history">클립보드 기록 활성화</string>
     <string name="delete_swipe">스와이프 삭제</string>
     <string name="show_emoji_key">이모지 키</string>
-    <string name="settings_category_input">입력</string>
     <string name="settings_category_additional_keys">추카 키</string>
     <string name="settings_category_correction">교정</string>
     <string name="settings_category_clipboard_history">클립보드 기록</string>
     <string name="settings_no_limit">제한 없음</string>
-    <string name="settings_category_miscellaneous">기타</string>
     <string name="enable_clipboard_history_summary">비활성화시 클립보드 콘텐츠가 있는 경우 클립보드 키로 붙여넣습니다</string>
     <string name="clipboard_history_retention_time">기록 보존 시간</string>
     <string name="incognito">강제 시크릿 모드</string>

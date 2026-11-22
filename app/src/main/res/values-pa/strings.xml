@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ \'ਤੇ ਧੁਨ ਵਜਾਓ"</string>
     <string name="popup_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
     <string name="settings_screen_preferences">"ਤਰਜੀਹਾਂ"</string>
-    <string name="settings_screen_gesture">"ਸੰਕੇਤ ਟਾਈਪਿੰਗ"</string>
     <string name="settings_screen_correction">"ਟੈਕਸਟ ਸੁਧਾਈ"</string>
     <string name="settings_screen_advanced">"ਵਿਕਸਿਤ"</string>
     <string name="settings_screen_theme">"ਥੀਮ"</string>

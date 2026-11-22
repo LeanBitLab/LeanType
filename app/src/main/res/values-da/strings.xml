@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Lyd ved tastetryk"</string>
     <string name="popup_on_keypress">"Pop op ved tastetryk"</string>
     <string name="settings_screen_preferences">"Præferencer"</string>
-    <string name="settings_screen_gesture">"Glidende indtastning"</string>
     <string name="settings_screen_correction">Tekstkorrektion</string>
     <string name="settings_screen_advanced">"Avanceret"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -108,9 +107,7 @@
     <string name="autospace_after_punctuation">Auto-mellemrum efter skilletegn</string>
     <string name="subtype_akkhor_bn_BD">%s (Akkhor)</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Input</string>
     <string name="settings_category_additional_keys">Yderligere taster</string>
-    <string name="settings_category_miscellaneous">Diverse</string>
     <string name="delete_swipe">Swipe-sletning</string>
     <string name="delete_swipe_summary">Udfør et swipe fra slet-tasten for at vælge og fjerne større dele af teksten på én gang</string>
     <string name="incognito">Gennemtving inkognitotilstand</string>

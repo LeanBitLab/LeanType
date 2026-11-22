@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"Toa sauti unapobofya kitufe"</string>
     <string name="popup_on_keypress">"Ibuka kitufe kinapobonyezwa"</string>
     <string name="settings_screen_preferences">"Mapendeleo"</string>
-    <string name="settings_screen_gesture">"Kuandika kwa Ishara"</string>
     <string name="settings_screen_correction">"Masahihisho ya maandishi"</string>
     <string name="settings_screen_advanced">"Mahiri"</string>
     <string name="settings_screen_theme">"Mandhari"</string>

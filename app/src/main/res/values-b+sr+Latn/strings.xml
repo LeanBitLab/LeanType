@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Zvuk na pritisak tastera"</string>
     <string name="popup_on_keypress">"Iskačući prozor prilikom pritiska tastera"</string>
     <string name="settings_screen_preferences">"Podešavanja"</string>
-    <string name="settings_screen_gesture">"Kucanje pokretima"</string>
     <string name="settings_screen_correction">"Ispravljanje teksta"</string>
     <string name="settings_screen_advanced">"Napredno"</string>
     <string name="settings_screen_theme">"Tema"</string>

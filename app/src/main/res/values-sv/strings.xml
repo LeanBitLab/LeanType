@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Ljud vid tangenttryck"</string>
     <string name="popup_on_keypress">"Popup vid tangenttryck"</string>
     <string name="settings_screen_preferences">Alternativ</string>
-    <string name="settings_screen_gesture">"Svepskrivning"</string>
     <string name="settings_screen_correction">"Textkorrigering"</string>
     <string name="settings_screen_advanced">"Avancerat"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -86,7 +85,6 @@
     <string name="settings_category_correction">Korrigeringar</string>
     <string name="settings_category_suggestions">Förslag</string>
     <string name="settings_category_experimental">Experimentella</string>
-    <string name="settings_category_miscellaneous">Diverse</string>
     <string name="abbreviation_unit_minutes">%s min</string>
     <string name="settings_no_limit">Ingen gräns</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Långtryckning på mellanslagstangenten öppnar menyn för val av inmatningsmetod</string>
@@ -103,7 +101,6 @@
     <string name="show_hints">Visa tangenttips</string>
     <string name="incognito">Tvinga inkognitoläge</string>
     <string name="prefs_force_incognito_mode_summary">Inaktivera inlärningen av nya ord</string>
-    <string name="settings_category_input">Inmatning</string>
     <string name="enable_clipboard_history">Aktivera urklippshistorik</string>
     <string name="enable_clipboard_history_summary">Om inaktiverad, kommer urklippstangenten att klistra in eventuellt urklippsinnehåll</string>
     <string name="clipboard_history_retention_time">Lagringstid för historik</string>

@@ -9,7 +9,6 @@
     <string name="popup_on_keypress">Визуальное увеличение клавиши при нажатии</string>
     <string name="settings_screen_preferences">Настройки</string>
     <string name="settings_screen_appearance">Оформление</string>
-    <string name="settings_screen_gesture">Непрерывный ввод</string>
     <string name="settings_screen_correction">Исправление текста</string>
     <string name="settings_screen_advanced">Расширенные настройки</string>
     <string name="settings_screen_theme">Тема</string>
@@ -131,9 +130,7 @@
     <string name="autospace_after_punctuation">Пробел автоматически после знаков препинания</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Изменять метод ввода с помощью пробела</string>
     <string name="settings_category_experimental">Экспериментальные</string>
-    <string name="settings_category_miscellaneous">Разное</string>
     <string name="settings_category_correction">Исправления</string>
-    <string name="settings_category_input">Настройки ввода</string>
     <string name="settings_category_additional_keys">Дополнительные клавиши</string>
     <string name="settings_category_suggestions">Подсказки</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Долгое нажатие клавиши пробела вызывает меню выбора метода ввода</string>
@@ -935,7 +932,6 @@
     <string name="floating_keyboard_dock_handle">Закрепить клавиатуру</string>
     <string name="remember_floating_keyboard_title">Запоминать плавающий режим</string>
     <string name="remember_floating_keyboard_summary">Открывать клавиатуру в плавающем режиме, если она была плавающей в прошлый раз</string>
-    <string name="settings_category_app_profiles">Профили приложений</string>
     <string name="settings_category_window_modes">Оконные &amp; плавающие режимы</string>
     <string name="settings_category_key_appearance">Внешний вид клавиш &amp; подсказки</string>
     <string name="app_quirks_title">Профили приложений</string>

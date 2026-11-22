@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Berbunyi jika tombol ditekan"</string>
     <string name="popup_on_keypress">"Muncul saat tombol ditekan"</string>
     <string name="settings_screen_preferences">"Preferensi"</string>
-    <string name="settings_screen_gesture">"Ketikan Gestur"</string>
     <string name="settings_screen_correction">"Koreksi teks"</string>
     <string name="settings_screen_advanced">"Lanjutan"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -100,11 +99,9 @@
     <string name="incognito">Paksa mode privat</string>
     <string name="show_emoji_key">Tombol emoji</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Masukan</string>
     <string name="settings_category_additional_keys">Tombol tambahan</string>
     <string name="settings_category_suggestions">Saran</string>
     <string name="settings_category_experimental">Percobaan</string>
-    <string name="settings_category_miscellaneous">Lainnya</string>
     <string name="settings_category_correction">Koreksi</string>
     <string name="more_keys_strip_description">Tombol lainnya</string>
     <string name="prefs_force_incognito_mode_summary">Nonaktifkan pembelajaran kata baru</string>
@@ -873,7 +870,6 @@
     <string name="custom_ai_keys_prompt_label">Prompt Kustom untuk Tombol %1$d</string>
     <string name="custom_ai_keys_tag_label">Tag / Label (misalnya \'Prancis\', \'Tata Bahasa\', \'Tulis Ulang\')</string>
     <string name="custom_ai_keys_selected_functions">Fungsi Kata Kunci yang Dipilih:</string>
-    <string name="settings_category_app_profiles">Profil aplikasi</string>
     <string name="settings_category_window_modes">Mode jendela &amp; mengambang</string>
     <string name="settings_category_key_appearance">Tampilan tombol &amp; petunjuk</string>
     <string name="app_quirks_title">Profil Aplikasi</string>

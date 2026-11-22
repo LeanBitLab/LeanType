@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Toista ääni näppäimiä painettaessa"</string>
     <string name="popup_on_keypress">"Ponnahdusikkuna painalluksella"</string>
     <string name="settings_screen_preferences">"Asetukset"</string>
-    <string name="settings_screen_gesture">"Piirtokirjoitus"</string>
     <string name="settings_screen_correction">"Tekstin korjaus"</string>
     <string name="settings_screen_advanced">"Lisäasetukset"</string>
     <string name="settings_screen_theme">"Teema"</string>
@@ -132,12 +131,10 @@
     <string name="more_autocorrect">Enemmän autom. korjausta</string>
     <string name="popup_keys_number" tools:keep="@string/popup_keys_number">Numerorivi</string>
     <string name="day_or_night_day">Päivä</string>
-    <string name="settings_category_input">Syöte</string>
     <string name="settings_category_clipboard_history">Leikepöydän historia</string>
     <string name="settings_category_correction">Korjaukset</string>
     <string name="settings_category_suggestions">Ehdotukset</string>
     <string name="settings_category_experimental">Kokeellinen</string>
-    <string name="settings_category_miscellaneous">Sekalaiset</string>
     <string name="settings_category_additional_keys">Lisänäppäimet</string>
     <string name="language_switch_key_switch_both">Vaihda molemmat</string>
     <string name="show_emoji_key">Emoji-näppäin</string>

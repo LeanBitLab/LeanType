@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Geluid bij toetsaanslag"</string>
     <string name="popup_on_keypress">"Pop-up bij toetsaanslag"</string>
     <string name="settings_screen_preferences">Instellingen</string>
-    <string name="settings_screen_gesture">Typen met gebaren</string>
     <string name="settings_screen_correction">"Tekstcorrectie"</string>
     <string name="settings_screen_advanced">"Geavanceerd"</string>
     <string name="settings_screen_theme">"Thema"</string>
@@ -89,7 +88,6 @@
     <string name="day_night_mode_summary">Het uiterlijk volgt de systeeminstellingen</string>
     <string name="settings_category_clipboard_history">Klembordgeschiedenis</string>
     <string name="settings_category_experimental">Experimenteel</string>
-    <string name="settings_category_miscellaneous">Overig</string>
     <string name="settings_no_limit">Geen limiet</string>
     <string name="clipboard_history_retention_time">Bewaartijd van de geschiedenis</string>
     <string name="delete_swipe">Verwijderen met veegbeweging</string>
@@ -117,7 +115,6 @@
     <string name="key_borders">Toetsranden</string>
     <string name="autospace_after_punctuation_summary">Automatisch spatie invoegen na interpunctie en het typen van een nieuw woord</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Invoer</string>
     <string name="settings_category_additional_keys">Extra toetsen</string>
     <string name="undo">"Ongedaan maken"</string>
     <string name="redo">"Opnieuw"</string>
@@ -796,7 +793,6 @@
     <string name="clear_log">Logboek wissen</string>
     <string name="share_log">Logboek delen</string>
     <string name="log_cleared">Logboek gewist</string>
-    <string name="settings_category_app_profiles">App-profielen</string>
     <string name="settings_category_window_modes">Venster- &amp; zweefmodi</string>
     <string name="app_quirks_title">App-profielen</string>
     <string name="app_quirks_summary">App-specifiek toetsenbordgedrag, webcompatibiliteit en auto-incognito</string>

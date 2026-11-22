@@ -9,7 +9,6 @@
     <string name="popup_on_keypress">"Па націску на клавішы ўсплывае акно"</string>
     <string name="settings_screen_preferences">"Параметры"</string>
     <string name="settings_screen_appearance">"Знешні выгляд"</string>
-    <string name="settings_screen_gesture">"Жэставы набор"</string>
     <string name="settings_screen_correction">"Выпраўленне тэксту"</string>
     <string name="settings_screen_advanced">"Дадатковыя"</string>
     <string name="settings_screen_theme">"Тэма"</string>
@@ -88,13 +87,11 @@
     <string name="settings_category_correction">Выпраўленні</string>
     <string name="settings_category_suggestions">Прапановы</string>
     <string name="settings_category_experimental">Эксперыментальныя</string>
-    <string name="settings_category_miscellaneous">Рознае</string>
     <string name="settings_no_limit">Без абмежаванняў</string>
     <string name="abbreviation_unit_minutes">%s хв.</string>
     <string name="android_spell_checker_settings">Налады праверкі правапісу LeanType</string>
     <string name="show_emoji_key">Клавіша эмодзі</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Ўвод</string>
     <string name="settings_category_additional_keys">Дадатковыя клавішы</string>
     <string name="spell_checker_service_name">Праверка правапісу LeanType</string>
     <string name="enable_clipboard_history">Ўключыць гісторыю буфера абмену</string>
@@ -902,7 +899,6 @@
     <string name="custom_ai_keys_prompt_label">Карыстальніцкі запыт для клавішы %1$d</string>
     <string name="custom_ai_keys_tag_label">Тэг / Метка (напрыклад, \'Французская\', \'Граматыка\', \'Перапісаць\')</string>
     <string name="custom_ai_keys_selected_functions">Выбраныя функцыі ключавых слоў:</string>
-    <string name="settings_category_app_profiles">Профілі праграм</string>
     <string name="settings_category_window_modes">Рэжымы акна і плаваючыя рэжымы</string>
     <string name="settings_category_key_appearance">Выгляд клавіш і падказкі</string>
     <string name="app_quirks_title">Профілі праграм</string>

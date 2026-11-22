@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"Tumunog sa keypress"</string>
     <string name="popup_on_keypress">"Mag-popup sa keypress"</string>
     <string name="settings_screen_preferences">"Mga Kagustuhan"</string>
-    <string name="settings_screen_gesture">"Gesture na Pagta-type"</string>
     <string name="settings_screen_correction">"Pagwawasto ng text"</string>
     <string name="settings_screen_advanced">"Advanced"</string>
     <string name="settings_screen_theme">"Tema"</string>

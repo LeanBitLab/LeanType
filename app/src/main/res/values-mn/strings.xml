@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Товч дарахад дуу гаргах"</string>
     <string name="popup_on_keypress">"Товч дарахад попап гарна"</string>
     <string name="settings_screen_preferences">"Тохируулга"</string>
-    <string name="settings_screen_gesture">"Зангаагаар бичих"</string>
     <string name="settings_screen_correction">"Текст засварлах"</string>
     <string name="settings_screen_advanced">"Дэлгэрэнгүй"</string>
     <string name="settings_screen_theme">"Загвар"</string>

@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Skaņa, nospiežot taustiņu"</string>
     <string name="popup_on_keypress">"Parādās, nospiežot taustiņu"</string>
     <string name="settings_screen_preferences">Iestatījumi</string>
-    <string name="settings_screen_gesture">"Ievadīt ar žestiem"</string>
     <string name="settings_screen_correction">"Teksta korekcija"</string>
     <string name="settings_screen_advanced">"Papildu"</string>
     <string name="settings_screen_theme">"Motīvs"</string>
@@ -99,7 +98,6 @@
     <string name="ime_settings">LeanType</string>
     <string name="android_spell_checker_settings">LeanType pareizrakstības pārbaudītāja iestatījumi</string>
     <string name="settings_category_suggestions">Ieteikumi</string>
-    <string name="settings_category_input">Ievade</string>
     <string name="settings_category_additional_keys">Papildus taustiņi</string>
     <string name="settings_category_clipboard_history">Starpliktuves vēsture</string>
     <string name="settings_category_correction">Labojumi</string>

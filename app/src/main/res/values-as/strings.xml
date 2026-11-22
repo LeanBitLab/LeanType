@@ -10,7 +10,6 @@
     <string name="sound_on_keypress">"কী টিপিলে শব্দ হ\'ব"</string>
     <string name="popup_on_keypress">"কী টিপিলে প\'পআপ ওলাব"</string>
     <string name="settings_screen_preferences">"অগ্ৰাধিকাৰসমূহ"</string>
-    <string name="settings_screen_gesture">"আঙুলি পিছলাই টাইপ কৰাৰ সুবিধা"</string>
     <string name="settings_screen_correction">"পাঠ শুধৰণি"</string>
     <string name="settings_screen_advanced">"উচ্চখাপৰ"</string>
     <string name="settings_screen_theme">"থীম"</string>

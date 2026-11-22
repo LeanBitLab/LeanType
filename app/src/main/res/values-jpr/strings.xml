@@ -11,12 +11,9 @@
     <string name="day_or_night_day">רוז</string>
     <string name="settings_screen_advanced">פישרפֿתה</string>
     <string name="settings_screen_theme">טרחזמינה</string>
-    <string name="settings_category_input">גריש</string>
     <string name="settings_category_correction">גֿלטגיריהא</string>
     <string name="settings_category_suggestions">פישנהאדהא</string>
     <string name="settings_category_experimental">אָזמאישי</string>
-    <string name="settings_category_miscellaneous">מתפֿרקה</string>
-    <string name="settings_screen_gesture">ורדי אשארהאי</string>
     <string name="settings_screen_correction">אצלאח נװשתאר</string>
     <string name="settings_category_additional_keys">כלידהאי אפֿזודה</string>
     <string name="settings_category_clipboard_history">תאריכֿצׄה תכֿתגירה</string>

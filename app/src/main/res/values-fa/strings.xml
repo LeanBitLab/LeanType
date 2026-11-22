@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"صدا با فشار کلید"</string>
     <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
     <string name="settings_screen_preferences">"تنظیمات برگزیده"</string>
-    <string name="settings_screen_gesture">"ورودی اشاره‌ای"</string>
     <string name="settings_screen_correction">"اصلاح نوشتار"</string>
     <string name="settings_screen_advanced">"پیشرفته"</string>
     <string name="settings_screen_theme">"طرح‌زمینه"</string>
@@ -93,8 +92,6 @@
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">کلیدهای افزوده</string>
     <string name="settings_category_experimental">آزمایشی</string>
-    <string name="settings_category_miscellaneous">متفرقه</string>
-    <string name="settings_category_input">ورودی</string>
     <string name="settings_category_correction">غلط‌گیری‌ها</string>
     <string name="settings_category_suggestions">پیشنهاد‌ها</string>
     <string name="clipboard_history_retention_time">مدت زمان نگهداری تاریخچه</string>

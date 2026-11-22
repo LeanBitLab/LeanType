@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"కీని నొక్కినప్పుడు ధ్వని"</string>
     <string name="popup_on_keypress">"కీని నొక్కినప్పుడు పాప్‌అప్ చూపు"</string>
     <string name="settings_screen_preferences">"ప్రాధాన్యతలు"</string>
-    <string name="settings_screen_gesture">"సంజ్ఞ టైపింగ్"</string>
     <string name="settings_screen_correction">"వచన సవరణ"</string>
     <string name="settings_screen_advanced">"అధునాతనం"</string>
     <string name="settings_screen_theme">"థీమ్"</string>
@@ -94,7 +93,6 @@
     <string name="settings_category_suggestions">సూచనలు</string>
     <string name="settings_category_experimental">ప్రయోగాత్మకము</string>
     <string name="settings_category_correction">సరిదిద్దుట</string>
-    <string name="settings_category_miscellaneous">వివధములు</string>
     <string name="settings_no_limit">పరిమితి లేదు</string>
     <string name="more_keys_strip_description">మరికొన్ని కీస్</string>
     <string name="number_row">సంఖ్యల వరుస</string>

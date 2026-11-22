@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"बटन दबाने पर आवाज़"</string>
     <string name="popup_on_keypress">"बटन दबाने पर पॉपअप दिखाएं"</string>
     <string name="settings_screen_preferences">"प्राथमिकताएं"</string>
-    <string name="settings_screen_gesture">"संकेतोें द्वारा टाइपिंग"</string>
     <string name="settings_screen_correction">"लेख सुधार"</string>
     <string name="settings_screen_advanced">"बेहतर सेटिंग"</string>
     <string name="settings_screen_theme">"थीम"</string>
@@ -304,7 +303,6 @@
     <string name="floating_keyboard_dock_handle">कीबोर्ड डॉक करें</string>
     <string name="remember_floating_keyboard_title">फ्लोटिंग मोड याद रखें</string>
     <string name="remember_floating_keyboard_summary">यदि कीबोर्ड पिछली बार फ्लोट कर रहा था तो उसे फ्लोटिंग मोड में फिर से खोलें</string>
-    <string name="settings_category_app_profiles">ऐप प्रोफाइल</string>
     <string name="settings_category_window_modes">विंडो और फ्लोटिंग मोड</string>
     <string name="settings_category_key_appearance">कुंजी प्रकटन और संकेत</string>
     <string name="app_quirks_title">ऐप प्रोफाइल</string>
@@ -783,14 +781,12 @@
     <string name="inline_emoji_search_summary">केवल इमोजी का सुझाव तब दें जब किसी शब्द के पहले कोलन हो</string>
     <string name="emoji_dictionary_required">इस सुविधा के काम करने के लिए एक इमोजी शब्दकोश की आवश्यकता है। .dict प्रारूप में शब्दकोश%sडाउनलोड किए जा सकते हैं।</string>
     <string name="show_emoji_descriptions">लंबे समय तक प्रेस करने पर इमोजी विवरण दिखाएं</string>
-    <string name="settings_category_input">इनपुट</string>
     <string name="settings_category_additional_keys">अतिरिक्त कुंजियाँ</string>
     <string name="settings_category_clipboard_history">क्लिपबोर्ड इतिहास</string>
     <string name="settings_category_correction">सुधार</string>
     <string name="settings_category_space">अंतरिक्ष</string>
     <string name="settings_category_suggestions">सुझाव पट्टी</string>
     <string name="settings_category_experimental">प्रयोगात्मक</string>
-    <string name="settings_category_miscellaneous">मिश्रित</string>
     <string name="settings_category_configuration">विन्यास</string>
     <string name="settings_category_visuals">दृश्य एवं पूर्वावलोकन</string>
     <string name="settings_category_gestures_advanced">उन्नत इशारे</string>

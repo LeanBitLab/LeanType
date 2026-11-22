@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"Lësho tingull kur shtyp tastin"</string>
     <string name="popup_on_keypress">"Zmadhim germe kur shtyp"</string>
     <string name="settings_screen_preferences">"Preferencat"</string>
-    <string name="settings_screen_gesture">"Shkrimi me gjeste"</string>
     <string name="settings_screen_correction">"Korrigjim teksti"</string>
     <string name="settings_screen_advanced">"I përparuar"</string>
     <string name="settings_screen_theme">"Tema"</string>

@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Son ao premer as teclas"</string>
     <string name="popup_on_keypress">Emerxentes ao premer as teclas</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
-    <string name="settings_screen_gesture">"Escritura por xestos"</string>
     <string name="settings_screen_correction">Ortografía</string>
     <string name="settings_screen_advanced">"Configuración avanzada"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -143,13 +142,11 @@
     <string name="settings_screen_appearance">Aparencia</string>
     <string name="hidden_features_title">Descrición de ferramentas ocultas</string>
     <string name="hidden_features_text">almacenaxe protexida do dispositivo</string>
-    <string name="settings_category_input">Entrada</string>
     <string name="settings_category_additional_keys">Teclas adicionais</string>
     <string name="settings_category_clipboard_history">Historial do portapapeis</string>
     <string name="settings_category_correction">Correccións</string>
     <string name="settings_category_suggestions">Suxestións</string>
     <string name="settings_category_experimental">Experimental</string>
-    <string name="settings_category_miscellaneous">Varios</string>
     <string name="split_spacer_scale">Distancia de separación</string>
     <string name="switch_language">Cambiar de idioma</string>
     <string name="language_switch_key_switch_both">Cambiar os dous</string>

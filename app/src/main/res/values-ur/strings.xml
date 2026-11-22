@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"کلید دبانے پر آواز"</string>
     <string name="popup_on_keypress">"کلید دبانے پر پاپ اپ"</string>
     <string name="settings_screen_preferences">"ترجیحات"</string>
-    <string name="settings_screen_gesture">"اشارہ جاتی ٹائپنگ"</string>
     <string name="settings_screen_correction">"متن کی اصلاح"</string>
     <string name="settings_screen_advanced">"جدید ترین"</string>
     <string name="settings_screen_theme">"تھیم"</string>
@@ -106,14 +105,12 @@
     <string name="inline_emoji_search_summary">جب کسی لفظ سے پہلے کولن (:) ہو تو صرف ایموجیز تجویز کریں</string>
     <string name="emoji_dictionary_required">اس فیچر کے کام کرنے کے لیے ایموجی لغت درکار ہے۔ .dict فارمیٹ میں لغات %s سے ڈاؤن لوڈ کی جا سکتی ہیں۔</string>
     <string name="show_emoji_descriptions">دیر تک دبانے پر ایموجی کی تفصیل دکھائیں</string>
-    <string name="settings_category_input">ان پٹ</string>
     <string name="settings_category_additional_keys">اضافی کیز</string>
     <string name="settings_category_clipboard_history">کلپ بورڈ کی تاریخ</string>
     <string name="settings_category_correction">تصحیح</string>
     <string name="settings_category_space">اسپیس</string>
     <string name="settings_category_suggestions">تجاویز</string>
     <string name="settings_category_experimental">تجرباتی</string>
-    <string name="settings_category_miscellaneous">متفرق</string>
     <string name="settings_category_configuration">تشکیل</string>
     <string name="settings_category_visuals">بصریات اور پیش منظر</string>
     <string name="settings_category_gestures_advanced">جدید اشارے</string>
@@ -972,7 +969,6 @@
     <string name="floating_keyboard_dock_handle">کی بورڈ ڈاک کریں</string>
     <string name="remember_floating_keyboard_title">فلوٹنگ موڈ یاد رکھیں</string>
     <string name="remember_floating_keyboard_summary">اگر کی بورڈ پچھلی بار فلوٹ کر رہا تھا تو اسے فلوٹنگ موڈ میں دوبارہ کھولیں</string>
-    <string name="settings_category_app_profiles">ایپ پروفائلز</string>
     <string name="settings_category_window_modes">ونڈو اور فلوٹنگ موڈز</string>
     <string name="settings_category_key_appearance">کیز کی ظاہری شکل اور اشارے</string>
     <string name="app_quirks_title">ایپ پروفائلز</string>

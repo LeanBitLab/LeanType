@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Баскычты басканда үн чыгат"</string>
     <string name="popup_on_keypress">"Баскыч басылганда калкып чыкма"</string>
     <string name="settings_screen_preferences">"Мүмкүнчүлүктөрдү тандоо"</string>
-    <string name="settings_screen_gesture">"Жаңсап терүү"</string>
     <string name="settings_screen_correction">"Текстти оңдоо"</string>
     <string name="settings_screen_advanced">"Өркүндөтүлгөн"</string>
     <string name="settings_screen_theme">"Тема"</string>

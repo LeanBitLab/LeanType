@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Zvuk pri stlačení klávesu"</string>
     <string name="popup_on_keypress">"Detail znaku pri stlačení"</string>
     <string name="settings_screen_preferences">"Predvoľby"</string>
-    <string name="settings_screen_gesture">"Písanie gestami"</string>
     <string name="settings_screen_correction">"Oprava textu"</string>
     <string name="settings_screen_advanced">"Rozšírené"</string>
     <string name="settings_screen_theme">"Motív"</string>
@@ -94,13 +93,11 @@
     <string name="android_spell_checker_settings">Nastavenia kontroly pravopisu LeanType</string>
     <string name="show_emoji_key">Emoji klávesa</string>
     <string name="incognito">Vynútiť režim inkognito</string>
-    <string name="settings_category_input">Vstup</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">Dodatočné klávesy</string>
     <string name="settings_category_correction">Korekcie</string>
     <string name="settings_category_suggestions">Návrhy</string>
     <string name="settings_category_experimental">Experimentálne</string>
-    <string name="settings_category_miscellaneous">Ostatné</string>
     <string name="select_input_method">"Zvoliť metódu vstupu"</string>
     <string name="undo">"Späť"</string>
     <string name="redo">"Znova"</string>

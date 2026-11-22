@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Zvok ob pritisku tipke"</string>
     <string name="popup_on_keypress">"Povečaj črko ob pritisku"</string>
     <string name="settings_screen_preferences">"Nastavitve"</string>
-    <string name="settings_screen_gesture">"Pisanje s kretnjami"</string>
     <string name="settings_screen_correction">"Popravki besedila"</string>
     <string name="settings_screen_advanced">"Dodatno"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -94,7 +93,6 @@
     <string name="settings_category_clipboard_history">Zgodovina odložišča</string>
     <string name="settings_category_correction">Popravki</string>
     <string name="settings_category_suggestions">Predlogi</string>
-    <string name="settings_category_miscellaneous">Razno</string>
     <string name="settings_no_limit">Brez omejitve</string>
     <string name="abbreviation_unit_minutes">%smin.</string>
     <string name="enable_clipboard_history">Omogoči tipko odložišča</string>
@@ -108,7 +106,6 @@
     <string name="spell_checker_service_name">Pregledovalnik črkovanja LeanType</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_additional_keys">Dodatne tipke</string>
-    <string name="settings_category_input">Vnos</string>
     <string name="autospace_after_punctuation">Samodejni presledek za ločilom</string>
     <string name="autospace_after_punctuation_summary">Samodejno vstavi presledek za ločilom ob pisanju nove besede</string>
     <string name="prefs_force_incognito_mode_summary">Onemogoči učenje novih besed</string>

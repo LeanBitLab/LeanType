@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Звук на притисак тастера"</string>
     <string name="popup_on_keypress">"Искачући прозор приликом притиска тастера"</string>
     <string name="settings_screen_preferences">"Подешавања"</string>
-    <string name="settings_screen_gesture">"Куцање покретима"</string>
     <string name="settings_screen_correction">"Исправљање текста"</string>
     <string name="settings_screen_advanced">"Напредно"</string>
     <string name="settings_screen_theme">"Тема"</string>
@@ -87,7 +86,6 @@
     <string name="spell_checker_service_name">LeanType провера правописа</string>
     <string name="android_spell_checker_settings">LeanType подешавања провере правописа</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Унос</string>
     <string name="settings_category_additional_keys">Додатни кључеви</string>
     <string name="auto_correction_confidence">Поузданост ауто-корекције</string>
     <string name="autospace_after_punctuation">Аутоматски размак после интерпункције</string>
@@ -118,7 +116,6 @@
     <string name="autospace_after_punctuation_summary">Аутоматски убаци размак после интерпункције када куцате нову реч</string>
     <string name="more_keys_strip_description">Додатни кључеви</string>
     <string name="settings_category_suggestions">Предлози</string>
-    <string name="settings_category_miscellaneous">Остало</string>
     <string name="undo">"Опозови"</string>
     <string name="redo">"Понови"</string>
     <string name="use_personalized_dicts_summary">"Користи комуникације и унете податке ради побољшања предлога"</string>

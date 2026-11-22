@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"צלילים בעת לחיצה על מקשים"</string>
     <string name="popup_on_keypress">חלונית קופצת בלחיצה על מקש</string>
     <string name="settings_screen_preferences">"העדפות"</string>
-    <string name="settings_screen_gesture">"הקלדה רציפה"</string>
     <string name="settings_screen_correction">תיקון מלל</string>
     <string name="settings_screen_advanced">"אפשרויות מתקדמות"</string>
     <string name="settings_screen_theme">"עיצוב"</string>
@@ -106,9 +105,7 @@
     <string name="day_night_mode_summary">המראה יעקוב אחר הגדרות המערכת</string>
     <string name="autospace_after_punctuation_summary">הוספת רווח אוטומטית לאחר סימני פיסוק בעת הקלדת מילה חדשה</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">קֶלֶט</string>
     <string name="settings_category_experimental">נסיוני</string>
-    <string name="settings_category_miscellaneous">שונות</string>
     <string name="settings_category_additional_keys">מפתחות נוספים</string>
     <string name="settings_category_correction">תיקונים</string>
     <string name="settings_category_suggestions">הצעות</string>
@@ -873,7 +870,6 @@
     <string name="custom_ai_keys_prompt_label">הנחיה מותאמת אישית עבור מקש %1$d</string>
     <string name="custom_ai_keys_tag_label">תגית / תווית (למשל \'צרפתית\', \'דקדוק\', \'שכתוב\')</string>
     <string name="custom_ai_keys_selected_functions">פונקציות מילות מפתח נבחרות:</string>
-    <string name="settings_category_app_profiles">פרופילי אפליקציה</string>
     <string name="settings_category_window_modes">מצבי חלון וצף</string>
     <string name="settings_category_key_appearance">מראה מקש ורמזים</string>
     <string name="app_quirks_title">פרופילי אפליקציה</string>

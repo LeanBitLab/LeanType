@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Sunet la apăsarea tastei"</string>
     <string name="popup_on_keypress">"Pop-up la apăsarea tastei"</string>
     <string name="settings_screen_preferences">"Preferințe"</string>
-    <string name="settings_screen_gesture">"Tastare gestuală"</string>
     <string name="settings_screen_correction">"Corectarea textului"</string>
     <string name="settings_screen_advanced">"Avansate"</string>
     <string name="settings_screen_theme">"Temă"</string>
@@ -101,7 +100,6 @@
     <string name="settings_category_correction">Corectări</string>
     <string name="settings_category_suggestions">Sugestii</string>
     <string name="settings_category_experimental">Experimental</string>
-    <string name="settings_category_miscellaneous">Diverse</string>
     <string name="split_spacer_scale">Distanță divizare</string>
     <string name="language_switch_key_switch_both">Comută ambele</string>
     <string name="show_emoji_key">Tasta Emoji</string>
@@ -113,7 +111,6 @@
     <string name="more_autocorrect">Mai multă auto-corecție</string>
     <string name="auto_correction_confidence">Încrederea în corecție automată</string>
     <string name="clipboard_history_retention_time">Timpul de păstrare a istoricului</string>
-    <string name="settings_category_input">Introducere</string>
     <string name="spell_checker_service_name">Verificator ortografic LeanType</string>
     <string name="android_spell_checker_settings">Setări pentru verificarea ortografică LeanType</string>
     <string name="settings_category_clipboard_history">Istoric clipboard</string>
@@ -902,7 +899,6 @@
     <string name="custom_ai_keys_prompt_label">Prompt personalizat pentru Tasta %1$d</string>
     <string name="custom_ai_keys_tag_label">Etichetă / Label (de ex. \'Franceză\', \'Gramatică\', \'Rescrie\')</string>
     <string name="custom_ai_keys_selected_functions">Funcții de cuvinte cheie selectate:</string>
-    <string name="settings_category_app_profiles">Profiluri aplicație</string>
     <string name="settings_category_window_modes">Moduri fereastră și plutitoare</string>
     <string name="settings_category_key_appearance">Aspectul tastelor și indicii</string>
     <string name="app_quirks_title">Profiluri aplicație</string>

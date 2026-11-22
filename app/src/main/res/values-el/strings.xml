@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"Ήχος πλήκτρων"</string>
     <string name="popup_on_keypress">"Εμφάνιση με το πάτημα πλήκτρου"</string>
     <string name="settings_screen_preferences">"Προτιμήσεις"</string>
-    <string name="settings_screen_gesture">"Πληκτρολόγηση με κίνηση"</string>
     <string name="settings_screen_correction">"Διόρθωση κειμένου"</string>
     <string name="settings_screen_advanced">"Σύνθετες"</string>
     <string name="settings_screen_theme">"Θέμα"</string>
@@ -99,7 +98,6 @@
     <string name="settings_category_suggestions">Προτάσεις</string>
     <string name="android_spell_checker_settings">Ρυθμίσεις ορθογραφικού ελέγχου LeanType</string>
     <string name="settings_category_clipboard_history">Ιστορικό πρόχειρου</string>
-    <string name="settings_category_miscellaneous">Διάφορα</string>
     <string name="abbreviation_unit_minutes">%smin.</string>
     <string name="enable_clipboard_history_summary">Εάν είναι απενεργοποιημένο, το πλήκτρο του προχείρου θα επικολλήσει το περιεχόμενο του προχείρου εάν υπάρχει</string>
     <string name="key_borders">Περίγραμμα πλήκτρου</string>
@@ -113,7 +111,6 @@
     <string name="day_night_mode_summary">Η εμφάνιση θα ακολουθεί τις ρυθμίσεις του συστήματος</string>
     <string name="autospace_after_punctuation">Αυτόματο κενό μετά τη στίξη</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Εισαγωγή</string>
     <string name="more_keys_strip_description">Περισσότερα πλήκτρα</string>
     <string name="prefs_force_incognito_mode_summary">Απενεργοποιήστε την εκμάθηση νέων λέξεων</string>
     <string name="show_hints">Εμφάνιση βασικών υποδείξεων</string>
@@ -973,7 +970,6 @@
     <string name="floating_keyboard_dock_handle">Προσάρτηση πληκτρολογίου</string>
     <string name="remember_floating_keyboard_title">Απομνημόνευση αιωρούμενης λειτουργίας</string>
     <string name="remember_floating_keyboard_summary">Επαναφορά πληκτρολογίου σε αιωρούμενη λειτουργία αν ήταν αιωρούμενο την τελευταία φορά</string>
-    <string name="settings_category_app_profiles">Προφίλ εφαρμογών</string>
     <string name="settings_category_window_modes">Λειτουργίες παραθύρου &amp; αιώρησης</string>
     <string name="settings_category_key_appearance">Εμφάνιση πλήκτρων &amp; υποδείξεις</string>
     <string name="app_quirks_title">Προφίλ εφαρμογών</string>

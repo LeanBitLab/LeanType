@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Sound on keypress"</string>
     <string name="popup_on_keypress">"Pop-up on key press"</string>
     <string name="settings_screen_preferences">"Preferences"</string>
-    <string name="settings_screen_gesture">"Gesture Typing"</string>
     <string name="settings_screen_correction">"Text correction"</string>
     <string name="settings_screen_advanced">"Advanced"</string>
     <string name="settings_screen_theme">"Theme"</string>
@@ -102,7 +101,6 @@
     <string name="split_spacer_scale">Split distance</string>
     <string name="show_emoji_key">Emoji key</string>
     <string name="switch_language">Switch Language</string>
-    <string name="settings_category_input">Input</string>
     <string name="settings_category_additional_keys">Additional keys</string>
     <string name="settings_category_suggestions">Suggestions</string>
     <string name="vibrate_in_dnd_mode">Vibrate in do not disturb mode</string>
@@ -112,7 +110,6 @@
     <string name="settings_category_clipboard_history">Clipboard history</string>
     <string name="settings_category_space">Space</string>
     <string name="settings_category_experimental">Experimental</string>
-    <string name="settings_category_miscellaneous">Uncategorised</string>
     <string name="language_switch_key_switch_both">Switch both</string>
     <string name="language_switch_key_behavior">Language switch key behavior</string>
     <string name="abbreviation_unit_minutes">%s min</string>

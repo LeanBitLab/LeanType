@@ -4,7 +4,6 @@
     <string name="sound_on_keypress">"Tuşa basıldığında ses çıkar"</string>
     <string name="popup_on_keypress">Tuşa basıldığında açılır pencere aç</string>
     <string name="settings_screen_preferences">Tercihler</string>
-    <string name="settings_screen_gesture">Hareketle yazma</string>
     <string name="settings_screen_correction">"Metin düzeltme"</string>
     <string name="settings_screen_advanced">"Gelişmiş"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -82,7 +81,6 @@
     <string name="settings_category_clipboard_history">Pano geçmişi</string>
     <string name="settings_category_correction">Düzeltmeler</string>
     <string name="settings_category_experimental">Deneysel</string>
-    <string name="settings_category_miscellaneous">Çeşitli</string>
     <string name="settings_no_limit">Sınır yok</string>
     <string name="incognito">Gizli modu zorla</string>
     <string name="prefs_force_incognito_mode_summary">Yeni sözcüklerin öğrenilmesini devre dışı bırak</string>
@@ -109,7 +107,6 @@
     <string name="delete_swipe_summary">Bir kerede metnin daha büyük bölümlerini seçmek ve silmek için silme tuşundan hızlıca kaydırın</string>
     <string name="day_night_mode_summary">Görünüm sistem ayarlarını takip edecektir</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Giriş</string>
     <string name="settings_category_additional_keys">Ek tuşlar</string>
     <string name="autospace_after_punctuation">Noktalama işaretlerinden sonra otomatik boşluk</string>
     <string name="autospace_after_punctuation_summary">Yeni bir sözcük yazarken noktalama işaretlerinden sonra otomatik olarak boşluk ekle</string>
@@ -901,7 +898,6 @@
     <string name="floating_keyboard_dock_handle">Klavyeyi sabitle</string>
     <string name="remember_floating_keyboard_title">Kayan modu hatırla</string>
     <string name="remember_floating_keyboard_summary">Klavye en son kayan moddaysa tekrar kayan modda açın</string>
-    <string name="settings_category_app_profiles">Uygulama profilleri</string>
     <string name="settings_category_window_modes">Pencere &amp; kayan modlar</string>
     <string name="settings_category_key_appearance">Tuş görünümü &amp; ipuçları</string>
     <string name="app_quirks_title">Uygulama profilleri</string>

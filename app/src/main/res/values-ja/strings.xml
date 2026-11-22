@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"キー操作音"</string>
     <string name="popup_on_keypress">"キー押下時ポップアップ"</string>
     <string name="settings_screen_preferences">"設定"</string>
-    <string name="settings_screen_gesture">"ジェスチャー入力"</string>
     <string name="settings_screen_correction">"テキストの修正"</string>
     <string name="settings_screen_advanced">"詳細設定"</string>
     <string name="settings_screen_theme">"テーマ"</string>
@@ -98,7 +97,6 @@
     <string name="ime_settings">LeanType</string>
     <string name="settings_no_limit">遅延無し</string>
     <string name="spell_checker_service_name">LeanTypeスペルチェッカ</string>
-    <string name="settings_category_input">入力</string>
     <string name="abbreviation_unit_minutes">%s 分</string>
     <string name="backup_restore_title">退避とレストア</string>
     <string name="enable_split_keyboard_landscape">スプリットキーボードをイネーブルする（横向き）</string>
@@ -108,7 +106,6 @@
     <string name="disable_personalized_dicts_message">注意：この設定をディセーブルしたら習ったデータが消える</string>
     <string name="add_to_personal_dictionary_summary">デバイスの個人用辞書を使用して学習した単語を保存する</string>
     <string name="center_suggestion_text_to_enter">いつも中間の入力候補を使う</string>
-    <string name="settings_category_miscellaneous">雑多</string>
     <string name="settings_category_space">スペース</string>
     <string name="language_switch_key_switch_both">両方を切り替える</string>
     <string name="switch_language">言語を切り替える</string>

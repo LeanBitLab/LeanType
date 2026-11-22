@@ -9,7 +9,6 @@
     <string name="popup_on_keypress">"Збільшення натиснутих"</string>
     <string name="settings_screen_preferences">"Параметри"</string>
     <string name="settings_screen_appearance">"Зовнішній вигляд"</string>
-    <string name="settings_screen_gesture">"Введення тексту жестами"</string>
     <string name="settings_screen_correction">"Виправлення тексту"</string>
     <string name="settings_screen_advanced">Додаткові</string>
     <string name="settings_screen_theme">"Тема"</string>
@@ -92,7 +91,6 @@
     <string name="theme_colors">Кольори теми</string>
     <string name="theme_colors_night">Кольори теми (темна тема)</string>
     <string name="day_night_mode">Використати тему системи</string>
-    <string name="settings_category_input">Введення</string>
     <string name="subtype_akkhor_bn_BD">%s (Аккгор)</string>
     <string name="autospace_after_punctuation">Автопробіл після знаків пунктуації</string>
     <string name="android_spell_checker_settings">Налаштування перевірки правопису LeanType</string>
@@ -100,7 +98,6 @@
     <string name="settings_category_suggestions">Пропозиції</string>
     <string name="settings_category_experimental">Експериментальне</string>
     <string name="settings_category_clipboard_history">Історія буфера обміну</string>
-    <string name="settings_category_miscellaneous">Різне</string>
     <string name="show_emoji_key">Клавіша емоджі</string>
     <string name="settings_no_limit">Без обмежень</string>
     <string name="abbreviation_unit_minutes">%s хвилин</string>
@@ -868,7 +865,6 @@
     <string name="custom_ai_keys_prompt_label">Користувацький промпт для клавіші %1$d</string>
     <string name="custom_ai_keys_tag_label">Тег / Мітка (напр. \'French\', \'Grammar\', \'Rewrite\')</string>
     <string name="custom_ai_keys_selected_functions">Вибрані функції ключових слів:</string>
-    <string name="settings_category_app_profiles">Профілі додатків</string>
     <string name="settings_category_window_modes">Режими вікна &amp; плаваючий</string>
     <string name="settings_category_key_appearance">Зовнішній вигляд клавіш &amp; підказки</string>
     <string name="app_quirks_title">Профілі додатків</string>

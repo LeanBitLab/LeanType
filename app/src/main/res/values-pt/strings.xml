@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Som ao tocar a tecla"</string>
     <string name="popup_on_keypress">"Mostrar letra em pop-up ao digitar"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
-    <string name="settings_screen_gesture">"Escrita com gestos"</string>
     <string name="settings_screen_correction">"Correção de texto"</string>
     <string name="settings_screen_advanced">"Avançado"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -92,8 +91,6 @@
     <string name="show_emoji_key">Tecla de emoji</string>
     <string name="settings_category_correction">Correções</string>
     <string name="settings_category_experimental">Experimental</string>
-    <string name="settings_category_input">Introdução</string>
-    <string name="settings_category_miscellaneous">Outras</string>
     <string name="ime_settings">LeanType</string>
     <string name="settings_category_suggestions">Sugestões</string>
     <string name="delete_swipe">Deslize para eliminar</string>
@@ -934,7 +931,6 @@
     <string name="floating_keyboard_dock_handle">Fixar teclado</string>
     <string name="remember_floating_keyboard_title">Lembrar modo flutuante</string>
     <string name="remember_floating_keyboard_summary">Reabrir o teclado em modo flutuante se ele estava flutuando da última vez</string>
-    <string name="settings_category_app_profiles">Perfis de aplicativo</string>
     <string name="settings_category_window_modes">Modos de janela &amp; flutuante</string>
     <string name="settings_category_key_appearance">Aparência das teclas &amp; dicas</string>
     <string name="app_quirks_title">Perfis de aplicativo</string>

@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Émettre un son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
     <string name="settings_screen_preferences">"Préférences"</string>
-    <string name="settings_screen_gesture">"Saisie gestuelle"</string>
     <string name="settings_screen_correction">"Correction du texte"</string>
     <string name="settings_screen_advanced">"Paramètres avancés"</string>
     <string name="settings_screen_theme">"Thème"</string>
@@ -142,11 +141,9 @@ Nouveau dictionnaire:
     <string name="load_gesture_library_button_load">Charger bibliothèque</string>
     <string name="load_gesture_library_button_delete">Supprimer bibliothèque</string>
     <string name="ime_settings">LeanType</string>
-    <string name="settings_category_input">Saisie</string>
     <string name="settings_category_correction">Corrections</string>
     <string name="settings_category_suggestions">Suggestions</string>
     <string name="settings_category_experimental">Expérimental</string>
-    <string name="settings_category_miscellaneous">Divers</string>
     <string name="prefs_force_incognito_mode_summary">Désactive l\'apprentissage de nouveaux mots</string>
     <string name="language_and_layouts_title">Langues &amp; Dispositions</string>
     <string name="more_keys_strip_description">Touches supplémentaires</string>
@@ -940,7 +937,6 @@ Nouveau dictionnaire:
     <string name="floating_keyboard_dock_handle">Ancrer le clavier</string>
     <string name="remember_floating_keyboard_title">Mémoriser le mode flottant</string>
     <string name="remember_floating_keyboard_summary">Rouvrir le clavier en mode flottant à la prochaine frappe s\'il était flottant la dernière fois</string>
-    <string name="settings_category_app_profiles">Profils d\'application</string>
     <string name="settings_category_window_modes">Modes fenêtre &amp; flottant</string>
     <string name="settings_category_key_appearance">Apparence des touches &amp; indices</string>
     <string name="app_quirks_title">Profils d\'application</string>

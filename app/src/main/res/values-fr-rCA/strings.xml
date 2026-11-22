@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
     <string name="settings_screen_preferences">"Préférences"</string>
-    <string name="settings_screen_gesture">"Entrée gestuelle"</string>
     <string name="settings_screen_correction">"Correction du texte"</string>
     <string name="settings_screen_advanced">"Avancés"</string>
     <string name="settings_screen_theme">"Thème"</string>

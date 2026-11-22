@@ -8,7 +8,6 @@
     <string name="sound_on_keypress">"Bunyi pada tekanan kekunci"</string>
     <string name="popup_on_keypress">"Pop timbul pada tekanan kunci"</string>
     <string name="settings_screen_preferences">"Pilihan"</string>
-    <string name="settings_screen_gesture">"Taipan Gerak Isyarat"</string>
     <string name="settings_screen_correction">"Pembetulan teks"</string>
     <string name="settings_screen_advanced">"Lanjutan"</string>
     <string name="settings_screen_theme">"Tema"</string>
@@ -103,14 +102,12 @@
     <string name="suggest_emojis">Cadangkan emoji</string>
     <string name="suggest_emojis_summary">Gunakan kamus emoji dalam cadangan normal</string>
     <string name="show_emoji_descriptions">Tunjukkan deskripsi emoji jika ditekan lama</string>
-    <string name="settings_category_input">Input</string>
     <string name="settings_category_additional_keys">Kekunci tambahan</string>
     <string name="settings_category_clipboard_history">Sejarah papan klip</string>
     <string name="settings_category_correction">Pembetulan</string>
     <string name="settings_category_space">Ruang</string>
     <string name="settings_category_suggestions">Cadangan</string>
     <string name="settings_category_experimental">Dalam ujikaji</string>
-    <string name="settings_category_miscellaneous">Lain-lain</string>
     <string name="enable_split_keyboard_landscape">Hidupkan papan kekunci terpisah (landskap)</string>
     <string name="split_spacer_scale">Jarak pisahan</string>
     <string name="switch_language">Tukar bahasa</string>

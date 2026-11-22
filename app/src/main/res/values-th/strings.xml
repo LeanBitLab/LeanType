@@ -9,7 +9,6 @@
     <string name="sound_on_keypress">"ส่งเสียงเมื่อกดปุ่ม"</string>
     <string name="popup_on_keypress">"ป๊อปอัปเมื่อกดแป้น"</string>
     <string name="settings_screen_preferences">"ค่ากำหนด"</string>
-    <string name="settings_screen_gesture">"การป้อนข้อมูลด้วยท่าทาง"</string>
     <string name="settings_screen_correction">"การแก้ไขข้อความ"</string>
     <string name="settings_screen_advanced">"ขั้นสูง"</string>
     <string name="settings_screen_theme">"ธีม"</string>
