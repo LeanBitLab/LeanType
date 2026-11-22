@@ -190,7 +190,7 @@ fun MainSettingsScreen(
                     }
                 }
 
-                // Group 1: General (AI, Languages, Preferences, Appearance, Toolbar)
+                // Group 1: General (Languages, Appearance, Preferences, Toolbar)
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -200,18 +200,6 @@ fun MainSettingsScreen(
                     )
                 ) {
                     Column {
-                        if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull") {
-                            Preference(
-                                name = stringResource(R.string.settings_screen_ai_integration),
-                                onClick = onClickAIIntegration,
-                                icon = R.drawable.ic_proofread
-                            ) { NextScreenIcon() }
-                        }
-                        Preference(
-                            name = stringResource(R.string.plugins_title),
-                            onClick = onClickLibraries,
-                            icon = R.drawable.ic_emoji_objects
-                        ) { NextScreenIcon() }
                         Preference(
                             name = stringResource(R.string.language_and_layouts_title),
                             description = enabledSubtypesDescription,
@@ -219,14 +207,14 @@ fun MainSettingsScreen(
                             icon = R.drawable.ic_settings_languages
                         ) { NextScreenIcon() }
                         Preference(
-                            name = stringResource(R.string.settings_screen_preferences),
-                            onClick = onClickPreferences,
-                            icon = R.drawable.ic_settings_preferences
-                        ) { NextScreenIcon() }
-                        Preference(
                             name = stringResource(R.string.settings_screen_appearance),
                             onClick = onClickAppearance,
                             icon = R.drawable.ic_settings_appearance
+                        ) { NextScreenIcon() }
+                        Preference(
+                            name = stringResource(R.string.settings_screen_preferences),
+                            onClick = onClickPreferences,
+                            icon = R.drawable.ic_settings_preferences
                         ) { NextScreenIcon() }
                         Preference(
                             name = stringResource(R.string.settings_screen_toolbar),
@@ -269,7 +257,32 @@ fun MainSettingsScreen(
                     }
                 }
 
-                // Group 3: Other (Advanced, About)
+                // Group 3: Extras (AI, Plugins)
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    )
+                ) {
+                    Column {
+                        if (BuildConfig.FLAVOR == "standard" || BuildConfig.FLAVOR == "standardfull") {
+                            Preference(
+                                name = stringResource(R.string.settings_screen_ai_integration),
+                                onClick = onClickAIIntegration,
+                                icon = R.drawable.ic_proofread
+                            ) { NextScreenIcon() }
+                        }
+                        Preference(
+                            name = stringResource(R.string.plugins_title),
+                            onClick = onClickLibraries,
+                            icon = R.drawable.ic_emoji_objects
+                        ) { NextScreenIcon() }
+                    }
+                }
+
+                // Group 4: Other (Advanced, Updates, About)
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()

@@ -31,6 +31,22 @@ class SettingsContainerTest {
     }
 
     @Test
+    fun searchJumpOpensTheScreenThatShowsTheSetting() {
+        val expected = mapOf(
+            SettingsWithoutKey.GEMINI_API_KEY to SettingsDestination.AIIntegration,
+            SettingsWithoutKey.AI_PROVIDER to SettingsDestination.AIIntegration,
+            SettingsWithoutKey.TRANSLATION_ENGINE to SettingsDestination.Translation,
+            SettingsWithoutKey.APP_QUIRKS to SettingsDestination.Advanced,
+            SettingsWithoutKey.BACKUP_RESTORE to SettingsDestination.Advanced,
+            helium314.keyboard.latin.settings.Settings.PREF_SAVE_SUBTYPE_PER_APP to SettingsDestination.Languages,
+            helium314.keyboard.latin.settings.Settings.PREF_LANGUAGE_SWIPE_DISTANCE to SettingsDestination.GestureTyping,
+            helium314.keyboard.latin.settings.Settings.PREF_CUSTOM_CURRENCY_KEY to SettingsDestination.Preferences,
+            helium314.keyboard.latin.settings.Settings.PREF_TIMESTAMP_FORMAT to SettingsDestination.Preferences,
+        )
+        expected.forEach { (key, destination) -> assertEquals(key, destination, container.screenOf(key)) }
+    }
+
+    @Test
     fun testFilterPerformance() {
         val searches = listOf("a", "b", "c", "theme", "color", "sound", "vib", "dictionary", "key", "layout")
 

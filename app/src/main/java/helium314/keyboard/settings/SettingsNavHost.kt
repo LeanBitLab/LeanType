@@ -129,7 +129,6 @@ fun SettingsNavHost(
                 onClickOcr = { navController.navigate(SettingsDestination.OCR) },
                 onClickAIIntegration = { navController.navigate(SettingsDestination.AIIntegration) },
                 onClickSound = { navController.navigate(SettingsDestination.Sound) },
-                onClickAppProfiles = { navController.navigate(SettingsDestination.AppQuirks) },
                 onClickCjk = { navController.navigate(SettingsDestination.Cjk) },
             )
         }

@@ -42,6 +42,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -49,6 +52,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import helium314.keyboard.latin.R
 import helium314.keyboard.settings.preferences.PreferenceCategory
@@ -190,7 +194,17 @@ fun SearchSettingsScreen(
                                     // a setting further down in a large card is not on screen after scrolling to it
                                     val bringIntoView = remember { BringIntoViewRequester() }
                                     LaunchedEffect(highlightKey) { if (key == highlightKey) bringIntoView.bringIntoView() }
-                                    Box(Modifier.bringIntoViewRequester(bringIntoView).background(highlight)) {
+                                    val nestedLine = MaterialTheme.colorScheme.outlineVariant
+                                    val nestedModifier = if (!row.nested) Modifier else Modifier
+                                        // a guide line and an indent show that the setting belongs to the fine-tune section above
+                                        .drawBehind {
+                                            val lineWidth = 2.dp.toPx()
+                                            val x = 14.dp.toPx()
+                                            val left = if (layoutDirection == LayoutDirection.Rtl) size.width - x - lineWidth else x
+                                            drawRect(nestedLine, topLeft = Offset(left, 0f), size = Size(lineWidth, size.height))
+                                        }
+                                        .padding(start = 20.dp)
+                                    Box(Modifier.bringIntoViewRequester(bringIntoView).background(highlight).then(nestedModifier)) {
                                         SettingsActivity.settingsContainer[key]?.Preference()
                                     }
                                 }
@@ -228,14 +242,22 @@ fun SearchSettingsScreen(
     )
 }
 
-/** A row of a settings screen: the title of a category ([key] is null) or a setting; first and last row of a card */
-private data class SettingRow(val id: String, val titleRes: Int?, val key: String?, val first: Boolean = false, val last: Boolean = false)
+/**
+ * A row of a settings screen: the title of a category ([key] is null) or a setting; first and last row of a card.
+ * [nested]: the setting is inside an open fine-tune section, i.e. after a fine-tune header in the same card.
+ */
+private data class SettingRow(val id: String, val titleRes: Int?, val key: String?, val first: Boolean = false, val last: Boolean = false, val nested: Boolean = false)
 
 private fun settingRows(groups: List<Pair<Int?, List<String>>>): List<SettingRow> = buildList {
     groups.forEachIndexed { index, (titleRes, keys) ->
         val group = buildList {
             if (titleRes != null) add(SettingRow("title_${index}_$titleRes", titleRes, null))
-            keys.forEach { add(SettingRow("${index}_$it", null, it)) }
+            var inFineTune = false
+            keys.forEach {
+                val isFineTuneHeader = it.startsWith(FINE_TUNE_SECTION_PREFIX)
+                add(SettingRow("${index}_$it", null, it, nested = inFineTune && !isFineTuneHeader))
+                if (isFineTuneHeader) inFineTune = true
+            }
         }
         group.forEachIndexed { i, row -> add(row.copy(first = i == 0, last = i == group.lastIndex)) }
     }
