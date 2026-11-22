@@ -26,8 +26,14 @@ import kotlin.random.Random
 class CustomSoundManager private constructor(private val appContext: Context) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
+    @Volatile
     private var soundPool: SoundPool? = null
+    @Volatile
     private var activePackId: String = SoundPackUrls.SYSTEM_DEFAULT_ID
+    // SoundPool.load is asynchronous: play() on a sample that is not decoded yet is silently dropped
+    private val readySamples = ConcurrentHashMap.newKeySet<Int>()
+    // Bumped on every (re)load and release so a load job that is still running cannot publish stale samples
+    private var loadGeneration = 0
 
     private data class LoadedSoundEvent(
         val sampleIds: List<Int>,
@@ -43,6 +49,8 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
     private var previewSoundPool: SoundPool? = null
     private val previewCache = ConcurrentHashMap<String, Int>()
+    private val previewReady = ConcurrentHashMap.newKeySet<Int>()
+    private val pendingPreview = ConcurrentHashMap<Int, Pair<Float, Float>>()
     private var loadJob: Job? = null
 
     private data class AudioPrefs(
@@ -138,13 +146,52 @@ class CustomSoundManager private constructor(private val appContext: Context) {
 
     @Synchronized
     private fun ensureSoundPool(): SoundPool {
-        return soundPool ?: createSoundPool().also { soundPool = it }
+        soundPool?.let { return it }
+        readySamples.clear()
+        val pool = createSoundPool()
+        pool.setOnLoadCompleteListener { loadedPool, sampleId, status ->
+            if (status == 0 && loadedPool === soundPool) readySamples.add(sampleId)
+            else if (status != 0) Log.w(TAG, "Failed to decode sound sample $sampleId (status $status)")
+        }
+        soundPool = pool
+        return pool
+    }
+
+    @Synchronized
+    private fun ensurePreviewSoundPool(): SoundPool {
+        previewSoundPool?.let { return it }
+        previewReady.clear()
+        pendingPreview.clear()
+        val pool = createSoundPool()
+        pool.setOnLoadCompleteListener { loadedPool, sampleId, status ->
+            if (loadedPool !== previewSoundPool) return@setOnLoadCompleteListener
+            if (status != 0) {
+                Log.w(TAG, "Failed to decode preview sample $sampleId (status $status)")
+                pendingPreview.remove(sampleId)
+                return@setOnLoadCompleteListener
+            }
+            previewReady.add(sampleId)
+            pendingPreview.remove(sampleId)?.let { (vol, rate) -> loadedPool.play(sampleId, vol, vol, 1, 0, rate) }
+        }
+        previewSoundPool = pool
+        return pool
+    }
+
+    @Synchronized
+    private fun releasePreviewPool() {
+        previewSoundPool?.release()
+        previewSoundPool = null
+        previewCache.clear()
+        previewReady.clear()
+        pendingPreview.clear()
     }
 
     private var lastLoadedPackId: String? = null
 
     @Synchronized
     fun setSoundPack(packId: String) {
+        // called on every settings change: pick up changed sound toggles on the next key press
+        cachedAudioPrefs = null
         if (activePackId == packId && (packId == SoundPackUrls.SYSTEM_DEFAULT_ID || loadedEvents.isNotEmpty())) {
             return
         }
@@ -179,21 +226,18 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         isInputViewActive = false
         release()
         lastLoadedPackId = null
-        previewSoundPool?.release()
-        previewSoundPool = null
-        previewCache.clear()
+        releasePreviewPool()
     }
 
     @Synchronized
     private fun loadActivePack() {
         val currentPool = soundPool
         if (currentPool != null) {
-            loadedEvents.values.forEach { event ->
-                event.sampleIds.forEach { sampleId ->
-                    try {
-                        currentPool.unload(sampleId)
-                    } catch (_: Exception) {}
-                }
+            loadedEvents.values.flatMap { it.sampleIds }.distinct().forEach { sampleId ->
+                readySamples.remove(sampleId)
+                try {
+                    currentPool.unload(sampleId)
+                } catch (_: Exception) {}
             }
         }
         loadedEvents.clear()
@@ -207,13 +251,17 @@ class CustomSoundManager private constructor(private val appContext: Context) {
         }
 
         val pool = ensureSoundPool()
+        val packId = activePackId
+        val generation = ++loadGeneration
 
         loadJob = scope.launch {
-            val manifest = SoundPackImporter.getManifest(appContext, activePackId)
-            val packDir = SoundPackImporter.getPackDir(appContext, activePackId)
+            val events = HashMap<String, LoadedSoundEvent>()
+            var masterVolume = 1.0f
+            val manifest = SoundPackImporter.getManifest(appContext, packId)
+            val packDir = SoundPackImporter.getPackDir(appContext, packId)
 
             if (manifest != null && manifest.sounds.isNotEmpty()) {
-                packMasterVolume = manifest.defaultMasterVolume.coerceIn(0f, 1f)
+                masterVolume = manifest.defaultMasterVolume.coerceIn(0f, 1f)
                 manifest.sounds.forEach { (eventName, soundEvent) ->
                     val sampleIds = mutableListOf<Int>()
                     val filesToLoad = soundEvent.files.take(SoundPackRules.MAX_VARIANTS_PER_EVENT)
@@ -225,7 +273,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
                         }
                     }
                     if (sampleIds.isNotEmpty()) {
-                        loadedEvents[eventName] = LoadedSoundEvent(
+                        events[eventName] = LoadedSoundEvent(
                             sampleIds = sampleIds,
                             mode = soundEvent.mode,
                             volume = soundEvent.volume.coerceIn(0f, 1f)
@@ -234,21 +282,41 @@ class CustomSoundManager private constructor(private val appContext: Context) {
                 }
             } else {
                 // Fallback to heuristic audio files
-                val audioFiles = SoundPackImporter.getPackAudioFiles(appContext, activePackId)
-                if (!audioFiles.isValid) return@launch
-                packMasterVolume = 1.0f
+                val audioFiles = SoundPackImporter.getPackAudioFiles(appContext, packId)
+                if (!audioFiles.isValid) {
+                    Log.w(TAG, "Sound pack $packId has no usable audio files")
+                    return@launch
+                }
 
                 val stdId = audioFiles.standardFile?.let { loadFileSample(pool, it) } ?: 0
                 val spcId = audioFiles.spaceFile?.let { if (it == audioFiles.standardFile) stdId else loadFileSample(pool, it) } ?: stdId
                 val delId = audioFiles.deleteFile?.let { if (it == audioFiles.standardFile) stdId else loadFileSample(pool, it) } ?: stdId
                 val entId = audioFiles.enterFile?.let { if (it == audioFiles.standardFile) stdId else loadFileSample(pool, it) } ?: stdId
 
-                if (stdId != 0) loadedEvents["keypress.default"] = LoadedSoundEvent(listOf(stdId), SoundMode.SINGLE, 1f)
-                if (spcId != 0) loadedEvents["keypress.space"] = LoadedSoundEvent(listOf(spcId), SoundMode.SINGLE, 1f)
-                if (delId != 0) loadedEvents["keypress.delete"] = LoadedSoundEvent(listOf(delId), SoundMode.SINGLE, 1f)
-                if (entId != 0) loadedEvents["keypress.return"] = LoadedSoundEvent(listOf(entId), SoundMode.SINGLE, 1f)
+                if (stdId != 0) events["keypress.default"] = LoadedSoundEvent(listOf(stdId), SoundMode.SINGLE, 1f)
+                if (spcId != 0) events["keypress.space"] = LoadedSoundEvent(listOf(spcId), SoundMode.SINGLE, 1f)
+                if (delId != 0) events["keypress.delete"] = LoadedSoundEvent(listOf(delId), SoundMode.SINGLE, 1f)
+                if (entId != 0) events["keypress.return"] = LoadedSoundEvent(listOf(entId), SoundMode.SINGLE, 1f)
             }
+            if (events.isEmpty()) Log.w(TAG, "Sound pack $packId loaded no samples")
+            publishLoadedEvents(generation, pool, events, masterVolume)
         }
+    }
+
+    @Synchronized
+    private fun publishLoadedEvents(generation: Int, pool: SoundPool, events: Map<String, LoadedSoundEvent>, masterVolume: Float) {
+        if (generation != loadGeneration || soundPool !== pool) {
+            // a newer pack was selected (or the pool released) while this one was loading
+            if (soundPool === pool) {
+                events.values.flatMap { it.sampleIds }.distinct().forEach { sampleId ->
+                    readySamples.remove(sampleId)
+                    try { pool.unload(sampleId) } catch (_: Exception) {}
+                }
+            }
+            return
+        }
+        packMasterVolume = masterVolume
+        loadedEvents.putAll(events)
     }
 
     private fun loadFileSample(pool: SoundPool, file: File): Int {
@@ -345,6 +413,10 @@ class CustomSoundManager private constructor(private val appContext: Context) {
                 sampleIds.first()
             }
         }
+        // still decoding (pack just selected or reloaded): let the caller play the system click instead of nothing
+        if (sampleId !in readySamples) {
+            return false
+        }
 
         // Dynamic typing velocity: subtle volume boost on typing bursts (<140ms between strokes)
         val velocityFactor = if (audioPrefs.dynamicVelocity && delta < 140L) {
@@ -391,7 +463,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
             return
         }
 
-        val pPool = previewSoundPool ?: createSoundPool().also { previewSoundPool = it }
+        val pPool = ensurePreviewSoundPool()
 
         scope.launch {
             val manifest = SoundPackImporter.getManifest(appContext, packId)
@@ -418,6 +490,8 @@ class CustomSoundManager private constructor(private val appContext: Context) {
                     val oldestKey = previewCache.keys().nextElement()
                     val evictedId = previewCache.remove(oldestKey)
                     if (evictedId != null && evictedId != 0) {
+                        previewReady.remove(evictedId)
+                        pendingPreview.remove(evictedId)
                         try { pPool.unload(evictedId) } catch (_: Throwable) {}
                     }
                 }
@@ -427,7 +501,11 @@ class CustomSoundManager private constructor(private val appContext: Context) {
                 if (sampleId != 0) {
                     val actualVol = if (volume < 0f) 0.8f else volume.coerceIn(0.1f, 1f)
                     val rate = pitch.coerceIn(0.5f, 2.0f)
-                    pPool.play(sampleId, actualVol, actualVol, 1, 0, rate)
+                    // queue first, then play if already decoded; the load listener plays it otherwise
+                    pendingPreview[sampleId] = actualVol to rate
+                    if (sampleId in previewReady) {
+                        pendingPreview.remove(sampleId)?.let { pPool.play(sampleId, actualVol, actualVol, 1, 0, rate) }
+                    }
                 }
             }
         }
@@ -437,8 +515,10 @@ class CustomSoundManager private constructor(private val appContext: Context) {
     fun release() {
         loadJob?.cancel()
         loadJob = null
+        loadGeneration++
         soundPool?.release()
         soundPool = null
+        readySamples.clear()
         loadedEvents.clear()
         cycleIndexes.clear()
         lastPlayedTime.clear()
@@ -449,9 +529,7 @@ class CustomSoundManager private constructor(private val appContext: Context) {
     fun onTrimMemory() {
         if (!isInputViewActive) {
             release()
-            previewSoundPool?.release()
-            previewSoundPool = null
-            previewCache.clear()
+            releasePreviewPool()
         }
     }
 
