@@ -176,6 +176,10 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         setColor(Color.TRANSPARENT)
     }
     private var isLoadingAnimationActive = false
+    /** the toolbar key that started the running AI request, it shows an X */
+    private var loadingKey: ToolbarKey? = null
+    /** buttons showing the X, with their own icon */
+    private val loadingKeyIcons = mutableListOf<Pair<ImageButton, Drawable?>>()
 
     private val keyDimension: Int
         get() {
@@ -673,7 +677,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
      * Shows pulse border loading animation on the whole toolbar.
      * Used during proofreading/translation API calls.
      */
-    fun showLoadingAnimation() {
+    fun showLoadingAnimation(activeKey: ToolbarKey = ToolbarKey.PROOFREAD) {
         if (isLoadingAnimationActive) return
         if (!isAttachedToWindow || visibility != View.VISIBLE || windowVisibility != View.VISIBLE) return
         isLoadingAnimationActive = true
@@ -681,15 +685,15 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         // Set loading border on the whole toolbar view
         this.foreground = loadingBorderDrawable
 
-        // Change proofread key icon to cancel/close icon
-        val closeIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase(java.util.Locale.US), context)
-        if (closeIcon != null) {
-            val proofreadKey = toolbar.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-                ?: pinnedKeys.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-            proofreadKey?.setImageDrawable(closeIcon)
-            if (proofreadKey != null) {
-                Settings.getValues().mColors.setColor(proofreadKey, ColorType.TOOL_BAR_KEY)
-            }
+        // the key that started the request shows an X: tapping it again cancels
+        loadingKey = activeKey
+        for (container in listOf(toolbar, pinnedKeys)) {
+            val button = container.findViewWithTag<ImageButton>(activeKey) ?: continue
+            val closeIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.CLOSE_HISTORY.name.lowercase(java.util.Locale.US), context)
+                ?: continue
+            loadingKeyIcons.add(button to button.drawable)
+            button.setImageDrawable(closeIcon)
+            Settings.getValues().mColors.setColor(button, ColorType.TOOL_BAR_KEY)
         }
         
         // Get accent color from theme (GESTURE_TRAIL is the accent color)
@@ -721,16 +725,19 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         loadingBorderDrawable.setStroke(4, Color.TRANSPARENT)
         this.foreground = null
 
-        // Restore proofread key icon
-        val proofreadIcon = KeyboardIconsSet.instance.getNewDrawable(ToolbarKey.PROOFREAD.name.lowercase(java.util.Locale.US), context)
-        if (proofreadIcon != null) {
-            val proofreadKey = toolbar.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-                ?: pinnedKeys.findViewWithTag<ImageButton>(ToolbarKey.PROOFREAD)
-            proofreadKey?.setImageDrawable(proofreadIcon)
-            if (proofreadKey != null) {
-                Settings.getValues().mColors.setColor(proofreadKey, ColorType.TOOL_BAR_KEY)
+        // restore the icon of the key that showed the X; buttons are looked up again, as the toolbar
+        // may have been rebuilt meanwhile (then the new buttons already have their own icon)
+        val key = loadingKey
+        loadingKey = null
+        if (key != null) {
+            for (container in listOf(toolbar, pinnedKeys)) {
+                val button = container.findViewWithTag<ImageButton>(key) ?: continue
+                val icon = loadingKeyIcons.firstOrNull { it.first === button } ?: continue
+                button.setImageDrawable(icon.second)
+                Settings.getValues().mColors.setColor(button, ColorType.TOOL_BAR_KEY)
             }
         }
+        loadingKeyIcons.clear()
     }
 
     private var isVoiceActive = false

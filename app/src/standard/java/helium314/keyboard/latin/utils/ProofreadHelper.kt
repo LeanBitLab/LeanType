@@ -67,6 +67,8 @@ object ProofreadHelper {
         text: String,
         noTextErrorResId: Int,
         errorResId: Int,
+        /** the toolbar key that started the request, it shows an X while the request runs */
+        loadingKey: ToolbarKey = ToolbarKey.PROOFREAD,
         apiCall: suspend (ProofreadService) -> Result<String>,
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit,
@@ -140,7 +142,7 @@ object ProofreadHelper {
 
         // Show loading animation on suggestion strip
         mainHandler.post {
-            KeyboardSwitcher.getInstance().showLoadingAnimation()
+            KeyboardSwitcher.getInstance().showLoadingAnimation(loadingKey)
         }
 
         // Launch coroutine for API call and track it for cancellation
@@ -374,6 +376,7 @@ object ProofreadHelper {
             text = text,
             noTextErrorResId = R.string.translate_no_text,
             errorResId = R.string.translate_error,
+            loadingKey = ToolbarKey.TRANSLATE,
             skipApiKeyCheck = usePlugin || isOfflineOnly,
             apiCall = { service ->
                 val pluginProvider = if (usePlugin) helium314.keyboard.latin.translation.TranslationLoader.getProvider(context) else null
@@ -529,6 +532,8 @@ object ProofreadHelper {
         prompt: String,
         hasSelection: Boolean,
         showThinking: Boolean,
+        /** the key that started the request, it shows an X while it runs */
+        toolbarKey: ToolbarKey? = null,
         onSuccess: (String) -> Unit,
         onError: (String) -> Unit
     ) {
@@ -537,6 +542,7 @@ object ProofreadHelper {
             text = text,
             noTextErrorResId = R.string.proofread_no_text,
             errorResId = R.string.proofread_error,
+            loadingKey = toolbarKey ?: ToolbarKey.PROOFREAD,
             apiCall = { service -> service.proofread(text, overridePrompt = prompt, showThinking = showThinking) },
             onSuccess = onSuccess,
             onError = onError,
