@@ -64,9 +64,13 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• PC QWERTY: Caps lock no longer shifts the number row and punctuation",
-    "• Hebrew: Symbols page uses the normal layout again instead of Arabic symbols",
-    "• Delete Word Swipe: One swipe deletes the word you are still typing"
+    "• Sound Packs: No more silent preview or keys right after choosing a pack",
+    "• Space Swipe: Cursor stops at the edge of the text instead of leaving the field",
+    "• AI Model Pickers: The saved model stays in the list; new Gemini voice default",
+    "• Settings: Fixed taps doing nothing with several settings windows open",
+    "• Settings: Reorganised with group headers and clearer section names",
+    "• What's New: Changelog shows once after an update; support section on top",
+    "• Offline AI: Chat format for Qwen and LFM2 models, no texts in the log"
 )
 
 @Composable

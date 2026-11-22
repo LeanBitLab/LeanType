@@ -1,4 +1,6 @@
-- PC QWERTY: caps lock now only capitalizes letters; the number row and punctuation keys stay unshifted, like a physical keyboard (#883).
-- Hebrew: the symbols page uses the normal layout again, so ? no longer types the Arabic question mark (#882).
-- Delete word swipe: one swipe now deletes the word you are still typing instead of only finishing it (#878).
-- Arabic, Farsi, Urdu and Kurdish keep their Arabic symbols layout, unchanged by the Hebrew fix.
+- Sound packs: no more silent preview or keys right after choosing a pack (#896).
+- Space swipe stops at the edge of the text instead of jumping to another field (#895).
+- Settings reorganised with group headers and clearer section names (#887, #892).
+- What's new dialog after updates; support section on top (#894).
+- Offline AI: chat format for Qwen and LFM2 models, no texts in the log (#888).
+- AI model pickers keep the saved model; new Gemini voice default (#886).
