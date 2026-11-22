@@ -892,7 +892,7 @@
     <string name="updates_auto_check_summary">பின்னணியில் புதிய வெளியீடுகளை அவ்வப்போது சரிபார்</string>
     <string name="updates_frequency_title">சரிபார்ப்பு அதிர்வெண்</string>
     <string name="updates_support_title">மேம்பாட்டிற்கு ஆதரவு</string>
-    <string name="updates_support_summary">LeanType 100% இலவசம், திறந்த மூலம் மற்றும் சுயாதீனமானது. உங்கள் ஆதரவு தொடர்ந்து செயலில் உள்ள மேம்பாட்டிற்கு நேரடியாக உதவுகிறது!</string>
+    <string name="updates_support_summary" formatted="false">LeanType 100% இலவசம், திறந்த மூலம் மற்றும் சுயாதீனமானது. உங்கள் ஆதரவு தொடர்ந்து செயலில் உள்ள மேம்பாட்டிற்கு நேரடியாக உதவுகிறது!</string>
     <string name="updates_github_sponsor_title">GitHub ஸ்பான்சர்கள்</string>
     <string name="updates_github_sponsor_desc">GitHub ஸ்பான்சர்கள் மூலம் மாதந்தோறும் அல்லது ஒருமுறை நிதியளி</string>
     <string name="updates_opencollective_title">Open Collective மூலம் நன்கொடை அளி</string>
@@ -1050,7 +1050,7 @@
     <string name="text_expander_discard_title">உங்கள் மாற்றங்களை நிராகரிக்கவா?</string>
     <string name="text_expander_discard">நிராகரி</string>
     <string name="text_expander_template_title">டெம்ப்ளேட் விரிவாக்கம்</string>
-    <string name="text_expander_template_hint">உடனே வருகிறேன்! அல்லது என் மின்னஞ்சல் %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">உடனே வருகிறேன்! அல்லது என் மின்னஞ்சல் %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">விரைவுப் பதிலீடுகள் (கர்சரில் சேர்க்க தட்டவும்):</string>
     <string name="text_expander_attach_image">புகைப்படம் அல்லது படத்தை இணைக்கவும்</string>
     <string name="text_expander_attach_image_desc">சேமிப்பகத்திலிருந்து புகைப்படம், வரைபடம் அல்லது படத்தைத் தேர்ந்தெடுக்கவும்</string>
@@ -1177,10 +1177,10 @@
     <string name="setup_step6_title_screenshots">திரைப்பகிர்வு பரிந்துரைகள்</string>
     <string name="setup_step6_instruction_screenshots">பரிந்துரைப் பட்டியில் சமீபத்தில் எடுக்கப்பட்ட திரைப்பகிர்வுகளைப் பரிந்துரைக்கவும். குறிப்பு: இந்த அனுமதி திரைப்பகிர்வுகளை இடைநிலைப்பலகையில் சேமிக்கவும் அனுமதிக்கிறது.</string>
     <string name="setup_step7_title_height">விசைப்பலகை உயரம்</string>
-    <string name="setup_step7_instruction_height">விசைப்பலகையின் உயரத்தை சரிசெய்யவும். பரிந்துரைக்கப்படுவது: அதிக சதுர விசைகளுக்கு 77%, உயரமான விசைகளுக்கு 100%.</string>
+    <string name="setup_step7_instruction_height" formatted="false">விசைப்பலகையின் உயரத்தை சரிசெய்யவும். பரிந்துரைக்கப்படுவது: அதிக சதுர விசைகளுக்கு 77%, உயரமான விசைகளுக்கு 100%.</string>
     <string name="setup_step0_headline">சிறந்த தட்டச்சு அனுபவத்திற்கு வரவேற்கிறோம்</string>
     <string name="setup_step0_subtitle">LeanType ஆனது தனியுரிமை, வேகம் மற்றும் ஆழமான தனிப்பயனாக்கத்திற்காக ஆரம்பத்திலிருந்தே வடிவமைக்கப்பட்டுள்ளது.</string>
-    <string name="setup_step0_feature1_title">100% தனிப்பட்டது மற்றும் பாதுகாப்பானது</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% தனிப்பட்டது மற்றும் பாதுகாப்பானது</string>
     <string name="setup_step0_feature1_desc">டெலிமெட்ரி, நெட்வொர்க் கண்காணிப்பு அல்லது கிளவுட் பதிவுகள் எதுவும் இல்லை. உங்கள் தட்டச்சு உங்கள் சாதனத்திலேயே இருக்கும்.</string>
     <string name="setup_step0_feature2_title">ஆழமாக தனிப்பயனாக்கக்கூடியது</string>
     <string name="setup_step0_feature2_desc">தளவமைப்புகள், விசைப்பலகை தீம்கள், அளவுகள், சைகைகள் மற்றும் பலமொழி தட்டச்சு ஆகியவற்றை உங்கள் விருப்பத்திற்கேற்ப மாற்றியமைக்கவும்.</string>
@@ -1647,4 +1647,15 @@
     <string name="voice_transcribe_while_speaking_summary">நீண்ட உரையாடல்களுக்குக் குறைந்த காத்திருப்பு நேரம்</string>
     <string name="voice_piecewise_field_changed">உரையாடல் நிறுத்தப்பட்டது: உரைப்புலம் மாற்றப்பட்டது, மீதமுள்ளவை செருகப்படவில்லை</string>
     <string name="settings_search_show_in_screen">அதன் திரையில் காட்டு</string>
+    <string name="language_pack_title">ஆப் மொழிபெயர்ப்பு</string>
+    <string name="language_pack_installed">%s: நிறுவப்பட்டது</string>
+    <string name="language_pack_missing">%s: நிறுவப்படவில்லை, ஆப் ஆங்கிலத்தில் காட்டப்படும்</string>
+    <string name="language_pack_dialog_title">%s க்கான மொழிபெயர்ப்பு</string>
+    <string name="language_pack_dialog_message">ஆப்பின் அளவைச் சிறியதாக வைத்திருக்க, அதன் மொழிபெயர்ப்புகள் தனியாகப் பதிவிறக்கப்படுகின்றன. %s க்கான மொழிபெயர்ப்பைப் பதிவிறக்கவும் அல்லது கோப்பிலிருந்து இறக்குமதி செய்யவும்.</string>
+    <string name="language_pack_download">மொழிபெயர்ப்பைப் பதிவிறக்கவும்</string>
+    <string name="language_pack_import">கோப்பிலிருந்து இறக்குமதி செய்</string>
+    <string name="language_pack_remove">மொழிபெயர்ப்பை அகற்று</string>
+    <string name="language_pack_download_failed">பதிவிறக்கம் தோல்வியடைந்தது. இந்த ஆப் பதிப்பிற்கு மொழிபெயர்ப்பு இன்னும் கிடைக்கவில்லை.</string>
+    <string name="language_pack_wrong_build">இந்த மொழிபெயர்ப்பு கோப்பு வேறு ஆப் பதிப்பிற்காக உருவாக்கப்பட்டது.</string>
+    <string name="language_pack_invalid">இது மொழிபெயர்ப்பு கோப்பு அல்ல.</string>
 </resources>

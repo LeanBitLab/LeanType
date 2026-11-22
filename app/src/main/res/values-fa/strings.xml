@@ -1095,7 +1095,7 @@
     <string name="text_expander_discard_title">تغییرات لغو شود؟</string>
     <string name="text_expander_discard">لغو تغییرات</string>
     <string name="text_expander_template_title">بسط الگویی</string>
-    <string name="text_expander_template_hint">الان برمی‌گردم! یا ایمیل من: %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">الان برمی‌گردم! یا ایمیل من: %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">جای‌نماهای سریع (برای درج در محل نشانگر ضربه بزنید):</string>
     <string name="text_expander_attach_image">پیوست عکس یا تصویر</string>
     <string name="text_expander_attach_image_desc">انتخاب یک عکس، نمودار یا تصویر از حافظه</string>
@@ -1692,4 +1692,15 @@
     <string name="voice_transcribe_while_speaking_summary">انتظار کوتاه‌تر برای دیکته‌های طولانی</string>
     <string name="voice_piecewise_field_changed">دیکته متوقف شد: کادر متنی تغییر کرد، بقیه متن درج نشد</string>
     <string name="settings_search_show_in_screen">نمایش در صفحه مربوطه</string>
+    <string name="language_pack_title">ترجمه برنامه</string>
+    <string name="language_pack_installed">%s: نصب شده</string>
+    <string name="language_pack_missing">%s: نصب نشده است، برنامه به انگلیسی نمایش داده می‌شود</string>
+    <string name="language_pack_dialog_title">ترجمه برای %s</string>
+    <string name="language_pack_dialog_message">برای کوچک نگه داشتن برنامه، ترجمه‌های آن جداگانه دانلود می‌شوند. ترجمه %s را دانلود کنید یا از یک فایل وارد کنید.</string>
+    <string name="language_pack_download">دانلود ترجمه</string>
+    <string name="language_pack_import">وارد کردن از فایل</string>
+    <string name="language_pack_remove">حذف ترجمه</string>
+    <string name="language_pack_download_failed">دانلود ناموفق بود. هنوز ترجمه‌ای برای این نسخه از برنامه در دسترس نیست.</string>
+    <string name="language_pack_wrong_build">این فایل ترجمه برای نسخه‌ای دیگر از برنامه ساخته شده است.</string>
+    <string name="language_pack_invalid">این فایل، فایل ترجمه نیست.</string>
 </resources>

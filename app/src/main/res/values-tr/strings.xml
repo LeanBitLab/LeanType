@@ -1726,4 +1726,15 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="settings_group_typing">Yazma</string>
     <string name="settings_group_extras">Ekstralar</string>
     <string name="settings_group_system">Sistem</string>
+    <string name="language_pack_title">Uygulama çevirisi</string>
+    <string name="language_pack_installed">%s: yüklü</string>
+    <string name="language_pack_missing">%s: yüklü değil, uygulama İngilizce gösterir</string>
+    <string name="language_pack_dialog_title">%s için çeviri</string>
+    <string name="language_pack_dialog_message">Uygulamayı küçük tutmak için çevirileri ayrıca indirilir. %s çevirisini indirin veya bir dosyadan içe aktarın.</string>
+    <string name="language_pack_download">Çeviriyi indir</string>
+    <string name="language_pack_import">Dosyadan içe aktar</string>
+    <string name="language_pack_remove">Çeviriyi kaldır</string>
+    <string name="language_pack_download_failed">İndirme başarısız oldu. Bu uygulama sürümü için henüz çeviri yok.</string>
+    <string name="language_pack_wrong_build">Bu çeviri dosyası farklı bir uygulama sürümü için hazırlanmış.</string>
+    <string name="language_pack_invalid">Bu dosya bir çeviri dosyası değil.</string>
 </resources>

@@ -1683,7 +1683,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Springe zu den Einstellungen</string>
     <string name="setup_wizard_title">Einrichtungsassistent</string>
-    <string name="setup_not_active_title">%saktivieren</string>
+    <string name="setup_not_active_title">%s aktivieren</string>
     <string name="setup_not_active_summary">Tippen Sie hier, um die Tastatureinrichtung abzuschließen</string>
     <string name="setup_welcome_summary"></string>
     <string name="localized_numbers_in_popups">Lokalisierte Nummern in Popups</string>
@@ -1750,4 +1750,15 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="settings_group_typing">Tippen</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">System</string>
+    <string name="language_pack_title">App-Übersetzung</string>
+    <string name="language_pack_installed">%s: installiert</string>
+    <string name="language_pack_missing">%s: nicht installiert, die App zeigt Englisch an</string>
+    <string name="language_pack_dialog_title">Übersetzung für %s</string>
+    <string name="language_pack_dialog_message">Damit die App klein bleibt, werden ihre Übersetzungen separat heruntergeladen. Lade die Übersetzung für %s herunter oder importiere sie aus einer Datei.</string>
+    <string name="language_pack_download">Übersetzung herunterladen</string>
+    <string name="language_pack_import">Aus Datei importieren</string>
+    <string name="language_pack_remove">Übersetzung entfernen</string>
+    <string name="language_pack_download_failed">Download fehlgeschlagen. Für diese App-Version ist noch keine Übersetzung verfügbar.</string>
+    <string name="language_pack_wrong_build">Diese Übersetzungsdatei wurde für eine andere App-Version erstellt.</string>
+    <string name="language_pack_invalid">Dies ist keine Übersetzungsdatei.</string>
 </resources>

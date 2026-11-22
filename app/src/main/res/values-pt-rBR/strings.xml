@@ -1616,7 +1616,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Pular para configurações</string>
     <string name="setup_wizard_title">Assistente de configuração</string>
-    <string name="setup_not_active_title">Ativar%s</string>
+    <string name="setup_not_active_title">Ativar %s</string>
     <string name="setup_not_active_summary">Toque para concluir a configuração do teclado</string>
     <string name="setup_welcome_summary">Execute a instalação inicial e o assistente de configuração</string>
     <string name="localized_numbers_in_popups">Números localizados em pop-ups</string>
@@ -1705,4 +1705,15 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="settings_group_typing">Digitação</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">Sistema</string>
+    <string name="language_pack_title">Tradução do app</string>
+    <string name="language_pack_installed">%s: instalado</string>
+    <string name="language_pack_missing">%s: não instalado, o app mostra em inglês</string>
+    <string name="language_pack_dialog_title">Tradução para %s</string>
+    <string name="language_pack_dialog_message">Para manter o app leve, as traduções são baixadas separadamente. Baixe a tradução para %s ou importe-a de um arquivo.</string>
+    <string name="language_pack_download">Baixar tradução</string>
+    <string name="language_pack_import">Importar de arquivo</string>
+    <string name="language_pack_remove">Remover tradução</string>
+    <string name="language_pack_download_failed">Falha no download. Ainda não há tradução disponível para esta versão do app.</string>
+    <string name="language_pack_wrong_build">Este arquivo de tradução foi feito para outra versão do app.</string>
+    <string name="language_pack_invalid">Este arquivo não é um arquivo de tradução.</string>
 </resources>

@@ -61,6 +61,7 @@ import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.LocaleUtils
 import helium314.keyboard.latin.utils.mainLayoutNameOrQwerty
 import helium314.keyboard.settings.Setting
+import helium314.keyboard.settings.preferences.LanguagePackPreference
 import helium314.keyboard.settings.preferences.ListPreference
 import helium314.keyboard.settings.preferences.SwitchPreference
 import java.util.Locale
@@ -149,6 +150,7 @@ fun LanguageScreen(
                     ) { NextScreenIcon() }
                     SettingsActivity.settingsContainer[Settings.PREF_SAVE_SUBTYPE_PER_APP]?.Preference()
                     SettingsActivity.settingsContainer[Settings.PREF_APP_LANGUAGE]?.Preference()
+                    LanguagePackPreference()
                 }
             }
         }

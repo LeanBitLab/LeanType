@@ -853,7 +853,7 @@
     <string name="updates_auto_check_summary">バックグラウンドで定期的に新しいリリースを確認します</string>
     <string name="updates_frequency_title">確認の頻度</string>
     <string name="updates_support_title">開発を支援</string>
-    <string name="updates_support_summary">LeanTypeは100%無料でオープンソースの独立したプロジェクトです。皆さまのご支援が開発の継続に直接役立ちます。</string>
+    <string name="updates_support_summary" formatted="false">LeanTypeは100%無料でオープンソースの独立したプロジェクトです。皆さまのご支援が開発の継続に直接役立ちます。</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsorsで毎月または1回のみ支援できます</string>
     <string name="updates_opencollective_title">Open Collectiveで寄付</string>
@@ -1093,7 +1093,7 @@
     <string name="text_expander_discard_title">変更を破棄しますか？</string>
     <string name="text_expander_discard">破棄</string>
     <string name="text_expander_template_title">テンプレート展開</string>
-    <string name="text_expander_template_hint">すぐ戻ります！ または 私のメールアドレスは %clipboard% です</string>
+    <string name="text_expander_template_hint" formatted="false">すぐ戻ります！ または 私のメールアドレスは %clipboard% です</string>
     <string name="text_expander_quick_placeholders_title">クイックプレースホルダー（タップしてカーソル位置に挿入）：</string>
     <string name="text_expander_attach_image">写真または画像を添付</string>
     <string name="text_expander_attach_image_desc">ストレージから写真、図、画像を選択します</string>
@@ -1220,10 +1220,10 @@
     <string name="setup_step6_title_screenshots">スクリーンショットの候補表示</string>
     <string name="setup_step6_instruction_screenshots">最近撮影したスクリーンショットを入力候補バーに表示します。注: この権限により、スクリーンショットをクリップボードに保存することもできます。</string>
     <string name="setup_step7_title_height">キーボードの高さ</string>
-    <string name="setup_step7_instruction_height">キーボードの高さを調整します。おすすめ: キーを正方形に近づけるなら77%、キーを縦長にするなら100%。</string>
+    <string name="setup_step7_instruction_height" formatted="false">キーボードの高さを調整します。おすすめ: キーを正方形に近づけるなら77%、キーを縦長にするなら100%。</string>
     <string name="setup_step0_headline">より快適な入力体験へようこそ</string>
     <string name="setup_step0_subtitle">LeanTypeは、プライバシー、速度、そして高いカスタマイズ性を重視してゼロから設計されています。</string>
-    <string name="setup_step0_feature1_title">100%プライベートで安全</string>
+    <string name="setup_step0_feature1_title" formatted="false">100%プライベートで安全</string>
     <string name="setup_step0_feature1_desc">テレメトリ、ネットワーク追跡、クラウドへのログ記録は一切ありません。入力内容は端末内にとどまります。</string>
     <string name="setup_step0_feature2_title">高いカスタマイズ性</string>
     <string name="setup_step0_feature2_desc">レイアウト、キーボードテーマ、サイズ、ジェスチャー、多言語入力を好みに合わせて調整できます。</string>
@@ -1690,4 +1690,15 @@
     <string name="voice_transcribe_while_speaking_summary">長い音声入力の待ち時間を短縮します</string>
     <string name="voice_piecewise_field_changed">音声入力を停止しました: テキストフィールドが変更されたため、残りは挿入されませんでした</string>
     <string name="settings_search_show_in_screen">該当の画面で表示</string>
+    <string name="language_pack_title">アプリの翻訳</string>
+    <string name="language_pack_installed">%s: インストール済み</string>
+    <string name="language_pack_missing">%s: 未インストール（アプリは英語で表示されます）</string>
+    <string name="language_pack_dialog_title">%s の翻訳</string>
+    <string name="language_pack_dialog_message">アプリの容量を抑えるため、翻訳は別途ダウンロードされます。%s の翻訳をダウンロードするか、ファイルからインポートしてください。</string>
+    <string name="language_pack_download">翻訳をダウンロード</string>
+    <string name="language_pack_import">ファイルからインポート</string>
+    <string name="language_pack_remove">翻訳を削除</string>
+    <string name="language_pack_download_failed">ダウンロードに失敗しました。このアプリバージョンの翻訳はまだ利用できません。</string>
+    <string name="language_pack_wrong_build">この翻訳ファイルは別のアプリバージョン用に作成されています。</string>
+    <string name="language_pack_invalid">このファイルは翻訳ファイルではありません。</string>
 </resources>

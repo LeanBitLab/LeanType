@@ -1644,7 +1644,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Treci la setări</string>
     <string name="setup_wizard_title">Expert de configurare</string>
-    <string name="setup_not_active_title">Activați%s</string>
+    <string name="setup_not_active_title">Activați %s</string>
     <string name="setup_not_active_summary">Atingeți pentru a finaliza configurarea tastaturii</string>
     <string name="setup_welcome_summary">Rulați vrăjitorul de configurare și configurare inițială</string>
     <string name="localized_numbers_in_popups"></string>
@@ -1787,4 +1787,15 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
         <item>Catalană</item>
         <item>Bască</item>
     </string-array>
+    <string name="language_pack_title">Traducerea aplicației</string>
+    <string name="language_pack_installed">%s: instalată</string>
+    <string name="language_pack_missing">%s: neinstalată, aplicația afișează engleza</string>
+    <string name="language_pack_dialog_title">Traducere pentru %s</string>
+    <string name="language_pack_dialog_message">Pentru a menține aplicația mică, traducerile sale se descarcă separat. Descarcă traducerea pentru %s sau importeaz-o dintr-un fișier.</string>
+    <string name="language_pack_download">Descarcă traducerea</string>
+    <string name="language_pack_import">Importă din fișier</string>
+    <string name="language_pack_remove">Elimină traducerea</string>
+    <string name="language_pack_download_failed">Descărcarea a eșuat. Nu există încă o traducere pentru această versiune a aplicației.</string>
+    <string name="language_pack_wrong_build">Acest fișier de traducere a fost creat pentru o altă versiune a aplicației.</string>
+    <string name="language_pack_invalid">Acest fișier nu este un fișier de traducere.</string>
 </resources>

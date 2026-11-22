@@ -1708,7 +1708,7 @@
     <string name="style_plain">Κανονικός</string>
     <string name="setup_skip_action">Μετάβαση στις ρυθμίσεις</string>
     <string name="setup_wizard_title">Οδηγός εγκατάστασης</string>
-    <string name="setup_not_active_title">Ενεργοποίηση%s</string>
+    <string name="setup_not_active_title">Ενεργοποίηση %s</string>
     <string name="setup_not_active_summary">Πατήστε για να ολοκληρώσετε τη ρύθμιση του πληκτρολογίου</string>
     <string name="setup_welcome_summary">Εκτελέστε τον οδηγό αρχικής εγκατάστασης και διαμόρφωσης</string>
     <string name="localized_numbers_in_popups">Τοπικοί αριθμοί σε αναδυόμενα παράθυρα</string>
@@ -1800,4 +1800,15 @@
     <string name="settings_group_typing">Δακτυλογραφία</string>
     <string name="settings_group_extras">Έξτρα</string>
     <string name="settings_group_system">Σύστημα</string>
+    <string name="language_pack_title">Μετάφραση εφαρμογής</string>
+    <string name="language_pack_installed">%s: εγκαταστάθηκε</string>
+    <string name="language_pack_missing">%s: δεν έχει εγκατασταθεί, η εφαρμογή εμφανίζει τα αγγλικά</string>
+    <string name="language_pack_dialog_title">Μετάφραση για %s</string>
+    <string name="language_pack_dialog_message">Για να διατηρείται το μέγεθος της εφαρμογής μικρό, οι μεταφράσεις της κατεβάζονται χωριστά. Κατεβάστε τη μετάφραση για %s ή εισαγάγετέ την από αρχείο.</string>
+    <string name="language_pack_download">Λήψη μετάφρασης</string>
+    <string name="language_pack_import">Εισαγωγή από αρχείο</string>
+    <string name="language_pack_remove">Κατάργηση μετάφρασης</string>
+    <string name="language_pack_download_failed">Η λήψη απέτυχε. Δεν υπάρχει ακόμη μετάφραση για αυτήν την έκδοση της εφαρμογής.</string>
+    <string name="language_pack_wrong_build">Αυτό το αρχείο μετάφρασης δημιουργήθηκε για διαφορετική έκδοση της εφαρμογής.</string>
+    <string name="language_pack_invalid">Αυτό το αρχείο δεν είναι αρχείο μετάφρασης.</string>
 </resources>

@@ -1610,7 +1610,7 @@
     <string name="style_plain">нормальний</string>
     <string name="setup_skip_action">Перейти до налаштувань</string>
     <string name="setup_wizard_title">Майстер налаштування</string>
-    <string name="setup_not_active_title">Увімкнути%s</string>
+    <string name="setup_not_active_title">Увімкнути %s</string>
     <string name="setup_not_active_summary">Торкніться, щоб завершити налаштування клавіатури</string>
     <string name="setup_welcome_summary">Запустіть майстер початкового налаштування та налаштування</string>
     <string name="localized_numbers_in_popups"></string>
@@ -1753,4 +1753,15 @@
         <item>Каталонська</item>
         <item>Баскська</item>
     </string-array>
+    <string name="language_pack_title">Переклад застосунку</string>
+    <string name="language_pack_installed">%s: встановлено</string>
+    <string name="language_pack_missing">%s: не встановлено, застосунок показує англійську мову</string>
+    <string name="language_pack_dialog_title">Переклад для %s</string>
+    <string name="language_pack_dialog_message">Щоб застосунок залишався невеликим, його переклади завантажуються окремо. Завантажте переклад для %s або імпортуйте його з файлу.</string>
+    <string name="language_pack_download">Завантажити переклад</string>
+    <string name="language_pack_import">Імпортувати з файлу</string>
+    <string name="language_pack_remove">Видалити переклад</string>
+    <string name="language_pack_download_failed">Не вдалося завантажити. Для цієї версії застосунку переклад ще недоступний.</string>
+    <string name="language_pack_wrong_build">Цей файл перекладу створено для іншої версії застосунку.</string>
+    <string name="language_pack_invalid">Цей файл не є файлом перекладу.</string>
 </resources>

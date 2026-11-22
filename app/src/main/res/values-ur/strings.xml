@@ -1699,7 +1699,7 @@
     <string name="style_plain">نارمل</string>
     <string name="setup_skip_action">ترتیبات پر جائیں۔</string>
     <string name="setup_wizard_title">سیٹ اپ وزرڈ</string>
-    <string name="setup_not_active_title">فعال کریں%s</string>
+    <string name="setup_not_active_title">فعال کریں %s</string>
     <string name="setup_not_active_summary">کی بورڈ سیٹ اپ مکمل کرنے کے لیے تھپتھپائیں۔</string>
     <string name="setup_welcome_summary">ابتدائی سیٹ اپ اور کنفیگریشن وزرڈ چلائیں۔</string>
     <string name="localized_numbers_in_popups">پاپ اپ میں مقامی نمبرز</string>
@@ -1791,4 +1791,15 @@
     <string name="settings_group_typing">ٹائپنگ</string>
     <string name="settings_group_extras">اضافی</string>
     <string name="settings_group_system">سسٹم</string>
+    <string name="language_pack_title">ایپ ترجمہ</string>
+    <string name="language_pack_installed">%s: انسٹال شدہ</string>
+    <string name="language_pack_missing">%s: انسٹال نہیں، ایپ انگریزی دکھاتی ہے</string>
+    <string name="language_pack_dialog_title">%s کا ترجمہ</string>
+    <string name="language_pack_dialog_message">ایپ کا سائز چھوٹا رکھنے کے لیے، اس کے ترجمے الگ سے ڈاؤن لوڈ ہوتے ہیں۔ %s کا ترجمہ ڈاؤن لوڈ کریں یا فائل سے درآمد کریں۔</string>
+    <string name="language_pack_download">ترجمہ ڈاؤن لوڈ کریں</string>
+    <string name="language_pack_import">فائل سے درآمد کریں</string>
+    <string name="language_pack_remove">ترجمہ ہٹائیں</string>
+    <string name="language_pack_download_failed">ڈاؤن لوڈ ناکام ہوا۔ اس ایپ ورژن کے لیے ابھی کوئی ترجمہ دستیاب نہیں ہے۔</string>
+    <string name="language_pack_wrong_build">یہ ترجمے کی فائل کسی دوسرے ایپ ورژن کے لیے بنائی گئی تھی۔</string>
+    <string name="language_pack_invalid">یہ فائل ترجمے کی فائل نہیں ہے۔</string>
 </resources>

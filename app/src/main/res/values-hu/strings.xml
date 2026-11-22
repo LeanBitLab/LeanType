@@ -1607,7 +1607,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="style_plain">Normál</string>
     <string name="setup_skip_action">Ugrás a beállításokhoz</string>
     <string name="setup_wizard_title">Telepítő varázsló</string>
-    <string name="setup_not_active_title">%sengedélyezése</string>
+    <string name="setup_not_active_title">%s engedélyezése</string>
     <string name="setup_not_active_summary">Érintse meg a billentyűzet beállításának befejezéséhez</string>
     <string name="setup_welcome_summary">Futtassa a kezdeti beállítási és konfigurációs varázslót</string>
     <string name="localized_numbers_in_popups">Lokalizált számok a felugró ablakokban</string>
@@ -1750,4 +1750,15 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
         <item>Katalán</item>
         <item>Baszk</item>
     </string-array>
+    <string name="language_pack_title">Alkalmazás fordítása</string>
+    <string name="language_pack_installed">%s: telepítve</string>
+    <string name="language_pack_missing">%s: nincs telepítve, az alkalmazás angolul jeleníti meg</string>
+    <string name="language_pack_dialog_title">%s fordítása</string>
+    <string name="language_pack_dialog_message">Az alkalmazás kis méretének megőrzése érdekében a fordítások külön töltődnek le. Töltse le a(z) %s fordítását, vagy importálja fájlból.</string>
+    <string name="language_pack_download">Fordítás letöltése</string>
+    <string name="language_pack_import">Importálás fájlból</string>
+    <string name="language_pack_remove">Fordítás eltávolítása</string>
+    <string name="language_pack_download_failed">A letöltés sikertelen. Ehhez az alkalmazásverzióhoz még nincs elérhető fordítás.</string>
+    <string name="language_pack_wrong_build">Ez a fordítási fájl egy másik alkalmazásverzióhoz készült.</string>
+    <string name="language_pack_invalid">Ez a fájl nem fordítási fájl.</string>
 </resources>

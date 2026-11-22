@@ -1754,4 +1754,15 @@
         <item>加泰罗尼亚语</item>
         <item>巴斯克语</item>
     </string-array>
+    <string name="language_pack_title">应用翻译</string>
+    <string name="language_pack_installed">%s：已安装</string>
+    <string name="language_pack_missing">%s：未安装，应用将显示英文</string>
+    <string name="language_pack_dialog_title">%s 的翻译</string>
+    <string name="language_pack_dialog_message">为了保持应用体积小巧，翻译文件需单独下载。请下载 %s 的翻译，或从文件导入。</string>
+    <string name="language_pack_download">下载翻译</string>
+    <string name="language_pack_import">从文件导入</string>
+    <string name="language_pack_remove">移除翻译</string>
+    <string name="language_pack_download_failed">下载失败。此应用版本暂无可用翻译。</string>
+    <string name="language_pack_wrong_build">此翻译文件适用于其他应用版本。</string>
+    <string name="language_pack_invalid">此文件不是翻译文件。</string>
 </resources>

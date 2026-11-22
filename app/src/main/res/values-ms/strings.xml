@@ -852,7 +852,7 @@ Kamus baharu:
     <string name="updates_auto_check_summary">Semak keluaran baharu di latar belakang secara berkala</string>
     <string name="updates_frequency_title">Kekerapan semakan</string>
     <string name="updates_support_title">Sokong pembangunan</string>
-    <string name="updates_support_summary">LeanType adalah 100% percuma, sumber terbuka dan bebas. Sokongan anda membantu kami meneruskan pembangunan aktif secara langsung!</string>
+    <string name="updates_support_summary" formatted="false">LeanType adalah 100% percuma, sumber terbuka dan bebas. Sokongan anda membantu kami meneruskan pembangunan aktif secara langsung!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">Taja setiap bulan atau sekali melalui GitHub Sponsors</string>
     <string name="updates_opencollective_title">Derma di Open Collective</string>
@@ -1092,7 +1092,7 @@ Kamus baharu:
     <string name="text_expander_discard_title">Buang perubahan anda?</string>
     <string name="text_expander_discard">Buang</string>
     <string name="text_expander_template_title">Kembangan Templat</string>
-    <string name="text_expander_template_hint">Kejap ya! atau E-mel saya ialah %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Kejap ya! atau E-mel saya ialah %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Pemegang Tempat Pantas (ketik untuk masukkan pada kursor):</string>
     <string name="text_expander_attach_image">Lampirkan foto atau imej</string>
     <string name="text_expander_attach_image_desc">Pilih foto, rajah atau imej daripada storan</string>
@@ -1219,10 +1219,10 @@ Kamus baharu:
     <string name="setup_step6_title_screenshots">Cadangan Tangkapan Skrin</string>
     <string name="setup_step6_instruction_screenshots">Cadangkan tangkapan skrin terbaharu dalam baris cadangan. Nota: Kebenaran ini juga membenarkan penyimpanan tangkapan skrin ke papan keratan.</string>
     <string name="setup_step7_title_height">Ketinggian Papan Kekunci</string>
-    <string name="setup_step7_instruction_height">Laraskan ketinggian papan kekunci. Disyorkan: 77% untuk kekunci lebih bersegi, 100% untuk kekunci lebih tinggi.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Laraskan ketinggian papan kekunci. Disyorkan: 77% untuk kekunci lebih bersegi, 100% untuk kekunci lebih tinggi.</string>
     <string name="setup_step0_headline">Selamat datang ke pengalaman menaip yang lebih baik</string>
     <string name="setup_step0_subtitle">LeanType direka bentuk sepenuhnya untuk privasi, kepantasan, dan penyesuaian mendalam.</string>
-    <string name="setup_step0_feature1_title">100% Peribadi &amp; Selamat</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% Peribadi &amp; Selamat</string>
     <string name="setup_step0_feature1_desc">Sifar telemetri, penjejakan rangkaian, atau pengelogan awan. Penaipan anda kekal pada peranti anda.</string>
     <string name="setup_step0_feature2_title">Sangat Boleh Disesuaikan</string>
     <string name="setup_step0_feature2_desc">Sesuaikan reka letak, tema papan kekunci, saiz, gerak isyarat, dan penaipan berbilang bahasa mengikut keutamaan anda.</string>
@@ -1689,4 +1689,15 @@ Kamus baharu:
     <string name="voice_transcribe_while_speaking_summary">Masa menunggu lebih pendek untuk imlak panjang</string>
     <string name="voice_piecewise_field_changed">Imlak dihentikan: medan teks berubah, selebihnya tidak dimasukkan</string>
     <string name="settings_search_show_in_screen">Tunjukkan pada skrinnya</string>
+    <string name="language_pack_title">Terjemahan aplikasi</string>
+    <string name="language_pack_installed">%s: dipasang</string>
+    <string name="language_pack_missing">%s: tidak dipasang, aplikasi memaparkan Bahasa Inggeris</string>
+    <string name="language_pack_dialog_title">Terjemahan untuk %s</string>
+    <string name="language_pack_dialog_message">Untuk memastikan aplikasi kecil, terjemahannya dimuat turun secara berasingan. Muat turun terjemahan untuk %s atau import daripada fail.</string>
+    <string name="language_pack_download">Muat turun terjemahan</string>
+    <string name="language_pack_import">Import daripada fail</string>
+    <string name="language_pack_remove">Alih keluar terjemahan</string>
+    <string name="language_pack_download_failed">Muat turun gagal. Tiada terjemahan tersedia untuk versi aplikasi ini lagi.</string>
+    <string name="language_pack_wrong_build">Fail terjemahan ini dibuat untuk versi aplikasi yang berbeza.</string>
+    <string name="language_pack_invalid">Fail ini bukan fail terjemahan.</string>
 </resources>

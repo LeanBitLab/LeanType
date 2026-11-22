@@ -1677,7 +1677,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="style_plain">Normale</string>
     <string name="setup_skip_action">Passa alle impostazioni</string>
     <string name="setup_wizard_title">Procedura guidata di configurazione</string>
-    <string name="setup_not_active_title">Abilita%s</string>
+    <string name="setup_not_active_title">Abilita %s</string>
     <string name="setup_not_active_summary">Tocca per completare la configurazione della tastiera</string>
     <string name="setup_welcome_summary">Eseguire la procedura guidata di installazione e configurazione iniziale</string>
     <string name="localized_numbers_in_popups">Numeri localizzati nei popup</string>
@@ -1766,4 +1766,15 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="settings_group_typing">Digitazione</string>
     <string name="settings_group_extras">Extra</string>
     <string name="settings_group_system">Sistema</string>
+    <string name="language_pack_title">Traduzione dell\'app</string>
+    <string name="language_pack_installed">%s: installata</string>
+    <string name="language_pack_missing">%s: non installata, l\'app mostra l\'inglese</string>
+    <string name="language_pack_dialog_title">Traduzione per %s</string>
+    <string name="language_pack_dialog_message">Per mantenere l\'app leggera, le sue traduzioni vengono scaricate separatamente. Scarica la traduzione per %s oppure importala da un file.</string>
+    <string name="language_pack_download">Scarica traduzione</string>
+    <string name="language_pack_import">Importa da file</string>
+    <string name="language_pack_remove">Rimuovi traduzione</string>
+    <string name="language_pack_download_failed">Download non riuscito. Al momento non è disponibile alcuna traduzione per questa versione dell\'app.</string>
+    <string name="language_pack_wrong_build">Questo file di traduzione è stato creato per una versione diversa dell\'app.</string>
+    <string name="language_pack_invalid">Questo file non è un file di traduzione.</string>
 </resources>

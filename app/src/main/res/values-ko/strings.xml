@@ -851,7 +851,7 @@
     <string name="updates_auto_check_summary">백그라운드에서 주기적으로 새 릴리스를 확인합니다</string>
     <string name="updates_frequency_title">확인 주기</string>
     <string name="updates_support_title">개발 후원</string>
-    <string name="updates_support_summary">LeanType은 100% 무료이며 오픈소스이고 독립적으로 운영됩니다. 여러분의 후원이 활발한 개발을 이어가는 데 직접적인 도움이 됩니다!</string>
+    <string name="updates_support_summary" formatted="false">LeanType은 100% 무료이며 오픈소스이고 독립적으로 운영됩니다. 여러분의 후원이 활발한 개발을 이어가는 데 직접적인 도움이 됩니다!</string>
     <string name="updates_github_sponsor_title">GitHub Sponsors</string>
     <string name="updates_github_sponsor_desc">GitHub Sponsors를 통해 매월 또는 일회성으로 후원하세요</string>
     <string name="updates_opencollective_title">Open Collective에서 후원</string>
@@ -1091,7 +1091,7 @@
     <string name="text_expander_discard_title">변경사항을 취소하시겠습니까?</string>
     <string name="text_expander_discard">취소</string>
     <string name="text_expander_template_title">템플릿 확장</string>
-    <string name="text_expander_template_hint">곧 돌아올게요! 또는 내 이메일은 %clipboard%입니다</string>
+    <string name="text_expander_template_hint" formatted="false">곧 돌아올게요! 또는 내 이메일은 %clipboard%입니다</string>
     <string name="text_expander_quick_placeholders_title">빠른 자리표시자(탭하여 커서 위치에 삽입):</string>
     <string name="text_expander_attach_image">사진 또는 이미지 첨부</string>
     <string name="text_expander_attach_image_desc">저장소에서 사진, 도표 또는 이미지를 선택합니다</string>
@@ -1218,10 +1218,10 @@
     <string name="setup_step6_title_screenshots">스크린샷 추천</string>
     <string name="setup_step6_instruction_screenshots">최근 촬영한 스크린샷을 추천 영역에 표시합니다. 참고: 이 권한은 스크린샷을 클립보드에 저장하는 기능에도 사용됩니다.</string>
     <string name="setup_step7_title_height">키보드 높이</string>
-    <string name="setup_step7_instruction_height">키보드 높이를 조절합니다. 권장: 정사각형에 가까운 키는 77%, 더 높은 키는 100%입니다.</string>
+    <string name="setup_step7_instruction_height" formatted="false">키보드 높이를 조절합니다. 권장: 정사각형에 가까운 키는 77%, 더 높은 키는 100%입니다.</string>
     <string name="setup_step0_headline">더 나은 입력 환경을 만나보세요</string>
     <string name="setup_step0_subtitle">LeanType은 개인정보 보호, 속도, 세밀한 맞춤 설정을 위해 처음부터 새로 설계되었습니다.</string>
-    <string name="setup_step0_feature1_title">100% 비공개 및 보안</string>
+    <string name="setup_step0_feature1_title" formatted="false">100% 비공개 및 보안</string>
     <string name="setup_step0_feature1_desc">텔레메트리, 네트워크 추적, 클라우드 로깅이 전혀 없습니다. 입력한 내용은 기기에만 저장됩니다.</string>
     <string name="setup_step0_feature2_title">세밀한 맞춤 설정</string>
     <string name="setup_step0_feature2_desc">레이아웃, 키보드 테마, 크기, 제스처, 다국어 입력을 원하는 대로 설정하세요.</string>
@@ -1688,4 +1688,15 @@
     <string name="voice_transcribe_while_speaking_summary">긴 받아쓰기의 대기 시간 단축</string>
     <string name="voice_piecewise_field_changed">받아쓰기 중단됨: 텍스트 필드가 변경되어 나머지는 입력되지 않았습니다</string>
     <string name="settings_search_show_in_screen">해당 화면에서 보기</string>
+    <string name="language_pack_title">앱 번역</string>
+    <string name="language_pack_installed">%s: 설치됨</string>
+    <string name="language_pack_missing">%s: 설치되지 않음, 앱은 영어로 표시됩니다</string>
+    <string name="language_pack_dialog_title">%s 번역</string>
+    <string name="language_pack_dialog_message">앱을 작게 유지하기 위해 번역 파일은 별도로 다운로드됩니다. %s 번역을 다운로드하거나 파일에서 가져오세요.</string>
+    <string name="language_pack_download">번역 다운로드</string>
+    <string name="language_pack_import">파일에서 가져오기</string>
+    <string name="language_pack_remove">번역 삭제</string>
+    <string name="language_pack_download_failed">다운로드에 실패했습니다. 이 앱 버전에 대한 번역이 아직 없습니다.</string>
+    <string name="language_pack_wrong_build">이 번역 파일은 다른 앱 버전용으로 만들어졌습니다.</string>
+    <string name="language_pack_invalid">이 파일은 번역 파일이 아닙니다.</string>
 </resources>

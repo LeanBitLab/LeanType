@@ -1676,7 +1676,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Saltar a configuración</string>
     <string name="setup_wizard_title">Asistente de configuración</string>
-    <string name="setup_not_active_title">Habilitar%s</string>
+    <string name="setup_not_active_title">Habilitar %s</string>
     <string name="setup_not_active_summary">Toque para completar la configuración del teclado</string>
     <string name="setup_welcome_summary">Ejecute el asistente de instalación y configuración inicial</string>
     <string name="localized_numbers_in_popups">Números localizados en ventanas emergentes</string>
@@ -1766,4 +1766,15 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="settings_group_typing">Escritura</string>
     <string name="settings_group_extras">Extras</string>
     <string name="settings_group_system">Sistema</string>
+    <string name="language_pack_title">Traducción de la app</string>
+    <string name="language_pack_installed">%s: instalado</string>
+    <string name="language_pack_missing">%s: no instalado, la app muestra inglés</string>
+    <string name="language_pack_dialog_title">Traducción para %s</string>
+    <string name="language_pack_dialog_message">Para mantener la app ligera, sus traducciones se descargan por separado. Descarga la traducción para %s o impórtala desde un archivo.</string>
+    <string name="language_pack_download">Descargar traducción</string>
+    <string name="language_pack_import">Importar desde archivo</string>
+    <string name="language_pack_remove">Eliminar traducción</string>
+    <string name="language_pack_download_failed">Error al descargar. Todavía no hay traducción disponible para esta versión de la app.</string>
+    <string name="language_pack_wrong_build">Este archivo de traducción se creó para una versión diferente de la app.</string>
+    <string name="language_pack_invalid">Este archivo no es un archivo de traducción.</string>
 </resources>

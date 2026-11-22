@@ -1090,7 +1090,7 @@ Từ điển mới:
     <string name="text_expander_discard_title">Hủy bỏ các thay đổi của bạn?</string>
     <string name="text_expander_discard">Hủy bỏ</string>
     <string name="text_expander_template_title">Mở rộng theo mẫu</string>
-    <string name="text_expander_template_hint">Tôi sẽ quay lại ngay! hoặc Email của tôi là %clipboard%</string>
+    <string name="text_expander_template_hint" formatted="false">Tôi sẽ quay lại ngay! hoặc Email của tôi là %clipboard%</string>
     <string name="text_expander_quick_placeholders_title">Phần giữ chỗ nhanh (nhấn để chèn tại con trỏ):</string>
     <string name="text_expander_attach_image">Đính kèm ảnh hoặc hình ảnh</string>
     <string name="text_expander_attach_image_desc">Chọn ảnh, biểu đồ hoặc hình ảnh từ bộ nhớ</string>
@@ -1217,10 +1217,10 @@ Từ điển mới:
     <string name="setup_step6_title_screenshots">Gợi ý ảnh chụp màn hình</string>
     <string name="setup_step6_instruction_screenshots">Gợi ý các ảnh chụp màn hình gần đây trên thanh gợi ý. Lưu ý: Quyền này cũng cho phép lưu ảnh chụp màn hình vào khay nhớ tạm.</string>
     <string name="setup_step7_title_height">Chiều cao bàn phím</string>
-    <string name="setup_step7_instruction_height">Điều chỉnh chiều cao bàn phím. Khuyên dùng: 77% để phím vuông hơn, 100% để phím cao hơn.</string>
+    <string name="setup_step7_instruction_height" formatted="false">Điều chỉnh chiều cao bàn phím. Khuyên dùng: 77% để phím vuông hơn, 100% để phím cao hơn.</string>
     <string name="setup_step0_headline">Chào mừng bạn đến với trải nghiệm gõ tốt hơn</string>
     <string name="setup_step0_subtitle">LeanType được thiết kế từ đầu vì quyền riêng tư, tốc độ và khả năng tùy biến sâu.</string>
-    <string name="setup_step0_feature1_title">Riêng tư &amp; An toàn 100%</string>
+    <string name="setup_step0_feature1_title" formatted="false">Riêng tư &amp; An toàn 100%</string>
     <string name="setup_step0_feature1_desc">Không đo lường từ xa, theo dõi mạng hoặc ghi nhật ký đám mây. Dữ liệu gõ phím nằm hoàn toàn trên thiết bị của bạn.</string>
     <string name="setup_step0_feature2_title">Tùy biến sâu</string>
     <string name="setup_step0_feature2_desc">Điều chỉnh bố cục, chủ đề bàn phím, kích thước, cử chỉ và gõ đa ngôn ngữ theo sở thích của bạn.</string>
@@ -1687,4 +1687,15 @@ Từ điển mới:
     <string name="voice_transcribe_while_speaking_summary">Giảm thời gian chờ cho các đoạn đọc chính tả dài</string>
     <string name="voice_piecewise_field_changed">Đã dừng nhập giọng nói: trường văn bản đã thay đổi, phần còn lại chưa được chèn</string>
     <string name="settings_search_show_in_screen">Hiển thị trong màn hình tương ứng</string>
+    <string name="language_pack_title">Bản dịch ứng dụng</string>
+    <string name="language_pack_installed">%s: đã cài đặt</string>
+    <string name="language_pack_missing">%s: chưa cài đặt, ứng dụng hiển thị tiếng Anh</string>
+    <string name="language_pack_dialog_title">Bản dịch cho %s</string>
+    <string name="language_pack_dialog_message">Để giữ ứng dụng nhỏ gọn, bản dịch được tải xuống riêng. Tải bản dịch cho %s hoặc nhập từ tệp.</string>
+    <string name="language_pack_download">Tải bản dịch</string>
+    <string name="language_pack_import">Nhập từ tệp</string>
+    <string name="language_pack_remove">Xóa bản dịch</string>
+    <string name="language_pack_download_failed">Tải xuống thất bại. Chưa có bản dịch cho phiên bản ứng dụng này.</string>
+    <string name="language_pack_wrong_build">Tệp bản dịch này được tạo cho phiên bản ứng dụng khác.</string>
+    <string name="language_pack_invalid">Đây không phải là tệp bản dịch.</string>
 </resources>

@@ -1607,7 +1607,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="style_plain">Normal</string>
     <string name="setup_skip_action">Lewati ke pengaturan</string>
     <string name="setup_wizard_title">Panduan pengaturan</string>
-    <string name="setup_not_active_title">Aktifkan%s</string>
+    <string name="setup_not_active_title">Aktifkan %s</string>
     <string name="setup_not_active_summary">Ketuk untuk menyelesaikan pengaturan keyboard</string>
     <string name="setup_welcome_summary"></string>
     <string name="localized_numbers_in_popups"></string>
@@ -1750,4 +1750,15 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
         <item>Katalan</item>
         <item>Basque</item>
     </string-array>
+    <string name="language_pack_title">Terjemahan aplikasi</string>
+    <string name="language_pack_installed">%s: terpasang</string>
+    <string name="language_pack_missing">%s: belum terpasang, aplikasi menampilkan bahasa Inggris</string>
+    <string name="language_pack_dialog_title">Terjemahan untuk %s</string>
+    <string name="language_pack_dialog_message">Untuk menjaga ukuran aplikasi tetap kecil, terjemahannya diunduh secara terpisah. Unduh terjemahan untuk %s atau impor dari file.</string>
+    <string name="language_pack_download">Unduh terjemahan</string>
+    <string name="language_pack_import">Impor dari file</string>
+    <string name="language_pack_remove">Hapus terjemahan</string>
+    <string name="language_pack_download_failed">Pengunduhan gagal. Belum ada terjemahan untuk versi aplikasi ini.</string>
+    <string name="language_pack_wrong_build">File terjemahan ini dibuat untuk versi aplikasi yang berbeda.</string>
+    <string name="language_pack_invalid">File ini bukan file terjemahan.</string>
 </resources>

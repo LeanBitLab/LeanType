@@ -1644,7 +1644,7 @@
     <string name="style_plain">Нармальны</string>
     <string name="setup_skip_action">Перайсці да налад</string>
     <string name="setup_wizard_title">Майстар наладкі</string>
-    <string name="setup_not_active_title">Уключыць%s</string>
+    <string name="setup_not_active_title">Уключыць %s</string>
     <string name="setup_not_active_summary">Націсніце, каб завяршыць наладку клавіятуры</string>
     <string name="setup_welcome_summary">Запусціце майстар першапачатковай налады і канфігурацыі</string>
     <string name="localized_numbers_in_popups">Лакалізаваныя лічбы ва ўсплываючых вокнах</string>
@@ -1787,4 +1787,15 @@
         <item>Каталанская</item>
         <item>Баскская</item>
     </string-array>
+    <string name="language_pack_title">Пераклад праграмы</string>
+    <string name="language_pack_installed">%s: усталявана</string>
+    <string name="language_pack_missing">%s: не ўсталявана, праграма паказвае англійскую мову</string>
+    <string name="language_pack_dialog_title">Пераклад для %s</string>
+    <string name="language_pack_dialog_message">Каб праграма займала менш месца, яе пераклады спампоўваюцца асобна. Спампуйце пераклад для %s або імпартуйце яго з файла.</string>
+    <string name="language_pack_download">Спампаваць пераклад</string>
+    <string name="language_pack_import">Імпартаваць з файла</string>
+    <string name="language_pack_remove">Выдаліць пераклад</string>
+    <string name="language_pack_download_failed">Спампаванне не атрымалася. Для гэтай версіі праграмы пераклад пакуль недаступны.</string>
+    <string name="language_pack_wrong_build">Гэты файл перакладу створаны для іншай версіі праграмы.</string>
+    <string name="language_pack_invalid">Гэта не файл перакладу.</string>
 </resources>
