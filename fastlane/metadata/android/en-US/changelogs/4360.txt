@@ -1,6 +1,6 @@
-- Sound packs: no more silent preview or keys right after choosing a pack (#896).
-- Space swipe stops at the edge of the text instead of jumping to another field (#895).
-- Settings reorganised with group headers and clearer section names (#887, #892).
-- What's new dialog after updates; support section on top (#894).
-- Offline AI: chat format for Qwen and LFM2 models, no texts in the log (#888).
-- AI model pickers keep the saved model; new Gemini voice default (#886).
+- New English-only Lite APKs for Android 11+, about 4 MB smaller (#899).
+- Language packs: download other app languages in Languages & Layouts > App translation (#898).
+- Japanese, Korean, Vietnamese, Traditional Chinese, Persian, Bengali, Tamil and Malay completed (#897).
+- Near-empty app translations dropped; layouts and dictionaries stay (#897).
+- Setup title spacing fixed in 25 languages (#898).
+- Docs follow the new settings layout, with a settings map (#899).

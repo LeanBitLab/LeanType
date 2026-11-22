@@ -64,13 +64,11 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Sound Packs: No more silent preview or keys right after choosing a pack",
-    "• Space Swipe: Cursor stops at the edge of the text instead of leaving the field",
-    "• AI Model Pickers: The saved model stays in the list; new Gemini voice default",
-    "• Settings: Fixed taps doing nothing with several settings windows open",
-    "• Settings: Reorganised with group headers and clearer section names",
-    "• What's New: Changelog shows once after an update; support section on top",
-    "• Offline AI: Chat format for Qwen and LFM2 models, no texts in the log"
+    "• Lite APKs: English-only builds for Android 11+, about 4 MB smaller",
+    "• Language Packs: Download app languages in Languages & Layouts > App translation",
+    "• Translations: Japanese, Korean, Vietnamese, Traditional Chinese, Persian, Bengali, Tamil and Malay completed",
+    "• App Languages: Near-empty translations dropped; layouts and dictionaries stay",
+    "• Setup: Fixed the missing space next to the app name in 25 languages"
 )
 
 @Composable
