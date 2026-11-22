@@ -3,6 +3,7 @@ package helium314.keyboard.settings
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -114,7 +115,17 @@ fun SearchSettingsScreen(
                     }
                     // one lazy row per setting (a whole card as one item composed every setting of the screen at once,
                     // which is what made opening a large screen slow); the rows of a group are drawn as one card
-                    val rows = remember(groups) { settingRows(groups) }
+                    // sections with a title can be collapsed, this is remembered; a section with the setting a jump
+                    // shows is open while it is shown (that is not saved)
+                    var collapsedSections by remember { mutableStateOf(collapsedSections(context)) }
+                    var revealKey by remember { mutableStateOf<String?>(null) }
+                    val jumpTargetNow = jumpTarget()
+                    LaunchedEffect(jumpTargetNow) { if (jumpTargetNow != null) revealKey = jumpTargetNow }
+                    val rows = remember(groups, collapsedSections, revealKey, jumpTargetNow) {
+                        settingRows(groups, { sectionId(context, title, it) }) { id, keys ->
+                            id in collapsedSections && revealKey !in keys && jumpTargetNow !in keys
+                        }
+                    }
 
                     // jump from a long press in the search results (see SettingsJump): show the setting
                     // here, opening its fine-tune section if needed, scroll to it and highlight it
@@ -182,7 +193,28 @@ fun SearchSettingsScreen(
                                     )
                             ) {
                                 if (row.key == null) {
-                                    PreferenceCategory(stringResource(row.titleRes!!))
+                                    val sectionId = row.sectionId!!
+                                    androidx.compose.foundation.layout.Row(
+                                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clickable(onClickLabel = stringResource(R.string.settings_category_collapse)) {
+                                                val collapse = !row.collapsed
+                                                if (collapse && revealKey in row.sectionKeys) revealKey = null
+                                                setSectionCollapsed(context, sectionId, collapse)
+                                                collapsedSections = if (collapse) collapsedSections + sectionId else collapsedSections - sectionId
+                                            }
+                                    ) {
+                                        Box(Modifier.weight(1f)) { PreferenceCategory(stringResource(row.titleRes!!)) }
+                                        Icon(
+                                            painterResource(R.drawable.ic_arrow_right),
+                                            null,
+                                            tint = MaterialTheme.colorScheme.primary,
+                                            modifier = Modifier
+                                                .padding(top = 12.dp, end = 16.dp)
+                                                .rotate(if (row.collapsed) 0f else 90f)
+                                        )
+                                    }
                                 } else {
                                     val key = row.key
                                     val highlight by animateColorAsState(
@@ -236,18 +268,29 @@ fun SearchSettingsScreen(
  * A row of a settings screen: the title of a category ([key] is null) or a setting; first and last row of a card.
  * [nested]: the setting is inside an open fine-tune section, i.e. after a fine-tune header in the same card.
  * [inOpenSection]: the row is nested or the header of a fine-tune section with settings shown inside.
+ * A title row knows its section ([sectionId], [sectionKeys]) and whether that is collapsed.
  */
 private data class SettingRow(
     val id: String, val titleRes: Int?, val key: String?, val first: Boolean = false, val last: Boolean = false,
-    val nested: Boolean = false, val inOpenSection: Boolean = false
+    val nested: Boolean = false, val inOpenSection: Boolean = false,
+    val sectionId: String? = null, val sectionKeys: List<String> = emptyList(), val collapsed: Boolean = false,
 )
 
-private fun settingRows(groups: List<Pair<Int?, List<String>>>): List<SettingRow> = buildList {
+private fun settingRows(
+    groups: List<Pair<Int?, List<String>>>,
+    sectionId: (Int) -> String,
+    isCollapsed: (String, List<String>) -> Boolean,
+): List<SettingRow> = buildList {
     groups.forEachIndexed { index, (titleRes, keys) ->
         val group = buildList {
-            if (titleRes != null) add(SettingRow("title_${index}_$titleRes", titleRes, null))
+            val collapsed = if (titleRes != null) {
+                val id = sectionId(titleRes)
+                val collapsed = isCollapsed(id, keys)
+                add(SettingRow("title_${index}_$titleRes", titleRes, null, sectionId = id, sectionKeys = keys, collapsed = collapsed))
+                collapsed
+            } else false
             var inFineTune = false
-            keys.forEach {
+            if (!collapsed) keys.forEach {
                 val isFineTuneHeader = it.startsWith(FINE_TUNE_SECTION_PREFIX)
                 add(SettingRow("${index}_$it", null, it, nested = inFineTune && !isFineTuneHeader))
                 if (isFineTuneHeader) inFineTune = true
@@ -388,6 +431,21 @@ fun <T: Any?> SearchScreen(
             }
         }
     }
+}
+
+private const val PREF_COLLAPSED_SECTIONS = "collapsed_settings_sections"
+
+private fun sectionId(context: android.content.Context, screenTitle: String, titleRes: Int) =
+    "$screenTitle/" + runCatching { context.resources.getResourceEntryName(titleRes) }.getOrDefault(titleRes.toString())
+
+private fun collapsedSections(context: android.content.Context): Set<String> =
+    context.prefs().getStringSet(PREF_COLLAPSED_SECTIONS, null).orEmpty().toSet()
+
+private fun setSectionCollapsed(context: android.content.Context, id: String, collapsed: Boolean) {
+    val prefs = context.prefs()
+    val set = prefs.getStringSet(PREF_COLLAPSED_SECTIONS, null).orEmpty().toMutableSet()
+    if (collapsed) set.add(id) else set.remove(id)
+    prefs.edit().putStringSet(PREF_COLLAPSED_SECTIONS, set).apply()
 }
 
 // from StreetComplete

@@ -10,6 +10,7 @@
     <string name="settings_screen_preferences">Optionen</string>
     <string name="settings_screen_correction">"Textkorrektur"</string>
     <string name="settings_screen_advanced">"Erweitert"</string>
+    <string name="settings_category_collapse">Abschnitt ein- oder ausklappen</string>
     <string name="settings_screen_theme">"Design"</string>
     <string name="enable_split_keyboard">"Geteilte Tastatur aktivieren"</string>
     <string name="language_switch_key_switch_input_method">"Eingabemethoden wechseln"</string>

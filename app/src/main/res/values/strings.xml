@@ -41,6 +41,7 @@
     <string name="settings_screen_suggestions">Suggestions</string>
     <!-- Settings screen title for advanced settings -->
     <string name="settings_screen_advanced">Advanced</string>
+    <string name="settings_category_collapse">Collapse or expand section</string>
     <!-- Settings screen title for keyboard theme settings -->
     <string name="settings_screen_theme">Theme</string>
     <!-- Settings category for key press behaviour, keypress sound and vibration -->
