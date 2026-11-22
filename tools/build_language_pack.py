@@ -64,12 +64,10 @@ def build_pack(aapt2: str, android_jar: Path, res: Path, locale: str, package: s
     files = sorted(p for p in locale_dir.glob("*.xml") if STRING_FILES.match(p.name)) if locale_dir.is_dir() else []
     if not files:
         sys.exit(f"no strings*.xml in {locale_dir}")
-    # the default strings are included so references between strings (@string/...) resolve
-    files += sorted(p for p in (res / "values").glob("*.xml") if STRING_FILES.match(p.name))
     flat_dir = work / f"flat-{locale}"
     flat_dir.mkdir()
     for f in files:
-        run(aapt2, "compile", "-o", str(flat_dir), str(f))
+        run(aapt2, "compile", "--legacy", "-o", str(flat_dir), str(f))  # --legacy like AGP
     flats = sorted(str(p) for p in flat_dir.iterdir())
     manifest = work / f"AndroidManifest-{locale}.xml"
     manifest.write_text(
@@ -78,7 +76,8 @@ def build_pack(aapt2: str, android_jar: Path, res: Path, locale: str, package: s
         '    <uses-sdk android:minSdkVersion="30" />\n'
         '    <application android:hasCode="false" />\n'
         '</manifest>\n')
-    run(aapt2, "link", "-o", str(out), "-I", str(android_jar), "--manifest", str(manifest),
+    # an overlay: its strings have no default value, which aapt2 would otherwise remove
+    run(aapt2, "link", "--no-resource-removal", "-o", str(out), "-I", str(android_jar), "--manifest", str(manifest),
         "--stable-ids", str(ids_file), *flats)
 
 
