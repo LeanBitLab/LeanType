@@ -63,7 +63,7 @@ import helium314.keyboard.settings.preferences.SwitchPreference
 import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
-private val currentChangelogItems = listOf(
+internal val currentChangelogItems = listOf(
     "• PC QWERTY: Caps lock no longer shifts the number row and punctuation",
     "• Hebrew: Symbols page uses the normal layout again instead of Arabic symbols",
     "• Delete Word Swipe: One swipe deletes the word you are still typing"
@@ -152,6 +152,53 @@ fun UpdatesScreen(
                     .padding(innerPadding)
                     .padding(vertical = 8.dp)
             ) {
+                // Support & Sponsorship (top, so it is easy to find)
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    )
+                ) {
+                    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+                        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
+                            Text(
+                                text = stringResource(R.string.updates_support_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.primary,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = stringResource(R.string.updates_support_summary),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+
+                        Preference(
+                            name = stringResource(R.string.updates_github_sponsor_title),
+                            description = stringResource(R.string.updates_github_sponsor_desc),
+                            icon = R.drawable.ic_settings_about_github,
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_VIEW, Links.SPONSOR.toUri())
+                                context.startActivity(intent)
+                            }
+                        )
+
+                        Preference(
+                            name = stringResource(R.string.updates_opencollective_title),
+                            description = stringResource(R.string.updates_opencollective_desc),
+                            icon = R.drawable.ic_opencollective,
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_VIEW, Links.OPEN_COLLECTIVE.toUri())
+                                context.startActivity(intent)
+                            }
+                        )
+                    }
+                }
+
                 // Section 1: App Updates (OMITTED entirely on offline flavor)
                 if (isOnlineFlavor) {
                     // Minimal Update Indicator Banner if update is available
@@ -374,53 +421,6 @@ fun UpdatesScreen(
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(16.dp)
-                        )
-                    }
-                }
-
-                // Section 2: Support & Sponsorship
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainer
-                    )
-                ) {
-                    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-                        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                            Text(
-                                text = stringResource(R.string.updates_support_title),
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.SemiBold
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = stringResource(R.string.updates_support_summary),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-
-                        Preference(
-                            name = stringResource(R.string.updates_github_sponsor_title),
-                            description = stringResource(R.string.updates_github_sponsor_desc),
-                            icon = R.drawable.ic_settings_about_github,
-                            onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Links.SPONSOR.toUri())
-                                context.startActivity(intent)
-                            }
-                        )
-
-                        Preference(
-                            name = stringResource(R.string.updates_opencollective_title),
-                            description = stringResource(R.string.updates_opencollective_desc),
-                            icon = R.drawable.ic_opencollective,
-                            onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Links.OPEN_COLLECTIVE.toUri())
-                                context.startActivity(intent)
-                            }
                         )
                     }
                 }

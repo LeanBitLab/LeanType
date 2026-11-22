@@ -10,6 +10,10 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.IntOffset
@@ -20,6 +24,8 @@ import androidx.navigation.compose.rememberNavController
 import helium314.keyboard.latin.common.LocaleUtils.constructLocale
 import helium314.keyboard.latin.settings.SettingsSubtype.Companion.toSettingsSubtype
 import helium314.keyboard.latin.settings.getTransitionAnimationScale
+import helium314.keyboard.latin.utils.getActivity
+import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.settings.screens.AIIntegrationScreen
 import helium314.keyboard.settings.screens.AboutScreen
 import helium314.keyboard.settings.screens.AdvancedSettingsScreen
@@ -63,6 +69,19 @@ fun SettingsNavHost(
             SettingsDestination.navEvents.collect { route ->
                 navController.navigate(route)
             }
+        }
+    }
+
+    // fine-tune sections start closed on every page opened from the main page (and on a fresh settings start);
+    // moving between a page and its sub-pages keeps them as the user left them
+    val ctx = LocalContext.current
+    var collapsedAtStart by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(navController) {
+        navController.currentBackStackEntryFlow.collect { entry ->
+            if (collapsedAtStart && entry.destination.route != SettingsDestination.Settings) return@collect
+            collapsedAtStart = true
+            collapseFineTuneSections(ctx.prefs())
+            (ctx.getActivity() as? SettingsActivity)?.prefChanged()
         }
     }
 

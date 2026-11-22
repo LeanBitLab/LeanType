@@ -75,5 +75,6 @@
     <string name="layout_tamil" translatable="false">Tamil</string>
 
     <string name="english_ime_name" translatable="false">LeanType</string>
+    <string name="open_collective" translatable="false">Open Collective</string>
 
 </resources>

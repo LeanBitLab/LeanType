@@ -54,6 +54,7 @@ import helium314.keyboard.settings.SettingsActivity
 import helium314.keyboard.settings.updates.AppUpdatesManager
 import helium314.keyboard.settings.Theme
 import helium314.keyboard.settings.dialogs.SponsorDialog
+import helium314.keyboard.settings.dialogs.WhatsNewDialog
 import helium314.keyboard.settings.initPreview
 import helium314.keyboard.settings.preferences.Preference
 import helium314.keyboard.settings.previewDark
@@ -94,6 +95,18 @@ fun MainSettingsScreen(
             Defaults.PREF_LAST_SPONSOR_DIALOG_SHOWN
         )
         var settingsOpenCount by remember { mutableStateOf(prefs.getInt("settings_open_count", 0)) }
+        // Show the changelog once per version, but not on a fresh install (no earlier settings open)
+        val whatsNewPending = remember {
+            prefs.getInt(Settings.PREF_LAST_WHATS_NEW_VERSION, 0) < BuildConfig.VERSION_CODE
+        }
+        var showWhatsNew by rememberSaveable { mutableStateOf(false) }
+        if (whatsNewPending) {
+            LaunchedEffect(Unit) {
+                if (settingsOpenCount > 0 && currentChangelogItems.isNotEmpty())
+                    showWhatsNew = true
+                prefs.edit { putInt(Settings.PREF_LAST_WHATS_NEW_VERSION, BuildConfig.VERSION_CODE) }
+            }
+        }
         LaunchedEffect(Unit) {
             val newCount = settingsOpenCount + 1
             prefs.edit { putInt("settings_open_count", newCount) }
@@ -109,10 +122,20 @@ fun MainSettingsScreen(
         )
         var showSponsorDialog by rememberSaveable { mutableStateOf(false) }
         
-        if (shouldShow) {
+        // what's new takes precedence, the sponsor dialog then shows on a later settings open
+        if (shouldShow && !whatsNewPending) {
             LaunchedEffect(Unit) {
                 showSponsorDialog = true
             }
+        }
+
+        if (showWhatsNew) {
+            WhatsNewDialog(
+                changelogItems = currentChangelogItems,
+                onDismissRequest = { showWhatsNew = false },
+                onSponsorGitHub = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Links.SPONSOR.toUri())) },
+                onSponsorOpenCollective = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Links.OPEN_COLLECTIVE.toUri())) }
+            )
         }
         
         if (showSponsorDialog) {
