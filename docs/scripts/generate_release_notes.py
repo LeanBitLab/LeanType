@@ -118,7 +118,7 @@ def inject_apk_sizes(content, apk_sizes):
     
     # Fallback: If no table was present, append an artifact summary section
     if not table_modified and apk_sizes:
-        artifacts_section = "\n\n### 📦 Build Artifact Sizes\n\n| File | Size |\n|:---|:---:|\n"
+        artifacts_section = "\n\n### Build Artifact Sizes\n\n| File | Size |\n|:---|:---:|\n"
         for name in sorted(apk_sizes.keys()):
             artifacts_section += f"| `{name}` | {apk_sizes[name]} |\n"
         result += artifacts_section
