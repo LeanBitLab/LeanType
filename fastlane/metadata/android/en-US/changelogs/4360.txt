@@ -1,6 +1,8 @@
-- New English-only Lite APKs for Android 11+, about 4 MB smaller (#899).
-- Language packs: download other app languages in Languages & Layouts > App translation (#898).
-- Japanese, Korean, Vietnamese, Traditional Chinese, Persian, Bengali, Tamil and Malay completed (#897).
-- Near-empty app translations dropped; layouts and dictionaries stay (#897).
-- Setup title spacing fixed in 25 languages (#898).
-- Docs follow the new settings layout, with a settings map (#899).
+- English-only Lite APKs for Android 11+, other languages as packs (#898).
+- Settings reorganised into Keyboard, Typing, Extras, System (#887).
+- What's new dialog after updates (#894).
+- Fixed doubled single letters in Chromium browsers (#880).
+- Caps lock on PC QWERTY only capitalizes letters (#883).
+- Fixed Hebrew symbols, sound packs, delete word swipe (#882, #896).
+- Better offline AI chat format for Qwen and LFM2 (#888).
+- Eight translations completed (#897).

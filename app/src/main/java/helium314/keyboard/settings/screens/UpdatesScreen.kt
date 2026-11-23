@@ -64,11 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Lite APKs: English-only builds for Android 11+, about 4 MB smaller",
-    "• Language Packs: Download app languages in Languages & Layouts > App translation",
-    "• Translations: Japanese, Korean, Vietnamese, Traditional Chinese, Persian, Bengali, Tamil and Malay completed",
-    "• App Languages: Near-empty translations dropped; layouts and dictionaries stay",
-    "• Setup: Fixed the missing space next to the app name in 25 languages"
+    "• Lite APKs: English-only builds for Android 11+, other languages as language packs",
+    "• Settings: Reorganised into Keyboard, Typing, Extras and System",
+    "• What's New: The changelog opens once after an update",
+    "• Browsers: Fixed doubled single letters in Chromium browsers",
+    "• Caps Lock: On PC QWERTY it only capitalizes letters",
+    "• Offline AI: Better chat format for Qwen and LFM2 models",
+    "• Sound Packs: No more silent first presses or mixed sounds",
+    "• Fixes: Hebrew symbols, delete word swipe, space swipe at text edges",
+    "• Translations: Eight languages completed, near-empty ones dropped",
+    "• Landscape: Wider split keyboard by default"
 )
 
 @Composable
