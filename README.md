@@ -18,7 +18,7 @@
 **A private, smart and deeply customizable open-source Android keyboard.**<br>
 Built on [HeliBoard](https://github.com/Helium314/HeliBoard). No tracking, and a flavor with no internet permission at all.
 
-[Download](#download) • [Features](#features) • [Plugins](#plugins) • [Full feature guide](docs/FEATURES.md) • [Support](#support)
+[Download](#download) • [Features](#features) • [Plugins](#plugins) • [Full feature guide](docs/FEATURES.md) • [More LeanBitLab apps](#more-leanbitlab-apps) • [Support](#support)
 
 </div>
 
@@ -107,9 +107,19 @@ Also available: [sound packs](https://github.com/LeanBitLab/LeanType-SoundPacks)
 
 </details>
 
+## More LeanBitLab apps
+
+| App | What it is |
+| :--- | :--- |
+| [LtvLauncher](https://github.com/leanbitlab-org/LtvLauncher) | Fast, private and ad-free launcher for Android TV |
+| [Lwidget](https://github.com/LeanBitLab/Lwidget) | Material You information widget with no internet permission |
+| [RdTube](https://github.com/LeanBitLab/RdTube) | Private, fast video client for Reddit |
+
+See [all LeanBitLab projects](https://github.com/LeanBitLab#-android-apps).
+
 ## Community
 
-[Issues](https://github.com/LeanBitLab/LeanType/issues) • [Discussions](https://github.com/LeanBitLab/LeanType/discussions) • [Telegram](https://t.me/leanbitlab) • [More LeanBitLab apps](https://github.com/LeanBitLab#-android-projects)
+[Issues](https://github.com/LeanBitLab/LeanType/issues) • [Discussions](https://github.com/LeanBitLab/LeanType/discussions) • [Telegram](https://t.me/leanbitlab)
 
 ## Support
 
