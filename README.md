@@ -58,9 +58,9 @@ Built on [HeliBoard](https://github.com/Helium314/HeliBoard). No tracking, and a
 | :--- | :--- | :--- |
 | `standard-release` (recommended) | Cloud AI, in-app plugin downloads and update checks | Optional |
 | `offline-release` | No network at all; on-device AI through the Offline AI plugin | None (no permission) |
-| `standard-lite-release` / `offline-lite-release` | The same, about 4 MB smaller: English only, other app languages as [language packs](https://github.com/LeanBitLab/LeanType-Language-Packs) (Android 11+) | Same as above |
+| `standard-lite-release` / `offline-lite-release` | The same, about 4 MB smaller: English only, other app languages as [language packs](https://github.com/LeanBitLab/LeanType-Language-Packs) (packs need Android 11+) | Same as above |
 
-All builds run on Android 6.0+ (Lite: 11+). If Play Protect or your browser blocks the APK, install through [Obtainium](https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/LeanBitLab/LeanType) or [App Manager](https://github.com/MuntashirAkon/AppManager).
+All builds, Lite included, run on Android 6.0+.
 
 ## Features
 
