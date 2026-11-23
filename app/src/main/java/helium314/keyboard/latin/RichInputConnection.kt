@@ -1379,10 +1379,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return true
         }
 
-        return endsWithWordCodepoint(
-            mCommittedTextBeforeComposingText.toString(),
-            spacingAndPunctuations
-        )
+        // the committed text cache is cleared after commitText in web editors
+        val textBefore = if (InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo))
+            getTextBeforeCursor(NUM_CHARS_TO_GET_BEFORE_CURSOR, 0)?.toString() ?: ""
+        else mCommittedTextBeforeComposingText.toString()
+        return endsWithWordCodepoint(textBefore, spacingAndPunctuations)
     }
 
     fun isCursorFollowedByWordCharacter(spacingAndPunctuations: SpacingAndPunctuations): Boolean {

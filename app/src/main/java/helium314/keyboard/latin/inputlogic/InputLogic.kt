@@ -1907,7 +1907,15 @@ class InputLogic(
                     sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
                 }
                 StatsUtils.onBackspacePressed(totalDeletes)
-                mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                if (!mConnection.hasSlowInputConnection() && !event.isKeyRepeat && mDeleteCount <= 1
+                    && inputTransaction.settingsValues.needsToLookupSuggestions()
+                    && inputTransaction.settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
+                ) {
+                    // the selection update caused by our key event is expected and ignored, so resume suggestions here
+                    mLatinIME.mHandler.postResumeSuggestions(true)
+                } else {
+                    mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                }
                 return
             }
 

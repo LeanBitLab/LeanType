@@ -1627,6 +1627,15 @@ class InputLogicTest {
         assertEquals("", composingText)
     }
 
+    @Test fun `single backspace restarts suggestions in web editor`() {
+        reset()
+        currentInputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT
+        setText("first second ")
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = false)
+        assertEquals("first second", text)
+        assertEquals("second", composingText)
+    }
+
     @Test fun `held backspace deletes whole words when enabled`() {
         reset()
         latinIME.prefs().edit { putBoolean(Settings.PREF_BACKSPACE_REPEAT_DELETES_WORDS, true) }
