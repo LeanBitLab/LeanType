@@ -54,7 +54,7 @@ LeanType combines a lightweight, privacy-focused keyboard foundation with cuttin
 | 🚫 **[Blocked Words Standalone Import & Export](#44-standalone-blocked-words-import--export)** | Standalone word list import/export with duplicate filtering |
 | 🇮🇳 **[Tamil V4 Layout Option](#45-tamil-v4-layout-option)** | Modern Tamil V4 layout option dynamically available across Tamil locales |
 | 🔤 **[Custom Text Styles](#46-custom-text-styles)** | Add your own Unicode font styles to the Font Style strip by pasting a styled alphabet |
-| 🌍 **[Lite Builds & UI Language Packs](#47-lite-builds--ui-language-packs)** | English-only Android 11+ APKs about 4 MB smaller, with app translations as downloadable packs |
+| 🌍 **[Lite Builds & UI Language Packs](#47-lite-builds--ui-language-packs)** | English-only APKs about 4 MB smaller, with app translations as downloadable packs (Android 11+) |
 | 🗺️ **[Settings Map](#48-settings-map)** | Every settings screen and the settings on it, generated from the code |
 | ✨ **[More Recent Additions](#49-more-recent-additions)** | Khipro Blinder mode, switch back to the main keyboard on reopen, What's New dialog |
 
@@ -568,8 +568,8 @@ LeanType is published in two purpose-built flavors to balance cloud AI capabilit
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Standard (Recommended)** | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | SDK 23 (6.0+) | **~12.8 MB** |
 | **Offline** | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | SDK 23 (6.0+) | **~12.5 MB** |
-| **Standard Lite** *(`-standard-lite-release.apk`)* | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | **Android 11+** | **~9 MB** |
-| **Offline Lite** *(`-offline-lite-release.apk`)* | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | **Android 11+** | **~9 MB** |
+| **Standard Lite** *(`-standard-lite-release.apk`)* | ✅ | ❌ | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin/AI)* | ✅ *(View Release)* | 🌐 Optional *(Opt-in)* | SDK 23 (6.0+) | **~9 MB** |
+| **Offline Lite** *(`-offline-lite-release.apk`)* | ❌ | ✅ *(Plugin on 8.0+)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ✅ *(Plugin)* | ❌ | 🚫 **None** | SDK 23 (6.0+) | **~9 MB** |
 
 > [!NOTE]
 > **Lite builds** are the same app with English as the only built-in UI language. Other app languages come as language packs (see [Lite Builds & UI Language Packs](#47-lite-builds--ui-language-packs)). They install over the regular build of the same flavor. The F-Droid build is the regular, all-languages Standard build.
@@ -1184,7 +1184,7 @@ Bubble: ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍ
 
 ## 47. Lite Builds & UI Language Packs
 
-Every release also ships English-only **Lite** APKs (`1-LeanType_<version>-standard-lite-release.apk`, `2-LeanType_<version>-offline-lite-release.apk`) for **Android 11 and newer**. They leave out the built-in UI translations, which makes them about 4 MB smaller. Typing languages, layouts and dictionaries are not affected: only the app's own text (settings, menus, keyboard panels) is.
+Every release also ships English-only **Lite** APKs (`1-LeanType_<version>-standard-lite-release.apk`, `2-LeanType_<version>-offline-lite-release.apk`) that run on Android 6.0+ like the regular builds. They leave out the built-in UI translations, which makes them about 4 MB smaller. Typing languages, layouts and dictionaries are not affected: only the app's own text (settings, menus, keyboard panels) is. Language packs need **Android 11 or newer**; on older versions a Lite build stays in English.
 
 ### Getting Your Language
 - Open **Settings → Languages & Layouts → App translation**. The row appears when the app language has no built-in translation.
