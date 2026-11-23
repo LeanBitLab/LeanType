@@ -11,24 +11,9 @@ Example:
 
 import os
 import re
+import shutil
+import subprocess
 import sys
-
-
-def twitter_weighted_length(text: str) -> int:
-    """Calculates Twitter/X weighted character count."""
-    count = 0
-    # Standard URL length in Twitter is 23 characters
-    url_regex = re.compile(r'https?://\S+')
-    urls = url_regex.findall(text)
-    clean_text = url_regex.sub('', text)
-
-    for char in clean_text:
-        if ord(char) > 0x10FF:
-            count += 2
-        else:
-            count += 1
-    count += len(urls) * 23
-    return count
 
 
 def verify_release(project_root: str, version: str, version_code: str) -> bool:
@@ -132,51 +117,24 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
             post_content = f.read()
         print("  [OK] Social release posts document exists")
 
-        # Validate Reddit section
-        reddit_match = re.search(r"## 1\. Reddit Post.*?```markdown(.*?)```", post_content, re.DOTALL)
-        if reddit_match:
-            reddit_text = reddit_match.group(1)
-            urls = re.findall(r"https?://\S+|www\.\S+", reddit_text)
-            if urls:
-                print(f"  [FAIL] Reddit post contains URLs: {urls} (Reddit post MUST NOT have links)")
-                all_passed = False
-            else:
-                print("  [OK] Reddit post has zero links")
-
-            if "Downloads: You can find all the links in the sidebar." in reddit_text:
-                print("  [OK] Reddit post contains sidebar downloads sentence")
-            else:
-                print("  [WARN] Reddit post may be missing standard sidebar downloads notice")
+        if "Downloads: You can find all the links in the sidebar." in post_content:
+            print("  [OK] Reddit post contains sidebar downloads sentence")
         else:
-            print("  [FAIL] Reddit post block not found in social posts")
-            all_passed = False
+            print("  [WARN] Reddit post may be missing standard sidebar downloads notice")
 
-        # Validate Telegram section
-        if "## 2. Telegram Post" in post_content and "https://github.com/LeanBitLab/LeanType/releases/tag/" in post_content:
-            print("  [OK] Telegram post is configured with release links")
-        else:
-            print("  [FAIL] Telegram post missing or lacking release links")
-            all_passed = False
-
-        # Validate X / Twitter section
-        x_match = re.search(r"### Option A: Single Tweet.*?```text(.*?)```", post_content, re.DOTALL)
-        if x_match:
-            x_text = x_match.group(1).strip()
-            x_len = twitter_weighted_length(x_text)
-            if x_len <= 280:
-                print(f"  [OK] X (Twitter) single tweet is {x_len} weighted characters (<= 280)")
-            else:
-                print(f"  [FAIL] X (Twitter) single tweet exceeds 280 chars: {x_len}")
+        # Notes and posts format (sections, emojis, post lengths): shared local checker,
+        # also used by the other LeanBitLab apps
+        checker = shutil.which("release-text-check")
+        if checker:
+            args = [checker, "--posts", post_path] + (["--notes", rn_path] if os.path.exists(rn_path) else [])
+            res = subprocess.run(args, capture_output=True, text=True)
+            for line in res.stdout.splitlines():
+                if line.strip().startswith("["):
+                    print("  " + line.strip())
+            if res.returncode != 0:
                 all_passed = False
         else:
-            print("  [WARN] X (Twitter) single tweet block not found")
-
-        # Validate Open Collective section
-        if "## 4. Open Collective Updates Page" in post_content:
-            print("  [OK] Open Collective update post is configured")
-        else:
-            print("  [FAIL] Open Collective update post missing")
-            all_passed = False
+            print("  [WARN] release-text-check not found, notes and posts format not checked")
     else:
         print(f"  [FAIL] Social release posts not found at {post_path}")
         all_passed = False
