@@ -752,7 +752,12 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
                 val word = info.word
                 if ((composedData.mIsBatchMode || !Settings.getValues().mSuggestEmojis) && (info.isEmoji || info.mSourceDict?.mDictType == Dictionary.TYPE_EMOJI))
                     continue
-                if (isBlacklisted(word) || SupportedEmojis.isUnsupported(word)) // don't add blacklisted words and unsupported emojis
+                // don't add blacklisted words and unsupported emojis. A blocked main dictionary word is only hidden
+                // from next-word predictions: while typing or gesturing it is still suggested and an auto-correct
+                // target, so removing a common word by accident does not break e.g. "im" -> "I'm" (#861)
+                val isPrediction = composedData.mTypedWord.isEmpty() && !composedData.mIsBatchMode
+                if ((isBlacklisted(word) && (isPrediction || !isMainDictWord(word)))
+                    || SupportedEmojis.isUnsupported(word))
                     continue
                 if (checkForGarbage
                     // consider the user might use custom main dictionary containing shortcuts
@@ -979,20 +984,26 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
 
     // todo: move into dictionaryGroup?
     private fun isValidWord(word: String, dictionariesToCheck: Array<String>, dictionaryGroup: DictionaryGroup): Boolean {
-        if (word.isEmpty() || dictionaryGroup.isBlacklisted(word)) return false
+        if (word.isEmpty()) return false
+        // a blocked main dictionary word is only hidden from suggestions, it stays valid when typed
+        if (dictionaryGroup.isBlacklisted(word) && !dictionaryGroup.isMainDictWord(word)) return false
         return dictionariesToCheck.any { dictionaryGroup.getDict(it)?.isValidWord(word) == true }
     }
 
     override fun isBlacklisted(word: String): Boolean =
         if (word.isBlank()) false else dictionaryGroups.any { it.isBlacklisted(word) }
 
+    private fun isMainDictWord(word: String) = dictionaryGroups.any { it.isMainDictWord(word) }
+
     override fun removeWord(word: String) {
         sessionWordBoost?.removeWord(word)
         // Decide once for all groups: blacklist matching ignores case and checks every group,
         // so a word of one language must not get blacklisted through another language's group.
-        val isMainDictWord = dictionaryGroups.any { it.isMainDictWord(word) }
+        // Blocking ignores case, so a capitalized variant of a valid lowercase word ("Of" for "of") is only
+        // removed from history, blocking it would hide "of" too.
+        val block = dictionaryGroups.none { it.isLowercaseFormMainDictWord(word) }
         for (dictionaryGroup in dictionaryGroups) {
-            dictionaryGroup.removeWord(word, isMainDictWord)
+            dictionaryGroup.removeWord(word, block)
         }
     }
 
@@ -1178,8 +1189,18 @@ private class DictionaryGroup(
             .any { mainDict.isValidWord(it) }
     }
 
-    /** Removes a word from all dictionaries in this group. Unless [isMainDictWord], it is also blacklisted. */
-    fun removeWord(word: String, isMainDictWord: Boolean = isMainDictWord(word)) {
+    /** Whether [word] has upper case letters and its lowercase form is in the main dictionary ("Of" for "of"). */
+    fun isLowercaseFormMainDictWord(word: String): Boolean {
+        val lowercase = word.lowercase(locale)
+        return lowercase != word && getDict(Dictionary.TYPE_MAIN)?.isValidWord(lowercase) == true
+    }
+
+    /**
+     * Removes a word from all dictionaries in this group and, if [block], adds it to the blacklist. A blocked main
+     * dictionary word is only hidden from next-word predictions, it stays valid and suggested while typing
+     * (see getSuggestions and isValidWord). Blocked words can be unblocked in the blocked words settings.
+     */
+    fun removeWord(word: String, block: Boolean = !isLowercaseFormMainDictWord(word)) {
         val lowercase = word.lowercase(locale)
 
         // Remove from user history
@@ -1213,14 +1234,9 @@ private class DictionaryGroup(
             appsDict.removeUnigramEntryDynamically(word)
         }
 
-        // Only add to blacklist if the word is NOT a standard valid word in the main system dictionary.
-        // Never blacklist core dictionary words (e.g. "in", "is", "me", "ok") when deleting suggestions.
-        if (!isMainDictWord) {
-            addToBlacklist(lowercase)
-        } else {
-            // If it's a main dict word, un-blacklist it in case it was previously mistakenly blacklisted
-            removeFromBlacklist(lowercase)
-        }
+        // Main dictionary words are blocked too, otherwise they come right back as predictions. This is safe for
+        // core words like "in" or "I'm" (#861): blocking them only affects predictions, not typing.
+        if (block) addToBlacklist(lowercase)
     }
 
     // --------------- Confidence for multilingual typing -------------------
@@ -1358,17 +1374,17 @@ private class DictionaryGroup(
         if (word.isBlank()) return false
         val lowercased = word.lowercase(locale)
         val exactWords = compiledExactBlacklist
-        if (exactWords.contains(lowercased) || exactWords.contains(word)) {
-            return true
+        val isExactMatch = exactWords.contains(lowercased) || exactWords.contains(word)
+        val patterns = compiledBlacklistPatterns
+        if (!isExactMatch && (patterns.isEmpty() || lowercased.length > 64)) {
+            return false
         }
+        // a word the user added to the personal dictionary is never blocked, e.g. when added after being removed
         val userDict = getSubDict(Dictionary.TYPE_USER)
         if (userDict != null && (userDict.isInDictionary(word) || userDict.isInDictionary(lowercased))) {
             return false
         }
-        val patterns = compiledBlacklistPatterns
-        if (patterns.isEmpty() || lowercased.length > 64) {
-            return false
-        }
+        if (isExactMatch) return true
         return patterns.any { pattern ->
             try {
                 pattern.matches(lowercased)

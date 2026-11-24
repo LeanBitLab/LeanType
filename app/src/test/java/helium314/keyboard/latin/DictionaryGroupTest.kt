@@ -116,26 +116,32 @@ class DictionaryGroupTest {
     }
 
     @Test
-    fun testRemoveWord_DoesNotBlacklistCapitalizedMainDictWord() {
+    fun testRemoveWord_MainDictWordIsOnlyHiddenFromPredictions() {
         val dictGroupClass = Class.forName("helium314.keyboard.latin.DictionaryGroup")
         val constructor = dictGroupClass.declaredConstructors.first { it.parameterCount == 4 }
         constructor.isAccessible = true
 
-        // The main dictionary only has the capitalized form, like "I'm" in English.
+        // The main dictionary only has the capitalized form, like "I'm" in English (#861), and lowercase "of".
         val mockMainDict = mock(Dictionary::class.java)
         `when`(mockMainDict.isValidWord("I'm")).thenReturn(true)
+        `when`(mockMainDict.isValidWord("of")).thenReturn(true)
         val instance = constructor.newInstance(Locale.ENGLISH, mockMainDict, emptyMap<String, ExpandableBinaryDictionary>(), null)
         val isMainDictWordMethod = dictGroupClass.getDeclaredMethod("isMainDictWord", String::class.java)
+        val isLowercaseFormMethod = dictGroupClass.getDeclaredMethod("isLowercaseFormMainDictWord", String::class.java)
         val removeWordMethod = dictGroupClass.getDeclaredMethod("removeWord", String::class.java, Boolean::class.javaPrimitiveType)
         val isBlacklistedMethod = dictGroupClass.getDeclaredMethod("isBlacklisted", String::class.java)
-        listOf(isMainDictWordMethod, removeWordMethod, isBlacklistedMethod).forEach { it.isAccessible = true }
+        listOf(isMainDictWordMethod, isLowercaseFormMethod, removeWordMethod, isBlacklistedMethod).forEach { it.isAccessible = true }
 
-        for (word in listOf("I'm", "i'm", "I,m")) {
-            removeWordMethod.invoke(instance, word, isMainDictWordMethod.invoke(instance, word) as Boolean)
+        for (word in listOf("I'm", "I,m", "Of")) {
+            removeWordMethod.invoke(instance, word, !(isLowercaseFormMethod.invoke(instance, word) as Boolean))
         }
 
-        assertFalse(isBlacklistedMethod.invoke(instance, "I'm") as Boolean)
-        assertFalse(isBlacklistedMethod.invoke(instance, "i'm") as Boolean)
+        // "I'm" is blocked, but as a main dictionary word the facilitator only hides it from predictions
+        assertTrue(isBlacklistedMethod.invoke(instance, "I'm") as Boolean)
+        assertTrue(isMainDictWordMethod.invoke(instance, "i'm") as Boolean)
         assertTrue(isBlacklistedMethod.invoke(instance, "I,m") as Boolean)
+        assertFalse(isMainDictWordMethod.invoke(instance, "I,m") as Boolean)
+        // removing "Of" must not block the valid lowercase "of" (blocking ignores case)
+        assertFalse(isBlacklistedMethod.invoke(instance, "of") as Boolean)
     }
 }
