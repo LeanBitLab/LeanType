@@ -64,6 +64,7 @@ class ClipboardHistoryManager(
     private var lastPrimaryClipText: String? = null
     private var lastPrimaryClipUri: String? = null
     private var lastPrimaryClipTimestamp: Long = 0L
+    private var isListening = false
 
     private data class ScreenshotInfo(
         val uri: Uri,
@@ -255,13 +256,25 @@ class ClipboardHistoryManager(
         } catch (e: Exception) {
             // Ignore
         }
+        isListening = false
+    }
+
+    /** Registers or removes the clip change listener to match the setting, which can change while the service runs. */
+    private fun updateListener() {
+        val enabled = latinIME.prefs().getBoolean(helium314.keyboard.latin.settings.Settings.PREF_ENABLE_CLIPBOARD_LISTENER,
+            helium314.keyboard.latin.settings.Defaults.PREF_ENABLE_CLIPBOARD_LISTENER)
+        if (enabled == isListening) return
+        if (enabled) {
+            clipboardManager.addPrimaryClipChangedListener(this)
+            isListening = true
+        } else {
+            stopListening()
+        }
     }
 
     fun onCreate() {
         clipboardManager = latinIME.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        if (latinIME.prefs().getBoolean(helium314.keyboard.latin.settings.Settings.PREF_ENABLE_CLIPBOARD_LISTENER, helium314.keyboard.latin.settings.Defaults.PREF_ENABLE_CLIPBOARD_LISTENER)) {
-            clipboardManager.addPrimaryClipChangedListener(this)
-        }
+        updateListener()
         clipboardDao = ClipboardDao.getInstance(latinIME)
         // ponytail: initialize last clip state
         try {
@@ -280,6 +293,7 @@ class ClipboardHistoryManager(
     }
 
     fun onStartInputView() {
+        updateListener()
         val prefs = latinIME.prefs()
         val lastDismissed = prefs.getString("last_dismissed_screenshot_uri", "")
         if (cachedScreenshotInfo != null && cachedScreenshotInfo?.uri?.toString() != lastDismissed) {
@@ -336,13 +350,7 @@ class ClipboardHistoryManager(
 
     fun onDestroy() {
         unregisterScreenshotObserver()
-        if (::clipboardManager.isInitialized) {
-            try {
-                clipboardManager.removePrimaryClipChangedListener(this)
-            } catch (e: Exception) {
-                // Ignore if already unregistered or manager unavailable
-            }
-        }
+        stopListening()
         mainHandler.removeCallbacksAndMessages(null)
         ClipboardDao.closeInstance()
     }
@@ -354,8 +362,12 @@ class ClipboardHistoryManager(
             val clipData = try {
                 clipboardManager.primaryClip
             } catch (e: Exception) {
+                helium314.keyboard.latin.utils.Log.w("ClipboardHistoryManager", "can't read clip on change: ${e.message}")
                 null
             }
+            // some systems deny clipboard access while the keyboard is hidden, then such clips can't be added to history (#911)
+            if (clipData == null)
+                helium314.keyboard.latin.utils.Log.w("ClipboardHistoryManager", "clip changed, but no readable clip")
             val currentText = if (clipData != null && clipData.itemCount > 0) {
                 clipData.getItemAt(0)?.coerceToText(latinIME)?.toString()
             } else {
