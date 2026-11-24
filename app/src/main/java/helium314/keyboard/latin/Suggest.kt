@@ -125,6 +125,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             removeTitleCaseVariants(typedWordFirstOccurrenceWordInfo, suggestionsContainer, mDictionaryFacilitator.currentLocale)
         }
         makeFirstTwoSuggestionsNonEmoji(suggestionsContainer)
+        promoteMissingApostropheContraction(typedWordString.dropLast(trailingSingleQuotesCount),
+            typedWordFirstOccurrenceWordInfo, suggestionsContainer)
 
         val (allowsToBeAutoCorrected, hasAutoCorrection) = shouldBeAutoCorrected(
             trailingSingleQuotesCount,
@@ -323,9 +325,9 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             val lowerConsidered = consideredWord.lowercase(Locale.ROOT)
             val expectedContraction = COMMON_CONTRACTIONS[lowerConsidered]
             if (expectedContraction != null && typedWordInfo == null) {
-                // If typed word matches a missing-apostrophe contraction (e.g. dont -> don't), promote it
-                val contractionMatch = suggestionResults.firstOrNull { it.mWord.equals(expectedContraction, ignoreCase = true) }
-                if (contractionMatch != null || firstSuggestion.mWord.equals(expectedContraction, ignoreCase = true)) {
+                // If typed word matches a missing-apostrophe contraction (e.g. dont -> don't), correct to it.
+                // Only if it is the first suggestion (see promoteMissingApostropheContraction), as auto-correct commits that one.
+                if (firstSuggestion.mWord.equals(expectedContraction, ignoreCase = true)) {
                     return true to true
                 }
             }
@@ -345,7 +347,10 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             }
 
             // Suppress auto-correcting to a titlecase/uppercase variant when user deliberately typed all lowercase mid-sentence (Issue #482)
-            val isMidSentenceLowercase = !wordComposer.wasShiftedNoLock()
+            // Only if the lowercase word is valid ("the" -> "The"): when only the capitalized form exists
+            // (German nouns, names), correcting the case is wanted
+            val isMidSentenceLowercase = typedWordInfo != null
+                && !wordComposer.wasShiftedNoLock()
                 && !wordComposer.wasAutoCapitalized()
                 && !wordComposer.isAllUpperCase()
                 && consideredWord.all { !it.isLetter() || it.isLowerCase() }
@@ -406,7 +411,7 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                     // don't allow if suggestion has too low score
                     return true to false
                 }
-                if (firstSuggestion.mSourceDict.mLocale !== typedWordInfo.mSourceDict.mLocale) {
+                if (firstSuggestion.mSourceDict.mLocale != typedWordInfo.mSourceDict.mLocale) {
                     // dict locale different -> return the better match
                     return true to (dictLocale == firstSuggestion.mSourceDict.mLocale)
                 }
@@ -662,6 +667,19 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             }
         }
 
+        /**
+         * Moves the contraction for a typed word that misses the apostrophe ("didnt" -> "didn't") to the first
+         * position, as auto-correct commits the first suggestion. Nothing is moved if the typed word is valid.
+         */
+        // public for testing
+        fun promoteMissingApostropheContraction(consideredWord: String, typedWordInfo: SuggestedWordInfo?,
+                                                candidates: MutableList<SuggestedWordInfo>) {
+            if (typedWordInfo != null) return
+            val contraction = COMMON_CONTRACTIONS[consideredWord.lowercase(Locale.ROOT)] ?: return
+            val index = candidates.indexOfFirst { it.mWord.equals(contraction, ignoreCase = true) }
+            if (index > 0) candidates.add(0, candidates.removeAt(index))
+        }
+
         private fun isDeveloperTokenOrSpecialSyntax(word: String): Boolean {
             if (word.isEmpty()) return false
             if (word.startsWith('#') || word.startsWith('@') || word.startsWith('/') || word.startsWith('.')) return true
@@ -815,15 +833,14 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
                 word
             }
 
-        private fun makeFirstTwoSuggestionsNonEmoji(words: MutableList<SuggestedWordInfo>) {
+        // public for testing
+        fun makeFirstTwoSuggestionsNonEmoji(words: MutableList<SuggestedWordInfo>) {
             for (i in 0..1) {
                 if (words.size > 2 && words[i].isEmoji) {
-                    val relativeIndex = words.subList(2, words.size).indexOfFirst { !it.isEmoji }
+                    // the next non-emoji after i, so the order of words stays the same
+                    val relativeIndex = words.subList(i + 1, words.size).indexOfFirst { !it.isEmoji }
                     if (relativeIndex < 0) break
-                    val firstNonEmojiIndex = relativeIndex + 2
-                    if (firstNonEmojiIndex > i) {
-                        words.add(i, words.removeAt(firstNonEmojiIndex))
-                    }
+                    words.add(i, words.removeAt(relativeIndex + i + 1))
                 }
             }
         }

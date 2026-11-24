@@ -325,6 +325,43 @@ class SuggestTest {
         assertEquals(listOf("London", "OK"), candidates.map { it.mWord })
     }
 
+    @Test fun `missing apostrophe contraction is moved first, so auto-correct commits it`() {
+        val candidates = mutableListOf(suggestion("did", 1000000, Locale.ENGLISH), suggestion("didn't", 900000, Locale.ENGLISH))
+        Suggest.promoteMissingApostropheContraction("didnt", null, candidates)
+        assertEquals(listOf("didn't", "did"), candidates.map { it.mWord })
+        // valid typed word: nothing moved
+        val valid = mutableListOf(suggestion("it", 1000000, Locale.ENGLISH), suggestion("it's", 900000, Locale.ENGLISH))
+        Suggest.promoteMissingApostropheContraction("its", suggestion("its", 1500000, Locale.ENGLISH), valid)
+        assertEquals(listOf("it", "it's"), valid.map { it.mWord })
+    }
+
+    @Test fun `promoted contraction is auto-corrected`() {
+        val candidates = mutableListOf(suggestion("did", 1000000, Locale.ENGLISH), suggestion("didn't", 900000, Locale.ENGLISH))
+        Suggest.promoteMissingApostropheContraction("didnt", null, candidates)
+        val result = shouldBeAutoCorrected("didnt", candidates, null, null, Locale.ENGLISH, thresholdModest)
+        assert(result.last())
+    }
+
+    @Test fun `lowercase word that only exists capitalized is corrected, like German nouns`() {
+        val german = Locale.GERMAN
+        val result = shouldBeAutoCorrected("haus", listOf(suggestion("Haus", 1500000, german)), null, null, german, thresholdModest)
+        assert(result.last())
+    }
+
+    @Test fun `valid lowercase word is not corrected to its capitalized form (#482)`() {
+        val result = shouldBeAutoCorrected("last",
+            listOf(suggestion("Last", 1800000, Locale.ENGLISH), suggestion("last", 1500000, Locale.ENGLISH)),
+            null, null, Locale.ENGLISH, thresholdModest)
+        assert(!result.last())
+    }
+
+    @Test fun `moving emojis out of the first two places keeps the order of words`() {
+        val words = mutableListOf(suggestion("\uD83D\uDE00", 900, Locale.ENGLISH), suggestion("one", 800, Locale.ENGLISH),
+            suggestion("two", 700, Locale.ENGLISH), suggestion("\uD83D\uDE01", 600, Locale.ENGLISH))
+        Suggest.makeFirstTwoSuggestionsNonEmoji(words)
+        assertEquals(listOf("one", "two"), words.take(2).map { it.mWord })
+    }
+
     private fun shouldBeAutoCorrected(word: String, // typed word
                               suggestions: List<SuggestedWordInfo>, // suggestions ordered by score, including suggestion for typed word if in dictionary
                               firstSuggestionForEmpty: SuggestedWordInfo?, // first suggestion if typed word would be empty (null if none)
