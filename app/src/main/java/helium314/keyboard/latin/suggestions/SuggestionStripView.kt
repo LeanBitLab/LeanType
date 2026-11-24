@@ -1281,6 +1281,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         val word = wordView.text.toString()
         listener.removeSuggestion(word)
         moreSuggestionsView.dismissPopupKeysPanel()
+        KeyboardSwitcher.getInstance().showToast(context.getString(R.string.suggestion_word_removed, word), true)
         // show suggestions, but without the removed word
         val suggestedWordInfos = ArrayList<SuggestedWordInfo>()
         for (i in 0..<suggestedWords.size()) {
