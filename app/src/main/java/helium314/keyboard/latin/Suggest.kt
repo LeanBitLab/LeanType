@@ -120,6 +120,10 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         // we may want to re-add it in case auto-correction happens, so that the original word can at least be selected
         val typedWordFirstOccurrenceWordInfo = suggestionsContainer.firstOrNull { it.mWord == capitalizedTypedWord }
         val firstOccurrenceOfTypedWordInSuggestions = SuggestedWordInfo.removeDupsAndTypedWord(capitalizedTypedWord, suggestionsContainer)
+        if (capitalizedTypedWord == typedWordString && !wordComposer.wasShiftedNoLock()
+            && !wordComposer.wasAutoCapitalized() && !wordComposer.isAllUpperCase()) {
+            removeTitleCaseVariants(typedWordFirstOccurrenceWordInfo, suggestionsContainer, mDictionaryFacilitator.currentLocale)
+        }
         makeFirstTwoSuggestionsNonEmoji(suggestionsContainer)
 
         val (allowsToBeAutoCorrected, hasAutoCorrection) = shouldBeAutoCorrected(
@@ -634,6 +638,29 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             "theres" to "there's", "heres" to "here's", "wheres" to "where's", "whos" to "who's",
             "lets" to "let's", "itll" to "it'll", "youll" to "you'll", "theyll" to "they'll"
         )
+
+        /**
+         * For a word typed in lowercase without shift, removes title-case candidates ("Of", "If") whose lowercase
+         * form is the valid typed word or another candidate. Such a candidate is only kept if it is from the
+         * language currently typed and its lowercase form comes from another language (English "I" vs Polish "i").
+         * [typedWordInfo] is the dictionary entry of the typed word, null if the typed word is not valid.
+         */
+        // public for testing
+        fun removeTitleCaseVariants(typedWordInfo: SuggestedWordInfo?, candidates: MutableList<SuggestedWordInfo>, currentLocale: Locale) {
+            val lowercaseEntries = candidates.filter { it.mWord.none { c -> c.isUpperCase() } }
+                .let { if (typedWordInfo != null) it + typedWordInfo else it }
+            if (lowercaseEntries.isEmpty()) return
+            candidates.removeAll { info ->
+                val word = info.mWord
+                if (word.isEmpty() || !word[0].isUpperCase() || word.drop(1).any { it.isUpperCase() })
+                    return@removeAll false
+                val locale = info.mSourceDict.mLocale
+                // lowercase with ROOT too, as e.g. Turkish lowercases "I" to dotless "ı"
+                val lowercaseForms = setOf(word.lowercase(Locale.ROOT), word.lowercase(locale ?: Locale.ROOT))
+                lowercaseEntries.any { it.mWord in lowercaseForms
+                        && (it.mSourceDict.mLocale == locale || locale != currentLocale) }
+            }
+        }
 
         private fun isDeveloperTokenOrSpecialSyntax(word: String): Boolean {
             if (word.isEmpty()) return false

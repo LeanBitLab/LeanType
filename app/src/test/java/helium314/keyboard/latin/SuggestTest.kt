@@ -292,6 +292,39 @@ class SuggestTest {
     }
 
 
+    @Test fun `no Turkish 'Of' for valid English 'of'`() {
+        val turkish = Locale.forLanguageTag("tr")
+        val candidates = mutableListOf(suggestion("Of", 500000, turkish), suggestion("if", 400000, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(suggestion("of", 1500000, Locale.ENGLISH), candidates, Locale.ENGLISH)
+        assertEquals(listOf("if"), candidates.map { it.mWord })
+    }
+
+    @Test fun `no capitalized duplicate of another candidate, also from Turkish dictionary`() {
+        val turkish = Locale.forLanguageTag("tr")
+        val candidates = mutableListOf(suggestion("If", 500000, turkish), suggestion("Of", 450000, Locale.ENGLISH),
+            suggestion("if", 400000, Locale.ENGLISH), suggestion("of", 300000, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(null, candidates, Locale.ENGLISH)
+        assertEquals(listOf("if", "of"), candidates.map { it.mWord })
+    }
+
+    @Test fun `keep English 'I' for Polish 'i' when typing in English, remove it when typing in Polish`() {
+        val polish = Locale.forLanguageTag("pl")
+        val typed = suggestion("i", 1500000, polish)
+        val candidates = mutableListOf(suggestion("I", 1500000, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(typed, candidates, Locale.ENGLISH)
+        assertEquals(listOf("I"), candidates.map { it.mWord })
+        Suggest.removeTitleCaseVariants(typed, candidates, polish)
+        assertEquals(emptyList(), candidates.map { it.mWord })
+    }
+
+    @Test fun `keep proper nouns and all caps words`() {
+        val candidates = mutableListOf(suggestion("London", 500000, Locale.ENGLISH), suggestion("OK", 400000, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(suggestion("ok", 1500000, Locale.ENGLISH), candidates, Locale.ENGLISH)
+        // "london" typed is not valid (typedWordInfo null) so "London" stays; "OK" is not title case
+        Suggest.removeTitleCaseVariants(null, candidates, Locale.ENGLISH)
+        assertEquals(listOf("London", "OK"), candidates.map { it.mWord })
+    }
+
     private fun shouldBeAutoCorrected(word: String, // typed word
                               suggestions: List<SuggestedWordInfo>, // suggestions ordered by score, including suggestion for typed word if in dictionary
                               firstSuggestionForEmpty: SuggestedWordInfo?, // first suggestion if typed word would be empty (null if none)
