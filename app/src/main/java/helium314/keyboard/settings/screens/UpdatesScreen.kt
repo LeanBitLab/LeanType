@@ -64,16 +64,15 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Lite APKs: English-only builds for Android 11+, other languages as language packs",
-    "• Settings: Reorganised into Keyboard, Typing, Extras and System",
-    "• What's New: The changelog opens once after an update",
-    "• Browsers: Fixed doubled single letters in Chromium browsers",
-    "• Caps Lock: On PC QWERTY it only capitalizes letters",
-    "• Offline AI: Better chat format for Qwen and LFM2 models",
-    "• Sound Packs: No more silent first presses or mixed sounds",
-    "• Fixes: Hebrew symbols, delete word swipe, space swipe at text edges",
-    "• Translations: Eight languages completed, near-empty ones dropped",
-    "• Landscape: Wider split keyboard by default"
+    "• Clipboard: The listener setting applies without a restart",
+    "• Contractions: Words typed without the apostrophe are promoted",
+    "• Corrections: Invalid words can be corrected by case only",
+    "• Suggestion removal: Hides only that dictionary word, with a toast",
+    "• Blocking: Capitalized variants are no longer blocked",
+    "• Personal dictionary: Overrides blocked words",
+    "• Colors: Fixed a crash with translucent accent colors",
+    "• Suggestions: Title case duplicates of lowercase words are dropped",
+    "• Clipboard: Unreadable clips are now logged"
 )
 
 @Composable

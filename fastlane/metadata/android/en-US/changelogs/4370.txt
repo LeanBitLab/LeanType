@@ -1,0 +1,8 @@
+- Clipboard listener setting now applies without a restart (#915).
+- Contractions typed without an apostrophe are promoted in suggestions (#916).
+- Case-only corrections for invalid words (#916).
+- Removing a suggestion hides only that word, with a toast (#918).
+- Personal dictionary overrides blocked words (#918).
+- Fixed crash with translucent accent colors (#913).
+- Dropped title case duplicates of lowercase words (#914).
+- Unreadable clipboard clips are now logged (#911).
