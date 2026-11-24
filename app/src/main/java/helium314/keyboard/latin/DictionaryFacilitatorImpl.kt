@@ -934,8 +934,9 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         for (info in results) {
             val word = info.mWord
             if (!isBeginningOfSentence && word.isNotEmpty() && Character.isUpperCase(word[0])) {
-                val lower = word.lowercase(currentlyPreferredDictionaryGroup.locale)
-                if (lower != word && (results.any { it.mWord == lower } || isValidSpellingWord(lower))) {
+                // lowercase with ROOT too, as e.g. Turkish lowercases "I" to dotless "ı"
+                val lowerForms = setOf(word.lowercase(currentlyPreferredDictionaryGroup.locale), word.lowercase(Locale.ROOT))
+                if (lowerForms.any { lower -> lower != word && (results.any { it.mWord == lower } || isValidSpellingWord(lower)) }) {
                     continue
                 }
             }
