@@ -763,7 +763,7 @@ open class KeyboardView @JvmOverloads constructor(
     private fun getCompositeColor(srcColor: Int, dstColor: Int): Int {
         val alpha = (srcColor ushr 24) and 0xFF
         if (alpha == 0xFF) return srcColor
-        if (alpha == 0x00) return dstColor
+        if (alpha == 0x00) return dstColor or 0xFF000000.toInt() // result is used as an opaque contrast background
         val fAlpha = alpha / 255f
         val srcR = (srcColor ushr 16) and 0xFF; val srcG = (srcColor ushr 8) and 0xFF; val srcB = srcColor and 0xFF
         val dstR = (dstColor ushr 16) and 0xFF; val dstG = (dstColor ushr 8) and 0xFF; val dstB = dstColor and 0xFF
