@@ -1,4 +1,3 @@
-- Personal dictionary shortcuts now auto-correct exact typed words even when valid (#924).
-- Floating toolbar pinned and full keys share one clamped size (#922).
-- Tall popups (e.g. Vietnamese) no longer close when sliding above the keyboard (#922).
-- Swiped words mid-sentence no longer come out in title case (#923).
+- Storage and cache lists downloaded app translations so you can remove them (#927).
+- Suggestions no longer offer all caps variants of more likely lowercase words (#914).
+- Languages without a word list no longer show English fallback words.
