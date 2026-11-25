@@ -916,7 +916,8 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
             "it" -> listOf("è", "di", "la", "il", "che", "in", "e", "un", "per", "non", "una", "sono")
             "pt" -> listOf("de", "a", "o", "que", "e", "do", "da", "em", "um", "para", "com", "não")
             "ru" -> listOf("и", "в", "не", "на", "я", "что", "быть", "с", "он", "как", "это", "по")
-            else -> listOf("the", "is", "to", "and", "you", "are", "in", "it", "that", "have")
+            // no curated list for this language: never fall back to English words
+            else -> emptyList()
         }
     }
 
