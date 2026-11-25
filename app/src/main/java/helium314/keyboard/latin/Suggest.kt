@@ -680,13 +680,17 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             if (lowercaseEntries.isEmpty()) return
             candidates.removeAll { info ->
                 val word = info.mWord
-                if (word.isEmpty() || !word[0].isUpperCase() || word.drop(1).any { it.isUpperCase() })
-                    return@removeAll false
+                if (word.isEmpty() || !word[0].isUpperCase()) return@removeAll false
+                val hasMoreCapitals = word.drop(1).any { it.isUpperCase() }
+                // all caps ("NOW") is only dropped below when its lowercase form is at least as likely, so "OK" stays
+                val isAllCaps = hasMoreCapitals && word.none { it.isLowerCase() }
+                if (hasMoreCapitals && !isAllCaps) return@removeAll false
                 val locale = info.mSourceDict.mLocale
                 // lowercase with ROOT too, as e.g. Turkish lowercases "I" to dotless "ı"
                 val lowercaseForms = setOf(word.lowercase(Locale.ROOT), word.lowercase(locale ?: Locale.ROOT))
                 lowercaseEntries.any { it.mWord in lowercaseForms
-                        && (it.mSourceDict.mLocale == locale || locale != currentLocale) }
+                        && (it.mSourceDict.mLocale == locale || locale != currentLocale)
+                        && (!isAllCaps || it.mScore >= info.mScore) }
             }
         }
 

@@ -359,10 +359,18 @@ class SuggestTest {
 
     @Test fun `keep proper nouns and all caps words`() {
         val candidates = mutableListOf(suggestion("London", 500000, Locale.ENGLISH), suggestion("OK", 400000, Locale.ENGLISH))
-        Suggest.removeTitleCaseVariants(suggestion("ok", 1500000, Locale.ENGLISH), candidates, Locale.ENGLISH)
+        Suggest.removeTitleCaseVariants(suggestion("ok", 300000, Locale.ENGLISH), candidates, Locale.ENGLISH)
         // "london" typed is not valid (typedWordInfo null) so "London" stays; "OK" is not title case
         Suggest.removeTitleCaseVariants(null, candidates, Locale.ENGLISH)
         assertEquals(listOf("London", "OK"), candidates.map { it.mWord })
+    }
+
+    @Test fun `all caps variant of a more likely lowercase word is dropped`() {
+        val typed = suggestion("now", 1709823, Locale.ENGLISH)
+        val candidates = mutableListOf(suggestion("NOW", 1459295, Locale.ENGLISH), suggestion("Noe", 671391, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(typed, candidates, Locale.ENGLISH)
+        // "Noe" has no lowercase counterpart, so it stays
+        assertEquals(listOf("Noe"), candidates.map { it.mWord })
     }
 
     @Test fun `missing apostrophe contraction is moved first, so auto-correct commits it`() {
