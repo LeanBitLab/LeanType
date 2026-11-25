@@ -515,6 +515,10 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             rejected = null
         }
         SuggestedWordInfo.removeDupsAndTypedWord(null, suggestionsContainer)
+        // Same as for typing: a word swiped mid-sentence without shift should not come out as "Well" or "So"
+        if (keyboardShiftMode == WordComposer.CAPS_MODE_OFF && !wordComposer.wasAutoCapitalized()) {
+            removeTitleCaseVariants(null, suggestionsContainer, mDictionaryFacilitator.currentLocale)
+        }
         makeFirstTwoSuggestionsNonEmoji(suggestionsContainer)
 
         // For some reason some suggestions with MIN_VALUE are making their way here.
