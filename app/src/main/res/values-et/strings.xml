@@ -1798,4 +1798,7 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="language_pack_download_failed">Allalaadimine ebaõnnestus. Sellele rakenduse versioonile pole veel tõlget saadaval.</string>
     <string name="language_pack_wrong_build">See tõlkefail on loodud teise rakenduse versiooni jaoks.</string>
     <string name="language_pack_invalid">See fail ei ole tõlkefail.</string>
+    <string name="storage_language_packs">Rakenduse tõlked (%d)</string>
+    <string name="storage_item_language_pack_desc">Allalaaditud rakenduse tõlge (kasutajaliidese tekstid)</string>
+    <string name="storage_type_language_pack">rakenduse tõlge</string>
 </resources>

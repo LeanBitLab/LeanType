@@ -1700,4 +1700,7 @@ Kamus baharu:
     <string name="language_pack_download_failed">Muat turun gagal. Tiada terjemahan tersedia untuk versi aplikasi ini lagi.</string>
     <string name="language_pack_wrong_build">Fail terjemahan ini dibuat untuk versi aplikasi yang berbeza.</string>
     <string name="language_pack_invalid">Fail ini bukan fail terjemahan.</string>
+    <string name="storage_language_packs">Terjemahan apl (%d)</string>
+    <string name="storage_item_language_pack_desc">Terjemahan apl dimuat turun (rentetan UI)</string>
+    <string name="storage_type_language_pack">terjemahan apl</string>
 </resources>

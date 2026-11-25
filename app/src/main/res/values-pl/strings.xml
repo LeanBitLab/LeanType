@@ -1808,4 +1808,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="language_pack_download_failed">Pobieranie nie powiodło się. Tłumaczenie dla tej wersji aplikacji jeszcze nie jest dostępne.</string>
     <string name="language_pack_wrong_build">Ten plik tłumaczenia został przygotowany dla innej wersji aplikacji.</string>
     <string name="language_pack_invalid">To nie jest plik tłumaczenia.</string>
+    <string name="storage_language_packs">Tłumaczenia aplikacji (%d)</string>
+    <string name="storage_item_language_pack_desc">Pobrane tłumaczenie aplikacji (teksty interfejsu)</string>
+    <string name="storage_type_language_pack">tłumaczenie aplikacji</string>
 </resources>

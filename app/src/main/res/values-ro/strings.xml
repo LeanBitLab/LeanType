@@ -1798,4 +1798,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="language_pack_download_failed">Descărcarea a eșuat. Nu există încă o traducere pentru această versiune a aplicației.</string>
     <string name="language_pack_wrong_build">Acest fișier de traducere a fost creat pentru o altă versiune a aplicației.</string>
     <string name="language_pack_invalid">Acest fișier nu este un fișier de traducere.</string>
+    <string name="storage_language_packs">Traduceri ale aplicației (%d)</string>
+    <string name="storage_item_language_pack_desc">Traducere descărcată a aplicației (șiruri UI)</string>
+    <string name="storage_type_language_pack">traducere a aplicației</string>
 </resources>

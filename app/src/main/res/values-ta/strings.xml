@@ -1658,4 +1658,7 @@
     <string name="language_pack_download_failed">பதிவிறக்கம் தோல்வியடைந்தது. இந்த ஆப் பதிப்பிற்கு மொழிபெயர்ப்பு இன்னும் கிடைக்கவில்லை.</string>
     <string name="language_pack_wrong_build">இந்த மொழிபெயர்ப்பு கோப்பு வேறு ஆப் பதிப்பிற்காக உருவாக்கப்பட்டது.</string>
     <string name="language_pack_invalid">இது மொழிபெயர்ப்பு கோப்பு அல்ல.</string>
+    <string name="storage_language_packs">பயன்பாட்டு மொழிபெயர்ப்புகள் (%d)</string>
+    <string name="storage_item_language_pack_desc">பதிவிறக்கப்பட்ட பயன்பாட்டு மொழிபெயர்ப்பு (UI சரங்கள்)</string>
+    <string name="storage_type_language_pack">பயன்பாட்டு மொழிபெயர்ப்பு</string>
 </resources>

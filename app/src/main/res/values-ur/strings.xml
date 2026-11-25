@@ -1802,4 +1802,7 @@
     <string name="language_pack_download_failed">ڈاؤن لوڈ ناکام ہوا۔ اس ایپ ورژن کے لیے ابھی کوئی ترجمہ دستیاب نہیں ہے۔</string>
     <string name="language_pack_wrong_build">یہ ترجمے کی فائل کسی دوسرے ایپ ورژن کے لیے بنائی گئی تھی۔</string>
     <string name="language_pack_invalid">یہ فائل ترجمے کی فائل نہیں ہے۔</string>
+    <string name="storage_language_packs">ایپ کے ترجمے (%d)</string>
+    <string name="storage_item_language_pack_desc">ڈاؤن لوڈ کردہ ایپ ترجمہ (UI سٹرنگز)</string>
+    <string name="storage_type_language_pack">ایپ ترجمہ</string>
 </resources>

@@ -1725,4 +1725,7 @@
     <string name="language_pack_download_failed">下載失敗。此應用程式版本目前尚無可用的翻譯。</string>
     <string name="language_pack_wrong_build">此翻譯檔案是為其他應用程式版本製作的。</string>
     <string name="language_pack_invalid">此檔案不是翻譯檔案。</string>
+    <string name="storage_language_packs">App 翻譯 (%d)</string>
+    <string name="storage_item_language_pack_desc">已下載的 App 翻譯（使用者介面字串）</string>
+    <string name="storage_type_language_pack">App 翻譯</string>
 </resources>

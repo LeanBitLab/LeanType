@@ -1777,4 +1777,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="language_pack_download_failed">Download non riuscito. Al momento non è disponibile alcuna traduzione per questa versione dell\'app.</string>
     <string name="language_pack_wrong_build">Questo file di traduzione è stato creato per una versione diversa dell\'app.</string>
     <string name="language_pack_invalid">Questo file non è un file di traduzione.</string>
+    <string name="storage_language_packs">Traduzioni dell\'app (%d)</string>
+    <string name="storage_item_language_pack_desc">Traduzione dell\'app scaricata (stringhe UI)</string>
+    <string name="storage_type_language_pack">traduzione dell\'app</string>
 </resources>

@@ -1701,4 +1701,7 @@
     <string name="language_pack_download_failed">ダウンロードに失敗しました。このアプリバージョンの翻訳はまだ利用できません。</string>
     <string name="language_pack_wrong_build">この翻訳ファイルは別のアプリバージョン用に作成されています。</string>
     <string name="language_pack_invalid">このファイルは翻訳ファイルではありません。</string>
+    <string name="storage_language_packs">アプリの翻訳（%d）</string>
+    <string name="storage_item_language_pack_desc">ダウンロード済みのアプリ翻訳（UI文字列）</string>
+    <string name="storage_type_language_pack">アプリ翻訳</string>
 </resources>

@@ -1659,4 +1659,7 @@
     <string name="language_pack_download_failed">ডাউনলোড ব্যর্থ হয়েছে। এই অ্যাপ সংস্করণের জন্য এখনো কোনো অনুবাদ পাওয়া যায়নি।</string>
     <string name="language_pack_wrong_build">এই অনুবাদ ফাইলটি অন্য অ্যাপ সংস্করণের জন্য তৈরি করা হয়েছে।</string>
     <string name="language_pack_invalid">এটি একটি অনুবাদ ফাইল নয়।</string>
+    <string name="storage_language_packs">অ্যাপ অনুবাদ (%d)</string>
+    <string name="storage_item_language_pack_desc">ডাউনলোড করা অ্যাপ অনুবাদ (UI স্ট্রিং)</string>
+    <string name="storage_type_language_pack">অ্যাপ অনুবাদ</string>
 </resources>
