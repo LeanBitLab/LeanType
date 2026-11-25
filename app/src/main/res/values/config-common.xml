@@ -82,11 +82,11 @@
     <!-- Minimum distance between gesture trail sampling points. -->
     <dimen name="config_gesture_trail_min_sampling_distance">9.6dp</dimen>
     <!-- Maximum angular threshold between gesture trails interpolation segments in degree. -->
-    <integer name="config_gesture_trail_max_interpolation_angular_threshold">15</integer>
+    <integer name="config_gesture_trail_max_interpolation_angular_threshold">10</integer>
     <!-- Maximum distance threshold between gesture trails interpolation segments. -->
-    <dimen name="config_gesture_trail_max_interpolation_distance_threshold">16.0dp</dimen>
+    <dimen name="config_gesture_trail_max_interpolation_distance_threshold">12.0dp</dimen>
     <!-- Maximum number of gesture trail interpolation segments. -->
-    <integer name="config_gesture_trail_max_interpolation_segments">6</integer>
+    <integer name="config_gesture_trail_max_interpolation_segments">8</integer>
     <dimen name="config_gesture_trail_start_width">10.0dp</dimen>
     <dimen name="config_gesture_trail_end_width">2.5dp</dimen>
     <!-- Percentages of gesture preview taril body and shadow, in proportion to the trail width.

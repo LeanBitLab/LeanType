@@ -13,6 +13,7 @@ import android.graphics.Rect
 import android.os.SystemClock
 import helium314.keyboard.latin.common.ResizableIntArray
 import kotlin.math.max
+import kotlin.math.roundToInt
 
 class GestureTrailDrawingPoints {
     private val mXCoordinates = ResizableIntArray(DEFAULT_CAPACITY)
@@ -196,14 +197,28 @@ class GestureTrailDrawingPoints {
 
         private fun getAlpha(elapsedTime: Int, params: GestureTrailDrawingParams): Int {
             val fullAlpha = Color.alpha(params.mTrailColor)
-            if (elapsedTime < params.mFadeoutStartDelay) return fullAlpha
-            val decreasingAlpha = fullAlpha * (elapsedTime - params.mFadeoutStartDelay) / params.mFadeoutDuration
-            return fullAlpha - decreasingAlpha
+            val visible = 1f - smoothStep(progress(elapsedTime - params.mFadeoutStartDelay, params.mFadeoutDuration))
+            return (fullAlpha * visible).roundToInt().coerceIn(0, fullAlpha)
         }
 
-        private fun getWidth(elapsedTime: Int, params: GestureTrailDrawingParams): Float {
-            val deltaWidth = params.mTrailStartWidth - params.mTrailEndWidth
-            return params.mTrailStartWidth - (deltaWidth * elapsedTime) / params.mTrailLingerDuration
+        private fun getWidth(elapsedTime: Int, params: GestureTrailDrawingParams): Float =
+            trailWidth(params.mTrailStartWidth, params.mTrailEndWidth, elapsedTime, params.mTrailLingerDuration)
+
+        /** Fraction of [duration] that has passed after [elapsed] ms, between 0 and 1. A duration of 0 or less counts as done. */
+        // internal for testing
+        internal fun progress(elapsed: Int, duration: Int): Float =
+            if (elapsed <= 0) 0f else if (duration <= 0 || elapsed >= duration) 1f else elapsed.toFloat() / duration
+
+        /** Eases in and out (zero slope at both ends), so a fade starts and ends softly instead of with a kink. */
+        // internal for testing
+        internal fun smoothStep(t: Float): Float {
+            val x = t.coerceIn(0f, 1f)
+            return x * x * (3f - 2f * x)
         }
+
+        /** The head keeps its full width for a moment and the tail thins out gently, instead of a straight taper. */
+        // internal for testing
+        internal fun trailWidth(startWidth: Float, endWidth: Float, elapsed: Int, lingerDuration: Int): Float =
+            startWidth - (startWidth - endWidth) * smoothStep(progress(elapsed, lingerDuration))
     }
 }
