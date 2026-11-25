@@ -1650,18 +1650,16 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         }
         if (currentStripWidth <= 0) return baseDim
 
-        // Cap toolbar keys so they don't consume more than half the strip width
-        val maxAvailableWidth = (currentStripWidth * 0.50f).toInt()
-        val maxSingleKeyWidth = maxAvailableWidth / totalKeys
-        // Minimum: derive from the keyboard's actual key width (40% of a key)
-        val keyboard = KeyboardSwitcher.getInstance().keyboard
-        val minAllowedKeyDim = if (keyboard != null && keyboard.mMostCommonKeyWidth > 0) {
-            (keyboard.mMostCommonKeyWidth * 0.40f).toInt()
-        } else {
-            (24 * resources.displayMetrics.density).toInt() // absolute fallback: 24dp
-        }
-        val minDim = minOf(minAllowedKeyDim, baseDim)
-        return maxSingleKeyWidth.coerceIn(minDim, baseDim)
+        // Pinned and full toolbar keys share this size: it follows the floating strip height
+        // (baseDim), shrinks when many pinned keys would take more than half the strip, and is
+        // clamped between a fixed minimum and the docked key size.
+        val maxSingleKeyWidth = (currentStripWidth * 0.50f).toInt() / totalKeys
+        val stripHeight = ResourceUtils.getSuggestionsStripHeight(resources)
+        val minDim = (MIN_FLOATING_TOOLBAR_KEY_DP * resources.displayMetrics.density).toInt()
+            .coerceAtMost(stripHeight)
+        val dockedStripHeight = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+        val maxDim = (dockedStripHeight * 0.88f).toInt().coerceAtLeast(minDim)
+        return minOf(baseDim, maxSingleKeyWidth).coerceIn(minDim, maxDim)
     }
 
     private fun rebuildToolbarKeys() {
@@ -1783,29 +1781,38 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
         val density = resources.displayMetrics.density
         val keyPadding = Math.round(singleKeyWidth * 0.15f).coerceIn((3 * density).toInt(), (singleKeyWidth / 4))
+        // Floating mode: keep full toolbar keys square like the pinned keys and spread them with
+        // margins, instead of stretching each key to an equal share of the strip width
+        val spreadWithMargins = useEqualSpacing && FloatingKeyboardManager.isFloatingMode(context)
+        val sideMargin = if (spreadWithMargins) {
+            ((containerWidth - visibleCount * singleKeyWidth) / (2 * visibleCount)).coerceAtLeast(0)
+        } else 0
 
         for (i in 0 until count) {
             val child = toolbar.getChildAt(i) ?: continue
             if (child.visibility == View.GONE) continue
             child.minimumWidth = 0
             child.minimumHeight = 0
-            val targetWidth = if (useEqualSpacing) 0 else singleKeyWidth
+            val targetWidth = if (useEqualSpacing && !spreadWithMargins) 0 else singleKeyWidth
             val targetHeight = singleKeyWidth
-            val targetWeight = if (useEqualSpacing) 1f else 0f
+            val targetWeight = if (useEqualSpacing && !spreadWithMargins) 1f else 0f
             val targetGravity = Gravity.CENTER_VERTICAL
 
             val lp = child.layoutParams as? LinearLayout.LayoutParams
             if (lp != null) {
-                if (lp.width != targetWidth || lp.height != targetHeight || lp.weight != targetWeight || lp.gravity != targetGravity) {
+                if (lp.width != targetWidth || lp.height != targetHeight || lp.weight != targetWeight || lp.gravity != targetGravity
+                    || lp.leftMargin != sideMargin || lp.rightMargin != sideMargin) {
                     lp.width = targetWidth
                     lp.height = targetHeight
                     lp.weight = targetWeight
                     lp.gravity = targetGravity
+                    lp.setMargins(sideMargin, lp.topMargin, sideMargin, lp.bottomMargin)
                     child.layoutParams = lp
                 }
             } else {
                 child.layoutParams = LinearLayout.LayoutParams(targetWidth, targetHeight, targetWeight).apply {
                     gravity = targetGravity
+                    setMargins(sideMargin, 0, sideMargin, 0)
                 }
             }
             child.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
@@ -2015,6 +2022,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     companion object {
         var DEBUG_SUGGESTIONS = false
         private const val DEBUG_INFO_TEXT_SIZE_IN_DIP = 6.5f
+        // Smallest toolbar key in floating mode, so icons stay tappable on a small keyboard
+        private const val MIN_FLOATING_TOOLBAR_KEY_DP = 30
         private val TAG = SuggestionStripView::class.java.simpleName
     }
 }

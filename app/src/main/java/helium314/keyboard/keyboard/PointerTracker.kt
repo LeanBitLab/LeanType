@@ -644,6 +644,12 @@ class PointerTracker private constructor(
         )
         // If the move event goes out from valid batch input area, cancel batch input.
         if (!onValidArea) {
+            if (isShowingPopupKeysPanel()) {
+                // A tall popup (e.g. Vietnamese 'a', 5 rows) reaches above the gesture area: stop
+                // gesture detection only, cancelling all trackers would dismiss the popup (#920)
+                mIsDetectingGesture = false
+                return
+            }
             cancelBatchInput()
             return
         }
