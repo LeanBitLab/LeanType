@@ -64,15 +64,10 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Clipboard: The listener setting applies without a restart",
-    "• Contractions: Words typed without the apostrophe are promoted",
-    "• Corrections: Invalid words can be corrected by case only",
-    "• Suggestion removal: Hides only that dictionary word, with a toast",
-    "• Blocking: Capitalized variants are no longer blocked",
-    "• Personal dictionary: Overrides blocked words",
-    "• Colors: Fixed a crash with translucent accent colors",
-    "• Suggestions: Title case duplicates of lowercase words are dropped",
-    "• Clipboard: Unreadable clips are now logged"
+    "• Personal dictionary: Exact shortcuts auto-correct valid typed words",
+    "• Floating toolbar: Pinned and full keys share one clamped size",
+    "• Popups: Tall popups no longer close when sliding above the keyboard",
+    "• Swipe: Swiped words mid-sentence are no longer title case"
 )
 
 @Composable
