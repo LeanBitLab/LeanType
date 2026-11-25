@@ -64,9 +64,8 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Storage and cache: List and remove downloaded app translations",
-    "• Suggestions: No all caps variants of more likely lowercase words",
-    "• Suggestions: No English fallback words in languages without a word list"
+    "• Gesture typing: Learns from corrections after a swipe",
+    "• Gesture trail: Smoother fade, taper and curves"
 )
 
 @Composable

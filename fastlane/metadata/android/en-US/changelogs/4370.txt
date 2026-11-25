@@ -1,3 +1,2 @@
-- Storage and cache lists downloaded app translations so you can remove them (#927).
-- Suggestions no longer offer all caps variants of more likely lowercase words (#914).
-- Languages without a word list no longer show English fallback words.
+- Gesture typing learns from your corrections: the word you pick after a swipe is suggested first for similar swipes next time (#928).
+- Smoother gesture trail: it now fades, tapers and curves more naturally (#929).
