@@ -112,6 +112,12 @@ interface DictionaryFacilitator {
     /** adjust confidences for multilingual typing */
     fun adjustConfidences(word: String, wasAutoCapitalized: Boolean)
 
+    /** The user replaced the swiped word [replaced] by the suggestion [picked], see GestureWordBias. */
+    fun recordGestureCorrection(picked: String, replaced: String) {}
+
+    /** The user kept the swiped [word]. */
+    fun recordGestureAccepted(word: String) {}
+
     /** a string with all used locales and their current confidences, null if multilingual typing is not used */
     fun localesAndConfidences(): String?
 

@@ -31,6 +31,7 @@ import helium314.keyboard.latin.dictionary.ExpandableBinaryDictionary
 import helium314.keyboard.latin.dictionary.UserBinaryDictionary
 import helium314.keyboard.latin.dictionary.WordConsumer
 import helium314.keyboard.latin.permissions.PermissionsUtil
+import helium314.keyboard.latin.personalization.GestureWordBias
 import helium314.keyboard.latin.personalization.SessionWordBoost
 import helium314.keyboard.latin.personalization.UserHistoryDictionary
 import helium314.keyboard.latin.settings.Settings
@@ -134,9 +135,11 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         }
         // Persist session word boost data on input finish
         sessionWordBoost?.flushIfDirty()
+        gestureWordBias?.flushIfDirty()
     }
 
     private var sessionWordBoost: SessionWordBoost? = null
+    private var gestureWordBias: GestureWordBias? = null
 
     /** Lazily initialize SessionWordBoost when context is available */
     private fun getSessionWordBoost(context: Context): SessionWordBoost {
@@ -199,6 +202,9 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         // Initialize session word boost with context if not yet done
         if (sessionWordBoost == null) {
             sessionWordBoost = SessionWordBoost.getInstance(context)
+        }
+        if (gestureWordBias == null) {
+            gestureWordBias = GestureWordBias.getInstance(context)
         }
 
         val locales = getUsedLocales(newLocale, context)
@@ -676,6 +682,9 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
             applySessionBoost(suggestionResults, boost, ngramContext.isBeginningOfSentenceContext)
         }
 
+        // Learn from corrections after swipes: close calls go to the word the user picked before, see GestureWordBias
+        if (composedData.mIsBatchMode) gestureWordBias?.takeIf { !it.isEmpty }?.let { applyGestureBias(suggestionResults, it) }
+
         includeAtLeastTwoWordSuggestions(suggestionResults, suggestionsArray, composedData.mTypedWord)
 
         if (composedData.mTypedWord.isEmpty() && !composedData.mIsBatchMode) {
@@ -921,6 +930,32 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         }
     }
 
+    private fun applyGestureBias(results: SuggestionResults, bias: GestureWordBias) {
+        val changed = results.mapNotNull { info ->
+            val adjustment = bias.getAdjustment(info.mWord)
+            if (adjustment == 0f) null
+            else info to SuggestedWordInfo(
+                info.mWord, info.mPrevWordsContext, GestureWordBias.adjustScore(info.mScore, adjustment),
+                info.mKindAndFlags, info.mSourceDict, info.mIndexOfTouchPointOfSecondWord, info.mAutoCommitFirstWordConfidence
+            )
+        }
+        for ((old, new) in changed) {
+            results.remove(old)
+            results.add(new)
+        }
+    }
+
+    override fun recordGestureCorrection(picked: String, replaced: String) {
+        gestureWordBias?.let {
+            it.recordCorrection(picked, replaced)
+            it.flushIfDirty() // corrections are rare and the file is small, so do not wait for onFinishInput
+        }
+    }
+
+    override fun recordGestureAccepted(word: String) {
+        gestureWordBias?.recordAccepted(word)
+    }
+
     /**
      * Apply session word boost to suggestion results.
      * Creates new SuggestedWordInfo objects with boosted scores for words
@@ -998,6 +1033,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
 
     override fun removeWord(word: String) {
         sessionWordBoost?.removeWord(word)
+        gestureWordBias?.removeWord(word)
         // Decide once for all groups: blacklist matching ignores case and checks every group,
         // so a word of one language must not get blacklisted through another language's group.
         // Blocking ignores case, so a capitalized variant of a valid lowercase word ("Of" for "of") is only
@@ -1016,6 +1052,7 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
 
     override fun clearUserHistoryDictionary(context: Context) {
         sessionWordBoost?.clear()
+        gestureWordBias?.clear()
         for (dictionaryGroup in dictionaryGroups) {
             dictionaryGroup.getSubDict(Dictionary.TYPE_USER_HISTORY)?.clear()
         }
