@@ -252,6 +252,46 @@ class SuggestTest {
         assert(!result2.last()) // should not be corrected
     }
 
+    @Test fun `valid typed word is autocorrected to an exact personal dictionary shortcut`() {
+        latinIME.prefs().edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, true) }
+        val locale = Locale.ENGLISH
+        // "fir" is valid, but the user added "for" with shortcut "fir"
+        val result = shouldBeAutoCorrected(
+            "fir",
+            listOf(exactShortcut("for", 1500000, locale), suggestion("fir", 1500000, locale)),
+            null, null, locale, thresholdModest
+        )
+        assert(result.last()) // should be corrected
+
+        // a shortcut reached by a fuzzy match ("fit" near key "fir") must not override a valid word
+        val fuzzy = shouldBeAutoCorrected(
+            "fit",
+            listOf(suggestion("for", 1500000, locale, true), suggestion("fit", 1500000, locale)),
+            null, null, locale, thresholdModest
+        )
+        assert(!fuzzy.last()) // should not be corrected
+    }
+
+    @Test fun `exact shortcut is not autocorrected when setting is off`() {
+        latinIME.prefs().edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, false) }
+        val locale = Locale.ENGLISH
+        val result = shouldBeAutoCorrected(
+            "fir",
+            listOf(exactShortcut("for", 1500000, locale), suggestion("fir", 1500000, locale)),
+            null, null, locale, thresholdModest
+        )
+        assert(!result.last()) // should not be corrected
+    }
+
+    @Test fun `exact shortcut is promoted to first suggestion`() {
+        latinIME.prefs().edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, true) }
+        val locale = Locale.ENGLISH
+        val words = mutableListOf(suggestion("fit", 1600000, locale), suggestion("far", 1550000, locale),
+            exactShortcut("for", 1500000, locale))
+        Suggest.promoteExactShortcut(words)
+        assertEquals("for", words.first().mWord)
+    }
+
     @Test fun `shortcuts are not autocorrected when setting is off`() {
         val prefs = latinIME.prefs()
         prefs.edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, false) }
@@ -399,6 +439,10 @@ class SuggestTest {
 }
 
 private var currentTypingLocale = Locale.ENGLISH
+
+/** A shortcut whose key was typed exactly, as flagged by the native dictionary */
+fun exactShortcut(word: String, score: Int, locale: Locale) = SuggestedWordInfo(word, "", score,
+    SuggestedWordInfo.KIND_SHORTCUT or SuggestedWordInfo.KIND_FLAG_EXACT_MATCH, TestDict(locale), 0, 0)
 
 fun suggestion(word: String, score: Int, locale: Locale, shortcut: Boolean = false) =
     SuggestedWordInfo(

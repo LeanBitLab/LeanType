@@ -127,6 +127,7 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         makeFirstTwoSuggestionsNonEmoji(suggestionsContainer)
         promoteMissingApostropheContraction(typedWordString.dropLast(trailingSingleQuotesCount),
             typedWordFirstOccurrenceWordInfo, suggestionsContainer)
+        promoteExactShortcut(suggestionsContainer)
 
         val (allowsToBeAutoCorrected, hasAutoCorrection) = shouldBeAutoCorrected(
             trailingSingleQuotesCount,
@@ -267,6 +268,7 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
         val allowsToBeAutoCorrected: Boolean
         if (SHOULD_AUTO_CORRECT_USING_NON_WHITE_LISTED_SUGGESTION
                 || firstSuggestionInContainer?.isKindOf(SuggestedWordInfo.KIND_WHITELIST) == true
+                || (firstSuggestionInContainer != null && isExactShortcut(firstSuggestionInContainer))
                 || (consideredWord.length > 1
                     && typedWordInfo?.mSourceDict == null // more than 1 letter and not in dictionary
                     // if the typed word contains @ or ., the suggestion also needs to contain it
@@ -366,6 +368,12 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             // Suppress repeating auto-corrections recently reverted by the user (Issue #415)
             if (RevertedCorrectionHistory.isRecentlyReverted(consideredWord, firstSuggestion.mWord)) {
                 return true to false
+            }
+
+            // The user mapped exactly this typed word to a word in the personal dictionary ("fir" -> "for"),
+            // so correct it even when the typed word is valid or short
+            if (isExactShortcut(firstSuggestion)) {
+                return true to true
             }
 
             if (!AutoCorrectionUtils.suggestionExceedsThreshold(firstSuggestion, consideredWord, mAutoCorrectionThreshold)) {
@@ -654,6 +662,17 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
          * language currently typed and its lowercase form comes from another language (English "I" vs Polish "i").
          * [typedWordInfo] is the dictionary entry of the typed word, null if the typed word is not valid.
          */
+        /** A personal dictionary shortcut whose key is exactly the typed word, with "Auto-correct shortcuts" on */
+        fun isExactShortcut(info: SuggestedWordInfo): Boolean =
+            info.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && info.isExactMatch && Settings.getValues().mAutoCorrectShortcuts
+
+        /** Moves an exact shortcut first, as auto-correction commits the first suggestion */
+        // public for testing
+        fun promoteExactShortcut(candidates: MutableList<SuggestedWordInfo>) {
+            val index = candidates.indexOfFirst { isExactShortcut(it) }
+            if (index > 0) candidates.add(0, candidates.removeAt(index))
+        }
+
         // public for testing
         fun removeTitleCaseVariants(typedWordInfo: SuggestedWordInfo?, candidates: MutableList<SuggestedWordInfo>, currentLocale: Locale) {
             val lowercaseEntries = candidates.filter { it.mWord.none { c -> c.isUpperCase() } }
