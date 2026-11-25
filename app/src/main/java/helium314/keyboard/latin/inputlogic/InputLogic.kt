@@ -340,6 +340,15 @@ class InputLogic(
             return onCodeInput(settingsValues, event, keyboardShiftState, handler)
         }
 
+        // A swiped word replaced by another suggestion is a correction the next swipes should learn from
+        if (mWordComposer.isBatchMode() && mWordComposer.isComposingWord() && !settingsValues.mIncognitoModeEnabled
+            && !suggestionInfo.isEmoji && !suggestionInfo.isKindOf(SuggestedWordInfo.KIND_SHORTCUT)
+        ) {
+            val replacedWord = mWordComposer.getTypedWord()
+            if (replacedWord.isNotEmpty() && !replacedWord.equals(rawSuggestion, ignoreCase = true))
+                mDictionaryFacilitator.recordGestureCorrection(rawSuggestion, replacedWord)
+        }
+
         val event = Event.createSuggestionPickedEvent(suggestionInfo)
         val inputTransaction = InputTransaction(
             settingsValues,
@@ -2304,6 +2313,7 @@ class InputLogic(
             word, wasAutoCapitalized, ngramContext,
             timeStampInSeconds, settingsValues.mBlockPotentiallyOffensive
         )
+        if (mWordComposer.isBatchMode()) mDictionaryFacilitator.recordGestureAccepted(word)
     }
 
     private fun stripWordSeparatorsFromEnd(word: String, settingsValues: SettingsValues): String {
