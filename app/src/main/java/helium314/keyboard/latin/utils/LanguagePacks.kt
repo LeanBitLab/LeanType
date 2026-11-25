@@ -122,6 +122,16 @@ object LanguagePacks {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) reload(context)
     }
 
+    /** All installed packs, whatever the current app language. */
+    fun installedPacks(context: Context): List<File> =
+        packsDir(context).listFiles { f -> f.isFile && f.name.endsWith(".apk") }.orEmpty().sortedBy { it.name }
+
+    /** Removes one installed pack, e.g. from the storage screen. */
+    fun remove(context: Context, pack: File) {
+        pack.delete()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) reload(context)
+    }
+
     fun importFromUri(context: Context, uri: Uri): Result {
         val temp = File(context.cacheDir, "language_pack_import.apk")
         context.contentResolver.openInputStream(uri)?.use { input -> temp.outputStream().use { input.copyTo(it) } }

@@ -1699,4 +1699,7 @@
     <string name="language_pack_download_failed">다운로드에 실패했습니다. 이 앱 버전에 대한 번역이 아직 없습니다.</string>
     <string name="language_pack_wrong_build">이 번역 파일은 다른 앱 버전용으로 만들어졌습니다.</string>
     <string name="language_pack_invalid">이 파일은 번역 파일이 아닙니다.</string>
+    <string name="storage_language_packs">앱 번역 (%d)</string>
+    <string name="storage_item_language_pack_desc">다운로드한 앱 번역(UI 문자열)</string>
+    <string name="storage_type_language_pack">앱 번역</string>
 </resources>

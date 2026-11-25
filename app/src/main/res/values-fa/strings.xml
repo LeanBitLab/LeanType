@@ -1703,4 +1703,7 @@
     <string name="language_pack_download_failed">دانلود ناموفق بود. هنوز ترجمه‌ای برای این نسخه از برنامه در دسترس نیست.</string>
     <string name="language_pack_wrong_build">این فایل ترجمه برای نسخه‌ای دیگر از برنامه ساخته شده است.</string>
     <string name="language_pack_invalid">این فایل، فایل ترجمه نیست.</string>
+    <string name="storage_language_packs">ترجمه‌های برنامه (%d)</string>
+    <string name="storage_item_language_pack_desc">ترجمه برنامه دانلودشده (رشته‌های رابط کاربری)</string>
+    <string name="storage_type_language_pack">ترجمه برنامه</string>
 </resources>

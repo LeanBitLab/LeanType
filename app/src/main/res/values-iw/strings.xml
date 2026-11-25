@@ -1769,4 +1769,7 @@
     <string name="language_pack_download_failed">ההורדה נכשלה. אין עדיין תרגום זמין לגרסת יישום זו.</string>
     <string name="language_pack_wrong_build">קובץ תרגום זה נוצר עבור גרסת יישום אחרת.</string>
     <string name="language_pack_invalid">קובץ זה אינו קובץ תרגום.</string>
+    <string name="storage_language_packs">תרגומי אפליקציה (%d)</string>
+    <string name="storage_item_language_pack_desc">תרגום אפליקציה שהורד (מחרוזות ממשק)</string>
+    <string name="storage_type_language_pack">תרגום אפליקציה</string>
 </resources>

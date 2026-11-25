@@ -1761,4 +1761,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="language_pack_download_failed">Pengunduhan gagal. Belum ada terjemahan untuk versi aplikasi ini.</string>
     <string name="language_pack_wrong_build">File terjemahan ini dibuat untuk versi aplikasi yang berbeda.</string>
     <string name="language_pack_invalid">File ini bukan file terjemahan.</string>
+    <string name="storage_language_packs">Terjemahan aplikasi (%d)</string>
+    <string name="storage_item_language_pack_desc">Terjemahan aplikasi yang diunduh (string UI)</string>
+    <string name="storage_type_language_pack">terjemahan aplikasi</string>
 </resources>

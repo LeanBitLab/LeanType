@@ -1707,4 +1707,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="language_pack_download_failed">Falha na transferência. Ainda não existe tradução disponível para esta versão da aplicação.</string>
     <string name="language_pack_wrong_build">Este ficheiro de tradução foi criado para outra versão da aplicação.</string>
     <string name="language_pack_invalid">Este ficheiro não é um ficheiro de tradução.</string>
+    <string name="storage_language_packs">Traduções da app (%d)</string>
+    <string name="storage_item_language_pack_desc">Tradução da app transferida (textos da interface)</string>
+    <string name="storage_type_language_pack">tradução da app</string>
 </resources>

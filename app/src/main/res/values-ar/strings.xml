@@ -1769,4 +1769,7 @@
     <string name="language_pack_download_failed">فشل التنزيل. لا تتوفر ترجمة لهذا الإصدار من التطبيق بعد.</string>
     <string name="language_pack_wrong_build">ملف الترجمة هذا مُعدّ لإصدار مختلف من التطبيق.</string>
     <string name="language_pack_invalid">هذا الملف ليس ملف ترجمة.</string>
+    <string name="storage_language_packs">ترجمات التطبيق (%d)</string>
+    <string name="storage_item_language_pack_desc">ترجمة التطبيق المنزّلة (نصوص واجهة المستخدم)</string>
+    <string name="storage_type_language_pack">ترجمة التطبيق</string>
 </resources>

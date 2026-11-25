@@ -1777,4 +1777,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="language_pack_download_failed">Error al descargar. Todavía no hay traducción disponible para esta versión de la app.</string>
     <string name="language_pack_wrong_build">Este archivo de traducción se creó para una versión diferente de la app.</string>
     <string name="language_pack_invalid">Este archivo no es un archivo de traducción.</string>
+    <string name="storage_language_packs">Traducciones de la app (%d)</string>
+    <string name="storage_item_language_pack_desc">Traducción de la app descargada (cadenas de la interfaz)</string>
+    <string name="storage_type_language_pack">traducción de la app</string>
 </resources>

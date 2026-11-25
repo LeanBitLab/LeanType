@@ -1770,4 +1770,7 @@
     <string name="language_pack_download_failed">Не удалось скачать. Перевод для этой версии приложения пока недоступен.</string>
     <string name="language_pack_wrong_build">Этот файл перевода создан для другой версии приложения.</string>
     <string name="language_pack_invalid">Это не файл перевода.</string>
+    <string name="storage_language_packs">Переводы приложения (%d)</string>
+    <string name="storage_item_language_pack_desc">Загруженный перевод приложения (строки интерфейса)</string>
+    <string name="storage_type_language_pack">перевод приложения</string>
 </resources>

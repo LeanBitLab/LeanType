@@ -1761,4 +1761,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="language_pack_download_failed">Preuzimanje nije uspjelo. Za ovu verziju aplikacije prijevod još nije dostupan.</string>
     <string name="language_pack_wrong_build">Ova datoteka prijevoda izrađena je za drugu verziju aplikacije.</string>
     <string name="language_pack_invalid">Ova datoteka nije datoteka prijevoda.</string>
+    <string name="storage_language_packs">Prijevodi aplikacije (%d)</string>
+    <string name="storage_item_language_pack_desc">Preuzeti prijevod aplikacije (UI nizovi)</string>
+    <string name="storage_type_language_pack">prijevod aplikacije</string>
 </resources>

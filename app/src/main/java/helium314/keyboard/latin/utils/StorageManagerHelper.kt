@@ -28,6 +28,7 @@ enum class StorageItemType {
     PLUGIN,
     TRANSLATION_MODEL,
     HANDWRITING_MODEL,
+    LANGUAGE_PACK,
     DICTIONARY,
     CACHE
 }
@@ -38,6 +39,7 @@ data class StorageOverview(
     val plugins: List<StorageItem>,
     val translationModels: List<StorageItem>,
     val handwritingModels: List<StorageItem>,
+    val languagePacks: List<StorageItem>,
     val dictionaries: List<StorageItem>,
     val cacheItems: List<StorageItem>
 ) {
@@ -63,6 +65,7 @@ object StorageManagerHelper {
         val plugins = mutableListOf<StorageItem>()
         val translationModels = mutableListOf<StorageItem>()
         val handwritingModels = mutableListOf<StorageItem>()
+        val languagePacks = mutableListOf<StorageItem>()
         val dictionaries = mutableListOf<StorageItem>()
         val cacheItems = mutableListOf<StorageItem>()
 
@@ -193,6 +196,23 @@ object StorageManagerHelper {
             }
         }
 
+        // 3b. App translations (language packs)
+        LanguagePacks.installedPacks(context).forEach { pack ->
+            val tag = pack.nameWithoutExtension
+            val locale = Locale.forLanguageTag(tag.replace("-r", "-"))
+            val langName = locale.getDisplayName(locale).ifBlank { tag }.replaceFirstChar { it.uppercase(locale) }
+            languagePacks.add(
+                StorageItem(
+                    id = "language_pack_$tag",
+                    name = "$langName ($tag)",
+                    description = context.getString(R.string.storage_item_language_pack_desc),
+                    sizeBytes = pack.length(),
+                    type = StorageItemType.LANGUAGE_PACK,
+                    onDelete = { LanguagePacks.remove(context, pack) }
+                )
+            )
+        }
+
         // 4. Cached / User Dictionaries
         try {
             val dictDir = File(DictionaryInfoUtils.getWordListCacheDirectory(context))
@@ -258,6 +278,7 @@ object StorageManagerHelper {
             plugins = plugins.sortedByDescending { it.sizeBytes },
             translationModels = translationModels.sortedByDescending { it.sizeBytes },
             handwritingModels = handwritingModels.sortedByDescending { it.sizeBytes },
+            languagePacks = languagePacks.sortedByDescending { it.sizeBytes },
             dictionaries = dictionaries.sortedByDescending { it.sizeBytes },
             cacheItems = cacheItems.sortedByDescending { it.sizeBytes }
         )

@@ -186,6 +186,16 @@ fun StorageScreen(
                 onDeleteItem = { itemToDelete = it }
             )
 
+            // Section 3b: App translations (language packs, only present once one was installed)
+            if (data.languagePacks.isNotEmpty()) {
+                StorageCategoryCard(
+                    title = stringResource(R.string.storage_language_packs, data.languagePacks.size),
+                    items = data.languagePacks,
+                    emptyText = "",
+                    onDeleteItem = { itemToDelete = it }
+                )
+            }
+
             // Section 4: Cached Dictionaries
             StorageCategoryCard(
                 title = stringResource(R.string.storage_cached_dictionaries, data.dictionaries.size),
@@ -211,6 +221,7 @@ fun StorageScreen(
             StorageItemType.PLUGIN -> stringResource(R.string.storage_type_plugin)
             StorageItemType.TRANSLATION_MODEL -> stringResource(R.string.storage_type_translation_model)
             StorageItemType.HANDWRITING_MODEL -> stringResource(R.string.storage_type_handwriting_model)
+            StorageItemType.LANGUAGE_PACK -> stringResource(R.string.storage_type_language_pack)
             StorageItemType.DICTIONARY -> stringResource(R.string.storage_type_dictionary)
             StorageItemType.CACHE -> stringResource(R.string.storage_type_cache)
         }

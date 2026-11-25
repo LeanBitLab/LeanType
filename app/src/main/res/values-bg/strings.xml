@@ -1798,4 +1798,7 @@
     <string name="language_pack_download_failed">Изтеглянето е неуспешно. Все още няма превод за тази версия на приложението.</string>
     <string name="language_pack_wrong_build">Този файл с превод е създаден за друга версия на приложението.</string>
     <string name="language_pack_invalid">Този файл не е файл с превод.</string>
+    <string name="storage_language_packs">Преводи на приложението (%d)</string>
+    <string name="storage_item_language_pack_desc">Изтеглен превод на приложението (текст на интерфейса)</string>
+    <string name="storage_type_language_pack">превод на приложението</string>
 </resources>

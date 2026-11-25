@@ -1763,4 +1763,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="language_pack_download_failed">Stahování selhalo. Pro tuto verzi aplikace zatím není k dispozici žádný překlad.</string>
     <string name="language_pack_wrong_build">Tento soubor s překladem byl vytvořen pro jinou verzi aplikace.</string>
     <string name="language_pack_invalid">Tento soubor není souborem s překladem.</string>
+    <string name="storage_language_packs">Překlady aplikace (%d)</string>
+    <string name="storage_item_language_pack_desc">Stažený překlad aplikace (texty rozhraní)</string>
+    <string name="storage_type_language_pack">překlad aplikace</string>
 </resources>

@@ -1801,4 +1801,7 @@
     <string name="language_pack_download_failed">डाउनलोड विफल। इस ऐप संस्करण के लिए अभी कोई अनुवाद उपलब्ध नहीं है।</string>
     <string name="language_pack_wrong_build">यह अनुवाद फ़ाइल किसी अलग ऐप संस्करण के लिए बनाई गई थी।</string>
     <string name="language_pack_invalid">यह फ़ाइल अनुवाद फ़ाइल नहीं है।</string>
+    <string name="storage_language_packs">ऐप अनुवाद (%d)</string>
+    <string name="storage_item_language_pack_desc">डाउनलोड किया गया ऐप अनुवाद (UI स्ट्रिंग्स)</string>
+    <string name="storage_type_language_pack">ऐप अनुवाद</string>
 </resources>

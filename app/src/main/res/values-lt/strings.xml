@@ -1799,4 +1799,7 @@ Ar norite atnaujinti?</string>
     <string name="language_pack_download_failed">Atsisiuntimas nepavyko. Šiai programos versijai vertimo dar nėra.</string>
     <string name="language_pack_wrong_build">Šis vertimo failas skirtas kitai programos versijai.</string>
     <string name="language_pack_invalid">Šis failas nėra vertimo failas.</string>
+    <string name="storage_language_packs">Programos vertimai (%d)</string>
+    <string name="storage_item_language_pack_desc">Atsisiųstas programos vertimas (vartotojo sąsajos tekstai)</string>
+    <string name="storage_type_language_pack">programos vertimas</string>
 </resources>

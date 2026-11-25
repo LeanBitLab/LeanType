@@ -1737,4 +1737,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="language_pack_download_failed">İndirme başarısız oldu. Bu uygulama sürümü için henüz çeviri yok.</string>
     <string name="language_pack_wrong_build">Bu çeviri dosyası farklı bir uygulama sürümü için hazırlanmış.</string>
     <string name="language_pack_invalid">Bu dosya bir çeviri dosyası değil.</string>
+    <string name="storage_language_packs">Uygulama çevirileri (%d)</string>
+    <string name="storage_item_language_pack_desc">İndirilen uygulama çevirisi (kullanıcı arayüzü metinleri)</string>
+    <string name="storage_type_language_pack">uygulama çevirisi</string>
 </resources>

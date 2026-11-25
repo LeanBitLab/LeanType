@@ -1811,4 +1811,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="language_pack_download_failed">Downloaden mislukt. Er is nog geen vertaling beschikbaar voor deze appversie.</string>
     <string name="language_pack_wrong_build">Dit vertalingsbestand is gemaakt voor een andere appversie.</string>
     <string name="language_pack_invalid">Dit bestand is geen vertalingsbestand.</string>
+    <string name="storage_language_packs">App-vertalingen (%d)</string>
+    <string name="storage_item_language_pack_desc">Gedownloade app-vertaling (UI-teksten)</string>
+    <string name="storage_type_language_pack">app-vertaling</string>
 </resources>

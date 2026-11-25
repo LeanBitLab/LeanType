@@ -2005,6 +2005,7 @@ New dictionary:
     <string name="storage_no_plugins">No dynamic plugins installed</string>
     <string name="storage_translation_models">Translation Models (%d)</string>
     <string name="storage_no_translation_models">No translation models downloaded</string>
+    <string name="storage_language_packs">App translations (%d)</string>
     <string name="storage_handwriting_models">Handwriting Models (%d)</string>
     <string name="storage_no_handwriting_models">No handwriting models downloaded</string>
     <string name="storage_cached_dictionaries">Dictionaries (%d)</string>
@@ -2228,10 +2229,12 @@ New dictionary:
     <string name="storage_item_plugin_offline_ai_name">Offline AI Plugin</string>
     <string name="storage_item_plugin_offline_ai_desc">On-device LLM proofreading engine</string>
     <string name="storage_item_trans_model_desc">Offline translation model files</string>
+    <string name="storage_item_language_pack_desc">Downloaded app translation (UI strings)</string>
     <string name="storage_item_hw_model_desc">Digital Ink recognition model</string>
     <string name="storage_item_dict_desc">Cached wordlist dictionary</string>
     <string name="storage_type_plugin">plugin</string>
     <string name="storage_type_translation_model">translation model</string>
+    <string name="storage_type_language_pack">app translation</string>
     <string name="storage_type_handwriting_model">handwriting model</string>
     <string name="storage_type_dictionary">dictionary</string>
     <string name="storage_type_cache">cache item</string>

@@ -1761,4 +1761,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="language_pack_download_failed">Download fehlgeschlagen. Für diese App-Version ist noch keine Übersetzung verfügbar.</string>
     <string name="language_pack_wrong_build">Diese Übersetzungsdatei wurde für eine andere App-Version erstellt.</string>
     <string name="language_pack_invalid">Dies ist keine Übersetzungsdatei.</string>
+    <string name="storage_language_packs">App-Übersetzungen (%d)</string>
+    <string name="storage_item_language_pack_desc">Heruntergeladene App-Übersetzung (UI-Texte)</string>
+    <string name="storage_type_language_pack">App-Übersetzung</string>
 </resources>

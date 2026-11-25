@@ -1698,4 +1698,7 @@ Từ điển mới:
     <string name="language_pack_download_failed">Tải xuống thất bại. Chưa có bản dịch cho phiên bản ứng dụng này.</string>
     <string name="language_pack_wrong_build">Tệp bản dịch này được tạo cho phiên bản ứng dụng khác.</string>
     <string name="language_pack_invalid">Đây không phải là tệp bản dịch.</string>
+    <string name="storage_language_packs">Bản dịch ứng dụng (%d)</string>
+    <string name="storage_item_language_pack_desc">Bản dịch giao diện ứng dụng đã tải xuống (chuỗi giao diện người dùng)</string>
+    <string name="storage_type_language_pack">bản dịch ứng dụng</string>
 </resources>

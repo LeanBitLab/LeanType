@@ -1761,4 +1761,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="language_pack_download_failed">A letöltés sikertelen. Ehhez az alkalmazásverzióhoz még nincs elérhető fordítás.</string>
     <string name="language_pack_wrong_build">Ez a fordítási fájl egy másik alkalmazásverzióhoz készült.</string>
     <string name="language_pack_invalid">Ez a fájl nem fordítási fájl.</string>
+    <string name="storage_language_packs">Alkalmazásfordítások (%d)</string>
+    <string name="storage_item_language_pack_desc">Letöltött alkalmazásfordítás (felületi szövegek)</string>
+    <string name="storage_type_language_pack">alkalmazásfordítás</string>
 </resources>

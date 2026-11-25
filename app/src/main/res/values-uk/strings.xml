@@ -1764,4 +1764,7 @@
     <string name="language_pack_download_failed">Не вдалося завантажити. Для цієї версії застосунку переклад ще недоступний.</string>
     <string name="language_pack_wrong_build">Цей файл перекладу створено для іншої версії застосунку.</string>
     <string name="language_pack_invalid">Цей файл не є файлом перекладу.</string>
+    <string name="storage_language_packs">Переклади застосунку (%d)</string>
+    <string name="storage_item_language_pack_desc">Завантажений переклад застосунку (рядки інтерфейсу)</string>
+    <string name="storage_type_language_pack">переклад застосунку</string>
 </resources>
