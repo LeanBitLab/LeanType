@@ -505,6 +505,7 @@ LeanType features a comprehensive, privacy-first clipboard manager with rich ges
 Prevent offensive, sensitive, or unwanted words from ever appearing in the suggestion strip:
 - Supports literal words and custom **regular expression (regex)** patterns.
 - Manage rules via **Settings → Languages & Layouts → Dictionaries → Blocked words**.
+- Removing a suggestion hides only that dictionary word. A blocked main dictionary word is no longer predicted as a next word, but it stays valid while you type it. Words in your personal dictionary are never blocked.
 
 ---
 
@@ -515,6 +516,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 - **Session Word Boost**: Temporarily boosts recently typed, verified words for immediate next-word ranking during active typing sessions.
 - **Suggestion Balance Master Sliders**: Fine-tune the exact scoring weights between unigram frequency, bigram/ngram context, and dictionary matches (**Settings → Suggestions → Suggestion Balance**).
 - **SuggestTrace & ScoreAudit Telemetry**: Built-in developer/power-user instrumentation to audit why specific words are being predicted or auto-corrected, backed by early beam pruning (`BEAM_DELTA = 60`) for optimal typing latency.
+- **Personal Dictionary Shortcuts**: With **Settings → Text correction → Auto-correct shortcuts** on, typing an exact personal dictionary shortcut auto-corrects it, even when the shortcut is a valid word.
 - **Google Dictionary Import**: Import existing user dictionaries exported from Gboard.
 - Configure via **Settings → Suggestions** and **Settings → Languages & Layouts → Dictionaries → Learning threshold**.
 
@@ -524,6 +526,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 
 - Smooth swipe typing powered by native C++ spatial scoring (`libjni_latinime.so`).
 - Supports floating preview text, customizable trail colors, and space-aware gesture input.
+- Learns from corrections: when you replace a swiped word with another suggestion, your pick gets a small boost in later swipes where the choice is close. Nothing new is learned in incognito mode.
 - In `standard` builds, the gesture library is downloaded automatically via **Settings → Gestures & swipes**.
 
 ---
@@ -1027,6 +1030,7 @@ Keep your keyboard installation clean and inspect on-device storage consumption 
   - **Dictionaries & Lexicons**: Main system dictionaries, user history dictionaries, and custom wordlists.
   - **Sound Packs**: Downloaded key audio `.zip` archives and unbundled audio effects.
   - **Media & Thumbnail Cache**: Cached GIF/sticker previews and transient camera OCR frames.
+  - **App Translations**: Downloaded or imported language packs, which you can remove to free space.
 - **1-Tap Cleanup Actions**:
   - **Clear Media Cache**: Instantly frees transient GIF, sticker, and image thumbnail storage.
   - **Purge OCR Cache**: Removes temporary camera captures and preview frames.
@@ -1193,6 +1197,7 @@ Every release also ships English-only **Lite** APKs (`1-LeanType_<version>-stand
 - A pack is never installed as an app. LeanType loads it from its own storage and checks that it holds only translations.
 
 ### After Updates
+- To remove a pack yourself, use **Settings → Plugins → Storage & Cache**.
 - Each pack is built for one exact app build. After an app update, the old pack no longer fits and is removed: download or import the pack for the new version.
 - The regular APKs and the F-Droid build keep all languages built in and never need a pack.
 
