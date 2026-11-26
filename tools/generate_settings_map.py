@@ -176,7 +176,8 @@ def build():
             # preference composables, e.g. LanguagePackPreference: their first stringResource is the row name
             for fn in re.findall(r"\b(\w+Preference)\(", body):
                 pf = fun_file.get(fn)
-                if pf and "/preferences/" in str(pf):
+                # SwitchPreference is generic: the caller names the row
+                if pf and "/preferences/" in str(pf) and fn != "SwitchPreference":
                     pt = kt[pf][kt[pf].find(f"fun {fn}("):]
                     m2 = re.search(r"stringResource\(R\.string\.(\w+)\)", pt)
                     if m2 and S.get(m2[1]) and S[m2[1]] not in seen:
