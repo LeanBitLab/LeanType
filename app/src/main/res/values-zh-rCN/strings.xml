@@ -1768,4 +1768,6 @@
     <string name="storage_language_packs">应用翻译（%d）</string>
     <string name="storage_item_language_pack_desc">已下载的应用翻译（界面文字）</string>
     <string name="storage_type_language_pack">应用翻译</string>
+    <string name="ocr_camera_failed">相机无法启动。点按即可重试。</string>
+    <string name="handwriting_not_recognized">无法识别手写内容。请重试。</string>
 </resources>

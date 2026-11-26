@@ -1802,4 +1802,6 @@ Ar norite atnaujinti?</string>
     <string name="storage_language_packs">Programos vertimai (%d)</string>
     <string name="storage_item_language_pack_desc">Atsisiųstas programos vertimas (vartotojo sąsajos tekstai)</string>
     <string name="storage_type_language_pack">programos vertimas</string>
+    <string name="ocr_camera_failed">Nepavyko paleisti kameros. Palieskite, kad bandytumėte dar kartą.</string>
+    <string name="handwriting_not_recognized">Nepavyko atpažinti rašysenos. Bandykite dar kartą.</string>
 </resources>

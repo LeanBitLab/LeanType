@@ -56,7 +56,7 @@ class VoiceInputManager(
 
     interface VoiceInputListener {
         fun onStateChanged(state: VoiceState)
-        fun onError(message: String, canRetry: Boolean = false)
+        fun onError(message: String, canRetry: Boolean = true)
         fun onScreenKeepAliveChanged(keepAlive: Boolean) {}
     }
 
@@ -169,6 +169,8 @@ class VoiceInputManager(
             stopVoice()
             return
         }
+        // a new session must not let a later Retry resend older audio
+        clearFailedAudio()
 
         if (state != VoiceState.IDLE && state != VoiceState.ERROR) {
             Log.w(TAG, "Resetting previous state $state for new voice session")
@@ -176,7 +178,7 @@ class VoiceInputManager(
         }
 
         if (!canStartVoice()) {
-            notifyError("Voice input not available or permission missing")
+            notifyError("Voice input not available or permission missing", canRetry = false)
             return
         }
 
@@ -198,7 +200,7 @@ class VoiceInputManager(
                 ProofreadService.AIProvider.OPENAI -> !service.getHuggingFaceToken().isNullOrBlank()
             }
             if (!hasKey) {
-                notifyError("API key for ${provider.name} not configured. Set it in Settings → AI Integration")
+                notifyError("API key for ${provider.name} not configured. Set it in Settings → AI Integration", canRetry = false)
                 return
             }
             startOnlineVoice()
@@ -257,10 +259,7 @@ class VoiceInputManager(
     private fun startOnlineVoice() {
         if (!isNetworkAvailable()) {
             val warningMsg = ims.getString(R.string.voice_no_internet_warning)
-            mainHandler.post {
-                Toast.makeText(ims, warningMsg, Toast.LENGTH_SHORT).show()
-            }
-            notifyError(warningMsg, canRetry = true)
+            notifyError(warningMsg)
             updateState(VoiceState.ERROR)
             return
         }
@@ -811,10 +810,7 @@ class VoiceInputManager(
             Log.w(TAG, "No internet connection before voice AI API access")
             lastFailedOnlineAudio = cachedAudio
             val warningMsg = ims.getString(R.string.voice_no_internet_warning)
-            mainHandler.post {
-                Toast.makeText(ims, warningMsg, Toast.LENGTH_SHORT).show()
-            }
-            notifyError(warningMsg, canRetry = true)
+            notifyError(warningMsg)
             cleanupSession()
             updateState(VoiceState.ERROR)
             return
@@ -848,11 +844,6 @@ class VoiceInputManager(
                             ex.message ?: "Transcription failed"
                         }
                         Log.e(TAG, "Online transcription error (retryCount=$retryCount): $err", ex)
-                        if (isNetworkErr) {
-                            mainHandler.post {
-                                Toast.makeText(ims, err, Toast.LENGTH_SHORT).show()
-                            }
-                        }
                         if (autoRetryEnabled && retryCount < 1 && !isNetworkErr) {
                             Log.i(TAG, "Auto-retrying online transcription in 1500ms...")
                             mainHandler.postDelayed({
@@ -862,7 +853,7 @@ class VoiceInputManager(
                             }, 1500L)
                         } else {
                             lastFailedOnlineAudio = cachedAudio
-                            notifyError(err, canRetry = true)
+                            notifyError(err)
                             cleanupSession()
                             updateState(VoiceState.ERROR)
                         }
@@ -876,10 +867,7 @@ class VoiceInputManager(
         val cached = lastFailedOnlineAudio ?: return
         if (!isNetworkAvailable()) {
             val warningMsg = ims.getString(R.string.voice_no_internet_warning)
-            mainHandler.post {
-                Toast.makeText(ims, warningMsg, Toast.LENGTH_SHORT).show()
-            }
-            notifyError(warningMsg, canRetry = true)
+            notifyError(warningMsg)
             return
         }
         Log.i(TAG, "Retrying last failed online voice audio")
@@ -1299,7 +1287,7 @@ class VoiceInputManager(
         }
     }
 
-    private fun notifyError(message: String, canRetry: Boolean = false) {
+    private fun notifyError(message: String, canRetry: Boolean = true) {
         mainHandler.post {
             listener?.onError(message, canRetry)
         }

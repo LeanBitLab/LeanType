@@ -1814,4 +1814,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="storage_language_packs">App-vertalingen (%d)</string>
     <string name="storage_item_language_pack_desc">Gedownloade app-vertaling (UI-teksten)</string>
     <string name="storage_type_language_pack">app-vertaling</string>
+    <string name="ocr_camera_failed">Camera kon niet worden gestart. Tik om opnieuw te proberen.</string>
+    <string name="handwriting_not_recognized">Het handschrift kon niet worden herkend. Probeer het opnieuw.</string>
 </resources>

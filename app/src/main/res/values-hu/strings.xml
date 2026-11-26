@@ -1764,4 +1764,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="storage_language_packs">Alkalmazásfordítások (%d)</string>
     <string name="storage_item_language_pack_desc">Letöltött alkalmazásfordítás (felületi szövegek)</string>
     <string name="storage_type_language_pack">alkalmazásfordítás</string>
+    <string name="ocr_camera_failed">Nem sikerült elindítani a kamerát. Koppintson az újrapróbálkozáshoz.</string>
+    <string name="handwriting_not_recognized">Nem sikerült felismerni a kézírást. Próbálja újra.</string>
 </resources>

@@ -596,7 +596,7 @@ class LatinIME : InputMethodService(),
             override fun onError(message: String, canRetry: Boolean) {
                 suggestionStripView?.showVoiceErrorWithRetry(
                     message = message,
-                    onRetry = Runnable {
+                    onRetry = if (!canRetry) null else Runnable {
                         if (voiceInputManager?.lastFailedOnlineAudio != null) {
                             voiceInputManager?.retryLastFailedOnlineVoice()
                         } else {
@@ -608,7 +608,10 @@ class LatinIME : InputMethodService(),
                         suggestionStripView?.hideVoiceStatus()
                     }
                 )
-                Toast.makeText(this@LatinIME, message, Toast.LENGTH_SHORT).show()
+                // toast only when the strip can't show the error (hidden toolbar mode, no input view)
+                if (suggestionStripView?.isShown != true) {
+                    Toast.makeText(this@LatinIME, message, Toast.LENGTH_SHORT).show()
+                }
                 onVoiceStateChanged(VoiceInputManager.VoiceState.ERROR)
             }
         })
@@ -643,7 +646,8 @@ class LatinIME : InputMethodService(),
                             VoiceVisualizerView.Mode.PROCESSING
                         )
                     }
-                    else -> strip.hideVoiceStatus()
+                    VoiceInputManager.VoiceState.ERROR -> {} // keep the error strip shown by onError
+                    VoiceInputManager.VoiceState.IDLE -> strip.hideVoiceStatus()
                 }
             }
             

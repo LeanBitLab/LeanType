@@ -1772,4 +1772,6 @@
     <string name="storage_language_packs">תרגומי אפליקציה (%d)</string>
     <string name="storage_item_language_pack_desc">תרגום אפליקציה שהורד (מחרוזות ממשק)</string>
     <string name="storage_type_language_pack">תרגום אפליקציה</string>
+    <string name="ocr_camera_failed">המצלמה לא הצליחה להתחיל. הקש כדי לנסות שוב.</string>
+    <string name="handwriting_not_recognized">לא ניתן לזהות את כתב היד. נסה שוב.</string>
 </resources>

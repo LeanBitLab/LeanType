@@ -547,6 +547,8 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     fun setSuggestions(suggestions: SuggestedWords, isRtlLanguage: Boolean) {
+        // typing dismisses a voice error, so it can't keep blocking suggestions
+        if (isVoiceError && !suggestions.isEmpty && suggestions.mInputStyle == SuggestedWords.INPUT_STYLE_TYPING) hideVoiceStatus()
         if (isVoiceActive) return
 
         if (isShowingEmojiSuggestions && !helium314.keyboard.keyboard.KeyboardSwitcher.getInstance().isShowingEmojiPalettes) {
@@ -734,6 +736,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     }
 
     private var isVoiceActive = false
+    private var isVoiceError = false
     private var voiceVisualizerView: VoiceVisualizerView? = null
 
     @JvmOverloads
@@ -748,6 +751,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         clear()
         isExternalSuggestionVisible = true
         isVoiceActive = true
+        isVoiceError = false
 
         val colors = Settings.getValues().mColors
         val accentColor = colors.get(ColorType.GESTURE_TRAIL)
@@ -828,12 +832,13 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
     fun showVoiceErrorWithRetry(
         message: String,
-        onRetry: Runnable,
+        onRetry: Runnable?,
         onDismiss: Runnable
     ) {
         clear()
         isExternalSuggestionVisible = true
         isVoiceActive = true
+        isVoiceError = true
 
         val colors = Settings.getValues().mColors
         val textColor = colors.get(ColorType.KEY_TEXT)
@@ -852,7 +857,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
             setTextColor(textColor)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
             gravity = Gravity.CENTER_VERTICAL
-            maxLines = 1
+            maxLines = 2
             ellipsize = TextUtils.TruncateAt.END
             layoutParams = LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1f).apply {
                 marginStart = 8.dpToPx(resources)
@@ -862,28 +867,30 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
         container.addView(textView)
 
         // Retry Button
-        val retryButton = TextView(context).apply {
-            text = context.getString(R.string.voice_retry_button)
-            setTextColor(if (accentColor != 0) accentColor else textColor)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-            typeface = android.graphics.Typeface.DEFAULT_BOLD
-            gravity = Gravity.CENTER
-            val padH = 12.dpToPx(resources)
-            val padV = 6.dpToPx(resources)
-            setPadding(padH, padV, padH, padV)
-            val bg = GradientDrawable().apply {
-                shape = GradientDrawable.RECTANGLE
-                cornerRadius = 14.dpToPx(resources).toFloat()
-                setColor(colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND))
+        if (onRetry != null) {
+            val retryButton = TextView(context).apply {
+                text = context.getString(R.string.voice_retry_button)
+                setTextColor(if (accentColor != 0) accentColor else textColor)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+                typeface = android.graphics.Typeface.DEFAULT_BOLD
+                gravity = Gravity.CENTER
+                val padH = 12.dpToPx(resources)
+                val padV = 6.dpToPx(resources)
+                setPadding(padH, padV, padH, padV)
+                val bg = GradientDrawable().apply {
+                    shape = GradientDrawable.RECTANGLE
+                    cornerRadius = 14.dpToPx(resources).toFloat()
+                    setColor(colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND))
+                }
+                background = bg
+                isClickable = true
+                setOnClickListener {
+                    AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this@SuggestionStripView, HapticEvent.KEY_PRESS)
+                    onRetry.run()
+                }
             }
-            background = bg
-            isClickable = true
-            setOnClickListener {
-                AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(KeyCode.NOT_SPECIFIED, this@SuggestionStripView, HapticEvent.KEY_PRESS)
-                onRetry.run()
-            }
+            container.addView(retryButton)
         }
-        container.addView(retryButton)
 
         // Close / Dismiss Button
         val closeButton = ImageButton(context, null, R.attr.suggestionWordStyle).apply {
@@ -914,6 +921,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
     fun hideVoiceStatus() {
         if (!isVoiceActive) return
         isVoiceActive = false
+        isVoiceError = false
         isExternalSuggestionVisible = false
         voiceVisualizerView?.setMode(VoiceVisualizerView.Mode.IDLE)
         voiceVisualizerView = null

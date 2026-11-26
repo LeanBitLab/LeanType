@@ -1780,4 +1780,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="storage_language_packs">Traducciones de la app (%d)</string>
     <string name="storage_item_language_pack_desc">Traducción de la app descargada (cadenas de la interfaz)</string>
     <string name="storage_type_language_pack">traducción de la app</string>
+    <string name="ocr_camera_failed">Error al iniciar la cámara. Toque para reintentar.</string>
+    <string name="handwriting_not_recognized">No se pudo reconocer la escritura a mano. Inténtelo de nuevo.</string>
 </resources>

@@ -1740,4 +1740,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="storage_language_packs">Uygulama çevirileri (%d)</string>
     <string name="storage_item_language_pack_desc">İndirilen uygulama çevirisi (kullanıcı arayüzü metinleri)</string>
     <string name="storage_type_language_pack">uygulama çevirisi</string>
+    <string name="ocr_camera_failed">Kamera başlatılamadı. Yeniden denemek için dokunun.</string>
+    <string name="handwriting_not_recognized">El yazısı tanınamadı. Tekrar deneyin.</string>
 </resources>

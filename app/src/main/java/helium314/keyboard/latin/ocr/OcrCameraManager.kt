@@ -92,17 +92,13 @@ class OcrCameraManager(private val context: Context) {
 
         val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
-        try {
-            camera = provider.bindToLifecycle(
-                lifecycleOwner,
-                cameraSelector,
-                preview,
-                imageCapture
-            )
-            isTorchOn = false
-        } catch (e: Exception) {
-            Log.e(TAG, "Binding camera use cases failed", e)
-        }
+        camera = provider.bindToLifecycle(
+            lifecycleOwner,
+            cameraSelector,
+            preview,
+            imageCapture
+        )
+        isTorchOn = false
     }
 
     fun toggleTorch(): Boolean {

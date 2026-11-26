@@ -1701,4 +1701,6 @@ Từ điển mới:
     <string name="storage_language_packs">Bản dịch ứng dụng (%d)</string>
     <string name="storage_item_language_pack_desc">Bản dịch giao diện ứng dụng đã tải xuống (chuỗi giao diện người dùng)</string>
     <string name="storage_type_language_pack">bản dịch ứng dụng</string>
+    <string name="ocr_camera_failed">Không thể khởi động camera. Nhấn để thử lại.</string>
+    <string name="handwriting_not_recognized">Không nhận dạng được chữ viết tay. Vui lòng thử lại.</string>
 </resources>

@@ -1764,4 +1764,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="storage_language_packs">Prijevodi aplikacije (%d)</string>
     <string name="storage_item_language_pack_desc">Preuzeti prijevod aplikacije (UI nizovi)</string>
     <string name="storage_type_language_pack">prijevod aplikacije</string>
+    <string name="ocr_camera_failed">Kameru nije bilo moguće pokrenuti. Dodirnite za ponovni pokušaj.</string>
+    <string name="handwriting_not_recognized">Rukopis nije prepoznat. Pokušajte ponovno.</string>
 </resources>

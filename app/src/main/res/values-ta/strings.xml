@@ -1661,4 +1661,6 @@
     <string name="storage_language_packs">பயன்பாட்டு மொழிபெயர்ப்புகள் (%d)</string>
     <string name="storage_item_language_pack_desc">பதிவிறக்கப்பட்ட பயன்பாட்டு மொழிபெயர்ப்பு (UI சரங்கள்)</string>
     <string name="storage_type_language_pack">பயன்பாட்டு மொழிபெயர்ப்பு</string>
+    <string name="ocr_camera_failed">கேமரா தொடங்கவில்லை. மீண்டும் முயற்சிக்க தட்டவும்.</string>
+    <string name="handwriting_not_recognized">கையெழுத்தை அடையாளம் காண முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
 </resources>

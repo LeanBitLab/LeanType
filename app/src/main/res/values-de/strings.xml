@@ -1764,4 +1764,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="storage_language_packs">App-Übersetzungen (%d)</string>
     <string name="storage_item_language_pack_desc">Heruntergeladene App-Übersetzung (UI-Texte)</string>
     <string name="storage_type_language_pack">App-Übersetzung</string>
+    <string name="ocr_camera_failed">Kamera konnte nicht gestartet werden. Zum erneuten Versuch tippen.</string>
+    <string name="handwriting_not_recognized">Die Handschrift konnte nicht erkannt werden. Versuchen Sie es erneut.</string>
 </resources>

@@ -27,13 +27,15 @@
         android:focusable="true"
         android:soundEffectsEnabled="false" />
 
-    <!-- Status indicator (e.g. No text detected) - no pill background -->
+    <!-- Status indicator (no text detected, camera failure) on a dark pill, readable over any scene -->
     <TextView
         android:id="@+id/ocr_status_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@null"
+        android:background="@drawable/ocr_status_pill"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
         android:textColor="#FFFFFF"
         android:text="@string/ocr_no_text_detected"
         android:textSize="14sp"
@@ -128,6 +130,7 @@
         android:background="#DD000000">
 
         <ImageView
+            android:id="@+id/ocr_plugin_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/ic_ocr"
