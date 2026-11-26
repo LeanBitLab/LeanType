@@ -700,7 +700,8 @@ f""", // no newline at the end
         assertEquals("খ", kKey.mHintLabel)
         val kPopupLabels = kKey.mPopupKeys?.mapNotNull { it.mLabel } ?: emptyList()
         assertEquals("খ", kPopupLabels.firstOrNull(), "Layout popup key 'খ' must precede symbols in popup keys")
-        assertTrue(kPopupLabels.contains("+"), "Symbols should still be available after layout keys")
+        // a key with popups of its own gets no symbols by position (#801)
+        assertTrue("+" !in kPopupLabels, "No positional symbols expected: $kPopupLabels")
     }
 
     @Test fun turkishLayoutCustomMoreSymbolsAffectsButtons() {
