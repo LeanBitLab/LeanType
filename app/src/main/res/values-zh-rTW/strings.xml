@@ -1728,4 +1728,6 @@
     <string name="storage_language_packs">App 翻譯 (%d)</string>
     <string name="storage_item_language_pack_desc">已下載的 App 翻譯（使用者介面字串）</string>
     <string name="storage_type_language_pack">App 翻譯</string>
+    <string name="ocr_camera_failed">相機無法啟動。點擊以重試。</string>
+    <string name="handwriting_not_recognized">無法辨識手寫內容。請再試一次。</string>
 </resources>

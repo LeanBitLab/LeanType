@@ -1772,4 +1772,6 @@
     <string name="storage_language_packs">ترجمات التطبيق (%d)</string>
     <string name="storage_item_language_pack_desc">ترجمة التطبيق المنزّلة (نصوص واجهة المستخدم)</string>
     <string name="storage_type_language_pack">ترجمة التطبيق</string>
+    <string name="ocr_camera_failed">فشل تشغيل الكاميرا. اضغط لإعادة المحاولة.</string>
+    <string name="handwriting_not_recognized">تعذّر التعرف على الكتابة اليدوية. حاول مرة أخرى.</string>
 </resources>

@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -22,7 +23,6 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.common.ColorType
-import helium314.keyboard.latin.common.Colors
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.settings.SettingsActivity
@@ -53,6 +53,7 @@ class OcrCameraView @JvmOverloads constructor(
     private var pipeline: OcrPipeline? = null
     private var listener: OcrViewListener? = null
     private var isCameraStarted = false
+    private var cameraRequest = 0
     private var isLoadingAnimationActive = false
     private var loadingAnimator: ValueAnimator? = null
     private val loadingBorderDrawable = GradientDrawable().apply {
@@ -155,6 +156,7 @@ class OcrCameraView @JvmOverloads constructor(
 
     fun startCamera() {
         if (!OcrPluginLoader.hasPlugin(context)) {
+            applyPluginPanelColors()
             pluginPanel?.visibility = View.VISIBLE
             controlsBar?.visibility = View.GONE
             previewView?.visibility = View.GONE
@@ -181,23 +183,69 @@ class OcrCameraView @JvmOverloads constructor(
             pipeline = OcrPipeline(context)
         }
 
+        hideStatus()
+        setShutterReady(false)
+        // ignore results of a start that was since stopped or superseded
+        val request = ++cameraRequest
         previewView?.let { pv ->
             cameraManager?.startCamera(
                 previewView = pv,
-                onReady = {
+                onReady = onReady@{
+                    if (request != cameraRequest) return@onReady
                     isCameraStarted = true
+                    setShutterReady(true)
                 },
-                onError = { e ->
+                onError = onError@{ e ->
                     Log.e(TAG, "Failed to start camera viewfinder", e)
+                    if (request != cameraRequest) return@onError
+                    showCameraError()
                 }
             )
         }
     }
 
+    private fun setShutterReady(ready: Boolean) {
+        shutterBtn?.isEnabled = ready
+        shutterBtn?.alpha = if (ready) 1f else 0.4f
+    }
+
+    private fun showCameraError() {
+        statusIndicator?.apply {
+            hideStatus()
+            text = context.getString(R.string.ocr_camera_failed)
+            visibility = View.VISIBLE
+            setOnClickListener { startCamera() }
+        }
+    }
+
+    // cancels a pending fade-out and the retry tap of an earlier status
+    private fun hideStatus() {
+        statusIndicator?.apply {
+            animate().cancel()
+            removeCallbacks(fadeOutStatus)
+            setOnClickListener(null)
+            isClickable = false
+            alpha = 1f
+            visibility = View.GONE
+        }
+    }
+
+    private val fadeOutStatus = Runnable {
+        statusIndicator?.let { status ->
+            status.animate()
+                .alpha(0f)
+                .setDuration(300)
+                .withEndAction { status.visibility = View.GONE }
+                .start()
+        }
+    }
+
     fun stopCamera() {
+        cameraRequest++
         showLoading(false)
         cameraManager?.stopCamera()
         isCameraStarted = false
+        hideStatus()
         flashBtn?.setImageResource(R.drawable.ic_flash_off)
     }
 
@@ -319,23 +367,15 @@ class OcrCameraView @JvmOverloads constructor(
     }
 
     private fun showNoTextDetected() {
+        hideStatus()
         statusIndicator?.apply {
             text = context.getString(R.string.ocr_no_text_detected)
-            animate().cancel()
             alpha = 0f
             visibility = View.VISIBLE
             animate()
                 .alpha(1f)
                 .setDuration(200)
-                .withEndAction {
-                    postDelayed({
-                        animate()
-                            .alpha(0f)
-                            .setDuration(300)
-                            .withEndAction { visibility = View.GONE }
-                            .start()
-                    }, 1800)
-                }
+                .withEndAction { postDelayed(fadeOutStatus, 1800) }
                 .start()
         }
     }
@@ -354,9 +394,20 @@ class OcrCameraView @JvmOverloads constructor(
         }
     }
 
-    fun applyColors(colors: Colors) {
-        statusIndicator?.let {
-            it.setTextColor(Color.WHITE)
+    private fun applyPluginPanelColors() {
+        val colors = Settings.getValues().mColors
+        pluginPanel?.let { colors.setBackground(it, ColorType.MAIN_BACKGROUND) }
+        findViewById<TextView>(R.id.ocr_plugin_title)?.setTextColor(colors.get(ColorType.KEY_TEXT))
+        findViewById<TextView>(R.id.ocr_plugin_summary)?.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
+        findViewById<ImageView>(R.id.ocr_plugin_icon)?.let { colors.setColor(it, ColorType.KEY_ICON) }
+        findViewById<Button>(R.id.ocr_btn_load_plugin)?.let { button ->
+            button.background = GradientDrawable().apply {
+                cornerRadius = 8f * resources.displayMetrics.density
+                setColor(colors.get(ColorType.ACTION_KEY_BACKGROUND))
+            }
+            button.setTextColor(colors.get(ColorType.KEY_TEXT))
+            val padding = (16 * resources.displayMetrics.density).toInt()
+            button.setPadding(padding, 0, padding, 0)
         }
     }
 }

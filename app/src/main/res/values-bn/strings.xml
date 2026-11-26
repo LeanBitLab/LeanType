@@ -1662,4 +1662,6 @@
     <string name="storage_language_packs">অ্যাপ অনুবাদ (%d)</string>
     <string name="storage_item_language_pack_desc">ডাউনলোড করা অ্যাপ অনুবাদ (UI স্ট্রিং)</string>
     <string name="storage_type_language_pack">অ্যাপ অনুবাদ</string>
+    <string name="ocr_camera_failed">ক্যামেরা চালু করা যায়নি। আবার চেষ্টা করতে ট্যাপ করুন।</string>
+    <string name="handwriting_not_recognized">হাতের লেখা শনাক্ত করা যায়নি। আবার চেষ্টা করুন।</string>
 </resources>

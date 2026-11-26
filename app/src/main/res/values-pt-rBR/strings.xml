@@ -1719,4 +1719,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="storage_language_packs">Traduções do app (%d)</string>
     <string name="storage_item_language_pack_desc">Tradução do app baixada (textos da interface)</string>
     <string name="storage_type_language_pack">tradução do app</string>
+    <string name="ocr_camera_failed">Falha ao iniciar a câmera. Toque para tentar novamente.</string>
+    <string name="handwriting_not_recognized">Não foi possível reconhecer a escrita à mão. Tente novamente.</string>
 </resources>

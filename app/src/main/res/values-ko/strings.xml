@@ -1702,4 +1702,6 @@
     <string name="storage_language_packs">앱 번역 (%d)</string>
     <string name="storage_item_language_pack_desc">다운로드한 앱 번역(UI 문자열)</string>
     <string name="storage_type_language_pack">앱 번역</string>
+    <string name="ocr_camera_failed">카메라를 시작하지 못했습니다. 다시 시도하려면 탭하세요.</string>
+    <string name="handwriting_not_recognized">필기를 인식하지 못했습니다. 다시 시도하세요.</string>
 </resources>

@@ -1706,4 +1706,6 @@
     <string name="storage_language_packs">ترجمه‌های برنامه (%d)</string>
     <string name="storage_item_language_pack_desc">ترجمه برنامه دانلودشده (رشته‌های رابط کاربری)</string>
     <string name="storage_type_language_pack">ترجمه برنامه</string>
+    <string name="ocr_camera_failed">دوربین راه‌اندازی نشد. برای تلاش مجدد ضربه بزنید.</string>
+    <string name="handwriting_not_recognized">دستخط شناسایی نشد. دوباره امتحان کنید.</string>
 </resources>

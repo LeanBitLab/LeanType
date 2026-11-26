@@ -1801,4 +1801,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="storage_language_packs">Rakenduse tõlked (%d)</string>
     <string name="storage_item_language_pack_desc">Allalaaditud rakenduse tõlge (kasutajaliidese tekstid)</string>
     <string name="storage_type_language_pack">rakenduse tõlge</string>
+    <string name="ocr_camera_failed">Kaamera käivitamine ebaõnnestus. Puudutage uuesti proovimiseks.</string>
+    <string name="handwriting_not_recognized">Käekirja ei õnnestunud tuvastada. Proovige uuesti.</string>
 </resources>

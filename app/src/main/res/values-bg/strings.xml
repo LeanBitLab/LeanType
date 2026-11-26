@@ -1801,4 +1801,6 @@
     <string name="storage_language_packs">Преводи на приложението (%d)</string>
     <string name="storage_item_language_pack_desc">Изтеглен превод на приложението (текст на интерфейса)</string>
     <string name="storage_type_language_pack">превод на приложението</string>
+    <string name="ocr_camera_failed">Камерата не успя да се стартира. Докоснете, за да опитате отново.</string>
+    <string name="handwriting_not_recognized">Ръкописният текст не можа да бъде разпознат. Опитайте отново.</string>
 </resources>

@@ -1704,4 +1704,6 @@
     <string name="storage_language_packs">アプリの翻訳（%d）</string>
     <string name="storage_item_language_pack_desc">ダウンロード済みのアプリ翻訳（UI文字列）</string>
     <string name="storage_type_language_pack">アプリ翻訳</string>
+    <string name="ocr_camera_failed">カメラを起動できませんでした。タップして再試行してください。</string>
+    <string name="handwriting_not_recognized">手書きを認識できませんでした。もう一度お試しください。</string>
 </resources>

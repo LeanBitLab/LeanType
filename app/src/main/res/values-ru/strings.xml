@@ -1773,4 +1773,6 @@
     <string name="storage_language_packs">Переводы приложения (%d)</string>
     <string name="storage_item_language_pack_desc">Загруженный перевод приложения (строки интерфейса)</string>
     <string name="storage_type_language_pack">перевод приложения</string>
+    <string name="ocr_camera_failed">Не удалось запустить камеру. Нажмите, чтобы повторить.</string>
+    <string name="handwriting_not_recognized">Не удалось распознать рукописный текст. Попробуйте ещё раз.</string>
 </resources>

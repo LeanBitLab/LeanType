@@ -1801,4 +1801,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="storage_language_packs">Traduceri ale aplicației (%d)</string>
     <string name="storage_item_language_pack_desc">Traducere descărcată a aplicației (șiruri UI)</string>
     <string name="storage_type_language_pack">traducere a aplicației</string>
+    <string name="ocr_camera_failed">Camera nu a putut porni. Atinge pentru a reîncerca.</string>
+    <string name="handwriting_not_recognized">Scrisul de mână nu a putut fi recunoscut. Încearcă din nou.</string>
 </resources>

@@ -1801,4 +1801,6 @@
     <string name="storage_language_packs">Пераклады праграмы (%d)</string>
     <string name="storage_item_language_pack_desc">Спампаваны пераклад праграмы (радкі інтэрфейсу)</string>
     <string name="storage_type_language_pack">пераклад праграмы</string>
+    <string name="ocr_camera_failed">Не ўдалося запусціць камеру. Націсніце, каб паўтарыць спробу.</string>
+    <string name="handwriting_not_recognized">Не ўдалося распазнаць рукапісны тэкст. Паспрабуйце яшчэ раз.</string>
 </resources>

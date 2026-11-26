@@ -1780,4 +1780,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="storage_language_packs">Traduzioni dell\'app (%d)</string>
     <string name="storage_item_language_pack_desc">Traduzione dell\'app scaricata (stringhe UI)</string>
     <string name="storage_type_language_pack">traduzione dell\'app</string>
+    <string name="ocr_camera_failed">Avvio della fotocamera non riuscito. Tocca per riprovare.</string>
+    <string name="handwriting_not_recognized">Impossibile riconoscere la scrittura a mano. Riprova.</string>
 </resources>

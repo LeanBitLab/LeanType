@@ -441,6 +441,7 @@
     <string name="ocr_camera_permission_required">Camera permission is required for OCR viewfinder</string>
     <string name="ocr_screenshot_load_failed">Failed to load screenshot image</string>
     <string name="ocr_no_text_detected">No text detected</string>
+    <string name="ocr_camera_failed">Camera failed to start. Tap to retry.</string>
     <string name="ocr_keep_line_breaks">Preserve line breaks</string>
     <string name="ocr_keep_line_breaks_summary">Keep line breaks in recognized text blocks</string>
     <string name="ocr_suggest_screenshot_text">Suggest text extraction from screenshots</string>
@@ -497,6 +498,7 @@
     <string name="handwriting_plugin_summary_text">Please load the handwriting plugin library to enable drawing recognition.</string>
     <string name="handwriting_plugin_load_button">Load Plugin</string>
     <string name="handwriting_hint_write_here">Write here</string>
+    <string name="handwriting_not_recognized">Couldn\'t recognize the handwriting. Try again.</string>
     <!-- Preferences item for inserting space after punctuation -->
     <string name="autospace_after_punctuation">Autospace after punctuation</string>
     <!-- Description for "autospace_after_punctuation" setting -->

@@ -1703,4 +1703,6 @@ Kamus baharu:
     <string name="storage_language_packs">Terjemahan apl (%d)</string>
     <string name="storage_item_language_pack_desc">Terjemahan apl dimuat turun (rentetan UI)</string>
     <string name="storage_type_language_pack">terjemahan apl</string>
+    <string name="ocr_camera_failed">Kamera gagal dimulakan. Ketik untuk cuba semula.</string>
+    <string name="handwriting_not_recognized">Tulisan tangan tidak dapat dikenali. Cuba lagi.</string>
 </resources>

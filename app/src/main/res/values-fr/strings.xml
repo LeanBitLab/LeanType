@@ -1769,4 +1769,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="storage_language_packs">Traductions de l’application (%d)</string>
     <string name="storage_item_language_pack_desc">Traduction de l’application téléchargée (chaînes de l’interface)</string>
     <string name="storage_type_language_pack">traduction de l’application</string>
+    <string name="ocr_camera_failed">Échec du démarrage de la caméra. Appuyez pour réessayer.</string>
+    <string name="handwriting_not_recognized">Impossible de reconnaître l\'écriture manuscrite. Réessayez.</string>
 </resources>

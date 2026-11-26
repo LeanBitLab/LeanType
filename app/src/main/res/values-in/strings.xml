@@ -1764,4 +1764,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="storage_language_packs">Terjemahan aplikasi (%d)</string>
     <string name="storage_item_language_pack_desc">Terjemahan aplikasi yang diunduh (string UI)</string>
     <string name="storage_type_language_pack">terjemahan aplikasi</string>
+    <string name="ocr_camera_failed">Kamera gagal dimulai. Ketuk untuk mencoba lagi.</string>
+    <string name="handwriting_not_recognized">Tulisan tangan tidak dapat dikenali. Coba lagi.</string>
 </resources>

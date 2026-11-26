@@ -1766,4 +1766,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="storage_language_packs">Překlady aplikace (%d)</string>
     <string name="storage_item_language_pack_desc">Stažený překlad aplikace (texty rozhraní)</string>
     <string name="storage_type_language_pack">překlad aplikace</string>
+    <string name="ocr_camera_failed">Kameru se nepodařilo spustit. Klepnutím to zkuste znovu.</string>
+    <string name="handwriting_not_recognized">Rukopis se nepodařilo rozpoznat. Zkuste to znovu.</string>
 </resources>

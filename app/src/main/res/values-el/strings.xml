@@ -1814,4 +1814,6 @@
     <string name="storage_language_packs">Μεταφράσεις εφαρμογής (%d)</string>
     <string name="storage_item_language_pack_desc">Ληφθείσα μετάφραση εφαρμογής (συμβολοσειρές UI)</string>
     <string name="storage_type_language_pack">μετάφραση εφαρμογής</string>
+    <string name="ocr_camera_failed">Η κάμερα απέτυχε να ξεκινήσει. Πατήστε για νέα προσπάθεια.</string>
+    <string name="handwriting_not_recognized">Δεν ήταν δυνατή η αναγνώριση του χειρόγραφου. Δοκιμάστε ξανά.</string>
 </resources>

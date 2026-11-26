@@ -1805,4 +1805,6 @@
     <string name="storage_language_packs">ایپ کے ترجمے (%d)</string>
     <string name="storage_item_language_pack_desc">ڈاؤن لوڈ کردہ ایپ ترجمہ (UI سٹرنگز)</string>
     <string name="storage_type_language_pack">ایپ ترجمہ</string>
+    <string name="ocr_camera_failed">کیمرہ شروع نہیں ہو سکا۔ دوبارہ کوشش کے لیے ٹیپ کریں۔</string>
+    <string name="handwriting_not_recognized">ہاتھ کی تحریر شناخت نہیں ہو سکی۔ دوبارہ کوشش کریں۔</string>
 </resources>

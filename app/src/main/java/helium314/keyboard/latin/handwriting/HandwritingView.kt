@@ -297,7 +297,10 @@ class HandwritingView @JvmOverloads constructor(
         recognitionExecutor.execute {
             try {
                 val results = recognizer.recognize(strokes)
-                if (results.isNullOrEmpty()) return@execute
+                if (results.isNullOrEmpty()) {
+                    showRecognitionFailed()
+                    return@execute
+                }
 
                 mainHandler.post {
                     val mainCandidate = results[0]
@@ -358,7 +361,16 @@ class HandwritingView @JvmOverloads constructor(
                 }
             } catch (e: Exception) {
                 Log.e("HandwritingView", "Error during recognition", e)
+                showRecognitionFailed()
             }
+        }
+    }
+
+    // the strokes are already cleared, so say why nothing was typed
+    private fun showRecognitionFailed() {
+        mainHandler.post {
+            if (!isShown) return@post
+            KeyboardSwitcher.getInstance().showToast(context.getString(R.string.handwriting_not_recognized), true)
         }
     }
 
