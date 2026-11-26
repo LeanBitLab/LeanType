@@ -536,7 +536,7 @@ class PointerTracker private constructor(
         }
         // A gesture should start only from a non-modifier key. Note that the gesture detection is
         // disabled when the key is repeating.
-        mIsDetectingGesture = (mKeyboard?.mId?.isAlphabetKeyboard == true) &&
+        mIsDetectingGesture = (mKeyboard?.mId?.isAlphabetKeyboard == true) && mKeyboard?.mId?.isKanaGrid == false &&
                 key != null && !key.isModifier() && !mKeySwipeAllowed && !sInKeySwipe
         if (mIsDetectingGesture) {
             mBatchInputArbiter.addDownEventPoint(x, y, eventTime,

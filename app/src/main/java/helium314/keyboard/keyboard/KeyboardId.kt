@@ -80,6 +80,10 @@ class KeyboardId(elementId: Int, params: KeyboardLayoutSet.Params) {
                 || LayoutParser.isHexLayout(mSubtype.mainLayoutName, mContext)
         )
 
+    /** A kana grid is complete as written: nothing is added to it, it is not split, and swiping it types no words */
+    val isKanaGrid: Boolean
+        get() = isAlphabetKeyboard && LayoutParser.isKanaGridLayout(mSubtype.mainLayoutName, mContext)
+
     fun navigateNext(): Boolean {
         return (mEditorInfo.imeOptions and EditorInfo.IME_FLAG_NAVIGATE_NEXT) != 0 ||
                 imeAction() == EditorInfo.IME_ACTION_NEXT

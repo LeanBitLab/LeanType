@@ -20,7 +20,6 @@ import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.define.DebugFlags
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.LayoutType
-import helium314.keyboard.latin.utils.LayoutUtils
 import helium314.keyboard.latin.utils.POPUP_KEYS_LAYOUT
 import helium314.keyboard.latin.utils.POPUP_KEYS_NUMBER
 import helium314.keyboard.latin.utils.replaceFirst
@@ -115,7 +114,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
         }
 
         // the kana grid is complete as written: 4 rows with its own side keys, and popups holding only kana
-        val isKanaGrid = params.mId.isAlphabetKeyboard && params.mId.mSubtype.mainLayoutName == LayoutUtils.JAPANESE_12KEY
+        val isKanaGrid = params.mId.isKanaGrid
         val isCompleteGrid = params.isHexagonal || isKanaGrid
 
         val numberRows = getNumberRows()
