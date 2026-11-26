@@ -308,6 +308,9 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             || (wordComposer.isMostlyCaps() && !wordComposer.isAllUpperCase()) // We never auto-correct when suggestions are resumed because it would be unexpected
             || wordComposer.isResumed() // If we don't have a main dictionary, we never want to auto-correct. The reason
             || isDeveloperTokenOrSpecialSyntax(consideredWord)
+            // never replace a typed word with an emoji, unless the user mapped it as a shortcut. The emoji dictionary
+            // is part of the main dictionary, so without a word list emojis can be the only candidates
+            || (firstSuggestionInContainer?.isEmoji == true && !isExactShortcut(firstSuggestionInContainer))
             // for this is, the user may have a contact whose name happens to match a valid
             // word in their language, and it will unexpectedly auto-correct. For example, if
             // the user types in English with no dictionary and has a "Will" in their contact

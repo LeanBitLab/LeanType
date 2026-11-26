@@ -52,6 +52,20 @@ class SuggestTest {
             .edit { putBoolean(Settings.PREF_AUTO_CORRECTION, true) } // need to enable, off by default
     }
 
+    // with only an emoji dictionary (no word list), emojis are the only candidates for any unknown word
+    @Test fun `unknown word is not autocorrected to an emoji`() {
+        val locale = Locale.ENGLISH
+        val result = shouldBeAutoCorrected(
+            "lov",
+            listOf(suggestion("\uD83D\uDE0D", Int.MAX_VALUE, locale)),
+            null,
+            null,
+            locale,
+            thresholdVeryAggressive
+        )
+        assert(!result.last()) // should not be corrected
+    }
+
     @Test fun `'on' to 'in' if 'in' was used before in this context`() {
         val locale = Locale.ENGLISH
         val result = shouldBeAutoCorrected(
