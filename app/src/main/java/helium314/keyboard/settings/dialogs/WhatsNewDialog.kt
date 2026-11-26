@@ -4,7 +4,6 @@ package helium314.keyboard.settings.dialogs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -52,21 +51,21 @@ fun WhatsNewDialog(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Row(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     SupportLinkButton(
                         iconRes = R.drawable.ic_settings_about_github,
                         label = stringResource(R.string.updates_github_sponsor_title),
                         onClick = onSponsorGitHub,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     )
                     SupportLinkButton(
                         iconRes = R.drawable.ic_opencollective,
                         label = stringResource(R.string.open_collective),
                         onClick = onSponsorOpenCollective,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
