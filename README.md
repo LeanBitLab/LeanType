@@ -34,12 +34,12 @@ Built on [HeliBoard](https://github.com/Helium314/HeliBoard). No tracking, and a
 
 ## Why LeanType
 
-- **Private by design**: no tracking. The Offline flavor has no internet permission, so nothing can leave your device.
+- **Private by design**: no tracking. The Offline flavor has no internet permission, so the keyboard cannot connect to the network (separately installed plugin apps have their own permissions).
 - **AI writing tools**: proofread, rewrite and translate with Gemini, Groq, OpenAI, your own server (Ollama, LM Studio), or a model running on your phone.
 - **Voice, handwriting and camera text**: on-device Whisper voice typing, handwriting recognition and OCR from the camera or screenshots, all offline.
 - **Fast typing**: gesture typing, clipboard history, a text expander, inline math (`25*4=`) and full physical keyboard support.
-- **Make it yours**: themes, wallpaper blur, 12+ key sound packs, hexagonal layouts, a floating keyboard and per-app profiles.
-- **Many languages**: downloadable dictionaries for many languages, plus Chinese, Japanese and Korean input through the CJK plugin.
+- **Make it yours**: themes, wallpaper blur, downloadable key sound packs, hexagonal layouts, a floating keyboard and per-app profiles.
+- **Many languages**: downloadable dictionaries for many languages, built-in Korean Hangul, and Chinese and Japanese input through the CJK plugin.
 
 ## Download
 
@@ -56,7 +56,7 @@ Built on [HeliBoard](https://github.com/Helium314/HeliBoard). No tracking, and a
 
 | APK | Pick it if you want | Internet |
 | :--- | :--- | :--- |
-| `standard-release` (recommended) | Cloud AI, in-app plugin downloads and update checks | Optional |
+| `standard-release` (recommended) | Cloud AI, in-app plugin downloads and update checks | Yes, can be turned off |
 | `offline-release` | No network at all; on-device AI through the Offline AI plugin | None (no permission) |
 | `standard-lite-release` / `offline-lite-release` | The same, about 4 MB smaller: English only, other app languages as [language packs](https://github.com/LeanBitLab/LeanType-Language-Packs) (packs need Android 11+) | Same as above |
 
@@ -67,14 +67,14 @@ All builds, Lite included, run on Android 6.0+.
 | Area | Highlights |
 | :--- | :--- |
 | **AI** | Proofreading and rewriting with cloud, self-hosted or on-device GGUF models; 10 custom AI keys with your own prompts; models fetched from your provider |
-| **Translation** | Translate in the keyboard with the offline plugin, built-in ML Kit or your AI provider |
+| **Translation** | Translate in the keyboard with the Translation plugin (offline ML Kit) or your AI provider |
 | **Voice & handwriting** | On-device Whisper voice typing with a live waveform; handwriting canvas with offline models |
 | **Camera & screenshots** | Scan text with an in-keyboard camera; a pill offers 1-tap text from new screenshots, with cleanup options |
-| **Typing** | Gesture typing, full-keyboard and backspace swipe gestures, touchpad mode, text editing panel, inline math, smart learning |
-| **Clipboard & shortcuts** | Searchable clipboard history with pinning and OTP filtering; text expander with `%date%`, `%clipboard%` and more; emoji search; GIF and sticker search |
-| **Look & feel** | Themes, live wallpaper blur, key shape and spacing controls, sound packs, hexagonal layouts, floating keyboard (automatic in landscape), split suggestions |
-| **Languages** | Downloadable dictionaries, Chinese Pinyin, Japanese Kana and Romaji, Korean Hangul (CJK plugin), Gboard dictionary import |
-| **Control** | Per-app profiles (**Settings → Advanced → App Profiles**), selective backup with encrypted API key export, storage and cache cleanup, word blacklist with regex |
+| **Typing** | Gesture typing (needs a separately loaded library), full-keyboard and backspace swipe gestures, touchpad mode, text editing panel, inline math, smart learning |
+| **Clipboard & shortcuts** | Searchable clipboard history with pinning and OTP filtering; text expander with `%date%`, `%clipboard%` and more; emoji search; GIF and sticker search (GIF plugin) |
+| **Look & feel** | Themes, wallpaper blur, key shape and spacing controls, sound packs, hexagonal layouts, floating keyboard (automatic in landscape), split suggestions |
+| **Languages** | Downloadable dictionaries, built-in Korean Hangul, Chinese Pinyin and Japanese romaji-to-kana input (CJK plugin), Gboard dictionary import |
+| **Control** | Per-app profiles (**Settings → Advanced → App Profiles**), selective backup with optional (unencrypted) API key export, storage and cache cleanup, word blacklist with regex |
 
 Every feature and setting is described in the [full feature guide](docs/FEATURES.md).
 
@@ -82,8 +82,9 @@ Every feature and setting is described in the [full feature guide](docs/FEATURES
 
 Optional features come as separate plugins, so the keyboard stays small.
 
-- **Standard**: open the plugin's screen under **Settings → Plugins** and tap **Download Plugin**.
-- **Offline**: download the plugin APK from its releases page and load it on the same screen.
+- **Translation, Handwriting, OCR, CJK**: open the plugin's screen under **Settings → Plugins**. Standard can download the plugin there; for Offline, download the APK from its releases page and load it on the same screen.
+- **Voice and GIF**: these are separate apps. Download the APK from their releases page (the plugin screen links there) and install it.
+- **Offline AI** (Offline flavor only): download the APK from its releases page and load it on its plugin screen.
 
 | Plugin | Adds | Settings screen |
 | :--- | :--- | :--- |
@@ -100,8 +101,8 @@ Also available: [sound packs](https://github.com/LeanBitLab/LeanType-SoundPacks)
 <details>
 <summary><b>Quick setup: AI, dictionaries, gesture typing</b></summary>
 
-- **Cloud or self-hosted AI**: get a key from [Google AI Studio](https://aistudio.google.com/apikey) or [Groq](https://console.groq.com/keys), or run [Ollama](https://ollama.com/) / [LM Studio](https://lmstudio.ai/) on your network. Then open **Settings → AI Integration → AI Provider**, pick a provider (or Custom for an OpenAI-compatible server) and a model.
-- **On-device AI** (Offline flavor): load the Offline AI plugin, then pick a GGUF model file (for example `Qwen2.5-0.5B-Instruct-Q4_K_M.gguf`) in **Settings → AI Integration → Offline Model**.
+- **Cloud or self-hosted AI**: get a key from [Google AI Studio](https://aistudio.google.com/apikey) or [Groq](https://console.groq.com/keys), or run [Ollama](https://ollama.com/) / [LM Studio](https://lmstudio.ai/) on your network. Then open **Settings → AI Integration → AI Provider**, pick a provider (**HF/OpenAI-compatible** for your own server) and a model.
+- **On-device AI** (Offline flavor): load the Offline AI plugin, then pick a GGUF model file (for example `Qwen2.5-0.5B-Instruct-Q4_K_M.gguf`) under **Settings → Plugins → Offline AI Plugin**, in **Offline Model**.
 - **Dictionaries**: **Settings → Languages & Layouts → Dictionaries**, or tap the dictionary icon in the toolbar when one is missing.
 - **Gesture typing**: Standard downloads the library in **Settings → Gestures & swipes**. Offline: [download the library](https://github.com/erkserkserks/openboard/tree/46fdf2b550035ca69299ce312fa158e7ade36967/app/src/main/jniLibs) and load it on the same screen.
 
