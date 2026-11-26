@@ -1,4 +1,5 @@
 [
+// kana-grid (keep this line in a copy: no extra keys or popups are added, and no split or gesture typing)
   [
     {"label": "emoji", "width": 0.2},
     {"label": "あ", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "あ"}, {"label": "い"}, {"label": "う"}, {"label": "え"}, {"label": "お"}, {"label": "ぁ"}, {"label": "ぃ"}, {"label": "ぅ"}, {"label": "ぇ"}, {"label": "ぉ"}]}},

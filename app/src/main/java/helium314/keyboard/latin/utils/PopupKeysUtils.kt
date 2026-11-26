@@ -28,7 +28,8 @@ fun createPopupKeysArray(popupSet: PopupSet<*>?, params: KeyboardParams, label: 
     val popupKeysDelegate = lazy { mutableSetOf<String>() }
     val popupKeys by popupKeysDelegate
     val baseTypes = if (params.mId.isAlphabetKeyboard) params.mPopupKeyTypes else allPopupKeyTypes
-    val types = if (params.isHexagonal) {
+    // hex layouts and kana grids need their layout popups even if the user turned them off: the kana grid can't be typed without
+    val types = if (params.isHexagonal || params.mId.isKanaGrid) {
         listOf(POPUP_KEYS_LAYOUT) + (baseTypes - POPUP_KEYS_LAYOUT)
     } else {
         baseTypes

@@ -11,6 +11,7 @@ import helium314.keyboard.keyboard.Keyboard
 import helium314.keyboard.keyboard.KeyboardId
 import helium314.keyboard.keyboard.KeyboardLayoutSet
 import helium314.keyboard.keyboard.internal.KeySpecParser.KeySpecParserError
+import helium314.keyboard.keyboard.internal.KeyboardBottomRowGeometry
 import helium314.keyboard.keyboard.internal.KeyboardBuilder
 import helium314.keyboard.keyboard.internal.KeyboardParams
 import helium314.keyboard.keyboard.internal.TouchPositionCorrection
@@ -46,6 +47,9 @@ import java.util.Locale
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import helium314.keyboard.latin.utils.POPUP_KEYS_ORDER_DEFAULT
+import helium314.keyboard.latin.common.Constants.Separators
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
@@ -773,6 +777,74 @@ f""", // no newline at the end
         }
     }
 
+    @Test fun japanese12KeyBottomRowIsNotTheSpaceRow() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+        val (kb, _) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+        val bottom = KeyboardBottomRowGeometry.findBottomRowKey(kb.sortedKeys)!!
+        // the emoji and clipboard bottom rows line up with the symbols / enter row, not with the space bar above it
+        assertEquals(kb.sortedKeys.first { it.code == KeyCode.SYMBOL_ALPHA }.y, bottom.y)
+        assertTrue(kb.sortedKeys.first { it.code == Constants.CODE_SPACE }.y < bottom.y)
+    }
+
+    @Test fun qwertyBottomRowIsTheSpaceRow() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "qwerty", true)
+        val (kb, _) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+        val space = kb.sortedKeys.first { it.code == Constants.CODE_SPACE }
+        val bottom = KeyboardBottomRowGeometry.findBottomRowKey(kb.sortedKeys)!!
+        assertEquals(space.y, bottom.y)
+        assertEquals(space.height, bottom.height)
+    }
+
+    @Test fun japanese12KeyPopupsStayWhenLayoutPopupsAreTurnedOff() {
+        val prefs = latinIME.prefs()
+        val original = prefs.getString(Settings.PREF_POPUP_KEYS_ORDER, null)
+        try {
+            prefs.edit { putString(Settings.PREF_POPUP_KEYS_ORDER,
+                POPUP_KEYS_ORDER_DEFAULT.replace(POPUP_KEYS_LAYOUT + Separators.KV + true, POPUP_KEYS_LAYOUT + Separators.KV + false)) }
+            Settings.getInstance().loadSettings(latinIME)
+            assertTrue(POPUP_KEYS_LAYOUT !in Settings.getValues().mPopupKeyTypes)
+            val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+            val (_, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+            val na = rows.flatten().first { it.mLabel == "な" }
+            assertEquals("なにぬねの", na.mPopupKeys.orEmpty().joinToString("") { it.mLabel!! })
+        } finally {
+            prefs.edit { if (original == null) remove(Settings.PREF_POPUP_KEYS_ORDER) else putString(Settings.PREF_POPUP_KEYS_ORDER, original) }
+            Settings.getInstance().loadSettings(latinIME)
+        }
+    }
+
+    @Test fun japanese12KeyIsNotSplit() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+        val (kb, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET, split = true)
+        assertTrue(kb.mId.mIsSplitLayout && kb.mId.isKanaGrid)
+        assertEquals(listOf(5, 5, 5, 5), rows.map { it.size }) // no spacers either
+    }
+
+    @Test fun copyOfJapanese12KeyIsStillAKanaGrid() {
+        val content = latinIME.assets.open("layouts/main/${LayoutUtils.JAPANESE_12KEY}.json").reader().use { it.readText() }
+        assertTrue(LayoutUtilsCustom.checkLayout(content, latinIME))
+        val name = LayoutUtilsCustom.getLayoutName("my kana", LayoutType.MAIN, Locale.JAPANESE)
+        val file = LayoutUtilsCustom.getLayoutFile(name, LayoutType.MAIN, latinIME)
+        try {
+            file.writeText(content)
+            LayoutUtilsCustom.onLayoutFileChanged()
+            val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, name, true)
+            val (kb, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET, split = true)
+            assertTrue(kb.mId.isKanaGrid)
+            assertEquals(listOf(5, 5, 5, 5), rows.map { it.size })
+        } finally {
+            file.delete()
+            LayoutUtilsCustom.onLayoutFileChanged()
+        }
+    }
+
+    @Test fun otherLayoutsAndTheSymbolsKeyboardAreNotKanaGrids() {
+        val japanese = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+        assertFalse(buildKeyboard(EditorInfo(), japanese, KeyboardId.ELEMENT_SYMBOLS).first.mId.isKanaGrid)
+        val qwerty = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "qwerty", true)
+        assertFalse(buildKeyboard(EditorInfo(), qwerty, KeyboardId.ELEMENT_ALPHABET).first.mId.isKanaGrid)
+    }
+
     @Test fun japanese12KeyKeepsNormalSymbolsKeyboard() {
         val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
         val (_, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_SYMBOLS)
@@ -781,8 +853,9 @@ f""", // no newline at the end
         assertTrue(codes.containsAll(listOf(KeyCode.DELETE, KeyCode.SYMBOL_ALPHA, Constants.CODE_SPACE)), "$codes")
     }
 
-    private fun buildKeyboard(editorInfo: EditorInfo, subtype: InputMethodSubtype, elementId: Int): Pair<Keyboard, List<List<KeyParams>>> {
+    private fun buildKeyboard(editorInfo: EditorInfo, subtype: InputMethodSubtype, elementId: Int, split: Boolean = false): Pair<Keyboard, List<List<KeyParams>>> {
         val layoutParams = KeyboardLayoutSet.Params()
+        layoutParams.mIsSplitLayoutEnabled = split
         val editorInfoField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mEditorInfo").apply { isAccessible = true }
         editorInfoField.set(layoutParams, editorInfo)
         val modeField = KeyboardLayoutSet.Params::class.java.getDeclaredField("mMode").apply { isAccessible = true }

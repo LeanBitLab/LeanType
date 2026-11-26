@@ -34,10 +34,23 @@ object LayoutParser {
     private const val TAG = "LayoutParser"
     private val layoutCache = hashMapOf<String, (KeyboardParams) -> MutableList<MutableList<KeyData>>>()
     private val hexLayoutCache = java.util.concurrent.ConcurrentHashMap<String, Boolean>()
+    private val kanaGridCache = java.util.concurrent.ConcurrentHashMap<String, Boolean>()
+    // a comment line in the layout file, so copies of the layout keep the behaviour whatever their name is
+    private const val KANA_GRID_MARKER = "// kana-grid"
 
     fun clearCache() {
         layoutCache.clear()
         hexLayoutCache.clear()
+        kanaGridCache.clear()
+    }
+
+    /** True for a main layout that is a complete kana grid, see [KANA_GRID_MARKER] */
+    fun isKanaGridLayout(layoutName: String, context: Context?): Boolean {
+        if (context == null) return false
+        return kanaGridCache[layoutName] ?: runCatching {
+            getLayoutFileContent(LayoutType.MAIN, layoutName.substringBefore("+"), context)
+                .lineSequence().any { it.startsWith(KANA_GRID_MARKER) }
+        }.getOrDefault(false).also { kanaGridCache[layoutName] = it }
     }
 
     fun isHexLayout(layoutName: String, context: Context?): Boolean {

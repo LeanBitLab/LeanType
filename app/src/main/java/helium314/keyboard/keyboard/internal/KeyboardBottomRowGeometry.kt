@@ -3,8 +3,8 @@
 package helium314.keyboard.keyboard.internal
 
 import android.content.Context
+import helium314.keyboard.keyboard.Key
 import helium314.keyboard.keyboard.KeyboardSwitcher
-import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.LatinIME
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.settings.Settings
@@ -59,16 +59,16 @@ object KeyboardBottomRowGeometry {
         val bottomRowAreaHeight = totalHeight - bottomRowY
 
         val mainKb = KeyboardSwitcher.getInstance().keyboard
-        // hex layouts have their space keys in a middle row, so the space key does not mark the bottom row
+        // hex layouts have interlocking rows of their own, so they keep the calculated bottom row
         if (mainKb != null && mainKb.mOccupiedHeight == totalHeight && !mainKb.isHexagonal
                 && (mainKb.mId.isAlphabetKeyboard || mainKb.mId.isAlphaOrSymbolKeyboard)) {
-            val spaceKey = mainKb.sortedKeys.firstOrNull { it.code == Constants.CODE_SPACE }
-            if (spaceKey != null) {
+            val bottomKey = findBottomRowKey(mainKb.sortedKeys)
+            if (bottomKey != null) {
                 return Dimensions(
-                    bottomRowY = spaceKey.y,
-                    bottomRowKeyHeight = spaceKey.height,
-                    bottomRowAreaHeight = mainKb.mOccupiedHeight - spaceKey.y,
-                    bottomPadding = mainKb.mOccupiedHeight - (spaceKey.y + spaceKey.height),
+                    bottomRowY = bottomKey.y,
+                    bottomRowKeyHeight = bottomKey.height,
+                    bottomRowAreaHeight = mainKb.mOccupiedHeight - bottomKey.y,
+                    bottomPadding = mainKb.mOccupiedHeight - (bottomKey.y + bottomKey.height),
                     totalKeyboardHeight = mainKb.mOccupiedHeight
                 )
             }
@@ -82,4 +82,10 @@ object KeyboardBottomRowGeometry {
             totalKeyboardHeight = totalHeight
         )
     }
+
+    /**
+     * A key of the lowest row. This is usually the space bar's row, but not every layout has the space bar there
+     * (Japanese 12-key grid, custom layouts).
+     */
+    internal fun findBottomRowKey(keys: List<Key>): Key? = keys.filterNot { it.isSpacer }.maxByOrNull { it.y }
 }
