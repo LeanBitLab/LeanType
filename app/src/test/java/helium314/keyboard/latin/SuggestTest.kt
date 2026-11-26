@@ -286,6 +286,23 @@ class SuggestTest {
         assert(!fuzzy.last()) // should not be corrected
     }
 
+    // emoji dictionaries store each emoji as a shortcut of its keywords, so typing a keyword matches it exactly
+    @Test fun `exact emoji dictionary shortcut is neither promoted nor autocorrected`() {
+        latinIME.prefs().edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, true) }
+        val locale = Locale.GERMAN
+        val emoji = exactShortcut("\u2764\uFE0F", 1500000, locale, Dictionary.TYPE_EMOJI)
+        val words = mutableListOf(suggestion("Herz", 1600000, locale), emoji)
+        Suggest.promoteExactShortcut(words)
+        assertEquals("Herz", words.first().mWord)
+
+        val result = shouldBeAutoCorrected(
+            "herz",
+            listOf(emoji, suggestion("herz", 1500000, locale)),
+            null, null, locale, thresholdModest
+        )
+        assert(!result.last()) // should not be corrected
+    }
+
     @Test fun `exact shortcut is not autocorrected when setting is off`() {
         latinIME.prefs().edit { putBoolean(Settings.PREF_AUTOCORRECT_SHORTCUTS, false) }
         val locale = Locale.ENGLISH
@@ -463,8 +480,8 @@ class SuggestTest {
 private var currentTypingLocale = Locale.ENGLISH
 
 /** A shortcut whose key was typed exactly, as flagged by the native dictionary */
-fun exactShortcut(word: String, score: Int, locale: Locale) = SuggestedWordInfo(word, "", score,
-    SuggestedWordInfo.KIND_SHORTCUT or SuggestedWordInfo.KIND_FLAG_EXACT_MATCH, TestDict(locale), 0, 0)
+fun exactShortcut(word: String, score: Int, locale: Locale, dictType: String = Dictionary.TYPE_USER) = SuggestedWordInfo(word, "",
+    score, SuggestedWordInfo.KIND_SHORTCUT or SuggestedWordInfo.KIND_FLAG_EXACT_MATCH, TestDict(locale, dictType), 0, 0)
 
 fun suggestion(word: String, score: Int, locale: Locale, shortcut: Boolean = false) =
     SuggestedWordInfo(
@@ -491,7 +508,7 @@ class ShadowFacilitator {
     fun hasAtLeastOneInitializedMainDictionary() = true // otherwise no autocorrect
 }
 
-private class TestDict(locale: Locale) : Dictionary("testDict", locale) {
+private class TestDict(locale: Locale, dictType: String = "testDict") : Dictionary(dictType, locale) {
     override fun getSuggestions(
         composedData: ComposedData,
         ngramContext: NgramContext,
