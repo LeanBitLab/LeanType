@@ -1,6 +1,7 @@
-- Added: Japanese 12-key kana layout with long-press for the rest of each kana row.
-- Japanese: Voiced and small kana are on long-press too.
-- Japanese: Kanji suggestions need CJK plugin v1.0.3 or later.
-- Kana grid: No extra keys, split mode or gesture typing.
-- Fixed: In browsers, a suggestion tapped after space and backspace could be added to the end of the word.
-- Docs: Corrected feature claims and settings paths in the README and feature guide.
+- Fixed: On tablets, the Enable split keyboard switches (portrait and landscape) now work.
+- Fixed: Split distance now works on tablets.
+- Tablets: Duplicate unfolded split settings are hidden.
+- Foldables: The toolbar split key no longer changes the folded screen.
+- Foldables: Split keyboard when unfolded applies to both orientations.
+- Phones: The toolbar key no longer overrides the landscape split switch.
+- Not tested on a tablet or foldable yet, please verify.

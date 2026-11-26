@@ -64,10 +64,13 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Japanese: New 12-key kana layout with long-press popups",
-    "• Japanese: Kanji suggestions need CJK plugin v1.0.3+",
-    "• Fixed: Suggestions after backspace in browsers",
-    "• Docs: Corrected feature descriptions"
+    "• Fixed: Split keyboard switches work on tablets",
+    "• Fixed: Split distance works on tablets",
+    "• Tablets: Duplicate unfolded split settings hidden",
+    "• Foldables: Toolbar split key keeps folded screen as is",
+    "• Foldables: Unfolded split switch covers both orientations",
+    "• Phones: Landscape split switch no longer overridden",
+    "• Tablet and foldable testing welcome"
 )
 
 @Composable
