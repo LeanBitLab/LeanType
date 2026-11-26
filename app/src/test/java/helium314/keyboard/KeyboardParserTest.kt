@@ -26,6 +26,7 @@ import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.LayoutType
 import helium314.keyboard.latin.utils.LayoutType.Companion.toExtraValue
+import helium314.keyboard.latin.utils.LayoutUtils
 import helium314.keyboard.latin.utils.LayoutUtilsCustom
 import helium314.keyboard.latin.utils.POPUP_KEYS_LAYOUT
 import helium314.keyboard.latin.utils.SubtypeUtilsAdditional
@@ -739,6 +740,45 @@ f""", // no newline at the end
         val (kb, keys) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_CUSTOM1)
         assertEquals(KeyboardId.ELEMENT_CUSTOM1, kb.mId.mElementId)
         assertTrue(keys.isNotEmpty())
+    }
+
+    @Test fun japanese12KeyGrid() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+        val (_, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_ALPHABET)
+        val keys = rows.map { row -> row.filter { !it.isSpacer } }
+
+        // four rows of five keys: the grid brings its own side keys, nothing is added by the functional layout
+        assertEquals(listOf(5, 5, 5, 5), keys.map { it.size })
+        assertEquals(listOf("あ", "か", "さ"), keys[0].subList(1, 4).map { it.mLabel })
+        assertEquals(listOf("た", "な", "は"), keys[1].subList(1, 4).map { it.mLabel })
+        assertEquals(listOf("ま", "や", "ら"), keys[2].subList(1, 4).map { it.mLabel })
+        assertEquals(listOf("、", "わ", "。"), keys[3].subList(1, 4).map { it.mLabel })
+        assertEquals(KeyCode.DELETE, keys[0][4].mCode)
+        assertEquals(KeyCode.ARROW_LEFT, keys[1][0].mCode)
+        assertEquals(KeyCode.ARROW_RIGHT, keys[1][4].mCode)
+        assertEquals(KeyCode.LANGUAGE_SWITCH, keys[2][0].mCode)
+        assertEquals(Constants.CODE_SPACE, keys[2][4].mCode)
+        assertEquals(KeyCode.SYMBOL_ALPHA, keys[3][0].mCode)
+
+        // popups keep the order of the kana table and hold nothing else (no number or symbol hints added)
+        val popups = keys.flatten().associate { it.mLabel to it.mPopupKeys?.map { p -> p.mLabel }.orEmpty() }
+        assertEquals("あいうえおぁぃぅぇぉ", popups.getValue("あ").joinToString(""))
+        assertEquals("はひふへほばびぶべぼぱぴぷぺぽ", popups.getValue("は").joinToString(""))
+        assertEquals("たちつてとだぢづでどっ", popups.getValue("た").joinToString(""))
+        assertEquals("やゆよゃゅょ", popups.getValue("や").joinToString(""))
+
+        // every popup is typed as exactly its own kana
+        keys.flatten().filter { it.mLabel != null && popups.getValue(it.mLabel).isNotEmpty() }.forEach { key ->
+            key.mPopupKeys!!.forEach { assertEquals(it.mLabel!!.single().code, it.mCode, "popup ${it.mLabel}") }
+        }
+    }
+
+    @Test fun japanese12KeyKeepsNormalSymbolsKeyboard() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.JAPANESE, LayoutUtils.JAPANESE_12KEY, true)
+        val (_, rows) = buildKeyboard(EditorInfo(), subtype, KeyboardId.ELEMENT_SYMBOLS)
+        val codes = rows.flatten().map { it.mCode }
+        // symbols still get their functional keys, including the way back to the kana grid
+        assertTrue(codes.containsAll(listOf(KeyCode.DELETE, KeyCode.SYMBOL_ALPHA, Constants.CODE_SPACE)), "$codes")
     }
 
     private fun buildKeyboard(editorInfo: EditorInfo, subtype: InputMethodSubtype, elementId: Int): Pair<Keyboard, List<List<KeyParams>>> {

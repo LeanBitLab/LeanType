@@ -1,0 +1,30 @@
+[
+  [
+    {"label": "emoji", "width": 0.2},
+    {"label": "あ", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "あ"}, {"label": "い"}, {"label": "う"}, {"label": "え"}, {"label": "お"}, {"label": "ぁ"}, {"label": "ぃ"}, {"label": "ぅ"}, {"label": "ぇ"}, {"label": "ぉ"}]}},
+    {"label": "か", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "か"}, {"label": "き"}, {"label": "く"}, {"label": "け"}, {"label": "こ"}, {"label": "が"}, {"label": "ぎ"}, {"label": "ぐ"}, {"label": "げ"}, {"label": "ご"}]}},
+    {"label": "さ", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "さ"}, {"label": "し"}, {"label": "す"}, {"label": "せ"}, {"label": "そ"}, {"label": "ざ"}, {"label": "じ"}, {"label": "ず"}, {"label": "ぜ"}, {"label": "ぞ"}]}},
+    {"label": "delete", "width": 0.2}
+  ],
+  [
+    {"label": "left", "width": 0.2},
+    {"label": "た", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "た"}, {"label": "ち"}, {"label": "つ"}, {"label": "て"}, {"label": "と"}, {"label": "だ"}, {"label": "ぢ"}, {"label": "づ"}, {"label": "で"}, {"label": "ど"}, {"label": "っ"}]}},
+    {"label": "な", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "な"}, {"label": "に"}, {"label": "ぬ"}, {"label": "ね"}, {"label": "の"}]}},
+    {"label": "は", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "は"}, {"label": "ひ"}, {"label": "ふ"}, {"label": "へ"}, {"label": "ほ"}, {"label": "ば"}, {"label": "び"}, {"label": "ぶ"}, {"label": "べ"}, {"label": "ぼ"}, {"label": "ぱ"}, {"label": "ぴ"}, {"label": "ぷ"}, {"label": "ぺ"}, {"label": "ぽ"}]}},
+    {"label": "right", "width": 0.2}
+  ],
+  [
+    {"label": "language_switch", "width": 0.2},
+    {"label": "ま", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "ま"}, {"label": "み"}, {"label": "む"}, {"label": "め"}, {"label": "も"}]}},
+    {"label": "や", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!3"}, {"label": "や"}, {"label": "ゆ"}, {"label": "よ"}, {"label": "ゃ"}, {"label": "ゅ"}, {"label": "ょ"}]}},
+    {"label": "ら", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "ら"}, {"label": "り"}, {"label": "る"}, {"label": "れ"}, {"label": "ろ"}]}},
+    {"label": "space", "width": 0.2}
+  ],
+  [
+    {"label": "symbol_alpha", "width": 0.2},
+    {"label": "、", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "、"}, {"label": "？"}, {"label": "！"}, {"label": "…"}, {"label": "・"}]}},
+    {"label": "わ", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!5"}, {"label": "わ"}, {"label": "を"}, {"label": "ん"}, {"label": "ー"}, {"label": "〜"}, {"label": "ゎ"}]}},
+    {"label": "。", "width": 0.2, "popup": {"relevant": [{"label": "!fixedOrder!3"}, {"label": "。"}, {"label": "「"}, {"label": "」"}]}},
+    {"label": "action", "width": 0.2}
+  ]
+]

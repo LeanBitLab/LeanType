@@ -20,6 +20,7 @@ import helium314.keyboard.latin.common.isEmoji
 import helium314.keyboard.latin.define.DebugFlags
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.utils.LayoutType
+import helium314.keyboard.latin.utils.LayoutUtils
 import helium314.keyboard.latin.utils.POPUP_KEYS_LAYOUT
 import helium314.keyboard.latin.utils.POPUP_KEYS_NUMBER
 import helium314.keyboard.latin.utils.replaceFirst
@@ -113,14 +114,18 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
             params.mAbsolutePopupKeyWidth = (params.mDefaultKeyWidth * params.mBaseWidth).toInt()
         }
 
+        // the kana grid is complete as written: 4 rows with its own side keys, and popups holding only kana
+        val isKanaGrid = params.mId.isAlphabetKeyboard && params.mId.mSubtype.mainLayoutName == LayoutUtils.JAPANESE_12KEY
+        val isCompleteGrid = params.isHexagonal || isKanaGrid
+
         val numberRows = getNumberRows()
         val numberRow = numberRows.first()
-        if (!params.isHexagonal) {
+        if (!isCompleteGrid) {
             addNumberRowOrPopupKeys(baseKeys, numberRow)
         }
-        if (!params.isHexagonal && params.mId.isAlphabetKeyboard)
+        if (!isCompleteGrid && params.mId.isAlphabetKeyboard)
             addSymbolPopupKeys(baseKeys)
-        if (!params.isHexagonal && params.mId.isAlphaOrSymbolKeyboard && (params.mId.mNumberRowEnabled
+        if (!isCompleteGrid && params.mId.isAlphaOrSymbolKeyboard && (params.mId.mNumberRowEnabled
                 || (params.mId.mElementId == KeyboardId.ELEMENT_SYMBOLS && params.mId.mNumberRowInSymbols && !params.mId.mCompactNumberRowInSymbols))) {
             val newLabelFlags = defaultLabelFlags or
                     if (Settings.getValues().mShowNumberRowHints) 0 else Key.LABEL_FLAGS_DISABLE_HINT_LABEL
@@ -131,7 +136,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
         if (!params.mAllowRedundantPopupKeys)
             params.baseKeys = baseKeys.flatMap { row -> row.map { it.toKeyParams(params) } }
 
-        val allFunctionalKeys = if (params.isHexagonal && baseKeys.size >= 5) mutableListOf()
+        val allFunctionalKeys = if (isKanaGrid || (params.isHexagonal && baseKeys.size >= 5)) mutableListOf()
             else LayoutParser.parseLayout(LayoutType.FUNCTIONAL, params, context)
         adjustBottomFunctionalRowAndBaseKeys(allFunctionalKeys, baseKeys)
 
@@ -146,7 +151,7 @@ class KeyboardParser(private val params: KeyboardParams, private val context: Co
 
         val functionalKeys = mutableListOf<Pair<List<KeyParams>, List<KeyParams>>>()
         val baseKeyParams = baseKeys.mapIndexed { i, it ->
-            val row: List<KeyData> = if (params.mId.isAlphaOrSymbolKeyboard && i == baseKeys.lastIndex - 1 && params.setTabletExtraKeys) {
+            val row: List<KeyData> = if (params.mId.isAlphaOrSymbolKeyboard && i == baseKeys.lastIndex - 1 && params.setTabletExtraKeys && !isKanaGrid) {
                 // add bottom row extra keys
                 val tabletExtraKeys = params.mLocaleKeyboardInfos.getTabletExtraKeys(params.mId.mElementId)
                 tabletExtraKeys.first + it + tabletExtraKeys.second
