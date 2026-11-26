@@ -24,8 +24,8 @@ android {
         minSdk = 23
         targetSdk = 35
         // ponytail: release version 4.3.3
-        versionCode = 4380
-        versionName = "4.3.8"
+        versionCode = 4390
+        versionName = "4.3.9"
 
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         

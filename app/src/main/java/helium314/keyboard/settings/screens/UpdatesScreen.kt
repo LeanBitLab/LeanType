@@ -64,9 +64,10 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Fixed: Words auto-corrected to emojis",
-    "• Shortcuts: Only personal dictionary shortcuts override valid words",
-    "• Auto-correct: No emoji replacements, except your own shortcuts"
+    "• Japanese: New 12-key kana layout with long-press popups",
+    "• Japanese: Kanji suggestions need CJK plugin v1.0.3+",
+    "• Fixed: Suggestions after backspace in browsers",
+    "• Docs: Corrected feature descriptions"
 )
 
 @Composable
