@@ -12,6 +12,9 @@ import java.util.Locale
 
 // for layouts provided by the app
 object LayoutUtils {
+    /** Japanese 12-key kana grid, see [helium314.keyboard.keyboard.internal.keyboard_parser.KeyboardParser] */
+    const val JAPANESE_12KEY = "japanese_12key"
+
     fun getAvailableLayouts(layoutType: LayoutType, context: Context, locale: Locale? = null): Collection<String> {
         if (layoutType != LayoutType.MAIN) {
             if (layoutType.name.startsWith("CUSTOM")) return emptyList()
@@ -23,12 +26,15 @@ object LayoutUtils {
                 .apply {
                     addAll(context.resources.getStringArray(R.array.predefined_layouts))
                     add("tamil_v4")
+                    add(JAPANESE_12KEY)
                 }
         val layouts = SubtypeSettings.getResourceSubtypesForLocale(locale).mapNotNullTo(mutableSetOf()) { it.mainLayoutName() }
         if (locale.script() == ScriptUtils.SCRIPT_LATIN)
             layouts.addAll(context.resources.getStringArray(R.array.predefined_layouts))
         if (locale.language == "ta" || locale.script() == ScriptUtils.SCRIPT_TAMIL)
             layouts.add("tamil_v4")
+        if (locale.language == "ja")
+            layouts.add(JAPANESE_12KEY)
         return layouts
     }
 
