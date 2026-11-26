@@ -612,6 +612,23 @@ class InputLogicTest {
         assertEquals("hello world there", getText())
     }
 
+    @Test fun testPickSuggestionAfterSpaceAndBackspace_browserPackage() {
+        reset()
+        editorInfoOverride = EditorInfo().apply {
+            packageName = "com.android.chrome"
+            inputType = InputType.TYPE_CLASS_TEXT
+        }
+        try {
+            typeNoAssert("thr ")
+            functionalKeyPress(KeyCode.DELETE)
+            assertEquals("thr", text)
+            pickSuggestion("the")
+            assertEquals("the", text)
+        } finally {
+            editorInfoOverride = null
+        }
+    }
+
     @Test fun testPickSuggestionOnWordCursor_chromiumBrowser_startOfWord() {
         reset()
         val ei = EditorInfo().apply {

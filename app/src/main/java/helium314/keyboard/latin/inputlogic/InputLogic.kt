@@ -1916,7 +1916,15 @@ class InputLogic(
                     sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL)
                 }
                 StatsUtils.onBackspacePressed(totalDeletes)
-                mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                if (inputTransaction.settingsValues.needsToLookupSuggestions()
+                    && inputTransaction.settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
+                ) {
+                    // pick up the word again, or a picked suggestion is appended to it. Delayed because the editor
+                    // handles the key event later, and key repeat keeps postponing it, so holding delete reads nothing
+                    mLatinIME.mHandler.postResumeSuggestions(true)
+                } else {
+                    mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+                }
                 return
             }
 
@@ -2427,7 +2435,9 @@ class InputLogic(
             return
         }
 
-        if (!mConnection.isCursorTouchingWord(settingsValues.mSpacingAndPunctuations, !mConnection.hasSlowInputConnection())) {
+        if (!mConnection.isCursorTouchingWord(
+                settingsValues.mSpacingAndPunctuations, !mConnection.hasSlowInputConnection(), readWebEditor = true)
+        ) {
             mWordComposer.setCapitalizedModeAtStartComposingTime(WordComposer.CAPS_MODE_OFF)
             mLatinIME.mHandler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_RECORRECTION)
             mConnection.finishComposingText()

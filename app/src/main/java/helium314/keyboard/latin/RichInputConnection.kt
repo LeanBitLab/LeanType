@@ -1367,9 +1367,11 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         return getTouchedWordRange(before, after, script, spacingAndPunctuations)
     }
 
+    /** @param readWebEditor ask a web editor for the text, as the cache is emptied there after each commit */
     fun isCursorTouchingWord(
         spacingAndPunctuations: SpacingAndPunctuations,
-        checkTextAfter: Boolean
+        checkTextAfter: Boolean,
+        readWebEditor: Boolean = false
     ): Boolean {
         if (checkTextAfter && isCursorFollowedByWordCharacter(spacingAndPunctuations)) {
             return true
@@ -1379,10 +1381,12 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
             return true
         }
 
-        return endsWithWordCodepoint(
-            mCommittedTextBeforeComposingText.toString(),
-            spacingAndPunctuations
-        )
+        val textBeforeCursor = if (readWebEditor && InputTypeUtils.isWebEditor(mParent.currentInputEditorInfo)) {
+            getTextBeforeCursor(NUM_CHARS_TO_GET_BEFORE_CURSOR, 0) ?: ""
+        } else {
+            mCommittedTextBeforeComposingText
+        }
+        return endsWithWordCodepoint(textBeforeCursor.toString(), spacingAndPunctuations)
     }
 
     fun isCursorFollowedByWordCharacter(spacingAndPunctuations: SpacingAndPunctuations): Boolean {
