@@ -1,0 +1,3 @@
+- Fixed: Words could be auto-corrected to emojis when an emoji dictionary was in use.
+- Only your personal dictionary shortcuts now auto-correct valid words.
+- Auto-correct no longer replaces a typed word with an emoji. Your own emoji shortcuts still work.

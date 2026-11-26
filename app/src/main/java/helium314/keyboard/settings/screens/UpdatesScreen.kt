@@ -64,16 +64,9 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Gesture typing: Learns from corrections after a swipe",
-    "• Personal dictionary shortcuts: Can auto-correct valid words",
-    "• Suggestions: Better contractions and fewer duplicates",
-    "• Suggestion removal: Safer removal and blocking",
-    "• Plugins: Handwriting, camera and voice errors shown on the keyboard",
-    "• Gesture trail: Smoother fade, taper and curves",
-    "• Languages without a word list: No more English fallback words",
-    "• Storage and cache: Remove downloaded app translations",
-    "• Fixed: Tall popups and floating toolbar key size",
-    "• Fixed: Crash with translucent accent colors"
+    "• Fixed: Words auto-corrected to emojis",
+    "• Shortcuts: Only personal dictionary shortcuts override valid words",
+    "• Auto-correct: No emoji replacements, except your own shortcuts"
 )
 
 @Composable
