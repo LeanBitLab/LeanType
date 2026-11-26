@@ -65,7 +65,15 @@ import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
     "• Gesture typing: Learns from corrections after a swipe",
-    "• Gesture trail: Smoother fade, taper and curves"
+    "• Personal dictionary shortcuts: Can auto-correct valid words",
+    "• Suggestions: Better contractions and fewer duplicates",
+    "• Suggestion removal: Safer removal and blocking",
+    "• Plugins: Handwriting, camera and voice errors shown on the keyboard",
+    "• Gesture trail: Smoother fade, taper and curves",
+    "• Languages without a word list: No more English fallback words",
+    "• Storage and cache: Remove downloaded app translations",
+    "• Fixed: Tall popups and floating toolbar key size",
+    "• Fixed: Crash with translucent accent colors"
 )
 
 @Composable

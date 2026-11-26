@@ -1,2 +1,7 @@
-- Gesture typing learns from your corrections: the word you pick after a swipe is suggested first for similar swipes next time (#928).
-- Smoother gesture trail: it now fades, tapers and curves more naturally (#929).
+- Gesture typing learns from the corrections you make after a swipe, and the trail is smoother.
+- Personal dictionary shortcuts can auto-correct valid words.
+- Better contractions and safer suggestion removal.
+- Fewer duplicate suggestions, no English words in languages without a word list.
+- Handwriting, camera and voice errors now show on the keyboard.
+- Remove downloaded app translations in Storage and cache.
+- Fixed popups, floating toolbar keys and an accent color crash.
