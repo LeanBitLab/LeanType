@@ -37,6 +37,10 @@ object ScreenProfileProvider {
         return hasHingeSensor
     }
 
+    /** A large screen without a hinge: it has no folded state, so the regular settings must apply to it. */
+    fun isTablet(context: Context): Boolean =
+        getScreenProfile(context).isLarge() && !isFoldableDevice(context)
+
     @JvmOverloads
     fun getScreenProfile(
         context: Context,

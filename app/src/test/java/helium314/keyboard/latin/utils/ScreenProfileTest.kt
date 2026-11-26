@@ -181,6 +181,57 @@ class ScreenProfileTest {
     }
 
     @Test
+    fun testPinLargeLandscapeSplitKeepsLandscapeState() {
+        val prefs = context.prefs()
+        Settings.pinLargeLandscapeSplit(prefs)
+        // what the tablet portrait switch saves afterwards
+        prefs.edit().putBoolean("split_keyboard_large", false).apply()
+        assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, false, ScreenProfile.LARGE))
+        assertEquals(true, Settings.readSplitKeyboardEnabled(prefs, true, ScreenProfile.LARGE))
+    }
+
+    @Test
+    fun testPinLargeLandscapeSplitKeepsSavedValueAndCompact() {
+        val prefs = context.prefs()
+        prefs.edit().putBoolean("split_keyboard_landscape_large", false).apply()
+        Settings.pinLargeLandscapeSplit(prefs)
+        assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, true, ScreenProfile.LARGE))
+        assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, true, ScreenProfile.COMPACT))
+    }
+
+    @Test
+    fun testSavingLargeSplitDoesNotChangeFoldedScreen() {
+        val prefs = context.prefs()
+        for (landscape in listOf(false, true)) {
+            Settings.saveSplitKeyboardEnabled(prefs, true, landscape, ScreenProfile.LARGE)
+            assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, landscape, ScreenProfile.COMPACT))
+            Settings.saveSplitKeyboardEnabled(prefs, false, landscape, ScreenProfile.LARGE)
+            assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, landscape, ScreenProfile.LARGE))
+        }
+    }
+
+    @Test
+    fun testSavingCompactSplitOverridesEarlierValueAndKeepsLarge() {
+        val prefs = context.prefs()
+        for (landscape in listOf(false, true)) {
+            Settings.saveSplitKeyboardEnabled(prefs, true, landscape, ScreenProfile.COMPACT)
+            Settings.saveSplitKeyboardEnabled(prefs, false, landscape, ScreenProfile.COMPACT)
+            assertEquals(false, Settings.readSplitKeyboardEnabled(prefs, landscape, ScreenProfile.COMPACT))
+            assertEquals(true, Settings.readSplitKeyboardEnabled(prefs, landscape, ScreenProfile.LARGE))
+        }
+    }
+
+    @Test
+    fun testRegularSplitSpacerScalesMatchLargeFallback() {
+        val prefs = context.prefs()
+        prefs.edit().putFloat("split_spacer_scale_true", 0.6f).apply()
+        val shown = Settings.readRegularSplitSpacerScales(prefs)
+        for (landscape in listOf(false, true))
+            assertEquals(Settings.readSplitSpacerScale(prefs, landscape, ScreenProfile.LARGE),
+                shown[if (landscape) 1 else 0], 0.001f)
+    }
+
+    @Test
     fun testUnfoldedBottomPaddingScale() {
         val prefs = context.prefs()
         prefs.edit().putFloat("bottom_padding_scale_false", 1.2f).apply()

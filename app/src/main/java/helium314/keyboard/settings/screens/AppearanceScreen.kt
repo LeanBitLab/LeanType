@@ -49,6 +49,7 @@ import androidx.core.content.edit
 import helium314.keyboard.latin.settings.Settings
 import helium314.keyboard.latin.settings.getProfileAwarePrefKey
 import helium314.keyboard.latin.utils.ScreenProfile
+import helium314.keyboard.latin.utils.ScreenProfileProvider
 import helium314.keyboard.latin.utils.WallpaperFetcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.Locale
@@ -68,8 +69,10 @@ fun AppearanceScreen(
     val popupOnEnabled = prefs.getBoolean(Settings.PREF_POPUP_ON, Defaults.PREF_POPUP_ON)
     val showHintsEnabled = prefs.getBoolean(Settings.PREF_SHOW_HINTS, Defaults.PREF_SHOW_HINTS)
     val narrowGapsEnabled = prefs.getBoolean(Settings.PREF_NARROW_KEY_GAPS, Defaults.PREF_NARROW_KEY_GAPS)
-    val splitEnabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE)
-        || prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, Defaults.PREF_ENABLE_SPLIT_KEYBOARD)
+    val isTablet = ScreenProfileProvider.isTablet(ctx)
+    val splitProfile = if (isTablet) ScreenProfile.LARGE else ScreenProfile.COMPACT
+    val splitEnabled = Settings.readSplitKeyboardEnabled(prefs, false, splitProfile)
+        || Settings.readSplitKeyboardEnabled(prefs, true, splitProfile)
 
     val fineTuneThemeExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_THEME, Defaults.PREF_EXPAND_FINE_TUNE_THEME)
     val fineTuneKeyPreviewsExpanded = fineTuneExpanded(prefs, Settings.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS, Defaults.PREF_EXPAND_FINE_TUNE_KEY_PREVIEWS)
@@ -114,8 +117,8 @@ fun AppearanceScreen(
             Settings.PREF_SPACE_BAR_TEXT,
             Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_KEYBOARD_HEIGHT_SCALE_PREFIX else null,
-            if (fineTuneFoldableExpanded) Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED else null,
-            if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX else null,
+            if (fineTuneFoldableExpanded && !isTablet) Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED else null,
+            if (fineTuneFoldableExpanded && !isTablet) Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX else null,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_BOTTOM_PADDING_SCALE_PREFIX else null,
             if (fineTuneFoldableExpanded) Settings.PREF_UNFOLDED_SIDE_PADDING_SCALE_PREFIX else null,
             Settings.PREF_EXPAND_FINE_TUNE_KEYBOARD_LAYOUT,
@@ -159,6 +162,47 @@ fun AppearanceScreen(
         onClickBack = onClickBack,
         title = stringResource(R.string.settings_screen_appearance),
         settings = items
+    )
+}
+
+@Composable
+private fun SplitSwitch(
+    setting: Setting,
+    landscape: Boolean,
+    profile: ScreenProfile,
+    beforeChange: () -> Unit = {},
+    afterSave: () -> Unit = {},
+) {
+    val prefs = LocalContext.current.prefs()
+    val baseKey = if (landscape) Settings.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else Settings.PREF_ENABLE_SPLIT_KEYBOARD
+    SwitchPreference(
+        name = setting.title,
+        description = setting.description,
+        // show and save the value the keyboard actually reads, which the toolbar key may have set
+        key = getProfileAwarePrefKey(baseKey, profile),
+        default = Settings.readSplitKeyboardEnabled(prefs, landscape, profile),
+        allowCheckedChange = {
+            beforeChange()
+            true
+        },
+    ) {
+        Settings.saveSplitKeyboardEnabled(prefs, it, landscape, profile)
+        afterSave()
+        KeyboardSwitcher.getInstance().reloadKeyboard()
+    }
+}
+
+/** The regular split switches control the large screen values only on tablets, which can't be folded. */
+@Composable
+private fun RegularSplitSwitch(setting: Setting, landscape: Boolean) {
+    val ctx = LocalContext.current
+    val isTablet = ScreenProfileProvider.isTablet(ctx)
+    SplitSwitch(
+        setting = setting,
+        landscape = landscape,
+        profile = if (isTablet) ScreenProfile.LARGE else ScreenProfile.COMPACT,
+        // runs before the new value is saved, while the landscape state can still be read
+        beforeChange = { if (isTablet && !landscape) Settings.pinLargeLandscapeSplit(ctx.prefs()) },
     )
 }
 
@@ -371,13 +415,7 @@ fun createAppearanceSettings(context: Context) = listOf(
         }
     },
     Setting(context, Settings.PREF_ENABLE_SPLIT_KEYBOARD, R.string.enable_split_keyboard) {
-        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD) {
-            val prefs = context.prefs()
-            val enabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, Defaults.PREF_ENABLE_SPLIT_KEYBOARD)
-            val profilePref = getProfileAwarePrefKey(Settings.PREF_ENABLE_SPLIT_KEYBOARD, ScreenProfile.COMPACT)
-            prefs.edit().putBoolean(profilePref, enabled).apply()
-            KeyboardSwitcher.getInstance().reloadKeyboard()
-        }
+        RegularSplitSwitch(it, landscape = false)
     },
     Setting(context, Settings.PREF_EXPAND_FINE_TUNE_FOLDABLE,
         R.string.fine_tune_foldable_title, R.string.fine_tune_foldable_summary
@@ -395,15 +433,16 @@ fun createAppearanceSettings(context: Context) = listOf(
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
     Setting(context, Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, R.string.unfolded_split_keyboard) {
-        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED) {
-            val prefs = context.prefs()
-            val enabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED)
-            val profilePref = getProfileAwarePrefKey(Settings.PREF_ENABLE_SPLIT_KEYBOARD, ScreenProfile.LARGE)
-            prefs.edit().putBoolean(profilePref, enabled).apply()
-            KeyboardSwitcher.getInstance().reloadKeyboard()
-        }
+        // returning early also hides it from settings search
+        if (ScreenProfileProvider.isTablet(LocalContext.current)) return@Setting
+        val prefs = LocalContext.current.prefs()
+        SplitSwitch(it, landscape = false, profile = ScreenProfile.LARGE, afterSave = {
+            // a landscape value saved by the toolbar key would otherwise keep overriding this switch
+            prefs.edit { remove(getProfileAwarePrefKey(Settings.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE, ScreenProfile.LARGE)) }
+        })
     },
     Setting(context, Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX, R.string.unfolded_split_spacer_scale) { setting ->
+        if (ScreenProfileProvider.isTablet(LocalContext.current)) return@Setting
         MultiSliderPreference(
             name = setting.title,
             baseKey = setting.key,
@@ -516,17 +555,20 @@ fun createAppearanceSettings(context: Context) = listOf(
         ) { KeyboardSwitcher.getInstance().reloadKeyboard() }
     },
     Setting(context, Settings.PREF_SPLIT_SPACER_SCALE_PREFIX, R.string.split_spacer_scale) { setting ->
+        val ctx = LocalContext.current
+        val isTablet = ScreenProfileProvider.isTablet(ctx)
         MultiSliderPreference(
             name = setting.title,
-            baseKey = setting.key,
+            // large screens prefer these keys over the regular ones
+            baseKey = if (isTablet) Settings.PREF_UNFOLDED_SPLIT_SPACER_SCALE_PREFIX else setting.key,
             dimensions = listOf(stringResource(R.string.landscape)),
-            defaults = Defaults.PREF_SPLIT_SPACER_SCALE,
+            defaults = if (isTablet) Settings.readRegularSplitSpacerScales(ctx.prefs()) else Defaults.PREF_SPLIT_SPACER_SCALE,
             range = 0.5f..2f,
             description = { "${(100 * it).roundToInt()}%" }
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
     Setting(context, Settings.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE, R.string.enable_split_keyboard_landscape) {
-        SwitchPreference(it, Defaults.PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE) { KeyboardSwitcher.getInstance().reloadKeyboard() }
+        RegularSplitSwitch(it, landscape = true)
     },
     Setting(context, Settings.PREF_NARROW_KEY_GAPS, R.string.prefs_narrow_key_gaps) {
         SwitchPreference(it, Defaults.PREF_NARROW_KEY_GAPS) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }

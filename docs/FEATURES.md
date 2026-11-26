@@ -1242,9 +1242,9 @@ graph LR
 - Symbols, More symbols, Functional keys, Numbers, Number row, Numpad, Numpad (landscape), Phone, Phone symbols, Emoji bottom row, Clipboard bottom row, Text editing, Custom layout 1, Custom layout 2, Custom layout 3, Custom layout 4, Custom layout 5
 
 </details>
-<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (10)</summary>
+<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (9)</summary>
 
-- "here", "Add dictionary from file", Personal dictionary, Blocked words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
+- "Add dictionary from file", Personal dictionary, Blocked words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
 
 </details>
 - **Settings → Languages & Layouts → Dictionaries → Personal dictionary**
@@ -1264,9 +1264,9 @@ graph LR
 - **Clipboard history**: Enable clipboard history, History retention time, Don't keep passwords and codes, Clipboard behavior, Show pinned items on top, Fold pinned items by default, Clipboard history font scale
 
 </details>
-<details><summary><b>Settings → Preferences → Keypress Audio</b> (20)</summary>
+<details><summary><b>Settings → Preferences → Keypress Audio</b> (19)</summary>
 
-- "here", Sound on keypress, Keypress sound volume, Sound Pack, Keypress sound style, Active Pack Info, Acoustics & Playback, Pitch Shift, Random pitch variation, Spatial stereo panning, Dynamic typing velocity, Key Sound Balance, Spacebar volume, Backspace volume, Enter key volume, Modifiers volume (Shift & Symbols), System & Profiles, Mute in silent/vibrate mode, Mute in Do Not Disturb, Play custom sounds over Bluetooth
+- Sound on keypress, Keypress sound volume, Sound Pack, Keypress sound style, Active Pack Info, Acoustics & Playback, Pitch Shift, Random pitch variation, Spatial stereo panning, Dynamic typing velocity, Key Sound Balance, Spacebar volume, Backspace volume, Enter key volume, Modifiers volume (Shift & Symbols), System & Profiles, Mute in silent/vibrate mode, Mute in Do Not Disturb, Play custom sounds over Bluetooth
 
 </details>
 <details><summary><b>Settings → Toolbar</b> (22)</summary>
@@ -1294,9 +1294,9 @@ graph LR
 - **Smart suggestions & tools**: Suggest emojis, Inline emoji search, Suggest clipboard content, Suggest recent screenshots, Compress screenshot suggestions, Inline math calculation, Look up app names
 
 </details>
-<details><summary><b>Settings → Text Expander</b> (11)</summary>
+<details><summary><b>Settings → Text Expander</b> (10)</summary>
 
-- "here", Configuration, Enable Text Expander, Expand immediately, Backspace undoes expansion, Show in suggestions, Autocomplete shortcuts, Suggestion only (no auto-expand), Management & Tools, Bulk editor, Online Guide & Syntax Reference
+- Configuration, Enable Text Expander, Expand immediately, Backspace undoes expansion, Show in suggestions, Autocomplete shortcuts, Suggestion only (no auto-expand), Management & Tools, Bulk editor, Online Guide & Syntax Reference
 
 </details>
 <details><summary><b>Settings → AI Integration</b> (16)</summary>
@@ -1310,9 +1310,9 @@ graph LR
 - Active Engines & Capabilities, Offline AI Plugin, Handwriting Input Plugin, Text Recognition (OCR), Voice Input, Translation, CJK Input, GIF Search, Keypress Audio, Storage & Maintenance, Storage & Cache, Documentation, Features Guide
 
 </details>
-<details><summary><b>Settings → Plugins → Voice Input</b> (11)</summary>
+<details><summary><b>Settings → Plugins → Voice Input</b> (10)</summary>
 
-- "here", Voice Plugin, Voice Input Provider, AI Provider & Voice Model, Manage On-Screen Keyboards, Disabled, Permissions, Microphone Permission, Manage & Download Models, Dictation & Behavior, Performance & Advanced
+- Voice Plugin, Voice Input Provider, AI Provider & Voice Model, Manage On-Screen Keyboards, Disabled, Permissions, Microphone Permission, Manage & Download Models, Dictation & Behavior, Performance & Advanced
 
 </details>
 <details><summary><b>Settings → Plugins → Translation</b> (7)</summary>
@@ -1325,27 +1325,27 @@ graph LR
 - Load handwriting plugin, Plugin Management, Handwriting Plugin, Configuration, Offline Models, Handwriting Models
 
 </details>
-<details><summary><b>Settings → Plugins → Text Recognition (OCR)</b> (20)</summary>
+<details><summary><b>Settings → Plugins → Text Recognition (OCR)</b> (19)</summary>
 
-- Downloading plugin..., "here", Text Recognition Settings, Plugin management, OCR Plugin APK, Permissions, Camera permission, Text extraction & formatting, Preserve line breaks, Trim extra whitespace, De-hyphenate broken words, Normalize punctuation & quotes, Strip list bullets & markers, Filter stray noise characters, Workflow & automation, Auto-copy to clipboard, Auto-insert into input field, Suggest text extraction from screenshots, Camera & viewfinder, Remember flash state
-
-</details>
-<details><summary><b>Settings → Plugins → CJK Input</b> (11)</summary>
-
-- Downloading CJK plugin…, "here", Plugin Management, Load CJK companion plugin, Supported Languages, Chinese (Pinyin), Japanese (Romaji to Kana/Kanji), Korean (Hangul), Engine Utilities, Enable Mock Engine (Debug), Clear CJK User History
+- Downloading plugin..., Text Recognition Settings, Plugin management, OCR Plugin APK, Permissions, Camera permission, Text extraction & formatting, Preserve line breaks, Trim extra whitespace, De-hyphenate broken words, Normalize punctuation & quotes, Strip list bullets & markers, Filter stray noise characters, Workflow & automation, Auto-copy to clipboard, Auto-insert into input field, Suggest text extraction from screenshots, Camera & viewfinder, Remember flash state
 
 </details>
-<details><summary><b>Settings → Plugins → GIF Search</b> (4)</summary>
+<details><summary><b>Settings → Plugins → CJK Input</b> (10)</summary>
 
-- "here", Plugin Status, Preview, Available Providers
+- Downloading CJK plugin…, Plugin Management, Load CJK companion plugin, Supported Languages, Chinese (Pinyin), Japanese (Romaji to Kana/Kanji), Korean (Hangul), Engine Utilities, Enable Mock Engine (Debug), Clear CJK User History
+
+</details>
+<details><summary><b>Settings → Plugins → GIF Search</b> (3)</summary>
+
+- Plugin Status, Preview, Available Providers
 
 </details>
 - **Settings → Plugins → Storage & Cache**
-<details><summary><b>Settings → Advanced</b> (23)</summary>
+<details><summary><b>Settings → Advanced</b> (22)</summary>
 
 - Force incognito mode, App Profiles, Background Services, Backup and restore, Enable debug settings, Debug settings, Physical keyboards and experimental, Physical keyboard layout, Emoji for physical keyboard, Physical keyboard suggestion shortcuts
 - **Experimental**: Override Emoji version, URL detection
-- "here", Downloading…, Translation source language, Translation target language, Offline AI Plugin, System Instruction, Translate System Instruction, Temperature, Top-P (Nucleus Sampling), Top-K, Min-P
+- Downloading…, Translation source language, Translation target language, Offline AI Plugin, System Instruction, Translate System Instruction, Temperature, Top-P (Nucleus Sampling), Top-K, Min-P
 
 </details>
 <details><summary><b>Settings → Advanced → App Profiles</b> (12)</summary>
@@ -1358,20 +1358,19 @@ graph LR
 - Spell Checker Service, Clipboard Listener, App Launcher Sync
 
 </details>
-<details><summary><b>Settings → Advanced → Debug settings</b> (6)</summary>
+<details><summary><b>Settings → Advanced → Debug settings</b> (5)</summary>
 
 - Enable debug settings, Debug Mode, Show suggestion infos, Force non-distinct multitouch, Show slide indicator
-- "here"
 
 </details>
-<details><summary><b>Settings → Advanced → Custom AI Keys</b> (2)</summary>
+<details><summary><b>Settings → Advanced → Custom AI Keys</b> (1)</summary>
 
-- "here", Show tags on keyboard
+- Show tags on keyboard
 
 </details>
-<details><summary><b>Settings → Updates</b> (5)</summary>
+<details><summary><b>Settings → Updates</b> (4)</summary>
 
-- "here", GitHub Sponsors, Donate on Open Collective, Check for updates, Companion plugins
+- GitHub Sponsors, Donate on Open Collective, Check for updates, Companion plugins
 
 </details>
 <details><summary><b>Settings → About</b> (8)</summary>

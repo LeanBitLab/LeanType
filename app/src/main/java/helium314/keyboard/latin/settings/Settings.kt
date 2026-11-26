@@ -188,15 +188,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
     fun writeSplitKeyboardEnabled(enabled: Boolean, isLandscape: Boolean) {
         val settingsValues = mSettingsValues ?: return
         val prefs = mPrefs ?: return
-        val basePref = if (isLandscape) PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else PREF_ENABLE_SPLIT_KEYBOARD
-        val profilePref = getProfileAwarePrefKey(basePref, settingsValues.mScreenProfile)
-        val editor = prefs.edit()
-            .putBoolean(profilePref, enabled)
-            .putBoolean(basePref, enabled)
-        if (settingsValues.mScreenProfile.isLarge() && !isLandscape) {
-            editor.putBoolean(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, enabled)
-        }
-        editor.apply()
+        saveSplitKeyboardEnabled(prefs, enabled, isLandscape, settingsValues.mScreenProfile)
     }
 
     fun readShowToolbarOnly(): Boolean {
@@ -789,6 +781,35 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
             }
             return getProfileAwareBoolean(prefs, basePref, profile, defaultValue)
         }
+
+        /** Used by the toolbar key and the settings switches, so they can't override each other. */
+        fun saveSplitKeyboardEnabled(prefs: SharedPreferences, enabled: Boolean, isLandscape: Boolean,
+                profile: helium314.keyboard.latin.utils.ScreenProfile) {
+            val basePref = if (isLandscape) PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE else PREF_ENABLE_SPLIT_KEYBOARD
+            val editor = prefs.edit().putBoolean(getProfileAwarePrefKey(basePref, profile), enabled)
+            if (!profile.isLarge()) {
+                editor.putBoolean(basePref, enabled)
+            } else if (!isLandscape) {
+                // no base key here: the folded screen of a foldable falls back to it
+                editor.putBoolean(PREF_ENABLE_SPLIT_KEYBOARD_UNFOLDED, enabled)
+            }
+            editor.apply()
+        }
+
+        /** Saves the portrait split switch for large screens, without changing the landscape state. */
+        fun pinLargeLandscapeSplit(prefs: SharedPreferences) {
+            val large = helium314.keyboard.latin.utils.ScreenProfile.LARGE
+            val landscapeKey = getProfileAwarePrefKey(PREF_ENABLE_SPLIT_KEYBOARD_LANDSCAPE, large)
+            if (!prefs.contains(landscapeKey))
+                prefs.edit().putBoolean(landscapeKey, readSplitKeyboardEnabled(prefs, true, large)).apply()
+        }
+
+        /** What tablets use while they have no own split distance: older versions saved it in the regular keys. */
+        fun readRegularSplitSpacerScales(prefs: SharedPreferences): Array<Float> =
+            Array(Defaults.PREF_SPLIT_SPACER_SCALE.size) {
+                prefs.getFloat(createPrefKeyForBooleanSettings(PREF_SPLIT_SPACER_SCALE_PREFIX, it, 1),
+                    Defaults.PREF_SPLIT_SPACER_SCALE[it])
+            }
 
         fun readSplitSpacerScale(prefs: SharedPreferences, landscape: Boolean): Float {
             return readSplitSpacerScale(prefs, landscape, helium314.keyboard.latin.utils.ScreenProfile.COMPACT)
