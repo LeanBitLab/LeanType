@@ -667,7 +667,10 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
          */
         /** A personal dictionary shortcut whose key is exactly the typed word, with "Auto-correct shortcuts" on */
         fun isExactShortcut(info: SuggestedWordInfo): Boolean =
-            info.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && info.isExactMatch && Settings.getValues().mAutoCorrectShortcuts
+            info.isKindOf(SuggestedWordInfo.KIND_SHORTCUT) && info.isExactMatch
+                // other dictionaries have shortcuts too, e.g. the emoji dictionary maps keywords to emojis
+                && info.mSourceDict.mDictType == Dictionary.TYPE_USER
+                && Settings.getValues().mAutoCorrectShortcuts
 
         /** Moves an exact shortcut first, as auto-correction commits the first suggestion */
         // public for testing
