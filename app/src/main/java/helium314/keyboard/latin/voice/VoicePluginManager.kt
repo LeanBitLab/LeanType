@@ -196,7 +196,7 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
             } catch (e: Exception) {
                 Log.e(TAG, "Error unbinding voice plugin service", e)
             } finally {
-                handleDisconnection()
+                handleDisconnection(releaseBinding = false) // just released above
             }
         }
     }
@@ -208,17 +208,26 @@ class VoicePluginManager(private val context: Context) : IBinder.DeathRecipient 
 
     private var lastLoggedModelState: Pair<String, Int?>? = null
 
-    private fun handleDisconnection() {
+    private fun handleDisconnection(releaseBinding: Boolean = true) {
         if (android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) {
             val staleBinder = engine?.asBinder() ?: return
             mainHandler.post {
                 if (engine?.asBinder() === staleBinder) {
-                    handleDisconnection()
+                    handleDisconnection(releaseBinding)
                 }
             }
             return
         }
         cancelScheduledUnbind()
+        // A dead or failing plugin keeps its bindings, and BIND_AUTO_CREATE lets Android restart it in the
+        // background with nothing to unbind it later. Release them; the next voice input binds again.
+        if (releaseBinding && (isBound || isConnecting)) {
+            try { context.unbindService(connection) } catch (e: Exception) { Log.w(TAG, "Voice plugin was not bound", e) }
+        }
+        if (isBoosted) {
+            isBoosted = false
+            try { context.unbindService(boostConnection) } catch (e: Exception) { }
+        }
         engine = null
         isBound = false
         isConnecting = false

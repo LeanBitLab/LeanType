@@ -27,6 +27,8 @@ import java.util.concurrent.TimeUnit
 
 class OcrCameraManager(private val context: Context) {
     private var cameraProvider: ProcessCameraProvider? = null
+    /** increased by every start and stop, so a start that was stopped before the provider was ready does not bind */
+    private var startRequest = 0
     private var imageCapture: ImageCapture? = null
     private var camera: Camera? = null
     private var isTorchOn: Boolean = false
@@ -63,9 +65,12 @@ class OcrCameraManager(private val context: Context) {
     @SuppressLint("RestrictedApi")
     fun startCamera(previewView: PreviewView, onReady: () -> Unit = {}, onError: (Exception) -> Unit = {}) {
         val future = ProcessCameraProvider.getInstance(context)
+        val request = ++startRequest
         future.addListener({
             try {
                 cameraProvider = future.get()
+                // stopped (keyboard hidden, OCR closed) while waiting: binding now would run the camera unseen
+                if (request != startRequest) return@addListener
                 bindCamera(previewView)
                 onReady()
             } catch (e: Exception) {
@@ -194,6 +199,7 @@ class OcrCameraManager(private val context: Context) {
     }
 
     fun stopCamera() {
+        startRequest++
         try {
             if (isTorchOn) {
                 camera?.cameraControl?.enableTorch(false)

@@ -323,9 +323,9 @@ class VoiceInputManager(
             startPiecewiseRecording()
             return
         }
-        if (state == VoiceState.CONNECTING_PLUGIN) {
-            updateState(VoiceState.STARTING_SESSION)
-        }
+        // also when the plugin was already connected (state IDLE): the microphone starts below, and only in
+        // STARTING_SESSION the handshake timeout fires and stopVoice() works if the plugin does not answer yet
+        updateState(VoiceState.STARTING_SESSION)
 
         val pipe: Array<ParcelFileDescriptor>
         try {
