@@ -96,7 +96,11 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     val scroll = rememberScrollState()
 
     var current by remember { mutableStateOf(TextExpanderUtils.getShortcuts(context)) }
-    var original by remember { mutableStateOf(TextExpanderText.format(current)) }
+    // shown in the order chosen for the shortcut list (#962), saved in the stored order, see inStoredOrder
+    fun formatSorted(shortcuts: Map<String, TextExpanderUtils.ShortcutEntry>) = TextExpanderText.format(
+        sortShortcuts(shortcuts, readShortcutSortOrder(context)).associateTo(LinkedHashMap()) { it.key to it.value }
+    )
+    var original by remember { mutableStateOf(formatSorted(current)) }
     var value by remember { mutableStateOf(TextFieldValue(original)) }
     var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
     var changedSomething by remember { mutableStateOf(false) }
@@ -111,7 +115,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     fun replaceText(text: String) { value = TextFieldValue(text.replace("\r\n", "\n")) }
     fun reload() {
         current = TextExpanderUtils.getShortcuts(context)
-        original = TextExpanderText.format(current)
+        original = formatSorted(current)
         value = TextFieldValue(original)
         hasPrevious = prefs.contains(TextExpanderUtils.PREF_DATA_PREVIOUS)
     }
@@ -333,7 +337,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     prefs.edit(commit = true) {
                         putString(TextExpanderUtils.PREF_DATA_PREVIOUS, prefs.getString(TextExpanderUtils.PREF_DATA, null) ?: "{}")
                     }
-                    TextExpanderUtils.saveShortcuts(context, result.entries)
+                    TextExpanderUtils.saveShortcuts(context, inStoredOrder(current, result.entries))
                     changedSomething = true
                     pending = null
                     reload()
