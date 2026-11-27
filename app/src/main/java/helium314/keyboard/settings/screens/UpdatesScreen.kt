@@ -64,13 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Fixed: Split keyboard switches work on tablets",
-    "• Fixed: Split distance works on tablets",
-    "• Tablets: Duplicate unfolded split settings hidden",
-    "• Foldables: Toolbar split key keeps folded screen as is",
-    "• Foldables: Unfolded split switch covers both orientations",
-    "• Phones: Landscape split switch no longer overridden",
-    "• Tablet and foldable testing welcome"
+    "• Added: Text expander shortcut sorting",
+    "• Added: Long-press space can switch language",
+    "• Added: Cursor swipe distance setting",
+    "• Added: Try-keyboard button in settings",
+    "• Added: Search settings by words and word parts",
+    "• Changed: Toolbar folds for swipe suggestions",
+    "• Changed: Camera and microphone stop when unused",
+    "• Fixed: Typed i keeps the dictionary I",
+    "• Fixed: Learning from retyped swipes",
+    "• Fixed: Delete swipe travel and spacing"
 )
 
 @Composable

@@ -1,7 +1,8 @@
-- Fixed: On tablets, the Enable split keyboard switches (portrait and landscape) now work.
-- Fixed: Split distance now works on tablets.
-- Tablets: Duplicate unfolded split settings are hidden.
-- Foldables: The toolbar split key no longer changes the folded screen.
-- Foldables: Split keyboard when unfolded applies to both orientations.
-- Phones: The toolbar key no longer overrides the landscape split switch.
-- Not tested on a tablet or foldable yet, please verify.
+- Added: Sort text expander shortcuts
+- Added: Long-press space can switch the language
+- Added: Cursor swipe distance setting
+- Added: Try-keyboard button and better settings search
+- Changed: Toolbar folds for swipe suggestions
+- Fixed: Typed "i" keeps the dictionary's "I"
+- Fixed: Learning from retyped swipes, delete swipe fixes
+- Fixed: Camera and microphone stop when unused
