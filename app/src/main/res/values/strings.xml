@@ -1471,9 +1471,6 @@ New dictionary:
     <string name="language_pack_invalid">This file is not a translation file.</string>
     <!-- Settings screen title for appearance preferences -->
     <string name="settings_screen_appearance">Appearance</string>
-    <!-- Text field to try the keyboard in the settings, shown by a button in the top bar -->
-    <string name="keyboard_test_field">Try the keyboard here</string>
-    <string name="keyboard_test_field_hint">Changes are shown the next time the keyboard opens. Nothing typed here is learned.</string>
     <!-- Settings screen title for toolbar preferences -->
     <string name="settings_screen_toolbar">Toolbar</string>
     <string name="settings_screen_ai_integration">AI Integration</string>

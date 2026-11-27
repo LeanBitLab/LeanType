@@ -1816,8 +1816,6 @@
     <string name="storage_type_language_pack">μετάφραση εφαρμογής</string>
     <string name="ocr_camera_failed">Η κάμερα απέτυχε να ξεκινήσει. Πατήστε για νέα προσπάθεια.</string>
     <string name="handwriting_not_recognized">Δεν ήταν δυνατή η αναγνώριση του χειρόγραφου. Δοκιμάστε ξανά.</string>
-    <string name="keyboard_test_field">Δοκιμάστε το πληκτρολόγιο εδώ</string>
-    <string name="keyboard_test_field_hint">Οι αλλαγές εμφανίζονται την επόμενη φορά που θα ανοίξει το πληκτρολόγιο. Ό,τι πληκτρολογείτε εδώ δεν μαθαίνεται.</string>
     <string name="cursor_swipe_step">Απόσταση σύρσιμου κέρσορα</string>
     <string name="cursor_swipe_step_summary">Απόσταση δαχτύλου για κάθε χαρακτήρα κατά το σύρσιμο στο πλήκτρο διαστήματος ή διαγραφής. Μεγαλύτερη τιμή σημαίνει πιο αργή κίνηση</string>
     <string name="ai_cancelled">Το αίτημα AI ακυρώθηκε</string>

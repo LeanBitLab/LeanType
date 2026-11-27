@@ -70,8 +70,6 @@ fun SearchSettingsScreen(
     title: String,
     settings: List<Any?>,
     headerContent: (@Composable () -> Unit)? = null,
-    /** a button in the top bar shows a field to try the keyboard, see [KeyboardTestField] */
-    testField: Boolean = false,
     content: @Composable (ColumnScope.() -> Unit)? = null // overrides settings if not null
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -87,7 +85,6 @@ fun SearchSettingsScreen(
             )
         },
         headerContent = headerContent,
-        testField = testField,
         content = {
             if (content != null) content()
             else {
@@ -287,7 +284,6 @@ fun <T: Any?> SearchScreen(
     icon: @Composable (() -> Unit)? = null,
     menu: List<Pair<String, () -> Unit>>? = null,
     headerContent: (@Composable () -> Unit)? = null,
-    testField: Boolean = false,
     content: @Composable (ColumnScope.() -> Unit)? = null,
 ) {
     // searchText and showSearch should have the same remember or rememberSaveable
@@ -295,7 +291,6 @@ fun <T: Any?> SearchScreen(
     // keyboard in unexpected situations such as going back from another screen, which is rather annoying
     var searchText by remember { mutableStateOf(TextFieldValue()) }
     var showSearch by remember { mutableStateOf(false) }
-    var showTestField by remember { mutableStateOf(false) }
     Scaffold(contentWindowInsets = WindowInsets(0))
     { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding)) {
@@ -305,8 +300,7 @@ fun <T: Any?> SearchScreen(
                 if (!value) searchText = TextFieldValue()
             }
             BackHandler {
-                if (showTestField) showTestField = false
-                else if (showSearch || searchText.text.isNotEmpty()) setShowSearch(false)
+                if (showSearch || searchText.text.isNotEmpty()) setShowSearch(false)
                 else onClickBack()
             }
             Surface(
@@ -318,8 +312,7 @@ fun <T: Any?> SearchScreen(
                         windowInsets = WindowInsets(0),
                         navigationIcon = {
                             BackButton { // same as BackHandler above
-                                if (showTestField) showTestField = false
-                                else if (showSearch) setShowSearch(false)
+                                if (showSearch) setShowSearch(false)
                                 else onClickBack()
                             }
                         },
@@ -328,10 +321,6 @@ fun <T: Any?> SearchScreen(
                                 modifier = Modifier.padding(end = 12.dp),
                                 verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
                             ) {
-                                if (testField)
-                                    IconButton(onClick = { showTestField = !showTestField }) {
-                                        Icon(painterResource(R.drawable.ic_ime_switcher), stringResource(R.string.keyboard_test_field))
-                                    }
                                 if (icon == null)
                                     IconButton(onClick = { setShowSearch(!showSearch) }) { SearchIcon() }
                                 else
@@ -372,9 +361,6 @@ fun <T: Any?> SearchScreen(
                             unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent
                         )
                     )
-                    // below the bar, so it doesn't scroll away with the settings
-                    if (showTestField)
-                        KeyboardTestField(onClose = { showTestField = false })
                 }
             }
             CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.bodyLarge) {

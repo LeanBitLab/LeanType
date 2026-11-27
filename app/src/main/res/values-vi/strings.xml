@@ -1703,8 +1703,6 @@ Từ điển mới:
     <string name="storage_type_language_pack">bản dịch ứng dụng</string>
     <string name="ocr_camera_failed">Không thể khởi động camera. Nhấn để thử lại.</string>
     <string name="handwriting_not_recognized">Không nhận dạng được chữ viết tay. Vui lòng thử lại.</string>
-    <string name="keyboard_test_field">Thử bàn phím tại đây</string>
-    <string name="keyboard_test_field_hint">Thay đổi sẽ hiển thị lần tới khi bàn phím mở. Nội dung nhập ở đây sẽ không được ghi nhớ.</string>
     <string name="cursor_swipe_step">Khoảng cách vuốt con trỏ</string>
     <string name="cursor_swipe_step_summary">Khoảng ngón tay di chuyển cho mỗi ký tự khi vuốt trên phím cách hoặc phím xóa. Giá trị cao hơn sẽ chậm hơn</string>
     <string name="ai_cancelled">Đã hủy yêu cầu AI</string>

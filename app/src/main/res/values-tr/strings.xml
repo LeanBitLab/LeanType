@@ -1742,8 +1742,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="storage_type_language_pack">uygulama çevirisi</string>
     <string name="ocr_camera_failed">Kamera başlatılamadı. Yeniden denemek için dokunun.</string>
     <string name="handwriting_not_recognized">El yazısı tanınamadı. Tekrar deneyin.</string>
-    <string name="keyboard_test_field">Klavyeyi burada deneyin</string>
-    <string name="keyboard_test_field_hint">Değişiklikler klavye bir sonraki açıldığında gösterilir. Buraya yazılanlar öğrenilmez.</string>
     <string name="cursor_swipe_step">İmleç kaydırma mesafesi</string>
     <string name="cursor_swipe_step_summary">Boşluk tuşu veya silme tuşunda kaydırırken her karakter için parmak hareketi mesafesi. Değer arttıkça yavaşlar</string>
     <string name="ai_cancelled">Yapay zeka isteği iptal edildi</string>

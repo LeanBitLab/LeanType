@@ -135,8 +135,6 @@
     <string name="voice" tools:keep="@string/voice">Spracheingabe</string>
     <string name="theme_name_dynamic" tools:keep="@string/theme_name_dynamic">Dynamische Farben</string>
     <string name="settings_screen_appearance">Aussehen</string>
-    <string name="keyboard_test_field">Tastatur hier ausprobieren</string>
-    <string name="keyboard_test_field_hint">Änderungen sind beim nächsten Öffnen der Tastatur sichtbar. Hier Getipptes wird nicht gelernt.</string>
     <string name="show_popup_hints">Funktionale Hinweise anzeigen</string>
     <string name="message_add_custom_layout">Datei in einem kompatiblen Format auswählen. Information zu den Formaten ist %s verfügbar.</string>
     <string name="select_color_key_background">Tastenhintergrund</string>

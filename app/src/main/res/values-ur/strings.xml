@@ -1807,8 +1807,6 @@
     <string name="storage_type_language_pack">ایپ ترجمہ</string>
     <string name="ocr_camera_failed">کیمرہ شروع نہیں ہو سکا۔ دوبارہ کوشش کے لیے ٹیپ کریں۔</string>
     <string name="handwriting_not_recognized">ہاتھ کی تحریر شناخت نہیں ہو سکی۔ دوبارہ کوشش کریں۔</string>
-    <string name="keyboard_test_field">یہاں کی بورڈ آزمائیں</string>
-    <string name="keyboard_test_field_hint">تبدیلیاں اگلی بار کی بورڈ کھلنے پر دکھائی دیں گی۔ یہاں ٹائپ کیا گیا کچھ بھی نہیں سیکھا جاتا۔</string>
     <string name="cursor_swipe_step">کرسر سوائپ فاصلہ</string>
     <string name="cursor_swipe_step_summary">اسپیس بار یا ڈیلیٹ کی پر سوائپ کرتے وقت ہر حرف کے لیے انگلی کا فاصلہ۔ زیادہ ہونے پر رفتار کم ہوگی</string>
     <string name="ai_cancelled">AI درخواست منسوخ ہو گئی</string>

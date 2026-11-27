@@ -1,7 +1,7 @@
 - Added: Sort text expander shortcuts
 - Added: Long-press space can switch the language
 - Added: Cursor swipe distance setting
-- Added: Try-keyboard button and better settings search
+- Added: Better settings search
 - Changed: Toolbar folds for swipe suggestions
 - Fixed: Typed "i" keeps the dictionary's "I"
 - Fixed: Learning from retyped swipes, delete swipe fixes

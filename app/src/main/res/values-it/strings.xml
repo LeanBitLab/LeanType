@@ -1782,8 +1782,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="storage_type_language_pack">traduzione dell\'app</string>
     <string name="ocr_camera_failed">Avvio della fotocamera non riuscito. Tocca per riprovare.</string>
     <string name="handwriting_not_recognized">Impossibile riconoscere la scrittura a mano. Riprova.</string>
-    <string name="keyboard_test_field">Prova la tastiera qui</string>
-    <string name="keyboard_test_field_hint">Le modifiche vengono mostrate la prossima volta che si apre la tastiera. Il testo digitato qui non viene appreso.</string>
     <string name="cursor_swipe_step">Distanza di scorrimento del cursore</string>
     <string name="cursor_swipe_step_summary">Distanza del dito per ogni carattere durante lo scorrimento sulla barra spaziatrice o sul tasto cancella. Un valore più alto significa più lentezza</string>
     <string name="ai_cancelled">Richiesta AI annullata</string>

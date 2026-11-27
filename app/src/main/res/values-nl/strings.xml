@@ -1816,8 +1816,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="storage_type_language_pack">app-vertaling</string>
     <string name="ocr_camera_failed">Camera kon niet worden gestart. Tik om opnieuw te proberen.</string>
     <string name="handwriting_not_recognized">Het handschrift kon niet worden herkend. Probeer het opnieuw.</string>
-    <string name="keyboard_test_field">Probeer het toetsenbord hier</string>
-    <string name="keyboard_test_field_hint">Wijzigingen worden getoond de volgende keer dat het toetsenbord wordt geopend. Wat hier wordt getypt, wordt niet geleerd.</string>
     <string name="cursor_swipe_step">Veegafstand cursor</string>
     <string name="cursor_swipe_step_summary">Vingerbeweging per teken bij vegen op de spatiebalk of verwijdertoets. Hoger is trager</string>
     <string name="ai_cancelled">AI-verzoek geannuleerd</string>

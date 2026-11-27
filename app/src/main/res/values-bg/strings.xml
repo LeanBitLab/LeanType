@@ -1803,8 +1803,6 @@
     <string name="storage_type_language_pack">превод на приложението</string>
     <string name="ocr_camera_failed">Камерата не успя да се стартира. Докоснете, за да опитате отново.</string>
     <string name="handwriting_not_recognized">Ръкописният текст не можа да бъде разпознат. Опитайте отново.</string>
-    <string name="keyboard_test_field">Опитайте клавиатурата тук</string>
-    <string name="keyboard_test_field_hint">Промените се показват при следващото отваряне на клавиатурата. Нищо въведено тук не се научава.</string>
     <string name="cursor_swipe_step">Разстояние на плъзгане на курсора</string>
     <string name="cursor_swipe_step_summary">Разстоянието, което пръстът изминава за всеки символ при плъзгане по интервала или клавиша за изтриване. По-голямата стойност означава по-бавно</string>
     <string name="ai_cancelled">Заявката към AI е отменена</string>

@@ -1774,8 +1774,6 @@
     <string name="storage_type_language_pack">תרגום אפליקציה</string>
     <string name="ocr_camera_failed">המצלמה לא הצליחה להתחיל. הקש כדי לנסות שוב.</string>
     <string name="handwriting_not_recognized">לא ניתן לזהות את כתב היד. נסה שוב.</string>
-    <string name="keyboard_test_field">נסה את המקלדת כאן</string>
-    <string name="keyboard_test_field_hint">השינויים יוצגו בפעם הבאה שהמקלדת תיפתח. שום דבר שמוקלד כאן לא נלמד.</string>
     <string name="cursor_swipe_step">מרחק החלקת הסמן</string>
     <string name="cursor_swipe_step_summary">מרחק האצבע עבור כל תו בעת החלקה על מקש הרווח או מקש המחיקה. ככל שהערך גבוה יותר, התנועה איטית יותר</string>
     <string name="ai_cancelled">בקשת ה-AI בוטלה</string>
