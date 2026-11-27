@@ -518,7 +518,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 
 - Swipe typing needs a separate gesture typing library, which is not included in the app. Without it, swiping does not produce words.
 - Supports floating preview text, customizable trail colors, and space-aware gesture input.
-- Learns from corrections: when you replace a swiped word with another suggestion, your pick gets a small boost in later swipes where the choice is close. Nothing new is learned in incognito mode.
+- Learns from corrections: when you replace a swiped word with another suggestion, or delete it with backspace and type one of the swipe's other candidates in its place, that word gets a small boost in later swipes where the choice is close. This also works with suggestions hidden. Nothing new is learned in incognito mode or with **Settings → Suggestions → Personalized suggestions** off.
 - Add the library under **Settings → Gestures & swipes → Load gesture typing library**: `standard` builds can download it there, for `offline` builds download the file yourself and load it.
 
 ---
