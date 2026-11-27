@@ -429,6 +429,10 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (requestCode == Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER) {
             return latinIME.showInputPickerDialog()
         }
+        if (requestCode == Constants.CUSTOM_CODE_SWITCH_LANGUAGE) {
+            latinIME.switchToNextSubtype()
+            return true
+        }
         if (requestCode == KeyboardActionListener.CODE_TOUCHPAD_ON) {
             isSpaceSwipeActive = true
             latinIME.isCursorGestureActive = true

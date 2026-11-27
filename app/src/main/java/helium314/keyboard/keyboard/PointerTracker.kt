@@ -1201,12 +1201,16 @@ class PointerTracker private constructor(
         }
         val code = key.code
         val sv = Settings.getValues()
-        if (code == KeyCode.LANGUAGE_SWITCH || (code == Constants.CODE_SPACE && key.popupKeys.isNullOrEmpty() && sv.mSpaceForLangChange)) {
-            if (sListener.onCustomRequest(Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER)) {
-                cancelKeyTracking()
-                sListener.onReleaseKey(code, false)
-                return
-            }
+        val spaceLongPress = if (code == Constants.CODE_SPACE && key.popupKeys.isNullOrEmpty()) sv.mSpaceLongPress else null
+        val request = when {
+            code == KeyCode.LANGUAGE_SWITCH || spaceLongPress == "input_method_picker" -> Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER
+            spaceLongPress == "switch_language" -> Constants.CUSTOM_CODE_SWITCH_LANGUAGE
+            else -> null
+        }
+        if (request != null && sListener.onCustomRequest(request)) {
+            cancelKeyTracking()
+            sListener.onReleaseKey(code, false)
+            return
         }
         if (code == Constants.CODE_SPACE && key.popupKeys.isNullOrEmpty()) {
             return

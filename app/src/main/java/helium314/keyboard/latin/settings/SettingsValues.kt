@@ -91,7 +91,8 @@ open class SettingsValues(
     @Deprecated("Use mPopupKeysVerticalOffsetPercent or mPopupKeysVerticalOffsetFraction")
     val mPopupKeysVerticalOffset: Float get() = mPopupKeysVerticalOffsetPercent
     val mAnimationSpeedScale: Float
-    val mSpaceForLangChange: Boolean
+    /** see [Settings.readSpaceLongPress] */
+    val mSpaceLongPress: String
     val mShowsEmojiKey: Boolean
     val mVarToolbarDirection: Boolean
     val mUsePersonalizedDicts: Boolean
@@ -332,7 +333,7 @@ open class SettingsValues(
         }
         mPopupKeysVerticalOffsetFraction = mPopupKeysVerticalOffsetPercent / 100f
         mAnimationSpeedScale = prefs.getFloat(Settings.PREF_ANIMATION_SPEED_SCALE, Defaults.PREF_ANIMATION_SPEED_SCALE)
-        mSpaceForLangChange = prefs.getBoolean(Settings.PREF_SPACE_TO_CHANGE_LANG, Defaults.PREF_SPACE_TO_CHANGE_LANG)
+        mSpaceLongPress = Settings.readSpaceLongPress(prefs)
         mShowsEmojiKey = prefs.getBoolean(Settings.PREF_SHOW_EMOJI_KEY, Defaults.PREF_SHOW_EMOJI_KEY)
         mVarToolbarDirection = mToolbarMode != ToolbarMode.HIDDEN && prefs.getBoolean(Settings.PREF_VARIABLE_TOOLBAR_DIRECTION, Defaults.PREF_VARIABLE_TOOLBAR_DIRECTION)
         mUsePersonalizedDicts = prefs.getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, Defaults.PREF_KEY_USE_PERSONALIZED_DICTS)

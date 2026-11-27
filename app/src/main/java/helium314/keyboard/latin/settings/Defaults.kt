@@ -227,6 +227,7 @@ object Defaults {
     const val PREF_ANIMATION_SPEED_SCALE = 1.0f
     const val PREF_MORE_POPUP_KEYS = "main"
     const val PREF_SPACE_TO_CHANGE_LANG = true
+    const val PREF_SPACE_LONG_PRESS = "input_method_picker"
     const val PREF_LANGUAGE_SWIPE_DISTANCE = 5
     const val PREF_FULL_KEYBOARD_SWIPE = "none"
     const val PREF_FULL_SWIPE_SWITCH_LANGUAGE = false

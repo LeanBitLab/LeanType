@@ -2491,6 +2491,7 @@ New dictionary:
         <item>theme_style|design look shape rounded</item>
         <item>theme_key_borders|outline frame look</item>
         <item>cursor_swipe_step|sensitivity speed fast</item>
+        <item>space_long_press|language switch long press</item>
         <item>keyboard_height_scale|size big small tall</item>
         <item>font_scale|text size letters big small</item>
         <item>vibrate_on|haptic feedback vibration buzz</item>

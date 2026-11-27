@@ -177,6 +177,8 @@ object Constants {
     }
 
     const val CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER = 1
+    /** like the language switch key, following "Language switch key behavior" */
+    const val CUSTOM_CODE_SWITCH_LANGUAGE = 2
 
     const val CODE_ENTER = '\n'.code
     const val CODE_TAB = '\t'.code

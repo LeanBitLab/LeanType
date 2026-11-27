@@ -497,7 +497,9 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_POPUP_KEYS_VERTICAL_OFFSET_PERCENT = "popup_keys_vertical_offset_percent"
         const val PREF_ANIMATION_SPEED_SCALE = "pref_animation_speed_scale"
 
+        /** legacy switch, replaced by [PREF_SPACE_LONG_PRESS] and only read when that is not set, see [readSpaceLongPress] */
         const val PREF_SPACE_TO_CHANGE_LANG = "prefs_long_press_keyboard_to_change_lang"
+        const val PREF_SPACE_LONG_PRESS = "space_long_press"
         const val PREF_LANGUAGE_SWIPE_DISTANCE = "language_swipe_distance"
         const val PREF_TOUCHPAD_SENSITIVITY = "touchpad_sensitivity"
         const val PREF_TOUCHPAD_FULLSCREEN = "touchpad_fullscreen"
@@ -681,6 +683,12 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
                 else -> KeyboardActionListener.SWIPE_NO_ACTION
             }
         }
+
+        /** what a long press on the space bar does: "input_method_picker", "switch_language" or "none" */
+        fun readSpaceLongPress(prefs: SharedPreferences): String =
+            prefs.getString(PREF_SPACE_LONG_PRESS, null)
+                ?: if (prefs.getBoolean(PREF_SPACE_TO_CHANGE_LANG, Defaults.PREF_SPACE_TO_CHANGE_LANG)) Defaults.PREF_SPACE_LONG_PRESS
+                else "none"
 
         fun readVerticalDownSpaceSwipe(prefs: SharedPreferences): Int {
             return when (prefs.getString(PREF_SPACE_VERTICAL_DOWN_SWIPE, Defaults.PREF_SPACE_VERTICAL_DOWN_SWIPE)) {
