@@ -1515,6 +1515,137 @@ class InputLogicTest {
 
     }
 
+    @Test fun `deleted swipe retyped as one of its candidates is learned`() {
+        reset()
+        chainInput("say ")
+        glideTypingInput("hall", "hello", "hill")
+        functionalKeyPress(KeyCode.DELETE)
+        assertEquals("say ", text)
+        chainInput("hello ")
+        assertEquals("say hello ", text)
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe retyped is learned when the next swipe commits it`() {
+        reset()
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello")
+        // starting the next swipe commits the typed word
+        latinIME.mInputLogic.onStartBatchInput(settingsValues, KeyboardSwitcher.getInstance(), latinIME.handler)
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+        // and a word typed after that swipe is not a correction of the first one
+        glideTypingInput("there", "then")
+        chainInput(" hall ")
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe replaced by a word that was no candidate is not learned`() {
+        reset()
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("goodbye ")
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleting more after a deleted swipe is not learned`() {
+        reset()
+        chainInput("say ")
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        functionalKeyPress(KeyCode.DELETE) // removes the space: editing more than the swiped word
+        chainInput(" hello ")
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `only the first word after a deleted swipe counts`() {
+        reset()
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hi hello ")
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe retyped is not learned in incognito mode or without personalized suggestions`() {
+        reset()
+        latinIME.prefs().edit { putBoolean(Settings.PREF_ALWAYS_INCOGNITO_MODE, true) }
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello ")
+        latinIME.prefs().edit { putBoolean(Settings.PREF_ALWAYS_INCOGNITO_MODE, false) }
+        latinIME.prefs().edit { putBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, false) }
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello ")
+        latinIME.prefs().edit { putBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, true) }
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe retyped is learned when suggestions are hidden`() {
+        reset()
+        latinIME.prefs().edit { putBoolean(Settings.PREF_SHOW_SUGGESTIONS, false) }
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello ")
+        latinIME.prefs().edit { putBoolean(Settings.PREF_SHOW_SUGGESTIONS, true) }
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
+    // suggestions hidden and auto-correct off: no suggestion lookups, typed letters are committed one by one
+    private fun disableSuggestionLookups() = latinIME.prefs().edit {
+        putBoolean(Settings.PREF_SHOW_SUGGESTIONS, false)
+        putBoolean(Settings.PREF_AUTO_CORRECTION, false)
+    }
+
+    @Test fun `deleted swipe retyped without suggestion lookups is learned`() {
+        reset()
+        disableSuggestionLookups()
+        chainInput("say ")
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello ")
+        assertEquals("say hello ", text)
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe retyped with a fixed typo without suggestion lookups is learned`() {
+        reset()
+        disableSuggestionLookups()
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("helk")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("lo,")
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe without suggestion lookups is not learned from other text`() {
+        reset()
+        disableSuggestionLookups()
+        chainInput("say ")
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("goodbye ") // no candidate
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        functionalKeyPress(KeyCode.DELETE) // deletes the space before the swipe
+        chainInput(" hello ")
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hi hello ") // the first word counts
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
+    @Test fun `deleted swipe retyped without suggestion lookups is learned when the next swipe starts`() {
+        reset()
+        disableSuggestionLookups()
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        chainInput("hello")
+        latinIME.mInputLogic.onStartBatchInput(settingsValues, KeyboardSwitcher.getInstance(), latinIME.handler)
+        assertEquals(listOf("hello" to "hall"), ShadowFacilitator2.gestureCorrections)
+    }
+
     @Test fun `held backspace accelerates composing word deletion past threshold`() {
         reset()
         chainInput("abcdefghijklmnopqrstuvwxy") // 25 characters
@@ -1840,6 +1971,7 @@ class InputLogicTest {
         lastNgramContext = ""
         addedWords.clear()
         ngramContexts.clear()
+        ShadowFacilitator2.gestureCorrections.clear()
         messages.clear()
         delayedMessages.clear()
 
@@ -2075,9 +2207,11 @@ class InputLogicTest {
         checkConnectionConsistency()
     }
 
-    private fun glideTypingInput(word: String) {
+    private fun glideTypingInput(word: String, vararg otherCandidates: String) {
         val info = SuggestedWordInfo(word, "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0)
-        val sw = SuggestedWords(ArrayList(listOf(info)), null, info, true, false, false, 0, 0)
+        val others = otherCandidates.map { SuggestedWordInfo(it, "", 0, 0, Mockito.mock(Dictionary::class.java), 0, 0) }
+        val sw = SuggestedWords(ArrayList(listOf(info) + others), null, info, true, false, false, 0, 0)
+        latinIME.mInputLogic.setSuggestedWords(sw) // the suggestions are set before the word, as in InputLogicHandler
         latinIME.mInputLogic.onUpdateTailBatchInputCompleted(settingsValues, sw, KeyboardSwitcher.getInstance())
     }
 
@@ -2452,7 +2586,12 @@ class ShadowFacilitator2 {
         addedWords.add(suggestion)
         ngramContexts.add(lastNgramContext)
     }
+    @Implementation
+    fun recordGestureCorrection(picked: String, replaced: String) {
+        gestureCorrections.add(picked to replaced)
+    }
     companion object {
+        val gestureCorrections = mutableListOf<Pair<String, String>>()
         var lastAddedWord = ""
         var lastNgramContext = ""
         val addedWords = mutableListOf<String>()

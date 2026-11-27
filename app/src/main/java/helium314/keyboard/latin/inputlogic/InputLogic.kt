@@ -117,6 +117,8 @@ class InputLogic(
     private var mLastExpandedCursorOffset = -1
     private var mJustRevertedExpandedShortcut: String? = null
     private var mJustRevertedACommit = false
+    /** a swiped word removed with backspace, for learning from the word typed in its place, see [recordRetypedSwipeCorrection] */
+    private var mDeletedSwipe: DeletedSwipe? = null
     private var mIsProcessingSelectionUpdate = false
     private var mIsRecoveringComposingSpan = false
     private var mLastSpanReclaimTime = 0L
@@ -143,6 +145,7 @@ class InputLogic(
         mCapsLockFromRecapitalize = false
         mEnteredText = null
         mWordBeingCorrectedByCursor = null
+        mDeletedSwipe = null
         mConnection.onStartInput()
         if (mWordComposer.getTypedWord().isNotEmpty()) {
             StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
@@ -343,7 +346,7 @@ class InputLogic(
 
         // A swiped word replaced by another suggestion is a correction the next swipes should learn from
         if (mWordComposer.isBatchMode() && mWordComposer.isComposingWord() && !settingsValues.mIncognitoModeEnabled
-            && !suggestionInfo.isEmoji && !suggestionInfo.isKindOf(SuggestedWordInfo.KIND_SHORTCUT)
+            && settingsValues.mUsePersonalizedDicts && !suggestionInfo.isEmoji && !suggestionInfo.isKindOf(SuggestedWordInfo.KIND_SHORTCUT)
         ) {
             val replacedWord = mWordComposer.getTypedWord()
             if (replacedWord.isNotEmpty() && !replacedWord.equals(rawSuggestion, ignoreCase = true))
@@ -569,6 +572,7 @@ class InputLogic(
         }
         mConnection.beginBatchEdit()
         try {
+            recordRetypedSwipeFromText(settingsValues)
             if (mWordComposer.isComposingWord()) {
                 if (mWordComposer.isCursorFrontOrMiddleOfComposingWord()) {
                     unlearnWord(mWordComposer.getTypedWord(), settingsValues, Constants.EVENT_BACKSPACE)
@@ -584,6 +588,8 @@ class InputLogic(
                     mWordComposer.setRejectedBatchModeSuggestion(selectedText.toString())
                 }
             }
+            // a word typed in place of a deleted swipe was committed just above, a new swipe starts over
+            mDeletedSwipe = null
             val codePointBeforeCursor = mConnection.codePointBeforeCursor
             if (Character.isLetterOrDigit(codePointBeforeCursor)
                 || settingsValues.isUsuallyFollowedBySpace(codePointBeforeCursor)
@@ -1438,6 +1444,7 @@ class InputLogic(
         val codePoint = event.codePoint
         val settingsValues = inputTransaction.settingsValues
         val wasComposingWord = mWordComposer.isComposingWord()
+        recordRetypedSwipeFromText(settingsValues)
         val needsSegmentation = ScriptUtils.needsWordSegmentation(settingsValues.mLocale)
         val shouldAvoidSendingCode = Constants.CODE_SPACE == codePoint
             && !settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
@@ -1722,6 +1729,8 @@ class InputLogic(
         val currentKeyboardScript = inputTransaction.settingsValues.mCurrentKeyboardScript
         mSpaceState = SpaceState.NONE
         mDeleteCount++
+        // deleting more than the word typed in place of a deleted swipe: the user is not just correcting the swipe
+        mDeletedSwipe?.let { if (!mWordComposer.isComposingWord() && mConnection.expectedSelectionStart <= it.position) mDeletedSwipe = null }
 
         val selection = if (event.isKeyRepeat) null else mConnection.getSelectedText(0)
         val hasSelection = !selection.isNullOrEmpty() || (!event.isKeyRepeat && mConnection.hasSelection())
@@ -1788,8 +1797,14 @@ class InputLogic(
             val wasBatchMode = mWordComposer.isBatchMode()
             val initialLength = mWordComposer.getTypedWord().length
             var deletedCodePoints = 0
+            var deletedSwipe: DeletedSwipe? = null
             if (mWordComposer.isBatchMode()) {
                 val rejectedSuggestion = mWordComposer.getTypedWord()
+                if (rejectedSuggestion.isNotEmpty()) {
+                    val candidates = (0 until mSuggestedWords.size()).map { mSuggestedWords.getWord(it) }
+                        .filterNot { it.equals(rejectedSuggestion, ignoreCase = true) }
+                    deletedSwipe = DeletedSwipe(rejectedSuggestion, candidates, -1)
+                }
                 mWordComposer.reset()
                 mWordComposer.setRejectedBatchModeSuggestion(rejectedSuggestion)
                 if (!TextUtils.isEmpty(rejectedSuggestion)) {
@@ -1836,6 +1851,7 @@ class InputLogic(
             } else {
                 if (wasBatchMode) {
                     mConnection.commitText("", 1)
+                    mDeletedSwipe = deletedSwipe?.copy(position = mConnection.expectedSelectionStart)
                 } else {
                     mConnection.finishComposingText()
                     mConnection.deleteTextBeforeCursor(initialLength)
@@ -2317,6 +2333,8 @@ class InputLogic(
         suggestion: String,
         ngramContext: NgramContext
     ) {
+        // before the check below: swipe corrections are learned also when suggestions are not shown
+        recordRetypedSwipeCorrection(settingsValues, suggestion)
         if (!settingsValues.isSuggestionsEnabledPerUserSettings() || TextUtils.isEmpty(suggestion)) {
             return
         }
@@ -2339,6 +2357,49 @@ class InputLogic(
         )
         if (mWordComposer.isBatchMode()) mDictionaryFacilitator.recordGestureAccepted(word)
     }
+
+    /**
+     * A swiped word was removed with backspace and [committedWord] typed in its place: if it was one of the
+     * swipe's other candidates, it is learned like picking it from the suggestion strip, see GestureWordBias.
+     * Only the first word committed after the deletion counts.
+     */
+    private fun recordRetypedSwipeCorrection(settingsValues: SettingsValues, committedWord: String) {
+        val deletedSwipe = mDeletedSwipe ?: return
+        mDeletedSwipe = null
+        if (mWordComposer.isBatchMode() || !canLearnSwipeCorrections(settingsValues)) return
+        // the word must be where the swiped word was, allowing for a space added before it
+        val start = mConnection.expectedSelectionStart - committedWord.length
+        if (start != deletedSwipe.position && start != deletedSwipe.position + 1) return
+        val word = stripWordSeparatorsFromEnd(UnicodeStyleEngine.toPlainText(committedWord), settingsValues)
+        if (deletedSwipe.candidates.none { it.equals(word, ignoreCase = true) }) return
+        mDictionaryFacilitator.recordGestureCorrection(word, deletedSwipe.word)
+    }
+
+    /**
+     * Without suggestion lookups (suggestions hidden and auto-correct off) typed letters are committed one by one
+     * and no word commit reaches [recordRetypedSwipeCorrection]: read the word typed in place of a deleted swipe
+     * from the text, when a separator is typed or the next swipe starts.
+     */
+    private fun recordRetypedSwipeFromText(settingsValues: SettingsValues) {
+        val deletedSwipe = mDeletedSwipe ?: return
+        if (mWordComposer.isComposingWord()) return // committed through performAdditionToUserHistoryDictionary
+        val length = mConnection.expectedSelectionStart - deletedSwipe.position
+        if (length <= 0 || length > MAX_RETYPED_SWIPE_LENGTH) {
+            mDeletedSwipe = null
+            return
+        }
+        val typed = mConnection.getTextBeforeCursor(length, 0)?.toString()
+        if (typed == null) {
+            mDeletedSwipe = null
+            return
+        }
+        recordRetypedSwipeCorrection(settingsValues, typed.trimStart(' '))
+    }
+
+    private fun canLearnSwipeCorrections(settingsValues: SettingsValues) = !settingsValues.mIncognitoModeEnabled
+            && settingsValues.mUsePersonalizedDicts && settingsValues.mInputAttributes.mShouldShowSuggestions
+
+    private data class DeletedSwipe(val word: String, val candidates: List<String>, val position: Int)
 
     private fun stripWordSeparatorsFromEnd(word: String, settingsValues: SettingsValues): String {
         return if (settingsValues.mSpacingAndPunctuations.isWordSeparator(word.codePointBefore(word.length))) {
@@ -3469,6 +3530,8 @@ class InputLogic(
     companion object {
         private const val TAG = "InputLogic"
         private const val INLINE_EMOJI_SEARCH_MARKER = ':'
+        /** longer text typed in place of a deleted swipe is not a single word correcting it */
+        private const val MAX_RETYPED_SWIPE_LENGTH = 48
         private const val KEY_REPEAT_INTERVAL_MS = 50
         /** interval before the second word, it gets shorter with each word until the minimum */
         private const val BACKSPACE_WORD_START_INTERVAL = 350f
