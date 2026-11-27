@@ -142,6 +142,8 @@ class LatinIME : InputMethodService(),
     private var lastOrientation = 0
     private var lastNightMode = 0
     private var lastPackageName: String? = null
+    private var lastImeOptions = 0
+    private var lastPrivateImeOptions: String? = null
     private var lastInputPackageName: String? = null
 
     val mSettings: Settings = Settings.getInstance()
@@ -299,13 +301,18 @@ class LatinIME : InputMethodService(),
         val orientation = resources.configuration.orientation
         val nightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val packageName = editorInfo?.packageName
+        // InputAttributes read these too, e.g. "no personalized learning" (incognito) of private browser tabs
+        val imeOptions = editorInfo?.imeOptions ?: 0
+        val privateImeOptions = editorInfo?.privateImeOptions
 
         if (!sSettingsDirty &&
             locale == lastSettingsLocale &&
             inputType == lastInputType &&
             orientation == lastOrientation &&
             nightMode == lastNightMode &&
-            packageName == lastPackageName
+            packageName == lastPackageName &&
+            imeOptions == lastImeOptions &&
+            privateImeOptions == lastPrivateImeOptions
         ) {
             return
         }
@@ -316,6 +323,8 @@ class LatinIME : InputMethodService(),
         lastOrientation = orientation
         lastNightMode = nightMode
         lastPackageName = packageName
+        lastImeOptions = imeOptions
+        lastPrivateImeOptions = privateImeOptions
 
         val inputAttributes = InputAttributes(editorInfo, isFullscreenMode, packageName)
         val currentKeyboardScript = keyboardSwitcher.currentKeyboardScript

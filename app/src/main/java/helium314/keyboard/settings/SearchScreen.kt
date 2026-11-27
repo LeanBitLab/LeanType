@@ -317,8 +317,9 @@ fun <T: Any?> SearchScreen(
                         title = title,
                         windowInsets = WindowInsets(0),
                         navigationIcon = {
-                            BackButton {
-                                if (showSearch) setShowSearch(false)
+                            BackButton { // same as BackHandler above
+                                if (showTestField) showTestField = false
+                                else if (showSearch) setShowSearch(false)
                                 else onClickBack()
                             }
                         },

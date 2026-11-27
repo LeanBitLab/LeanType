@@ -613,6 +613,26 @@ class InputLogicTest {
         assertEquals("hello world there", getText())
     }
 
+    @Test fun `a field asking for no learning is incognito although the previous field had the same input type`() {
+        reset()
+        // like a normal and a private browser tab: same app and input type, only the private one asks for no learning
+        val normal = EditorInfo().apply { inputType = currentInputType; packageName = "test.incognito.cache" }
+        val private = EditorInfo().apply {
+            inputType = currentInputType; packageName = "test.incognito.cache"
+            imeOptions = EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
+        }
+        try {
+            for ((editorInfo, incognito) in listOf(normal to false, private to true, normal to false)) {
+                editorInfoOverride = editorInfo
+                latinIME.onStartInputInternal(editorInfo, false)
+                latinIME.onStartInputViewInternal(editorInfo, false)
+                assertEquals(incognito, settingsValues.mIncognitoModeEnabled)
+            }
+        } finally {
+            editorInfoOverride = null
+        }
+    }
+
     @Test fun testPickSuggestionAfterSpaceAndBackspace_browserPackage() {
         reset()
         editorInfoOverride = EditorInfo().apply {
