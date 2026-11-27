@@ -104,7 +104,7 @@ fun PreferencesScreen(
             R.string.settings_category_additional_keys,
             Settings.PREF_SHOW_NUMBER_ROW,
             Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY,
-            Settings.PREF_SPACE_TO_CHANGE_LANG,
+            Settings.PREF_SPACE_LONG_PRESS,
             Settings.PREF_EXPAND_FINE_TUNE_ADDITIONAL_KEYS,
             if (fineTuneAdditionalKeysExpanded && SubtypeSettings.getEnabledSubtypes(true).any { it.locale().language in localesWithLocalizedNumberRow })
                 Settings.PREF_LOCALIZED_NUMBER_ROW else null,
@@ -255,11 +255,17 @@ fun createPreferencesSettings(context: Context) = listOf(
             Defaults.PREF_LANGUAGE_SWITCH_KEY
         ) { KeyboardSwitcher.getInstance().setThemeNeedsReload() }
     },
-    Setting(context, Settings.PREF_SPACE_TO_CHANGE_LANG,
-        R.string.prefs_long_press_keyboard_to_change_lang,
-        R.string.prefs_long_press_keyboard_to_change_lang_summary)
-    {
-        SwitchPreference(it, Defaults.PREF_SPACE_TO_CHANGE_LANG)
+    Setting(context, Settings.PREF_SPACE_LONG_PRESS, R.string.prefs_long_press_keyboard_to_change_lang) {
+        ListPreference(
+            it,
+            listOf(
+                stringResource(R.string.select_input_method) to "input_method_picker",
+                stringResource(R.string.switch_language) to "switch_language",
+                stringResource(R.string.action_none) to "none"
+            ),
+            // until changed here, the value comes from the old on/off switch
+            Settings.readSpaceLongPress(LocalContext.current.prefs())
+        )
     },
     Setting(context, Settings.PREF_DIRECT_IME_SWITCH_TARGET, R.string.direct_ime_switch_title, R.string.direct_ime_switch_summary) {
         ListPreference(
