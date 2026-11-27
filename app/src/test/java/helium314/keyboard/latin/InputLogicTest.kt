@@ -2083,6 +2083,8 @@ class InputLogicTest {
         latinIME.mInputLogic.insertCustomAiResult("Hello world.", shouldAppend = false, hasSelection = false)
         assertEquals("Hello world.", text)
         assertEquals("", composingText)
+        // suggestions for "wor" are gone, picking one can't add it to the result
+        assertTrue(latinIME.mInputLogic.suggestedWords.isEmpty)
         // typing continues normally
         chainInput(" ok")
         assertEquals("Hello world. ok", text)
@@ -2094,6 +2096,22 @@ class InputLogicTest {
         latinIME.mInputLogic.insertCustomAiResult("Answer.", shouldAppend = true, hasSelection = false)
         assertEquals("hello wor\n\nAnswer.", text)
         assertEquals("", composingText)
+    }
+
+    @Test fun `custom AI key result is appended at the end of the text, not at the cursor`() {
+        reset()
+        setText("first line")
+        setCursorPosition(5) // after "first"
+        latinIME.mInputLogic.insertCustomAiResult("Answer.", shouldAppend = true, hasSelection = false)
+        assertEquals("first line\n\nAnswer.", text)
+    }
+
+    @Test fun `custom AI key result replaces the selection`() {
+        reset()
+        setText("one teh two")
+        setCursorPosition(4, 7) // "teh"
+        latinIME.mInputLogic.insertCustomAiResult("the", shouldAppend = false, hasSelection = true)
+        assertEquals("one the two", text)
     }
 
     @Test
