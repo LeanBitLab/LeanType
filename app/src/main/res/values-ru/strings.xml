@@ -1655,8 +1655,6 @@
     <string name="select_import_language">Выберите язык по умолчанию для импортированных слов без языковых тегов:</string>
     <string name="select_file">Выберите файл</string>
     <string name="clear_learned_words_title">Четко выученные слова</string>
-    <string name="clear_learned_words_summary">Удалить все слова и предложения следующего слова, полученные при вводе</string>
-    <string name="clear_learned_words_confirmation">Вы уверены, что хотите удалить все выученные слова и предложения?</string>
     <string name="clear_learned_words_success">Выученные слова очищены</string>
     <string name="space_swipe_delete_word_entry">Удалить слово</string>
     <string name="personal_dict_export">Экспортировать словарь</string>
@@ -1781,4 +1779,5 @@
     <string name="learned_words">Выученные слова</string>
     <string name="learned_words_summary">Просмотр и удаление отдельных слов, выученных при наборе текста</string>
     <string name="learned_words_empty">Для текущих языков клавиатуры пока нет выученных слов</string>
+    <string name="clear_learned_words_details">Будут удалены все слова и предложения следующего слова, изученные на основе вашего набора текста, на всех языках. Личный словарь и заблокированные слова сохранятся. Это действие нельзя отменить.</string>
 </resources>

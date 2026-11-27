@@ -1621,8 +1621,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="select_import_language">Dil etiketi olmayan içe aktarılan kelimeler için varsayılan dili seçin:</string>
     <string name="select_file">Dosya seç</string>
     <string name="clear_learned_words_title">Öğrenilen kelimeleri temizle</string>
-    <string name="clear_learned_words_summary">Yazarak öğrenilen tüm kelimeleri ve sonraki kelime önerilerini silin</string>
-    <string name="clear_learned_words_confirmation">Öğrenilen tüm kelimeleri ve önerileri temizlemek istediğinizden emin misiniz?</string>
     <string name="clear_learned_words_success">Öğrenilen kelimeler temizlendi</string>
     <string name="space_swipe_delete_word_entry">Kelimeyi sil</string>
     <string name="personal_dict_export">Sözlüğü dışa aktar</string>
@@ -1748,4 +1746,5 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="learned_words">Öğrenilen kelimeler</string>
     <string name="learned_words_summary">Yazarken öğrenilen tek tek kelimeleri görüntüleyin ve silin</string>
     <string name="learned_words_empty">Klavyenin geçerli dilleri için henüz öğrenilmiş kelime yok</string>
+    <string name="clear_learned_words_details">Bu işlem, tüm dillerde yazarken öğrenilen tüm kelimeleri ve sonraki kelime önerilerini siler. Kişisel sözlüğünüz ve engellenen kelimeleriniz korunur. Bu işlem geri alınamaz.</string>
 </resources>

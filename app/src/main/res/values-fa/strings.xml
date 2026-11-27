@@ -156,8 +156,6 @@
     <string name="use_apps_dict_summary">استفاده از نام برنامه‌های نصب‌شده برای پیشنهادها و تصحیح‌ها</string>
     <string name="disable_personalized_dicts_message">هشدار: غیرفعال کردن این تنظیم، داده‌های یادگرفته‌شده را پاک می‌کند</string>
     <string name="clear_learned_words_title">پاک کردن کلمات یادگرفته‌شده</string>
-    <string name="clear_learned_words_summary">حذف همه کلمات و پیشنهادهای کلمه بعدی که از تایپ یادگرفته شده‌اند</string>
-    <string name="clear_learned_words_confirmation">آیا مطمئنید که می‌خواهید همه کلمات و پیشنهادهای یادگرفته‌شده را پاک کنید؟</string>
     <string name="clear_learned_words_success">کلمات یادگرفته‌شده پاک شدند</string>
     <string name="add_to_personal_dictionary">افزودن کلمات به واژه‌نامه شخصی</string>
     <string name="add_to_personal_dictionary_summary">استفاده از واژه‌نامه شخصی دستگاه برای ذخیره کلمات یادگرفته‌شده</string>
@@ -1714,4 +1712,5 @@
     <string name="learned_words">یادگرفته‌شده‌ها</string>
     <string name="learned_words_summary">مشاهده و حذف کلمات منفردی که از تایپ یاد گرفته شده‌اند</string>
     <string name="learned_words_empty">هنوز کلمه‌ای برای زبان‌های فعلی صفحه‌کلید یاد گرفته نشده است</string>
+    <string name="clear_learned_words_details">با این کار همه واژه‌ها و پیشنهادهای واژه‌ی بعدی که از تایپ شما یاد گرفته شده‌اند، در همه زبان‌ها حذف می‌شوند. واژه‌نامه شخصی و واژه‌های مسدودشده شما حفظ می‌شوند. این عمل برگشت‌پذیر نیست.</string>
 </resources>

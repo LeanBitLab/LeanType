@@ -1629,8 +1629,6 @@
     <string name="select_import_language">Выберыце мову па змаўчанні для імпартаваных слоў без моўных тэгаў:</string>
     <string name="select_file">Выберыце файл</string>
     <string name="clear_learned_words_title">Выразныя вывучаныя словы</string>
-    <string name="clear_learned_words_summary">Выдаліць усе словы і прапановы наступнага слова, атрыманыя падчас уводу</string>
-    <string name="clear_learned_words_confirmation">Вы ўпэўнены, што хочаце выдаліць усе вывучаныя словы і прапановы?</string>
     <string name="clear_learned_words_success">Вывучаныя словы ачышчаны</string>
     <string name="space_swipe_delete_word_entry">Выдаліць слова</string>
     <string name="personal_dict_export">Экспарт слоўніка</string>
@@ -1809,4 +1807,5 @@
     <string name="learned_words">Вывучаныя словы</string>
     <string name="learned_words_summary">Глядзіце і выдаляйце асобныя словы, вывучаныя пры наборы тэксту</string>
     <string name="learned_words_empty">Для бягучых моў клавіятуры пакуль няма вывучаных слоў</string>
+    <string name="clear_learned_words_details">Гэта выдаляе кожнае слова і наступнае слова-прапанову, вывучаныя з вашага ўводу, на ўсіх мовах. Асабісты слоўнік і заблакіраваныя словы захоўваюцца. Гэта дзеянне нельга адмяніць.</string>
 </resources>

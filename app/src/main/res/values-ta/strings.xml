@@ -437,8 +437,6 @@
     <string name="settings_category_visuals">காட்சிகள் &amp; முன்னோட்டம்</string>
     <string name="settings_category_gestures_advanced">மேம்பட்ட சைகைகள்</string>
     <string name="clear_learned_words_title">கற்ற சொற்களை அழி</string>
-    <string name="clear_learned_words_summary">தட்டச்சிலிருந்து கற்ற அனைத்து சொற்களையும் அடுத்த-சொல் பரிந்துரைகளையும் நீக்கு</string>
-    <string name="clear_learned_words_confirmation">கற்ற அனைத்து சொற்களையும் பரிந்துரைகளையும் அழிக்க விரும்புகிறீர்களா?</string>
     <string name="clear_learned_words_success">கற்ற சொற்கள் அழிக்கப்பட்டன</string>
     <string name="add_to_personal_dict_threshold">கற்றல் வரம்பு</string>
     <string name="add_to_personal_dict_threshold_times_1">1 முறை தட்டச்சு செய்த பிறகு சேர்</string>
@@ -1669,4 +1667,5 @@
     <string name="learned_words">கற்றறிந்த சொற்கள்</string>
     <string name="learned_words_summary">தட்டச்சு செய்வதிலிருந்து கற்றறிந்த தனிச் சொற்களைப் பார்க்கவும் நீக்கவும்</string>
     <string name="learned_words_empty">விசைப்பலகையின் தற்போதைய மொழிகளுக்கு இதுவரை கற்றறிந்த சொற்கள் இல்லை</string>
+    <string name="clear_learned_words_details">இதன் மூலம் நீங்கள் தட்டச்சு செய்ததிலிருந்து கற்றுக்கொள்ளப்பட்ட ஒவ்வொரு சொல்லும் அடுத்த சொல் பரிந்துரையும் அனைத்து மொழிகளிலும் நீக்கப்படும். உங்கள் தனிப்பட்ட அகராதி மற்றும் தடுக்கப்பட்ட சொற்கள் வைக்கப்படும். இதை மாற்ற முடியாது.</string>
 </resources>

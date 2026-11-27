@@ -1595,8 +1595,6 @@
     <string name="select_import_language">Виберіть мову за умовчанням для імпортованих слів без мовних тегів:</string>
     <string name="select_file">Виберіть файл</string>
     <string name="clear_learned_words_title">Чітко вивчені слова</string>
-    <string name="clear_learned_words_summary">Видаліть усі слова та пропозиції наступного слова, отримані під час введення</string>
-    <string name="clear_learned_words_confirmation">Ви впевнені, що бажаєте видалити всі вивчені слова та пропозиції?</string>
     <string name="clear_learned_words_success">Вивчені слова очищені</string>
     <string name="space_swipe_delete_word_entry">Видалити слово</string>
     <string name="personal_dict_export">Експорт словника</string>
@@ -1775,4 +1773,5 @@
     <string name="learned_words">Вивчені слова</string>
     <string name="learned_words_summary">Переглядайте та видаляйте окремі слова, вивчені під час введення</string>
     <string name="learned_words_empty">Для поточних мов клавіатури ще немає вивчених слів</string>
+    <string name="clear_learned_words_details">Це видалить усі слова та підказки наступного слова, вивчені з вашого набору тексту, у всіх мовах. Ваш персональний словник і заблоковані слова буде збережено. Цю дію неможливо скасувати.</string>
 </resources>

@@ -1597,8 +1597,6 @@
     <string name="select_import_language">为没有语言标签的导入单词选择默认语言：</string>
     <string name="select_file">选择文件</string>
     <string name="clear_learned_words_title">清晰学过的单词</string>
-    <string name="clear_learned_words_summary">删除从打字中学到的所有单词和下一个单词建议</string>
-    <string name="clear_learned_words_confirmation">您确定要清除所有已学单词和建议吗？</string>
     <string name="clear_learned_words_success">已学单词清除</string>
     <string name="space_swipe_delete_word_entry">删除单词</string>
     <string name="personal_dict_export">导出词典</string>
@@ -1776,4 +1774,5 @@
     <string name="learned_words">已学习的词语</string>
     <string name="learned_words_summary">查看并删除通过输入学习到的单个词语</string>
     <string name="learned_words_empty">当前键盘语言暂无已学习的词语</string>
+    <string name="clear_learned_words_details">这将删除您在所有语言中输入时学习到的所有词语和下一个词建议。您的个人词典和已屏蔽的词语将保留。此操作无法撤销。</string>
 </resources>

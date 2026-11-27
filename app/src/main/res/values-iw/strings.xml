@@ -1600,8 +1600,6 @@
     <string name="select_import_language">בחר שפת ברירת מחדל עבור מילים מיובאות ללא תגי שפה:</string>
     <string name="select_file">בחר קובץ</string>
     <string name="clear_learned_words_title">מילים נלמדות ברורות</string>
-    <string name="clear_learned_words_summary">מחק את כל המילים וההצעות למילה הבאה שנלמדו מהקלדה</string>
-    <string name="clear_learned_words_confirmation">האם אתה בטוח שברצונך לנקות את כל המילים וההצעות שנלמדו?</string>
     <string name="clear_learned_words_success">מילים נלמדות נוקו</string>
     <string name="space_swipe_delete_word_entry">מחק מילה</string>
     <string name="personal_dict_export">ייצוא מילון</string>
@@ -1780,4 +1778,5 @@
     <string name="learned_words">מילים שנלמדו</string>
     <string name="learned_words_summary">הצג ומחק מילים בודדות שנלמדו מההקלדה</string>
     <string name="learned_words_empty">עדיין אין מילים שנלמדו עבור השפות הנוכחיות של המקלדת</string>
+    <string name="clear_learned_words_details">פעולה זו מוחקת כל מילה והצעת מילה הבאה שנלמדו מההקלדה שלך, בכל השפות. המילון האישי והמילים החסומות יישמרו. לא ניתן לבטל פעולה זו.</string>
 </resources>

@@ -1651,8 +1651,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="select_import_language">Sélectionnez la langue par défaut pour les mots importés sans balises de langue :</string>
     <string name="select_file">Sélectionner un fichier</string>
     <string name="clear_learned_words_title">Mots clairs appris</string>
-    <string name="clear_learned_words_summary">Supprimez tous les mots et suggestions de mots suivants appris lors de la saisie</string>
-    <string name="clear_learned_words_confirmation">Êtes-vous sûr de vouloir effacer tous les mots et suggestions appris ?</string>
     <string name="clear_learned_words_success">Mots appris effacés</string>
     <string name="space_swipe_delete_word_entry">Supprimer le mot</string>
     <string name="personal_dict_export">Exporter le dictionnaire</string>
@@ -1777,4 +1775,5 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="learned_words">Mots appris</string>
     <string name="learned_words_summary">Voir et supprimer les mots individuels appris lors de la saisie</string>
     <string name="learned_words_empty">Aucun mot appris pour les langues actuelles du clavier pour le moment</string>
+    <string name="clear_learned_words_details">Ceci supprime tous les mots et suggestions de mot suivant appris à partir de votre saisie, dans toutes les langues. Votre dictionnaire personnel et les mots bloqués sont conservés. Cette action est irréversible.</string>
 </resources>

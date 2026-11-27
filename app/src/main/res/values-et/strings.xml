@@ -1629,8 +1629,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="select_import_language">Valige ilma keelemärgenditeta imporditud sõnade jaoks vaikekeel:</string>
     <string name="select_file">Valige fail</string>
     <string name="clear_learned_words_title">Selge õpitud sõnad</string>
-    <string name="clear_learned_words_summary">Kustutage kõik tippimisel õpitud sõnad ja järgmise sõna soovitused</string>
-    <string name="clear_learned_words_confirmation">Kas olete kindel, et soovite kõik õpitud sõnad ja soovitused kustutada?</string>
     <string name="clear_learned_words_success">Õpitud sõnad kustutatud</string>
     <string name="space_swipe_delete_word_entry">Kustuta sõna</string>
     <string name="personal_dict_export">Ekspordi sõnastik</string>
@@ -1809,4 +1807,5 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="learned_words">Õpitud sõnad</string>
     <string name="learned_words_summary">Vaata ja kustuta üksikuid tippimisel õpitud sõnu</string>
     <string name="learned_words_empty">Klaviatuuri praeguste keelte jaoks pole veel õpitud sõnu</string>
+    <string name="clear_learned_words_details">See kustutab kõik sõnad ja järgmise sõna soovitused, mis on õpitud sinu tippimisest, kõigis keeltes. Isiklik sõnastik ja blokeeritud sõnad jäävad alles. Seda ei saa tagasi võtta.</string>
 </resources>

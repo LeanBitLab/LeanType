@@ -1629,8 +1629,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="select_import_language">Selectați limba implicită pentru cuvintele importate fără etichete de limbă:</string>
     <string name="select_file">Selectați fișierul</string>
     <string name="clear_learned_words_title">Cuvinte clare învățate</string>
-    <string name="clear_learned_words_summary">Ștergeți toate cuvintele și sugestiile pentru cuvintele următoare învățate din tastare</string>
-    <string name="clear_learned_words_confirmation">Sigur doriți să ștergeți toate cuvintele și sugestiile învățate?</string>
     <string name="clear_learned_words_success">Cuvintele învățate șterse</string>
     <string name="space_swipe_delete_word_entry">Șterge cuvântul</string>
     <string name="personal_dict_export">Export dicționar</string>
@@ -1809,4 +1807,5 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="learned_words">Cuvinte învățate</string>
     <string name="learned_words_summary">Vezi și șterge cuvintele individuale învățate din scriere</string>
     <string name="learned_words_empty">Încă nu există cuvinte învățate pentru limbile curente ale tastaturii</string>
+    <string name="clear_learned_words_details">Aceasta șterge toate cuvintele și sugestiile pentru cuvântul următor învățate din tastarea ta, în toate limbile. Dicționarul tău personal și cuvintele blocate sunt păstrate. Această acțiune nu poate fi anulată.</string>
 </resources>

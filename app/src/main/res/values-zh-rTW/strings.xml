@@ -181,8 +181,6 @@
     <string name="use_apps_dict_summary">在建議和更正中使用已安裝應用程式的名稱</string>
     <string name="disable_personalized_dicts_message">警告：停用此設定將清除已學習的資料</string>
     <string name="clear_learned_words_title">清除已學習的字詞</string>
-    <string name="clear_learned_words_summary">刪除從輸入中學習到的所有字詞與下一個字詞建議</string>
-    <string name="clear_learned_words_confirmation">確定要清除所有已學習的字詞與建議嗎？</string>
     <string name="clear_learned_words_success">已清除已學習的字詞</string>
     <string name="add_to_personal_dictionary">將字詞加入個人字典</string>
     <string name="add_to_personal_dictionary_summary">使用裝置的個人字典儲存已學習的字詞</string>
@@ -1736,4 +1734,5 @@
     <string name="learned_words">學習過的字詞</string>
     <string name="learned_words_summary">查看並刪除輸入時學習到的單一字詞</string>
     <string name="learned_words_empty">目前鍵盤語言尚無學習過的字詞</string>
+    <string name="clear_learned_words_details">這會刪除所有語言中從您的輸入學習到的字詞及下一個字詞建議。您的個人字典和已封鎖的字詞會保留。此操作無法復原。</string>
 </resources>

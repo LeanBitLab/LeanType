@@ -1639,8 +1639,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="select_import_language">Wybierz domyślny język dla importowanych słów bez znaczników językowych:</string>
     <string name="select_file">Wybierz plik</string>
     <string name="clear_learned_words_title">Wyczyść wyuczone słowa</string>
-    <string name="clear_learned_words_summary">Usuń wszystkie słowa i sugestie kolejnych słów wyciągnięte podczas pisania</string>
-    <string name="clear_learned_words_confirmation">Czy na pewno chcesz usunąć wszystkie poznane słowa i sugestie?</string>
     <string name="clear_learned_words_success">Nauczone słowa zostały usunięte</string>
     <string name="space_swipe_delete_word_entry">Usuń słowo</string>
     <string name="personal_dict_export">Eksportuj słownik</string>
@@ -1819,4 +1817,5 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="learned_words">Nauczone słowa</string>
     <string name="learned_words_summary">Przeglądaj i usuwaj pojedyncze słowa nauczone podczas pisania</string>
     <string name="learned_words_empty">Brak nauczonych słów dla bieżących języków klawiatury</string>
+    <string name="clear_learned_words_details">Spowoduje to usunięcie wszystkich słów i sugestii następnego słowa nauczonych na podstawie pisania we wszystkich językach. Twój słownik osobisty i zablokowane słowa zostaną zachowane. Tej operacji nie można cofnąć.</string>
 </resources>

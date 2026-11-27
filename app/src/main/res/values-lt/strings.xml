@@ -1630,8 +1630,6 @@ Ar norite atnaujinti?</string>
     <string name="select_import_language">Pasirinkite numatytąją kalbą importuojamiems žodžiams be kalbos žymų:</string>
     <string name="select_file">Pasirinkite failą</string>
     <string name="clear_learned_words_title">Aiškūs išmokti žodžiai</string>
-    <string name="clear_learned_words_summary">Ištrinkite visus žodžius ir kito žodžio pasiūlymus, išmoktus įvedant tekstą</string>
-    <string name="clear_learned_words_confirmation">Ar tikrai norite išvalyti visus išmoktus žodžius ir pasiūlymus?</string>
     <string name="clear_learned_words_success">Išmokti žodžiai išvalyti</string>
     <string name="space_swipe_delete_word_entry">Ištrinti žodį</string>
     <string name="personal_dict_export">Eksportuoti žodyną</string>
@@ -1810,4 +1808,5 @@ Ar norite atnaujinti?</string>
     <string name="learned_words">Išmokti žodžiai</string>
     <string name="learned_words_summary">Peržiūrėkite ir ištrinkite atskirus žodžius, išmoktus rašant</string>
     <string name="learned_words_empty">Klaviatūros dabartinėms kalboms dar nėra išmoktų žodžių</string>
+    <string name="clear_learned_words_details">Tai ištrina visus žodžius ir kito žodžio pasiūlymus, išmoktus iš jūsų rašymo, visomis kalbomis. Jūsų asmeninis žodynas ir užblokuoti žodžiai išliks. Šio veiksmo atšaukti negalima.</string>
 </resources>

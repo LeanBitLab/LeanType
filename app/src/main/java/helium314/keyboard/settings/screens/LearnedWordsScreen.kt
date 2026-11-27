@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.settings.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,7 +28,9 @@ import androidx.compose.ui.unit.dp
 import helium314.keyboard.latin.LatinIME
 import helium314.keyboard.latin.LearnedWord
 import helium314.keyboard.latin.R
+import helium314.keyboard.latin.personalization.PersonalizationHelper
 import helium314.keyboard.settings.SearchScreen
+import helium314.keyboard.settings.dialogs.ConfirmationDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -40,6 +43,7 @@ internal fun sortLearnedWords(words: List<LearnedWord>): List<LearnedWord> =
 fun LearnedWordsScreen(onClickBack: () -> Unit) {
     val ctx = LocalContext.current
     var words: List<LearnedWord>? by remember { mutableStateOf(null) }
+    var showClearDialog by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         // the history is held by the running keyboard, reading it waits for its dictionary thread
         words = withContext(Dispatchers.IO) {
@@ -51,6 +55,11 @@ fun LearnedWordsScreen(onClickBack: () -> Unit) {
         onClickBack = onClickBack,
         title = { Text(if (list == null) stringResource(R.string.learned_words) else "${stringResource(R.string.learned_words)} (${list.size})") },
         filteredItems = { term -> list.orEmpty().filter { it.word.startsWith(term, ignoreCase = true) } },
+        actions = {
+            IconButton(onClick = { showClearDialog = true }) {
+                Icon(painterResource(R.drawable.ic_clear_all), stringResource(R.string.clear_learned_words_title))
+            }
+        },
         content = if (list != null && list.isEmpty()) { {
             Text(
                 stringResource(R.string.learned_words_empty),
@@ -86,4 +95,19 @@ fun LearnedWordsScreen(onClickBack: () -> Unit) {
             }
         }
     )
+    if (showClearDialog) {
+        ConfirmationDialog(
+            onDismissRequest = { showClearDialog = false },
+            onConfirmed = {
+                showClearDialog = false
+                PersonalizationHelper.clearUserHistory(ctx)
+                words = emptyList()
+                Toast.makeText(ctx, ctx.getString(R.string.clear_learned_words_success), Toast.LENGTH_SHORT).show()
+            },
+            title = { Text(stringResource(R.string.clear_learned_words_title)) },
+            content = { Text(stringResource(R.string.clear_learned_words_details)) },
+            confirmButtonText = stringResource(R.string.clear_all),
+            cancelButtonText = stringResource(android.R.string.cancel),
+        )
+    }
 }

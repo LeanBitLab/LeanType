@@ -1684,8 +1684,6 @@
     <string name="select_import_language">لینگویج ٹیگز کے بغیر درآمد شدہ الفاظ کے لیے ڈیفالٹ زبان منتخب کریں:</string>
     <string name="select_file">فائل منتخب کریں۔</string>
     <string name="clear_learned_words_title">سیکھے ہوئے الفاظ کو صاف کریں۔</string>
-    <string name="clear_learned_words_summary">ٹائپنگ سے سیکھے گئے تمام الفاظ اور اگلے لفظ کی تجاویز کو حذف کریں۔</string>
-    <string name="clear_learned_words_confirmation">کیا آپ واقعی تمام سیکھے ہوئے الفاظ اور تجاویز کو صاف کرنا چاہتے ہیں؟</string>
     <string name="clear_learned_words_success">سیکھے ہوئے الفاظ صاف ہو گئے۔</string>
     <string name="space_swipe_delete_word_entry">لفظ حذف کریں۔</string>
     <string name="personal_dict_export">لغت برآمد کریں۔</string>
@@ -1813,4 +1811,5 @@
     <string name="learned_words">سیکھے گئے الفاظ</string>
     <string name="learned_words_summary">ٹائپنگ سے سیکھے گئے انفرادی الفاظ دیکھیں اور حذف کریں</string>
     <string name="learned_words_empty">کی بورڈ کی موجودہ زبانوں کے لیے ابھی تک کوئی سیکھے گئے الفاظ نہیں ہیں</string>
+    <string name="clear_learned_words_details">یہ آپ کی ٹائپنگ سے سیکھے گئے ہر لفظ اور اگلے لفظ کی تجویز کو تمام زبانوں میں حذف کر دیتا ہے۔ آپ کی ذاتی لغت اور بلاک کیے گئے الفاظ برقرار رہیں گے۔ اسے واپس نہیں لایا جا سکتا۔</string>
 </resources>
