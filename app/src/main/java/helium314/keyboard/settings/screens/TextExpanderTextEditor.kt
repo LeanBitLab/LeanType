@@ -5,7 +5,6 @@ import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -35,11 +34,17 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.core.view.WindowCompat
+import androidx.compose.ui.window.DialogWindowProvider
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -128,15 +133,27 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
     }
 
     Dialog(onDismissRequest = ::close, properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
+        // the dialog has its own window: give its status and navigation bar icons the colors of the settings screens
+        val view = LocalView.current
+        val lightBars = MaterialTheme.colorScheme.background.luminance() > 0.5f
+        SideEffect {
+            (view.parent as? DialogWindowProvider)?.window?.let { window ->
+                WindowCompat.getInsetsController(window, view).apply {
+                    isAppearanceLightStatusBars = lightBars
+                    isAppearanceLightNavigationBars = lightBars
+                }
+            }
+        }
         Scaffold(
             contentWindowInsets = WindowInsets.safeDrawing,
             topBar = {
                 TopAppBar(
                     title = {
-                        Text(
+                        Text( // like the titles of the other settings screens
                             text = stringResource(R.string.text_expander_all_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -145,43 +162,26 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                         BackButton(onClick = ::close)
                     },
                     actions = {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(end = 8.dp)
-                        ) {
+                        // default icon button size and color, like in the top bar of the other settings screens
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             if (hasPrevious) {
-                                IconButton(
-                                    onClick = { askRestore = true },
-                                    modifier = Modifier.size(38.dp)
-                                ) {
+                                IconButton(onClick = { askRestore = true }) {
                                     Icon(
                                         painter = painterResource(R.drawable.ic_undo),
-                                        contentDescription = stringResource(R.string.text_expander_restore_previous),
-                                        modifier = Modifier.size(20.dp),
-                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                        contentDescription = stringResource(R.string.text_expander_restore_previous)
                                     )
                                 }
                             }
-                            IconButton(
-                                onClick = { loadFile.launch(arrayOf("text/*")) },
-                                modifier = Modifier.size(38.dp)
-                            ) {
+                            IconButton(onClick = { loadFile.launch(arrayOf("text/*")) }) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_file_upload),
-                                    contentDescription = stringResource(R.string.text_expander_load_file),
-                                    modifier = Modifier.size(20.dp),
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                    contentDescription = stringResource(R.string.text_expander_load_file)
                                 )
                             }
-                            IconButton(
-                                onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) },
-                                modifier = Modifier.size(38.dp)
-                            ) {
+                            IconButton(onClick = { saveFile.launch(context.getString(R.string.text_expander_file_name)) }) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_file_download),
-                                    contentDescription = stringResource(R.string.text_expander_save_file),
-                                    modifier = Modifier.size(20.dp),
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                    contentDescription = stringResource(R.string.text_expander_save_file)
                                 )
                             }
                             IconButton(
@@ -230,13 +230,12 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                                     value = value.copy(selection = TextRange(lineEnd))
                                     scope.launch { scroll.animateScrollTo(l.getLineTop(line).toInt()) }
                                 },
-                                label = {
-                                    Text(
-                                        text = "# ${name.ifEmpty { "?" }}",
-                                        fontFamily = FontFamily.Monospace,
-                                        fontWeight = FontWeight.SemiBold
-                                    )
-                                }
+                                label = { Text(name.ifEmpty { "?" }) },
+                                // filled and borderless like the placeholder tags below
+                                border = null,
+                                colors = SuggestionChipDefaults.suggestionChipColors(
+                                    containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f)
+                                )
                             )
                         }
                     }
@@ -246,7 +245,7 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                        .padding(start = 20.dp, end = 20.dp, top = 4.dp, bottom = 8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -264,15 +263,14 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     )
                 }
 
-                // Code-style Editor box
+                // Editor box, a card like the setting groups of the other screens
                 Surface(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 4.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surfaceContainerLow,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+                    color = MaterialTheme.colorScheme.surfaceContainer
                 ) {
                     val headerStyle = SpanStyle(
                         color = MaterialTheme.colorScheme.primary,
@@ -300,8 +298,9 @@ fun TextExpanderTextEditor(onClose: (Boolean) -> Unit) {
                     )
                 }
 
-                Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 8.dp)) {
-                    PlaceholderTagsRow(value) { value = it }
+                // the padding is inside the scrolling row, so the tags scroll to the screen edges instead of being cut
+                Box(modifier = Modifier.padding(top = 4.dp, bottom = 8.dp)) {
+                    PlaceholderTagsRow(value, contentPadding = 16.dp) { value = it }
                 }
             }
         }
