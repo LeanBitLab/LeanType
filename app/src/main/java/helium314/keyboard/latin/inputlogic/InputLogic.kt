@@ -3257,9 +3257,6 @@ class InputLogic(
         if (hasSelection) {
             val selectedText = mConnection.getSelectedText(0)
             textToProcess = selectedText?.toString() ?: ""
-            if (shouldAppend) {
-                mConnection.setSelection(mConnection.expectedSelectionEnd, mConnection.expectedSelectionEnd)
-            }
         } else {
             val maxChars = 60000
             var textBefore: CharSequence? = null
@@ -3284,18 +3281,9 @@ class InputLogic(
             val before = textBefore?.toString() ?: ""
             val after = textAfter?.toString() ?: ""
             textToProcess = before + after
-
-            if (!shouldAppend) {
-                mConnection.selectAll()
-            } else {
-                if (textToProcess.isNotEmpty()) {
-                    if (after.isNotEmpty() && mConnection.expectedSelectionEnd >= 0) {
-                        val newPos = mConnection.expectedSelectionEnd + after.length
-                        mConnection.setSelection(newPos, newPos)
-                    }
-                }
-            }
         }
+        // the selection and the cursor are changed only when the result is inserted: some apps (e.g.
+        // Nine Mail) hide the keyboard when the selection changes, which would cancel the request
 
         val targetEditorInfo = getCurrentInputEditorInfo()
         val targetPackage = targetEditorInfo?.packageName
@@ -3316,9 +3304,11 @@ class InputLogic(
                     return@customAsync
                 }
                 if (shouldAppend) {
+                    moveCursorToEndForAppend(hasSelection)
                     val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
                     mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
                 } else if (!hasSelection) {
+                    // selects all itself
                     mConnection.replaceEntireText(resultText)
                 } else {
                     mLatinIME.onTextInput(resultText)
@@ -3329,6 +3319,23 @@ class InputLogic(
                 KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_error_format, errorMessage), true)
             }
         )
+    }
+
+    /** Before appending a result: after the selection the request was made for, or at the end of the text */
+    private fun moveCursorToEndForAppend(hadSelection: Boolean) {
+        val end = mConnection.expectedSelectionEnd
+        if (end < 0) return
+        if (hadSelection) {
+            if (mConnection.expectedSelectionStart != end) mConnection.setSelection(end, end)
+            return
+        }
+        val after = try {
+            mConnection.getTextAfterCursor(60000, 0)?.length ?: 0
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to get text after cursor: $e")
+            0
+        }
+        if (after > 0) mConnection.setSelection(end + after, end + after)
     }
 
     private fun tryJumpToNextPlaceholder(): Boolean {
