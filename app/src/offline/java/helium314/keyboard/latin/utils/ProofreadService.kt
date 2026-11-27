@@ -15,6 +15,7 @@ import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.CoroutineScope
@@ -84,6 +85,13 @@ class ProofreadService(private val context: Context) {
             isModelLoaded = false
             isModelAvailable = true
         }
+
+        /**
+         * One generation at a time. The plugin can't stop a generation, so a cancelled request keeps
+         * running until it is done, and a new one would fail with "Context is busy". It waits here
+         * instead. A plain lock, as it is held by the thread blocked in the plugin.
+         */
+        val generateLock = Any()
 
         suspend fun loadModel(
             context: Context,
@@ -411,17 +419,25 @@ class ProofreadService(private val context: Context) {
             }
             
             // Use provider to generate completion
-            OfflineAiLoader.isBusy = true
-            val output = try {
-                provider.generate(fullPrompt, mapOf(
-                    "temperature" to temp.toDouble(),
-                    "top_p" to topP.toDouble(),
-                    "top_k" to topK,
-                    "min_p" to minP.toDouble(),
-                    "max_tokens" to effectiveMaxTokens
-                ))
-            } finally {
-                OfflineAiLoader.isBusy = false
+            val output = synchronized(ModelHolder.generateLock) {
+                // cancelled while waiting for the previous generation: don't start one, it can't be stopped
+                if (!isActive) {
+                    ModelHolder.scheduleUnload(context)
+                    return@withContext Result.failure(ProofreadException("Cancelled"))
+                }
+                // set and cleared inside the lock: a waiting request can't clear it while another one runs
+                OfflineAiLoader.isBusy = true
+                try {
+                    provider.generate(fullPrompt, mapOf(
+                        "temperature" to temp.toDouble(),
+                        "top_p" to topP.toDouble(),
+                        "top_k" to topK,
+                        "min_p" to minP.toDouble(),
+                        "max_tokens" to effectiveMaxTokens
+                    ))
+                } finally {
+                    OfflineAiLoader.isBusy = false
+                }
             }
 
             // Schedule unload after work is done
