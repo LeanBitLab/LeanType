@@ -68,6 +68,13 @@ object Constants {
          * [helium314.keyboard.latin.settings.SettingsValues.mGestureFloatingPreviewTextEnabled]
          */
         const val NO_FLOATING_GESTURE_PREVIEW = "noGestureFloatingPreview"
+
+        /**
+         * The private IME option used to indicate that nothing typed in a field should be learned, like
+         * [android.view.inputmethod.EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING] (which Compose text
+         * fields can't set). Used for the test field in the settings.
+         */
+        const val NO_PERSONALIZED_LEARNING = "noPersonalizedLearning"
     }
 
     object Subtype {

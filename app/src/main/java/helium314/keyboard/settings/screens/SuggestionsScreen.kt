@@ -109,7 +109,8 @@ fun SuggestionsScreen(
     SearchSettingsScreen(
         onClickBack = onClickBack,
         title = stringResource(R.string.settings_screen_suggestions),
-        settings = items
+        settings = items,
+        testField = true,
     )
 }
 
