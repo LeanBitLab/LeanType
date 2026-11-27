@@ -3,6 +3,7 @@ package helium314.keyboard.settings
 
 import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.settings.screens.UserDictSortOrder
+import helium314.keyboard.settings.screens.inStoredOrder
 import helium314.keyboard.settings.screens.sortShortcuts
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -18,6 +19,14 @@ class TextExpanderSortTest {
     @Test fun `oldest keeps the order of adding`() = assertEquals(listOf(1, 2, 3, 4, 5), order(UserDictSortOrder.OLDEST))
 
     @Test fun `last added reverses it`() = assertEquals(listOf(5, 4, 3, 2, 1), order(UserDictSortOrder.LAST_ADDED))
+
+    @Test fun `saving a sorted bulk editor keeps the order of adding`() {
+        val stored = linkedMapOf("brb" to 1, "ack" to 2, "cya" to 3)
+        // edited in alphabetical order: "ack" changed, "brb" removed, "zz" and "aa" added
+        val edited = linkedMapOf("aa" to 9, "ack" to 20, "cya" to 3, "zz" to 8)
+        val saved = inStoredOrder(stored, edited)
+        assertEquals(listOf("ack" to 20, "cya" to 3, "aa" to 9, "zz" to 8), saved.toList())
+    }
 
     @Test fun `alphabetical ignores case and sorts regex shortcuts by their label`() =
         // ";addr" < "ack" < "brb" < "cya" < "regex: \d+eur"

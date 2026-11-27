@@ -122,12 +122,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
         mutableStateOf(TextExpanderUtils.getShortcuts(context))
     }
     // the stored order is the order of adding, so OLDEST is the list as before
-    var sortOrder by remember {
-        mutableStateOf(
-            UserDictSortOrder.entries.firstOrNull { it.name == context.prefs().getString(TextExpanderUtils.PREF_SORT_ORDER, null) }
-                ?: UserDictSortOrder.OLDEST
-        )
-    }
+    var sortOrder by remember { mutableStateOf(readShortcutSortOrder(context)) }
     var showSortDialog by remember { mutableStateOf(false) }
     val sortedShortcuts = remember(shortcutsMap, sortOrder) { sortShortcuts(shortcutsMap, sortOrder) }
 
@@ -819,6 +814,20 @@ internal fun <V> sortShortcuts(shortcuts: Map<String, V>, order: UserDictSortOrd
     UserDictSortOrder.ALPHABETICAL -> shortcuts.entries.sortedBy { TextExpanderText.displayName(it.key).lowercase() }
     UserDictSortOrder.LAST_ADDED -> shortcuts.entries.reversed()
     UserDictSortOrder.OLDEST -> shortcuts.entries.toList()
+}
+
+/** The order chosen for the shortcut list and the bulk editor; OLDEST, the order of adding, by default */
+internal fun readShortcutSortOrder(context: android.content.Context): UserDictSortOrder =
+    UserDictSortOrder.entries.firstOrNull { it.name == context.prefs().getString(TextExpanderUtils.PREF_SORT_ORDER, null) }
+        ?: UserDictSortOrder.OLDEST
+
+/**
+ * [edited] in the stored order of [stored]: kept shortcuts keep their place and new ones come last, so saving
+ * from a sorted bulk editor keeps the order of adding (for Oldest and Last added).
+ */
+internal fun <V> inStoredOrder(stored: Map<String, V>, edited: Map<String, V>): Map<String, V> = LinkedHashMap<String, V>().apply {
+    stored.keys.forEach { key -> edited[key]?.let { put(key, it) } }
+    edited.forEach { (key, value) -> if (key !in this) put(key, value) }
 }
 
 /** Placeholder tags, a tap inserts the tag at the cursor */
