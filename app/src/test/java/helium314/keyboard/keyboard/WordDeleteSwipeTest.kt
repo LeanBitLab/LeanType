@@ -25,9 +25,9 @@ class WordDeleteSwipeTest {
     fun `multiple words selection progression`() {
         val text = "one two three"
         val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
-        assertEquals(listOf(13, 7, 3, 0), boundaries)
-        assertEquals(" three", text.substring(boundaries[1], boundaries[0]))
-        assertEquals(" two three", text.substring(boundaries[2], boundaries[0]))
+        assertEquals(listOf(13, 8, 4, 0), boundaries)
+        assertEquals("three", text.substring(boundaries[1], boundaries[0]))
+        assertEquals("two three", text.substring(boundaries[2], boundaries[0]))
         assertEquals("one two three", text.substring(boundaries[3], boundaries[0]))
     }
 
@@ -35,8 +35,8 @@ class WordDeleteSwipeTest {
     fun `words with punctuation attached`() {
         val text = "Hello, world!"
         val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
-        assertEquals(listOf(13, 6, 0), boundaries)
-        assertEquals(" world!", text.substring(boundaries[1], boundaries[0]))
+        assertEquals(listOf(13, 7, 0), boundaries)
+        assertEquals("world!", text.substring(boundaries[1], boundaries[0]))
         assertEquals("Hello, world!", text.substring(boundaries[2], boundaries[0]))
     }
 
@@ -44,8 +44,8 @@ class WordDeleteSwipeTest {
     fun `trailing spaces before cursor`() {
         val text = "first second  "
         val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
-        assertEquals(listOf(14, 5, 0), boundaries)
-        assertEquals(" second  ", text.substring(boundaries[1], boundaries[0]))
+        assertEquals(listOf(14, 6, 0), boundaries)
+        assertEquals("second  ", text.substring(boundaries[1], boundaries[0]))
         assertEquals("first second  ", text.substring(boundaries[2], boundaries[0]))
     }
 
@@ -55,7 +55,28 @@ class WordDeleteSwipeTest {
         val endOffset = 100
         val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, endOffset)
         // text length is 11, offset is 100 - 11 = 89
-        assertEquals(listOf(100, 94, 89), boundaries)
+        assertEquals(listOf(100, 95, 89), boundaries)
+    }
+
+    @Test
+    fun `deleting a word keeps the space before it`() {
+        val text = "Hello how are yuo"
+        val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
+        assertEquals("Hello how are ", text.substring(0, boundaries[1]))
+    }
+
+    @Test
+    fun `deleting a word keeps the line break before it`() {
+        val text = "first\nsecond"
+        val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
+        assertEquals(listOf(12, 6, 0), boundaries)
+    }
+
+    @Test
+    fun `leading whitespace can still be selected`() {
+        val text = "  hello"
+        val boundaries = KeyboardActionListenerImpl.getWordBoundariesBackwards(text, text.length)
+        assertEquals(listOf(7, 2, 0), boundaries)
     }
 
     @Test
@@ -140,22 +161,22 @@ class WordDeleteSwipeTest {
         val wordsBeforeLine = KeyboardActionListenerImpl.getWordBoundariesBackwards(textBeforeLine, lineBaseStart)
 
         // Text before line 3 is "first line\nsecond line\n" (length 23)
-        // Word boundaries backwards (including delimiter):
-        // 23, 17 (" line\n"), 10 ("second"), 5 (" line\n"), 0 ("first")
-        assertEquals(listOf(23, 17, 10, 5, 0), wordsBeforeLine)
+        // Word boundaries backwards (at word starts, the space before a word is kept):
+        // 23, 18 ("line\n"), 11 ("second "), 6 ("line\n"), 0 ("first ")
+        assertEquals(listOf(23, 18, 11, 6, 0), wordsBeforeLine)
         assertEquals(23, wordsBeforeLine[0])
-        assertEquals(17, wordsBeforeLine[1])
-        assertEquals(" line\n", initialText.substring(wordsBeforeLine[1], lineBaseStart))
-        assertEquals("\nsecond line\n", initialText.substring(wordsBeforeLine[2], lineBaseStart))
+        assertEquals(18, wordsBeforeLine[1])
+        assertEquals("line\n", initialText.substring(wordsBeforeLine[1], lineBaseStart))
+        assertEquals("second line\n", initialText.substring(wordsBeforeLine[2], lineBaseStart))
     }
 
     @Test
     fun `forward word boundaries are ascending and end at the swipe start`() {
         val text = "one two three"
         // from the start of the text: positions between words, nearest first, ending at the cursor
-        assertEquals(listOf(3, 7, 13), KeyboardActionListenerImpl.getWordBoundariesForwards(text, text.length, 0))
+        assertEquals(listOf(4, 8, 13), KeyboardActionListenerImpl.getWordBoundariesForwards(text, text.length, 0))
         // from the middle of the text only boundaries after that point remain
-        assertEquals(listOf(7, 13), KeyboardActionListenerImpl.getWordBoundariesForwards(text, text.length, 3))
+        assertEquals(listOf(4, 8, 13), KeyboardActionListenerImpl.getWordBoundariesForwards(text, text.length, 3))
     }
 
     @Test
@@ -173,7 +194,7 @@ class WordDeleteSwipeTest {
         val lineBase = KeyboardActionListenerImpl.getLineBoundariesBackwards(text, end)[1] // 23
         assertEquals(23, lineBase)
         val forward = KeyboardActionListenerImpl.getWordBoundariesForwards(text, end, lineBase)
-        assertEquals(listOf(28, 33), forward)
+        assertEquals(listOf(29, 33), forward)
         assertEquals("third", text.substring(lineBase, forward[0]).trim())
         assertEquals("third line", text.substring(lineBase, forward[1]))
     }
@@ -185,7 +206,7 @@ class WordDeleteSwipeTest {
         val endOffset = 100
         val startOffset = endOffset - text.length // 84
         assertEquals(
-            listOf(startOffset + 5, startOffset + 10, endOffset),
+            listOf(startOffset + 6, startOffset + 11, endOffset),
             KeyboardActionListenerImpl.getWordBoundariesForwards(text, endOffset, startOffset)
         )
     }

@@ -963,6 +963,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (!connection.hasSelection()) return
         inputLogic.finishInput()
         onCodeInput(KeyCode.DELETE, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
+        if (settings.current.mDeleteSwipeWordByWord) inputLogic.markSpaceKeptBySwipe()
         keyboardSwitcher.requestUpdatingShiftState(
             inputLogic.getCurrentAutoCapsState(settings.current),
             inputLogic.getCurrentRecapitalizeState()
@@ -1420,44 +1421,29 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                         break
                     }
                 }
-                if (i == 0) break
 
                 // 2. Skip attached punctuation
-                var skippedPunctuation = false
                 while (i > 0) {
                     val cp = Character.codePointBefore(text, i)
                     if (!Character.isLetterOrDigit(cp) && !Character.isWhitespace(cp)) {
                         i -= Character.charCount(cp)
-                        skippedPunctuation = true
                     } else {
                         break
                     }
                 }
 
                 // 3. Skip word characters
-                var skippedWord = false
                 while (i > 0) {
                     val cp = Character.codePointBefore(text, i)
                     if (Character.isLetterOrDigit(cp)) {
                         i -= Character.charCount(cp)
-                        skippedWord = true
                     } else {
                         break
                     }
                 }
 
-                // 4. Consume preceding whitespace if a word or punctuation was skipped
-                if (skippedWord || skippedPunctuation) {
-                    while (i > 0) {
-                        val cp = Character.codePointBefore(text, i)
-                        if (Character.isWhitespace(cp)) {
-                            i -= Character.charCount(cp)
-                        } else {
-                            break
-                        }
-                    }
-                }
-
+                // The whitespace before a word is not part of it, so it stays for retyping the word
+                // (like held backspace). Whitespace at the very start of the text is a step of its own.
                 boundaries.add((offset + i).coerceAtLeast(0))
             }
             return boundaries
