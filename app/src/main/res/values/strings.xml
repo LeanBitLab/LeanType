@@ -2477,4 +2477,36 @@ New dictionary:
     <string name="voice_piecewise_field_changed">Dictation stopped: the text field changed, the rest was not inserted</string>
     <!-- Long press on a search result in the settings (accessibility action) -->
     <string name="settings_search_show_in_screen">Show in its screen</string>
+    <!-- Additional search words for settings: "setting key|word word ...". Only words the search doesn't find in title and description (also not as part of a word) -->
+    <string-array name="settings_search_keywords">
+        <item>theme_colors|theme design colour dark light look skin</item>
+        <item>theme_colors_night|theme design colour dark look skin</item>
+        <item>theme_style|design look shape rounded</item>
+        <item>theme_key_borders|outline frame look</item>
+        <item>keyboard_height_scale|size big small tall</item>
+        <item>font_scale|text size letters big small</item>
+        <item>vibrate_on|haptic feedback vibration buzz</item>
+        <item>vibration_duration_settings|haptic feedback strength</item>
+        <item>sound_on|click audio tone noise</item>
+        <item>popup_on|preview bubble magnify</item>
+        <item>auto_correction|autocorrect typo spelling fix mistake</item>
+        <item>auto_cap|uppercase shift</item>
+        <item>show_suggestions|prediction bar strip</item>
+        <item>next_word_prediction|predict</item>
+        <item>gesture_input|swipe glide slide</item>
+        <item>show_number_row|digits numbers</item>
+        <item>show_emoji_key|smiley emoticon</item>
+        <item>use_double_space_period|full stop dot</item>
+        <item>split_keyboard|tablet landscape thumbs</item>
+        <item>enable_clipboard_history|copy</item>
+        <item>always_incognito_mode|private privacy history</item>
+        <item>backup_restore|export import save transfer phone</item>
+        <item>horizontal_space_swipe|cursor move arrow</item>
+        <item>delete_swipe|erase backspace</item>
+        <item>key_longpress_timeout|hold</item>
+        <item>show_hints|popup characters accents umlauts</item>
+        <item>use_system_wallpaper|image picture photo</item>
+        <item>background_image|picture photo wallpaper</item>
+        <item>navbar_color|buttons</item>
+    </string-array>
 </resources>

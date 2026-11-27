@@ -52,28 +52,54 @@ class SettingsContainer(context: Context) {
     //  don't show disabled settings -> users confused
     //  show as disabled (i.e. no interaction possible) -> users confused
     //  show, but change will not do anything because another setting needs to be enabled first -> probably best
+    /** additional search words for some settings, e.g. "color" for the theme, see R.array.settings_search_keywords */
+    internal val keywords: Map<String, List<String>> =
+        parseKeywords(context.resources.getStringArray(R.array.settings_search_keywords))
+
     fun filter(searchTerm: String): List<Setting> {
         val term = searchTerm.lowercase().trim()
         val titleMatch = mutableListOf<Setting>()
         val titleWordMatch = mutableListOf<Setting>()
         val descriptionMatch = mutableListOf<Setting>()
+        val keywordMatch = mutableListOf<Setting>()
         val partialMatch = mutableListOf<Setting>()
 
         list.forEach { setting ->
-            val titleLower = setting.titleLower
-            if (titleLower.startsWith(term)) {
-                titleMatch.add(setting)
-            } else if (setting.titleWords.any { it.startsWith(term) }) {
-                titleWordMatch.add(setting)
-            } else if (setting.descriptionWords?.any { it.startsWith(term) } == true) {
-                descriptionMatch.add(setting)
-            } else if (term.length >= 3 && (titleLower.contains(term) || setting.descriptionLower?.contains(term) == true)) {
-                // parts of compound words, e.g. "taste" in the German "Löschtaste", or "correct" in "Autocorrect"
-                partialMatch.add(setting)
+            when (match(setting, term)) {
+                Match.TITLE -> titleMatch.add(setting)
+                Match.TITLE_WORD -> titleWordMatch.add(setting)
+                Match.DESCRIPTION -> descriptionMatch.add(setting)
+                Match.PARTIAL -> partialMatch.add(setting)
+                null -> if (keywords[setting.key]?.any { it.startsWith(term) } == true) keywordMatch.add(setting)
             }
         }
 
-        return titleMatch + titleWordMatch + descriptionMatch + partialMatch
+        return titleMatch + titleWordMatch + descriptionMatch + keywordMatch + partialMatch
+    }
+
+    internal enum class Match { TITLE, TITLE_WORD, DESCRIPTION, PARTIAL }
+
+    /** how [setting] is found for [term] (lower case) without the [keywords], null if not */
+    internal fun match(setting: Setting, term: String): Match? {
+        val titleLower = setting.titleLower
+        return when {
+            titleLower.startsWith(term) -> Match.TITLE
+            setting.titleWords.any { it.startsWith(term) } -> Match.TITLE_WORD
+            setting.descriptionWords?.any { it.startsWith(term) } == true -> Match.DESCRIPTION
+            // parts of compound words, e.g. "taste" in the German "Löschtaste", or "correct" in "Autocorrect"
+            term.length >= 3 && (titleLower.contains(term) || setting.descriptionLower?.contains(term) == true) -> Match.PARTIAL
+            else -> null
+        }
+    }
+
+    companion object {
+        /** entries "setting key|word word ...", words in lower case */
+        internal fun parseKeywords(entries: Array<String>): Map<String, List<String>> =
+            entries.mapNotNull { entry ->
+                val key = entry.substringBefore('|', "").trim()
+                if (key.isEmpty()) null
+                else key to entry.substringAfter('|').lowercase().split(' ', ',').filter { it.isNotBlank() }
+            }.groupBy({ it.first }, { it.second }).mapValues { (_, lists) -> lists.flatten() }
     }
 }
 

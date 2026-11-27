@@ -2,7 +2,11 @@ package helium314.keyboard.settings
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import helium314.keyboard.latin.R
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -45,6 +49,36 @@ class SettingsContainerTest {
             helium314.keyboard.latin.settings.Settings.PREF_TIMESTAMP_FORMAT to SettingsDestination.Preferences,
         )
         expected.forEach { (key, destination) -> assertEquals(key, destination, container.screenOf(key)) }
+    }
+
+    @Test
+    fun keywordsPointToSettingsAndFindWhatTheSearchMisses() = checkKeywords()
+
+    @Test
+    @Config(qualifiers = "de")
+    fun germanKeywordsPointToSettingsAndFindWhatTheSearchMisses() = checkKeywords()
+
+    private fun checkKeywords() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val entries = context.resources.getStringArray(R.array.settings_search_keywords)
+        assertTrue(entries.isNotEmpty())
+        entries.forEach { assertTrue("no key or no words: $it", it.substringBefore('|', "").isNotBlank() && it.substringAfter('|').isNotBlank()) }
+        container.keywords.forEach { (key, words) ->
+            val setting = container[key]
+            assertNotNull("no setting $key", setting)
+            words.forEach { word ->
+                // a word the search finds anyway is not needed
+                assertNull("\"$word\" already finds $key", container.match(setting!!, word))
+                assertTrue("\"$word\" doesn't find $key", setting in container.filter(word))
+            }
+        }
+    }
+
+    @Test
+    fun keywordsAreParsed() {
+        val keywords = SettingsContainer.parseKeywords(arrayOf("a|Color colour", "b|x,y", "|nothing", "a|dark"))
+        assertEquals(mapOf("a" to listOf("color", "colour", "dark"), "b" to listOf("x", "y")), keywords)
+        assertFalse(keywords.containsKey(""))
     }
 
     @Test
