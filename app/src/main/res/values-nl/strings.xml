@@ -1642,8 +1642,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="select_import_language">Selecteer de standaardtaal voor geïmporteerde woorden zonder taaltags:</string>
     <string name="select_file">Selecteer bestand</string>
     <string name="clear_learned_words_title">Duidelijke geleerde woorden</string>
-    <string name="clear_learned_words_summary">Verwijder alle woorden en suggesties voor volgende woorden die u tijdens het typen hebt geleerd</string>
-    <string name="clear_learned_words_confirmation">Weet u zeker dat u alle geleerde woorden en suggesties wilt wissen?</string>
     <string name="clear_learned_words_success">Geleerde woorden gewist</string>
     <string name="space_swipe_delete_word_entry">Woord verwijderen</string>
     <string name="personal_dict_export">Woordenboek exporteren</string>
@@ -1822,4 +1820,5 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="learned_words">Geleerde woorden</string>
     <string name="learned_words_summary">Bekijk en verwijder afzonderlijke woorden die zijn geleerd tijdens het typen</string>
     <string name="learned_words_empty">Nog geen geleerde woorden voor de huidige talen van het toetsenbord</string>
+    <string name="clear_learned_words_details">Hiermee worden alle woorden en volgende-woordsuggesties verwijderd die uit je typgedrag zijn geleerd, in alle talen. Je persoonlijke woordenlijst en geblokkeerde woorden blijven behouden. Dit kan niet ongedaan worden gemaakt.</string>
 </resources>

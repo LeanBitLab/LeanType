@@ -1653,8 +1653,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="select_import_language">Selecione o idioma padrão para palavras importadas sem tags de idioma:</string>
     <string name="select_file">Selecione o arquivo</string>
     <string name="clear_learned_words_title">Limpar palavras aprendidas</string>
-    <string name="clear_learned_words_summary">Exclua todas as palavras e sugestões de palavras seguintes aprendidas durante a digitação</string>
-    <string name="clear_learned_words_confirmation">Tem certeza de que deseja limpar todas as palavras e sugestões aprendidas?</string>
     <string name="clear_learned_words_success">Palavras aprendidas apagadas</string>
     <string name="space_swipe_delete_word_entry">Excluir palavra</string>
     <string name="personal_dict_export">Exportar dicionário</string>
@@ -1779,4 +1777,5 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="learned_words">Palavras aprendidas</string>
     <string name="learned_words_summary">Ver e excluir palavras individuais aprendidas ao digitar</string>
     <string name="learned_words_empty">Ainda não há palavras aprendidas para os idiomas atuais do teclado</string>
+    <string name="clear_learned_words_details">Isto elimina todas as palavras e sugestões de próxima palavra aprendidas com a sua escrita, em todos os idiomas. O seu dicionário pessoal e as palavras bloqueadas são mantidos. Esta ação não pode ser desfeita.</string>
 </resources>

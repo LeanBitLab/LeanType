@@ -1668,8 +1668,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="select_import_language">Wählen Sie die Standardsprache für importierte Wörter ohne Sprach-Tags:</string>
     <string name="select_file">Datei auswählen</string>
     <string name="clear_learned_words_title">Klare gelernte Wörter</string>
-    <string name="clear_learned_words_summary">Löschen Sie alle beim Tippen gelernten Wörter und Vorschläge für das nächste Wort</string>
-    <string name="clear_learned_words_confirmation">Sind Sie sicher, dass Sie alle gelernten Wörter und Vorschläge löschen möchten?</string>
     <string name="clear_learned_words_success">Gelernte Wörter gelöscht</string>
     <string name="space_swipe_delete_word_entry">Wort löschen</string>
     <string name="personal_dict_export">Wörterbuch exportieren</string>
@@ -1801,4 +1799,5 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="learned_words">Gelernte Wörter</string>
     <string name="learned_words_summary">Beim Tippen gelernte einzelne Wörter ansehen und löschen</string>
     <string name="learned_words_empty">Für die aktuellen Sprachen der Tastatur wurden noch keine Wörter gelernt</string>
+    <string name="clear_learned_words_details">Dadurch werden alle Wörter und Vorschläge für das nächste Wort gelöscht, die aus deiner Eingabe in allen Sprachen gelernt wurden. Dein persönliches Wörterbuch und gesperrte Wörter bleiben erhalten. Dies kann nicht rückgängig gemacht werden.</string>
 </resources>

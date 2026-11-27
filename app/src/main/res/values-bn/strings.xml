@@ -438,8 +438,6 @@
     <string name="settings_category_visuals">ভিজ্যুয়াল ও প্রিভিউ</string>
     <string name="settings_category_gestures_advanced">উন্নত ইশারা</string>
     <string name="clear_learned_words_title">শেখা শব্দ মুছুন</string>
-    <string name="clear_learned_words_summary">টাইপিং থেকে শেখা সকল শব্দ ও পরবর্তী-শব্দের পরামর্শ মুছুন</string>
-    <string name="clear_learned_words_confirmation">আপনি কি নিশ্চিত যে সকল শেখা শব্দ ও পরামর্শ মুছতে চান?</string>
     <string name="clear_learned_words_success">শেখা শব্দ মুছে ফেলা হয়েছে</string>
     <string name="add_to_personal_dict_threshold">শেখার সীমা</string>
     <string name="add_to_personal_dict_threshold_times_1">১ বার টাইপ করার পর যোগ করুন</string>
@@ -1670,4 +1668,5 @@
     <string name="learned_words">শেখা শব্দসমূহ</string>
     <string name="learned_words_summary">টাইপ করে শেখা একক শব্দ দেখুন ও মুছুন</string>
     <string name="learned_words_empty">কীবোর্ডের বর্তমান ভাষাগুলোর জন্য এখনও কোনো শেখা শব্দ নেই</string>
+    <string name="clear_learned_words_details">এটি আপনার টাইপিং থেকে শেখা প্রতিটি শব্দ ও পরবর্তী-শব্দের পরামর্শ মুছে ফেলবে, সব ভাষায়। আপনার ব্যক্তিগত অভিধান ও ব্লক করা শব্দ রাখা হবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।</string>
 </resources>

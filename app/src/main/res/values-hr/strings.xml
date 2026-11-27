@@ -1592,8 +1592,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="select_import_language">Odaberite zadani jezik za uvezene riječi bez jezičnih oznaka:</string>
     <string name="select_file">Odaberite datoteku</string>
     <string name="clear_learned_words_title">Jasne naučene riječi</string>
-    <string name="clear_learned_words_summary">Izbrišite sve riječi i prijedloge sljedeće riječi naučene tijekom tipkanja</string>
-    <string name="clear_learned_words_confirmation">Jeste li sigurni da želite izbrisati sve naučene riječi i prijedloge?</string>
     <string name="clear_learned_words_success">Naučene riječi izbrisane</string>
     <string name="space_swipe_delete_word_entry">Izbriši riječ</string>
     <string name="personal_dict_export">Izvezi rječnik</string>
@@ -1772,4 +1770,5 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="learned_words">Naučene riječi</string>
     <string name="learned_words_summary">Pregledajte i izbrišite pojedinačne riječi naučene tijekom tipkanja</string>
     <string name="learned_words_empty">Za trenutačne jezike tipkovnice još nema naučenih riječi</string>
+    <string name="clear_learned_words_details">Ovo briše svaku riječ i prijedlog sljedeće riječi naučen iz vašeg tipkanja, na svim jezicima. Vaš osobni rječnik i blokirane riječi se čuvaju. Ovo se ne može poništiti.</string>
 </resources>

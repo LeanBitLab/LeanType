@@ -201,8 +201,6 @@
     <string name="settings_category_visuals">Visual &amp; pratonton</string>
     <string name="settings_category_gestures_advanced">Gerak isyarat lanjutan</string>
     <string name="clear_learned_words_title">Kosongkan perkataan yang dipelajari</string>
-    <string name="clear_learned_words_summary">Padam semua perkataan dan cadangan perkataan seterusnya yang dipelajari daripada menaip</string>
-    <string name="clear_learned_words_confirmation">Adakah anda pasti mahu mengosongkan semua perkataan dan cadangan yang dipelajari?</string>
     <string name="clear_learned_words_success">Perkataan yang dipelajari telah dikosongkan</string>
     <string name="add_to_personal_dictionary">Tambah perkataan ke kamus peribadi</string>
     <string name="add_to_personal_dictionary_summary">Guna kamus peribadi peranti untuk menyimpan perkataan yang dipelajari</string>
@@ -1711,4 +1709,5 @@ Kamus baharu:
     <string name="learned_words">Perkataan yang dipelajari</string>
     <string name="learned_words_summary">Lihat dan padam perkataan individu yang dipelajari daripada menaip</string>
     <string name="learned_words_empty">Belum ada perkataan yang dipelajari untuk bahasa semasa papan kekunci</string>
+    <string name="clear_learned_words_details">Ini memadamkan setiap perkataan dan cadangan perkataan seterusnya yang dipelajari daripada taipan anda, dalam semua bahasa. Kamus peribadi dan perkataan yang disekat akan dikekalkan. Tindakan ini tidak boleh dibatalkan.</string>
 </resources>

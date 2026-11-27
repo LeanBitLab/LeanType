@@ -510,7 +510,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 - **Suggestion Balance**: Adjust the balance between dictionary accuracy and your personal typing history (**Settings → Suggestions → Suggestion balance**).
 - **Personal Dictionary Shortcuts**: With **Settings → Text correction → Auto-correct shortcuts** on, typing an exact personal dictionary shortcut auto-corrects it, even when the shortcut is a valid word.
 - **Google Dictionary Import**: Import existing user dictionaries exported from Gboard.
-- **Learned Words**: **Settings → Languages & Layouts → Dictionaries → Learned words** lists the words learned from typing for the keyboard's current languages, most used first. Search them and delete single words; **Clear learned words** removes all.
+- **Learned Words**: **Settings → Languages & Layouts → Dictionaries → Learned words** lists the words learned from typing for the keyboard's current languages, most used first. Search them and delete single words; the clear button in its top bar removes all learned words in all languages, after a confirmation. The same screen opens from **Settings → Suggestions → Learned words**.
 - Configure via **Settings → Suggestions** and **Settings → Languages & Layouts → Dictionaries → Learning threshold**.
 
 ---
@@ -1245,9 +1245,9 @@ graph LR
 - Symbols, More symbols, Functional keys, Numbers, Number row, Numpad, Numpad (landscape), Phone, Phone symbols, Emoji bottom row, Clipboard bottom row, Text editing, Custom layout 1, Custom layout 2, Custom layout 3, Custom layout 4, Custom layout 5
 
 </details>
-<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (10)</summary>
+<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (9)</summary>
 
-- "Add dictionary from file", Personal dictionary, Blocked words, Learned words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
+- "Add dictionary from file", Personal dictionary, Blocked words, Learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
 
 </details>
 - **Settings → Languages & Layouts → Dictionaries → Personal dictionary**
@@ -1294,7 +1294,7 @@ graph LR
 <details><summary><b>Settings → Suggestions</b> (22)</summary>
 
 - **Suggestions strip**: Show correction suggestions, Always show suggestions, Don’t always show suggestions for web edit fields, Number of suggestions, Always use middle suggestion, Always show typed word in the middle, Punctuation suggestions
-- **Prediction & learning**: Next-word suggestions, Suggestion balance, Personalized suggestions, Clear learned words, Prediction details, Prioritize personal & learned words, Require context match for learned words, Disable multi-word suggestions
+- **Prediction & learning**: Next-word suggestions, Suggestion balance, Personalized suggestions, Learned words, Prediction details, Prioritize personal & learned words, Require context match for learned words, Disable multi-word suggestions
 - **Smart suggestions & tools**: Suggest emojis, Inline emoji search, Suggest clipboard content, Suggest recent screenshots, Compress screenshot suggestions, Inline math calculation, Look up app names
 
 </details>

@@ -241,8 +241,6 @@
     <string name="use_apps_dict">Tra cứu tên ứng dụng</string>
     <string name="use_apps_dict_summary">Dùng tên các ứng dụng đã cài đặt để gợi ý và sửa lỗi</string>
     <string name="clear_learned_words_title">Xoá từ đã học</string>
-    <string name="clear_learned_words_summary">Xoá tất cả từ và gợi ý từ tiếp theo đã học từ quá trình gõ</string>
-    <string name="clear_learned_words_confirmation">Bạn có chắc chắn muốn xoá tất cả từ và gợi ý đã học không?</string>
     <string name="clear_learned_words_success">Đã xoá các từ đã học</string>
     <string name="add_to_personal_dict_threshold">Ngưỡng học từ</string>
     <string name="add_to_personal_dict_threshold_times_1">Thêm sau khi gõ 1 lần</string>
@@ -1709,4 +1707,5 @@ Từ điển mới:
     <string name="learned_words">Từ đã học</string>
     <string name="learned_words_summary">Xem và xóa từng từ đã học từ quá trình gõ</string>
     <string name="learned_words_empty">Chưa có từ nào đã học cho các ngôn ngữ hiện tại của bàn phím</string>
+    <string name="clear_learned_words_details">Thao tác này sẽ xoá mọi từ và gợi ý từ tiếp theo đã học từ việc bạn gõ, trong tất cả các ngôn ngữ. Từ điển cá nhân và các từ đã chặn sẽ được giữ lại. Thao tác này không thể hoàn tác.</string>
 </resources>

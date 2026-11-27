@@ -1592,8 +1592,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="select_import_language">Seleccione el idioma predeterminado para palabras importadas sin etiquetas de idioma:</string>
     <string name="select_file">Seleccionar archivo</string>
     <string name="clear_learned_words_title">Palabras claras aprendidas</string>
-    <string name="clear_learned_words_summary">Elimine todas las palabras y sugerencias de palabras siguientes aprendidas al escribir</string>
-    <string name="clear_learned_words_confirmation">¿Está seguro de que desea borrar todas las palabras y sugerencias aprendidas?</string>
     <string name="clear_learned_words_success">Palabras aprendidas borradas</string>
     <string name="space_swipe_delete_word_entry">Eliminar palabra</string>
     <string name="personal_dict_export">Exportar diccionario</string>
@@ -1771,4 +1769,5 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="learned_words">Palabras aprendidas</string>
     <string name="learned_words_summary">Ver y eliminar palabras individuales aprendidas al escribir</string>
     <string name="learned_words_empty">Aún no hay palabras aprendidas para los idiomas actuales del teclado</string>
+    <string name="clear_learned_words_details">Esto elimina todas las palabras y sugerencias de la siguiente palabra aprendidas de tu escritura, en todos los idiomas. Tu diccionario personal y las palabras bloqueadas se conservan. Esta acción no se puede deshacer.</string>
 </resources>

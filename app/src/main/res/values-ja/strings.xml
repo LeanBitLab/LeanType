@@ -169,8 +169,6 @@
     <string name="use_apps_dict">アプリ名を検索</string>
     <string name="use_apps_dict_summary">インストール済みアプリの名前を入力候補と修正に使用します</string>
     <string name="clear_learned_words_title">学習した単語を消去</string>
-    <string name="clear_learned_words_summary">入力から学習したすべての単語と次単語の候補を削除します</string>
-    <string name="clear_learned_words_confirmation">学習したすべての単語と候補を消去しますか？</string>
     <string name="clear_learned_words_success">学習した単語を消去しました</string>
     <string name="add_to_personal_dict_threshold">学習のしきい値</string>
     <string name="add_to_personal_dict_threshold_times_1">1回入力した後に追加</string>
@@ -1712,4 +1710,5 @@
     <string name="learned_words">学習済みの単語</string>
     <string name="learned_words_summary">入力から学習した単語を個別に確認・削除します</string>
     <string name="learned_words_empty">このキーボードの現在の言語では、まだ学習済みの単語はありません</string>
+    <string name="clear_learned_words_details">すべての言語で、入力から学習した単語と次語候補がすべて削除されます。個人用辞書とブロックした単語は保持されます。この操作は元に戻せません。</string>
 </resources>

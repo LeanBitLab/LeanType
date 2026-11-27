@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.widget.Toast
 import android.provider.Settings as AndroidSettings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -31,7 +30,6 @@ import androidx.core.content.edit
 import helium314.keyboard.dictionarypack.DictionaryPackConstants
 import helium314.keyboard.keyboard.KeyboardSwitcher
 import helium314.keyboard.latin.R
-import helium314.keyboard.latin.personalization.PersonalizationHelper
 import helium314.keyboard.latin.permissions.PermissionsUtil
 import helium314.keyboard.latin.settings.Defaults
 import helium314.keyboard.latin.settings.Settings
@@ -44,6 +42,8 @@ import helium314.keyboard.settings.SearchSettingsScreen
 import helium314.keyboard.settings.Setting
 import helium314.keyboard.settings.SettingsActivity
 import helium314.keyboard.settings.Theme
+import helium314.keyboard.settings.NextScreenIcon
+import helium314.keyboard.settings.SettingsDestination
 import helium314.keyboard.settings.dialogs.ConfirmationDialog
 import helium314.keyboard.settings.initPreview
 import helium314.keyboard.settings.preferences.ExpandablePreference
@@ -87,7 +87,7 @@ fun SuggestionsScreen(
             Settings.PREF_BIGRAM_PREDICTIONS,
             if (bigramPredictionsEnabled) Settings.PREF_SUGGESTION_BALANCE else null,
             Settings.PREF_KEY_USE_PERSONALIZED_DICTS,
-            Settings.PREF_CLEAR_LEARNED_WORDS,
+            Settings.PREF_LEARNED_WORDS,
             if (bigramPredictionsEnabled) Settings.PREF_EXPAND_FINE_TUNE_PREDICTION else null,
             if (bigramPredictionsEnabled && fineTunePredictionExpanded) Settings.PREF_PRIORITIZE_PERSONAL_SUGGESTIONS else null,
             if (bigramPredictionsEnabled && fineTunePredictionExpanded) Settings.PREF_NEXT_WORD_STRICT_NGRAM else null,
@@ -171,27 +171,14 @@ fun createSuggestionsSettings(context: Context) = listOf(
             )
         }
     },
-    Setting(context, Settings.PREF_CLEAR_LEARNED_WORDS,
-        R.string.clear_learned_words_title, R.string.clear_learned_words_summary
-    ) { setting ->
-        var showConfirmDialog by rememberSaveable { mutableStateOf(false) }
-        val ctx = LocalContext.current
+    Setting(context, Settings.PREF_LEARNED_WORDS, R.string.learned_words, R.string.learned_words_summary) { setting ->
         Preference(
             name = setting.title,
             description = setting.description,
-            icon = R.drawable.ic_clear_all,
-            onClick = { showConfirmDialog = true }
+            icon = R.drawable.ic_dictionary,
+            onClick = { SettingsDestination.navigateTo(SettingsDestination.LearnedWords) },
+            value = { NextScreenIcon() }
         )
-        if (showConfirmDialog) {
-            ConfirmationDialog(
-                onDismissRequest = { showConfirmDialog = false },
-                onConfirmed = {
-                    PersonalizationHelper.clearUserHistory(ctx)
-                    Toast.makeText(ctx, ctx.getString(R.string.clear_learned_words_success), Toast.LENGTH_SHORT).show()
-                },
-                content = { Text(stringResource(R.string.clear_learned_words_confirmation)) }
-            )
-        }
     },
     Setting(context, Settings.PREF_BIGRAM_PREDICTIONS,
         R.string.bigram_prediction, R.string.bigram_prediction_summary

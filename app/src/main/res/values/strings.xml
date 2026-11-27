@@ -118,8 +118,8 @@
     <!-- Shown on the learned words screen when there are none -->
     <string name="learned_words_empty">No learned words for the keyboard\'s current languages yet</string>
     <string name="clear_learned_words_title">Clear learned words</string>
-    <string name="clear_learned_words_summary">Delete all words and next-word suggestions learned from typing</string>
-    <string name="clear_learned_words_confirmation">Are you sure you want to clear all learned words and suggestions?</string>
+    <!-- Confirmation text for clearing all learned words, from the learned words screen -->
+    <string name="clear_learned_words_details">This deletes every word and next-word suggestion learned from your typing, in all languages. Your personal dictionary and blocked words are kept. This cannot be undone.</string>
     <string name="clear_learned_words_success">Learned words cleared</string>
     <!-- Option name for adding learned words to personal dictionary -->
     <string name="add_to_personal_dictionary">Add words to personal dictionary</string>

@@ -285,6 +285,8 @@ fun <T: Any?> SearchScreen(
     menu: List<Pair<String, () -> Unit>>? = null,
     headerContent: (@Composable () -> Unit)? = null,
     content: @Composable (ColumnScope.() -> Unit)? = null,
+    /** more top bar buttons, after the search button */
+    actions: (@Composable () -> Unit)? = null,
 ) {
     // searchText and showSearch should have the same remember or rememberSaveable
     // saveable survives orientation changes and switching between screens, but shows the
@@ -325,6 +327,7 @@ fun <T: Any?> SearchScreen(
                                     IconButton(onClick = { setShowSearch(!showSearch) }) { SearchIcon() }
                                 else
                                     icon()
+                                actions?.invoke()
                                 if (menu != null)
                                     Box {
                                         var showMenu by remember { mutableStateOf(false) }

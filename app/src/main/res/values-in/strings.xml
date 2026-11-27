@@ -1592,8 +1592,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="select_import_language">Pilih bahasa default untuk kata-kata yang diimpor tanpa tag bahasa:</string>
     <string name="select_file">Pilih berkas</string>
     <string name="clear_learned_words_title">Kata-kata yang dipelajari dengan jelas</string>
-    <string name="clear_learned_words_summary">Hapus semua kata dan saran kata berikutnya yang dipelajari dari mengetik</string>
-    <string name="clear_learned_words_confirmation">Apakah Anda yakin ingin menghapus semua kata dan saran yang dipelajari?</string>
     <string name="clear_learned_words_success">Kata-kata yang dipelajari dibersihkan</string>
     <string name="space_swipe_delete_word_entry">Hapus kata</string>
     <string name="personal_dict_export">Ekspor kamus</string>
@@ -1772,4 +1770,5 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="learned_words">Kata yang dipelajari</string>
     <string name="learned_words_summary">Lihat dan hapus kata tunggal yang dipelajari dari pengetikan</string>
     <string name="learned_words_empty">Belum ada kata yang dipelajari untuk bahasa keyboard saat ini</string>
+    <string name="clear_learned_words_details">Ini menghapus setiap kata dan saran kata berikutnya yang dipelajari dari pengetikan Anda, dalam semua bahasa. Kamus pribadi dan kata yang diblokir tetap disimpan. Tindakan ini tidak dapat dibatalkan.</string>
 </resources>

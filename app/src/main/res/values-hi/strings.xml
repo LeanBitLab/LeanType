@@ -1632,8 +1632,6 @@
     <string name="select_import_language">भाषा टैग के बिना आयातित शब्दों के लिए डिफ़ॉल्ट भाषा चुनें:</string>
     <string name="select_file">फ़ाइल चुनें</string>
     <string name="clear_learned_words_title">स्पष्ट सीखे हुए शब्द</string>
-    <string name="clear_learned_words_summary">टाइपिंग से सीखे गए सभी शब्द और अगले शब्द के सुझाव हटा दें</string>
-    <string name="clear_learned_words_confirmation">क्या आप वाकई सीखे गए सभी शब्दों और सुझावों को साफ़ करना चाहते हैं?</string>
     <string name="clear_learned_words_success">सीखे हुए शब्द साफ़ हो गए</string>
     <string name="space_swipe_delete_word_entry">शब्द हटाएँ</string>
     <string name="personal_dict_export">शब्दकोश निर्यात करें</string>
@@ -1812,4 +1810,5 @@
     <string name="learned_words">सीखे हुए शब्द</string>
     <string name="learned_words_summary">टाइप करने से सीखे गए अलग-अलग शब्दों को देखें और हटाएं</string>
     <string name="learned_words_empty">कीबोर्ड की वर्तमान भाषाओं के लिए अभी तक कोई सीखा हुआ शब्द नहीं है</string>
+    <string name="clear_learned_words_details">यह आपकी टाइपिंग से सीखे गए सभी शब्दों और अगले-शब्द सुझावों को सभी भाषाओं में हटा देता है। आपका व्यक्तिगत शब्दकोश और अवरुद्ध शब्द सुरक्षित रहेंगे। यह क्रिया वापस नहीं की जा सकती।</string>
 </resources>
