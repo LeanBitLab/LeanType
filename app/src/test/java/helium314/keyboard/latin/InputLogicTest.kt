@@ -2075,6 +2075,27 @@ class InputLogicTest {
         assertEquals(8, connection.expectedSelectionEnd)
     }
 
+    @Test fun `custom AI key result replaces all text while a word is composing`() {
+        reset()
+        chainInput("hello wor")
+        assertEquals("wor", composingText)
+        // the result arrives while "wor" is still composing (the user typed during the request)
+        latinIME.mInputLogic.insertCustomAiResult("Hello world.", shouldAppend = false, hasSelection = false)
+        assertEquals("Hello world.", text)
+        assertEquals("", composingText)
+        // typing continues normally
+        chainInput(" ok")
+        assertEquals("Hello world. ok", text)
+    }
+
+    @Test fun `custom AI key result is appended after a composing word`() {
+        reset()
+        chainInput("hello wor")
+        latinIME.mInputLogic.insertCustomAiResult("Answer.", shouldAppend = true, hasSelection = false)
+        assertEquals("hello wor\n\nAnswer.", text)
+        assertEquals("", composingText)
+    }
+
     @Test
     fun testCommitTextWithSelection() {
         reset()

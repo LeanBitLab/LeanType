@@ -17,6 +17,7 @@ import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.EditorInfo
+import androidx.annotation.VisibleForTesting
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.compat.isDeviceLocked
 import helium314.keyboard.event.Event
@@ -3303,22 +3304,37 @@ class InputLogic(
                     Log.w(TAG, "Target editor changed during custom AI operation, ignoring result")
                     return@customAsync
                 }
-                if (shouldAppend) {
-                    moveCursorToEndForAppend(hasSelection)
-                    val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
-                    mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
-                } else if (!hasSelection) {
-                    // selects all itself
-                    mConnection.replaceEntireText(resultText)
-                } else {
-                    mLatinIME.onTextInput(resultText)
-                }
+                insertCustomAiResult(resultText, shouldAppend, hasSelection)
             },
             onError = { errorMessage ->
                 Log.e(TAG, "Custom AI Error: $errorMessage")
                 KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_error_format, errorMessage), true)
             }
         )
+    }
+
+    /**
+     * Inserts the result of a custom AI key. The user may have typed while the request ran, so a word
+     * that is still composing is finished first: otherwise replacing all text could replace only that
+     * word and keep the text before it.
+     */
+    @VisibleForTesting
+    fun insertCustomAiResult(resultText: String, shouldAppend: Boolean, hasSelection: Boolean) {
+        if (mWordComposer.isComposingWord()) {
+            mConnection.finishComposingText()
+            StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
+        }
+        resetComposingState(true)
+        if (shouldAppend) {
+            moveCursorToEndForAppend(hasSelection)
+            val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
+            mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
+        } else if (!hasSelection) {
+            // selects all itself
+            mConnection.replaceEntireText(resultText)
+        } else {
+            mLatinIME.onTextInput(resultText)
+        }
     }
 
     /** Before appending a result: after the selection the request was made for, or at the end of the text */
