@@ -1730,8 +1730,6 @@
     <string name="storage_type_language_pack">App 翻譯</string>
     <string name="ocr_camera_failed">相機無法啟動。點擊以重試。</string>
     <string name="handwriting_not_recognized">無法辨識手寫內容。請再試一次。</string>
-    <string name="keyboard_test_field">在這裡試用鍵盤</string>
-    <string name="keyboard_test_field_hint">變更將在下次開啟鍵盤時顯示。此處輸入的內容不會被學習。</string>
     <string name="cursor_swipe_step">游標滑動距離</string>
     <string name="cursor_swipe_step_summary">在空白鍵或刪除鍵上滑動時，每個字元所需的手指移動距離。數值越高，移動越慢</string>
     <string name="ai_cancelled">AI 請求已取消</string>

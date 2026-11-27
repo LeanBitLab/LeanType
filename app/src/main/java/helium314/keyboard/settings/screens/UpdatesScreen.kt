@@ -67,7 +67,6 @@ internal val currentChangelogItems = listOf(
     "• Added: Text expander shortcut sorting",
     "• Added: Long-press space can switch language",
     "• Added: Cursor swipe distance setting",
-    "• Added: Try-keyboard button in settings",
     "• Added: Search settings by words and word parts",
     "• Changed: Toolbar folds for swipe suggestions",
     "• Changed: Camera and microphone stop when unused",

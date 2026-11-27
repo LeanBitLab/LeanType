@@ -1765,8 +1765,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="storage_type_language_pack">traducción de la aplicación</string>
     <string name="ocr_camera_failed">No se pudo iniciar la cámara. Toca para reintentar.</string>
     <string name="handwriting_not_recognized">No se pudo reconocer la escritura a mano. Inténtalo de nuevo.</string>
-    <string name="keyboard_test_field">Pruebe el teclado aquí</string>
-    <string name="keyboard_test_field_hint">Los cambios se mostrarán la próxima vez que se abra el teclado. Lo que escriba aquí no se aprende.</string>
     <string name="cursor_swipe_step">Distancia de deslizamiento del cursor</string>
     <string name="cursor_swipe_step_summary">Recorrido del dedo por cada carácter al deslizar sobre la barra espaciadora o la tecla de borrar. Un valor más alto significa más lento</string>
     <string name="ai_cancelled">Solicitud de IA cancelada</string>

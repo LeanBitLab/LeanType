@@ -1704,8 +1704,6 @@
     <string name="storage_type_language_pack">앱 번역</string>
     <string name="ocr_camera_failed">카메라를 시작하지 못했습니다. 다시 시도하려면 탭하세요.</string>
     <string name="handwriting_not_recognized">필기를 인식하지 못했습니다. 다시 시도하세요.</string>
-    <string name="keyboard_test_field">여기에서 키보드를 사용해 보세요</string>
-    <string name="keyboard_test_field_hint">변경 사항은 다음에 키보드를 열 때 표시됩니다. 여기에 입력한 내용은 학습되지 않습니다.</string>
     <string name="cursor_swipe_step">커서 스와이프 거리</string>
     <string name="cursor_swipe_step_summary">스페이스바 또는 삭제 키에서 스와이프할 때 문자마다 이동하는 손가락 거리입니다. 값이 클수록 느려집니다</string>
     <string name="ai_cancelled">AI 요청이 취소됨</string>

@@ -1663,8 +1663,6 @@
     <string name="storage_type_language_pack">பயன்பாட்டு மொழிபெயர்ப்பு</string>
     <string name="ocr_camera_failed">கேமரா தொடங்கவில்லை. மீண்டும் முயற்சிக்க தட்டவும்.</string>
     <string name="handwriting_not_recognized">கையெழுத்தை அடையாளம் காண முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
-    <string name="keyboard_test_field">இங்கே விசைப்பலகையை முயற்சிக்கவும்</string>
-    <string name="keyboard_test_field_hint">மாற்றங்கள் விசைப்பலகை அடுத்த முறை திறக்கும்போது காட்டப்படும். இங்கே தட்டச்சு செய்வது எதுவும் கற்றுக்கொள்ளப்படாது.</string>
     <string name="cursor_swipe_step">கர்சர் ஸ்வைப் தூரம்</string>
     <string name="cursor_swipe_step_summary">ஸ்பேஸ் பாரில் அல்லது டெலீட் விசையில் ஸ்வைப் செய்யும்போது ஒவ்வொரு எழுத்துக்கும் விரல் நகரும் தூரம். அதிகமாக இருந்தால் மெதுவாக இருக்கும்</string>
     <string name="ai_cancelled">AI கோரிக்கை ரத்து செய்யப்பட்டது</string>

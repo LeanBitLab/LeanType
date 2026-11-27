@@ -11,7 +11,6 @@ import android.text.InputType
 import android.view.inputmethod.EditorInfo
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.latin.common.Constants.ImeOption.NO_FLOATING_GESTURE_PREVIEW
-import helium314.keyboard.latin.common.Constants.ImeOption.NO_PERSONALIZED_LEARNING
 import helium314.keyboard.latin.common.containsValueWhenSplit
 import helium314.keyboard.latin.define.DebugFlags
 import helium314.keyboard.latin.utils.InputTypeUtils
@@ -106,7 +105,6 @@ class InputAttributes(
                 } else {
                     false
                 }) || AppQuirksManager.isIncognitoApp(mTargetApplicationPackageName)
-                    || inPrivateImeOptions(mPackageNameForPrivateImeOptions, NO_PERSONALIZED_LEARNING, editorInfo)
             }
         }
     }

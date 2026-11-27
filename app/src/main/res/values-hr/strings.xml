@@ -1766,8 +1766,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="storage_type_language_pack">prijevod aplikacije</string>
     <string name="ocr_camera_failed">Kameru nije bilo moguće pokrenuti. Dodirnite za ponovni pokušaj.</string>
     <string name="handwriting_not_recognized">Rukopis nije prepoznat. Pokušajte ponovno.</string>
-    <string name="keyboard_test_field">Promjene će se prikazati sljedeći put kada se tipkovnica otvori. Ništa što se ovdje upiše se ne uči.</string>
-    <string name="keyboard_test_field_hint">Udaljenost klizanja kursora</string>
     <string name="cursor_swipe_step">Zahtjev za AI prekinut</string>
     <string name="cursor_swipe_step_summary">Udaljenost pomicanja prsta za svaki znak pri klizanju po razmaknici ili tipki za brisanje. Veća vrijednost znači sporije</string>
     <string name="ai_cancelled">Zahtjev za AI prekinut</string>

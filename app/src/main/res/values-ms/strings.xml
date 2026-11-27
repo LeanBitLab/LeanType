@@ -1705,8 +1705,6 @@ Kamus baharu:
     <string name="storage_type_language_pack">terjemahan apl</string>
     <string name="ocr_camera_failed">Kamera gagal dimulakan. Ketik untuk cuba semula.</string>
     <string name="handwriting_not_recognized">Tulisan tangan tidak dapat dikenali. Cuba lagi.</string>
-    <string name="keyboard_test_field">Cuba papan kekunci di sini</string>
-    <string name="keyboard_test_field_hint">Perubahan ditunjukkan kali seterusnya papan kekunci dibuka. Tiada apa yang ditaip di sini dipelajari.</string>
     <string name="cursor_swipe_step">Jarak leret kursor</string>
     <string name="cursor_swipe_step_summary">Jarak jari untuk setiap aksara apabila meleret pada bar ruang atau kekunci padam. Lebih tinggi bermakna lebih perlahan</string>
     <string name="ai_cancelled">Permintaan AI dibatalkan</string>

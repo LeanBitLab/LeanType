@@ -1769,8 +1769,6 @@
     <string name="storage_type_language_pack">переклад застосунку</string>
     <string name="ocr_camera_failed">Не вдалося запустити камеру. Торкніться, щоб повторити спробу.</string>
     <string name="handwriting_not_recognized">Не вдалося розпізнати рукописний текст. Спробуйте ще раз.</string>
-    <string name="keyboard_test_field">Спробуйте клавіатуру тут</string>
-    <string name="keyboard_test_field_hint">Зміни відображаються під час наступного відкриття клавіатури. Введений тут текст не запам\'ятовується.</string>
     <string name="cursor_swipe_step">Відстань свайпу курсора</string>
     <string name="cursor_swipe_step_summary">Відстань, яку проходить палець для кожного символу під час свайпу по пробілу або клавіші delete. Більше значення означає повільніше</string>
     <string name="ai_cancelled">Запит ШІ скасовано</string>

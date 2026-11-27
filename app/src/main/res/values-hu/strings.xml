@@ -1766,8 +1766,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="storage_type_language_pack">alkalmazásfordítás</string>
     <string name="ocr_camera_failed">Nem sikerült elindítani a kamerát. Koppintson az újrapróbálkozáshoz.</string>
     <string name="handwriting_not_recognized">Nem sikerült felismerni a kézírást. Próbálja újra.</string>
-    <string name="keyboard_test_field">Próbálja ki a billentyűzetet itt</string>
-    <string name="keyboard_test_field_hint">A módosítások a billentyűzet következő megnyitásakor jelennek meg. Az itt beírt szöveg nem kerül megtanulásra.</string>
     <string name="cursor_swipe_step">Kurzorcsúsztatás távolsága</string>
     <string name="cursor_swipe_step_summary">Az ujj által megtett távolság karakterenként szóköz- vagy törlésbillentyűn csúsztatáskor. Magasabb érték = lassabb</string>
     <string name="ai_cancelled">MI-kérés megszakítva</string>

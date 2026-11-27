@@ -79,17 +79,4 @@ class InputAttributesTest {
         val attrs = createAttributes(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_AUTO_CORRECT)
         assertTrue(attrs.mInputTypeShouldAutoCorrect)
     }
-
-    @Test
-    fun privateImeOptionDisablesLearning() {
-        fun attributes(privateImeOptions: String?) = InputAttributes(EditorInfo().apply {
-            inputType = InputType.TYPE_CLASS_TEXT
-            packageName = "helium314.keyboard"
-            this.privateImeOptions = privateImeOptions
-        }, false, "helium314.keyboard")
-        assertFalse(attributes(null).mNoLearning)
-        assertTrue(attributes("helium314.keyboard.noPersonalizedLearning").mNoLearning)
-        // only with the keyboard's package name
-        assertFalse(attributes("noPersonalizedLearning").mNoLearning)
-    }
 }

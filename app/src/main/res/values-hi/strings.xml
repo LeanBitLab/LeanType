@@ -1806,8 +1806,6 @@
     <string name="storage_type_language_pack">ऐप अनुवाद</string>
     <string name="ocr_camera_failed">कैमरा शुरू होने में विफल। पुनः प्रयास करने के लिए टैप करें।</string>
     <string name="handwriting_not_recognized">हस्तलेख पहचाना नहीं जा सका। फिर से प्रयास करें।</string>
-    <string name="keyboard_test_field">यहां कीबोर्ड आज़माएं</string>
-    <string name="keyboard_test_field_hint">बदलाव अगली बार कीबोर्ड खुलने पर दिखेंगे। यहां टाइप किया गया कुछ भी सीखा नहीं जाता।</string>
     <string name="cursor_swipe_step">कर्सर स्वाइप दूरी</string>
     <string name="cursor_swipe_step_summary">स्पेस बार या डिलीट कुंजी पर स्वाइप करते समय हर अक्षर के लिए उंगली की दूरी। अधिक मान का अर्थ है धीमी गति</string>
     <string name="ai_cancelled">AI अनुरोध रद्द किया गया</string>
