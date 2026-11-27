@@ -1768,4 +1768,7 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="cursor_swipe_step">Distancia de deslizamiento del cursor</string>
     <string name="cursor_swipe_step_summary">Recorrido del dedo por cada carácter al deslizar sobre la barra espaciadora o la tecla de borrar. Un valor más alto significa más lento</string>
     <string name="ai_cancelled">Solicitud de IA cancelada</string>
+    <string name="learned_words">Palabras aprendidas</string>
+    <string name="learned_words_summary">Ver y eliminar palabras individuales aprendidas al escribir</string>
+    <string name="learned_words_empty">Aún no hay palabras aprendidas para los idiomas actuales del teclado</string>
 </resources>

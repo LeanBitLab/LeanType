@@ -1819,4 +1819,7 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="cursor_swipe_step">Veegafstand cursor</string>
     <string name="cursor_swipe_step_summary">Vingerbeweging per teken bij vegen op de spatiebalk of verwijdertoets. Hoger is trager</string>
     <string name="ai_cancelled">AI-verzoek geannuleerd</string>
+    <string name="learned_words">Geleerde woorden</string>
+    <string name="learned_words_summary">Bekijk en verwijder afzonderlijke woorden die zijn geleerd tijdens het typen</string>
+    <string name="learned_words_empty">Nog geen geleerde woorden voor de huidige talen van het toetsenbord</string>
 </resources>

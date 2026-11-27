@@ -23,6 +23,9 @@ import java.util.concurrent.TimeUnit
  * instantiate and select the correct dictionaries (based on language and settings), update entries
  * and fetch suggestions.
  */
+/** a word in the learning history; [count] is how often it was used (decays over time) */
+data class LearnedWord(val word: String, val locale: Locale, val count: Int)
+
 interface DictionaryFacilitator {
 
     interface DictionaryInitializationListener {
@@ -143,6 +146,12 @@ interface DictionaryFacilitator {
     fun isValidSuggestionWord(word: String): Boolean
 
     fun clearUserHistoryDictionary(context: Context)
+
+    /** words in the learning history of the current languages, for the learned words screen; may block, not on the UI thread */
+    fun getLearnedWords(): List<LearnedWord> = emptyList()
+
+    /** remove one word from the learning history of [locale] */
+    fun removeLearnedWord(word: String, locale: Locale) {}
 
     fun dump(context: Context): String
 

@@ -1777,4 +1777,7 @@
     <string name="cursor_swipe_step">مسافة سحب المؤشر</string>
     <string name="cursor_swipe_step_summary">المسافة التي يقطعها إصبعك لكل حرف عند السحب على مفتاح المسافة أو مفتاح الحذف. كلما زادت القيمة، كان التحرك أبطأ</string>
     <string name="ai_cancelled">تم إلغاء طلب الذكاء الاصطناعي</string>
+    <string name="learned_words">الكلمات المتعلّمة</string>
+    <string name="learned_words_summary">عرض الكلمات الفردية المتعلّمة من الكتابة وحذفها</string>
+    <string name="learned_words_empty">لا توجد كلمات متعلّمة للغات الحالية للوحة المفاتيح حتى الآن</string>
 </resources>

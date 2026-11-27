@@ -1769,4 +1769,7 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="cursor_swipe_step">Jarak geser kursor</string>
     <string name="cursor_swipe_step_summary">Jarak jari untuk setiap karakter saat menggeser pada tombol spasi atau hapus. Semakin tinggi, semakin lambat</string>
     <string name="ai_cancelled">Permintaan AI dibatalkan</string>
+    <string name="learned_words">Kata yang dipelajari</string>
+    <string name="learned_words_summary">Lihat dan hapus kata tunggal yang dipelajari dari pengetikan</string>
+    <string name="learned_words_empty">Belum ada kata yang dipelajari untuk bahasa keyboard saat ini</string>
 </resources>

@@ -1778,4 +1778,7 @@
     <string name="cursor_swipe_step">Расстояние свайпа курсора</string>
     <string name="cursor_swipe_step_summary">Перемещение пальца для каждого символа при свайпе по пробелу или клавише удаления. Чем больше значение, тем медленнее</string>
     <string name="ai_cancelled">Запрос ИИ отменён</string>
+    <string name="learned_words">Выученные слова</string>
+    <string name="learned_words_summary">Просмотр и удаление отдельных слов, выученных при наборе текста</string>
+    <string name="learned_words_empty">Для текущих языков клавиатуры пока нет выученных слов</string>
 </resources>

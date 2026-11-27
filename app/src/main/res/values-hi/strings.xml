@@ -1809,4 +1809,7 @@
     <string name="cursor_swipe_step">कर्सर स्वाइप दूरी</string>
     <string name="cursor_swipe_step_summary">स्पेस बार या डिलीट कुंजी पर स्वाइप करते समय हर अक्षर के लिए उंगली की दूरी। अधिक मान का अर्थ है धीमी गति</string>
     <string name="ai_cancelled">AI अनुरोध रद्द किया गया</string>
+    <string name="learned_words">सीखे हुए शब्द</string>
+    <string name="learned_words_summary">टाइप करने से सीखे गए अलग-अलग शब्दों को देखें और हटाएं</string>
+    <string name="learned_words_empty">कीबोर्ड की वर्तमान भाषाओं के लिए अभी तक कोई सीखा हुआ शब्द नहीं है</string>
 </resources>

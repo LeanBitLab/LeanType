@@ -1776,4 +1776,7 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="cursor_swipe_step">Distância de deslize do cursor</string>
     <string name="cursor_swipe_step_summary">Distância percorrida pelo dedo para cada caractere ao deslizar na barra de espaço ou na tecla de apagar. Quanto maior, mais lento</string>
     <string name="ai_cancelled">Pedido de AI cancelado</string>
+    <string name="learned_words">Palavras aprendidas</string>
+    <string name="learned_words_summary">Ver e excluir palavras individuais aprendidas ao digitar</string>
+    <string name="learned_words_empty">Ainda não há palavras aprendidas para os idiomas atuais do teclado</string>
 </resources>

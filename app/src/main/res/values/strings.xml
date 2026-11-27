@@ -111,6 +111,12 @@
     <string name="use_personalized_dicts">Personalized suggestions</string>
     <!-- Dialog message informing that dictionaries will be deleted on changing the setting -->
     <string name="disable_personalized_dicts_message">Warning: Disabling this setting will clear learned data</string>
+    <!-- Title of the screen listing the words learned from typing -->
+    <string name="learned_words">Learned words</string>
+    <!-- Description of the entry that opens the learned words screen -->
+    <string name="learned_words_summary">See and delete single words learned from typing</string>
+    <!-- Shown on the learned words screen when there are none -->
+    <string name="learned_words_empty">No learned words for the keyboard\'s current languages yet</string>
     <string name="clear_learned_words_title">Clear learned words</string>
     <string name="clear_learned_words_summary">Delete all words and next-word suggestions learned from typing</string>
     <string name="clear_learned_words_confirmation">Are you sure you want to clear all learned words and suggestions?</string>

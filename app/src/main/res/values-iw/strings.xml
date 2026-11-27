@@ -1777,4 +1777,7 @@
     <string name="cursor_swipe_step">מרחק החלקת הסמן</string>
     <string name="cursor_swipe_step_summary">מרחק האצבע עבור כל תו בעת החלקה על מקש הרווח או מקש המחיקה. ככל שהערך גבוה יותר, התנועה איטית יותר</string>
     <string name="ai_cancelled">בקשת ה-AI בוטלה</string>
+    <string name="learned_words">מילים שנלמדו</string>
+    <string name="learned_words_summary">הצג ומחק מילים בודדות שנלמדו מההקלדה</string>
+    <string name="learned_words_empty">עדיין אין מילים שנלמדו עבור השפות הנוכחיות של המקלדת</string>
 </resources>

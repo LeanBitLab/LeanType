@@ -1806,4 +1806,7 @@
     <string name="cursor_swipe_step">Адлегласць свайпа курсора</string>
     <string name="cursor_swipe_step_summary">Колькасць руху пальцам для кожнага знака пры свайпе па прасторы або клавішы выдалення. Больш значэнне  -  павольней</string>
     <string name="ai_cancelled">Запыт ШІ скасаваны</string>
+    <string name="learned_words">Вывучаныя словы</string>
+    <string name="learned_words_summary">Глядзіце і выдаляйце асобныя словы, вывучаныя пры наборы тэксту</string>
+    <string name="learned_words_empty">Для бягучых моў клавіятуры пакуль няма вывучаных слоў</string>
 </resources>

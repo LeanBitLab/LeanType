@@ -1807,4 +1807,7 @@ Ar norite atnaujinti?</string>
     <string name="cursor_swipe_step">Žymeklio perbraukimo atstumas</string>
     <string name="cursor_swipe_step_summary">Piršto nuotolis kiekvienam simboliui braukiant per tarpo klavišą ar trynimo klavišą. Didesnė reikšmė reiškia lėtesnį judėjimą</string>
     <string name="ai_cancelled">AI užklausa atšaukta</string>
+    <string name="learned_words">Išmokti žodžiai</string>
+    <string name="learned_words_summary">Peržiūrėkite ir ištrinkite atskirus žodžius, išmoktus rašant</string>
+    <string name="learned_words_empty">Klaviatūros dabartinėms kalboms dar nėra išmoktų žodžių</string>
 </resources>

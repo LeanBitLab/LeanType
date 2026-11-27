@@ -1667,4 +1667,7 @@
     <string name="cursor_swipe_step">কার্সার সোয়াইপের দূরত্ব</string>
     <string name="cursor_swipe_step_summary">স্পেস বার বা মুছুন বোতামে সোয়াইপ করার সময় প্রতিটি অক্ষরের জন্য আঙুলের চলাচলের দূরত্ব। বেশি হলে ধীর হবে</string>
     <string name="ai_cancelled">AI অনুরোধ বাতিল করা হয়েছে</string>
+    <string name="learned_words">শেখা শব্দসমূহ</string>
+    <string name="learned_words_summary">টাইপ করে শেখা একক শব্দ দেখুন ও মুছুন</string>
+    <string name="learned_words_empty">কীবোর্ডের বর্তমান ভাষাগুলোর জন্য এখনও কোনো শেখা শব্দ নেই</string>
 </resources>

@@ -1711,4 +1711,7 @@
     <string name="cursor_swipe_step">فاصلهٔ حرکت کرسور</string>
     <string name="cursor_swipe_step_summary">مسافت انگشت برای هر نویسه هنگام کشیدن روی کلید فاصله یا حذف. مقدار بالاتر یعنی کندتر</string>
     <string name="ai_cancelled">درخواست هوش مصنوعی لغو شد</string>
+    <string name="learned_words">یادگرفته‌شده‌ها</string>
+    <string name="learned_words_summary">مشاهده و حذف کلمات منفردی که از تایپ یاد گرفته شده‌اند</string>
+    <string name="learned_words_empty">هنوز کلمه‌ای برای زبان‌های فعلی صفحه‌کلید یاد گرفته نشده است</string>
 </resources>

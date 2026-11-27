@@ -1666,4 +1666,7 @@
     <string name="cursor_swipe_step">கர்சர் ஸ்வைப் தூரம்</string>
     <string name="cursor_swipe_step_summary">ஸ்பேஸ் பாரில் அல்லது டெலீட் விசையில் ஸ்வைப் செய்யும்போது ஒவ்வொரு எழுத்துக்கும் விரல் நகரும் தூரம். அதிகமாக இருந்தால் மெதுவாக இருக்கும்</string>
     <string name="ai_cancelled">AI கோரிக்கை ரத்து செய்யப்பட்டது</string>
+    <string name="learned_words">கற்றறிந்த சொற்கள்</string>
+    <string name="learned_words_summary">தட்டச்சு செய்வதிலிருந்து கற்றறிந்த தனிச் சொற்களைப் பார்க்கவும் நீக்கவும்</string>
+    <string name="learned_words_empty">விசைப்பலகையின் தற்போதைய மொழிகளுக்கு இதுவரை கற்றறிந்த சொற்கள் இல்லை</string>
 </resources>

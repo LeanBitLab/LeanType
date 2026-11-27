@@ -1707,4 +1707,7 @@
     <string name="cursor_swipe_step">커서 스와이프 거리</string>
     <string name="cursor_swipe_step_summary">스페이스바 또는 삭제 키에서 스와이프할 때 문자마다 이동하는 손가락 거리입니다. 값이 클수록 느려집니다</string>
     <string name="ai_cancelled">AI 요청이 취소됨</string>
+    <string name="learned_words">학습된 단어</string>
+    <string name="learned_words_summary">입력하며 학습된 개별 단어를 보고 삭제합니다</string>
+    <string name="learned_words_empty">키보드의 현재 언어에 학습된 단어가 아직 없습니다</string>
 </resources>
