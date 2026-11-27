@@ -161,7 +161,8 @@ fun AppearanceScreen(
     SearchSettingsScreen(
         onClickBack = onClickBack,
         title = stringResource(R.string.settings_screen_appearance),
-        settings = items
+        settings = items,
+        testField = true,
     )
 }
 
