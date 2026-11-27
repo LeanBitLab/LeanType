@@ -1803,4 +1803,9 @@
     <string name="storage_type_language_pack">пераклад праграмы</string>
     <string name="ocr_camera_failed">Не ўдалося запусціць камеру. Націсніце, каб паўтарыць спробу.</string>
     <string name="handwriting_not_recognized">Не ўдалося распазнаць рукапісны тэкст. Паспрабуйце яшчэ раз.</string>
+    <string name="keyboard_test_field">Паспрабуйце клавіятуру тут</string>
+    <string name="keyboard_test_field_hint">Змены будуць паказаны пры наступным адкрыцці клавіятуры. Тое, што набіраецца тут, не запамінаецца.</string>
+    <string name="cursor_swipe_step">Адлегласць свайпа курсора</string>
+    <string name="cursor_swipe_step_summary">Колькасць руху пальцам для кожнага знака пры свайпе па прасторы або клавішы выдалення. Больш значэнне  -  павольней</string>
+    <string name="ai_cancelled">Запыт ШІ скасаваны</string>
 </resources>

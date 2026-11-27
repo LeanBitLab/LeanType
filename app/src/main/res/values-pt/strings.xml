@@ -1773,4 +1773,9 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="storage_type_language_pack">tradução da app</string>
     <string name="ocr_camera_failed">Falha ao iniciar a câmara. Toque para tentar novamente.</string>
     <string name="handwriting_not_recognized">Não foi possível reconhecer a escrita à mão. Tente novamente.</string>
+    <string name="keyboard_test_field">Experimente o teclado aqui</string>
+    <string name="keyboard_test_field_hint">As alterações são mostradas na próxima vez que o teclado for aberto. Nada do que for escrito aqui é aprendido.</string>
+    <string name="cursor_swipe_step">Distância de deslize do cursor</string>
+    <string name="cursor_swipe_step_summary">Distância percorrida pelo dedo para cada caractere ao deslizar na barra de espaço ou na tecla de apagar. Quanto maior, mais lento</string>
+    <string name="ai_cancelled">Pedido de AI cancelado</string>
 </resources>

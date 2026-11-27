@@ -119,6 +119,7 @@ fun GestureTypingScreen(
                     || Settings.readHorizontalSpaceSwipe(prefs) == KeyboardActionListener.SWIPE_SWITCH_LANGUAGE) {
                     add(Settings.PREF_LANGUAGE_SWIPE_DISTANCE)
                 }
+                add(Settings.PREF_CURSOR_SWIPE_STEP)
                 add(Settings.PREF_VERTICAL_SWIPE_THRESHOLD)
                 add(Settings.PREF_SPACE_VERTICAL_SWIPE)
                 add(Settings.PREF_SPACE_VERTICAL_DOWN_SWIPE)
@@ -346,6 +347,22 @@ fun createGestureTypingSettings(context: Context) = listOf(
             stepSize = 1,
             description = { value ->
                 if (value.toInt() == Defaults.PREF_VERTICAL_SWIPE_THRESHOLD) {
+                    "${value.toInt()} dp (${stringResource(R.string.button_default)})"
+                } else {
+                    "${value.toInt()} dp"
+                }
+            }
+        )
+    },
+    Setting(context, Settings.PREF_CURSOR_SWIPE_STEP, R.string.cursor_swipe_step, R.string.cursor_swipe_step_summary) {
+        SliderPreference(
+            name = it.title,
+            key = it.key,
+            default = Defaults.PREF_CURSOR_SWIPE_STEP,
+            range = 5f..40f,
+            stepSize = 1,
+            description = { value ->
+                if (value.toInt() == Defaults.PREF_CURSOR_SWIPE_STEP) {
                     "${value.toInt()} dp (${stringResource(R.string.button_default)})"
                 } else {
                     "${value.toInt()} dp"

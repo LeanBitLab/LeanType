@@ -1770,4 +1770,9 @@
     <string name="storage_type_language_pack">应用翻译</string>
     <string name="ocr_camera_failed">相机无法启动。点按即可重试。</string>
     <string name="handwriting_not_recognized">无法识别手写内容。请重试。</string>
+    <string name="keyboard_test_field">在此试用键盘</string>
+    <string name="keyboard_test_field_hint">更改将在下次打开键盘时生效。此处输入的内容不会被学习。</string>
+    <string name="cursor_swipe_step">滑动光标时的步长</string>
+    <string name="cursor_swipe_step_summary">在空格键或删除键上滑动时，每个字符所需的手指移动距离。数值越大，移动越慢</string>
+    <string name="ai_cancelled">AI 请求已取消</string>
 </resources>

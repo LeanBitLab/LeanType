@@ -891,7 +891,8 @@ class PointerTracker private constructor(
             }
 
             // Horizontal movement
-            val stepsX = dX / sPointerStep
+            val cursorStep = cursorSwipeStepPx(sv)
+            val stepsX = dX / cursorStep
             if (stepsX != 0 && !mInVerticalSwipe) {
                 if (!mInHorizontalSwipe) {
                     getTimerProxy().cancelKeyTimersOf(this)
@@ -900,7 +901,7 @@ class PointerTracker private constructor(
                     return
                 }
                 if (sListener.onHorizontalSpaceSwipe(stepsX)) {
-                    mStartX += stepsX * sPointerStep
+                    mStartX += stepsX * cursorStep
                 }
             }
         } else if (code == KeyCode.DELETE) {
@@ -909,7 +910,7 @@ class PointerTracker private constructor(
             // The curve is only for a purely sideways word swipe. A line step restarts the word count (see
             // prepareExactVertical), so after it the even steps count from the finger, not from the swipe start.
             val curved = byWord && !mDeleteSwipeLineMoved
-            val evenStep = if (byWord) sWordDeletePointerStep else sPointerStep
+            val evenStep = if (byWord) sWordDeletePointerStep else cursorSwipeStepPx(sv)
             // on the curve mStartX stays at the position that selected the current word count
             fun boundaryPx(words: Int) = (WordSwipeCurve.boundary(words) * density).roundToInt()
             var words = mDeleteSwipeWords
@@ -999,11 +1000,12 @@ class PointerTracker private constructor(
             }
 
             if (action == KeyboardActionListener.SWIPE_MOVE_CURSOR) {
-                val stepsX = dX / sPointerStep
+                val cursorStep = cursorSwipeStepPx(sv)
+                val stepsX = dX / cursorStep
                 if (stepsX != 0) {
                     mInHorizontalSwipe = true
                     if (sListener.onFullKeyboardSwipe(stepsX, action)) {
-                        mStartX += stepsX * sPointerStep
+                        mStartX += stepsX * cursorStep
                     }
                 }
             } else {
@@ -1425,6 +1427,8 @@ class PointerTracker private constructor(
 
         private var sParams: PointerTrackerParams? = null
         private val sPointerStep = 10.dpToPx(Resources.getSystem())
+        /** finger travel for one character when moving the cursor or deleting by swipe, from the settings */
+        private fun cursorSwipeStepPx(sv: SettingsValues) = max(1, sv.mCursorSwipeStep.dpToPx(Resources.getSystem()))
         private val sWordDeletePointerStep = 24.dpToPx(Resources.getSystem())
         private var sGestureStrokeRecognitionParams: GestureStrokeRecognitionParams? = null
         private var sGestureStrokeDrawingParams: GestureStrokeDrawingParams? = null

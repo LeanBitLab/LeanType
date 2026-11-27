@@ -1797,4 +1797,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
         <item>use_system_wallpaper|foto</item>
         <item>background_image|foto</item>
     </string-array>
+    <string name="cursor_swipe_step">Cursor-Wischdistanz</string>
+    <string name="cursor_swipe_step_summary">Fingerweg für jedes Zeichen beim Wischen auf der Leertaste oder der Löschtaste. Höhere Werte bedeuten langsamer</string>
+    <string name="ai_cancelled">KI-Anfrage abgebrochen</string>
 </resources>

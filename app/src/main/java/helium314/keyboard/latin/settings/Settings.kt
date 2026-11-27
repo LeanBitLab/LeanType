@@ -413,6 +413,7 @@ class Settings private constructor() : SharedPreferences.OnSharedPreferenceChang
         const val PREF_SPACE_VERTICAL_SWIPE = "vertical_space_swipe"
         const val PREF_SPACE_VERTICAL_DOWN_SWIPE = "vertical_down_space_swipe"
         const val PREF_VERTICAL_SWIPE_THRESHOLD = "vertical_swipe_threshold"
+        const val PREF_CURSOR_SWIPE_STEP = "cursor_swipe_step"
         const val PREF_DELETE_SWIPE = "delete_swipe"
         const val PREF_DELETE_SWIPE_WORD_BY_WORD = "delete_swipe_word_by_word"
         const val PREF_FULL_KEYBOARD_SWIPE = "full_keyboard_swipe"

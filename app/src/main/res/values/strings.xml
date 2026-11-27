@@ -1649,6 +1649,10 @@ New dictionary:
     <string name="vertical_swipe_threshold">Vertical swipe threshold</string>
     <!-- Description of the setting for vertical swipe gesture distance threshold -->
     <string name="vertical_swipe_threshold_summary">Distance required to trigger vertical swipe gestures on spacebar and toolbar</string>
+    <!-- Title of the setting for how far the finger moves per character when swiping to move the cursor or delete -->
+    <string name="cursor_swipe_step">Cursor swipe distance</string>
+    <!-- Description of the setting for how far the finger moves per character when swiping to move the cursor or delete -->
+    <string name="cursor_swipe_step_summary">Finger travel for each character when swiping on the space bar or delete key. Higher is slower</string>
     <!-- Title of the setting to auto hide pinned keys when toolbar is expanded -->
     <string name="auto_hide_pinned_keys">Auto hide pinned keys</string>
     <!-- Description of the setting to auto hide pinned keys when toolbar is expanded -->
@@ -2486,6 +2490,7 @@ New dictionary:
         <item>theme_colors_night|theme design colour dark look skin</item>
         <item>theme_style|design look shape rounded</item>
         <item>theme_key_borders|outline frame look</item>
+        <item>cursor_swipe_step|sensitivity speed fast</item>
         <item>keyboard_height_scale|size big small tall</item>
         <item>font_scale|text size letters big small</item>
         <item>vibrate_on|haptic feedback vibration buzz</item>

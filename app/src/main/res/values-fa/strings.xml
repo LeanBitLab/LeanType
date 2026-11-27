@@ -1708,4 +1708,9 @@
     <string name="storage_type_language_pack">ترجمه برنامه</string>
     <string name="ocr_camera_failed">دوربین راه‌اندازی نشد. برای تلاش مجدد ضربه بزنید.</string>
     <string name="handwriting_not_recognized">دستخط شناسایی نشد. دوباره امتحان کنید.</string>
+    <string name="keyboard_test_field">کلید را اینجا امتحان کنید</string>
+    <string name="keyboard_test_field_hint">تغییرات دفعه بعد که صفحه‌کلید باز شود نمایش داده می‌شوند. هر چیزی که اینجا تایپ کنید یادگرفته نمی‌شود.</string>
+    <string name="cursor_swipe_step">فاصلهٔ حرکت کرسور</string>
+    <string name="cursor_swipe_step_summary">مسافت انگشت برای هر نویسه هنگام کشیدن روی کلید فاصله یا حذف. مقدار بالاتر یعنی کندتر</string>
+    <string name="ai_cancelled">درخواست هوش مصنوعی لغو شد</string>
 </resources>
