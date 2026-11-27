@@ -40,6 +40,8 @@ import java.util.WeakHashMap
 import kotlin.math.abs
 import kotlin.math.hypot
 import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 class PointerTracker private constructor(
@@ -90,6 +92,10 @@ class PointerTracker private constructor(
     private var mLastX = 0
     private var mLastY = 0
     private var mStartX = 0
+    /** words selected by the word delete swipe, see [WordSwipeCurve] */
+    private var mDeleteSwipeWords = 0
+    /** the delete swipe has selected lines: from then on words move in even steps, as the curve no longer applies */
+    private var mDeleteSwipeLineMoved = false
     private var mStartY = 0
     private var mDeleteRunX = 0
     private var mDeleteRunY = 0
@@ -596,6 +602,8 @@ class PointerTracker private constructor(
                 setPressedKeyGraphics(key, eventTime)
             }
             mStartX = x
+            mDeleteSwipeWords = 0
+            mDeleteSwipeLineMoved = false
             mStartY = y
             mDeleteRunX = x
             mDeleteRunY = y
@@ -896,9 +904,19 @@ class PointerTracker private constructor(
                 }
             }
         } else if (code == KeyCode.DELETE) {
-            val stepSizeX = if (sv.mDeleteSwipeWordByWord) sWordDeletePointerStep else sPointerStep
+            val byWord = sv.mDeleteSwipeWordByWord
+            val density = Resources.getSystem().displayMetrics.density
+            // The curve is only for a purely sideways word swipe. A line step restarts the word count (see
+            // prepareExactVertical), so after it the even steps count from the finger, not from the swipe start.
+            val curved = byWord && !mDeleteSwipeLineMoved
+            val evenStep = if (byWord) sWordDeletePointerStep else sPointerStep
+            // on the curve mStartX stays at the position that selected the current word count
+            fun boundaryPx(words: Int) = (WordSwipeCurve.boundary(words) * density).roundToInt()
+            var words = mDeleteSwipeWords
+            if (curved) words = WordSwipeCurve.wordCount((mStartX + boundaryPx(words) - x) / density, words)
             val verticalPointerStep = max(1, sv.mVerticalSwipeThreshold.dpToPx(Resources.getSystem()))
-            val stepsX = (x - mStartX) / stepSizeX
+            // negative is to the left: more is selected
+            val stepsX = if (curved) mDeleteSwipeWords - words else (x - mStartX) / evenStep
             var stepsY = (y - mStartY) / verticalPointerStep
 
             // Track lowest point (largest y) of the current upward run.
@@ -911,7 +929,9 @@ class PointerTracker private constructor(
                 // from swiping left or right across the keyboard, so ignore vertical line delete.
                 val runDx = abs(x - mDeleteRunX)
                 val runDy = mDeleteRunY - y
-                if (runDx >= runDy || abs(x - mStartX) >= abs(y - mStartY) || stepsX != 0) {
+                // capped at one even step: the wider word steps must not make line swipes harder
+                val sinceStepX = min(abs(x - mStartX), evenStep)
+                if (runDx >= runDy || sinceStepX >= abs(y - mStartY) || stepsX != 0) {
                     stepsY = 0
                     mStartY = y
                     mDeleteRunX = x
@@ -925,10 +945,21 @@ class PointerTracker private constructor(
                     mInHorizontalSwipe = true
                 }
                 if (stepsX != 0) {
-                    mStartX += stepsX * stepSizeX
+                    if (curved) {
+                        mStartX += boundaryPx(mDeleteSwipeWords) - boundaryPx(words)
+                        mDeleteSwipeWords = words
+                    } else {
+                        mStartX += stepsX * evenStep
+                    }
                 }
                 if (stepsY != 0) {
                     mStartY += stepsY * verticalPointerStep
+                    // only upward selects lines, a downward wobble in a sideways swipe keeps the curve
+                    if (curved && stepsY < 0) {
+                        mDeleteSwipeLineMoved = true
+                        // keep at most a partial even step, else a wide curve step would jump words at once
+                        mStartX = x + (mStartX - x).coerceIn(1 - evenStep, evenStep - 1)
+                    }
                     mDeleteRunX = x
                     mDeleteRunY = y
                 }
