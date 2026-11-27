@@ -110,9 +110,13 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
         print("  [FAIL] docs/badges/download.svg not found")
         all_passed = False
 
-    # 6. Pdoc/release_posts_v<version>.md
+    # 6. Pdoc/release_posts_v<version>.md (stable releases only, betas get no social posts)
+    is_beta = "beta" in version.lower()
     post_path = os.path.join(project_root, "Pdoc", f"release_posts_v{version}.md")
-    if os.path.exists(post_path):
+    check_args = ["--notes", rn_path] if os.path.exists(rn_path) else []
+    if is_beta:
+        print("  [OK] Social release posts not needed for betas")
+    elif os.path.exists(post_path):
         with open(post_path, "r", encoding="utf-8") as f:
             post_content = f.read()
         print("  [OK] Social release posts document exists")
@@ -121,26 +125,26 @@ def verify_release(project_root: str, version: str, version_code: str) -> bool:
             print("  [OK] Reddit post contains sidebar downloads sentence")
         else:
             print("  [WARN] Reddit post may be missing standard sidebar downloads notice")
-
-        # Notes and posts format (sections, emojis, post lengths): shared local checker,
-        # also used by the other LeanBitLab apps
-        checker = shutil.which("release-text-check")
-        if checker:
-            args = [checker, "--posts", post_path] + (["--notes", rn_path] if os.path.exists(rn_path) else [])
-            res = subprocess.run(args, capture_output=True, text=True)
-            for line in res.stdout.splitlines():
-                if line.strip().startswith("["):
-                    print("  " + line.strip())
-            if res.returncode != 0:
-                all_passed = False
-        else:
-            print("  [WARN] release-text-check not found, notes and posts format not checked")
+        check_args += ["--posts", post_path]
     else:
         print(f"  [FAIL] Social release posts not found at {post_path}")
         all_passed = False
 
+    # Notes and posts format (sections, emojis, post lengths): shared local checker,
+    # also used by the other LeanBitLab apps
+    checker = shutil.which("release-text-check")
+    if checker and check_args:
+        res = subprocess.run([checker, *check_args], capture_output=True, text=True)
+        for line in res.stdout.splitlines():
+            if line.strip().startswith("["):
+                print("  " + line.strip())
+        if res.returncode != 0:
+            all_passed = False
+    elif not checker:
+        print("  [WARN] release-text-check not found, notes and posts format not checked")
+
     # Check for em dashes across all release files
-    files_to_check = [rn_path, cl_path, updates_path, badge_path, post_path]
+    files_to_check = [rn_path, cl_path, updates_path, badge_path] + ([] if is_beta else [post_path])
     em_dash_found = False
     for p in files_to_check:
         if os.path.exists(p):
