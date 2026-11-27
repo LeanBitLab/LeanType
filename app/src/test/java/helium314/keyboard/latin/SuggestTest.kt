@@ -388,6 +388,13 @@ class SuggestTest {
         assertEquals(emptyList(), candidates.map { it.mWord })
     }
 
+    @Test fun `keep the dictionary's whitelist correction 'I' for a typed or learned 'i'`() {
+        // #961: "i" can be valid or learned, but the dictionary asks to correct it to "I"
+        val candidates = mutableListOf(suggestion("I", Int.MAX_VALUE, Locale.ENGLISH), suggestion("i", 300000, Locale.ENGLISH))
+        Suggest.removeTitleCaseVariants(suggestion("i", 300000, Locale.ENGLISH), candidates, Locale.ENGLISH)
+        assertEquals(listOf("I", "i"), candidates.map { it.mWord })
+    }
+
     @Test fun `keep proper nouns and all caps words`() {
         val candidates = mutableListOf(suggestion("London", 500000, Locale.ENGLISH), suggestion("OK", 400000, Locale.ENGLISH))
         Suggest.removeTitleCaseVariants(suggestion("ok", 300000, Locale.ENGLISH), candidates, Locale.ENGLISH)
