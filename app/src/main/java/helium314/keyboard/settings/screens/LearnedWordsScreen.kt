@@ -57,7 +57,7 @@ fun LearnedWordsScreen(onClickBack: () -> Unit) {
         filteredItems = { term -> list.orEmpty().filter { it.word.startsWith(term, ignoreCase = true) } },
         actions = {
             IconButton(onClick = { showClearDialog = true }) {
-                Icon(painterResource(R.drawable.ic_clear_all), stringResource(R.string.clear_learned_words_title))
+                Icon(painterResource(R.drawable.ic_bin), stringResource(R.string.clear_learned_words_title))
             }
         },
         content = if (list != null && list.isEmpty()) { {
