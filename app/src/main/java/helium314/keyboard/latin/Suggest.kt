@@ -687,6 +687,8 @@ class Suggest(private val mDictionaryFacilitator: DictionaryFacilitator) {
             candidates.removeAll { info ->
                 val word = info.mWord
                 if (word.isEmpty() || !word[0].isUpperCase()) return@removeAll false
+                // a correction the dictionary asks for, like "i" to "I" (#961)
+                if (info.isKindOf(SuggestedWordInfo.KIND_WHITELIST)) return@removeAll false
                 val hasMoreCapitals = word.drop(1).any { it.isUpperCase() }
                 // all caps ("NOW") is only dropped below when its lowercase form is at least as likely, so "OK" stays
                 val isAllCaps = hasMoreCapitals && word.none { it.isLowerCase() }
