@@ -58,6 +58,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.rotate
+import helium314.keyboard.latin.utils.TextExpanderText
+import helium314.keyboard.settings.dialogs.ListPickerDialog
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
@@ -118,6 +121,15 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
     var shortcutsMap by remember {
         mutableStateOf(TextExpanderUtils.getShortcuts(context))
     }
+    // the stored order is the order of adding, so OLDEST is the list as before
+    var sortOrder by remember {
+        mutableStateOf(
+            UserDictSortOrder.entries.firstOrNull { it.name == context.prefs().getString(TextExpanderUtils.PREF_SORT_ORDER, null) }
+                ?: UserDictSortOrder.OLDEST
+        )
+    }
+    var showSortDialog by remember { mutableStateOf(false) }
+    val sortedShortcuts = remember(shortcutsMap, sortOrder) { sortShortcuts(shortcutsMap, sortOrder) }
 
     val coroutineScope = rememberCoroutineScope()
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
@@ -293,6 +305,33 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
 
                     // 3. Shortcuts List
                     PreferenceCategory("${stringResource(R.string.text_expander_custom_shortcuts_title)} (${shortcutsMap.size})")
+                    if (shortcutsMap.size > 1) {
+                        // same as in the personal dictionary
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .clickable { showSortDialog = true }
+                                    .padding(vertical = 4.dp, horizontal = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                Text(
+                                    text = "${stringResource(R.string.user_dict_sort_title)}: ${sortOrder.displayName()}",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_arrow_left),
+                                    contentDescription = stringResource(R.string.user_dict_sort_title),
+                                    modifier = Modifier.size(14.dp).rotate(-90f),
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+                        }
+                    }
 
                     if (shortcutsMap.isEmpty()) {
                         Card(
@@ -362,7 +401,7 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                             }
                         }
                     } else {
-                        shortcutsMap.entries.forEach { (shortcut, entry) ->
+                        sortedShortcuts.forEach { (shortcut, entry) ->
                             ShortcutItem(
                                 shortcut = shortcut,
                                 entry = entry,
@@ -412,6 +451,20 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
                 )
             }
         }
+    }
+
+    if (showSortDialog) {
+        ListPickerDialog(
+            onDismissRequest = { showSortDialog = false },
+            items = UserDictSortOrder.entries,
+            selectedItem = sortOrder,
+            onItemSelected = {
+                sortOrder = it
+                context.prefs().edit { putString(TextExpanderUtils.PREF_SORT_ORDER, it.name) }
+            },
+            title = { Text(stringResource(R.string.user_dict_sort_title)) },
+            getItemName = { it.displayName() }
+        )
     }
 
     if (showTextEditor) {
@@ -761,14 +814,26 @@ fun TextExpanderScreen(onClickBack: () -> Unit) {
     }
 }
 
+/** The shortcut list in the order chosen in settings. Shortcuts are stored in the order of adding. */
+internal fun <V> sortShortcuts(shortcuts: Map<String, V>, order: UserDictSortOrder): List<Map.Entry<String, V>> = when (order) {
+    UserDictSortOrder.ALPHABETICAL -> shortcuts.entries.sortedBy { TextExpanderText.displayName(it.key).lowercase() }
+    UserDictSortOrder.LAST_ADDED -> shortcuts.entries.reversed()
+    UserDictSortOrder.OLDEST -> shortcuts.entries.toList()
+}
+
 /** Placeholder tags, a tap inserts the tag at the cursor */
 @Composable
-internal fun PlaceholderTagsRow(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit) {
+internal fun PlaceholderTagsRow(
+    value: TextFieldValue,
+    contentPadding: androidx.compose.ui.unit.Dp = 0.dp, // inside the scrolling, so the tags still scroll to the edges
+    onValueChange: (TextFieldValue) -> Unit
+) {
     val editingTemplate = value
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState()),
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = contentPadding),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         val tags = listOf(

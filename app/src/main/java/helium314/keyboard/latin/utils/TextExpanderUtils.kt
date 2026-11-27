@@ -24,6 +24,8 @@ object TextExpanderUtils {
     const val PREF_SUGGESTIONS_ONLY = "pref_text_expander_suggestions_only"
     const val PREF_DATA = "pref_text_expander_data"
     const val PREF_DATA_PREVIOUS = "pref_text_expander_data_previous"
+    /** order of the shortcut list in settings only, a UserDictSortOrder name */
+    const val PREF_SORT_ORDER = "pref_text_expander_sort_order"
     const val REGEX_PREFIX = "__regex__:"
 
     // Pre-compiled regexes for performance
