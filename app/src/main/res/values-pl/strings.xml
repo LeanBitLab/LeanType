@@ -1816,4 +1816,7 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="cursor_swipe_step">Odległość przesuwania kursora</string>
     <string name="cursor_swipe_step_summary">Odległość palca dla każdego znaku podczas przesuwania po spacji lub klawiszu usuwania. Wyższa wartość oznacza wolniejsze przesuwanie</string>
     <string name="ai_cancelled">Anulowano żądanie AI</string>
+    <string name="learned_words">Nauczone słowa</string>
+    <string name="learned_words_summary">Przeglądaj i usuwaj pojedyncze słowa nauczone podczas pisania</string>
+    <string name="learned_words_empty">Brak nauczonych słów dla bieżących języków klawiatury</string>
 </resources>

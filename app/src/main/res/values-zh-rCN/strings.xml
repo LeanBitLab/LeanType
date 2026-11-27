@@ -1773,4 +1773,7 @@
     <string name="cursor_swipe_step">滑动光标时的步长</string>
     <string name="cursor_swipe_step_summary">在空格键或删除键上滑动时，每个字符所需的手指移动距离。数值越大，移动越慢</string>
     <string name="ai_cancelled">AI 请求已取消</string>
+    <string name="learned_words">已学习的词语</string>
+    <string name="learned_words_summary">查看并删除通过输入学习到的单个词语</string>
+    <string name="learned_words_empty">当前键盘语言暂无已学习的词语</string>
 </resources>

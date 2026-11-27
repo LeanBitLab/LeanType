@@ -1769,4 +1769,7 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="cursor_swipe_step">Kurzorcsúsztatás távolsága</string>
     <string name="cursor_swipe_step_summary">Az ujj által megtett távolság karakterenként szóköz- vagy törlésbillentyűn csúsztatáskor. Magasabb érték = lassabb</string>
     <string name="ai_cancelled">MI-kérés megszakítva</string>
+    <string name="learned_words">Megtanult szavak</string>
+    <string name="learned_words_summary">A gépelés során megtanult egyes szavak megtekintése és törlése</string>
+    <string name="learned_words_empty">A billentyűzet jelenlegi nyelveihez még nincsenek megtanult szavak</string>
 </resources>

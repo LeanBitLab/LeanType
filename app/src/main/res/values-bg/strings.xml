@@ -1806,4 +1806,7 @@
     <string name="cursor_swipe_step">Разстояние на плъзгане на курсора</string>
     <string name="cursor_swipe_step_summary">Разстоянието, което пръстът изминава за всеки символ при плъзгане по интервала или клавиша за изтриване. По-голямата стойност означава по-бавно</string>
     <string name="ai_cancelled">Заявката към AI е отменена</string>
+    <string name="learned_words">Научени думи</string>
+    <string name="learned_words_summary">Преглед и изтриване на отделни думи, научени при писане</string>
+    <string name="learned_words_empty">Все още няма научени думи за текущите езици на клавиатурата</string>
 </resources>

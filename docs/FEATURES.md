@@ -510,6 +510,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 - **Suggestion Balance**: Adjust the balance between dictionary accuracy and your personal typing history (**Settings → Suggestions → Suggestion balance**).
 - **Personal Dictionary Shortcuts**: With **Settings → Text correction → Auto-correct shortcuts** on, typing an exact personal dictionary shortcut auto-corrects it, even when the shortcut is a valid word.
 - **Google Dictionary Import**: Import existing user dictionaries exported from Gboard.
+- **Learned Words**: **Settings → Languages & Layouts → Dictionaries → Learned words** lists the words learned from typing for the keyboard's current languages, most used first. Search them and delete single words; **Clear learned words** removes all.
 - Configure via **Settings → Suggestions** and **Settings → Languages & Layouts → Dictionaries → Learning threshold**.
 
 ---
@@ -1203,6 +1204,7 @@ graph LR
   n_Languages --> n_Dictionaries["Dictionaries"]
   n_Dictionaries --> n_PersonalDictionaries["Personal dictionary"]
   n_Dictionaries --> n_BlockedWords["Blocked words"]
+  n_Dictionaries --> n_LearnedWords["LearnedWords"]
   g0 --> n_Appearance["Appearance"]
   g0 --> n_Preferences["Preferences"]
   n_Preferences --> n_Sound["Keypress Audio"]
@@ -1243,13 +1245,14 @@ graph LR
 - Symbols, More symbols, Functional keys, Numbers, Number row, Numpad, Numpad (landscape), Phone, Phone symbols, Emoji bottom row, Clipboard bottom row, Text editing, Custom layout 1, Custom layout 2, Custom layout 3, Custom layout 4, Custom layout 5
 
 </details>
-<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (9)</summary>
+<details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (10)</summary>
 
-- "Add dictionary from file", Personal dictionary, Blocked words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
+- "Add dictionary from file", Personal dictionary, Blocked words, Learned words, Clear learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
 
 </details>
 - **Settings → Languages & Layouts → Dictionaries → Personal dictionary**
 - **Settings → Languages & Layouts → Dictionaries → Blocked words**
+- **Settings → Languages & Layouts → Dictionaries → LearnedWords**
 <details><summary><b>Settings → Appearance</b> (53)</summary>
 
 - Style, Colors, Key borders, Auto day/night mode, Colors (night), Set background image, Use system wallpaper, Theme and borders, Key corner radius, Functional key corner radius, Action key corner radius, Color navigation bar, Set background image (landscape), Background blur, Icon style, Customize icons, Clear clipboard icon

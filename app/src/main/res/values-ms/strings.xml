@@ -1708,4 +1708,7 @@ Kamus baharu:
     <string name="cursor_swipe_step">Jarak leret kursor</string>
     <string name="cursor_swipe_step_summary">Jarak jari untuk setiap aksara apabila meleret pada bar ruang atau kekunci padam. Lebih tinggi bermakna lebih perlahan</string>
     <string name="ai_cancelled">Permintaan AI dibatalkan</string>
+    <string name="learned_words">Perkataan yang dipelajari</string>
+    <string name="learned_words_summary">Lihat dan padam perkataan individu yang dipelajari daripada menaip</string>
+    <string name="learned_words_empty">Belum ada perkataan yang dipelajari untuk bahasa semasa papan kekunci</string>
 </resources>

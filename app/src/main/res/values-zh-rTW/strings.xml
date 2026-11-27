@@ -1733,4 +1733,7 @@
     <string name="cursor_swipe_step">游標滑動距離</string>
     <string name="cursor_swipe_step_summary">在空白鍵或刪除鍵上滑動時，每個字元所需的手指移動距離。數值越高，移動越慢</string>
     <string name="ai_cancelled">AI 請求已取消</string>
+    <string name="learned_words">學習過的字詞</string>
+    <string name="learned_words_summary">查看並刪除輸入時學習到的單一字詞</string>
+    <string name="learned_words_empty">目前鍵盤語言尚無學習過的字詞</string>
 </resources>

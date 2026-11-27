@@ -1810,4 +1810,7 @@
     <string name="cursor_swipe_step">کرسر سوائپ فاصلہ</string>
     <string name="cursor_swipe_step_summary">اسپیس بار یا ڈیلیٹ کی پر سوائپ کرتے وقت ہر حرف کے لیے انگلی کا فاصلہ۔ زیادہ ہونے پر رفتار کم ہوگی</string>
     <string name="ai_cancelled">AI درخواست منسوخ ہو گئی</string>
+    <string name="learned_words">سیکھے گئے الفاظ</string>
+    <string name="learned_words_summary">ٹائپنگ سے سیکھے گئے انفرادی الفاظ دیکھیں اور حذف کریں</string>
+    <string name="learned_words_empty">کی بورڈ کی موجودہ زبانوں کے لیے ابھی تک کوئی سیکھے گئے الفاظ نہیں ہیں</string>
 </resources>

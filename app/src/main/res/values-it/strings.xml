@@ -1785,4 +1785,7 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="cursor_swipe_step">Distanza di scorrimento del cursore</string>
     <string name="cursor_swipe_step_summary">Distanza del dito per ogni carattere durante lo scorrimento sulla barra spaziatrice o sul tasto cancella. Un valore più alto significa più lentezza</string>
     <string name="ai_cancelled">Richiesta AI annullata</string>
+    <string name="learned_words">Parole apprese</string>
+    <string name="learned_words_summary">Visualizza ed elimina le singole parole apprese durante la digitazione</string>
+    <string name="learned_words_empty">Nessuna parola appresa per le lingue attuali della tastiera</string>
 </resources>

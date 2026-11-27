@@ -1806,4 +1806,7 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="cursor_swipe_step">Distanța de glisare a cursorului</string>
     <string name="cursor_swipe_step_summary">Distanța parcursă de deget pentru fiecare caracter la glisare pe bara de spațiu sau pe tasta de ștergere. Valoarea mai mare înseamnă mai lent</string>
     <string name="ai_cancelled">Cererea AI a fost anulată</string>
+    <string name="learned_words">Cuvinte învățate</string>
+    <string name="learned_words_summary">Vezi și șterge cuvintele individuale învățate din scriere</string>
+    <string name="learned_words_empty">Încă nu există cuvinte învățate pentru limbile curente ale tastaturii</string>
 </resources>

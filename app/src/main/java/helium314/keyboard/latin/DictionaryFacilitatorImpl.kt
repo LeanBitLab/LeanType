@@ -1050,6 +1050,20 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
         }
     }
 
+    override fun getLearnedWords(): List<LearnedWord> = dictionaryGroups.flatMap { group ->
+        val dict = group.getSubDict(Dictionary.TYPE_USER_HISTORY) ?: return@flatMap emptyList()
+        dict.getWordPropertiesForSyncing(LEARNED_WORDS_TIMEOUT_MS)
+            .filter { !it.mIsNotAWord && !it.mIsBeginningOfSentence && it.mWord.isNotEmpty() }
+            .map { LearnedWord(it.mWord, group.locale, it.mProbabilityInfo.mCount) }
+    }
+
+    override fun removeLearnedWord(word: String, locale: Locale) {
+        for (group in dictionaryGroups) {
+            if (group.locale == locale) group.getSubDict(Dictionary.TYPE_USER_HISTORY)?.removeUnigramEntryDynamically(word)
+        }
+        sessionWordBoost?.removeWord(word)
+    }
+
     override fun clearUserHistoryDictionary(context: Context) {
         sessionWordBoost?.clear()
         gestureWordBias?.clear()
@@ -1084,6 +1098,8 @@ class DictionaryFacilitatorImpl : DictionaryFacilitator {
 
         // HACK: This threshold is being used when adding a capitalized entry in the User History dictionary.
         private const val CAPITALIZED_FORM_MAX_PROBABILITY_FOR_INSERT = 140
+        // reading a large learning history word by word takes longer than the usual 100 ms
+        private const val LEARNED_WORDS_TIMEOUT_MS = 3000L
 
         // Multiplier to convert session boost values into native score-space (native scores are ~0-255)
         private const val BOOST_SCORE_MULTIPLIER = 1.0f

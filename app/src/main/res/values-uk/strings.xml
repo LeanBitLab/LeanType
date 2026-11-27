@@ -1772,4 +1772,7 @@
     <string name="cursor_swipe_step">Відстань свайпу курсора</string>
     <string name="cursor_swipe_step_summary">Відстань, яку проходить палець для кожного символу під час свайпу по пробілу або клавіші delete. Більше значення означає повільніше</string>
     <string name="ai_cancelled">Запит ШІ скасовано</string>
+    <string name="learned_words">Вивчені слова</string>
+    <string name="learned_words_summary">Переглядайте та видаляйте окремі слова, вивчені під час введення</string>
+    <string name="learned_words_empty">Для поточних мов клавіатури ще немає вивчених слів</string>
 </resources>

@@ -1774,4 +1774,7 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="cursor_swipe_step">Distance de glissement du curseur</string>
     <string name="cursor_swipe_step_summary">Distance parcourue par le doigt pour chaque caractère lors d\'un glissement sur la barre d\'espace ou la touche supprimer. Plus la valeur est élevée, plus le déplacement est lent</string>
     <string name="ai_cancelled">Requête IA annulée</string>
+    <string name="learned_words">Mots appris</string>
+    <string name="learned_words_summary">Voir et supprimer les mots individuels appris lors de la saisie</string>
+    <string name="learned_words_empty">Aucun mot appris pour les langues actuelles du clavier pour le moment</string>
 </resources>

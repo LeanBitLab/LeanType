@@ -141,6 +141,14 @@ fun DictionaryScreen(
                             value = { NextScreenIcon() }
                         )
 
+                        Preference(
+                            name = stringResource(R.string.learned_words),
+                            description = stringResource(R.string.learned_words_summary),
+                            icon = R.drawable.ic_dictionary,
+                            onClick = { SettingsDestination.navigateTo(SettingsDestination.LearnedWords) },
+                            value = { NextScreenIcon() }
+                        )
+
                         // Clear Learned Words Entry
                         Preference(
                             name = stringResource(R.string.clear_learned_words_title),

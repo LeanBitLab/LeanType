@@ -1706,4 +1706,7 @@ Từ điển mới:
     <string name="cursor_swipe_step">Khoảng cách vuốt con trỏ</string>
     <string name="cursor_swipe_step_summary">Khoảng ngón tay di chuyển cho mỗi ký tự khi vuốt trên phím cách hoặc phím xóa. Giá trị cao hơn sẽ chậm hơn</string>
     <string name="ai_cancelled">Đã hủy yêu cầu AI</string>
+    <string name="learned_words">Từ đã học</string>
+    <string name="learned_words_summary">Xem và xóa từng từ đã học từ quá trình gõ</string>
+    <string name="learned_words_empty">Chưa có từ nào đã học cho các ngôn ngữ hiện tại của bàn phím</string>
 </resources>

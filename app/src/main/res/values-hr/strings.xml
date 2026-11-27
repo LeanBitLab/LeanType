@@ -1769,4 +1769,7 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="cursor_swipe_step">Zahtjev za AI prekinut</string>
     <string name="cursor_swipe_step_summary">Udaljenost pomicanja prsta za svaki znak pri klizanju po razmaknici ili tipki za brisanje. Veća vrijednost znači sporije</string>
     <string name="ai_cancelled">Zahtjev za AI prekinut</string>
+    <string name="learned_words">Naučene riječi</string>
+    <string name="learned_words_summary">Pregledajte i izbrišite pojedinačne riječi naučene tijekom tipkanja</string>
+    <string name="learned_words_empty">Za trenutačne jezike tipkovnice još nema naučenih riječi</string>
 </resources>

@@ -1745,4 +1745,7 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="cursor_swipe_step">İmleç kaydırma mesafesi</string>
     <string name="cursor_swipe_step_summary">Boşluk tuşu veya silme tuşunda kaydırırken her karakter için parmak hareketi mesafesi. Değer arttıkça yavaşlar</string>
     <string name="ai_cancelled">Yapay zeka isteği iptal edildi</string>
+    <string name="learned_words">Öğrenilen kelimeler</string>
+    <string name="learned_words_summary">Yazarken öğrenilen tek tek kelimeleri görüntüleyin ve silin</string>
+    <string name="learned_words_empty">Klavyenin geçerli dilleri için henüz öğrenilmiş kelime yok</string>
 </resources>

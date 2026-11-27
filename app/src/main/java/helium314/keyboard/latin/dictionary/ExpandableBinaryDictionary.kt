@@ -502,7 +502,7 @@ abstract class ExpandableBinaryDictionary(
         })
     }
 
-    fun getWordPropertiesForSyncing(): Array<WordProperty> {
+    fun getWordPropertiesForSyncing(timeoutMs: Long = TIMEOUT_FOR_READ_OPS_IN_MILLISECONDS.toLong()): Array<WordProperty> {
         reloadDictionaryIfRequired()
         val result = AsyncResultHolder<Array<WordProperty>>("WordPropertiesForSync")
         asyncExecuteTaskWithLock(mLock.readLock(), Runnable {
@@ -519,7 +519,7 @@ abstract class ExpandableBinaryDictionary(
                 result.set(wordPropertyList.toTypedArray())
             }
         })
-        return result.get(DEFAULT_WORD_PROPERTIES_FOR_SYNC, TIMEOUT_FOR_READ_OPS_IN_MILLISECONDS.toLong()) ?: DEFAULT_WORD_PROPERTIES_FOR_SYNC
+        return result.get(DEFAULT_WORD_PROPERTIES_FOR_SYNC, timeoutMs) ?: DEFAULT_WORD_PROPERTIES_FOR_SYNC
     }
 
     companion object {

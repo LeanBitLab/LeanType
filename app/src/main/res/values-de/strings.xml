@@ -1798,4 +1798,7 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="cursor_swipe_step">Cursor-Wischdistanz</string>
     <string name="cursor_swipe_step_summary">Fingerweg für jedes Zeichen beim Wischen auf der Leertaste oder der Löschtaste. Höhere Werte bedeuten langsamer</string>
     <string name="ai_cancelled">KI-Anfrage abgebrochen</string>
+    <string name="learned_words">Gelernte Wörter</string>
+    <string name="learned_words_summary">Beim Tippen gelernte einzelne Wörter ansehen und löschen</string>
+    <string name="learned_words_empty">Für die aktuellen Sprachen der Tastatur wurden noch keine Wörter gelernt</string>
 </resources>

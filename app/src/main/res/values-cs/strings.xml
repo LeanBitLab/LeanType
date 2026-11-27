@@ -1771,4 +1771,7 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="cursor_swipe_step">Vzdálenost posunu kurzoru</string>
     <string name="cursor_swipe_step_summary">Vzdálenost prstu pro každý znak při posunu na mezerníku nebo klávese delete. Vyšší hodnota znamená pomalejší posun</string>
     <string name="ai_cancelled">Požadavek AI zrušen</string>
+    <string name="learned_words">Naučená slova</string>
+    <string name="learned_words_summary">Zobrazit a smazat jednotlivá slova naučená psaním</string>
+    <string name="learned_words_empty">Pro aktuální jazyky klávesnice zatím nejsou žádná naučená slova</string>
 </resources>

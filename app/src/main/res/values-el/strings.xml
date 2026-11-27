@@ -1819,4 +1819,7 @@
     <string name="cursor_swipe_step">Απόσταση σύρσιμου κέρσορα</string>
     <string name="cursor_swipe_step_summary">Απόσταση δαχτύλου για κάθε χαρακτήρα κατά το σύρσιμο στο πλήκτρο διαστήματος ή διαγραφής. Μεγαλύτερη τιμή σημαίνει πιο αργή κίνηση</string>
     <string name="ai_cancelled">Το αίτημα AI ακυρώθηκε</string>
+    <string name="learned_words">Μαθημένες λέξεις</string>
+    <string name="learned_words_summary">Δείτε και διαγράψτε μεμονωμένες λέξεις που έχουν μάθει από την πληκτρολόγηση</string>
+    <string name="learned_words_empty">Δεν υπάρχουν ακόμη μαθημένες λέξεις για τις τρέχουσες γλώσσες του πληκτρολογίου</string>
 </resources>

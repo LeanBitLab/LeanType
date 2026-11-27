@@ -1709,4 +1709,7 @@
     <string name="cursor_swipe_step">カーソルスワイプの距離</string>
     <string name="cursor_swipe_step_summary">スペースキーまたは削除キーでスワイプしたときの、1文字ごとの指の移動距離。値を大きくすると遅くなります</string>
     <string name="ai_cancelled">AIリクエストをキャンセルしました</string>
+    <string name="learned_words">学習済みの単語</string>
+    <string name="learned_words_summary">入力から学習した単語を個別に確認・削除します</string>
+    <string name="learned_words_empty">このキーボードの現在の言語では、まだ学習済みの単語はありません</string>
 </resources>
