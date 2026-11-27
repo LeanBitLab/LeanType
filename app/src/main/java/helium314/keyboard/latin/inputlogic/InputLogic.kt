@@ -69,6 +69,7 @@ import helium314.keyboard.latin.utils.CustomAIKeyText
 import helium314.keyboard.latin.utils.TextExpanderUtils
 import helium314.keyboard.latin.utils.TextPlacement
 import helium314.keyboard.latin.utils.TextRange
+import helium314.keyboard.latin.utils.ToolbarKey
 import helium314.keyboard.latin.utils.getTimestamp
 import java.text.BreakIterator
 import java.util.ArrayList
@@ -758,6 +759,12 @@ class InputLogic(
     }
 
     private fun handleTranslate() {
+        // a second tap while the AI is working cancels it
+        if (ProofreadHelper.isOperationInProgress) {
+            ProofreadHelper.cancelCurrentOperation()
+            KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_cancelled), true)
+            return
+        }
         val textToTranslate: String
         val hasSelection = mConnection.hasSelection()
 
@@ -3181,6 +3188,12 @@ class InputLogic(
     }
 
     private fun handleCustomAIKey(index: Int) {
+        // a second tap while the AI is working cancels it
+        if (ProofreadHelper.isOperationInProgress) {
+            ProofreadHelper.cancelCurrentOperation()
+            KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_cancelled), true)
+            return
+        }
         val prefs = helium314.keyboard.latin.utils.DeviceProtectedUtils.getSharedPreferences(mLatinIME)
         var prompt = prefs.getString("pref_custom_ai_prompt_$index", "") ?: ""
         val systemInstructionBuilder = StringBuilder()
@@ -3291,6 +3304,7 @@ class InputLogic(
         ProofreadHelper.customAsync(
             mLatinIME,
             textToProcess, prompt, hasSelection, showThinking,
+            toolbarKey = ToolbarKey.entries.firstOrNull { it.name == "CUSTOM_AI_$index" },
             onSuccess = { resultText ->
                 if (!mLatinIME.isInputViewShown || !mConnection.isConnected()) {
                     Log.w(TAG, "Input view hidden or disconnected during custom AI operation, ignoring result")

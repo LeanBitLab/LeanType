@@ -54,6 +54,7 @@ import helium314.keyboard.latin.cjk.CjkCandidateStripView
 import helium314.keyboard.latin.cjk.CjkInputManager
 import helium314.keyboard.latin.settings.SettingsValues
 import helium314.keyboard.latin.suggestions.SuggestionStripView
+import helium314.keyboard.latin.utils.ToolbarKey
 import helium314.keyboard.latin.utils.CapsModeUtils
 import helium314.keyboard.latin.utils.LanguageOnSpacebarUtils
 import helium314.keyboard.latin.utils.Log
@@ -1188,8 +1189,9 @@ class KeyboardSwitcher private constructor() : KeyboardState.SwitchActions {
         }
     }
 
-    fun showLoadingAnimation() {
-        mSuggestionStripView?.showLoadingAnimation()
+    /** [key]: the toolbar key that started the AI request, it shows an X while the request runs */
+    fun showLoadingAnimation(key: ToolbarKey = ToolbarKey.PROOFREAD) {
+        mSuggestionStripView?.showLoadingAnimation(key)
     }
 
     fun hideLoadingAnimation() {

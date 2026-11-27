@@ -2140,6 +2140,7 @@ New dictionary:
     <string name="proofread_no_text">No text to proofread</string>
     <string name="proofread_no_api_key">Gemini API key not set. Go to Settings → AI integration.</string>
     <string name="proofread_output_truncated">Proofread output truncated by model; replacement aborted.</string>
+    <string name="ai_cancelled">AI request cancelled</string>
     <string name="translation_output_truncated">Translation output truncated by model; replacement aborted.</string>
     <string name="translation_unchanged">Translation unchanged or identical to source text.</string>
     <string name="error_getting_suggestions">Error getting suggestions</string>
