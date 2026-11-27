@@ -2123,6 +2123,11 @@ class InputLogic(
         return false
     }
 
+    /** The space kept by a word delete swipe counts as automatic, so punctuation typed next replaces it */
+    fun markKeptSpaceAsAutomatic() {
+        if (mConnection.codePointBeforeCursor == Constants.CODE_SPACE) mSpaceState = SpaceState.WEAK
+    }
+
     fun startDoubleSpacePeriodCountdown(inputTransaction: InputTransaction) {
         mDoubleSpacePeriodCountdownStart = inputTransaction.timestamp
     }
