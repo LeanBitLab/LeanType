@@ -1636,6 +1636,20 @@ class InputLogicTest {
         assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
     }
 
+    @Test fun `moving the cursor after a deleted swipe learns nothing and does not crash`() {
+        reset()
+        disableSuggestionLookups()
+        setText("I - ok")
+        setCursorPosition(1)
+        glideTypingInput("hall", "hello")
+        functionalKeyPress(KeyCode.DELETE)
+        // move right past the existing space, then type a separator: only a space lies between
+        setCursorPosition(connection.expectedSelectionStart + 1)
+        typeNoAssert(",")
+        checkConnectionConsistency()
+        assertEquals(emptyList<Pair<String, String>>(), ShadowFacilitator2.gestureCorrections)
+    }
+
     @Test fun `deleted swipe retyped without suggestion lookups is learned when the next swipe starts`() {
         reset()
         disableSuggestionLookups()
