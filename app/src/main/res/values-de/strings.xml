@@ -1766,4 +1766,33 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="storage_type_language_pack">App-Übersetzung</string>
     <string name="ocr_camera_failed">Kamera konnte nicht gestartet werden. Zum erneuten Versuch tippen.</string>
     <string name="handwriting_not_recognized">Die Handschrift konnte nicht erkannt werden. Versuchen Sie es erneut.</string>
+    <string-array name="settings_search_keywords">
+        <item>theme_colors|design thema dunkel hell aussehen look</item>
+        <item>theme_colors_night|design thema dunkel aussehen</item>
+        <item>theme_style|design aussehen form rund</item>
+        <item>theme_key_borders|rahmen umrandung aussehen</item>
+        <item>keyboard_height_scale|groß klein höhe</item>
+        <item>font_scale|schriftgröße buchstaben groß klein</item>
+        <item>vibrate_on|vibrieren haptik rückmeldung</item>
+        <item>vibration_duration_settings|stärke haptik</item>
+        <item>sound_on|klick klang geräusch</item>
+        <item>popup_on|vorschau lupe blase</item>
+        <item>auto_correction|tippfehler rechtschreibung</item>
+        <item>auto_cap|großschreibung großbuchstaben umschalt</item>
+        <item>show_suggestions|vorschlag wortvorschläge leiste</item>
+        <item>next_word_prediction|vorhersage vorschlag</item>
+        <item>gesture_input|wischen gleiten swipe</item>
+        <item>show_number_row|ziffern zahlenreihe</item>
+        <item>show_emoji_key|smiley emoticon</item>
+        <item>split_keyboard|teilen tablet querformat daumen</item>
+        <item>enable_clipboard_history|kopieren einfügen</item>
+        <item>always_incognito_mode|privat privatsphäre verlauf</item>
+        <item>backup_restore|sicherung export import übertragen handy</item>
+        <item>horizontal_space_swipe|cursor bewegen pfeil</item>
+        <item>delete_swipe|entfernen löschtaste</item>
+        <item>key_longpress_timeout|gedrückt halten verzögerung drücken</item>
+        <item>show_hints|akzente umlaute sonderzeichen</item>
+        <item>use_system_wallpaper|foto</item>
+        <item>background_image|foto</item>
+    </string-array>
 </resources>
