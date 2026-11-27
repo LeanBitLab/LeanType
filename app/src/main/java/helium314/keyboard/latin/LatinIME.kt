@@ -38,6 +38,7 @@ import android.view.inputmethod.InputMethodSubtype
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.annotation.VisibleForTesting
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -1841,7 +1842,8 @@ class LatinIME : InputMethodService(),
             noSuggestionsFromDictionaries
         ) {
             suggestionStripView?.setSuggestions(suggestedWords, richImm.currentSubtype.isRtlSubtype)
-            if (currentSettingsValues.mAutoHideToolbar && !noSuggestionsFromDictionaries && inputLogic.isComposingWord) {
+            if (shouldAutoHideToolbar(currentSettingsValues.mAutoHideToolbar, noSuggestionsFromDictionaries,
+                    inputLogic.isComposingWord, suggestedWords.mInputStyle)) {
                 suggestionStripView?.foldToolbar(!currentSettingsValues.mAutoShowToolbarNoSuggestions)
             } else if (currentSettingsValues.mAutoShowToolbarNoSuggestions && noSuggestionsFromDictionaries) {
                 if (suggestionStripView?.isExternalSuggestionVisible != true) {
@@ -2702,3 +2704,12 @@ private data class EditorKey(
     val fieldId: Int,
     val privateImeOptions: String?
 )
+
+/**
+ * Whether "Auto hide toolbar" folds the toolbar for new suggestions: only for suggestions of a word, not
+ * for predictions. A finished swipe sets its suggestions before its word is composing, so its input
+ * style counts too (#870).
+ */
+@VisibleForTesting
+internal fun shouldAutoHideToolbar(autoHideToolbar: Boolean, noSuggestions: Boolean, isComposingWord: Boolean, inputStyle: Int) =
+    autoHideToolbar && !noSuggestions && (isComposingWord || inputStyle == SuggestedWords.INPUT_STYLE_TAIL_BATCH)
