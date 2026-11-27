@@ -64,6 +64,7 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
+    "• Added: Learned words screen to search, delete or clear words",
     "• Added: Text expander shortcut sorting",
     "• Added: Long-press space can switch language",
     "• Added: Cursor swipe distance setting",

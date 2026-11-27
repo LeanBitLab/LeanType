@@ -1,3 +1,4 @@
+- Added: Learned words screen to search, delete or clear words
 - Added: Sort text expander shortcuts
 - Added: Long-press space can switch the language
 - Added: Cursor swipe distance setting
@@ -5,4 +6,4 @@
 - Changed: Toolbar folds for swipe suggestions
 - Fixed: Typed "i" keeps the dictionary's "I"
 - Fixed: Learning from retyped swipes, delete swipe fixes
-- Fixed: Camera and microphone stop when unused
+- Changed: Camera and microphone stop when unused
