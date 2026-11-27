@@ -1771,4 +1771,9 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="storage_type_language_pack">traduction de l’application</string>
     <string name="ocr_camera_failed">Échec du démarrage de la caméra. Appuyez pour réessayer.</string>
     <string name="handwriting_not_recognized">Impossible de reconnaître l\'écriture manuscrite. Réessayez.</string>
+    <string name="keyboard_test_field">Essayez le clavier ici</string>
+    <string name="keyboard_test_field_hint">Les modifications apparaîtront la prochaine fois que le clavier s\'ouvrira. Rien de ce qui est saisi ici n\'est appris.</string>
+    <string name="cursor_swipe_step">Distance de glissement du curseur</string>
+    <string name="cursor_swipe_step_summary">Distance parcourue par le doigt pour chaque caractère lors d\'un glissement sur la barre d\'espace ou la touche supprimer. Plus la valeur est élevée, plus le déplacement est lent</string>
+    <string name="ai_cancelled">Requête IA annulée</string>
 </resources>

@@ -1803,4 +1803,9 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="storage_type_language_pack">rakenduse tõlge</string>
     <string name="ocr_camera_failed">Kaamera käivitamine ebaõnnestus. Puudutage uuesti proovimiseks.</string>
     <string name="handwriting_not_recognized">Käekirja ei õnnestunud tuvastada. Proovige uuesti.</string>
+    <string name="keyboard_test_field">Proovige klaviatuuri siin</string>
+    <string name="keyboard_test_field_hint">Muudatused ilmuvad järgmisel klaviatuuri avamisel. Siia sisestatut ei õpita.</string>
+    <string name="cursor_swipe_step">Kursori libistamise vahemaa</string>
+    <string name="cursor_swipe_step_summary">Sõrme liikumine iga märgi kohta tühikuklahvil või kustutusklahvil libistamisel. Suurem väärtus tähendab aeglasemat liikumist</string>
+    <string name="ai_cancelled">AI päring tühistati</string>
 </resources>

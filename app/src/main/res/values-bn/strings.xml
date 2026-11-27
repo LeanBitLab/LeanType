@@ -1664,4 +1664,9 @@
     <string name="storage_type_language_pack">অ্যাপ অনুবাদ</string>
     <string name="ocr_camera_failed">ক্যামেরা চালু করা যায়নি। আবার চেষ্টা করতে ট্যাপ করুন।</string>
     <string name="handwriting_not_recognized">হাতের লেখা শনাক্ত করা যায়নি। আবার চেষ্টা করুন।</string>
+    <string name="keyboard_test_field">কিবোর্ড এখানে পরীক্ষা করুন</string>
+    <string name="keyboard_test_field_hint">পরিবর্তনগুলি পরের বার কিবোর্ড খুললে দেখা যাবে। এখানে যা টাইপ করা হয় তা শেখা হয় না।</string>
+    <string name="cursor_swipe_step">কার্সার সোয়াইপের দূরত্ব</string>
+    <string name="cursor_swipe_step_summary">স্পেস বার বা মুছুন বোতামে সোয়াইপ করার সময় প্রতিটি অক্ষরের জন্য আঙুলের চলাচলের দূরত্ব। বেশি হলে ধীর হবে</string>
+    <string name="ai_cancelled">AI অনুরোধ বাতিল করা হয়েছে</string>
 </resources>

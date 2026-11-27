@@ -520,6 +520,7 @@ LeanType learns your vocabulary organically as you type while providing deep gra
 - Supports floating preview text, customizable trail colors, and space-aware gesture input.
 - Learns from corrections: when you replace a swiped word with another suggestion, or delete it with backspace and type one of the swipe's other candidates in its place, that word gets a small boost in later swipes where the choice is close. This also works with suggestions hidden. Nothing new is learned in incognito mode or with **Settings → Suggestions → Personalized suggestions** off.
 - Add the library under **Settings → Gestures & swipes → Load gesture typing library**: `standard` builds can download it there, for `offline` builds download the file yourself and load it.
+- **Settings → Gestures & swipes → Cursor swipe distance** sets how far the finger moves for each character when swiping on the space bar or delete key (default 10 dp; higher is slower).
 
 ---
 
@@ -1274,11 +1275,11 @@ graph LR
 - Toolbar mode, Split toolbar, Select toolbar keys, Select pinned toolbar keys, Select clipboard toolbar keys, Custom text styles, Show download button in toolbar, Toolbar behavior, Auto-span toolbar keys, Toolbar keys alignment, Pin toolbar key on long press, Auto show toolbar on open, Auto show toolbar on select, Auto hide toolbar, Auto show toolbar when no suggestions, Auto hide pinned keys, Remember toolbar state, Show long-press hint pills, Customize toolbar key codes, Show only toolbar with physical keyboard, Variable toolbar direction, Hide clipboard and emoji toolbars too
 
 </details>
-<details><summary><b>Settings → Gestures & swipes</b> (24)</summary>
+<details><summary><b>Settings → Gestures & swipes</b> (25)</summary>
 
 - **Configuration**: Enable gesture typing, Load gesture typing library
 - **Visuals & Preview**: Show gesture trail, Floating preview, Gesture typing, Dynamic floating preview, Gesture trail lifespan, Phrase gesture, Rapid typing cooldown, Autospace before gesture typing a word, Autospace after gesture typing a word
-- **Advanced Gestures**: Horizontal spacebar swipe gesture, Delete swipe, Delete word by word, Full keyboard swipe gesture, Full-screen touchpad, Swipe gestures and touchpad, Horizontal swipe threshold, Vertical swipe threshold, Vertical up spacebar swipe gesture, Vertical down spacebar swipe gesture, Toolbar swipe up gesture, Toolbar swipe down gesture, Touchpad sensitivity
+- **Advanced Gestures**: Horizontal spacebar swipe gesture, Delete swipe, Delete word by word, Full keyboard swipe gesture, Full-screen touchpad, Swipe gestures and touchpad, Horizontal swipe threshold, Cursor swipe distance, Vertical swipe threshold, Vertical up spacebar swipe gesture, Vertical down spacebar swipe gesture, Toolbar swipe up gesture, Toolbar swipe down gesture, Touchpad sensitivity
 
 </details>
 <details><summary><b>Settings → Text correction</b> (22)</summary>

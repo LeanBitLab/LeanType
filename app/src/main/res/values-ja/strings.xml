@@ -1706,4 +1706,9 @@
     <string name="storage_type_language_pack">アプリ翻訳</string>
     <string name="ocr_camera_failed">カメラを起動できませんでした。タップして再試行してください。</string>
     <string name="handwriting_not_recognized">手書きを認識できませんでした。もう一度お試しください。</string>
+    <string name="keyboard_test_field">ここでキーボードを試す</string>
+    <string name="keyboard_test_field_hint">変更は次回キーボードを開いたときに反映されます。ここに入力した内容は学習されません。</string>
+    <string name="cursor_swipe_step">カーソルスワイプの距離</string>
+    <string name="cursor_swipe_step_summary">スペースキーまたは削除キーでスワイプしたときの、1文字ごとの指の移動距離。値を大きくすると遅くなります</string>
+    <string name="ai_cancelled">AIリクエストをキャンセルしました</string>
 </resources>

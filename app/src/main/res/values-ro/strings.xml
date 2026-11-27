@@ -1803,4 +1803,9 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="storage_type_language_pack">traducere a aplicației</string>
     <string name="ocr_camera_failed">Camera nu a putut porni. Atinge pentru a reîncerca.</string>
     <string name="handwriting_not_recognized">Scrisul de mână nu a putut fi recunoscut. Încearcă din nou.</string>
+    <string name="keyboard_test_field">Încercați tastatura aici</string>
+    <string name="keyboard_test_field_hint">Modificările se afișează la următoarea deschidere a tastaturii. Nimic din ce scrieți aici nu este învățat.</string>
+    <string name="cursor_swipe_step">Distanța de glisare a cursorului</string>
+    <string name="cursor_swipe_step_summary">Distanța parcursă de deget pentru fiecare caracter la glisare pe bara de spațiu sau pe tasta de ștergere. Valoarea mai mare înseamnă mai lent</string>
+    <string name="ai_cancelled">Cererea AI a fost anulată</string>
 </resources>

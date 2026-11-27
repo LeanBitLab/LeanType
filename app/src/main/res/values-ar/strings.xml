@@ -1774,4 +1774,9 @@
     <string name="storage_type_language_pack">ترجمة التطبيق</string>
     <string name="ocr_camera_failed">فشل تشغيل الكاميرا. اضغط لإعادة المحاولة.</string>
     <string name="handwriting_not_recognized">تعذّر التعرف على الكتابة اليدوية. حاول مرة أخرى.</string>
+    <string name="keyboard_test_field">جرّب لوحة المفاتيح هنا</string>
+    <string name="keyboard_test_field_hint">تظهر التغييرات في المرة التالية التي تفتح فيها لوحة المفاتيح. لا يتم تعلّم أي شيء مكتوب هنا.</string>
+    <string name="cursor_swipe_step">مسافة سحب المؤشر</string>
+    <string name="cursor_swipe_step_summary">المسافة التي يقطعها إصبعك لكل حرف عند السحب على مفتاح المسافة أو مفتاح الحذف. كلما زادت القيمة، كان التحرك أبطأ</string>
+    <string name="ai_cancelled">تم إلغاء طلب الذكاء الاصطناعي</string>
 </resources>

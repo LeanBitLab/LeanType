@@ -1768,4 +1768,9 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="storage_type_language_pack">překlad aplikace</string>
     <string name="ocr_camera_failed">Kameru se nepodařilo spustit. Klepnutím to zkuste znovu.</string>
     <string name="handwriting_not_recognized">Rukopis se nepodařilo rozpoznat. Zkuste to znovu.</string>
+    <string name="keyboard_test_field">Vyzkoušejte klávesnici zde</string>
+    <string name="keyboard_test_field_hint">Změny se zobrazí při příštím otevření klávesnice. Nic zde napsaného se nenaučí.</string>
+    <string name="cursor_swipe_step">Vzdálenost posunu kurzoru</string>
+    <string name="cursor_swipe_step_summary">Vzdálenost prstu pro každý znak při posunu na mezerníku nebo klávese delete. Vyšší hodnota znamená pomalejší posun</string>
+    <string name="ai_cancelled">Požadavek AI zrušen</string>
 </resources>

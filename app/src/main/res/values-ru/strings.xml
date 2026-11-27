@@ -1775,4 +1775,9 @@
     <string name="storage_type_language_pack">перевод приложения</string>
     <string name="ocr_camera_failed">Не удалось запустить камеру. Нажмите, чтобы повторить.</string>
     <string name="handwriting_not_recognized">Не удалось распознать рукописный текст. Попробуйте ещё раз.</string>
+    <string name="keyboard_test_field">Попробуйте клавиатуру здесь</string>
+    <string name="keyboard_test_field_hint">Изменения появятся при следующем открытии клавиатуры. Введённый здесь текст не запоминается.</string>
+    <string name="cursor_swipe_step">Расстояние свайпа курсора</string>
+    <string name="cursor_swipe_step_summary">Перемещение пальца для каждого символа при свайпе по пробелу или клавише удаления. Чем больше значение, тем медленнее</string>
+    <string name="ai_cancelled">Запрос ИИ отменён</string>
 </resources>
