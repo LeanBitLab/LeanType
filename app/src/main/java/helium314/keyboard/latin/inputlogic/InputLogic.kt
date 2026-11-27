@@ -204,6 +204,8 @@ class InputLogic(
             if (mConnection.isBelatedExpectedUpdate(oldSelStart, newSelStart, oldSelEnd, newSelEnd, composingSpanStart, composingSpanEnd)) {
                 return false
             }
+            // the cursor was moved: text after a deleted swipe is no longer what the user typed in its place
+            mDeletedSwipe = null
 
             val isWeb = InputTypeUtils.isWebEditor(getCurrentInputEditorInfo())
             if (isWeb && mWordComposer.isComposingWord() && composingSpanStart == -1 && composingSpanEnd == -1) {
@@ -348,7 +350,8 @@ class InputLogic(
         if (mWordComposer.isBatchMode() && mWordComposer.isComposingWord() && !settingsValues.mIncognitoModeEnabled
             && settingsValues.mUsePersonalizedDicts && !suggestionInfo.isEmoji && !suggestionInfo.isKindOf(SuggestedWordInfo.KIND_SHORTCUT)
         ) {
-            val replacedWord = mWordComposer.getTypedWord()
+            // plain text: with a live text style the swiped word is styled, the suggestions are not
+            val replacedWord = UnicodeStyleEngine.toPlainText(mWordComposer.getTypedWord())
             if (replacedWord.isNotEmpty() && !replacedWord.equals(rawSuggestion, ignoreCase = true))
                 mDictionaryFacilitator.recordGestureCorrection(rawSuggestion, replacedWord)
         }
@@ -1800,10 +1803,12 @@ class InputLogic(
             var deletedSwipe: DeletedSwipe? = null
             if (mWordComposer.isBatchMode()) {
                 val rejectedSuggestion = mWordComposer.getTypedWord()
-                if (rejectedSuggestion.isNotEmpty()) {
+                // plain text: with a live text style the swiped word is styled, the suggestions are not
+                val rejectedPlain = UnicodeStyleEngine.toPlainText(rejectedSuggestion)
+                if (rejectedPlain.isNotEmpty()) {
                     val candidates = (0 until mSuggestedWords.size()).map { mSuggestedWords.getWord(it) }
-                        .filterNot { it.equals(rejectedSuggestion, ignoreCase = true) }
-                    deletedSwipe = DeletedSwipe(rejectedSuggestion, candidates, -1)
+                        .filterNot { it.equals(rejectedPlain, ignoreCase = true) }
+                    deletedSwipe = DeletedSwipe(rejectedPlain, candidates, -1)
                 }
                 mWordComposer.reset()
                 mWordComposer.setRejectedBatchModeSuggestion(rejectedSuggestion)
@@ -2370,7 +2375,9 @@ class InputLogic(
         // the word must be where the swiped word was, allowing for a space added before it
         val start = mConnection.expectedSelectionStart - committedWord.length
         if (start != deletedSwipe.position && start != deletedSwipe.position + 1) return
-        val word = stripWordSeparatorsFromEnd(UnicodeStyleEngine.toPlainText(committedWord), settingsValues)
+        val plainWord = UnicodeStyleEngine.toPlainText(committedWord)
+        if (plainWord.isEmpty()) return // e.g. only a space was typed, and stripWordSeparatorsFromEnd needs a character
+        val word = stripWordSeparatorsFromEnd(plainWord, settingsValues)
         if (deletedSwipe.candidates.none { it.equals(word, ignoreCase = true) }) return
         mDictionaryFacilitator.recordGestureCorrection(word, deletedSwipe.word)
     }
@@ -2740,6 +2747,7 @@ class InputLogic(
         settingsValues: SettingsValues,
         handler: LatinIME.UIHandler
     ) {
+        recordRetypedSwipeFromText(settingsValues)
         if (mWordComposer.isComposingWord()) {
             val typedWord = mWordComposer.getTypedWord()
             val ngramContext = mConnection.getNgramContextFromNthPreviousWord(settingsValues.mSpacingAndPunctuations, 1)
