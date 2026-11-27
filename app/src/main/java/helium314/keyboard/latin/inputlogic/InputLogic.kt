@@ -2097,10 +2097,14 @@ class InputLogic(
         }
 
         // ponytail: only strip auto-inserted spaces (WEAK/PHANTOM/SWAP), never manual (NONE)
+        // A space kept by a word delete swipe may have been typed by hand, so only sentence punctuation replaces it:
+        // that ends the previous word, while e.g. ":)" or a bracket may be meant to stay apart.
+        val spaceMayBeStripped = if (SpaceState.KEPT_BY_SWIPE == inputTransaction.spaceState) isSentencePunctuation(codePoint)
+            else SpaceState.NONE != inputTransaction.spaceState
         if (!inputTransaction.settingsValues.mPreserveSpaceBeforePunctuation
             && isSpaceStrippingPunctuation(codePoint)
             && !inputTransaction.settingsValues.isUsuallyPrecededBySpace(codePoint)
-            && inputTransaction.spaceState != SpaceState.NONE
+            && spaceMayBeStripped
         ) {
             if (mConnection.codePointBeforeCursor == Constants.CODE_SPACE) {
                 mConnection.removeTrailingSpace()
@@ -2123,9 +2127,9 @@ class InputLogic(
         return false
     }
 
-    /** The space kept by a word delete swipe counts as automatic, so punctuation typed next replaces it */
-    fun markKeptSpaceAsAutomatic() {
-        if (mConnection.codePointBeforeCursor == Constants.CODE_SPACE) mSpaceState = SpaceState.WEAK
+    /** Remembers the space kept by a word delete swipe, so sentence punctuation typed right after replaces it */
+    fun markSpaceKeptBySwipe() {
+        if (mConnection.codePointBeforeCursor == Constants.CODE_SPACE) mSpaceState = SpaceState.KEPT_BY_SWIPE
     }
 
     fun startDoubleSpacePeriodCountdown(inputTransaction: InputTransaction) {
@@ -3502,6 +3506,8 @@ class InputLogic(
             skipWhile { Character.isLetterOrDigit(it) }
             return i
         }
+
+        private fun isSentencePunctuation(codePoint: Int): Boolean = codePoint.toChar() in ".,?!؟،।॥。、"
 
         fun isSpaceStrippingPunctuation(codePoint: Int): Boolean {
             return codePoint == '.'.code

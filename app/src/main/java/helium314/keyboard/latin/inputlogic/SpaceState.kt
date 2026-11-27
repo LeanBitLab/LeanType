@@ -37,4 +37,6 @@ object SpaceState {
     // Phantom spaces happen when a user chooses a word from the suggestion strip. In this state,
     // non-separators insert a space before they get inserted.
     const val PHANTOM = 4
+    /** the space before a word removed by a word delete swipe: only sentence punctuation replaces it */
+    const val KEPT_BY_SWIPE = 5
 }

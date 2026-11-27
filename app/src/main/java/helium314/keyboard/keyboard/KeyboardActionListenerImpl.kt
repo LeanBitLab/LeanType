@@ -963,7 +963,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (!connection.hasSelection()) return
         inputLogic.finishInput()
         onCodeInput(KeyCode.DELETE, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false)
-        if (settings.current.mDeleteSwipeWordByWord) inputLogic.markKeptSpaceAsAutomatic()
+        if (settings.current.mDeleteSwipeWordByWord) inputLogic.markSpaceKeptBySwipe()
         keyboardSwitcher.requestUpdatingShiftState(
             inputLogic.getCurrentAutoCapsState(settings.current),
             inputLogic.getCurrentRecapitalizeState()

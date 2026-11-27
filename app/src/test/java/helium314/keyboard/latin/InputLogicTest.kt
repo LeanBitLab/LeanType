@@ -1864,6 +1864,38 @@ class InputLogicTest {
         }
     }
 
+    @Test fun `other punctuation after a word delete swipe keeps the space`() {
+        for (punctuation in listOf(":", ";", ")", "]", "}")) {
+            swipeDeleteLastWord(byWord = true)
+            typeNoAssert(punctuation)
+            assertEquals("Hello how are $punctuation", text)
+        }
+    }
+
+    @Test fun `punctuation on the symbol layer still attaches after a word delete swipe`() {
+        swipeDeleteLastWord(byWord = true)
+        functionalKeyPress(KeyCode.SYMBOL)
+        typeNoAssert("?")
+        assertEquals("Hello how are?", text)
+    }
+
+    // e0fb5fe2b: a space that is not part of the current typing is never removed
+    @Test fun `a space already in the text is kept before punctuation`() {
+        for (punctuation in listOf(".", ",", "?", "!")) {
+            reset()
+            setText("hello ")
+            typeNoAssert(punctuation)
+            assertEquals("hello $punctuation", text)
+        }
+    }
+
+    @Test fun `moving the cursor after a word delete swipe keeps the space before punctuation`() {
+        swipeDeleteLastWord(byWord = true)
+        setCursorPosition(6)
+        typeNoAssert(".")
+        assertEquals("Hello .how are ", text)
+    }
+
     @Test fun `word can be retyped directly after a word delete swipe`() {
         swipeDeleteLastWord(byWord = true)
         chainInput("you")
