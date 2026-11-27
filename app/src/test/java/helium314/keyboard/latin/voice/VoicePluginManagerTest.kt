@@ -69,6 +69,20 @@ class VoicePluginManagerTest {
     }
 
     @Test
+    fun pluginProcessDeath_releasesBindingOnce() {
+        assertTrue(manager.bindIfNeeded())
+        fakeContext.simulateConnected()
+        fakeContext.lastConn?.onServiceDisconnected(ComponentName("com.leanbitlab.leantype.voice.offline", "VoiceEngineService"))
+        shadowOf(Looper.getMainLooper()).idle()
+        // the binding is released, so Android does not restart the plugin in the background
+        assertEquals(1, fakeContext.unbindCalls)
+        assertFalse(manager.isPluginConnected())
+        // nothing left to release later
+        manager.unbind()
+        assertEquals(1, fakeContext.unbindCalls)
+    }
+
+    @Test
     fun unbindAfterDelay_noopWhenNotBound() {
         manager.unbindAfterDelay(300_000L)
         assertFalse(manager.hasScheduledUnbind())
