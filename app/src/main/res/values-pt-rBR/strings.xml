@@ -1726,6 +1726,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="clear_learned_words_details">Isso exclui todas as palavras e sugestões de próxima palavra aprendidas com a sua digitação, em todos os idiomas. Seu dicionário pessoal e as palavras bloqueadas serão mantidos. Esta ação não pode ser desfeita.</string>
     <string name="auto_add_learned_words">Adicionar automaticamente palavras aprendidas</string>
     <string name="auto_add_learned_words_summary">Salvar no dicionário pessoal do dispositivo as palavras que o teclado aprende com a sua digitação</string>
-    <string name="prefs_physical_key_long_press_accent">Manter pressionadas as teclas físicas para acentos</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Manter pressionada uma tecla de letra digita a primeira letra acentuada ou especial entre suas teclas de pop-up</string>
+    <string name="prefs_physical_key_long_press_popup">Manter pressionadas as teclas físicas para caracteres de pop-up</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Manter uma tecla física pressionada mostra os caracteres do seu pop-up na barra de sugestões; escolha um para substituir a letra digitada</string>
 </resources>

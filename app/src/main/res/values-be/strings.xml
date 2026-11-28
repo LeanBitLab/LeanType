@@ -1808,6 +1808,6 @@
     <string name="clear_learned_words_details">Гэта выдаляе кожнае слова і наступнае слова-прапанову, вывучаныя з вашага ўводу, на ўсіх мовах. Асабісты слоўнік і заблакіраваныя словы захоўваюцца. Гэта дзеянне нельга адмяніць.</string>
     <string name="auto_add_learned_words">Аўтаматычна дадаваць вывучаныя словы</string>
     <string name="auto_add_learned_words_summary">Захоўваць у асабісты слоўнік прылады словы, якія клавіятура вывучае з вашага набору тэксту</string>
-    <string name="prefs_physical_key_long_press_accent">Утрыманне фізічных клавіш для акцэнтаў</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Утрыманне клавішы з літарай уводзіць першую літару з акцэнтам або спецыяльную літару з яе ўсплывальных клавіш</string>
+    <string name="prefs_physical_key_long_press_popup">Утрымліванне фізічных клавіш для символаў са спліўнога меню</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Утрыманне фізічнай клавішы паказвае сімвалы яе спліўнога меню ў радку падказак; выберыце адзін, каб замяніць уведзеную літару</string>
 </resources>

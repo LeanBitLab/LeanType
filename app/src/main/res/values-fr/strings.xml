@@ -1776,6 +1776,6 @@ Permet l\'inférence GGUF / llama.cpp sur l\'appareil pour la correction et la r
     <string name="clear_learned_words_details">Ceci supprime tous les mots et suggestions de mot suivant appris à partir de votre saisie, dans toutes les langues. Votre dictionnaire personnel et les mots bloqués sont conservés. Cette action est irréversible.</string>
     <string name="auto_add_learned_words">Ajouter automatiquement les mots appris</string>
     <string name="auto_add_learned_words_summary">Enregistrer dans le dictionnaire personnel de l\'appareil les mots que le clavier apprend de votre saisie</string>
-    <string name="prefs_physical_key_long_press_accent">Maintenir les touches physiques pour les accents</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Maintenir une touche de lettre saisit la première lettre accentuée ou spéciale parmi ses touches popup</string>
+    <string name="prefs_physical_key_long_press_popup">Maintenir les touches physiques pour afficher les caractères</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Maintenir une touche physique affiche les caractères de son appui prolongé dans la barre de suggestions ; choisissez-en un pour remplacer la lettre saisie</string>
 </resources>

@@ -1774,6 +1774,6 @@
     <string name="clear_learned_words_details">Це видалить усі слова та підказки наступного слова, вивчені з вашого набору тексту, у всіх мовах. Ваш персональний словник і заблоковані слова буде збережено. Цю дію неможливо скасувати.</string>
     <string name="auto_add_learned_words">Автоматично додавати вивчені слова</string>
     <string name="auto_add_learned_words_summary">Зберігати слова, які клавіатура вивчає з вашого набору тексту, у персональний словник пристрою</string>
-    <string name="prefs_physical_key_long_press_accent">Утримуйте фізичні клавіші для акцентів</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Утримання клавіші з літерою вводить першу літеру з акцентом або спеціальну літеру серед її спливаючих клавіш</string>
+    <string name="prefs_physical_key_long_press_popup">Утримуйте фізичні клавіші для символів із спливаючого меню</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Утримання фізичної клавіші показує символи її спливаючого меню в смужці підказок. Виберіть один, щоб замінити введену літеру</string>
 </resources>

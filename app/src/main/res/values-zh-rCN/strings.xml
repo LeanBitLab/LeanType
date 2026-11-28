@@ -1775,6 +1775,6 @@
     <string name="clear_learned_words_details">这将删除您在所有语言中输入时学习到的所有词语和下一个词建议。您的个人词典和已屏蔽的词语将保留。此操作无法撤销。</string>
     <string name="auto_add_learned_words">自动添加已学习的词语</string>
     <string name="auto_add_learned_words_summary">将键盘从您的输入中学到的词语保存到设备的个人词典中</string>
-    <string name="prefs_physical_key_long_press_accent">长按实体按键输入重音符号</string>
-    <string name="prefs_physical_key_long_press_accent_summary">长按字母键时，会输入其弹出按键中第一个带重音或特殊的字母</string>
+    <string name="prefs_physical_key_long_press_popup">按住实体键显示弹出字符</string>
+    <string name="prefs_physical_key_long_press_popup_summary">按住实体键时，候选栏会显示其弹出字符，选择一个即可替换已输入的字母</string>
 </resources>

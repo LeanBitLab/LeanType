@@ -1669,6 +1669,6 @@
     <string name="clear_learned_words_details">এটি আপনার টাইপিং থেকে শেখা প্রতিটি শব্দ ও পরবর্তী-শব্দের পরামর্শ মুছে ফেলবে, সব ভাষায়। আপনার ব্যক্তিগত অভিধান ও ব্লক করা শব্দ রাখা হবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।</string>
     <string name="auto_add_learned_words">স্বয়ংক্রিয়ভাবে শেখা শব্দ যোগ করুন</string>
     <string name="auto_add_learned_words_summary">কীবোর্ড আপনার টাইপিং থেকে যে শব্দগুলো শেখে, সেগুলো ডিভাইসের ব্যক্তিগত অভিধানে সংরক্ষণ করুন</string>
-    <string name="prefs_physical_key_long_press_accent">ফিজিক্যাল কী দীর্ঘ চাপ দিয়ে অ্যাকসেন্ট</string>
-    <string name="prefs_physical_key_long_press_accent_summary">কোনো অক্ষর কী দীর্ঘ চাপ দিলে তার পপআপ কীগুলোর মধ্যে প্রথম অ্যাকসেন্ট বা বিশেষ অক্ষরটি টাইপ হয়</string>
+    <string name="prefs_physical_key_long_press_popup">ফিজিক্যাল কী চেপে ধরে পপআপ অক্ষর দেখুন</string>
+    <string name="prefs_physical_key_long_press_popup_summary">ফিজিক্যাল কী চেপে ধরলে সাজেশন বারে তার পপআপের অক্ষরগুলো দেখায়; টাইপ করা অক্ষরের পরিবর্তে একটি বেছে নিন</string>
 </resources>

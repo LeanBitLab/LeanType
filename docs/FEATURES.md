@@ -1347,7 +1347,7 @@ graph LR
 - **Settings → Plugins → Storage & Cache**
 <details><summary><b>Settings → Advanced</b> (23)</summary>
 
-- Force incognito mode, App Profiles, Background Services, Backup and restore, Enable debug settings, Debug settings, Physical keyboards and experimental, Physical keyboard layout, Hold physical keys for accents, Emoji for physical keyboard, Physical keyboard suggestion shortcuts
+- Force incognito mode, App Profiles, Background Services, Backup and restore, Enable debug settings, Debug settings, Physical keyboards and experimental, Physical keyboard layout, Hold physical keys for popup characters, Emoji for physical keyboard, Physical keyboard suggestion shortcuts
 - **Experimental**: Override Emoji version, URL detection
 - Downloading…, Translation source language, Translation target language, Offline AI Plugin, System Instruction, Translate System Instruction, Temperature, Top-P (Nucleus Sampling), Top-K, Min-P
 
