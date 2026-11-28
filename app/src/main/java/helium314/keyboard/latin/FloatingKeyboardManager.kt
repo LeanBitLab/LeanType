@@ -1,5 +1,6 @@
 package helium314.keyboard.latin
 
+import android.os.SystemClock
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
@@ -40,6 +41,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         private const val PREF_WIDTH = "floating_width"
         private const val PREF_SCALE = "floating_scale"
         private const val PREF_IS_ACTIVE = "floating_is_active"
+        private const val APP_HIDE_AFTER_TOGGLE_MS = 1000L
         private const val FLOATING_WIDTH_FRACTION = 0.75f
         private const val BOTTOM_BAR_HEIGHT_DP = 28
         private const val CORNER_RADIUS_DP = 16f
@@ -317,11 +319,22 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
         Log.i(TAG, "Floating keyboard hidden, docked mode restored")
     }
 
+    private var toggledOnAt: Long? = null
+
+    /**
+     * Some apps close the keyboard as soon as it starts floating, probably because it then takes no space, and
+     * open it again right after. Floating mode has to survive that, even if it is not remembered.
+     */
+    fun wasJustToggledOn(): Boolean =
+        toggledOnAt?.let { SystemClock.uptimeMillis() - it < APP_HIDE_AFTER_TOGGLE_MS } == true
+
     fun toggle() {
         if (isFloating) {
+            toggledOnAt = null
             hide()
         } else {
             show(isAutoLandscape = false)
+            if (isFloating) toggledOnAt = SystemClock.uptimeMillis()
         }
     }
 

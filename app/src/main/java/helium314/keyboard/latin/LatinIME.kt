@@ -1111,7 +1111,7 @@ class LatinIME : InputMethodService(),
         ProofreadHelper.cancelCurrentJob()
         val fkm = floatingKeyboardManager
         if (fkm != null) {
-            if (!settings.current.mRememberFloatingKeyboard) {
+            if (!settings.current.mRememberFloatingKeyboard && !fkm.wasJustToggledOn()) {
                 fkm.clearFloatingActiveState()
             } else {
                 fkm.resetDragAndResizeState()
