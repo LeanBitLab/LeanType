@@ -147,7 +147,7 @@ fun MissingDictionaryDialog(onDismissRequest: () -> Unit, locale: Locale) {
 
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
-        cancelButtonText = stringResource(R.string.dialog_close),
+        cancelButtonText = null, // the X in the title closes it
         onConfirmed = {},
         confirmButtonText = null,
         title = dialogTitle,

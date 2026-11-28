@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.keyboard
 
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
@@ -186,8 +187,9 @@ class TouchpadView @JvmOverloads constructor(
             val density = context.resources.displayMetrics.density
             val gd = GradientDrawable()
             gd.shape = GradientDrawable.RECTANGLE
-            gd.cornerRadius = 6f * density
-            gd.setColor(colors.get(ColorType.KEY_BACKGROUND))
+            gd.cornerRadius = keyboardCornerRadiusPx(resources)
+            // not the key background, which the touchpad surface behind it uses
+            gd.setColor(colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND))
             btnClose.background = gd
 
             if (iconsSet != null) {
@@ -208,7 +210,7 @@ class TouchpadView @JvmOverloads constructor(
 
         val surfaceBg = GradientDrawable()
         surfaceBg.shape = GradientDrawable.RECTANGLE
-        surfaceBg.cornerRadius = 16f * density
+        surfaceBg.cornerRadius = keyboardCornerRadiusPx(resources)
         surfaceBg.setColor(Color.WHITE)
         surface.background = surfaceBg
 

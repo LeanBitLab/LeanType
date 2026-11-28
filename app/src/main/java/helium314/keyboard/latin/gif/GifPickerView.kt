@@ -1,5 +1,8 @@
 package helium314.keyboard.latin.gif
 
+import helium314.keyboard.latin.utils.keyboardSearchBarBackground
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
+import android.graphics.drawable.GradientDrawable
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -229,7 +232,7 @@ class GifPickerView @JvmOverloads constructor(
                     }
                     GifPluginManager.State.NOT_INSTALLED -> {
                         progress.visibility = View.GONE
-                        showStatus(context.getString(R.string.gif_plugin_not_installed_desc), context.getString(R.string.gif_open_settings)) {
+                        showStatus(context.getString(R.string.gif_error_plugin_not_installed), context.getString(R.string.gif_open_settings)) {
                             openGifSettings()
                         }
                     }
@@ -527,7 +530,7 @@ class GifPickerView @JvmOverloads constructor(
     private fun updateCategoryTabsUI() {
         val colors = Settings.getValues().mColors
         val activeBg = colors?.get(ColorType.ACTION_KEY_BACKGROUND) ?: 0x33888888
-        val activeText = colors?.get(ColorType.KEY_TEXT) ?: 0xFFFFFFFF.toInt()
+        val activeText = colors?.get(ColorType.ACTION_KEY_ICON) ?: 0xFFFFFFFF.toInt()
         val inactiveText = colors?.get(ColorType.KEY_HINT_TEXT) ?: 0x88FFFFFF.toInt()
 
         val tabs = listOf(
@@ -540,11 +543,14 @@ class GifPickerView @JvmOverloads constructor(
         for ((tab, kind) in tabs) {
             val isSelected = (selectedKind == kind)
             if (isSelected) {
-                tab.backgroundTintList = ColorStateList.valueOf(activeBg)
+                tab.background = GradientDrawable().apply {
+                    cornerRadius = keyboardCornerRadiusPx(resources)
+                    setColor(activeBg)
+                }
                 tab.setTextColor(activeText)
                 tab.setTypeface(null, Typeface.BOLD)
             } else {
-                tab.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+                tab.background = null
                 tab.setTextColor(inactiveText)
                 tab.setTypeface(null, Typeface.NORMAL)
             }
@@ -699,7 +705,7 @@ class GifPickerView @JvmOverloads constructor(
         val textCol = colors.get(ColorType.KEY_TEXT)
         setBackgroundColor(stripBg)
 
-        searchContainer.background = null
+        searchContainer.background = keyboardSearchBarBackground(resources)
         cursorIndicator.setBackgroundColor(textCol)
         statusAction.backgroundTintList = ColorStateList.valueOf(colors.get(ColorType.ACTION_KEY_BACKGROUND))
 

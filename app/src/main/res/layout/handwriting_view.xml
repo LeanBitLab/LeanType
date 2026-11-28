@@ -69,14 +69,14 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="24dp"
+                android:padding="8dp"
                 android:visibility="gone"
                 android:background="@android:color/transparent">
 
                 <ImageView
                     android:id="@+id/handwriting_plugin_icon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:src="@drawable/ic_edit"
                     android:contentDescription="@null"
                     android:importantForAccessibility="no" />
@@ -85,7 +85,7 @@
                     android:id="@+id/handwriting_plugin_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="@string/handwriting_plugin_required"
                     android:gravity="center"
                     android:textSize="16sp"
@@ -93,6 +93,7 @@
 
                 <TextView
                     android:id="@+id/handwriting_plugin_summary"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -104,7 +105,7 @@
                     android:id="@+id/handwriting_plugin_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:paddingStart="16dp"

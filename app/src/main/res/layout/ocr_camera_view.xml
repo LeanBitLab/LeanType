@@ -150,6 +150,7 @@
 
         <TextView
             android:id="@+id/ocr_plugin_summary"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -165,5 +166,17 @@
             android:layout_marginTop="16dp"
             android:text="@string/ocr_plugin_open_settings" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ocr_plugin_close"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_close_rounded"
+        android:contentDescription="@android:string/cancel"
+        android:visibility="gone" />
 
 </helium314.keyboard.latin.ocr.OcrCameraView>

@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.ocr
 
+import helium314.keyboard.latin.utils.keyboardSearchBarBackground
+import androidx.core.graphics.ColorUtils
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
@@ -148,9 +151,11 @@ class OcrCameraView @JvmOverloads constructor(
             flashBtn?.setImageResource(if (isNowOn) R.drawable.ic_flash_on else R.drawable.ic_flash_off)
         }
 
-        closeBtn?.setOnClickListener {
-            stopCamera()
-            listener?.onCloseOcr()
+        for (button in listOfNotNull(closeBtn, findViewById(R.id.ocr_plugin_close))) {
+            button.setOnClickListener {
+                stopCamera()
+                listener?.onCloseOcr()
+            }
         }
     }
 
@@ -158,12 +163,14 @@ class OcrCameraView @JvmOverloads constructor(
         if (!OcrPluginLoader.hasPlugin(context)) {
             applyPluginPanelColors()
             pluginPanel?.visibility = View.VISIBLE
+            findViewById<View>(R.id.ocr_plugin_close)?.visibility = View.VISIBLE
             controlsBar?.visibility = View.GONE
             previewView?.visibility = View.GONE
             return
         }
 
         pluginPanel?.visibility = View.GONE
+        findViewById<View>(R.id.ocr_plugin_close)?.visibility = View.GONE
         controlsBar?.visibility = View.VISIBLE
         previewView?.visibility = View.VISIBLE
 
@@ -396,16 +403,21 @@ class OcrCameraView @JvmOverloads constructor(
 
     private fun applyPluginPanelColors() {
         val colors = Settings.getValues().mColors
-        pluginPanel?.let { colors.setBackground(it, ColorType.MAIN_BACKGROUND) }
+        // opaque: the black camera view behind must not show through
+        pluginPanel?.setBackgroundColor(ColorUtils.setAlphaComponent(colors.get(ColorType.MAIN_BACKGROUND), 0xFF))
         findViewById<TextView>(R.id.ocr_plugin_title)?.setTextColor(colors.get(ColorType.KEY_TEXT))
         findViewById<TextView>(R.id.ocr_plugin_summary)?.setTextColor(colors.get(ColorType.KEY_HINT_TEXT))
         findViewById<ImageView>(R.id.ocr_plugin_icon)?.let { colors.setColor(it, ColorType.KEY_ICON) }
+        findViewById<ImageView>(R.id.ocr_plugin_close)?.let {
+            it.background = keyboardSearchBarBackground(resources)
+            colors.setColor(it, ColorType.KEY_ICON)
+        }
         findViewById<Button>(R.id.ocr_btn_load_plugin)?.let { button ->
             button.background = GradientDrawable().apply {
-                cornerRadius = 8f * resources.displayMetrics.density
+                cornerRadius = keyboardCornerRadiusPx(resources)
                 setColor(colors.get(ColorType.ACTION_KEY_BACKGROUND))
             }
-            button.setTextColor(colors.get(ColorType.KEY_TEXT))
+            button.setTextColor(colors.get(ColorType.ACTION_KEY_ICON))
             val padding = (16 * resources.displayMetrics.density).toInt()
             button.setPadding(padding, 0, padding, 0)
         }
