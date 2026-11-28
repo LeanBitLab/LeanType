@@ -1709,6 +1709,6 @@
     <string name="clear_learned_words_details">이 작업은 모든 언어에서 입력한 내용을 바탕으로 학습된 모든 단어와 다음 단어 추천을 삭제합니다. 개인 사전과 차단된 단어는 유지됩니다. 이 작업은 되돌릴 수 없습니다.</string>
     <string name="auto_add_learned_words">학습한 단어 자동 추가</string>
     <string name="auto_add_learned_words_summary">키보드가 입력하면서 학습한 단어를 기기의 개인 사전에 저장합니다</string>
-    <string name="prefs_physical_key_long_press_accent">물리 키 길게 눌러 악센트 입력</string>
-    <string name="prefs_physical_key_long_press_accent_summary">문자 키를 길게 누르면 팝업 키 중 첫 번째 악센트 또는 특수 문자가 입력됩니다</string>
+    <string name="prefs_physical_key_long_press_popup">물리 키를 길게 눌러 팝업 문자 입력</string>
+    <string name="prefs_physical_key_long_press_popup_summary">물리 키를 길게 누르면 추천 바에 해당 키 팝업의 문자가 표시되며, 하나를 선택하면 입력한 글자를 대체합니다</string>
 </resources>

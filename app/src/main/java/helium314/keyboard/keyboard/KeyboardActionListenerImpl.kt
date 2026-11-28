@@ -26,7 +26,7 @@ import helium314.keyboard.latin.AudioAndHapticFeedbackManager
 import helium314.keyboard.latin.EmojiAltPhysicalKeyDetector
 import helium314.keyboard.latin.LastComposedWord
 import helium314.keyboard.latin.LatinIME
-import helium314.keyboard.latin.PhysicalKeyAccents
+import helium314.keyboard.latin.PhysicalKeyChoices
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.RichInputMethodManager
 import helium314.keyboard.latin.cjk.CjkInputManager
@@ -92,18 +92,18 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     // the last physical key press that typed a letter, until it repeats or another key goes down
     private var mLongPressCandidate: HeldKey? = null
-    // the key whose letter was replaced by an accent, its further repeats are swallowed
+    // the held key whose choices are shown, its further repeats are swallowed
     // not KEYCODE_UNKNOWN for "none": unmapped hardware buttons send that, and must keep repeating
-    private var mAccentedKeyCode: Int? = null
+    private var mChoicesKeyCode: Int? = null
 
     /** @return true if the event is a repeat that must not type anything */
     private fun handlePhysicalLongPress(keyCode: Int, keyEvent: KeyEvent): Boolean {
         if (keyEvent.repeatCount == 0) {
             mLongPressCandidate = null
-            if (keyCode == mAccentedKeyCode) mAccentedKeyCode = null
+            if (keyCode == mChoicesKeyCode) mChoicesKeyCode = null
             return false
         }
-        if (keyCode == mAccentedKeyCode) return true
+        if (keyCode == mChoicesKeyCode) return true
         val candidate = mLongPressCandidate ?: return false
         mLongPressCandidate = null // only the first repeat counts as the long press
         if (keyEvent.repeatCount != 1 || candidate.keyCode != keyCode || candidate.deviceId != keyEvent.deviceId)
@@ -112,22 +112,21 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (candidate.cursor != connection.expectedSelectionStart
             || candidate.editorInfo !== latinIME.currentInputEditorInfo
         ) return false
-        // symbols, emoji and numpad layouts don't have the letter keys, so they give no accent
+        // symbols, emoji and numpad layouts don't have the letter keys, so they give no choices
         val keyboard = keyboardSwitcher.keyboard?.takeIf { it.mId.isAlphabetKeyboard } ?: return false
-        val accent = PhysicalKeyAccents.findAccent(keyboard.sortedKeys, candidate.codePoint, keyboard.mId.locale)
-            ?: return false
-        if (!latinIME.replaceLongPressedLetter(candidate.codePoint, accent)) return false
-        mAccentedKeyCode = keyCode
+        val choices = PhysicalKeyChoices.find(keyboard.sortedKeys, candidate.codePoint, keyboard.mId.locale)
+        if (!latinIME.showPhysicalKeyChoices(candidate.codePoint, choices)) return false
+        mChoicesKeyCode = keyCode
         return true
     }
 
     private fun rememberLongPressCandidate(keyEvent: KeyEvent, event: Event) {
-        if (!settings.current.mPhysicalKeyLongPressAccent || keyEvent.repeatCount != 0) return
+        if (!settings.current.mPhysicalKeyLongPressPopup || keyEvent.repeatCount != 0) return
         if (keyEvent.isCtrlPressed || keyEvent.isAltPressed || keyEvent.isMetaPressed) return
         // in these cases the key doesn't type straight into the text field
         if (keyboardSwitcher.isGifPickerShowing || settings.current.mLocale.language == "ko") return
         if (CjkInputManager.getInstance(latinIME).isCjkSubtypeActive(RichInputMethodManager.getInstance().currentSubtype)) return
-        if (!Character.isLetter(event.codePoint)) return
+        if (event.codePoint <= ' '.code) return
         mLongPressCandidate = HeldKey(keyEvent.keyCode, keyEvent.deviceId, event.codePoint,
             connection.expectedSelectionStart, latinIME.currentInputEditorInfo)
     }
@@ -144,7 +143,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     override fun onKeyUp(keyCode: Int, keyEvent: KeyEvent): Boolean {
         emojiAltPhysicalKeyDetector.onKeyUp(keyEvent)
-        if (keyCode == mAccentedKeyCode) mAccentedKeyCode = null
+        if (keyCode == mChoicesKeyCode) mChoicesKeyCode = null
         if (keyCode == mLongPressCandidate?.keyCode) mLongPressCandidate = null
         if (!ProductionFlags.IS_HARDWARE_KEYBOARD_SUPPORTED)
             return false
@@ -198,6 +197,9 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
                 }
             }
         }
+
+        // another key keeps the typed letter. Not a modifier, which may be the start of a selection shortcut
+        if (keyEvent.repeatCount == 0 && !KeyEvent.isModifierKey(keyCode)) latinIME.dismissPhysicalKeyChoices()
 
         val physicalLayoutPref = settings.current.mPhysicalKeyboardLayout
         val targetLayoutName = if (physicalLayoutPref == Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT) {

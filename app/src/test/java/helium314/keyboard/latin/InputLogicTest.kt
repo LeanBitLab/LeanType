@@ -1981,13 +1981,13 @@ class InputLogicTest {
         assertEquals(null, InputLogic.getInlineEmojiSearchString("2606:127.0.0.1::/48"))
     }
     private fun replaceLast(old: Char, new: Char): Boolean {
-        val replaced = inputLogic.replaceLastTypedCodePoint(settingsValues, old.code, new.code)
+        val replaced = inputLogic.replaceLastTyped(settingsValues, old.code, new.toString())
         handleMessages()
         checkConnectionConsistency()
         return replaced
     }
 
-    @Test fun longPressAccentReplacesLetterInComposingWord() {
+    @Test fun longPressReplacementReplacesLetterInComposingWord() {
         reset()
         chainInput("sch")
         input('o')
@@ -1998,7 +1998,7 @@ class InputLogicTest {
         assertEquals("schön", composingText)
     }
 
-    @Test fun longPressAccentKeepsCapitalization() {
+    @Test fun longPressReplacementKeepsCapitalization() {
         reset()
         input('A')
         assertTrue(replaceLast('A', 'Ä'))
@@ -2009,7 +2009,7 @@ class InputLogicTest {
         assertFalse(composer.isMostlyCaps())
     }
 
-    @Test fun longPressAccentReplacesCommittedLetter() {
+    @Test fun longPressReplacementReplacesCommittedLetter() {
         reset()
         setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
         chainInput("pa")
@@ -2017,7 +2017,7 @@ class InputLogicTest {
         assertEquals("pä", getText())
     }
 
-    @Test fun longPressAccentLeavesTextAloneWhenItCannotApply() {
+    @Test fun longPressReplacementLeavesTextAloneWhenItCannotApply() {
         reset()
         chainInput("ab")
         assertFalse(replaceLast('a', 'ä')) // not the character before the cursor
@@ -2026,7 +2026,7 @@ class InputLogicTest {
         setInputType(InputType.TYPE_NULL)
         typeNoAssert("a")
         val before = text
-        assertFalse(inputLogic.replaceLastTypedCodePoint(settingsValues, 'a'.code, 'ä'.code))
+        assertFalse(inputLogic.replaceLastTyped(settingsValues, 'a'.code, "ä"))
         assertEquals(before, text)
     }
 
@@ -2042,31 +2042,98 @@ class InputLogicTest {
         handleMessages()
     }
 
-    @Test fun holdingPhysicalKeyTypesAccentOnlyWhenEnabled() {
-        reset()
+    // an on-screen keyboard, a visible suggestion strip and the option, so held keys can show their popup
+    private fun setUpPhysicalKeyChoices(): SuggestionStripView {
         ShadowKeyboardSwitcher.keyboard = KeyboardLayoutSet.Builder(latinIME, latinIME.currentInputEditorInfo)
             .setKeyboardGeometry(500, 300)
             .setSubtype(RichInputMethodManager.getInstance().currentSubtype)
             .build()
             .getKeyboard(KeyboardId.ELEMENT_ALPHABET)
-        holdPhysicalKey(KeyEvent.KEYCODE_A, 3)
-        assertEquals("aaaa", getText()) // off by default: normal key repeat
-
         // like Android, and unlike the shadow's default, return the same object while the field stays the same
         editorInfoOverride = EditorInfo().apply { inputType = currentInputType }
-        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, true) }
+        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP, true) }
         setText("")
+        val strip = Mockito.mock(SuggestionStripView::class.java)
+        Mockito.`when`(strip.isShown).thenReturn(true)
+        LatinIME::class.java.getDeclaredField("suggestionStripView").apply { isAccessible = true }.set(latinIME, strip)
+        return strip
+    }
+
+    private fun shownChoices(strip: SuggestionStripView) = Mockito.mockingDetails(strip).invocations
+        .filter { it.method.name == "setSuggestions" }.map { it.arguments[0] }.filterIsInstance<PhysicalKeyChoices>().last()
+
+    private fun pickChoice(choices: PhysicalKeyChoices, word: String) {
+        val info = (0 until choices.size()).map { choices.getInfo(it) }.first { it.mWord == word }
+        latinIME.pickSuggestionManually(info)
+        handleMessages()
+        checkConnectionConsistency()
+    }
+
+    @Test fun holdingPhysicalKeyKeepsRepeatingWhenDisabled() {
+        reset()
+        setUpPhysicalKeyChoices()
+        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP, false) }
         holdPhysicalKey(KeyEvent.KEYCODE_A, 3)
-        val accented = getText()
-        assertEquals(1, accented.length)
-        assertTrue(accented != "a" && accented[0].isLetter(), accented)
+        assertEquals("aaaa", getText())
+        assertFalse(latinIME.isShowingPhysicalKeyChoices)
+    }
 
-        holdPhysicalKey(KeyEvent.KEYCODE_A, 0) // a normal press afterwards still types the plain letter
-        assertEquals(accented + "a", getText())
+    @Test fun holdingPhysicalKeyShowsChoicesAndPickingReplacesTheLetter() {
+        reset()
+        val strip = setUpPhysicalKeyChoices()
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 3)
+        assertEquals("a", getText()) // kept until a choice is picked, and no repeats
+        assertTrue(latinIME.isShowingPhysicalKeyChoices) // also after releasing the key
+        val choices = shownChoices(strip)
+        pickChoice(choices, "@")
+        assertEquals("@", getText()) // no space added
+        assertFalse(latinIME.isShowingPhysicalKeyChoices)
+        pickChoice(choices, "@") // a choice from a view that was not updated yet does nothing
+        assertEquals("@", getText())
+    }
 
-        setText("")
-        holdPhysicalKey(KeyEvent.KEYCODE_Q, 2) // no accent for q, so it repeats
-        assertEquals("qqq", getText())
+    @Test fun typingOnKeepsTheLetterAndDismissesPhysicalKeyChoices() {
+        reset()
+        setUpPhysicalKeyChoices()
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 1)
+        assertTrue(latinIME.isShowingPhysicalKeyChoices)
+        holdPhysicalKey(KeyEvent.KEYCODE_B, 0)
+        assertEquals("ab", getText())
+        assertFalse(latinIME.isShowingPhysicalKeyChoices)
+    }
+
+    @Test fun movingTheCursorDismissesPhysicalKeyChoices() {
+        reset()
+        val strip = setUpPhysicalKeyChoices()
+        setText("xy")
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 1)
+        assertTrue(latinIME.isShowingPhysicalKeyChoices)
+        assertTrue(shownChoices(strip).size() > 0)
+        latinIME.onUpdateSelection(1, 1, 2, 2, -1, -1) // a late report on the way to the cursor
+        assertTrue(latinIME.isShowingPhysicalKeyChoices)
+        latinIME.onUpdateSelection(3, 3, 1, 1, -1, -1)
+        handleMessages()
+        assertFalse(latinIME.isShowingPhysicalKeyChoices)
+        assertEquals("xya", text)
+    }
+
+    @Test fun hiddenSuggestionStripLetsPhysicalKeyRepeat() {
+        reset()
+        val strip = setUpPhysicalKeyChoices()
+        Mockito.`when`(strip.isShown).thenReturn(false)
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 2)
+        assertEquals("aaa", getText())
+        assertFalse(latinIME.isShowingPhysicalKeyChoices)
+    }
+
+    @Test fun symbolReplacementEndsTheComposingWordAsTyped() {
+        reset()
+        chainInput("teh")
+        assertTrue(inputLogic.replaceLastTyped(settingsValues, 'h'.code, "#"))
+        handleMessages()
+        assertEquals("te#", getText())
+        assertEquals("", composingText)
+        checkConnectionConsistency()
     }
 
     @Test fun unmappedPhysicalButtonKeepsRepeating() {
@@ -2078,14 +2145,7 @@ class InputLogicTest {
 
     @Test fun movingTheCursorCancelsPhysicalLongPress() {
         reset()
-        ShadowKeyboardSwitcher.keyboard = KeyboardLayoutSet.Builder(latinIME, latinIME.currentInputEditorInfo)
-            .setKeyboardGeometry(500, 300)
-            .setSubtype(RichInputMethodManager.getInstance().currentSubtype)
-            .build()
-            .getKeyboard(KeyboardId.ELEMENT_ALPHABET)
-        // like Android, and unlike the shadow's default, return the same object while the field stays the same
-        editorInfoOverride = EditorInfo().apply { inputType = currentInputType }
-        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, true) }
+        setUpPhysicalKeyChoices()
         setText("ba ")
         val keyDownField = editorInfoOverride
         latinIME.onKeyDown(KeyEvent.KEYCODE_A, KeyEvent(0L, 0L, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_A, 0))
@@ -2099,7 +2159,7 @@ class InputLogicTest {
         assertEquals("baa " + typed.substring(3), text) // a plain repeat at the new position, nothing replaced
     }
 
-    @Test fun longPressAccentWorksInTheMiddleOfText() {
+    @Test fun longPressReplacementWorksInTheMiddleOfText() {
         reset()
         setText("xy")
         setCursorPosition(1)

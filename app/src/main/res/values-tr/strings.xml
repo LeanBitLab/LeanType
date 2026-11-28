@@ -1747,6 +1747,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="clear_learned_words_details">Bu işlem, tüm dillerde yazarken öğrenilen tüm kelimeleri ve sonraki kelime önerilerini siler. Kişisel sözlüğünüz ve engellenen kelimeleriniz korunur. Bu işlem geri alınamaz.</string>
     <string name="auto_add_learned_words">Öğrenilen kelimeleri otomatik ekle</string>
     <string name="auto_add_learned_words_summary">Klavyenin yazdığınız metinden öğrendiği kelimeleri cihazın kişisel sözlüğüne kaydet</string>
-    <string name="prefs_physical_key_long_press_accent">Fiziksel tuşları basılı tutarak aksan yazın</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Bir harf tuşunu basılı tutmak, açılır tuşları arasındaki ilk aksanlı veya özel harfi yazar</string>
+    <string name="prefs_physical_key_long_press_popup">Fiziksel tuşları basılı tutarak açılır karakterleri göster</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Fiziksel bir tuşu basılı tutmak, o tuşun açılır karakterlerini öneri çubuğunda gösterir; birini seçerek yazılan harfin yerine koyabilirsiniz</string>
 </resources>

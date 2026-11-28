@@ -1771,6 +1771,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="clear_learned_words_details">Ini menghapus setiap kata dan saran kata berikutnya yang dipelajari dari pengetikan Anda, dalam semua bahasa. Kamus pribadi dan kata yang diblokir tetap disimpan. Tindakan ini tidak dapat dibatalkan.</string>
     <string name="auto_add_learned_words">Otomatis tambahkan kata yang dipelajari</string>
     <string name="auto_add_learned_words_summary">Simpan kata yang dipelajari keyboard dari pengetikan Anda ke kamus pribadi perangkat</string>
-    <string name="prefs_physical_key_long_press_accent">Tahan tombol fisik untuk aksen</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Menahan tombol huruf akan mengetik huruf beraksen atau huruf khusus pertama di antara tombol pop-up-nya</string>
+    <string name="prefs_physical_key_long_press_popup">Tahan tombol fisik untuk karakter popup</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Menahan tombol fisik menampilkan karakter dari popupnya di bilah saran, pilih salah satu untuk mengganti huruf yang diketik</string>
 </resources>

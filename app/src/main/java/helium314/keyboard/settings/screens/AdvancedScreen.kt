@@ -96,7 +96,7 @@ fun AdvancedSettingsScreen(
 
             // Fine-tune physical keyboards & experimental
             if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT else null,
-            if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT else null,
+            if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY else null,
             if (fineTuneAdvancedExpanded) Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS else null,
             if (fineTuneAdvancedExpanded) R.string.settings_category_experimental else null,
@@ -165,10 +165,10 @@ private fun createAdvancedSettings(context: Context) = listOfNotNull(
         )
         ListPreference(setting, items, Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT)
     },
-    Setting(context, Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, R.string.prefs_physical_key_long_press_accent,
-        R.string.prefs_physical_key_long_press_accent_summary)
+    Setting(context, Settings.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP, R.string.prefs_physical_key_long_press_popup,
+        R.string.prefs_physical_key_long_press_popup_summary)
     {
-        SwitchPreference(it, Defaults.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT)
+        SwitchPreference(it, Defaults.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP)
     },
     Setting(context, Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, R.string.prefs_enable_emoji_alt_physical_key,
         R.string.prefs_enable_emoji_alt_physical_key_summary)

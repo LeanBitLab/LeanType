@@ -1787,6 +1787,6 @@ Abilita l\'inferenza GGUF / llama.cpp sul dispositivo per correzione e riscrittu
     <string name="clear_learned_words_details">Questa operazione elimina tutte le parole e i suggerimenti della parola successiva appresi dalla digitazione, in tutte le lingue. Il dizionario personale e le parole bloccate vengono mantenuti. Non è possibile annullare l\'operazione.</string>
     <string name="auto_add_learned_words">Aggiungi automaticamente le parole apprese</string>
     <string name="auto_add_learned_words_summary">Salva nel dizionario personale del dispositivo le parole che la tastiera impara dalla digitazione</string>
-    <string name="prefs_physical_key_long_press_accent">Tieni premuti i tasti fisici per gli accenti</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Tenendo premuto un tasto lettera si digita la prima lettera accentata o speciale tra i suoi tasti popup</string>
+    <string name="prefs_physical_key_long_press_popup">Tieni premuti i tasti fisici per i caratteri popup</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Tenere premuto un tasto fisico mostra i caratteri del suo popup nella barra dei suggerimenti; sceglievi uno per sostituire la lettera digitata</string>
 </resources>

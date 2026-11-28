@@ -1821,6 +1821,6 @@
     <string name="clear_learned_words_details">Αυτό διαγράφει όλες τις λέξεις και τις προτάσεις επόμενης λέξης που έμαθε το πληκτρολόγιο από την πληκτρολόγησή σας, σε όλες τις γλώσσες. Το προσωπικό σας λεξικό και οι αποκλεισμένες λέξεις διατηρούνται. Αυτή η ενέργεια δεν μπορεί να ανακληθεί.</string>
     <string name="auto_add_learned_words">Αυτόματη προσθήκη εκμαθημένων λέξεων</string>
     <string name="auto_add_learned_words_summary">Αποθήκευση λέξεων που μαθαίνει το πληκτρολόγιο από την πληκτρολόγησή σας στο προσωπικό λεξικό της συσκευής</string>
-    <string name="prefs_physical_key_long_press_accent">Παρατεταμένο πάτημα φυσικών πλήκτρων για τόνους</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Το παρατεταμένο πάτημα ενός πλήκτρου γράμματος πληκτρολογεί το πρώτο τονισμένο ή ειδικό γράμμα από τα αναδυόμενα πλήκτρα του</string>
+    <string name="prefs_physical_key_long_press_popup">Παρατεταμένο πάτημα φυσικών πλήκτρων για χαρακτήρες popup</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Το παρατεταμένο πάτημα ενός φυσικού πλήκτρου εμφανίζει τους χαρακτήρες του popup του στη λωρίδα προτάσεων. Επιλέξτε έναν για να αντικαταστήσετε το πληκτρολογημένο γράμμα</string>
 </resources>

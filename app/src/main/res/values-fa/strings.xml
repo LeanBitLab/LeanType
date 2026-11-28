@@ -1713,6 +1713,6 @@
     <string name="clear_learned_words_details">با این کار همه واژه‌ها و پیشنهادهای واژه‌ی بعدی که از تایپ شما یاد گرفته شده‌اند، در همه زبان‌ها حذف می‌شوند. واژه‌نامه شخصی و واژه‌های مسدودشده شما حفظ می‌شوند. این عمل برگشت‌پذیر نیست.</string>
     <string name="auto_add_learned_words">افزودن خودکار کلمات یادگرفته‌شده</string>
     <string name="auto_add_learned_words_summary">کلماتی که صفحه‌کلید از تایپ شما یاد می‌گیرد را در واژه‌نامه شخصی دستگاه ذخیره کن</string>
-    <string name="prefs_physical_key_long_press_accent">نگه‌داشتن کلیدهای فیزیکی برای لهجه‌ها</string>
-    <string name="prefs_physical_key_long_press_accent_summary">نگه‌داشتن کلید حرف، اولین حرف با لهجه یا حرف ویژهٔ کلیدهای بالاپر آن را تایپ می‌کند</string>
+    <string name="prefs_physical_key_long_press_popup">نگه‌داشتن کلیدهای فیزیکی برای نویسه‌های پاپ‌آپ</string>
+    <string name="prefs_physical_key_long_press_popup_summary">نگه‌داشتن یک کلید فیزیکی، نویسه‌های پاپ‌آپ آن را در نوار پیشنهادها نشان می‌دهد؛ یکی را انتخاب کنید تا حرف تایپ‌شده جایگزین شود</string>
 </resources>

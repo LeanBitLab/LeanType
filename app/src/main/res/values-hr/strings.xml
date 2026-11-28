@@ -1771,6 +1771,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="clear_learned_words_details">Ovo briše svaku riječ i prijedlog sljedeće riječi naučen iz vašeg tipkanja, na svim jezicima. Vaš osobni rječnik i blokirane riječi se čuvaju. Ovo se ne može poništiti.</string>
     <string name="auto_add_learned_words">Automatski dodaj naučene riječi</string>
     <string name="auto_add_learned_words_summary">Spremi riječi koje tipkovnica nauči iz vašeg tipkanja u osobni rječnik uređaja</string>
-    <string name="prefs_physical_key_long_press_accent">Dugo pritiskajte fizičke tipke za naglaske</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Dugim pritiskom na tipku slova upisuje se prvo naglašeno ili posebno slovo među njezinim skočnim tipkama</string>
+    <string name="prefs_physical_key_long_press_popup">Dugo pritiskajte fizičke tipke za znakove iskočnog izbornika</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Dugim pritiskom fizičke tipke prikazuju se znakovi njezina iskočnog izbornika u traci prijedloga. Odaberite jedan za zamjenu upisanog slova</string>
 </resources>

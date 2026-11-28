@@ -39,6 +39,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import helium314.keyboard.accessibility.AccessibilityUtils
 import helium314.keyboard.keyboard.KeyboardSwitcher
+import helium314.keyboard.latin.PhysicalKeyChoices
 import helium314.keyboard.latin.PunctuationSuggestions
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.SuggestedWords
@@ -330,10 +331,11 @@ internal class SuggestionStripLayoutHelper(
         return indexInSuggestedWords
     }
 
+    // shows the entries from left to right, unlike words, which are ordered around the center
     private fun layoutPunctuationsAndReturnStartIndexOfMoreSuggestions(
-        punctuationSuggestions: PunctuationSuggestions, stripView: ViewGroup
+        punctuationSuggestions: SuggestedWords, stripView: ViewGroup, maxInStrip: Int = PUNCTUATIONS_IN_STRIP
     ): Int {
-        val countInStrip = minOf(punctuationSuggestions.size(), PUNCTUATIONS_IN_STRIP)
+        val countInStrip = minOf(punctuationSuggestions.size(), maxInStrip)
         for (positionInStrip in 0 until countInStrip) {
             if (positionInStrip != 0) {
                 addDivider(stripView, mDividerViews[positionInStrip])
@@ -369,6 +371,10 @@ internal class SuggestionStripLayoutHelper(
             return layoutPunctuationsAndReturnStartIndexOfMoreSuggestions(
                 suggestedWords as PunctuationSuggestions, stripView
             )
+        }
+
+        if (suggestedWords is PhysicalKeyChoices) {
+            return layoutPunctuationsAndReturnStartIndexOfMoreSuggestions(suggestedWords, stripView, mSuggestionsCountInStrip)
         }
 
         val wordCountToShow = suggestedWords.getWordCountToShow()

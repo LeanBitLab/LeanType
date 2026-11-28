@@ -465,6 +465,7 @@ class LatinIME : InputMethodService(),
 
     override fun onConfigurationChanged(conf: Configuration) {
         super.onConfigurationChanged(conf)
+        dismissPhysicalKeyChoices() // for example when a keyboard is connected or disconnected
         ScreenProfileProvider.invalidateCache()
         displayContext = getDisplayContext()
         loadSettings()
@@ -858,6 +859,7 @@ class LatinIME : InputMethodService(),
 
     fun onStartInputViewInternal(editorInfo: EditorInfo, restarting: Boolean) {
         super.onStartInputView(editorInfo, restarting)
+        mShownKeyChoices = null // the strip is set up again below
         refreshDeviceLocked(this)
         ProofreadHelper.preloadModel(this)
 
@@ -1105,6 +1107,7 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.hideGifPicker()
         keyboardSwitcher.hideOcrPanels()
         clipboardHistoryManager.onWindowHidden()
+        dismissPhysicalKeyChoices()
         ProofreadHelper.cancelCurrentJob()
         val fkm = floatingKeyboardManager
         if (fkm != null) {
@@ -1192,6 +1195,11 @@ class LatinIME : InputMethodService(),
         composingSpanStart: Int, composingSpanEnd: Int
     ) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, composingSpanStart, composingSpanEnd)
+        mShownKeyChoices?.let {
+            // a slow editor may only now report the way to the cursor after the held key
+            val catchingUp = newSelStart == newSelEnd && newSelStart > oldSelStart && newSelStart <= it.cursor
+            if (!catchingUp && (newSelStart != it.cursor || newSelEnd != it.cursor)) dismissPhysicalKeyChoices()
+        }
         inputLogic.connection.onEditorReportedSelection(newSelStart)
         voiceInputManager?.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, composingSpanStart, composingSpanEnd)
         val cjkManager = CjkInputManager.getInstance(this)
@@ -1627,6 +1635,8 @@ class LatinIME : InputMethodService(),
     }
 
     fun onEvent(event: Event) {
+        // any further input keeps the typed letter
+        if (event.keyCode != KeyCode.SHIFT) dismissPhysicalKeyChoices()
         if (keyboardSwitcher.isGifPickerShowing) {
             if (event.keyCode == KeyCode.SHIFT) {
                 return
@@ -1698,15 +1708,57 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.onEvent(event, currentAutoCapsState, currentRecapitalizeState)
     }
 
-    /** Replaces the just typed [letter] with [accent] when a physical key is held. */
-    fun replaceLongPressedLetter(letter: Int, accent: Int): Boolean {
-        if (!inputLogic.replaceLastTypedCodePoint(settings.current, letter, accent)) return false
+    private class ShownKeyChoices(
+        val choices: PhysicalKeyChoices, val typed: Int, val cursor: Int, val editorInfo: EditorInfo?
+    )
+
+    private var mShownKeyChoices: ShownKeyChoices? = null
+    private var mLastKeyChoices: PhysicalKeyChoices? = null // to ignore a pick from a view that is not updated yet
+    val isShowingPhysicalKeyChoices: Boolean get() = mShownKeyChoices != null
+
+    /**
+     * Shows [choices] for the just typed [typed] of a held physical key in the suggestion strip.
+     * @return false if the strip can't be seen, or [typed] is not what is before the cursor
+     */
+    fun showPhysicalKeyChoices(typed: Int, choices: List<String>): Boolean {
+        val strip = suggestionStripView ?: return false
+        if (choices.isEmpty() || !hasSuggestionStripView() || !isInputViewShown || !strip.isShown) return false
+        if (!inputLogic.canReplaceLastTyped(settings.current, typed)) return false
+        // a pending update for the typed letter would replace the choices
+        handler.cancelUpdateSuggestionStrip()
+        val shown = ShownKeyChoices(PhysicalKeyChoices(choices), typed,
+            inputLogic.connection.expectedSelectionStart, currentInputEditorInfo)
+        mShownKeyChoices = shown
+        mLastKeyChoices = shown.choices
+        strip.setSuggestions(shown.choices, richImm.currentSubtype.isRtlSubtype)
+        strip.setToolbarVisibility(false)
+        return true
+    }
+
+    /** Removes the choices of a held physical key, if shown, and goes back to normal suggestions. */
+    fun dismissPhysicalKeyChoices() {
+        if (mShownKeyChoices == null) return
+        mShownKeyChoices = null
+        setNeutralSuggestionStrip()
         handler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_TYPING)
+    }
+
+    /** @return true if [info] is one of the shown choices of a held physical key, which is then used */
+    private fun pickPhysicalKeyChoice(info: SuggestedWordInfo): Boolean {
+        val choices = mLastKeyChoices ?: return false
+        // identity, because an ordinary suggestion may be equal to a choice
+        if ((0 until choices.size()).none { choices.getInfo(it) === info }) return false
+        val shown = mShownKeyChoices?.takeIf { it.choices === choices } ?: return true // dismissed, do nothing
+        // the choices must not replace a character somewhere else
+        if (shown.cursor == inputLogic.connection.expectedSelectionStart && shown.editorInfo === currentInputEditorInfo)
+            inputLogic.replaceLastTyped(settings.current, shown.typed, info.mWord)
+        dismissPhysicalKeyChoices()
         return true
     }
 
     fun onTextInput(rawText: String?) {
         if (rawText == null) return
+        dismissPhysicalKeyChoices()
         if (keyboardSwitcher.isGifPickerShowing && keyboardSwitcher.onGifSearchText(rawText)) return
         val event = Event.createSoftwareTextEvent(rawText, KeyCode.MULTIPLE_CODE_POINTS, null)
         val completeInputTransaction = inputLogic.onTextInput(settings.current, event, keyboardSwitcher.keyboardShiftMode, handler)
@@ -1804,6 +1856,7 @@ class LatinIME : InputMethodService(),
     }
 
     fun onStartBatchInput() {
+        dismissPhysicalKeyChoices()
         if (!JniUtils.sHaveNativeGestureLib) {
             keyboardSwitcher.showToast(getString(R.string.load_gesture_library), true)
             inputLogic.onCancelBatchInput(handler)
@@ -1843,6 +1896,8 @@ class LatinIME : InputMethodService(),
             && !CjkInputManager.getInstance(this).isComposing
 
     private fun setSuggestedWords(suggestedWords: SuggestedWords) {
+        // late dictionary results must not replace the choices, dismissing them requests new ones
+        if (mShownKeyChoices != null) return
         if (CjkInputManager.getInstance(this).isCjkSubtypeActive(richImm.currentSubtype)) {
             return
         }
@@ -1893,6 +1948,7 @@ class LatinIME : InputMethodService(),
     }
 
     override fun pickSuggestionManually(suggestionInfo: SuggestedWordInfo?) {
+        if (suggestionInfo != null && pickPhysicalKeyChoice(suggestionInfo)) return
         if (suggestionInfo == null) return
         val completeInputTransaction = inputLogic.onPickSuggestionManually(settings.current, suggestionInfo, keyboardSwitcher.keyboardShiftMode, handler)
         updateStateAfterInputTransaction(completeInputTransaction)

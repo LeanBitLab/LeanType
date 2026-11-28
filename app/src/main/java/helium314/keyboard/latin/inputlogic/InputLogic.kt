@@ -1225,28 +1225,37 @@ class InputLogic(
         )
     }
 
-    /**
-     * Replaces [oldCodePoint] right before the cursor with [newCodePoint], keeping a composing word intact.
-     * @return false without changing anything if the text is not what typing [oldCodePoint] would have left,
-     * for example because a shortcut was expanded or a combiner changed the letter.
-     */
-    fun replaceLastTypedCodePoint(settingsValues: SettingsValues, oldCodePoint: Int, newCodePoint: Int): Boolean {
+    /** @return whether [typed] is still right before the cursor, as typing it left it, so it can be replaced */
+    fun canReplaceLastTyped(settingsValues: SettingsValues, typed: Int): Boolean {
         // terminals and games without a real text field can't be relied on to delete the letter
         if (settingsValues.mInputAttributes.mInputType and InputType.TYPE_MASK_CLASS != InputType.TYPE_CLASS_TEXT) return false
+        // not after a shortcut expansion, or if a combiner changed what was typed
         if (mLastExpandedText != null || mConnection.hasSelection()) return false
-        if (mConnection.codePointBeforeCursor != oldCodePoint) return false
-        val newText = StringUtils.newSingleCodePointString(newCodePoint)
-        val isComposing = mWordComposer.isComposingWord()
-        if (isComposing && (mWordComposer.isCursorFrontOrMiddleOfComposingWord()
-                    || !mWordComposer.getTypedWord().endsWith(StringUtils.newSingleCodePointString(oldCodePoint)))
-        ) return false
+        if (mConnection.codePointBeforeCursor != typed) return false
+        return !mWordComposer.isComposingWord() || !mWordComposer.isCursorFrontOrMiddleOfComposingWord()
+                && mWordComposer.getTypedWord().endsWith(StringUtils.newSingleCodePointString(typed))
+    }
+
+    /**
+     * Replaces [typed] right before the cursor with [replacement]. A letter stays part of the composing word,
+     * anything else ends the word as it is, without auto-correction.
+     * @return false without changing anything if [canReplaceLastTyped] is false
+     */
+    fun replaceLastTyped(settingsValues: SettingsValues, typed: Int, replacement: String): Boolean {
+        if (replacement.isEmpty() || !canReplaceLastTyped(settingsValues, typed)) return false
+        val first = replacement.codePointAt(0)
         mConnection.beginBatchEdit()
-        if (isComposing) {
-            mWordComposer.replaceLastCodePoint(oldCodePoint, newCodePoint)
+        if (mWordComposer.isComposingWord() && replacement.length == Character.charCount(first) && Character.isLetter(first)) {
+            mWordComposer.replaceLastCodePoint(typed, first)
             setComposingTextInternal(getTextWithUnderline(mWordComposer.getTypedWord()), 1)
         } else {
-            mConnection.deleteTextBeforeCursor(Character.charCount(oldCodePoint))
-            mConnection.commitText(newText, 1)
+            if (mWordComposer.isComposingWord()) {
+                mConnection.finishComposingText()
+                resetComposingState(true)
+            }
+            mConnection.deleteTextBeforeCursor(Character.charCount(typed))
+            mConnection.commitText(replacement, 1)
+            mSpaceState = SpaceState.NONE
         }
         mConnection.endBatchEdit()
         return true

@@ -58,7 +58,7 @@ open class SettingsValues(
     val mHasHardwareKeyboard: Boolean
     val mShowToolbarOnly: Boolean
     val mPhysicalKeyboardSuggestionShortcuts: String
-    val mPhysicalKeyLongPressAccent: Boolean
+    val mPhysicalKeyLongPressPopup: Boolean
     val mPhysicalKeyboardLayout: String
     val mDisplayOrientation: Int
     val mScreenProfile: helium314.keyboard.latin.utils.ScreenProfile
@@ -282,7 +282,7 @@ open class SettingsValues(
             else -> globalToolbarMode
         }
         mPhysicalKeyboardSuggestionShortcuts = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS, Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS) ?: Defaults.PREF_PHYSICAL_KEYBOARD_SUGGESTION_SHORTCUTS
-        mPhysicalKeyLongPressAccent = prefs.getBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, Defaults.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT)
+        mPhysicalKeyLongPressPopup = prefs.getBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP, Defaults.PREF_PHYSICAL_KEY_LONG_PRESS_POPUP)
         mPhysicalKeyboardLayout = prefs.getString(Settings.PREF_PHYSICAL_KEYBOARD_LAYOUT, Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT) ?: Defaults.PREF_PHYSICAL_KEYBOARD_LAYOUT
         mToolbarHidingGlobal = prefs.getBoolean(Settings.PREF_TOOLBAR_HIDING_GLOBAL, Defaults.PREF_TOOLBAR_HIDING_GLOBAL)
         mSplitToolbar = prefs.getBoolean(Settings.PREF_SPLIT_TOOLBAR, Defaults.PREF_SPLIT_TOOLBAR)

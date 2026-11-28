@@ -1708,6 +1708,6 @@ Từ điển mới:
     <string name="clear_learned_words_details">Thao tác này sẽ xoá mọi từ và gợi ý từ tiếp theo đã học từ việc bạn gõ, trong tất cả các ngôn ngữ. Từ điển cá nhân và các từ đã chặn sẽ được giữ lại. Thao tác này không thể hoàn tác.</string>
     <string name="auto_add_learned_words">Tự động thêm từ đã học</string>
     <string name="auto_add_learned_words_summary">Lưu các từ bàn phím học được từ quá trình gõ của bạn vào từ điển cá nhân của thiết bị</string>
-    <string name="prefs_physical_key_long_press_accent">Giữ phím vật lý để nhập dấu</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Giữ một phím chữ sẽ nhập chữ có dấu hoặc chữ đặc biệt đầu tiên trong số các phím popup của phím đó</string>
+    <string name="prefs_physical_key_long_press_popup">Nhấn giữ phím vật lý để hiện ký tự popup</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Khi nhấn giữ phím vật lý, các ký tự trong popup của phím đó sẽ hiện trên thanh gợi ý. Chọn một ký tự để thay thế chữ cái đã gõ</string>
 </resources>

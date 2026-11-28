@@ -1771,6 +1771,6 @@ Lehetővé teszi az eszközön futó GGUF / llama.cpp következtetést a javít�
     <string name="clear_learned_words_details">Ez törli az összes szót és a következő szóra vonatkozó javaslatot, amelyet a gépelés alapján tanult meg, minden nyelven. A személyes szótár és a letiltott szavak megmaradnak. Ez a művelet nem vonható vissza.</string>
     <string name="auto_add_learned_words">Új szavak automatikus hozzáadása</string>
     <string name="auto_add_learned_words_summary">Az billentyűzet által a gépelésből tanult szavak mentése az eszköz személyes szótárába</string>
-    <string name="prefs_physical_key_long_press_accent">Hosszan nyomva tartott fizikai billentyűk ékezetekhez</string>
-    <string name="prefs_physical_key_long_press_accent_summary">A betűbillentyű hosszan nyomva tartása a felugró billentyűi közül az első ékezetes vagy speciális betűt írja be</string>
+    <string name="prefs_physical_key_long_press_popup">Fizikai billentyűk tartása a felugró karakterekhez</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Fizikai billentyű tartása esetén a felugró karakterei megjelennek a javaslatsávban; válasszon egyet a beírt betű helyettesítéséhez</string>
 </resources>

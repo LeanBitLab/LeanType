@@ -1809,6 +1809,6 @@ Ar norite atnaujinti?</string>
     <string name="clear_learned_words_details">Tai ištrina visus žodžius ir kito žodžio pasiūlymus, išmoktus iš jūsų rašymo, visomis kalbomis. Jūsų asmeninis žodynas ir užblokuoti žodžiai išliks. Šio veiksmo atšaukti negalima.</string>
     <string name="auto_add_learned_words">Automatiškai pridėti išmoktus žodžius</string>
     <string name="auto_add_learned_words_summary">Įrenginio asmeniniame žodyne išsaugoti žodžius, kuriuos klaviatūra išmoksta iš jūsų rašymo</string>
-    <string name="prefs_physical_key_long_press_accent">Ilgai spaudžiant fizinius klavišus įvesti diakritinius ženklus</string>
-    <string name="prefs_physical_key_long_press_accent_summary">Ilgai laikant raidės klavišą, įvedama pirmoji su diakritiniu ženklu arba specialioji raidė iš jo iškylančiųjų klavišų</string>
+    <string name="prefs_physical_key_long_press_popup">Laikyti fizinius klavišus, kad būtų rodomi papildomi simboliai</string>
+    <string name="prefs_physical_key_long_press_popup_summary">Laikant nuspaustą fizinį klavišą, įrankių juostoje rodomi jo papildomo meniu simboliai. Pasirinkite vieną, kad pakeistumėte įvestą raidę</string>
 </resources>
