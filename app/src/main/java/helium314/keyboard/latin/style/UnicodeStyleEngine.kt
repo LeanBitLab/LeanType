@@ -758,9 +758,9 @@ object UnicodeStyleEngine {
             while (i < len) {
                 val origCp = testChars.codePointAt(i)
                 val mappedCp = style.mapCodePoint(origCp)
-                val isAsciiLetterCollision = (origCp in 'A'.code..'Z'.code || origCp in 'a'.code..'z'.code)
-                        && (mappedCp in 'A'.code..'Z'.code || mappedCp in 'a'.code..'z'.code)
-                if (mappedCp != origCp && !isAsciiLetterCollision && !reverse.containsKey(mappedCp)) {
+                // plain ASCII is never "styled": the upside-down style swaps ' and , (also 6 and 9, < and >),
+                // so reversing that would turn "I'm" into "I,m"
+                if (mappedCp != origCp && mappedCp >= 0x80 && !reverse.containsKey(mappedCp)) {
                     reverse[mappedCp] = origCp
                 }
                 i += Character.charCount(origCp)

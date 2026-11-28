@@ -109,6 +109,15 @@ class UnicodeStyleEngineTest {
     }
 
     @Test
+    fun testToPlainTextKeepsPlainAscii() {
+        val ascii = (' '..'~').joinToString("")
+        assertEquals(ascii, UnicodeStyleEngine.toPlainText(ascii))
+        for (word in listOf("I'm", "You'll", "it's", "a,b", "69", "<>"))
+            assertEquals(word, UnicodeStyleEngine.toPlainText(word))
+        assertFalse(UnicodeStyleEngine.isStyledCharacter('\''.code))
+    }
+
+    @Test
     fun testInvertedText() {
         val input = "hello"
         val inverted = UnicodeStyleEngine.transformText(input, "transform_inverted")
