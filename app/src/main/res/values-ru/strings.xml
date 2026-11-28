@@ -1780,4 +1780,6 @@
     <string name="clear_learned_words_details">Будут удалены все слова и предложения следующего слова, изученные на основе вашего набора текста, на всех языках. Личный словарь и заблокированные слова сохранятся. Это действие нельзя отменить.</string>
     <string name="auto_add_learned_words">Автоматически добавлять изученные слова</string>
     <string name="auto_add_learned_words_summary">Сохранять слова, которые клавиатура запоминает при наборе текста, в личный словарь устройства</string>
+    <string name="prefs_physical_key_long_press_accent">Удержание физических клавиш для акцентов</string>
+    <string name="prefs_physical_key_long_press_accent_summary">При удержании клавиши с буквой вводится первая буква с диакритикой или специальный символ из её всплывающих клавиш</string>
 </resources>

@@ -1711,4 +1711,6 @@
     <string name="clear_learned_words_details">すべての言語で、入力から学習した単語と次語候補がすべて削除されます。個人用辞書とブロックした単語は保持されます。この操作は元に戻せません。</string>
     <string name="auto_add_learned_words">学習した単語を自動で追加</string>
     <string name="auto_add_learned_words_summary">キーボードが入力から学習した単語を、端末の個人用辞書に保存します</string>
+    <string name="prefs_physical_key_long_press_accent">物理キーを長押しでアクセント記号を入力</string>
+    <string name="prefs_physical_key_long_press_accent_summary">文字キーを長押しすると、ポップアップキーのうち最初のアクセント付き文字または特殊文字が入力されます</string>
 </resources>

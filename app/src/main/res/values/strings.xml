@@ -204,6 +204,8 @@
     <string name="prefs_physical_keyboard_layout_summary">Choose layout mapping for external hardware keyboards (e.g. AZERTY, QWERTZ, Dvorak)</string>
     <string name="physical_keyboard_layout_match_soft">Match on-screen keyboard (Auto)</string>
     <string name="physical_keyboard_layout_system_default">System default</string>
+    <string name="prefs_physical_key_long_press_accent">Hold physical keys for accents</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Holding a letter key types the first accented or special letter among its popup keys</string>
     <!-- Option to undo auto correction with backspace -->
     <string name="backspace_reverts_autocorrect">Backspace reverts autocorrect</string>
     <string name="auto_correct_indicator_underline_title">Auto-correct indicator underline</string>

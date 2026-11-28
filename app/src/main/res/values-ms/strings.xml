@@ -1710,4 +1710,6 @@ Kamus baharu:
     <string name="clear_learned_words_details">Ini memadamkan setiap perkataan dan cadangan perkataan seterusnya yang dipelajari daripada taipan anda, dalam semua bahasa. Kamus peribadi dan perkataan yang disekat akan dikekalkan. Tindakan ini tidak boleh dibatalkan.</string>
     <string name="auto_add_learned_words">Tambah perkataan yang dipelajari secara automatik</string>
     <string name="auto_add_learned_words_summary">Simpan perkataan yang dipelajari papan kekunci daripada taipan anda ke kamus peribadi peranti</string>
+    <string name="prefs_physical_key_long_press_accent">Tekan lama kekunci fizikal untuk aksen</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Menekan kekunci huruf akan menaip huruf beraksen atau khas pertama dalam kekunci pop timbulnya</string>
 </resources>

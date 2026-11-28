@@ -1821,4 +1821,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="clear_learned_words_details">Hiermee worden alle woorden en volgende-woordsuggesties verwijderd die uit je typgedrag zijn geleerd, in alle talen. Je persoonlijke woordenlijst en geblokkeerde woorden blijven behouden. Dit kan niet ongedaan worden gemaakt.</string>
     <string name="auto_add_learned_words">Geleerde woorden automatisch toevoegen</string>
     <string name="auto_add_learned_words_summary">Woorden die het toetsenbord leert uit je typen opslaan in het persoonlijke woordenboek van het apparaat</string>
+    <string name="prefs_physical_key_long_press_accent">Fysieke toetsen ingedrukt houden voor accenten</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Een letter ingedrukt houden typt de eerste geaccentueerde of speciale letter uit de pop-uptoetsen</string>
 </resources>

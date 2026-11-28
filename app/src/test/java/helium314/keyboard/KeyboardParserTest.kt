@@ -21,6 +21,7 @@ import helium314.keyboard.keyboard.internal.keyboard_parser.POPUP_KEYS_NORMAL
 import helium314.keyboard.keyboard.internal.keyboard_parser.addLocaleKeyTextsToParams
 import helium314.keyboard.keyboard.internal.keyboard_parser.floris.KeyCode
 import helium314.keyboard.latin.LatinIME
+import helium314.keyboard.latin.PhysicalKeyAccents
 import helium314.keyboard.latin.BuildConfig
 import helium314.keyboard.latin.RichInputMethodSubtype
 import helium314.keyboard.latin.common.Constants
@@ -537,6 +538,22 @@ f""", // no newline at the end
         val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.ENGLISH, "qwerty", true)
         val (kb, keys) = buildKeyboard(editorInfo, subtype, KeyboardId.ELEMENT_ALPHABET)
         assertEquals(kb.sortedKeys.size, keys.sumOf { it.size })
+    }
+
+    @Test fun `held physical key gives the first letter popup, not the number or symbol`() {
+        val subtype = SubtypeUtilsAdditional.createEmojiCapableAdditionalSubtype(Locale.GERMAN, "qwerty", true)
+        for (element in listOf(KeyboardId.ELEMENT_ALPHABET, KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED)) {
+            val (kb, _) = buildKeyboard(EditorInfo(), subtype, element)
+            fun accent(typed: Char) = PhysicalKeyAccents.findAccent(kb.sortedKeys, typed.code, Locale.GERMAN)?.let { String(Character.toChars(it)) }
+            assertEquals("ä", accent('a'))
+            assertEquals("ö", accent('o'))
+            assertEquals("ü", accent('u'))
+            assertEquals("ß", accent('s'))
+            assertEquals("Ä", accent('A'))
+            assertEquals("ẞ", accent('S'))
+            assertEquals(null, accent('q')) // only a number and symbols, so the key keeps repeating
+            assertEquals(null, accent('1'))
+        }
     }
 
     @Test fun `dvorak has 4 rows`() {

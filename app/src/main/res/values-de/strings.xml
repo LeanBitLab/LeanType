@@ -1800,4 +1800,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="clear_learned_words_details">Dadurch werden alle Wörter und Vorschläge für das nächste Wort gelöscht, die aus deiner Eingabe in allen Sprachen gelernt wurden. Dein persönliches Wörterbuch und gesperrte Wörter bleiben erhalten. Dies kann nicht rückgängig gemacht werden.</string>
     <string name="auto_add_learned_words">Gelernte Wörter automatisch hinzufügen</string>
     <string name="auto_add_learned_words_summary">Wörter, die die Tastatur beim Tippen lernt, im persönlichen Wörterbuch des Geräts speichern</string>
+    <string name="prefs_physical_key_long_press_accent">Physische Tasten für Akzente gedrückt halten</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Wenn Sie eine Buchstabentaste gedrückt halten, wird der erste akzentuierte oder Sonderbuchstabe aus deren Popup-Tasten eingegeben</string>
 </resources>

@@ -1787,4 +1787,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="clear_learned_words_details">Esto elimina todas las palabras y sugerencias de próxima palabra aprendidas de su escritura, en todos los idiomas. Su diccionario personal y las palabras bloqueadas se conservan. Esta acción no se puede deshacer.</string>
     <string name="auto_add_learned_words">Añadir automáticamente las palabras aprendidas</string>
     <string name="auto_add_learned_words_summary">Guardar en el diccionario personal del dispositivo las palabras que el teclado aprende de lo que escribes</string>
+    <string name="prefs_physical_key_long_press_accent">Mantener pulsadas las teclas físicas para acentos</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Mantener pulsada una tecla de letra escribe la primera letra acentuada o especial de sus teclas emergentes</string>
 </resources>

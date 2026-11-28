@@ -1773,4 +1773,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="clear_learned_words_details">Tímto se smažou všechna slova a návrhy následujících slov, které se naučily z vašeho psaní, ve všech jazycích. Vaše osobní slovník a blokovaná slova zůstanou zachována. Tuto akci nelze vrátit zpět.</string>
     <string name="auto_add_learned_words">Automaticky přidávat naučená slova</string>
     <string name="auto_add_learned_words_summary">Ukládat slova, která klávesnice zjistí z vašeho psaní, do osobního slovníku zařízení</string>
+    <string name="prefs_physical_key_long_press_accent">Dlouhým stiskem fyzických kláves zadávat diakritiku</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Dlouhý stisk písmenové klávesy zadá první písmeno s diakritikou nebo speciální písmeno z jejích vyskakovacích kláves</string>
 </resources>

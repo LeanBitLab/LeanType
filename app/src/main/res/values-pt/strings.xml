@@ -1778,4 +1778,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="clear_learned_words_details">Isto elimina todas as palavras e sugestões de próxima palavra aprendidas com a sua escrita, em todos os idiomas. O seu dicionário pessoal e as palavras bloqueadas são mantidos. Esta ação não pode ser desfeita.</string>
     <string name="auto_add_learned_words">Adicionar automaticamente palavras aprendidas</string>
     <string name="auto_add_learned_words_summary">Guardar no dicionário pessoal do dispositivo as palavras que o teclado aprende com a sua escrita</string>
+    <string name="prefs_physical_key_long_press_accent">Manter premidas as teclas físicas para acentos</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Manter premida uma tecla de letra escreve a primeira letra acentuada ou especial entre as suas teclas de pop-up</string>
 </resources>
