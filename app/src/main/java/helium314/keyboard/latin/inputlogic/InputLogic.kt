@@ -361,7 +361,8 @@ class InputLogic(
             settingsValues,
             event, SystemClock.uptimeMillis(), mSpaceState, keyboardShiftState
         )
-        RevertedCorrectionHistory.remove(mWordComposer.getTypedWord())
+        // picking a rejected correction by hand allows it again; picking the typed word must not
+        RevertedCorrectionHistory.remove(mWordComposer.getTypedWord(), rawSuggestion)
         if (DebugFlags.DEBUG_ENABLED) {
             Log.i("SuggestTrace", "pickSuggestion: composingBefore=" + mWordComposer.isComposingWord())
         }
