@@ -76,6 +76,8 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
     private val mCommittedTextBeforeComposingText = StringBuilder()
     private val mComposingText = StringBuilder()
     private var mPendingInFlightDeletions = 0
+    // cursor start the editor last reported, to see how far it lags behind what we sent
+    private var mReportedSelStart = INVALID_CURSOR_POSITION
 
     private val mTempObjectForCommitText = SpannableStringBuilder()
 
@@ -117,7 +119,22 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         mNestLevel = 0
         mIsActive = true
         mPendingInFlightDeletions = 0
+        mReportedSelStart = INVALID_CURSOR_POSITION
         mIC = refreshInputConnection()
+    }
+
+    /** Called for every selection update from the editor, before it is compared with the expected one. */
+    fun onEditorReportedSelection(selStart: Int) {
+        mReportedSelStart = selStart
+    }
+
+    /**
+     * How many chars we deleted that the editor has not applied yet: it handles our edits later, so
+     * held delete can run ahead of it. 0 if unknown, e.g. before the editor reported a cursor.
+     */
+    fun unappliedDeletionCount(): Int {
+        if (mReportedSelStart < 0 || mExpectedSelStart < 0 || mExpectedSelStart != mExpectedSelEnd) return 0
+        return (mReportedSelStart - mExpectedSelStart).coerceAtLeast(0)
     }
 
     fun onFinishInput() {
@@ -138,6 +155,7 @@ class RichInputConnection(private val mParent: InputMethodService) : PrivateComm
         lastCursorAnchorInfo = null
         mNestLevel = 0
         mPendingInFlightDeletions = 0
+        mReportedSelStart = INVALID_CURSOR_POSITION
     }
 
     private fun checkConsistencyForDebug() {

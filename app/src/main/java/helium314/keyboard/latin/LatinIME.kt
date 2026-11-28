@@ -943,7 +943,8 @@ class LatinIME : InputMethodService(),
         if (!isImeSuppressedByHardwareKeyboard() || currentSettingsValues.mHasHardwareKeyboard) {
             inputLogic.startInput(richImm.combiningRulesExtraValueOfCurrentSubtype, currentSettingsValues)
             resetDictionaryFacilitatorIfNecessary()
-            
+            inputLogic.connection.onEditorReportedSelection(editorInfo.initialSelStart)
+
             if (!inputLogic.connection.resetCachesUponCursorMoveAndReturnSuccess(editorInfo.initialSelStart, editorInfo.initialSelEnd, false)) {
                 handler.postResetCaches(isDifferentTextField, 5)
                 needToCallLoadKeyboardLater = true
@@ -1191,6 +1192,7 @@ class LatinIME : InputMethodService(),
         composingSpanStart: Int, composingSpanEnd: Int
     ) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, composingSpanStart, composingSpanEnd)
+        inputLogic.connection.onEditorReportedSelection(newSelStart)
         voiceInputManager?.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, composingSpanStart, composingSpanEnd)
         val cjkManager = CjkInputManager.getInstance(this)
         if (cjkManager.isCjkSubtypeActive(richImm.currentSubtype)) {

@@ -1616,7 +1616,7 @@ class InputLogic(
     private fun getBackspaceExtraDeletes(deleteCount: Int): Int {
         if (deleteCount <= Constants.DELETE_ACCELERATE_AT) return 0
         val count = deleteCount - Constants.DELETE_ACCELERATE_AT
-        return when {
+        val extraDeletes = when {
             count < 10 -> 1
             count < 20 -> 2
             count < 30 -> 3
@@ -1626,6 +1626,10 @@ class InputLogic(
             count < 70 -> 13
             else -> (13 + (count - 70) / 2).coerceAtMost(20)
         }
+        // A slow editor queues deletes it has not applied yet, and they go on deleting after the key is
+        // released (#972). Send extra deletes only while it keeps up, so the queue stays at one repeat's worth.
+        val unapplied = mConnection.unappliedDeletionCount()
+        return extraDeletes.coerceAtMost((MAX_UNAPPLIED_BACKSPACE_DELETES - unapplied).coerceAtLeast(0))
     }
 
     /**
@@ -3541,6 +3545,8 @@ class InputLogic(
         /** longer text typed in place of a deleted swipe is not a single word correcting it */
         private const val MAX_RETYPED_SWIPE_LENGTH = 48
         private const val KEY_REPEAT_INTERVAL_MS = 50
+        // most chars held delete may have sent that the editor has not applied, about one fast repeat's worth
+        private const val MAX_UNAPPLIED_BACKSPACE_DELETES = 21
         /** interval before the second word, it gets shorter with each word until the minimum */
         private const val BACKSPACE_WORD_START_INTERVAL = 350f
         private const val BACKSPACE_WORD_ACCELERATION = 0.8f
