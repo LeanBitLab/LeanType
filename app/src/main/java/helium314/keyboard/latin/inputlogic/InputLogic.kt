@@ -17,6 +17,7 @@ import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.inputmethod.CorrectionInfo
 import android.view.inputmethod.EditorInfo
+import androidx.annotation.VisibleForTesting
 import helium314.keyboard.compat.AppQuirksManager
 import helium314.keyboard.compat.isDeviceLocked
 import helium314.keyboard.event.Event
@@ -3335,9 +3336,6 @@ class InputLogic(
         if (hasSelection) {
             val selectedText = mConnection.getSelectedText(0)
             textToProcess = selectedText?.toString() ?: ""
-            if (shouldAppend) {
-                mConnection.setSelection(mConnection.expectedSelectionEnd, mConnection.expectedSelectionEnd)
-            }
         } else {
             val maxChars = 60000
             var textBefore: CharSequence? = null
@@ -3362,18 +3360,9 @@ class InputLogic(
             val before = textBefore?.toString() ?: ""
             val after = textAfter?.toString() ?: ""
             textToProcess = before + after
-
-            if (!shouldAppend) {
-                mConnection.selectAll()
-            } else {
-                if (textToProcess.isNotEmpty()) {
-                    if (after.isNotEmpty() && mConnection.expectedSelectionEnd >= 0) {
-                        val newPos = mConnection.expectedSelectionEnd + after.length
-                        mConnection.setSelection(newPos, newPos)
-                    }
-                }
-            }
         }
+        // the selection and the cursor are changed only when the result is inserted: some apps (e.g.
+        // Nine Mail) hide the keyboard when the selection changes, which would cancel the request
 
         val targetEditorInfo = getCurrentInputEditorInfo()
         val targetPackage = targetEditorInfo?.packageName
@@ -3393,20 +3382,62 @@ class InputLogic(
                     Log.w(TAG, "Target editor changed during custom AI operation, ignoring result")
                     return@customAsync
                 }
-                if (shouldAppend) {
-                    val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
-                    mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
-                } else if (!hasSelection) {
-                    mConnection.replaceEntireText(resultText)
-                } else {
-                    mLatinIME.onTextInput(resultText)
-                }
+                insertCustomAiResult(resultText, shouldAppend, hasSelection)
             },
             onError = { errorMessage ->
                 Log.e(TAG, "Custom AI Error: $errorMessage")
                 KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(R.string.ai_error_format, errorMessage), true)
             }
         )
+    }
+
+    /**
+     * Inserts the result of a custom AI key. The user may have typed while the request ran, so a word
+     * that is still composing is finished first: otherwise replacing all text could replace only that
+     * word and keep the text before it.
+     */
+    @VisibleForTesting
+    fun insertCustomAiResult(resultText: String, shouldAppend: Boolean, hasSelection: Boolean) {
+        if (mWordComposer.isComposingWord()) {
+            mConnection.finishComposingText()
+            StatsUtils.onWordCommitUserTyped(mWordComposer.getTypedWord(), mWordComposer.isBatchMode())
+        }
+        resetComposingState(true)
+        // suggestions for the old text don't fit anymore, and no space is to be added before the result
+        mSuggestedWords = SuggestedWords.getEmptyInstance()
+        mSuggestionStripViewAccessor.setNeutralSuggestionStrip()
+        mSpaceState = SpaceState.NONE
+        if (shouldAppend) {
+            moveCursorToEndForAppend(hasSelection)
+            val textBefore = mConnection.getTextBeforeCursor(2, 0) ?: ""
+            mLatinIME.onTextInput(CustomAIKeyText.separatorBefore(textBefore) + resultText.trim())
+        } else if (!hasSelection) {
+            // selects all itself; the app's selection update is the expected one, so nothing else updates the state
+            mConnection.replaceEntireText(resultText)
+            val settingsValues = Settings.getValues()
+            KeyboardSwitcher.getInstance().requestUpdatingShiftState(
+                getCurrentAutoCapsState(settingsValues), getCurrentRecapitalizeState()
+            )
+        } else {
+            mLatinIME.onTextInput(resultText)
+        }
+    }
+
+    /** Before appending a result: after the selection the request was made for, or at the end of the text */
+    private fun moveCursorToEndForAppend(hadSelection: Boolean) {
+        val end = mConnection.expectedSelectionEnd
+        if (end < 0) return
+        if (hadSelection) {
+            if (mConnection.expectedSelectionStart != end) mConnection.setSelection(end, end)
+            return
+        }
+        val after = try {
+            mConnection.getTextAfterCursor(60000, 0)?.length ?: 0
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to get text after cursor: $e")
+            0
+        }
+        if (after > 0) mConnection.setSelection(end + after, end + after)
     }
 
     private fun tryJumpToNextPlaceholder(): Boolean {
