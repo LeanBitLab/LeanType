@@ -16,6 +16,7 @@ object UnicodeStyleEngine {
     private class StyleSet(val styles: List<StyleDefinition>) {
         val byId: Map<String, StyleDefinition> = styles.associateBy { it.id }
         val reverse: Map<Int, Int> = buildReverseMap(styles)
+        val combiningMarks: Set<Int> = styles.mapNotNull { style -> style.combiningMark.takeIf { it != 0 } }.toSet()
     }
 
     private val builtinStyles: List<StyleDefinition> by lazy { initializeStyles() }
@@ -57,7 +58,7 @@ object UnicodeStyleEngine {
     }
 
     /**
-     * Checks whether a codepoint is a styled Unicode character or combining mark.
+     * Checks whether a codepoint is a styled Unicode character or any combining mark, so it belongs to a word.
      */
     fun isStyledCharacter(codePoint: Int): Boolean {
         return currentSet().reverse.containsKey(codePoint) || isCombiningMark(codePoint)
@@ -118,7 +119,7 @@ object UnicodeStyleEngine {
         val len = styledText.length
         while (i < len) {
             val cp = styledText.codePointAt(i)
-            if (isCombiningMark(cp)) {
+            if (isStyleMark(cp)) {
                 i += Character.charCount(cp)
                 continue
             }
@@ -128,6 +129,9 @@ object UnicodeStyleEngine {
         }
         return sb.toString()
     }
+
+    // only the marks a style adds: others are accents of the text itself, for example decomposed Vietnamese or Yoruba
+    private fun isStyleMark(cp: Int): Boolean = cp in currentSet().combiningMarks
 
     private fun isCombiningMark(cp: Int): Boolean {
         return cp in 0x0300..0x036F || cp in 0x1AB0..0x1AFF || cp in 0x1DC0..0x1DFF || cp in 0x20D0..0x20FF
@@ -752,7 +756,8 @@ object UnicodeStyleEngine {
         testChars.append("+-=() .,?!'\"<>_")
 
         for (style in styles) {
-            if (style.combiningMark != 0) continue
+            // upside-down can't be typed live and uses real letters (ɔ, ǝ, Ɛ ...), which must stay as they are
+            if (style.combiningMark != 0 || style.isReversed) continue
             var i = 0
             val len = testChars.length
             while (i < len) {

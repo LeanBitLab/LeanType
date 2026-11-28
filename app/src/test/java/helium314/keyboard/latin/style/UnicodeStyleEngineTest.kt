@@ -118,6 +118,27 @@ class UnicodeStyleEngineTest {
     }
 
     @Test
+    fun testToPlainTextKeepsRealLetters() {
+        // letters of real alphabets that the upside-down style also uses
+        val word = "ɐɔǝɟɥɯɹʇʌʍʎƆƎƐƖɾʞ"
+        assertEquals(word, UnicodeStyleEngine.toPlainText(word))
+        assertFalse(UnicodeStyleEngine.isStyledCharacter('ɔ'.code))
+    }
+
+    @Test
+    fun testToPlainTextKeepsAccentsButRemovesStyleMarks() {
+        // acute, dot below, hook above and tilde as separate combining characters
+        val accented = "e\u0301 o\u0323 a\u0309 n\u0303"
+        assertEquals(accented, UnicodeStyleEngine.toPlainText(accented))
+        assertTrue(UnicodeStyleEngine.isStyledCharacter(0x0301)) // still part of a word, for typing and backspace
+        for (id in UnicodeStyleEngine.getAllStyles().filter { it.combiningMark != 0 }.map { it.id }) {
+            val styled = UnicodeStyleEngine.transformText(accented, id)
+            assertNotEquals(accented, styled)
+            assertEquals(accented, UnicodeStyleEngine.toPlainText(styled))
+        }
+    }
+
+    @Test
     fun testInvertedText() {
         val input = "hello"
         val inverted = UnicodeStyleEngine.transformText(input, "transform_inverted")
