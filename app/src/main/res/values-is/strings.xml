@@ -193,7 +193,6 @@
     <string name="language_switch_key_behavior">Hegðun lykils til að breyta tungumáli</string>
     <string name="settings_no_limit">Engin takmörk</string>
     <string name="theme_name_darker" tools:keep="@string/theme_name_darker">Dekkra</string>
-    <string name="add_to_personal_dictionary">Bæta orðum við einkaorðasafn</string>
     <string name="enable_clipboard_history">Virkja klippispjaldsferil</string>
     <string name="backup_restore_title">Öryggisafrit og endurheimta</string>
     <string name="backup_error">Villa í öryggisafriti: %s</string>
@@ -289,7 +288,6 @@
     <string name="customize_currencies_detail">Stilltu aðal- og allt að 6 viðbótar gjaldmiðlatákn, aðskilin með bilum</string>
     <string name="disable_personalized_dicts_message">Aðvörun: Sé þessi stilling gerð óvirk verða öll lærð gögn hreinsuð</string>
     <string name="dictionary_file_error">Villa: Valin skrá er ekki gild orðasafnsskrá</string>
-    <string name="add_to_personal_dictionary_summary">Nota einkaorðasafn til að geyma lærð orð</string>
     <string name="center_suggestion_text_to_enter">Alltaf nota miðjutillögu</string>
     <string name="hidden_features_summary">Birta eiginleika sem annars væri kannski ekki tekið eftir</string>
     <string name="show_popup_keys_main">Bæta við mjög algengum tilbrigðum (sjálfgefið)</string>

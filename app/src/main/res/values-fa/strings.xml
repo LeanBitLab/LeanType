@@ -157,8 +157,6 @@
     <string name="disable_personalized_dicts_message">هشدار: غیرفعال کردن این تنظیم، داده‌های یادگرفته‌شده را پاک می‌کند</string>
     <string name="clear_learned_words_title">پاک کردن کلمات یادگرفته‌شده</string>
     <string name="clear_learned_words_success">کلمات یادگرفته‌شده پاک شدند</string>
-    <string name="add_to_personal_dictionary">افزودن کلمات به واژه‌نامه شخصی</string>
-    <string name="add_to_personal_dictionary_summary">استفاده از واژه‌نامه شخصی دستگاه برای ذخیره کلمات یادگرفته‌شده</string>
     <string name="add_to_personal_dict_threshold">آستانه یادگیری</string>
     <string name="add_to_personal_dict_threshold_times_1">افزودن پس از تایپ ۱ بار</string>
     <string name="add_to_personal_dict_threshold_times_many">افزودن پس از تایپ %d بار</string>
@@ -1713,4 +1711,6 @@
     <string name="learned_words_summary">مشاهده و حذف کلمات منفردی که از تایپ یاد گرفته شده‌اند</string>
     <string name="learned_words_empty">هنوز کلمه‌ای برای زبان‌های فعلی صفحه‌کلید یاد گرفته نشده است</string>
     <string name="clear_learned_words_details">با این کار همه واژه‌ها و پیشنهادهای واژه‌ی بعدی که از تایپ شما یاد گرفته شده‌اند، در همه زبان‌ها حذف می‌شوند. واژه‌نامه شخصی و واژه‌های مسدودشده شما حفظ می‌شوند. این عمل برگشت‌پذیر نیست.</string>
+    <string name="auto_add_learned_words">افزودن خودکار کلمات یادگرفته‌شده</string>
+    <string name="auto_add_learned_words_summary">کلماتی که صفحه‌کلید از تایپ شما یاد می‌گیرد را در واژه‌نامه شخصی دستگاه ذخیره کن</string>
 </resources>

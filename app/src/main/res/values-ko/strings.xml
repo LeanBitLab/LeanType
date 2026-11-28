@@ -159,8 +159,6 @@
     <string name="disable_personalized_dicts_message">경고: 이 설정을 끄면 학습된 데이터가 삭제됩니다.</string>
     <string name="clear_learned_words_title">학습된 단어 삭제</string>
     <string name="clear_learned_words_success">학습된 단어가 삭제되었습니다.</string>
-    <string name="add_to_personal_dictionary">개인 사전에 단어 추가</string>
-    <string name="add_to_personal_dictionary_summary">기기의 개인 사전에 학습된 단어를 저장합니다.</string>
     <string name="add_to_personal_dict_threshold">학습 기준</string>
     <string name="add_to_personal_dict_threshold_times_1">1번 입력 후 추가</string>
     <string name="add_to_personal_dict_threshold_times_many">%d번 입력 후 추가</string>
@@ -1709,4 +1707,6 @@
     <string name="learned_words_summary">입력하며 학습된 개별 단어를 보고 삭제합니다</string>
     <string name="learned_words_empty">키보드의 현재 언어에 학습된 단어가 아직 없습니다</string>
     <string name="clear_learned_words_details">이 작업은 모든 언어에서 입력한 내용을 바탕으로 학습된 모든 단어와 다음 단어 추천을 삭제합니다. 개인 사전과 차단된 단어는 유지됩니다. 이 작업은 되돌릴 수 없습니다.</string>
+    <string name="auto_add_learned_words">학습한 단어 자동 추가</string>
+    <string name="auto_add_learned_words_summary">키보드가 입력하면서 학습한 단어를 기기의 개인 사전에 저장합니다</string>
 </resources>

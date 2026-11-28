@@ -128,8 +128,6 @@
     <string name="label_pause_key">"Jeda"</string>
     <string name="label_wait_key">"Tunggu"</string>
     <string name="language_switch_key_switch_both">Ganti keduanya</string>
-    <string name="add_to_personal_dictionary">Tambahkan kata ke kamus pribadi</string>
-    <string name="add_to_personal_dictionary_summary">Gunakan kamus pribadi perangkat untuk menyimpan kata yang telah dipelajari</string>
     <string name="more_autocorrect">Koreksi otomatis selengkapnya</string>
     <string name="more_autocorrect_summary">Lakukan koreksi otomatis bahkan meski tidak diminta secara langsung oleh kolom input</string>
     <string name="backup_restore_message">Simpan atau muat dari berkas. Peringatan: mengembalikan ke awal akan menimpa data yang lama</string>
@@ -1771,4 +1769,6 @@ Memungkinkan inferensi GGUF / llama.cpp di perangkat untuk koreksi teks dan penu
     <string name="learned_words_summary">Lihat dan hapus kata tunggal yang dipelajari dari pengetikan</string>
     <string name="learned_words_empty">Belum ada kata yang dipelajari untuk bahasa keyboard saat ini</string>
     <string name="clear_learned_words_details">Ini menghapus setiap kata dan saran kata berikutnya yang dipelajari dari pengetikan Anda, dalam semua bahasa. Kamus pribadi dan kata yang diblokir tetap disimpan. Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="auto_add_learned_words">Otomatis tambahkan kata yang dipelajari</string>
+    <string name="auto_add_learned_words_summary">Simpan kata yang dipelajari keyboard dari pengetikan Anda ke kamus pribadi perangkat</string>
 </resources>

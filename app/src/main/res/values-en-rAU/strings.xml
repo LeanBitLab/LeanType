@@ -114,7 +114,6 @@
     <string name="language_switch_key_behavior">Language switch key behavior</string>
     <string name="abbreviation_unit_minutes">%s min</string>
     <string name="settings_no_limit">No limit</string>
-    <string name="add_to_personal_dictionary">Add learnt words to personal dictionary</string>
     <string name="use_apps_dict">Look up app names</string>
     <string name="use_apps_dict_summary">Use names of installed apps for suggestions and corrections</string>
 </resources>

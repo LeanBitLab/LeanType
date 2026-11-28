@@ -173,8 +173,8 @@ fun DictionaryScreen(
                         PreferenceCategory(stringResource(R.string.word_learning_category))
 
                         SwitchPreference(
-                            name = stringResource(R.string.add_to_personal_dictionary),
-                            description = stringResource(R.string.add_to_personal_dictionary_summary),
+                            name = stringResource(R.string.auto_add_learned_words),
+                            description = stringResource(R.string.auto_add_learned_words_summary),
                             key = Settings.PREF_ADD_TO_PERSONAL_DICTIONARY,
                             default = Defaults.PREF_ADD_TO_PERSONAL_DICTIONARY,
                             icon = R.drawable.ic_settings_correction,

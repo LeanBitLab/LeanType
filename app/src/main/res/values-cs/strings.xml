@@ -128,8 +128,6 @@
     <string name="label_wait_key">"Čekat"</string>
     <string name="split_spacer_scale">Separační vzdálenost</string>
     <string name="switch_language">Přepnout jazyk</string>
-    <string name="add_to_personal_dictionary">Přidat slova do osobního slovníku</string>
-    <string name="add_to_personal_dictionary_summary">Použít osobní slovník zařízení k ukládání naučených slovíček</string>
     <string name="more_autocorrect">Další automatické opravy</string>
     <string name="more_autocorrect_summary">Automatické opravy, i když to není výslovně požadováno ve vstupním poli</string>
     <string name="day_or_night_day">Denní</string>
@@ -1773,4 +1771,6 @@ Umožňuje lokální inferenci GGUF / llama.cpp na zařízení pro korektury a p
     <string name="learned_words_summary">Zobrazit a smazat jednotlivá slova naučená psaním</string>
     <string name="learned_words_empty">Pro aktuální jazyky klávesnice zatím nejsou žádná naučená slova</string>
     <string name="clear_learned_words_details">Tímto se smažou všechna slova a návrhy následujících slov, které se naučily z vašeho psaní, ve všech jazycích. Vaše osobní slovník a blokovaná slova zůstanou zachována. Tuto akci nelze vrátit zpět.</string>
+    <string name="auto_add_learned_words">Automaticky přidávat naučená slova</string>
+    <string name="auto_add_learned_words_summary">Ukládat slova, která klávesnice zjistí z vašeho psaní, do osobního slovníku zařízení</string>
 </resources>

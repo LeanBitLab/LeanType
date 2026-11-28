@@ -155,8 +155,6 @@
     <string name="backup_restore_title">Säkerhetskopiering och återställning</string>
     <string name="dialog_close">Stäng</string>
     <string name="language_switch_key_switch_both">Byt båda</string>
-    <string name="add_to_personal_dictionary">Lägg till ord i personlig ordbok</string>
-    <string name="add_to_personal_dictionary_summary">Använd enhetens personliga ordbok för lagring av inlärda ord</string>
     <string name="prefs_always_show_suggestions">Visa alltid förslag</string>
     <string name="more_autocorrect">Mer autokorrigering</string>
     <string name="backup_restore_message">Spara till eller ladda från fil. Varning: Återställning kommer att skriva över befintliga data</string>

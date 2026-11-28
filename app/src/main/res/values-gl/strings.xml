@@ -153,8 +153,6 @@
     <string name="show_emoji_key">Tecla Emoji</string>
     <string name="settings_no_limit">Sen límite</string>
     <string name="disable_personalized_dicts_message">Aviso: ao desactivar este axuste vas eliminar os datos aprendidos</string>
-    <string name="add_to_personal_dictionary">Engadir palabras ao dicionario persoal</string>
-    <string name="add_to_personal_dictionary_summary">Usar un dicionario persoal no dispositivo para gardar palabras aprendidas</string>
     <string name="prefs_always_show_suggestions">Mostrar sempre suxestións</string>
     <string name="prefs_always_show_suggestions_summary">Ignorar as solicitudes de outras apps para desactivar as suxestións (pode dar problemas)</string>
     <string name="more_autocorrect">Auto-corrección estendida</string>

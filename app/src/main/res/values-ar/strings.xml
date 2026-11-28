@@ -194,11 +194,9 @@
     <string name="theme_name_dynamic" tools:keep="@string/theme_name_dynamic">ألوان ديناميكية</string>
     <string name="theme_name_pink" tools:keep="@string/theme_name_pink">وردي</string>
     <string name="disable_personalized_dicts_message">تحذير: سيؤدي تعطيل هذا الإعداد إلى محُ البيانات التي تم تعلمها</string>
-    <string name="add_to_personal_dictionary">أضف كلمات إلى القاموس الشخصي</string>
     <string name="select_color_key_hint">نص تلميح رئيسي</string>
     <string name="var_toolbar_direction_summary">اعكس الاتجاه عند تحديد نوع فرعي من لوحة المفاتيح من اليمين إلى اليسار</string>
     <string name="var_toolbar_direction">اتجاه شريط الأدوات المتغير</string>
-    <string name="add_to_personal_dictionary_summary">استخدم القاموس الشخصي للجهاز لتخزين الكلمات التي تم تعلمها</string>
     <string name="more_autocorrect_summary">التصحيح التلقائي حتى عندما لا يطلبه حقل الإدخال بشكل صريح</string>
     <string name="backup_restore_message">حفظ أو تحميل من الملف. تحذير: ستؤدي الاستعادة إلى استبدال البيانات الموجودة</string>
     <string name="theme_name_indigo" tools:keep="@string/theme_name_indigo">النيلي</string>
@@ -1779,4 +1777,6 @@
     <string name="learned_words_summary">عرض الكلمات الفردية المتعلّمة من الكتابة وحذفها</string>
     <string name="learned_words_empty">لا توجد كلمات متعلّمة للغات الحالية للوحة المفاتيح حتى الآن</string>
     <string name="clear_learned_words_details">تُحذف هذه الإجراءات كل كلمة واقتراح للكلمة التالية تعلّمهما لوحة المفاتيح من كتابتك، بجميع اللغات. ستبقى قاموسك الشخصي والكلمات المحظورة محفوظة. لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="auto_add_learned_words">إضافة الكلمات المكتشفة تلقائيًا</string>
+    <string name="auto_add_learned_words_summary">حفظ الكلمات التي يتعلمها لوحة المفاتيح من كتابتك في القاموس الشخصي للجهاز</string>
 </resources>

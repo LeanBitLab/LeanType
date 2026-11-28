@@ -134,8 +134,6 @@
     <string name="prefs_narrow_key_gaps">Smalle toetsruimte</string>
     <string name="split_spacer_scale">Scheidingsruimte</string>
     <string name="language_switch_key_switch_both">Beide</string>
-    <string name="add_to_personal_dictionary">Woorden toevoegen aan persoonlijk woordenboek</string>
-    <string name="add_to_personal_dictionary_summary">Gebruik het persoonlijke woordenboek van het apparaat om geleerde woorden op te slaan</string>
     <string name="disable_personalized_dicts_message">Waarschuwing: Als u deze instelling uitschakelt, worden de geleerde gegevens gewist</string>
     <string name="prefs_always_show_suggestions">Altijd suggesties tonen</string>
     <string name="more_autocorrect_summary">Automatisch corrigeren, zelfs als dit niet expliciet wordt gevraagd door het invoerveld</string>
@@ -1821,4 +1819,6 @@ Maakt GGUF / llama.cpp-inferentie op het apparaat mogelijk voor proeflezen en he
     <string name="learned_words_summary">Bekijk en verwijder afzonderlijke woorden die zijn geleerd tijdens het typen</string>
     <string name="learned_words_empty">Nog geen geleerde woorden voor de huidige talen van het toetsenbord</string>
     <string name="clear_learned_words_details">Hiermee worden alle woorden en volgende-woordsuggesties verwijderd die uit je typgedrag zijn geleerd, in alle talen. Je persoonlijke woordenlijst en geblokkeerde woorden blijven behouden. Dit kan niet ongedaan worden gemaakt.</string>
+    <string name="auto_add_learned_words">Geleerde woorden automatisch toevoegen</string>
+    <string name="auto_add_learned_words_summary">Woorden die het toetsenbord leert uit je typen opslaan in het persoonlijke woordenboek van het apparaat</string>
 </resources>

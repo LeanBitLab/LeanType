@@ -142,7 +142,6 @@
     <string name="theme_colors">Farben</string>
     <string name="select_color_functional_key_background">Funktionstastenhintergrund</string>
     <string name="subtype_generic_sebeolsik_390">%s (Sebeolsik 390)</string>
-    <string name="add_to_personal_dictionary_summary">Persönliches Wörterbuch des Gerätes verwenden, um gelernte Wörter zu speichern</string>
     <string name="user_dict_word_already_present">Dieses Wort ist bereits im Benutzer-Wörterbuch %s vorhanden. Bitte gib ein anderes Wort ein.</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Abgerundet</string>
     <string name="button_backup">Sicherung</string>
@@ -155,7 +154,6 @@
     <string name="dictionary_file_wrong_script">Fehler: Skript ist nicht kompatibel mit dieser Tastatur</string>
     <string name="hidden_features_title">Beschreibung der versteckten Features</string>
     <string name="popup_keys_language_priority" tools:keep="@string/popup_keys_language_priority">Sprache (Priorität)</string>
-    <string name="add_to_personal_dictionary">Wörter zum persönlichen Wörterbuch hinzufügen</string>
     <string name="customize_background_image">Hintergrundbild festlegen</string>
     <string name="edit_layout">Tippen, um das Rohlayout zu bearbeiten</string>
     <string name="theme_name_pink" tools:keep="@string/theme_name_pink">Pink</string>
@@ -1800,4 +1798,6 @@ Ermöglicht lokale GGUF / llama.cpp-Inferenz für Korrekturlesen und Umschreiben
     <string name="learned_words_summary">Beim Tippen gelernte einzelne Wörter ansehen und löschen</string>
     <string name="learned_words_empty">Für die aktuellen Sprachen der Tastatur wurden noch keine Wörter gelernt</string>
     <string name="clear_learned_words_details">Dadurch werden alle Wörter und Vorschläge für das nächste Wort gelöscht, die aus deiner Eingabe in allen Sprachen gelernt wurden. Dein persönliches Wörterbuch und gesperrte Wörter bleiben erhalten. Dies kann nicht rückgängig gemacht werden.</string>
+    <string name="auto_add_learned_words">Gelernte Wörter automatisch hinzufügen</string>
+    <string name="auto_add_learned_words_summary">Wörter, die die Tastatur beim Tippen lernt, im persönlichen Wörterbuch des Geräts speichern</string>
 </resources>

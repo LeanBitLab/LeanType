@@ -127,8 +127,6 @@
     <string name="label_search_key">"Buscar"</string>
     <string name="label_pause_key">"Pausar"</string>
     <string name="label_wait_key">"Espera"</string>
-    <string name="add_to_personal_dictionary">Añadir palabras al diccionario personal</string>
-    <string name="add_to_personal_dictionary_summary">Utiliza el diccionario personal del dispositivo para guardar las palabras aprendidas</string>
     <string name="prefs_always_show_suggestions">Mostrar siempre sugerencias</string>
     <string name="more_autocorrect_summary">Activa la autocorrección incluso en los campos de texto que no la solicitan explícitamente</string>
     <string name="backup_restore_title">Copia de seguridad y restauración</string>
@@ -1770,4 +1768,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="learned_words_summary">Ver y eliminar palabras individuales aprendidas al escribir</string>
     <string name="learned_words_empty">Aún no hay palabras aprendidas para los idiomas actuales del teclado</string>
     <string name="clear_learned_words_details">Esto elimina todas las palabras y sugerencias de la siguiente palabra aprendidas de tu escritura, en todos los idiomas. Tu diccionario personal y las palabras bloqueadas se conservan. Esta acción no se puede deshacer.</string>
+    <string name="auto_add_learned_words">Añadir automáticamente las palabras aprendidas</string>
+    <string name="auto_add_learned_words_summary">Guardar en el diccionario personal del dispositivo las palabras que el teclado aprende de tu escritura</string>
 </resources>

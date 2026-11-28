@@ -142,7 +142,6 @@
     <string name="theme_colors">Kolory</string>
     <string name="select_color_functional_key_background">Tło klawiszy funkcyjnych</string>
     <string name="subtype_generic_sebeolsik_390">%s (Sebeolsik 390)</string>
-    <string name="add_to_personal_dictionary_summary">Używaj słownika osobistego do przechowywania nauczonych słów</string>
     <string name="user_dict_word_already_present">To słowo znajduje się już w słowniku: %s. Wpisz inne.</string>
     <string name="style_name_Rounded" tools:keep="@string/style_name_Rounded">Zaokrąglony</string>
     <string name="button_backup">Kopia</string>
@@ -155,7 +154,6 @@
     <string name="dictionary_file_wrong_script">Błąd: skrypt nie jest kompatybilny z tą klawiaturą</string>
     <string name="hidden_features_title">Opis ukrytych funkcji</string>
     <string name="popup_keys_language_priority" tools:keep="@string/popup_keys_language_priority">Język (dodatkowy)</string>
-    <string name="add_to_personal_dictionary">Dodawaj słowa do słownika osobistego</string>
     <string name="customize_background_image">Ustaw obraz jako tło klawiatury</string>
     <string name="edit_layout">Dotknij, aby edytować układ</string>
     <string name="theme_name_pink" tools:keep="@string/theme_name_pink">Różowe</string>
@@ -1818,4 +1816,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="learned_words_summary">Przeglądaj i usuwaj pojedyncze słowa nauczone podczas pisania</string>
     <string name="learned_words_empty">Brak nauczonych słów dla bieżących języków klawiatury</string>
     <string name="clear_learned_words_details">Spowoduje to usunięcie wszystkich słów i sugestii następnego słowa nauczonych na podstawie pisania we wszystkich językach. Twój słownik osobisty i zablokowane słowa zostaną zachowane. Tej operacji nie można cofnąć.</string>
+    <string name="auto_add_learned_words">Automatycznie dodawaj nauczone słowa</string>
+    <string name="auto_add_learned_words_summary">Zapisuj słowa, których klawiatura uczy się z twojego pisania, w osobistym słowniku urządzenia</string>
 </resources>

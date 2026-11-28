@@ -105,9 +105,7 @@
     <string name="settings_category_additional_keys">Допълнителни бутони</string>
     <string name="show_emoji_key">Бутон за емотикони</string>
     <string name="settings_no_limit">Без ограничение</string>
-    <string name="add_to_personal_dictionary">Добавяне на думи към личния речник</string>
     <string name="prefs_always_show_suggestions">Винаги показвайте предложения</string>
-    <string name="add_to_personal_dictionary_summary">Използвайте личния речник на устройството, за да съхранявате научени думи</string>
     <string name="popup_keys_number" tools:keep="@string/popup_keys_number">Ред с числа</string>
     <string name="gesture_floating_preview_static">Плаващ преглед</string>
     <string name="gesture_floating_preview_static_summary">Вижте предложената дума, докато жестикулирате</string>
@@ -1808,4 +1806,6 @@
     <string name="learned_words_summary">Преглед и изтриване на отделни думи, научени при писане</string>
     <string name="learned_words_empty">Все още няма научени думи за текущите езици на клавиатурата</string>
     <string name="clear_learned_words_details">Това изтрива всяка дума и предложение за следваща дума, научени от въвеждането ви, на всички езици. Личният ви речник и блокираните думи се запазват. Това действие не може да бъде отменено.</string>
+    <string name="auto_add_learned_words">Автоматично добавяне на научените думи</string>
+    <string name="auto_add_learned_words_summary">Запазване на думите, които клавиатурата научава от въвеждането ви, в личния речник на устройството</string>
 </resources>

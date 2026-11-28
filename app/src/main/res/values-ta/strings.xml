@@ -121,8 +121,6 @@
     <string name="use_apps_dict">பயன்பாட்டின் பெயர்களைப் பார்க்கவும்</string>
     <string name="use_apps_dict_summary">பரிந்துரைகள் மற்றும் திருத்தங்களுக்கு நிறுவப்பட்ட பயன்பாடுகளின் பெயர்களைப் பயன்படுத்தவும்</string>
     <string name="disable_personalized_dicts_message">எச்சரிக்கை: இந்த அமைப்பை முடக்கினால், கற்ற தரவு அழிக்கப்படும்</string>
-    <string name="add_to_personal_dictionary">தனிப்பட்ட அகராதியில் வார்த்தைகளைச் சேர்க்கவும்</string>
-    <string name="add_to_personal_dictionary_summary">கற்ற சொற்களைச் சேமிக்க சாதனத்தின் தனிப்பட்ட அகராதியைப் பயன்படுத்தவும்</string>
     <string name="prefs_always_show_suggestions">எப்போதும் பரிந்துரைகளைக் காட்டு</string>
     <string name="prefs_always_show_suggestions_summary">பரிந்துரைகளை முடக்குவதற்கான பிற பயன்பாடுகளின் கோரிக்கையை புறக்கணிக்கவும் (சிக்கல்களை ஏற்படுத்தலாம்)</string>
     <string name="prefs_always_show_suggestions_except_web_text">இணையத் திருத்தப் புலங்களுக்கான பரிந்துரைகளை எப்போதும் காட்ட வேண்டாம்</string>
@@ -1668,4 +1666,6 @@
     <string name="learned_words_summary">தட்டச்சு செய்வதிலிருந்து கற்றறிந்த தனிச் சொற்களைப் பார்க்கவும் நீக்கவும்</string>
     <string name="learned_words_empty">விசைப்பலகையின் தற்போதைய மொழிகளுக்கு இதுவரை கற்றறிந்த சொற்கள் இல்லை</string>
     <string name="clear_learned_words_details">இதன் மூலம் நீங்கள் தட்டச்சு செய்ததிலிருந்து கற்றுக்கொள்ளப்பட்ட ஒவ்வொரு சொல்லும் அடுத்த சொல் பரிந்துரையும் அனைத்து மொழிகளிலும் நீக்கப்படும். உங்கள் தனிப்பட்ட அகராதி மற்றும் தடுக்கப்பட்ட சொற்கள் வைக்கப்படும். இதை மாற்ற முடியாது.</string>
+    <string name="auto_add_learned_words">தானாக கற்ற சொற்களைச் சேர்</string>
+    <string name="auto_add_learned_words_summary">விசைப்பலகை உங்கள் தட்டச்சிலிருந்து கற்கும் சொற்களை சாதனத்தின் தனிப்பட்ட அகராதியில் சேமிக்கவும்</string>
 </resources>

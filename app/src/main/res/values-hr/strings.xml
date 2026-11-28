@@ -143,8 +143,6 @@
     <string name="use_apps_dict">Potraži nazive aplikacija</string>
     <string name="use_apps_dict_summary">Koristi nazive instaliranih aplikacija za prijedloge i ispravke</string>
     <string name="disable_personalized_dicts_message">Upozorenje: onemogućavanjem ove postavke izbrisat će se naučeni podaci</string>
-    <string name="add_to_personal_dictionary">Dodaj riječi u osobni rječnik</string>
-    <string name="add_to_personal_dictionary_summary">Koristi osobni rječnik uređaja za pohranjivanje naučenih riječi</string>
     <string name="prefs_always_show_suggestions">Uvijek prikaži prijedloge</string>
     <string name="prefs_always_show_suggestions_summary">Ignorira zahtjeve drugih aplikacija da se onemoguće prijedlozi (može uzrokovati probleme)</string>
     <string name="more_autocorrect">Više automatskog ispravljanja</string>
@@ -1771,4 +1769,6 @@ Omogućuje lokalno GGUF / llama.cpp zaključivanje na uređaju za lekturu i prep
     <string name="learned_words_summary">Pregledajte i izbrišite pojedinačne riječi naučene tijekom tipkanja</string>
     <string name="learned_words_empty">Za trenutačne jezike tipkovnice još nema naučenih riječi</string>
     <string name="clear_learned_words_details">Ovo briše svaku riječ i prijedlog sljedeće riječi naučen iz vašeg tipkanja, na svim jezicima. Vaš osobni rječnik i blokirane riječi se čuvaju. Ovo se ne može poništiti.</string>
+    <string name="auto_add_learned_words">Automatski dodaj naučene riječi</string>
+    <string name="auto_add_learned_words_summary">Spremi riječi koje tipkovnica nauči iz vašeg tipkanja u osobni rječnik uređaja</string>
 </resources>

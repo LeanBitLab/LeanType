@@ -1247,7 +1247,7 @@ graph LR
 </details>
 <details><summary><b>Settings → Languages & Layouts → Dictionaries</b> (9)</summary>
 
-- "Add dictionary from file", Personal dictionary, Blocked words, Learned words, Dictionary repository, Word learning, Add words to personal dictionary, Learning threshold, Languages & Layouts
+- "Add dictionary from file", Personal dictionary, Blocked words, Learned words, Dictionary repository, Word learning, Auto-add learned words, Learning threshold, Languages & Layouts
 
 </details>
 - **Settings → Languages & Layouts → Dictionaries → Personal dictionary**

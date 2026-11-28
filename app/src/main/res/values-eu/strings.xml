@@ -130,8 +130,6 @@
     <string name="switch_language">Aldatu hizkuntza</string>
     <string name="disable_personalized_dicts_message">Abisua: ezarpen hau desgaituz gero, ikasitako datuak garbituko dira</string>
     <string name="split_spacer_scale">Zabaldu tartea</string>
-    <string name="add_to_personal_dictionary">Gehitu hitzak hiztegi pertsonalera</string>
-    <string name="add_to_personal_dictionary_summary">Erabili gailuko hiztegi pertsonala ikasitako hitzak gordetzeko</string>
     <string name="prefs_always_show_suggestions">Erakutsi beti iradokizunak</string>
     <string name="more_autocorrect">Zuzenketa automatiko gehiago</string>
     <string name="more_autocorrect_summary">Zuzendu automatikoki sarrera-eremuak esplizituki eskatzen ez badu ere</string>

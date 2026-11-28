@@ -186,7 +186,6 @@
     <string name="settings_category_additional_keys">Phím bổ sung</string>
     <string name="settings_category_correction">Trình sửa lỗi</string>
     <string name="settings_category_space">Khoảng cách</string>
-    <string name="add_to_personal_dictionary">Thêm từ vào từ điển cá nhân</string>
     <string name="gesture_floating_preview_static">Xem trước hiệu ứng nổi</string>
     <string name="gesture_fast_typing_cooldown">Thời gian hồi lại khi gõ phím nhanh</string>
     <string name="backup_error">Lỗi lưu trữ: %s</string>
@@ -211,7 +210,6 @@
     <string name="theme_name_indigo" tools:keep="@string/theme_name_indigo">Màu chàm</string>
     <string name="select_color_background">Hình nền bàn phím</string>
     <string name="no_dictionary_message">"Nếu không có từ điển, bạn sẽ chỉ thấy gợi ý cho chữ mà bạn đã nhập trước đó.&lt;br&gt;\n        Bạn có thể tải từ điển %1$s, hoặc kiểm tra từ điển \"%2$s\" được tải trực tiếp %3$s."</string>
-    <string name="add_to_personal_dictionary_summary">Sử dụng từ điển cá nhân trên thiết bị để lưu trữ từ</string>
     <string name="backup_restored">Khôi phục dữ liệu đã lưu trữ thành công</string>
     <string name="prefs_space_bar_text">Tuỳ chỉnh chữ cho phím khoảng cách</string>
     <string name="suggest_emojis_summary">Sử dụng từ điển biểu tượng cảm xúc trong chế độ gợi ý thường</string>
@@ -1708,4 +1706,6 @@ Từ điển mới:
     <string name="learned_words_summary">Xem và xóa từng từ đã học từ quá trình gõ</string>
     <string name="learned_words_empty">Chưa có từ nào đã học cho các ngôn ngữ hiện tại của bàn phím</string>
     <string name="clear_learned_words_details">Thao tác này sẽ xoá mọi từ và gợi ý từ tiếp theo đã học từ việc bạn gõ, trong tất cả các ngôn ngữ. Từ điển cá nhân và các từ đã chặn sẽ được giữ lại. Thao tác này không thể hoàn tác.</string>
+    <string name="auto_add_learned_words">Tự động thêm từ đã học</string>
+    <string name="auto_add_learned_words_summary">Lưu các từ bàn phím học được từ quá trình gõ của bạn vào từ điển cá nhân của thiết bị</string>
 </resources>
