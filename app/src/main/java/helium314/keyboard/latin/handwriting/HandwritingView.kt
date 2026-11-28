@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.handwriting
 
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -138,11 +139,11 @@ class HandwritingView @JvmOverloads constructor(
             if (button != null) {
                 val btnBackground = GradientDrawable().apply {
                     shape = GradientDrawable.RECTANGLE
-                    cornerRadius = 8f * context.resources.displayMetrics.density
+                    cornerRadius = keyboardCornerRadiusPx(context.resources)
                     setColor(colors.get(ColorType.ACTION_KEY_BACKGROUND))
                 }
                 button.background = btnBackground
-                button.setTextColor(colors.get(ColorType.KEY_TEXT))
+                button.setTextColor(colors.get(ColorType.ACTION_KEY_ICON))
 
                 // ponytail: download plugin directly on standard/standardfull flavor, otherwise go to Settings
                 if ("standard" == helium314.keyboard.latin.BuildConfig.FLAVOR || "standardfull" == helium314.keyboard.latin.BuildConfig.FLAVOR) {

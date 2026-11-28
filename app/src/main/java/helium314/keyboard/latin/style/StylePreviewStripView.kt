@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 package helium314.keyboard.latin.style
 
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
@@ -116,7 +117,7 @@ class StylePreviewStripView @JvmOverloads constructor(
         chipsContainer.removeAllViews()
         val density = resources.displayMetrics.density
         val chipHeight = (30 * density).toInt()
-        val cornerRadius = chipHeight / 2f
+        val cornerRadius = keyboardCornerRadiusPx(resources)
         val marginH = (4 * density).toInt()
         val padH = (14 * density).toInt()
         val colors = Settings.getValues().mColors

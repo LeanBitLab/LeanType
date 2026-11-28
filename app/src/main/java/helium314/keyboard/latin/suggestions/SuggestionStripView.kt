@@ -5,6 +5,7 @@
  */
 package helium314.keyboard.latin.suggestions
 
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import java.util.Locale
@@ -886,7 +887,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
                 setPadding(padH, padV, padH, padV)
                 val bg = GradientDrawable().apply {
                     shape = GradientDrawable.RECTANGLE
-                    cornerRadius = 14.dpToPx(resources).toFloat()
+                    cornerRadius = keyboardCornerRadiusPx(resources)
                     setColor(colors.get(ColorType.TOOL_BAR_EXPAND_KEY_BACKGROUND))
                 }
                 background = bg
@@ -1586,7 +1587,7 @@ class SuggestionStripView(context: Context, attrs: AttributeSet?, defStyle: Int)
 
             val bg = GradientDrawable().apply {
                 shape = GradientDrawable.RECTANGLE
-                cornerRadius = 16.dpToPx(resources).toFloat()
+                cornerRadius = keyboardCornerRadiusPx(resources)
                 setColor(bgColor)
             }
             background = bg

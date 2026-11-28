@@ -6,6 +6,7 @@
 
 package helium314.keyboard.latin.suggestions
 
+import helium314.keyboard.latin.utils.withKeyboardCorners
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -508,7 +509,7 @@ internal class SuggestionStripLayoutHelper(
         thumbH: Int
     ) {
         val colors = Settings.getValues().mColors
-        val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
+        val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.withKeyboardCorners(context.resources)
         if (chipBg != null) {
             colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
         }
@@ -568,7 +569,7 @@ internal class SuggestionStripLayoutHelper(
             wordView.setPadding(padH, 0, padH, 0)
 
             val colors = Settings.getValues().mColors
-            val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.mutate()
+            val chipBg = ContextCompat.getDrawable(context, R.drawable.clipboard_suggestion_background)?.withKeyboardCorners(context.resources)
             if (chipBg != null) {
                 colors.setColor(chipBg, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
             }

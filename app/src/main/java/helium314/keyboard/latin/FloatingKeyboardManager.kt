@@ -1,5 +1,6 @@
 package helium314.keyboard.latin
 
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.os.SystemClock
 import android.annotation.SuppressLint
 import android.content.Context
@@ -483,7 +484,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
             setColorFilter(textColor)
             background = GradientDrawable().apply {
                 shape = GradientDrawable.RECTANGLE
-                this.cornerRadius = 6 * density
+                this.cornerRadius = keyboardCornerRadiusPx(context.resources)
                 setColor((textColor and 0x00FFFFFF) or 0x1A000000.toInt())
             }
             contentDescription = context.getString(R.string.floating_keyboard_dock_handle)
@@ -498,7 +499,7 @@ class FloatingKeyboardManager(private val context: Context, private val latinIME
 
         val resizeBg = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            this.cornerRadius = 6 * density
+            this.cornerRadius = keyboardCornerRadiusPx(context.resources)
             setColor(defaultBgColor)
         }
 

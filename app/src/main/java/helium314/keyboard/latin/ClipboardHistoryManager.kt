@@ -2,6 +2,8 @@
 
 package helium314.keyboard.latin
 
+import helium314.keyboard.latin.utils.withKeyboardCorners
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
@@ -743,6 +745,7 @@ class ClipboardHistoryManager(
         textView.setTextColor(colors.get(ColorType.KEY_TEXT))
         clipIcon?.let { colors.setColor(it, ColorType.KEY_ICON) }
         colors.setColor(closeButton, ColorType.REMOVE_SUGGESTION_ICON)
+        binding.root.background = binding.root.background?.withKeyboardCorners(latinIME.resources)
         colors.setBackground(binding.root, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
 
         return binding.root
@@ -808,7 +811,7 @@ class ClipboardHistoryManager(
         val extractButton = binding.screenshotExtractTextButton
         val closeButton = binding.screenshotSuggestionClose
 
-        val cornerRadius = 8.dpToPx(latinIME.resources).toFloat()
+        val cornerRadius = keyboardCornerRadiusPx(latinIME.resources)
         pasteButton.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
                 outline.setRoundRect(0, 0, view.width, view.height, cornerRadius)
@@ -894,6 +897,7 @@ class ClipboardHistoryManager(
         }
 
         val colors = latinIME.mSettings.current.mColors
+        binding.root.background = binding.root.background?.withKeyboardCorners(latinIME.resources)
         colors.setBackground(binding.root, ColorType.CLIPBOARD_SUGGESTION_BACKGROUND)
         colors.setColor(extractButton, ColorType.REMOVE_SUGGESTION_ICON)
         colors.setColor(closeButton, ColorType.REMOVE_SUGGESTION_ICON)

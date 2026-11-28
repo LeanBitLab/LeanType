@@ -834,7 +834,10 @@ open class Key : Comparable<Key> {
             ) {
                 actionFlags = actionFlags or ACTION_FLAGS_ENABLE_LONG_PRESS
             }
-            if (mCode <= Constants.CODE_SPACE && mCode != KeyCode.MULTIPLE_CODE_POINTS && mIconName == null) {
+            // the handwriting close key is on a second keyboard view, where a preview would show in the wrong place
+        if (mCode == KeyCode.CLEAR_HANDWRITING
+            || mCode <= Constants.CODE_SPACE && mCode != KeyCode.MULTIPLE_CODE_POINTS && mIconName == null
+        ) {
                 actionFlags = actionFlags or ACTION_FLAGS_NO_KEY_PREVIEW
             }
             when (mCode) {

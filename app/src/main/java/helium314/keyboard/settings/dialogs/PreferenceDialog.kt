@@ -112,12 +112,12 @@ fun PreferenceDialogContent(
                                 onClick = onDismissRequest,
                                 modifier = Modifier
                                     .size(32.dp)
-                                    .background(MaterialTheme.colorScheme.surfaceVariant, shape = CircleShape)
+                                    .background(MaterialTheme.colorScheme.secondaryContainer, shape = CircleShape)
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_close_rounded),
                                     contentDescription = "Close",
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    tint = MaterialTheme.colorScheme.onSecondaryContainer,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }

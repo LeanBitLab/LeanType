@@ -2,6 +2,8 @@
 
 package helium314.keyboard.keyboard.clipboard
 
+import helium314.keyboard.latin.utils.keyboardSearchBarBackground
+import helium314.keyboard.latin.utils.keyboardCornerRadiusPx
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -349,7 +351,11 @@ class ClipboardHistoryView @JvmOverloads constructor(
         isSearchModeActive = true
         
         searchBarTextView = InlineCursorTextView(context).apply {
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply {
+                val margin = (4 * resources.displayMetrics.density).toInt()
+                setMargins(margin, margin, margin, margin)
+            }
+            background = keyboardSearchBarBackground(resources)
             gravity = android.view.Gravity.CENTER_VERTICAL or android.view.Gravity.START
             textSize = 16f
             val textColor = Settings.getValues().mColors.get(ColorType.KEY_TEXT)
@@ -379,10 +385,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardStrip.addView(searchBarTextView)
         
         backButton = ImageButton(context).apply {
-             layoutParams = LinearLayout.LayoutParams(
-                 resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width), 
-                 LinearLayout.LayoutParams.MATCH_PARENT
-             )
+             layoutParams = stripKeyLayoutParams()
              setImageResource(R.drawable.ic_close)
              setBackgroundResource(R.drawable.toolbar_key_background)
              setColorFilter(Settings.getValues().mColors.get(ColorType.KEY_ICON))
@@ -709,10 +712,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardStrip.removeAllViews()
 
         val colors = Settings.getValues().mColors
-        val btnWidth = resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width)
 
         val closeButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = stripKeyLayoutParams()
             setImageResource(R.drawable.ic_close)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
@@ -734,7 +736,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardStrip.addView(countTextView)
 
         val selectAllButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = stripKeyLayoutParams()
             setImageResource(R.drawable.ic_select_all_rounded)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
@@ -753,7 +755,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardStrip.addView(selectAllButton)
 
         val pinButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = stripKeyLayoutParams()
             setImageResource(R.drawable.ic_clipboard_pin_rounded)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
@@ -773,7 +775,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardStrip.addView(pinButton)
 
         val deleteButton = ImageButton(context).apply {
-            layoutParams = LinearLayout.LayoutParams(btnWidth, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = stripKeyLayoutParams()
             setImageResource(R.drawable.ic_bin_rounded)
             setBackgroundResource(R.drawable.toolbar_key_background)
             setColorFilter(colors.get(ColorType.KEY_ICON))
@@ -870,9 +872,6 @@ class ClipboardHistoryView @JvmOverloads constructor(
                     ?.scaleY(1.0f)
                     ?.setDuration(140)
                     ?.setInterpolator(android.view.animation.DecelerateInterpolator())
-                    ?.withEndAction {
-                        anchor.translationZ = 0f
-                    }
                     ?.start()
             }
 
@@ -911,7 +910,6 @@ class ClipboardHistoryView @JvmOverloads constructor(
         activeAnchorView = anchorView
 
         // Animate anchor view lift
-        anchorView.translationZ = 4.dpToPx(resources).toFloat()
         anchorView.animate()
             ?.scaleX(1.025f)
             ?.scaleY(1.025f)
@@ -934,10 +932,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
 
         val pillDrawable = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            cornerRadius = clipboardCornerRadiusPx(resources)
+            cornerRadius = keyboardCornerRadiusPx(resources)
             setColor(pillFillColor)
-            // the list behind is not dimmed, and shadows barely show on dark themes
-            setStroke(1.dpToPx(resources), ColorUtils.setAlphaComponent(colors.get(ColorType.KEY_ICON), 0x40))
         }
         pill.background = pillDrawable
         pill.clipToOutline = true
@@ -1848,6 +1844,15 @@ class ClipboardHistoryView @JvmOverloads constructor(
                 clipboardAdapter.refresh()
             }
         }
+    }
+
+    // square and centered like the other keys of the strip, filling its height would make their background taller
+    private fun stripKeyLayoutParams(): LinearLayout.LayoutParams {
+        val size = kotlin.math.min(
+            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_edge_key_width),
+            resources.getDimensionPixelSize(R.dimen.config_suggestions_strip_height)
+        )
+        return LinearLayout.LayoutParams(size, size).apply { gravity = Gravity.CENTER_VERTICAL }
     }
 
     private fun applyClipboardToolbarKeyLayoutParams() {

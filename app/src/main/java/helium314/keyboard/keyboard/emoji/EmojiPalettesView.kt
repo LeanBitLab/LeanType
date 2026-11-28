@@ -7,6 +7,9 @@
 
 package helium314.keyboard.keyboard.emoji
 
+import helium314.keyboard.latin.utils.keyboardSearchBarBackground
+import androidx.core.graphics.ColorUtils
+import android.view.Gravity
 import android.annotation.SuppressLint
 import kotlin.math.abs
 import kotlin.math.max
@@ -491,16 +494,8 @@ class EmojiPalettesView @JvmOverloads constructor(
         inputContainer.layoutParams = LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, inputWeight)
         inputContainer.setPadding(toPx(4f), 0, toPx(4f), 0)
 
-        val searchIcon = ImageView(ctx)
-        searchIcon.setImageResource(R.drawable.sym_keyboard_search_rounded)
-        mColors.setColor(searchIcon, ColorType.KEY_TEXT)
-        searchIcon.alpha = 0.7f
-        val iconSize = toPx(20f)
-        searchIcon.layoutParams = LayoutParams(iconSize, iconSize)
-        inputContainer.addView(searchIcon)
-
         val searchBar = InlineCursorTextView(ctx).apply {
-            background = null
+            background = keyboardSearchBarBackground(resources)
             hint = "Search"
             val textColor = mColors.get(ColorType.KEY_TEXT)
             setTextColor(textColor)
@@ -510,8 +505,11 @@ class EmojiPalettesView @JvmOverloads constructor(
             maxLines = 1
             setHorizontallyScrolling(true)
             isHorizontalScrollBarEnabled = false
-            setPadding(toPx(4f), 0, toPx(4f), 0)
-            layoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
+            setPadding(toPx(12f), 0, toPx(12f), 0)
+            gravity = Gravity.CENTER_VERTICAL
+            layoutParams = LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f).apply {
+                setMargins(toPx(4f), toPx(4f), toPx(4f), toPx(4f))
+            }
             isFocusable = false
             isFocusableInTouchMode = false
             var touchDownX = 0f
@@ -565,7 +563,7 @@ class EmojiPalettesView @JvmOverloads constructor(
 
         if (!Settings.getValues().mSplitToolbar) {
             val divider = View(ctx)
-            divider.setBackgroundColor(0x55888888)
+            divider.setBackgroundColor(ColorUtils.setAlphaComponent(Settings.getValues().mColors.get(ColorType.KEY_HINT_TEXT), 0x55))
             val divParams = LayoutParams(toPx(1f), ViewGroup.LayoutParams.MATCH_PARENT)
             divParams.setMargins(0, toPx(4f), 0, toPx(4f))
             divider.layoutParams = divParams
