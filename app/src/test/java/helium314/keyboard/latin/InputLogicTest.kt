@@ -1507,6 +1507,24 @@ class InputLogicTest {
         assertEquals("\uD83E\uDEC6\uD83E\uDEC6", text)
     }
 
+    @Test fun `reverted autocorrect stays rejected until it is picked by hand`() {
+        val history = helium314.keyboard.latin.utils.RevertedCorrectionHistory
+        history.clear()
+        reset()
+        setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_AUTO_CORRECT)
+        chainInput("hullo")
+        getAutocorrectedWithSpaceAfter("hello", "hullo")
+        functionalKeyPress(KeyCode.DELETE)
+
+        chainInput(" hullo")
+        pickSuggestion("hullo")
+        assertTrue(history.isRecentlyReverted("hullo", "hello"))
+
+        chainInput("hullo")
+        pickSuggestion("hello")
+        kotlin.test.assertFalse(history.isRecentlyReverted("hullo", "hello"))
+    }
+
     @Test fun `revert autocorrect on delete`() {
         reset()
         setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_AUTO_CORRECT)

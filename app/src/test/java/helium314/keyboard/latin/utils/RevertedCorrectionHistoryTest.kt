@@ -41,8 +41,25 @@ class RevertedCorrectionHistoryTest {
         RevertedCorrectionHistory.record("thier", "their")
         assertTrue(RevertedCorrectionHistory.isRecentlyReverted("thier", "their"))
 
-        RevertedCorrectionHistory.remove("thier")
+        RevertedCorrectionHistory.remove("Thier", "Their")
         assertFalse(RevertedCorrectionHistory.isRecentlyReverted("thier", "their"))
+    }
+
+    @Test
+    fun testKeepsSeveralCandidatesPerTypedWord() {
+        RevertedCorrectionHistory.record("thier", "their")
+        RevertedCorrectionHistory.record("thier", "there")
+        assertTrue(RevertedCorrectionHistory.isRecentlyReverted("thier", "their"))
+        assertTrue(RevertedCorrectionHistory.isRecentlyReverted("thier", "there"))
+
+        // picking the typed word or an unrelated one keeps the rejections
+        RevertedCorrectionHistory.remove("thier", "thier")
+        RevertedCorrectionHistory.remove("thier", "tier")
+        assertTrue(RevertedCorrectionHistory.isRecentlyReverted("thier", "their"))
+
+        RevertedCorrectionHistory.remove("thier", "their")
+        assertFalse(RevertedCorrectionHistory.isRecentlyReverted("thier", "their"))
+        assertTrue(RevertedCorrectionHistory.isRecentlyReverted("thier", "there"))
     }
 
     @Test

@@ -12,32 +12,33 @@ import java.util.Locale
  */
 object RevertedCorrectionHistory {
     private const val MAX_SIZE = 30
-    private val cache = LruCache<String, String>(MAX_SIZE)
+    private val cache = LruCache<String, Set<String>>(MAX_SIZE)
+
+    private fun normalize(word: CharSequence?) = word?.toString()?.trim()?.lowercase(Locale.ROOT).orEmpty()
 
     @Synchronized
     fun record(typedWord: CharSequence?, revertedCandidate: CharSequence?) {
-        if (typedWord.isNullOrEmpty() || revertedCandidate.isNullOrEmpty()) return
-        val key = typedWord.toString().trim().lowercase(Locale.ROOT)
-        val value = revertedCandidate.toString().trim().lowercase(Locale.ROOT)
-        if (key.isNotEmpty() && value.isNotEmpty() && key != value) {
-            cache.put(key, value)
-        }
+        val key = normalize(typedWord)
+        val candidate = normalize(revertedCandidate)
+        if (key.isEmpty() || candidate.isEmpty() || key == candidate) return
+        cache.put(key, cache.get(key).orEmpty() + candidate)
     }
 
     @Synchronized
     fun isRecentlyReverted(typedWord: CharSequence?, candidateWord: CharSequence?): Boolean {
-        if (typedWord.isNullOrEmpty() || candidateWord.isNullOrEmpty()) return false
-        val key = typedWord.toString().trim().lowercase(Locale.ROOT)
-        val candidate = candidateWord.toString().trim().lowercase(Locale.ROOT)
-        val reverted = cache.get(key) ?: return false
-        return reverted == candidate
+        val key = normalize(typedWord)
+        if (key.isEmpty()) return false
+        return cache.get(key)?.contains(normalize(candidateWord)) == true
     }
 
+    /** Allows [candidateWord] again for [typedWord], other rejected corrections stay */
     @Synchronized
-    fun remove(typedWord: CharSequence?) {
-        if (typedWord.isNullOrEmpty()) return
-        val key = typedWord.toString().trim().lowercase(Locale.ROOT)
-        cache.remove(key)
+    fun remove(typedWord: CharSequence?, candidateWord: CharSequence?) {
+        val key = normalize(typedWord)
+        if (key.isEmpty()) return
+        val rejected = cache.get(key) ?: return
+        val remaining = rejected - normalize(candidateWord)
+        if (remaining.isEmpty()) cache.remove(key) else cache.put(key, remaining)
     }
 
     @Synchronized
