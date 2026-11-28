@@ -4,6 +4,7 @@
 - Added: Cursor swipe distance setting
 - Added: Better settings search
 - Changed: Toolbar folds for swipe suggestions
-- Fixed: Typed "i" keeps the dictionary's "I"
-- Fixed: Learning from retyped swipes, delete swipe fixes
 - Changed: Camera and microphone stop when unused
+- Fixed: Typed "i" keeps the dictionary's "I"
+- Fixed: Held delete stops on release in slow apps
+- Fixed: Settings screens missing title

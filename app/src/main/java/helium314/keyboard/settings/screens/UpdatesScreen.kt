@@ -73,7 +73,7 @@ internal val currentChangelogItems = listOf(
     "• Changed: Camera and microphone stop when unused",
     "• Fixed: Typed i keeps the dictionary I",
     "• Fixed: Learning from retyped swipes",
-    "• Fixed: Delete swipe travel and spacing"
+    "• Fixed: Held delete stops on release in slow apps"
 )
 
 @Composable
