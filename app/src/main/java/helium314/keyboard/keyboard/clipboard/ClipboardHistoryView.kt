@@ -885,7 +885,6 @@ class ClipboardHistoryView @JvmOverloads constructor(
                     ?.setInterpolator(android.view.animation.AccelerateInterpolator())
                     ?.withEndAction {
                         overlay.visibility = View.GONE
-                        overlay.background = null
                         pill.alpha = 1f
                         pill.scaleX = 1f
                         pill.scaleY = 1f
@@ -893,7 +892,6 @@ class ClipboardHistoryView @JvmOverloads constructor(
                     ?.start()
             } else {
                 overlay.visibility = View.GONE
-                overlay.background = null
             }
             return true
         }
@@ -934,17 +932,16 @@ class ClipboardHistoryView @JvmOverloads constructor(
             Color.WHITE
         }
 
-        val pillRadius = 24.dpToPx(resources).toFloat()
         val pillDrawable = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            cornerRadius = pillRadius
+            cornerRadius = clipboardCornerRadiusPx(resources)
             setColor(pillFillColor)
+            // the list behind is not dimmed, and shadows barely show on dark themes
+            setStroke(1.dpToPx(resources), ColorUtils.setAlphaComponent(colors.get(ColorType.KEY_ICON), 0x40))
         }
         pill.background = pillDrawable
         pill.clipToOutline = true
         pill.elevation = 8.dpToPx(resources).toFloat()
-
-        overlay.setBackgroundColor(if (isDark) 0x44000000.toInt() else 0x22000000)
 
         // Configure Pin button
         val pinIconRes = if (pinIconId != 0) pinIconId else R.drawable.ic_clipboard_pin_rounded
