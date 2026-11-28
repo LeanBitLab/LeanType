@@ -64,16 +64,16 @@ import helium314.keyboard.settings.updates.AppUpdatesManager
 import kotlinx.coroutines.launch
 
 internal val currentChangelogItems = listOf(
-    "• Added: Learned words screen to search, delete or clear words",
-    "• Added: Text expander shortcut sorting",
+    "• Added: Hold physical keys for popups (off by default, please test)",
+    "• Added: Learned words screen",
+    "• Added: Sort text expander shortcuts",
     "• Added: Long-press space can switch language",
     "• Added: Cursor swipe distance setting",
-    "• Added: Search settings by words and word parts",
-    "• Changed: Toolbar folds for swipe suggestions",
-    "• Changed: Camera and microphone stop when unused",
-    "• Fixed: Typed i keeps the dictionary I",
-    "• Fixed: Learning from retyped swipes",
-    "• Fixed: Held delete stops on release in slow apps"
+    "• Changed: Clipboard long press no longer dims the list",
+    "• Fixed: Learned words keep apostrophes",
+    "• Fixed: Floating mode is kept if an app closes the keyboard",
+    "• Fixed: Undone corrections are all remembered",
+    "• Fixed: Held delete in slow apps"
 )
 
 @Composable
