@@ -3,6 +3,7 @@
 package helium314.keyboard.keyboard.clipboard
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.graphics.Typeface
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -236,8 +237,7 @@ class ClipboardAdapter(
 
     private fun createCardBackground(view: View): Drawable {
         val colors = Settings.getValues().mColors
-        val radiusDp = Settings.getValues().mKeyBorderRadius.takeIf { it >= 0f } ?: 8f
-        val radiusPx = radiusDp * view.resources.displayMetrics.density
+        val radiusPx = clipboardCornerRadiusPx(view.resources)
         val cardBg = colors.get(ColorType.POPUP_KEYS_BACKGROUND)
         val mainBg = colors.get(ColorType.MAIN_BACKGROUND)
         val isDark = isDarkColor(mainBg) || isDarkColor(cardBg)
@@ -318,8 +318,7 @@ class ClipboardAdapter(
             selectedOverlay?.background = GradientDrawable().apply {
                 val colors = Settings.getValues().mColors
                 val accentColor = colors.get(ColorType.ACTION_KEY_BACKGROUND)
-                val radiusDp = Settings.getValues().mKeyBorderRadius.takeIf { it >= 0f } ?: 8f
-                val radiusPx = radiusDp * view.resources.displayMetrics.density
+                val radiusPx = clipboardCornerRadiusPx(view.resources)
                 shape = GradientDrawable.RECTANGLE
                 cornerRadius = radiusPx
                 setColor(ColorUtils.setAlphaComponent(accentColor, 0x26))
@@ -448,3 +447,7 @@ class ClipboardAdapter(
         }
     }
 }
+
+/** Corner radius shared by the clipboard cards and their popup, following the key corner radius setting. */
+internal fun clipboardCornerRadiusPx(resources: Resources): Float =
+    (Settings.getValues().mKeyBorderRadius.takeIf { it >= 0f } ?: 8f) * resources.displayMetrics.density
