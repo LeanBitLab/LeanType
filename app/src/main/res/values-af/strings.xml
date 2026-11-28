@@ -133,7 +133,6 @@
     <string name="dictionary_link_text">hier</string>
     <string name="switch_language">Wissel taal</string>
     <string name="language_switch_key_switch_both">Wissel beide</string>
-    <string name="add_to_personal_dictionary">Voeg woorde toe aan persoonlike woordeboek</string>
     <string name="prefs_always_show_suggestions">Wys altyd voorstelle</string>
     <string name="center_suggestion_text_to_enter">Gebruik altyd middelste voorstel</string>
     <string name="suggest_punctuation">Leesteken voorstelle</string>

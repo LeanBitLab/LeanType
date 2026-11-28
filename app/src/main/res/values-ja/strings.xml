@@ -104,7 +104,6 @@
     <string name="settings_category_suggestions">提案</string>
     <string name="settings_category_experimental">実験的</string>
     <string name="disable_personalized_dicts_message">注意：この設定をディセーブルしたら習ったデータが消える</string>
-    <string name="add_to_personal_dictionary_summary">デバイスの個人用辞書を使用して学習した単語を保存する</string>
     <string name="center_suggestion_text_to_enter">いつも中間の入力候補を使う</string>
     <string name="settings_category_space">スペース</string>
     <string name="language_switch_key_switch_both">両方を切り替える</string>
@@ -115,7 +114,6 @@
     <string name="restore_error">バックアップをレストアする中エラー：%s</string>
     <string name="backup_error">バックアップエラー： %s</string>
     <string name="button_restore">レストア</string>
-    <string name="add_to_personal_dictionary">個人用辞書に単語を追加する</string>
     <string name="backup_restored">バックアップをレストアした</string>
     <string name="load_gesture_library_button_load">ライブラリーをロードする</string>
     <string name="settings_category_clipboard_history">クリップボードの履歴</string>
@@ -1711,4 +1709,6 @@
     <string name="learned_words_summary">入力から学習した単語を個別に確認・削除します</string>
     <string name="learned_words_empty">このキーボードの現在の言語では、まだ学習済みの単語はありません</string>
     <string name="clear_learned_words_details">すべての言語で、入力から学習した単語と次語候補がすべて削除されます。個人用辞書とブロックした単語は保持されます。この操作は元に戻せません。</string>
+    <string name="auto_add_learned_words">学習した単語を自動で追加</string>
+    <string name="auto_add_learned_words_summary">キーボードが入力から学習した単語を、端末の個人用辞書に保存します</string>
 </resources>

@@ -124,7 +124,6 @@
     <string name="label_pause_key">"Dur"</string>
     <string name="label_wait_key">"Bekle"</string>
     <string name="disable_personalized_dicts_message">Uyarı: Bu ayarı devre dışı bırakmak öğrenilmiş verileri temizler</string>
-    <string name="add_to_personal_dictionary">Kişisel sözlüğe kelime ekle</string>
     <string name="prefs_always_show_suggestions">Her zaman önerileri göster</string>
     <string name="language_switch_key_switch_both">İkisini de değiştir</string>
     <string name="button_backup">Yedekle</string>
@@ -138,7 +137,6 @@
     <string name="load_gesture_library_button_delete">Kitaplığı sil</string>
     <string name="language_and_layouts_title">Diller ve Düzenler</string>
     <string name="more_autocorrect">Daha fazla otomatik düzeltme</string>
-    <string name="add_to_personal_dictionary_summary">Öğrenilmiş kelimeleri depolamak için cihaz kişisel sözlüğünü kullan</string>
     <string name="localized_number_row">Sayı satırını yerelleştir</string>
     <string name="theme_name_cloudy" ns0:keep="@string/theme_name_cloudy">Gölgeli</string>
     <string name="toast_msg_clipboard_copy">İçerik kopyalandı</string>
@@ -1747,4 +1745,6 @@ Metin düzeltme ve yeniden yazma için cihaz üzerinde GGUF / llama.cpp çıkar�
     <string name="learned_words_summary">Yazarken öğrenilen tek tek kelimeleri görüntüleyin ve silin</string>
     <string name="learned_words_empty">Klavyenin geçerli dilleri için henüz öğrenilmiş kelime yok</string>
     <string name="clear_learned_words_details">Bu işlem, tüm dillerde yazarken öğrenilen tüm kelimeleri ve sonraki kelime önerilerini siler. Kişisel sözlüğünüz ve engellenen kelimeleriniz korunur. Bu işlem geri alınamaz.</string>
+    <string name="auto_add_learned_words">Öğrenilen kelimeleri otomatik ekle</string>
+    <string name="auto_add_learned_words_summary">Klavyenin yazdığınız metinden öğrendiği kelimeleri cihazın kişisel sözlüğüne kaydet</string>
 </resources>

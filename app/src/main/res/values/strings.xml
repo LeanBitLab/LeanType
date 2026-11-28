@@ -122,9 +122,9 @@
     <string name="clear_learned_words_details">This deletes every word and next-word suggestion learned from your typing, in all languages. Your personal dictionary and blocked words are kept. This cannot be undone.</string>
     <string name="clear_learned_words_success">Learned words cleared</string>
     <!-- Option name for adding learned words to personal dictionary -->
-    <string name="add_to_personal_dictionary">Add words to personal dictionary</string>
+    <string name="auto_add_learned_words">Auto-add learned words</string>
     <!-- Description for option to add learned words to system-wide user dictionary -->
-    <string name="add_to_personal_dictionary_summary">Use device personal dictionary to store learned words</string>
+    <string name="auto_add_learned_words_summary">Save words the keyboard learns from your typing to the device\'s personal dictionary</string>
     <!-- Option name for threshold before adding words to personal dictionary -->
     <string name="add_to_personal_dict_threshold">Learning threshold</string>
     <string name="add_to_personal_dict_threshold_times_1">Add after typing 1 time</string>

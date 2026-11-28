@@ -118,8 +118,6 @@
     <string name="use_apps_dict">ဖုန်းထဲရှိ အပလီကေးရှင်းအမည်များကို ရှာဖွေမည်</string>
     <string name="use_apps_dict_summary">ဖုန်းထဲရှိ အပလီကေးရှင်းအမည်များကို အကြံပြုချက်နှင့် သတ်ပုံပြင်ဆင်ချက်များအတွက် အသုံးပြုမည်</string>
     <string name="disable_personalized_dicts_message">သတိ - ဤခလုတ်ကိုပိတ်ပါက အဘိဓာန်တွင်းထည့်သွင်းထားသော စကားလုံးအားလုံးကို ပယ်ဖျက်လိမ့်မည်</string>
-    <string name="add_to_personal_dictionary">ကိုယ်ပိုင်အဘိဓာန်ထဲသို့ ဝေါဟာရများထည့်မည်</string>
-    <string name="add_to_personal_dictionary_summary">ဝေါဟာရအသစ်များကို ကိုယ်ပိုင်အဘိဓာန်တွင် ထည့်သွင်းမှတ်တမ်းတင်မည်</string>
     <string name="prefs_always_show_suggestions">အကြံပြုချက်များကို အမြဲတမ်းပြပါ</string>
     <string name="prefs_always_show_suggestions_summary">အကြံပြုချက်များကိုပိတ်ထားရန် ဖုန်းထဲရှိ အခြားအပလီကေးရှင်းများ၏ တောင်းဆိုချက်များကို မသိကျိုးကျွန်ပြုပါ (ချွတ်ယွင်းမှုများပေါ်ပေါက်လာနိုင်သည်)</string>
     <string name="prefs_always_show_suggestions_except_web_text">ဝက်ဘ်စာမျက်နှာများပေါ်ရှိ ပုံစံဖြည့်သွင်းသည့်နေရာများတွင် အကြုံပြုချက်များကို အမြဲမပြပါနှင့်</string>

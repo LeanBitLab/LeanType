@@ -136,8 +136,6 @@
     <string name="switch_language">Canvia l\'idioma</string>
     <string name="vibrate_in_dnd_mode">Vibra en mode No Molestar</string>
     <string name="language_switch_key_switch_both">Canvia ambdós</string>
-    <string name="add_to_personal_dictionary">Afegeix paraules al diccionari personal</string>
-    <string name="add_to_personal_dictionary_summary">Utilitza el diccionari personal del dispositiu per desar les paraules apreses</string>
     <string name="prefs_always_show_suggestions">Mostra suggeriments sempre</string>
     <string name="more_autocorrect_summary">Autocorrecció fins i tot quan no ho sol·liciti explícitament el camp d\'entrada</string>
     <string name="gesture_floating_preview_dynamic_summary">Mou la vista prèvia durant un gest</string>

@@ -202,8 +202,6 @@
     <string name="settings_category_gestures_advanced">Gerak isyarat lanjutan</string>
     <string name="clear_learned_words_title">Kosongkan perkataan yang dipelajari</string>
     <string name="clear_learned_words_success">Perkataan yang dipelajari telah dikosongkan</string>
-    <string name="add_to_personal_dictionary">Tambah perkataan ke kamus peribadi</string>
-    <string name="add_to_personal_dictionary_summary">Guna kamus peribadi peranti untuk menyimpan perkataan yang dipelajari</string>
     <string name="add_to_personal_dict_threshold">Ambang pembelajaran</string>
     <string name="add_to_personal_dict_threshold_times_1">Tambah selepas menaip 1 kali</string>
     <string name="add_to_personal_dict_threshold_times_many">Tambah selepas menaip %d kali</string>
@@ -1710,4 +1708,6 @@ Kamus baharu:
     <string name="learned_words_summary">Lihat dan padam perkataan individu yang dipelajari daripada menaip</string>
     <string name="learned_words_empty">Belum ada perkataan yang dipelajari untuk bahasa semasa papan kekunci</string>
     <string name="clear_learned_words_details">Ini memadamkan setiap perkataan dan cadangan perkataan seterusnya yang dipelajari daripada taipan anda, dalam semua bahasa. Kamus peribadi dan perkataan yang disekat akan dikekalkan. Tindakan ini tidak boleh dibatalkan.</string>
+    <string name="auto_add_learned_words">Tambah perkataan yang dipelajari secara automatik</string>
+    <string name="auto_add_learned_words_summary">Simpan perkataan yang dipelajari papan kekunci daripada taipan anda ke kamus peribadi peranti</string>
 </resources>

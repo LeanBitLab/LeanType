@@ -148,8 +148,6 @@
     <string name="use_apps_dict">Αναζήτηση ονομάτων εφαρμογών</string>
     <string name="use_apps_dict_summary">Χρήση ονομάτων εγκατεστημένων εφαρμογών για προτάσεις και διορθώσεις</string>
     <string name="disable_personalized_dicts_message">Προειδοποίηση: Η απενεργοποίηση αυτής της ρύθμισης θα διαγράψει τα δεδομένα που έχουν μάθει</string>
-    <string name="add_to_personal_dictionary">Προσθήκη λέξεων στο προσωπικό λεξικό</string>
-    <string name="add_to_personal_dictionary_summary">Χρήση προσωπικού λεξικού συσκευής για αποθήκευση μαθημένων λέξεων</string>
     <string name="edit_blocked_words">Αποκλεισμένες λέξεις</string>
     <string name="add_blocked_word">Αποκλεισμός λέξης</string>
     <string name="blocked_word_already_present">Η λέξη είναι ήδη αποκλεισμένη</string>
@@ -1821,4 +1819,6 @@
     <string name="learned_words_summary">Δείτε και διαγράψτε μεμονωμένες λέξεις που έχουν μάθει από την πληκτρολόγηση</string>
     <string name="learned_words_empty">Δεν υπάρχουν ακόμη μαθημένες λέξεις για τις τρέχουσες γλώσσες του πληκτρολογίου</string>
     <string name="clear_learned_words_details">Αυτό διαγράφει όλες τις λέξεις και τις προτάσεις επόμενης λέξης που έμαθε το πληκτρολόγιο από την πληκτρολόγησή σας, σε όλες τις γλώσσες. Το προσωπικό σας λεξικό και οι αποκλεισμένες λέξεις διατηρούνται. Αυτή η ενέργεια δεν μπορεί να ανακληθεί.</string>
+    <string name="auto_add_learned_words">Αυτόματη προσθήκη εκμαθημένων λέξεων</string>
+    <string name="auto_add_learned_words_summary">Αποθήκευση λέξεων που μαθαίνει το πληκτρολόγιο από την πληκτρολόγησή σας στο προσωπικό λεξικό της συσκευής</string>
 </resources>

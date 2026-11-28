@@ -179,13 +179,11 @@
     <string name="show_popup_hints">Показать функциональные подсказки</string>
     <string name="message_add_custom_layout">Выберите файл в поддерживаемом формате. Информация о форматах доступна по адресу %s.</string>
     <string name="subtype_generic_sebeolsik_390">%s (Себольсик 390)</string>
-    <string name="add_to_personal_dictionary_summary">Использовать личный словарь устройства для хранения изученных слов</string>
     <string name="subtype_generic_sebeolsik_final">%s (Себольсик финальная)</string>
     <string name="theme_name_chocolate" tools:keep="@string/theme_name_chocolate">Шоколад</string>
     <string name="theme_name_cloudy" tools:keep="@string/theme_name_cloudy">Облачная</string>
     <string name="day_or_night_day">День</string>
     <string name="popup_keys_language_priority" tools:keep="@string/popup_keys_language_priority">Язык (приоритет)</string>
-    <string name="add_to_personal_dictionary">Добавить слова в личный словарь</string>
     <string name="customize_background_image">Установить фоновое изображение</string>
     <string name="edit_layout">Нажмите, чтобы отредактировать базовую раскладку</string>
     <string name="theme_name_pink" tools:keep="@string/theme_name_pink">Розовая</string>
@@ -1780,4 +1778,6 @@
     <string name="learned_words_summary">Просмотр и удаление отдельных слов, выученных при наборе текста</string>
     <string name="learned_words_empty">Для текущих языков клавиатуры пока нет выученных слов</string>
     <string name="clear_learned_words_details">Будут удалены все слова и предложения следующего слова, изученные на основе вашего набора текста, на всех языках. Личный словарь и заблокированные слова сохранятся. Это действие нельзя отменить.</string>
+    <string name="auto_add_learned_words">Автоматически добавлять изученные слова</string>
+    <string name="auto_add_learned_words_summary">Сохранять слова, которые клавиатура запоминает при наборе текста, в личный словарь устройства</string>
 </resources>

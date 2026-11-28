@@ -124,9 +124,7 @@
     <string name="split_spacer_scale">Delingsmellomrom</string>
     <string name="settings_no_limit">Uten begrensninger</string>
     <string name="disable_personalized_dicts_message">Advarsel: Ved å skru av dette slettes også de lærte dataene</string>
-    <string name="add_to_personal_dictionary">Legg til ord i personlig ordbok</string>
     <string name="prefs_always_show_suggestions">Vis alltid forslag</string>
-    <string name="add_to_personal_dictionary_summary">Bruk enhetens personlige ordbok for å lagre lærte ord</string>
     <string name="more_autocorrect">Mer autokorrektur</string>
     <string name="more_autocorrect_summary">Autokorrekt selv om det ikke er eksplisitt forespurt av inndatafeltet</string>
     <string name="auto_correction_confidence">Selvsikkerhet for autokorrektur</string>

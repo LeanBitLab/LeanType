@@ -169,7 +169,6 @@
     <string name="label_pause_key">"Пауза"</string>
     <string name="label_wait_key">Чекати</string>
     <string name="language_and_layouts_title">Мови та розкладки</string>
-    <string name="add_to_personal_dictionary">Додати слова до особистого словника</string>
     <string name="split_spacer_scale">Відстань розділення</string>
     <string name="switch_language">Змінити мову</string>
     <string name="disable_personalized_dicts_message">Попередження: Вимкнення цього параметра призведе до видалення отриманих даних</string>
@@ -225,7 +224,6 @@
     <string name="show_popup_hints">Показати функціональні підказки</string>
     <string name="show_popup_hints_summary">Показувати підказки, якщо тривале натискання клавіші запускає додаткові функції</string>
     <string name="subtype_xdq">Кайтазька</string>
-    <string name="add_to_personal_dictionary_summary">Використовувати особистий словник для зберігання вивчених слів</string>
     <string name="prefs_always_show_suggestions_summary">Ігнорувати запити інших застосунків про вимкнення пропозицій (може викликати проблеми)</string>
     <string name="more_autocorrect">Більше автокорекції</string>
     <string name="edit_layout">Натисніть, щоб відредагувати базову розкладку</string>
@@ -1774,4 +1772,6 @@
     <string name="learned_words_summary">Переглядайте та видаляйте окремі слова, вивчені під час введення</string>
     <string name="learned_words_empty">Для поточних мов клавіатури ще немає вивчених слів</string>
     <string name="clear_learned_words_details">Це видалить усі слова та підказки наступного слова, вивчені з вашого набору тексту, у всіх мовах. Ваш персональний словник і заблоковані слова буде збережено. Цю дію неможливо скасувати.</string>
+    <string name="auto_add_learned_words">Автоматично додавати вивчені слова</string>
+    <string name="auto_add_learned_words_summary">Зберігати слова, які клавіатура вивчає з вашого набору тексту, у персональний словник пристрою</string>
 </resources>

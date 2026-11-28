@@ -169,7 +169,6 @@
     <string name="label_wait_key">"Чакаць"</string>
     <string name="prefs_always_show_suggestions">Заўсёды паказваць прапановы</string>
     <string name="voice" tools:keep="@string/voice">Галасавы ўвод</string>
-    <string name="add_to_personal_dictionary">Дадаць словы ў асабісты слоўнік</string>
     <string name="language_and_layouts_title">Мовы і раскладкі</string>
     <string name="load_gesture_library_message">Вам спатрэбіцца бібліятэка для «%s». Несумяшчальныя бібліятэкі могуць выйсці з ладу пры выкарыстанні жэставага ўводу.
 \n
@@ -209,7 +208,6 @@
     <string name="one_handed" tools:keep="@string/one_handed">Рэжым адной рукой</string>
     <string name="popup_keys_layout" tools:keep="@string/popup_keys_layout">Раскладка</string>
     <string name="localized_number_row">Лакалізаваць лікавы радок</string>
-    <string name="add_to_personal_dictionary_summary">Выкарыстоўваць асабісты слоўнік прылады для захоўвання вывучаных слоў</string>
     <string name="subtype_probhat_bn_BD">%s (Прабгат)</string>
     <string name="subtype_generic_sebeolsik_390">%s (Себяольсік 390)</string>
     <string name="subtype_generic_sebeolsik_final">%s (Себяольсік фінальная)</string>
@@ -1808,4 +1806,6 @@
     <string name="learned_words_summary">Глядзіце і выдаляйце асобныя словы, вывучаныя пры наборы тэксту</string>
     <string name="learned_words_empty">Для бягучых моў клавіятуры пакуль няма вывучаных слоў</string>
     <string name="clear_learned_words_details">Гэта выдаляе кожнае слова і наступнае слова-прапанову, вывучаныя з вашага ўводу, на ўсіх мовах. Асабісты слоўнік і заблакіраваныя словы захоўваюцца. Гэта дзеянне нельга адмяніць.</string>
+    <string name="auto_add_learned_words">Аўтаматычна дадаваць вывучаныя словы</string>
+    <string name="auto_add_learned_words_summary">Захоўваць у асабісты слоўнік прылады словы, якія клавіятура вывучае з вашага набору тэксту</string>
 </resources>

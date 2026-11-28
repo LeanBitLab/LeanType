@@ -128,8 +128,6 @@
     <string name="label_pause_key">"Пауза"</string>
     <string name="label_wait_key">"Чекај"</string>
     <string name="language_switch_key_switch_both">Променити обоје</string>
-    <string name="add_to_personal_dictionary">Додати речи у лични речник</string>
-    <string name="add_to_personal_dictionary_summary">Користити лични речник уређаја за чување научених речи</string>
     <string name="prefs_always_show_suggestions">Увек приказати сугестије</string>
     <string name="more_autocorrect">Више ауткорекције</string>
     <string name="more_autocorrect_summary">Аутокорекција чак и кад није експлицитно захтевана од поља за унос</string>

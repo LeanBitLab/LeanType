@@ -167,8 +167,6 @@
     <string name="select_color_suggestion">建议条文本</string>
     <string name="split_spacer_scale">分离距离</string>
     <string name="language_switch_key_switch_both">切换两者</string>
-    <string name="add_to_personal_dictionary">将字词添加到个人字典</string>
-    <string name="add_to_personal_dictionary_summary">使用设备个人字典存储学习到的字词</string>
     <string name="disable_personalized_dicts_message">警告：禁用此设置将清除学习数据</string>
     <string name="prefs_always_show_suggestions">始终显示建议</string>
     <string name="prefs_always_show_suggestions_summary">忽略其他应用禁用建议的请求（可能会导致问题）</string>
@@ -1775,4 +1773,6 @@
     <string name="learned_words_summary">查看并删除通过输入学习到的单个词语</string>
     <string name="learned_words_empty">当前键盘语言暂无已学习的词语</string>
     <string name="clear_learned_words_details">这将删除您在所有语言中输入时学习到的所有词语和下一个词建议。您的个人词典和已屏蔽的词语将保留。此操作无法撤销。</string>
+    <string name="auto_add_learned_words">自动添加已学习的词语</string>
+    <string name="auto_add_learned_words_summary">将键盘从您的输入中学到的词语保存到设备的个人词典中</string>
 </resources>

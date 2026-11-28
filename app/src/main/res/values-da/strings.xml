@@ -130,8 +130,6 @@
     <string name="prefs_always_show_suggestions_summary">Ignorer andre apps\' anmodning om at deaktivere forslag (kan skabe problemer)</string>
     <string name="button_backup">Backup</string>
     <string name="language_switch_key_switch_both">Skift begge</string>
-    <string name="add_to_personal_dictionary">Føj ord til personlig ordbog</string>
-    <string name="add_to_personal_dictionary_summary">Brug enhedens personlige ordbog til at gemme indlærte ord</string>
     <string name="prefs_always_show_suggestions">Vis altid forslag</string>
     <string name="more_autocorrect">Mere autokorrektion</string>
     <string name="more_autocorrect_summary">Autokorrektur, selv når inputfeltet ikke eksplicit efterspørger det</string>

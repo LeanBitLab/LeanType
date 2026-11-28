@@ -123,8 +123,6 @@
     <string name="use_apps_dict">Ieškoti pavadinimų</string>
     <string name="use_apps_dict_summary">Pasiūlymam ir taisymam naudoti įdiegtų programų pavadinimus</string>
     <string name="disable_personalized_dicts_message">Įspėjimas: Išjungus šią parinktį bus išvalyti išmokti duomenys</string>
-    <string name="add_to_personal_dictionary">Pridėti žodžius į asmeninį žodyną</string>
-    <string name="add_to_personal_dictionary_summary">Išmoktiem žodžiam naudoti asmeninį įrenginio žodyną</string>
     <string name="prefs_always_show_suggestions">Visada rodyti pasiūlymus</string>
     <string name="prefs_always_show_suggestions_summary">Ignoruoti kitų programų prašymus išjungti pasiūlymus (gali kilti bėdų)</string>
     <string name="prefs_always_show_suggestions_except_web_text">Interneto taisymo laukeliam nerodyti pasiūlymų</string>
@@ -1809,4 +1807,6 @@ Ar norite atnaujinti?</string>
     <string name="learned_words_summary">Peržiūrėkite ir ištrinkite atskirus žodžius, išmoktus rašant</string>
     <string name="learned_words_empty">Klaviatūros dabartinėms kalboms dar nėra išmoktų žodžių</string>
     <string name="clear_learned_words_details">Tai ištrina visus žodžius ir kito žodžio pasiūlymus, išmoktus iš jūsų rašymo, visomis kalbomis. Jūsų asmeninis žodynas ir užblokuoti žodžiai išliks. Šio veiksmo atšaukti negalima.</string>
+    <string name="auto_add_learned_words">Automatiškai pridėti išmoktus žodžius</string>
+    <string name="auto_add_learned_words_summary">Įrenginio asmeniniame žodyne išsaugoti žodžius, kuriuos klaviatūra išmoksta iš jūsų rašymo</string>
 </resources>

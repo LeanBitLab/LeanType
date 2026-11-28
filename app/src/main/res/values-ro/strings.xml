@@ -105,8 +105,6 @@
     <string name="show_emoji_key">Tasta Emoji</string>
     <string name="abbreviation_unit_minutes">%s min</string>
     <string name="settings_no_limit">Fără limită</string>
-    <string name="add_to_personal_dictionary">Adaugă cuvinte în dicționarul personal</string>
-    <string name="add_to_personal_dictionary_summary">Utilizează dicționarul personal al dispozitivului pentru a stoca cuvintele învățate</string>
     <string name="prefs_always_show_suggestions">Afișează sugestii întotdeauna</string>
     <string name="more_autocorrect">Mai multă auto-corecție</string>
     <string name="auto_correction_confidence">Încrederea în corecție automată</string>
@@ -1808,4 +1806,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="learned_words_summary">Vezi și șterge cuvintele individuale învățate din scriere</string>
     <string name="learned_words_empty">Încă nu există cuvinte învățate pentru limbile curente ale tastaturii</string>
     <string name="clear_learned_words_details">Aceasta șterge toate cuvintele și sugestiile pentru cuvântul următor învățate din tastarea ta, în toate limbile. Dicționarul tău personal și cuvintele blocate sunt păstrate. Această acțiune nu poate fi anulată.</string>
+    <string name="auto_add_learned_words">Adaugă automat cuvintele învățate</string>
+    <string name="auto_add_learned_words_summary">Salvează în dicționarul personal al dispozitivului cuvintele pe care tastatura le învață din modul în care scrii</string>
 </resources>

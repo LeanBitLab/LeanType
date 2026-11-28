@@ -118,7 +118,6 @@
     <string name="select_input_method">Selecionar método de entrada</string>
     <string name="undo">"Desfazer"</string>
     <string name="redo">"Refazer"</string>
-    <string name="add_to_personal_dictionary_summary">Usar o dicionário pessoal do dispositivo para armazenar palavras aprendidas</string>
     <string name="backup_error">Erro de backup: %s</string>
     <string name="restore_error">Erro restaurando o backup: %s</string>
     <string name="button_backup">Fazer backup</string>
@@ -157,7 +156,6 @@
     <string name="var_toolbar_direction">Direção da barra de ferramentas variável</string>
     <string name="split_spacer_scale">Distância de separação</string>
     <string name="language_switch_key_switch_both">Alterar ambos</string>
-    <string name="add_to_personal_dictionary">Adicionar palavras ao dicionário pessoal</string>
     <string name="more_autocorrect">Mais autocorreção</string>
     <string name="more_autocorrect_summary">Automaticamente corrigir mesmo quando não explicitamente solicitado pelo campo de entrada</string>
     <string name="backup_restore_title">Backup e restauração</string>
@@ -1726,4 +1724,6 @@ Habilita inferência GGUF / llama.cpp no dispositivo para revisão e reescrita.<
     <string name="learned_words_summary">Ver e excluir palavras individuais aprendidas ao digitar</string>
     <string name="learned_words_empty">Ainda não há palavras aprendidas para os idiomas atuais do teclado</string>
     <string name="clear_learned_words_details">Isso exclui todas as palavras e sugestões de próxima palavra aprendidas com a sua digitação, em todos os idiomas. Seu dicionário pessoal e as palavras bloqueadas serão mantidos. Esta ação não pode ser desfeita.</string>
+    <string name="auto_add_learned_words">Adicionar automaticamente palavras aprendidas</string>
+    <string name="auto_add_learned_words_summary">Salvar no dicionário pessoal do dispositivo as palavras que o teclado aprende com a sua digitação</string>
 </resources>

@@ -129,7 +129,6 @@
     <string name="split_spacer_scale">Distancia de dividido</string>
     <string name="language_switch_key_switch_both">Intercambiar ambos</string>
     <string name="disable_personalized_dicts_message">Advertencia: Desactivar esta opción eliminará la información aprendida</string>
-    <string name="add_to_personal_dictionary">Añadir palabras al diccionario personal</string>
     <string name="prefs_always_show_suggestions">Siempre mostrar sugerencias</string>
     <string name="more_autocorrect_summary">Autocorrección incluso cuando el campo de entrada no lo solicita explícitamente</string>
     <string name="more_autocorrect">Más autocorrecciones</string>
@@ -276,7 +275,6 @@
     <string name="theme_name_indigo" tools:keep="@string/theme_name_indigo">Indigo</string>
     <string name="full_left" tools:keep="@string/full_left">A la izquierda</string>
     <string name="subtype_generic_student">%s (Student)</string>
-    <string name="add_to_personal_dictionary_summary">Utilizar el diccionario personal del dispositivo para almacenar las palabras aprendidas</string>
     <string name="prefs_always_show_suggestions_summary">Ignorar la petición de otras aplicaciones de desactivar las sugerencias (puede producir problemas)</string>
     <string name="show_popup_hints">Mostrar pistas de funciones</string>
     <string name="prefs_bottom_padding_scale">Escala del borde inferior</string>
@@ -1787,4 +1785,6 @@ Permite la inferencia GGUF / llama.cpp en el dispositivo para corrección y rees
     <string name="learned_words_summary">Ver y eliminar palabras individuales aprendidas al escribir</string>
     <string name="learned_words_empty">Aún no hay palabras aprendidas para los idiomas actuales del teclado</string>
     <string name="clear_learned_words_details">Esto elimina todas las palabras y sugerencias de próxima palabra aprendidas de su escritura, en todos los idiomas. Su diccionario personal y las palabras bloqueadas se conservan. Esta acción no se puede deshacer.</string>
+    <string name="auto_add_learned_words">Añadir automáticamente las palabras aprendidas</string>
+    <string name="auto_add_learned_words_summary">Guardar en el diccionario personal del dispositivo las palabras que el teclado aprende de lo que escribes</string>
 </resources>
