@@ -9,6 +9,7 @@ import android.os.SystemClock
 import android.text.InputType
 import android.util.SparseArray
 import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodSubtype
 import android.view.inputmethod.TextBoundsInfo
 import androidx.annotation.RequiresApi
@@ -25,8 +26,10 @@ import helium314.keyboard.latin.AudioAndHapticFeedbackManager
 import helium314.keyboard.latin.EmojiAltPhysicalKeyDetector
 import helium314.keyboard.latin.LastComposedWord
 import helium314.keyboard.latin.LatinIME
+import helium314.keyboard.latin.PhysicalKeyAccents
 import helium314.keyboard.latin.R
 import helium314.keyboard.latin.RichInputMethodManager
+import helium314.keyboard.latin.cjk.CjkInputManager
 import helium314.keyboard.latin.common.Constants
 import helium314.keyboard.latin.common.InputPointers
 import helium314.keyboard.latin.common.StringUtils
@@ -85,6 +88,50 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
     private val mConsumedPhysicalKeys = HashSet<Int>()
     private val mRemappedShortcutKeys = HashMap<Int, Int>()
 
+    private class HeldKey(val keyCode: Int, val deviceId: Int, val codePoint: Int, val cursor: Int, val editorInfo: EditorInfo?)
+
+    // the last physical key press that typed a letter, until it repeats or another key goes down
+    private var mLongPressCandidate: HeldKey? = null
+    // the key whose letter was replaced by an accent, its further repeats are swallowed
+    // not KEYCODE_UNKNOWN for "none": unmapped hardware buttons send that, and must keep repeating
+    private var mAccentedKeyCode: Int? = null
+
+    /** @return true if the event is a repeat that must not type anything */
+    private fun handlePhysicalLongPress(keyCode: Int, keyEvent: KeyEvent): Boolean {
+        if (keyEvent.repeatCount == 0) {
+            mLongPressCandidate = null
+            if (keyCode == mAccentedKeyCode) mAccentedKeyCode = null
+            return false
+        }
+        if (keyCode == mAccentedKeyCode) return true
+        val candidate = mLongPressCandidate ?: return false
+        mLongPressCandidate = null // only the first repeat counts as the long press
+        if (keyEvent.repeatCount != 1 || candidate.keyCode != keyCode || candidate.deviceId != keyEvent.deviceId)
+            return false
+        // the cursor or the text field changed, so the letter before the cursor may be another one
+        if (candidate.cursor != connection.expectedSelectionStart
+            || candidate.editorInfo !== latinIME.currentInputEditorInfo
+        ) return false
+        // symbols, emoji and numpad layouts don't have the letter keys, so they give no accent
+        val keyboard = keyboardSwitcher.keyboard?.takeIf { it.mId.isAlphabetKeyboard } ?: return false
+        val accent = PhysicalKeyAccents.findAccent(keyboard.sortedKeys, candidate.codePoint, keyboard.mId.locale)
+            ?: return false
+        if (!latinIME.replaceLongPressedLetter(candidate.codePoint, accent)) return false
+        mAccentedKeyCode = keyCode
+        return true
+    }
+
+    private fun rememberLongPressCandidate(keyEvent: KeyEvent, event: Event) {
+        if (!settings.current.mPhysicalKeyLongPressAccent || keyEvent.repeatCount != 0) return
+        if (keyEvent.isCtrlPressed || keyEvent.isAltPressed || keyEvent.isMetaPressed) return
+        // in these cases the key doesn't type straight into the text field
+        if (keyboardSwitcher.isGifPickerShowing || settings.current.mLocale.language == "ko") return
+        if (CjkInputManager.getInstance(latinIME).isCjkSubtypeActive(RichInputMethodManager.getInstance().currentSubtype)) return
+        if (!Character.isLetter(event.codePoint)) return
+        mLongPressCandidate = HeldKey(keyEvent.keyCode, keyEvent.deviceId, event.codePoint,
+            connection.expectedSelectionStart, latinIME.currentInputEditorInfo)
+    }
+
     private fun isUnhandledNavigationKey(keyCode: Int): Boolean = when (keyCode) {
         KeyEvent.KEYCODE_PAGE_UP,
         KeyEvent.KEYCODE_PAGE_DOWN,
@@ -97,6 +144,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
 
     override fun onKeyUp(keyCode: Int, keyEvent: KeyEvent): Boolean {
         emojiAltPhysicalKeyDetector.onKeyUp(keyEvent)
+        if (keyCode == mAccentedKeyCode) mAccentedKeyCode = null
+        if (keyCode == mLongPressCandidate?.keyCode) mLongPressCandidate = null
         if (!ProductionFlags.IS_HARDWARE_KEYBOARD_SUPPORTED)
             return false
 
@@ -117,6 +166,8 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         emojiAltPhysicalKeyDetector.onKeyDown(keyEvent)
         if (!ProductionFlags.IS_HARDWARE_KEYBOARD_SUPPORTED)
             return false
+
+        if (handlePhysicalLongPress(keyCode, keyEvent)) return true
 
         if (keyboardSwitcher.isShowingEmojiPalettes) {
             val emojiPalettesView = keyboardSwitcher.emojiPalettesView
@@ -181,6 +232,7 @@ class KeyboardActionListenerImpl(private val latinIME: LatinIME, private val inp
         if (event.isHandled) {
             latinIME.onEvent(event)
             mConsumedPhysicalKeys.add(keyCode)
+            rememberLongPressCandidate(keyEvent, event)
             return true
         }
         return false

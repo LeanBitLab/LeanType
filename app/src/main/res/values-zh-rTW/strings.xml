@@ -1735,4 +1735,6 @@
     <string name="clear_learned_words_details">這會刪除所有語言中從您的輸入學習到的字詞及下一個字詞建議。您的個人字典和已封鎖的字詞會保留。此操作無法復原。</string>
     <string name="auto_add_learned_words">自動新增已學習的字詞</string>
     <string name="auto_add_learned_words_summary">將鍵盤從你的輸入中學到的字詞儲存到裝置的個人字典中</string>
+    <string name="prefs_physical_key_long_press_accent">實體按鍵長按輸入重音符號</string>
+    <string name="prefs_physical_key_long_press_accent_summary">長按字母鍵時，會輸入其彈出按鍵中第一個帶重音或特殊符號的字母</string>
 </resources>

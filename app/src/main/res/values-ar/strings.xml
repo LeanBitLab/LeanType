@@ -1779,4 +1779,6 @@
     <string name="clear_learned_words_details">تُحذف هذه الإجراءات كل كلمة واقتراح للكلمة التالية تعلّمهما لوحة المفاتيح من كتابتك، بجميع اللغات. ستبقى قاموسك الشخصي والكلمات المحظورة محفوظة. لا يمكن التراجع عن هذا الإجراء.</string>
     <string name="auto_add_learned_words">إضافة الكلمات المكتشفة تلقائيًا</string>
     <string name="auto_add_learned_words_summary">حفظ الكلمات التي يتعلمها لوحة المفاتيح من كتابتك في القاموس الشخصي للجهاز</string>
+    <string name="prefs_physical_key_long_press_accent">الضغط مطولاً على المفاتيح الفعلية لإدخال الحروف المشكّلة</string>
+    <string name="prefs_physical_key_long_press_accent_summary">الضغط مطولاً على مفتاح حرف يكتب أول حرف مشكّل أو خاص من بين مفاتيحه المنبثقة</string>
 </resources>

@@ -1698,6 +1698,13 @@ class LatinIME : InputMethodService(),
         keyboardSwitcher.onEvent(event, currentAutoCapsState, currentRecapitalizeState)
     }
 
+    /** Replaces the just typed [letter] with [accent] when a physical key is held. */
+    fun replaceLongPressedLetter(letter: Int, accent: Int): Boolean {
+        if (!inputLogic.replaceLastTypedCodePoint(settings.current, letter, accent)) return false
+        handler.postUpdateSuggestionStrip(SuggestedWords.INPUT_STYLE_TYPING)
+        return true
+    }
+
     fun onTextInput(rawText: String?) {
         if (rawText == null) return
         if (keyboardSwitcher.isGifPickerShowing && keyboardSwitcher.onGifSearchText(rawText)) return

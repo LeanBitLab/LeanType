@@ -64,6 +64,7 @@ import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.Implementation
 import org.robolectric.annotation.Implements
+import org.robolectric.annotation.RealObject
 import org.robolectric.shadows.ShadowLog
 import java.util.*
 import kotlin.math.min
@@ -1979,6 +1980,134 @@ class InputLogicTest {
         assertEquals(null, InputLogic.getInlineEmojiSearchString(":("))
         assertEquals(null, InputLogic.getInlineEmojiSearchString("2606:127.0.0.1::/48"))
     }
+    private fun replaceLast(old: Char, new: Char): Boolean {
+        val replaced = inputLogic.replaceLastTypedCodePoint(settingsValues, old.code, new.code)
+        handleMessages()
+        checkConnectionConsistency()
+        return replaced
+    }
+
+    @Test fun longPressAccentReplacesLetterInComposingWord() {
+        reset()
+        chainInput("sch")
+        input('o')
+        assertTrue(replaceLast('o', 'ö'))
+        assertEquals("schö", textBeforeCursor)
+        assertEquals("schö", composingText)
+        chainInput("n")
+        assertEquals("schön", composingText)
+    }
+
+    @Test fun longPressAccentKeepsCapitalization() {
+        reset()
+        input('A')
+        assertTrue(replaceLast('A', 'Ä'))
+        assertEquals("Ä", composingText)
+        val composer = InputLogic::class.java.getDeclaredField("mWordComposer").apply { isAccessible = true }
+            .get(inputLogic) as WordComposer
+        assertTrue(composer.isOrWillBeOnlyFirstCharCapitalized())
+        assertFalse(composer.isMostlyCaps())
+    }
+
+    @Test fun longPressAccentReplacesCommittedLetter() {
+        reset()
+        setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+        chainInput("pa")
+        assertTrue(replaceLast('a', 'ä'))
+        assertEquals("pä", getText())
+    }
+
+    @Test fun longPressAccentLeavesTextAloneWhenItCannotApply() {
+        reset()
+        chainInput("ab")
+        assertFalse(replaceLast('a', 'ä')) // not the character before the cursor
+        assertEquals("ab", getText())
+        setText("")
+        setInputType(InputType.TYPE_NULL)
+        typeNoAssert("a")
+        val before = text
+        assertFalse(inputLogic.replaceLastTypedCodePoint(settingsValues, 'a'.code, 'ä'.code))
+        assertEquals(before, text)
+    }
+
+    // a held physical key: the press, then the system's key repeats, then the release
+    private fun holdPhysicalKey(keyCode: Int, repeats: Int) {
+        for (repeat in 0..repeats) {
+            val event = KeyEvent(0L, 0L, KeyEvent.ACTION_DOWN, keyCode, repeat)
+            // the framework types the key itself if the keyboard doesn't consume it
+            if (!latinIME.onKeyDown(keyCode, event)) text += event.unicodeChar.toChar()
+            handleMessages()
+        }
+        latinIME.onKeyUp(keyCode, KeyEvent(KeyEvent.ACTION_UP, keyCode))
+        handleMessages()
+    }
+
+    @Test fun holdingPhysicalKeyTypesAccentOnlyWhenEnabled() {
+        reset()
+        ShadowKeyboardSwitcher.keyboard = KeyboardLayoutSet.Builder(latinIME, latinIME.currentInputEditorInfo)
+            .setKeyboardGeometry(500, 300)
+            .setSubtype(RichInputMethodManager.getInstance().currentSubtype)
+            .build()
+            .getKeyboard(KeyboardId.ELEMENT_ALPHABET)
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 3)
+        assertEquals("aaaa", getText()) // off by default: normal key repeat
+
+        // like Android, and unlike the shadow's default, return the same object while the field stays the same
+        editorInfoOverride = EditorInfo().apply { inputType = currentInputType }
+        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, true) }
+        setText("")
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 3)
+        val accented = getText()
+        assertEquals(1, accented.length)
+        assertTrue(accented != "a" && accented[0].isLetter(), accented)
+
+        holdPhysicalKey(KeyEvent.KEYCODE_A, 0) // a normal press afterwards still types the plain letter
+        assertEquals(accented + "a", getText())
+
+        setText("")
+        holdPhysicalKey(KeyEvent.KEYCODE_Q, 2) // no accent for q, so it repeats
+        assertEquals("qqq", getText())
+    }
+
+    @Test fun unmappedPhysicalButtonKeepsRepeating() {
+        reset()
+        for (repeat in 0..2) {
+            assertFalse(latinIME.onKeyDown(KeyEvent.KEYCODE_UNKNOWN, KeyEvent(0L, 0L, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_UNKNOWN, repeat)))
+        }
+    }
+
+    @Test fun movingTheCursorCancelsPhysicalLongPress() {
+        reset()
+        ShadowKeyboardSwitcher.keyboard = KeyboardLayoutSet.Builder(latinIME, latinIME.currentInputEditorInfo)
+            .setKeyboardGeometry(500, 300)
+            .setSubtype(RichInputMethodManager.getInstance().currentSubtype)
+            .build()
+            .getKeyboard(KeyboardId.ELEMENT_ALPHABET)
+        // like Android, and unlike the shadow's default, return the same object while the field stays the same
+        editorInfoOverride = EditorInfo().apply { inputType = currentInputType }
+        latinIME.prefs().edit { putBoolean(Settings.PREF_PHYSICAL_KEY_LONG_PRESS_ACCENT, true) }
+        setText("ba ")
+        val keyDownField = editorInfoOverride
+        latinIME.onKeyDown(KeyEvent.KEYCODE_A, KeyEvent(0L, 0L, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_A, 0))
+        handleMessages()
+        // the user taps behind the other "a" before the key repeats
+        val typed = text
+        setCursorPosition(2) // behind the "a" of "ba"
+        editorInfoOverride = keyDownField // only the cursor moved, the field is the same
+        latinIME.onKeyDown(KeyEvent.KEYCODE_A, KeyEvent(0L, 0L, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_A, 1))
+        handleMessages()
+        assertEquals("baa " + typed.substring(3), text) // a plain repeat at the new position, nothing replaced
+    }
+
+    @Test fun longPressAccentWorksInTheMiddleOfText() {
+        reset()
+        setText("xy")
+        setCursorPosition(1)
+        input('o')
+        assertTrue(replaceLast('o', 'ö'))
+        assertEquals("xöy", text)
+    }
+
     private fun typeNoAssert(text: String) {
         text.forEach {
             latinIME.onEvent(Event.createEventForCodePointFromUnknownSource(it.code))
@@ -2048,6 +2177,7 @@ class InputLogicTest {
     // should be called before every test, so the same state is guaranteed
     private fun reset() {
         // reset input connection & facilitator
+        ShadowKeyboardSwitcher.keyboard = null
         currentScript = ScriptUtils.SCRIPT_LATIN
         text = ""
         batchEdit = 0
@@ -2650,6 +2780,17 @@ class ShadowHandler {
 
 @Implements(KeyboardSwitcher::class)
 class ShadowKeyboardSwitcher {
+    companion object {
+        // stands in for the on-screen keyboard in tests that have no keyboard view
+        var keyboard: Keyboard? = null
+    }
+
+    @RealObject
+    private lateinit var switcher: KeyboardSwitcher
+
+    @Implementation
+    fun getKeyboard(): Keyboard? = keyboard ?: switcher.activeMainKeyboardView?.keyboard
+
     @Implementation
     // basically only needed for null check
     fun getMainKeyboardView(): MainKeyboardView = Mockito.mock(MainKeyboardView::class.java)

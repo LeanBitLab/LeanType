@@ -1779,4 +1779,6 @@
     <string name="clear_learned_words_details">פעולה זו מוחקת כל מילה והצעת מילה הבאה שנלמדו מההקלדה שלך, בכל השפות. המילון האישי והמילים החסומות יישמרו. לא ניתן לבטל פעולה זו.</string>
     <string name="auto_add_learned_words">הוספה אוטומטית של מילים נלמדות</string>
     <string name="auto_add_learned_words_summary">שמירת מילים שהמקלדת לומדת מההקלדה שלך במילון האישי של המכשיר</string>
+    <string name="prefs_physical_key_long_press_accent">החזקת מקשים פיזיים להטיית אותיות</string>
+    <string name="prefs_physical_key_long_press_accent_summary">החזקת מקש אות מקלידה את האות המוטה או המיוחדת הראשונה מבין מקשי הקופץ שלה</string>
 </resources>

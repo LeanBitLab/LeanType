@@ -1225,6 +1225,33 @@ class InputLogic(
         )
     }
 
+    /**
+     * Replaces [oldCodePoint] right before the cursor with [newCodePoint], keeping a composing word intact.
+     * @return false without changing anything if the text is not what typing [oldCodePoint] would have left,
+     * for example because a shortcut was expanded or a combiner changed the letter.
+     */
+    fun replaceLastTypedCodePoint(settingsValues: SettingsValues, oldCodePoint: Int, newCodePoint: Int): Boolean {
+        // terminals and games without a real text field can't be relied on to delete the letter
+        if (settingsValues.mInputAttributes.mInputType and InputType.TYPE_MASK_CLASS != InputType.TYPE_CLASS_TEXT) return false
+        if (mLastExpandedText != null || mConnection.hasSelection()) return false
+        if (mConnection.codePointBeforeCursor != oldCodePoint) return false
+        val newText = StringUtils.newSingleCodePointString(newCodePoint)
+        val isComposing = mWordComposer.isComposingWord()
+        if (isComposing && (mWordComposer.isCursorFrontOrMiddleOfComposingWord()
+                    || !mWordComposer.getTypedWord().endsWith(StringUtils.newSingleCodePointString(oldCodePoint)))
+        ) return false
+        mConnection.beginBatchEdit()
+        if (isComposing) {
+            mWordComposer.replaceLastCodePoint(oldCodePoint, newCodePoint)
+            setComposingTextInternal(getTextWithUnderline(mWordComposer.getTypedWord()), 1)
+        } else {
+            mConnection.deleteTextBeforeCursor(Character.charCount(oldCodePoint))
+            mConnection.commitText(newText, 1)
+        }
+        mConnection.endBatchEdit()
+        return true
+    }
+
     private fun handleNonSeparatorEvent(
         event: Event,
         settingsValues: SettingsValues,

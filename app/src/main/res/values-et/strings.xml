@@ -1808,4 +1808,6 @@ Võimaldab seadmesisese GGUF / llama.cpp järelduse korrektuuri ja ümbersõnast
     <string name="clear_learned_words_details">See kustutab kõik sõnad ja järgmise sõna soovitused, mis on õpitud sinu tippimisest, kõigis keeltes. Isiklik sõnastik ja blokeeritud sõnad jäävad alles. Seda ei saa tagasi võtta.</string>
     <string name="auto_add_learned_words">Lisa õpitud sõnad automaatselt</string>
     <string name="auto_add_learned_words_summary">Salvesta seadme isiklikku sõnastikku sõnad, mida klaviatuur sinu sisestusest õpib</string>
+    <string name="prefs_physical_key_long_press_accent">Füüsiliste klahvide pikk vajutus aktsentideks</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Tähe-klahvi hoidmine kirjutab selle hüpikklahvide esimese aktsentandmärgiga või erimärgiga tähe</string>
 </resources>

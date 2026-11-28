@@ -1808,4 +1808,6 @@
     <string name="clear_learned_words_details">Това изтрива всяка дума и предложение за следваща дума, научени от въвеждането ви, на всички езици. Личният ви речник и блокираните думи се запазват. Това действие не може да бъде отменено.</string>
     <string name="auto_add_learned_words">Автоматично добавяне на научените думи</string>
     <string name="auto_add_learned_words_summary">Запазване на думите, които клавиатурата научава от въвеждането ви, в личния речник на устройството</string>
+    <string name="prefs_physical_key_long_press_accent">Задържане на физически клавиши за акценти</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Задържането на буквен клавиш въвежда първата буква с ударение или специалната буква от неговите изскачащи клавиши</string>
 </resources>

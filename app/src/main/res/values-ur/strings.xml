@@ -1812,4 +1812,6 @@
     <string name="clear_learned_words_details">یہ آپ کی ٹائپنگ سے سیکھے گئے ہر لفظ اور اگلے لفظ کی تجویز کو تمام زبانوں میں حذف کر دیتا ہے۔ آپ کی ذاتی لغت اور بلاک کیے گئے الفاظ برقرار رہیں گے۔ اسے واپس نہیں لایا جا سکتا۔</string>
     <string name="auto_add_learned_words">خودکار طور پر سیکھے گئے الفاظ شامل کریں</string>
     <string name="auto_add_learned_words_summary">وہ الفاظ محفوظ کریں جو کی بورڈ آپ کی ٹائپنگ سے سیکھتا ہے، آلے کی ذاتی لغت میں</string>
+    <string name="prefs_physical_key_long_press_accent">فزیکل کیز دبائیں اور لہجے حاصل کریں</string>
+    <string name="prefs_physical_key_long_press_accent_summary">کسی حرف کی کلید دبانے سے اس کے پاپ اپ کیز میں سے پہلا لہجے دار یا خاص حرف ٹائپ ہوتا ہے</string>
 </resources>

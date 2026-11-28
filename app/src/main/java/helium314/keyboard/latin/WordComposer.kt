@@ -206,6 +206,16 @@ class WordComposer {
         mAutoCorrection = null
     }
 
+    /** Replaces the last letter of the composing word, [oldCodePoint], as if [newCodePoint] had been typed instead. */
+    fun replaceLastCodePoint(oldCodePoint: Int, newCodePoint: Int) {
+        applyProcessedEvent(Event.createSoftwareKeypressEvent(Event.NOT_A_CODE_POINT, KeyCode.DELETE, 0,
+            Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false))
+        // deleting doesn't lower the count
+        if (Character.isUpperCase(oldCodePoint)) mCapsCount--
+        applyProcessedEvent(Event.createSoftwareKeypressEvent(newCodePoint, KeyCode.NOT_SPECIFIED, 0,
+            Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false))
+    }
+
     fun setCursorPositionWithinWord(posWithinWord: Int) {
         mCursorPositionWithinWord = posWithinWord
         // TODO: compute where that puts us inside the events.

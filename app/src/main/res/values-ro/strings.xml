@@ -1808,4 +1808,6 @@ Activează inferența GGUF / llama.cpp pe dispozitiv pentru corectură și refor
     <string name="clear_learned_words_details">Aceasta șterge toate cuvintele și sugestiile pentru cuvântul următor învățate din tastarea ta, în toate limbile. Dicționarul tău personal și cuvintele blocate sunt păstrate. Această acțiune nu poate fi anulată.</string>
     <string name="auto_add_learned_words">Adaugă automat cuvintele învățate</string>
     <string name="auto_add_learned_words_summary">Salvează în dicționarul personal al dispozitivului cuvintele pe care tastatura le învață din modul în care scrii</string>
+    <string name="prefs_physical_key_long_press_accent">Ține apăsate tastele fizice pentru accente</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Ținând apăsată o tastă cu litere, se tastează prima literă accentuată sau specială dintre tastele pop-up ale acesteia</string>
 </resources>

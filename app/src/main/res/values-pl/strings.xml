@@ -1818,4 +1818,6 @@ Umożliwia lokalne wnioskowanie GGUF / llama.cpp na urządzeniu w celu korekty i
     <string name="clear_learned_words_details">Spowoduje to usunięcie wszystkich słów i sugestii następnego słowa nauczonych na podstawie pisania we wszystkich językach. Twój słownik osobisty i zablokowane słowa zostaną zachowane. Tej operacji nie można cofnąć.</string>
     <string name="auto_add_learned_words">Automatycznie dodawaj nauczone słowa</string>
     <string name="auto_add_learned_words_summary">Zapisuj słowa, których klawiatura uczy się z twojego pisania, w osobistym słowniku urządzenia</string>
+    <string name="prefs_physical_key_long_press_accent">Przytrzymaj klawisze fizyczne, aby wpisać znaki diakrytyczne</string>
+    <string name="prefs_physical_key_long_press_accent_summary">Przytrzymanie klawisza litery wpisuje pierwszą literę z akcentem lub znak specjalny spośród jego klawiszy kontekstowych</string>
 </resources>
