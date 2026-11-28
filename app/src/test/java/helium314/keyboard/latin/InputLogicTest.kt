@@ -1785,6 +1785,40 @@ class InputLogicTest {
         assertEquals("", text)
     }
 
+    @Test fun `held backspace sends no extra deletes while the editor lags behind`() {
+        reset()
+        setText("x".repeat(120) + " ")
+        connection.onEditorReportedSelection(selectionStart) // the test field reports no initial cursor
+        // the editor applies nothing it is sent, so 20 single deletes are still in flight
+        for (i in 1..20) {
+            functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true, editorReports = false)
+        }
+        assertEquals(101, text.length)
+        // accelerated repeat, but the editor has not caught up: only the normal single delete
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true, editorReports = false)
+        assertEquals(100, text.length)
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true) // editor catches up after this one
+        assertEquals(99, text.length)
+        // caught up: acceleration is back (1 + 1 extra)
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals(97, text.length)
+    }
+
+    @Test fun `held backspace in a lagging web editor queues at most one repeat of extra deletes`() {
+        reset()
+        currentInputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT
+        setText("x".repeat(200) + " ")
+        connection.onEditorReportedSelection(selectionStart) // the test field reports no initial cursor
+        for (i in 1..60) {
+            functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true, editorReports = false)
+        }
+        // 60 normal deletes plus the one extra that still fit (unthrottled: 60 + 105 extra)
+        assertEquals(201 - 61, text.length)
+        connection.onEditorReportedSelection(selectionStart) // the editor catches up
+        functionalKeyPress(KeyCode.DELETE, isKeyRepeat = true)
+        assertEquals(201 - 61 - 7, text.length) // 61st delete: 1 + 6 extra
+    }
+
     @Test fun `key repeat backspace does not restart intermediate composing words`() {
         reset()
         setText("first second ")
@@ -2132,10 +2166,12 @@ class InputLogicTest {
         functionalKeyPress(KeyCode.SHIFT)
     }
 
-    private fun functionalKeyPress(keyCode: Int, isKeyRepeat: Boolean = false) {
+    // editorReports = false: the editor has not yet told the keyboard where its cursor is now, like a slow app
+    private fun functionalKeyPress(keyCode: Int, isKeyRepeat: Boolean = false, editorReports: Boolean = true) {
         require(keyCode < 0) { "not a functional key code: $keyCode" }
         latinIME.onEvent(Event.createSoftwareKeypressEvent(Event.NOT_A_CODE_POINT, keyCode, 0, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat))
         handleMessages()
+        if (editorReports) connection.onEditorReportedSelection(selectionStart)
         checkConnectionConsistency()
     }
 
